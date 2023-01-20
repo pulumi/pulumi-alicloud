@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.tsdb.TsdbFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.tsdb.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;

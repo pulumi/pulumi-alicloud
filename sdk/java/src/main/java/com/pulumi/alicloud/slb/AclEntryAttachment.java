@@ -45,15 +45,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraformslbaclconfig&#34;);
- *         final var ipVersion = config.get(&#34;ipVersion&#34;).orElse(&#34;ipv4&#34;);
- *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
- *             .ipVersion(ipVersion)
+ *         var attachmentAcl = new Acl(&#34;attachmentAcl&#34;, AclArgs.builder()        
+ *             .ipVersion(&#34;ipv4&#34;)
  *             .build());
  * 
- *         var defaultAclEntryAttachment = new AclEntryAttachment(&#34;defaultAclEntryAttachment&#34;, AclEntryAttachmentArgs.builder()        
- *             .aclId(defaultAcl.id())
+ *         var attachmentAclEntryAttachment = new AclEntryAttachment(&#34;attachmentAclEntryAttachment&#34;, AclEntryAttachmentArgs.builder()        
+ *             .aclId(attachmentAcl.id())
  *             .entry(&#34;168.10.10.0/24&#34;)
  *             .comment(&#34;second&#34;)
  *             .build());

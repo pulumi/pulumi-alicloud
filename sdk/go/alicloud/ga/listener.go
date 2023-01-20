@@ -101,6 +101,8 @@ type Listener struct {
 	ClientAffinity pulumi.StringPtrOutput `pulumi:"clientAffinity"`
 	// The description of the listener.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The routing type of the listener. Default Value: `Standard`. Valid values:
+	ListenerType pulumi.StringOutput `pulumi:"listenerType"`
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The portRanges of the listener.
@@ -111,6 +113,8 @@ type Listener struct {
 	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
 	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol pulumi.BoolPtrOutput `pulumi:"proxyProtocol"`
+	// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// The status of the listener.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -160,6 +164,8 @@ type listenerState struct {
 	ClientAffinity *string `pulumi:"clientAffinity"`
 	// The description of the listener.
 	Description *string `pulumi:"description"`
+	// The routing type of the listener. Default Value: `Standard`. Valid values:
+	ListenerType *string `pulumi:"listenerType"`
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name *string `pulumi:"name"`
 	// The portRanges of the listener.
@@ -170,6 +176,8 @@ type listenerState struct {
 	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
 	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol *bool `pulumi:"proxyProtocol"`
+	// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The status of the listener.
 	Status *string `pulumi:"status"`
 }
@@ -185,6 +193,8 @@ type ListenerState struct {
 	ClientAffinity pulumi.StringPtrInput
 	// The description of the listener.
 	Description pulumi.StringPtrInput
+	// The routing type of the listener. Default Value: `Standard`. Valid values:
+	ListenerType pulumi.StringPtrInput
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringPtrInput
 	// The portRanges of the listener.
@@ -195,6 +205,8 @@ type ListenerState struct {
 	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
 	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol pulumi.BoolPtrInput
+	// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+	SecurityPolicyId pulumi.StringPtrInput
 	// The status of the listener.
 	Status pulumi.StringPtrInput
 }
@@ -214,6 +226,8 @@ type listenerArgs struct {
 	ClientAffinity *string `pulumi:"clientAffinity"`
 	// The description of the listener.
 	Description *string `pulumi:"description"`
+	// The routing type of the listener. Default Value: `Standard`. Valid values:
+	ListenerType *string `pulumi:"listenerType"`
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name *string `pulumi:"name"`
 	// The portRanges of the listener.
@@ -224,6 +238,8 @@ type listenerArgs struct {
 	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
 	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol *bool `pulumi:"proxyProtocol"`
+	// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 }
 
 // The set of arguments for constructing a Listener resource.
@@ -238,6 +254,8 @@ type ListenerArgs struct {
 	ClientAffinity pulumi.StringPtrInput
 	// The description of the listener.
 	Description pulumi.StringPtrInput
+	// The routing type of the listener. Default Value: `Standard`. Valid values:
+	ListenerType pulumi.StringPtrInput
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringPtrInput
 	// The portRanges of the listener.
@@ -248,6 +266,8 @@ type ListenerArgs struct {
 	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
 	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol pulumi.BoolPtrInput
+	// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+	SecurityPolicyId pulumi.StringPtrInput
 }
 
 func (ListenerArgs) ElementType() reflect.Type {
@@ -359,6 +379,11 @@ func (o ListenerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The routing type of the listener. Default Value: `Standard`. Valid values:
+func (o ListenerOutput) ListenerType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.ListenerType }).(pulumi.StringOutput)
+}
+
 // The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 func (o ListenerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -379,6 +404,11 @@ func (o ListenerOutput) Protocol() pulumi.StringPtrOutput {
 // `false`: keep client source IP function is not turned on.
 func (o ListenerOutput) ProxyProtocol() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolPtrOutput { return v.ProxyProtocol }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+func (o ListenerOutput) SecurityPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
 
 // The status of the listener.

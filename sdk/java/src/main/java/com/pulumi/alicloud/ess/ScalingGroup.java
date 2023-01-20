@@ -106,6 +106,20 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return this.groupType;
     }
     /**
+     * Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+     * 
+     */
+    @Export(name="healthCheckType", type=String.class, parameters={})
+    private Output<String> healthCheckType;
+
+    /**
+     * @return Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+     * 
+     */
+    public Output<String> healthCheckType() {
+        return this.healthCheckType;
+    }
+    /**
      * Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
      * 
      */

@@ -3,8 +3,10 @@
 
 package com.pulumi.alicloud.hbr;
 
+import com.pulumi.alicloud.hbr.inputs.RestoreJobOtsDetailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +16,51 @@ import javax.annotation.Nullable;
 public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RestoreJobArgs Empty = new RestoreJobArgs();
+
+    /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    @Import(name="crossAccountRoleName")
+    private @Nullable Output<String> crossAccountRoleName;
+
+    /**
+     * @return The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    public Optional<Output<String>> crossAccountRoleName() {
+        return Optional.ofNullable(this.crossAccountRoleName);
+    }
+
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    @Import(name="crossAccountType")
+    private @Nullable Output<String> crossAccountType;
+
+    /**
+     * @return The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    public Optional<Output<String>> crossAccountType() {
+        return Optional.ofNullable(this.crossAccountType);
+    }
+
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    @Import(name="crossAccountUserId")
+    private @Nullable Output<Integer> crossAccountUserId;
+
+    /**
+     * @return The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    public Optional<Output<Integer>> crossAccountUserId() {
+        return Optional.ofNullable(this.crossAccountUserId);
+    }
 
     /**
      * The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
@@ -58,6 +105,21 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> options() {
         return Optional.ofNullable(this.options);
+    }
+
+    /**
+     * The details about the Tablestore instance. See the following `Block ots_detail`.
+     * 
+     */
+    @Import(name="otsDetail")
+    private @Nullable Output<RestoreJobOtsDetailArgs> otsDetail;
+
+    /**
+     * @return The details about the Tablestore instance. See the following `Block ots_detail`.
+     * 
+     */
+    public Optional<Output<RestoreJobOtsDetailArgs>> otsDetail() {
+        return Optional.ofNullable(this.otsDetail);
     }
 
     /**
@@ -333,9 +395,13 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
     private RestoreJobArgs() {}
 
     private RestoreJobArgs(RestoreJobArgs $) {
+        this.crossAccountRoleName = $.crossAccountRoleName;
+        this.crossAccountType = $.crossAccountType;
+        this.crossAccountUserId = $.crossAccountUserId;
         this.exclude = $.exclude;
         this.include = $.include;
         this.options = $.options;
+        this.otsDetail = $.otsDetail;
         this.restoreJobId = $.restoreJobId;
         this.restoreType = $.restoreType;
         this.snapshotHash = $.snapshotHash;
@@ -372,6 +438,69 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RestoreJobArgs defaults) {
             $ = new RestoreJobArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param crossAccountRoleName The role name created in the original account RAM backup by the cross account managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountRoleName(@Nullable Output<String> crossAccountRoleName) {
+            $.crossAccountRoleName = crossAccountRoleName;
+            return this;
+        }
+
+        /**
+         * @param crossAccountRoleName The role name created in the original account RAM backup by the cross account managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountRoleName(String crossAccountRoleName) {
+            return crossAccountRoleName(Output.of(crossAccountRoleName));
+        }
+
+        /**
+         * @param crossAccountType The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountType(@Nullable Output<String> crossAccountType) {
+            $.crossAccountType = crossAccountType;
+            return this;
+        }
+
+        /**
+         * @param crossAccountType The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountType(String crossAccountType) {
+            return crossAccountType(Output.of(crossAccountType));
+        }
+
+        /**
+         * @param crossAccountUserId The original account ID of the cross account backup managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountUserId(@Nullable Output<Integer> crossAccountUserId) {
+            $.crossAccountUserId = crossAccountUserId;
+            return this;
+        }
+
+        /**
+         * @param crossAccountUserId The original account ID of the cross account backup managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountUserId(Integer crossAccountUserId) {
+            return crossAccountUserId(Output.of(crossAccountUserId));
         }
 
         /**
@@ -435,6 +564,27 @@ public final class RestoreJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder options(String options) {
             return options(Output.of(options));
+        }
+
+        /**
+         * @param otsDetail The details about the Tablestore instance. See the following `Block ots_detail`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder otsDetail(@Nullable Output<RestoreJobOtsDetailArgs> otsDetail) {
+            $.otsDetail = otsDetail;
+            return this;
+        }
+
+        /**
+         * @param otsDetail The details about the Tablestore instance. See the following `Block ots_detail`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder otsDetail(RestoreJobOtsDetailArgs otsDetail) {
+            return otsDetail(Output.of(otsDetail));
         }
 
         /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MongoDB.Inputs
 {
 
-    public sealed class InstanceReplicaSetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceReplicaSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The connection address of the node.
@@ -57,5 +57,6 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public InstanceReplicaSetArgs()
         {
         }
+        public static new InstanceReplicaSetArgs Empty => new InstanceReplicaSetArgs();
     }
 }

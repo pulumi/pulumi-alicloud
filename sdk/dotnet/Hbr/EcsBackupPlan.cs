@@ -21,46 +21,46 @@ namespace Pulumi.AliCloud.Hbr
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "valut-name";
+    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "valut-name";
-    ///         var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new AliCloud.Hbr.VaultArgs
-    ///         {
-    ///             VaultName = name,
-    ///         });
-    ///         var defaultInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
-    ///         {
-    ///             NameRegex = "no-deleteing-hbr-ecs-backup-plan",
-    ///             Status = "Running",
-    ///         }));
-    ///         var example = new AliCloud.Hbr.EcsBackupPlan("example", new AliCloud.Hbr.EcsBackupPlanArgs
-    ///         {
-    ///             EcsBackupPlanName = "example_value",
-    ///             InstanceId = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances?[0]?.Id),
-    ///             VaultId = defaultVault.Id,
-    ///             Retention = "1",
-    ///             Schedule = "I|1602673264|PT2H",
-    ///             BackupType = "COMPLETE",
-    ///             SpeedLimit = "0:24:5120",
-    ///             Paths = 
-    ///             {
-    ///                 "/home",
-    ///                 "/var",
-    ///             },
-    ///             Exclude = @"  [""/home/exclude""]
-    /// ",
-    ///             Include = @"  [""/home/include""]
-    /// ",
-    ///         });
-    ///     }
+    ///         VaultName = name,
+    ///     });
     /// 
-    /// }
+    ///     var defaultInstances = AliCloud.Ecs.GetInstances.Invoke(new()
+    ///     {
+    ///         NameRegex = "no-deleteing-hbr-ecs-backup-plan",
+    ///         Status = "Running",
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Hbr.EcsBackupPlan("example", new()
+    ///     {
+    ///         EcsBackupPlanName = "example_value",
+    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+    ///         VaultId = defaultVault.Id,
+    ///         Retention = "1",
+    ///         Schedule = "I|1602673264|PT2H",
+    ///         BackupType = "COMPLETE",
+    ///         SpeedLimit = "0:24:5120",
+    ///         Paths = new[]
+    ///         {
+    ///             "/home",
+    ///             "/var",
+    ///         },
+    ///         Exclude = @"  [""/home/exclude""]
+    /// ",
+    ///         Include = @"  [""/home/include""]
+    /// ",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Notice
     /// 
@@ -89,13 +89,31 @@ namespace Pulumi.AliCloud.Hbr
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/ecsBackupPlan:EcsBackupPlan")]
-    public partial class EcsBackupPlan : Pulumi.CustomResource
+    public partial class EcsBackupPlan : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         [Output("backupType")]
         public Output<string> BackupType { get; private set; } = null!;
+
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Output("crossAccountRoleName")]
+        public Output<string?> CrossAccountRoleName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Output("crossAccountType")]
+        public Output<string> CrossAccountType { get; private set; } = null!;
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Output("crossAccountUserId")]
+        public Output<int?> CrossAccountUserId { get; private set; } = null!;
 
         /// <summary>
         /// The detail of the backup plan.
@@ -219,13 +237,31 @@ namespace Pulumi.AliCloud.Hbr
         }
     }
 
-    public sealed class EcsBackupPlanArgs : Pulumi.ResourceArgs
+    public sealed class EcsBackupPlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         [Input("backupType", required: true)]
         public Input<string> BackupType { get; set; } = null!;
+
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
 
         /// <summary>
         /// The detail of the backup plan.
@@ -314,15 +350,34 @@ namespace Pulumi.AliCloud.Hbr
         public EcsBackupPlanArgs()
         {
         }
+        public static new EcsBackupPlanArgs Empty => new EcsBackupPlanArgs();
     }
 
-    public sealed class EcsBackupPlanState : Pulumi.ResourceArgs
+    public sealed class EcsBackupPlanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
+
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
 
         /// <summary>
         /// The detail of the backup plan.
@@ -411,5 +466,6 @@ namespace Pulumi.AliCloud.Hbr
         public EcsBackupPlanState()
         {
         }
+        public static new EcsBackupPlanState Empty => new EcsBackupPlanState();
     }
 }

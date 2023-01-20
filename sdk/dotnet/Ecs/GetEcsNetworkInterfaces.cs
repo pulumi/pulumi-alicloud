@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetEcsNetworkInterfaces.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetEcsNetworkInterfaces.InvokeAsync(new AliCloud.Ecs.GetEcsNetworkInterfacesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "eni-abcd1234",
-        ///             },
-        ///             NameRegex = "tf-testAcc",
-        ///         }));
-        ///         this.FirstEcsNetworkInterfaceId = example.Apply(example =&gt; example.Interfaces?[0]?.Id);
-        ///     }
+        ///             "eni-abcd1234",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
         /// 
-        ///     [Output("firstEcsNetworkInterfaceId")]
-        ///     public Output&lt;string&gt; FirstEcsNetworkInterfaceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsNetworkInterfaceId"] = example.Apply(getEcsNetworkInterfacesResult =&gt; getEcsNetworkInterfacesResult.Interfaces[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsNetworkInterfacesResult> InvokeAsync(GetEcsNetworkInterfacesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsNetworkInterfacesResult>("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args ?? new GetEcsNetworkInterfacesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsNetworkInterfacesResult>("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args ?? new GetEcsNetworkInterfacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetEcsNetworkInterfaces.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetEcsNetworkInterfaces.InvokeAsync(new AliCloud.Ecs.GetEcsNetworkInterfacesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "eni-abcd1234",
-        ///             },
-        ///             NameRegex = "tf-testAcc",
-        ///         }));
-        ///         this.FirstEcsNetworkInterfaceId = example.Apply(example =&gt; example.Interfaces?[0]?.Id);
-        ///     }
+        ///             "eni-abcd1234",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
         /// 
-        ///     [Output("firstEcsNetworkInterfaceId")]
-        ///     public Output&lt;string&gt; FirstEcsNetworkInterfaceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsNetworkInterfaceId"] = example.Apply(getEcsNetworkInterfacesResult =&gt; getEcsNetworkInterfacesResult.Interfaces[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsNetworkInterfacesResult> Invoke(GetEcsNetworkInterfacesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsNetworkInterfacesResult>("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args ?? new GetEcsNetworkInterfacesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsNetworkInterfacesResult>("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args ?? new GetEcsNetworkInterfacesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsNetworkInterfacesArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsNetworkInterfacesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -203,9 +201,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsNetworkInterfacesArgs()
         {
         }
+        public static new GetEcsNetworkInterfacesArgs Empty => new GetEcsNetworkInterfacesArgs();
     }
 
-    public sealed class GetEcsNetworkInterfacesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsNetworkInterfacesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -315,6 +314,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsNetworkInterfacesInvokeArgs()
         {
         }
+        public static new GetEcsNetworkInterfacesInvokeArgs Empty => new GetEcsNetworkInterfacesInvokeArgs();
     }
 
 

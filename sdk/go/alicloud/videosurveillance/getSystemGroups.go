@@ -45,9 +45,9 @@ import (
 //					defaultSystemGroup.ID(),
 //				},
 //			}, nil)
-//			ctx.Export("vsGroup", defaultSystemGroups.ApplyT(func(defaultSystemGroups videosurveillance.GetSystemGroupsResult) (string, error) {
-//				return defaultSystemGroups.Ids[0], nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("vsGroup", defaultSystemGroups.ApplyT(func(defaultSystemGroups videosurveillance.GetSystemGroupsResult) (*string, error) {
+//				return &defaultSystemGroups.Ids[0], nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

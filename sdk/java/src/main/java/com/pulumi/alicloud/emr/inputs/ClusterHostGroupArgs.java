@@ -33,14 +33,14 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+     * Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      * 
      */
     @Import(name="chargeType")
     private @Nullable Output<String> chargeType;
 
     /**
-     * @return Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+     * @return Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      * 
      */
     public Optional<Output<String>> chargeType() {
@@ -310,7 +310,7 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param chargeType Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+         * @param chargeType Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param chargeType Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+         * @param chargeType Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
          * 
          * @return builder
          * 

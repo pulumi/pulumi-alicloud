@@ -98,14 +98,14 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
      * 
      */
     @Import(name="dbClusterVersion", required=true)
     private Output<String> dbClusterVersion;
 
     /**
-     * @return The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+     * @return The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
      * 
      */
     public Output<String> dbClusterVersion() {
@@ -263,6 +263,21 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The id of the VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
      * The vswitch id of DBCluster.
      * 
      */
@@ -275,6 +290,21 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
+    }
+
+    /**
+     * The zone ID of the instance.
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
+
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private DbClusterArgs() {}
@@ -296,7 +326,9 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.status = $.status;
         this.storageType = $.storageType;
         this.usedTime = $.usedTime;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -437,7 +469,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterVersion The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+         * @param dbClusterVersion The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
          * 
          * @return builder
          * 
@@ -448,7 +480,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterVersion The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+         * @param dbClusterVersion The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
          * 
          * @return builder
          * 
@@ -668,6 +700,27 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
+        }
+
+        /**
          * @param vswitchId The vswitch id of DBCluster.
          * 
          * @return builder
@@ -686,6 +739,27 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vswitchId(String vswitchId) {
             return vswitchId(Output.of(vswitchId));
+        }
+
+        /**
+         * @param zoneId The zone ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId The zone ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public DbClusterArgs build() {

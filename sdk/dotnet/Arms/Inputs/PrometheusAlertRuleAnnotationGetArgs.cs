@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Arms.Inputs
 {
 
-    public sealed class PrometheusAlertRuleAnnotationGetArgs : Pulumi.ResourceArgs
+    public sealed class PrometheusAlertRuleAnnotationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the annotation.
+        /// The name of the label.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The value of the annotation.
+        /// The value of the label.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Arms.Inputs
         public PrometheusAlertRuleAnnotationGetArgs()
         {
         }
+        public static new PrometheusAlertRuleAnnotationGetArgs Empty => new PrometheusAlertRuleAnnotationGetArgs();
     }
 }

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -180,6 +181,21 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+     * 
+     */
+    @Import(name="securityProtectionTypes")
+    private @Nullable Output<List<String>> securityProtectionTypes;
+
+    /**
+     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+     * 
+     */
+    public Optional<Output<List<String>>> securityProtectionTypes() {
+        return Optional.ofNullable(this.securityProtectionTypes);
+    }
+
+    /**
      * (Available in 1.120.0+) The status of bandwidth package.
      * 
      */
@@ -222,6 +238,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         this.name = $.name;
         this.ratio = $.ratio;
         this.resourceGroupId = $.resourceGroupId;
+        this.securityProtectionTypes = $.securityProtectionTypes;
         this.status = $.status;
         this.zone = $.zone;
     }
@@ -464,6 +481,37 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(@Nullable Output<List<String>> securityProtectionTypes) {
+            $.securityProtectionTypes = securityProtectionTypes;
+            return this;
+        }
+
+        /**
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(List<String> securityProtectionTypes) {
+            return securityProtectionTypes(Output.of(securityProtectionTypes));
+        }
+
+        /**
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(String... securityProtectionTypes) {
+            return securityProtectionTypes(List.of(securityProtectionTypes));
         }
 
         /**

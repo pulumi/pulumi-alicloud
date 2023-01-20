@@ -28,9 +28,6 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// <summary>
         /// (Optional, Available in v1.121.2+) Whether the file system is encrypted. 
         /// * Valid values:
-        /// * `0`: The file system is not encrypted.
-        /// * `1`: The file system is encrypted with a managed secret key.
-        /// * `2`: User management key.
         /// </summary>
         public readonly int EncryptType;
         /// <summary>

@@ -17,14 +17,14 @@ public final class AddressPoolAddressArgs extends com.pulumi.resources.ResourceA
     public static final AddressPoolAddressArgs Empty = new AddressPoolAddressArgs();
 
     /**
-     * The address that you want to add to the address pool.
+     * The address lists of the Address Pool. See the following `Block address`.
      * 
      */
     @Import(name="address", required=true)
     private Output<String> address;
 
     /**
-     * @return The address that you want to add to the address pool.
+     * @return The address lists of the Address Pool. See the following `Block address`.
      * 
      */
     public Output<String> address() {
@@ -33,8 +33,6 @@ public final class AddressPoolAddressArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The source region of the address. expressed as a JSON string. The structure is as follows:
-     * * `LineCodes`: List of home lineCodes.
-     * * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
      * 
      */
     @Import(name="attributeInfo", required=true)
@@ -42,8 +40,6 @@ public final class AddressPoolAddressArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The source region of the address. expressed as a JSON string. The structure is as follows:
-     * * `LineCodes`: List of home lineCodes.
-     * * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
      * 
      */
     public Output<String> attributeInfo() {
@@ -124,7 +120,7 @@ public final class AddressPoolAddressArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param address The address that you want to add to the address pool.
+         * @param address The address lists of the Address Pool. See the following `Block address`.
          * 
          * @return builder
          * 
@@ -135,7 +131,7 @@ public final class AddressPoolAddressArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param address The address that you want to add to the address pool.
+         * @param address The address lists of the Address Pool. See the following `Block address`.
          * 
          * @return builder
          * 
@@ -146,8 +142,6 @@ public final class AddressPoolAddressArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param attributeInfo The source region of the address. expressed as a JSON string. The structure is as follows:
-         * * `LineCodes`: List of home lineCodes.
-         * * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
          * 
          * @return builder
          * 
@@ -159,8 +153,6 @@ public final class AddressPoolAddressArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param attributeInfo The source region of the address. expressed as a JSON string. The structure is as follows:
-         * * `LineCodes`: List of home lineCodes.
-         * * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
          * 
          * @return builder
          * 

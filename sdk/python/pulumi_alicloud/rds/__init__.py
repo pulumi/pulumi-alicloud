@@ -11,6 +11,9 @@ from .backup_policy import *
 from .connection import *
 from .database import *
 from .get_accounts import *
+from .get_cross_region_backups import *
+from .get_cross_regions import *
+from .get_instance_class_infos import *
 from .get_instance_classes import *
 from .get_instance_engines import *
 from .get_instances import *
@@ -22,7 +25,10 @@ from .instance import *
 from .rds_account import *
 from .rds_backup import *
 from .rds_clone_db_instance import *
+from .rds_db_proxy import *
+from .rds_instance_cross_backup_policy import *
 from .rds_parameter_group import *
+from .rds_service_linked_role import *
 from .rds_upgrade_db_instance import *
 from .read_only_instance import *
 from .read_write_splitting_connection import *

@@ -75,9 +75,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/ecsKeyPair:EcsKeyPair")
 public class EcsKeyPair extends com.pulumi.resources.CustomResource {
+    /**
+     * The finger print of the key pair.
+     * 
+     */
     @Export(name="fingerPrint", type=String.class, parameters={})
     private Output<String> fingerPrint;
 
+    /**
+     * @return The finger print of the key pair.
+     * 
+     */
     public Output<String> fingerPrint() {
         return this.fingerPrint;
     }

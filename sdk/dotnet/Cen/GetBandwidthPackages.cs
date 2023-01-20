@@ -19,30 +19,29 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cen.GetBandwidthPackages.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cen.GetBandwidthPackages.InvokeAsync(new AliCloud.Cen.GetBandwidthPackagesArgs
-        ///         {
-        ///             InstanceId = "cen-id1",
-        ///             NameRegex = "^foo",
-        ///         }));
-        ///         this.FirstCenBandwidthPackageId = example.Apply(example =&gt; example.Packages?[0]?.Id);
-        ///     }
+        ///         InstanceId = "cen-id1",
+        ///         NameRegex = "^foo",
+        ///     });
         /// 
-        ///     [Output("firstCenBandwidthPackageId")]
-        ///     public Output&lt;string&gt; FirstCenBandwidthPackageId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCenBandwidthPackageId"] = example.Apply(getBandwidthPackagesResult =&gt; getBandwidthPackagesResult.Packages[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBandwidthPackagesResult> InvokeAsync(GetBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthPackagesResult>("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args ?? new GetBandwidthPackagesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthPackagesResult>("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args ?? new GetBandwidthPackagesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN Bandwidth Packages available to the user.
@@ -52,34 +51,33 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cen.GetBandwidthPackages.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cen.GetBandwidthPackages.InvokeAsync(new AliCloud.Cen.GetBandwidthPackagesArgs
-        ///         {
-        ///             InstanceId = "cen-id1",
-        ///             NameRegex = "^foo",
-        ///         }));
-        ///         this.FirstCenBandwidthPackageId = example.Apply(example =&gt; example.Packages?[0]?.Id);
-        ///     }
+        ///         InstanceId = "cen-id1",
+        ///         NameRegex = "^foo",
+        ///     });
         /// 
-        ///     [Output("firstCenBandwidthPackageId")]
-        ///     public Output&lt;string&gt; FirstCenBandwidthPackageId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCenBandwidthPackageId"] = example.Apply(getBandwidthPackagesResult =&gt; getBandwidthPackagesResult.Packages[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBandwidthPackagesResult> Invoke(GetBandwidthPackagesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBandwidthPackagesResult>("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args ?? new GetBandwidthPackagesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBandwidthPackagesResult>("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args ?? new GetBandwidthPackagesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBandwidthPackagesArgs : Pulumi.InvokeArgs
+    public sealed class GetBandwidthPackagesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -94,7 +92,7 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+        /// Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
         /// </summary>
         [Input("includeReservationData")]
         public bool? IncludeReservationData { get; set; }
@@ -123,9 +121,10 @@ namespace Pulumi.AliCloud.Cen
         public GetBandwidthPackagesArgs()
         {
         }
+        public static new GetBandwidthPackagesArgs Empty => new GetBandwidthPackagesArgs();
     }
 
-    public sealed class GetBandwidthPackagesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBandwidthPackagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -140,7 +139,7 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+        /// Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
         /// </summary>
         [Input("includeReservationData")]
         public Input<bool>? IncludeReservationData { get; set; }
@@ -169,6 +168,7 @@ namespace Pulumi.AliCloud.Cen
         public GetBandwidthPackagesInvokeArgs()
         {
         }
+        public static new GetBandwidthPackagesInvokeArgs Empty => new GetBandwidthPackagesInvokeArgs();
     }
 
 
@@ -181,7 +181,6 @@ namespace Pulumi.AliCloud.Cen
         public readonly string Id;
         /// <summary>
         /// A list of specific CEN Bandwidth Package IDs.
-        /// * `names` (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly bool? IncludeReservationData;
@@ -190,6 +189,9 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public readonly string? InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>

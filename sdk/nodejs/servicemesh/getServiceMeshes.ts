@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,25 +22,22 @@ import * as utilities from "../utilities";
  * const ids = alicloud.servicemesh.getServiceMeshes({
  *     ids: ["example_id"],
  * });
- * export const serviceMeshServiceMeshId1 = ids.then(ids => ids.meshes?[0]?.id);
+ * export const serviceMeshServiceMeshId1 = ids.then(ids => ids.meshes?.[0]?.id);
  * const nameRegex = alicloud.servicemesh.getServiceMeshes({
  *     nameRegex: "^my-ServiceMesh",
  * });
- * export const serviceMeshServiceMeshId2 = nameRegex.then(nameRegex => nameRegex.meshes?[0]?.id);
+ * export const serviceMeshServiceMeshId2 = nameRegex.then(nameRegex => nameRegex.meshes?.[0]?.id);
  * const status = alicloud.servicemesh.getServiceMeshes({
  *     ids: ["example_id"],
  *     status: "running",
  * });
- * export const serviceMeshServiceMeshId3 = status.then(status => status.meshes?[0]?.id);
+ * export const serviceMeshServiceMeshId3 = status.then(status => status.meshes?.[0]?.id);
  * ```
  */
 export function getServiceMeshes(args?: GetServiceMeshesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceMeshesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -64,7 +62,7 @@ export interface GetServiceMeshesArgs {
     nameRegex?: string;
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `running` or `initial`.
      */
     status?: string;
 }
@@ -79,15 +77,51 @@ export interface GetServiceMeshesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Service Mesh Service Meshes. Each element contains the following attributes:
+     */
     readonly meshes: outputs.servicemesh.GetServiceMeshesMesh[];
     readonly nameRegex?: string;
+    /**
+     * A list of Service Mesh names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.138.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.servicemesh.getServiceMeshes({
+ *     ids: ["example_id"],
+ * });
+ * export const serviceMeshServiceMeshId1 = ids.then(ids => ids.meshes?.[0]?.id);
+ * const nameRegex = alicloud.servicemesh.getServiceMeshes({
+ *     nameRegex: "^my-ServiceMesh",
+ * });
+ * export const serviceMeshServiceMeshId2 = nameRegex.then(nameRegex => nameRegex.meshes?.[0]?.id);
+ * const status = alicloud.servicemesh.getServiceMeshes({
+ *     ids: ["example_id"],
+ *     status: "running",
+ * });
+ * export const serviceMeshServiceMeshId3 = status.then(status => status.meshes?.[0]?.id);
+ * ```
+ */
 export function getServiceMeshesOutput(args?: GetServiceMeshesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceMeshesResult> {
-    return pulumi.output(args).apply(a => getServiceMeshes(a, opts))
+    return pulumi.output(args).apply((a: any) => getServiceMeshes(a, opts))
 }
 
 /**
@@ -105,7 +139,7 @@ export interface GetServiceMeshesOutputArgs {
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `running` or `initial`.
      */
     status?: pulumi.Input<string>;
 }

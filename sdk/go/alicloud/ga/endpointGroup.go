@@ -126,12 +126,12 @@ type EndpointGroup struct {
 	AcceleratorId pulumi.StringOutput `pulumi:"acceleratorId"`
 	// The description of the endpoint group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The endpointConfigurations of the endpoint group.
+	// The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
 	EndpointConfigurations EndpointGroupEndpointConfigurationArrayOutput `pulumi:"endpointConfigurations"`
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringOutput `pulumi:"endpointGroupRegion"`
 	// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-	EndpointGroupType pulumi.StringPtrOutput `pulumi:"endpointGroupType"`
+	EndpointGroupType pulumi.StringOutput `pulumi:"endpointGroupType"`
 	// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
 	EndpointRequestProtocol pulumi.StringPtrOutput `pulumi:"endpointRequestProtocol"`
 	// The interval between two consecutive health checks. Unit: seconds.
@@ -146,7 +146,7 @@ type EndpointGroup struct {
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
 	// The name of the endpoint group.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Mapping between listening port and forwarding port of boarding point.
+	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
 	PortOverrides EndpointGroupPortOverridesPtrOutput `pulumi:"portOverrides"`
 	// The status of the endpoint group.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -201,7 +201,7 @@ type endpointGroupState struct {
 	AcceleratorId *string `pulumi:"acceleratorId"`
 	// The description of the endpoint group.
 	Description *string `pulumi:"description"`
-	// The endpointConfigurations of the endpoint group.
+	// The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
 	EndpointConfigurations []EndpointGroupEndpointConfiguration `pulumi:"endpointConfigurations"`
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion *string `pulumi:"endpointGroupRegion"`
@@ -221,7 +221,7 @@ type endpointGroupState struct {
 	ListenerId *string `pulumi:"listenerId"`
 	// The name of the endpoint group.
 	Name *string `pulumi:"name"`
-	// Mapping between listening port and forwarding port of boarding point.
+	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
 	PortOverrides *EndpointGroupPortOverrides `pulumi:"portOverrides"`
 	// The status of the endpoint group.
 	Status *string `pulumi:"status"`
@@ -236,7 +236,7 @@ type EndpointGroupState struct {
 	AcceleratorId pulumi.StringPtrInput
 	// The description of the endpoint group.
 	Description pulumi.StringPtrInput
-	// The endpointConfigurations of the endpoint group.
+	// The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
 	EndpointConfigurations EndpointGroupEndpointConfigurationArrayInput
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringPtrInput
@@ -256,7 +256,7 @@ type EndpointGroupState struct {
 	ListenerId pulumi.StringPtrInput
 	// The name of the endpoint group.
 	Name pulumi.StringPtrInput
-	// Mapping between listening port and forwarding port of boarding point.
+	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
 	PortOverrides EndpointGroupPortOverridesPtrInput
 	// The status of the endpoint group.
 	Status pulumi.StringPtrInput
@@ -275,7 +275,7 @@ type endpointGroupArgs struct {
 	AcceleratorId string `pulumi:"acceleratorId"`
 	// The description of the endpoint group.
 	Description *string `pulumi:"description"`
-	// The endpointConfigurations of the endpoint group.
+	// The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
 	EndpointConfigurations []EndpointGroupEndpointConfiguration `pulumi:"endpointConfigurations"`
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion string `pulumi:"endpointGroupRegion"`
@@ -295,7 +295,7 @@ type endpointGroupArgs struct {
 	ListenerId string `pulumi:"listenerId"`
 	// The name of the endpoint group.
 	Name *string `pulumi:"name"`
-	// Mapping between listening port and forwarding port of boarding point.
+	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
 	PortOverrides *EndpointGroupPortOverrides `pulumi:"portOverrides"`
 	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
 	ThresholdCount *int `pulumi:"thresholdCount"`
@@ -309,7 +309,7 @@ type EndpointGroupArgs struct {
 	AcceleratorId pulumi.StringInput
 	// The description of the endpoint group.
 	Description pulumi.StringPtrInput
-	// The endpointConfigurations of the endpoint group.
+	// The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
 	EndpointConfigurations EndpointGroupEndpointConfigurationArrayInput
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringInput
@@ -329,7 +329,7 @@ type EndpointGroupArgs struct {
 	ListenerId pulumi.StringInput
 	// The name of the endpoint group.
 	Name pulumi.StringPtrInput
-	// Mapping between listening port and forwarding port of boarding point.
+	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
 	PortOverrides EndpointGroupPortOverridesPtrInput
 	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
 	ThresholdCount pulumi.IntPtrInput
@@ -434,7 +434,7 @@ func (o EndpointGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The endpointConfigurations of the endpoint group.
+// The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
 func (o EndpointGroupOutput) EndpointConfigurations() EndpointGroupEndpointConfigurationArrayOutput {
 	return o.ApplyT(func(v *EndpointGroup) EndpointGroupEndpointConfigurationArrayOutput { return v.EndpointConfigurations }).(EndpointGroupEndpointConfigurationArrayOutput)
 }
@@ -445,8 +445,8 @@ func (o EndpointGroupOutput) EndpointGroupRegion() pulumi.StringOutput {
 }
 
 // The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-func (o EndpointGroupOutput) EndpointGroupType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointGroup) pulumi.StringPtrOutput { return v.EndpointGroupType }).(pulumi.StringPtrOutput)
+func (o EndpointGroupOutput) EndpointGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.EndpointGroupType }).(pulumi.StringOutput)
 }
 
 // The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
@@ -484,7 +484,7 @@ func (o EndpointGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Mapping between listening port and forwarding port of boarding point.
+// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
 func (o EndpointGroupOutput) PortOverrides() EndpointGroupPortOverridesPtrOutput {
 	return o.ApplyT(func(v *EndpointGroup) EndpointGroupPortOverridesPtrOutput { return v.PortOverrides }).(EndpointGroupPortOverridesPtrOutput)
 }

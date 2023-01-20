@@ -29,10 +29,10 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
  * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
- *     topicQuota: 50,
+ *     partitionNum: 50,
  *     diskType: 1,
  *     diskSize: 500,
  *     deployType: 5,

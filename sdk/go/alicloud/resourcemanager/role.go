@@ -75,7 +75,6 @@ type Role struct {
 	pulumi.CustomResourceState
 
 	// The resource descriptor of the role.
-	// * `createDate` (Removed form v1.114.0) - Role creation time.
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// The content of the permissions strategy that plays a role.
 	AssumeRolePolicyDocument pulumi.StringOutput `pulumi:"assumeRolePolicyDocument"`
@@ -127,7 +126,6 @@ func GetRole(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
 	// The resource descriptor of the role.
-	// * `createDate` (Removed form v1.114.0) - Role creation time.
 	Arn *string `pulumi:"arn"`
 	// The content of the permissions strategy that plays a role.
 	AssumeRolePolicyDocument *string `pulumi:"assumeRolePolicyDocument"`
@@ -145,7 +143,6 @@ type roleState struct {
 
 type RoleState struct {
 	// The resource descriptor of the role.
-	// * `createDate` (Removed form v1.114.0) - Role creation time.
 	Arn pulumi.StringPtrInput
 	// The content of the permissions strategy that plays a role.
 	AssumeRolePolicyDocument pulumi.StringPtrInput
@@ -276,7 +273,6 @@ func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 }
 
 // The resource descriptor of the role.
-// * `createDate` (Removed form v1.114.0) - Role creation time.
 func (o RoleOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
 }

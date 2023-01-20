@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -26,21 +27,18 @@ import * as utilities from "../utilities";
  *         "my-Queue-2",
  *     ],
  * });
- * export const amqpQueueId1 = ids.then(ids => ids.queues?[0]?.id);
+ * export const amqpQueueId1 = ids.then(ids => ids.queues?.[0]?.id);
  * const nameRegex = alicloud.amqp.getQueues({
  *     instanceId: "amqp-abc12345",
  *     virtualHostName: "my-VirtualHost",
  *     nameRegex: "^my-Queue",
  * });
- * export const amqpQueueId2 = nameRegex.then(nameRegex => nameRegex.queues?[0]?.id);
+ * export const amqpQueueId2 = nameRegex.then(nameRegex => nameRegex.queues?.[0]?.id);
  * ```
  */
 export function getQueues(args: GetQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetQueuesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:amqp/getQueues:getQueues", {
         "ids": args.ids,
         "instanceId": args.instanceId,
@@ -89,9 +87,38 @@ export interface GetQueuesResult {
     readonly queues: outputs.amqp.GetQueuesQueue[];
     readonly virtualHostName: string;
 }
-
+/**
+ * This data source provides the Amqp Queues of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.127.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.amqp.getQueues({
+ *     instanceId: "amqp-abc12345",
+ *     virtualHostName: "my-VirtualHost",
+ *     ids: [
+ *         "my-Queue-1",
+ *         "my-Queue-2",
+ *     ],
+ * });
+ * export const amqpQueueId1 = ids.then(ids => ids.queues?.[0]?.id);
+ * const nameRegex = alicloud.amqp.getQueues({
+ *     instanceId: "amqp-abc12345",
+ *     virtualHostName: "my-VirtualHost",
+ *     nameRegex: "^my-Queue",
+ * });
+ * export const amqpQueueId2 = nameRegex.then(nameRegex => nameRegex.queues?.[0]?.id);
+ * ```
+ */
 export function getQueuesOutput(args: GetQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueuesResult> {
-    return pulumi.output(args).apply(a => getQueues(a, opts))
+    return pulumi.output(args).apply((a: any) => getQueues(a, opts))
 }
 
 /**

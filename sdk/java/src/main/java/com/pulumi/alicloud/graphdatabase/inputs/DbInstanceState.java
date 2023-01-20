@@ -19,6 +19,21 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
     public static final DbInstanceState Empty = new DbInstanceState();
 
     /**
+     * (Available in 1.196.0+)  The connection string of the instance.
+     * 
+     */
+    @Import(name="connectionString")
+    private @Nullable Output<String> connectionString;
+
+    /**
+     * @return (Available in 1.196.0+)  The connection string of the instance.
+     * 
+     */
+    public Optional<Output<String>> connectionString() {
+        return Optional.ofNullable(this.connectionString);
+    }
+
+    /**
      * The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
      * 
      */
@@ -154,6 +169,21 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available in 1.196.0+) The connection port of the instance.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) The connection port of the instance.
+     * 
+     */
+    public Optional<Output<String>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
+    /**
      * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      * 
      */
@@ -216,6 +246,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
     private DbInstanceState() {}
 
     private DbInstanceState(DbInstanceState $) {
+        this.connectionString = $.connectionString;
         this.dbInstanceCategory = $.dbInstanceCategory;
         this.dbInstanceDescription = $.dbInstanceDescription;
         this.dbInstanceIpArrays = $.dbInstanceIpArrays;
@@ -225,6 +256,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
         this.dbNodeStorage = $.dbNodeStorage;
         this.dbVersion = $.dbVersion;
         this.paymentType = $.paymentType;
+        this.port = $.port;
         this.status = $.status;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
@@ -247,6 +279,27 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DbInstanceState defaults) {
             $ = new DbInstanceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param connectionString (Available in 1.196.0+)  The connection string of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionString(@Nullable Output<String> connectionString) {
+            $.connectionString = connectionString;
+            return this;
+        }
+
+        /**
+         * @param connectionString (Available in 1.196.0+)  The connection string of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionString(String connectionString) {
+            return connectionString(Output.of(connectionString));
         }
 
         /**
@@ -446,6 +499,27 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param port (Available in 1.196.0+) The connection port of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<String> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port (Available in 1.196.0+) The connection port of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(String port) {
+            return port(Output.of(port));
         }
 
         /**

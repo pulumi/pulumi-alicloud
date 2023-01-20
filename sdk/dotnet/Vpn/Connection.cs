@@ -15,64 +15,64 @@ namespace Pulumi.AliCloud.Vpn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fooGateway = new AliCloud.Vpn.Gateway("fooGateway", new()
     ///     {
-    ///         var fooGateway = new AliCloud.Vpn.Gateway("fooGateway", new AliCloud.Vpn.GatewayArgs
-    ///         {
-    ///             VpcId = "vpc-fake-id",
-    ///             Bandwidth = 10,
-    ///             EnableSsl = true,
-    ///             InstanceChargeType = "PostPaid",
-    ///             Description = "test_create_description",
-    ///         });
-    ///         var fooCustomerGateway = new AliCloud.Vpn.CustomerGateway("fooCustomerGateway", new AliCloud.Vpn.CustomerGatewayArgs
-    ///         {
-    ///             IpAddress = "42.104.22.228",
-    ///             Description = "testAccVpnCgwDesc",
-    ///         });
-    ///         var fooConnection = new AliCloud.Vpn.Connection("fooConnection", new AliCloud.Vpn.ConnectionArgs
-    ///         {
-    ///             VpnGatewayId = fooGateway.Id,
-    ///             CustomerGatewayId = fooCustomerGateway.Id,
-    ///             LocalSubnets = 
-    ///             {
-    ///                 "172.16.0.0/24",
-    ///                 "172.16.1.0/24",
-    ///             },
-    ///             RemoteSubnets = 
-    ///             {
-    ///                 "10.0.0.0/24",
-    ///                 "10.0.1.0/24",
-    ///             },
-    ///             EffectImmediately = true,
-    ///             IkeConfig = new AliCloud.Vpn.Inputs.ConnectionIkeConfigArgs
-    ///             {
-    ///                 IkeAuthAlg = "md5",
-    ///                 IkeEncAlg = "des",
-    ///                 IkeVersion = "ikev1",
-    ///                 IkeMode = "main",
-    ///                 IkeLifetime = 86400,
-    ///                 Psk = "tf-testvpn2",
-    ///                 IkePfs = "group1",
-    ///                 IkeRemoteId = "testbob2",
-    ///                 IkeLocalId = "testalice2",
-    ///             },
-    ///             IpsecConfig = new AliCloud.Vpn.Inputs.ConnectionIpsecConfigArgs
-    ///             {
-    ///                 IpsecPfs = "group5",
-    ///                 IpsecEncAlg = "des",
-    ///                 IpsecAuthAlg = "md5",
-    ///                 IpsecLifetime = 8640,
-    ///             },
-    ///         });
-    ///     }
+    ///         VpcId = "vpc-fake-id",
+    ///         Bandwidth = 10,
+    ///         EnableSsl = true,
+    ///         InstanceChargeType = "PostPaid",
+    ///         Description = "test_create_description",
+    ///     });
     /// 
-    /// }
+    ///     var fooCustomerGateway = new AliCloud.Vpn.CustomerGateway("fooCustomerGateway", new()
+    ///     {
+    ///         IpAddress = "42.104.22.228",
+    ///         Description = "testAccVpnCgwDesc",
+    ///     });
+    /// 
+    ///     var fooConnection = new AliCloud.Vpn.Connection("fooConnection", new()
+    ///     {
+    ///         VpnGatewayId = fooGateway.Id,
+    ///         CustomerGatewayId = fooCustomerGateway.Id,
+    ///         LocalSubnets = new[]
+    ///         {
+    ///             "172.16.0.0/24",
+    ///             "172.16.1.0/24",
+    ///         },
+    ///         RemoteSubnets = new[]
+    ///         {
+    ///             "10.0.0.0/24",
+    ///             "10.0.1.0/24",
+    ///         },
+    ///         EffectImmediately = true,
+    ///         IkeConfig = new AliCloud.Vpn.Inputs.ConnectionIkeConfigArgs
+    ///         {
+    ///             IkeAuthAlg = "md5",
+    ///             IkeEncAlg = "des",
+    ///             IkeVersion = "ikev1",
+    ///             IkeMode = "main",
+    ///             IkeLifetime = 86400,
+    ///             Psk = "tf-testvpn2",
+    ///             IkePfs = "group1",
+    ///             IkeRemoteId = "testbob2",
+    ///             IkeLocalId = "testalice2",
+    ///         },
+    ///         IpsecConfig = new AliCloud.Vpn.Inputs.ConnectionIpsecConfigArgs
+    ///         {
+    ///             IpsecPfs = "group5",
+    ///             IpsecEncAlg = "des",
+    ///             IpsecAuthAlg = "md5",
+    ///             IpsecLifetime = 8640,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Vpn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/connection:Connection")]
-    public partial class Connection : Pulumi.CustomResource
+    public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The configurations of the BGP routing protocol. See the following `Block bgp_config`.
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Vpn
         }
     }
 
-    public sealed class ConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configurations of the BGP routing protocol. See the following `Block bgp_config`.
@@ -297,9 +297,10 @@ namespace Pulumi.AliCloud.Vpn
         public ConnectionArgs()
         {
         }
+        public static new ConnectionArgs Empty => new ConnectionArgs();
     }
 
-    public sealed class ConnectionState : Pulumi.ResourceArgs
+    public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configurations of the BGP routing protocol. See the following `Block bgp_config`.
@@ -394,5 +395,6 @@ namespace Pulumi.AliCloud.Vpn
         public ConnectionState()
         {
         }
+        public static new ConnectionState Empty => new ConnectionState();
     }
 }

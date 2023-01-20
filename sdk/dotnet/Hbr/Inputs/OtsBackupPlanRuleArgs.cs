@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Hbr.Inputs
 {
 
-    public sealed class OtsBackupPlanRuleArgs : Pulumi.ResourceArgs
+    public sealed class OtsBackupPlanRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: true, false.
+        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// Backup retention days, the minimum is 1.
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         public OtsBackupPlanRuleArgs()
         {
         }
+        public static new OtsBackupPlanRuleArgs Empty => new OtsBackupPlanRuleArgs();
     }
 }

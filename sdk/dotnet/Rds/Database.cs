@@ -17,47 +17,49 @@ namespace Pulumi.AliCloud.Rds
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "Rds";
+    ///     var name = config.Get("name") ?? "dbdatabasebasic";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "Rds";
-    ///         var name = config.Get("name") ?? "dbdatabasebasic";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
-    ///         {
-    ///             Engine = "MySQL",
-    ///             EngineVersion = "5.6",
-    ///             InstanceType = "rds.mysql.s1.small",
-    ///             InstanceStorage = 10,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             InstanceName = name,
-    ///         });
-    ///         var defaultDatabase = new AliCloud.Rds.Database("defaultDatabase", new AliCloud.Rds.DatabaseArgs
-    ///         {
-    ///             InstanceId = instance.Id,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var instance = new AliCloud.Rds.Instance("instance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
+    ///         InstanceType = "rds.mysql.s1.small",
+    ///         InstanceStorage = 10,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var defaultDatabase = new AliCloud.Rds.Database("defaultDatabase", new()
+    ///     {
+    ///         InstanceId = instance.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,7 +71,7 @@ namespace Pulumi.AliCloud.Rds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/database:Database")]
-    public partial class Database : Pulumi.CustomResource
+    public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Character set. The value range is limited to the following:
@@ -143,7 +145,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
-    public sealed class DatabaseArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Character set. The value range is limited to the following:
@@ -176,9 +178,10 @@ namespace Pulumi.AliCloud.Rds
         public DatabaseArgs()
         {
         }
+        public static new DatabaseArgs Empty => new DatabaseArgs();
     }
 
-    public sealed class DatabaseState : Pulumi.ResourceArgs
+    public sealed class DatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Character set. The value range is limited to the following:
@@ -211,5 +214,6 @@ namespace Pulumi.AliCloud.Rds
         public DatabaseState()
         {
         }
+        public static new DatabaseState Empty => new DatabaseState();
     }
 }

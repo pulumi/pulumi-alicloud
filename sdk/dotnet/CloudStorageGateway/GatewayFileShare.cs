@@ -21,75 +21,80 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultStocks = AliCloud.CloudStorageGateway.GetStocks.Invoke(new()
     ///     {
-    ///         var defaultStocks = Output.Create(AliCloud.CloudStorageGateway.GetStocks.InvokeAsync(new AliCloud.CloudStorageGateway.GetStocksArgs
-    ///         {
-    ///             GatewayClass = "Standard",
-    ///         }));
-    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = "example_value",
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = vpc.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultStocks.Apply(defaultStocks =&gt; defaultStocks.Stocks?[0]?.ZoneId),
-    ///             VswitchName = "example_value",
-    ///         });
-    ///         var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("defaultStorageBundle", new AliCloud.CloudStorageGateway.StorageBundleArgs
-    ///         {
-    ///             StorageBundleName = "example_value",
-    ///         });
-    ///         var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new AliCloud.CloudStorageGateway.GatewayArgs
-    ///         {
-    ///             Description = "tf-acctestDesalone",
-    ///             GatewayClass = "Standard",
-    ///             Type = "File",
-    ///             PaymentType = "PayAsYouGo",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             ReleaseAfterExpiration = true,
-    ///             PublicNetworkBandwidth = 10,
-    ///             StorageBundleId = defaultStorageBundle.Id,
-    ///             Location = "Cloud",
-    ///             GatewayName = "example_value",
-    ///         });
-    ///         var defaultGatewayCacheDisk = new AliCloud.CloudStorageGateway.GatewayCacheDisk("defaultGatewayCacheDisk", new AliCloud.CloudStorageGateway.GatewayCacheDiskArgs
-    ///         {
-    ///             CacheDiskCategory = "cloud_efficiency",
-    ///             GatewayId = defaultGateway.Id,
-    ///             CacheDiskSizeInGb = 50,
-    ///         });
-    ///         var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             BucketName = "example_value",
-    ///         });
-    ///         var defaultGatewayFileShare = new AliCloud.CloudStorageGateway.GatewayFileShare("defaultGatewayFileShare", new AliCloud.CloudStorageGateway.GatewayFileShareArgs
-    ///         {
-    ///             GatewayFileShareName = "example_value",
-    ///             GatewayId = defaultGateway.Id,
-    ///             LocalPath = defaultGatewayCacheDisk.LocalFilePath,
-    ///             OssBucketName = defaultBucket.BucketName,
-    ///             OssEndpoint = defaultBucket.ExtranetEndpoint,
-    ///             Protocol = "NFS",
-    ///             RemoteSync = true,
-    ///             PollingInterval = 4500,
-    ///             FeLimit = 0,
-    ///             BackendLimit = 0,
-    ///             CacheMode = "Cache",
-    ///             Squash = "none",
-    ///             LagPeriod = 5,
-    ///         });
-    ///     }
+    ///         GatewayClass = "Standard",
+    ///     });
     /// 
-    /// }
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         VpcName = "example_value",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultStocks.Apply(getStocksResult =&gt; getStocksResult.Stocks[0]?.ZoneId),
+    ///         VswitchName = "example_value",
+    ///     });
+    /// 
+    ///     var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("defaultStorageBundle", new()
+    ///     {
+    ///         StorageBundleName = "example_value",
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new()
+    ///     {
+    ///         Description = "tf-acctestDesalone",
+    ///         GatewayClass = "Standard",
+    ///         Type = "File",
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ReleaseAfterExpiration = true,
+    ///         PublicNetworkBandwidth = 10,
+    ///         StorageBundleId = defaultStorageBundle.Id,
+    ///         Location = "Cloud",
+    ///         GatewayName = "example_value",
+    ///     });
+    /// 
+    ///     var defaultGatewayCacheDisk = new AliCloud.CloudStorageGateway.GatewayCacheDisk("defaultGatewayCacheDisk", new()
+    ///     {
+    ///         CacheDiskCategory = "cloud_efficiency",
+    ///         GatewayId = defaultGateway.Id,
+    ///         CacheDiskSizeInGb = 50,
+    ///     });
+    /// 
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     {
+    ///         BucketName = "example_value",
+    ///     });
+    /// 
+    ///     var defaultGatewayFileShare = new AliCloud.CloudStorageGateway.GatewayFileShare("defaultGatewayFileShare", new()
+    ///     {
+    ///         GatewayFileShareName = "example_value",
+    ///         GatewayId = defaultGateway.Id,
+    ///         LocalPath = defaultGatewayCacheDisk.LocalFilePath,
+    ///         OssBucketName = defaultBucket.BucketName,
+    ///         OssEndpoint = defaultBucket.ExtranetEndpoint,
+    ///         Protocol = "NFS",
+    ///         RemoteSync = true,
+    ///         PollingInterval = 4500,
+    ///         FeLimit = 0,
+    ///         BackendLimit = 0,
+    ///         CacheMode = "Cache",
+    ///         Squash = "none",
+    ///         LagPeriod = 5,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -101,7 +106,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudstoragegateway/gatewayFileShare:GatewayFileShare")]
-    public partial class GatewayFileShare : Pulumi.CustomResource
+    public partial class GatewayFileShare : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
@@ -351,7 +356,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         }
     }
 
-    public sealed class GatewayFileShareArgs : Pulumi.ResourceArgs
+    public sealed class GatewayFileShareArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
@@ -554,9 +559,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GatewayFileShareArgs()
         {
         }
+        public static new GatewayFileShareArgs Empty => new GatewayFileShareArgs();
     }
 
-    public sealed class GatewayFileShareState : Pulumi.ResourceArgs
+    public sealed class GatewayFileShareState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
@@ -765,5 +771,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GatewayFileShareState()
         {
         }
+        public static new GatewayFileShareState Empty => new GatewayFileShareState();
     }
 }

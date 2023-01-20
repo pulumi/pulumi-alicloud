@@ -111,9 +111,17 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The status of the resource group in all regions.
+     * 
+     */
     @Export(name="regionStatuses", type=List.class, parameters={ResourceGroupRegionStatus.class})
     private Output<List<ResourceGroupRegionStatus>> regionStatuses;
 
+    /**
+     * @return The status of the resource group in all regions.
+     * 
+     */
     public Output<List<ResourceGroupRegionStatus>> regionStatuses() {
         return this.regionStatuses;
     }

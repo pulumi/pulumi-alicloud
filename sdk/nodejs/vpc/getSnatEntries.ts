@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,7 +26,7 @@ import * as utilities from "../utilities";
  * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
  *     vpcId: fooNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     availabilityZone: _default.then(_default => _default.zones?[0]?.id),
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const fooNatGateway = new alicloud.vpc.NatGateway("fooNatGateway", {
@@ -48,11 +49,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSnatEntries(args: GetSnatEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetSnatEntriesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getSnatEntries:getSnatEntries", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -146,9 +144,50 @@ export interface GetSnatEntriesResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
+ *
+ * > **NOTE:** Available in 1.37.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "snat-entry-example-name";
+ * const default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     vpcId: fooNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const fooNatGateway = new alicloud.vpc.NatGateway("fooNatGateway", {
+ *     vpcId: fooNetwork.id,
+ *     specification: "Small",
+ * });
+ * const fooEipAddress = new alicloud.ecs.EipAddress("fooEipAddress", {addressName: name});
+ * const fooEipAssociation = new alicloud.ecs.EipAssociation("fooEipAssociation", {
+ *     allocationId: fooEipAddress.id,
+ *     instanceId: fooNatGateway.id,
+ * });
+ * const fooSnatEntry = new alicloud.vpc.SnatEntry("fooSnatEntry", {
+ *     snatTableId: fooNatGateway.snatTableIds,
+ *     sourceVswitchId: fooSwitch.id,
+ *     snatIp: fooEipAddress.ipAddress,
+ * });
+ * const fooSnatEntries = alicloud.vpc.getSnatEntriesOutput({
+ *     snatTableId: fooSnatEntry.snatTableId,
+ * });
+ * ```
+ */
 export function getSnatEntriesOutput(args: GetSnatEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnatEntriesResult> {
-    return pulumi.output(args).apply(a => getSnatEntries(a, opts))
+    return pulumi.output(args).apply((a: any) => getSnatEntries(a, opts))
 }
 
 /**

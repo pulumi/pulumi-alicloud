@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class EcsInstanceSetNetworkInterfaceGetArgs : Pulumi.ResourceArgs
+    public sealed class EcsInstanceSetNetworkInterfaceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of ENI.
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? PrimaryIpAddress { get; set; }
 
         /// <summary>
-        /// -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+        /// The ID of the security group to which to assign secondary ENI.
         /// </summary>
         [Input("securityGroupId", required: true)]
         public Input<string> SecurityGroupId { get; set; } = null!;
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public EcsInstanceSetNetworkInterfaceGetArgs()
         {
         }
+        public static new EcsInstanceSetNetworkInterfaceGetArgs Empty => new EcsInstanceSetNetworkInterfaceGetArgs();
     }
 }

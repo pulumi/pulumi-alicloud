@@ -29,18 +29,18 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.zones?[0]?.id,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
  * }));
  * const instance = new alicloud.rds.Instance("instance", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceType: "rds.mysql.s1.small",
  *     instanceStorage: 10,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     instanceName: name,
  * });
- * const db: alicloud.rds.Database[];
+ * const db: alicloud.rds.Database[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     db.push(new alicloud.rds.Database(`db-${range.value}`, {
  *         instanceId: instance.id,
@@ -71,8 +71,8 @@ import * as utilities from "../utilities";
  *     sourceEndpointPassword: "Test12345",
  *     subscriptionInstanceNetworkType: "vpc",
  *     dbList: "        {\"dtstestdata\": {\"name\": \"tfaccountpri_0\", \"all\": true}}\n",
- *     subscriptionInstanceVpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
- *     subscriptionInstanceVswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     subscriptionInstanceVpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     subscriptionInstanceVswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     status: "Normal",
  * });
  * const defaultConsumerChannel = new alicloud.dts.ConsumerChannel("defaultConsumerChannel", {

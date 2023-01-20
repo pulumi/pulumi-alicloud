@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,20 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const instanceInstances = pulumi.output(alicloud.bastionhost.getInstances({
+ * const instanceInstances = alicloud.bastionhost.getInstances({
  *     descriptionRegex: "^bastionhost",
- * }));
- *
- * export const instance = alicloud_bastionhost_instances_instance.map(v => v.id);
+ * });
+ * export const instance = alicloud_bastionhost_instances.instance.map(__item => __item.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:bastionhost/getInstances:getInstances", {
         "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,
@@ -62,11 +59,11 @@ export interface GetInstancesArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const instance = pulumi.output(alicloud.bastionhost.getInstances({
+     * const instance = alicloud.bastionhost.getInstances({
      *     tags: {
      *         tagKey1: "tagValue1",
      *     },
-     * }));
+     * });
      * ```
      */
     tags?: {[key: string]: any};
@@ -93,9 +90,27 @@ export interface GetInstancesResult {
      */
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * > **NOTE:** From the version 1.132.0, the data source has been renamed to `alicloud.bastionhost.getInstances`.
+ *
+ * This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in 1.63.0+ .
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const instanceInstances = alicloud.bastionhost.getInstances({
+ *     descriptionRegex: "^bastionhost",
+ * });
+ * export const instance = alicloud_bastionhost_instances.instance.map(__item => __item.id);
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**
@@ -120,11 +135,11 @@ export interface GetInstancesOutputArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const instance = pulumi.output(alicloud.bastionhost.getInstances({
+     * const instance = alicloud.bastionhost.getInstances({
      *     tags: {
      *         tagKey1: "tagValue1",
      *     },
-     * }));
+     * });
      * ```
      */
     tags?: pulumi.Input<{[key: string]: any}>;

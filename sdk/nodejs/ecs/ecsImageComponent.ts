@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     content: "RUN yum update -y",
  *     description: "example_value",
  *     imageComponentName: "example_value",
- *     resourceGroupId: _default.then(_default => _default.groups?[0]?.id),
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  *     systemType: "Linux",
  *     tags: {
  *         Created: "TF",

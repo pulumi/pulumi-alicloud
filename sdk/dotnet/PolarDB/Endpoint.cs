@@ -19,49 +19,51 @@ namespace Pulumi.AliCloud.PolarDB
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "PolarDB";
+    ///     var name = config.Get("name") ?? "polardbconnectionbasic";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "PolarDB";
-    ///         var name = config.Get("name") ?? "polardbconnectionbasic";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new AliCloud.PolarDB.ClusterArgs
-    ///         {
-    ///             DbType = "MySQL",
-    ///             DbVersion = "8.0",
-    ///             PayType = "PostPaid",
-    ///             DbNodeClass = "polar.mysql.x4.large",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             Description = name,
-    ///         });
-    ///         var endpoint = new AliCloud.PolarDB.Endpoint("endpoint", new AliCloud.PolarDB.EndpointArgs
-    ///         {
-    ///             DbClusterId = defaultCluster.Id,
-    ///             EndpointType = "Custom",
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new()
+    ///     {
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         PayType = "PostPaid",
+    ///         DbNodeClass = "polar.mysql.x4.large",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var endpoint = new AliCloud.PolarDB.Endpoint("endpoint", new()
+    ///     {
+    ///         DbClusterId = defaultCluster.Id,
+    ///         EndpointType = "Custom",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Argument Reference
     /// 
@@ -89,7 +91,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/endpoint:Endpoint")]
-    public partial class Endpoint : Pulumi.CustomResource
+    public partial class Endpoint : global::Pulumi.CustomResource
     {
         [Output("autoAddNewNodes")]
         public Output<string> AutoAddNewNodes { get; private set; } = null!;
@@ -186,7 +188,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
     }
 
-    public sealed class EndpointArgs : Pulumi.ResourceArgs
+    public sealed class EndpointArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoAddNewNodes")]
         public Input<string>? AutoAddNewNodes { get; set; }
@@ -231,9 +233,10 @@ namespace Pulumi.AliCloud.PolarDB
         public EndpointArgs()
         {
         }
+        public static new EndpointArgs Empty => new EndpointArgs();
     }
 
-    public sealed class EndpointState : Pulumi.ResourceArgs
+    public sealed class EndpointState : global::Pulumi.ResourceArgs
     {
         [Input("autoAddNewNodes")]
         public Input<string>? AutoAddNewNodes { get; set; }
@@ -299,5 +302,6 @@ namespace Pulumi.AliCloud.PolarDB
         public EndpointState()
         {
         }
+        public static new EndpointState Empty => new EndpointState();
     }
 }

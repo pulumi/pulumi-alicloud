@@ -5,17 +5,61 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./domain";
-export * from "./domainConfig";
-export * from "./getDomains";
-export * from "./getIpaDomains";
-export * from "./getService";
-export * from "./ipaDomain";
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
 
-// Import resources to register:
-import { Domain } from "./domain";
-import { DomainConfig } from "./domainConfig";
-import { IpaDomain } from "./ipaDomain";
+export { DomainConfigArgs, DomainConfigState } from "./domainConfig";
+export type DomainConfig = import("./domainConfig").DomainConfig;
+export const DomainConfig: typeof import("./domainConfig").DomainConfig = null as any;
+utilities.lazyLoad(exports, ["DomainConfig"], () => require("./domainConfig"));
+
+export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
+export const getDomains: typeof import("./getDomains").getDomains = null as any;
+export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
+
+export { GetIpaDomainsArgs, GetIpaDomainsResult, GetIpaDomainsOutputArgs } from "./getIpaDomains";
+export const getIpaDomains: typeof import("./getIpaDomains").getIpaDomains = null as any;
+export const getIpaDomainsOutput: typeof import("./getIpaDomains").getIpaDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getIpaDomains","getIpaDomainsOutput"], () => require("./getIpaDomains"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { GetWafDomainsArgs, GetWafDomainsResult, GetWafDomainsOutputArgs } from "./getWafDomains";
+export const getWafDomains: typeof import("./getWafDomains").getWafDomains = null as any;
+export const getWafDomainsOutput: typeof import("./getWafDomains").getWafDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getWafDomains","getWafDomainsOutput"], () => require("./getWafDomains"));
+
+export { GetWafPoliciesArgs, GetWafPoliciesResult, GetWafPoliciesOutputArgs } from "./getWafPolicies";
+export const getWafPolicies: typeof import("./getWafPolicies").getWafPolicies = null as any;
+export const getWafPoliciesOutput: typeof import("./getWafPolicies").getWafPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getWafPolicies","getWafPoliciesOutput"], () => require("./getWafPolicies"));
+
+export { IpaDomainArgs, IpaDomainState } from "./ipaDomain";
+export type IpaDomain = import("./ipaDomain").IpaDomain;
+export const IpaDomain: typeof import("./ipaDomain").IpaDomain = null as any;
+utilities.lazyLoad(exports, ["IpaDomain"], () => require("./ipaDomain"));
+
+export { WafDomainArgs, WafDomainState } from "./wafDomain";
+export type WafDomain = import("./wafDomain").WafDomain;
+export const WafDomain: typeof import("./wafDomain").WafDomain = null as any;
+utilities.lazyLoad(exports, ["WafDomain"], () => require("./wafDomain"));
+
+export { WafPolicyArgs, WafPolicyState } from "./wafPolicy";
+export type WafPolicy = import("./wafPolicy").WafPolicy;
+export const WafPolicy: typeof import("./wafPolicy").WafPolicy = null as any;
+utilities.lazyLoad(exports, ["WafPolicy"], () => require("./wafPolicy"));
+
+export { WafPolicyDomainAttachmentArgs, WafPolicyDomainAttachmentState } from "./wafPolicyDomainAttachment";
+export type WafPolicyDomainAttachment = import("./wafPolicyDomainAttachment").WafPolicyDomainAttachment;
+export const WafPolicyDomainAttachment: typeof import("./wafPolicyDomainAttachment").WafPolicyDomainAttachment = null as any;
+utilities.lazyLoad(exports, ["WafPolicyDomainAttachment"], () => require("./wafPolicyDomainAttachment"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -27,6 +71,12 @@ const _module = {
                 return new DomainConfig(name, <any>undefined, { urn })
             case "alicloud:dcdn/ipaDomain:IpaDomain":
                 return new IpaDomain(name, <any>undefined, { urn })
+            case "alicloud:dcdn/wafDomain:WafDomain":
+                return new WafDomain(name, <any>undefined, { urn })
+            case "alicloud:dcdn/wafPolicy:WafPolicy":
+                return new WafPolicy(name, <any>undefined, { urn })
+            case "alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment":
+                return new WafPolicyDomainAttachment(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -35,3 +85,6 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/domainConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/ipaDomain", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dcdn/wafDomain", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dcdn/wafPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dcdn/wafPolicyDomainAttachment", _module)

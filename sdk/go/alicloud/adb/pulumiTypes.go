@@ -410,6 +410,283 @@ func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClust
 	}).(GetClustersClusterOutput)
 }
 
+type GetDBClusterLakeVersionsVersion struct {
+	// The name of the service.
+	CommodityCode string `pulumi:"commodityCode"`
+	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries.
+	ComputeResource string `pulumi:"computeResource"`
+	// The endpoint of the cluster.
+	ConnectionString string `pulumi:"connectionString"`
+	// The CreateTime of the ADB cluster.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the DBCluster.
+	DbClusterId string `pulumi:"dbClusterId"`
+	// The db cluster version.
+	DbClusterVersion string `pulumi:"dbClusterVersion"`
+	// The engine of the database.
+	Engine string `pulumi:"engine"`
+	// The engine version of the database.
+	EngineVersion string `pulumi:"engineVersion"`
+	// The time when the cluster expires.
+	ExpireTime string `pulumi:"expireTime"`
+	// Indicates whether the cluster has expired.
+	Expired string `pulumi:"expired"`
+	// The ID of the DBCluster.
+	Id string `pulumi:"id"`
+	// The lock mode of the cluster.
+	LockMode string `pulumi:"lockMode"`
+	// The reason why the cluster is locked.
+	LockReason string `pulumi:"lockReason"`
+	// The payment type of the resource.
+	PaymentType string `pulumi:"paymentType"`
+	// The port that is used to access the cluster.
+	Port string `pulumi:"port"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations.
+	StorageResource string `pulumi:"storageResource"`
+	// The vpc id.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	// The zone ID  of the resource.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetDBClusterLakeVersionsVersionInput is an input type that accepts GetDBClusterLakeVersionsVersionArgs and GetDBClusterLakeVersionsVersionOutput values.
+// You can construct a concrete instance of `GetDBClusterLakeVersionsVersionInput` via:
+//
+//	GetDBClusterLakeVersionsVersionArgs{...}
+type GetDBClusterLakeVersionsVersionInput interface {
+	pulumi.Input
+
+	ToGetDBClusterLakeVersionsVersionOutput() GetDBClusterLakeVersionsVersionOutput
+	ToGetDBClusterLakeVersionsVersionOutputWithContext(context.Context) GetDBClusterLakeVersionsVersionOutput
+}
+
+type GetDBClusterLakeVersionsVersionArgs struct {
+	// The name of the service.
+	CommodityCode pulumi.StringInput `pulumi:"commodityCode"`
+	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries.
+	ComputeResource pulumi.StringInput `pulumi:"computeResource"`
+	// The endpoint of the cluster.
+	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
+	// The CreateTime of the ADB cluster.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the DBCluster.
+	DbClusterId pulumi.StringInput `pulumi:"dbClusterId"`
+	// The db cluster version.
+	DbClusterVersion pulumi.StringInput `pulumi:"dbClusterVersion"`
+	// The engine of the database.
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// The engine version of the database.
+	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
+	// The time when the cluster expires.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// Indicates whether the cluster has expired.
+	Expired pulumi.StringInput `pulumi:"expired"`
+	// The ID of the DBCluster.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The lock mode of the cluster.
+	LockMode pulumi.StringInput `pulumi:"lockMode"`
+	// The reason why the cluster is locked.
+	LockReason pulumi.StringInput `pulumi:"lockReason"`
+	// The payment type of the resource.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The port that is used to access the cluster.
+	Port pulumi.StringInput `pulumi:"port"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations.
+	StorageResource pulumi.StringInput `pulumi:"storageResource"`
+	// The vpc id.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The zone ID  of the resource.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetDBClusterLakeVersionsVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDBClusterLakeVersionsVersion)(nil)).Elem()
+}
+
+func (i GetDBClusterLakeVersionsVersionArgs) ToGetDBClusterLakeVersionsVersionOutput() GetDBClusterLakeVersionsVersionOutput {
+	return i.ToGetDBClusterLakeVersionsVersionOutputWithContext(context.Background())
+}
+
+func (i GetDBClusterLakeVersionsVersionArgs) ToGetDBClusterLakeVersionsVersionOutputWithContext(ctx context.Context) GetDBClusterLakeVersionsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDBClusterLakeVersionsVersionOutput)
+}
+
+// GetDBClusterLakeVersionsVersionArrayInput is an input type that accepts GetDBClusterLakeVersionsVersionArray and GetDBClusterLakeVersionsVersionArrayOutput values.
+// You can construct a concrete instance of `GetDBClusterLakeVersionsVersionArrayInput` via:
+//
+//	GetDBClusterLakeVersionsVersionArray{ GetDBClusterLakeVersionsVersionArgs{...} }
+type GetDBClusterLakeVersionsVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetDBClusterLakeVersionsVersionArrayOutput() GetDBClusterLakeVersionsVersionArrayOutput
+	ToGetDBClusterLakeVersionsVersionArrayOutputWithContext(context.Context) GetDBClusterLakeVersionsVersionArrayOutput
+}
+
+type GetDBClusterLakeVersionsVersionArray []GetDBClusterLakeVersionsVersionInput
+
+func (GetDBClusterLakeVersionsVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDBClusterLakeVersionsVersion)(nil)).Elem()
+}
+
+func (i GetDBClusterLakeVersionsVersionArray) ToGetDBClusterLakeVersionsVersionArrayOutput() GetDBClusterLakeVersionsVersionArrayOutput {
+	return i.ToGetDBClusterLakeVersionsVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetDBClusterLakeVersionsVersionArray) ToGetDBClusterLakeVersionsVersionArrayOutputWithContext(ctx context.Context) GetDBClusterLakeVersionsVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDBClusterLakeVersionsVersionArrayOutput)
+}
+
+type GetDBClusterLakeVersionsVersionOutput struct{ *pulumi.OutputState }
+
+func (GetDBClusterLakeVersionsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDBClusterLakeVersionsVersion)(nil)).Elem()
+}
+
+func (o GetDBClusterLakeVersionsVersionOutput) ToGetDBClusterLakeVersionsVersionOutput() GetDBClusterLakeVersionsVersionOutput {
+	return o
+}
+
+func (o GetDBClusterLakeVersionsVersionOutput) ToGetDBClusterLakeVersionsVersionOutputWithContext(ctx context.Context) GetDBClusterLakeVersionsVersionOutput {
+	return o
+}
+
+// The name of the service.
+func (o GetDBClusterLakeVersionsVersionOutput) CommodityCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.CommodityCode }).(pulumi.StringOutput)
+}
+
+// The specifications of computing resources in elastic mode. The increase of resources can speed up queries.
+func (o GetDBClusterLakeVersionsVersionOutput) ComputeResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.ComputeResource }).(pulumi.StringOutput)
+}
+
+// The endpoint of the cluster.
+func (o GetDBClusterLakeVersionsVersionOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The CreateTime of the ADB cluster.
+func (o GetDBClusterLakeVersionsVersionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the DBCluster.
+func (o GetDBClusterLakeVersionsVersionOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// The db cluster version.
+func (o GetDBClusterLakeVersionsVersionOutput) DbClusterVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.DbClusterVersion }).(pulumi.StringOutput)
+}
+
+// The engine of the database.
+func (o GetDBClusterLakeVersionsVersionOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// The engine version of the database.
+func (o GetDBClusterLakeVersionsVersionOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// The time when the cluster expires.
+func (o GetDBClusterLakeVersionsVersionOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether the cluster has expired.
+func (o GetDBClusterLakeVersionsVersionOutput) Expired() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.Expired }).(pulumi.StringOutput)
+}
+
+// The ID of the DBCluster.
+func (o GetDBClusterLakeVersionsVersionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The lock mode of the cluster.
+func (o GetDBClusterLakeVersionsVersionOutput) LockMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.LockMode }).(pulumi.StringOutput)
+}
+
+// The reason why the cluster is locked.
+func (o GetDBClusterLakeVersionsVersionOutput) LockReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.LockReason }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource.
+func (o GetDBClusterLakeVersionsVersionOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The port that is used to access the cluster.
+func (o GetDBClusterLakeVersionsVersionOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetDBClusterLakeVersionsVersionOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetDBClusterLakeVersionsVersionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The specifications of storage resources in elastic mode. The resources are used for data read and write operations.
+func (o GetDBClusterLakeVersionsVersionOutput) StorageResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.StorageResource }).(pulumi.StringOutput)
+}
+
+// The vpc id.
+func (o GetDBClusterLakeVersionsVersionOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetDBClusterLakeVersionsVersionOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone ID  of the resource.
+func (o GetDBClusterLakeVersionsVersionOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDBClusterLakeVersionsVersion) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetDBClusterLakeVersionsVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDBClusterLakeVersionsVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDBClusterLakeVersionsVersion)(nil)).Elem()
+}
+
+func (o GetDBClusterLakeVersionsVersionArrayOutput) ToGetDBClusterLakeVersionsVersionArrayOutput() GetDBClusterLakeVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetDBClusterLakeVersionsVersionArrayOutput) ToGetDBClusterLakeVersionsVersionArrayOutputWithContext(ctx context.Context) GetDBClusterLakeVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetDBClusterLakeVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetDBClusterLakeVersionsVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDBClusterLakeVersionsVersion {
+		return vs[0].([]GetDBClusterLakeVersionsVersion)[vs[1].(int)]
+	}).(GetDBClusterLakeVersionsVersionOutput)
+}
+
 type GetDBClustersCluster struct {
 	// Auto-renewal period of an cluster, in the unit of the month.
 	AutoRenewPeriod int `pulumi:"autoRenewPeriod"`
@@ -449,7 +726,7 @@ type GetDBClustersCluster struct {
 	ElasticIoResource int `pulumi:"elasticIoResource"`
 	// The engine of the database.
 	Engine string `pulumi:"engine"`
-	// The engine version of the database..
+	// The engine version of the database.
 	EngineVersion string `pulumi:"engineVersion"`
 	// The number of nodes. The node resources are used for data computing in elastic mode.
 	ExecutorCount string `pulumi:"executorCount"`
@@ -547,7 +824,7 @@ type GetDBClustersClusterArgs struct {
 	ElasticIoResource pulumi.IntInput `pulumi:"elasticIoResource"`
 	// The engine of the database.
 	Engine pulumi.StringInput `pulumi:"engine"`
-	// The engine version of the database..
+	// The engine version of the database.
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
 	// The number of nodes. The node resources are used for data computing in elastic mode.
 	ExecutorCount pulumi.StringInput `pulumi:"executorCount"`
@@ -741,7 +1018,7 @@ func (o GetDBClustersClusterOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-// The engine version of the database..
+// The engine version of the database.
 func (o GetDBClustersClusterOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
@@ -879,6 +1156,166 @@ func (o GetDBClustersClusterArrayOutput) Index(i pulumi.IntInput) GetDBClustersC
 	}).(GetDBClustersClusterOutput)
 }
 
+type GetResourceGroupsGroup struct {
+	// Creation time.
+	CreateTime string `pulumi:"createTime"`
+	// DBClusterId
+	DbClusterId string `pulumi:"dbClusterId"`
+	// The name of the resource pool, which cannot exceed 64 bytes in length.
+	GroupName string `pulumi:"groupName"`
+	// Query type, value description:
+	// * **etl**: Batch query mode.
+	// * **interactive**: interactive Query mode
+	// * **default_type**: the default query mode.
+	GroupType string `pulumi:"groupType"`
+	// The `key` of the resource supplied above.The value is formulated as `<db_cluster_id>:<group_name>`.
+	Id string `pulumi:"id"`
+	// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+	NodeNum int `pulumi:"nodeNum"`
+	// Binding User.
+	User string `pulumi:"user"`
+}
+
+// GetResourceGroupsGroupInput is an input type that accepts GetResourceGroupsGroupArgs and GetResourceGroupsGroupOutput values.
+// You can construct a concrete instance of `GetResourceGroupsGroupInput` via:
+//
+//	GetResourceGroupsGroupArgs{...}
+type GetResourceGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetResourceGroupsGroupOutput() GetResourceGroupsGroupOutput
+	ToGetResourceGroupsGroupOutputWithContext(context.Context) GetResourceGroupsGroupOutput
+}
+
+type GetResourceGroupsGroupArgs struct {
+	// Creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// DBClusterId
+	DbClusterId pulumi.StringInput `pulumi:"dbClusterId"`
+	// The name of the resource pool, which cannot exceed 64 bytes in length.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Query type, value description:
+	// * **etl**: Batch query mode.
+	// * **interactive**: interactive Query mode
+	// * **default_type**: the default query mode.
+	GroupType pulumi.StringInput `pulumi:"groupType"`
+	// The `key` of the resource supplied above.The value is formulated as `<db_cluster_id>:<group_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+	NodeNum pulumi.IntInput `pulumi:"nodeNum"`
+	// Binding User.
+	User pulumi.StringInput `pulumi:"user"`
+}
+
+func (GetResourceGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceGroupsGroup)(nil)).Elem()
+}
+
+func (i GetResourceGroupsGroupArgs) ToGetResourceGroupsGroupOutput() GetResourceGroupsGroupOutput {
+	return i.ToGetResourceGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetResourceGroupsGroupArgs) ToGetResourceGroupsGroupOutputWithContext(ctx context.Context) GetResourceGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsGroupOutput)
+}
+
+// GetResourceGroupsGroupArrayInput is an input type that accepts GetResourceGroupsGroupArray and GetResourceGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetResourceGroupsGroupArrayInput` via:
+//
+//	GetResourceGroupsGroupArray{ GetResourceGroupsGroupArgs{...} }
+type GetResourceGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceGroupsGroupArrayOutput() GetResourceGroupsGroupArrayOutput
+	ToGetResourceGroupsGroupArrayOutputWithContext(context.Context) GetResourceGroupsGroupArrayOutput
+}
+
+type GetResourceGroupsGroupArray []GetResourceGroupsGroupInput
+
+func (GetResourceGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceGroupsGroup)(nil)).Elem()
+}
+
+func (i GetResourceGroupsGroupArray) ToGetResourceGroupsGroupArrayOutput() GetResourceGroupsGroupArrayOutput {
+	return i.ToGetResourceGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceGroupsGroupArray) ToGetResourceGroupsGroupArrayOutputWithContext(ctx context.Context) GetResourceGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsGroupArrayOutput)
+}
+
+type GetResourceGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetResourceGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceGroupsGroup)(nil)).Elem()
+}
+
+func (o GetResourceGroupsGroupOutput) ToGetResourceGroupsGroupOutput() GetResourceGroupsGroupOutput {
+	return o
+}
+
+func (o GetResourceGroupsGroupOutput) ToGetResourceGroupsGroupOutputWithContext(ctx context.Context) GetResourceGroupsGroupOutput {
+	return o
+}
+
+// Creation time.
+func (o GetResourceGroupsGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// DBClusterId
+func (o GetResourceGroupsGroupOutput) DbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// The name of the resource pool, which cannot exceed 64 bytes in length.
+func (o GetResourceGroupsGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// Query type, value description:
+// * **etl**: Batch query mode.
+// * **interactive**: interactive Query mode
+// * **default_type**: the default query mode.
+func (o GetResourceGroupsGroupOutput) GroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.GroupType }).(pulumi.StringOutput)
+}
+
+// The `key` of the resource supplied above.The value is formulated as `<db_cluster_id>:<group_name>`.
+func (o GetResourceGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+func (o GetResourceGroupsGroupOutput) NodeNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) int { return v.NodeNum }).(pulumi.IntOutput)
+}
+
+// Binding User.
+func (o GetResourceGroupsGroupOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.User }).(pulumi.StringOutput)
+}
+
+type GetResourceGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceGroupsGroup)(nil)).Elem()
+}
+
+func (o GetResourceGroupsGroupArrayOutput) ToGetResourceGroupsGroupArrayOutput() GetResourceGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetResourceGroupsGroupArrayOutput) ToGetResourceGroupsGroupArrayOutputWithContext(ctx context.Context) GetResourceGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetResourceGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetResourceGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceGroupsGroup {
+		return vs[0].([]GetResourceGroupsGroup)[vs[1].(int)]
+	}).(GetResourceGroupsGroupOutput)
+}
+
 type GetZonesZone struct {
 	// ID of the zone.
 	Id string `pulumi:"id"`
@@ -988,14 +1425,22 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClusterLakeVersionsVersionInput)(nil)).Elem(), GetDBClusterLakeVersionsVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClusterLakeVersionsVersionArrayInput)(nil)).Elem(), GetDBClusterLakeVersionsVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClustersClusterInput)(nil)).Elem(), GetDBClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDBClustersClusterArrayInput)(nil)).Elem(), GetDBClustersClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupsGroupInput)(nil)).Elem(), GetResourceGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupsGroupArrayInput)(nil)).Elem(), GetResourceGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetDBClusterLakeVersionsVersionOutput{})
+	pulumi.RegisterOutputType(GetDBClusterLakeVersionsVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetDBClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetDBClustersClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetResourceGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

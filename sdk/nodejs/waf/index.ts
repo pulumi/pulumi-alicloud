@@ -5,19 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./certificate";
-export * from "./domain";
-export * from "./getCertificates";
-export * from "./getDomains";
-export * from "./getInstances";
-export * from "./instance";
-export * from "./protectionModule";
+export { CertificateArgs, CertificateState } from "./certificate";
+export type Certificate = import("./certificate").Certificate;
+export const Certificate: typeof import("./certificate").Certificate = null as any;
+utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
 
-// Import resources to register:
-import { Certificate } from "./certificate";
-import { Domain } from "./domain";
-import { Instance } from "./instance";
-import { ProtectionModule } from "./protectionModule";
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+
+export { GetCertificatesArgs, GetCertificatesResult, GetCertificatesOutputArgs } from "./getCertificates";
+export const getCertificates: typeof import("./getCertificates").getCertificates = null as any;
+export const getCertificatesOutput: typeof import("./getCertificates").getCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificates","getCertificatesOutput"], () => require("./getCertificates"));
+
+export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
+export const getDomains: typeof import("./getDomains").getDomains = null as any;
+export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { ProtectionModuleArgs, ProtectionModuleState } from "./protectionModule";
+export type ProtectionModule = import("./protectionModule").ProtectionModule;
+export const ProtectionModule: typeof import("./protectionModule").ProtectionModule = null as any;
+utilities.lazyLoad(exports, ["ProtectionModule"], () => require("./protectionModule"));
+
 
 const _module = {
     version: utilities.getVersion(),

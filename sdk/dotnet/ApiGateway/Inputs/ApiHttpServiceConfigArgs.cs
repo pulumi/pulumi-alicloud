@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ApiGateway.Inputs
 {
 
-    public sealed class ApiHttpServiceConfigArgs : Pulumi.ResourceArgs
+    public sealed class ApiHttpServiceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of backend service.
@@ -22,13 +22,13 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string>? AoneName { get; set; }
 
         /// <summary>
-        /// The http method of backend service.
+        /// The method of the api, including 'GET','POST','PUT' etc.
         /// </summary>
         [Input("method", required: true)]
         public Input<string> Method { get; set; } = null!;
 
         /// <summary>
-        /// The path of backend service.
+        /// The request path of the api.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
@@ -42,5 +42,6 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public ApiHttpServiceConfigArgs()
         {
         }
+        public static new ApiHttpServiceConfigArgs Empty => new ApiHttpServiceConfigArgs();
     }
 }

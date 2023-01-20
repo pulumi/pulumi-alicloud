@@ -23,42 +23,40 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CloudStorageGateway.GetGatewayBlockVolumes.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CloudStorageGateway.GetGatewayBlockVolumes.InvokeAsync(new AliCloud.CloudStorageGateway.GetGatewayBlockVolumesArgs
+        ///         GatewayId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             GatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CloudStorageGatewayGatewayBlockVolumeId1 = ids.Apply(ids =&gt; ids.Volumes?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.CloudStorageGateway.GetGatewayBlockVolumes.InvokeAsync(new AliCloud.CloudStorageGateway.GetGatewayBlockVolumesArgs
-        ///         {
-        ///             GatewayId = "example_value",
-        ///             NameRegex = "^my-GatewayBlockVolume",
-        ///         }));
-        ///         this.CloudStorageGatewayGatewayBlockVolumeId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Volumes?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cloudStorageGatewayGatewayBlockVolumeId1")]
-        ///     public Output&lt;string&gt; CloudStorageGatewayGatewayBlockVolumeId1 { get; set; }
-        ///     [Output("cloudStorageGatewayGatewayBlockVolumeId2")]
-        ///     public Output&lt;string&gt; CloudStorageGatewayGatewayBlockVolumeId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CloudStorageGateway.GetGatewayBlockVolumes.Invoke(new()
+        ///     {
+        ///         GatewayId = "example_value",
+        ///         NameRegex = "^my-GatewayBlockVolume",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayGatewayBlockVolumeId1"] = ids.Apply(getGatewayBlockVolumesResult =&gt; getGatewayBlockVolumesResult.Volumes[0]?.Id),
+        ///         ["cloudStorageGatewayGatewayBlockVolumeId2"] = nameRegex.Apply(getGatewayBlockVolumesResult =&gt; getGatewayBlockVolumesResult.Volumes[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewayBlockVolumesResult> InvokeAsync(GetGatewayBlockVolumesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGatewayBlockVolumesResult>("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args ?? new GetGatewayBlockVolumesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayBlockVolumesResult>("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args ?? new GetGatewayBlockVolumesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
@@ -72,46 +70,44 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CloudStorageGateway.GetGatewayBlockVolumes.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CloudStorageGateway.GetGatewayBlockVolumes.InvokeAsync(new AliCloud.CloudStorageGateway.GetGatewayBlockVolumesArgs
+        ///         GatewayId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             GatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CloudStorageGatewayGatewayBlockVolumeId1 = ids.Apply(ids =&gt; ids.Volumes?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.CloudStorageGateway.GetGatewayBlockVolumes.InvokeAsync(new AliCloud.CloudStorageGateway.GetGatewayBlockVolumesArgs
-        ///         {
-        ///             GatewayId = "example_value",
-        ///             NameRegex = "^my-GatewayBlockVolume",
-        ///         }));
-        ///         this.CloudStorageGatewayGatewayBlockVolumeId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Volumes?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cloudStorageGatewayGatewayBlockVolumeId1")]
-        ///     public Output&lt;string&gt; CloudStorageGatewayGatewayBlockVolumeId1 { get; set; }
-        ///     [Output("cloudStorageGatewayGatewayBlockVolumeId2")]
-        ///     public Output&lt;string&gt; CloudStorageGatewayGatewayBlockVolumeId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CloudStorageGateway.GetGatewayBlockVolumes.Invoke(new()
+        ///     {
+        ///         GatewayId = "example_value",
+        ///         NameRegex = "^my-GatewayBlockVolume",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayGatewayBlockVolumeId1"] = ids.Apply(getGatewayBlockVolumesResult =&gt; getGatewayBlockVolumesResult.Volumes[0]?.Id),
+        ///         ["cloudStorageGatewayGatewayBlockVolumeId2"] = nameRegex.Apply(getGatewayBlockVolumesResult =&gt; getGatewayBlockVolumesResult.Volumes[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewayBlockVolumesResult> Invoke(GetGatewayBlockVolumesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGatewayBlockVolumesResult>("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args ?? new GetGatewayBlockVolumesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewayBlockVolumesResult>("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args ?? new GetGatewayBlockVolumesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGatewayBlockVolumesArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewayBlockVolumesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Gateway ID.
@@ -149,9 +145,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GetGatewayBlockVolumesArgs()
         {
         }
+        public static new GetGatewayBlockVolumesArgs Empty => new GetGatewayBlockVolumesArgs();
     }
 
-    public sealed class GetGatewayBlockVolumesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewayBlockVolumesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Gateway ID.
@@ -189,6 +186,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GetGatewayBlockVolumesInvokeArgs()
         {
         }
+        public static new GetGatewayBlockVolumesInvokeArgs Empty => new GetGatewayBlockVolumesInvokeArgs();
     }
 
 

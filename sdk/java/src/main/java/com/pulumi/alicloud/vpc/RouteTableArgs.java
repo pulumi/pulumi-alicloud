@@ -18,6 +18,21 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
     public static final RouteTableArgs Empty = new RouteTableArgs();
 
     /**
+     * The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * 
+     */
+    @Import(name="associateType")
+    private @Nullable Output<String> associateType;
+
+    /**
+     * @return The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * 
+     */
+    public Optional<Output<String>> associateType() {
+        return Optional.ofNullable(this.associateType);
+    }
+
+    /**
      * The description of the route table instance.
      * 
      */
@@ -103,6 +118,7 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
     private RouteTableArgs() {}
 
     private RouteTableArgs(RouteTableArgs $) {
+        this.associateType = $.associateType;
         this.description = $.description;
         this.name = $.name;
         this.routeTableName = $.routeTableName;
@@ -126,6 +142,27 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RouteTableArgs defaults) {
             $ = new RouteTableArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param associateType The type of routing table created. Valid values are `VSwitch` and `Gateway`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associateType(@Nullable Output<String> associateType) {
+            $.associateType = associateType;
+            return this;
+        }
+
+        /**
+         * @param associateType The type of routing table created. Valid values are `VSwitch` and `Gateway`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associateType(String associateType) {
+            return associateType(Output.of(associateType));
         }
 
         /**

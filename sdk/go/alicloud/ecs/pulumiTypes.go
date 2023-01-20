@@ -575,7 +575,7 @@ type EcsInstanceSetNetworkInterface struct {
 	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
 	// The primary private IP address of ENI.
 	PrimaryIpAddress *string `pulumi:"primaryIpAddress"`
-	// -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+	// The ID of the security group to which to assign secondary ENI.
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// The ID of the vSwitch to which to connect ENI.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -599,7 +599,7 @@ type EcsInstanceSetNetworkInterfaceArgs struct {
 	NetworkInterfaceName pulumi.StringPtrInput `pulumi:"networkInterfaceName"`
 	// The primary private IP address of ENI.
 	PrimaryIpAddress pulumi.StringPtrInput `pulumi:"primaryIpAddress"`
-	// -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+	// The ID of the security group to which to assign secondary ENI.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
 	// The ID of the vSwitch to which to connect ENI.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
@@ -671,7 +671,7 @@ func (o EcsInstanceSetNetworkInterfaceOutput) PrimaryIpAddress() pulumi.StringPt
 	return o.ApplyT(func(v EcsInstanceSetNetworkInterface) *string { return v.PrimaryIpAddress }).(pulumi.StringPtrOutput)
 }
 
-// -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+// The ID of the security group to which to assign secondary ENI.
 func (o EcsInstanceSetNetworkInterfaceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v EcsInstanceSetNetworkInterface) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
@@ -702,19 +702,19 @@ func (o EcsInstanceSetNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) EcsI
 }
 
 type EcsLaunchTemplateDataDisk struct {
-	// The category of the disk.
+	// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
 	Category *string `pulumi:"category"`
-	// Indicates whether the data disk is released with the instance.
+	// Specifies whether to release the system disk when the instance is released. Default to `true`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description *string `pulumi:"description"`
 	// Encrypted the data in this disk.
 	Encrypted *bool `pulumi:"encrypted"`
-	// The name of the data disk.
+	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	Name *string `pulumi:"name"`
-	// The performance level of the ESSD used as the data disk.
+	// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// The size of the data disk.
+	// Size of the system disk, measured in GB. Value range: [20, 500].
 	Size *int `pulumi:"size"`
 	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
 	SnapshotId *string `pulumi:"snapshotId"`
@@ -732,19 +732,19 @@ type EcsLaunchTemplateDataDiskInput interface {
 }
 
 type EcsLaunchTemplateDataDiskArgs struct {
-	// The category of the disk.
+	// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Indicates whether the data disk is released with the instance.
+	// Specifies whether to release the system disk when the instance is released. Default to `true`.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Encrypted the data in this disk.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
-	// The name of the data disk.
+	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The performance level of the ESSD used as the data disk.
+	// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// The size of the data disk.
+	// Size of the system disk, measured in GB. Value range: [20, 500].
 	Size pulumi.IntPtrInput `pulumi:"size"`
 	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
@@ -801,17 +801,17 @@ func (o EcsLaunchTemplateDataDiskOutput) ToEcsLaunchTemplateDataDiskOutputWithCo
 	return o
 }
 
-// The category of the disk.
+// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
 func (o EcsLaunchTemplateDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the data disk is released with the instance.
+// Specifies whether to release the system disk when the instance is released. Default to `true`.
 func (o EcsLaunchTemplateDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
-// The description of the data disk.
+// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 func (o EcsLaunchTemplateDataDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -821,17 +821,17 @@ func (o EcsLaunchTemplateDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the data disk.
+// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 func (o EcsLaunchTemplateDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The performance level of the ESSD used as the data disk.
+// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
 func (o EcsLaunchTemplateDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// The size of the data disk.
+// Size of the system disk, measured in GB. Value range: [20, 500].
 func (o EcsLaunchTemplateDataDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -862,15 +862,15 @@ func (o EcsLaunchTemplateDataDiskArrayOutput) Index(i pulumi.IntInput) EcsLaunch
 }
 
 type EcsLaunchTemplateNetworkInterfaces struct {
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description *string `pulumi:"description"`
-	// The name of the data disk.
+	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	Name *string `pulumi:"name"`
 	// The primary private IP address of the ENI.
 	PrimaryIp *string `pulumi:"primaryIp"`
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -886,15 +886,15 @@ type EcsLaunchTemplateNetworkInterfacesInput interface {
 }
 
 type EcsLaunchTemplateNetworkInterfacesArgs struct {
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The name of the data disk.
+	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The primary private IP address of the ENI.
 	PrimaryIp pulumi.StringPtrInput `pulumi:"primaryIp"`
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 
@@ -975,12 +975,12 @@ func (o EcsLaunchTemplateNetworkInterfacesOutput) ToEcsLaunchTemplateNetworkInte
 	}).(EcsLaunchTemplateNetworkInterfacesPtrOutput)
 }
 
-// The description of the data disk.
+// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 func (o EcsLaunchTemplateNetworkInterfacesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the data disk.
+// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 func (o EcsLaunchTemplateNetworkInterfacesOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -990,12 +990,12 @@ func (o EcsLaunchTemplateNetworkInterfacesOutput) PrimaryIp() pulumi.StringPtrOu
 	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.PrimaryIp }).(pulumi.StringPtrOutput)
 }
 
-// The security group ID must be one in the same VPC.
+// The security group ID.
 func (o EcsLaunchTemplateNetworkInterfacesOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 func (o EcsLaunchTemplateNetworkInterfacesOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
@@ -1024,7 +1024,7 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Elem() EcsLaunchTemplateNet
 	}).(EcsLaunchTemplateNetworkInterfacesOutput)
 }
 
-// The description of the data disk.
+// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
 		if v == nil {
@@ -1034,7 +1034,7 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Description() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the data disk.
+// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
 		if v == nil {
@@ -1054,7 +1054,7 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) PrimaryIp() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The security group ID must be one in the same VPC.
+// The security group ID.
 func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
 		if v == nil {
@@ -1064,7 +1064,7 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) SecurityGroupId() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *string {
 		if v == nil {
@@ -1075,19 +1075,19 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPt
 }
 
 type EcsLaunchTemplateSystemDisk struct {
-	// The category of the disk.
+	// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
 	Category *string `pulumi:"category"`
-	// Indicates whether the data disk is released with the instance.
+	// Specifies whether to release the system disk when the instance is released. Default to `true`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description *string `pulumi:"description"`
 	// The Iops.
 	Iops *string `pulumi:"iops"`
-	// The name of the data disk.
+	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	Name *string `pulumi:"name"`
-	// The performance level of the ESSD used as the data disk.
+	// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// The size of the data disk.
+	// Size of the system disk, measured in GB. Value range: [20, 500].
 	Size *int `pulumi:"size"`
 }
 
@@ -1103,19 +1103,19 @@ type EcsLaunchTemplateSystemDiskInput interface {
 }
 
 type EcsLaunchTemplateSystemDiskArgs struct {
-	// The category of the disk.
+	// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Indicates whether the data disk is released with the instance.
+	// Specifies whether to release the system disk when the instance is released. Default to `true`.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The Iops.
 	Iops pulumi.StringPtrInput `pulumi:"iops"`
-	// The name of the data disk.
+	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The performance level of the ESSD used as the data disk.
+	// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// The size of the data disk.
+	// Size of the system disk, measured in GB. Value range: [20, 500].
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -1196,17 +1196,17 @@ func (o EcsLaunchTemplateSystemDiskOutput) ToEcsLaunchTemplateSystemDiskPtrOutpu
 	}).(EcsLaunchTemplateSystemDiskPtrOutput)
 }
 
-// The category of the disk.
+// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
 func (o EcsLaunchTemplateSystemDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the data disk is released with the instance.
+// Specifies whether to release the system disk when the instance is released. Default to `true`.
 func (o EcsLaunchTemplateSystemDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
-// The description of the data disk.
+// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 func (o EcsLaunchTemplateSystemDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1216,17 +1216,17 @@ func (o EcsLaunchTemplateSystemDiskOutput) Iops() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Iops }).(pulumi.StringPtrOutput)
 }
 
-// The name of the data disk.
+// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 func (o EcsLaunchTemplateSystemDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The performance level of the ESSD used as the data disk.
+// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
 func (o EcsLaunchTemplateSystemDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// The size of the data disk.
+// Size of the system disk, measured in GB. Value range: [20, 500].
 func (o EcsLaunchTemplateSystemDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -1255,7 +1255,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Elem() EcsLaunchTemplateSystemDisk
 	}).(EcsLaunchTemplateSystemDiskOutput)
 }
 
-// The category of the disk.
+// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -1265,7 +1265,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Category() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the data disk is released with the instance.
+// Specifies whether to release the system disk when the instance is released. Default to `true`.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *bool {
 		if v == nil {
@@ -1275,7 +1275,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) DeleteWithInstance() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The description of the data disk.
+// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -1295,7 +1295,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Iops() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the data disk.
+// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -1305,7 +1305,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The performance level of the ESSD used as the data disk.
+// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -1315,7 +1315,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) PerformanceLevel() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The size of the data disk.
+// Size of the system disk, measured in GB. Value range: [20, 500].
 func (o EcsLaunchTemplateSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *int {
 		if v == nil {
@@ -1710,29 +1710,20 @@ type InstanceDataDisk struct {
 	// The ID of the automatic snapshot policy applied to the system disk.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	// The category of the disk:
-	// - `cloud`: The general cloud disk.
-	// - `cloudEfficiency`: The efficiency cloud disk.
-	// - `cloudSsd`: The SSD cloud disk.
-	// - `cloudEssd`: The ESSD cloud disk.
-	// - `ephemeralSsd`: The local SSD disk.
-	//   Default to `cloudEfficiency`.
 	Category *string `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
-	// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+	// The mount point of the data disk.
+	Device *string `pulumi:"device"`
+	// Encrypted the data in this disk. Default value: `false`.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The KMS key ID corresponding to the Nth data disk.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// The name of the data disk.
 	Name *string `pulumi:"name"`
 	// The performance level of the ESSD used as data disk:
-	// - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-	// - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-	// - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-	// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-	//   Default to `PL1`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The size of the data disk.
 	// - cloud：[5, 2000]
@@ -1760,29 +1751,20 @@ type InstanceDataDiskArgs struct {
 	// The ID of the automatic snapshot policy applied to the system disk.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
 	// The category of the disk:
-	// - `cloud`: The general cloud disk.
-	// - `cloudEfficiency`: The efficiency cloud disk.
-	// - `cloudSsd`: The SSD cloud disk.
-	// - `cloudEssd`: The ESSD cloud disk.
-	// - `ephemeralSsd`: The local SSD disk.
-	//   Default to `cloudEfficiency`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+	// The mount point of the data disk.
+	Device pulumi.StringPtrInput `pulumi:"device"`
+	// Encrypted the data in this disk. Default value: `false`.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// The KMS key ID corresponding to the Nth data disk.
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The name of the data disk.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The performance level of the ESSD used as data disk:
-	// - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-	// - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-	// - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-	// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-	//   Default to `PL1`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
 	// The size of the data disk.
 	// - cloud：[5, 2000]
@@ -1852,12 +1834,6 @@ func (o InstanceDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 }
 
 // The category of the disk:
-//   - `cloud`: The general cloud disk.
-//   - `cloudEfficiency`: The efficiency cloud disk.
-//   - `cloudSsd`: The SSD cloud disk.
-//   - `cloudEssd`: The ESSD cloud disk.
-//   - `ephemeralSsd`: The local SSD disk.
-//     Default to `cloudEfficiency`.
 func (o InstanceDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -1872,7 +1848,12 @@ func (o InstanceDataDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+// The mount point of the data disk.
+func (o InstanceDataDiskOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
+}
+
+// Encrypted the data in this disk. Default value: `false`.
 func (o InstanceDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
@@ -1888,11 +1869,6 @@ func (o InstanceDataDiskOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The performance level of the ESSD used as data disk:
-//   - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-//   - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-//   - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-//   - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-//     Default to `PL1`.
 func (o InstanceDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
@@ -2100,7 +2076,7 @@ type LaunchTemplateDataDisk struct {
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
-	// -(Optional, Bool) Encrypted the data in this disk.
+	// Encrypted the data in this disk.
 	Encrypted *bool `pulumi:"encrypted"`
 	// The name of the data disk.
 	Name             *string `pulumi:"name"`
@@ -2139,7 +2115,7 @@ type LaunchTemplateDataDiskArgs struct {
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// -(Optional, Bool) Encrypted the data in this disk.
+	// Encrypted the data in this disk.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// The name of the data disk.
 	Name             pulumi.StringPtrInput `pulumi:"name"`
@@ -2226,7 +2202,7 @@ func (o LaunchTemplateDataDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// -(Optional, Bool) Encrypted the data in this disk.
+// Encrypted the data in this disk.
 func (o LaunchTemplateDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
@@ -2771,6 +2747,103 @@ func (o LaunchTemplateSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ReservedInstanceOperationLock struct {
+	// The reason why the reserved instance was locked.
+	LockReason *string `pulumi:"lockReason"`
+}
+
+// ReservedInstanceOperationLockInput is an input type that accepts ReservedInstanceOperationLockArgs and ReservedInstanceOperationLockOutput values.
+// You can construct a concrete instance of `ReservedInstanceOperationLockInput` via:
+//
+//	ReservedInstanceOperationLockArgs{...}
+type ReservedInstanceOperationLockInput interface {
+	pulumi.Input
+
+	ToReservedInstanceOperationLockOutput() ReservedInstanceOperationLockOutput
+	ToReservedInstanceOperationLockOutputWithContext(context.Context) ReservedInstanceOperationLockOutput
+}
+
+type ReservedInstanceOperationLockArgs struct {
+	// The reason why the reserved instance was locked.
+	LockReason pulumi.StringPtrInput `pulumi:"lockReason"`
+}
+
+func (ReservedInstanceOperationLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservedInstanceOperationLock)(nil)).Elem()
+}
+
+func (i ReservedInstanceOperationLockArgs) ToReservedInstanceOperationLockOutput() ReservedInstanceOperationLockOutput {
+	return i.ToReservedInstanceOperationLockOutputWithContext(context.Background())
+}
+
+func (i ReservedInstanceOperationLockArgs) ToReservedInstanceOperationLockOutputWithContext(ctx context.Context) ReservedInstanceOperationLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservedInstanceOperationLockOutput)
+}
+
+// ReservedInstanceOperationLockArrayInput is an input type that accepts ReservedInstanceOperationLockArray and ReservedInstanceOperationLockArrayOutput values.
+// You can construct a concrete instance of `ReservedInstanceOperationLockArrayInput` via:
+//
+//	ReservedInstanceOperationLockArray{ ReservedInstanceOperationLockArgs{...} }
+type ReservedInstanceOperationLockArrayInput interface {
+	pulumi.Input
+
+	ToReservedInstanceOperationLockArrayOutput() ReservedInstanceOperationLockArrayOutput
+	ToReservedInstanceOperationLockArrayOutputWithContext(context.Context) ReservedInstanceOperationLockArrayOutput
+}
+
+type ReservedInstanceOperationLockArray []ReservedInstanceOperationLockInput
+
+func (ReservedInstanceOperationLockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReservedInstanceOperationLock)(nil)).Elem()
+}
+
+func (i ReservedInstanceOperationLockArray) ToReservedInstanceOperationLockArrayOutput() ReservedInstanceOperationLockArrayOutput {
+	return i.ToReservedInstanceOperationLockArrayOutputWithContext(context.Background())
+}
+
+func (i ReservedInstanceOperationLockArray) ToReservedInstanceOperationLockArrayOutputWithContext(ctx context.Context) ReservedInstanceOperationLockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservedInstanceOperationLockArrayOutput)
+}
+
+type ReservedInstanceOperationLockOutput struct{ *pulumi.OutputState }
+
+func (ReservedInstanceOperationLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservedInstanceOperationLock)(nil)).Elem()
+}
+
+func (o ReservedInstanceOperationLockOutput) ToReservedInstanceOperationLockOutput() ReservedInstanceOperationLockOutput {
+	return o
+}
+
+func (o ReservedInstanceOperationLockOutput) ToReservedInstanceOperationLockOutputWithContext(ctx context.Context) ReservedInstanceOperationLockOutput {
+	return o
+}
+
+// The reason why the reserved instance was locked.
+func (o ReservedInstanceOperationLockOutput) LockReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReservedInstanceOperationLock) *string { return v.LockReason }).(pulumi.StringPtrOutput)
+}
+
+type ReservedInstanceOperationLockArrayOutput struct{ *pulumi.OutputState }
+
+func (ReservedInstanceOperationLockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReservedInstanceOperationLock)(nil)).Elem()
+}
+
+func (o ReservedInstanceOperationLockArrayOutput) ToReservedInstanceOperationLockArrayOutput() ReservedInstanceOperationLockArrayOutput {
+	return o
+}
+
+func (o ReservedInstanceOperationLockArrayOutput) ToReservedInstanceOperationLockArrayOutputWithContext(ctx context.Context) ReservedInstanceOperationLockArrayOutput {
+	return o
+}
+
+func (o ReservedInstanceOperationLockArrayOutput) Index(i pulumi.IntInput) ReservedInstanceOperationLockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReservedInstanceOperationLock {
+		return vs[0].([]ReservedInstanceOperationLock)[vs[1].(int)]
+	}).(ReservedInstanceOperationLockOutput)
+}
+
 type GetActivationsActivation struct {
 	// The ID of the activation code.
 	ActivationId string `pulumi:"activationId"`
@@ -3161,6 +3234,256 @@ func (o GetAutoSnapshotPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetAu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAutoSnapshotPoliciesPolicy {
 		return vs[0].([]GetAutoSnapshotPoliciesPolicy)[vs[1].(int)]
 	}).(GetAutoSnapshotPoliciesPolicyOutput)
+}
+
+type GetCapacityReservationsReservation struct {
+	// Capacity Reservation id
+	CapacityReservationId string `pulumi:"capacityReservationId"`
+	// Capacity reservation service name.
+	CapacityReservationName string `pulumi:"capacityReservationName"`
+	// description of the capacity reservation instance
+	Description string `pulumi:"description"`
+	// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+	EndTime string `pulumi:"endTime"`
+	// Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
+	EndTimeType string `pulumi:"endTimeType"`
+	// The ID of the Capacity Reservation.
+	Id string `pulumi:"id"`
+	// The total number of instances that need to be reserved within the capacity reservation
+	InstanceAmount string `pulumi:"instanceAmount"`
+	// Instance type. Currently, you can only set the capacity reservation service for one instance type.
+	InstanceType string `pulumi:"instanceType"`
+	// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+	MatchCriteria string `pulumi:"matchCriteria"`
+	// The payment type of the resource. value range `PostPaid`, `PrePaid`.
+	PaymentType string `pulumi:"paymentType"`
+	// platform of the capacity reservation , value range `windows`, `linux`, `all`.
+	Platform string `pulumi:"platform"`
+	// The resource group id.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// time of the capacity reservation which become active
+	StartTime string `pulumi:"startTime"`
+	// The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
+	StartTimeType string `pulumi:"startTimeType"`
+	// The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+	Status string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// This parameter is under test and is not yet open for use.
+	TimeSlot string `pulumi:"timeSlot"`
+	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+	ZoneIds []string `pulumi:"zoneIds"`
+}
+
+// GetCapacityReservationsReservationInput is an input type that accepts GetCapacityReservationsReservationArgs and GetCapacityReservationsReservationOutput values.
+// You can construct a concrete instance of `GetCapacityReservationsReservationInput` via:
+//
+//	GetCapacityReservationsReservationArgs{...}
+type GetCapacityReservationsReservationInput interface {
+	pulumi.Input
+
+	ToGetCapacityReservationsReservationOutput() GetCapacityReservationsReservationOutput
+	ToGetCapacityReservationsReservationOutputWithContext(context.Context) GetCapacityReservationsReservationOutput
+}
+
+type GetCapacityReservationsReservationArgs struct {
+	// Capacity Reservation id
+	CapacityReservationId pulumi.StringInput `pulumi:"capacityReservationId"`
+	// Capacity reservation service name.
+	CapacityReservationName pulumi.StringInput `pulumi:"capacityReservationName"`
+	// description of the capacity reservation instance
+	Description pulumi.StringInput `pulumi:"description"`
+	// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
+	EndTimeType pulumi.StringInput `pulumi:"endTimeType"`
+	// The ID of the Capacity Reservation.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The total number of instances that need to be reserved within the capacity reservation
+	InstanceAmount pulumi.StringInput `pulumi:"instanceAmount"`
+	// Instance type. Currently, you can only set the capacity reservation service for one instance type.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+	MatchCriteria pulumi.StringInput `pulumi:"matchCriteria"`
+	// The payment type of the resource. value range `PostPaid`, `PrePaid`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// platform of the capacity reservation , value range `windows`, `linux`, `all`.
+	Platform pulumi.StringInput `pulumi:"platform"`
+	// The resource group id.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// time of the capacity reservation which become active
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
+	StartTimeType pulumi.StringInput `pulumi:"startTimeType"`
+	// The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// This parameter is under test and is not yet open for use.
+	TimeSlot pulumi.StringInput `pulumi:"timeSlot"`
+	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+	ZoneIds pulumi.StringArrayInput `pulumi:"zoneIds"`
+}
+
+func (GetCapacityReservationsReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCapacityReservationsReservation)(nil)).Elem()
+}
+
+func (i GetCapacityReservationsReservationArgs) ToGetCapacityReservationsReservationOutput() GetCapacityReservationsReservationOutput {
+	return i.ToGetCapacityReservationsReservationOutputWithContext(context.Background())
+}
+
+func (i GetCapacityReservationsReservationArgs) ToGetCapacityReservationsReservationOutputWithContext(ctx context.Context) GetCapacityReservationsReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCapacityReservationsReservationOutput)
+}
+
+// GetCapacityReservationsReservationArrayInput is an input type that accepts GetCapacityReservationsReservationArray and GetCapacityReservationsReservationArrayOutput values.
+// You can construct a concrete instance of `GetCapacityReservationsReservationArrayInput` via:
+//
+//	GetCapacityReservationsReservationArray{ GetCapacityReservationsReservationArgs{...} }
+type GetCapacityReservationsReservationArrayInput interface {
+	pulumi.Input
+
+	ToGetCapacityReservationsReservationArrayOutput() GetCapacityReservationsReservationArrayOutput
+	ToGetCapacityReservationsReservationArrayOutputWithContext(context.Context) GetCapacityReservationsReservationArrayOutput
+}
+
+type GetCapacityReservationsReservationArray []GetCapacityReservationsReservationInput
+
+func (GetCapacityReservationsReservationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCapacityReservationsReservation)(nil)).Elem()
+}
+
+func (i GetCapacityReservationsReservationArray) ToGetCapacityReservationsReservationArrayOutput() GetCapacityReservationsReservationArrayOutput {
+	return i.ToGetCapacityReservationsReservationArrayOutputWithContext(context.Background())
+}
+
+func (i GetCapacityReservationsReservationArray) ToGetCapacityReservationsReservationArrayOutputWithContext(ctx context.Context) GetCapacityReservationsReservationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCapacityReservationsReservationArrayOutput)
+}
+
+type GetCapacityReservationsReservationOutput struct{ *pulumi.OutputState }
+
+func (GetCapacityReservationsReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCapacityReservationsReservation)(nil)).Elem()
+}
+
+func (o GetCapacityReservationsReservationOutput) ToGetCapacityReservationsReservationOutput() GetCapacityReservationsReservationOutput {
+	return o
+}
+
+func (o GetCapacityReservationsReservationOutput) ToGetCapacityReservationsReservationOutputWithContext(ctx context.Context) GetCapacityReservationsReservationOutput {
+	return o
+}
+
+// Capacity Reservation id
+func (o GetCapacityReservationsReservationOutput) CapacityReservationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.CapacityReservationId }).(pulumi.StringOutput)
+}
+
+// Capacity reservation service name.
+func (o GetCapacityReservationsReservationOutput) CapacityReservationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.CapacityReservationName }).(pulumi.StringOutput)
+}
+
+// description of the capacity reservation instance
+func (o GetCapacityReservationsReservationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
+func (o GetCapacityReservationsReservationOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
+func (o GetCapacityReservationsReservationOutput) EndTimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.EndTimeType }).(pulumi.StringOutput)
+}
+
+// The ID of the Capacity Reservation.
+func (o GetCapacityReservationsReservationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The total number of instances that need to be reserved within the capacity reservation
+func (o GetCapacityReservationsReservationOutput) InstanceAmount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.InstanceAmount }).(pulumi.StringOutput)
+}
+
+// Instance type. Currently, you can only set the capacity reservation service for one instance type.
+func (o GetCapacityReservationsReservationOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+func (o GetCapacityReservationsReservationOutput) MatchCriteria() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.MatchCriteria }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource. value range `PostPaid`, `PrePaid`.
+func (o GetCapacityReservationsReservationOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// platform of the capacity reservation , value range `windows`, `linux`, `all`.
+func (o GetCapacityReservationsReservationOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.Platform }).(pulumi.StringOutput)
+}
+
+// The resource group id.
+func (o GetCapacityReservationsReservationOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// time of the capacity reservation which become active
+func (o GetCapacityReservationsReservationOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
+func (o GetCapacityReservationsReservationOutput) StartTimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.StartTimeType }).(pulumi.StringOutput)
+}
+
+// The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+func (o GetCapacityReservationsReservationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetCapacityReservationsReservationOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// This parameter is under test and is not yet open for use.
+func (o GetCapacityReservationsReservationOutput) TimeSlot() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) string { return v.TimeSlot }).(pulumi.StringOutput)
+}
+
+// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+func (o GetCapacityReservationsReservationOutput) ZoneIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCapacityReservationsReservation) []string { return v.ZoneIds }).(pulumi.StringArrayOutput)
+}
+
+type GetCapacityReservationsReservationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCapacityReservationsReservationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCapacityReservationsReservation)(nil)).Elem()
+}
+
+func (o GetCapacityReservationsReservationArrayOutput) ToGetCapacityReservationsReservationArrayOutput() GetCapacityReservationsReservationArrayOutput {
+	return o
+}
+
+func (o GetCapacityReservationsReservationArrayOutput) ToGetCapacityReservationsReservationArrayOutputWithContext(ctx context.Context) GetCapacityReservationsReservationArrayOutput {
+	return o
+}
+
+func (o GetCapacityReservationsReservationArrayOutput) Index(i pulumi.IntInput) GetCapacityReservationsReservationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCapacityReservationsReservation {
+		return vs[0].([]GetCapacityReservationsReservation)[vs[1].(int)]
+	}).(GetCapacityReservationsReservationOutput)
 }
 
 type GetCommandsCommand struct {
@@ -11207,6 +11530,364 @@ func (o GetEipsEipArrayOutput) Index(i pulumi.IntInput) GetEipsEipOutput {
 	}).(GetEipsEipOutput)
 }
 
+type GetElasticityAssurancesAssurance struct {
+	// Details of resource allocation.
+	AllocatedResources []GetElasticityAssurancesAssuranceAllocatedResource `pulumi:"allocatedResources"`
+	// Description of flexible guarantee service.
+	Description string `pulumi:"description"`
+	// The first ID of the resource
+	ElasticityAssuranceId string `pulumi:"elasticityAssuranceId"`
+	// Flexible guarantee service failure time.
+	EndTime string `pulumi:"endTime"`
+	// ID of flexible guarantee service.
+	Id string `pulumi:"id"`
+	// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
+	InstanceChargeType string `pulumi:"instanceChargeType"`
+	// The ID of the elasticity assurance.
+	PrivatePoolOptionsId string `pulumi:"privatePoolOptionsId"`
+	// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+	PrivatePoolOptionsMatchCriteria string `pulumi:"privatePoolOptionsMatchCriteria"`
+	// The name of the elasticity assurance.
+	PrivatePoolOptionsName string `pulumi:"privatePoolOptionsName"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Flexible guarantee service effective time.
+	StartTime string `pulumi:"startTime"`
+	// Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
+	StartTimeType string `pulumi:"startTimeType"`
+	// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+	Status string `pulumi:"status"`
+	// The tag key-value pair information bound by the elastic guarantee service.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The total number of flexible guarantee services.
+	TotalAssuranceTimes string `pulumi:"totalAssuranceTimes"`
+	// This parameter is not yet available.
+	UsedAssuranceTimes int `pulumi:"usedAssuranceTimes"`
+}
+
+// GetElasticityAssurancesAssuranceInput is an input type that accepts GetElasticityAssurancesAssuranceArgs and GetElasticityAssurancesAssuranceOutput values.
+// You can construct a concrete instance of `GetElasticityAssurancesAssuranceInput` via:
+//
+//	GetElasticityAssurancesAssuranceArgs{...}
+type GetElasticityAssurancesAssuranceInput interface {
+	pulumi.Input
+
+	ToGetElasticityAssurancesAssuranceOutput() GetElasticityAssurancesAssuranceOutput
+	ToGetElasticityAssurancesAssuranceOutputWithContext(context.Context) GetElasticityAssurancesAssuranceOutput
+}
+
+type GetElasticityAssurancesAssuranceArgs struct {
+	// Details of resource allocation.
+	AllocatedResources GetElasticityAssurancesAssuranceAllocatedResourceArrayInput `pulumi:"allocatedResources"`
+	// Description of flexible guarantee service.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The first ID of the resource
+	ElasticityAssuranceId pulumi.StringInput `pulumi:"elasticityAssuranceId"`
+	// Flexible guarantee service failure time.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// ID of flexible guarantee service.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
+	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
+	// The ID of the elasticity assurance.
+	PrivatePoolOptionsId pulumi.StringInput `pulumi:"privatePoolOptionsId"`
+	// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+	PrivatePoolOptionsMatchCriteria pulumi.StringInput `pulumi:"privatePoolOptionsMatchCriteria"`
+	// The name of the elasticity assurance.
+	PrivatePoolOptionsName pulumi.StringInput `pulumi:"privatePoolOptionsName"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Flexible guarantee service effective time.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
+	StartTimeType pulumi.StringInput `pulumi:"startTimeType"`
+	// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The tag key-value pair information bound by the elastic guarantee service.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The total number of flexible guarantee services.
+	TotalAssuranceTimes pulumi.StringInput `pulumi:"totalAssuranceTimes"`
+	// This parameter is not yet available.
+	UsedAssuranceTimes pulumi.IntInput `pulumi:"usedAssuranceTimes"`
+}
+
+func (GetElasticityAssurancesAssuranceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetElasticityAssurancesAssurance)(nil)).Elem()
+}
+
+func (i GetElasticityAssurancesAssuranceArgs) ToGetElasticityAssurancesAssuranceOutput() GetElasticityAssurancesAssuranceOutput {
+	return i.ToGetElasticityAssurancesAssuranceOutputWithContext(context.Background())
+}
+
+func (i GetElasticityAssurancesAssuranceArgs) ToGetElasticityAssurancesAssuranceOutputWithContext(ctx context.Context) GetElasticityAssurancesAssuranceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetElasticityAssurancesAssuranceOutput)
+}
+
+// GetElasticityAssurancesAssuranceArrayInput is an input type that accepts GetElasticityAssurancesAssuranceArray and GetElasticityAssurancesAssuranceArrayOutput values.
+// You can construct a concrete instance of `GetElasticityAssurancesAssuranceArrayInput` via:
+//
+//	GetElasticityAssurancesAssuranceArray{ GetElasticityAssurancesAssuranceArgs{...} }
+type GetElasticityAssurancesAssuranceArrayInput interface {
+	pulumi.Input
+
+	ToGetElasticityAssurancesAssuranceArrayOutput() GetElasticityAssurancesAssuranceArrayOutput
+	ToGetElasticityAssurancesAssuranceArrayOutputWithContext(context.Context) GetElasticityAssurancesAssuranceArrayOutput
+}
+
+type GetElasticityAssurancesAssuranceArray []GetElasticityAssurancesAssuranceInput
+
+func (GetElasticityAssurancesAssuranceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetElasticityAssurancesAssurance)(nil)).Elem()
+}
+
+func (i GetElasticityAssurancesAssuranceArray) ToGetElasticityAssurancesAssuranceArrayOutput() GetElasticityAssurancesAssuranceArrayOutput {
+	return i.ToGetElasticityAssurancesAssuranceArrayOutputWithContext(context.Background())
+}
+
+func (i GetElasticityAssurancesAssuranceArray) ToGetElasticityAssurancesAssuranceArrayOutputWithContext(ctx context.Context) GetElasticityAssurancesAssuranceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetElasticityAssurancesAssuranceArrayOutput)
+}
+
+type GetElasticityAssurancesAssuranceOutput struct{ *pulumi.OutputState }
+
+func (GetElasticityAssurancesAssuranceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetElasticityAssurancesAssurance)(nil)).Elem()
+}
+
+func (o GetElasticityAssurancesAssuranceOutput) ToGetElasticityAssurancesAssuranceOutput() GetElasticityAssurancesAssuranceOutput {
+	return o
+}
+
+func (o GetElasticityAssurancesAssuranceOutput) ToGetElasticityAssurancesAssuranceOutputWithContext(ctx context.Context) GetElasticityAssurancesAssuranceOutput {
+	return o
+}
+
+// Details of resource allocation.
+func (o GetElasticityAssurancesAssuranceOutput) AllocatedResources() GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) []GetElasticityAssurancesAssuranceAllocatedResource {
+		return v.AllocatedResources
+	}).(GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput)
+}
+
+// Description of flexible guarantee service.
+func (o GetElasticityAssurancesAssuranceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource
+func (o GetElasticityAssurancesAssuranceOutput) ElasticityAssuranceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.ElasticityAssuranceId }).(pulumi.StringOutput)
+}
+
+// Flexible guarantee service failure time.
+func (o GetElasticityAssurancesAssuranceOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// ID of flexible guarantee service.
+func (o GetElasticityAssurancesAssuranceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
+func (o GetElasticityAssurancesAssuranceOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// The ID of the elasticity assurance.
+func (o GetElasticityAssurancesAssuranceOutput) PrivatePoolOptionsId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.PrivatePoolOptionsId }).(pulumi.StringOutput)
+}
+
+// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+func (o GetElasticityAssurancesAssuranceOutput) PrivatePoolOptionsMatchCriteria() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.PrivatePoolOptionsMatchCriteria }).(pulumi.StringOutput)
+}
+
+// The name of the elasticity assurance.
+func (o GetElasticityAssurancesAssuranceOutput) PrivatePoolOptionsName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.PrivatePoolOptionsName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetElasticityAssurancesAssuranceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Flexible guarantee service effective time.
+func (o GetElasticityAssurancesAssuranceOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
+func (o GetElasticityAssurancesAssuranceOutput) StartTimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.StartTimeType }).(pulumi.StringOutput)
+}
+
+// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+func (o GetElasticityAssurancesAssuranceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag key-value pair information bound by the elastic guarantee service.
+func (o GetElasticityAssurancesAssuranceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The total number of flexible guarantee services.
+func (o GetElasticityAssurancesAssuranceOutput) TotalAssuranceTimes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) string { return v.TotalAssuranceTimes }).(pulumi.StringOutput)
+}
+
+// This parameter is not yet available.
+func (o GetElasticityAssurancesAssuranceOutput) UsedAssuranceTimes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssurance) int { return v.UsedAssuranceTimes }).(pulumi.IntOutput)
+}
+
+type GetElasticityAssurancesAssuranceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetElasticityAssurancesAssuranceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetElasticityAssurancesAssurance)(nil)).Elem()
+}
+
+func (o GetElasticityAssurancesAssuranceArrayOutput) ToGetElasticityAssurancesAssuranceArrayOutput() GetElasticityAssurancesAssuranceArrayOutput {
+	return o
+}
+
+func (o GetElasticityAssurancesAssuranceArrayOutput) ToGetElasticityAssurancesAssuranceArrayOutputWithContext(ctx context.Context) GetElasticityAssurancesAssuranceArrayOutput {
+	return o
+}
+
+func (o GetElasticityAssurancesAssuranceArrayOutput) Index(i pulumi.IntInput) GetElasticityAssurancesAssuranceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetElasticityAssurancesAssurance {
+		return vs[0].([]GetElasticityAssurancesAssurance)[vs[1].(int)]
+	}).(GetElasticityAssurancesAssuranceOutput)
+}
+
+type GetElasticityAssurancesAssuranceAllocatedResource struct {
+	// Instance type.
+	InstanceType string `pulumi:"instanceType"`
+	// The total number of instances that need to be reserved within an instance type.
+	TotalAmount int `pulumi:"totalAmount"`
+	// The number of instances that have been used.
+	UsedAmount int `pulumi:"usedAmount"`
+	// The zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetElasticityAssurancesAssuranceAllocatedResourceInput is an input type that accepts GetElasticityAssurancesAssuranceAllocatedResourceArgs and GetElasticityAssurancesAssuranceAllocatedResourceOutput values.
+// You can construct a concrete instance of `GetElasticityAssurancesAssuranceAllocatedResourceInput` via:
+//
+//	GetElasticityAssurancesAssuranceAllocatedResourceArgs{...}
+type GetElasticityAssurancesAssuranceAllocatedResourceInput interface {
+	pulumi.Input
+
+	ToGetElasticityAssurancesAssuranceAllocatedResourceOutput() GetElasticityAssurancesAssuranceAllocatedResourceOutput
+	ToGetElasticityAssurancesAssuranceAllocatedResourceOutputWithContext(context.Context) GetElasticityAssurancesAssuranceAllocatedResourceOutput
+}
+
+type GetElasticityAssurancesAssuranceAllocatedResourceArgs struct {
+	// Instance type.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The total number of instances that need to be reserved within an instance type.
+	TotalAmount pulumi.IntInput `pulumi:"totalAmount"`
+	// The number of instances that have been used.
+	UsedAmount pulumi.IntInput `pulumi:"usedAmount"`
+	// The zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetElasticityAssurancesAssuranceAllocatedResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetElasticityAssurancesAssuranceAllocatedResource)(nil)).Elem()
+}
+
+func (i GetElasticityAssurancesAssuranceAllocatedResourceArgs) ToGetElasticityAssurancesAssuranceAllocatedResourceOutput() GetElasticityAssurancesAssuranceAllocatedResourceOutput {
+	return i.ToGetElasticityAssurancesAssuranceAllocatedResourceOutputWithContext(context.Background())
+}
+
+func (i GetElasticityAssurancesAssuranceAllocatedResourceArgs) ToGetElasticityAssurancesAssuranceAllocatedResourceOutputWithContext(ctx context.Context) GetElasticityAssurancesAssuranceAllocatedResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetElasticityAssurancesAssuranceAllocatedResourceOutput)
+}
+
+// GetElasticityAssurancesAssuranceAllocatedResourceArrayInput is an input type that accepts GetElasticityAssurancesAssuranceAllocatedResourceArray and GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput values.
+// You can construct a concrete instance of `GetElasticityAssurancesAssuranceAllocatedResourceArrayInput` via:
+//
+//	GetElasticityAssurancesAssuranceAllocatedResourceArray{ GetElasticityAssurancesAssuranceAllocatedResourceArgs{...} }
+type GetElasticityAssurancesAssuranceAllocatedResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetElasticityAssurancesAssuranceAllocatedResourceArrayOutput() GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput
+	ToGetElasticityAssurancesAssuranceAllocatedResourceArrayOutputWithContext(context.Context) GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput
+}
+
+type GetElasticityAssurancesAssuranceAllocatedResourceArray []GetElasticityAssurancesAssuranceAllocatedResourceInput
+
+func (GetElasticityAssurancesAssuranceAllocatedResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetElasticityAssurancesAssuranceAllocatedResource)(nil)).Elem()
+}
+
+func (i GetElasticityAssurancesAssuranceAllocatedResourceArray) ToGetElasticityAssurancesAssuranceAllocatedResourceArrayOutput() GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput {
+	return i.ToGetElasticityAssurancesAssuranceAllocatedResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetElasticityAssurancesAssuranceAllocatedResourceArray) ToGetElasticityAssurancesAssuranceAllocatedResourceArrayOutputWithContext(ctx context.Context) GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput)
+}
+
+type GetElasticityAssurancesAssuranceAllocatedResourceOutput struct{ *pulumi.OutputState }
+
+func (GetElasticityAssurancesAssuranceAllocatedResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetElasticityAssurancesAssuranceAllocatedResource)(nil)).Elem()
+}
+
+func (o GetElasticityAssurancesAssuranceAllocatedResourceOutput) ToGetElasticityAssurancesAssuranceAllocatedResourceOutput() GetElasticityAssurancesAssuranceAllocatedResourceOutput {
+	return o
+}
+
+func (o GetElasticityAssurancesAssuranceAllocatedResourceOutput) ToGetElasticityAssurancesAssuranceAllocatedResourceOutputWithContext(ctx context.Context) GetElasticityAssurancesAssuranceAllocatedResourceOutput {
+	return o
+}
+
+// Instance type.
+func (o GetElasticityAssurancesAssuranceAllocatedResourceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssuranceAllocatedResource) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The total number of instances that need to be reserved within an instance type.
+func (o GetElasticityAssurancesAssuranceAllocatedResourceOutput) TotalAmount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssuranceAllocatedResource) int { return v.TotalAmount }).(pulumi.IntOutput)
+}
+
+// The number of instances that have been used.
+func (o GetElasticityAssurancesAssuranceAllocatedResourceOutput) UsedAmount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssuranceAllocatedResource) int { return v.UsedAmount }).(pulumi.IntOutput)
+}
+
+// The zone ID.
+func (o GetElasticityAssurancesAssuranceAllocatedResourceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticityAssurancesAssuranceAllocatedResource) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetElasticityAssurancesAssuranceAllocatedResource)(nil)).Elem()
+}
+
+func (o GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput) ToGetElasticityAssurancesAssuranceAllocatedResourceArrayOutput() GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput {
+	return o
+}
+
+func (o GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput) ToGetElasticityAssurancesAssuranceAllocatedResourceArrayOutputWithContext(ctx context.Context) GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput {
+	return o
+}
+
+func (o GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput) Index(i pulumi.IntInput) GetElasticityAssurancesAssuranceAllocatedResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetElasticityAssurancesAssuranceAllocatedResource {
+		return vs[0].([]GetElasticityAssurancesAssuranceAllocatedResource)[vs[1].(int)]
+	}).(GetElasticityAssurancesAssuranceAllocatedResourceOutput)
+}
+
 type GetHpcClustersCluster struct {
 	// The description of ECS Hpc Cluster.
 	Description string `pulumi:"description"`
@@ -11370,18 +12051,10 @@ type GetImagesImage struct {
 	Size  int    `pulumi:"size"`
 	State string `pulumi:"state"`
 	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-	// * `Creating`: The image is being created.
-	// * `Waiting`: The image is waiting to be processed.
-	// * `Available`: The image is available.
-	// * `UnAvailable`: The image is unavailable.
-	// * `CreateFailed`: The image failed to be created.
-	// * `Deprecated`: The image is discontinued.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Specifies whether to check the validity of the request without actually making the request. Valid values:
-	// * `instance`: The image is already in use and running on an ECS instance.
-	// * `none`: The image is not in use.
 	Usage string `pulumi:"usage"`
 }
 
@@ -11435,18 +12108,10 @@ type GetImagesImageArgs struct {
 	Size  pulumi.IntInput    `pulumi:"size"`
 	State pulumi.StringInput `pulumi:"state"`
 	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-	// * `Creating`: The image is being created.
-	// * `Waiting`: The image is waiting to be processed.
-	// * `Available`: The image is available.
-	// * `UnAvailable`: The image is unavailable.
-	// * `CreateFailed`: The image failed to be created.
-	// * `Deprecated`: The image is discontinued.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// Specifies whether to check the validity of the request without actually making the request. Valid values:
-	// * `instance`: The image is already in use and running on an ECS instance.
-	// * `none`: The image is not in use.
 	Usage pulumi.StringInput `pulumi:"usage"`
 }
 
@@ -11602,12 +12267,6 @@ func (o GetImagesImageOutput) State() pulumi.StringOutput {
 }
 
 // The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-// * `Creating`: The image is being created.
-// * `Waiting`: The image is waiting to be processed.
-// * `Available`: The image is available.
-// * `UnAvailable`: The image is unavailable.
-// * `CreateFailed`: The image failed to be created.
-// * `Deprecated`: The image is discontinued.
 func (o GetImagesImageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -11618,8 +12277,6 @@ func (o GetImagesImageOutput) Tags() pulumi.MapOutput {
 }
 
 // Specifies whether to check the validity of the request without actually making the request. Valid values:
-// * `instance`: The image is already in use and running on an ECS instance.
-// * `none`: The image is not in use.
 func (o GetImagesImageOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Usage }).(pulumi.StringOutput)
 }
@@ -11760,7 +12417,7 @@ func (o GetImagesImageDiskDeviceMappingArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetInstanceTypeFamiliesFamily struct {
-	// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+	// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
 	Generation string `pulumi:"generation"`
 	// ID of the instance type family.
 	Id string `pulumi:"id"`
@@ -11780,7 +12437,7 @@ type GetInstanceTypeFamiliesFamilyInput interface {
 }
 
 type GetInstanceTypeFamiliesFamilyArgs struct {
-	// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+	// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
 	Generation pulumi.StringInput `pulumi:"generation"`
 	// ID of the instance type family.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -11839,7 +12496,7 @@ func (o GetInstanceTypeFamiliesFamilyOutput) ToGetInstanceTypeFamiliesFamilyOutp
 	return o
 }
 
-// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
 func (o GetInstanceTypeFamiliesFamilyOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypeFamiliesFamily) string { return v.Generation }).(pulumi.StringOutput)
 }
@@ -14593,10 +15250,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateNetworkInterfacesPtrInput)(nil)).Elem(), LaunchTemplateNetworkInterfacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateSystemDiskInput)(nil)).Elem(), LaunchTemplateSystemDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateSystemDiskPtrInput)(nil)).Elem(), LaunchTemplateSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstanceOperationLockInput)(nil)).Elem(), ReservedInstanceOperationLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstanceOperationLockArrayInput)(nil)).Elem(), ReservedInstanceOperationLockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActivationsActivationInput)(nil)).Elem(), GetActivationsActivationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActivationsActivationArrayInput)(nil)).Elem(), GetActivationsActivationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyArrayInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCapacityReservationsReservationInput)(nil)).Elem(), GetCapacityReservationsReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCapacityReservationsReservationArrayInput)(nil)).Elem(), GetCapacityReservationsReservationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandInput)(nil)).Elem(), GetCommandsCommandArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommandsCommandArrayInput)(nil)).Elem(), GetCommandsCommandArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedHostsHostInput)(nil)).Elem(), GetDedicatedHostsHostArgs{})
@@ -14681,6 +15342,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEipsAddressArrayInput)(nil)).Elem(), GetEipsAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEipsEipInput)(nil)).Elem(), GetEipsEipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEipsEipArrayInput)(nil)).Elem(), GetEipsEipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticityAssurancesAssuranceInput)(nil)).Elem(), GetElasticityAssurancesAssuranceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticityAssurancesAssuranceArrayInput)(nil)).Elem(), GetElasticityAssurancesAssuranceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticityAssurancesAssuranceAllocatedResourceInput)(nil)).Elem(), GetElasticityAssurancesAssuranceAllocatedResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticityAssurancesAssuranceAllocatedResourceArrayInput)(nil)).Elem(), GetElasticityAssurancesAssuranceAllocatedResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHpcClustersClusterInput)(nil)).Elem(), GetHpcClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHpcClustersClusterArrayInput)(nil)).Elem(), GetHpcClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
@@ -14748,10 +15413,14 @@ func init() {
 	pulumi.RegisterOutputType(LaunchTemplateNetworkInterfacesPtrOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateSystemDiskOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateSystemDiskPtrOutput{})
+	pulumi.RegisterOutputType(ReservedInstanceOperationLockOutput{})
+	pulumi.RegisterOutputType(ReservedInstanceOperationLockArrayOutput{})
 	pulumi.RegisterOutputType(GetActivationsActivationOutput{})
 	pulumi.RegisterOutputType(GetActivationsActivationArrayOutput{})
 	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetCapacityReservationsReservationOutput{})
+	pulumi.RegisterOutputType(GetCapacityReservationsReservationArrayOutput{})
 	pulumi.RegisterOutputType(GetCommandsCommandOutput{})
 	pulumi.RegisterOutputType(GetCommandsCommandArrayOutput{})
 	pulumi.RegisterOutputType(GetDedicatedHostsHostOutput{})
@@ -14836,6 +15505,10 @@ func init() {
 	pulumi.RegisterOutputType(GetEipsAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetEipsEipOutput{})
 	pulumi.RegisterOutputType(GetEipsEipArrayOutput{})
+	pulumi.RegisterOutputType(GetElasticityAssurancesAssuranceOutput{})
+	pulumi.RegisterOutputType(GetElasticityAssurancesAssuranceArrayOutput{})
+	pulumi.RegisterOutputType(GetElasticityAssurancesAssuranceAllocatedResourceOutput{})
+	pulumi.RegisterOutputType(GetElasticityAssurancesAssuranceAllocatedResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetHpcClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetHpcClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})

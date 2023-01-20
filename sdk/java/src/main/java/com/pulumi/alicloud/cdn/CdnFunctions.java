@@ -534,7 +534,7 @@ public final class CdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -576,7 +576,7 @@ public final class CdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -618,7 +618,7 @@ public final class CdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -660,7 +660,7 @@ public final class CdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -702,7 +702,7 @@ public final class CdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -744,7 +744,7 @@ public final class CdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cdn.CdnFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,20 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const pvtzZonesDs = alicloud_pvtz_zone_basic.zoneName.apply(zoneName => alicloud.pvtz.getZones({
- *     keyword: zoneName,
- * }));
- *
- * export const firstZoneId = pvtzZonesDs.zones[0].id;
+ * const pvtzZonesDs = alicloud.pvtz.getZones({
+ *     keyword: alicloud_pvtz_zone.basic.zone_name,
+ * });
+ * export const firstZoneId = pvtzZonesDs.then(pvtzZonesDs => pvtzZonesDs.zones?.[0]?.id);
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:pvtz/getZones:getZones", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -47,7 +44,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetZonesArgs {
     /**
-     * -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+     * Default to `false`. Set it to true can output more details.
      */
     enableDetails?: boolean;
     /**
@@ -117,9 +114,23 @@ export interface GetZonesResult {
      */
     readonly zones: outputs.pvtz.GetZonesZone[];
 }
-
+/**
+ * This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const pvtzZonesDs = alicloud.pvtz.getZones({
+ *     keyword: alicloud_pvtz_zone.basic.zone_name,
+ * });
+ * export const firstZoneId = pvtzZonesDs.then(pvtzZonesDs => pvtzZonesDs.zones?.[0]?.id);
+ * ```
+ */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(args).apply(a => getZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getZones(a, opts))
 }
 
 /**
@@ -127,7 +138,7 @@ export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetZonesOutputArgs {
     /**
-     * -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+     * Default to `false`. Set it to true can output more details.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**

@@ -15,22 +15,20 @@ namespace Pulumi.AliCloud.ApiGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new AliCloud.ApiGateway.VpcAccess("foo", new()
     ///     {
-    ///         var foo = new AliCloud.ApiGateway.VpcAccess("foo", new AliCloud.ApiGateway.VpcAccessArgs
-    ///         {
-    ///             InstanceId = "i-kai2ks92kzkw92ka",
-    ///             Port = 8080,
-    ///             VpcId = "vpc-awkcj192ka9zalz",
-    ///         });
-    ///     }
+    ///         InstanceId = "i-kai2ks92kzkw92ka",
+    ///         Port = 8080,
+    ///         VpcId = "vpc-awkcj192ka9zalz",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.AliCloud.ApiGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:apigateway/vpcAccess:VpcAccess")]
-    public partial class VpcAccess : Pulumi.CustomResource
+    public partial class VpcAccess : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID of the instance in VPC (ECS/Server Load Balance).
@@ -112,7 +110,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
     }
 
-    public sealed class VpcAccessArgs : Pulumi.ResourceArgs
+    public sealed class VpcAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the instance in VPC (ECS/Server Load Balance).
@@ -141,9 +139,10 @@ namespace Pulumi.AliCloud.ApiGateway
         public VpcAccessArgs()
         {
         }
+        public static new VpcAccessArgs Empty => new VpcAccessArgs();
     }
 
-    public sealed class VpcAccessState : Pulumi.ResourceArgs
+    public sealed class VpcAccessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the instance in VPC (ECS/Server Load Balance).
@@ -172,5 +171,6 @@ namespace Pulumi.AliCloud.ApiGateway
         public VpcAccessState()
         {
         }
+        public static new VpcAccessState Empty => new VpcAccessState();
     }
 }

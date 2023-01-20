@@ -34,7 +34,7 @@ class ApiArgs:
         """
         The set of arguments for constructing a Api resource.
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
-        :param pulumi.Input[str] description: The description of Constant parameter.
+        :param pulumi.Input[str] description: The description of the api. Defaults to null.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
         :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
@@ -44,7 +44,7 @@ class ApiArgs:
         :param pulumi.Input['ApiHttpServiceConfigArgs'] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
         :param pulumi.Input['ApiHttpVpcServiceConfigArgs'] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
         :param pulumi.Input['ApiMockServiceConfigArgs'] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
-        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]] request_parameters: request_parameters defines the request parameters of the api.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api.
@@ -91,7 +91,7 @@ class ApiArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        The description of Constant parameter.
+        The description of the api. Defaults to null.
         """
         return pulumi.get(self, "description")
 
@@ -211,7 +211,7 @@ class ApiArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        The name of the api gateway api. Defaults to null.
         """
         return pulumi.get(self, "name")
 
@@ -280,14 +280,14 @@ class _ApiState:
         :param pulumi.Input[str] api_id: The ID of the api of api gateway.
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api.
-        :param pulumi.Input[str] description: The description of Constant parameter.
+        :param pulumi.Input[str] description: The description of the api. Defaults to null.
         :param pulumi.Input['ApiFcServiceConfigArgs'] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
         :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
         :param pulumi.Input['ApiHttpServiceConfigArgs'] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
         :param pulumi.Input['ApiHttpVpcServiceConfigArgs'] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
         :param pulumi.Input['ApiMockServiceConfigArgs'] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
-        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
         :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API.
         :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]] request_parameters: request_parameters defines the request parameters of the api.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
@@ -367,7 +367,7 @@ class _ApiState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of Constant parameter.
+        The description of the api. Defaults to null.
         """
         return pulumi.get(self, "description")
 
@@ -451,7 +451,7 @@ class _ApiState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        The name of the api gateway api. Defaults to null.
         """
         return pulumi.get(self, "name")
 
@@ -596,14 +596,14 @@ class Api(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api.
-        :param pulumi.Input[str] description: The description of Constant parameter.
+        :param pulumi.Input[str] description: The description of the api. Defaults to null.
         :param pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
         :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
         :param pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
         :param pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
         :param pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
-        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
         :param pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']] request_config: Request_config defines how users can send requests to your API.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
@@ -768,14 +768,14 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[str] api_id: The ID of the api of api gateway.
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiConstantParameterArgs']]]] constant_parameters: constant_parameters defines the constant parameters of the api.
-        :param pulumi.Input[str] description: The description of Constant parameter.
+        :param pulumi.Input[str] description: The description of the api. Defaults to null.
         :param pulumi.Input[pulumi.InputType['ApiFcServiceConfigArgs']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'.
         :param pulumi.Input[bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
         :param pulumi.Input[str] group_id: The api gateway that the api belongs to. Defaults to null.
         :param pulumi.Input[pulumi.InputType['ApiHttpServiceConfigArgs']] http_service_config: http_service_config defines the config when service_type selected 'HTTP'.
         :param pulumi.Input[pulumi.InputType['ApiHttpVpcServiceConfigArgs']] http_vpc_service_config: http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
         :param pulumi.Input[pulumi.InputType['ApiMockServiceConfigArgs']] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'.
-        :param pulumi.Input[str] name: System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        :param pulumi.Input[str] name: The name of the api gateway api. Defaults to null.
         :param pulumi.Input[pulumi.InputType['ApiRequestConfigArgs']] request_config: Request_config defines how users can send requests to your API.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiRequestParameterArgs']]]] request_parameters: request_parameters defines the request parameters of the api.
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
@@ -832,7 +832,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        The description of Constant parameter.
+        The description of the api. Defaults to null.
         """
         return pulumi.get(self, "description")
 
@@ -888,7 +888,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        The name of the api gateway api. Defaults to null.
         """
         return pulumi.get(self, "name")
 

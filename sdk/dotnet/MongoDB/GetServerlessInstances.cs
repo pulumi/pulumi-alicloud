@@ -23,45 +23,44 @@ namespace Pulumi.AliCloud.MongoDB
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.MongoDB.GetServerlessInstances.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.MongoDB.GetServerlessInstances.InvokeAsync(new AliCloud.MongoDB.GetServerlessInstancesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             DbInstanceClass = "example_value",
-        ///             DbInstanceDescription = "example_value",
-        ///             NetworkType = "VPC",
-        ///             ResourceGroupId = "example_value",
-        ///             Status = "Running",
-        ///             VpcId = "example_value",
-        ///             VswitchId = "example_value",
-        ///             ZoneId = "example_value",
-        ///             Tags = 
-        ///             {
-        ///                 { "Created", "MongodbServerlessInstance" },
-        ///                 { "For", "TF" },
-        ///             },
-        ///         }));
-        ///         this.MongodbServerlessInstanceId1 = example.Apply(example =&gt; example.Instances?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         DbInstanceClass = "example_value",
+        ///         DbInstanceDescription = "example_value",
+        ///         NetworkType = "VPC",
+        ///         ResourceGroupId = "example_value",
+        ///         Status = "Running",
+        ///         VpcId = "example_value",
+        ///         VswitchId = "example_value",
+        ///         ZoneId = "example_value",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "MongodbServerlessInstance" },
+        ///             { "For", "TF" },
+        ///         },
+        ///     });
         /// 
-        ///     [Output("mongodbServerlessInstanceId1")]
-        ///     public Output&lt;string&gt; MongodbServerlessInstanceId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbServerlessInstanceId1"] = example.Apply(getServerlessInstancesResult =&gt; getServerlessInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerlessInstancesResult> InvokeAsync(GetServerlessInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerlessInstancesResult>("alicloud:mongodb/getServerlessInstances:getServerlessInstances", args ?? new GetServerlessInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerlessInstancesResult>("alicloud:mongodb/getServerlessInstances:getServerlessInstances", args ?? new GetServerlessInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
@@ -75,49 +74,48 @@ namespace Pulumi.AliCloud.MongoDB
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.MongoDB.GetServerlessInstances.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.MongoDB.GetServerlessInstances.InvokeAsync(new AliCloud.MongoDB.GetServerlessInstancesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             DbInstanceClass = "example_value",
-        ///             DbInstanceDescription = "example_value",
-        ///             NetworkType = "VPC",
-        ///             ResourceGroupId = "example_value",
-        ///             Status = "Running",
-        ///             VpcId = "example_value",
-        ///             VswitchId = "example_value",
-        ///             ZoneId = "example_value",
-        ///             Tags = 
-        ///             {
-        ///                 { "Created", "MongodbServerlessInstance" },
-        ///                 { "For", "TF" },
-        ///             },
-        ///         }));
-        ///         this.MongodbServerlessInstanceId1 = example.Apply(example =&gt; example.Instances?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         DbInstanceClass = "example_value",
+        ///         DbInstanceDescription = "example_value",
+        ///         NetworkType = "VPC",
+        ///         ResourceGroupId = "example_value",
+        ///         Status = "Running",
+        ///         VpcId = "example_value",
+        ///         VswitchId = "example_value",
+        ///         ZoneId = "example_value",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "MongodbServerlessInstance" },
+        ///             { "For", "TF" },
+        ///         },
+        ///     });
         /// 
-        ///     [Output("mongodbServerlessInstanceId1")]
-        ///     public Output&lt;string&gt; MongodbServerlessInstanceId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mongodbServerlessInstanceId1"] = example.Apply(getServerlessInstancesResult =&gt; getServerlessInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerlessInstancesResult> Invoke(GetServerlessInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerlessInstancesResult>("alicloud:mongodb/getServerlessInstances:getServerlessInstances", args ?? new GetServerlessInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerlessInstancesResult>("alicloud:mongodb/getServerlessInstances:getServerlessInstances", args ?? new GetServerlessInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServerlessInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetServerlessInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The db instance class.
@@ -203,9 +201,10 @@ namespace Pulumi.AliCloud.MongoDB
         public GetServerlessInstancesArgs()
         {
         }
+        public static new GetServerlessInstancesArgs Empty => new GetServerlessInstancesArgs();
     }
 
-    public sealed class GetServerlessInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServerlessInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The db instance class.
@@ -291,6 +290,7 @@ namespace Pulumi.AliCloud.MongoDB
         public GetServerlessInstancesInvokeArgs()
         {
         }
+        public static new GetServerlessInstancesInvokeArgs Empty => new GetServerlessInstancesInvokeArgs();
     }
 
 

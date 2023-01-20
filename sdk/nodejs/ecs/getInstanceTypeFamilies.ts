@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstanceTypeFamilies = pulumi.output(alicloud.ecs.getInstanceTypeFamilies({
+ * const default = alicloud.ecs.getInstanceTypeFamilies({
  *     instanceChargeType: "PrePaid",
- * }));
- *
- * export const firstInstanceTypeFamilyId = defaultInstanceTypeFamilies.families[0].id;
- * export const instanceIds = defaultInstanceTypeFamilies.ids;
+ * });
+ * export const firstInstanceTypeFamilyId = _default.then(_default => _default.families?.[0]?.id);
+ * export const instanceIds = _default.then(_default => _default.ids);
  * ```
  */
 export function getInstanceTypeFamilies(args?: GetInstanceTypeFamiliesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeFamiliesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", {
         "generation": args.generation,
         "instanceChargeType": args.instanceChargeType,
@@ -45,7 +42,7 @@ export function getInstanceTypeFamilies(args?: GetInstanceTypeFamiliesArgs, opts
  */
 export interface GetInstanceTypeFamiliesArgs {
     /**
-     * The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+     * The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
      */
     generation?: string;
     /**
@@ -85,9 +82,26 @@ export interface GetInstanceTypeFamiliesResult {
     readonly spotStrategy?: string;
     readonly zoneId?: string;
 }
-
+/**
+ * This data source provides the ECS instance type families of Alibaba Cloud.
+ *
+ * > **NOTE:** Available in 1.54.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ecs.getInstanceTypeFamilies({
+ *     instanceChargeType: "PrePaid",
+ * });
+ * export const firstInstanceTypeFamilyId = _default.then(_default => _default.families?.[0]?.id);
+ * export const instanceIds = _default.then(_default => _default.ids);
+ * ```
+ */
 export function getInstanceTypeFamiliesOutput(args?: GetInstanceTypeFamiliesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypeFamiliesResult> {
-    return pulumi.output(args).apply(a => getInstanceTypeFamilies(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceTypeFamilies(a, opts))
 }
 
 /**
@@ -95,7 +109,7 @@ export function getInstanceTypeFamiliesOutput(args?: GetInstanceTypeFamiliesOutp
  */
 export interface GetInstanceTypeFamiliesOutputArgs {
     /**
-     * The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+     * The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
      */
     generation?: pulumi.Input<string>;
     /**

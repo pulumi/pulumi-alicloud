@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,7 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -76,7 +77,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .topicQuota(&#34;50&#34;)
+ *             .partitionNum(&#34;50&#34;)
  *             .diskType(&#34;1&#34;)
  *             .diskSize(&#34;500&#34;)
  *             .deployType(&#34;5&#34;)
@@ -222,6 +223,9 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ds = pulumi.output(alicloud.ess.getScheduledTasks({
+ * const ds = alicloud.ess.getScheduledTasks({
  *     nameRegex: "scheduled_task_name",
  *     scheduledTaskId: "scheduled_task_id",
- * }));
- *
- * export const firstScheduledTask = ds.tasks[0].id;
+ * });
+ * export const firstScheduledTask = ds.then(ds => ds.tasks?.[0]?.id);
  * ```
  */
 export function getScheduledTasks(args?: GetScheduledTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledTasksResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ess/getScheduledTasks:getScheduledTasks", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -91,9 +88,26 @@ export interface GetScheduledTasksResult {
      */
     readonly tasks: outputs.ess.GetScheduledTasksTask[];
 }
-
+/**
+ * This data source provides available scheduled task resources.
+ *
+ * > **NOTE:** Available in 1.72.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ds = alicloud.ess.getScheduledTasks({
+ *     nameRegex: "scheduled_task_name",
+ *     scheduledTaskId: "scheduled_task_id",
+ * });
+ * export const firstScheduledTask = ds.then(ds => ds.tasks?.[0]?.id);
+ * ```
+ */
 export function getScheduledTasksOutput(args?: GetScheduledTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduledTasksResult> {
-    return pulumi.output(args).apply(a => getScheduledTasks(a, opts))
+    return pulumi.output(args).apply((a: any) => getScheduledTasks(a, opts))
 }
 
 /**

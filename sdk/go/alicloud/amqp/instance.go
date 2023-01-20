@@ -100,9 +100,6 @@ type Instance struct {
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit pulumi.StringPtrOutput `pulumi:"renewalDurationUnit"`
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
-	// - `AutoRenewal`: Auto renewal.
-	// - `ManualRenewal`: Manual renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -178,9 +175,6 @@ type instanceState struct {
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
-	// - `AutoRenewal`: Auto renewal.
-	// - `ManualRenewal`: Manual renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
@@ -213,9 +207,6 @@ type InstanceState struct {
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit pulumi.StringPtrInput
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
-	// - `AutoRenewal`: Auto renewal.
-	// - `ManualRenewal`: Manual renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
@@ -252,9 +243,6 @@ type instanceArgs struct {
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
-	// - `AutoRenewal`: Auto renewal.
-	// - `ManualRenewal`: Manual renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The storage size. It is valid when `instanceType` is vip.
 	StorageSize *string `pulumi:"storageSize"`
@@ -286,9 +274,6 @@ type InstanceArgs struct {
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit pulumi.StringPtrInput
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
-	// - `AutoRenewal`: Auto renewal.
-	// - `ManualRenewal`: Manual renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
 	// The storage size. It is valid when `instanceType` is vip.
 	StorageSize pulumi.StringPtrInput
@@ -438,9 +423,6 @@ func (o InstanceOutput) RenewalDurationUnit() pulumi.StringPtrOutput {
 }
 
 // Whether to renew an instance automatically or not. Default to "ManualRenewal".
-// - `AutoRenewal`: Auto renewal.
-// - `ManualRenewal`: Manual renewal.
-// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 func (o InstanceOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }

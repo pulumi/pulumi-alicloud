@@ -21,88 +21,87 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ecs.EcsLaunchTemplate("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ecs.EcsLaunchTemplate("default", new AliCloud.Ecs.EcsLaunchTemplateArgs
+    ///         DataDisks = new[]
     ///         {
-    ///             DataDisks = 
+    ///             new AliCloud.Ecs.Inputs.EcsLaunchTemplateDataDiskArgs
     ///             {
-    ///                 new AliCloud.Ecs.Inputs.EcsLaunchTemplateDataDiskArgs
-    ///                 {
-    ///                     Category = "cloud",
-    ///                     DeleteWithInstance = true,
-    ///                     Description = "test1",
-    ///                     Encrypted = false,
-    ///                     Name = "disk1",
-    ///                     PerformanceLevel = "PL0",
-    ///                     Size = 20,
-    ///                 },
-    ///                 new AliCloud.Ecs.Inputs.EcsLaunchTemplateDataDiskArgs
-    ///                 {
-    ///                     Category = "cloud",
-    ///                     DeleteWithInstance = true,
-    ///                     Description = "test2",
-    ///                     Encrypted = false,
-    ///                     Name = "disk2",
-    ///                     PerformanceLevel = "PL0",
-    ///                     Size = 20,
-    ///                 },
+    ///                 Category = "cloud",
+    ///                 DeleteWithInstance = true,
+    ///                 Description = "test1",
+    ///                 Encrypted = false,
+    ///                 Name = "disk1",
+    ///                 PerformanceLevel = "PL0",
+    ///                 Size = 20,
     ///             },
+    ///             new AliCloud.Ecs.Inputs.EcsLaunchTemplateDataDiskArgs
+    ///             {
+    ///                 Category = "cloud",
+    ///                 DeleteWithInstance = true,
+    ///                 Description = "test2",
+    ///                 Encrypted = false,
+    ///                 Name = "disk2",
+    ///                 PerformanceLevel = "PL0",
+    ///                 Size = 20,
+    ///             },
+    ///         },
+    ///         Description = "Test For Terraform",
+    ///         HostName = "host_name",
+    ///         ImageId = "m-bp1i3ucxxxxx",
+    ///         InstanceChargeType = "PrePaid",
+    ///         InstanceName = "instance_name",
+    ///         InstanceType = "instance_type",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         InternetMaxBandwidthIn = 5,
+    ///         InternetMaxBandwidthOut = 0,
+    ///         IoOptimized = "optimized",
+    ///         KeyPairName = "key_pair_name",
+    ///         LaunchTemplateName = "tf_test_name",
+    ///         NetworkInterfaces = new AliCloud.Ecs.Inputs.EcsLaunchTemplateNetworkInterfacesArgs
+    ///         {
+    ///             Description = "hello1",
+    ///             Name = "eth0",
+    ///             PrimaryIp = "10.0.0.2",
+    ///             SecurityGroupId = "sg-asdfnbgxxxxxxx",
+    ///             VswitchId = "vw-zkdfjaxxxxxx",
+    ///         },
+    ///         NetworkType = "vpc",
+    ///         RamRoleName = "ram_role_name",
+    ///         ResourceGroupId = "rg-zkdfjaxxxxxx",
+    ///         SecurityEnhancementStrategy = "Active",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             "sg-zkdfjaxxxxxx",
+    ///         },
+    ///         SpotPriceLimit = 5,
+    ///         SpotStrategy = "SpotWithPriceLimit",
+    ///         SystemDisk = new AliCloud.Ecs.Inputs.EcsLaunchTemplateSystemDiskArgs
+    ///         {
+    ///             Category = "cloud_ssd",
+    ///             DeleteWithInstance = false,
     ///             Description = "Test For Terraform",
-    ///             HostName = "host_name",
-    ///             ImageId = "m-bp1i3ucxxxxx",
-    ///             InstanceChargeType = "PrePaid",
-    ///             InstanceName = "instance_name",
-    ///             InstanceType = "instance_type",
-    ///             InternetChargeType = "PayByBandwidth",
-    ///             InternetMaxBandwidthIn = 5,
-    ///             InternetMaxBandwidthOut = 0,
-    ///             IoOptimized = "optimized",
-    ///             KeyPairName = "key_pair_name",
-    ///             NetworkInterfaces = new AliCloud.Ecs.Inputs.EcsLaunchTemplateNetworkInterfacesArgs
-    ///             {
-    ///                 Description = "hello1",
-    ///                 Name = "eth0",
-    ///                 PrimaryIp = "10.0.0.2",
-    ///                 SecurityGroupId = "sg-asdfnbgxxxxxxx",
-    ///                 VswitchId = "vw-zkdfjaxxxxxx",
-    ///             },
-    ///             NetworkType = "vpc",
-    ///             RamRoleName = "ram_role_name",
-    ///             ResourceGroupId = "rg-zkdfjaxxxxxx",
-    ///             SecurityEnhancementStrategy = "Active",
-    ///             SecurityGroupIds = 
-    ///             {
-    ///                 "sg-zkdfjaxxxxxx",
-    ///             },
-    ///             SpotPriceLimit = 5,
-    ///             SpotStrategy = "SpotWithPriceLimit",
-    ///             SystemDisk = new AliCloud.Ecs.Inputs.EcsLaunchTemplateSystemDiskArgs
-    ///             {
-    ///                 Category = "cloud_ssd",
-    ///                 DeleteWithInstance = false,
-    ///                 Description = "Test For Terraform",
-    ///                 Name = "tf_test_name",
-    ///                 Size = 40,
-    ///             },
-    ///             TemplateTags = 
-    ///             {
-    ///                 { "Create", "Terraform" },
-    ///                 { "For", "Test" },
-    ///             },
-    ///             UserData = "xxxxxxx",
-    ///             VpcId = "vpc-asdfnbgxxxxxxx",
-    ///             VswitchId = "vw-zwxscaxxxxxx",
-    ///             ZoneId = "cn-hangzhou-i",
-    ///         });
-    ///     }
+    ///             Name = "tf_test_name",
+    ///             Size = 40,
+    ///         },
+    ///         TemplateTags = 
+    ///         {
+    ///             { "Create", "Terraform" },
+    ///             { "For", "Test" },
+    ///         },
+    ///         UserData = "xxxxxxx",
+    ///         VpcId = "vpc-asdfnbgxxxxxxx",
+    ///         VswitchId = "vw-zwxscaxxxxxx",
+    ///         ZoneId = "cn-hangzhou-i",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -114,7 +113,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate")]
-    public partial class EcsLaunchTemplate : Pulumi.CustomResource
+    public partial class EcsLaunchTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
@@ -135,7 +134,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> DeploymentSetId { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the data disk.
+        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -170,6 +169,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("instanceChargeType")]
         public Output<string?> InstanceChargeType { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// </summary>
         [Output("instanceName")]
         public Output<string?> InstanceName { get; private set; } = null!;
 
@@ -218,7 +220,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> LaunchTemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the data disk.
+        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -274,7 +276,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SecurityEnhancementStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The security group ID must be one in the same VPC.
+        /// The security group ID.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string?> SecurityGroupId { get; private set; } = null!;
@@ -292,7 +294,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SpotDuration { get; private set; } = null!;
 
         /// <summary>
-        /// -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+        /// Sets the maximum hourly instance price. Supports up to three decimal places.
         /// </summary>
         [Output("spotPriceLimit")]
         public Output<double?> SpotPriceLimit { get; private set; } = null!;
@@ -309,15 +311,27 @@ namespace Pulumi.AliCloud.Ecs
         [Output("systemDisk")]
         public Output<Outputs.EcsLaunchTemplateSystemDisk> SystemDisk { get; private set; } = null!;
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// </summary>
         [Output("systemDiskCategory")]
         public Output<string> SystemDiskCategory { get; private set; } = null!;
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// </summary>
         [Output("systemDiskDescription")]
         public Output<string> SystemDiskDescription { get; private set; } = null!;
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// </summary>
         [Output("systemDiskName")]
         public Output<string> SystemDiskName { get; private set; } = null!;
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// </summary>
         [Output("systemDiskSize")]
         public Output<int> SystemDiskSize { get; private set; } = null!;
 
@@ -347,6 +361,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("userData")]
         public Output<string> UserData { get; private set; } = null!;
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        /// </summary>
         [Output("userdata")]
         public Output<string> Userdata { get; private set; } = null!;
 
@@ -356,11 +373,14 @@ namespace Pulumi.AliCloud.Ecs
         [Output("versionDescription")]
         public Output<string?> VersionDescription { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        /// When creating a VPC-Connected instance, you must specify its VSwitch ID.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -415,7 +435,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsLaunchTemplateArgs : Pulumi.ResourceArgs
+    public sealed class EcsLaunchTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
@@ -442,7 +462,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
-        /// The description of the data disk.
+        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -477,6 +497,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
+        /// <summary>
+        /// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
@@ -525,7 +548,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LaunchTemplateName { get; set; }
 
         /// <summary>
-        /// The name of the data disk.
+        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -581,7 +604,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SecurityEnhancementStrategy { get; set; }
 
         /// <summary>
-        /// The security group ID must be one in the same VPC.
+        /// The security group ID.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -605,7 +628,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotDuration { get; set; }
 
         /// <summary>
-        /// -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+        /// Sets the maximum hourly instance price. Supports up to three decimal places.
         /// </summary>
         [Input("spotPriceLimit")]
         public Input<double>? SpotPriceLimit { get; set; }
@@ -622,15 +645,27 @@ namespace Pulumi.AliCloud.Ecs
         [Input("systemDisk")]
         public Input<Inputs.EcsLaunchTemplateSystemDiskArgs>? SystemDisk { get; set; }
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// </summary>
         [Input("systemDiskDescription")]
         public Input<string>? SystemDiskDescription { get; set; }
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// </summary>
         [Input("systemDiskName")]
         public Input<string>? SystemDiskName { get; set; }
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
 
@@ -672,6 +707,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }
 
@@ -681,11 +719,14 @@ namespace Pulumi.AliCloud.Ecs
         [Input("versionDescription")]
         public Input<string>? VersionDescription { get; set; }
 
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        /// When creating a VPC-Connected instance, you must specify its VSwitch ID.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -699,9 +740,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsLaunchTemplateArgs()
         {
         }
+        public static new EcsLaunchTemplateArgs Empty => new EcsLaunchTemplateArgs();
     }
 
-    public sealed class EcsLaunchTemplateState : Pulumi.ResourceArgs
+    public sealed class EcsLaunchTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
@@ -728,7 +770,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
-        /// The description of the data disk.
+        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -763,6 +805,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
+        /// <summary>
+        /// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
@@ -811,7 +856,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LaunchTemplateName { get; set; }
 
         /// <summary>
-        /// The name of the data disk.
+        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -867,7 +912,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SecurityEnhancementStrategy { get; set; }
 
         /// <summary>
-        /// The security group ID must be one in the same VPC.
+        /// The security group ID.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -891,7 +936,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotDuration { get; set; }
 
         /// <summary>
-        /// -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+        /// Sets the maximum hourly instance price. Supports up to three decimal places.
         /// </summary>
         [Input("spotPriceLimit")]
         public Input<double>? SpotPriceLimit { get; set; }
@@ -908,15 +953,27 @@ namespace Pulumi.AliCloud.Ecs
         [Input("systemDisk")]
         public Input<Inputs.EcsLaunchTemplateSystemDiskGetArgs>? SystemDisk { get; set; }
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// </summary>
         [Input("systemDiskDescription")]
         public Input<string>? SystemDiskDescription { get; set; }
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// </summary>
         [Input("systemDiskName")]
         public Input<string>? SystemDiskName { get; set; }
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
 
@@ -958,6 +1015,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
+        /// <summary>
+        /// It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }
 
@@ -967,11 +1027,14 @@ namespace Pulumi.AliCloud.Ecs
         [Input("versionDescription")]
         public Input<string>? VersionDescription { get; set; }
 
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        /// When creating a VPC-Connected instance, you must specify its VSwitch ID.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -985,5 +1048,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsLaunchTemplateState()
         {
         }
+        public static new EcsLaunchTemplateState Empty => new EcsLaunchTemplateState();
     }
 }

@@ -44,7 +44,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -91,7 +91,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -138,7 +138,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -185,7 +185,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -232,7 +232,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -279,7 +279,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.polardb.inputs.GetEndpointsArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -578,7 +578,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -623,7 +623,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -668,7 +668,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -713,7 +713,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -758,7 +758,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -803,7 +803,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -848,7 +848,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -889,7 +889,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -930,7 +930,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -971,7 +971,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1012,7 +1012,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1053,7 +1053,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1246,7 +1246,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1284,7 +1284,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1322,7 +1322,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1360,7 +1360,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1398,7 +1398,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1436,7 +1436,7 @@ public final class PvtzFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

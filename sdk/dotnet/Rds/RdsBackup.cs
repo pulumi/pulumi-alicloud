@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.Rds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
     ///     {
-    ///         var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new AliCloud.Rds.InstanceArgs
-    ///         {
-    ///             Engine = "MySQL",
-    ///             EngineVersion = "5.6",
-    ///             InstanceType = "rds.mysql.t1.small",
-    ///             InstanceStorage = 30,
-    ///             InstanceChargeType = "Postpaid",
-    ///             DbInstanceStorageType = "local_ssd",
-    ///         });
-    ///         var exampleRdsBackup = new AliCloud.Rds.RdsBackup("exampleRdsBackup", new AliCloud.Rds.RdsBackupArgs
-    ///         {
-    ///             DbInstanceId = exampleInstance.Id,
-    ///         });
-    ///     }
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
+    ///         InstanceType = "rds.mysql.t1.small",
+    ///         InstanceStorage = 30,
+    ///         InstanceChargeType = "Postpaid",
+    ///         DbInstanceStorageType = "local_ssd",
+    ///     });
     /// 
-    /// }
+    ///     var exampleRdsBackup = new AliCloud.Rds.RdsBackup("exampleRdsBackup", new()
+    ///     {
+    ///         DbInstanceId = exampleInstance.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +54,7 @@ namespace Pulumi.AliCloud.Rds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/rdsBackup:RdsBackup")]
-    public partial class RdsBackup : Pulumi.CustomResource
+    public partial class RdsBackup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The backup id.
@@ -153,7 +152,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
-    public sealed class RdsBackupArgs : Pulumi.ResourceArgs
+    public sealed class RdsBackupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
@@ -198,9 +197,10 @@ namespace Pulumi.AliCloud.Rds
         public RdsBackupArgs()
         {
         }
+        public static new RdsBackupArgs Empty => new RdsBackupArgs();
     }
 
-    public sealed class RdsBackupState : Pulumi.ResourceArgs
+    public sealed class RdsBackupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The backup id.
@@ -257,5 +257,6 @@ namespace Pulumi.AliCloud.Rds
         public RdsBackupState()
         {
         }
+        public static new RdsBackupState Empty => new RdsBackupState();
     }
 }

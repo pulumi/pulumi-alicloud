@@ -394,13 +394,15 @@ class HostAccount(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
-            __props__.__dict__["pass_phrase"] = pass_phrase
-            __props__.__dict__["password"] = password
-            __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["pass_phrase"] = None if pass_phrase is None else pulumi.Output.secret(pass_phrase)
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             if protocol_name is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol_name'")
             __props__.__dict__["protocol_name"] = protocol_name
             __props__.__dict__["host_account_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["passPhrase", "password", "privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(HostAccount, __self__).__init__(
             'alicloud:bastionhost/hostAccount:HostAccount',
             resource_name,

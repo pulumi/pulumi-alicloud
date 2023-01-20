@@ -52,7 +52,7 @@ func GetRoles(ctx *pulumi.Context, args *GetRolesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getRoles.
 type GetRolesArgs struct {
-	// - A list of ram role IDs.
+	// A list of ram role IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by the role name.
 	NameRegex  *string `pulumi:"nameRegex"`
@@ -94,7 +94,7 @@ func GetRolesOutput(ctx *pulumi.Context, args GetRolesOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getRoles.
 type GetRolesOutputArgs struct {
-	// - A list of ram role IDs.
+	// A list of ram role IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by the role name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`

@@ -21,32 +21,29 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Ecs.GetInstanceTypeFamilies.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Ecs.GetInstanceTypeFamilies.InvokeAsync(new AliCloud.Ecs.GetInstanceTypeFamiliesArgs
-        ///         {
-        ///             InstanceChargeType = "PrePaid",
-        ///         }));
-        ///         this.FirstInstanceTypeFamilyId = @default.Apply(@default =&gt; @default.Families?[0]?.Id);
-        ///         this.InstanceIds = @default.Apply(@default =&gt; @default.Ids);
-        ///     }
+        ///         InstanceChargeType = "PrePaid",
+        ///     });
         /// 
-        ///     [Output("firstInstanceTypeFamilyId")]
-        ///     public Output&lt;string&gt; FirstInstanceTypeFamilyId { get; set; }
-        ///     [Output("instanceIds")]
-        ///     public Output&lt;string&gt; InstanceIds { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceTypeFamilyId"] = @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult).Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Families[0]?.Id)),
+        ///         ["instanceIds"] = @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult).Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Ids)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypeFamiliesResult> InvokeAsync(GetInstanceTypeFamiliesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? new GetInstanceTypeFamiliesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? new GetInstanceTypeFamiliesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the ECS instance type families of Alibaba Cloud.
@@ -58,39 +55,36 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Ecs.GetInstanceTypeFamilies.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Ecs.GetInstanceTypeFamilies.InvokeAsync(new AliCloud.Ecs.GetInstanceTypeFamiliesArgs
-        ///         {
-        ///             InstanceChargeType = "PrePaid",
-        ///         }));
-        ///         this.FirstInstanceTypeFamilyId = @default.Apply(@default =&gt; @default.Families?[0]?.Id);
-        ///         this.InstanceIds = @default.Apply(@default =&gt; @default.Ids);
-        ///     }
+        ///         InstanceChargeType = "PrePaid",
+        ///     });
         /// 
-        ///     [Output("firstInstanceTypeFamilyId")]
-        ///     public Output&lt;string&gt; FirstInstanceTypeFamilyId { get; set; }
-        ///     [Output("instanceIds")]
-        ///     public Output&lt;string&gt; InstanceIds { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceTypeFamilyId"] = @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult).Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Families[0]?.Id)),
+        ///         ["instanceIds"] = @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult).Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Ids)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceTypeFamiliesResult> Invoke(GetInstanceTypeFamiliesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? new GetInstanceTypeFamiliesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? new GetInstanceTypeFamiliesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceTypeFamiliesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypeFamiliesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+        /// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
         /// </summary>
         [Input("generation")]
         public string? Generation { get; set; }
@@ -119,12 +113,13 @@ namespace Pulumi.AliCloud.Ecs
         public GetInstanceTypeFamiliesArgs()
         {
         }
+        public static new GetInstanceTypeFamiliesArgs Empty => new GetInstanceTypeFamiliesArgs();
     }
 
-    public sealed class GetInstanceTypeFamiliesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTypeFamiliesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+        /// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
         /// </summary>
         [Input("generation")]
         public Input<string>? Generation { get; set; }
@@ -153,6 +148,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetInstanceTypeFamiliesInvokeArgs()
         {
         }
+        public static new GetInstanceTypeFamiliesInvokeArgs Empty => new GetInstanceTypeFamiliesInvokeArgs();
     }
 
 

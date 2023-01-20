@@ -82,7 +82,6 @@ type Instance struct {
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	DataNodeDiskEncrypted pulumi.BoolPtrOutput `pulumi:"dataNodeDiskEncrypted"`
 	// The single data node storage space.
-	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
 	DataNodeDiskSize pulumi.IntOutput `pulumi:"dataNodeDiskSize"`
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
 	DataNodeDiskType pulumi.StringOutput `pulumi:"dataNodeDiskType"`
@@ -171,6 +170,13 @@ func NewInstance(ctx *pulumi.Context,
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:elasticsearch/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -202,7 +208,6 @@ type instanceState struct {
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	DataNodeDiskEncrypted *bool `pulumi:"dataNodeDiskEncrypted"`
 	// The single data node storage space.
-	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
 	DataNodeDiskSize *int `pulumi:"dataNodeDiskSize"`
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
 	DataNodeDiskType *string `pulumi:"dataNodeDiskType"`
@@ -276,7 +281,6 @@ type InstanceState struct {
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	DataNodeDiskEncrypted pulumi.BoolPtrInput
 	// The single data node storage space.
-	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
 	DataNodeDiskSize pulumi.IntPtrInput
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
 	DataNodeDiskType pulumi.StringPtrInput
@@ -354,7 +358,6 @@ type instanceArgs struct {
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	DataNodeDiskEncrypted *bool `pulumi:"dataNodeDiskEncrypted"`
 	// The single data node storage space.
-	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
 	DataNodeDiskSize int `pulumi:"dataNodeDiskSize"`
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
 	DataNodeDiskType string `pulumi:"dataNodeDiskType"`
@@ -419,7 +422,6 @@ type InstanceArgs struct {
 	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
 	DataNodeDiskEncrypted pulumi.BoolPtrInput
 	// The single data node storage space.
-	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
 	DataNodeDiskSize pulumi.IntInput
 	// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
 	DataNodeDiskType pulumi.StringInput
@@ -581,7 +583,6 @@ func (o InstanceOutput) DataNodeDiskEncrypted() pulumi.BoolPtrOutput {
 }
 
 // The single data node storage space.
-// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
 func (o InstanceOutput) DataNodeDiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DataNodeDiskSize }).(pulumi.IntOutput)
 }

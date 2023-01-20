@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Dts
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dts/migrationJob:MigrationJob")]
-    public partial class MigrationJob : Pulumi.CustomResource
+    public partial class MigrationJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Start time in Unix timestamp format.
@@ -266,7 +266,7 @@ namespace Pulumi.AliCloud.Dts
         }
     }
 
-    public sealed class MigrationJobArgs : Pulumi.ResourceArgs
+    public sealed class MigrationJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Start time in Unix timestamp format.
@@ -457,9 +457,10 @@ namespace Pulumi.AliCloud.Dts
         public MigrationJobArgs()
         {
         }
+        public static new MigrationJobArgs Empty => new MigrationJobArgs();
     }
 
-    public sealed class MigrationJobState : Pulumi.ResourceArgs
+    public sealed class MigrationJobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Start time in Unix timestamp format.
@@ -650,5 +651,6 @@ namespace Pulumi.AliCloud.Dts
         public MigrationJobState()
         {
         }
+        public static new MigrationJobState Empty => new MigrationJobState();
     }
 }

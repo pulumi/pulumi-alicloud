@@ -146,6 +146,7 @@ class _TransitRouterRouteEntryState:
         :param pulumi.Input[str] status: The associating status of the Transit Router.
         :param pulumi.Input[str] transit_router_route_entry_description: The description of the transit router route entry.
         :param pulumi.Input[str] transit_router_route_entry_destination_cidr_block: The CIDR of the transit router route entry.
+        :param pulumi.Input[str] transit_router_route_entry_id: The ID of the route entry.
         :param pulumi.Input[str] transit_router_route_entry_name: The name of the transit router route entry.
         :param pulumi.Input[str] transit_router_route_entry_next_hop_id: The ID of the transit router route entry next hop.
         :param pulumi.Input[str] transit_router_route_entry_next_hop_type: The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
@@ -221,6 +222,9 @@ class _TransitRouterRouteEntryState:
     @property
     @pulumi.getter(name="transitRouterRouteEntryId")
     def transit_router_route_entry_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the route entry.
+        """
         return pulumi.get(self, "transit_router_route_entry_id")
 
     @transit_router_route_entry_id.setter
@@ -407,6 +411,7 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
         :param pulumi.Input[str] status: The associating status of the Transit Router.
         :param pulumi.Input[str] transit_router_route_entry_description: The description of the transit router route entry.
         :param pulumi.Input[str] transit_router_route_entry_destination_cidr_block: The CIDR of the transit router route entry.
+        :param pulumi.Input[str] transit_router_route_entry_id: The ID of the route entry.
         :param pulumi.Input[str] transit_router_route_entry_name: The name of the transit router route entry.
         :param pulumi.Input[str] transit_router_route_entry_next_hop_id: The ID of the transit router route entry next hop.
         :param pulumi.Input[str] transit_router_route_entry_next_hop_type: The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
@@ -462,6 +467,9 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
     @property
     @pulumi.getter(name="transitRouterRouteEntryId")
     def transit_router_route_entry_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the route entry.
+        """
         return pulumi.get(self, "transit_router_route_entry_id")
 
     @property

@@ -22,15 +22,15 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
      * The CIDR address block list of the prefix list. See the following `Block entrys`.
      * 
      */
-    @Import(name="entrys", required=true)
-    private Output<List<PrefixListEntryArgs>> entrys;
+    @Import(name="entrys")
+    private @Nullable Output<List<PrefixListEntryArgs>> entrys;
 
     /**
      * @return The CIDR address block list of the prefix list. See the following `Block entrys`.
      * 
      */
-    public Output<List<PrefixListEntryArgs>> entrys() {
-        return this.entrys;
+    public Optional<Output<List<PrefixListEntryArgs>>> entrys() {
+        return Optional.ofNullable(this.entrys);
     }
 
     /**
@@ -127,7 +127,7 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder entrys(Output<List<PrefixListEntryArgs>> entrys) {
+        public Builder entrys(@Nullable Output<List<PrefixListEntryArgs>> entrys) {
             $.entrys = entrys;
             return this;
         }
@@ -237,7 +237,6 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PrefixListArgs build() {
-            $.entrys = Objects.requireNonNull($.entrys, "expected parameter 'entrys' to be non-null");
             return $;
         }
     }

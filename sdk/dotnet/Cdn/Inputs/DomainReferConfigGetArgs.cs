@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn.Inputs
 {
 
-    public sealed class DomainReferConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class DomainReferConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowEmpty")]
         public Input<string>? AllowEmpty { get; set; }
@@ -29,5 +29,6 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         public DomainReferConfigGetArgs()
         {
         }
+        public static new DomainReferConfigGetArgs Empty => new DomainReferConfigGetArgs();
     }
 }

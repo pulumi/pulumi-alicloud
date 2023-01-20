@@ -37,9 +37,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("dataWorksFolderId1", ids.ApplyT(func(ids dataworks.GetFoldersResult) (string, error) {
-//				return ids.Folders[0].Id, nil
-//			}).(pulumi.StringOutput))
+//			ids := pulumi.All(_default.FolderId, _default.ProjectId).ApplyT(func(_args []interface{}) (dataworks.GetFoldersResult, error) {
+//				folderId := _args[0].(string)
+//				projectId := _args[1].(*string)
+//				return dataworks.GetFoldersOutput(ctx, dataworks.GetFoldersOutputArgs{
+//					Ids: []string{
+//						folderId,
+//					},
+//					ProjectId:        projectId,
+//					ParentFolderPath: "Business Flow/tfTestAcc/folderDi",
+//				}, nil), nil
+//			}).(dataworks.GetFoldersResultOutput)
+//			ctx.Export("dataWorksFolderId1", ids.ApplyT(func(ids dataworks.GetFoldersResult) (*string, error) {
+//				return &ids.Folders[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

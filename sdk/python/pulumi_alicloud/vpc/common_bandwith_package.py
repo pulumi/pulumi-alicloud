@@ -24,6 +24,7 @@ class CommonBandwithPackageArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CommonBandwithPackage resource.
@@ -39,6 +40,7 @@ class CommonBandwithPackageArgs:
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
         :param pulumi.Input[int] ratio: Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the common bandwidth package belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
         :param pulumi.Input[str] zone: The zone of bandwidth package.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -63,6 +65,8 @@ class CommonBandwithPackageArgs:
             pulumi.set(__self__, "ratio", ratio)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_protection_types is not None:
+            pulumi.set(__self__, "security_protection_types", security_protection_types)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -189,6 +193,18 @@ class CommonBandwithPackageArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="securityProtectionTypes")
+    def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+        """
+        return pulumi.get(self, "security_protection_types")
+
+    @security_protection_types.setter
+    def security_protection_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_protection_types", value)
+
+    @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -214,6 +230,7 @@ class _CommonBandwithPackageState:
                  name: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -230,6 +247,7 @@ class _CommonBandwithPackageState:
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
         :param pulumi.Input[int] ratio: Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the common bandwidth package belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
         :param pulumi.Input[str] status: (Available in 1.120.0+) The status of bandwidth package.
         :param pulumi.Input[str] zone: The zone of bandwidth package.
         """
@@ -256,6 +274,8 @@ class _CommonBandwithPackageState:
             pulumi.set(__self__, "ratio", ratio)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_protection_types is not None:
+            pulumi.set(__self__, "security_protection_types", security_protection_types)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if zone is not None:
@@ -384,6 +404,18 @@ class _CommonBandwithPackageState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="securityProtectionTypes")
+    def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+        """
+        return pulumi.get(self, "security_protection_types")
+
+    @security_protection_types.setter
+    def security_protection_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_protection_types", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -423,6 +455,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -463,6 +496,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
         :param pulumi.Input[int] ratio: Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the common bandwidth package belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
         :param pulumi.Input[str] zone: The zone of bandwidth package.
         """
         ...
@@ -520,6 +554,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -545,6 +580,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["ratio"] = ratio
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["security_protection_types"] = security_protection_types
             __props__.__dict__["zone"] = zone
             __props__.__dict__["status"] = None
         super(CommonBandwithPackage, __self__).__init__(
@@ -567,6 +603,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             ratio: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'CommonBandwithPackage':
         """
@@ -588,6 +625,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
         :param pulumi.Input[int] ratio: Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the common bandwidth package belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
         :param pulumi.Input[str] status: (Available in 1.120.0+) The status of bandwidth package.
         :param pulumi.Input[str] zone: The zone of bandwidth package.
         """
@@ -605,6 +643,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["ratio"] = ratio
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["security_protection_types"] = security_protection_types
         __props__.__dict__["status"] = status
         __props__.__dict__["zone"] = zone
         return CommonBandwithPackage(resource_name, opts=opts, __props__=__props__)
@@ -690,6 +729,14 @@ class CommonBandwithPackage(pulumi.CustomResource):
         The Id of resource group which the common bandwidth package belongs.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityProtectionTypes")
+    def security_protection_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+        """
+        return pulumi.get(self, "security_protection_types")
 
     @property
     @pulumi.getter

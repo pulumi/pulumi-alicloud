@@ -117,9 +117,9 @@ import (
 //				FileSystemType: pulumi.String("cpfs"),
 //				Capacity:       pulumi.Int(3600),
 //				Description:    pulumi.String("tf-testacc"),
-//				ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
-//				VpcId:          pulumi.String(defaultNetworks.Ids[0]),
-//				VswitchId:      pulumi.String(defaultSwitches.Ids[0]),
+//				ZoneId:         *pulumi.String(defaultZones.Zones[0].ZoneId),
+//				VpcId:          *pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:      *pulumi.String(defaultSwitches.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

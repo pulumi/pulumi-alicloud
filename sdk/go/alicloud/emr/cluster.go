@@ -31,7 +31,7 @@ type Cluster struct {
 
 	// Boot action parameters.
 	BootstrapActions ClusterBootstrapActionArrayOutput `pulumi:"bootstrapActions"`
-	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
+	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 	ChargeType pulumi.StringPtrOutput `pulumi:"chargeType"`
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
@@ -59,7 +59,7 @@ type Cluster struct {
 	MetaStoreType pulumi.StringOutput `pulumi:"metaStoreType"`
 	// The configurations of emr-cluster service modification after cluster created.
 	ModifyClusterServiceConfig ClusterModifyClusterServiceConfigPtrOutput `pulumi:"modifyClusterServiceConfig"`
-	// bootstrap action name.
+	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional software list.
 	OptionSoftwareLists pulumi.StringArrayOutput `pulumi:"optionSoftwareLists"`
@@ -125,7 +125,7 @@ func GetCluster(ctx *pulumi.Context,
 type clusterState struct {
 	// Boot action parameters.
 	BootstrapActions []ClusterBootstrapAction `pulumi:"bootstrapActions"`
-	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
+	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 	ChargeType *string `pulumi:"chargeType"`
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType *string `pulumi:"clusterType"`
@@ -153,7 +153,7 @@ type clusterState struct {
 	MetaStoreType *string `pulumi:"metaStoreType"`
 	// The configurations of emr-cluster service modification after cluster created.
 	ModifyClusterServiceConfig *ClusterModifyClusterServiceConfig `pulumi:"modifyClusterServiceConfig"`
-	// bootstrap action name.
+	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name *string `pulumi:"name"`
 	// Optional software list.
 	OptionSoftwareLists []string `pulumi:"optionSoftwareLists"`
@@ -182,7 +182,7 @@ type clusterState struct {
 type ClusterState struct {
 	// Boot action parameters.
 	BootstrapActions ClusterBootstrapActionArrayInput
-	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
+	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 	ChargeType pulumi.StringPtrInput
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType pulumi.StringPtrInput
@@ -210,7 +210,7 @@ type ClusterState struct {
 	MetaStoreType pulumi.StringPtrInput
 	// The configurations of emr-cluster service modification after cluster created.
 	ModifyClusterServiceConfig ClusterModifyClusterServiceConfigPtrInput
-	// bootstrap action name.
+	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name pulumi.StringPtrInput
 	// Optional software list.
 	OptionSoftwareLists pulumi.StringArrayInput
@@ -243,7 +243,7 @@ func (ClusterState) ElementType() reflect.Type {
 type clusterArgs struct {
 	// Boot action parameters.
 	BootstrapActions []ClusterBootstrapAction `pulumi:"bootstrapActions"`
-	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
+	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 	ChargeType *string `pulumi:"chargeType"`
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType string `pulumi:"clusterType"`
@@ -271,7 +271,7 @@ type clusterArgs struct {
 	MetaStoreType *string `pulumi:"metaStoreType"`
 	// The configurations of emr-cluster service modification after cluster created.
 	ModifyClusterServiceConfig *ClusterModifyClusterServiceConfig `pulumi:"modifyClusterServiceConfig"`
-	// bootstrap action name.
+	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name *string `pulumi:"name"`
 	// Optional software list.
 	OptionSoftwareLists []string `pulumi:"optionSoftwareLists"`
@@ -301,7 +301,7 @@ type clusterArgs struct {
 type ClusterArgs struct {
 	// Boot action parameters.
 	BootstrapActions ClusterBootstrapActionArrayInput
-	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
+	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 	ChargeType pulumi.StringPtrInput
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType pulumi.StringInput
@@ -329,7 +329,7 @@ type ClusterArgs struct {
 	MetaStoreType pulumi.StringPtrInput
 	// The configurations of emr-cluster service modification after cluster created.
 	ModifyClusterServiceConfig ClusterModifyClusterServiceConfigPtrInput
-	// bootstrap action name.
+	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name pulumi.StringPtrInput
 	// Optional software list.
 	OptionSoftwareLists pulumi.StringArrayInput
@@ -447,7 +447,7 @@ func (o ClusterOutput) BootstrapActions() ClusterBootstrapActionArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterBootstrapActionArrayOutput { return v.BootstrapActions }).(ClusterBootstrapActionArrayOutput)
 }
 
-// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
+// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 func (o ClusterOutput) ChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ChargeType }).(pulumi.StringPtrOutput)
 }
@@ -517,7 +517,7 @@ func (o ClusterOutput) ModifyClusterServiceConfig() ClusterModifyClusterServiceC
 	return o.ApplyT(func(v *Cluster) ClusterModifyClusterServiceConfigPtrOutput { return v.ModifyClusterServiceConfig }).(ClusterModifyClusterServiceConfigPtrOutput)
 }
 
-// bootstrap action name.
+// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -19,44 +19,45 @@ namespace Pulumi.AliCloud.Gpdb
     /// ### Create a AnalyticDB for PostgreSQL instance
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "Gpdb",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             VswitchName = "vpc-123456",
-    ///         });
-    ///         var adbPgInstance = new AliCloud.Gpdb.ElasticInstance("adbPgInstance", new AliCloud.Gpdb.ElasticInstanceArgs
-    ///         {
-    ///             Engine = "gpdb",
-    ///             EngineVersion = "6.0",
-    ///             SegStorageType = "cloud_essd",
-    ///             SegNodeNum = 4,
-    ///             StorageSize = 50,
-    ///             InstanceSpec = "2C16G",
-    ///             DbInstanceDescription = "Created by terraform",
-    ///             InstanceNetworkType = "VPC",
-    ///             PaymentType = "PayAsYouGo",
-    ///             VswitchId = defaultSwitch.Id,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "Gpdb",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         VswitchName = "vpc-123456",
+    ///     });
+    /// 
+    ///     var adbPgInstance = new AliCloud.Gpdb.ElasticInstance("adbPgInstance", new()
+    ///     {
+    ///         Engine = "gpdb",
+    ///         EngineVersion = "6.0",
+    ///         SegStorageType = "cloud_essd",
+    ///         SegNodeNum = 4,
+    ///         StorageSize = 50,
+    ///         InstanceSpec = "2C16G",
+    ///         DbInstanceDescription = "Created by terraform",
+    ///         InstanceNetworkType = "VPC",
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -68,7 +69,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:gpdb/elasticInstance:ElasticInstance")]
-    public partial class ElasticInstance : Pulumi.CustomResource
+    public partial class ElasticInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ADB PG instance connection string.
@@ -145,6 +146,12 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         [Output("paymentType")]
         public Output<string?> PaymentType { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.196.0+) The connection port of the instance.
+        /// </summary>
+        [Output("port")]
+        public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
         /// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -238,7 +245,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
     }
 
-    public sealed class ElasticInstanceArgs : Pulumi.ResourceArgs
+    public sealed class ElasticInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
@@ -367,9 +374,10 @@ namespace Pulumi.AliCloud.Gpdb
         public ElasticInstanceArgs()
         {
         }
+        public static new ElasticInstanceArgs Empty => new ElasticInstanceArgs();
     }
 
-    public sealed class ElasticInstanceState : Pulumi.ResourceArgs
+    public sealed class ElasticInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ADB PG instance connection string.
@@ -447,6 +455,12 @@ namespace Pulumi.AliCloud.Gpdb
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
+        /// <summary>
+        /// (Available in 1.196.0+) The connection port of the instance.
+        /// </summary>
+        [Input("port")]
+        public Input<string>? Port { get; set; }
+
         [Input("securityIpLists")]
         private InputList<string>? _securityIpLists;
 
@@ -510,5 +524,6 @@ namespace Pulumi.AliCloud.Gpdb
         public ElasticInstanceState()
         {
         }
+        public static new ElasticInstanceState Empty => new ElasticInstanceState();
     }
 }

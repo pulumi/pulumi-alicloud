@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetEcsSnapshots.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetEcsSnapshots.InvokeAsync(new AliCloud.Ecs.GetEcsSnapshotsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "s-bp1fvuxxxxxxxx",
-        ///             },
-        ///             NameRegex = "tf-test",
-        ///         }));
-        ///         this.FirstEcsSnapshotId = example.Apply(example =&gt; example.Snapshots?[0]?.Id);
-        ///     }
+        ///             "s-bp1fvuxxxxxxxx",
+        ///         },
+        ///         NameRegex = "tf-test",
+        ///     });
         /// 
-        ///     [Output("firstEcsSnapshotId")]
-        ///     public Output&lt;string&gt; FirstEcsSnapshotId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsSnapshotId"] = example.Apply(getEcsSnapshotsResult =&gt; getEcsSnapshotsResult.Snapshots[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsSnapshotsResult> InvokeAsync(GetEcsSnapshotsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsSnapshotsResult>("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args ?? new GetEcsSnapshotsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsSnapshotsResult>("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args ?? new GetEcsSnapshotsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetEcsSnapshots.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetEcsSnapshots.InvokeAsync(new AliCloud.Ecs.GetEcsSnapshotsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "s-bp1fvuxxxxxxxx",
-        ///             },
-        ///             NameRegex = "tf-test",
-        ///         }));
-        ///         this.FirstEcsSnapshotId = example.Apply(example =&gt; example.Snapshots?[0]?.Id);
-        ///     }
+        ///             "s-bp1fvuxxxxxxxx",
+        ///         },
+        ///         NameRegex = "tf-test",
+        ///     });
         /// 
-        ///     [Output("firstEcsSnapshotId")]
-        ///     public Output&lt;string&gt; FirstEcsSnapshotId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsSnapshotId"] = example.Apply(getEcsSnapshotsResult =&gt; getEcsSnapshotsResult.Snapshots[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsSnapshotsResult> Invoke(GetEcsSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsSnapshotsResult>("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args ?? new GetEcsSnapshotsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsSnapshotsResult>("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", args ?? new GetEcsSnapshotsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsSnapshotsArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsSnapshotsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The category of the snapshot.
@@ -200,9 +198,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsSnapshotsArgs()
         {
         }
+        public static new GetEcsSnapshotsArgs Empty => new GetEcsSnapshotsArgs();
     }
 
-    public sealed class GetEcsSnapshotsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The category of the snapshot.
@@ -309,6 +308,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsSnapshotsInvokeArgs()
         {
         }
+        public static new GetEcsSnapshotsInvokeArgs Empty => new GetEcsSnapshotsInvokeArgs();
     }
 
 

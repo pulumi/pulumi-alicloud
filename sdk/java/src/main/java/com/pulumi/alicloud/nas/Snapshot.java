@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.nas.NasFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
  * import com.pulumi.alicloud.nas.FileSystemArgs;
  * import com.pulumi.alicloud.nas.Snapshot;

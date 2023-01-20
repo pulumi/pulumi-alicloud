@@ -74,6 +74,10 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * The description of the transit router vbr attachment.
      */
     public readonly transitRouterAttachmentDescription!: pulumi.Output<string | undefined>;
@@ -118,6 +122,7 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
             resourceInputs["routeTableAssociationEnabled"] = state ? state.routeTableAssociationEnabled : undefined;
             resourceInputs["routeTablePropagationEnabled"] = state ? state.routeTablePropagationEnabled : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["transitRouterAttachmentDescription"] = state ? state.transitRouterAttachmentDescription : undefined;
             resourceInputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
             resourceInputs["transitRouterAttachmentName"] = state ? state.transitRouterAttachmentName : undefined;
@@ -138,6 +143,7 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
             resourceInputs["resourceType"] = args ? args.resourceType : undefined;
             resourceInputs["routeTableAssociationEnabled"] = args ? args.routeTableAssociationEnabled : undefined;
             resourceInputs["routeTablePropagationEnabled"] = args ? args.routeTablePropagationEnabled : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["transitRouterAttachmentDescription"] = args ? args.transitRouterAttachmentDescription : undefined;
             resourceInputs["transitRouterAttachmentName"] = args ? args.transitRouterAttachmentName : undefined;
             resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
@@ -183,6 +189,10 @@ export interface TransitRouterVbrAttachmentState {
      * The associating status of the network.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The description of the transit router vbr attachment.
      */
@@ -237,6 +247,10 @@ export interface TransitRouterVbrAttachmentArgs {
      * Whether to enabled route table propagation. The system default value is `true`.
      */
     routeTablePropagationEnabled?: pulumi.Input<boolean>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The description of the transit router vbr attachment.
      */

@@ -58,7 +58,7 @@ import (
 //				ClusterVersion:       pulumi.String("ZooKeeper_3_5_5"),
 //				InstanceCount:        pulumi.Int(1),
 //				NetType:              pulumi.String("privatenet"),
-//				VswitchId:            pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:            *pulumi.String(defaultSwitches.Ids[0]),
 //				PubNetworkFlow:       pulumi.String("1"),
 //				AclEntryLists: pulumi.StringArray{
 //					pulumi.String("127.0.0.1/32"),

@@ -35,6 +35,10 @@ public final class GetPoliciesResult {
      * 
      */
     private List<GetPoliciesPolicy> policies;
+    /**
+     * @return The type of the policy.
+     * 
+     */
     private @Nullable String policyType;
 
     private GetPoliciesResult() {}
@@ -72,6 +76,10 @@ public final class GetPoliciesResult {
     public List<GetPoliciesPolicy> policies() {
         return this.policies;
     }
+    /**
+     * @return The type of the policy.
+     * 
+     */
     public Optional<String> policyType() {
         return Optional.ofNullable(this.policyType);
     }

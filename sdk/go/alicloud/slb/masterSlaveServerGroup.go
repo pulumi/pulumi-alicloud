@@ -27,6 +27,166 @@ import (
 //
 // > **NOTE:** Available in 1.54.0+
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			msServerGroupZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			msServerGroupInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(msServerGroupZones.Zones[0].Id),
+//				EniAmount:        pulumi.IntRef(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			image, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			slbMasterSlaveServerGroup := "forSlbMasterSlaveServerGroup"
+//			if param := cfg.Get("slbMasterSlaveServerGroup"); param != "" {
+//				slbMasterSlaveServerGroup = param
+//			}
+//			mainNetwork, err := vpc.NewNetwork(ctx, "mainNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(slbMasterSlaveServerGroup),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mainSwitch, err := vpc.NewSwitch(ctx, "mainSwitch", &vpc.SwitchArgs{
+//				VpcId:       mainNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/16"),
+//				ZoneId:      *pulumi.String(msServerGroupZones.Zones[0].Id),
+//				VswitchName: pulumi.String(slbMasterSlaveServerGroup),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			groupSecurityGroup, err := ecs.NewSecurityGroup(ctx, "groupSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: mainNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var msServerGroupInstance []*ecs.Instance
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("msServerGroupInstance-%v", key0), &ecs.InstanceArgs{
+//					ImageId:      *pulumi.String(image.Images[0].Id),
+//					InstanceType: *pulumi.String(msServerGroupInstanceTypes.InstanceTypes[0].Id),
+//					InstanceName: pulumi.String(slbMasterSlaveServerGroup),
+//					SecurityGroups: pulumi.StringArray{
+//						groupSecurityGroup.ID(),
+//					},
+//					InternetChargeType:      pulumi.String("PayByTraffic"),
+//					InternetMaxBandwidthOut: pulumi.Int(10),
+//					AvailabilityZone:        *pulumi.String(msServerGroupZones.Zones[0].Id),
+//					InstanceChargeType:      pulumi.String("PostPaid"),
+//					SystemDiskCategory:      pulumi.String("cloud_efficiency"),
+//					VswitchId:               mainSwitch.ID(),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				msServerGroupInstance = append(msServerGroupInstance, __res)
+//			}
+//			msServerGroupApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "msServerGroupApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//				LoadBalancerName: pulumi.String(slbMasterSlaveServerGroup),
+//				VswitchId:        mainSwitch.ID(),
+//				LoadBalancerSpec: pulumi.String("slb.s2.small"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			msServerGroupEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "msServerGroupEcsNetworkInterface", &ecs.EcsNetworkInterfaceArgs{
+//				NetworkInterfaceName: pulumi.String(slbMasterSlaveServerGroup),
+//				VswitchId:            mainSwitch.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					groupSecurityGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsNetworkInterfaceAttachment(ctx, "msServerGroupEcsNetworkInterfaceAttachment", &ecs.EcsNetworkInterfaceAttachmentArgs{
+//				InstanceId:         msServerGroupInstance[0].ID(),
+//				NetworkInterfaceId: msServerGroupEcsNetworkInterface.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			groupMasterSlaveServerGroup, err := slb.NewMasterSlaveServerGroup(ctx, "groupMasterSlaveServerGroup", &slb.MasterSlaveServerGroupArgs{
+//				LoadBalancerId: msServerGroupApplicationLoadBalancer.ID(),
+//				Servers: slb.MasterSlaveServerGroupServerArray{
+//					&slb.MasterSlaveServerGroupServerArgs{
+//						ServerId:   msServerGroupInstance[0].ID(),
+//						Port:       pulumi.Int(100),
+//						Weight:     pulumi.Int(100),
+//						ServerType: pulumi.String("Master"),
+//					},
+//					&slb.MasterSlaveServerGroupServerArgs{
+//						ServerId:   msServerGroupInstance[1].ID(),
+//						Port:       pulumi.Int(100),
+//						Weight:     pulumi.Int(100),
+//						ServerType: pulumi.String("Slave"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = slb.NewListener(ctx, "tcp", &slb.ListenerArgs{
+//				LoadBalancerId:           msServerGroupApplicationLoadBalancer.ID(),
+//				MasterSlaveServerGroupId: groupMasterSlaveServerGroup.ID(),
+//				FrontendPort:             pulumi.Int(22),
+//				Protocol:                 pulumi.String("tcp"),
+//				Bandwidth:                pulumi.Int(10),
+//				HealthCheckType:          pulumi.String("tcp"),
+//				PersistenceTimeout:       pulumi.Int(3600),
+//				HealthyThreshold:         pulumi.Int(8),
+//				UnhealthyThreshold:       pulumi.Int(8),
+//				HealthCheckTimeout:       pulumi.Int(8),
+//				HealthCheckInterval:      pulumi.Int(5),
+//				HealthCheckHttpCode:      pulumi.String("http_2xx"),
+//				HealthCheckConnectPort:   pulumi.Int(20),
+//				HealthCheckUri:           pulumi.String("/console"),
+//				EstablishedTimeout:       pulumi.Int(600),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Block servers
 //
 // The servers mapping supports the following:

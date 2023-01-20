@@ -15,22 +15,22 @@ namespace Pulumi.AliCloud.Ram
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a RAM Group Policy attachment.
+    ///     var @group = new AliCloud.Ram.Group("group", new()
     ///     {
-    ///         // Create a RAM Group Policy attachment.
-    ///         var @group = new AliCloud.Ram.Group("group", new AliCloud.Ram.GroupArgs
-    ///         {
-    ///             Comments = "this is a group comments.",
-    ///             Force = true,
-    ///         });
-    ///         var policy = new AliCloud.Ram.Policy("policy", new AliCloud.Ram.PolicyArgs
-    ///         {
-    ///             Document = @"    {
+    ///         Comments = "this is a group comments.",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var policy = new AliCloud.Ram.Policy("policy", new()
+    ///     {
+    ///         Document = @"    {
     ///       ""Statement"": [
     ///         {
     ///           ""Action"": [
@@ -47,18 +47,18 @@ namespace Pulumi.AliCloud.Ram
     ///         ""Version"": ""1""
     ///     }
     /// ",
-    ///             Description = "this is a policy test",
-    ///             Force = true,
-    ///         });
-    ///         var attach = new AliCloud.Ram.GroupPolicyAttachment("attach", new AliCloud.Ram.GroupPolicyAttachmentArgs
-    ///         {
-    ///             PolicyName = policy.Name,
-    ///             PolicyType = policy.Type,
-    ///             GroupName = @group.Name,
-    ///         });
-    ///     }
+    ///         Description = "this is a policy test",
+    ///         Force = true,
+    ///     });
     /// 
-    /// }
+    ///     var attach = new AliCloud.Ram.GroupPolicyAttachment("attach", new()
+    ///     {
+    ///         PolicyName = policy.Name,
+    ///         PolicyType = policy.Type,
+    ///         GroupName = @group.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment")]
-    public partial class GroupPolicyAttachment : Pulumi.CustomResource
+    public partial class GroupPolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class GroupPolicyAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class GroupPolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -157,9 +157,10 @@ namespace Pulumi.AliCloud.Ram
         public GroupPolicyAttachmentArgs()
         {
         }
+        public static new GroupPolicyAttachmentArgs Empty => new GroupPolicyAttachmentArgs();
     }
 
-    public sealed class GroupPolicyAttachmentState : Pulumi.ResourceArgs
+    public sealed class GroupPolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -182,5 +183,6 @@ namespace Pulumi.AliCloud.Ram
         public GroupPolicyAttachmentState()
         {
         }
+        public static new GroupPolicyAttachmentState Empty => new GroupPolicyAttachmentState();
     }
 }

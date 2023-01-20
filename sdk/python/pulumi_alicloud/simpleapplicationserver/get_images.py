@@ -118,9 +118,6 @@ def get_images(ids: Optional[Sequence[str]] = None,
     Use this data source to access information about an existing resource.
 
     :param str image_type: The type of the image. Valid values: `app`, `custom`, `system`.
-           * `system`: operating system (OS) image.
-           * `app`: application image.
-           * `custom`: custom image.
     :param str platform: The platform of Plan supported.
     """
     __args__ = dict()
@@ -154,9 +151,6 @@ def get_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     Use this data source to access information about an existing resource.
 
     :param str image_type: The type of the image. Valid values: `app`, `custom`, `system`.
-           * `system`: operating system (OS) image.
-           * `app`: application image.
-           * `custom`: custom image.
     :param str platform: The platform of Plan supported.
     """
     ...

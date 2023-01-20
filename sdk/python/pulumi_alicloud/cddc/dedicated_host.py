@@ -677,7 +677,7 @@ class DedicatedHost(pulumi.CustomResource):
             __props__.__dict__["host_class"] = host_class
             __props__.__dict__["host_name"] = host_name
             __props__.__dict__["image_category"] = image_category
-            __props__.__dict__["os_password"] = os_password
+            __props__.__dict__["os_password"] = None if os_password is None else pulumi.Output.secret(os_password)
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
@@ -692,6 +692,8 @@ class DedicatedHost(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["dedicated_host_id"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["osPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DedicatedHost, __self__).__init__(
             'alicloud:cddc/dedicatedHost:DedicatedHost',
             resource_name,

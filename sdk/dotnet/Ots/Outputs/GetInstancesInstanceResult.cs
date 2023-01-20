@@ -52,24 +52,22 @@ namespace Pulumi.AliCloud.Ots.Outputs
         /// <summary>
         /// A map of tags assigned to the instance. It must be in the format:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instancesDs = AliCloud.Ots.GetInstances.Invoke(new()
         ///     {
-        ///         var instancesDs = Output.Create(AliCloud.Ots.GetInstances.InvokeAsync(new AliCloud.Ots.GetInstancesArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///                 { "tagKey2", "tagValue2" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "tagKey1", "tagValue1" },
+        ///             { "tagKey2", "tagValue2" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;

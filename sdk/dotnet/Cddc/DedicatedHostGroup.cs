@@ -21,32 +21,31 @@ namespace Pulumi.AliCloud.Cddc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
     ///     {
-    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = "tf_test_foo",
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var @default = new AliCloud.Cddc.DedicatedHostGroup("default", new AliCloud.Cddc.DedicatedHostGroupArgs
-    ///         {
-    ///             Engine = "MongoDB",
-    ///             VpcId = vpc.Id,
-    ///             CpuAllocationRatio = 101,
-    ///             MemAllocationRatio = 50,
-    ///             DiskAllocationRatio = 200,
-    ///             AllocationPolicy = "Evenly",
-    ///             HostReplacePolicy = "Manual",
-    ///             DedicatedHostGroupDesc = "tf-testaccDesc",
-    ///         });
-    ///     }
+    ///         VpcName = "tf_test_foo",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
     /// 
-    /// }
+    ///     var @default = new AliCloud.Cddc.DedicatedHostGroup("default", new()
+    ///     {
+    ///         Engine = "MongoDB",
+    ///         VpcId = vpc.Id,
+    ///         CpuAllocationRatio = 101,
+    ///         MemAllocationRatio = 50,
+    ///         DiskAllocationRatio = 200,
+    ///         AllocationPolicy = "Evenly",
+    ///         HostReplacePolicy = "Manual",
+    ///         DedicatedHostGroupDesc = "tf-testaccDesc",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +57,7 @@ namespace Pulumi.AliCloud.Cddc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cddc/dedicatedHostGroup:DedicatedHostGroup")]
-    public partial class DedicatedHostGroup : Pulumi.CustomResource
+    public partial class DedicatedHostGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
@@ -159,7 +158,7 @@ namespace Pulumi.AliCloud.Cddc
         }
     }
 
-    public sealed class DedicatedHostGroupArgs : Pulumi.ResourceArgs
+    public sealed class DedicatedHostGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
@@ -219,9 +218,10 @@ namespace Pulumi.AliCloud.Cddc
         public DedicatedHostGroupArgs()
         {
         }
+        public static new DedicatedHostGroupArgs Empty => new DedicatedHostGroupArgs();
     }
 
-    public sealed class DedicatedHostGroupState : Pulumi.ResourceArgs
+    public sealed class DedicatedHostGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
@@ -281,5 +281,6 @@ namespace Pulumi.AliCloud.Cddc
         public DedicatedHostGroupState()
         {
         }
+        public static new DedicatedHostGroupState Empty => new DedicatedHostGroupState();
     }
 }

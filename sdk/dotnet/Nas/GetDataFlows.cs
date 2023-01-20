@@ -23,42 +23,40 @@ namespace Pulumi.AliCloud.Nas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Nas.GetDataFlows.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Nas.GetDataFlows.InvokeAsync(new AliCloud.Nas.GetDataFlowsArgs
+        ///         FileSystemId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             FileSystemId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.NasDataFlowId1 = ids.Apply(ids =&gt; ids.Flows?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Nas.GetDataFlows.InvokeAsync(new AliCloud.Nas.GetDataFlowsArgs
-        ///         {
-        ///             FileSystemId = "example_value",
-        ///             Status = "Running",
-        ///         }));
-        ///         this.NasDataFlowId2 = status.Apply(status =&gt; status.Flows?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("nasDataFlowId1")]
-        ///     public Output&lt;string&gt; NasDataFlowId1 { get; set; }
-        ///     [Output("nasDataFlowId2")]
-        ///     public Output&lt;string&gt; NasDataFlowId2 { get; set; }
-        /// }
+        ///     var status = AliCloud.Nas.GetDataFlows.Invoke(new()
+        ///     {
+        ///         FileSystemId = "example_value",
+        ///         Status = "Running",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nasDataFlowId1"] = ids.Apply(getDataFlowsResult =&gt; getDataFlowsResult.Flows[0]?.Id),
+        ///         ["nasDataFlowId2"] = status.Apply(getDataFlowsResult =&gt; getDataFlowsResult.Flows[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDataFlowsResult> InvokeAsync(GetDataFlowsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDataFlowsResult>("alicloud:nas/getDataFlows:getDataFlows", args ?? new GetDataFlowsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataFlowsResult>("alicloud:nas/getDataFlows:getDataFlows", args ?? new GetDataFlowsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Nas Data Flows of the current Alibaba Cloud user.
@@ -72,46 +70,44 @@ namespace Pulumi.AliCloud.Nas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Nas.GetDataFlows.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Nas.GetDataFlows.InvokeAsync(new AliCloud.Nas.GetDataFlowsArgs
+        ///         FileSystemId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             FileSystemId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.NasDataFlowId1 = ids.Apply(ids =&gt; ids.Flows?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Nas.GetDataFlows.InvokeAsync(new AliCloud.Nas.GetDataFlowsArgs
-        ///         {
-        ///             FileSystemId = "example_value",
-        ///             Status = "Running",
-        ///         }));
-        ///         this.NasDataFlowId2 = status.Apply(status =&gt; status.Flows?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("nasDataFlowId1")]
-        ///     public Output&lt;string&gt; NasDataFlowId1 { get; set; }
-        ///     [Output("nasDataFlowId2")]
-        ///     public Output&lt;string&gt; NasDataFlowId2 { get; set; }
-        /// }
+        ///     var status = AliCloud.Nas.GetDataFlows.Invoke(new()
+        ///     {
+        ///         FileSystemId = "example_value",
+        ///         Status = "Running",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nasDataFlowId1"] = ids.Apply(getDataFlowsResult =&gt; getDataFlowsResult.Flows[0]?.Id),
+        ///         ["nasDataFlowId2"] = status.Apply(getDataFlowsResult =&gt; getDataFlowsResult.Flows[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDataFlowsResult> Invoke(GetDataFlowsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDataFlowsResult>("alicloud:nas/getDataFlows:getDataFlows", args ?? new GetDataFlowsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDataFlowsResult>("alicloud:nas/getDataFlows:getDataFlows", args ?? new GetDataFlowsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDataFlowsArgs : Pulumi.InvokeArgs
+    public sealed class GetDataFlowsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the file system.
@@ -143,9 +139,10 @@ namespace Pulumi.AliCloud.Nas
         public GetDataFlowsArgs()
         {
         }
+        public static new GetDataFlowsArgs Empty => new GetDataFlowsArgs();
     }
 
-    public sealed class GetDataFlowsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDataFlowsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the file system.
@@ -177,6 +174,7 @@ namespace Pulumi.AliCloud.Nas
         public GetDataFlowsInvokeArgs()
         {
         }
+        public static new GetDataFlowsInvokeArgs Empty => new GetDataFlowsInvokeArgs();
     }
 
 

@@ -3,8 +3,13 @@
 
 package com.pulumi.alicloud.gpdb.outputs;
 
+import com.pulumi.alicloud.gpdb.outputs.GetInstancesInstanceIpWhitelist;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -14,57 +19,143 @@ public final class GetInstancesInstance {
      * 
      */
     private String availabilityZone;
-    /**
-     * @return Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
-     * 
-     */
     private String chargeType;
     /**
-     * @return The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
+     * @return The connection string of the instance.
      * 
      */
+    private String connectionString;
+    /**
+     * @return The number of CPU cores of the computing node. Unit: Core.
+     * 
+     */
+    private String cpuCores;
+    /**
+     * @return The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+     * 
+     */
+    private String createTime;
     private String creationTime;
     /**
-     * @return The description of an instance.
+     * @return The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * 
+     */
+    private String dbInstanceCategory;
+    /**
+     * @return The db instance class.
+     * 
+     */
+    private String dbInstanceClass;
+    /**
+     * @return The db instance id.
+     * 
+     */
+    private String dbInstanceId;
+    /**
+     * @return The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     * 
+     */
+    private String dbInstanceMode;
+    /**
+     * @return The description of the instance.
      * 
      */
     private String description;
     /**
-     * @return Database engine type. Supported option is `gpdb`.
+     * @return The database engine used by the instance.
      * 
      */
     private String engine;
     /**
-     * @return Database engine version.
+     * @return The version of the database engine used by the instance.
      * 
      */
     private String engineVersion;
     /**
-     * @return The instance id.
+     * @return The ID of the db Instance.
      * 
      */
     private String id;
     /**
-     * @return The group type.
+     * @return The network type of the instance.
      * 
      */
-    private String instanceClass;
-    /**
-     * @return The number of groups.
-     * 
-     */
-    private String instanceGroupCount;
     private String instanceNetworkType;
+    /**
+     * @return The ip whitelist.
+     * 
+     */
+    private List<GetInstancesInstanceIpWhitelist> ipWhitelists;
+    /**
+     * @return The end time of the maintenance window for the instance.
+     * 
+     */
+    private String maintainEndTime;
+    /**
+     * @return The start time of the maintenance window for the instance.
+     * 
+     */
+    private String maintainStartTime;
+    /**
+     * @return The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * 
+     */
+    private String masterNodeNum;
+    /**
+     * @return The memory size of the compute node.
+     * 
+     */
+    private String memorySize;
+    /**
+     * @return The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+     * 
+     */
+    private String paymentType;
     /**
      * @return Region ID the instance belongs to.
      * 
      */
     private String regionId;
     /**
-     * @return Status of the instance.
+     * @return Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * 
+     */
+    private String segNodeNum;
+    /**
+     * @return The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
      * 
      */
     private String status;
+    /**
+     * @return The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * 
+     */
+    private Integer storageSize;
+    /**
+     * @return The type of disks. Valid values: `cloud_essd`, `cloud_efficiency`.
+     * 
+     */
+    private String storageType;
+    /**
+     * @return The tags of the instance.
+     * 
+     */
+    private Map<String,Object> tags;
+    /**
+     * @return The ID of the VPC。.
+     * 
+     */
+    private String vpcId;
+    /**
+     * @return The vswitch id.
+     * 
+     */
+    private String vswitchId;
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
+    private String zoneId;
 
     private GetInstancesInstance() {}
     /**
@@ -74,64 +165,137 @@ public final class GetInstancesInstance {
     public String availabilityZone() {
         return this.availabilityZone;
     }
-    /**
-     * @return Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
-     * 
-     */
     public String chargeType() {
         return this.chargeType;
     }
     /**
-     * @return The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
+     * @return The connection string of the instance.
      * 
      */
+    public String connectionString() {
+        return this.connectionString;
+    }
+    /**
+     * @return The number of CPU cores of the computing node. Unit: Core.
+     * 
+     */
+    public String cpuCores() {
+        return this.cpuCores;
+    }
+    /**
+     * @return The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+     * 
+     */
+    public String createTime() {
+        return this.createTime;
+    }
     public String creationTime() {
         return this.creationTime;
     }
     /**
-     * @return The description of an instance.
+     * @return The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * 
+     */
+    public String dbInstanceCategory() {
+        return this.dbInstanceCategory;
+    }
+    /**
+     * @return The db instance class.
+     * 
+     */
+    public String dbInstanceClass() {
+        return this.dbInstanceClass;
+    }
+    /**
+     * @return The db instance id.
+     * 
+     */
+    public String dbInstanceId() {
+        return this.dbInstanceId;
+    }
+    /**
+     * @return The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     * 
+     */
+    public String dbInstanceMode() {
+        return this.dbInstanceMode;
+    }
+    /**
+     * @return The description of the instance.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return Database engine type. Supported option is `gpdb`.
+     * @return The database engine used by the instance.
      * 
      */
     public String engine() {
         return this.engine;
     }
     /**
-     * @return Database engine version.
+     * @return The version of the database engine used by the instance.
      * 
      */
     public String engineVersion() {
         return this.engineVersion;
     }
     /**
-     * @return The instance id.
+     * @return The ID of the db Instance.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The group type.
+     * @return The network type of the instance.
      * 
      */
-    public String instanceClass() {
-        return this.instanceClass;
-    }
-    /**
-     * @return The number of groups.
-     * 
-     */
-    public String instanceGroupCount() {
-        return this.instanceGroupCount;
-    }
     public String instanceNetworkType() {
         return this.instanceNetworkType;
+    }
+    /**
+     * @return The ip whitelist.
+     * 
+     */
+    public List<GetInstancesInstanceIpWhitelist> ipWhitelists() {
+        return this.ipWhitelists;
+    }
+    /**
+     * @return The end time of the maintenance window for the instance.
+     * 
+     */
+    public String maintainEndTime() {
+        return this.maintainEndTime;
+    }
+    /**
+     * @return The start time of the maintenance window for the instance.
+     * 
+     */
+    public String maintainStartTime() {
+        return this.maintainStartTime;
+    }
+    /**
+     * @return The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * 
+     */
+    public String masterNodeNum() {
+        return this.masterNodeNum;
+    }
+    /**
+     * @return The memory size of the compute node.
+     * 
+     */
+    public String memorySize() {
+        return this.memorySize;
+    }
+    /**
+     * @return The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+     * 
+     */
+    public String paymentType() {
+        return this.paymentType;
     }
     /**
      * @return Region ID the instance belongs to.
@@ -141,11 +305,60 @@ public final class GetInstancesInstance {
         return this.regionId;
     }
     /**
-     * @return Status of the instance.
+     * @return Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * 
+     */
+    public String segNodeNum() {
+        return this.segNodeNum;
+    }
+    /**
+     * @return The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
      * 
      */
     public String status() {
         return this.status;
+    }
+    /**
+     * @return The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * 
+     */
+    public Integer storageSize() {
+        return this.storageSize;
+    }
+    /**
+     * @return The type of disks. Valid values: `cloud_essd`, `cloud_efficiency`.
+     * 
+     */
+    public String storageType() {
+        return this.storageType;
+    }
+    /**
+     * @return The tags of the instance.
+     * 
+     */
+    public Map<String,Object> tags() {
+        return this.tags;
+    }
+    /**
+     * @return The ID of the VPC。.
+     * 
+     */
+    public String vpcId() {
+        return this.vpcId;
+    }
+    /**
+     * @return The vswitch id.
+     * 
+     */
+    public String vswitchId() {
+        return this.vswitchId;
+    }
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
+    public String zoneId() {
+        return this.zoneId;
     }
 
     public static Builder builder() {
@@ -159,31 +372,67 @@ public final class GetInstancesInstance {
     public static final class Builder {
         private String availabilityZone;
         private String chargeType;
+        private String connectionString;
+        private String cpuCores;
+        private String createTime;
         private String creationTime;
+        private String dbInstanceCategory;
+        private String dbInstanceClass;
+        private String dbInstanceId;
+        private String dbInstanceMode;
         private String description;
         private String engine;
         private String engineVersion;
         private String id;
-        private String instanceClass;
-        private String instanceGroupCount;
         private String instanceNetworkType;
+        private List<GetInstancesInstanceIpWhitelist> ipWhitelists;
+        private String maintainEndTime;
+        private String maintainStartTime;
+        private String masterNodeNum;
+        private String memorySize;
+        private String paymentType;
         private String regionId;
+        private String segNodeNum;
         private String status;
+        private Integer storageSize;
+        private String storageType;
+        private Map<String,Object> tags;
+        private String vpcId;
+        private String vswitchId;
+        private String zoneId;
         public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
     	      this.chargeType = defaults.chargeType;
+    	      this.connectionString = defaults.connectionString;
+    	      this.cpuCores = defaults.cpuCores;
+    	      this.createTime = defaults.createTime;
     	      this.creationTime = defaults.creationTime;
+    	      this.dbInstanceCategory = defaults.dbInstanceCategory;
+    	      this.dbInstanceClass = defaults.dbInstanceClass;
+    	      this.dbInstanceId = defaults.dbInstanceId;
+    	      this.dbInstanceMode = defaults.dbInstanceMode;
     	      this.description = defaults.description;
     	      this.engine = defaults.engine;
     	      this.engineVersion = defaults.engineVersion;
     	      this.id = defaults.id;
-    	      this.instanceClass = defaults.instanceClass;
-    	      this.instanceGroupCount = defaults.instanceGroupCount;
     	      this.instanceNetworkType = defaults.instanceNetworkType;
+    	      this.ipWhitelists = defaults.ipWhitelists;
+    	      this.maintainEndTime = defaults.maintainEndTime;
+    	      this.maintainStartTime = defaults.maintainStartTime;
+    	      this.masterNodeNum = defaults.masterNodeNum;
+    	      this.memorySize = defaults.memorySize;
+    	      this.paymentType = defaults.paymentType;
     	      this.regionId = defaults.regionId;
+    	      this.segNodeNum = defaults.segNodeNum;
     	      this.status = defaults.status;
+    	      this.storageSize = defaults.storageSize;
+    	      this.storageType = defaults.storageType;
+    	      this.tags = defaults.tags;
+    	      this.vpcId = defaults.vpcId;
+    	      this.vswitchId = defaults.vswitchId;
+    	      this.zoneId = defaults.zoneId;
         }
 
         @CustomType.Setter
@@ -197,8 +446,43 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder connectionString(String connectionString) {
+            this.connectionString = Objects.requireNonNull(connectionString);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cpuCores(String cpuCores) {
+            this.cpuCores = Objects.requireNonNull(cpuCores);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            this.createTime = Objects.requireNonNull(createTime);
+            return this;
+        }
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dbInstanceCategory(String dbInstanceCategory) {
+            this.dbInstanceCategory = Objects.requireNonNull(dbInstanceCategory);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dbInstanceClass(String dbInstanceClass) {
+            this.dbInstanceClass = Objects.requireNonNull(dbInstanceClass);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dbInstanceId(String dbInstanceId) {
+            this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dbInstanceMode(String dbInstanceMode) {
+            this.dbInstanceMode = Objects.requireNonNull(dbInstanceMode);
             return this;
         }
         @CustomType.Setter
@@ -222,18 +506,41 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder instanceClass(String instanceClass) {
-            this.instanceClass = Objects.requireNonNull(instanceClass);
-            return this;
-        }
-        @CustomType.Setter
-        public Builder instanceGroupCount(String instanceGroupCount) {
-            this.instanceGroupCount = Objects.requireNonNull(instanceGroupCount);
-            return this;
-        }
-        @CustomType.Setter
         public Builder instanceNetworkType(String instanceNetworkType) {
             this.instanceNetworkType = Objects.requireNonNull(instanceNetworkType);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipWhitelists(List<GetInstancesInstanceIpWhitelist> ipWhitelists) {
+            this.ipWhitelists = Objects.requireNonNull(ipWhitelists);
+            return this;
+        }
+        public Builder ipWhitelists(GetInstancesInstanceIpWhitelist... ipWhitelists) {
+            return ipWhitelists(List.of(ipWhitelists));
+        }
+        @CustomType.Setter
+        public Builder maintainEndTime(String maintainEndTime) {
+            this.maintainEndTime = Objects.requireNonNull(maintainEndTime);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maintainStartTime(String maintainStartTime) {
+            this.maintainStartTime = Objects.requireNonNull(maintainStartTime);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder masterNodeNum(String masterNodeNum) {
+            this.masterNodeNum = Objects.requireNonNull(masterNodeNum);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder memorySize(String memorySize) {
+            this.memorySize = Objects.requireNonNull(memorySize);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder paymentType(String paymentType) {
+            this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
         @CustomType.Setter
@@ -242,24 +549,77 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder segNodeNum(String segNodeNum) {
+            this.segNodeNum = Objects.requireNonNull(segNodeNum);
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder storageSize(Integer storageSize) {
+            this.storageSize = Objects.requireNonNull(storageSize);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder storageType(String storageType) {
+            this.storageType = Objects.requireNonNull(storageType);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tags(Map<String,Object> tags) {
+            this.tags = Objects.requireNonNull(tags);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vpcId(String vpcId) {
+            this.vpcId = Objects.requireNonNull(vpcId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vswitchId(String vswitchId) {
+            this.vswitchId = Objects.requireNonNull(vswitchId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder zoneId(String zoneId) {
+            this.zoneId = Objects.requireNonNull(zoneId);
             return this;
         }
         public GetInstancesInstance build() {
             final var o = new GetInstancesInstance();
             o.availabilityZone = availabilityZone;
             o.chargeType = chargeType;
+            o.connectionString = connectionString;
+            o.cpuCores = cpuCores;
+            o.createTime = createTime;
             o.creationTime = creationTime;
+            o.dbInstanceCategory = dbInstanceCategory;
+            o.dbInstanceClass = dbInstanceClass;
+            o.dbInstanceId = dbInstanceId;
+            o.dbInstanceMode = dbInstanceMode;
             o.description = description;
             o.engine = engine;
             o.engineVersion = engineVersion;
             o.id = id;
-            o.instanceClass = instanceClass;
-            o.instanceGroupCount = instanceGroupCount;
             o.instanceNetworkType = instanceNetworkType;
+            o.ipWhitelists = ipWhitelists;
+            o.maintainEndTime = maintainEndTime;
+            o.maintainStartTime = maintainStartTime;
+            o.masterNodeNum = masterNodeNum;
+            o.memorySize = memorySize;
+            o.paymentType = paymentType;
             o.regionId = regionId;
+            o.segNodeNum = segNodeNum;
             o.status = status;
+            o.storageSize = storageSize;
+            o.storageType = storageType;
+            o.tags = tags;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
             return o;
         }
     }

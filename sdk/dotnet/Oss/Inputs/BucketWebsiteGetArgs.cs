@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketWebsiteGetArgs : Pulumi.ResourceArgs
+    public sealed class BucketWebsiteGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An absolute path to the document to return in case of a 4XX error.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketWebsiteGetArgs()
         {
         }
+        public static new BucketWebsiteGetArgs Empty => new BucketWebsiteGetArgs();
     }
 }

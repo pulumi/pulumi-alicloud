@@ -19,57 +19,61 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "slbservergroups";
+        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "slbservergroups";
-        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-        ///         {
-        ///             AvailableDiskCategory = "cloud_efficiency",
-        ///             AvailableResourceCreation = "VSwitch",
-        ///         }));
-        ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-        ///         {
-        ///             VpcName = name,
-        ///             CidrBlock = "172.16.0.0/16",
-        ///         });
-        ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-        ///         {
-        ///             VpcId = defaultNetwork.Id,
-        ///             CidrBlock = "172.16.0.0/16",
-        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-        ///             VswitchName = name,
-        ///         });
-        ///         var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new AliCloud.Slb.ApplicationLoadBalancerArgs
-        ///         {
-        ///             LoadBalancerName = name,
-        ///             VswitchId = defaultSwitch.Id,
-        ///         });
-        ///         var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new AliCloud.Slb.ServerGroupArgs
-        ///         {
-        ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
-        ///         });
-        ///         var sampleDs = AliCloud.Slb.GetServerGroups.Invoke(new AliCloud.Slb.GetServerGroupsInvokeArgs
-        ///         {
-        ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
-        ///         });
-        ///         this.FirstSlbServerGroupId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbServerGroups?[0]?.Id);
-        ///     }
+        ///         AvailableDiskCategory = "cloud_efficiency",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
         /// 
-        ///     [Output("firstSlbServerGroupId")]
-        ///     public Output&lt;string&gt; FirstSlbServerGroupId { get; set; }
-        /// }
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/16",
+        ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new()
+        ///     {
+        ///         LoadBalancerName = name,
+        ///         VswitchId = defaultSwitch.Id,
+        ///     });
+        /// 
+        ///     var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new()
+        ///     {
+        ///         LoadBalancerId = defaultApplicationLoadBalancer.Id,
+        ///     });
+        /// 
+        ///     var sampleDs = AliCloud.Slb.GetServerGroups.Invoke(new()
+        ///     {
+        ///         LoadBalancerId = defaultApplicationLoadBalancer.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbServerGroupId"] = sampleDs.Apply(getServerGroupsResult =&gt; getServerGroupsResult.SlbServerGroups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerGroupsResult> InvokeAsync(GetServerGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupsResult>("alicloud:slb/getServerGroups:getServerGroups", args ?? new GetServerGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupsResult>("alicloud:slb/getServerGroups:getServerGroups", args ?? new GetServerGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the VServer groups related to a server load balancer.
@@ -79,61 +83,65 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "slbservergroups";
+        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "slbservergroups";
-        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-        ///         {
-        ///             AvailableDiskCategory = "cloud_efficiency",
-        ///             AvailableResourceCreation = "VSwitch",
-        ///         }));
-        ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-        ///         {
-        ///             VpcName = name,
-        ///             CidrBlock = "172.16.0.0/16",
-        ///         });
-        ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-        ///         {
-        ///             VpcId = defaultNetwork.Id,
-        ///             CidrBlock = "172.16.0.0/16",
-        ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-        ///             VswitchName = name,
-        ///         });
-        ///         var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new AliCloud.Slb.ApplicationLoadBalancerArgs
-        ///         {
-        ///             LoadBalancerName = name,
-        ///             VswitchId = defaultSwitch.Id,
-        ///         });
-        ///         var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new AliCloud.Slb.ServerGroupArgs
-        ///         {
-        ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
-        ///         });
-        ///         var sampleDs = AliCloud.Slb.GetServerGroups.Invoke(new AliCloud.Slb.GetServerGroupsInvokeArgs
-        ///         {
-        ///             LoadBalancerId = defaultApplicationLoadBalancer.Id,
-        ///         });
-        ///         this.FirstSlbServerGroupId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbServerGroups?[0]?.Id);
-        ///     }
+        ///         AvailableDiskCategory = "cloud_efficiency",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
         /// 
-        ///     [Output("firstSlbServerGroupId")]
-        ///     public Output&lt;string&gt; FirstSlbServerGroupId { get; set; }
-        /// }
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "172.16.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/16",
+        ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new()
+        ///     {
+        ///         LoadBalancerName = name,
+        ///         VswitchId = defaultSwitch.Id,
+        ///     });
+        /// 
+        ///     var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new()
+        ///     {
+        ///         LoadBalancerId = defaultApplicationLoadBalancer.Id,
+        ///     });
+        /// 
+        ///     var sampleDs = AliCloud.Slb.GetServerGroups.Invoke(new()
+        ///     {
+        ///         LoadBalancerId = defaultApplicationLoadBalancer.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbServerGroupId"] = sampleDs.Apply(getServerGroupsResult =&gt; getServerGroupsResult.SlbServerGroups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerGroupsResult> Invoke(GetServerGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerGroupsResult>("alicloud:slb/getServerGroups:getServerGroups", args ?? new GetServerGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupsResult>("alicloud:slb/getServerGroups:getServerGroups", args ?? new GetServerGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServerGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetServerGroupsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -165,9 +173,10 @@ namespace Pulumi.AliCloud.Slb
         public GetServerGroupsArgs()
         {
         }
+        public static new GetServerGroupsArgs Empty => new GetServerGroupsArgs();
     }
 
-    public sealed class GetServerGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServerGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -199,6 +208,7 @@ namespace Pulumi.AliCloud.Slb
         public GetServerGroupsInvokeArgs()
         {
         }
+        public static new GetServerGroupsInvokeArgs Empty => new GetServerGroupsInvokeArgs();
     }
 
 

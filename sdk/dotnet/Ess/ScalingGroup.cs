@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Ess
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ess/scalingGroup:ScalingGroup")]
-    public partial class ScalingGroup : Pulumi.CustomResource
+    public partial class ScalingGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
@@ -52,6 +52,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("groupType")]
         public Output<string> GroupType { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+        /// </summary>
+        [Output("healthCheckType")]
+        public Output<string> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
         /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
@@ -204,7 +210,7 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
-    public sealed class ScalingGroupArgs : Pulumi.ResourceArgs
+    public sealed class ScalingGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("dbInstanceIds")]
         private InputList<string>? _dbInstanceIds;
@@ -243,6 +249,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
+
+        /// <summary>
+        /// Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+        /// </summary>
+        [Input("healthCheckType")]
+        public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
         /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
@@ -384,9 +396,10 @@ namespace Pulumi.AliCloud.Ess
         public ScalingGroupArgs()
         {
         }
+        public static new ScalingGroupArgs Empty => new ScalingGroupArgs();
     }
 
-    public sealed class ScalingGroupState : Pulumi.ResourceArgs
+    public sealed class ScalingGroupState : global::Pulumi.ResourceArgs
     {
         [Input("dbInstanceIds")]
         private InputList<string>? _dbInstanceIds;
@@ -425,6 +438,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
+
+        /// <summary>
+        /// Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+        /// </summary>
+        [Input("healthCheckType")]
+        public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
         /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
@@ -566,5 +585,6 @@ namespace Pulumi.AliCloud.Ess
         public ScalingGroupState()
         {
         }
+        public static new ScalingGroupState Empty => new ScalingGroupState();
     }
 }

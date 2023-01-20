@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ServiceMesh.Inputs
 {
 
-    public sealed class ServiceMeshMeshConfigPilotGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMeshMeshConfigPilotGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to support the HTTP1.0.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public ServiceMeshMeshConfigPilotGetArgs()
         {
         }
+        public static new ServiceMeshMeshConfigPilotGetArgs Empty => new ServiceMeshMeshConfigPilotGetArgs();
     }
 }

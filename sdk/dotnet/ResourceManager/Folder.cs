@@ -22,20 +22,18 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.ResourceManager.Folder("example", new()
     ///     {
-    ///         var example = new AliCloud.ResourceManager.Folder("example", new AliCloud.ResourceManager.FolderArgs
-    ///         {
-    ///             FolderName = "test",
-    ///         });
-    ///     }
+    ///         FolderName = "test",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/folder:Folder")]
-    public partial class Folder : Pulumi.CustomResource
+    public partial class Folder : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
@@ -105,7 +103,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class FolderArgs : Pulumi.ResourceArgs
+    public sealed class FolderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
@@ -122,9 +120,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public FolderArgs()
         {
         }
+        public static new FolderArgs Empty => new FolderArgs();
     }
 
-    public sealed class FolderState : Pulumi.ResourceArgs
+    public sealed class FolderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
@@ -141,5 +140,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public FolderState()
         {
         }
+        public static new FolderState Empty => new FolderState();
     }
 }

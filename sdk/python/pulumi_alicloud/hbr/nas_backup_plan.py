@@ -22,6 +22,9 @@ class NasBackupPlanArgs:
                  schedule: pulumi.Input[str],
                  vault_id: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  options: Optional[pulumi.Input[str]] = None):
         """
@@ -34,7 +37,11 @@ class NasBackupPlanArgs:
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         :param pulumi.Input[str] create_time: This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
+        :param pulumi.Input[str] options: This parameter specifies whether to use Windows VSS to define a backup path.
         """
         pulumi.set(__self__, "backup_type", backup_type)
         pulumi.set(__self__, "file_system_id", file_system_id)
@@ -48,6 +55,12 @@ class NasBackupPlanArgs:
             pulumi.log.warn("""create_time is deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.""")
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if cross_account_role_name is not None:
+            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+        if cross_account_type is not None:
+            pulumi.set(__self__, "cross_account_type", cross_account_type)
+        if cross_account_user_id is not None:
+            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if options is not None:
@@ -150,6 +163,42 @@ class NasBackupPlanArgs:
         pulumi.set(self, "create_time", value)
 
     @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @cross_account_role_name.setter
+    def cross_account_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_role_name", value)
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @cross_account_type.setter
+    def cross_account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_type", value)
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The original account ID of the cross account backup managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_user_id")
+
+    @cross_account_user_id.setter
+    def cross_account_user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cross_account_user_id", value)
+
+    @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -164,6 +213,9 @@ class NasBackupPlanArgs:
     @property
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
+        """
+        This parameter specifies whether to use Windows VSS to define a backup path.
+        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -176,6 +228,9 @@ class _NasBackupPlanState:
     def __init__(__self__, *,
                  backup_type: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  nas_backup_plan_name: Optional[pulumi.Input[str]] = None,
@@ -188,9 +243,13 @@ class _NasBackupPlanState:
         Input properties used for looking up and filtering NasBackupPlan resources.
         :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] create_time: This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] file_system_id: The File System ID of Nas.
         :param pulumi.Input[str] nas_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[str] options: This parameter specifies whether to use Windows VSS to define a backup path.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
@@ -203,6 +262,12 @@ class _NasBackupPlanState:
             pulumi.log.warn("""create_time is deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.""")
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if cross_account_role_name is not None:
+            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+        if cross_account_type is not None:
+            pulumi.set(__self__, "cross_account_type", cross_account_type)
+        if cross_account_user_id is not None:
+            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if file_system_id is not None:
@@ -245,6 +310,42 @@ class _NasBackupPlanState:
         pulumi.set(self, "create_time", value)
 
     @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @cross_account_role_name.setter
+    def cross_account_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_role_name", value)
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @cross_account_type.setter
+    def cross_account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_type", value)
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The original account ID of the cross account backup managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_user_id")
+
+    @cross_account_user_id.setter
+    def cross_account_user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cross_account_user_id", value)
+
+    @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -283,6 +384,9 @@ class _NasBackupPlanState:
     @property
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[str]]:
+        """
+        This parameter specifies whether to use Windows VSS to define a backup path.
+        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -345,6 +449,9 @@ class NasBackupPlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_type: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  nas_backup_plan_name: Optional[pulumi.Input[str]] = None,
@@ -405,9 +512,13 @@ class NasBackupPlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] create_time: This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] file_system_id: The File System ID of Nas.
         :param pulumi.Input[str] nas_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[str] options: This parameter specifies whether to use Windows VSS to define a backup path.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
@@ -483,6 +594,9 @@ class NasBackupPlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_type: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  nas_backup_plan_name: Optional[pulumi.Input[str]] = None,
@@ -507,6 +621,9 @@ class NasBackupPlan(pulumi.CustomResource):
                 warnings.warn("""Field 'create_time' has been deprecated from provider version 1.153.0.""", DeprecationWarning)
                 pulumi.log.warn("""create_time is deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.""")
             __props__.__dict__["create_time"] = create_time
+            __props__.__dict__["cross_account_role_name"] = cross_account_role_name
+            __props__.__dict__["cross_account_type"] = cross_account_type
+            __props__.__dict__["cross_account_user_id"] = cross_account_user_id
             __props__.__dict__["disabled"] = disabled
             if file_system_id is None and not opts.urn:
                 raise TypeError("Missing required property 'file_system_id'")
@@ -539,6 +656,9 @@ class NasBackupPlan(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backup_type: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            cross_account_role_name: Optional[pulumi.Input[str]] = None,
+            cross_account_type: Optional[pulumi.Input[str]] = None,
+            cross_account_user_id: Optional[pulumi.Input[int]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             file_system_id: Optional[pulumi.Input[str]] = None,
             nas_backup_plan_name: Optional[pulumi.Input[str]] = None,
@@ -556,9 +676,13 @@ class NasBackupPlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] create_time: This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] file_system_id: The File System ID of Nas.
         :param pulumi.Input[str] nas_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
+        :param pulumi.Input[str] options: This parameter specifies whether to use Windows VSS to define a backup path.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
@@ -570,6 +694,9 @@ class NasBackupPlan(pulumi.CustomResource):
 
         __props__.__dict__["backup_type"] = backup_type
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["cross_account_role_name"] = cross_account_role_name
+        __props__.__dict__["cross_account_type"] = cross_account_type
+        __props__.__dict__["cross_account_user_id"] = cross_account_user_id
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["file_system_id"] = file_system_id
         __props__.__dict__["nas_backup_plan_name"] = nas_backup_plan_name
@@ -595,6 +722,30 @@ class NasBackupPlan(pulumi.CustomResource):
         This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> pulumi.Output[str]:
+        """
+        The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> pulumi.Output[Optional[int]]:
+        """
+        The original account ID of the cross account backup managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_user_id")
 
     @property
     @pulumi.getter
@@ -623,6 +774,9 @@ class NasBackupPlan(pulumi.CustomResource):
     @property
     @pulumi.getter
     def options(self) -> pulumi.Output[Optional[str]]:
+        """
+        This parameter specifies whether to use Windows VSS to define a backup path.
+        """
         return pulumi.get(self, "options")
 
     @property

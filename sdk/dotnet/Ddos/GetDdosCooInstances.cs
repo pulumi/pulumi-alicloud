@@ -19,30 +19,29 @@ namespace Pulumi.AliCloud.Ddos
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instanceDdosCooInstances = AliCloud.Ddos.GetDdosCooInstances.Invoke(new()
         ///     {
-        ///         var instanceDdosCooInstances = Output.Create(AliCloud.Ddos.GetDdosCooInstances.InvokeAsync(new AliCloud.Ddos.GetDdosCooInstancesArgs
-        ///         {
-        ///             NameRegex = "^ddoscoo",
-        ///         }));
-        ///         this.Instance = alicloud_ddoscoo_instances.Instance.Select(__item =&gt; __item.Id).ToList();
-        ///     }
+        ///         NameRegex = "^ddoscoo",
+        ///     });
         /// 
-        ///     [Output("instance")]
-        ///     public Output&lt;string&gt; Instance { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instance"] = alicloud_ddoscoo_instances.Instance.Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDdosCooInstancesResult> InvokeAsync(GetDdosCooInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooInstancesResult>("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args ?? new GetDdosCooInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooInstancesResult>("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args ?? new GetDdosCooInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
@@ -52,34 +51,33 @@ namespace Pulumi.AliCloud.Ddos
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instanceDdosCooInstances = AliCloud.Ddos.GetDdosCooInstances.Invoke(new()
         ///     {
-        ///         var instanceDdosCooInstances = Output.Create(AliCloud.Ddos.GetDdosCooInstances.InvokeAsync(new AliCloud.Ddos.GetDdosCooInstancesArgs
-        ///         {
-        ///             NameRegex = "^ddoscoo",
-        ///         }));
-        ///         this.Instance = alicloud_ddoscoo_instances.Instance.Select(__item =&gt; __item.Id).ToList();
-        ///     }
+        ///         NameRegex = "^ddoscoo",
+        ///     });
         /// 
-        ///     [Output("instance")]
-        ///     public Output&lt;string&gt; Instance { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instance"] = alicloud_ddoscoo_instances.Instance.Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDdosCooInstancesResult> Invoke(GetDdosCooInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDdosCooInstancesResult>("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args ?? new GetDdosCooInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDdosCooInstancesResult>("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args ?? new GetDdosCooInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDdosCooInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetDdosCooInstancesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -105,9 +103,10 @@ namespace Pulumi.AliCloud.Ddos
         public GetDdosCooInstancesArgs()
         {
         }
+        public static new GetDdosCooInstancesArgs Empty => new GetDdosCooInstancesArgs();
     }
 
-    public sealed class GetDdosCooInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDdosCooInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -133,6 +132,7 @@ namespace Pulumi.AliCloud.Ddos
         public GetDdosCooInstancesInvokeArgs()
         {
         }
+        public static new GetDdosCooInstancesInvokeArgs Empty => new GetDdosCooInstancesInvokeArgs();
     }
 
 

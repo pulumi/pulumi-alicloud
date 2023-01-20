@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.BastionHost
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.BastionHost.UserGroup("example", new()
     ///     {
-    ///         var example = new AliCloud.BastionHost.UserGroup("example", new AliCloud.BastionHost.UserGroupArgs
-    ///         {
-    ///             InstanceId = "example_value",
-    ///             UserGroupName = "example_value",
-    ///         });
-    ///     }
+    ///         InstanceId = "example_value",
+    ///         UserGroupName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/userGroup:UserGroup")]
-    public partial class UserGroup : Pulumi.CustomResource
+    public partial class UserGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specify the New Group of Remark Information. Supports up to 500 Characters.
@@ -117,7 +115,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
     }
 
-    public sealed class UserGroupArgs : Pulumi.ResourceArgs
+    public sealed class UserGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the New Group of Remark Information. Supports up to 500 Characters.
@@ -140,9 +138,10 @@ namespace Pulumi.AliCloud.BastionHost
         public UserGroupArgs()
         {
         }
+        public static new UserGroupArgs Empty => new UserGroupArgs();
     }
 
-    public sealed class UserGroupState : Pulumi.ResourceArgs
+    public sealed class UserGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the New Group of Remark Information. Supports up to 500 Characters.
@@ -171,5 +170,6 @@ namespace Pulumi.AliCloud.BastionHost
         public UserGroupState()
         {
         }
+        public static new UserGroupState Empty => new UserGroupState();
     }
 }

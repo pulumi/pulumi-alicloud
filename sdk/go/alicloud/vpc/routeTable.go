@@ -60,6 +60,8 @@ import (
 type RouteTable struct {
 	pulumi.CustomResourceState
 
+	// The type of routing table created. Valid values are `VSwitch` and `Gateway`
+	AssociateType pulumi.StringOutput `pulumi:"associateType"`
 	// The description of the route table instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
@@ -108,6 +110,8 @@ func GetRouteTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouteTable resources.
 type routeTableState struct {
+	// The type of routing table created. Valid values are `VSwitch` and `Gateway`
+	AssociateType *string `pulumi:"associateType"`
 	// The description of the route table instance.
 	Description *string `pulumi:"description"`
 	// Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
@@ -125,6 +129,8 @@ type routeTableState struct {
 }
 
 type RouteTableState struct {
+	// The type of routing table created. Valid values are `VSwitch` and `Gateway`
+	AssociateType pulumi.StringPtrInput
 	// The description of the route table instance.
 	Description pulumi.StringPtrInput
 	// Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
@@ -146,6 +152,8 @@ func (RouteTableState) ElementType() reflect.Type {
 }
 
 type routeTableArgs struct {
+	// The type of routing table created. Valid values are `VSwitch` and `Gateway`
+	AssociateType *string `pulumi:"associateType"`
 	// The description of the route table instance.
 	Description *string `pulumi:"description"`
 	// Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
@@ -162,6 +170,8 @@ type routeTableArgs struct {
 
 // The set of arguments for constructing a RouteTable resource.
 type RouteTableArgs struct {
+	// The type of routing table created. Valid values are `VSwitch` and `Gateway`
+	AssociateType pulumi.StringPtrInput
 	// The description of the route table instance.
 	Description pulumi.StringPtrInput
 	// Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
@@ -261,6 +271,11 @@ func (o RouteTableOutput) ToRouteTableOutput() RouteTableOutput {
 
 func (o RouteTableOutput) ToRouteTableOutputWithContext(ctx context.Context) RouteTableOutput {
 	return o
+}
+
+// The type of routing table created. Valid values are `VSwitch` and `Gateway`
+func (o RouteTableOutput) AssociateType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.AssociateType }).(pulumi.StringOutput)
 }
 
 // The description of the route table instance.

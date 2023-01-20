@@ -28,74 +28,77 @@ namespace Pulumi.AliCloud.Ga
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new()
     ///     {
-    ///         var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new AliCloud.Ga.AcceleratorArgs
-    ///         {
-    ///             Duration = 1,
-    ///             AutoUseCoupon = true,
-    ///             Spec = "1",
-    ///         });
-    ///         var deBandwidthPackage = new AliCloud.Ga.BandwidthPackage("deBandwidthPackage", new AliCloud.Ga.BandwidthPackageArgs
-    ///         {
-    ///             Bandwidth = 100,
-    ///             Type = "Basic",
-    ///             BandwidthType = "Basic",
-    ///             PaymentType = "PayAsYouGo",
-    ///             BillingType = "PayBy95",
-    ///             Ratio = 30,
-    ///         });
-    ///         var deBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("deBandwidthPackageAttachment", new AliCloud.Ga.BandwidthPackageAttachmentArgs
-    ///         {
-    ///             AcceleratorId = exampleAccelerator.Id,
-    ///             BandwidthPackageId = deBandwidthPackage.Id,
-    ///         });
-    ///         var exampleListener = new AliCloud.Ga.Listener("exampleListener", new AliCloud.Ga.ListenerArgs
-    ///         {
-    ///             AcceleratorId = exampleAccelerator.Id,
-    ///             PortRanges = 
-    ///             {
-    ///                 new AliCloud.Ga.Inputs.ListenerPortRangeArgs
-    ///                 {
-    ///                     FromPort = 60,
-    ///                     ToPort = 70,
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 deBandwidthPackageAttachment,
-    ///             },
-    ///         });
-    ///         var exampleEipAddress = new AliCloud.Ecs.EipAddress("exampleEipAddress", new AliCloud.Ecs.EipAddressArgs
-    ///         {
-    ///             Bandwidth = "10",
-    ///             InternetChargeType = "PayByBandwidth",
-    ///         });
-    ///         var exampleEndpointGroup = new AliCloud.Ga.EndpointGroup("exampleEndpointGroup", new AliCloud.Ga.EndpointGroupArgs
-    ///         {
-    ///             AcceleratorId = exampleAccelerator.Id,
-    ///             EndpointConfigurations = 
-    ///             {
-    ///                 new AliCloud.Ga.Inputs.EndpointGroupEndpointConfigurationArgs
-    ///                 {
-    ///                     Endpoint = exampleEipAddress.IpAddress,
-    ///                     Type = "PublicIp",
-    ///                     Weight = 20,
-    ///                 },
-    ///             },
-    ///             EndpointGroupRegion = "cn-hangzhou",
-    ///             ListenerId = exampleListener.Id,
-    ///         });
-    ///     }
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "1",
+    ///     });
     /// 
-    /// }
+    ///     var deBandwidthPackage = new AliCloud.Ga.BandwidthPackage("deBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 100,
+    ///         Type = "Basic",
+    ///         BandwidthType = "Basic",
+    ///         PaymentType = "PayAsYouGo",
+    ///         BillingType = "PayBy95",
+    ///         Ratio = 30,
+    ///     });
+    /// 
+    ///     var deBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("deBandwidthPackageAttachment", new()
+    ///     {
+    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         BandwidthPackageId = deBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var exampleListener = new AliCloud.Ga.Listener("exampleListener", new()
+    ///     {
+    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         PortRanges = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
+    ///             {
+    ///                 FromPort = 60,
+    ///                 ToPort = 70,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             deBandwidthPackageAttachment,
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleEipAddress = new AliCloud.Ecs.EipAddress("exampleEipAddress", new()
+    ///     {
+    ///         Bandwidth = "10",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///     });
+    /// 
+    ///     var exampleEndpointGroup = new AliCloud.Ga.EndpointGroup("exampleEndpointGroup", new()
+    ///     {
+    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         EndpointConfigurations = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.EndpointGroupEndpointConfigurationArgs
+    ///             {
+    ///                 Endpoint = exampleEipAddress.IpAddress,
+    ///                 Type = "PublicIp",
+    ///                 Weight = 20,
+    ///             },
+    ///         },
+    ///         EndpointGroupRegion = "cn-hangzhou",
+    ///         ListenerId = exampleListener.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -107,7 +110,7 @@ namespace Pulumi.AliCloud.Ga
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/endpointGroup:EndpointGroup")]
-    public partial class EndpointGroup : Pulumi.CustomResource
+    public partial class EndpointGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Global Accelerator instance to which the endpoint group will be added.
@@ -122,7 +125,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The endpointConfigurations of the endpoint group.
+        /// The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
         /// </summary>
         [Output("endpointConfigurations")]
         public Output<ImmutableArray<Outputs.EndpointGroupEndpointConfiguration>> EndpointConfigurations { get; private set; } = null!;
@@ -137,7 +140,7 @@ namespace Pulumi.AliCloud.Ga
         /// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
         /// </summary>
         [Output("endpointGroupType")]
-        public Output<string?> EndpointGroupType { get; private set; } = null!;
+        public Output<string> EndpointGroupType { get; private set; } = null!;
 
         /// <summary>
         /// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
@@ -182,7 +185,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Mapping between listening port and forwarding port of boarding point.
+        /// Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
         /// </summary>
         [Output("portOverrides")]
         public Output<Outputs.EndpointGroupPortOverrides?> PortOverrides { get; private set; } = null!;
@@ -249,7 +252,7 @@ namespace Pulumi.AliCloud.Ga
         }
     }
 
-    public sealed class EndpointGroupArgs : Pulumi.ResourceArgs
+    public sealed class EndpointGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Global Accelerator instance to which the endpoint group will be added.
@@ -267,7 +270,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.EndpointGroupEndpointConfigurationArgs>? _endpointConfigurations;
 
         /// <summary>
-        /// The endpointConfigurations of the endpoint group.
+        /// The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
         /// </summary>
         public InputList<Inputs.EndpointGroupEndpointConfigurationArgs> EndpointConfigurations
         {
@@ -330,7 +333,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Mapping between listening port and forwarding port of boarding point.
+        /// Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
         /// </summary>
         [Input("portOverrides")]
         public Input<Inputs.EndpointGroupPortOverridesArgs>? PortOverrides { get; set; }
@@ -350,9 +353,10 @@ namespace Pulumi.AliCloud.Ga
         public EndpointGroupArgs()
         {
         }
+        public static new EndpointGroupArgs Empty => new EndpointGroupArgs();
     }
 
-    public sealed class EndpointGroupState : Pulumi.ResourceArgs
+    public sealed class EndpointGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Global Accelerator instance to which the endpoint group will be added.
@@ -370,7 +374,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.EndpointGroupEndpointConfigurationGetArgs>? _endpointConfigurations;
 
         /// <summary>
-        /// The endpointConfigurations of the endpoint group.
+        /// The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
         /// </summary>
         public InputList<Inputs.EndpointGroupEndpointConfigurationGetArgs> EndpointConfigurations
         {
@@ -433,7 +437,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Mapping between listening port and forwarding port of boarding point.
+        /// Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
         /// </summary>
         [Input("portOverrides")]
         public Input<Inputs.EndpointGroupPortOverridesGetArgs>? PortOverrides { get; set; }
@@ -459,5 +463,6 @@ namespace Pulumi.AliCloud.Ga
         public EndpointGroupState()
         {
         }
+        public static new EndpointGroupState Empty => new EndpointGroupState();
     }
 }

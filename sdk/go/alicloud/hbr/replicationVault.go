@@ -26,8 +26,8 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -44,8 +44,8 @@ import (
 //			if param := cfg.Get("regionSource"); param != "" {
 //				regionSource = param
 //			}
-//			_, err := providers.Newalicloud(ctx, "source", &providers.alicloudArgs{
-//				Region: regionSource,
+//			_, err := alicloud.NewProvider(ctx, "source", &alicloud.ProviderArgs{
+//				Region: pulumi.String(regionSource),
 //			})
 //			if err != nil {
 //				return err
@@ -61,14 +61,14 @@ import (
 //				return err
 //			}
 //			regionReplication := defaultReplicationVaultRegions.Regions[0].ReplicationRegionId
-//			_, err = providers.Newalicloud(ctx, "replication", &providers.alicloudArgs{
-//				Region: regionReplication,
+//			_, err = alicloud.NewProvider(ctx, "replication", &alicloud.ProviderArgs{
+//				Region: *pulumi.String(regionReplication),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = hbr.NewReplicationVault(ctx, "defaultReplicationVault", &hbr.ReplicationVaultArgs{
-//				ReplicationSourceRegionId: pulumi.String(regionReplication),
+//				ReplicationSourceRegionId: *pulumi.String(regionReplication),
 //				ReplicationSourceVaultId:  defaultVault.ID(),
 //				VaultName:                 pulumi.String(name),
 //				VaultStorageClass:         pulumi.String("STANDARD"),

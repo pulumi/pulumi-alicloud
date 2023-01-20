@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .domain import *
+from .editing_project import *
 from .get_domains import *
 from ._inputs import *
 from . import outputs

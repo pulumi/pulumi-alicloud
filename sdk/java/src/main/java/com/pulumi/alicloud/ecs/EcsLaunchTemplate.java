@@ -88,6 +88,7 @@ import javax.annotation.Nullable;
  *             .internetMaxBandwidthOut(&#34;0&#34;)
  *             .ioOptimized(&#34;optimized&#34;)
  *             .keyPairName(&#34;key_pair_name&#34;)
+ *             .launchTemplateName(&#34;tf_test_name&#34;)
  *             .networkInterfaces(EcsLaunchTemplateNetworkInterfacesArgs.builder()
  *                 .description(&#34;hello1&#34;)
  *                 .name(&#34;eth0&#34;)
@@ -177,14 +178,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deploymentSetId);
     }
     /**
-     * The description of the data disk.
+     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the data disk.
+     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     public Output<Optional<String>> description() {
@@ -260,9 +261,17 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> instanceChargeType() {
         return Codegen.optional(this.instanceChargeType);
     }
+    /**
+     * The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * 
+     */
     @Export(name="instanceName", type=String.class, parameters={})
     private Output</* @Nullable */ String> instanceName;
 
+    /**
+     * @return The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * 
+     */
     public Output<Optional<String>> instanceName() {
         return Codegen.optional(this.instanceName);
     }
@@ -369,7 +378,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return this.launchTemplateName;
     }
     /**
-     * The name of the data disk.
+     * It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
@@ -380,7 +389,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The name of the data disk.
+     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
      * 
      */
     public Output<String> name() {
@@ -503,14 +512,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.securityEnhancementStrategy);
     }
     /**
-     * The security group ID must be one in the same VPC.
+     * The security group ID.
      * 
      */
     @Export(name="securityGroupId", type=String.class, parameters={})
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
-     * @return The security group ID must be one in the same VPC.
+     * @return The security group ID.
      * 
      */
     public Output<Optional<String>> securityGroupId() {
@@ -545,14 +554,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.spotDuration);
     }
     /**
-     * -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+     * Sets the maximum hourly instance price. Supports up to three decimal places.
      * 
      */
     @Export(name="spotPriceLimit", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> spotPriceLimit;
 
     /**
-     * @return -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+     * @return Sets the maximum hourly instance price. Supports up to three decimal places.
      * 
      */
     public Output<Optional<Double>> spotPriceLimit() {
@@ -587,6 +596,8 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return this.systemDisk;
     }
     /**
+     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
      * @deprecated
      * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -595,10 +606,16 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     @Export(name="systemDiskCategory", type=String.class, parameters={})
     private Output<String> systemDiskCategory;
 
+    /**
+     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
+     */
     public Output<String> systemDiskCategory() {
         return this.systemDiskCategory;
     }
     /**
+     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
      * @deprecated
      * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -607,10 +624,16 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     @Export(name="systemDiskDescription", type=String.class, parameters={})
     private Output<String> systemDiskDescription;
 
+    /**
+     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
+     */
     public Output<String> systemDiskDescription() {
         return this.systemDiskDescription;
     }
     /**
+     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
      * @deprecated
      * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -619,10 +642,16 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     @Export(name="systemDiskName", type=String.class, parameters={})
     private Output<String> systemDiskName;
 
+    /**
+     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
+     */
     public Output<String> systemDiskName() {
         return this.systemDiskName;
     }
     /**
+     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
      * @deprecated
      * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -631,6 +660,10 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     @Export(name="systemDiskSize", type=Integer.class, parameters={})
     private Output<Integer> systemDiskSize;
 
+    /**
+     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * 
+     */
     public Output<Integer> systemDiskSize() {
         return this.systemDiskSize;
     }
@@ -695,6 +728,8 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return this.userData;
     }
     /**
+     * It has been deprecated from version 1.120.0, and use field `user_data` instead.
+     * 
      * @deprecated
      * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
      * 
@@ -703,6 +738,10 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     @Export(name="userdata", type=String.class, parameters={})
     private Output<String> userdata;
 
+    /**
+     * @return It has been deprecated from version 1.120.0, and use field `user_data` instead.
+     * 
+     */
     public Output<String> userdata() {
         return this.userdata;
     }
@@ -720,21 +759,29 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> versionDescription() {
         return Codegen.optional(this.versionDescription);
     }
+    /**
+     * The ID of the VPC.
+     * 
+     */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output<String> vpcId;
 
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
     public Output<String> vpcId() {
         return this.vpcId;
     }
     /**
-     * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      * 
      */
     @Export(name="vswitchId", type=String.class, parameters={})
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * @return When creating a VPC-Connected instance, you must specify its VSwitch ID.
      * 
      */
     public Output<Optional<String>> vswitchId() {

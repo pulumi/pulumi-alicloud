@@ -18,6 +18,7 @@ class NatGatewayArgs:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 eip_bind_mode: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -37,6 +38,9 @@ class NatGatewayArgs:
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
+        :param pulumi.Input[bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
+        :param pulumi.Input[str] eip_bind_mode: The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        :param pulumi.Input[bool] force: Specifies whether to forcefully delete the NAT gateway.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
@@ -55,6 +59,8 @@ class NatGatewayArgs:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if eip_bind_mode is not None:
+            pulumi.set(__self__, "eip_bind_mode", eip_bind_mode)
         if force is not None:
             pulumi.set(__self__, "force", force)
         if instance_charge_type is not None:
@@ -121,6 +127,9 @@ class NatGatewayArgs:
     @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to only precheck this request. Default value: `false`.
+        """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
@@ -128,8 +137,23 @@ class NatGatewayArgs:
         pulumi.set(self, "dry_run", value)
 
     @property
+    @pulumi.getter(name="eipBindMode")
+    def eip_bind_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        """
+        return pulumi.get(self, "eip_bind_mode")
+
+    @eip_bind_mode.setter
+    def eip_bind_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eip_bind_mode", value)
+
+    @property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to forcefully delete the NAT gateway.
+        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -272,6 +296,7 @@ class _NatGatewayState:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 eip_bind_mode: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  forward_table_ids: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -294,6 +319,9 @@ class _NatGatewayState:
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
+        :param pulumi.Input[bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
+        :param pulumi.Input[str] eip_bind_mode: The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        :param pulumi.Input[bool] force: Specifies whether to forcefully delete the NAT gateway.
         :param pulumi.Input[str] forward_table_ids: The nat gateway will auto create a forward item.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
@@ -315,6 +343,8 @@ class _NatGatewayState:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if eip_bind_mode is not None:
+            pulumi.set(__self__, "eip_bind_mode", eip_bind_mode)
         if force is not None:
             pulumi.set(__self__, "force", force)
         if forward_table_ids is not None:
@@ -377,6 +407,9 @@ class _NatGatewayState:
     @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to only precheck this request. Default value: `false`.
+        """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
@@ -384,8 +417,23 @@ class _NatGatewayState:
         pulumi.set(self, "dry_run", value)
 
     @property
+    @pulumi.getter(name="eipBindMode")
+    def eip_bind_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        """
+        return pulumi.get(self, "eip_bind_mode")
+
+    @eip_bind_mode.setter
+    def eip_bind_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eip_bind_mode", value)
+
+    @property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to forcefully delete the NAT gateway.
+        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -578,6 +626,7 @@ class NatGateway(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 eip_bind_mode: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -598,7 +647,7 @@ class NatGateway(pulumi.CustomResource):
         Nat gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/natGateway:NatGateway example ngw-abc123456
+         $ pulumi import alicloud:vpc/natGateway:NatGateway example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -607,6 +656,9 @@ class NatGateway(pulumi.CustomResource):
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
+        :param pulumi.Input[bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
+        :param pulumi.Input[str] eip_bind_mode: The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        :param pulumi.Input[bool] force: Specifies whether to forcefully delete the NAT gateway.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
@@ -631,7 +683,7 @@ class NatGateway(pulumi.CustomResource):
         Nat gateway can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/natGateway:NatGateway example ngw-abc123456
+         $ pulumi import alicloud:vpc/natGateway:NatGateway example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -652,6 +704,7 @@ class NatGateway(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 eip_bind_mode: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
@@ -677,6 +730,7 @@ class NatGateway(pulumi.CustomResource):
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["dry_run"] = dry_run
+            __props__.__dict__["eip_bind_mode"] = eip_bind_mode
             __props__.__dict__["force"] = force
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
@@ -708,6 +762,7 @@ class NatGateway(pulumi.CustomResource):
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
+            eip_bind_mode: Optional[pulumi.Input[str]] = None,
             force: Optional[pulumi.Input[bool]] = None,
             forward_table_ids: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -735,6 +790,9 @@ class NatGateway(pulumi.CustomResource):
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
+        :param pulumi.Input[bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
+        :param pulumi.Input[str] eip_bind_mode: The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        :param pulumi.Input[bool] force: Specifies whether to forcefully delete the NAT gateway.
         :param pulumi.Input[str] forward_table_ids: The nat gateway will auto create a forward item.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
@@ -757,6 +815,7 @@ class NatGateway(pulumi.CustomResource):
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["dry_run"] = dry_run
+        __props__.__dict__["eip_bind_mode"] = eip_bind_mode
         __props__.__dict__["force"] = force
         __props__.__dict__["forward_table_ids"] = forward_table_ids
         __props__.__dict__["instance_charge_type"] = instance_charge_type
@@ -796,11 +855,25 @@ class NatGateway(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to only precheck this request. Default value: `false`.
+        """
         return pulumi.get(self, "dry_run")
+
+    @property
+    @pulumi.getter(name="eipBindMode")
+    def eip_bind_mode(self) -> pulumi.Output[str]:
+        """
+        The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        """
+        return pulumi.get(self, "eip_bind_mode")
 
     @property
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to forcefully delete the NAT gateway.
+        """
         return pulumi.get(self, "force")
 
     @property

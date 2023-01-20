@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class EciScalingConfigurationContainerArgs : Pulumi.ResourceArgs
+    public sealed class EciScalingConfigurationContainerArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         }
 
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
@@ -47,6 +47,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
         /// <summary>
         /// The structure of environmentVars.
+        /// See Block_environment_var_in_init_container below for details.
         /// See Block_environment_var_in_container below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationContainerEnvironmentVarArgs> EnvironmentVars
@@ -73,14 +74,80 @@ namespace Pulumi.AliCloud.Ess.Inputs
         [Input("imagePullPolicy")]
         public Input<string>? ImagePullPolicy { get; set; }
 
+        [Input("livenessProbeExecCommands")]
+        private InputList<string>? _livenessProbeExecCommands;
+
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// Commands that you want to run in containers when you use the CLI to perform liveness probes.
+        /// </summary>
+        public InputList<string> LivenessProbeExecCommands
+        {
+            get => _livenessProbeExecCommands ?? (_livenessProbeExecCommands = new InputList<string>());
+            set => _livenessProbeExecCommands = value;
+        }
+
+        /// <summary>
+        /// The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
+        /// </summary>
+        [Input("livenessProbeFailureThreshold")]
+        public Input<int>? LivenessProbeFailureThreshold { get; set; }
+
+        /// <summary>
+        /// The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+        /// </summary>
+        [Input("livenessProbeHttpGetPath")]
+        public Input<string>? LivenessProbeHttpGetPath { get; set; }
+
+        /// <summary>
+        /// The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+        /// </summary>
+        [Input("livenessProbeHttpGetPort")]
+        public Input<int>? LivenessProbeHttpGetPort { get; set; }
+
+        /// <summary>
+        /// The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
+        /// </summary>
+        [Input("livenessProbeHttpGetScheme")]
+        public Input<string>? LivenessProbeHttpGetScheme { get; set; }
+
+        /// <summary>
+        /// The number of seconds after container has started before liveness probes are initiated.
+        /// </summary>
+        [Input("livenessProbeInitialDelaySeconds")]
+        public Input<int>? LivenessProbeInitialDelaySeconds { get; set; }
+
+        /// <summary>
+        /// The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        /// </summary>
+        [Input("livenessProbePeriodSeconds")]
+        public Input<int>? LivenessProbePeriodSeconds { get; set; }
+
+        /// <summary>
+        /// The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+        /// </summary>
+        [Input("livenessProbeSuccessThreshold")]
+        public Input<int>? LivenessProbeSuccessThreshold { get; set; }
+
+        /// <summary>
+        /// The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
+        /// </summary>
+        [Input("livenessProbeTcpSocketPort")]
+        public Input<int>? LivenessProbeTcpSocketPort { get; set; }
+
+        /// <summary>
+        /// The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+        /// </summary>
+        [Input("livenessProbeTimeoutSeconds")]
+        public Input<int>? LivenessProbeTimeoutSeconds { get; set; }
+
+        /// <summary>
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
 
         /// <summary>
-        /// The name of the mounted volume.
+        /// The name of the volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -89,7 +156,8 @@ namespace Pulumi.AliCloud.Ess.Inputs
         private InputList<Inputs.EciScalingConfigurationContainerPortArgs>? _ports;
 
         /// <summary>
-        /// The structure of port. See Block_port_in_container below for details.
+        /// The structure of port. See Block_port_in_init_container below
+        /// for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationContainerPortArgs> Ports
         {
@@ -97,11 +165,78 @@ namespace Pulumi.AliCloud.Ess.Inputs
             set => _ports = value;
         }
 
+        [Input("readinessProbeExecCommands")]
+        private InputList<string>? _readinessProbeExecCommands;
+
+        /// <summary>
+        /// Commands that you want to run in containers when you use the CLI to perform readiness probes.
+        /// </summary>
+        public InputList<string> ReadinessProbeExecCommands
+        {
+            get => _readinessProbeExecCommands ?? (_readinessProbeExecCommands = new InputList<string>());
+            set => _readinessProbeExecCommands = value;
+        }
+
+        /// <summary>
+        /// The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
+        /// </summary>
+        [Input("readinessProbeFailureThreshold")]
+        public Input<int>? ReadinessProbeFailureThreshold { get; set; }
+
+        /// <summary>
+        /// The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+        /// </summary>
+        [Input("readinessProbeHttpGetPath")]
+        public Input<string>? ReadinessProbeHttpGetPath { get; set; }
+
+        /// <summary>
+        /// The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+        /// </summary>
+        [Input("readinessProbeHttpGetPort")]
+        public Input<int>? ReadinessProbeHttpGetPort { get; set; }
+
+        /// <summary>
+        /// The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
+        /// </summary>
+        [Input("readinessProbeHttpGetScheme")]
+        public Input<string>? ReadinessProbeHttpGetScheme { get; set; }
+
+        /// <summary>
+        /// The number of seconds after container N has started before readiness probes are initiated.
+        /// </summary>
+        [Input("readinessProbeInitialDelaySeconds")]
+        public Input<int>? ReadinessProbeInitialDelaySeconds { get; set; }
+
+        /// <summary>
+        /// The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        /// </summary>
+        [Input("readinessProbePeriodSeconds")]
+        public Input<int>? ReadinessProbePeriodSeconds { get; set; }
+
+        /// <summary>
+        /// The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+        /// </summary>
+        [Input("readinessProbeSuccessThreshold")]
+        public Input<int>? ReadinessProbeSuccessThreshold { get; set; }
+
+        /// <summary>
+        /// The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
+        /// </summary>
+        [Input("readinessProbeTcpSocketPort")]
+        public Input<int>? ReadinessProbeTcpSocketPort { get; set; }
+
+        /// <summary>
+        /// The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+        /// </summary>
+        [Input("readinessProbeTimeoutSeconds")]
+        public Input<int>? ReadinessProbeTimeoutSeconds { get; set; }
+
         [Input("volumeMounts")]
         private InputList<Inputs.EciScalingConfigurationContainerVolumeMountArgs>? _volumeMounts;
 
         /// <summary>
         /// The structure of volumeMounts.
+        /// See Block_volume_mount_in_init_container below for details.
         /// See Block_volume_mount_in_container below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationContainerVolumeMountArgs> VolumeMounts
@@ -119,5 +254,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public EciScalingConfigurationContainerArgs()
         {
         }
+        public static new EciScalingConfigurationContainerArgs Empty => new EciScalingConfigurationContainerArgs();
     }
 }

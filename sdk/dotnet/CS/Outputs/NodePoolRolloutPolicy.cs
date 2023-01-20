@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class NodePoolRolloutPolicy
     {
         /// <summary>
-        /// Max number of unavailable nodes. Default to `1`.
+        /// Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
         /// </summary>
         public readonly int? MaxUnavailable;
 

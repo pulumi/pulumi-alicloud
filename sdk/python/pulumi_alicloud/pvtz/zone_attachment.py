@@ -245,12 +245,11 @@ class ZoneAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         zone = alicloud.pvtz.Zone("zone")
         first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
         second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
-        eu = pulumi.providers.Alicloud("eu", region="eu-central-1")
+        eu = alicloud.Provider("eu", region="eu-central-1")
         third = alicloud.vpc.Network("third", cidr_block="172.16.0.0/16",
         opts=pulumi.ResourceOptions(provider=alicloud["eu"]))
         zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",
@@ -337,12 +336,11 @@ class ZoneAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         zone = alicloud.pvtz.Zone("zone")
         first = alicloud.vpc.Network("first", cidr_block="172.16.0.0/12")
         second = alicloud.vpc.Network("second", cidr_block="172.16.0.0/16")
-        eu = pulumi.providers.Alicloud("eu", region="eu-central-1")
+        eu = alicloud.Provider("eu", region="eu-central-1")
         third = alicloud.vpc.Network("third", cidr_block="172.16.0.0/16",
         opts=pulumi.ResourceOptions(provider=alicloud["eu"]))
         zone_attachment = alicloud.pvtz.ZoneAttachment("zone-attachment",

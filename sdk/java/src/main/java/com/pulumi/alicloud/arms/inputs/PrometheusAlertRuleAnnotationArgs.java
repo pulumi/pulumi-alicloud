@@ -16,14 +16,14 @@ public final class PrometheusAlertRuleAnnotationArgs extends com.pulumi.resource
     public static final PrometheusAlertRuleAnnotationArgs Empty = new PrometheusAlertRuleAnnotationArgs();
 
     /**
-     * The name of the annotation.
+     * The name of the label.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the annotation.
+     * @return The name of the label.
      * 
      */
     public Optional<Output<String>> name() {
@@ -31,14 +31,14 @@ public final class PrometheusAlertRuleAnnotationArgs extends com.pulumi.resource
     }
 
     /**
-     * The value of the annotation.
+     * The value of the label.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the annotation.
+     * @return The value of the label.
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class PrometheusAlertRuleAnnotationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the annotation.
+         * @param name The name of the label.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class PrometheusAlertRuleAnnotationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the annotation.
+         * @param name The name of the label.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class PrometheusAlertRuleAnnotationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param value The value of the annotation.
+         * @param value The value of the label.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class PrometheusAlertRuleAnnotationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param value The value of the annotation.
+         * @param value The value of the label.
          * 
          * @return builder
          * 

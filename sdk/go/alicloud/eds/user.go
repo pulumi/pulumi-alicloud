@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Elastic Desktop Service(EDS) User resource.
+// Provides a Elastic Desktop Service (ECD) User resource.
 //
-// For information about Elastic Desktop Service(EDS) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
+// For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
 //
 // > **NOTE:** Available in v1.142.0+.
 //
@@ -83,6 +83,13 @@ func NewUser(ctx *pulumi.Context,
 	if args.EndUserId == nil {
 		return nil, errors.New("invalid value for required argument 'EndUserId'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource User
 	err := ctx.RegisterResource("alicloud:eds/user:User", name, args, &resource, opts...)
 	if err != nil {

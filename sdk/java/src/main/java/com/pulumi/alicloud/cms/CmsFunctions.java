@@ -20,6 +20,8 @@ import com.pulumi.alicloud.cms.inputs.GetHybridMonitorFcTasksArgs;
 import com.pulumi.alicloud.cms.inputs.GetHybridMonitorFcTasksPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetHybridMonitorSlsTasksArgs;
 import com.pulumi.alicloud.cms.inputs.GetHybridMonitorSlsTasksPlainArgs;
+import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
+import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetMetricRuleTemplatesArgs;
 import com.pulumi.alicloud.cms.inputs.GetMetricRuleTemplatesPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetMonitorGroupInstancesArgs;
@@ -40,6 +42,7 @@ import com.pulumi.alicloud.cms.outputs.GetGroupMetricRulesResult;
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorDatasResult;
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorFcTasksResult;
 import com.pulumi.alicloud.cms.outputs.GetHybridMonitorSlsTasksResult;
+import com.pulumi.alicloud.cms.outputs.GetMetricRuleBlackListsResult;
 import com.pulumi.alicloud.cms.outputs.GetMetricRuleTemplatesResult;
 import com.pulumi.alicloud.cms.outputs.GetMonitorGroupInstancesResult;
 import com.pulumi.alicloud.cms.outputs.GetMonitorGroupsResult;
@@ -2160,6 +2163,258 @@ public final class CmsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", TypeShape.of(GetHybridMonitorSlsTasksResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
+     * 
+     * &gt; **NOTE:** Available in 1.194.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
+     *             .ids(alicloud_cms_metric_rule_black_lists.default().id())
+     *             .category(&#34;ecs&#34;)
+     *             .namespace(&#34;acs_ecs_dashboard&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, data.alicloud_cms_metric_rule_black_lists().lists()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetMetricRuleBlackListsResult> getMetricRuleBlackLists() {
+        return getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
+     * 
+     * &gt; **NOTE:** Available in 1.194.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
+     *             .ids(alicloud_cms_metric_rule_black_lists.default().id())
+     *             .category(&#34;ecs&#34;)
+     *             .namespace(&#34;acs_ecs_dashboard&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, data.alicloud_cms_metric_rule_black_lists().lists()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetMetricRuleBlackListsResult> getMetricRuleBlackListsPlain() {
+        return getMetricRuleBlackListsPlain(GetMetricRuleBlackListsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
+     * 
+     * &gt; **NOTE:** Available in 1.194.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
+     *             .ids(alicloud_cms_metric_rule_black_lists.default().id())
+     *             .category(&#34;ecs&#34;)
+     *             .namespace(&#34;acs_ecs_dashboard&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, data.alicloud_cms_metric_rule_black_lists().lists()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetMetricRuleBlackListsResult> getMetricRuleBlackLists(GetMetricRuleBlackListsArgs args) {
+        return getMetricRuleBlackLists(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
+     * 
+     * &gt; **NOTE:** Available in 1.194.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
+     *             .ids(alicloud_cms_metric_rule_black_lists.default().id())
+     *             .category(&#34;ecs&#34;)
+     *             .namespace(&#34;acs_ecs_dashboard&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, data.alicloud_cms_metric_rule_black_lists().lists()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetMetricRuleBlackListsResult> getMetricRuleBlackListsPlain(GetMetricRuleBlackListsPlainArgs args) {
+        return getMetricRuleBlackListsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
+     * 
+     * &gt; **NOTE:** Available in 1.194.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
+     *             .ids(alicloud_cms_metric_rule_black_lists.default().id())
+     *             .category(&#34;ecs&#34;)
+     *             .namespace(&#34;acs_ecs_dashboard&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, data.alicloud_cms_metric_rule_black_lists().lists()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetMetricRuleBlackListsResult> getMetricRuleBlackLists(GetMetricRuleBlackListsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists", TypeShape.of(GetMetricRuleBlackListsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
+     * 
+     * &gt; **NOTE:** Available in 1.194.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetMetricRuleBlackListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
+     *             .ids(alicloud_cms_metric_rule_black_lists.default().id())
+     *             .category(&#34;ecs&#34;)
+     *             .namespace(&#34;acs_ecs_dashboard&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, data.alicloud_cms_metric_rule_black_lists().lists()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetMetricRuleBlackListsResult> getMetricRuleBlackListsPlain(GetMetricRuleBlackListsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists", TypeShape.of(GetMetricRuleBlackListsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.134.0+.
@@ -3038,7 +3293,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3079,7 +3334,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3120,7 +3375,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3161,7 +3416,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3202,7 +3457,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3243,7 +3498,7 @@ public final class CmsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cms.CmsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

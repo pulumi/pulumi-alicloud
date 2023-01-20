@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Edas
         /// &gt; **NOTE:** Available in 1.82.0+
         /// </summary>
         public static Task<GetDeployGroupsResult> InvokeAsync(GetDeployGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeployGroupsResult>("alicloud:edas/getDeployGroups:getDeployGroups", args ?? new GetDeployGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeployGroupsResult>("alicloud:edas/getDeployGroups:getDeployGroups", args ?? new GetDeployGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Edas
         /// &gt; **NOTE:** Available in 1.82.0+
         /// </summary>
         public static Output<GetDeployGroupsResult> Invoke(GetDeployGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeployGroupsResult>("alicloud:edas/getDeployGroups:getDeployGroups", args ?? new GetDeployGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeployGroupsResult>("alicloud:edas/getDeployGroups:getDeployGroups", args ?? new GetDeployGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDeployGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetDeployGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the EDAS application.
@@ -49,9 +49,10 @@ namespace Pulumi.AliCloud.Edas
         public GetDeployGroupsArgs()
         {
         }
+        public static new GetDeployGroupsArgs Empty => new GetDeployGroupsArgs();
     }
 
-    public sealed class GetDeployGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDeployGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the EDAS application.
@@ -71,6 +72,7 @@ namespace Pulumi.AliCloud.Edas
         public GetDeployGroupsInvokeArgs()
         {
         }
+        public static new GetDeployGroupsInvokeArgs Empty => new GetDeployGroupsInvokeArgs();
     }
 
 

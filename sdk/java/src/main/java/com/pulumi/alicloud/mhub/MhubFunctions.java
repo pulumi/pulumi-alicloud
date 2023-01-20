@@ -34,7 +34,7 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.App;
      * import com.pulumi.alicloud.mhub.AppArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
+     * import com.pulumi.alicloud.mhub.inputs.GetAppsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -90,7 +90,7 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.App;
      * import com.pulumi.alicloud.mhub.AppArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
+     * import com.pulumi.alicloud.mhub.inputs.GetAppsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -146,7 +146,7 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.App;
      * import com.pulumi.alicloud.mhub.AppArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
+     * import com.pulumi.alicloud.mhub.inputs.GetAppsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -202,7 +202,7 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.App;
      * import com.pulumi.alicloud.mhub.AppArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
+     * import com.pulumi.alicloud.mhub.inputs.GetAppsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -258,7 +258,7 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.Product;
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
-     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -311,7 +311,7 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.Product;
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
-     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -364,7 +364,7 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.Product;
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
-     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -417,7 +417,7 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.Product;
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
-     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -470,7 +470,7 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.Product;
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
-     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -523,7 +523,7 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.Product;
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
-     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

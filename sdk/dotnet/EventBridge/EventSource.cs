@@ -21,28 +21,26 @@ namespace Pulumi.AliCloud.EventBridge
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.EventBridge.EventSource("example", new()
     ///     {
-    ///         var example = new AliCloud.EventBridge.EventSource("example", new AliCloud.EventBridge.EventSourceArgs
+    ///         Description = "tf-test",
+    ///         EventBusName = "bus_name",
+    ///         EventSourceName = "tftest",
+    ///         ExternalSourceConfig = 
     ///         {
-    ///             Description = "tf-test",
-    ///             EventBusName = "bus_name",
-    ///             EventSourceName = "tftest",
-    ///             ExternalSourceConfig = 
-    ///             {
-    ///                 { "QueueName", "mns_queuqe_name" },
-    ///             },
-    ///             ExternalSourceType = "MNS",
-    ///             LinkedExternalSource = true,
-    ///         });
-    ///     }
+    ///             { "QueueName", "mns_queuqe_name" },
+    ///         },
+    ///         ExternalSourceType = "MNS",
+    ///         LinkedExternalSource = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.AliCloud.EventBridge
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eventbridge/eventSource:EventSource")]
-    public partial class EventSource : Pulumi.CustomResource
+    public partial class EventSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The detail describe of event source.
@@ -149,7 +147,7 @@ namespace Pulumi.AliCloud.EventBridge
         }
     }
 
-    public sealed class EventSourceArgs : Pulumi.ResourceArgs
+    public sealed class EventSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The detail describe of event source.
@@ -209,9 +207,10 @@ namespace Pulumi.AliCloud.EventBridge
         public EventSourceArgs()
         {
         }
+        public static new EventSourceArgs Empty => new EventSourceArgs();
     }
 
-    public sealed class EventSourceState : Pulumi.ResourceArgs
+    public sealed class EventSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The detail describe of event source.
@@ -271,5 +270,6 @@ namespace Pulumi.AliCloud.EventBridge
         public EventSourceState()
         {
         }
+        public static new EventSourceState Empty => new EventSourceState();
     }
 }

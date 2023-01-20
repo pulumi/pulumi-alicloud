@@ -24,12 +24,12 @@ import * as utilities from "../utilities";
  * const defaultInstances = alicloud.bastionhost.getInstances({});
  * const defaultHostShareKey = new alicloud.bastionhost.HostShareKey("defaultHostShareKey", {
  *     hostShareKeyName: "example_name",
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.instances?[0]?.id),
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.instances?.[0]?.id),
  *     passPhrase: "example_value",
  *     privateKey: "example_value",
  * });
  * const defaultHost = new alicloud.bastionhost.Host("defaultHost", {
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?[0]),
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?.[0]),
  *     hostName: name,
  *     activeAddressType: "Private",
  *     hostPrivateAddress: "172.16.0.10",
@@ -37,14 +37,14 @@ import * as utilities from "../utilities";
  *     source: "Local",
  * });
  * const defaultHostAccount = new alicloud.bastionhost.HostAccount("defaultHostAccount", {
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?[0]),
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?.[0]),
  *     hostAccountName: name,
  *     hostId: defaultHost.hostId,
  *     protocolName: "SSH",
  *     password: "YourPassword12345",
  * });
  * const defaultHostAccountShareKeyAttachment = new alicloud.bastionhost.HostAccountShareKeyAttachment("defaultHostAccountShareKeyAttachment", {
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.instances?[0]?.id),
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.instances?.[0]?.id),
  *     hostShareKeyId: defaultHostShareKey.hostShareKeyId,
  *     hostAccountId: defaultHostAccount.hostAccountId,
  * });

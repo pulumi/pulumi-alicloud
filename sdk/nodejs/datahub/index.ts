@@ -5,15 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getService";
-export * from "./project";
-export * from "./subscription";
-export * from "./topic";
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 
-// Import resources to register:
-import { Project } from "./project";
-import { Subscription } from "./subscription";
-import { Topic } from "./topic";
+export { ProjectArgs, ProjectState } from "./project";
+export type Project = import("./project").Project;
+export const Project: typeof import("./project").Project = null as any;
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+
+export { SubscriptionArgs, SubscriptionState } from "./subscription";
+export type Subscription = import("./subscription").Subscription;
+export const Subscription: typeof import("./subscription").Subscription = null as any;
+utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
+
+export { TopicArgs, TopicState } from "./topic";
+export type Topic = import("./topic").Topic;
+export const Topic: typeof import("./topic").Topic = null as any;
+utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
+
 
 const _module = {
     version: utilities.getVersion(),

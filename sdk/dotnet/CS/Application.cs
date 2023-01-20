@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     [AliCloudResourceType("alicloud:cs/application:Application")]
-    public partial class Application : Pulumi.CustomResource
+    public partial class Application : global::Pulumi.CustomResource
     {
         [Output("blueGreen")]
         public Output<bool?> BlueGreen { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class ApplicationArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationArgs : global::Pulumi.ResourceArgs
     {
         [Input("blueGreen")]
         public Input<bool>? BlueGreen { get; set; }
@@ -126,9 +126,10 @@ namespace Pulumi.AliCloud.CS
         public ApplicationArgs()
         {
         }
+        public static new ApplicationArgs Empty => new ApplicationArgs();
     }
 
-    public sealed class ApplicationState : Pulumi.ResourceArgs
+    public sealed class ApplicationState : global::Pulumi.ResourceArgs
     {
         [Input("blueGreen")]
         public Input<bool>? BlueGreen { get; set; }
@@ -176,5 +177,6 @@ namespace Pulumi.AliCloud.CS
         public ApplicationState()
         {
         }
+        public static new ApplicationState Empty => new ApplicationState();
     }
 }

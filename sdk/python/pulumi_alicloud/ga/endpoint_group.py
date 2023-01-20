@@ -34,7 +34,7 @@ class EndpointGroupArgs:
         """
         The set of arguments for constructing a EndpointGroup resource.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
-        :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group.
+        :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] description: The description of the endpoint group.
@@ -45,7 +45,7 @@ class EndpointGroupArgs:
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
         :param pulumi.Input[str] name: The name of the endpoint group.
-        :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point.
+        :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
         :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
         :param pulumi.Input[int] traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
         """
@@ -92,7 +92,7 @@ class EndpointGroupArgs:
     @pulumi.getter(name="endpointConfigurations")
     def endpoint_configurations(self) -> pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]]:
         """
-        The endpointConfigurations of the endpoint group.
+        The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
         """
         return pulumi.get(self, "endpoint_configurations")
 
@@ -224,7 +224,7 @@ class EndpointGroupArgs:
     @pulumi.getter(name="portOverrides")
     def port_overrides(self) -> Optional[pulumi.Input['EndpointGroupPortOverridesArgs']]:
         """
-        Mapping between listening port and forwarding port of boarding point.
+        Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
         """
         return pulumi.get(self, "port_overrides")
 
@@ -280,7 +280,7 @@ class _EndpointGroupState:
         Input properties used for looking up and filtering EndpointGroup resources.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
         :param pulumi.Input[str] description: The description of the endpoint group.
-        :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group.
+        :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
         :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
@@ -290,7 +290,7 @@ class _EndpointGroupState:
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
-        :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point.
+        :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
         :param pulumi.Input[str] status: The status of the endpoint group.
         :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
         :param pulumi.Input[int] traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
@@ -356,7 +356,7 @@ class _EndpointGroupState:
     @pulumi.getter(name="endpointConfigurations")
     def endpoint_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]]]:
         """
-        The endpointConfigurations of the endpoint group.
+        The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
         """
         return pulumi.get(self, "endpoint_configurations")
 
@@ -476,7 +476,7 @@ class _EndpointGroupState:
     @pulumi.getter(name="portOverrides")
     def port_overrides(self) -> Optional[pulumi.Input['EndpointGroupPortOverridesArgs']]:
         """
-        Mapping between listening port and forwarding port of boarding point.
+        Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
         """
         return pulumi.get(self, "port_overrides")
 
@@ -611,7 +611,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
         :param pulumi.Input[str] description: The description of the endpoint group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
         :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
@@ -621,7 +621,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
-        :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point.
+        :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
         :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
         :param pulumi.Input[int] traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
         """
@@ -794,7 +794,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
         :param pulumi.Input[str] description: The description of the endpoint group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
         :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
@@ -804,7 +804,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
-        :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point.
+        :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
         :param pulumi.Input[str] status: The status of the endpoint group.
         :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
         :param pulumi.Input[int] traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
@@ -851,7 +851,7 @@ class EndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="endpointConfigurations")
     def endpoint_configurations(self) -> pulumi.Output[Sequence['outputs.EndpointGroupEndpointConfiguration']]:
         """
-        The endpointConfigurations of the endpoint group.
+        The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
         """
         return pulumi.get(self, "endpoint_configurations")
 
@@ -865,7 +865,7 @@ class EndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointGroupType")
-    def endpoint_group_type(self) -> pulumi.Output[Optional[str]]:
+    def endpoint_group_type(self) -> pulumi.Output[str]:
         """
         The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
         """
@@ -931,7 +931,7 @@ class EndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="portOverrides")
     def port_overrides(self) -> pulumi.Output[Optional['outputs.EndpointGroupPortOverrides']]:
         """
-        Mapping between listening port and forwarding port of boarding point.
+        Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
         """
         return pulumi.get(self, "port_overrides")
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Arms.Inputs
 {
 
-    public sealed class DispatchRuleNotifyRuleNotifyObjectArgs : Pulumi.ResourceArgs
+    public sealed class DispatchRuleNotifyRuleNotifyObjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the contact or contact group.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Arms.Inputs
         public DispatchRuleNotifyRuleNotifyObjectArgs()
         {
         }
+        public static new DispatchRuleNotifyRuleNotifyObjectArgs Empty => new DispatchRuleNotifyRuleNotifyObjectArgs();
     }
 }

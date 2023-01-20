@@ -76,9 +76,6 @@ type DomainResource struct {
 	// The domain name of the website that you want to add to the instance.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
 	HttpsExt    pulumi.StringOutput      `pulumi:"httpsExt"`
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
 	// Protocol type and port number information.
@@ -136,9 +133,6 @@ type domainResourceState struct {
 	// The domain name of the website that you want to add to the instance.
 	Domain *string `pulumi:"domain"`
 	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
 	HttpsExt    *string  `pulumi:"httpsExt"`
 	InstanceIds []string `pulumi:"instanceIds"`
 	// Protocol type and port number information.
@@ -153,9 +147,6 @@ type DomainResourceState struct {
 	// The domain name of the website that you want to add to the instance.
 	Domain pulumi.StringPtrInput
 	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
 	HttpsExt    pulumi.StringPtrInput
 	InstanceIds pulumi.StringArrayInput
 	// Protocol type and port number information.
@@ -174,9 +165,6 @@ type domainResourceArgs struct {
 	// The domain name of the website that you want to add to the instance.
 	Domain string `pulumi:"domain"`
 	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
 	HttpsExt    *string  `pulumi:"httpsExt"`
 	InstanceIds []string `pulumi:"instanceIds"`
 	// Protocol type and port number information.
@@ -192,9 +180,6 @@ type DomainResourceArgs struct {
 	// The domain name of the website that you want to add to the instance.
 	Domain pulumi.StringInput
 	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
 	HttpsExt    pulumi.StringPtrInput
 	InstanceIds pulumi.StringArrayInput
 	// Protocol type and port number information.
@@ -298,9 +283,6 @@ func (o DomainResourceOutput) Domain() pulumi.StringOutput {
 }
 
 // The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
 func (o DomainResourceOutput) HttpsExt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.StringOutput { return v.HttpsExt }).(pulumi.StringOutput)
 }

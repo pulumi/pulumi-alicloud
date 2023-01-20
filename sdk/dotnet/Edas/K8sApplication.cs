@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.Edas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:edas/k8sApplication:K8sApplication")]
-    public partial class K8sApplication : Pulumi.CustomResource
+    public partial class K8sApplication : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the application
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Edas
         }
     }
 
-    public sealed class K8sApplicationArgs : Pulumi.ResourceArgs
+    public sealed class K8sApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the application
@@ -458,9 +458,10 @@ namespace Pulumi.AliCloud.Edas
         public K8sApplicationArgs()
         {
         }
+        public static new K8sApplicationArgs Empty => new K8sApplicationArgs();
     }
 
-    public sealed class K8sApplicationState : Pulumi.ResourceArgs
+    public sealed class K8sApplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the application
@@ -663,5 +664,6 @@ namespace Pulumi.AliCloud.Edas
         public K8sApplicationState()
         {
         }
+        public static new K8sApplicationState Empty => new K8sApplicationState();
     }
 }

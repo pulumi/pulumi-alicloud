@@ -13,6 +13,7 @@ from . import outputs
 __all__ = [
     'OtsBackupPlanOtsDetail',
     'OtsBackupPlanRule',
+    'RestoreJobOtsDetail',
     'ServerBackupPlanDetail',
     'GetBackupJobsFilterResult',
     'GetBackupJobsJobResult',
@@ -99,11 +100,11 @@ class OtsBackupPlanRule(dict):
                  rule_name: Optional[str] = None,
                  schedule: Optional[str] = None):
         """
-        :param str backup_type: The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
-        :param bool disabled: Whether to disable the backup task. Valid values: true, false.
-        :param str retention: Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param str backup_type: Backup type. Valid values: `COMPLETE`.
+        :param bool disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        :param str retention: Backup retention days, the minimum is 1.
         :param str rule_name: The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
-        :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         if backup_type is not None:
             pulumi.set(__self__, "backup_type", backup_type)
@@ -120,7 +121,7 @@ class OtsBackupPlanRule(dict):
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[str]:
         """
-        The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        Backup type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -128,7 +129,7 @@ class OtsBackupPlanRule(dict):
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
         """
-        Whether to disable the backup task. Valid values: true, false.
+        Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -136,7 +137,7 @@ class OtsBackupPlanRule(dict):
     @pulumi.getter
     def retention(self) -> Optional[str]:
         """
-        Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+        Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
@@ -152,9 +153,45 @@ class OtsBackupPlanRule(dict):
     @pulumi.getter
     def schedule(self) -> Optional[str]:
         """
-        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
+
+
+@pulumi.output_type
+class RestoreJobOtsDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "overwriteExisting":
+            suggest = "overwrite_existing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RestoreJobOtsDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RestoreJobOtsDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RestoreJobOtsDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 overwrite_existing: Optional[bool] = None):
+        """
+        :param bool overwrite_existing: Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+        """
+        if overwrite_existing is not None:
+            pulumi.set(__self__, "overwrite_existing", overwrite_existing)
+
+    @property
+    @pulumi.getter(name="overwriteExisting")
+    def overwrite_existing(self) -> Optional[bool]:
+        """
+        Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "overwrite_existing")
 
 
 @pulumi.output_type
@@ -373,6 +410,9 @@ class GetBackupJobsJobResult(dict):
                  bytes_total: str,
                  complete_time: str,
                  create_time: str,
+                 cross_account_role_name: str,
+                 cross_account_type: str,
+                 cross_account_user_id: int,
                  error_message: str,
                  exclude: str,
                  file_system_id: str,
@@ -403,6 +443,9 @@ class GetBackupJobsJobResult(dict):
         :param str bytes_total: The total amount of data sources. Unit byte.
         :param str complete_time: The completion time of backup job. UNIX time seconds.
         :param str create_time: The creation time of backup job. UNIX time seconds.
+        :param str cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        :param str cross_account_type: The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        :param int cross_account_user_id: The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         :param str error_message: Error message.
         :param str exclude: Exclude path. String of Json list. Up to 255 characters. e.g. `"[\\"/home/work\\"]"`
         :param str file_system_id: The ID of destination file system.
@@ -432,6 +475,9 @@ class GetBackupJobsJobResult(dict):
         pulumi.set(__self__, "bytes_total", bytes_total)
         pulumi.set(__self__, "complete_time", complete_time)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+        pulumi.set(__self__, "cross_account_type", cross_account_type)
+        pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
         pulumi.set(__self__, "error_message", error_message)
         pulumi.set(__self__, "exclude", exclude)
         pulumi.set(__self__, "file_system_id", file_system_id)
@@ -531,6 +577,30 @@ class GetBackupJobsJobResult(dict):
         The creation time of backup job. UNIX time seconds.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> str:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> str:
+        """
+        The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> int:
+        """
+        The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        """
+        return pulumi.get(self, "cross_account_user_id")
 
     @property
     @pulumi.getter(name="errorMessage")

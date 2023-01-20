@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class SwarmNodeArgs : Pulumi.ResourceArgs
+    public sealed class SwarmNodeArgs : global::Pulumi.ResourceArgs
     {
         [Input("eip")]
         public Input<string>? Eip { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public SwarmNodeArgs()
         {
         }
+        public static new SwarmNodeArgs Empty => new SwarmNodeArgs();
     }
 }

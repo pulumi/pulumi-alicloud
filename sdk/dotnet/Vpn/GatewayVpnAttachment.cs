@@ -21,68 +21,80 @@ namespace Pulumi.AliCloud.Vpn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new()
     ///     {
-    ///         var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new AliCloud.Vpn.CustomerGatewayArgs
-    ///         {
-    ///             IpAddress = "42.104.22.210",
-    ///             Asn = "45014",
-    ///             Description = "testAccVpnConnectionDesc",
-    ///         });
-    ///         var defaultGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment", new AliCloud.Vpn.GatewayVpnAttachmentArgs
-    ///         {
-    ///             CustomerGatewayId = defaultCustomerGateway.Id,
-    ///             NetworkType = "public",
-    ///             LocalSubnet = "0.0.0.0/0",
-    ///             RemoteSubnet = "0.0.0.0/0",
-    ///             EffectImmediately = false,
-    ///             IkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIkeConfigArgs
-    ///             {
-    ///                 IkeAuthAlg = "md5",
-    ///                 IkeEncAlg = "des",
-    ///                 IkeVersion = "ikev2",
-    ///                 IkeMode = "main",
-    ///                 IkeLifetime = 86400,
-    ///                 Psk = "tf-testvpn2",
-    ///                 IkePfs = "group1",
-    ///                 RemoteId = "testbob2",
-    ///                 LocalId = "testalice2",
-    ///             },
-    ///             IpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIpsecConfigArgs
-    ///             {
-    ///                 IpsecPfs = "group5",
-    ///                 IpsecEncAlg = "des",
-    ///                 IpsecAuthAlg = "md5",
-    ///                 IpsecLifetime = 86400,
-    ///             },
-    ///             BgpConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentBgpConfigArgs
-    ///             {
-    ///                 Enable = true,
-    ///                 LocalAsn = 45014,
-    ///                 TunnelCidr = "169.254.11.0/30",
-    ///                 LocalBgpIp = "169.254.11.1",
-    ///             },
-    ///             HealthCheckConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentHealthCheckConfigArgs
-    ///             {
-    ///                 Enable = true,
-    ///                 Sip = "192.168.1.1",
-    ///                 Dip = "10.0.0.1",
-    ///                 Interval = 10,
-    ///                 Retry = 10,
-    ///                 Policy = "revoke_route",
-    ///             },
-    ///             EnableDpd = true,
-    ///             EnableNatTraversal = true,
-    ///             VpnAttachmentName = @var.Name,
-    ///         });
-    ///     }
+    ///         IpAddress = "42.104.22.210",
+    ///         Asn = "45014",
+    ///         Description = "testAccVpnConnectionDesc",
+    ///     });
     /// 
-    /// }
+    ///     var defaultGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment", new()
+    ///     {
+    ///         CustomerGatewayId = defaultCustomerGateway.Id,
+    ///         NetworkType = "public",
+    ///         LocalSubnet = "0.0.0.0/0",
+    ///         RemoteSubnet = "0.0.0.0/0",
+    ///         EffectImmediately = false,
+    ///         IkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIkeConfigArgs
+    ///         {
+    ///             IkeAuthAlg = "md5",
+    ///             IkeEncAlg = "des",
+    ///             IkeVersion = "ikev2",
+    ///             IkeMode = "main",
+    ///             IkeLifetime = 86400,
+    ///             Psk = "tf-testvpn2",
+    ///             IkePfs = "group1",
+    ///             RemoteId = "testbob2",
+    ///             LocalId = "testalice2",
+    ///         },
+    ///         IpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIpsecConfigArgs
+    ///         {
+    ///             IpsecPfs = "group5",
+    ///             IpsecEncAlg = "des",
+    ///             IpsecAuthAlg = "md5",
+    ///             IpsecLifetime = 86400,
+    ///         },
+    ///         BgpConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentBgpConfigArgs
+    ///         {
+    ///             Enable = true,
+    ///             LocalAsn = 45014,
+    ///             TunnelCidr = "169.254.11.0/30",
+    ///             LocalBgpIp = "169.254.11.1",
+    ///         },
+    ///         HealthCheckConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentHealthCheckConfigArgs
+    ///         {
+    ///             Enable = true,
+    ///             Sip = "192.168.1.1",
+    ///             Dip = "10.0.0.1",
+    ///             Interval = 10,
+    ///             Retry = 10,
+    ///             Policy = "revoke_route",
+    ///         },
+    ///         EnableDpd = true,
+    ///         EnableNatTraversal = true,
+    ///         VpnAttachmentName = @var.Name,
+    ///     });
+    /// 
+    ///     var vpnAttachments = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke(new()
+    ///     {
+    ///         Ids = new[]
+    ///         {
+    ///             alicloud_vpn_gateway_vpn_attachment.Vpn_attachment1.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["localId"] = vpnAttachments.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.IkeConfigs[0]?.LocalId),
+    ///         ["internetIp"] = vpnAttachments.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.InternetIp),
+    ///     };
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -94,7 +106,7 @@ namespace Pulumi.AliCloud.Vpn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment")]
-    public partial class GatewayVpnAttachment : Pulumi.CustomResource
+    public partial class GatewayVpnAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Bgp configuration information. See the following `Block bgp_config`.
@@ -103,7 +115,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<Outputs.GatewayVpnAttachmentBgpConfig> BgpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the customer gateway.
+        /// The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
         /// </summary>
         [Output("customerGatewayId")]
         public Output<string> CustomerGatewayId { get; private set; } = null!;
@@ -137,6 +149,12 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Output("ikeConfig")]
         public Output<Outputs.GatewayVpnAttachmentIkeConfig> IkeConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The VPN gateway IP.
+        /// </summary>
+        [Output("internetIp")]
+        public Output<string> InternetIp { get; private set; } = null!;
 
         /// <summary>
         /// Configuration negotiated in the second stage. See the following `Block ipsec_config`.
@@ -218,7 +236,7 @@ namespace Pulumi.AliCloud.Vpn
         }
     }
 
-    public sealed class GatewayVpnAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class GatewayVpnAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bgp configuration information. See the following `Block bgp_config`.
@@ -227,7 +245,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<Inputs.GatewayVpnAttachmentBgpConfigArgs>? BgpConfig { get; set; }
 
         /// <summary>
-        /// The ID of the customer gateway.
+        /// The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
         /// </summary>
         [Input("customerGatewayId", required: true)]
         public Input<string> CustomerGatewayId { get; set; } = null!;
@@ -295,9 +313,10 @@ namespace Pulumi.AliCloud.Vpn
         public GatewayVpnAttachmentArgs()
         {
         }
+        public static new GatewayVpnAttachmentArgs Empty => new GatewayVpnAttachmentArgs();
     }
 
-    public sealed class GatewayVpnAttachmentState : Pulumi.ResourceArgs
+    public sealed class GatewayVpnAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bgp configuration information. See the following `Block bgp_config`.
@@ -306,7 +325,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<Inputs.GatewayVpnAttachmentBgpConfigGetArgs>? BgpConfig { get; set; }
 
         /// <summary>
-        /// The ID of the customer gateway.
+        /// The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
         /// </summary>
         [Input("customerGatewayId")]
         public Input<string>? CustomerGatewayId { get; set; }
@@ -340,6 +359,12 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Input("ikeConfig")]
         public Input<Inputs.GatewayVpnAttachmentIkeConfigGetArgs>? IkeConfig { get; set; }
+
+        /// <summary>
+        /// The VPN gateway IP.
+        /// </summary>
+        [Input("internetIp")]
+        public Input<string>? InternetIp { get; set; }
 
         /// <summary>
         /// Configuration negotiated in the second stage. See the following `Block ipsec_config`.
@@ -380,5 +405,6 @@ namespace Pulumi.AliCloud.Vpn
         public GatewayVpnAttachmentState()
         {
         }
+        public static new GatewayVpnAttachmentState Empty => new GatewayVpnAttachmentState();
     }
 }

@@ -21,31 +21,30 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleTrafficMirrorFilter = new AliCloud.Vpc.TrafficMirrorFilter("exampleTrafficMirrorFilter", new()
     ///     {
-    ///         var exampleTrafficMirrorFilter = new AliCloud.Vpc.TrafficMirrorFilter("exampleTrafficMirrorFilter", new AliCloud.Vpc.TrafficMirrorFilterArgs
-    ///         {
-    ///             TrafficMirrorFilterName = "example_value",
-    ///         });
-    ///         var exampleTrafficMirrorFilterEgressRule = new AliCloud.Vpc.TrafficMirrorFilterEgressRule("exampleTrafficMirrorFilterEgressRule", new AliCloud.Vpc.TrafficMirrorFilterEgressRuleArgs
-    ///         {
-    ///             TrafficMirrorFilterId = exampleTrafficMirrorFilter.Id,
-    ///             Priority = 1,
-    ///             RuleAction = "accept",
-    ///             Protocol = "UDP",
-    ///             DestinationCidrBlock = "10.0.0.0/24",
-    ///             SourceCidrBlock = "10.0.0.0/24",
-    ///             DestinationPortRange = "1/120",
-    ///             SourcePortRange = "1/120",
-    ///         });
-    ///     }
+    ///         TrafficMirrorFilterName = "example_value",
+    ///     });
     /// 
-    /// }
+    ///     var exampleTrafficMirrorFilterEgressRule = new AliCloud.Vpc.TrafficMirrorFilterEgressRule("exampleTrafficMirrorFilterEgressRule", new()
+    ///     {
+    ///         TrafficMirrorFilterId = exampleTrafficMirrorFilter.Id,
+    ///         Priority = 1,
+    ///         RuleAction = "accept",
+    ///         Protocol = "UDP",
+    ///         DestinationCidrBlock = "10.0.0.0/24",
+    ///         SourceCidrBlock = "10.0.0.0/24",
+    ///         DestinationPortRange = "1/120",
+    ///         SourcePortRange = "1/120",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +56,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/trafficMirrorFilterEgressRule:TrafficMirrorFilterEgressRule")]
-    public partial class TrafficMirrorFilterEgressRule : Pulumi.CustomResource
+    public partial class TrafficMirrorFilterEgressRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The destination CIDR block of the outbound traffic.
@@ -169,7 +168,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class TrafficMirrorFilterEgressRuleArgs : Pulumi.ResourceArgs
+    public sealed class TrafficMirrorFilterEgressRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination CIDR block of the outbound traffic.
@@ -228,9 +227,10 @@ namespace Pulumi.AliCloud.Vpc
         public TrafficMirrorFilterEgressRuleArgs()
         {
         }
+        public static new TrafficMirrorFilterEgressRuleArgs Empty => new TrafficMirrorFilterEgressRuleArgs();
     }
 
-    public sealed class TrafficMirrorFilterEgressRuleState : Pulumi.ResourceArgs
+    public sealed class TrafficMirrorFilterEgressRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination CIDR block of the outbound traffic.
@@ -301,5 +301,6 @@ namespace Pulumi.AliCloud.Vpc
         public TrafficMirrorFilterEgressRuleState()
         {
         }
+        public static new TrafficMirrorFilterEgressRuleState Empty => new TrafficMirrorFilterEgressRuleState();
     }
 }

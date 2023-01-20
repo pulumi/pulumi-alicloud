@@ -21,26 +21,25 @@ namespace Pulumi.AliCloud.Nas
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.Nas.GetZones.InvokeAsync());
-        ///         this.AlicloudNasZonesId = @default.Apply(@default =&gt; @default.Zones?[0]?.ZoneId);
-        ///     }
+        ///     var @default = AliCloud.Nas.GetZones.Invoke();
         /// 
-        ///     [Output("alicloudNasZonesId")]
-        ///     public Output&lt;string&gt; AlicloudNasZonesId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudNasZonesId"] = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:nas/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:nas/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provide  a data source to retrieve the type of zone used to create NAS file system.
@@ -52,30 +51,29 @@ namespace Pulumi.AliCloud.Nas
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.Nas.GetZones.InvokeAsync());
-        ///         this.AlicloudNasZonesId = @default.Apply(@default =&gt; @default.Zones?[0]?.ZoneId);
-        ///     }
+        ///     var @default = AliCloud.Nas.GetZones.Invoke();
         /// 
-        ///     [Output("alicloudNasZonesId")]
-        ///     public Output&lt;string&gt; AlicloudNasZonesId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudNasZonesId"] = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:nas/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:nas/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
@@ -89,9 +87,10 @@ namespace Pulumi.AliCloud.Nas
         public GetZonesArgs()
         {
         }
+        public static new GetZonesArgs Empty => new GetZonesArgs();
     }
 
-    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
@@ -105,6 +104,7 @@ namespace Pulumi.AliCloud.Nas
         public GetZonesInvokeArgs()
         {
         }
+        public static new GetZonesInvokeArgs Empty => new GetZonesInvokeArgs();
     }
 
 

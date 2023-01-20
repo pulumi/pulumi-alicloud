@@ -19,85 +19,90 @@ namespace Pulumi.AliCloud.Cen
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testAcccExample";
+    ///     var us = new AliCloud.Provider("us", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testAcccExample";
-    ///         var us = new AliCloud.Provider("us", new AliCloud.ProviderArgs
-    ///         {
-    ///             Region = "us-east-1",
-    ///         });
-    ///         var cn = new AliCloud.Provider("cn", new AliCloud.ProviderArgs
-    ///         {
-    ///             Region = "cn-hangzhou",
-    ///         });
-    ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///             CenInstanceName = name,
-    ///             ProtectionLevel = "REDUCED",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Cn,
-    ///         });
-    ///         var defaultBandwidthPackage = new AliCloud.Cen.BandwidthPackage("defaultBandwidthPackage", new AliCloud.Cen.BandwidthPackageArgs
-    ///         {
-    ///             Bandwidth = 5,
-    ///             CenBandwidthPackageName = name,
-    ///             GeographicRegionAId = "China",
-    ///             GeographicRegionBId = "North-America",
-    ///         });
-    ///         var defaultBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new AliCloud.Cen.BandwidthPackageAttachmentArgs
-    ///         {
-    ///             InstanceId = defaultInstance.Id,
-    ///             BandwidthPackageId = defaultBandwidthPackage.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Cn,
-    ///         });
-    ///         var cnTransitRouter = new AliCloud.Cen.TransitRouter("cnTransitRouter", new AliCloud.Cen.TransitRouterArgs
-    ///         {
-    ///             CenId = defaultInstance.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Cn,
-    ///             DependsOn = 
-    ///             {
-    ///                 defaultBandwidthPackageAttachment,
-    ///             },
-    ///         });
-    ///         var usTransitRouter = new AliCloud.Cen.TransitRouter("usTransitRouter", new AliCloud.Cen.TransitRouterArgs
-    ///         {
-    ///             CenId = defaultInstance.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Us,
-    ///             DependsOn = 
-    ///             {
-    ///                 alicloud_cen_transit_router.Default_0,
-    ///             },
-    ///         });
-    ///         var defaultTransitRouterPeerAttachment = new AliCloud.Cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", new AliCloud.Cen.TransitRouterPeerAttachmentArgs
-    ///         {
-    ///             CenId = defaultInstance.Id,
-    ///             TransitRouterId = cnTransitRouter.TransitRouterId,
-    ///             PeerTransitRouterRegionId = "us-east-1",
-    ///             PeerTransitRouterId = usTransitRouter.TransitRouterId,
-    ///             CenBandwidthPackageId = defaultBandwidthPackageAttachment.BandwidthPackageId,
-    ///             Bandwidth = 5,
-    ///             TransitRouterAttachmentDescription = name,
-    ///             TransitRouterAttachmentName = name,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Cn,
-    ///         });
-    ///     }
+    ///         Region = "us-east-1",
+    ///     });
     /// 
-    /// }
+    ///     var cn = new AliCloud.Provider("cn", new()
+    ///     {
+    ///         Region = "cn-hangzhou",
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     {
+    ///         CenInstanceName = name,
+    ///         ProtectionLevel = "REDUCED",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Cn,
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackage = new AliCloud.Cen.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 5,
+    ///         CenBandwidthPackageName = name,
+    ///         GeographicRegionAId = "China",
+    ///         GeographicRegionBId = "North-America",
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Cn,
+    ///     });
+    /// 
+    ///     var cnTransitRouter = new AliCloud.Cen.TransitRouter("cnTransitRouter", new()
+    ///     {
+    ///         CenId = defaultInstance.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Cn,
+    ///         DependsOn = new[]
+    ///         {
+    ///             defaultBandwidthPackageAttachment,
+    ///         },
+    ///     });
+    /// 
+    ///     var usTransitRouter = new AliCloud.Cen.TransitRouter("usTransitRouter", new()
+    ///     {
+    ///         CenId = defaultInstance.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Us,
+    ///         DependsOn = new[]
+    ///         {
+    ///             alicloud_cen_transit_router.Default_0,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultTransitRouterPeerAttachment = new AliCloud.Cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", new()
+    ///     {
+    ///         CenId = defaultInstance.Id,
+    ///         TransitRouterId = cnTransitRouter.TransitRouterId,
+    ///         PeerTransitRouterRegionId = "us-east-1",
+    ///         PeerTransitRouterId = usTransitRouter.TransitRouterId,
+    ///         CenBandwidthPackageId = defaultBandwidthPackageAttachment.BandwidthPackageId,
+    ///         Bandwidth = 5,
+    ///         TransitRouterAttachmentDescription = name,
+    ///         TransitRouterAttachmentName = name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Cn,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -109,7 +114,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment")]
-    public partial class TransitRouterPeerAttachment : Pulumi.CustomResource
+    public partial class TransitRouterPeerAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Auto publish route enabled. The system default value is `false`.
@@ -251,7 +256,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class TransitRouterPeerAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class TransitRouterPeerAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto publish route enabled. The system default value is `false`.
@@ -340,9 +345,10 @@ namespace Pulumi.AliCloud.Cen
         public TransitRouterPeerAttachmentArgs()
         {
         }
+        public static new TransitRouterPeerAttachmentArgs Empty => new TransitRouterPeerAttachmentArgs();
     }
 
-    public sealed class TransitRouterPeerAttachmentState : Pulumi.ResourceArgs
+    public sealed class TransitRouterPeerAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto publish route enabled. The system default value is `false`.
@@ -443,5 +449,6 @@ namespace Pulumi.AliCloud.Cen
         public TransitRouterPeerAttachmentState()
         {
         }
+        public static new TransitRouterPeerAttachmentState Empty => new TransitRouterPeerAttachmentState();
     }
 }

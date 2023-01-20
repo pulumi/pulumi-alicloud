@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstRosStackId = example.then(example => example.stacks?[0]?.id);
+ * export const firstRosStackId = example.then(example => example.stacks?.[0]?.id);
  * ```
  */
 export function getStacks(args?: GetStacksArgs, opts?: pulumi.InvokeOptions): Promise<GetStacksResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ros/getStacks:getStacks", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -104,9 +102,28 @@ export interface GetStacksResult {
     readonly status?: string;
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides the Ros Stacks of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.106.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ros.getStacks({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstRosStackId = example.then(example => example.stacks?.[0]?.id);
+ * ```
+ */
 export function getStacksOutput(args?: GetStacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStacksResult> {
-    return pulumi.output(args).apply(a => getStacks(a, opts))
+    return pulumi.output(args).apply((a: any) => getStacks(a, opts))
 }
 
 /**

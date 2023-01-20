@@ -17,32 +17,30 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = new AliCloud.Slb.LoadBalancer("default", new AliCloud.Slb.LoadBalancerArgs
-        ///         {
-        ///         });
-        ///         var slbsDs = Output.Create(AliCloud.Slb.GetLoadBalancers.InvokeAsync(new AliCloud.Slb.GetLoadBalancersArgs
-        ///         {
-        ///             NameRegex = "sample_slb",
-        ///         }));
-        ///         this.FirstSlbId = slbsDs.Apply(slbsDs =&gt; slbsDs.Slbs?[0]?.Id);
-        ///     }
+        ///     var @default = new AliCloud.Slb.LoadBalancer("default");
         /// 
-        ///     [Output("firstSlbId")]
-        ///     public Output&lt;string&gt; FirstSlbId { get; set; }
-        /// }
+        ///     var slbsDs = AliCloud.Slb.GetLoadBalancers.Invoke(new()
+        ///     {
+        ///         NameRegex = "sample_slb",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbId"] = slbsDs.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Slbs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -50,36 +48,34 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = new AliCloud.Slb.LoadBalancer("default", new AliCloud.Slb.LoadBalancerArgs
-        ///         {
-        ///         });
-        ///         var slbsDs = Output.Create(AliCloud.Slb.GetLoadBalancers.InvokeAsync(new AliCloud.Slb.GetLoadBalancersArgs
-        ///         {
-        ///             NameRegex = "sample_slb",
-        ///         }));
-        ///         this.FirstSlbId = slbsDs.Apply(slbsDs =&gt; slbsDs.Slbs?[0]?.Id);
-        ///     }
+        ///     var @default = new AliCloud.Slb.LoadBalancer("default");
         /// 
-        ///     [Output("firstSlbId")]
-        ///     public Output&lt;string&gt; FirstSlbId { get; set; }
-        /// }
+        ///     var slbsDs = AliCloud.Slb.GetLoadBalancers.Invoke(new()
+        ///     {
+        ///         NameRegex = "sample_slb",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbId"] = slbsDs.Apply(getLoadBalancersResult =&gt; getLoadBalancersResult.Slbs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetLoadBalancersArgs : Pulumi.InvokeArgs
+    public sealed class GetLoadBalancersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Service address of the SLBs.
@@ -168,24 +164,22 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var taggedInstances = AliCloud.Slb.GetLoadBalancers.Invoke(new()
         ///     {
-        ///         var taggedInstances = Output.Create(AliCloud.Slb.GetLoadBalancers.InvokeAsync(new AliCloud.Slb.GetLoadBalancersArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///                 { "tagKey2", "tagValue2" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "tagKey1", "tagValue1" },
+        ///             { "tagKey2", "tagValue2" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public Dictionary<string, object> Tags
@@ -209,9 +203,10 @@ namespace Pulumi.AliCloud.Slb
         public GetLoadBalancersArgs()
         {
         }
+        public static new GetLoadBalancersArgs Empty => new GetLoadBalancersArgs();
     }
 
-    public sealed class GetLoadBalancersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLoadBalancersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Service address of the SLBs.
@@ -300,24 +295,22 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var taggedInstances = AliCloud.Slb.GetLoadBalancers.Invoke(new()
         ///     {
-        ///         var taggedInstances = Output.Create(AliCloud.Slb.GetLoadBalancers.InvokeAsync(new AliCloud.Slb.GetLoadBalancersArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///                 { "tagKey2", "tagValue2" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "tagKey1", "tagValue1" },
+        ///             { "tagKey2", "tagValue2" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public InputMap<object> Tags
@@ -341,6 +334,7 @@ namespace Pulumi.AliCloud.Slb
         public GetLoadBalancersInvokeArgs()
         {
         }
+        public static new GetLoadBalancersInvokeArgs Empty => new GetLoadBalancersInvokeArgs();
     }
 
 

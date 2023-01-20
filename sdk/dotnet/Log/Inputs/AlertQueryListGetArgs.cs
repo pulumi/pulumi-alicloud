@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class AlertQueryListGetArgs : Pulumi.ResourceArgs
+    public sealed class AlertQueryListGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Chart title, optional from 1.161.0+.
@@ -93,5 +93,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public AlertQueryListGetArgs()
         {
         }
+        public static new AlertQueryListGetArgs Empty => new AlertQueryListGetArgs();
     }
 }

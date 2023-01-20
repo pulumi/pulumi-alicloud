@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class LaunchTemplateNetworkInterfacesArgs : Pulumi.ResourceArgs
+    public sealed class LaunchTemplateNetworkInterfacesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the data disk.
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public LaunchTemplateNetworkInterfacesArgs()
         {
         }
+        public static new LaunchTemplateNetworkInterfacesArgs Empty => new LaunchTemplateNetworkInterfacesArgs();
     }
 }

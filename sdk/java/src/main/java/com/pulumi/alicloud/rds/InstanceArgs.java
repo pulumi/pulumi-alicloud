@@ -145,6 +145,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The RDS edition of the instance. Valid values:
+     * * **Basic**: Basic Edition.
+     * * **HighAvailability**: High-availability Edition.
+     * * **AlwaysOn**: Cluster Edition.
+     * * **Finance**: Enterprise Edition.
+     * 
+     */
+    @Import(name="category")
+    private @Nullable Output<String> category;
+
+    /**
+     * @return The RDS edition of the instance. Valid values:
+     * * **Basic**: Basic Edition.
+     * * **HighAvailability**: High-availability Edition.
+     * * **AlwaysOn**: Cluster Edition.
+     * * **Finance**: Enterprise Edition.
+     * 
+     */
+    public Optional<Output<String>> category() {
+        return Optional.ofNullable(this.category);
+    }
+
+    /**
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      * 
      */
@@ -333,6 +356,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
+    }
+
+    /**
+     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * - Immediate: The change immediately takes effect.
+     * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+     * 
+     */
+    @Import(name="effectiveTime")
+    private @Nullable Output<String> effectiveTime;
+
+    /**
+     * @return The method to update the engine version.  Default value: Immediate. Valid values:
+     * - Immediate: The change immediately takes effect.
+     * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+     * 
+     */
+    public Optional<Output<String>> effectiveTime() {
+        return Optional.ofNullable(this.effectiveTime);
     }
 
     /**
@@ -1042,6 +1084,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The VPC ID of the instance.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The VPC ID of the instance.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      * 
      */
@@ -1136,6 +1193,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.babelfishConfigs = $.babelfishConfigs;
         this.babelfishPort = $.babelfishPort;
         this.caType = $.caType;
+        this.category = $.category;
         this.clientCaCert = $.clientCaCert;
         this.clientCaEnabled = $.clientCaEnabled;
         this.clientCertRevocationList = $.clientCertRevocationList;
@@ -1147,6 +1205,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.dbIsIgnoreCase = $.dbIsIgnoreCase;
         this.dbTimeZone = $.dbTimeZone;
         this.deletionProtection = $.deletionProtection;
+        this.effectiveTime = $.effectiveTime;
         this.encryptionKey = $.encryptionKey;
         this.engine = $.engine;
         this.engineVersion = $.engineVersion;
@@ -1189,6 +1248,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.tdeStatus = $.tdeStatus;
         this.upgradeDbInstanceKernelVersion = $.upgradeDbInstanceKernelVersion;
         this.upgradeTime = $.upgradeTime;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.whitelistNetworkType = $.whitelistNetworkType;
         this.zoneId = $.zoneId;
@@ -1385,6 +1445,35 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder caType(String caType) {
             return caType(Output.of(caType));
+        }
+
+        /**
+         * @param category The RDS edition of the instance. Valid values:
+         * * **Basic**: Basic Edition.
+         * * **HighAvailability**: High-availability Edition.
+         * * **AlwaysOn**: Cluster Edition.
+         * * **Finance**: Enterprise Edition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder category(@Nullable Output<String> category) {
+            $.category = category;
+            return this;
+        }
+
+        /**
+         * @param category The RDS edition of the instance. Valid values:
+         * * **Basic**: Basic Edition.
+         * * **HighAvailability**: High-availability Edition.
+         * * **AlwaysOn**: Cluster Edition.
+         * * **Finance**: Enterprise Edition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder category(String category) {
+            return category(Output.of(category));
         }
 
         /**
@@ -1638,6 +1727,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
+         * @param effectiveTime The method to update the engine version.  Default value: Immediate. Valid values:
+         * - Immediate: The change immediately takes effect.
+         * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveTime(@Nullable Output<String> effectiveTime) {
+            $.effectiveTime = effectiveTime;
+            return this;
+        }
+
+        /**
+         * @param effectiveTime The method to update the engine version.  Default value: Immediate. Valid values:
+         * - Immediate: The change immediately takes effect.
+         * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveTime(String effectiveTime) {
+            return effectiveTime(Output.of(effectiveTime));
         }
 
         /**
@@ -2628,6 +2742,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder upgradeTime(String upgradeTime) {
             return upgradeTime(Output.of(upgradeTime));
+        }
+
+        /**
+         * @param vpcId The VPC ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The VPC ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         /**

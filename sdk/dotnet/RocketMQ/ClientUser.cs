@@ -23,25 +23,23 @@ namespace Pulumi.AliCloud.RocketMQ
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.RocketMQ.ClientUser("default", new()
     ///     {
-    ///         var @default = new AliCloud.RocketMQ.ClientUser("default", new AliCloud.RocketMQ.ClientUserArgs
-    ///         {
-    ///             Bandwidth = 20,
-    ///             ClientIp = "192.1.10.0",
-    ///             Password = "xxxxxxx",
-    ///             SagId = "sag-xxxxx",
-    ///             UserMail = "tftest-xxxxx@test.com",
-    ///             UserName = "th-username-xxxxx",
-    ///         });
-    ///     }
+    ///         Bandwidth = 20,
+    ///         ClientIp = "192.1.10.0",
+    ///         Password = "xxxxxxx",
+    ///         SagId = "sag-xxxxx",
+    ///         UserMail = "tftest-xxxxx@test.com",
+    ///         UserName = "th-username-xxxxx",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +51,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/clientUser:ClientUser")]
-    public partial class ClientUser : Pulumi.CustomResource
+    public partial class ClientUser : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
@@ -141,7 +139,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
-    public sealed class ClientUserArgs : Pulumi.ResourceArgs
+    public sealed class ClientUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
@@ -193,9 +191,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public ClientUserArgs()
         {
         }
+        public static new ClientUserArgs Empty => new ClientUserArgs();
     }
 
-    public sealed class ClientUserState : Pulumi.ResourceArgs
+    public sealed class ClientUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
@@ -247,5 +246,6 @@ namespace Pulumi.AliCloud.RocketMQ
         public ClientUserState()
         {
         }
+        public static new ClientUserState Empty => new ClientUserState();
     }
 }

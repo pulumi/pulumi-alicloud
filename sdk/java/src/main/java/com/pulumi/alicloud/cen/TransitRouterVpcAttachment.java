@@ -12,8 +12,10 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -25,7 +27,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Basic Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -44,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.TransitRouterArgs;
  * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
  * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+ * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -92,11 +94,17 @@ import javax.annotation.Nullable;
  * 
  *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment(&#34;defaultTransitRouterVpcAttachment&#34;, TransitRouterVpcAttachmentArgs.builder()        
  *             .cenId(defaultInstance.id())
- *             .transitRouterId(defaultTransitRouter.id())
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
  *             .vpcId(defaultNetwork.id())
- *             .zoneMapping(            
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .zoneMappings(            
+ *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                     .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+ *                     .vswitchId(defaultMaster.id())
+ *                     .build(),
+ *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                     .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[1]))
+ *                     .vswitchId(defaultSlave.id())
+ *                     .build())
  *             .transitRouterAttachmentName(transitRouterAttachmentName)
  *             .transitRouterAttachmentDescription(transitRouterAttachmentDescription)
  *             .build());
@@ -173,30 +181,26 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.resourceType);
     }
     /**
-     * Whether to enabled route table association. The system default value is `true`.
+     * @deprecated
+     * Field &#39;route_table_association_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_association&#39; instead.
      * 
      */
+    @Deprecated /* Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead. */
     @Export(name="routeTableAssociationEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> routeTableAssociationEnabled;
 
-    /**
-     * @return Whether to enabled route table association. The system default value is `true`.
-     * 
-     */
     public Output<Optional<Boolean>> routeTableAssociationEnabled() {
         return Codegen.optional(this.routeTableAssociationEnabled);
     }
     /**
-     * Whether to enabled route table propagation. The system default value is `true`.
+     * @deprecated
+     * Field &#39;route_table_propagation_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_propagation&#39; instead.
      * 
      */
+    @Deprecated /* Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead. */
     @Export(name="routeTablePropagationEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> routeTablePropagationEnabled;
 
-    /**
-     * @return Whether to enabled route table propagation. The system default value is `true`.
-     * 
-     */
     public Output<Optional<Boolean>> routeTablePropagationEnabled() {
         return Codegen.optional(this.routeTablePropagationEnabled);
     }
@@ -213,6 +217,20 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The description of the transit router vbr attachment.
@@ -299,14 +317,16 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
         return this.vpcOwnerId;
     }
     /**
-     * The list of zone mapping of the VPC.
+     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      * 
      */
     @Export(name="zoneMappings", type=List.class, parameters={TransitRouterVpcAttachmentZoneMapping.class})
     private Output<List<TransitRouterVpcAttachmentZoneMapping>> zoneMappings;
 
     /**
-     * @return The list of zone mapping of the VPC.
+     * @return The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      * 
      */
     public Output<List<TransitRouterVpcAttachmentZoneMapping>> zoneMappings() {

@@ -61,14 +61,14 @@ public final class EcsInstanceSetNetworkInterfaceArgs extends com.pulumi.resourc
     }
 
     /**
-     * -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+     * The ID of the security group to which to assign secondary ENI.
      * 
      */
     @Import(name="securityGroupId", required=true)
     private Output<String> securityGroupId;
 
     /**
-     * @return -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+     * @return The ID of the security group to which to assign secondary ENI.
      * 
      */
     public Output<String> securityGroupId() {
@@ -182,7 +182,7 @@ public final class EcsInstanceSetNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param securityGroupId -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+         * @param securityGroupId The ID of the security group to which to assign secondary ENI.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class EcsInstanceSetNetworkInterfaceArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param securityGroupId -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+         * @param securityGroupId The ID of the security group to which to assign secondary ENI.
          * 
          * @return builder
          * 

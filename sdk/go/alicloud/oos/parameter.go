@@ -47,7 +47,7 @@ import (
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("OosParameter"),
 //				},
-//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+//				ResourceGroupId: *pulumi.String(_default.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -71,10 +71,6 @@ type Parameter struct {
 	pulumi.CustomResourceState
 
 	// The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
-	// * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
-	// * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
-	// * `MinLength`: The minimum length of the common parameter.
-	// * `MaxLength`: The maximum length of the common parameter.
 	Constraints pulumi.StringPtrOutput `pulumi:"constraints"`
 	// The description of the common parameter. The description must be `1` to `200` characters in length.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -129,10 +125,6 @@ func GetParameter(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Parameter resources.
 type parameterState struct {
 	// The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
-	// * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
-	// * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
-	// * `MinLength`: The minimum length of the common parameter.
-	// * `MaxLength`: The maximum length of the common parameter.
 	Constraints *string `pulumi:"constraints"`
 	// The description of the common parameter. The description must be `1` to `200` characters in length.
 	Description *string `pulumi:"description"`
@@ -150,10 +142,6 @@ type parameterState struct {
 
 type ParameterState struct {
 	// The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
-	// * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
-	// * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
-	// * `MinLength`: The minimum length of the common parameter.
-	// * `MaxLength`: The maximum length of the common parameter.
 	Constraints pulumi.StringPtrInput
 	// The description of the common parameter. The description must be `1` to `200` characters in length.
 	Description pulumi.StringPtrInput
@@ -175,10 +163,6 @@ func (ParameterState) ElementType() reflect.Type {
 
 type parameterArgs struct {
 	// The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
-	// * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
-	// * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
-	// * `MinLength`: The minimum length of the common parameter.
-	// * `MaxLength`: The maximum length of the common parameter.
 	Constraints *string `pulumi:"constraints"`
 	// The description of the common parameter. The description must be `1` to `200` characters in length.
 	Description *string `pulumi:"description"`
@@ -197,10 +181,6 @@ type parameterArgs struct {
 // The set of arguments for constructing a Parameter resource.
 type ParameterArgs struct {
 	// The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
-	// * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
-	// * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
-	// * `MinLength`: The minimum length of the common parameter.
-	// * `MaxLength`: The maximum length of the common parameter.
 	Constraints pulumi.StringPtrInput
 	// The description of the common parameter. The description must be `1` to `200` characters in length.
 	Description pulumi.StringPtrInput
@@ -304,10 +284,6 @@ func (o ParameterOutput) ToParameterOutputWithContext(ctx context.Context) Param
 }
 
 // The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
-// * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
-// * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
-// * `MinLength`: The minimum length of the common parameter.
-// * `MaxLength`: The maximum length of the common parameter.
 func (o ParameterOutput) Constraints() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Parameter) pulumi.StringPtrOutput { return v.Constraints }).(pulumi.StringPtrOutput)
 }

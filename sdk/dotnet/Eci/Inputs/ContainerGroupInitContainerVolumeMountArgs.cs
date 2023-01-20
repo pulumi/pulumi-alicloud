@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class ContainerGroupInitContainerVolumeMountArgs : Pulumi.ResourceArgs
+    public sealed class ContainerGroupInitContainerVolumeMountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public Input<string>? MountPath { get; set; }
 
         /// <summary>
-        /// The name of the security context that the container group runs.
+        /// The name of the volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public ContainerGroupInitContainerVolumeMountArgs()
         {
         }
+        public static new ContainerGroupInitContainerVolumeMountArgs Empty => new ContainerGroupInitContainerVolumeMountArgs();
     }
 }

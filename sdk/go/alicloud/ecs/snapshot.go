@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewSnapshot(ctx, "snapshot", &ecs.SnapshotArgs{
-//				DiskId:      pulumi.Any(alicloud_disk_attachment.Instance - attachment.Disk_id),
+//				DiskId:      pulumi.Any(alicloud_disk_attachment.InstanceAttachment.Disk_id),
 //				Description: pulumi.String("this snapshot is created for testing"),
 //				Tags: pulumi.AnyMap{
 //					"version": pulumi.Any("1.2"),

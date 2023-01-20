@@ -21,32 +21,31 @@ namespace Pulumi.AliCloud.Rds
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var resources = AliCloud.Rds.GetInstanceClasses.Invoke(new()
         ///     {
-        ///         var resources = Output.Create(AliCloud.Rds.GetInstanceClasses.InvokeAsync(new AliCloud.Rds.GetInstanceClassesArgs
-        ///         {
-        ///             Engine = "MySQL",
-        ///             EngineVersion = "5.6",
-        ///             InstanceChargeType = "PostPaid",
-        ///             OutputFile = "./classes.txt",
-        ///         }));
-        ///         this.FirstDbInstanceClass = resources.Apply(resources =&gt; resources.InstanceClasses?[0]?.InstanceClass);
-        ///     }
+        ///         Engine = "MySQL",
+        ///         EngineVersion = "5.6",
+        ///         InstanceChargeType = "PostPaid",
+        ///         OutputFile = "./classes.txt",
+        ///     });
         /// 
-        ///     [Output("firstDbInstanceClass")]
-        ///     public Output&lt;string&gt; FirstDbInstanceClass { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDbInstanceClass"] = resources.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceClassesResult> InvokeAsync(GetInstanceClassesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:rds/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:rds/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the RDS instance classes resource available info of Alibaba Cloud.
@@ -58,36 +57,35 @@ namespace Pulumi.AliCloud.Rds
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var resources = AliCloud.Rds.GetInstanceClasses.Invoke(new()
         ///     {
-        ///         var resources = Output.Create(AliCloud.Rds.GetInstanceClasses.InvokeAsync(new AliCloud.Rds.GetInstanceClassesArgs
-        ///         {
-        ///             Engine = "MySQL",
-        ///             EngineVersion = "5.6",
-        ///             InstanceChargeType = "PostPaid",
-        ///             OutputFile = "./classes.txt",
-        ///         }));
-        ///         this.FirstDbInstanceClass = resources.Apply(resources =&gt; resources.InstanceClasses?[0]?.InstanceClass);
-        ///     }
+        ///         Engine = "MySQL",
+        ///         EngineVersion = "5.6",
+        ///         InstanceChargeType = "PostPaid",
+        ///         OutputFile = "./classes.txt",
+        ///     });
         /// 
-        ///     [Output("firstDbInstanceClass")]
-        ///     public Output&lt;string&gt; FirstDbInstanceClass { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDbInstanceClass"] = resources.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceClassesResult> Invoke(GetInstanceClassesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceClassesResult>("alicloud:rds/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceClassesResult>("alicloud:rds/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceClassesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceClassesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
@@ -172,9 +170,10 @@ namespace Pulumi.AliCloud.Rds
         public GetInstanceClassesArgs()
         {
         }
+        public static new GetInstanceClassesArgs Empty => new GetInstanceClassesArgs();
     }
 
-    public sealed class GetInstanceClassesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceClassesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
@@ -259,6 +258,7 @@ namespace Pulumi.AliCloud.Rds
         public GetInstanceClassesInvokeArgs()
         {
         }
+        public static new GetInstanceClassesInvokeArgs Empty => new GetInstanceClassesInvokeArgs();
     }
 
 

@@ -24,64 +24,65 @@ namespace Pulumi.AliCloud.CS
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-test";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-test";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-    ///         {
-    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
-    ///             CpuCoreCount = 2,
-    ///             MemorySize = 4,
-    ///             KubernetesNodeRole = "Worker",
-    ///         })));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "10.1.0.0/21",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VswitchName = name,
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "10.1.1.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var defaultKeyPair = new AliCloud.Ecs.KeyPair("defaultKeyPair", new AliCloud.Ecs.KeyPairArgs
-    ///         {
-    ///             KeyPairName = name,
-    ///         });
-    ///         var defaultManagedKubernetes = new List&lt;AliCloud.CS.ManagedKubernetes&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; (1 == true); rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             defaultManagedKubernetes.Add(new AliCloud.CS.ManagedKubernetes($"defaultManagedKubernetes-{range.Value}", new AliCloud.CS.ManagedKubernetesArgs
-    ///             {
-    ///                 ClusterSpec = "ack.pro.small",
-    ///                 IsEnterpriseSecurityGroup = true,
-    ///                 WorkerNumber = 2,
-    ///                 Password = "Hello1234",
-    ///                 PodCidr = "172.20.0.0/16",
-    ///                 ServiceCidr = "172.21.0.0/20",
-    ///                 WorkerVswitchIds = 
-    ///                 {
-    ///                     defaultSwitch.Id,
-    ///                 },
-    ///                 WorkerInstanceTypes = 
-    ///                 {
-    ///                     defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
-    ///                 },
-    ///             }));
-    ///         }
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 2,
+    ///         MemorySize = 4,
+    ///         KubernetesNodeRole = "Worker",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.1.0.0/21",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "10.1.1.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultKeyPair = new AliCloud.Ecs.KeyPair("defaultKeyPair", new()
+    ///     {
+    ///         KeyPairName = name,
+    ///     });
+    /// 
+    ///     var defaultManagedKubernetes = new List&lt;AliCloud.CS.ManagedKubernetes&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; (1 == true); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultManagedKubernetes.Add(new AliCloud.CS.ManagedKubernetes($"defaultManagedKubernetes-{range.Value}", new()
+    ///         {
+    ///             ClusterSpec = "ack.pro.small",
+    ///             IsEnterpriseSecurityGroup = true,
+    ///             WorkerNumber = 2,
+    ///             Password = "Hello1234",
+    ///             PodCidr = "172.20.0.0/16",
+    ///             ServiceCidr = "172.21.0.0/20",
+    ///             WorkerVswitchIds = new[]
+    ///             {
+    ///                 defaultSwitch.Id,
+    ///             },
+    ///             WorkerInstanceTypes = new[]
+    ///             {
+    ///                 defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///             },
+    ///         }));
+    ///     }
+    /// });
     /// ```
     /// **Installing of addon**
     /// When a cluster is created, some system addons and those specified at the time of cluster creation will be installed, so when an addon resource is applied:
@@ -95,59 +96,54 @@ namespace Pulumi.AliCloud.CS
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var ack_node_problem_detector = new AliCloud.CS.KubernetesAddon("ack-node-problem-detector", new()
     ///     {
-    ///         var ack_node_problem_detector = new AliCloud.CS.KubernetesAddon("ack-node-problem-detector", new AliCloud.CS.KubernetesAddonArgs
-    ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             Version = "1.2.7",
-    ///         });
-    ///         var nginxIngressController = new AliCloud.CS.KubernetesAddon("nginxIngressController", new AliCloud.CS.KubernetesAddonArgs
-    ///         {
-    ///             ClusterId = @var.Cluster_id,
-    ///             Version = "v1.1.2-aliyun.2",
-    ///             Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "CpuLimit", "" },
-    ///                 { "CpuRequest", "100m" },
-    ///                 { "EnableWebhook", true },
-    ///                 { "HostNetwork", false },
-    ///                 { "IngressSlbNetworkType", "internet" },
-    ///                 { "IngressSlbSpec", "slb.s2.small" },
-    ///                 { "MemoryLimit", "" },
-    ///                 { "MemoryRequest", "200Mi" },
-    ///                 { "NodeSelector", new[]
-    ///                     {
-    ///                     }
-    ///                  },
-    ///             }),
-    ///         });
-    ///     }
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         Version = "1.2.7",
+    ///     });
     /// 
-    /// }
+    ///     var nginxIngressController = new AliCloud.CS.KubernetesAddon("nginxIngressController", new()
+    ///     {
+    ///         ClusterId = @var.Cluster_id,
+    ///         Version = "v1.1.2-aliyun.2",
+    ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["CpuLimit"] = "",
+    ///             ["CpuRequest"] = "100m",
+    ///             ["EnableWebhook"] = true,
+    ///             ["HostNetwork"] = false,
+    ///             ["IngressSlbNetworkType"] = "internet",
+    ///             ["IngressSlbSpec"] = "slb.s2.small",
+    ///             ["MemoryLimit"] = "",
+    ///             ["MemoryRequest"] = "200Mi",
+    ///             ["NodeSelector"] = new[]
+    ///             {
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// **Upgrading of addon**
     /// First, check the `next_version` field of the addon that can be upgraded to through the `.tfstate file`, then overwrite the `version` field with the value of `next_version` and apply.
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var ack_node_problem_detector = new AliCloud.CS.KubernetesAddon("ack-node-problem-detector", new()
     ///     {
-    ///         var ack_node_problem_detector = new AliCloud.CS.KubernetesAddon("ack-node-problem-detector", new AliCloud.CS.KubernetesAddonArgs
-    ///         {
-    ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-    ///             Version = "1.2.8",
-    ///         });
-    ///         // upgrade from 1.2.7 to 1.2.8
-    ///     }
+    ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+    ///         Version = "1.2.8",
+    ///     });
     /// 
-    /// }
+    ///     // upgrade from 1.2.7 to 1.2.8
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -155,11 +151,11 @@ namespace Pulumi.AliCloud.CS
     /// Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `terraform plan`.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon alicloud_cs_kubernetes_addon.my_addon &lt;cluster_id&gt;:&lt;addon_name&gt;
+    ///  $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon &lt;cluster_id&gt;:&lt;addon_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/kubernetesAddon:KubernetesAddon")]
-    public partial class KubernetesAddon : Pulumi.CustomResource
+    public partial class KubernetesAddon : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Is the addon ready for upgrade.
@@ -247,7 +243,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class KubernetesAddonArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesAddonArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of kubernetes cluster.
@@ -276,9 +272,10 @@ namespace Pulumi.AliCloud.CS
         public KubernetesAddonArgs()
         {
         }
+        public static new KubernetesAddonArgs Empty => new KubernetesAddonArgs();
     }
 
-    public sealed class KubernetesAddonState : Pulumi.ResourceArgs
+    public sealed class KubernetesAddonState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Is the addon ready for upgrade.
@@ -325,5 +322,6 @@ namespace Pulumi.AliCloud.CS
         public KubernetesAddonState()
         {
         }
+        public static new KubernetesAddonState Empty => new KubernetesAddonState();
     }
 }

@@ -22,34 +22,34 @@ namespace Pulumi.AliCloud.PolarDB
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var polardbClustersDs = AliCloud.PolarDB.GetClusters.Invoke(new()
         ///     {
-        ///         var polardbClustersDs = Output.Create(AliCloud.PolarDB.GetClusters.InvokeAsync(new AliCloud.PolarDB.GetClustersArgs
-        ///         {
-        ///             DescriptionRegex = "pc-\\w+",
-        ///             Status = "Running",
-        ///         }));
-        ///         var @default = polardbClustersDs.Apply(polardbClustersDs =&gt; Output.Create(AliCloud.PolarDB.GetDatabases.InvokeAsync(new AliCloud.PolarDB.GetDatabasesArgs
-        ///         {
-        ///             DbClusterId = polardbClustersDs.Clusters?[0]?.Id,
-        ///         })));
-        ///         this.Database = @default.Apply(@default =&gt; @default.Databases?[0]?.DbName);
-        ///     }
+        ///         DescriptionRegex = "pc-\\w+",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("database")]
-        ///     public Output&lt;string&gt; Database { get; set; }
-        /// }
+        ///     var @default = AliCloud.PolarDB.GetDatabases.Invoke(new()
+        ///     {
+        ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["database"] = @default.Apply(getDatabasesResult =&gt; getDatabasesResult).Apply(@default =&gt; @default.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases[0]?.DbName)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabasesResult> InvokeAsync(GetDatabasesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("alicloud:polardb/getDatabases:getDatabases", args ?? new GetDatabasesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("alicloud:polardb/getDatabases:getDatabases", args ?? new GetDatabasesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.polardb.getDatabases` data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
@@ -62,38 +62,38 @@ namespace Pulumi.AliCloud.PolarDB
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var polardbClustersDs = AliCloud.PolarDB.GetClusters.Invoke(new()
         ///     {
-        ///         var polardbClustersDs = Output.Create(AliCloud.PolarDB.GetClusters.InvokeAsync(new AliCloud.PolarDB.GetClustersArgs
-        ///         {
-        ///             DescriptionRegex = "pc-\\w+",
-        ///             Status = "Running",
-        ///         }));
-        ///         var @default = polardbClustersDs.Apply(polardbClustersDs =&gt; Output.Create(AliCloud.PolarDB.GetDatabases.InvokeAsync(new AliCloud.PolarDB.GetDatabasesArgs
-        ///         {
-        ///             DbClusterId = polardbClustersDs.Clusters?[0]?.Id,
-        ///         })));
-        ///         this.Database = @default.Apply(@default =&gt; @default.Databases?[0]?.DbName);
-        ///     }
+        ///         DescriptionRegex = "pc-\\w+",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("database")]
-        ///     public Output&lt;string&gt; Database { get; set; }
-        /// }
+        ///     var @default = AliCloud.PolarDB.GetDatabases.Invoke(new()
+        ///     {
+        ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["database"] = @default.Apply(getDatabasesResult =&gt; getDatabasesResult).Apply(@default =&gt; @default.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases[0]?.DbName)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("alicloud:polardb/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("alicloud:polardb/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDatabasesArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabasesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The polarDB cluster ID.
@@ -110,9 +110,10 @@ namespace Pulumi.AliCloud.PolarDB
         public GetDatabasesArgs()
         {
         }
+        public static new GetDatabasesArgs Empty => new GetDatabasesArgs();
     }
 
-    public sealed class GetDatabasesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabasesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The polarDB cluster ID.
@@ -129,6 +130,7 @@ namespace Pulumi.AliCloud.PolarDB
         public GetDatabasesInvokeArgs()
         {
         }
+        public static new GetDatabasesInvokeArgs Empty => new GetDatabasesInvokeArgs();
     }
 
 

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,15 +23,12 @@ import * as utilities from "../utilities";
  *     productCode: "ess",
  *     ids: ["4621F886-81E9-xxxx-xxxx"],
  * });
- * export const firstQuotasQuotaApplicationId = example.then(example => example.applications?[0]?.id);
+ * export const firstQuotasQuotaApplicationId = example.then(example => example.applications?.[0]?.id);
  * ```
  */
 export function getQuotaApplications(args: GetQuotaApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaApplicationsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:quotas/getQuotaApplications:getQuotaApplications", {
         "dimensions": args.dimensions,
         "enableDetails": args.enableDetails,
@@ -99,9 +97,28 @@ export interface GetQuotaApplicationsResult {
     readonly quotaCategory?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.117.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.quotas.getQuotaApplications({
+ *     productCode: "ess",
+ *     ids: ["4621F886-81E9-xxxx-xxxx"],
+ * });
+ * export const firstQuotasQuotaApplicationId = example.then(example => example.applications?.[0]?.id);
+ * ```
+ */
 export function getQuotaApplicationsOutput(args: GetQuotaApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaApplicationsResult> {
-    return pulumi.output(args).apply(a => getQuotaApplications(a, opts))
+    return pulumi.output(args).apply((a: any) => getQuotaApplications(a, opts))
 }
 
 /**

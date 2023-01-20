@@ -31,9 +31,9 @@ import * as utilities from "../utilities";
  * });
  * const defaultBundle = new alicloud.eds.Bundle("defaultBundle", {
  *     description: _var.name,
- *     desktopType: defaultDesktopTypes.then(defaultDesktopTypes => defaultDesktopTypes.ids?[0]),
+ *     desktopType: defaultDesktopTypes.then(defaultDesktopTypes => defaultDesktopTypes.ids?.[0]),
  *     bundleName: _var.name,
- *     imageId: defaultImages.then(defaultImages => defaultImages.ids?[0]),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
  *     userDiskSizeGibs: [70],
  *     rootDiskSizeGib: 80,
  *     rootDiskPerformanceLevel: "PL1",

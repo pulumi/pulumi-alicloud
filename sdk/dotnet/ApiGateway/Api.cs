@@ -15,60 +15,59 @@ namespace Pulumi.AliCloud.ApiGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var apiGroup = new AliCloud.ApiGateway.Group("apiGroup", new()
     ///     {
-    ///         var apiGroup = new AliCloud.ApiGateway.Group("apiGroup", new AliCloud.ApiGateway.GroupArgs
-    ///         {
-    ///             Description = "description of the api group",
-    ///         });
-    ///         var apiGatewayApi = new AliCloud.ApiGateway.Api("apiGatewayApi", new AliCloud.ApiGateway.ApiArgs
-    ///         {
-    ///             GroupId = apiGroup.Id,
-    ///             Description = "your description",
-    ///             AuthType = "APP",
-    ///             ForceNonceCheck = false,
-    ///             RequestConfig = new AliCloud.ApiGateway.Inputs.ApiRequestConfigArgs
-    ///             {
-    ///                 Protocol = "HTTP",
-    ///                 Method = "GET",
-    ///                 Path = "/test/path1",
-    ///                 Mode = "MAPPING",
-    ///             },
-    ///             ServiceType = "HTTP",
-    ///             HttpServiceConfig = new AliCloud.ApiGateway.Inputs.ApiHttpServiceConfigArgs
-    ///             {
-    ///                 Address = "http://apigateway-backend.alicloudapi.com:8080",
-    ///                 Method = "GET",
-    ///                 Path = "/web/cloudapi",
-    ///                 Timeout = 12,
-    ///                 AoneName = "cloudapi-openapi",
-    ///             },
-    ///             RequestParameters = 
-    ///             {
-    ///                 new AliCloud.ApiGateway.Inputs.ApiRequestParameterArgs
-    ///                 {
-    ///                     Name = "aaa",
-    ///                     Type = "STRING",
-    ///                     Required = "OPTIONAL",
-    ///                     In = "QUERY",
-    ///                     InService = "QUERY",
-    ///                     NameService = "testparams",
-    ///                 },
-    ///             },
-    ///             StageNames = 
-    ///             {
-    ///                 "RELEASE",
-    ///                 "TEST",
-    ///             },
-    ///         });
-    ///     }
+    ///         Description = "description of the api group",
+    ///     });
     /// 
-    /// }
+    ///     var apiGatewayApi = new AliCloud.ApiGateway.Api("apiGatewayApi", new()
+    ///     {
+    ///         GroupId = apiGroup.Id,
+    ///         Description = "your description",
+    ///         AuthType = "APP",
+    ///         ForceNonceCheck = false,
+    ///         RequestConfig = new AliCloud.ApiGateway.Inputs.ApiRequestConfigArgs
+    ///         {
+    ///             Protocol = "HTTP",
+    ///             Method = "GET",
+    ///             Path = "/test/path1",
+    ///             Mode = "MAPPING",
+    ///         },
+    ///         ServiceType = "HTTP",
+    ///         HttpServiceConfig = new AliCloud.ApiGateway.Inputs.ApiHttpServiceConfigArgs
+    ///         {
+    ///             Address = "http://apigateway-backend.alicloudapi.com:8080",
+    ///             Method = "GET",
+    ///             Path = "/web/cloudapi",
+    ///             Timeout = 12,
+    ///             AoneName = "cloudapi-openapi",
+    ///         },
+    ///         RequestParameters = new[]
+    ///         {
+    ///             new AliCloud.ApiGateway.Inputs.ApiRequestParameterArgs
+    ///             {
+    ///                 Name = "aaa",
+    ///                 Type = "STRING",
+    ///                 Required = "OPTIONAL",
+    ///                 In = "QUERY",
+    ///                 InService = "QUERY",
+    ///                 NameService = "testparams",
+    ///             },
+    ///         },
+    ///         StageNames = new[]
+    ///         {
+    ///             "RELEASE",
+    ///             "TEST",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -80,7 +79,7 @@ namespace Pulumi.AliCloud.ApiGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:apigateway/api:Api")]
-    public partial class Api : Pulumi.CustomResource
+    public partial class Api : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the api of api gateway.
@@ -101,7 +100,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<ImmutableArray<Outputs.ApiConstantParameter>> ConstantParameters { get; private set; } = null!;
 
         /// <summary>
-        /// The description of Constant parameter.
+        /// The description of the api. Defaults to null.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -143,7 +142,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<Outputs.ApiMockServiceConfig?> MockServiceConfig { get; private set; } = null!;
 
         /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        /// The name of the api gateway api. Defaults to null.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -222,7 +221,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
     }
 
-    public sealed class ApiArgs : Pulumi.ResourceArgs
+    public sealed class ApiArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authorization Type including APP and ANONYMOUS. Defaults to null.
@@ -243,7 +242,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
 
         /// <summary>
-        /// The description of Constant parameter.
+        /// The description of the api. Defaults to null.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
@@ -285,7 +284,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<Inputs.ApiMockServiceConfigArgs>? MockServiceConfig { get; set; }
 
         /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        /// The name of the api gateway api. Defaults to null.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -341,9 +340,10 @@ namespace Pulumi.AliCloud.ApiGateway
         public ApiArgs()
         {
         }
+        public static new ApiArgs Empty => new ApiArgs();
     }
 
-    public sealed class ApiState : Pulumi.ResourceArgs
+    public sealed class ApiState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the api of api gateway.
@@ -370,7 +370,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
 
         /// <summary>
-        /// The description of Constant parameter.
+        /// The description of the api. Defaults to null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -412,7 +412,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<Inputs.ApiMockServiceConfigGetArgs>? MockServiceConfig { get; set; }
 
         /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        /// The name of the api gateway api. Defaults to null.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -468,5 +468,6 @@ namespace Pulumi.AliCloud.ApiGateway
         public ApiState()
         {
         }
+        public static new ApiState Empty => new ApiState();
     }
 }

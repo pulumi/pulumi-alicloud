@@ -5,50 +5,156 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./alarm";
-export * from "./alarmContact";
-export * from "./alarmContactGroup";
-export * from "./dynamicTagGroup";
-export * from "./eventRule";
-export * from "./getAlarmContactGroups";
-export * from "./getAlarmContacts";
-export * from "./getDynamicTagGroups";
-export * from "./getEventRules";
-export * from "./getGroupMetricRules";
-export * from "./getHybridMonitorDatas";
-export * from "./getHybridMonitorFcTasks";
-export * from "./getHybridMonitorSlsTasks";
-export * from "./getMetricRuleTemplates";
-export * from "./getMonitorGroupInstances";
-export * from "./getMonitorGroups";
-export * from "./getNamespaces";
-export * from "./getService";
-export * from "./getSlsGroups";
-export * from "./groupMetricRule";
-export * from "./hybridMonitorFcTask";
-export * from "./hybridMonitorSlsTask";
-export * from "./metricRuleTemplate";
-export * from "./monitorGroup";
-export * from "./monitorGroupInstances";
-export * from "./namespace";
-export * from "./siteMonitor";
-export * from "./slsGroup";
+export { AlarmArgs, AlarmState } from "./alarm";
+export type Alarm = import("./alarm").Alarm;
+export const Alarm: typeof import("./alarm").Alarm = null as any;
+utilities.lazyLoad(exports, ["Alarm"], () => require("./alarm"));
 
-// Import resources to register:
-import { Alarm } from "./alarm";
-import { AlarmContact } from "./alarmContact";
-import { AlarmContactGroup } from "./alarmContactGroup";
-import { DynamicTagGroup } from "./dynamicTagGroup";
-import { EventRule } from "./eventRule";
-import { GroupMetricRule } from "./groupMetricRule";
-import { HybridMonitorFcTask } from "./hybridMonitorFcTask";
-import { HybridMonitorSlsTask } from "./hybridMonitorSlsTask";
-import { MetricRuleTemplate } from "./metricRuleTemplate";
-import { MonitorGroup } from "./monitorGroup";
-import { MonitorGroupInstances } from "./monitorGroupInstances";
-import { Namespace } from "./namespace";
-import { SiteMonitor } from "./siteMonitor";
-import { SlsGroup } from "./slsGroup";
+export { AlarmContactArgs, AlarmContactState } from "./alarmContact";
+export type AlarmContact = import("./alarmContact").AlarmContact;
+export const AlarmContact: typeof import("./alarmContact").AlarmContact = null as any;
+utilities.lazyLoad(exports, ["AlarmContact"], () => require("./alarmContact"));
+
+export { AlarmContactGroupArgs, AlarmContactGroupState } from "./alarmContactGroup";
+export type AlarmContactGroup = import("./alarmContactGroup").AlarmContactGroup;
+export const AlarmContactGroup: typeof import("./alarmContactGroup").AlarmContactGroup = null as any;
+utilities.lazyLoad(exports, ["AlarmContactGroup"], () => require("./alarmContactGroup"));
+
+export { DynamicTagGroupArgs, DynamicTagGroupState } from "./dynamicTagGroup";
+export type DynamicTagGroup = import("./dynamicTagGroup").DynamicTagGroup;
+export const DynamicTagGroup: typeof import("./dynamicTagGroup").DynamicTagGroup = null as any;
+utilities.lazyLoad(exports, ["DynamicTagGroup"], () => require("./dynamicTagGroup"));
+
+export { EventRuleArgs, EventRuleState } from "./eventRule";
+export type EventRule = import("./eventRule").EventRule;
+export const EventRule: typeof import("./eventRule").EventRule = null as any;
+utilities.lazyLoad(exports, ["EventRule"], () => require("./eventRule"));
+
+export { GetAlarmContactGroupsArgs, GetAlarmContactGroupsResult, GetAlarmContactGroupsOutputArgs } from "./getAlarmContactGroups";
+export const getAlarmContactGroups: typeof import("./getAlarmContactGroups").getAlarmContactGroups = null as any;
+export const getAlarmContactGroupsOutput: typeof import("./getAlarmContactGroups").getAlarmContactGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getAlarmContactGroups","getAlarmContactGroupsOutput"], () => require("./getAlarmContactGroups"));
+
+export { GetAlarmContactsArgs, GetAlarmContactsResult, GetAlarmContactsOutputArgs } from "./getAlarmContacts";
+export const getAlarmContacts: typeof import("./getAlarmContacts").getAlarmContacts = null as any;
+export const getAlarmContactsOutput: typeof import("./getAlarmContacts").getAlarmContactsOutput = null as any;
+utilities.lazyLoad(exports, ["getAlarmContacts","getAlarmContactsOutput"], () => require("./getAlarmContacts"));
+
+export { GetDynamicTagGroupsArgs, GetDynamicTagGroupsResult, GetDynamicTagGroupsOutputArgs } from "./getDynamicTagGroups";
+export const getDynamicTagGroups: typeof import("./getDynamicTagGroups").getDynamicTagGroups = null as any;
+export const getDynamicTagGroupsOutput: typeof import("./getDynamicTagGroups").getDynamicTagGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getDynamicTagGroups","getDynamicTagGroupsOutput"], () => require("./getDynamicTagGroups"));
+
+export { GetEventRulesArgs, GetEventRulesResult, GetEventRulesOutputArgs } from "./getEventRules";
+export const getEventRules: typeof import("./getEventRules").getEventRules = null as any;
+export const getEventRulesOutput: typeof import("./getEventRules").getEventRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getEventRules","getEventRulesOutput"], () => require("./getEventRules"));
+
+export { GetGroupMetricRulesArgs, GetGroupMetricRulesResult, GetGroupMetricRulesOutputArgs } from "./getGroupMetricRules";
+export const getGroupMetricRules: typeof import("./getGroupMetricRules").getGroupMetricRules = null as any;
+export const getGroupMetricRulesOutput: typeof import("./getGroupMetricRules").getGroupMetricRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupMetricRules","getGroupMetricRulesOutput"], () => require("./getGroupMetricRules"));
+
+export { GetHybridMonitorDatasArgs, GetHybridMonitorDatasResult, GetHybridMonitorDatasOutputArgs } from "./getHybridMonitorDatas";
+export const getHybridMonitorDatas: typeof import("./getHybridMonitorDatas").getHybridMonitorDatas = null as any;
+export const getHybridMonitorDatasOutput: typeof import("./getHybridMonitorDatas").getHybridMonitorDatasOutput = null as any;
+utilities.lazyLoad(exports, ["getHybridMonitorDatas","getHybridMonitorDatasOutput"], () => require("./getHybridMonitorDatas"));
+
+export { GetHybridMonitorFcTasksArgs, GetHybridMonitorFcTasksResult, GetHybridMonitorFcTasksOutputArgs } from "./getHybridMonitorFcTasks";
+export const getHybridMonitorFcTasks: typeof import("./getHybridMonitorFcTasks").getHybridMonitorFcTasks = null as any;
+export const getHybridMonitorFcTasksOutput: typeof import("./getHybridMonitorFcTasks").getHybridMonitorFcTasksOutput = null as any;
+utilities.lazyLoad(exports, ["getHybridMonitorFcTasks","getHybridMonitorFcTasksOutput"], () => require("./getHybridMonitorFcTasks"));
+
+export { GetHybridMonitorSlsTasksArgs, GetHybridMonitorSlsTasksResult, GetHybridMonitorSlsTasksOutputArgs } from "./getHybridMonitorSlsTasks";
+export const getHybridMonitorSlsTasks: typeof import("./getHybridMonitorSlsTasks").getHybridMonitorSlsTasks = null as any;
+export const getHybridMonitorSlsTasksOutput: typeof import("./getHybridMonitorSlsTasks").getHybridMonitorSlsTasksOutput = null as any;
+utilities.lazyLoad(exports, ["getHybridMonitorSlsTasks","getHybridMonitorSlsTasksOutput"], () => require("./getHybridMonitorSlsTasks"));
+
+export { GetMetricRuleBlackListsArgs, GetMetricRuleBlackListsResult, GetMetricRuleBlackListsOutputArgs } from "./getMetricRuleBlackLists";
+export const getMetricRuleBlackLists: typeof import("./getMetricRuleBlackLists").getMetricRuleBlackLists = null as any;
+export const getMetricRuleBlackListsOutput: typeof import("./getMetricRuleBlackLists").getMetricRuleBlackListsOutput = null as any;
+utilities.lazyLoad(exports, ["getMetricRuleBlackLists","getMetricRuleBlackListsOutput"], () => require("./getMetricRuleBlackLists"));
+
+export { GetMetricRuleTemplatesArgs, GetMetricRuleTemplatesResult, GetMetricRuleTemplatesOutputArgs } from "./getMetricRuleTemplates";
+export const getMetricRuleTemplates: typeof import("./getMetricRuleTemplates").getMetricRuleTemplates = null as any;
+export const getMetricRuleTemplatesOutput: typeof import("./getMetricRuleTemplates").getMetricRuleTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getMetricRuleTemplates","getMetricRuleTemplatesOutput"], () => require("./getMetricRuleTemplates"));
+
+export { GetMonitorGroupInstancesArgs, GetMonitorGroupInstancesResult, GetMonitorGroupInstancesOutputArgs } from "./getMonitorGroupInstances";
+export const getMonitorGroupInstances: typeof import("./getMonitorGroupInstances").getMonitorGroupInstances = null as any;
+export const getMonitorGroupInstancesOutput: typeof import("./getMonitorGroupInstances").getMonitorGroupInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitorGroupInstances","getMonitorGroupInstancesOutput"], () => require("./getMonitorGroupInstances"));
+
+export { GetMonitorGroupsArgs, GetMonitorGroupsResult, GetMonitorGroupsOutputArgs } from "./getMonitorGroups";
+export const getMonitorGroups: typeof import("./getMonitorGroups").getMonitorGroups = null as any;
+export const getMonitorGroupsOutput: typeof import("./getMonitorGroups").getMonitorGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitorGroups","getMonitorGroupsOutput"], () => require("./getMonitorGroups"));
+
+export { GetNamespacesArgs, GetNamespacesResult, GetNamespacesOutputArgs } from "./getNamespaces";
+export const getNamespaces: typeof import("./getNamespaces").getNamespaces = null as any;
+export const getNamespacesOutput: typeof import("./getNamespaces").getNamespacesOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespaces","getNamespacesOutput"], () => require("./getNamespaces"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { GetSlsGroupsArgs, GetSlsGroupsResult, GetSlsGroupsOutputArgs } from "./getSlsGroups";
+export const getSlsGroups: typeof import("./getSlsGroups").getSlsGroups = null as any;
+export const getSlsGroupsOutput: typeof import("./getSlsGroups").getSlsGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getSlsGroups","getSlsGroupsOutput"], () => require("./getSlsGroups"));
+
+export { GroupMetricRuleArgs, GroupMetricRuleState } from "./groupMetricRule";
+export type GroupMetricRule = import("./groupMetricRule").GroupMetricRule;
+export const GroupMetricRule: typeof import("./groupMetricRule").GroupMetricRule = null as any;
+utilities.lazyLoad(exports, ["GroupMetricRule"], () => require("./groupMetricRule"));
+
+export { HybridMonitorFcTaskArgs, HybridMonitorFcTaskState } from "./hybridMonitorFcTask";
+export type HybridMonitorFcTask = import("./hybridMonitorFcTask").HybridMonitorFcTask;
+export const HybridMonitorFcTask: typeof import("./hybridMonitorFcTask").HybridMonitorFcTask = null as any;
+utilities.lazyLoad(exports, ["HybridMonitorFcTask"], () => require("./hybridMonitorFcTask"));
+
+export { HybridMonitorSlsTaskArgs, HybridMonitorSlsTaskState } from "./hybridMonitorSlsTask";
+export type HybridMonitorSlsTask = import("./hybridMonitorSlsTask").HybridMonitorSlsTask;
+export const HybridMonitorSlsTask: typeof import("./hybridMonitorSlsTask").HybridMonitorSlsTask = null as any;
+utilities.lazyLoad(exports, ["HybridMonitorSlsTask"], () => require("./hybridMonitorSlsTask"));
+
+export { MetricRuleBlackListArgs, MetricRuleBlackListState } from "./metricRuleBlackList";
+export type MetricRuleBlackList = import("./metricRuleBlackList").MetricRuleBlackList;
+export const MetricRuleBlackList: typeof import("./metricRuleBlackList").MetricRuleBlackList = null as any;
+utilities.lazyLoad(exports, ["MetricRuleBlackList"], () => require("./metricRuleBlackList"));
+
+export { MetricRuleTemplateArgs, MetricRuleTemplateState } from "./metricRuleTemplate";
+export type MetricRuleTemplate = import("./metricRuleTemplate").MetricRuleTemplate;
+export const MetricRuleTemplate: typeof import("./metricRuleTemplate").MetricRuleTemplate = null as any;
+utilities.lazyLoad(exports, ["MetricRuleTemplate"], () => require("./metricRuleTemplate"));
+
+export { MonitorGroupArgs, MonitorGroupState } from "./monitorGroup";
+export type MonitorGroup = import("./monitorGroup").MonitorGroup;
+export const MonitorGroup: typeof import("./monitorGroup").MonitorGroup = null as any;
+utilities.lazyLoad(exports, ["MonitorGroup"], () => require("./monitorGroup"));
+
+export { MonitorGroupInstancesArgs, MonitorGroupInstancesState } from "./monitorGroupInstances";
+export type MonitorGroupInstances = import("./monitorGroupInstances").MonitorGroupInstances;
+export const MonitorGroupInstances: typeof import("./monitorGroupInstances").MonitorGroupInstances = null as any;
+utilities.lazyLoad(exports, ["MonitorGroupInstances"], () => require("./monitorGroupInstances"));
+
+export { NamespaceArgs, NamespaceState } from "./namespace";
+export type Namespace = import("./namespace").Namespace;
+export const Namespace: typeof import("./namespace").Namespace = null as any;
+utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+
+export { SiteMonitorArgs, SiteMonitorState } from "./siteMonitor";
+export type SiteMonitor = import("./siteMonitor").SiteMonitor;
+export const SiteMonitor: typeof import("./siteMonitor").SiteMonitor = null as any;
+utilities.lazyLoad(exports, ["SiteMonitor"], () => require("./siteMonitor"));
+
+export { SlsGroupArgs, SlsGroupState } from "./slsGroup";
+export type SlsGroup = import("./slsGroup").SlsGroup;
+export const SlsGroup: typeof import("./slsGroup").SlsGroup = null as any;
+utilities.lazyLoad(exports, ["SlsGroup"], () => require("./slsGroup"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -70,6 +176,8 @@ const _module = {
                 return new HybridMonitorFcTask(name, <any>undefined, { urn })
             case "alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask":
                 return new HybridMonitorSlsTask(name, <any>undefined, { urn })
+            case "alicloud:cms/metricRuleBlackList:MetricRuleBlackList":
+                return new MetricRuleBlackList(name, <any>undefined, { urn })
             case "alicloud:cms/metricRuleTemplate:MetricRuleTemplate":
                 return new MetricRuleTemplate(name, <any>undefined, { urn })
             case "alicloud:cms/monitorGroup:MonitorGroup":
@@ -95,6 +203,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cms/eventRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/groupMetricRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/hybridMonitorFcTask", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/hybridMonitorSlsTask", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/metricRuleBlackList", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/metricRuleTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroupInstances", _module)

@@ -10,61 +10,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRolesRole {
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     * 
+     */
     private String arn;
+    /**
+     * @return (Available in v1.114.0+) The assume role policy document.
+     * 
+     */
     private String assumeRolePolicyDocument;
+    /**
+     * @return The description of the RAM role.
+     * 
+     */
     private String description;
     /**
      * @return The ID of the role.
-     * * `role_id`- The ID of the role.
-     * * `role_name`- The name of the role.
-     * * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
-     * * `create_date`- (Removed form v1.114.0) The time when the RAM role was created.
-     * * `update_date`- The time when the RAM role was updated.
-     * * `description`- The description of the RAM role.
-     * * `max_session_duration`- The maximum session duration of the RAM role.
-     * * `assume_role_policy_document`- (Available in v1.114.0+) The assume role policy document.
      * 
      */
     private String id;
+    /**
+     * @return The maximum session duration of the RAM role.
+     * 
+     */
     private Integer maxSessionDuration;
+    /**
+     * @return The ID of the role.
+     * 
+     */
     private String roleId;
+    /**
+     * @return The name of the role.
+     * 
+     */
     private String roleName;
+    /**
+     * @return The time when the RAM role was updated.
+     * 
+     */
     private String updateDate;
 
     private GetRolesRole() {}
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     * 
+     */
     public String arn() {
         return this.arn;
     }
+    /**
+     * @return (Available in v1.114.0+) The assume role policy document.
+     * 
+     */
     public String assumeRolePolicyDocument() {
         return this.assumeRolePolicyDocument;
     }
+    /**
+     * @return The description of the RAM role.
+     * 
+     */
     public String description() {
         return this.description;
     }
     /**
      * @return The ID of the role.
-     * * `role_id`- The ID of the role.
-     * * `role_name`- The name of the role.
-     * * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
-     * * `create_date`- (Removed form v1.114.0) The time when the RAM role was created.
-     * * `update_date`- The time when the RAM role was updated.
-     * * `description`- The description of the RAM role.
-     * * `max_session_duration`- The maximum session duration of the RAM role.
-     * * `assume_role_policy_document`- (Available in v1.114.0+) The assume role policy document.
      * 
      */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The maximum session duration of the RAM role.
+     * 
+     */
     public Integer maxSessionDuration() {
         return this.maxSessionDuration;
     }
+    /**
+     * @return The ID of the role.
+     * 
+     */
     public String roleId() {
         return this.roleId;
     }
+    /**
+     * @return The name of the role.
+     * 
+     */
     public String roleName() {
         return this.roleName;
     }
+    /**
+     * @return The time when the RAM role was updated.
+     * 
+     */
     public String updateDate() {
         return this.updateDate;
     }

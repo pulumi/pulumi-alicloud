@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const alicloudKmsKeyVersionsDs = pulumi.output(alicloud.kms.getKeyVersions({
+ * const alicloudKmsKeyVersionsDs = alicloud.kms.getKeyVersions({
  *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
  *     keyId: "08438c-b4d5-4d05-928c-07b7xxxx",
- * }));
- *
- * export const allVersions = alicloudKmsKeyVersionsDs.versions;
+ * });
+ * export const allVersions = alicloudKmsKeyVersionsDs.then(alicloudKmsKeyVersionsDs => alicloudKmsKeyVersionsDs.versions);
  * ```
  */
 export function getKeyVersions(args: GetKeyVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyVersionsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getKeyVersions:getKeyVersions", {
         "ids": args.ids,
         "keyId": args.keyId,
@@ -75,9 +71,26 @@ export interface GetKeyVersionsResult {
      */
     readonly versions: outputs.kms.GetKeyVersionsVersion[];
 }
-
+/**
+ * This data source provides a list of KMS KeyVersions in an Alibaba Cloud account according to the specified filters.
+ *
+ * > NOTE: Available in v1.85.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const alicloudKmsKeyVersionsDs = alicloud.kms.getKeyVersions({
+ *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
+ *     keyId: "08438c-b4d5-4d05-928c-07b7xxxx",
+ * });
+ * export const allVersions = alicloudKmsKeyVersionsDs.then(alicloudKmsKeyVersionsDs => alicloudKmsKeyVersionsDs.versions);
+ * ```
+ */
 export function getKeyVersionsOutput(args: GetKeyVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyVersionsResult> {
-    return pulumi.output(args).apply(a => getKeyVersions(a, opts))
+    return pulumi.output(args).apply((a: any) => getKeyVersions(a, opts))
 }
 
 /**

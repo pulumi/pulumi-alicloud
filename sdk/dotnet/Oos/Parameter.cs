@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.Oos
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
-    ///         var example = new AliCloud.Oos.Parameter("example", new AliCloud.Oos.ParameterArgs
-    ///         {
-    ///             ParameterName = "my-Parameter",
-    ///             Type = "String",
-    ///             Value = "example_value",
-    ///             Description = "example_value",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "OosParameter" },
-    ///             },
-    ///             ResourceGroupId = @default.Apply(@default =&gt; @default.Groups?[0]?.Id),
-    ///         });
-    ///     }
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    /// }
+    ///     var example = new AliCloud.Oos.Parameter("example", new()
+    ///     {
+    ///         ParameterName = "my-Parameter",
+    ///         Type = "String",
+    ///         Value = "example_value",
+    ///         Description = "example_value",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "OosParameter" },
+    ///         },
+    ///         ResourceGroupId = @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult).Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,14 +55,10 @@ namespace Pulumi.AliCloud.Oos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/parameter:Parameter")]
-    public partial class Parameter : Pulumi.CustomResource
+    public partial class Parameter : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
-        /// * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
-        /// * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
-        /// * `MinLength`: The minimum length of the common parameter.
-        /// * `MaxLength`: The maximum length of the common parameter.
         /// </summary>
         [Output("constraints")]
         public Output<string?> Constraints { get; private set; } = null!;
@@ -148,14 +143,10 @@ namespace Pulumi.AliCloud.Oos
         }
     }
 
-    public sealed class ParameterArgs : Pulumi.ResourceArgs
+    public sealed class ParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
-        /// * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
-        /// * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
-        /// * `MinLength`: The minimum length of the common parameter.
-        /// * `MaxLength`: The maximum length of the common parameter.
         /// </summary>
         [Input("constraints")]
         public Input<string>? Constraints { get; set; }
@@ -205,16 +196,13 @@ namespace Pulumi.AliCloud.Oos
         public ParameterArgs()
         {
         }
+        public static new ParameterArgs Empty => new ParameterArgs();
     }
 
-    public sealed class ParameterState : Pulumi.ResourceArgs
+    public sealed class ParameterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
-        /// * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
-        /// * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
-        /// * `MinLength`: The minimum length of the common parameter.
-        /// * `MaxLength`: The maximum length of the common parameter.
         /// </summary>
         [Input("constraints")]
         public Input<string>? Constraints { get; set; }
@@ -264,5 +252,6 @@ namespace Pulumi.AliCloud.Oos
         public ParameterState()
         {
         }
+        public static new ParameterState Empty => new ParameterState();
     }
 }

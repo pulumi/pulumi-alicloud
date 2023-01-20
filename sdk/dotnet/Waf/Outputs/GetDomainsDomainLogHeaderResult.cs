@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Waf.Outputs
     [OutputType]
     public sealed class GetDomainsDomainLogHeaderResult
     {
+        /// <summary>
+        /// The key of label.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// The value of label.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

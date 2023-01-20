@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class EdgeKubernetesCertificateAuthorityGetArgs : Pulumi.ResourceArgs
+    public sealed class EdgeKubernetesCertificateAuthorityGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public EdgeKubernetesCertificateAuthorityGetArgs()
         {
         }
+        public static new EdgeKubernetesCertificateAuthorityGetArgs Empty => new EdgeKubernetesCertificateAuthorityGetArgs();
     }
 }

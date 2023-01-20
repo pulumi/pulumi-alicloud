@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.Cfg
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Cfg.GetDeliveries.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Cfg.GetDeliveries.InvokeAsync(new AliCloud.Cfg.GetDeliveriesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.ConfigDeliveryId1 = ids.Apply(ids =&gt; ids.Deliveries?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("configDeliveryId1")]
-        ///     public Output&lt;string&gt; ConfigDeliveryId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["configDeliveryId1"] = ids.Apply(getDeliveriesResult =&gt; getDeliveriesResult.Deliveries[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDeliveriesResult> InvokeAsync(GetDeliveriesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeliveriesResult>("alicloud:cfg/getDeliveries:getDeliveries", args ?? new GetDeliveriesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeliveriesResult>("alicloud:cfg/getDeliveries:getDeliveries", args ?? new GetDeliveriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Config Deliveries of the current Alibaba Cloud user.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.Cfg
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Cfg.GetDeliveries.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Cfg.GetDeliveries.InvokeAsync(new AliCloud.Cfg.GetDeliveriesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.ConfigDeliveryId1 = ids.Apply(ids =&gt; ids.Deliveries?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("configDeliveryId1")]
-        ///     public Output&lt;string&gt; ConfigDeliveryId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["configDeliveryId1"] = ids.Apply(getDeliveriesResult =&gt; getDeliveriesResult.Deliveries[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDeliveriesResult> Invoke(GetDeliveriesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeliveriesResult>("alicloud:cfg/getDeliveries:getDeliveries", args ?? new GetDeliveriesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeliveriesResult>("alicloud:cfg/getDeliveries:getDeliveries", args ?? new GetDeliveriesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDeliveriesArgs : Pulumi.InvokeArgs
+    public sealed class GetDeliveriesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -123,9 +121,10 @@ namespace Pulumi.AliCloud.Cfg
         public GetDeliveriesArgs()
         {
         }
+        public static new GetDeliveriesArgs Empty => new GetDeliveriesArgs();
     }
 
-    public sealed class GetDeliveriesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDeliveriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -157,6 +156,7 @@ namespace Pulumi.AliCloud.Cfg
         public GetDeliveriesInvokeArgs()
         {
         }
+        public static new GetDeliveriesInvokeArgs Empty => new GetDeliveriesInvokeArgs();
     }
 
 

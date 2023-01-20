@@ -21,23 +21,21 @@ namespace Pulumi.AliCloud.Cdn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Cdn.RealTimeLogDelivery("example", new()
     ///     {
-    ///         var example = new AliCloud.Cdn.RealTimeLogDelivery("example", new AliCloud.Cdn.RealTimeLogDeliveryArgs
-    ///         {
-    ///             Domain = "example_value",
-    ///             Logstore = "example_value",
-    ///             Project = "example_value",
-    ///             SlsRegion = "cn-hanghzou",
-    ///         });
-    ///     }
+    ///         Domain = "example_value",
+    ///         Logstore = "example_value",
+    ///         Project = "example_value",
+    ///         SlsRegion = "cn-hanghzou",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.Cdn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery")]
-    public partial class RealTimeLogDelivery : Pulumi.CustomResource
+    public partial class RealTimeLogDelivery : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
@@ -125,7 +123,7 @@ namespace Pulumi.AliCloud.Cdn
         }
     }
 
-    public sealed class RealTimeLogDeliveryArgs : Pulumi.ResourceArgs
+    public sealed class RealTimeLogDeliveryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
@@ -154,9 +152,10 @@ namespace Pulumi.AliCloud.Cdn
         public RealTimeLogDeliveryArgs()
         {
         }
+        public static new RealTimeLogDeliveryArgs Empty => new RealTimeLogDeliveryArgs();
     }
 
-    public sealed class RealTimeLogDeliveryState : Pulumi.ResourceArgs
+    public sealed class RealTimeLogDeliveryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
@@ -191,5 +190,6 @@ namespace Pulumi.AliCloud.Cdn
         public RealTimeLogDeliveryState()
         {
         }
+        public static new RealTimeLogDeliveryState Empty => new RealTimeLogDeliveryState();
     }
 }

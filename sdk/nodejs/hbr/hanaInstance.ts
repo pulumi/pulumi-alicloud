@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     host: "1.1.1.1",
  *     instanceNumber: 1,
  *     password: "YouPassword123",
- *     resourceGroupId: exampleResourceGroups.then(exampleResourceGroups => exampleResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: exampleResourceGroups.then(exampleResourceGroups => exampleResourceGroups.groups?.[0]?.id),
  *     sid: "HXE",
  *     useSsl: false,
  *     userName: "admin",
@@ -170,7 +170,7 @@ export class HanaInstance extends pulumi.CustomResource {
             resourceInputs["hanaName"] = args ? args.hanaName : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["instanceNumber"] = args ? args.instanceNumber : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["sid"] = args ? args.sid : undefined;
             resourceInputs["useSsl"] = args ? args.useSsl : undefined;
@@ -181,6 +181,8 @@ export class HanaInstance extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(HanaInstance.__pulumiType, name, resourceInputs, opts);
     }
 }

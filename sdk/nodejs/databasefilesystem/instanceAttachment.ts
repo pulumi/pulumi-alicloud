@@ -24,12 +24,12 @@ import * as utilities from "../utilities";
  * });
  * const zoneId = "cn-hangzhou-i";
  * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
+ *     vpcId: defaultNetworks.ids?.[0],
  *     zoneId: zoneId,
  * }));
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
  *     description: "tf test",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
  * });
  * const defaultImages = alicloud.ecs.getImages({
  *     owners: "system",
@@ -37,11 +37,11 @@ import * as utilities from "../utilities";
  *     mostRecent: true,
  * });
  * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
  *     instanceName: _var.name,
  *     instanceType: "ecs.g7se.large",
  *     availabilityZone: zoneId,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     systemDiskCategory: "cloud_essd",
  *     securityGroups: [defaultSecurityGroup.id],
  * });
@@ -102,6 +102,9 @@ export class InstanceAttachment extends pulumi.CustomResource {
      * The ID of the database file system.
      */
     public readonly instanceId!: pulumi.Output<string>;
+    /**
+     * The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
@@ -149,6 +152,9 @@ export interface InstanceAttachmentState {
      * The ID of the database file system.
      */
     instanceId?: pulumi.Input<string>;
+    /**
+     * The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+     */
     status?: pulumi.Input<string>;
 }
 

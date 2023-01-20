@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Emr.Inputs
 {
 
-    public sealed class ClusterModifyClusterServiceConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterModifyClusterServiceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cluster service configuration modification comment, e.g. "Modify tez configuration".
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public Input<bool>? RefreshHostConfig { get; set; }
 
         /// <summary>
-        /// Cluster service configuration modification name, e.g. ’HDFS’.
+        /// Custom configuration service name, e.g. ’HDFS’.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -75,5 +75,6 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public ClusterModifyClusterServiceConfigGetArgs()
         {
         }
+        public static new ClusterModifyClusterServiceConfigGetArgs Empty => new ClusterModifyClusterServiceConfigGetArgs();
     }
 }

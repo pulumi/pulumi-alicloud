@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string? DefaultValue;
         /// <summary>
-        /// The description of Constant parameter.
+        /// The description of the api. Defaults to null.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// System parameter location; values: 'HEAD' and 'QUERY'.
+        /// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
         /// </summary>
         public readonly string In;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string InService;
         /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        /// The name of the api gateway api. Defaults to null.
         /// </summary>
         public readonly string Name;
         /// <summary>

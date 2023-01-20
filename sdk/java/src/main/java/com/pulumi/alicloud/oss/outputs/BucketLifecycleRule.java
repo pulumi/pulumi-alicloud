@@ -24,7 +24,7 @@ public final class BucketLifecycleRule {
      */
     private @Nullable List<BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads;
     /**
-     * @return Specifies the accelerate status of a bucket.
+     * @return Specifies lifecycle rule status.
      * 
      */
     private Boolean enabled;
@@ -68,7 +68,7 @@ public final class BucketLifecycleRule {
         return this.abortMultipartUploads == null ? List.of() : this.abortMultipartUploads;
     }
     /**
-     * @return Specifies the accelerate status of a bucket.
+     * @return Specifies lifecycle rule status.
      * 
      */
     public Boolean enabled() {

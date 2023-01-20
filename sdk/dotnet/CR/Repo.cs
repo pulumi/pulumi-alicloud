@@ -21,28 +21,27 @@ namespace Pulumi.AliCloud.CR
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_namespace = new AliCloud.CR.Namespace("my-namespace", new()
     ///     {
-    ///         var my_namespace = new AliCloud.CR.Namespace("my-namespace", new AliCloud.CR.NamespaceArgs
-    ///         {
-    ///             AutoCreate = false,
-    ///             DefaultVisibility = "PUBLIC",
-    ///         });
-    ///         var my_repo = new AliCloud.CR.Repo("my-repo", new AliCloud.CR.RepoArgs
-    ///         {
-    ///             Namespace = my_namespace.Name,
-    ///             Summary = "this is summary of my new repo",
-    ///             RepoType = "PUBLIC",
-    ///             Detail = "this is a public repo",
-    ///         });
-    ///     }
+    ///         AutoCreate = false,
+    ///         DefaultVisibility = "PUBLIC",
+    ///     });
     /// 
-    /// }
+    ///     var my_repo = new AliCloud.CR.Repo("my-repo", new()
+    ///     {
+    ///         Namespace = my_namespace.Name,
+    ///         Summary = "this is summary of my new repo",
+    ///         RepoType = "PUBLIC",
+    ///         Detail = "this is a public repo",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +53,7 @@ namespace Pulumi.AliCloud.CR
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cr/repo:Repo")]
-    public partial class Repo : Pulumi.CustomResource
+    public partial class Repo : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The repository specific information. MarkDown format is supported, and the length limit is 2000.
@@ -136,7 +135,7 @@ namespace Pulumi.AliCloud.CR
         }
     }
 
-    public sealed class RepoArgs : Pulumi.ResourceArgs
+    public sealed class RepoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The repository specific information. MarkDown format is supported, and the length limit is 2000.
@@ -171,9 +170,10 @@ namespace Pulumi.AliCloud.CR
         public RepoArgs()
         {
         }
+        public static new RepoArgs Empty => new RepoArgs();
     }
 
-    public sealed class RepoState : Pulumi.ResourceArgs
+    public sealed class RepoState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The repository specific information. MarkDown format is supported, and the length limit is 2000.
@@ -214,5 +214,6 @@ namespace Pulumi.AliCloud.CR
         public RepoState()
         {
         }
+        public static new RepoState Empty => new RepoState();
     }
 }

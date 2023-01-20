@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,20 +13,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const disksDs = pulumi.output(alicloud.ecs.getDisks({
+ * const disksDs = alicloud.ecs.getDisks({
  *     nameRegex: "sample_disk",
- * }));
- *
- * export const firstDiskId = disksDs.disks[0].id;
+ * });
+ * export const firstDiskId = disksDs.then(disksDs => disksDs.disks?.[0]?.id);
  * ```
  */
 export function getDisks(args?: GetDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetDisksResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getDisks:getDisks", {
         "additionalAttributes": args.additionalAttributes,
         "autoSnapshotPolicyId": args.autoSnapshotPolicyId,
@@ -124,12 +121,12 @@ export interface GetDisksArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const disksDs = pulumi.output(alicloud.ecs.getDisks({
+     * const disksDs = alicloud.ecs.getDisks({
      *     tags: {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }));
+     * });
      * ```
      */
     tags?: {[key: string]: any};
@@ -217,9 +214,21 @@ export interface GetDisksResult {
     readonly type?: string;
     readonly zoneId?: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const disksDs = alicloud.ecs.getDisks({
+ *     nameRegex: "sample_disk",
+ * });
+ * export const firstDiskId = disksDs.then(disksDs => disksDs.disks?.[0]?.id);
+ * ```
+ */
 export function getDisksOutput(args?: GetDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDisksResult> {
-    return pulumi.output(args).apply(a => getDisks(a, opts))
+    return pulumi.output(args).apply((a: any) => getDisks(a, opts))
 }
 
 /**
@@ -287,12 +296,12 @@ export interface GetDisksOutputArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const disksDs = pulumi.output(alicloud.ecs.getDisks({
+     * const disksDs = alicloud.ecs.getDisks({
      *     tags: {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }));
+     * });
      * ```
      */
     tags?: pulumi.Input<{[key: string]: any}>;

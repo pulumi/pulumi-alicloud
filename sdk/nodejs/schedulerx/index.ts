@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getNamespaces";
-export * from "./namespace";
+export { GetNamespacesArgs, GetNamespacesResult, GetNamespacesOutputArgs } from "./getNamespaces";
+export const getNamespaces: typeof import("./getNamespaces").getNamespaces = null as any;
+export const getNamespacesOutput: typeof import("./getNamespaces").getNamespacesOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespaces","getNamespacesOutput"], () => require("./getNamespaces"));
 
-// Import resources to register:
-import { Namespace } from "./namespace";
+export { NamespaceArgs, NamespaceState } from "./namespace";
+export type Namespace = import("./namespace").Namespace;
+export const Namespace: typeof import("./namespace").Namespace = null as any;
+utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+
 
 const _module = {
     version: utilities.getVersion(),

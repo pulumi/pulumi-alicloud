@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ecs.GetEcsImageComponents.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsImageComponents.InvokeAsync(new AliCloud.Ecs.GetEcsImageComponentsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.EcsImageComponentId1 = ids.Apply(ids =&gt; ids.Components?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Ecs.GetEcsImageComponents.InvokeAsync(new AliCloud.Ecs.GetEcsImageComponentsArgs
-        ///         {
-        ///             NameRegex = "^my-ImageComponent",
-        ///         }));
-        ///         this.EcsImageComponentId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Components?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ecsImageComponentId1")]
-        ///     public Output&lt;string&gt; EcsImageComponentId1 { get; set; }
-        ///     [Output("ecsImageComponentId2")]
-        ///     public Output&lt;string&gt; EcsImageComponentId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Ecs.GetEcsImageComponents.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ImageComponent",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsImageComponentId1"] = ids.Apply(getEcsImageComponentsResult =&gt; getEcsImageComponentsResult.Components[0]?.Id),
+        ///         ["ecsImageComponentId2"] = nameRegex.Apply(getEcsImageComponentsResult =&gt; getEcsImageComponentsResult.Components[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsImageComponentsResult> InvokeAsync(GetEcsImageComponentsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsImageComponentsResult>("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", args ?? new GetEcsImageComponentsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsImageComponentsResult>("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", args ?? new GetEcsImageComponentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Image Components of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ecs.GetEcsImageComponents.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsImageComponents.InvokeAsync(new AliCloud.Ecs.GetEcsImageComponentsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.EcsImageComponentId1 = ids.Apply(ids =&gt; ids.Components?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Ecs.GetEcsImageComponents.InvokeAsync(new AliCloud.Ecs.GetEcsImageComponentsArgs
-        ///         {
-        ///             NameRegex = "^my-ImageComponent",
-        ///         }));
-        ///         this.EcsImageComponentId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Components?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ecsImageComponentId1")]
-        ///     public Output&lt;string&gt; EcsImageComponentId1 { get; set; }
-        ///     [Output("ecsImageComponentId2")]
-        ///     public Output&lt;string&gt; EcsImageComponentId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Ecs.GetEcsImageComponents.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ImageComponent",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsImageComponentId1"] = ids.Apply(getEcsImageComponentsResult =&gt; getEcsImageComponentsResult.Components[0]?.Id),
+        ///         ["ecsImageComponentId2"] = nameRegex.Apply(getEcsImageComponentsResult =&gt; getEcsImageComponentsResult.Components[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsImageComponentsResult> Invoke(GetEcsImageComponentsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsImageComponentsResult>("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", args ?? new GetEcsImageComponentsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsImageComponentsResult>("alicloud:ecs/getEcsImageComponents:getEcsImageComponents", args ?? new GetEcsImageComponentsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsImageComponentsArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsImageComponentsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -161,9 +157,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsImageComponentsArgs()
         {
         }
+        public static new GetEcsImageComponentsArgs Empty => new GetEcsImageComponentsArgs();
     }
 
-    public sealed class GetEcsImageComponentsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsImageComponentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -219,6 +216,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsImageComponentsInvokeArgs()
         {
         }
+        public static new GetEcsImageComponentsInvokeArgs Empty => new GetEcsImageComponentsInvokeArgs();
     }
 
 

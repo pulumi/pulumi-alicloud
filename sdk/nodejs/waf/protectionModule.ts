@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const defaultInstances = alicloud.waf.getInstances({});
  * const defaultDomain = new alicloud.waf.Domain("defaultDomain", {
  *     domainName: "you domain",
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?[0]),
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?.[0]),
  *     isAccessProduct: "On",
  *     sourceIps: ["1.1.1.1"],
  *     clusterType: "PhysicalCluster",
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const defaultProtectionModule = new alicloud.waf.ProtectionModule("defaultProtectionModule", {
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?[0]),
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?.[0]),
  *     domain: defaultDomain.domainName,
  *     defenseType: "ac_cc",
  *     mode: 0,
@@ -84,11 +84,6 @@ export class ProtectionModule extends pulumi.CustomResource {
 
     /**
      * The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
-     * * `waf`: RegEx Protection Engine.
-     * * `dld`: Big Data Deep Learning Engine.
-     * * `acCc`: HTTP Flood Protection.
-     * * `antifraud`: Data Risk Control.
-     * * `normalized`: Positive Security Model.
      */
     public readonly defenseType!: pulumi.Output<string>;
     /**
@@ -110,8 +105,6 @@ export class ProtectionModule extends pulumi.CustomResource {
     public readonly mode!: pulumi.Output<number>;
     /**
      * The status of the resource. Valid values: `0`, `1`.
-     * * `0`: disables the protection module.
-     * * `1`: enables the protection module.
      */
     public readonly status!: pulumi.Output<number | undefined>;
 
@@ -164,11 +157,6 @@ export class ProtectionModule extends pulumi.CustomResource {
 export interface ProtectionModuleState {
     /**
      * The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
-     * * `waf`: RegEx Protection Engine.
-     * * `dld`: Big Data Deep Learning Engine.
-     * * `acCc`: HTTP Flood Protection.
-     * * `antifraud`: Data Risk Control.
-     * * `normalized`: Positive Security Model.
      */
     defenseType?: pulumi.Input<string>;
     /**
@@ -190,8 +178,6 @@ export interface ProtectionModuleState {
     mode?: pulumi.Input<number>;
     /**
      * The status of the resource. Valid values: `0`, `1`.
-     * * `0`: disables the protection module.
-     * * `1`: enables the protection module.
      */
     status?: pulumi.Input<number>;
 }
@@ -202,11 +188,6 @@ export interface ProtectionModuleState {
 export interface ProtectionModuleArgs {
     /**
      * The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
-     * * `waf`: RegEx Protection Engine.
-     * * `dld`: Big Data Deep Learning Engine.
-     * * `acCc`: HTTP Flood Protection.
-     * * `antifraud`: Data Risk Control.
-     * * `normalized`: Positive Security Model.
      */
     defenseType: pulumi.Input<string>;
     /**
@@ -228,8 +209,6 @@ export interface ProtectionModuleArgs {
     mode: pulumi.Input<number>;
     /**
      * The status of the resource. Valid values: `0`, `1`.
-     * * `0`: disables the protection module.
-     * * `1`: enables the protection module.
      */
     status?: pulumi.Input<number>;
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -78,6 +79,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * Basic Usage for new alert
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -273,7 +275,7 @@ export class Alert extends pulumi.CustomResource {
     /**
      * Timestamp, notifications before closing again.
      */
-    public readonly muteUntil!: pulumi.Output<number | undefined>;
+    public readonly muteUntil!: pulumi.Output<number>;
     /**
      * Switch for whether new alert fires when no data happens, default is false.
      */

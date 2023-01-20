@@ -21,50 +21,50 @@ namespace Pulumi.AliCloud.Dns
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
-    ///         var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new AliCloud.Cms.AlarmContactGroupArgs
-    ///         {
-    ///             AlarmContactGroupName = @var.Name,
-    ///         });
-    ///         var defaultGtmInstance = new AliCloud.Dns.GtmInstance("defaultGtmInstance", new AliCloud.Dns.GtmInstanceArgs
-    ///         {
-    ///             InstanceName = @var.Name,
-    ///             PaymentType = "Subscription",
-    ///             Period = 1,
-    ///             RenewalStatus = "ManualRenewal",
-    ///             PackageEdition = "standard",
-    ///             HealthCheckTaskCount = 100,
-    ///             SmsNotificationCount = 1000,
-    ///             PublicCnameMode = "SYSTEM_ASSIGN",
-    ///             Ttl = 60,
-    ///             CnameType = "PUBLIC",
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///             AlertGroups = 
-    ///             {
-    ///                 defaultAlarmContactGroup.AlarmContactGroupName,
-    ///             },
-    ///             PublicUserDomainName = @var.Domain_name,
-    ///             AlertConfigs = 
-    ///             {
-    ///                 new AliCloud.Dns.Inputs.GtmInstanceAlertConfigArgs
-    ///                 {
-    ///                     SmsNotice = true,
-    ///                     NoticeType = "ADDR_ALERT",
-    ///                     EmailNotice = true,
-    ///                     DingtalkNotice = true,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    /// }
+    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+    ///     {
+    ///         AlarmContactGroupName = @var.Name,
+    ///     });
+    /// 
+    ///     var defaultGtmInstance = new AliCloud.Dns.GtmInstance("defaultGtmInstance", new()
+    ///     {
+    ///         InstanceName = @var.Name,
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         PackageEdition = "standard",
+    ///         HealthCheckTaskCount = 100,
+    ///         SmsNotificationCount = 1000,
+    ///         PublicCnameMode = "SYSTEM_ASSIGN",
+    ///         Ttl = 60,
+    ///         CnameType = "PUBLIC",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         AlertGroups = new[]
+    ///         {
+    ///             defaultAlarmContactGroup.AlarmContactGroupName,
+    ///         },
+    ///         PublicUserDomainName = @var.Domain_name,
+    ///         AlertConfigs = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.GtmInstanceAlertConfigArgs
+    ///             {
+    ///                 SmsNotice = true,
+    ///                 NoticeType = "ADDR_ALERT",
+    ///                 EmailNotice = true,
+    ///                 DingtalkNotice = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/gtmInstance:GtmInstance")]
-    public partial class GtmInstance : Pulumi.CustomResource
+    public partial class GtmInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The alert notification methods. See the following `Block alert_config`.
@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class GtmInstanceArgs : Pulumi.ResourceArgs
+    public sealed class GtmInstanceArgs : global::Pulumi.ResourceArgs
     {
         [Input("alertConfigs")]
         private InputList<Inputs.GtmInstanceAlertConfigArgs>? _alertConfigs;
@@ -379,9 +379,10 @@ namespace Pulumi.AliCloud.Dns
         public GtmInstanceArgs()
         {
         }
+        public static new GtmInstanceArgs Empty => new GtmInstanceArgs();
     }
 
-    public sealed class GtmInstanceState : Pulumi.ResourceArgs
+    public sealed class GtmInstanceState : global::Pulumi.ResourceArgs
     {
         [Input("alertConfigs")]
         private InputList<Inputs.GtmInstanceAlertConfigGetArgs>? _alertConfigs;
@@ -518,5 +519,6 @@ namespace Pulumi.AliCloud.Dns
         public GtmInstanceState()
         {
         }
+        public static new GtmInstanceState Empty => new GtmInstanceState();
     }
 }

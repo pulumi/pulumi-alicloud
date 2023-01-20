@@ -31,14 +31,14 @@ public final class HybridMonitorFcTaskState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The index warehouse where the host belongs.
+     * the namespace of the Alibaba Cloud service.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return The index warehouse where the host belongs.
+     * @return the namespace of the Alibaba Cloud service.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -62,8 +62,6 @@ public final class HybridMonitorFcTaskState extends com.pulumi.resources.Resourc
 
     /**
      * The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-     * - `namespace`: the namespace of the Alibaba Cloud service.
-     * - `metric_list`: the metrics of the Alibaba Cloud service.
      * 
      */
     @Import(name="yarmConfig")
@@ -71,8 +69,6 @@ public final class HybridMonitorFcTaskState extends com.pulumi.resources.Resourc
 
     /**
      * @return The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-     * - `namespace`: the namespace of the Alibaba Cloud service.
-     * - `metric_list`: the metrics of the Alibaba Cloud service.
      * 
      */
     public Optional<Output<String>> yarmConfig() {
@@ -128,7 +124,7 @@ public final class HybridMonitorFcTaskState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param namespace The index warehouse where the host belongs.
+         * @param namespace the namespace of the Alibaba Cloud service.
          * 
          * @return builder
          * 
@@ -139,7 +135,7 @@ public final class HybridMonitorFcTaskState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param namespace The index warehouse where the host belongs.
+         * @param namespace the namespace of the Alibaba Cloud service.
          * 
          * @return builder
          * 
@@ -171,8 +167,6 @@ public final class HybridMonitorFcTaskState extends com.pulumi.resources.Resourc
 
         /**
          * @param yarmConfig The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-         * - `namespace`: the namespace of the Alibaba Cloud service.
-         * - `metric_list`: the metrics of the Alibaba Cloud service.
          * 
          * @return builder
          * 
@@ -184,8 +178,6 @@ public final class HybridMonitorFcTaskState extends com.pulumi.resources.Resourc
 
         /**
          * @param yarmConfig The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-         * - `namespace`: the namespace of the Alibaba Cloud service.
-         * - `metric_list`: the metrics of the Alibaba Cloud service.
          * 
          * @return builder
          * 

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,23 +17,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const dmsEnterpriseUsersDs = pulumi.output(alicloud.dms.getEnterpriseUsers({
+ * const dmsEnterpriseUsersDs = alicloud.dms.getEnterpriseUsers({
  *     ids: ["uid"],
  *     role: "USER",
  *     status: "NORMAL",
- * }));
- *
- * export const firstUserId = dmsEnterpriseUsersDs.users[0].id;
+ * });
+ * export const firstUserId = dmsEnterpriseUsersDs.then(dmsEnterpriseUsersDs => dmsEnterpriseUsersDs.users?.[0]?.id);
  * ```
  */
 export function getEnterpriseUsers(args?: GetEnterpriseUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseUsersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -105,9 +101,27 @@ export interface GetEnterpriseUsersResult {
      */
     readonly users: outputs.dms.GetEnterpriseUsersUser[];
 }
-
+/**
+ * This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in 1.90.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dmsEnterpriseUsersDs = alicloud.dms.getEnterpriseUsers({
+ *     ids: ["uid"],
+ *     role: "USER",
+ *     status: "NORMAL",
+ * });
+ * export const firstUserId = dmsEnterpriseUsersDs.then(dmsEnterpriseUsersDs => dmsEnterpriseUsersDs.users?.[0]?.id);
+ * ```
+ */
 export function getEnterpriseUsersOutput(args?: GetEnterpriseUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseUsersResult> {
-    return pulumi.output(args).apply(a => getEnterpriseUsers(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnterpriseUsers(a, opts))
 }
 
 /**

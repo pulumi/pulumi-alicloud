@@ -39,6 +39,11 @@ public final class GetSwitchesVswitch {
      */
     private String id;
     /**
+     * @return The IPv6 CIDR block of the switch.
+     * 
+     */
+    private String ipv6CidrBlock;
+    /**
      * @return Indicate whether the VSwitch is created by the system.
      * 
      */
@@ -126,6 +131,13 @@ public final class GetSwitchesVswitch {
         return this.id;
     }
     /**
+     * @return The IPv6 CIDR block of the switch.
+     * 
+     */
+    public String ipv6CidrBlock() {
+        return this.ipv6CidrBlock;
+    }
+    /**
      * @return Indicate whether the VSwitch is created by the system.
      * 
      */
@@ -210,6 +222,7 @@ public final class GetSwitchesVswitch {
         private String creationTime;
         private String description;
         private String id;
+        private String ipv6CidrBlock;
         private Boolean isDefault;
         private String name;
         private String resourceGroupId;
@@ -228,6 +241,7 @@ public final class GetSwitchesVswitch {
     	      this.creationTime = defaults.creationTime;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
+    	      this.ipv6CidrBlock = defaults.ipv6CidrBlock;
     	      this.isDefault = defaults.isDefault;
     	      this.name = defaults.name;
     	      this.resourceGroupId = defaults.resourceGroupId;
@@ -263,6 +277,11 @@ public final class GetSwitchesVswitch {
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6CidrBlock(String ipv6CidrBlock) {
+            this.ipv6CidrBlock = Objects.requireNonNull(ipv6CidrBlock);
             return this;
         }
         @CustomType.Setter
@@ -322,6 +341,7 @@ public final class GetSwitchesVswitch {
             o.creationTime = creationTime;
             o.description = description;
             o.id = id;
+            o.ipv6CidrBlock = ipv6CidrBlock;
             o.isDefault = isDefault;
             o.name = name;
             o.resourceGroupId = resourceGroupId;

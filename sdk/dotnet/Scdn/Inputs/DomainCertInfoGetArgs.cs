@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Scdn.Inputs
 {
 
-    public sealed class DomainCertInfoGetArgs : Pulumi.ResourceArgs
+    public sealed class DomainCertInfoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If You Enable HTTPS Here Certificate Name.
@@ -27,11 +27,21 @@ namespace Pulumi.AliCloud.Scdn.Inputs
         [Input("certType")]
         public Input<string>? CertType { get; set; }
 
+        [Input("sslPri")]
+        private Input<string>? _sslPri;
+
         /// <summary>
         /// Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
         /// </summary>
-        [Input("sslPri")]
-        public Input<string>? SslPri { get; set; }
+        public Input<string>? SslPri
+        {
+            get => _sslPri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslPri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
@@ -48,5 +58,6 @@ namespace Pulumi.AliCloud.Scdn.Inputs
         public DomainCertInfoGetArgs()
         {
         }
+        public static new DomainCertInfoGetArgs Empty => new DomainCertInfoGetArgs();
     }
 }

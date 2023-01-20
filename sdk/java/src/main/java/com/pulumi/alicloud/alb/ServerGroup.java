@@ -39,9 +39,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -259,6 +259,20 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serverGroupName);
     }
     /**
+     * The type of the server group. Valid values:
+     * 
+     */
+    @Export(name="serverGroupType", type=String.class, parameters={})
+    private Output<String> serverGroupType;
+
+    /**
+     * @return The type of the server group. Valid values:
+     * 
+     */
+    public Output<String> serverGroupType() {
+        return this.serverGroupType;
+    }
+    /**
      * The backend server.
      * 
      */
@@ -300,9 +314,17 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<ServerGroupStickySessionConfig>> stickySessionConfig() {
         return Codegen.optional(this.stickySessionConfig);
     }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }

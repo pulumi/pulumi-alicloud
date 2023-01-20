@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// &gt; **NOTE:** Available in 1.94.0+.
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dcdn/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dcdn/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a collection of DCDN Domains to the specified filters.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Dcdn
         /// &gt; **NOTE:** Available in 1.94.0+.
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:dcdn/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:dcdn/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDomainsArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The end time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
@@ -100,9 +100,10 @@ namespace Pulumi.AliCloud.Dcdn
         public GetDomainsArgs()
         {
         }
+        public static new GetDomainsArgs Empty => new GetDomainsArgs();
     }
 
-    public sealed class GetDomainsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The end time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
@@ -173,6 +174,7 @@ namespace Pulumi.AliCloud.Dcdn
         public GetDomainsInvokeArgs()
         {
         }
+        public static new GetDomainsInvokeArgs Empty => new GetDomainsInvokeArgs();
     }
 
 

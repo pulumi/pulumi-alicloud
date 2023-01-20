@@ -32,6 +32,21 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    /**
      * The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
@@ -95,6 +110,7 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
 
     private Ipv4GatewayState(Ipv4GatewayState $) {
         this.dryRun = $.dryRun;
+        this.enabled = $.enabled;
         this.ipv4GatewayDescription = $.ipv4GatewayDescription;
         this.ipv4GatewayName = $.ipv4GatewayName;
         this.status = $.status;
@@ -138,6 +154,27 @@ public final class Ipv4GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
+        }
+
+        /**
+         * @param enabled Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         /**

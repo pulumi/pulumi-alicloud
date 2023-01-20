@@ -21,28 +21,29 @@ namespace Pulumi.AliCloud.Ddos
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
-    ///         var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new AliCloud.Ecs.EipAddressArgs
-    ///         {
-    ///             AddressName = @var.Name,
-    ///         });
-    ///         var defaultDdosBgpInstances = Output.Create(AliCloud.Ddos.GetDdosBgpInstances.InvokeAsync());
-    ///         var defaultBgpIp = new AliCloud.Ddos.BgpIp("defaultBgpIp", new AliCloud.Ddos.BgpIpArgs
-    ///         {
-    ///             InstanceId = defaultDdosBgpInstances.Apply(defaultDdosBgpInstances =&gt; defaultDdosBgpInstances.Ids?[0]),
-    ///             Ip = defaultEipAddress.IpAddress,
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///         });
-    ///     }
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    /// }
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+    ///     {
+    ///         AddressName = @var.Name,
+    ///     });
+    /// 
+    ///     var defaultDdosBgpInstances = AliCloud.Ddos.GetDdosBgpInstances.Invoke();
+    /// 
+    ///     var defaultBgpIp = new AliCloud.Ddos.BgpIp("defaultBgpIp", new()
+    ///     {
+    ///         InstanceId = defaultDdosBgpInstances.Apply(getDdosBgpInstancesResult =&gt; getDdosBgpInstancesResult.Ids[0]),
+    ///         Ip = defaultEipAddress.IpAddress,
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +55,7 @@ namespace Pulumi.AliCloud.Ddos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ddos/bgpIp:BgpIp")]
-    public partial class BgpIp : Pulumi.CustomResource
+    public partial class BgpIp : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the native protection enterprise instance to be operated.
@@ -124,7 +125,7 @@ namespace Pulumi.AliCloud.Ddos
         }
     }
 
-    public sealed class BgpIpArgs : Pulumi.ResourceArgs
+    public sealed class BgpIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the native protection enterprise instance to be operated.
@@ -147,9 +148,10 @@ namespace Pulumi.AliCloud.Ddos
         public BgpIpArgs()
         {
         }
+        public static new BgpIpArgs Empty => new BgpIpArgs();
     }
 
-    public sealed class BgpIpState : Pulumi.ResourceArgs
+    public sealed class BgpIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the native protection enterprise instance to be operated.
@@ -178,5 +180,6 @@ namespace Pulumi.AliCloud.Ddos
         public BgpIpState()
         {
         }
+        public static new BgpIpState Empty => new BgpIpState();
     }
 }

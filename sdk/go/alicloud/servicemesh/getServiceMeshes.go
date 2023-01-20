@@ -78,7 +78,7 @@ type GetServiceMeshesArgs struct {
 	// A regex string to filter results by Service Mesh name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `running` or `initial`.
 	Status *string `pulumi:"status"`
 }
 
@@ -86,13 +86,16 @@ type GetServiceMeshesArgs struct {
 type GetServiceMeshesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	Meshes     []GetServiceMeshesMesh `pulumi:"meshes"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Status     *string                `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Service Mesh Service Meshes. Each element contains the following attributes:
+	Meshes    []GetServiceMeshesMesh `pulumi:"meshes"`
+	NameRegex *string                `pulumi:"nameRegex"`
+	// A list of Service Mesh names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetServiceMeshesOutput(ctx *pulumi.Context, args GetServiceMeshesOutputArgs, opts ...pulumi.InvokeOption) GetServiceMeshesResultOutput {
@@ -116,7 +119,7 @@ type GetServiceMeshesOutputArgs struct {
 	// A regex string to filter results by Service Mesh name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `running` or `initial`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -152,6 +155,7 @@ func (o GetServiceMeshesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceMeshesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Service Mesh Service Meshes. Each element contains the following attributes:
 func (o GetServiceMeshesResultOutput) Meshes() GetServiceMeshesMeshArrayOutput {
 	return o.ApplyT(func(v GetServiceMeshesResult) []GetServiceMeshesMesh { return v.Meshes }).(GetServiceMeshesMeshArrayOutput)
 }
@@ -160,6 +164,7 @@ func (o GetServiceMeshesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMeshesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Service Mesh names.
 func (o GetServiceMeshesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceMeshesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -168,6 +173,7 @@ func (o GetServiceMeshesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMeshesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetServiceMeshesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMeshesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

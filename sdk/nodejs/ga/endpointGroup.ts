@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -114,7 +115,7 @@ export class EndpointGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The endpointConfigurations of the endpoint group.
+     * The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
      */
     public readonly endpointConfigurations!: pulumi.Output<outputs.ga.EndpointGroupEndpointConfiguration[]>;
     /**
@@ -124,7 +125,7 @@ export class EndpointGroup extends pulumi.CustomResource {
     /**
      * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
      */
-    public readonly endpointGroupType!: pulumi.Output<string | undefined>;
+    public readonly endpointGroupType!: pulumi.Output<string>;
     /**
      * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
      */
@@ -154,7 +155,7 @@ export class EndpointGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Mapping between listening port and forwarding port of boarding point.
+     * Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
      */
     public readonly portOverrides!: pulumi.Output<outputs.ga.EndpointGroupPortOverrides | undefined>;
     /**
@@ -248,7 +249,7 @@ export interface EndpointGroupState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The endpointConfigurations of the endpoint group.
+     * The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
      */
     endpointConfigurations?: pulumi.Input<pulumi.Input<inputs.ga.EndpointGroupEndpointConfiguration>[]>;
     /**
@@ -288,7 +289,7 @@ export interface EndpointGroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Mapping between listening port and forwarding port of boarding point.
+     * Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
      */
     portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides>;
     /**
@@ -318,7 +319,7 @@ export interface EndpointGroupArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The endpointConfigurations of the endpoint group.
+     * The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
      */
     endpointConfigurations: pulumi.Input<pulumi.Input<inputs.ga.EndpointGroupEndpointConfiguration>[]>;
     /**
@@ -358,7 +359,7 @@ export interface EndpointGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Mapping between listening port and forwarding port of boarding point.
+     * Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
      */
     portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides>;
     /**

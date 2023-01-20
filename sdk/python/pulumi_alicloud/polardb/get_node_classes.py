@@ -145,12 +145,11 @@ def get_node_classes(db_node_class: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    resources_zones = alicloud.get_zones(available_resource_creation="PolarDB")
-    resources_node_classes = alicloud.polardb.get_node_classes(zone_id=resources_zones.zones[0].id,
-        pay_type="PostPaid",
+    resources = alicloud.polardb.get_node_classes(pay_type="PostPaid",
         db_type="MySQL",
         db_version="5.6")
-    pulumi.export("polardbNodeClasses", resources_node_classes.classes)
+    pulumi.export("polardbNodeClasses", resources.classes)
+    pulumi.export("polardbAvailableZoneId", resources.classes[0].zone_id)
     ```
 
 
@@ -204,12 +203,11 @@ def get_node_classes_output(db_node_class: Optional[pulumi.Input[Optional[str]]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    resources_zones = alicloud.get_zones(available_resource_creation="PolarDB")
-    resources_node_classes = alicloud.polardb.get_node_classes(zone_id=resources_zones.zones[0].id,
-        pay_type="PostPaid",
+    resources = alicloud.polardb.get_node_classes(pay_type="PostPaid",
         db_type="MySQL",
         db_version="5.6")
-    pulumi.export("polardbNodeClasses", resources_node_classes.classes)
+    pulumi.export("polardbNodeClasses", resources.classes)
+    pulumi.export("polardbAvailableZoneId", resources.classes[0].zone_id)
     ```
 
 

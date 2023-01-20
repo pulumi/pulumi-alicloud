@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSynchronizationInstance = new alicloud.dts.SynchronizationInstance("default", {
+ * const _default = new alicloud.dts.SynchronizationInstance("default", {
  *     destinationEndpointEngineName: "ADB30",
  *     destinationEndpointRegion: "cn-hangzhou",
  *     instanceClass: "small",

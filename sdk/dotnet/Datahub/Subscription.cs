@@ -17,22 +17,20 @@ namespace Pulumi.AliCloud.Datahub
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Datahub.Subscription("example", new()
     ///     {
-    ///         var example = new AliCloud.Datahub.Subscription("example", new AliCloud.Datahub.SubscriptionArgs
-    ///         {
-    ///             Comment = "created by terraform",
-    ///             ProjectName = "tf_datahub_project",
-    ///             TopicName = "tf_datahub_topic",
-    ///         });
-    ///     }
+    ///         Comment = "created by terraform",
+    ///         ProjectName = "tf_datahub_project",
+    ///         TopicName = "tf_datahub_topic",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.AliCloud.Datahub
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:datahub/subscription:Subscription")]
-    public partial class Subscription : Pulumi.CustomResource
+    public partial class Subscription : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Comment of the datahub subscription. It cannot be longer than 255 characters.
@@ -126,7 +124,7 @@ namespace Pulumi.AliCloud.Datahub
         }
     }
 
-    public sealed class SubscriptionArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Comment of the datahub subscription. It cannot be longer than 255 characters.
@@ -149,9 +147,10 @@ namespace Pulumi.AliCloud.Datahub
         public SubscriptionArgs()
         {
         }
+        public static new SubscriptionArgs Empty => new SubscriptionArgs();
     }
 
-    public sealed class SubscriptionState : Pulumi.ResourceArgs
+    public sealed class SubscriptionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Comment of the datahub subscription. It cannot be longer than 255 characters.
@@ -192,5 +191,6 @@ namespace Pulumi.AliCloud.Datahub
         public SubscriptionState()
         {
         }
+        public static new SubscriptionState Empty => new SubscriptionState();
     }
 }

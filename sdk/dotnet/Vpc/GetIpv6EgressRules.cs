@@ -23,58 +23,54 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetIpv6EgressRules.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetIpv6EgressRules.InvokeAsync(new AliCloud.Vpc.GetIpv6EgressRulesArgs
+        ///         Ipv6GatewayId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             Ipv6GatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.VpcIpv6EgressRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetIpv6EgressRules.InvokeAsync(new AliCloud.Vpc.GetIpv6EgressRulesArgs
-        ///         {
-        ///             Ipv6GatewayId = "example_value",
-        ///             NameRegex = "^my-Ipv6EgressRule",
-        ///         }));
-        ///         this.VpcIpv6EgressRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetIpv6EgressRules.InvokeAsync(new AliCloud.Vpc.GetIpv6EgressRulesArgs
-        ///         {
-        ///             Ipv6GatewayId = "example_value",
-        ///             Status = "Available",
-        ///         }));
-        ///         this.VpcIpv6EgressRuleId3 = status.Apply(status =&gt; status.Rules?[0]?.Id);
-        ///         var ipv6EgressRuleName = Output.Create(AliCloud.Vpc.GetIpv6EgressRules.InvokeAsync(new AliCloud.Vpc.GetIpv6EgressRulesArgs
-        ///         {
-        ///             Ipv6GatewayId = "example_value",
-        ///             Ipv6EgressRuleName = "example_value",
-        ///         }));
-        ///         this.VpcIpv6EgressRuleId4 = ipv6EgressRuleName.Apply(ipv6EgressRuleName =&gt; ipv6EgressRuleName.Rules?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcIpv6EgressRuleId1")]
-        ///     public Output&lt;string&gt; VpcIpv6EgressRuleId1 { get; set; }
-        ///     [Output("vpcIpv6EgressRuleId2")]
-        ///     public Output&lt;string&gt; VpcIpv6EgressRuleId2 { get; set; }
-        ///     [Output("vpcIpv6EgressRuleId3")]
-        ///     public Output&lt;string&gt; VpcIpv6EgressRuleId3 { get; set; }
-        ///     [Output("vpcIpv6EgressRuleId4")]
-        ///     public Output&lt;string&gt; VpcIpv6EgressRuleId4 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetIpv6EgressRules.Invoke(new()
+        ///     {
+        ///         Ipv6GatewayId = "example_value",
+        ///         NameRegex = "^my-Ipv6EgressRule",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetIpv6EgressRules.Invoke(new()
+        ///     {
+        ///         Ipv6GatewayId = "example_value",
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     var ipv6EgressRuleName = AliCloud.Vpc.GetIpv6EgressRules.Invoke(new()
+        ///     {
+        ///         Ipv6GatewayId = "example_value",
+        ///         Ipv6EgressRuleName = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcIpv6EgressRuleId1"] = ids.Apply(getIpv6EgressRulesResult =&gt; getIpv6EgressRulesResult.Rules[0]?.Id),
+        ///         ["vpcIpv6EgressRuleId2"] = nameRegex.Apply(getIpv6EgressRulesResult =&gt; getIpv6EgressRulesResult.Rules[0]?.Id),
+        ///         ["vpcIpv6EgressRuleId3"] = status.Apply(getIpv6EgressRulesResult =&gt; getIpv6EgressRulesResult.Rules[0]?.Id),
+        ///         ["vpcIpv6EgressRuleId4"] = ipv6EgressRuleName.Apply(getIpv6EgressRulesResult =&gt; getIpv6EgressRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpv6EgressRulesResult> InvokeAsync(GetIpv6EgressRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6EgressRulesResult>("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", args ?? new GetIpv6EgressRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpv6EgressRulesResult>("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", args ?? new GetIpv6EgressRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Ipv6 Egress Rules of the current Alibaba Cloud user.
@@ -88,62 +84,58 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetIpv6EgressRules.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetIpv6EgressRules.InvokeAsync(new AliCloud.Vpc.GetIpv6EgressRulesArgs
+        ///         Ipv6GatewayId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             Ipv6GatewayId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.VpcIpv6EgressRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetIpv6EgressRules.InvokeAsync(new AliCloud.Vpc.GetIpv6EgressRulesArgs
-        ///         {
-        ///             Ipv6GatewayId = "example_value",
-        ///             NameRegex = "^my-Ipv6EgressRule",
-        ///         }));
-        ///         this.VpcIpv6EgressRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetIpv6EgressRules.InvokeAsync(new AliCloud.Vpc.GetIpv6EgressRulesArgs
-        ///         {
-        ///             Ipv6GatewayId = "example_value",
-        ///             Status = "Available",
-        ///         }));
-        ///         this.VpcIpv6EgressRuleId3 = status.Apply(status =&gt; status.Rules?[0]?.Id);
-        ///         var ipv6EgressRuleName = Output.Create(AliCloud.Vpc.GetIpv6EgressRules.InvokeAsync(new AliCloud.Vpc.GetIpv6EgressRulesArgs
-        ///         {
-        ///             Ipv6GatewayId = "example_value",
-        ///             Ipv6EgressRuleName = "example_value",
-        ///         }));
-        ///         this.VpcIpv6EgressRuleId4 = ipv6EgressRuleName.Apply(ipv6EgressRuleName =&gt; ipv6EgressRuleName.Rules?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcIpv6EgressRuleId1")]
-        ///     public Output&lt;string&gt; VpcIpv6EgressRuleId1 { get; set; }
-        ///     [Output("vpcIpv6EgressRuleId2")]
-        ///     public Output&lt;string&gt; VpcIpv6EgressRuleId2 { get; set; }
-        ///     [Output("vpcIpv6EgressRuleId3")]
-        ///     public Output&lt;string&gt; VpcIpv6EgressRuleId3 { get; set; }
-        ///     [Output("vpcIpv6EgressRuleId4")]
-        ///     public Output&lt;string&gt; VpcIpv6EgressRuleId4 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetIpv6EgressRules.Invoke(new()
+        ///     {
+        ///         Ipv6GatewayId = "example_value",
+        ///         NameRegex = "^my-Ipv6EgressRule",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetIpv6EgressRules.Invoke(new()
+        ///     {
+        ///         Ipv6GatewayId = "example_value",
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     var ipv6EgressRuleName = AliCloud.Vpc.GetIpv6EgressRules.Invoke(new()
+        ///     {
+        ///         Ipv6GatewayId = "example_value",
+        ///         Ipv6EgressRuleName = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcIpv6EgressRuleId1"] = ids.Apply(getIpv6EgressRulesResult =&gt; getIpv6EgressRulesResult.Rules[0]?.Id),
+        ///         ["vpcIpv6EgressRuleId2"] = nameRegex.Apply(getIpv6EgressRulesResult =&gt; getIpv6EgressRulesResult.Rules[0]?.Id),
+        ///         ["vpcIpv6EgressRuleId3"] = status.Apply(getIpv6EgressRulesResult =&gt; getIpv6EgressRulesResult.Rules[0]?.Id),
+        ///         ["vpcIpv6EgressRuleId4"] = ipv6EgressRuleName.Apply(getIpv6EgressRulesResult =&gt; getIpv6EgressRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpv6EgressRulesResult> Invoke(GetIpv6EgressRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpv6EgressRulesResult>("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", args ?? new GetIpv6EgressRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpv6EgressRulesResult>("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", args ?? new GetIpv6EgressRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetIpv6EgressRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetIpv6EgressRulesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -193,9 +185,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetIpv6EgressRulesArgs()
         {
         }
+        public static new GetIpv6EgressRulesArgs Empty => new GetIpv6EgressRulesArgs();
     }
 
-    public sealed class GetIpv6EgressRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIpv6EgressRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -245,6 +238,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetIpv6EgressRulesInvokeArgs()
         {
         }
+        public static new GetIpv6EgressRulesInvokeArgs Empty => new GetIpv6EgressRulesInvokeArgs();
     }
 
 

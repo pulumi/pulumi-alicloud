@@ -50,14 +50,14 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The endpointConfigurations of the endpoint group.
+     * The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
      * 
      */
     @Import(name="endpointConfigurations", required=true)
     private Output<List<EndpointGroupEndpointConfigurationArgs>> endpointConfigurations;
 
     /**
-     * @return The endpointConfigurations of the endpoint group.
+     * @return The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
      * 
      */
     public Output<List<EndpointGroupEndpointConfigurationArgs>> endpointConfigurations() {
@@ -200,14 +200,14 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Mapping between listening port and forwarding port of boarding point.
+     * Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
      * 
      */
     @Import(name="portOverrides")
     private @Nullable Output<EndpointGroupPortOverridesArgs> portOverrides;
 
     /**
-     * @return Mapping between listening port and forwarding port of boarding point.
+     * @return Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
      * 
      */
     public Optional<Output<EndpointGroupPortOverridesArgs>> portOverrides() {
@@ -325,7 +325,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointConfigurations The endpointConfigurations of the endpoint group.
+         * @param endpointConfigurations The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointConfigurations The endpointConfigurations of the endpoint group.
+         * @param endpointConfigurations The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointConfigurations The endpointConfigurations of the endpoint group.
+         * @param endpointConfigurations The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
          * 
          * @return builder
          * 
@@ -545,7 +545,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portOverrides Mapping between listening port and forwarding port of boarding point.
+         * @param portOverrides Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
          * 
          * @return builder
          * 
@@ -556,7 +556,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portOverrides Mapping between listening port and forwarding port of boarding point.
+         * @param portOverrides Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
          * 
          * @return builder
          * 

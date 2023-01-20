@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class EciScalingConfigurationVolumeGetArgs : Pulumi.ResourceArgs
+    public sealed class EciScalingConfigurationVolumeGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("configFileVolumeConfigFileToPaths")]
         private InputList<Inputs.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathGetArgs>? _configFileVolumeConfigFileToPaths;
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public Input<string>? FlexVolumeOptions { get; set; }
 
         /// <summary>
-        /// The name of the mounted volume.
+        /// The name of the volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -93,5 +93,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public EciScalingConfigurationVolumeGetArgs()
         {
         }
+        public static new EciScalingConfigurationVolumeGetArgs Empty => new EciScalingConfigurationVolumeGetArgs();
     }
 }

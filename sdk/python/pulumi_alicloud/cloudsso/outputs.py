@@ -13,6 +13,7 @@ from . import outputs
 __all__ = [
     'AccessConfigurationPermissionPolicy',
     'DirectorySamlIdentityProviderConfiguration',
+    'GetAccessAssignmentsAssignmentResult',
     'GetAccessConfigurationsConfigurationResult',
     'GetAccessConfigurationsConfigurationPermissionPolicyResult',
     'GetDirectoriesDirectoryResult',
@@ -134,6 +135,134 @@ class DirectorySamlIdentityProviderConfiguration(dict):
         SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
         """
         return pulumi.get(self, "sso_status")
+
+
+@pulumi.output_type
+class GetAccessAssignmentsAssignmentResult(dict):
+    def __init__(__self__, *,
+                 access_configuration_id: str,
+                 access_configuration_name: str,
+                 directory_id: str,
+                 id: str,
+                 principal_id: str,
+                 principal_name: str,
+                 principal_type: str,
+                 target_id: str,
+                 target_name: str,
+                 target_path_name: str,
+                 target_type: str):
+        """
+        :param str access_configuration_id: Access configuration ID.
+        :param str access_configuration_name: The name of the access configuration.
+        :param str directory_id: Directory ID.
+        :param str id: The ID of the Access Assignment.
+        :param str principal_id: The ID of the access assignment.
+        :param str principal_name: Cloud SSO identity name.
+        :param str principal_type: Create the identity type of the access assignment, which can be a user or a user group.
+        :param str target_id: The ID of the target to create the resource range.
+        :param str target_name: Task target name.
+        :param str target_path_name: The path name of the task target in the resource directory.
+        :param str target_type: The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+        """
+        pulumi.set(__self__, "access_configuration_id", access_configuration_id)
+        pulumi.set(__self__, "access_configuration_name", access_configuration_name)
+        pulumi.set(__self__, "directory_id", directory_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "principal_id", principal_id)
+        pulumi.set(__self__, "principal_name", principal_name)
+        pulumi.set(__self__, "principal_type", principal_type)
+        pulumi.set(__self__, "target_id", target_id)
+        pulumi.set(__self__, "target_name", target_name)
+        pulumi.set(__self__, "target_path_name", target_path_name)
+        pulumi.set(__self__, "target_type", target_type)
+
+    @property
+    @pulumi.getter(name="accessConfigurationId")
+    def access_configuration_id(self) -> str:
+        """
+        Access configuration ID.
+        """
+        return pulumi.get(self, "access_configuration_id")
+
+    @property
+    @pulumi.getter(name="accessConfigurationName")
+    def access_configuration_name(self) -> str:
+        """
+        The name of the access configuration.
+        """
+        return pulumi.get(self, "access_configuration_name")
+
+    @property
+    @pulumi.getter(name="directoryId")
+    def directory_id(self) -> str:
+        """
+        Directory ID.
+        """
+        return pulumi.get(self, "directory_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Access Assignment.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> str:
+        """
+        The ID of the access assignment.
+        """
+        return pulumi.get(self, "principal_id")
+
+    @property
+    @pulumi.getter(name="principalName")
+    def principal_name(self) -> str:
+        """
+        Cloud SSO identity name.
+        """
+        return pulumi.get(self, "principal_name")
+
+    @property
+    @pulumi.getter(name="principalType")
+    def principal_type(self) -> str:
+        """
+        Create the identity type of the access assignment, which can be a user or a user group.
+        """
+        return pulumi.get(self, "principal_type")
+
+    @property
+    @pulumi.getter(name="targetId")
+    def target_id(self) -> str:
+        """
+        The ID of the target to create the resource range.
+        """
+        return pulumi.get(self, "target_id")
+
+    @property
+    @pulumi.getter(name="targetName")
+    def target_name(self) -> str:
+        """
+        Task target name.
+        """
+        return pulumi.get(self, "target_name")
+
+    @property
+    @pulumi.getter(name="targetPathName")
+    def target_path_name(self) -> str:
+        """
+        The path name of the task target in the resource directory.
+        """
+        return pulumi.get(self, "target_path_name")
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> str:
+        """
+        The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+        """
+        return pulumi.get(self, "target_type")
 
 
 @pulumi.output_type

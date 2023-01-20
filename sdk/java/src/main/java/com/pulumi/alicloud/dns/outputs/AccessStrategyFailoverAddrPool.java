@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessStrategyFailoverAddrPool {
     /**
-     * @return The ID of the address pool in the primary address pool group.
+     * @return The ID of the address pool in the secondary address pool group.
      * 
      */
     private @Nullable String addrPoolId;
     /**
-     * @return The weight of the address pool in the primary address pool group.
+     * @return The weight of the address pool in the secondary address pool group.
      * 
      */
     private @Nullable Integer lbaWeight;
 
     private AccessStrategyFailoverAddrPool() {}
     /**
-     * @return The ID of the address pool in the primary address pool group.
+     * @return The ID of the address pool in the secondary address pool group.
      * 
      */
     public Optional<String> addrPoolId() {
         return Optional.ofNullable(this.addrPoolId);
     }
     /**
-     * @return The weight of the address pool in the primary address pool group.
+     * @return The weight of the address pool in the secondary address pool group.
      * 
      */
     public Optional<Integer> lbaWeight() {

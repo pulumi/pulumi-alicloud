@@ -23,40 +23,39 @@ namespace Pulumi.AliCloud.Cen
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
-    ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///         });
-    ///         var defaultProject = new AliCloud.Log.Project("defaultProject", new AliCloud.Log.ProjectArgs
-    ///         {
-    ///             Description = "create by terraform",
-    ///         });
-    ///         var defaultStore = new AliCloud.Log.Store("defaultStore", new AliCloud.Log.StoreArgs
-    ///         {
-    ///             Project = defaultProject.Name,
-    ///             RetentionPeriod = 3650,
-    ///             ShardCount = 3,
-    ///             AutoSplit = true,
-    ///             MaxSplitShardCount = 60,
-    ///             AppendMeta = true,
-    ///         });
-    ///         var defaultFlowLog = new AliCloud.Cen.FlowLog("defaultFlowLog", new AliCloud.Cen.FlowLogArgs
-    ///         {
-    ///             FlowLogName = "my-flowlog",
-    ///             CenId = defaultInstance.Id,
-    ///             ProjectName = defaultProject.Name,
-    ///             LogStoreName = defaultStore.Name,
-    ///         });
-    ///     }
+    ///     // Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
+    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance");
     /// 
-    /// }
+    ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
+    ///     {
+    ///         Description = "create by terraform",
+    ///     });
+    /// 
+    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
+    ///     {
+    ///         Project = defaultProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var defaultFlowLog = new AliCloud.Cen.FlowLog("defaultFlowLog", new()
+    ///     {
+    ///         FlowLogName = "my-flowlog",
+    ///         CenId = defaultInstance.Id,
+    ///         ProjectName = defaultProject.Name,
+    ///         LogStoreName = defaultStore.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -68,7 +67,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/flowLog:FlowLog")]
-    public partial class FlowLog : Pulumi.CustomResource
+    public partial class FlowLog : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the CEN Instance.
@@ -150,7 +149,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class FlowLogArgs : Pulumi.ResourceArgs
+    public sealed class FlowLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CEN Instance.
@@ -191,9 +190,10 @@ namespace Pulumi.AliCloud.Cen
         public FlowLogArgs()
         {
         }
+        public static new FlowLogArgs Empty => new FlowLogArgs();
     }
 
-    public sealed class FlowLogState : Pulumi.ResourceArgs
+    public sealed class FlowLogState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CEN Instance.
@@ -234,5 +234,6 @@ namespace Pulumi.AliCloud.Cen
         public FlowLogState()
         {
         }
+        public static new FlowLogState Empty => new FlowLogState();
     }
 }

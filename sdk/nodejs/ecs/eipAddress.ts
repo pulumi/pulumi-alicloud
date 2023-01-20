@@ -130,9 +130,17 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+     */
+    public readonly publicIpAddressPoolId!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     */
+    public readonly securityProtectionTypes!: pulumi.Output<string[] | undefined>;
     /**
      * The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      */
@@ -169,7 +177,9 @@ export class EipAddress extends pulumi.CustomResource {
             resourceInputs["netmode"] = state ? state.netmode : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["publicIpAddressPoolId"] = state ? state.publicIpAddressPoolId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityProtectionTypes"] = state ? state.securityProtectionTypes : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -187,7 +197,9 @@ export class EipAddress extends pulumi.CustomResource {
             resourceInputs["netmode"] = args ? args.netmode : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["publicIpAddressPoolId"] = args ? args.publicIpAddressPoolId : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityProtectionTypes"] = args ? args.securityProtectionTypes : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -263,9 +275,17 @@ export interface EipAddressState {
      */
     period?: pulumi.Input<number>;
     /**
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+     */
+    publicIpAddressPoolId?: pulumi.Input<string>;
+    /**
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     */
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      */
@@ -338,9 +358,17 @@ export interface EipAddressArgs {
      */
     period?: pulumi.Input<number>;
     /**
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+     */
+    publicIpAddressPoolId?: pulumi.Input<string>;
+    /**
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     */
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */

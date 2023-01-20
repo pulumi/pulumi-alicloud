@@ -19,26 +19,24 @@ namespace Pulumi.AliCloud.Dns
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Domain Record
+    ///     var record = new AliCloud.Dns.AlidnsRecord("record", new()
     ///     {
-    ///         // Create a new Domain Record
-    ///         var record = new AliCloud.Dns.AlidnsRecord("record", new AliCloud.Dns.AlidnsRecordArgs
-    ///         {
-    ///             DomainName = "domainname",
-    ///             Remark = "Test new alidns record.",
-    ///             Rr = "@",
-    ///             Status = "ENABLE",
-    ///             Type = "A",
-    ///             Value = "192.168.99.99",
-    ///         });
-    ///     }
+    ///         DomainName = "domainname",
+    ///         Remark = "Test new alidns record.",
+    ///         Rr = "@",
+    ///         Status = "ENABLE",
+    ///         Type = "A",
+    ///         Value = "192.168.99.99",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/alidnsRecord:AlidnsRecord")]
-    public partial class AlidnsRecord : Pulumi.CustomResource
+    public partial class AlidnsRecord : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -162,7 +160,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class AlidnsRecordArgs : Pulumi.ResourceArgs
+    public sealed class AlidnsRecordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -233,9 +231,10 @@ namespace Pulumi.AliCloud.Dns
         public AlidnsRecordArgs()
         {
         }
+        public static new AlidnsRecordArgs Empty => new AlidnsRecordArgs();
     }
 
-    public sealed class AlidnsRecordState : Pulumi.ResourceArgs
+    public sealed class AlidnsRecordState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -306,5 +305,6 @@ namespace Pulumi.AliCloud.Dns
         public AlidnsRecordState()
         {
         }
+        public static new AlidnsRecordState Empty => new AlidnsRecordState();
     }
 }

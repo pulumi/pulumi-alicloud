@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsNetworkInterfacePermission:EcsNetworkInterfacePermission")]
-    public partial class EcsNetworkInterfacePermission : Pulumi.CustomResource
+    public partial class EcsNetworkInterfacePermission : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsNetworkInterfacePermissionArgs : Pulumi.ResourceArgs
+    public sealed class EcsNetworkInterfacePermissionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
@@ -130,9 +130,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsNetworkInterfacePermissionArgs()
         {
         }
+        public static new EcsNetworkInterfacePermissionArgs Empty => new EcsNetworkInterfacePermissionArgs();
     }
 
-    public sealed class EcsNetworkInterfacePermissionState : Pulumi.ResourceArgs
+    public sealed class EcsNetworkInterfacePermissionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
@@ -167,5 +168,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsNetworkInterfacePermissionState()
         {
         }
+        public static new EcsNetworkInterfacePermissionState Empty => new EcsNetworkInterfacePermissionState();
     }
 }

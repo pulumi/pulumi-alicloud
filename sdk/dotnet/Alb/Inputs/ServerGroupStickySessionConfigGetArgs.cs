@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ServerGroupStickySessionConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ServerGroupStickySessionConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
@@ -42,5 +42,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public ServerGroupStickySessionConfigGetArgs()
         {
         }
+        public static new ServerGroupStickySessionConfigGetArgs Empty => new ServerGroupStickySessionConfigGetArgs();
     }
 }

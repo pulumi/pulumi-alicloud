@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.Tag
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Tag.GetMetaTags.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Tag.GetMetaTags.InvokeAsync(new AliCloud.Tag.GetMetaTagsArgs
-        ///         {
-        ///             KeyName = "example_value",
-        ///         }));
-        ///         this.TagMetaTagDefault1 = @default.Apply(@default =&gt; @default.Tags?.ValueName);
-        ///     }
+        ///         KeyName = "example_value",
+        ///     });
         /// 
-        ///     [Output("tagMetaTagDefault1")]
-        ///     public Output&lt;string&gt; TagMetaTagDefault1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["tagMetaTagDefault1"] = @default.Apply(getMetaTagsResult =&gt; getMetaTagsResult).Apply(@default =&gt; @default.Apply(getMetaTagsResult =&gt; getMetaTagsResult.Tags?.ValueName)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMetaTagsResult> InvokeAsync(GetMetaTagsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMetaTagsResult>("alicloud:tag/getMetaTags:getMetaTags", args ?? new GetMetaTagsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetaTagsResult>("alicloud:tag/getMetaTags:getMetaTags", args ?? new GetMetaTagsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.Tag
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Tag.GetMetaTags.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Tag.GetMetaTags.InvokeAsync(new AliCloud.Tag.GetMetaTagsArgs
-        ///         {
-        ///             KeyName = "example_value",
-        ///         }));
-        ///         this.TagMetaTagDefault1 = @default.Apply(@default =&gt; @default.Tags?.ValueName);
-        ///     }
+        ///         KeyName = "example_value",
+        ///     });
         /// 
-        ///     [Output("tagMetaTagDefault1")]
-        ///     public Output&lt;string&gt; TagMetaTagDefault1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["tagMetaTagDefault1"] = @default.Apply(getMetaTagsResult =&gt; getMetaTagsResult).Apply(@default =&gt; @default.Apply(getMetaTagsResult =&gt; getMetaTagsResult.Tags?.ValueName)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMetaTagsResult> Invoke(GetMetaTagsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMetaTagsResult>("alicloud:tag/getMetaTags:getMetaTags", args ?? new GetMetaTagsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMetaTagsResult>("alicloud:tag/getMetaTags:getMetaTags", args ?? new GetMetaTagsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetMetaTagsArgs : Pulumi.InvokeArgs
+    public sealed class GetMetaTagsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the key.
@@ -99,9 +97,10 @@ namespace Pulumi.AliCloud.Tag
         public GetMetaTagsArgs()
         {
         }
+        public static new GetMetaTagsArgs Empty => new GetMetaTagsArgs();
     }
 
-    public sealed class GetMetaTagsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMetaTagsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the key.
@@ -115,6 +114,7 @@ namespace Pulumi.AliCloud.Tag
         public GetMetaTagsInvokeArgs()
         {
         }
+        public static new GetMetaTagsInvokeArgs Empty => new GetMetaTagsInvokeArgs();
     }
 
 

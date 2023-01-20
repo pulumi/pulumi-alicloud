@@ -30,10 +30,10 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`
+ * Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
  * 
  * ```sh
- *  $ pulumi import alicloud:cs/kubernetes:Kubernetes alicloud_cs_kubernetes.main cluster-id
+ *  $ pulumi import alicloud:cs/kubernetes:Kubernetes main cluster-id
  * ```
  * 
  */
@@ -330,7 +330,11 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     /**
      * The path of kube config, like `~/.kube/config`.
      * 
+     * @deprecated
+     * Field &#39;kube_config&#39; has been deprecated from provider version 1.187.0. New DataSource &#39;alicloud_cs_cluster_credential&#39; manage your cluster&#39;s kube config.
+     * 
      */
+    @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
     @Export(name="kubeConfig", type=String.class, parameters={})
     private Output</* @Nullable */ String> kubeConfig;
 
@@ -564,14 +568,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return this.natGatewayId;
     }
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
      * 
      */
     @Export(name="newNatGateway", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> newNatGateway;
 
     /**
-     * @return Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+     * @return Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
      * 
      */
     public Output<Optional<Boolean>> newNatGateway() {
@@ -742,14 +746,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retainResources);
     }
     /**
-     * The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
      * 
      */
     @Export(name="runtime", type=KubernetesRuntime.class, parameters={})
     private Output</* @Nullable */ KubernetesRuntime> runtime;
 
     /**
-     * @return The runtime of containers. Default to `docker`. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+     * @return The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
      * 
      */
     public Output<Optional<KubernetesRuntime>> runtime() {
@@ -1126,7 +1130,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.workerDiskSnapshotPolicyId);
     }
     /**
-     * (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+     * (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
      * 
      * @deprecated
      * Field &#39;worker_instance_charge_type&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;instance_charge_type&#39; to replace it
@@ -1134,14 +1138,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it */
     @Export(name="workerInstanceChargeType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> workerInstanceChargeType;
+    private Output<String> workerInstanceChargeType;
 
     /**
-     * @return (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required.
+     * @return (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
      * 
      */
-    public Output<Optional<String>> workerInstanceChargeType() {
-        return Codegen.optional(this.workerInstanceChargeType);
+    public Output<String> workerInstanceChargeType() {
+        return this.workerInstanceChargeType;
     }
     /**
      * (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
@@ -1298,6 +1302,9 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

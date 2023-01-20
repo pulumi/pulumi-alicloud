@@ -411,6 +411,7 @@ class _DBClusterState:
                  pay_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -423,7 +424,7 @@ class _DBClusterState:
         Input properties used for looking up and filtering DBCluster resources.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
-        :param pulumi.Input[str] connection_string: The endpoint of the cluster.
+        :param pulumi.Input[str] connection_string: The connection string of the cluster.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         :param pulumi.Input[str] db_cluster_version: The db cluster version. Value options: `3.0`, Default to `3.0`.
@@ -437,6 +438,7 @@ class _DBClusterState:
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the ADB cluster.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -488,6 +490,8 @@ class _DBClusterState:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
@@ -533,7 +537,7 @@ class _DBClusterState:
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint of the cluster.
+        The connection string of the cluster.
         """
         return pulumi.get(self, "connection_string")
 
@@ -705,6 +709,18 @@ class _DBClusterState:
     @period.setter
     def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.196.0+) The connection port of the ADB cluster.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter(name="renewalStatus")
@@ -1070,6 +1086,7 @@ class DBCluster(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["connection_string"] = None
+            __props__.__dict__["port"] = None
             __props__.__dict__["status"] = None
         super(DBCluster, __self__).__init__(
             'alicloud:adb/dBCluster:DBCluster',
@@ -1098,6 +1115,7 @@ class DBCluster(pulumi.CustomResource):
             pay_type: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            port: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1115,7 +1133,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
-        :param pulumi.Input[str] connection_string: The endpoint of the cluster.
+        :param pulumi.Input[str] connection_string: The connection string of the cluster.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         :param pulumi.Input[str] db_cluster_version: The db cluster version. Value options: `3.0`, Default to `3.0`.
@@ -1129,6 +1147,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the ADB cluster.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -1161,6 +1180,7 @@ class DBCluster(pulumi.CustomResource):
         __props__.__dict__["pay_type"] = pay_type
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["port"] = port
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_ips"] = security_ips
@@ -1191,7 +1211,7 @@ class DBCluster(pulumi.CustomResource):
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[str]:
         """
-        The endpoint of the cluster.
+        The connection string of the cluster.
         """
         return pulumi.get(self, "connection_string")
 
@@ -1303,6 +1323,14 @@ class DBCluster(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.196.0+) The connection port of the ADB cluster.
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="renewalStatus")

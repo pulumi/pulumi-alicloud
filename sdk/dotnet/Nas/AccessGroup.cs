@@ -22,43 +22,39 @@ namespace Pulumi.AliCloud.Nas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new AliCloud.Nas.AccessGroup("foo", new()
     ///     {
-    ///         var foo = new AliCloud.Nas.AccessGroup("foo", new AliCloud.Nas.AccessGroupArgs
-    ///         {
-    ///             Description = "test_AccessG",
-    ///             Type = "Classic",
-    ///         });
-    ///     }
+    ///         Description = "test_AccessG",
+    ///         Type = "Classic",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Example after v1.92.0
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new AliCloud.Nas.AccessGroup("foo", new()
     ///     {
-    ///         var foo = new AliCloud.Nas.AccessGroup("foo", new AliCloud.Nas.AccessGroupArgs
-    ///         {
-    ///             AccessGroupName = "CreateAccessGroup",
-    ///             AccessGroupType = "Vpc",
-    ///             Description = "test_AccessG",
-    ///             FileSystemType = "extreme",
-    ///         });
-    ///     }
+    ///         AccessGroupName = "CreateAccessGroup",
+    ///         AccessGroupType = "Vpc",
+    ///         Description = "test_AccessG",
+    ///         FileSystemType = "extreme",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -70,7 +66,7 @@ namespace Pulumi.AliCloud.Nas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/accessGroup:AccessGroup")]
-    public partial class AccessGroup : Pulumi.CustomResource
+    public partial class AccessGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A Name of one Access Group.
@@ -152,7 +148,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
-    public sealed class AccessGroupArgs : Pulumi.ResourceArgs
+    public sealed class AccessGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Name of one Access Group.
@@ -193,9 +189,10 @@ namespace Pulumi.AliCloud.Nas
         public AccessGroupArgs()
         {
         }
+        public static new AccessGroupArgs Empty => new AccessGroupArgs();
     }
 
-    public sealed class AccessGroupState : Pulumi.ResourceArgs
+    public sealed class AccessGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Name of one Access Group.
@@ -236,5 +233,6 @@ namespace Pulumi.AliCloud.Nas
         public AccessGroupState()
         {
         }
+        public static new AccessGroupState Empty => new AccessGroupState();
     }
 }

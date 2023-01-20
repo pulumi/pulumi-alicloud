@@ -53,10 +53,6 @@ public final class GetHostEcsLevelInfosPlainArgs extends com.pulumi.resources.In
 
     /**
      * The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
-     * * `local_ssd`: specifies that the host uses local SSDs.
-     * * `cloud_essd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-     * * `cloud_essd2`: specifies that the host uses ESSDs of PL2.
-     * * `cloud_essd3`: specifies that the host uses ESSDs of PL3.
      * 
      */
     @Import(name="storageType", required=true)
@@ -64,10 +60,6 @@ public final class GetHostEcsLevelInfosPlainArgs extends com.pulumi.resources.In
 
     /**
      * @return The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
-     * * `local_ssd`: specifies that the host uses local SSDs.
-     * * `cloud_essd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-     * * `cloud_essd2`: specifies that the host uses ESSDs of PL2.
-     * * `cloud_essd3`: specifies that the host uses ESSDs of PL3.
      * 
      */
     public String storageType() {
@@ -146,10 +138,6 @@ public final class GetHostEcsLevelInfosPlainArgs extends com.pulumi.resources.In
 
         /**
          * @param storageType The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
-         * * `local_ssd`: specifies that the host uses local SSDs.
-         * * `cloud_essd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-         * * `cloud_essd2`: specifies that the host uses ESSDs of PL2.
-         * * `cloud_essd3`: specifies that the host uses ESSDs of PL3.
          * 
          * @return builder
          * 

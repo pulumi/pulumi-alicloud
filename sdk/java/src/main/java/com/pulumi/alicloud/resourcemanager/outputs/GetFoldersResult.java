@@ -37,6 +37,10 @@ public final class GetFoldersResult {
      */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return (Available in v1.114.0+)The ID of the parent folder.
+     * 
+     */
     private @Nullable String parentFolderId;
     private @Nullable String queryKeyword;
 
@@ -78,6 +82,10 @@ public final class GetFoldersResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return (Available in v1.114.0+)The ID of the parent folder.
+     * 
+     */
     public Optional<String> parentFolderId() {
         return Optional.ofNullable(this.parentFolderId);
     }

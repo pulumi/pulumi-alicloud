@@ -30,6 +30,10 @@ public final class GetTopicSubscriptionsResult {
      * 
      */
     private List<GetTopicSubscriptionsSubscription> subscriptions;
+    /**
+     * @return The topic which The subscription belongs to was named with the name.
+     * 
+     */
     private String topicName;
 
     private GetTopicSubscriptionsResult() {}
@@ -60,6 +64,10 @@ public final class GetTopicSubscriptionsResult {
     public List<GetTopicSubscriptionsSubscription> subscriptions() {
         return this.subscriptions;
     }
+    /**
+     * @return The topic which The subscription belongs to was named with the name.
+     * 
+     */
     public String topicName() {
         return this.topicName;
     }

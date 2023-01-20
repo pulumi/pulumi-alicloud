@@ -15,10 +15,11 @@ namespace Pulumi.AliCloud.Slb.Outputs
     {
         /// <summary>
         /// Id of server certificate issued by alibaba cloud.
-        /// * `alicloud_certificate_name`- Name of server certificate issued by alibaba cloud.
-        /// * `is_alicloud_certificate`- Is server certificate issued by alibaba cloud or not.
         /// </summary>
         public readonly string AlicloudCertificateId;
+        /// <summary>
+        /// Name of server certificate issued by alibaba cloud.
+        /// </summary>
         public readonly string AlicloudCertificateName;
         /// <summary>
         /// Server certificate common name.
@@ -48,6 +49,9 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// Server certificate ID.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Is server certificate issued by alibaba cloud or not.
+        /// </summary>
         public readonly bool IsAlicloudCertificate;
         /// <summary>
         /// Server certificate name.

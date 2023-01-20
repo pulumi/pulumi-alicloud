@@ -5,51 +5,151 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./application";
-export * from "./autoscalingConfig";
-export * from "./cluster";
-export * from "./edgeKubernetes";
-export * from "./getAckService";
-export * from "./getEdgeKubernetesClusters";
-export * from "./getKubernetesAddonMetadata";
-export * from "./getKubernetesAddons";
-export * from "./getKubernetesClusters";
-export * from "./getKubernetesPermission";
-export * from "./getKubernetesVersion";
-export * from "./getManagedKubernetesClusters";
-export * from "./getRegistryEnterpriseInstances";
-export * from "./getRegistryEnterpriseNamespaces";
-export * from "./getRegistryEnterpriseRepos";
-export * from "./getRegistryEnterpriseSyncRules";
-export * from "./getServerlessKubernetesClusters";
-export * from "./kubernetes";
-export * from "./kubernetesAddon";
-export * from "./kubernetesAutoscaler";
-export * from "./kubernetesPermission";
-export * from "./managedKubernetes";
-export * from "./nodePool";
-export * from "./registryEnterpriseNamespace";
-export * from "./registryEnterpriseRepo";
-export * from "./registryEnterpriseSyncRule";
-export * from "./serverlessKubernetes";
-export * from "./swarm";
+export { ApplicationArgs, ApplicationState } from "./application";
+export type Application = import("./application").Application;
+export const Application: typeof import("./application").Application = null as any;
+utilities.lazyLoad(exports, ["Application"], () => require("./application"));
 
-// Import resources to register:
-import { Application } from "./application";
-import { AutoscalingConfig } from "./autoscalingConfig";
-import { Cluster } from "./cluster";
-import { EdgeKubernetes } from "./edgeKubernetes";
-import { Kubernetes } from "./kubernetes";
-import { KubernetesAddon } from "./kubernetesAddon";
-import { KubernetesAutoscaler } from "./kubernetesAutoscaler";
-import { KubernetesPermission } from "./kubernetesPermission";
-import { ManagedKubernetes } from "./managedKubernetes";
-import { NodePool } from "./nodePool";
-import { RegistryEnterpriseNamespace } from "./registryEnterpriseNamespace";
-import { RegistryEnterpriseRepo } from "./registryEnterpriseRepo";
-import { RegistryEnterpriseSyncRule } from "./registryEnterpriseSyncRule";
-import { ServerlessKubernetes } from "./serverlessKubernetes";
-import { Swarm } from "./swarm";
+export { AutoscalingConfigArgs, AutoscalingConfigState } from "./autoscalingConfig";
+export type AutoscalingConfig = import("./autoscalingConfig").AutoscalingConfig;
+export const AutoscalingConfig: typeof import("./autoscalingConfig").AutoscalingConfig = null as any;
+utilities.lazyLoad(exports, ["AutoscalingConfig"], () => require("./autoscalingConfig"));
+
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
+
+export { EdgeKubernetesArgs, EdgeKubernetesState } from "./edgeKubernetes";
+export type EdgeKubernetes = import("./edgeKubernetes").EdgeKubernetes;
+export const EdgeKubernetes: typeof import("./edgeKubernetes").EdgeKubernetes = null as any;
+utilities.lazyLoad(exports, ["EdgeKubernetes"], () => require("./edgeKubernetes"));
+
+export { GetAckServiceArgs, GetAckServiceResult, GetAckServiceOutputArgs } from "./getAckService";
+export const getAckService: typeof import("./getAckService").getAckService = null as any;
+export const getAckServiceOutput: typeof import("./getAckService").getAckServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getAckService","getAckServiceOutput"], () => require("./getAckService"));
+
+export { GetClusterCredentialArgs, GetClusterCredentialResult, GetClusterCredentialOutputArgs } from "./getClusterCredential";
+export const getClusterCredential: typeof import("./getClusterCredential").getClusterCredential = null as any;
+export const getClusterCredentialOutput: typeof import("./getClusterCredential").getClusterCredentialOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterCredential","getClusterCredentialOutput"], () => require("./getClusterCredential"));
+
+export { GetEdgeKubernetesClustersArgs, GetEdgeKubernetesClustersResult, GetEdgeKubernetesClustersOutputArgs } from "./getEdgeKubernetesClusters";
+export const getEdgeKubernetesClusters: typeof import("./getEdgeKubernetesClusters").getEdgeKubernetesClusters = null as any;
+export const getEdgeKubernetesClustersOutput: typeof import("./getEdgeKubernetesClusters").getEdgeKubernetesClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeKubernetesClusters","getEdgeKubernetesClustersOutput"], () => require("./getEdgeKubernetesClusters"));
+
+export { GetKubernetesAddonMetadataArgs, GetKubernetesAddonMetadataResult, GetKubernetesAddonMetadataOutputArgs } from "./getKubernetesAddonMetadata";
+export const getKubernetesAddonMetadata: typeof import("./getKubernetesAddonMetadata").getKubernetesAddonMetadata = null as any;
+export const getKubernetesAddonMetadataOutput: typeof import("./getKubernetesAddonMetadata").getKubernetesAddonMetadataOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesAddonMetadata","getKubernetesAddonMetadataOutput"], () => require("./getKubernetesAddonMetadata"));
+
+export { GetKubernetesAddonsArgs, GetKubernetesAddonsResult, GetKubernetesAddonsOutputArgs } from "./getKubernetesAddons";
+export const getKubernetesAddons: typeof import("./getKubernetesAddons").getKubernetesAddons = null as any;
+export const getKubernetesAddonsOutput: typeof import("./getKubernetesAddons").getKubernetesAddonsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesAddons","getKubernetesAddonsOutput"], () => require("./getKubernetesAddons"));
+
+export { GetKubernetesClustersArgs, GetKubernetesClustersResult, GetKubernetesClustersOutputArgs } from "./getKubernetesClusters";
+export const getKubernetesClusters: typeof import("./getKubernetesClusters").getKubernetesClusters = null as any;
+export const getKubernetesClustersOutput: typeof import("./getKubernetesClusters").getKubernetesClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesClusters","getKubernetesClustersOutput"], () => require("./getKubernetesClusters"));
+
+export { GetKubernetesPermissionArgs, GetKubernetesPermissionResult, GetKubernetesPermissionOutputArgs } from "./getKubernetesPermission";
+export const getKubernetesPermission: typeof import("./getKubernetesPermission").getKubernetesPermission = null as any;
+export const getKubernetesPermissionOutput: typeof import("./getKubernetesPermission").getKubernetesPermissionOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesPermission","getKubernetesPermissionOutput"], () => require("./getKubernetesPermission"));
+
+export { GetKubernetesVersionArgs, GetKubernetesVersionResult, GetKubernetesVersionOutputArgs } from "./getKubernetesVersion";
+export const getKubernetesVersion: typeof import("./getKubernetesVersion").getKubernetesVersion = null as any;
+export const getKubernetesVersionOutput: typeof import("./getKubernetesVersion").getKubernetesVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesVersion","getKubernetesVersionOutput"], () => require("./getKubernetesVersion"));
+
+export { GetManagedKubernetesClustersArgs, GetManagedKubernetesClustersResult, GetManagedKubernetesClustersOutputArgs } from "./getManagedKubernetesClusters";
+export const getManagedKubernetesClusters: typeof import("./getManagedKubernetesClusters").getManagedKubernetesClusters = null as any;
+export const getManagedKubernetesClustersOutput: typeof import("./getManagedKubernetesClusters").getManagedKubernetesClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getManagedKubernetesClusters","getManagedKubernetesClustersOutput"], () => require("./getManagedKubernetesClusters"));
+
+export { GetRegistryEnterpriseInstancesArgs, GetRegistryEnterpriseInstancesResult, GetRegistryEnterpriseInstancesOutputArgs } from "./getRegistryEnterpriseInstances";
+export const getRegistryEnterpriseInstances: typeof import("./getRegistryEnterpriseInstances").getRegistryEnterpriseInstances = null as any;
+export const getRegistryEnterpriseInstancesOutput: typeof import("./getRegistryEnterpriseInstances").getRegistryEnterpriseInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistryEnterpriseInstances","getRegistryEnterpriseInstancesOutput"], () => require("./getRegistryEnterpriseInstances"));
+
+export { GetRegistryEnterpriseNamespacesArgs, GetRegistryEnterpriseNamespacesResult, GetRegistryEnterpriseNamespacesOutputArgs } from "./getRegistryEnterpriseNamespaces";
+export const getRegistryEnterpriseNamespaces: typeof import("./getRegistryEnterpriseNamespaces").getRegistryEnterpriseNamespaces = null as any;
+export const getRegistryEnterpriseNamespacesOutput: typeof import("./getRegistryEnterpriseNamespaces").getRegistryEnterpriseNamespacesOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistryEnterpriseNamespaces","getRegistryEnterpriseNamespacesOutput"], () => require("./getRegistryEnterpriseNamespaces"));
+
+export { GetRegistryEnterpriseReposArgs, GetRegistryEnterpriseReposResult, GetRegistryEnterpriseReposOutputArgs } from "./getRegistryEnterpriseRepos";
+export const getRegistryEnterpriseRepos: typeof import("./getRegistryEnterpriseRepos").getRegistryEnterpriseRepos = null as any;
+export const getRegistryEnterpriseReposOutput: typeof import("./getRegistryEnterpriseRepos").getRegistryEnterpriseReposOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistryEnterpriseRepos","getRegistryEnterpriseReposOutput"], () => require("./getRegistryEnterpriseRepos"));
+
+export { GetRegistryEnterpriseSyncRulesArgs, GetRegistryEnterpriseSyncRulesResult, GetRegistryEnterpriseSyncRulesOutputArgs } from "./getRegistryEnterpriseSyncRules";
+export const getRegistryEnterpriseSyncRules: typeof import("./getRegistryEnterpriseSyncRules").getRegistryEnterpriseSyncRules = null as any;
+export const getRegistryEnterpriseSyncRulesOutput: typeof import("./getRegistryEnterpriseSyncRules").getRegistryEnterpriseSyncRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistryEnterpriseSyncRules","getRegistryEnterpriseSyncRulesOutput"], () => require("./getRegistryEnterpriseSyncRules"));
+
+export { GetServerlessKubernetesClustersArgs, GetServerlessKubernetesClustersResult, GetServerlessKubernetesClustersOutputArgs } from "./getServerlessKubernetesClusters";
+export const getServerlessKubernetesClusters: typeof import("./getServerlessKubernetesClusters").getServerlessKubernetesClusters = null as any;
+export const getServerlessKubernetesClustersOutput: typeof import("./getServerlessKubernetesClusters").getServerlessKubernetesClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getServerlessKubernetesClusters","getServerlessKubernetesClustersOutput"], () => require("./getServerlessKubernetesClusters"));
+
+export { KubernetesArgs, KubernetesState } from "./kubernetes";
+export type Kubernetes = import("./kubernetes").Kubernetes;
+export const Kubernetes: typeof import("./kubernetes").Kubernetes = null as any;
+utilities.lazyLoad(exports, ["Kubernetes"], () => require("./kubernetes"));
+
+export { KubernetesAddonArgs, KubernetesAddonState } from "./kubernetesAddon";
+export type KubernetesAddon = import("./kubernetesAddon").KubernetesAddon;
+export const KubernetesAddon: typeof import("./kubernetesAddon").KubernetesAddon = null as any;
+utilities.lazyLoad(exports, ["KubernetesAddon"], () => require("./kubernetesAddon"));
+
+export { KubernetesAutoscalerArgs, KubernetesAutoscalerState } from "./kubernetesAutoscaler";
+export type KubernetesAutoscaler = import("./kubernetesAutoscaler").KubernetesAutoscaler;
+export const KubernetesAutoscaler: typeof import("./kubernetesAutoscaler").KubernetesAutoscaler = null as any;
+utilities.lazyLoad(exports, ["KubernetesAutoscaler"], () => require("./kubernetesAutoscaler"));
+
+export { KubernetesPermissionArgs, KubernetesPermissionState } from "./kubernetesPermission";
+export type KubernetesPermission = import("./kubernetesPermission").KubernetesPermission;
+export const KubernetesPermission: typeof import("./kubernetesPermission").KubernetesPermission = null as any;
+utilities.lazyLoad(exports, ["KubernetesPermission"], () => require("./kubernetesPermission"));
+
+export { ManagedKubernetesArgs, ManagedKubernetesState } from "./managedKubernetes";
+export type ManagedKubernetes = import("./managedKubernetes").ManagedKubernetes;
+export const ManagedKubernetes: typeof import("./managedKubernetes").ManagedKubernetes = null as any;
+utilities.lazyLoad(exports, ["ManagedKubernetes"], () => require("./managedKubernetes"));
+
+export { NodePoolArgs, NodePoolState } from "./nodePool";
+export type NodePool = import("./nodePool").NodePool;
+export const NodePool: typeof import("./nodePool").NodePool = null as any;
+utilities.lazyLoad(exports, ["NodePool"], () => require("./nodePool"));
+
+export { RegistryEnterpriseNamespaceArgs, RegistryEnterpriseNamespaceState } from "./registryEnterpriseNamespace";
+export type RegistryEnterpriseNamespace = import("./registryEnterpriseNamespace").RegistryEnterpriseNamespace;
+export const RegistryEnterpriseNamespace: typeof import("./registryEnterpriseNamespace").RegistryEnterpriseNamespace = null as any;
+utilities.lazyLoad(exports, ["RegistryEnterpriseNamespace"], () => require("./registryEnterpriseNamespace"));
+
+export { RegistryEnterpriseRepoArgs, RegistryEnterpriseRepoState } from "./registryEnterpriseRepo";
+export type RegistryEnterpriseRepo = import("./registryEnterpriseRepo").RegistryEnterpriseRepo;
+export const RegistryEnterpriseRepo: typeof import("./registryEnterpriseRepo").RegistryEnterpriseRepo = null as any;
+utilities.lazyLoad(exports, ["RegistryEnterpriseRepo"], () => require("./registryEnterpriseRepo"));
+
+export { RegistryEnterpriseSyncRuleArgs, RegistryEnterpriseSyncRuleState } from "./registryEnterpriseSyncRule";
+export type RegistryEnterpriseSyncRule = import("./registryEnterpriseSyncRule").RegistryEnterpriseSyncRule;
+export const RegistryEnterpriseSyncRule: typeof import("./registryEnterpriseSyncRule").RegistryEnterpriseSyncRule = null as any;
+utilities.lazyLoad(exports, ["RegistryEnterpriseSyncRule"], () => require("./registryEnterpriseSyncRule"));
+
+export { ServerlessKubernetesArgs, ServerlessKubernetesState } from "./serverlessKubernetes";
+export type ServerlessKubernetes = import("./serverlessKubernetes").ServerlessKubernetes;
+export const ServerlessKubernetes: typeof import("./serverlessKubernetes").ServerlessKubernetes = null as any;
+utilities.lazyLoad(exports, ["ServerlessKubernetes"], () => require("./serverlessKubernetes"));
+
+export { SwarmArgs, SwarmState } from "./swarm";
+export type Swarm = import("./swarm").Swarm;
+export const Swarm: typeof import("./swarm").Swarm = null as any;
+utilities.lazyLoad(exports, ["Swarm"], () => require("./swarm"));
+
 
 const _module = {
     version: utilities.getVersion(),

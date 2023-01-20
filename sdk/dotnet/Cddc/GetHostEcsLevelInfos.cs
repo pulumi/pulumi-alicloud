@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Cddc
         /// &gt; **NOTE:** Available in v1.147.0+.
         /// </summary>
         public static Task<GetHostEcsLevelInfosResult> InvokeAsync(GetHostEcsLevelInfosArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Cddc
         /// &gt; **NOTE:** Available in v1.147.0+.
         /// </summary>
         public static Output<GetHostEcsLevelInfosResult> Invoke(GetHostEcsLevelInfosInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostEcsLevelInfosResult>("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", args ?? new GetHostEcsLevelInfosInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHostEcsLevelInfosArgs : Pulumi.InvokeArgs
+    public sealed class GetHostEcsLevelInfosArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The database engine of the host. Valid values: `mysql`, `mssql`, `pgsql`, `redis`.
@@ -47,11 +47,7 @@ namespace Pulumi.AliCloud.Cddc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`. 
-        /// * `local_ssd`: specifies that the host uses local SSDs.
-        /// * `cloud_essd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-        /// * `cloud_essd2`: specifies that the host uses ESSDs of PL2.
-        /// * `cloud_essd3`: specifies that the host uses ESSDs of PL3.
+        /// The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
         /// </summary>
         [Input("storageType", required: true)]
         public string StorageType { get; set; } = null!;
@@ -65,9 +61,10 @@ namespace Pulumi.AliCloud.Cddc
         public GetHostEcsLevelInfosArgs()
         {
         }
+        public static new GetHostEcsLevelInfosArgs Empty => new GetHostEcsLevelInfosArgs();
     }
 
-    public sealed class GetHostEcsLevelInfosInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHostEcsLevelInfosInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The database engine of the host. Valid values: `mysql`, `mssql`, `pgsql`, `redis`.
@@ -85,11 +82,7 @@ namespace Pulumi.AliCloud.Cddc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`. 
-        /// * `local_ssd`: specifies that the host uses local SSDs.
-        /// * `cloud_essd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-        /// * `cloud_essd2`: specifies that the host uses ESSDs of PL2.
-        /// * `cloud_essd3`: specifies that the host uses ESSDs of PL3.
+        /// The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
         /// </summary>
         [Input("storageType", required: true)]
         public Input<string> StorageType { get; set; } = null!;
@@ -103,6 +96,7 @@ namespace Pulumi.AliCloud.Cddc
         public GetHostEcsLevelInfosInvokeArgs()
         {
         }
+        public static new GetHostEcsLevelInfosInvokeArgs Empty => new GetHostEcsLevelInfosInvokeArgs();
     }
 
 

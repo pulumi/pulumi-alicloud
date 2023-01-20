@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -170,7 +171,10 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
      */
-    public readonly config!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly config!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * Intranet connection address of the KVStore instance.
+     */
     public /*out*/ readonly connectionDomain!: pulumi.Output<string>;
     /**
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
@@ -347,7 +351,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
      */
-    public readonly securityIps!: pulumi.Output<string[] | undefined>;
+    public readonly securityIps!: pulumi.Output<string[]>;
     /**
      * The ID of the source instance.
      */
@@ -359,7 +363,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly sslEnable!: pulumi.Output<string | undefined>;
     /**
      * The status of KVStore DBInstance.
-     * * `connectionDomain`- Intranet connection address of the KVStore instance.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -488,7 +491,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["nodeType"] = args ? args.nodeType : undefined;
             resourceInputs["orderType"] = args ? args.orderType : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
@@ -516,6 +519,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -570,6 +575,9 @@ export interface InstanceState {
      * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
      */
     config?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Intranet connection address of the KVStore instance.
+     */
     connectionDomain?: pulumi.Input<string>;
     /**
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
@@ -758,7 +766,6 @@ export interface InstanceState {
     sslEnable?: pulumi.Input<string>;
     /**
      * The status of KVStore DBInstance.
-     * * `connectionDomain`- Intranet connection address of the KVStore instance.
      */
     status?: pulumi.Input<string>;
     /**

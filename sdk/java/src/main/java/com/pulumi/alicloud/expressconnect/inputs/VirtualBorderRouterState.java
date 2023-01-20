@@ -108,6 +108,21 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+     * 
+     */
+    @Import(name="includeCrossAccountVbr")
+    private @Nullable Output<Boolean> includeCrossAccountVbr;
+
+    /**
+     * @return Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> includeCrossAccountVbr() {
+        return Optional.ofNullable(this.includeCrossAccountVbr);
+    }
+
+    /**
      * Alibaba Cloud-Connected IPv4 address.
      * 
      */
@@ -326,6 +341,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         this.description = $.description;
         this.detectMultiplier = $.detectMultiplier;
         this.enableIpv6 = $.enableIpv6;
+        this.includeCrossAccountVbr = $.includeCrossAccountVbr;
         this.localGatewayIp = $.localGatewayIp;
         this.localIpv6GatewayIp = $.localIpv6GatewayIp;
         this.minRxInterval = $.minRxInterval;
@@ -484,6 +500,27 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
          */
         public Builder enableIpv6(Boolean enableIpv6) {
             return enableIpv6(Output.of(enableIpv6));
+        }
+
+        /**
+         * @param includeCrossAccountVbr Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeCrossAccountVbr(@Nullable Output<Boolean> includeCrossAccountVbr) {
+            $.includeCrossAccountVbr = includeCrossAccountVbr;
+            return this;
+        }
+
+        /**
+         * @param includeCrossAccountVbr Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeCrossAccountVbr(Boolean includeCrossAccountVbr) {
+            return includeCrossAccountVbr(Output.of(includeCrossAccountVbr));
         }
 
         /**

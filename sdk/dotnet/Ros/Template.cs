@@ -21,25 +21,23 @@ namespace Pulumi.AliCloud.Ros
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ros.Template("example", new()
     ///     {
-    ///         var example = new AliCloud.Ros.Template("example", new AliCloud.Ros.TemplateArgs
-    ///         {
-    ///             TemplateBody = @"    {
+    ///         TemplateBody = @"    {
     ///     	""ROSTemplateFormatVersion"": ""2015-09-01""
     ///     }
     ///     
     /// ",
-    ///             TemplateName = "example_value",
-    ///         });
-    ///     }
+    ///         TemplateName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +49,7 @@ namespace Pulumi.AliCloud.Ros
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ros/template:Template")]
-    public partial class Template : Pulumi.CustomResource
+    public partial class Template : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the template. The description can be up to 256 characters in length.
@@ -127,7 +125,7 @@ namespace Pulumi.AliCloud.Ros
         }
     }
 
-    public sealed class TemplateArgs : Pulumi.ResourceArgs
+    public sealed class TemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the template. The description can be up to 256 characters in length.
@@ -168,9 +166,10 @@ namespace Pulumi.AliCloud.Ros
         public TemplateArgs()
         {
         }
+        public static new TemplateArgs Empty => new TemplateArgs();
     }
 
-    public sealed class TemplateState : Pulumi.ResourceArgs
+    public sealed class TemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the template. The description can be up to 256 characters in length.
@@ -211,5 +210,6 @@ namespace Pulumi.AliCloud.Ros
         public TemplateState()
         {
         }
+        public static new TemplateState Empty => new TemplateState();
     }
 }

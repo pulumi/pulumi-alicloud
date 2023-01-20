@@ -17,6 +17,8 @@ class ApplicationArgs:
                  app_name: pulumi.Input[str],
                  package_type: pulumi.Input[str],
                  replicas: pulumi.Input[int],
+                 acr_assume_role_arn: Optional[pulumi.Input[str]] = None,
+                 acr_instance_id: Optional[pulumi.Input[str]] = None,
                  app_description: Optional[pulumi.Input[str]] = None,
                  auto_config: Optional[pulumi.Input[bool]] = None,
                  auto_enable_application_scaling_rule: Optional[pulumi.Input[bool]] = None,
@@ -73,6 +75,8 @@ class ApplicationArgs:
         :param pulumi.Input[str] app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
         :param pulumi.Input[str] package_type: Application package type. Support FatJar, War and Image. Valid values: `FatJar`, `Image`, `War`.
         :param pulumi.Input[int] replicas: Initial number of instances.
+        :param pulumi.Input[str] acr_assume_role_arn: The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        :param pulumi.Input[str] acr_instance_id: The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
         :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters.
         :param pulumi.Input[bool] auto_config: The auto config. Valid values: `false`, `true`.
         :param pulumi.Input[bool] auto_enable_application_scaling_rule: The auto enable application scaling rule. Valid values: `false`, `true`.
@@ -130,6 +134,10 @@ class ApplicationArgs:
         pulumi.set(__self__, "app_name", app_name)
         pulumi.set(__self__, "package_type", package_type)
         pulumi.set(__self__, "replicas", replicas)
+        if acr_assume_role_arn is not None:
+            pulumi.set(__self__, "acr_assume_role_arn", acr_assume_role_arn)
+        if acr_instance_id is not None:
+            pulumi.set(__self__, "acr_instance_id", acr_instance_id)
         if app_description is not None:
             pulumi.set(__self__, "app_description", app_description)
         if auto_config is not None:
@@ -268,6 +276,30 @@ class ApplicationArgs:
     @replicas.setter
     def replicas(self, value: pulumi.Input[int]):
         pulumi.set(self, "replicas", value)
+
+    @property
+    @pulumi.getter(name="acrAssumeRoleArn")
+    def acr_assume_role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        """
+        return pulumi.get(self, "acr_assume_role_arn")
+
+    @acr_assume_role_arn.setter
+    def acr_assume_role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acr_assume_role_arn", value)
+
+    @property
+    @pulumi.getter(name="acrInstanceId")
+    def acr_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+        """
+        return pulumi.get(self, "acr_instance_id")
+
+    @acr_instance_id.setter
+    def acr_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acr_instance_id", value)
 
     @property
     @pulumi.getter(name="appDescription")
@@ -887,6 +919,8 @@ class ApplicationArgs:
 @pulumi.input_type
 class _ApplicationState:
     def __init__(__self__, *,
+                 acr_assume_role_arn: Optional[pulumi.Input[str]] = None,
+                 acr_instance_id: Optional[pulumi.Input[str]] = None,
                  app_description: Optional[pulumi.Input[str]] = None,
                  app_name: Optional[pulumi.Input[str]] = None,
                  auto_config: Optional[pulumi.Input[bool]] = None,
@@ -943,6 +977,8 @@ class _ApplicationState:
                  web_container: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Application resources.
+        :param pulumi.Input[str] acr_assume_role_arn: The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        :param pulumi.Input[str] acr_instance_id: The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
         :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters.
         :param pulumi.Input[str] app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
         :param pulumi.Input[bool] auto_config: The auto config. Valid values: `false`, `true`.
@@ -1000,6 +1036,10 @@ class _ApplicationState:
         :param pulumi.Input[str] war_start_options: WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         :param pulumi.Input[str] web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
         """
+        if acr_assume_role_arn is not None:
+            pulumi.set(__self__, "acr_assume_role_arn", acr_assume_role_arn)
+        if acr_instance_id is not None:
+            pulumi.set(__self__, "acr_instance_id", acr_instance_id)
         if app_description is not None:
             pulumi.set(__self__, "app_description", app_description)
         if app_name is not None:
@@ -1108,6 +1148,30 @@ class _ApplicationState:
             pulumi.set(__self__, "war_start_options", war_start_options)
         if web_container is not None:
             pulumi.set(__self__, "web_container", web_container)
+
+    @property
+    @pulumi.getter(name="acrAssumeRoleArn")
+    def acr_assume_role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        """
+        return pulumi.get(self, "acr_assume_role_arn")
+
+    @acr_assume_role_arn.setter
+    def acr_assume_role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acr_assume_role_arn", value)
+
+    @property
+    @pulumi.getter(name="acrInstanceId")
+    def acr_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+        """
+        return pulumi.get(self, "acr_instance_id")
+
+    @acr_instance_id.setter
+    def acr_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acr_instance_id", value)
 
     @property
     @pulumi.getter(name="appDescription")
@@ -1765,6 +1829,8 @@ class Application(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acr_assume_role_arn: Optional[pulumi.Input[str]] = None,
+                 acr_instance_id: Optional[pulumi.Input[str]] = None,
                  app_description: Optional[pulumi.Input[str]] = None,
                  app_name: Optional[pulumi.Input[str]] = None,
                  auto_config: Optional[pulumi.Input[bool]] = None,
@@ -1875,6 +1941,8 @@ class Application(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acr_assume_role_arn: The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        :param pulumi.Input[str] acr_instance_id: The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
         :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters.
         :param pulumi.Input[str] app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
         :param pulumi.Input[bool] auto_config: The auto config. Valid values: `false`, `true`.
@@ -2006,6 +2074,8 @@ class Application(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acr_assume_role_arn: Optional[pulumi.Input[str]] = None,
+                 acr_instance_id: Optional[pulumi.Input[str]] = None,
                  app_description: Optional[pulumi.Input[str]] = None,
                  app_name: Optional[pulumi.Input[str]] = None,
                  auto_config: Optional[pulumi.Input[bool]] = None,
@@ -2069,6 +2139,8 @@ class Application(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApplicationArgs.__new__(ApplicationArgs)
 
+            __props__.__dict__["acr_assume_role_arn"] = acr_assume_role_arn
+            __props__.__dict__["acr_instance_id"] = acr_instance_id
             __props__.__dict__["app_description"] = app_description
             if app_name is None and not opts.urn:
                 raise TypeError("Missing required property 'app_name'")
@@ -2099,8 +2171,8 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["mount_host"] = mount_host
             __props__.__dict__["namespace_id"] = namespace_id
             __props__.__dict__["nas_id"] = nas_id
-            __props__.__dict__["oss_ak_id"] = oss_ak_id
-            __props__.__dict__["oss_ak_secret"] = oss_ak_secret
+            __props__.__dict__["oss_ak_id"] = None if oss_ak_id is None else pulumi.Output.secret(oss_ak_id)
+            __props__.__dict__["oss_ak_secret"] = None if oss_ak_secret is None else pulumi.Output.secret(oss_ak_secret)
             __props__.__dict__["oss_mount_descs"] = oss_mount_descs
             if package_type is None and not opts.urn:
                 raise TypeError("Missing required property 'package_type'")
@@ -2129,6 +2201,8 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["war_start_options"] = war_start_options
             __props__.__dict__["web_container"] = web_container
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["ossAkId", "ossAkSecret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Application, __self__).__init__(
             'alicloud:sae/application:Application',
             resource_name,
@@ -2139,6 +2213,8 @@ class Application(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acr_assume_role_arn: Optional[pulumi.Input[str]] = None,
+            acr_instance_id: Optional[pulumi.Input[str]] = None,
             app_description: Optional[pulumi.Input[str]] = None,
             app_name: Optional[pulumi.Input[str]] = None,
             auto_config: Optional[pulumi.Input[bool]] = None,
@@ -2200,6 +2276,8 @@ class Application(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acr_assume_role_arn: The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        :param pulumi.Input[str] acr_instance_id: The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
         :param pulumi.Input[str] app_description: Application description information. No more than 1024 characters.
         :param pulumi.Input[str] app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
         :param pulumi.Input[bool] auto_config: The auto config. Valid values: `false`, `true`.
@@ -2261,6 +2339,8 @@ class Application(pulumi.CustomResource):
 
         __props__ = _ApplicationState.__new__(_ApplicationState)
 
+        __props__.__dict__["acr_assume_role_arn"] = acr_assume_role_arn
+        __props__.__dict__["acr_instance_id"] = acr_instance_id
         __props__.__dict__["app_description"] = app_description
         __props__.__dict__["app_name"] = app_name
         __props__.__dict__["auto_config"] = auto_config
@@ -2316,6 +2396,22 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["war_start_options"] = war_start_options
         __props__.__dict__["web_container"] = web_container
         return Application(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="acrAssumeRoleArn")
+    def acr_assume_role_arn(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+        """
+        return pulumi.get(self, "acr_assume_role_arn")
+
+    @property
+    @pulumi.getter(name="acrInstanceId")
+    def acr_instance_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+        """
+        return pulumi.get(self, "acr_instance_id")
 
     @property
     @pulumi.getter(name="appDescription")
@@ -2649,7 +2745,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> pulumi.Output[Optional[str]]:
+    def security_group_id(self) -> pulumi.Output[str]:
         """
         Security group ID.
         """

@@ -52,10 +52,12 @@ type Eip struct {
 	Name    pulumi.StringOutput    `pulumi:"name"`
 	Netmode pulumi.StringPtrOutput `pulumi:"netmode"`
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	Period      pulumi.IntPtrOutput `pulumi:"period"`
+	PaymentType           pulumi.StringOutput    `pulumi:"paymentType"`
+	Period                pulumi.IntPtrOutput    `pulumi:"period"`
+	PublicIpAddressPoolId pulumi.StringPtrOutput `pulumi:"publicIpAddressPoolId"`
 	// The Id of resource group which the eip belongs.
-	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	ResourceGroupId         pulumi.StringOutput      `pulumi:"resourceGroupId"`
+	SecurityProtectionTypes pulumi.StringArrayOutput `pulumi:"securityProtectionTypes"`
 	// The EIP current status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -119,10 +121,12 @@ type eipState struct {
 	Name    *string `pulumi:"name"`
 	Netmode *string `pulumi:"netmode"`
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	PaymentType           *string `pulumi:"paymentType"`
+	Period                *int    `pulumi:"period"`
+	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The Id of resource group which the eip belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	ResourceGroupId         *string  `pulumi:"resourceGroupId"`
+	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// The EIP current status.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -158,10 +162,12 @@ type EipState struct {
 	Name    pulumi.StringPtrInput
 	Netmode pulumi.StringPtrInput
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	PaymentType           pulumi.StringPtrInput
+	Period                pulumi.IntPtrInput
+	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The Id of resource group which the eip belongs.
-	ResourceGroupId pulumi.StringPtrInput
+	ResourceGroupId         pulumi.StringPtrInput
+	SecurityProtectionTypes pulumi.StringArrayInput
 	// The EIP current status.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -199,10 +205,12 @@ type eipArgs struct {
 	Name    *string `pulumi:"name"`
 	Netmode *string `pulumi:"netmode"`
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	PaymentType           *string `pulumi:"paymentType"`
+	Period                *int    `pulumi:"period"`
+	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The Id of resource group which the eip belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	ResourceGroupId         *string  `pulumi:"resourceGroupId"`
+	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -235,10 +243,12 @@ type EipArgs struct {
 	Name    pulumi.StringPtrInput
 	Netmode pulumi.StringPtrInput
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	PaymentType           pulumi.StringPtrInput
+	Period                pulumi.IntPtrInput
+	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The Id of resource group which the eip belongs.
-	ResourceGroupId pulumi.StringPtrInput
+	ResourceGroupId         pulumi.StringPtrInput
+	SecurityProtectionTypes pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
@@ -402,9 +412,17 @@ func (o EipOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Eip) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
+func (o EipOutput) PublicIpAddressPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.PublicIpAddressPoolId }).(pulumi.StringPtrOutput)
+}
+
 // The Id of resource group which the eip belongs.
 func (o EipOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+func (o EipOutput) SecurityProtectionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringArrayOutput { return v.SecurityProtectionTypes }).(pulumi.StringArrayOutput)
 }
 
 // The EIP current status.

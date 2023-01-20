@@ -5,18 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./execution";
-export * from "./flow";
-export * from "./getExecutions";
-export * from "./getFlows";
-export * from "./getSchedules";
-export * from "./getService";
-export * from "./schedule";
+export { ExecutionArgs, ExecutionState } from "./execution";
+export type Execution = import("./execution").Execution;
+export const Execution: typeof import("./execution").Execution = null as any;
+utilities.lazyLoad(exports, ["Execution"], () => require("./execution"));
 
-// Import resources to register:
-import { Execution } from "./execution";
-import { Flow } from "./flow";
-import { Schedule } from "./schedule";
+export { FlowArgs, FlowState } from "./flow";
+export type Flow = import("./flow").Flow;
+export const Flow: typeof import("./flow").Flow = null as any;
+utilities.lazyLoad(exports, ["Flow"], () => require("./flow"));
+
+export { GetExecutionsArgs, GetExecutionsResult, GetExecutionsOutputArgs } from "./getExecutions";
+export const getExecutions: typeof import("./getExecutions").getExecutions = null as any;
+export const getExecutionsOutput: typeof import("./getExecutions").getExecutionsOutput = null as any;
+utilities.lazyLoad(exports, ["getExecutions","getExecutionsOutput"], () => require("./getExecutions"));
+
+export { GetFlowsArgs, GetFlowsResult, GetFlowsOutputArgs } from "./getFlows";
+export const getFlows: typeof import("./getFlows").getFlows = null as any;
+export const getFlowsOutput: typeof import("./getFlows").getFlowsOutput = null as any;
+utilities.lazyLoad(exports, ["getFlows","getFlowsOutput"], () => require("./getFlows"));
+
+export { GetSchedulesArgs, GetSchedulesResult, GetSchedulesOutputArgs } from "./getSchedules";
+export const getSchedules: typeof import("./getSchedules").getSchedules = null as any;
+export const getSchedulesOutput: typeof import("./getSchedules").getSchedulesOutput = null as any;
+utilities.lazyLoad(exports, ["getSchedules","getSchedulesOutput"], () => require("./getSchedules"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { ScheduleArgs, ScheduleState } from "./schedule";
+export type Schedule = import("./schedule").Schedule;
+export const Schedule: typeof import("./schedule").Schedule = null as any;
+utilities.lazyLoad(exports, ["Schedule"], () => require("./schedule"));
+
 
 const _module = {
     version: utilities.getVersion(),

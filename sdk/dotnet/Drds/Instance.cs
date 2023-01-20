@@ -23,25 +23,23 @@ namespace Pulumi.AliCloud.Drds
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Drds.Instance("default", new()
     ///     {
-    ///         var @default = new AliCloud.Drds.Instance("default", new AliCloud.Drds.InstanceArgs
-    ///         {
-    ///             Description = "drds instance",
-    ///             InstanceChargeType = "PostPaid",
-    ///             InstanceSeries = "drds.sn1.4c8g",
-    ///             Specification = "drds.sn1.4c8g.8C16G",
-    ///             VswitchId = "vsw-bp1jlu3swk8rq2yoi40ey",
-    ///             ZoneId = "cn-hangzhou-e",
-    ///         });
-    ///     }
+    ///         Description = "drds instance",
+    ///         InstanceChargeType = "PostPaid",
+    ///         InstanceSeries = "drds.sn1.4c8g",
+    ///         Specification = "drds.sn1.4c8g.8C16G",
+    ///         VswitchId = "vsw-bp1jlu3swk8rq2yoi40ey",
+    ///         ZoneId = "cn-hangzhou-e",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,8 +51,14 @@ namespace Pulumi.AliCloud.Drds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:drds/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (Available in 1.196.0+) The connection string of the DRDS instance.
+        /// </summary>
+        [Output("connectionString")]
+        public Output<string> ConnectionString { get; private set; } = null!;
+
         /// <summary>
         /// Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         /// </summary>
@@ -77,6 +81,12 @@ namespace Pulumi.AliCloud.Drds
         public Output<string> InstanceSeries { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.196.0+) The connection port of the DRDS instance.
+        /// </summary>
+        [Output("port")]
+        public Output<string> Port { get; private set; } = null!;
+
+        /// <summary>
         /// User-defined DRDS instance specification. Value range:
         /// - `drds.sn1.4c8g` for DRDS instance Starter version;
         /// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -89,6 +99,12 @@ namespace Pulumi.AliCloud.Drds
         /// </summary>
         [Output("specification")]
         public Output<string> Specification { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The VSwitch ID to launch in.
@@ -146,7 +162,7 @@ namespace Pulumi.AliCloud.Drds
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the DRDS instance, This description can have a string of 2 to 256 characters.
@@ -184,6 +200,12 @@ namespace Pulumi.AliCloud.Drds
         public Input<string> Specification { get; set; } = null!;
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The VSwitch ID to launch in.
         /// </summary>
         [Input("vswitchId", required: true)]
@@ -198,10 +220,17 @@ namespace Pulumi.AliCloud.Drds
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Available in 1.196.0+) The connection string of the DRDS instance.
+        /// </summary>
+        [Input("connectionString")]
+        public Input<string>? ConnectionString { get; set; }
+
         /// <summary>
         /// Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         /// </summary>
@@ -224,6 +253,12 @@ namespace Pulumi.AliCloud.Drds
         public Input<string>? InstanceSeries { get; set; }
 
         /// <summary>
+        /// (Available in 1.196.0+) The connection port of the DRDS instance.
+        /// </summary>
+        [Input("port")]
+        public Input<string>? Port { get; set; }
+
+        /// <summary>
         /// User-defined DRDS instance specification. Value range:
         /// - `drds.sn1.4c8g` for DRDS instance Starter version;
         /// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -236,6 +271,12 @@ namespace Pulumi.AliCloud.Drds
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }
+
+        /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The VSwitch ID to launch in.
@@ -252,5 +293,6 @@ namespace Pulumi.AliCloud.Drds
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

@@ -255,7 +255,7 @@ def get_domains(ali_domain: Optional[bool] = None,
     :param str domain_name_regex: A regex string to filter results by the domain name.
     :param str group_id: Domain group ID, if not filled, the default is all groups.
     :param str group_name_regex: A regex string to filter results by the group name.
-    :param Sequence[str] ids: - A list of domain IDs.
+    :param Sequence[str] ids: A list of domain IDs.
     :param str instance_id: Cloud analysis product ID.
     :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
     :param str lang: User language.
@@ -339,7 +339,7 @@ def get_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]] = None
     :param str domain_name_regex: A regex string to filter results by the domain name.
     :param str group_id: Domain group ID, if not filled, the default is all groups.
     :param str group_name_regex: A regex string to filter results by the group name.
-    :param Sequence[str] ids: - A list of domain IDs.
+    :param Sequence[str] ids: A list of domain IDs.
     :param str instance_id: Cloud analysis product ID.
     :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
     :param str lang: User language.

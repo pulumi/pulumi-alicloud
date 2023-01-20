@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,15 +23,12 @@ import * as utilities from "../utilities";
  *     acceleratorId: "example_value",
  *     ids: ["example_value"],
  * });
- * export const firstGaIpSetId = example.then(example => example.sets?[0]?.id);
+ * export const firstGaIpSetId = example.then(example => example.sets?.[0]?.id);
  * ```
  */
 export function getIpSets(args: GetIpSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpSetsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getIpSets:getIpSets", {
         "acceleratorId": args.acceleratorId,
         "ids": args.ids,
@@ -72,9 +70,28 @@ export interface GetIpSetsResult {
     readonly sets: outputs.ga.GetIpSetsSet[];
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.113.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ga.getIpSets({
+ *     acceleratorId: "example_value",
+ *     ids: ["example_value"],
+ * });
+ * export const firstGaIpSetId = example.then(example => example.sets?.[0]?.id);
+ * ```
+ */
 export function getIpSetsOutput(args: GetIpSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpSetsResult> {
-    return pulumi.output(args).apply(a => getIpSets(a, opts))
+    return pulumi.output(args).apply((a: any) => getIpSets(a, opts))
 }
 
 /**

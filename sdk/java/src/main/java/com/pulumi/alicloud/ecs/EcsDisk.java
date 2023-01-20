@@ -100,14 +100,14 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
         return this.availabilityZone;
     }
     /**
-     * Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. Default is `cloud_efficiency`.
+     * Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
      * 
      */
     @Export(name="category", type=String.class, parameters={})
     private Output</* @Nullable */ String> category;
 
     /**
-     * @return Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. Default is `cloud_efficiency`.
+     * @return Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
      * 
      */
     public Output<Optional<String>> category() {
@@ -177,8 +177,6 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-     * * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-     * * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
      * 
      */
     @Export(name="dryRun", type=Boolean.class, parameters={})
@@ -186,8 +184,6 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-     * * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-     * * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -293,9 +289,6 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      * 
      */
     @Export(name="performanceLevel", type=String.class, parameters={})
@@ -303,9 +296,6 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      * 
      */
     public Output<String> performanceLevel() {
@@ -411,8 +401,6 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-     * * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-     * * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
@@ -420,8 +408,6 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-     * * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-     * * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
      * 
      */
     public Output<Optional<String>> type() {

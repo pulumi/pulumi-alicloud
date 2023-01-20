@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     status: "CreateSuccess",
  * });
  * const defaultDelegatedAdministrator = new alicloud.resourcemanager.DelegatedAdministrator("defaultDelegatedAdministrator", {
- *     accountId: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?[0]?.accountId),
+ *     accountId: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?.[0]?.accountId),
  *     servicePrincipal: "cloudfw.aliyuncs.com",
  * });
  * ```

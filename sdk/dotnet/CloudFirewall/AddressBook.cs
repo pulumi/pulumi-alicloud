@@ -21,32 +21,30 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.CloudFirewall.AddressBook("example", new()
     ///     {
-    ///         var example = new AliCloud.CloudFirewall.AddressBook("example", new AliCloud.CloudFirewall.AddressBookArgs
+    ///         AutoAddTagEcs = 0,
+    ///         Description = "example_value",
+    ///         EcsTags = new[]
     ///         {
-    ///             AutoAddTagEcs = 0,
-    ///             Description = "example_value",
-    ///             EcsTags = 
+    ///             new AliCloud.CloudFirewall.Inputs.AddressBookEcsTagArgs
     ///             {
-    ///                 new AliCloud.CloudFirewall.Inputs.AddressBookEcsTagArgs
-    ///                 {
-    ///                     TagKey = "created",
-    ///                     TagValue = "tfTestAcc0",
-    ///                 },
+    ///                 TagKey = "created",
+    ///                 TagValue = "tfTestAcc0",
     ///             },
-    ///             GroupName = "example_value",
-    ///             GroupType = "tag",
-    ///             TagRelation = "and",
-    ///         });
-    ///     }
+    ///         },
+    ///         GroupName = "example_value",
+    ///         GroupType = "tag",
+    ///         TagRelation = "and",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +56,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudfirewall/addressBook:AddressBook")]
-    public partial class AddressBook : Pulumi.CustomResource
+    public partial class AddressBook : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The list of addresses.
@@ -154,7 +152,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
     }
 
-    public sealed class AddressBookArgs : Pulumi.ResourceArgs
+    public sealed class AddressBookArgs : global::Pulumi.ResourceArgs
     {
         [Input("addressLists")]
         private InputList<string>? _addressLists;
@@ -221,9 +219,10 @@ namespace Pulumi.AliCloud.CloudFirewall
         public AddressBookArgs()
         {
         }
+        public static new AddressBookArgs Empty => new AddressBookArgs();
     }
 
-    public sealed class AddressBookState : Pulumi.ResourceArgs
+    public sealed class AddressBookState : global::Pulumi.ResourceArgs
     {
         [Input("addressLists")]
         private InputList<string>? _addressLists;
@@ -290,5 +289,6 @@ namespace Pulumi.AliCloud.CloudFirewall
         public AddressBookState()
         {
         }
+        public static new AddressBookState Empty => new AddressBookState();
     }
 }

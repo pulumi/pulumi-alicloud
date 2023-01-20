@@ -21,57 +21,54 @@ namespace Pulumi.AliCloud.ClickHouse
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "testaccountname";
+    ///     var pwd = config.Get("pwd") ?? "Tf-testpwd";
+    ///     var defaultRegions = AliCloud.ClickHouse.GetRegions.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "testaccountname";
-    ///         var pwd = config.Get("pwd") ?? "Tf-testpwd";
-    ///         var defaultRegions = Output.Create(AliCloud.ClickHouse.GetRegions.InvokeAsync(new AliCloud.ClickHouse.GetRegionsArgs
-    ///         {
-    ///             Current = true,
-    ///         }));
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultRegions).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultRegions = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultRegions.Regions?[0]?.ZoneIds?[0]?.ZoneId,
-    ///             }));
-    ///         });
-    ///         var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new AliCloud.ClickHouse.DbClusterArgs
-    ///         {
-    ///             DbClusterVersion = "20.3.10.75",
-    ///             Category = "Basic",
-    ///             DbClusterClass = "S8",
-    ///             DbClusterNetworkType = "vpc",
-    ///             DbClusterDescription = name,
-    ///             DbNodeGroupCount = 1,
-    ///             PaymentType = "PayAsYouGo",
-    ///             DbNodeStorage = "500",
-    ///             StorageType = "cloud_essd",
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Vswitches?[0]?.Id),
-    ///         });
-    ///         var defaultAccount = new AliCloud.ClickHouse.Account("defaultAccount", new AliCloud.ClickHouse.AccountArgs
-    ///         {
-    ///             DbClusterId = defaultDbCluster.Id,
-    ///             AccountDescription = "your_description",
-    ///             AccountName = name,
-    ///             AccountPassword = pwd,
-    ///         });
-    ///     }
+    ///         Current = true,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId),
+    ///     });
+    /// 
+    ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
+    ///     {
+    ///         DbClusterVersion = "20.3.10.75",
+    ///         Category = "Basic",
+    ///         DbClusterClass = "S8",
+    ///         DbClusterNetworkType = "vpc",
+    ///         DbClusterDescription = name,
+    ///         DbNodeGroupCount = 1,
+    ///         PaymentType = "PayAsYouGo",
+    ///         DbNodeStorage = "500",
+    ///         StorageType = "cloud_essd",
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultAccount = new AliCloud.ClickHouse.Account("defaultAccount", new()
+    ///     {
+    ///         DbClusterId = defaultDbCluster.Id,
+    ///         AccountDescription = "your_description",
+    ///         AccountName = name,
+    ///         AccountPassword = pwd,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -83,7 +80,7 @@ namespace Pulumi.AliCloud.ClickHouse
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:clickhouse/account:Account")]
-    public partial class Account : Pulumi.CustomResource
+    public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
         /// In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
@@ -123,8 +120,6 @@ namespace Pulumi.AliCloud.ClickHouse
 
         /// <summary>
         /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-        /// -`true`: grants DDL permissions to the database account.
-        /// -`false`: does not grant DDL permissions to the database account.
         /// </summary>
         [Output("ddlAuthority")]
         public Output<bool> DdlAuthority { get; private set; } = null!;
@@ -203,7 +198,7 @@ namespace Pulumi.AliCloud.ClickHouse
         }
     }
 
-    public sealed class AccountArgs : Pulumi.ResourceArgs
+    public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
@@ -243,8 +238,6 @@ namespace Pulumi.AliCloud.ClickHouse
 
         /// <summary>
         /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-        /// -`true`: grants DDL permissions to the database account.
-        /// -`false`: does not grant DDL permissions to the database account.
         /// </summary>
         [Input("ddlAuthority")]
         public Input<bool>? DdlAuthority { get; set; }
@@ -270,9 +263,10 @@ namespace Pulumi.AliCloud.ClickHouse
         public AccountArgs()
         {
         }
+        public static new AccountArgs Empty => new AccountArgs();
     }
 
-    public sealed class AccountState : Pulumi.ResourceArgs
+    public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
@@ -312,8 +306,6 @@ namespace Pulumi.AliCloud.ClickHouse
 
         /// <summary>
         /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-        /// -`true`: grants DDL permissions to the database account.
-        /// -`false`: does not grant DDL permissions to the database account.
         /// </summary>
         [Input("ddlAuthority")]
         public Input<bool>? DdlAuthority { get; set; }
@@ -351,5 +343,6 @@ namespace Pulumi.AliCloud.ClickHouse
         public AccountState()
         {
         }
+        public static new AccountState Empty => new AccountState();
     }
 }

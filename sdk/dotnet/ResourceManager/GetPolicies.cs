@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:**  Available in 1.86.0+.
         /// </summary>
         public static Task<GetPoliciesResult> InvokeAsync(GetPoliciesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:resourcemanager/getPolicies:getPolicies", args ?? new GetPoliciesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:resourcemanager/getPolicies:getPolicies", args ?? new GetPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:**  Available in 1.86.0+.
         /// </summary>
         public static Output<GetPoliciesResult> Invoke(GetPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("alicloud:resourcemanager/getPolicies:getPolicies", args ?? new GetPoliciesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("alicloud:resourcemanager/getPolicies:getPolicies", args ?? new GetPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPoliciesArgs : Pulumi.InvokeArgs
+    public sealed class GetPoliciesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -61,9 +61,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetPoliciesArgs()
         {
         }
+        public static new GetPoliciesArgs Empty => new GetPoliciesArgs();
     }
 
-    public sealed class GetPoliciesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -95,6 +96,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetPoliciesInvokeArgs()
         {
         }
+        public static new GetPoliciesInvokeArgs Empty => new GetPoliciesInvokeArgs();
     }
 
 
@@ -119,6 +121,9 @@ namespace Pulumi.AliCloud.ResourceManager
         /// A list of policies. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPoliciesPolicyResult> Policies;
+        /// <summary>
+        /// The type of the policy.
+        /// </summary>
         public readonly string? PolicyType;
 
         [OutputConstructor]

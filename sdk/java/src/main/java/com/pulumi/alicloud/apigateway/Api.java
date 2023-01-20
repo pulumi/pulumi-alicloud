@@ -148,14 +148,14 @@ public class Api extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.constantParameters);
     }
     /**
-     * The description of Constant parameter.
+     * The description of the api. Defaults to null.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
-     * @return The description of Constant parameter.
+     * @return The description of the api. Defaults to null.
      * 
      */
     public Output<String> description() {
@@ -246,14 +246,14 @@ public class Api extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mockServiceConfig);
     }
     /**
-     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * The name of the api gateway api. Defaults to null.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * @return The name of the api gateway api. Defaults to null.
      * 
      */
     public Output<String> name() {

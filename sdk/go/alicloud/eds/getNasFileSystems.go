@@ -52,9 +52,14 @@ import (
 //				return err
 //			}
 //			ctx.Export("ecdNasFileSystemId1", ids.Systems[0].Id)
-//			ctx.Export("ecdNasFileSystemId2", nameRegex.ApplyT(func(nameRegex eds.GetNasFileSystemsResult) (string, error) {
-//				return nameRegex.Systems[0].Id, nil
-//			}).(pulumi.StringOutput))
+//			nameRegex := defaultNasFileSystem.NasFileSystemName.ApplyT(func(nasFileSystemName *string) (eds.GetNasFileSystemsResult, error) {
+//				return eds.GetNasFileSystemsOutput(ctx, eds.GetNasFileSystemsOutputArgs{
+//					NameRegex: nasFileSystemName,
+//				}, nil), nil
+//			}).(eds.GetNasFileSystemsResultOutput)
+//			ctx.Export("ecdNasFileSystemId2", nameRegex.ApplyT(func(nameRegex eds.GetNasFileSystemsResult) (*string, error) {
+//				return &nameRegex.Systems[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -37,7 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.nas.FileSystem;
  * import com.pulumi.alicloud.nas.FileSystemArgs;
  * import com.pulumi.alicloud.nas.NasFunctions;
- * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
+ * import com.pulumi.alicloud.nas.inputs.GetFileSystemsArgs;
  * import com.pulumi.alicloud.hbr.NasBackupPlan;
  * import com.pulumi.alicloud.hbr.NasBackupPlanArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -133,6 +134,48 @@ public class NasBackupPlan extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    @Export(name="crossAccountRoleName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> crossAccountRoleName;
+
+    /**
+     * @return The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    public Output<Optional<String>> crossAccountRoleName() {
+        return Codegen.optional(this.crossAccountRoleName);
+    }
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    @Export(name="crossAccountType", type=String.class, parameters={})
+    private Output<String> crossAccountType;
+
+    /**
+     * @return The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    public Output<String> crossAccountType() {
+        return this.crossAccountType;
+    }
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    @Export(name="crossAccountUserId", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> crossAccountUserId;
+
+    /**
+     * @return The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    public Output<Optional<Integer>> crossAccountUserId() {
+        return Codegen.optional(this.crossAccountUserId);
+    }
+    /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      * 
      */
@@ -174,9 +217,17 @@ public class NasBackupPlan extends com.pulumi.resources.CustomResource {
     public Output<String> nasBackupPlanName() {
         return this.nasBackupPlanName;
     }
+    /**
+     * This parameter specifies whether to use Windows VSS to define a backup path.
+     * 
+     */
     @Export(name="options", type=String.class, parameters={})
     private Output</* @Nullable */ String> options;
 
+    /**
+     * @return This parameter specifies whether to use Windows VSS to define a backup path.
+     * 
+     */
     public Output<Optional<String>> options() {
         return Codegen.optional(this.options);
     }

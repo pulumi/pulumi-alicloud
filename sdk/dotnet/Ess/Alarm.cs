@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Ess
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ess/alarm:Alarm")]
-    public partial class Alarm : Pulumi.CustomResource
+    public partial class Alarm : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
-    public sealed class AlarmArgs : Pulumi.ResourceArgs
+    public sealed class AlarmArgs : global::Pulumi.ResourceArgs
     {
         [Input("alarmActions", required: true)]
         private InputList<string>? _alarmActions;
@@ -256,9 +256,10 @@ namespace Pulumi.AliCloud.Ess
         public AlarmArgs()
         {
         }
+        public static new AlarmArgs Empty => new AlarmArgs();
     }
 
-    public sealed class AlarmState : Pulumi.ResourceArgs
+    public sealed class AlarmState : global::Pulumi.ResourceArgs
     {
         [Input("alarmActions")]
         private InputList<string>? _alarmActions;
@@ -365,5 +366,6 @@ namespace Pulumi.AliCloud.Ess
         public AlarmState()
         {
         }
+        public static new AlarmState Empty => new AlarmState();
     }
 }

@@ -652,7 +652,7 @@ public final class FnfFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -693,7 +693,7 @@ public final class FnfFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -734,7 +734,7 @@ public final class FnfFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -775,7 +775,7 @@ public final class FnfFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -816,7 +816,7 @@ public final class FnfFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -857,7 +857,7 @@ public final class FnfFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

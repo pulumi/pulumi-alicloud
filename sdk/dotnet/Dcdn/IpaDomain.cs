@@ -21,38 +21,37 @@ namespace Pulumi.AliCloud.Dcdn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
-    ///         var @default = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
-    ///         {
-    ///             NameRegex = "default",
-    ///         }));
-    ///         var example = new AliCloud.Dcdn.IpaDomain("example", new AliCloud.Dcdn.IpaDomainArgs
-    ///         {
-    ///             DomainName = "example.com",
-    ///             ResourceGroupId = @default.Apply(@default =&gt; @default.Groups?[0]?.Id),
-    ///             Sources = 
-    ///             {
-    ///                 new AliCloud.Dcdn.Inputs.IpaDomainSourceArgs
-    ///                 {
-    ///                     Content = "1.1.1.1",
-    ///                     Port = 80,
-    ///                     Priority = "20",
-    ///                     Type = "ipaddr",
-    ///                     Weight = 10,
-    ///                 },
-    ///             },
-    ///             Scope = "overseas",
-    ///             Status = "online",
-    ///         });
-    ///     }
+    ///         NameRegex = "default",
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.Dcdn.IpaDomain("example", new()
+    ///     {
+    ///         DomainName = "example.com",
+    ///         ResourceGroupId = @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult).Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///         Sources = new[]
+    ///         {
+    ///             new AliCloud.Dcdn.Inputs.IpaDomainSourceArgs
+    ///             {
+    ///                 Content = "1.1.1.1",
+    ///                 Port = 80,
+    ///                 Priority = "20",
+    ///                 Type = "ipaddr",
+    ///                 Weight = 10,
+    ///             },
+    ///         },
+    ///         Scope = "overseas",
+    ///         Status = "online",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +63,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dcdn/ipaDomain:IpaDomain")]
-    public partial class IpaDomain : Pulumi.CustomResource
+    public partial class IpaDomain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
@@ -140,7 +139,7 @@ namespace Pulumi.AliCloud.Dcdn
         }
     }
 
-    public sealed class IpaDomainArgs : Pulumi.ResourceArgs
+    public sealed class IpaDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
@@ -181,9 +180,10 @@ namespace Pulumi.AliCloud.Dcdn
         public IpaDomainArgs()
         {
         }
+        public static new IpaDomainArgs Empty => new IpaDomainArgs();
     }
 
-    public sealed class IpaDomainState : Pulumi.ResourceArgs
+    public sealed class IpaDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
@@ -224,5 +224,6 @@ namespace Pulumi.AliCloud.Dcdn
         public IpaDomainState()
         {
         }
+        public static new IpaDomainState Empty => new IpaDomainState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class SlsGroupSlsGroupConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class SlsGroupSlsGroupConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Log Store.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public SlsGroupSlsGroupConfigGetArgs()
         {
         }
+        public static new SlsGroupSlsGroupConfigGetArgs Empty => new SlsGroupSlsGroupConfigGetArgs();
     }
 }

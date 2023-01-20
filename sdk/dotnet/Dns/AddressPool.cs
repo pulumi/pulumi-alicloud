@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/addressPool:AddressPool")]
-    public partial class AddressPool : Pulumi.CustomResource
+    public partial class AddressPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the address pool.
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string> AddressPoolName { get; private set; } = null!;
 
         /// <summary>
-        /// The address that you want to add to the address pool.
+        /// The address lists of the Address Pool. See the following `Block address`.
         /// </summary>
         [Output("addresses")]
         public Output<ImmutableArray<Outputs.AddressPoolAddress>> Addresses { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class AddressPoolArgs : Pulumi.ResourceArgs
+    public sealed class AddressPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the address pool.
@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AddressPoolAddressArgs>? _addresses;
 
         /// <summary>
-        /// The address that you want to add to the address pool.
+        /// The address lists of the Address Pool. See the following `Block address`.
         /// </summary>
         public InputList<Inputs.AddressPoolAddressArgs> Addresses
         {
@@ -142,9 +142,10 @@ namespace Pulumi.AliCloud.Dns
         public AddressPoolArgs()
         {
         }
+        public static new AddressPoolArgs Empty => new AddressPoolArgs();
     }
 
-    public sealed class AddressPoolState : Pulumi.ResourceArgs
+    public sealed class AddressPoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the address pool.
@@ -156,7 +157,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.AddressPoolAddressGetArgs>? _addresses;
 
         /// <summary>
-        /// The address that you want to add to the address pool.
+        /// The address lists of the Address Pool. See the following `Block address`.
         /// </summary>
         public InputList<Inputs.AddressPoolAddressGetArgs> Addresses
         {
@@ -185,5 +186,6 @@ namespace Pulumi.AliCloud.Dns
         public AddressPoolState()
         {
         }
+        public static new AddressPoolState Empty => new AddressPoolState();
     }
 }

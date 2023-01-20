@@ -18,7 +18,6 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The resource descriptor of the role.
-     * * `create_date` (Removed form v1.114.0) - Role creation time.
      * 
      */
     @Import(name="arn")
@@ -26,7 +25,6 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The resource descriptor of the role.
-     * * `create_date` (Removed form v1.114.0) - Role creation time.
      * 
      */
     public Optional<Output<String>> arn() {
@@ -155,7 +153,6 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param arn The resource descriptor of the role.
-         * * `create_date` (Removed form v1.114.0) - Role creation time.
          * 
          * @return builder
          * 
@@ -167,7 +164,6 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param arn The resource descriptor of the role.
-         * * `create_date` (Removed form v1.114.0) - Role creation time.
          * 
          * @return builder
          * 

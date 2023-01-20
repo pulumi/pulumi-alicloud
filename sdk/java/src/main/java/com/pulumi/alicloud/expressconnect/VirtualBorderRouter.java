@@ -99,14 +99,14 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="bandwidth", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> bandwidth;
+    private Output<Integer> bandwidth;
 
     /**
      * @return The bandwidth.
      * 
      */
-    public Output<Optional<Integer>> bandwidth() {
-        return Codegen.optional(this.bandwidth);
+    public Output<Integer> bandwidth() {
+        return this.bandwidth;
     }
     /**
      * Operators for physical connection circuit provided coding.
@@ -163,6 +163,20 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> enableIpv6() {
         return this.enableIpv6;
+    }
+    /**
+     * Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+     * 
+     */
+    @Export(name="includeCrossAccountVbr", type=Boolean.class, parameters={})
+    private Output<Boolean> includeCrossAccountVbr;
+
+    /**
+     * @return Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+     * 
+     */
+    public Output<Boolean> includeCrossAccountVbr() {
+        return this.includeCrossAccountVbr;
     }
     /**
      * Alibaba Cloud-Connected IPv4 address.

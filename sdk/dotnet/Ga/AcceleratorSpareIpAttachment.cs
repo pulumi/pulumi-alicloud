@@ -21,46 +21,47 @@ namespace Pulumi.AliCloud.Ga
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
     ///     {
-    ///         var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new AliCloud.Ga.AcceleratorArgs
-    ///         {
-    ///             Duration = 1,
-    ///             Spec = "1",
-    ///             AcceleratorName = @var.Name,
-    ///             AutoUseCoupon = true,
-    ///             Description = @var.Name,
-    ///         });
-    ///         var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new AliCloud.Ga.BandwidthPackageArgs
-    ///         {
-    ///             Bandwidth = 100,
-    ///             Type = "Basic",
-    ///             BandwidthType = "Basic",
-    ///             PaymentType = "PayAsYouGo",
-    ///             BillingType = "PayBy95",
-    ///             Ratio = 30,
-    ///             BandwidthPackageName = @var.Name,
-    ///             AutoPay = true,
-    ///             AutoUseCoupon = true,
-    ///         });
-    ///         var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new AliCloud.Ga.BandwidthPackageAttachmentArgs
-    ///         {
-    ///             AcceleratorId = defaultAccelerator.Id,
-    ///             BandwidthPackageId = defaultBandwidthPackage.Id,
-    ///         });
-    ///         var defaultAcceleratorSpareIpAttachment = new AliCloud.Ga.AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment", new AliCloud.Ga.AcceleratorSpareIpAttachmentArgs
-    ///         {
-    ///             AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
-    ///             SpareIp = "127.0.0.1",
-    ///         });
-    ///     }
+    ///         Duration = 1,
+    ///         Spec = "1",
+    ///         AcceleratorName = @var.Name,
+    ///         AutoUseCoupon = true,
+    ///         Description = @var.Name,
+    ///     });
     /// 
-    /// }
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 100,
+    ///         Type = "Basic",
+    ///         BandwidthType = "Basic",
+    ///         PaymentType = "PayAsYouGo",
+    ///         BillingType = "PayBy95",
+    ///         Ratio = 30,
+    ///         BandwidthPackageName = @var.Name,
+    ///         AutoPay = true,
+    ///         AutoUseCoupon = true,
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     {
+    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var defaultAcceleratorSpareIpAttachment = new AliCloud.Ga.AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment", new()
+    ///     {
+    ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
+    ///         SpareIp = "127.0.0.1",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +73,7 @@ namespace Pulumi.AliCloud.Ga
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment")]
-    public partial class AcceleratorSpareIpAttachment : Pulumi.CustomResource
+    public partial class AcceleratorSpareIpAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the global acceleration instance.
@@ -142,7 +143,7 @@ namespace Pulumi.AliCloud.Ga
         }
     }
 
-    public sealed class AcceleratorSpareIpAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class AcceleratorSpareIpAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the global acceleration instance.
@@ -165,9 +166,10 @@ namespace Pulumi.AliCloud.Ga
         public AcceleratorSpareIpAttachmentArgs()
         {
         }
+        public static new AcceleratorSpareIpAttachmentArgs Empty => new AcceleratorSpareIpAttachmentArgs();
     }
 
-    public sealed class AcceleratorSpareIpAttachmentState : Pulumi.ResourceArgs
+    public sealed class AcceleratorSpareIpAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the global acceleration instance.
@@ -196,5 +198,6 @@ namespace Pulumi.AliCloud.Ga
         public AcceleratorSpareIpAttachmentState()
         {
         }
+        public static new AcceleratorSpareIpAttachmentState Empty => new AcceleratorSpareIpAttachmentState();
     }
 }

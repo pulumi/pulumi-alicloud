@@ -259,6 +259,7 @@ class _InstanceState:
         :param pulumi.Input[str] raid_stripe_unit_number: The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
         :param pulumi.Input[int] size: The size Of the Database file system. Unit: GiB.
         :param pulumi.Input[str] snapshot_id: The snapshot id of the Database file system.
+        :param pulumi.Input[str] status: The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The Zone ID of the Database file system.
         """
@@ -429,6 +430,9 @@ class _InstanceState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -663,6 +667,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] raid_stripe_unit_number: The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
         :param pulumi.Input[int] size: The size Of the Database file system. Unit: GiB.
         :param pulumi.Input[str] snapshot_id: The snapshot id of the Database file system.
+        :param pulumi.Input[str] status: The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The Zone ID of the Database file system.
         """
@@ -777,6 +782,9 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+        """
         return pulumi.get(self, "status")
 
     @property

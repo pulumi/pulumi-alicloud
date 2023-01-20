@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -30,16 +31,13 @@ import * as utilities from "../utilities";
  * const defaultNetworkPackages = alicloud.eds.getNetworkPackagesOutput({
  *     ids: [defaultNetworkPackage.id],
  * });
- * export const ecdNetworkPackageId1 = defaultNetworkPackages.apply(defaultNetworkPackages => defaultNetworkPackages.packages?[0]?.id);
+ * export const ecdNetworkPackageId1 = defaultNetworkPackages.apply(defaultNetworkPackages => defaultNetworkPackages.packages?.[0]?.id);
  * ```
  */
 export function getNetworkPackages(args?: GetNetworkPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkPackagesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getNetworkPackages:getNetworkPackages", {
         "ids": args.ids,
         "outputFile": args.outputFile,
@@ -75,9 +73,36 @@ export interface GetNetworkPackagesResult {
     readonly packages: outputs.eds.GetNetworkPackagesPackage[];
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.142.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     desktopAccessType: "Internet",
+ *     officeSiteName: "example_value",
+ * });
+ * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("defaultNetworkPackage", {
+ *     bandwidth: 10,
+ *     officeSiteId: defaultSimpleOfficeSite.id,
+ * });
+ * const defaultNetworkPackages = alicloud.eds.getNetworkPackagesOutput({
+ *     ids: [defaultNetworkPackage.id],
+ * });
+ * export const ecdNetworkPackageId1 = defaultNetworkPackages.apply(defaultNetworkPackages => defaultNetworkPackages.packages?.[0]?.id);
+ * ```
+ */
 export function getNetworkPackagesOutput(args?: GetNetworkPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPackagesResult> {
-    return pulumi.output(args).apply(a => getNetworkPackages(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetworkPackages(a, opts))
 }
 
 /**

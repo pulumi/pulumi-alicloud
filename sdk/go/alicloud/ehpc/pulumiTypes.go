@@ -11,25 +11,27 @@ import (
 )
 
 type ClusterAdditionalVolume struct {
-	// The queue of the nodes to which the additional file system is attached.
+	// The queue to which the compute nodes are added.
 	JobQueue *string `pulumi:"jobQueue"`
 	// The local directory on which the additional file system is mounted.
 	LocalDirectory *string `pulumi:"localDirectory"`
 	// The type of the cluster. Valid value: `PublicCloud`.
 	Location *string `pulumi:"location"`
-	// The remote directory to which the additional file system is mounted.
+	// The remote directory to which the file system is mounted.
 	RemoteDirectory *string `pulumi:"remoteDirectory"`
 	// The roles. See the following `Block roles`.
 	Roles []ClusterAdditionalVolumeRole `pulumi:"roles"`
-	// The ID of the additional file system.
+	// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
 	VolumeId *string `pulumi:"volumeId"`
 	// The mount options of the file system.
 	VolumeMountOption *string `pulumi:"volumeMountOption"`
-	// The mount target of the additional file system.
+	// The mount target of the file system. Take note of the following information:
+	// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+	// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
 	VolumeMountpoint *string `pulumi:"volumeMountpoint"`
-	// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+	// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
 	VolumeProtocol *string `pulumi:"volumeProtocol"`
-	// The type of the additional shared storage. Only NAS file systems are supported.
+	// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
 	VolumeType *string `pulumi:"volumeType"`
 }
 
@@ -45,25 +47,27 @@ type ClusterAdditionalVolumeInput interface {
 }
 
 type ClusterAdditionalVolumeArgs struct {
-	// The queue of the nodes to which the additional file system is attached.
+	// The queue to which the compute nodes are added.
 	JobQueue pulumi.StringPtrInput `pulumi:"jobQueue"`
 	// The local directory on which the additional file system is mounted.
 	LocalDirectory pulumi.StringPtrInput `pulumi:"localDirectory"`
 	// The type of the cluster. Valid value: `PublicCloud`.
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// The remote directory to which the additional file system is mounted.
+	// The remote directory to which the file system is mounted.
 	RemoteDirectory pulumi.StringPtrInput `pulumi:"remoteDirectory"`
 	// The roles. See the following `Block roles`.
 	Roles ClusterAdditionalVolumeRoleArrayInput `pulumi:"roles"`
-	// The ID of the additional file system.
+	// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
 	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
 	// The mount options of the file system.
 	VolumeMountOption pulumi.StringPtrInput `pulumi:"volumeMountOption"`
-	// The mount target of the additional file system.
+	// The mount target of the file system. Take note of the following information:
+	// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+	// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
 	VolumeMountpoint pulumi.StringPtrInput `pulumi:"volumeMountpoint"`
-	// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+	// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
 	VolumeProtocol pulumi.StringPtrInput `pulumi:"volumeProtocol"`
-	// The type of the additional shared storage. Only NAS file systems are supported.
+	// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
 	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
 }
 
@@ -118,7 +122,7 @@ func (o ClusterAdditionalVolumeOutput) ToClusterAdditionalVolumeOutputWithContex
 	return o
 }
 
-// The queue of the nodes to which the additional file system is attached.
+// The queue to which the compute nodes are added.
 func (o ClusterAdditionalVolumeOutput) JobQueue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.JobQueue }).(pulumi.StringPtrOutput)
 }
@@ -133,7 +137,7 @@ func (o ClusterAdditionalVolumeOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The remote directory to which the additional file system is mounted.
+// The remote directory to which the file system is mounted.
 func (o ClusterAdditionalVolumeOutput) RemoteDirectory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.RemoteDirectory }).(pulumi.StringPtrOutput)
 }
@@ -143,7 +147,7 @@ func (o ClusterAdditionalVolumeOutput) Roles() ClusterAdditionalVolumeRoleArrayO
 	return o.ApplyT(func(v ClusterAdditionalVolume) []ClusterAdditionalVolumeRole { return v.Roles }).(ClusterAdditionalVolumeRoleArrayOutput)
 }
 
-// The ID of the additional file system.
+// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
 func (o ClusterAdditionalVolumeOutput) VolumeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
 }
@@ -153,17 +157,19 @@ func (o ClusterAdditionalVolumeOutput) VolumeMountOption() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeMountOption }).(pulumi.StringPtrOutput)
 }
 
-// The mount target of the additional file system.
+// The mount target of the file system. Take note of the following information:
+// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
 func (o ClusterAdditionalVolumeOutput) VolumeMountpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeMountpoint }).(pulumi.StringPtrOutput)
 }
 
-// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
 func (o ClusterAdditionalVolumeOutput) VolumeProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeProtocol }).(pulumi.StringPtrOutput)
 }
 
-// The type of the additional shared storage. Only NAS file systems are supported.
+// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
 func (o ClusterAdditionalVolumeOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolume) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
 }

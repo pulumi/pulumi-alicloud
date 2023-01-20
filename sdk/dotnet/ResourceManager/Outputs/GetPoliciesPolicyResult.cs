@@ -27,10 +27,11 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         public readonly string Description;
         /// <summary>
         /// The ID of the policy.
-        /// * `policy_name`- The name of the policy.
-        /// * `policy_type`- The type of the policy.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the policy.
+        /// </summary>
         public readonly string PolicyName;
         /// <summary>
         /// The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.

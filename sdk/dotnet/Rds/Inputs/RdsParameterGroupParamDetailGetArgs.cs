@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds.Inputs
 {
 
-    public sealed class RdsParameterGroupParamDetailGetArgs : Pulumi.ResourceArgs
+    public sealed class RdsParameterGroupParamDetailGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of a parameter.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Rds.Inputs
         public RdsParameterGroupParamDetailGetArgs()
         {
         }
+        public static new RdsParameterGroupParamDetailGetArgs Empty => new RdsParameterGroupParamDetailGetArgs();
     }
 }

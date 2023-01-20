@@ -64,7 +64,9 @@ import (
 type Acl struct {
 	pulumi.CustomResourceState
 
-	// The entries of the Acl. See the following `Block aclEntries`.
+	// The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+	//
+	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
 	AclEntries AclAclEntryArrayOutput `pulumi:"aclEntries"`
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
 	AclName pulumi.StringPtrOutput `pulumi:"aclName"`
@@ -108,7 +110,9 @@ func GetAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Acl resources.
 type aclState struct {
-	// The entries of the Acl. See the following `Block aclEntries`.
+	// The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+	//
+	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
 	AclEntries []AclAclEntry `pulumi:"aclEntries"`
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
 	AclName *string `pulumi:"aclName"`
@@ -121,7 +125,9 @@ type aclState struct {
 }
 
 type AclState struct {
-	// The entries of the Acl. See the following `Block aclEntries`.
+	// The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+	//
+	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
 	AclEntries AclAclEntryArrayInput
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
 	AclName pulumi.StringPtrInput
@@ -138,7 +144,9 @@ func (AclState) ElementType() reflect.Type {
 }
 
 type aclArgs struct {
-	// The entries of the Acl. See the following `Block aclEntries`.
+	// The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+	//
+	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
 	AclEntries []AclAclEntry `pulumi:"aclEntries"`
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
 	AclName *string `pulumi:"aclName"`
@@ -150,7 +158,9 @@ type aclArgs struct {
 
 // The set of arguments for constructing a Acl resource.
 type AclArgs struct {
-	// The entries of the Acl. See the following `Block aclEntries`.
+	// The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+	//
+	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
 	AclEntries AclAclEntryArrayInput
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
 	AclName pulumi.StringPtrInput
@@ -247,7 +257,9 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
-// The entries of the Acl. See the following `Block aclEntries`.
+// The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+//
+// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
 func (o AclOutput) AclEntries() AclAclEntryArrayOutput {
 	return o.ApplyT(func(v *Acl) AclAclEntryArrayOutput { return v.AclEntries }).(AclAclEntryArrayOutput)
 }

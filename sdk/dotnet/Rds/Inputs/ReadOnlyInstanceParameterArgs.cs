@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds.Inputs
 {
 
-    public sealed class ReadOnlyInstanceParameterArgs : Pulumi.ResourceArgs
+    public sealed class ReadOnlyInstanceParameterArgs : global::Pulumi.ResourceArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Rds.Inputs
         public ReadOnlyInstanceParameterArgs()
         {
         }
+        public static new ReadOnlyInstanceParameterArgs Empty => new ReadOnlyInstanceParameterArgs();
     }
 }

@@ -40,7 +40,7 @@ type AlbServerGroupAttachment struct {
 	// If instances of scaling group are attached/removed from slb backend server when attach/detach alb
 	// server group from scaling group. Default to false.
 	ForceAttach pulumi.BoolPtrOutput `pulumi:"forceAttach"`
-	// - The port will be used for Alb Server Group backend server.
+	// The port will be used for Alb Server Group backend server.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// ID of the scaling group.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
@@ -94,7 +94,7 @@ type albServerGroupAttachmentState struct {
 	// If instances of scaling group are attached/removed from slb backend server when attach/detach alb
 	// server group from scaling group. Default to false.
 	ForceAttach *bool `pulumi:"forceAttach"`
-	// - The port will be used for Alb Server Group backend server.
+	// The port will be used for Alb Server Group backend server.
 	Port *int `pulumi:"port"`
 	// ID of the scaling group.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
@@ -108,7 +108,7 @@ type AlbServerGroupAttachmentState struct {
 	// If instances of scaling group are attached/removed from slb backend server when attach/detach alb
 	// server group from scaling group. Default to false.
 	ForceAttach pulumi.BoolPtrInput
-	// - The port will be used for Alb Server Group backend server.
+	// The port will be used for Alb Server Group backend server.
 	Port pulumi.IntPtrInput
 	// ID of the scaling group.
 	ScalingGroupId pulumi.StringPtrInput
@@ -126,7 +126,7 @@ type albServerGroupAttachmentArgs struct {
 	// If instances of scaling group are attached/removed from slb backend server when attach/detach alb
 	// server group from scaling group. Default to false.
 	ForceAttach *bool `pulumi:"forceAttach"`
-	// - The port will be used for Alb Server Group backend server.
+	// The port will be used for Alb Server Group backend server.
 	Port int `pulumi:"port"`
 	// ID of the scaling group.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
@@ -141,7 +141,7 @@ type AlbServerGroupAttachmentArgs struct {
 	// If instances of scaling group are attached/removed from slb backend server when attach/detach alb
 	// server group from scaling group. Default to false.
 	ForceAttach pulumi.BoolPtrInput
-	// - The port will be used for Alb Server Group backend server.
+	// The port will be used for Alb Server Group backend server.
 	Port pulumi.IntInput
 	// ID of the scaling group.
 	ScalingGroupId pulumi.StringInput
@@ -247,7 +247,7 @@ func (o AlbServerGroupAttachmentOutput) ForceAttach() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlbServerGroupAttachment) pulumi.BoolPtrOutput { return v.ForceAttach }).(pulumi.BoolPtrOutput)
 }
 
-// - The port will be used for Alb Server Group backend server.
+// The port will be used for Alb Server Group backend server.
 func (o AlbServerGroupAttachmentOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *AlbServerGroupAttachment) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }

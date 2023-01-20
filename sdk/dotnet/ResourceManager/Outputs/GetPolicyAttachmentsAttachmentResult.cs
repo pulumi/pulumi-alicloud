@@ -23,10 +23,6 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         public readonly string Description;
         /// <summary>
         /// The ID of the Resource Manager Policy Attachment.
-        /// * `policy_name`- The name of the policy.
-        /// * `policy_type`- The type of the policy.
-        /// * `principal_name`- The name of the object to which the policy is attached.
-        /// * `principal_type`- The type of the object to which the policy is attached.
         /// </summary>
         public readonly string Id;
         /// <summary>

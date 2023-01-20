@@ -19,27 +19,25 @@ namespace Pulumi.AliCloud.Dns
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Add a new Domain.
+    ///     var dns = new AliCloud.Dns.AlidnsDomain("dns", new()
     ///     {
-    ///         // Add a new Domain.
-    ///         var dns = new AliCloud.Dns.AlidnsDomain("dns", new AliCloud.Dns.AlidnsDomainArgs
+    ///         DomainName = "starmove.com",
+    ///         GroupId = "85ab8713-4a30-4de4-9d20-155ff830****",
+    ///         Tags = 
     ///         {
-    ///             DomainName = "starmove.com",
-    ///             GroupId = "85ab8713-4a30-4de4-9d20-155ff830****",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "Terraform" },
-    ///                 { "Environment", "test" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "Created", "Terraform" },
+    ///             { "Environment", "test" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +49,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/alidnsDomain:AlidnsDomain")]
-    public partial class AlidnsDomain : Pulumi.CustomResource
+    public partial class AlidnsDomain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of the dns server name.
@@ -159,7 +157,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class AlidnsDomainArgs : Pulumi.ResourceArgs
+    public sealed class AlidnsDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -208,9 +206,10 @@ namespace Pulumi.AliCloud.Dns
         public AlidnsDomainArgs()
         {
         }
+        public static new AlidnsDomainArgs Empty => new AlidnsDomainArgs();
     }
 
-    public sealed class AlidnsDomainState : Pulumi.ResourceArgs
+    public sealed class AlidnsDomainState : global::Pulumi.ResourceArgs
     {
         [Input("dnsServers")]
         private InputList<string>? _dnsServers;
@@ -289,5 +288,6 @@ namespace Pulumi.AliCloud.Dns
         public AlidnsDomainState()
         {
         }
+        public static new AlidnsDomainState Empty => new AlidnsDomainState();
     }
 }

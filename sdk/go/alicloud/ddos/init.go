@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold":
 		r = &BasicDefenseThreshold{}
+	case "alicloud:ddos/basicThreshold:BasicThreshold":
+		r = &BasicThreshold{}
 	case "alicloud:ddos/bgpIp:BgpIp":
 		r = &BgpIp{}
 	case "alicloud:ddos/ddosBgpInstance:DdosBgpInstance":
@@ -51,6 +53,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ddos/basicDefenseThreshold",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ddos/basicThreshold",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

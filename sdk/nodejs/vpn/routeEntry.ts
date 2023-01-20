@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "10.1.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
  * const defaultGateway = new alicloud.vpn.Gateway("defaultGateway", {
  *     vpcId: defaultNetwork.id,

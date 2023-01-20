@@ -20,35 +20,34 @@ namespace Pulumi.AliCloud.Rds
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dbInstancesDs = AliCloud.Rds.GetInstances.Invoke(new()
         ///     {
-        ///         var dbInstancesDs = Output.Create(AliCloud.Rds.GetInstances.InvokeAsync(new AliCloud.Rds.GetInstancesArgs
+        ///         NameRegex = "data-\\d+",
+        ///         Status = "Running",
+        ///         Tags = 
         ///         {
-        ///             NameRegex = "data-\\d+",
-        ///             Status = "Running",
-        ///             Tags = 
-        ///             {
-        ///                 { "size", "tiny" },
-        ///                 { "type", "database" },
-        ///             },
-        ///         }));
-        ///         this.FirstDbInstanceId = dbInstancesDs.Apply(dbInstancesDs =&gt; dbInstancesDs.Instances?[0]?.Id);
-        ///     }
+        ///             { "size", "tiny" },
+        ///             { "type", "database" },
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstDbInstanceId")]
-        ///     public Output&lt;string&gt; FirstDbInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDbInstanceId"] = dbInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
@@ -59,39 +58,38 @@ namespace Pulumi.AliCloud.Rds
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dbInstancesDs = AliCloud.Rds.GetInstances.Invoke(new()
         ///     {
-        ///         var dbInstancesDs = Output.Create(AliCloud.Rds.GetInstances.InvokeAsync(new AliCloud.Rds.GetInstancesArgs
+        ///         NameRegex = "data-\\d+",
+        ///         Status = "Running",
+        ///         Tags = 
         ///         {
-        ///             NameRegex = "data-\\d+",
-        ///             Status = "Running",
-        ///             Tags = 
-        ///             {
-        ///                 { "size", "tiny" },
-        ///                 { "type", "database" },
-        ///             },
-        ///         }));
-        ///         this.FirstDbInstanceId = dbInstancesDs.Apply(dbInstancesDs =&gt; dbInstancesDs.Instances?[0]?.Id);
-        ///     }
+        ///             { "size", "tiny" },
+        ///             { "type", "database" },
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstDbInstanceId")]
-        ///     public Output&lt;string&gt; FirstDbInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDbInstanceId"] = dbInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// `Standard` for standard access mode and `Safe` for high security access mode.
@@ -178,9 +176,10 @@ namespace Pulumi.AliCloud.Rds
         public GetInstancesArgs()
         {
         }
+        public static new GetInstancesArgs Empty => new GetInstancesArgs();
     }
 
-    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// `Standard` for standard access mode and `Safe` for high security access mode.
@@ -267,6 +266,7 @@ namespace Pulumi.AliCloud.Rds
         public GetInstancesInvokeArgs()
         {
         }
+        public static new GetInstancesInvokeArgs Empty => new GetInstancesInvokeArgs();
     }
 
 

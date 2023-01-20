@@ -23,38 +23,38 @@ namespace Pulumi.AliCloud.Nas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "testacc";
+    ///     var defaultZones = AliCloud.Nas.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "testacc";
-    ///         var defaultZones = Output.Create(AliCloud.Nas.GetZones.InvokeAsync(new AliCloud.Nas.GetZonesArgs
-    ///         {
-    ///             FileSystemType = "extreme",
-    ///         }));
-    ///         var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new AliCloud.Nas.FileSystemArgs
-    ///         {
-    ///             FileSystemType = "extreme",
-    ///             ProtocolType = "NFS",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.ZoneId),
-    ///             StorageType = "standard",
-    ///             Description = name,
-    ///             Capacity = 100,
-    ///         });
-    ///         var defaultSnapshot = new AliCloud.Nas.Snapshot("defaultSnapshot", new AliCloud.Nas.SnapshotArgs
-    ///         {
-    ///             FileSystemId = defaultFileSystem.Id,
-    ///             Description = name,
-    ///             RetentionDays = 20,
-    ///             SnapshotName = name,
-    ///         });
-    ///     }
+    ///         FileSystemType = "extreme",
+    ///     });
     /// 
-    /// }
+    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new()
+    ///     {
+    ///         FileSystemType = "extreme",
+    ///         ProtocolType = "NFS",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         StorageType = "standard",
+    ///         Description = name,
+    ///         Capacity = 100,
+    ///     });
+    /// 
+    ///     var defaultSnapshot = new AliCloud.Nas.Snapshot("defaultSnapshot", new()
+    ///     {
+    ///         FileSystemId = defaultFileSystem.Id,
+    ///         Description = name,
+    ///         RetentionDays = 20,
+    ///         SnapshotName = name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Nas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/snapshot:Snapshot")]
-    public partial class Snapshot : Pulumi.CustomResource
+    public partial class Snapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
-    public sealed class SnapshotArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
@@ -173,9 +173,10 @@ namespace Pulumi.AliCloud.Nas
         public SnapshotArgs()
         {
         }
+        public static new SnapshotArgs Empty => new SnapshotArgs();
     }
 
-    public sealed class SnapshotState : Pulumi.ResourceArgs
+    public sealed class SnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
@@ -211,5 +212,6 @@ namespace Pulumi.AliCloud.Nas
         public SnapshotState()
         {
         }
+        public static new SnapshotState Empty => new SnapshotState();
     }
 }

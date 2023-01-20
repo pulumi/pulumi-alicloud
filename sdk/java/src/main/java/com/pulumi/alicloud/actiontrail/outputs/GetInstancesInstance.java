@@ -92,6 +92,11 @@ public final class GetInstancesInstance {
      */
     private String paidType;
     /**
+     * @return (Available in 1.194.0+) The number of partitions.
+     * 
+     */
+    private Integer partitionNum;
+    /**
      * @return The SASL domain point of the instance.
      * 
      */
@@ -264,6 +269,13 @@ public final class GetInstancesInstance {
         return this.paidType;
     }
     /**
+     * @return (Available in 1.194.0+) The number of partitions.
+     * 
+     */
+    public Integer partitionNum() {
+        return this.partitionNum;
+    }
+    /**
      * @return The SASL domain point of the instance.
      * 
      */
@@ -379,6 +391,7 @@ public final class GetInstancesInstance {
         private Integer msgRetain;
         private String name;
         private String paidType;
+        private Integer partitionNum;
         private String saslDomainEndpoint;
         private String securityGroup;
         private Integer serviceStatus;
@@ -410,6 +423,7 @@ public final class GetInstancesInstance {
     	      this.msgRetain = defaults.msgRetain;
     	      this.name = defaults.name;
     	      this.paidType = defaults.paidType;
+    	      this.partitionNum = defaults.partitionNum;
     	      this.saslDomainEndpoint = defaults.saslDomainEndpoint;
     	      this.securityGroup = defaults.securityGroup;
     	      this.serviceStatus = defaults.serviceStatus;
@@ -504,6 +518,11 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder partitionNum(Integer partitionNum) {
+            this.partitionNum = Objects.requireNonNull(partitionNum);
+            return this;
+        }
+        @CustomType.Setter
         public Builder saslDomainEndpoint(String saslDomainEndpoint) {
             this.saslDomainEndpoint = Objects.requireNonNull(saslDomainEndpoint);
             return this;
@@ -588,6 +607,7 @@ public final class GetInstancesInstance {
             o.msgRetain = msgRetain;
             o.name = name;
             o.paidType = paidType;
+            o.partitionNum = partitionNum;
             o.saslDomainEndpoint = saslDomainEndpoint;
             o.securityGroup = securityGroup;
             o.serviceStatus = serviceStatus;

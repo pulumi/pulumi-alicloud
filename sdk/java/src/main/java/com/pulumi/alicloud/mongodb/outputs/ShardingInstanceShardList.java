@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ShardingInstanceShardList {
     /**
-     * @return -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     private String nodeClass;
@@ -36,7 +36,7 @@ public final class ShardingInstanceShardList {
 
     private ShardingInstanceShardList() {}
     /**
-     * @return -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     public String nodeClass() {

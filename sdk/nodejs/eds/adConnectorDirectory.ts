@@ -24,8 +24,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.ids?[0],
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.ids?.[0],
  * }));
  * const defaultAdConnectorDirectory = new alicloud.eds.AdConnectorDirectory("defaultAdConnectorDirectory", {
  *     directoryName: _var.name,
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     specification: 1,
  *     subDomainDnsAddresses: ["127.0.0.3"],
  *     subDomainName: "child.example.com",
- *     vswitchIds: [defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0])],
+ *     vswitchIds: [defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0])],
  * });
  * ```
  *
@@ -182,7 +182,7 @@ export class AdConnectorDirectory extends pulumi.CustomResource {
             resourceInputs["directoryName"] = args ? args.directoryName : undefined;
             resourceInputs["dnsAddresses"] = args ? args.dnsAddresses : undefined;
             resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["domainPassword"] = args ? args.domainPassword : undefined;
+            resourceInputs["domainPassword"] = args?.domainPassword ? pulumi.secret(args.domainPassword) : undefined;
             resourceInputs["domainUserName"] = args ? args.domainUserName : undefined;
             resourceInputs["enableAdminAccess"] = args ? args.enableAdminAccess : undefined;
             resourceInputs["mfaEnabled"] = args ? args.mfaEnabled : undefined;
@@ -193,6 +193,8 @@ export class AdConnectorDirectory extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["domainPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AdConnectorDirectory.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Nat gateway can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/natGateway:NatGateway example ngw-abc123456
+ *  $ pulumi import alicloud:vpc/natGateway:NatGateway example <id>
  * ```
  */
 export class NatGateway extends pulumi.CustomResource {
@@ -51,7 +51,17 @@ export class NatGateway extends pulumi.CustomResource {
      * Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether to only precheck this request. Default value: `false`.
+     */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    /**
+     * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+     */
+    public readonly eipBindMode!: pulumi.Output<string>;
+    /**
+     * Specifies whether to forcefully delete the NAT gateway.
+     */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
      * The nat gateway will auto create a forward item.
@@ -127,6 +137,7 @@ export class NatGateway extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["eipBindMode"] = state ? state.eipBindMode : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["forwardTableIds"] = state ? state.forwardTableIds : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
@@ -151,6 +162,7 @@ export class NatGateway extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["eipBindMode"] = args ? args.eipBindMode : undefined;
             resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
@@ -187,7 +199,17 @@ export interface NatGatewayState {
      * Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies whether to only precheck this request. Default value: `false`.
+     */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+     */
+    eipBindMode?: pulumi.Input<string>;
+    /**
+     * Specifies whether to forcefully delete the NAT gateway.
+     */
     force?: pulumi.Input<boolean>;
     /**
      * The nat gateway will auto create a forward item.
@@ -262,7 +284,17 @@ export interface NatGatewayArgs {
      * Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies whether to only precheck this request. Default value: `false`.
+     */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+     */
+    eipBindMode?: pulumi.Input<string>;
+    /**
+     * Specifies whether to forcefully delete the NAT gateway.
+     */
     force?: pulumi.Input<boolean>;
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.

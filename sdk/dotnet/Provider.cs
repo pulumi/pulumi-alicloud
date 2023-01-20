@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [AliCloudResourceType("pulumi:providers:alicloud")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
@@ -201,6 +201,12 @@ namespace Pulumi.AliCloud
 
         [Input("logEndpoint")]
         public Input<string>? LogEndpoint { get; set; }
+
+        /// <summary>
+        /// The maximum retry timeout of the request.
+        /// </summary>
+        [Input("maxRetryTimeout", json: true)]
+        public Input<int>? MaxRetryTimeout { get; set; }
 
         [Input("mnsEndpoint")]
         public Input<string>? MnsEndpoint { get; set; }
@@ -270,5 +276,6 @@ namespace Pulumi.AliCloud
             Profile = Utilities.GetEnv("ALICLOUD_PROFILE");
             Region = Utilities.GetEnv("ALICLOUD_REGION");
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

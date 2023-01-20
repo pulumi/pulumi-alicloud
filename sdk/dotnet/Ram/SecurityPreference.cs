@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Ram
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ram.SecurityPreference("example", new()
     ///     {
-    ///         var example = new AliCloud.Ram.SecurityPreference("example", new AliCloud.Ram.SecurityPreferenceArgs
-    ///         {
-    ///             AllowUserToChangePassword = true,
-    ///             EnableSaveMfaTicket = false,
-    ///         });
-    ///     }
+    ///         AllowUserToChangePassword = true,
+    ///         EnableSaveMfaTicket = false,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/securityPreference:SecurityPreference")]
-    public partial class SecurityPreference : Pulumi.CustomResource
+    public partial class SecurityPreference : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
@@ -138,7 +136,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class SecurityPreferenceArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPreferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
@@ -188,9 +186,10 @@ namespace Pulumi.AliCloud.Ram
         public SecurityPreferenceArgs()
         {
         }
+        public static new SecurityPreferenceArgs Empty => new SecurityPreferenceArgs();
     }
 
-    public sealed class SecurityPreferenceState : Pulumi.ResourceArgs
+    public sealed class SecurityPreferenceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
@@ -240,5 +239,6 @@ namespace Pulumi.AliCloud.Ram
         public SecurityPreferenceState()
         {
         }
+        public static new SecurityPreferenceState Empty => new SecurityPreferenceState();
     }
 }

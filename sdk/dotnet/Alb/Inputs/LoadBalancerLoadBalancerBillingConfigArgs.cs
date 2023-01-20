@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class LoadBalancerLoadBalancerBillingConfigArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerLoadBalancerBillingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The billing method of the ALB instance. Valid value: `PayAsYouGo`.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public LoadBalancerLoadBalancerBillingConfigArgs()
         {
         }
+        public static new LoadBalancerLoadBalancerBillingConfigArgs Empty => new LoadBalancerLoadBalancerBillingConfigArgs();
     }
 }

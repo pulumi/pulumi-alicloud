@@ -21,37 +21,35 @@ namespace Pulumi.AliCloud.ElasticSearch
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance = new AliCloud.ElasticSearch.Instance("instance", new()
     ///     {
-    ///         var instance = new AliCloud.ElasticSearch.Instance("instance", new AliCloud.ElasticSearch.InstanceArgs
+    ///         ClientNodeAmount = 2,
+    ///         ClientNodeSpec = "elasticsearch.sn2ne.large",
+    ///         DataNodeAmount = 2,
+    ///         DataNodeDiskSize = 20,
+    ///         DataNodeDiskType = "cloud_ssd",
+    ///         DataNodeSpec = "elasticsearch.sn2ne.large",
+    ///         Description = "description",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Password = "Your password",
+    ///         Protocol = "HTTPS",
+    ///         Tags = 
     ///         {
-    ///             ClientNodeAmount = 2,
-    ///             ClientNodeSpec = "elasticsearch.sn2ne.large",
-    ///             DataNodeAmount = 2,
-    ///             DataNodeDiskSize = 20,
-    ///             DataNodeDiskType = "cloud_ssd",
-    ///             DataNodeSpec = "elasticsearch.sn2ne.large",
-    ///             Description = "description",
-    ///             InstanceChargeType = "PostPaid",
-    ///             Password = "Your password",
-    ///             Protocol = "HTTPS",
-    ///             Tags = 
-    ///             {
-    ///                 { "key1", "value1" },
-    ///                 { "key2", "value2" },
-    ///             },
-    ///             Version = "5.5.3_with_X-Pack",
-    ///             VswitchId = "some vswitch id",
-    ///             ZoneCount = 2,
-    ///         });
-    ///     }
+    ///             { "key1", "value1" },
+    ///             { "key2", "value2" },
+    ///         },
+    ///         Version = "5.5.3_with_X-Pack",
+    ///         VswitchId = "some vswitch id",
+    ///         ZoneCount = 2,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -63,7 +61,7 @@ namespace Pulumi.AliCloud.ElasticSearch
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:elasticsearch/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Elasticsearch cluster's client node quantity, between 2 and 25.
@@ -91,7 +89,6 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         /// <summary>
         /// The single data node storage space.
-        /// - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         /// </summary>
         [Output("dataNodeDiskSize")]
         public Output<int> DataNodeDiskSize { get; private set; } = null!;
@@ -295,6 +292,10 @@ namespace Pulumi.AliCloud.ElasticSearch
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -316,7 +317,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Elasticsearch cluster's client node quantity, between 2 and 25.
@@ -344,7 +345,6 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         /// <summary>
         /// The single data node storage space.
-        /// - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         /// </summary>
         [Input("dataNodeDiskSize", required: true)]
         public Input<int> DataNodeDiskSize { get; set; } = null!;
@@ -445,11 +445,21 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Input("masterNodeSpec")]
         public Input<string>? MasterNodeSpec { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&amp;*()_+-=`).
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
@@ -540,9 +550,10 @@ namespace Pulumi.AliCloud.ElasticSearch
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Elasticsearch cluster's client node quantity, between 2 and 25.
@@ -570,7 +581,6 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         /// <summary>
         /// The single data node storage space.
-        /// - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         /// </summary>
         [Input("dataNodeDiskSize")]
         public Input<int>? DataNodeDiskSize { get; set; }
@@ -689,11 +699,21 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Input("masterNodeSpec")]
         public Input<string>? MasterNodeSpec { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&amp;*()_+-=`).
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
@@ -796,5 +816,6 @@ namespace Pulumi.AliCloud.ElasticSearch
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

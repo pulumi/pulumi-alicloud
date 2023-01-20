@@ -259,10 +259,12 @@ class GatewaySmbUser(pulumi.CustomResource):
             __props__.__dict__["gateway_id"] = gateway_id
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(GatewaySmbUser, __self__).__init__(
             'alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser',
             resource_name,

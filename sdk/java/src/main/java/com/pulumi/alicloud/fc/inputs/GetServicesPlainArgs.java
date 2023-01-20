@@ -16,14 +16,14 @@ public final class GetServicesPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetServicesPlainArgs Empty = new GetServicesPlainArgs();
 
     /**
-     * - A list of FC services ids.
+     * A list of FC services ids.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return - A list of FC services ids.
+     * @return A list of FC services ids.
      * 
      */
     public Optional<List<String>> ids() {
@@ -79,7 +79,7 @@ public final class GetServicesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param ids - A list of FC services ids.
+         * @param ids A list of FC services ids.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class GetServicesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param ids - A list of FC services ids.
+         * @param ids A list of FC services ids.
          * 
          * @return builder
          * 

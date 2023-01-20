@@ -16,6 +16,10 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
      * 
      */
     private String dip;
+    /**
+     * @return Specifies whether to enable health checks.
+     * 
+     */
     private Boolean enable;
     /**
      * @return The interval between two consecutive health checks. Unit: seconds.
@@ -51,6 +55,10 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
     public String dip() {
         return this.dip;
     }
+    /**
+     * @return Specifies whether to enable health checks.
+     * 
+     */
     public Boolean enable() {
         return this.enable;
     }

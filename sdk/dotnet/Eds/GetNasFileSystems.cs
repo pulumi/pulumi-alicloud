@@ -23,46 +23,46 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
         ///     {
-        ///         var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new AliCloud.Eds.SimpleOfficeSiteArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/12",
-        ///             DesktopAccessType = "Internet",
-        ///             OfficeSiteName = "your_office_site_name",
-        ///             EnableInternetAccess = false,
-        ///         });
-        ///         var defaultNasFileSystem = new AliCloud.Eds.NasFileSystem("defaultNasFileSystem", new AliCloud.Eds.NasFileSystemArgs
-        ///         {
-        ///             Description = "your_description",
-        ///             OfficeSiteId = defaultSimpleOfficeSite.Id,
-        ///             NasFileSystemName = "your_nas_file_system_name",
-        ///         });
-        ///         var ids = Output.Create(AliCloud.Eds.GetNasFileSystems.InvokeAsync());
-        ///         this.EcdNasFileSystemId1 = ids.Apply(ids =&gt; ids.Systems?[0]?.Id);
-        ///         var nameRegex = defaultNasFileSystem.NasFileSystemName.Apply(nasFileSystemName =&gt; AliCloud.Eds.GetNasFileSystems.Invoke(new AliCloud.Eds.GetNasFileSystemsInvokeArgs
-        ///         {
-        ///             NameRegex = nasFileSystemName,
-        ///         }));
-        ///         this.EcdNasFileSystemId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Systems?[0]?.Id);
-        ///     }
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         DesktopAccessType = "Internet",
+        ///         OfficeSiteName = "your_office_site_name",
+        ///         EnableInternetAccess = false,
+        ///     });
         /// 
-        ///     [Output("ecdNasFileSystemId1")]
-        ///     public Output&lt;string&gt; EcdNasFileSystemId1 { get; set; }
-        ///     [Output("ecdNasFileSystemId2")]
-        ///     public Output&lt;string&gt; EcdNasFileSystemId2 { get; set; }
-        /// }
+        ///     var defaultNasFileSystem = new AliCloud.Eds.NasFileSystem("defaultNasFileSystem", new()
+        ///     {
+        ///         Description = "your_description",
+        ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+        ///         NasFileSystemName = "your_nas_file_system_name",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Eds.GetNasFileSystems.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Eds.GetNasFileSystems.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultNasFileSystem.NasFileSystemName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdNasFileSystemId1"] = ids.Apply(getNasFileSystemsResult =&gt; getNasFileSystemsResult.Systems[0]?.Id),
+        ///         ["ecdNasFileSystemId2"] = nameRegex.Apply(getNasFileSystemsResult =&gt; getNasFileSystemsResult.Systems[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNasFileSystemsResult> InvokeAsync(GetNasFileSystemsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNasFileSystemsResult>("alicloud:eds/getNasFileSystems:getNasFileSystems", args ?? new GetNasFileSystemsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNasFileSystemsResult>("alicloud:eds/getNasFileSystems:getNasFileSystems", args ?? new GetNasFileSystemsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
@@ -76,50 +76,50 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
         ///     {
-        ///         var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new AliCloud.Eds.SimpleOfficeSiteArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/12",
-        ///             DesktopAccessType = "Internet",
-        ///             OfficeSiteName = "your_office_site_name",
-        ///             EnableInternetAccess = false,
-        ///         });
-        ///         var defaultNasFileSystem = new AliCloud.Eds.NasFileSystem("defaultNasFileSystem", new AliCloud.Eds.NasFileSystemArgs
-        ///         {
-        ///             Description = "your_description",
-        ///             OfficeSiteId = defaultSimpleOfficeSite.Id,
-        ///             NasFileSystemName = "your_nas_file_system_name",
-        ///         });
-        ///         var ids = Output.Create(AliCloud.Eds.GetNasFileSystems.InvokeAsync());
-        ///         this.EcdNasFileSystemId1 = ids.Apply(ids =&gt; ids.Systems?[0]?.Id);
-        ///         var nameRegex = defaultNasFileSystem.NasFileSystemName.Apply(nasFileSystemName =&gt; AliCloud.Eds.GetNasFileSystems.Invoke(new AliCloud.Eds.GetNasFileSystemsInvokeArgs
-        ///         {
-        ///             NameRegex = nasFileSystemName,
-        ///         }));
-        ///         this.EcdNasFileSystemId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Systems?[0]?.Id);
-        ///     }
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         DesktopAccessType = "Internet",
+        ///         OfficeSiteName = "your_office_site_name",
+        ///         EnableInternetAccess = false,
+        ///     });
         /// 
-        ///     [Output("ecdNasFileSystemId1")]
-        ///     public Output&lt;string&gt; EcdNasFileSystemId1 { get; set; }
-        ///     [Output("ecdNasFileSystemId2")]
-        ///     public Output&lt;string&gt; EcdNasFileSystemId2 { get; set; }
-        /// }
+        ///     var defaultNasFileSystem = new AliCloud.Eds.NasFileSystem("defaultNasFileSystem", new()
+        ///     {
+        ///         Description = "your_description",
+        ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+        ///         NasFileSystemName = "your_nas_file_system_name",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Eds.GetNasFileSystems.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Eds.GetNasFileSystems.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultNasFileSystem.NasFileSystemName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdNasFileSystemId1"] = ids.Apply(getNasFileSystemsResult =&gt; getNasFileSystemsResult.Systems[0]?.Id),
+        ///         ["ecdNasFileSystemId2"] = nameRegex.Apply(getNasFileSystemsResult =&gt; getNasFileSystemsResult.Systems[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNasFileSystemsResult> Invoke(GetNasFileSystemsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNasFileSystemsResult>("alicloud:eds/getNasFileSystems:getNasFileSystems", args ?? new GetNasFileSystemsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNasFileSystemsResult>("alicloud:eds/getNasFileSystems:getNasFileSystems", args ?? new GetNasFileSystemsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNasFileSystemsArgs : Pulumi.InvokeArgs
+    public sealed class GetNasFileSystemsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -157,9 +157,10 @@ namespace Pulumi.AliCloud.Eds
         public GetNasFileSystemsArgs()
         {
         }
+        public static new GetNasFileSystemsArgs Empty => new GetNasFileSystemsArgs();
     }
 
-    public sealed class GetNasFileSystemsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNasFileSystemsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -197,6 +198,7 @@ namespace Pulumi.AliCloud.Eds
         public GetNasFileSystemsInvokeArgs()
         {
         }
+        public static new GetNasFileSystemsInvokeArgs Empty => new GetNasFileSystemsInvokeArgs();
     }
 
 

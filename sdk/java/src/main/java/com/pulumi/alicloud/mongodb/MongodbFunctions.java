@@ -47,7 +47,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -90,7 +90,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -133,7 +133,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -176,7 +176,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -384,7 +384,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -425,7 +425,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -466,7 +466,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -507,7 +507,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -548,7 +548,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -589,7 +589,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1167,7 +1167,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import java.util.List;
@@ -1210,7 +1210,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import java.util.List;
@@ -1253,7 +1253,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import java.util.List;
@@ -1296,7 +1296,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import java.util.List;
@@ -1339,7 +1339,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import java.util.List;
@@ -1382,7 +1382,7 @@ public final class MongodbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mongodb.MongodbFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.mongodb.Instance;
      * import com.pulumi.alicloud.mongodb.InstanceArgs;
      * import java.util.List;

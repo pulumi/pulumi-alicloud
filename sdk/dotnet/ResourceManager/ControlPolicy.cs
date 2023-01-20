@@ -21,19 +21,18 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.ResourceManager.ControlPolicy("example", new()
     ///     {
-    ///         var example = new AliCloud.ResourceManager.ControlPolicy("example", new AliCloud.ResourceManager.ControlPolicyArgs
-    ///         {
-    ///             ControlPolicyName = "tf-testAccRDControlPolicy",
-    ///             Description = "tf-testAccRDControlPolicy",
-    ///             EffectScope = "RAM",
-    ///             PolicyDocument = @"  {
+    ///         ControlPolicyName = "tf-testAccRDControlPolicy",
+    ///         Description = "tf-testAccRDControlPolicy",
+    ///         EffectScope = "RAM",
+    ///         PolicyDocument = @"  {
     ///     ""Version"": ""1"",
     ///     ""Statement"": [
     ///       {
@@ -50,10 +49,9 @@ namespace Pulumi.AliCloud.ResourceManager
     ///   }
     ///   
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -65,7 +63,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/controlPolicy:ControlPolicy")]
-    public partial class ControlPolicy : Pulumi.CustomResource
+    public partial class ControlPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of control policy.
@@ -135,7 +133,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class ControlPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ControlPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of control policy.
@@ -164,9 +162,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public ControlPolicyArgs()
         {
         }
+        public static new ControlPolicyArgs Empty => new ControlPolicyArgs();
     }
 
-    public sealed class ControlPolicyState : Pulumi.ResourceArgs
+    public sealed class ControlPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of control policy.
@@ -195,5 +194,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public ControlPolicyState()
         {
         }
+        public static new ControlPolicyState Empty => new ControlPolicyState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Waf.Inputs
 {
 
-    public sealed class DomainLogHeaderGetArgs : Pulumi.ResourceArgs
+    public sealed class DomainLogHeaderGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Waf.Inputs
         public DomainLogHeaderGetArgs()
         {
         }
+        public static new DomainLogHeaderGetArgs Empty => new DomainLogHeaderGetArgs();
     }
 }

@@ -21,34 +21,34 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultPhysicalConnections = Output.Create(AliCloud.ExpressConnect.GetPhysicalConnections.InvokeAsync());
-    ///         var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("defaultVirtualBorderRouter", new AliCloud.ExpressConnect.VirtualBorderRouterArgs
-    ///         {
-    ///             LocalGatewayIp = "10.0.0.1",
-    ///             PeerGatewayIp = "10.0.0.2",
-    ///             PeeringSubnetMask = "255.255.255.252",
-    ///             PhysicalConnectionId = defaultPhysicalConnections.Apply(defaultPhysicalConnections =&gt; defaultPhysicalConnections.Connections?[0]?.Id),
-    ///             VirtualBorderRouterName = @var.Name,
-    ///             VlanId = 120,
-    ///             MinRxInterval = 1000,
-    ///             MinTxInterval = 1000,
-    ///             DetectMultiplier = 10,
-    ///         });
-    ///         var example = new AliCloud.Vpc.BgpNetwork("example", new AliCloud.Vpc.BgpNetworkArgs
-    ///         {
-    ///             DstCidrBlock = "example_value",
-    ///             RouterId = defaultVirtualBorderRouter.Id,
-    ///         });
-    ///     }
+    ///     var defaultPhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke();
     /// 
-    /// }
+    ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("defaultVirtualBorderRouter", new()
+    ///     {
+    ///         LocalGatewayIp = "10.0.0.1",
+    ///         PeerGatewayIp = "10.0.0.2",
+    ///         PeeringSubnetMask = "255.255.255.252",
+    ///         PhysicalConnectionId = defaultPhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         VirtualBorderRouterName = @var.Name,
+    ///         VlanId = 120,
+    ///         MinRxInterval = 1000,
+    ///         MinTxInterval = 1000,
+    ///         DetectMultiplier = 10,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Vpc.BgpNetwork("example", new()
+    ///     {
+    ///         DstCidrBlock = "example_value",
+    ///         RouterId = defaultVirtualBorderRouter.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/bgpNetwork:BgpNetwork")]
-    public partial class BgpNetwork : Pulumi.CustomResource
+    public partial class BgpNetwork : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class BgpNetworkArgs : Pulumi.ResourceArgs
+    public sealed class BgpNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
@@ -141,9 +141,10 @@ namespace Pulumi.AliCloud.Vpc
         public BgpNetworkArgs()
         {
         }
+        public static new BgpNetworkArgs Empty => new BgpNetworkArgs();
     }
 
-    public sealed class BgpNetworkState : Pulumi.ResourceArgs
+    public sealed class BgpNetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
@@ -166,5 +167,6 @@ namespace Pulumi.AliCloud.Vpc
         public BgpNetworkState()
         {
         }
+        public static new BgpNetworkState Empty => new BgpNetworkState();
     }
 }

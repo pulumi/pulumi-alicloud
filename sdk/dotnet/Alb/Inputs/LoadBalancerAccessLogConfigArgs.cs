@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class LoadBalancerAccessLogConfigArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerAccessLogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The log service that access logs are shipped to.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public LoadBalancerAccessLogConfigArgs()
         {
         }
+        public static new LoadBalancerAccessLogConfigArgs Empty => new LoadBalancerAccessLogConfigArgs();
     }
 }

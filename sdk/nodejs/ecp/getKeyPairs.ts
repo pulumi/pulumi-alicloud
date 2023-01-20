@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,20 +20,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.ecp.getKeyPairs({});
- * export const ecpKeyPairId1 = ids.then(ids => ids.pairs?[0]?.id);
+ * export const ecpKeyPairId1 = ids.then(ids => ids.pairs?.[0]?.id);
  * const nameRegex = alicloud.ecp.getKeyPairs({
  *     nameRegex: "^my-KeyPair",
  * });
- * export const ecpKeyPairId2 = nameRegex.then(nameRegex => nameRegex.pairs?[0]?.id);
+ * export const ecpKeyPairId2 = nameRegex.then(nameRegex => nameRegex.pairs?.[0]?.id);
  * ```
  */
 export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecp/getKeyPairs:getKeyPairs", {
         "ids": args.ids,
         "keyPairFingerPrint": args.keyPairFingerPrint,
@@ -75,9 +73,29 @@ export interface GetKeyPairsResult {
     readonly outputFile?: string;
     readonly pairs: outputs.ecp.GetKeyPairsPair[];
 }
-
+/**
+ * This data source provides the Ecp Key Pairs of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.130.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ecp.getKeyPairs({});
+ * export const ecpKeyPairId1 = ids.then(ids => ids.pairs?.[0]?.id);
+ * const nameRegex = alicloud.ecp.getKeyPairs({
+ *     nameRegex: "^my-KeyPair",
+ * });
+ * export const ecpKeyPairId2 = nameRegex.then(nameRegex => nameRegex.pairs?.[0]?.id);
+ * ```
+ */
 export function getKeyPairsOutput(args?: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
-    return pulumi.output(args).apply(a => getKeyPairs(a, opts))
+    return pulumi.output(args).apply((a: any) => getKeyPairs(a, opts))
 }
 
 /**

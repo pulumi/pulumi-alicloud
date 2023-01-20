@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -142,6 +142,36 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
         return this.archiveBackupRetentionPeriod;
     }
     /**
+     * The frequency at which you want to perform a snapshot backup on the instance. Valid values:
+     * - -1: No backup frequencies are specified.
+     * - 30: A snapshot backup is performed once every 30 minutes.
+     * - 60: A snapshot backup is performed once every 60 minutes.
+     * - 120: A snapshot backup is performed once every 120 minutes.
+     * - 240: A snapshot backup is performed once every 240 minutes.
+     * - 360: A snapshot backup is performed once every 360 minutes.
+     * - 480: A snapshot backup is performed once every 480 minutes.
+     * - 720: A snapshot backup is performed once every 720 minutes.
+     * 
+     */
+    @Export(name="backupInterval", type=String.class, parameters={})
+    private Output<String> backupInterval;
+
+    /**
+     * @return The frequency at which you want to perform a snapshot backup on the instance. Valid values:
+     * - -1: No backup frequencies are specified.
+     * - 30: A snapshot backup is performed once every 30 minutes.
+     * - 60: A snapshot backup is performed once every 60 minutes.
+     * - 120: A snapshot backup is performed once every 120 minutes.
+     * - 240: A snapshot backup is performed once every 240 minutes.
+     * - 360: A snapshot backup is performed once every 360 minutes.
+     * - 480: A snapshot backup is performed once every 480 minutes.
+     * - 720: A snapshot backup is performed once every 720 minutes.
+     * 
+     */
+    public Output<String> backupInterval() {
+        return this.backupInterval;
+    }
+    /**
      * It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
      * 
      * @deprecated
@@ -190,6 +220,22 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> backupTime() {
         return this.backupTime;
+    }
+    /**
+     * Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
+     * &gt; **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
+     * 
+     */
+    @Export(name="category", type=String.class, parameters={})
+    private Output<String> category;
+
+    /**
+     * @return Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
+     * &gt; **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
+     * 
+     */
+    public Output<String> category() {
+        return this.category;
     }
     /**
      * The compress type of instance policy. Valid values are `1`, `4`, `8`.
@@ -340,14 +386,14 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
         return this.logRetentionPeriod;
     }
     /**
-     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      * 
      */
     @Export(name="preferredBackupPeriods", type=List.class, parameters={String.class})
     private Output<List<String>> preferredBackupPeriods;
 
     /**
-     * @return DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
+     * @return DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      * 
      */
     public Output<List<String>> preferredBackupPeriods() {

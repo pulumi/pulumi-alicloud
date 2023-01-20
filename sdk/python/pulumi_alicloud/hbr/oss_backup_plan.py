@@ -20,6 +20,9 @@ class OssBackupPlanArgs:
                  retention: pulumi.Input[str],
                  schedule: pulumi.Input[str],
                  vault_id: pulumi.Input[str],
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  prefix: Optional[pulumi.Input[str]] = None):
         """
@@ -30,6 +33,9 @@ class OssBackupPlanArgs:
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] prefix: Backup prefix. Once specified, only objects with matching prefixes will be backed up.
         """
@@ -39,6 +45,12 @@ class OssBackupPlanArgs:
         pulumi.set(__self__, "retention", retention)
         pulumi.set(__self__, "schedule", schedule)
         pulumi.set(__self__, "vault_id", vault_id)
+        if cross_account_role_name is not None:
+            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+        if cross_account_type is not None:
+            pulumi.set(__self__, "cross_account_type", cross_account_type)
+        if cross_account_user_id is not None:
+            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if prefix is not None:
@@ -117,6 +129,42 @@ class OssBackupPlanArgs:
         pulumi.set(self, "vault_id", value)
 
     @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @cross_account_role_name.setter
+    def cross_account_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_role_name", value)
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @cross_account_type.setter
+    def cross_account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_type", value)
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The original account ID of the cross account backup managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_user_id")
+
+    @cross_account_user_id.setter
+    def cross_account_user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cross_account_user_id", value)
+
+    @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -146,6 +194,9 @@ class _OssBackupPlanState:
     def __init__(__self__, *,
                  backup_type: Optional[pulumi.Input[str]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  oss_backup_plan_name: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None,
@@ -156,6 +207,9 @@ class _OssBackupPlanState:
         Input properties used for looking up and filtering OssBackupPlan resources.
         :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] bucket: The name of OSS bucket.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[str] prefix: Backup prefix. Once specified, only objects with matching prefixes will be backed up.
@@ -167,6 +221,12 @@ class _OssBackupPlanState:
             pulumi.set(__self__, "backup_type", backup_type)
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
+        if cross_account_role_name is not None:
+            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+        if cross_account_type is not None:
+            pulumi.set(__self__, "cross_account_type", cross_account_type)
+        if cross_account_user_id is not None:
+            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if oss_backup_plan_name is not None:
@@ -203,6 +263,42 @@ class _OssBackupPlanState:
     @bucket.setter
     def bucket(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @cross_account_role_name.setter
+    def cross_account_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_role_name", value)
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @cross_account_type.setter
+    def cross_account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_type", value)
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The original account ID of the cross account backup managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_user_id")
+
+    @cross_account_user_id.setter
+    def cross_account_user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cross_account_user_id", value)
 
     @property
     @pulumi.getter
@@ -284,6 +380,9 @@ class OssBackupPlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_type: Optional[pulumi.Input[str]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  oss_backup_plan_name: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None,
@@ -334,6 +433,9 @@ class OssBackupPlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] bucket: The name of OSS bucket.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[str] prefix: Backup prefix. Once specified, only objects with matching prefixes will be backed up.
@@ -403,6 +505,9 @@ class OssBackupPlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_type: Optional[pulumi.Input[str]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  oss_backup_plan_name: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None,
@@ -424,6 +529,9 @@ class OssBackupPlan(pulumi.CustomResource):
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
+            __props__.__dict__["cross_account_role_name"] = cross_account_role_name
+            __props__.__dict__["cross_account_type"] = cross_account_type
+            __props__.__dict__["cross_account_user_id"] = cross_account_user_id
             __props__.__dict__["disabled"] = disabled
             if oss_backup_plan_name is None and not opts.urn:
                 raise TypeError("Missing required property 'oss_backup_plan_name'")
@@ -450,6 +558,9 @@ class OssBackupPlan(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backup_type: Optional[pulumi.Input[str]] = None,
             bucket: Optional[pulumi.Input[str]] = None,
+            cross_account_role_name: Optional[pulumi.Input[str]] = None,
+            cross_account_type: Optional[pulumi.Input[str]] = None,
+            cross_account_user_id: Optional[pulumi.Input[int]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             oss_backup_plan_name: Optional[pulumi.Input[str]] = None,
             prefix: Optional[pulumi.Input[str]] = None,
@@ -465,6 +576,9 @@ class OssBackupPlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] bucket: The name of OSS bucket.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[str] prefix: Backup prefix. Once specified, only objects with matching prefixes will be backed up.
@@ -478,6 +592,9 @@ class OssBackupPlan(pulumi.CustomResource):
 
         __props__.__dict__["backup_type"] = backup_type
         __props__.__dict__["bucket"] = bucket
+        __props__.__dict__["cross_account_role_name"] = cross_account_role_name
+        __props__.__dict__["cross_account_type"] = cross_account_type
+        __props__.__dict__["cross_account_user_id"] = cross_account_user_id
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["oss_backup_plan_name"] = oss_backup_plan_name
         __props__.__dict__["prefix"] = prefix
@@ -501,6 +618,30 @@ class OssBackupPlan(pulumi.CustomResource):
         The name of OSS bucket.
         """
         return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> pulumi.Output[str]:
+        """
+        The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> pulumi.Output[Optional[int]]:
+        """
+        The original account ID of the cross account backup managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_user_id")
 
     @property
     @pulumi.getter

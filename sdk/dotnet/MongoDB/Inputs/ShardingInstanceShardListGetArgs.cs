@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MongoDB.Inputs
 {
 
-    public sealed class ShardingInstanceShardListGetArgs : Pulumi.ResourceArgs
+    public sealed class ShardingInstanceShardListGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        /// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         [Input("nodeClass", required: true)]
         public Input<string> NodeClass { get; set; } = null!;
@@ -40,5 +40,6 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public ShardingInstanceShardListGetArgs()
         {
         }
+        public static new ShardingInstanceShardListGetArgs Empty => new ShardingInstanceShardListGetArgs();
     }
 }

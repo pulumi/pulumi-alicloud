@@ -22,64 +22,66 @@ namespace Pulumi.AliCloud.Rds
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "Rds";
+    ///     var name = config.Get("name") ?? "dbaccountprivilegebasic";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "Rds";
-    ///         var name = config.Get("name") ?? "dbaccountprivilegebasic";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
-    ///         {
-    ///             Engine = "MySQL",
-    ///             EngineVersion = "5.6",
-    ///             InstanceType = "rds.mysql.s1.small",
-    ///             InstanceStorage = 10,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             InstanceName = name,
-    ///         });
-    ///         var db = new List&lt;AliCloud.Rds.Database&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             db.Add(new AliCloud.Rds.Database($"db-{range.Value}", new AliCloud.Rds.DatabaseArgs
-    ///             {
-    ///                 InstanceId = instance.Id,
-    ///                 Description = "from terraform",
-    ///             }));
-    ///         }
-    ///         var account = new AliCloud.Rds.Account("account", new AliCloud.Rds.AccountArgs
-    ///         {
-    ///             InstanceId = instance.Id,
-    ///             Password = "Test12345",
-    ///             Description = "from terraform",
-    ///         });
-    ///         var privilege = new AliCloud.Rds.AccountPrivilege("privilege", new AliCloud.Rds.AccountPrivilegeArgs
-    ///         {
-    ///             InstanceId = instance.Id,
-    ///             AccountName = account.Name,
-    ///             Privilege = "ReadOnly",
-    ///             DbNames = db.Select(__item =&gt; __item.Name).ToList(),
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var instance = new AliCloud.Rds.Instance("instance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
+    ///         InstanceType = "rds.mysql.s1.small",
+    ///         InstanceStorage = 10,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var db = new List&lt;AliCloud.Rds.Database&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         db.Add(new AliCloud.Rds.Database($"db-{range.Value}", new()
+    ///         {
+    ///             InstanceId = instance.Id,
+    ///             Description = "from terraform",
+    ///         }));
+    ///     }
+    ///     var account = new AliCloud.Rds.Account("account", new()
+    ///     {
+    ///         InstanceId = instance.Id,
+    ///         Password = "Test12345",
+    ///         Description = "from terraform",
+    ///     });
+    /// 
+    ///     var privilege = new AliCloud.Rds.AccountPrivilege("privilege", new()
+    ///     {
+    ///         InstanceId = instance.Id,
+    ///         AccountName = account.Name,
+    ///         Privilege = "ReadOnly",
+    ///         DbNames = db.Select(__item =&gt; __item.Name).ToList(),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -91,7 +93,7 @@ namespace Pulumi.AliCloud.Rds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/accountPrivilege:AccountPrivilege")]
-    public partial class AccountPrivilege : Pulumi.CustomResource
+    public partial class AccountPrivilege : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A specified account name.
@@ -166,7 +168,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
-    public sealed class AccountPrivilegeArgs : Pulumi.ResourceArgs
+    public sealed class AccountPrivilegeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A specified account name.
@@ -206,9 +208,10 @@ namespace Pulumi.AliCloud.Rds
         public AccountPrivilegeArgs()
         {
         }
+        public static new AccountPrivilegeArgs Empty => new AccountPrivilegeArgs();
     }
 
-    public sealed class AccountPrivilegeState : Pulumi.ResourceArgs
+    public sealed class AccountPrivilegeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A specified account name.
@@ -248,5 +251,6 @@ namespace Pulumi.AliCloud.Rds
         public AccountPrivilegeState()
         {
         }
+        public static new AccountPrivilegeState Empty => new AccountPrivilegeState();
     }
 }

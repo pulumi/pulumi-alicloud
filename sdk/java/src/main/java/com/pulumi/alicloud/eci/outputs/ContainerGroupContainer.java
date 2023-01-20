@@ -4,7 +4,9 @@
 package com.pulumi.alicloud.eci.outputs;
 
 import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerEnvironmentVar;
+import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerLivenessProbe;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerPort;
+import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerReadinessProbe;
 import com.pulumi.alicloud.eci.outputs.ContainerGroupContainerVolumeMount;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -29,7 +31,7 @@ public final class ContainerGroupContainer {
      */
     private @Nullable List<String> commands;
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     private @Nullable Double cpu;
@@ -54,12 +56,17 @@ public final class ContainerGroupContainer {
      */
     private @Nullable String imagePullPolicy;
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The health check of the container.
+     * 
+     */
+    private @Nullable List<ContainerGroupContainerLivenessProbe> livenessProbes;
+    /**
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     private @Nullable Double memory;
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     private String name;
@@ -68,6 +75,11 @@ public final class ContainerGroupContainer {
      * 
      */
     private @Nullable List<ContainerGroupContainerPort> ports;
+    /**
+     * @return The health check of the container.
+     * 
+     */
+    private @Nullable List<ContainerGroupContainerReadinessProbe> readinessProbes;
     private @Nullable Boolean ready;
     private @Nullable Integer restartCount;
     /**
@@ -97,7 +109,7 @@ public final class ContainerGroupContainer {
         return this.commands == null ? List.of() : this.commands;
     }
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     public Optional<Double> cpu() {
@@ -132,14 +144,21 @@ public final class ContainerGroupContainer {
         return Optional.ofNullable(this.imagePullPolicy);
     }
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The health check of the container.
+     * 
+     */
+    public List<ContainerGroupContainerLivenessProbe> livenessProbes() {
+        return this.livenessProbes == null ? List.of() : this.livenessProbes;
+    }
+    /**
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     public Optional<Double> memory() {
         return Optional.ofNullable(this.memory);
     }
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     public String name() {
@@ -151,6 +170,13 @@ public final class ContainerGroupContainer {
      */
     public List<ContainerGroupContainerPort> ports() {
         return this.ports == null ? List.of() : this.ports;
+    }
+    /**
+     * @return The health check of the container.
+     * 
+     */
+    public List<ContainerGroupContainerReadinessProbe> readinessProbes() {
+        return this.readinessProbes == null ? List.of() : this.readinessProbes;
     }
     public Optional<Boolean> ready() {
         return Optional.ofNullable(this.ready);
@@ -189,9 +215,11 @@ public final class ContainerGroupContainer {
         private @Nullable Integer gpu;
         private String image;
         private @Nullable String imagePullPolicy;
+        private @Nullable List<ContainerGroupContainerLivenessProbe> livenessProbes;
         private @Nullable Double memory;
         private String name;
         private @Nullable List<ContainerGroupContainerPort> ports;
+        private @Nullable List<ContainerGroupContainerReadinessProbe> readinessProbes;
         private @Nullable Boolean ready;
         private @Nullable Integer restartCount;
         private @Nullable List<ContainerGroupContainerVolumeMount> volumeMounts;
@@ -206,9 +234,11 @@ public final class ContainerGroupContainer {
     	      this.gpu = defaults.gpu;
     	      this.image = defaults.image;
     	      this.imagePullPolicy = defaults.imagePullPolicy;
+    	      this.livenessProbes = defaults.livenessProbes;
     	      this.memory = defaults.memory;
     	      this.name = defaults.name;
     	      this.ports = defaults.ports;
+    	      this.readinessProbes = defaults.readinessProbes;
     	      this.ready = defaults.ready;
     	      this.restartCount = defaults.restartCount;
     	      this.volumeMounts = defaults.volumeMounts;
@@ -260,6 +290,14 @@ public final class ContainerGroupContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder livenessProbes(@Nullable List<ContainerGroupContainerLivenessProbe> livenessProbes) {
+            this.livenessProbes = livenessProbes;
+            return this;
+        }
+        public Builder livenessProbes(ContainerGroupContainerLivenessProbe... livenessProbes) {
+            return livenessProbes(List.of(livenessProbes));
+        }
+        @CustomType.Setter
         public Builder memory(@Nullable Double memory) {
             this.memory = memory;
             return this;
@@ -276,6 +314,14 @@ public final class ContainerGroupContainer {
         }
         public Builder ports(ContainerGroupContainerPort... ports) {
             return ports(List.of(ports));
+        }
+        @CustomType.Setter
+        public Builder readinessProbes(@Nullable List<ContainerGroupContainerReadinessProbe> readinessProbes) {
+            this.readinessProbes = readinessProbes;
+            return this;
+        }
+        public Builder readinessProbes(ContainerGroupContainerReadinessProbe... readinessProbes) {
+            return readinessProbes(List.of(readinessProbes));
         }
         @CustomType.Setter
         public Builder ready(@Nullable Boolean ready) {
@@ -309,9 +355,11 @@ public final class ContainerGroupContainer {
             o.gpu = gpu;
             o.image = image;
             o.imagePullPolicy = imagePullPolicy;
+            o.livenessProbes = livenessProbes;
             o.memory = memory;
             o.name = name;
             o.ports = ports;
+            o.readinessProbes = readinessProbes;
             o.ready = ready;
             o.restartCount = restartCount;
             o.volumeMounts = volumeMounts;

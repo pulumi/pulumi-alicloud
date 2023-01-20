@@ -185,6 +185,21 @@ public final class EcdPolicyGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     * 
+     */
+    @Import(name="recordingExpires")
+    private @Nullable Output<Integer> recordingExpires;
+
+    /**
+     * @return The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     * 
+     */
+    public Optional<Output<Integer>> recordingExpires() {
+        return Optional.ofNullable(this.recordingExpires);
+    }
+
+    /**
      * The fps of recording. Valid values: `2`, `5`, `10`, `15`.
      * 
      */
@@ -303,6 +318,7 @@ public final class EcdPolicyGroupArgs extends com.pulumi.resources.ResourceArgs 
         this.policyGroupName = $.policyGroupName;
         this.recording = $.recording;
         this.recordingEndTime = $.recordingEndTime;
+        this.recordingExpires = $.recordingExpires;
         this.recordingFps = $.recordingFps;
         this.recordingStartTime = $.recordingStartTime;
         this.usbRedirect = $.usbRedirect;
@@ -579,6 +595,27 @@ public final class EcdPolicyGroupArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder recordingEndTime(String recordingEndTime) {
             return recordingEndTime(Output.of(recordingEndTime));
+        }
+
+        /**
+         * @param recordingExpires The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recordingExpires(@Nullable Output<Integer> recordingExpires) {
+            $.recordingExpires = recordingExpires;
+            return this;
+        }
+
+        /**
+         * @param recordingExpires The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recordingExpires(Integer recordingExpires) {
+            return recordingExpires(Output.of(recordingExpires));
         }
 
         /**

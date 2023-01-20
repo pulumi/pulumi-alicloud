@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultImageExport = new alicloud.ecs.ImageExport("default", {
+ * const _default = new alicloud.ecs.ImageExport("default", {
  *     imageId: "m-bp1gxy***",
  *     ossBucket: "ecsimageexportconfig",
  *     ossPrefix: "ecsExport",

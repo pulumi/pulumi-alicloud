@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,16 +19,13 @@ import * as utilities from "../utilities";
  * const default = alicloud.kvstore.getInstances({
  *     nameRegex: "testname",
  * });
- * export const firstInstanceName = _default.then(_default => _default.instances?[0]?.name);
+ * export const firstInstanceName = _default.then(_default => _default.instances?.[0]?.name);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kvstore/getInstances:getInstances", {
         "architectureType": args.architectureType,
         "editionType": args.editionType,
@@ -156,11 +154,13 @@ export interface GetInstancesResult {
      * A list of KVStore Instance IDs.
      */
     readonly ids: string[];
+    /**
+     * (Optional) Type of the applied ApsaraDB for instance.
+     * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     */
     readonly instanceClass?: string;
     /**
      * (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
-     * * `instanceClass`- (Optional) Type of the applied ApsaraDB for instance.
-     * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
      */
     readonly instanceType?: string;
     /**
@@ -201,9 +201,24 @@ export interface GetInstancesResult {
      */
     readonly zoneId?: string;
 }
-
+/**
+ * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
+ * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.kvstore.getInstances({
+ *     nameRegex: "testname",
+ * });
+ * export const firstInstanceName = _default.then(_default => _default.instances?.[0]?.name);
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**

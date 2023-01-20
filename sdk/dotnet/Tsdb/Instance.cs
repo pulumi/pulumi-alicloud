@@ -21,36 +21,37 @@ namespace Pulumi.AliCloud.Tsdb
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleZones = Output.Create(AliCloud.Tsdb.GetZones.InvokeAsync());
-    ///         var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "192.168.0.0/16",
-    ///         });
-    ///         var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             AvailabilityZone = exampleZones.Apply(exampleZones =&gt; exampleZones.Ids?[0]),
-    ///             CidrBlock = "192.168.1.0/24",
-    ///             VpcId = exampleNetwork.Id,
-    ///         });
-    ///         var exampleInstance = new AliCloud.Tsdb.Instance("exampleInstance", new AliCloud.Tsdb.InstanceArgs
-    ///         {
-    ///             PaymentType = "PayAsYouGo",
-    ///             VswitchId = exampleSwitch.Id,
-    ///             InstanceStorage = "50",
-    ///             InstanceClass = "tsdb.1x.basic",
-    ///             EngineType = "tsdb_tsdb",
-    ///             InstanceAlias = "tf-testaccTsdbInstance",
-    ///         });
-    ///     }
+    ///     var exampleZones = AliCloud.Tsdb.GetZones.Invoke();
     /// 
-    /// }
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         CidrBlock = "192.168.1.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Tsdb.Instance("exampleInstance", new()
+    ///     {
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         InstanceStorage = "50",
+    ///         InstanceClass = "tsdb.1x.basic",
+    ///         EngineType = "tsdb_tsdb",
+    ///         InstanceAlias = "tf-testaccTsdbInstance",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -62,7 +63,7 @@ namespace Pulumi.AliCloud.Tsdb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:tsdb/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The app key.
@@ -196,7 +197,7 @@ namespace Pulumi.AliCloud.Tsdb
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The app key.
@@ -283,9 +284,10 @@ namespace Pulumi.AliCloud.Tsdb
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The app key.
@@ -378,5 +380,6 @@ namespace Pulumi.AliCloud.Tsdb
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

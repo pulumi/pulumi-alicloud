@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/switch:Switch")]
-    public partial class Switch : Pulumi.CustomResource
+    public partial class Switch : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> VswitchName { get; private set; } = null!;
 
         /// <summary>
-        /// The AZ for the switch.
+        /// The AZ for the switch. **Note:** Required for a VPC switch.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class SwitchArgs : Pulumi.ResourceArgs
+    public sealed class SwitchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? VswitchName { get; set; }
 
         /// <summary>
-        /// The AZ for the switch.
+        /// The AZ for the switch. **Note:** Required for a VPC switch.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -178,9 +178,10 @@ namespace Pulumi.AliCloud.Vpc
         public SwitchArgs()
         {
         }
+        public static new SwitchArgs Empty => new SwitchArgs();
     }
 
-    public sealed class SwitchState : Pulumi.ResourceArgs
+    public sealed class SwitchState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
@@ -237,7 +238,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? VswitchName { get; set; }
 
         /// <summary>
-        /// The AZ for the switch.
+        /// The AZ for the switch. **Note:** Required for a VPC switch.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -245,5 +246,6 @@ namespace Pulumi.AliCloud.Vpc
         public SwitchState()
         {
         }
+        public static new SwitchState Empty => new SwitchState();
     }
 }

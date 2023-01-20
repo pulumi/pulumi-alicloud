@@ -21,33 +21,32 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
-    ///         var @default = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
-    ///         {
-    ///             NameRegex = "default",
-    ///         }));
-    ///         var example = new AliCloud.Ecs.EcsImageComponent("example", new AliCloud.Ecs.EcsImageComponentArgs
-    ///         {
-    ///             ComponentType = "Build",
-    ///             Content = "RUN yum update -y",
-    ///             Description = "example_value",
-    ///             ImageComponentName = "example_value",
-    ///             ResourceGroupId = @default.Apply(@default =&gt; @default.Groups?[0]?.Id),
-    ///             SystemType = "Linux",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///             },
-    ///         });
-    ///     }
+    ///         NameRegex = "default",
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.Ecs.EcsImageComponent("example", new()
+    ///     {
+    ///         ComponentType = "Build",
+    ///         Content = "RUN yum update -y",
+    ///         Description = "example_value",
+    ///         ImageComponentName = "example_value",
+    ///         ResourceGroupId = @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult).Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///         SystemType = "Linux",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsImageComponent:EcsImageComponent")]
-    public partial class EcsImageComponent : Pulumi.CustomResource
+    public partial class EcsImageComponent : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The type of the image component. Only image building components are supported. Valid values: `Build`.
@@ -147,7 +146,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsImageComponentArgs : Pulumi.ResourceArgs
+    public sealed class EcsImageComponentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the image component. Only image building components are supported. Valid values: `Build`.
@@ -200,9 +199,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsImageComponentArgs()
         {
         }
+        public static new EcsImageComponentArgs Empty => new EcsImageComponentArgs();
     }
 
-    public sealed class EcsImageComponentState : Pulumi.ResourceArgs
+    public sealed class EcsImageComponentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the image component. Only image building components are supported. Valid values: `Build`.
@@ -255,5 +255,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsImageComponentState()
         {
         }
+        public static new EcsImageComponentState Empty => new EcsImageComponentState();
     }
 }

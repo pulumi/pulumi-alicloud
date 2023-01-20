@@ -21,38 +21,37 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
     ///     {
-    ///         var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new AliCloud.Cms.AlarmContactGroupArgs
-    ///         {
-    ///             AlarmContactGroupName = "example_value",
-    ///             Describe = "example_value",
-    ///             EnableSubscribed = true,
-    ///         });
-    ///         var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("defaultDynamicTagGroup", new AliCloud.Cms.DynamicTagGroupArgs
-    ///         {
-    ///             ContactGroupLists = 
-    ///             {
-    ///                 defaultAlarmContactGroup.Id,
-    ///             },
-    ///             TagKey = "your_tag_key",
-    ///             MatchExpresses = 
-    ///             {
-    ///                 new AliCloud.Cms.Inputs.DynamicTagGroupMatchExpressArgs
-    ///                 {
-    ///                     TagValue = "your_tag_value",
-    ///                     TagValueMatchFunction = "all",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AlarmContactGroupName = "example_value",
+    ///         Describe = "example_value",
+    ///         EnableSubscribed = true,
+    ///     });
     /// 
-    /// }
+    ///     var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("defaultDynamicTagGroup", new()
+    ///     {
+    ///         ContactGroupLists = new[]
+    ///         {
+    ///             defaultAlarmContactGroup.Id,
+    ///         },
+    ///         TagKey = "your_tag_key",
+    ///         MatchExpresses = new[]
+    ///         {
+    ///             new AliCloud.Cms.Inputs.DynamicTagGroupMatchExpressArgs
+    ///             {
+    ///                 TagValue = "your_tag_value",
+    ///                 TagValueMatchFunction = "all",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +63,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/dynamicTagGroup:DynamicTagGroup")]
-    public partial class DynamicTagGroup : Pulumi.CustomResource
+    public partial class DynamicTagGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
@@ -146,7 +145,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class DynamicTagGroupArgs : Pulumi.ResourceArgs
+    public sealed class DynamicTagGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("contactGroupLists", required: true)]
         private InputList<string>? _contactGroupLists;
@@ -199,9 +198,10 @@ namespace Pulumi.AliCloud.Cms
         public DynamicTagGroupArgs()
         {
         }
+        public static new DynamicTagGroupArgs Empty => new DynamicTagGroupArgs();
     }
 
-    public sealed class DynamicTagGroupState : Pulumi.ResourceArgs
+    public sealed class DynamicTagGroupState : global::Pulumi.ResourceArgs
     {
         [Input("contactGroupLists")]
         private InputList<string>? _contactGroupLists;
@@ -260,5 +260,6 @@ namespace Pulumi.AliCloud.Cms
         public DynamicTagGroupState()
         {
         }
+        public static new DynamicTagGroupState Empty => new DynamicTagGroupState();
     }
 }

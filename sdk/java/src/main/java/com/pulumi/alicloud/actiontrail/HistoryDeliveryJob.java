@@ -29,6 +29,57 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.actiontrail.Trail;
+ * import com.pulumi.alicloud.actiontrail.TrailArgs;
+ * import com.pulumi.alicloud.actiontrail.HistoryDeliveryJob;
+ * import com.pulumi.alicloud.actiontrail.HistoryDeliveryJobArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var exampleRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         final var exampleAccount = AlicloudFunctions.getAccount();
+ * 
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;tf actiontrail test&#34;)
+ *             .build());
+ * 
+ *         var exampleTrail = new Trail(&#34;exampleTrail&#34;, TrailArgs.builder()        
+ *             .trailName(&#34;example_value&#34;)
+ *             .slsProjectArn(exampleProject.name().applyValue(name -&gt; String.format(&#34;acs:log:%s:%s:project/%s&#34;, exampleRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),exampleAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
+ *             .build());
+ * 
+ *         var exampleHistoryDeliveryJob = new HistoryDeliveryJob(&#34;exampleHistoryDeliveryJob&#34;, HistoryDeliveryJobArgs.builder()        
+ *             .trailName(exampleTrail.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Actiontrail History Delivery Job can be imported using the id, e.g.

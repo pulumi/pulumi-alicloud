@@ -23,34 +23,33 @@ namespace Pulumi.AliCloud.CR
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CR.GetChartRepositories.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CR.GetChartRepositories.InvokeAsync(new AliCloud.CR.GetChartRepositoriesArgs
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CrChartRepositoryId1 = data.Alicloud_cr_chart_repositories.Default.Ids[0];
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("crChartRepositoryId1")]
-        ///     public Output&lt;string&gt; CrChartRepositoryId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["crChartRepositoryId1"] = data.Alicloud_cr_chart_repositories.Default.Ids[0],
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetChartRepositoriesResult> InvokeAsync(GetChartRepositoriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChartRepositoriesResult>("alicloud:cr/getChartRepositories:getChartRepositories", args ?? new GetChartRepositoriesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetChartRepositoriesResult>("alicloud:cr/getChartRepositories:getChartRepositories", args ?? new GetChartRepositoriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cr Chart Repositories of the current Alibaba Cloud user.
@@ -64,38 +63,37 @@ namespace Pulumi.AliCloud.CR
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CR.GetChartRepositories.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CR.GetChartRepositories.InvokeAsync(new AliCloud.CR.GetChartRepositoriesArgs
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CrChartRepositoryId1 = data.Alicloud_cr_chart_repositories.Default.Ids[0];
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("crChartRepositoryId1")]
-        ///     public Output&lt;string&gt; CrChartRepositoryId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["crChartRepositoryId1"] = data.Alicloud_cr_chart_repositories.Default.Ids[0],
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetChartRepositoriesResult> Invoke(GetChartRepositoriesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChartRepositoriesResult>("alicloud:cr/getChartRepositories:getChartRepositories", args ?? new GetChartRepositoriesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetChartRepositoriesResult>("alicloud:cr/getChartRepositories:getChartRepositories", args ?? new GetChartRepositoriesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetChartRepositoriesArgs : Pulumi.InvokeArgs
+    public sealed class GetChartRepositoriesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -127,9 +125,10 @@ namespace Pulumi.AliCloud.CR
         public GetChartRepositoriesArgs()
         {
         }
+        public static new GetChartRepositoriesArgs Empty => new GetChartRepositoriesArgs();
     }
 
-    public sealed class GetChartRepositoriesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetChartRepositoriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -161,6 +160,7 @@ namespace Pulumi.AliCloud.CR
         public GetChartRepositoriesInvokeArgs()
         {
         }
+        public static new GetChartRepositoriesInvokeArgs Empty => new GetChartRepositoriesInvokeArgs();
     }
 
 

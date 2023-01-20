@@ -49,10 +49,6 @@ export class SecretParameter extends pulumi.CustomResource {
 
     /**
      * The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-     * * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-     * * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-     * * `MinLength`: The minimum length of the encryption parameter.
-     * * `MaxLength`: The maximum length of the encryption parameter.
      */
     public readonly constraints!: pulumi.Output<string | undefined>;
     /**
@@ -120,9 +116,11 @@ export class SecretParameter extends pulumi.CustomResource {
             resourceInputs["secretParameterName"] = args ? args.secretParameterName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SecretParameter.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -133,10 +131,6 @@ export class SecretParameter extends pulumi.CustomResource {
 export interface SecretParameterState {
     /**
      * The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-     * * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-     * * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-     * * `MinLength`: The minimum length of the encryption parameter.
-     * * `MaxLength`: The maximum length of the encryption parameter.
      */
     constraints?: pulumi.Input<string>;
     /**
@@ -175,10 +169,6 @@ export interface SecretParameterState {
 export interface SecretParameterArgs {
     /**
      * The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-     * * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-     * * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-     * * `MinLength`: The minimum length of the encryption parameter.
-     * * `MaxLength`: The maximum length of the encryption parameter.
      */
     constraints?: pulumi.Input<string>;
     /**

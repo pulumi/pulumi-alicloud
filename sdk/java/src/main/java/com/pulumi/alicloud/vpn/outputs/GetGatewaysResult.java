@@ -22,7 +22,11 @@ public final class GetGatewaysResult {
     /**
      * @return Whether the ipsec function is enabled.
      * 
+     * @deprecated
+     * Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
+     * 
      */
+    @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
     private @Nullable Boolean enableIpsec;
     /**
      * @return A list of VPN gateways. Each element contains the following attributes:
@@ -39,6 +43,7 @@ public final class GetGatewaysResult {
      * 
      */
     private List<String> ids;
+    private @Nullable Boolean includeReservationData;
     private @Nullable String nameRegex;
     /**
      * @return names of the VPN.
@@ -68,7 +73,11 @@ public final class GetGatewaysResult {
     /**
      * @return Whether the ipsec function is enabled.
      * 
+     * @deprecated
+     * Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
+     * 
      */
+    @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
     public Optional<Boolean> enableIpsec() {
         return Optional.ofNullable(this.enableIpsec);
     }
@@ -92,6 +101,9 @@ public final class GetGatewaysResult {
      */
     public List<String> ids() {
         return this.ids;
+    }
+    public Optional<Boolean> includeReservationData() {
+        return Optional.ofNullable(this.includeReservationData);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
@@ -135,6 +147,7 @@ public final class GetGatewaysResult {
         private List<GetGatewaysGateway> gateways;
         private String id;
         private List<String> ids;
+        private @Nullable Boolean includeReservationData;
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
@@ -148,6 +161,7 @@ public final class GetGatewaysResult {
     	      this.gateways = defaults.gateways;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.includeReservationData = defaults.includeReservationData;
     	      this.nameRegex = defaults.nameRegex;
     	      this.names = defaults.names;
     	      this.outputFile = defaults.outputFile;
@@ -187,6 +201,11 @@ public final class GetGatewaysResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
+        public Builder includeReservationData(@Nullable Boolean includeReservationData) {
+            this.includeReservationData = includeReservationData;
+            return this;
+        }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
@@ -221,6 +240,7 @@ public final class GetGatewaysResult {
             o.gateways = gateways;
             o.id = id;
             o.ids = ids;
+            o.includeReservationData = includeReservationData;
             o.nameRegex = nameRegex;
             o.names = names;
             o.outputFile = outputFile;

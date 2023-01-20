@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cfg.Inputs
 {
 
-    public sealed class AggregatorAggregatorAccountArgs : Pulumi.ResourceArgs
+    public sealed class AggregatorAggregatorAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Aggregator account Uid.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Cfg.Inputs
         public AggregatorAggregatorAccountArgs()
         {
         }
+        public static new AggregatorAggregatorAccountArgs Empty => new AggregatorAggregatorAccountArgs();
     }
 }

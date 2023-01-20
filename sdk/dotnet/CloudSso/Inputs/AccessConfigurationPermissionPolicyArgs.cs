@@ -10,13 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CloudSso.Inputs
 {
 
-    public sealed class AccessConfigurationPermissionPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AccessConfigurationPermissionPolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("permissionPolicyDocument")]
+        private Input<string>? _permissionPolicyDocument;
+
         /// <summary>
         /// The Content of Policy.
         /// </summary>
-        [Input("permissionPolicyDocument")]
-        public Input<string>? PermissionPolicyDocument { get; set; }
+        public Input<string>? PermissionPolicyDocument
+        {
+            get => _permissionPolicyDocument;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _permissionPolicyDocument = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Policy Name of policy. The name of the resource.
@@ -33,5 +43,6 @@ namespace Pulumi.AliCloud.CloudSso.Inputs
         public AccessConfigurationPermissionPolicyArgs()
         {
         }
+        public static new AccessConfigurationPermissionPolicyArgs Empty => new AccessConfigurationPermissionPolicyArgs();
     }
 }

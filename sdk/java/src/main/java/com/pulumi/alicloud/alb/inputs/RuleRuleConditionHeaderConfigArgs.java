@@ -17,14 +17,14 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
     public static final RuleRuleConditionHeaderConfigArgs Empty = new RuleRuleConditionHeaderConfigArgs();
 
     /**
-     * The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+     * The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+     * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
      * 
      */
     public Optional<Output<String>> key() {
@@ -32,14 +32,14 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The query string.
+     * The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return The query string.
+     * @return The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -72,7 +72,7 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param key The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+         * @param key The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param key The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+         * @param key The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param values The query string.
+         * @param values The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param values The query string.
+         * @param values The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param values The query string.
+         * @param values The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
          * 
          * @return builder
          * 

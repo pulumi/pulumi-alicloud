@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultMigrationInstance = new alicloud.dts.MigrationInstance("default", {
+ * const _default = new alicloud.dts.MigrationInstance("default", {
  *     destinationEndpointEngineName: "MySQL",
  *     destinationEndpointRegion: "cn-hangzhou",
  *     instanceClass: "small",

@@ -6,12 +6,16 @@ package com.pulumi.alicloud.ecs;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ecs.ReservedInstanceArgs;
 import com.pulumi.alicloud.ecs.inputs.ReservedInstanceState;
+import com.pulumi.alicloud.ecs.outputs.ReservedInstanceOperationLock;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -69,18 +73,74 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/reservedInstance:ReservedInstance")
 public class ReservedInstance extends com.pulumi.resources.CustomResource {
     /**
-     * Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+     * Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
+     * 
+     */
+    @Export(name="allocationStatus", type=String.class, parameters={})
+    private Output<String> allocationStatus;
+
+    /**
+     * @return Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
+     * 
+     */
+    public Output<String> allocationStatus() {
+        return this.allocationStatus;
+    }
+    /**
+     * The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+     * 
+     */
+    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    private Output<Integer> autoRenewPeriod;
+
+    /**
+     * @return The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `period_unit` is set to Month: 1 Default value when `period_unit` is set to Year: 12
+     * 
+     */
+    public Output<Integer> autoRenewPeriod() {
+        return this.autoRenewPeriod;
+    }
+    /**
+     * The time when the reserved instance was created.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The time when the reserved instance was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
+     * @return Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The time when the reserved instance expires.
+     * 
+     */
+    @Export(name="expiredTime", type=String.class, parameters={})
+    private Output<String> expiredTime;
+
+    /**
+     * @return The time when the reserved instance expires.
+     * 
+     */
+    public Output<String> expiredTime() {
+        return this.expiredTime;
     }
     /**
      * Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
@@ -111,48 +171,84 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
         return this.instanceType;
     }
     /**
-     * Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+     * Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated from provider version 1.194.0. New field &#39;reserved_instance_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead. */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+     * @return Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+     * Payment type of the RI. Default value: `All Upfront`. Valid values:
+     * - `No Upfront`: No upfront payment.
+     * - `Partial Upfront`: A portion of upfront payment.
+     * - `All Upfront`: Full upfront payment.
      * 
      */
     @Export(name="offeringType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> offeringType;
+    private Output<String> offeringType;
 
     /**
-     * @return Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
+     * @return Payment type of the RI. Default value: `All Upfront`. Valid values:
+     * - `No Upfront`: No upfront payment.
+     * - `Partial Upfront`: A portion of upfront payment.
+     * - `All Upfront`: Full upfront payment.
      * 
      */
-    public Output<Optional<String>> offeringType() {
-        return Codegen.optional(this.offeringType);
+    public Output<String> offeringType() {
+        return this.offeringType;
     }
+    /**
+     * Details about the lock status of the reserved instance.
+     * 
+     */
+    @Export(name="operationLocks", type=List.class, parameters={ReservedInstanceOperationLock.class})
+    private Output<List<ReservedInstanceOperationLock>> operationLocks;
+
+    /**
+     * @return Details about the lock status of the reserved instance.
+     * 
+     */
+    public Output<List<ReservedInstanceOperationLock>> operationLocks() {
+        return this.operationLocks;
+    }
+    /**
+     * The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+     * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `period_unit` is `Month`, Valid values: `1`.
+     * 
+     */
     @Export(name="period", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
+     * - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
+     * - When `period_unit` is `Month`, Valid values: `1`.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * Term unit. Optional value: Year.
+     * The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
      * 
      */
     @Export(name="periodUnit", type=String.class, parameters={})
     private Output</* @Nullable */ String> periodUnit;
 
     /**
-     * @return Term unit. Optional value: Year.
+     * @return The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `period_unit` can be set to `Month`.
      * 
      */
     public Output<Optional<String>> periodUnit() {
@@ -173,6 +269,34 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
         return this.platform;
     }
     /**
+     * Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+     * 
+     */
+    @Export(name="renewalStatus", type=String.class, parameters={})
+    private Output<String> renewalStatus;
+
+    /**
+     * @return Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
+     * 
+     */
+    public Output<String> renewalStatus() {
+        return this.renewalStatus;
+    }
+    /**
+     * Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+     * 
+     */
+    @Export(name="reservedInstanceName", type=String.class, parameters={})
+    private Output<String> reservedInstanceName;
+
+    /**
+     * @return Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
+     * 
+     */
+    public Output<String> reservedInstanceName() {
+        return this.reservedInstanceName;
+    }
+    /**
      * Resource group ID.
      * 
      */
@@ -191,14 +315,56 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="scope", type=String.class, parameters={})
-    private Output</* @Nullable */ String> scope;
+    private Output<String> scope;
 
     /**
      * @return Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
      * 
      */
-    public Output<Optional<String>> scope() {
-        return Codegen.optional(this.scope);
+    public Output<String> scope() {
+        return this.scope;
+    }
+    /**
+     * The time when the reserved instance took effect.
+     * 
+     */
+    @Export(name="startTime", type=String.class, parameters={})
+    private Output<String> startTime;
+
+    /**
+     * @return The time when the reserved instance took effect.
+     * 
+     */
+    public Output<String> startTime() {
+        return this.startTime;
+    }
+    /**
+     * The status of the reserved instance.
+     * 
+     */
+    @Export(name="status", type=String.class, parameters={})
+    private Output<String> status;
+
+    /**
+     * @return The status of the reserved instance.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).

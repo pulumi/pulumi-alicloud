@@ -19,67 +19,69 @@ namespace Pulumi.AliCloud.Ess
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "essscalingconfiguration";
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "essscalingconfiguration";
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = data.Alicloud_zones.Default.Zones[0].Id,
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///         });
-    ///         var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new AliCloud.Ess.ScalingGroupArgs
-    ///         {
-    ///             MinSize = 0,
-    ///             MaxSize = 1,
-    ///             ScalingGroupName = name,
-    ///             RemovalPolicies = 
-    ///             {
-    ///                 "OldestInstance",
-    ///                 "NewestInstance",
-    ///             },
-    ///             VswitchIds = 
-    ///             {
-    ///                 defaultSwitch.Id,
-    ///             },
-    ///             GroupType = "ECI",
-    ///         });
-    ///         var defaultEciScalingConfiguration = new AliCloud.Ess.EciScalingConfiguration("defaultEciScalingConfiguration", new AliCloud.Ess.EciScalingConfigurationArgs
-    ///         {
-    ///             ScalingGroupId = defaultScalingGroup.Id,
-    ///             Cpu = 2,
-    ///             Memory = 4,
-    ///             SecurityGroupId = defaultSecurityGroup.Id,
-    ///             ForceDelete = true,
-    ///             Active = true,
-    ///             ContainerGroupName = "container-group-1649839595174",
-    ///             Containers = 
-    ///             {
-    ///                 new AliCloud.Ess.Inputs.EciScalingConfigurationContainerArgs
-    ///                 {
-    ///                     Name = "container-1",
-    ///                     Image = "registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
     /// 
-    /// }
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = data.Alicloud_zones.Default.Zones[0].Id,
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new()
+    ///     {
+    ///         MinSize = 0,
+    ///         MaxSize = 1,
+    ///         ScalingGroupName = name,
+    ///         RemovalPolicies = new[]
+    ///         {
+    ///             "OldestInstance",
+    ///             "NewestInstance",
+    ///         },
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         GroupType = "ECI",
+    ///     });
+    /// 
+    ///     var defaultEciScalingConfiguration = new AliCloud.Ess.EciScalingConfiguration("defaultEciScalingConfiguration", new()
+    ///     {
+    ///         ScalingGroupId = defaultScalingGroup.Id,
+    ///         Cpu = 2,
+    ///         Memory = 4,
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         ForceDelete = true,
+    ///         Active = true,
+    ///         ContainerGroupName = "container-group-1649839595174",
+    ///         Containers = new[]
+    ///         {
+    ///             new AliCloud.Ess.Inputs.EciScalingConfigurationContainerArgs
+    ///             {
+    ///                 Name = "container-1",
+    ///                 Image = "registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -91,8 +93,16 @@ namespace Pulumi.AliCloud.Ess
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ess/eciScalingConfiguration:EciScalingConfiguration")]
-    public partial class EciScalingConfiguration : Pulumi.CustomResource
+    public partial class EciScalingConfiguration : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Information about the Container Registry Enterprise Edition instance. The details see
+        /// Block `acr_registry_info`.See Block acr_registry_info below for
+        /// details.
+        /// </summary>
+        [Output("acrRegistryInfos")]
+        public Output<ImmutableArray<Outputs.EciScalingConfigurationAcrRegistryInfo>> AcrRegistryInfos { get; private set; } = null!;
+
         /// <summary>
         /// Whether active current eci scaling configuration in the specified scaling group. Note that only
         /// one configuration can be active. Default to `false`.
@@ -119,7 +129,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<Outputs.EciScalingConfigurationContainer>> Containers { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Output("cpu")]
         public Output<double?> Cpu { get; private set; } = null!;
@@ -196,7 +206,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<Outputs.EciScalingConfigurationInitContainer>> InitContainers { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         [Output("memory")]
         public Output<double?> Memory { get; private set; } = null!;
@@ -314,8 +324,22 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
-    public sealed class EciScalingConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class EciScalingConfigurationArgs : global::Pulumi.ResourceArgs
     {
+        [Input("acrRegistryInfos")]
+        private InputList<Inputs.EciScalingConfigurationAcrRegistryInfoArgs>? _acrRegistryInfos;
+
+        /// <summary>
+        /// Information about the Container Registry Enterprise Edition instance. The details see
+        /// Block `acr_registry_info`.See Block acr_registry_info below for
+        /// details.
+        /// </summary>
+        public InputList<Inputs.EciScalingConfigurationAcrRegistryInfoArgs> AcrRegistryInfos
+        {
+            get => _acrRegistryInfos ?? (_acrRegistryInfos = new InputList<Inputs.EciScalingConfigurationAcrRegistryInfoArgs>());
+            set => _acrRegistryInfos = value;
+        }
+
         /// <summary>
         /// Whether active current eci scaling configuration in the specified scaling group. Note that only
         /// one configuration can be active. Default to `false`.
@@ -348,7 +372,7 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
@@ -443,7 +467,7 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
@@ -532,10 +556,25 @@ namespace Pulumi.AliCloud.Ess
         public EciScalingConfigurationArgs()
         {
         }
+        public static new EciScalingConfigurationArgs Empty => new EciScalingConfigurationArgs();
     }
 
-    public sealed class EciScalingConfigurationState : Pulumi.ResourceArgs
+    public sealed class EciScalingConfigurationState : global::Pulumi.ResourceArgs
     {
+        [Input("acrRegistryInfos")]
+        private InputList<Inputs.EciScalingConfigurationAcrRegistryInfoGetArgs>? _acrRegistryInfos;
+
+        /// <summary>
+        /// Information about the Container Registry Enterprise Edition instance. The details see
+        /// Block `acr_registry_info`.See Block acr_registry_info below for
+        /// details.
+        /// </summary>
+        public InputList<Inputs.EciScalingConfigurationAcrRegistryInfoGetArgs> AcrRegistryInfos
+        {
+            get => _acrRegistryInfos ?? (_acrRegistryInfos = new InputList<Inputs.EciScalingConfigurationAcrRegistryInfoGetArgs>());
+            set => _acrRegistryInfos = value;
+        }
+
         /// <summary>
         /// Whether active current eci scaling configuration in the specified scaling group. Note that only
         /// one configuration can be active. Default to `false`.
@@ -568,7 +607,7 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
@@ -663,7 +702,7 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
@@ -752,5 +791,6 @@ namespace Pulumi.AliCloud.Ess
         public EciScalingConfigurationState()
         {
         }
+        public static new EciScalingConfigurationState Empty => new EciScalingConfigurationState();
     }
 }

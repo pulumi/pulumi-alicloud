@@ -23,59 +23,62 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testAcc";
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testAcc";
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "192.168.0.0/24",
-    ///         });
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VswitchName = name,
-    ///             CidrBlock = "192.168.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VpcId = defaultNetwork.Id,
-    ///         });
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///         });
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
-    ///         {
-    ///             Status = "OK",
-    ///         }));
-    ///         var defaultEcsNetworkInterface = new AliCloud.Ecs.EcsNetworkInterface("defaultEcsNetworkInterface", new AliCloud.Ecs.EcsNetworkInterfaceArgs
-    ///         {
-    ///             NetworkInterfaceName = name,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             SecurityGroupIds = 
-    ///             {
-    ///                 defaultSecurityGroup.Id,
-    ///             },
-    ///             Description = "Basic test",
-    ///             PrimaryIpAddress = "192.168.0.2",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "Test" },
-    ///             },
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Ids?[0]),
-    ///         });
-    ///     }
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/24",
+    ///     });
     /// 
-    /// }
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "192.168.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultEcsNetworkInterface = new AliCloud.Ecs.EcsNetworkInterface("defaultEcsNetworkInterface", new()
+    ///     {
+    ///         NetworkInterfaceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///         Description = "Basic test",
+    ///         PrimaryIpAddress = "192.168.0.2",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "Test" },
+    ///         },
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -87,13 +90,25 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface")]
-    public partial class EcsNetworkInterface : Pulumi.CustomResource
+    public partial class EcsNetworkInterface : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        /// </summary>
+        [Output("ipv6AddressCount")]
+        public Output<int> Ipv6AddressCount { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        /// </summary>
+        [Output("ipv6Addresses")]
+        public Output<ImmutableArray<string>> Ipv6Addresses { get; private set; } = null!;
 
         /// <summary>
         /// The MAC address of the ENI.
@@ -235,13 +250,31 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsNetworkInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class EcsNetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        /// </summary>
+        [Input("ipv6AddressCount")]
+        public Input<int>? Ipv6AddressCount { get; set; }
+
+        [Input("ipv6Addresses")]
+        private InputList<string>? _ipv6Addresses;
+
+        /// <summary>
+        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        /// </summary>
+        public InputList<string> Ipv6Addresses
+        {
+            get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<string>());
+            set => _ipv6Addresses = value;
+        }
 
         /// <summary>
         /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
@@ -362,15 +395,34 @@ namespace Pulumi.AliCloud.Ecs
         public EcsNetworkInterfaceArgs()
         {
         }
+        public static new EcsNetworkInterfaceArgs Empty => new EcsNetworkInterfaceArgs();
     }
 
-    public sealed class EcsNetworkInterfaceState : Pulumi.ResourceArgs
+    public sealed class EcsNetworkInterfaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        /// </summary>
+        [Input("ipv6AddressCount")]
+        public Input<int>? Ipv6AddressCount { get; set; }
+
+        [Input("ipv6Addresses")]
+        private InputList<string>? _ipv6Addresses;
+
+        /// <summary>
+        /// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        /// </summary>
+        public InputList<string> Ipv6Addresses
+        {
+            get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<string>());
+            set => _ipv6Addresses = value;
+        }
 
         /// <summary>
         /// The MAC address of the ENI.
@@ -503,5 +555,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsNetworkInterfaceState()
         {
         }
+        public static new EcsNetworkInterfaceState Empty => new EcsNetworkInterfaceState();
     }
 }

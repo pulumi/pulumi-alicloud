@@ -20,9 +20,6 @@ type GetImagesImage struct {
 	// The name of the resource.
 	ImageName string `pulumi:"imageName"`
 	// The type of the image. Valid values: `app`, `custom`, `system`.
-	// * `system`: operating system (OS) image.
-	// * `app`: application image.
-	// * `custom`: custom image.
 	ImageType string `pulumi:"imageType"`
 	// The platform of Plan supported.
 	Platform string `pulumi:"platform"`
@@ -49,9 +46,6 @@ type GetImagesImageArgs struct {
 	// The name of the resource.
 	ImageName pulumi.StringInput `pulumi:"imageName"`
 	// The type of the image. Valid values: `app`, `custom`, `system`.
-	// * `system`: operating system (OS) image.
-	// * `app`: application image.
-	// * `custom`: custom image.
 	ImageType pulumi.StringInput `pulumi:"imageType"`
 	// The platform of Plan supported.
 	Platform pulumi.StringInput `pulumi:"platform"`
@@ -129,9 +123,6 @@ func (o GetImagesImageOutput) ImageName() pulumi.StringOutput {
 }
 
 // The type of the image. Valid values: `app`, `custom`, `system`.
-// * `system`: operating system (OS) image.
-// * `app`: application image.
-// * `custom`: custom image.
 func (o GetImagesImageOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.ImageType }).(pulumi.StringOutput)
 }

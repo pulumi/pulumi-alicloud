@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -111,6 +112,20 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly hpcClusterId!: pulumi.Output<string | undefined>;
     /**
+     * Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+     */
+    public readonly httpEndpoint!: pulumi.Output<string>;
+    /**
+     * The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+     */
+    public readonly httpPutResponseHopLimit!: pulumi.Output<number>;
+    /**
+     * Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+     * - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+     * - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+     */
+    public readonly httpTokens!: pulumi.Output<string>;
+    /**
      * The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
      */
     public readonly imageId!: pulumi.Output<string>;
@@ -147,6 +162,14 @@ export class Instance extends pulumi.CustomResource {
      * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
     public readonly ioOptimized!: pulumi.Output<string | undefined>;
+    /**
+     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+     */
+    public readonly ipv6AddressCount!: pulumi.Output<number>;
+    /**
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     */
+    public readonly ipv6Addresses!: pulumi.Output<string[]>;
     /**
      * Whether to use outdated instance type. Default to false.
      */
@@ -198,9 +221,6 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly publicIp!: pulumi.Output<string>;
     /**
      * Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
-     * - `AutoRenewal`: Enable auto renewal.
-     * - `Normal`: Disable auto renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     public readonly renewalStatus!: pulumi.Output<string | undefined>;
     /**
@@ -230,6 +250,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
     /**
+     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+     */
+    public readonly spotDuration!: pulumi.Output<number>;
+    /**
      * The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
      */
     public readonly spotPriceLimit!: pulumi.Output<number | undefined>;
@@ -245,7 +269,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+     * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
      */
     public readonly stoppedMode!: pulumi.Output<string>;
     /**
@@ -257,7 +281,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly systemDiskAutoSnapshotPolicyId!: pulumi.Output<string | undefined>;
     /**
-     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
      */
     public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
     /**
@@ -269,9 +293,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly systemDiskEncryptAlgorithm!: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-     * - `true`: encrypts the system disk.
-     * - `false`: does not encrypt the system disk.
+     * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
      */
     public readonly systemDiskEncrypted!: pulumi.Output<boolean | undefined>;
     /**
@@ -342,6 +364,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["hostName"] = state ? state.hostName : undefined;
             resourceInputs["hpcClusterId"] = state ? state.hpcClusterId : undefined;
+            resourceInputs["httpEndpoint"] = state ? state.httpEndpoint : undefined;
+            resourceInputs["httpPutResponseHopLimit"] = state ? state.httpPutResponseHopLimit : undefined;
+            resourceInputs["httpTokens"] = state ? state.httpTokens : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["includeDataDisks"] = state ? state.includeDataDisks : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
@@ -351,6 +376,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["internetMaxBandwidthIn"] = state ? state.internetMaxBandwidthIn : undefined;
             resourceInputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
             resourceInputs["ioOptimized"] = state ? state.ioOptimized : undefined;
+            resourceInputs["ipv6AddressCount"] = state ? state.ipv6AddressCount : undefined;
+            resourceInputs["ipv6Addresses"] = state ? state.ipv6Addresses : undefined;
             resourceInputs["isOutdated"] = state ? state.isOutdated : undefined;
             resourceInputs["keyName"] = state ? state.keyName : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
@@ -371,6 +398,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["secondaryPrivateIps"] = state ? state.secondaryPrivateIps : undefined;
             resourceInputs["securityEnhancementStrategy"] = state ? state.securityEnhancementStrategy : undefined;
             resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
+            resourceInputs["spotDuration"] = state ? state.spotDuration : undefined;
             resourceInputs["spotPriceLimit"] = state ? state.spotPriceLimit : undefined;
             resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -414,6 +442,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["hostName"] = args ? args.hostName : undefined;
             resourceInputs["hpcClusterId"] = args ? args.hpcClusterId : undefined;
+            resourceInputs["httpEndpoint"] = args ? args.httpEndpoint : undefined;
+            resourceInputs["httpPutResponseHopLimit"] = args ? args.httpPutResponseHopLimit : undefined;
+            resourceInputs["httpTokens"] = args ? args.httpTokens : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["includeDataDisks"] = args ? args.includeDataDisks : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
@@ -423,6 +454,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["internetMaxBandwidthIn"] = args ? args.internetMaxBandwidthIn : undefined;
             resourceInputs["internetMaxBandwidthOut"] = args ? args.internetMaxBandwidthOut : undefined;
             resourceInputs["ioOptimized"] = args ? args.ioOptimized : undefined;
+            resourceInputs["ipv6AddressCount"] = args ? args.ipv6AddressCount : undefined;
+            resourceInputs["ipv6Addresses"] = args ? args.ipv6Addresses : undefined;
             resourceInputs["isOutdated"] = args ? args.isOutdated : undefined;
             resourceInputs["keyName"] = args ? args.keyName : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
@@ -431,7 +464,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintenanceNotify"] = args ? args.maintenanceNotify : undefined;
             resourceInputs["maintenanceTime"] = args ? args.maintenanceTime : undefined;
             resourceInputs["operatorType"] = args ? args.operatorType : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
             resourceInputs["privateIp"] = args ? args.privateIp : undefined;
@@ -442,6 +475,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["secondaryPrivateIps"] = args ? args.secondaryPrivateIps : undefined;
             resourceInputs["securityEnhancementStrategy"] = args ? args.securityEnhancementStrategy : undefined;
             resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
+            resourceInputs["spotDuration"] = args ? args.spotDuration : undefined;
             resourceInputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
             resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
@@ -465,6 +499,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["publicIp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -542,6 +578,20 @@ export interface InstanceState {
      */
     hpcClusterId?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+     */
+    httpEndpoint?: pulumi.Input<string>;
+    /**
+     * The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+     */
+    httpPutResponseHopLimit?: pulumi.Input<number>;
+    /**
+     * Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+     * - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+     * - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+     */
+    httpTokens?: pulumi.Input<string>;
+    /**
      * The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
      */
     imageId?: pulumi.Input<string>;
@@ -578,6 +628,14 @@ export interface InstanceState {
      * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
     ioOptimized?: pulumi.Input<string>;
+    /**
+     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+     */
+    ipv6AddressCount?: pulumi.Input<number>;
+    /**
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     */
+    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to use outdated instance type. Default to false.
      */
@@ -629,9 +687,6 @@ export interface InstanceState {
     publicIp?: pulumi.Input<string>;
     /**
      * Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
-     * - `AutoRenewal`: Enable auto renewal.
-     * - `Normal`: Disable auto renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
     /**
@@ -661,6 +716,10 @@ export interface InstanceState {
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+     */
+    spotDuration?: pulumi.Input<number>;
+    /**
      * The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
      */
     spotPriceLimit?: pulumi.Input<number>;
@@ -676,7 +735,7 @@ export interface InstanceState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+     * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
      */
     stoppedMode?: pulumi.Input<string>;
     /**
@@ -688,7 +747,7 @@ export interface InstanceState {
      */
     systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
      */
     systemDiskCategory?: pulumi.Input<string>;
     /**
@@ -700,9 +759,7 @@ export interface InstanceState {
      */
     systemDiskEncryptAlgorithm?: pulumi.Input<string>;
     /**
-     * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-     * - `true`: encrypts the system disk.
-     * - `false`: does not encrypt the system disk.
+     * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
      */
     systemDiskEncrypted?: pulumi.Input<boolean>;
     /**
@@ -816,6 +873,20 @@ export interface InstanceArgs {
      */
     hpcClusterId?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+     */
+    httpEndpoint?: pulumi.Input<string>;
+    /**
+     * The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+     */
+    httpPutResponseHopLimit?: pulumi.Input<number>;
+    /**
+     * Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+     * - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+     * - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+     */
+    httpTokens?: pulumi.Input<string>;
+    /**
      * The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
      */
     imageId: pulumi.Input<string>;
@@ -852,6 +923,14 @@ export interface InstanceArgs {
      * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
     ioOptimized?: pulumi.Input<string>;
+    /**
+     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+     */
+    ipv6AddressCount?: pulumi.Input<number>;
+    /**
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     */
+    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to use outdated instance type. Default to false.
      */
@@ -899,9 +978,6 @@ export interface InstanceArgs {
     privateIp?: pulumi.Input<string>;
     /**
      * Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
-     * - `AutoRenewal`: Enable auto renewal.
-     * - `Normal`: Disable auto renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
     /**
@@ -931,6 +1007,10 @@ export interface InstanceArgs {
      */
     securityGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+     */
+    spotDuration?: pulumi.Input<number>;
+    /**
      * The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
      */
     spotPriceLimit?: pulumi.Input<number>;
@@ -946,7 +1026,7 @@ export interface InstanceArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+     * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
      */
     stoppedMode?: pulumi.Input<string>;
     /**
@@ -958,7 +1038,7 @@ export interface InstanceArgs {
      */
     systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
      */
     systemDiskCategory?: pulumi.Input<string>;
     /**
@@ -970,9 +1050,7 @@ export interface InstanceArgs {
      */
     systemDiskEncryptAlgorithm?: pulumi.Input<string>;
     /**
-     * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-     * - `true`: encrypts the system disk.
-     * - `false`: does not encrypt the system disk.
+     * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
      */
     systemDiskEncrypted?: pulumi.Input<boolean>;
     /**

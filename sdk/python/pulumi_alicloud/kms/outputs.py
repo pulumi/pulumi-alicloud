@@ -142,22 +142,22 @@ class GetKeysKeyResult(dict):
                  status: str):
         """
         :param str arn: The Alibaba Cloud Resource Name (ARN) of the key.
+        :param str automatic_rotation: (Available in 1.123.1+) Specifies whether to enable automatic key rotation.
         :param str creation_date: Creation date of key.
         :param str creator: The owner of the key.
-               * `automatic_rotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
-               * `key_id` -(Available in 1.123.1+)  ID of the key.
-               * `key_spec` -(Available in 1.123.1+)  The type of the CMK.
-               * `key_usage` -(Available in 1.123.1+)  The usage of CMK.
-               * `last_rotation_date` -(Available in 1.123.1+)  The date and time the last rotation was performed.
-               * `material_expire_time` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
-               * `next_rotation_date` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
-               * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
-               * `protection_level` -(Available in 1.123.1+)  The protection level of the CMK.
-               * `rotation_interval` -(Available in 1.123.1+)  The period of automatic key rotation.
-               * `primary_key_version` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
         :param str delete_date: Deletion date of key.
         :param str description: Description of the key.
         :param str id: ID of the key.
+        :param str key_id: (Available in 1.123.1+)  ID of the key.
+        :param str key_spec: (Available in 1.123.1+)  The type of the CMK.
+        :param str key_usage: (Available in 1.123.1+)  The usage of CMK.
+        :param str last_rotation_date: (Available in 1.123.1+)  The date and time the last rotation was performed.
+        :param str material_expire_time: (Available in 1.123.1+)  The time and date the key material for the CMK expires.
+        :param str next_rotation_date: (Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+        :param str origin: (Available in 1.123.1+)  The source of the key material for the CMK.
+        :param str primary_key_version: (Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
+        :param str protection_level: (Available in 1.123.1+)  The protection level of the CMK.
+        :param str rotation_interval: (Available in 1.123.1+)  The period of automatic key rotation.
         :param str status: Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
         """
         pulumi.set(__self__, "arn", arn)
@@ -190,6 +190,9 @@ class GetKeysKeyResult(dict):
     @property
     @pulumi.getter(name="automaticRotation")
     def automatic_rotation(self) -> str:
+        """
+        (Available in 1.123.1+) Specifies whether to enable automatic key rotation.
+        """
         return pulumi.get(self, "automatic_rotation")
 
     @property
@@ -205,17 +208,6 @@ class GetKeysKeyResult(dict):
     def creator(self) -> str:
         """
         The owner of the key.
-        * `automatic_rotation` -(Available in 1.123.1+) Specifies whether to enable automatic key rotation.
-        * `key_id` -(Available in 1.123.1+)  ID of the key.
-        * `key_spec` -(Available in 1.123.1+)  The type of the CMK.
-        * `key_usage` -(Available in 1.123.1+)  The usage of CMK.
-        * `last_rotation_date` -(Available in 1.123.1+)  The date and time the last rotation was performed.
-        * `material_expire_time` -(Available in 1.123.1+)  The time and date the key material for the CMK expires.
-        * `next_rotation_date` -(Available in 1.123.1+)  The time the next rotation is scheduled for execution.
-        * `origin` -(Available in 1.123.1+)  The source of the key material for the CMK.
-        * `protection_level` -(Available in 1.123.1+)  The protection level of the CMK.
-        * `rotation_interval` -(Available in 1.123.1+)  The period of automatic key rotation.
-        * `primary_key_version` -(Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
         """
         return pulumi.get(self, "creator")
 
@@ -246,51 +238,81 @@ class GetKeysKeyResult(dict):
     @property
     @pulumi.getter(name="keyId")
     def key_id(self) -> str:
+        """
+        (Available in 1.123.1+)  ID of the key.
+        """
         return pulumi.get(self, "key_id")
 
     @property
     @pulumi.getter(name="keySpec")
     def key_spec(self) -> str:
+        """
+        (Available in 1.123.1+)  The type of the CMK.
+        """
         return pulumi.get(self, "key_spec")
 
     @property
     @pulumi.getter(name="keyUsage")
     def key_usage(self) -> str:
+        """
+        (Available in 1.123.1+)  The usage of CMK.
+        """
         return pulumi.get(self, "key_usage")
 
     @property
     @pulumi.getter(name="lastRotationDate")
     def last_rotation_date(self) -> str:
+        """
+        (Available in 1.123.1+)  The date and time the last rotation was performed.
+        """
         return pulumi.get(self, "last_rotation_date")
 
     @property
     @pulumi.getter(name="materialExpireTime")
     def material_expire_time(self) -> str:
+        """
+        (Available in 1.123.1+)  The time and date the key material for the CMK expires.
+        """
         return pulumi.get(self, "material_expire_time")
 
     @property
     @pulumi.getter(name="nextRotationDate")
     def next_rotation_date(self) -> str:
+        """
+        (Available in 1.123.1+)  The time the next rotation is scheduled for execution.
+        """
         return pulumi.get(self, "next_rotation_date")
 
     @property
     @pulumi.getter
     def origin(self) -> str:
+        """
+        (Available in 1.123.1+)  The source of the key material for the CMK.
+        """
         return pulumi.get(self, "origin")
 
     @property
     @pulumi.getter(name="primaryKeyVersion")
     def primary_key_version(self) -> str:
+        """
+        (Available in 1.123.1+)  The ID of the current primary key version of the symmetric CMK.
+        """
         return pulumi.get(self, "primary_key_version")
 
     @property
     @pulumi.getter(name="protectionLevel")
     def protection_level(self) -> str:
+        """
+        (Available in 1.123.1+)  The protection level of the CMK.
+        """
         return pulumi.get(self, "protection_level")
 
     @property
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> str:
+        """
+        (Available in 1.123.1+)  The period of automatic key rotation.
+        """
         return pulumi.get(self, "rotation_interval")
 
     @property

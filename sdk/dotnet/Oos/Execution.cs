@@ -17,16 +17,15 @@ namespace Pulumi.AliCloud.Oos
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Oos.Template("default", new()
     ///     {
-    ///         var @default = new AliCloud.Oos.Template("default", new AliCloud.Oos.TemplateArgs
-    ///         {
-    ///             Content = @"  {
+    ///         Content = @"  {
     ///     ""FormatVersion"": ""OOS-2019-06-01"",
     ///     ""Description"": ""Update Describe instances of given status"",
     ///     ""Parameters"":{
@@ -49,24 +48,24 @@ namespace Pulumi.AliCloud.Oos
     ///       }]
     ///   }
     /// ",
-    ///             TemplateName = "test-name",
-    ///             VersionName = "test",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "acceptance Test" },
-    ///             },
-    ///         });
-    ///         var example = new AliCloud.Oos.Execution("example", new AliCloud.Oos.ExecutionArgs
+    ///         TemplateName = "test-name",
+    ///         VersionName = "test",
+    ///         Tags = 
     ///         {
-    ///             TemplateName = @default.TemplateName,
-    ///             Description = "From TF Test",
-    ///             Parameters = @"				{""Status"":""Running""}
-    /// ",
-    ///         });
-    ///     }
+    ///             { "Created", "TF" },
+    ///             { "For", "acceptance Test" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.Oos.Execution("example", new()
+    ///     {
+    ///         TemplateName = @default.TemplateName,
+    ///         Description = "From TF Test",
+    ///         Parameters = @"				{""Status"":""Running""}
+    /// ",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -78,7 +77,7 @@ namespace Pulumi.AliCloud.Oos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/execution:Execution")]
-    public partial class Execution : Pulumi.CustomResource
+    public partial class Execution : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The counters of OOS Execution.
@@ -250,7 +249,7 @@ namespace Pulumi.AliCloud.Oos
         }
     }
 
-    public sealed class ExecutionArgs : Pulumi.ResourceArgs
+    public sealed class ExecutionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of OOS Execution.
@@ -309,9 +308,10 @@ namespace Pulumi.AliCloud.Oos
         public ExecutionArgs()
         {
         }
+        public static new ExecutionArgs Empty => new ExecutionArgs();
     }
 
-    public sealed class ExecutionState : Pulumi.ResourceArgs
+    public sealed class ExecutionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The counters of OOS Execution.
@@ -442,5 +442,6 @@ namespace Pulumi.AliCloud.Oos
         public ExecutionState()
         {
         }
+        public static new ExecutionState Empty => new ExecutionState();
     }
 }

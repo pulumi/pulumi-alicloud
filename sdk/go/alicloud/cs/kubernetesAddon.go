@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -67,7 +67,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("10.1.1.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -79,7 +79,9 @@ import (
 //				return err
 //			}
 //			var defaultManagedKubernetes []*cs.ManagedKubernetes
-//			for key0, _ := range 1 == true {
+//			for index := 0; index < 1 == true; index++ {
+//				key0 := index
+//				_ := index
 //				__res, err := cs.NewManagedKubernetes(ctx, fmt.Sprintf("defaultManagedKubernetes-%v", key0), &cs.ManagedKubernetesArgs{
 //					ClusterSpec:               pulumi.String("ack.pro.small"),
 //					IsEnterpriseSecurityGroup: pulumi.Bool(true),
@@ -91,7 +93,7 @@ import (
 //						defaultSwitch.ID(),
 //					},
 //					WorkerInstanceTypes: pulumi.StringArray{
-//						pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//						*pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //					},
 //				})
 //				if err != nil {
@@ -193,7 +195,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon alicloud_cs_kubernetes_addon.my_addon <cluster_id>:<addon_name>
+//	$ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon <cluster_id>:<addon_name>
 //
 // ```
 type KubernetesAddon struct {

@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
@@ -71,7 +71,7 @@ import (
 //			}
 //			mainSwitch, err := vpc.NewSwitch(ctx, "mainSwitch", &vpc.SwitchArgs{
 //				VpcId:       mainNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
 //			})
@@ -85,17 +85,19 @@ import (
 //				return err
 //			}
 //			var instanceInstance []*ecs.Instance
-//			for key0, _ := range "2" {
+//			for index := 0; index < "2"; index++ {
+//				key0 := index
+//				_ := index
 //				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("instanceInstance-%v", key0), &ecs.InstanceArgs{
-//					ImageId:      pulumi.String(image.Images[0].Id),
-//					InstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//					ImageId:      *pulumi.String(image.Images[0].Id),
+//					InstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //					InstanceName: pulumi.String(name),
 //					SecurityGroups: pulumi.StringArray{
 //						groupSecurityGroup.ID(),
 //					},
 //					InternetChargeType:      pulumi.String("PayByTraffic"),
 //					InternetMaxBandwidthOut: pulumi.Int(10),
-//					AvailabilityZone:        pulumi.String(defaultZones.Zones[0].Id),
+//					AvailabilityZone:        *pulumi.String(defaultZones.Zones[0].Id),
 //					InstanceChargeType:      pulumi.String("PostPaid"),
 //					SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //					VswitchId:               mainSwitch.ID(),
@@ -136,9 +138,9 @@ import (
 //			sampleDs := slb.GetMasterSlaveServerGroupsOutput(ctx, slb.GetMasterSlaveServerGroupsOutputArgs{
 //				LoadBalancerId: instanceApplicationLoadBalancer.ID(),
 //			}, nil)
-//			ctx.Export("firstSlbServerGroupId", sampleDs.ApplyT(func(sampleDs slb.GetMasterSlaveServerGroupsResult) (string, error) {
-//				return sampleDs.Groups[0].Id, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("firstSlbServerGroupId", sampleDs.ApplyT(func(sampleDs slb.GetMasterSlaveServerGroupsResult) (*string, error) {
+//				return &sampleDs.Groups[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

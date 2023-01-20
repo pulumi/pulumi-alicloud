@@ -103,11 +103,13 @@ export class Account extends pulumi.CustomResource {
             }
             resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
             resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * });
  * const example = new alicloud.vpc.Ipv4Gateway("example", {
  *     ipv4GatewayName: "example_value",
- *     vpcId: _default.then(_default => _default.ids?[0]),
+ *     vpcId: _default.then(_default => _default.ids?.[0]),
  * });
  * ```
  *
@@ -69,6 +69,10 @@ export class Ipv4Gateway extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+     */
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
     public readonly ipv4GatewayDescription!: pulumi.Output<string | undefined>;
@@ -99,6 +103,7 @@ export class Ipv4Gateway extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as Ipv4GatewayState | undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["ipv4GatewayDescription"] = state ? state.ipv4GatewayDescription : undefined;
             resourceInputs["ipv4GatewayName"] = state ? state.ipv4GatewayName : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -109,6 +114,7 @@ export class Ipv4Gateway extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vpcId'");
             }
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["ipv4GatewayDescription"] = args ? args.ipv4GatewayDescription : undefined;
             resourceInputs["ipv4GatewayName"] = args ? args.ipv4GatewayName : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
@@ -127,6 +133,10 @@ export interface Ipv4GatewayState {
      * The dry run.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+     */
+    enabled?: pulumi.Input<boolean>;
     /**
      * The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
@@ -153,6 +163,10 @@ export interface Ipv4GatewayArgs {
      * The dry run.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+     */
+    enabled?: pulumi.Input<boolean>;
     /**
      * The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */

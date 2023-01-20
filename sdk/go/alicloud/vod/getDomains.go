@@ -77,10 +77,6 @@ func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getDomains.
 type GetDomainsArgs struct {
 	// The search method. Valid values:
-	// * `fuzzyMatch`: fuzzy match. This is the default value.
-	// * `preMatch`: prefix match.
-	// * `sufMatch`: suffix match.
-	// * `fullMatch`: exact match
 	DomainSearchType *string `pulumi:"domainSearchType"`
 	// A list of Domain IDs. Its element value is same as Domain Name.
 	Ids []string `pulumi:"ids"`
@@ -90,8 +86,6 @@ type GetDomainsArgs struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-	// * `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -125,10 +119,6 @@ func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pu
 // A collection of arguments for invoking getDomains.
 type GetDomainsOutputArgs struct {
 	// The search method. Valid values:
-	// * `fuzzyMatch`: fuzzy match. This is the default value.
-	// * `preMatch`: prefix match.
-	// * `sufMatch`: suffix match.
-	// * `fullMatch`: exact match
 	DomainSearchType pulumi.StringPtrInput `pulumi:"domainSearchType"`
 	// A list of Domain IDs. Its element value is same as Domain Name.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -138,8 +128,6 @@ type GetDomainsOutputArgs struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-	// * `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags pulumi.MapInput `pulumi:"tags"`
 }
 

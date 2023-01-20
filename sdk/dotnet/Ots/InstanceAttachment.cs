@@ -15,52 +15,54 @@ namespace Pulumi.AliCloud.Ots
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create an OTS instance
+    ///     var fooInstance = new AliCloud.Ots.Instance("fooInstance", new()
     ///     {
-    ///         // Create an OTS instance
-    ///         var fooInstance = new AliCloud.Ots.Instance("fooInstance", new AliCloud.Ots.InstanceArgs
+    ///         Description = "for table",
+    ///         AccessedBy = "Vpc",
+    ///         Tags = 
     ///         {
-    ///             Description = "for table",
-    ///             AccessedBy = "Vpc",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "Building table" },
-    ///             },
-    ///         });
-    ///         var fooZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = fooNetwork.Id,
-    ///             VswitchName = "for-ots-instance",
-    ///             CidrBlock = "172.16.1.0/24",
-    ///             ZoneId = fooZones.Apply(fooZones =&gt; fooZones.Zones?[0]?.Id),
-    ///         });
-    ///         var fooInstanceAttachment = new AliCloud.Ots.InstanceAttachment("fooInstanceAttachment", new AliCloud.Ots.InstanceAttachmentArgs
-    ///         {
-    ///             InstanceName = fooInstance.Name,
-    ///             VpcName = "attachment1",
-    ///             VswitchId = fooSwitch.Id,
-    ///         });
-    ///     }
+    ///             { "Created", "TF" },
+    ///             { "For", "Building table" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var fooZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     {
+    ///         VpcId = fooNetwork.Id,
+    ///         VswitchName = "for-ots-instance",
+    ///         CidrBlock = "172.16.1.0/24",
+    ///         ZoneId = fooZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var fooInstanceAttachment = new AliCloud.Ots.InstanceAttachment("fooInstanceAttachment", new()
+    ///     {
+    ///         InstanceName = fooInstance.Name,
+    ///         VpcName = "attachment1",
+    ///         VswitchId = fooSwitch.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ots/instanceAttachment:InstanceAttachment")]
-    public partial class InstanceAttachment : Pulumi.CustomResource
+    public partial class InstanceAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the OTS instance.
@@ -130,7 +132,7 @@ namespace Pulumi.AliCloud.Ots
         }
     }
 
-    public sealed class InstanceAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class InstanceAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the OTS instance.
@@ -153,9 +155,10 @@ namespace Pulumi.AliCloud.Ots
         public InstanceAttachmentArgs()
         {
         }
+        public static new InstanceAttachmentArgs Empty => new InstanceAttachmentArgs();
     }
 
-    public sealed class InstanceAttachmentState : Pulumi.ResourceArgs
+    public sealed class InstanceAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the OTS instance.
@@ -184,5 +187,6 @@ namespace Pulumi.AliCloud.Ots
         public InstanceAttachmentState()
         {
         }
+        public static new InstanceAttachmentState Empty => new InstanceAttachmentState();
     }
 }

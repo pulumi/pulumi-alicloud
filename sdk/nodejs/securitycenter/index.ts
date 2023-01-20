@@ -5,13 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getGroups";
-export * from "./group";
-export * from "./serviceLinkedRole";
+export { GetGroupsArgs, GetGroupsResult, GetGroupsOutputArgs } from "./getGroups";
+export const getGroups: typeof import("./getGroups").getGroups = null as any;
+export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
 
-// Import resources to register:
-import { Group } from "./group";
-import { ServiceLinkedRole } from "./serviceLinkedRole";
+export { GroupArgs, GroupState } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { ServiceLinkedRoleArgs, ServiceLinkedRoleState } from "./serviceLinkedRole";
+export type ServiceLinkedRole = import("./serviceLinkedRole").ServiceLinkedRole;
+export const ServiceLinkedRole: typeof import("./serviceLinkedRole").ServiceLinkedRole = null as any;
+utilities.lazyLoad(exports, ["ServiceLinkedRole"], () => require("./serviceLinkedRole"));
+
 
 const _module = {
     version: utilities.getVersion(),

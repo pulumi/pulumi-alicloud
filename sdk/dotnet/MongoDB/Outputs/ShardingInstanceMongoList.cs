@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string? ConnectString;
         /// <summary>
-        /// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        /// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         public readonly string NodeClass;
         /// <summary>

@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const exampleEcsDedicatedHostCluster = new alicloud.ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster", {
  *     dedicatedHostClusterName: "example_value",
  *     description: "example_value",
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?[0]?.id),
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
  *     tags: {
  *         Create: "TF",
  *         For: "DDH_Cluster_Test",

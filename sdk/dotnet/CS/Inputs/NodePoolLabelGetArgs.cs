@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class NodePoolLabelGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolLabelGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The label key.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public NodePoolLabelGetArgs()
         {
         }
+        public static new NodePoolLabelGetArgs Empty => new NodePoolLabelGetArgs();
     }
 }

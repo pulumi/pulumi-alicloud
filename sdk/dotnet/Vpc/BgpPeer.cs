@@ -21,46 +21,47 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultPhysicalConnections = Output.Create(AliCloud.ExpressConnect.GetPhysicalConnections.InvokeAsync());
-    ///         var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("defaultVirtualBorderRouter", new AliCloud.ExpressConnect.VirtualBorderRouterArgs
-    ///         {
-    ///             LocalGatewayIp = "10.0.0.1",
-    ///             PeerGatewayIp = "10.0.0.2",
-    ///             PeeringSubnetMask = "255.255.255.252",
-    ///             PhysicalConnectionId = defaultPhysicalConnections.Apply(defaultPhysicalConnections =&gt; defaultPhysicalConnections.Connections?[0]?.Id),
-    ///             VirtualBorderRouterName = "example_value",
-    ///             VlanId = 120,
-    ///             MinRxInterval = 1000,
-    ///             MinTxInterval = 1000,
-    ///             DetectMultiplier = 10,
-    ///         });
-    ///         var defaultBgpGroup = new AliCloud.Vpc.BgpGroup("defaultBgpGroup", new AliCloud.Vpc.BgpGroupArgs
-    ///         {
-    ///             AuthKey = "YourPassword+12345678",
-    ///             BgpGroupName = "example_value",
-    ///             Description = "example_value",
-    ///             LocalAsn = 64512,
-    ///             PeerAsn = 1111,
-    ///             RouterId = defaultVirtualBorderRouter.Id,
-    ///         });
-    ///         var defaultBgpPeer = new AliCloud.Vpc.BgpPeer("defaultBgpPeer", new AliCloud.Vpc.BgpPeerArgs
-    ///         {
-    ///             BfdMultiHop = 10,
-    ///             BgpGroupId = defaultBgpGroup.Id,
-    ///             EnableBfd = true,
-    ///             IpVersion = "IPV4",
-    ///             PeerIpAddress = "1.1.1.1",
-    ///         });
-    ///     }
+    ///     var defaultPhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke();
     /// 
-    /// }
+    ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("defaultVirtualBorderRouter", new()
+    ///     {
+    ///         LocalGatewayIp = "10.0.0.1",
+    ///         PeerGatewayIp = "10.0.0.2",
+    ///         PeeringSubnetMask = "255.255.255.252",
+    ///         PhysicalConnectionId = defaultPhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         VirtualBorderRouterName = "example_value",
+    ///         VlanId = 120,
+    ///         MinRxInterval = 1000,
+    ///         MinTxInterval = 1000,
+    ///         DetectMultiplier = 10,
+    ///     });
+    /// 
+    ///     var defaultBgpGroup = new AliCloud.Vpc.BgpGroup("defaultBgpGroup", new()
+    ///     {
+    ///         AuthKey = "YourPassword+12345678",
+    ///         BgpGroupName = "example_value",
+    ///         Description = "example_value",
+    ///         LocalAsn = 64512,
+    ///         PeerAsn = 1111,
+    ///         RouterId = defaultVirtualBorderRouter.Id,
+    ///     });
+    /// 
+    ///     var defaultBgpPeer = new AliCloud.Vpc.BgpPeer("defaultBgpPeer", new()
+    ///     {
+    ///         BfdMultiHop = 10,
+    ///         BgpGroupId = defaultBgpGroup.Id,
+    ///         EnableBfd = true,
+    ///         IpVersion = "IPV4",
+    ///         PeerIpAddress = "1.1.1.1",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +73,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/bgpPeer:BgpPeer")]
-    public partial class BgpPeer : Pulumi.CustomResource
+    public partial class BgpPeer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
@@ -154,7 +155,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class BgpPeerArgs : Pulumi.ResourceArgs
+    public sealed class BgpPeerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
@@ -189,9 +190,10 @@ namespace Pulumi.AliCloud.Vpc
         public BgpPeerArgs()
         {
         }
+        public static new BgpPeerArgs Empty => new BgpPeerArgs();
     }
 
-    public sealed class BgpPeerState : Pulumi.ResourceArgs
+    public sealed class BgpPeerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
@@ -232,5 +234,6 @@ namespace Pulumi.AliCloud.Vpc
         public BgpPeerState()
         {
         }
+        public static new BgpPeerState Empty => new BgpPeerState();
     }
 }

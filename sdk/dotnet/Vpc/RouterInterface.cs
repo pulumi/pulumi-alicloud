@@ -13,29 +13,28 @@ namespace Pulumi.AliCloud.Vpc
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new AliCloud.Vpc.Network("foo", new()
     ///     {
-    ///         var foo = new AliCloud.Vpc.Network("foo", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var @interface = new AliCloud.Vpc.RouterInterface("interface", new AliCloud.Vpc.RouterInterfaceArgs
-    ///         {
-    ///             OppositeRegion = "cn-beijing",
-    ///             RouterType = "VRouter",
-    ///             RouterId = foo.RouterId,
-    ///             Role = "InitiatingSide",
-    ///             Specification = "Large.2",
-    ///             Description = "test1",
-    ///         });
-    ///     }
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
     /// 
-    /// }
+    ///     var @interface = new AliCloud.Vpc.RouterInterface("interface", new()
+    ///     {
+    ///         OppositeRegion = "cn-beijing",
+    ///         RouterType = "VRouter",
+    ///         RouterId = foo.RouterId,
+    ///         Role = "InitiatingSide",
+    ///         Specification = "Large.2",
+    ///         Description = "test1",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +46,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/routerInterface:RouterInterface")]
-    public partial class RouterInterface : Pulumi.CustomResource
+    public partial class RouterInterface : global::Pulumi.CustomResource
     {
         /// <summary>
         /// It has been deprecated from version 1.11.0.
@@ -193,7 +192,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class RouterInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class RouterInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
@@ -268,9 +267,10 @@ namespace Pulumi.AliCloud.Vpc
         public RouterInterfaceArgs()
         {
         }
+        public static new RouterInterfaceArgs Empty => new RouterInterfaceArgs();
     }
 
-    public sealed class RouterInterfaceState : Pulumi.ResourceArgs
+    public sealed class RouterInterfaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// It has been deprecated from version 1.11.0.
@@ -375,5 +375,6 @@ namespace Pulumi.AliCloud.Vpc
         public RouterInterfaceState()
         {
         }
+        public static new RouterInterfaceState Empty => new RouterInterfaceState();
     }
 }

@@ -145,6 +145,10 @@ class GetInstancesResult:
     @property
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[str]:
+        """
+        (Optional) Type of the applied ApsaraDB for instance.
+        For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        """
         return pulumi.get(self, "instance_class")
 
     @property
@@ -152,8 +156,6 @@ class GetInstancesResult:
     def instance_type(self) -> Optional[str]:
         """
         (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
-        * `instance_class`- (Optional) Type of the applied ApsaraDB for instance.
-        For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
         """
         return pulumi.get(self, "instance_type")
 

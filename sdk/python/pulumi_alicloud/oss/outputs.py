@@ -43,6 +43,7 @@ __all__ = [
     'GetInstanceAttachmentsAttachmentResult',
     'GetInstancesInstanceResult',
     'GetTablesTableResult',
+    'GetTablesTableDefinedColumnResult',
     'GetTablesTablePrimaryKeyResult',
 ]
 
@@ -169,7 +170,7 @@ class BucketLifecycleRule(dict):
                  prefix: Optional[str] = None,
                  transitions: Optional[Sequence['outputs.BucketLifecycleRuleTransition']] = None):
         """
-        :param bool enabled: Specifies the accelerate status of a bucket.
+        :param bool enabled: Specifies lifecycle rule status.
         :param Sequence['BucketLifecycleRuleAbortMultipartUploadArgs'] abort_multipart_uploads: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
         :param Sequence['BucketLifecycleRuleExpirationArgs'] expirations: Specifies a period in the object's expire (documented below).
         :param str id: Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
@@ -198,7 +199,7 @@ class BucketLifecycleRule(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Specifies the accelerate status of a bucket.
+        Specifies lifecycle rule status.
         """
         return pulumi.get(self, "enabled")
 
@@ -282,8 +283,8 @@ class BucketLifecycleRuleAbortMultipartUpload(dict):
                  created_before_date: Optional[str] = None,
                  days: Optional[int] = None):
         """
-        :param str created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-        :param int days: Specifies the number of days noncurrent object versions transition.
+        :param str created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+        :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
         """
         if created_before_date is not None:
             pulumi.set(__self__, "created_before_date", created_before_date)
@@ -294,7 +295,7 @@ class BucketLifecycleRuleAbortMultipartUpload(dict):
     @pulumi.getter(name="createdBeforeDate")
     def created_before_date(self) -> Optional[str]:
         """
-        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
         """
         return pulumi.get(self, "created_before_date")
 
@@ -302,7 +303,7 @@ class BucketLifecycleRuleAbortMultipartUpload(dict):
     @pulumi.getter
     def days(self) -> Optional[int]:
         """
-        Specifies the number of days noncurrent object versions transition.
+        Specifies the number of days after object creation when the specific rule action takes effect.
         """
         return pulumi.get(self, "days")
 
@@ -334,9 +335,9 @@ class BucketLifecycleRuleExpiration(dict):
                  days: Optional[int] = None,
                  expired_object_delete_marker: Optional[bool] = None):
         """
-        :param str created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+        :param str created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
         :param str date: Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
-        :param int days: Specifies the number of days noncurrent object versions transition.
+        :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
         :param bool expired_object_delete_marker: On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
         """
         if created_before_date is not None:
@@ -352,7 +353,7 @@ class BucketLifecycleRuleExpiration(dict):
     @pulumi.getter(name="createdBeforeDate")
     def created_before_date(self) -> Optional[str]:
         """
-        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
         """
         return pulumi.get(self, "created_before_date")
 
@@ -368,7 +369,7 @@ class BucketLifecycleRuleExpiration(dict):
     @pulumi.getter
     def days(self) -> Optional[int]:
         """
-        Specifies the number of days noncurrent object versions transition.
+        Specifies the number of days after object creation when the specific rule action takes effect.
         """
         return pulumi.get(self, "days")
 
@@ -386,7 +387,7 @@ class BucketLifecycleRuleNoncurrentVersionExpiration(dict):
     def __init__(__self__, *,
                  days: int):
         """
-        :param int days: Specifies the number of days noncurrent object versions transition.
+        :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
         """
         pulumi.set(__self__, "days", days)
 
@@ -394,7 +395,7 @@ class BucketLifecycleRuleNoncurrentVersionExpiration(dict):
     @pulumi.getter
     def days(self) -> int:
         """
-        Specifies the number of days noncurrent object versions transition.
+        Specifies the number of days after object creation when the specific rule action takes effect.
         """
         return pulumi.get(self, "days")
 
@@ -422,8 +423,8 @@ class BucketLifecycleRuleNoncurrentVersionTransition(dict):
                  days: int,
                  storage_class: str):
         """
-        :param int days: Specifies the number of days noncurrent object versions transition.
-        :param str storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
+        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         """
         pulumi.set(__self__, "days", days)
         pulumi.set(__self__, "storage_class", storage_class)
@@ -432,7 +433,7 @@ class BucketLifecycleRuleNoncurrentVersionTransition(dict):
     @pulumi.getter
     def days(self) -> int:
         """
-        Specifies the number of days noncurrent object versions transition.
+        Specifies the number of days after object creation when the specific rule action takes effect.
         """
         return pulumi.get(self, "days")
 
@@ -440,7 +441,7 @@ class BucketLifecycleRuleNoncurrentVersionTransition(dict):
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> str:
         """
-        Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         """
         return pulumi.get(self, "storage_class")
 
@@ -471,9 +472,9 @@ class BucketLifecycleRuleTransition(dict):
                  days: Optional[int] = None,
                  storage_class: Optional[str] = None):
         """
-        :param str created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-        :param int days: Specifies the number of days noncurrent object versions transition.
-        :param str storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        :param str created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+        :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
+        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         """
         if created_before_date is not None:
             pulumi.set(__self__, "created_before_date", created_before_date)
@@ -486,7 +487,7 @@ class BucketLifecycleRuleTransition(dict):
     @pulumi.getter(name="createdBeforeDate")
     def created_before_date(self) -> Optional[str]:
         """
-        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
         """
         return pulumi.get(self, "created_before_date")
 
@@ -494,7 +495,7 @@ class BucketLifecycleRuleTransition(dict):
     @pulumi.getter
     def days(self) -> Optional[int]:
         """
-        Specifies the number of days noncurrent object versions transition.
+        Specifies the number of days after object creation when the specific rule action takes effect.
         """
         return pulumi.get(self, "days")
 
@@ -502,7 +503,7 @@ class BucketLifecycleRuleTransition(dict):
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[str]:
         """
-        Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         """
         return pulumi.get(self, "storage_class")
 
@@ -869,7 +870,7 @@ class BucketTransferAcceleration(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Specifies the accelerate status of a bucket.
+        :param bool enabled: Specifies lifecycle rule status.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -877,7 +878,7 @@ class BucketTransferAcceleration(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Specifies the accelerate status of a bucket.
+        Specifies lifecycle rule status.
         """
         return pulumi.get(self, "enabled")
 
@@ -1834,6 +1835,7 @@ class GetInstancesInstanceResult(dict):
 @pulumi.output_type
 class GetTablesTableResult(dict):
     def __init__(__self__, *,
+                 defined_columns: Sequence['outputs.GetTablesTableDefinedColumnResult'],
                  id: str,
                  instance_name: str,
                  max_version: int,
@@ -1848,12 +1850,18 @@ class GetTablesTableResult(dict):
         :param str table_name: The table name of the OTS which could not be changed.
         :param int time_to_live: The retention time of data stored in this table.
         """
+        pulumi.set(__self__, "defined_columns", defined_columns)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "max_version", max_version)
         pulumi.set(__self__, "primary_keys", primary_keys)
         pulumi.set(__self__, "table_name", table_name)
         pulumi.set(__self__, "time_to_live", time_to_live)
+
+    @property
+    @pulumi.getter(name="definedColumns")
+    def defined_columns(self) -> Sequence['outputs.GetTablesTableDefinedColumnResult']:
+        return pulumi.get(self, "defined_columns")
 
     @property
     @pulumi.getter
@@ -1902,6 +1910,25 @@ class GetTablesTableResult(dict):
         The retention time of data stored in this table.
         """
         return pulumi.get(self, "time_to_live")
+
+
+@pulumi.output_type
+class GetTablesTableDefinedColumnResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 type: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

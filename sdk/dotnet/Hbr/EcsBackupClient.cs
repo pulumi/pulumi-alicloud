@@ -21,34 +21,33 @@ namespace Pulumi.AliCloud.Hbr
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = AliCloud.Ecs.GetInstances.Invoke(new()
     ///     {
-    ///         var @default = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
-    ///         {
-    ///             NameRegex = "ecs_instance_name",
-    ///             Status = "Running",
-    ///         }));
-    ///         var example = new AliCloud.Hbr.EcsBackupClient("example", new AliCloud.Hbr.EcsBackupClientArgs
-    ///         {
-    ///             InstanceId = @default.Apply(@default =&gt; @default.Instances?[0]?.Id),
-    ///             UseHttps = false,
-    ///             DataNetworkType = "PUBLIC",
-    ///             MaxCpuCore = "2",
-    ///             MaxWorker = "4",
-    ///             DataProxySetting = "USE_CONTROL_PROXY",
-    ///             ProxyHost = "192.168.11.101",
-    ///             ProxyPort = "80",
-    ///             ProxyUser = "user",
-    ///             ProxyPassword = "password",
-    ///         });
-    ///     }
+    ///         NameRegex = "ecs_instance_name",
+    ///         Status = "Running",
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.Hbr.EcsBackupClient("example", new()
+    ///     {
+    ///         InstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+    ///         UseHttps = false,
+    ///         DataNetworkType = "PUBLIC",
+    ///         MaxCpuCore = "2",
+    ///         MaxWorker = "4",
+    ///         DataProxySetting = "USE_CONTROL_PROXY",
+    ///         ProxyHost = "192.168.11.101",
+    ///         ProxyPort = "80",
+    ///         ProxyUser = "user",
+    ///         ProxyPassword = "password",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Notice
     /// 
@@ -69,7 +68,7 @@ namespace Pulumi.AliCloud.Hbr
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/ecsBackupClient:EcsBackupClient")]
-    public partial class EcsBackupClient : Pulumi.CustomResource
+    public partial class EcsBackupClient : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
@@ -181,7 +180,7 @@ namespace Pulumi.AliCloud.Hbr
         }
     }
 
-    public sealed class EcsBackupClientArgs : Pulumi.ResourceArgs
+    public sealed class EcsBackupClientArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
@@ -252,9 +251,10 @@ namespace Pulumi.AliCloud.Hbr
         public EcsBackupClientArgs()
         {
         }
+        public static new EcsBackupClientArgs Empty => new EcsBackupClientArgs();
     }
 
-    public sealed class EcsBackupClientState : Pulumi.ResourceArgs
+    public sealed class EcsBackupClientState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
@@ -325,5 +325,6 @@ namespace Pulumi.AliCloud.Hbr
         public EcsBackupClientState()
         {
         }
+        public static new EcsBackupClientState Empty => new EcsBackupClientState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class ContainerGroupDnsConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ContainerGroupDnsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("nameServers")]
         private InputList<string>? _nameServers;
@@ -51,5 +51,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public ContainerGroupDnsConfigGetArgs()
         {
         }
+        public static new ContainerGroupDnsConfigGetArgs Empty => new ContainerGroupDnsConfigGetArgs();
     }
 }

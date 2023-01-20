@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class ContainerGroupEciSecurityContextGetArgs : Pulumi.ResourceArgs
+    public sealed class ContainerGroupEciSecurityContextGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("sysctls")]
         private InputList<Inputs.ContainerGroupEciSecurityContextSysctlGetArgs>? _sysctls;
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public ContainerGroupEciSecurityContextGetArgs()
         {
         }
+        public static new ContainerGroupEciSecurityContextGetArgs Empty => new ContainerGroupEciSecurityContextGetArgs();
     }
 }

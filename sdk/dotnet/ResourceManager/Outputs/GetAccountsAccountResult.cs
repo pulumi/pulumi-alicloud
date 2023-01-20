@@ -13,11 +13,17 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
     [OutputType]
     public sealed class GetAccountsAccountResult
     {
+        /// <summary>
+        /// The ID of the account.
+        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
         /// </summary>
         public readonly string AccountName;
+        /// <summary>
+        /// The name of the member account.
+        /// </summary>
         public readonly string DisplayName;
         /// <summary>
         /// The ID of the folder.
@@ -25,8 +31,6 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         public readonly string FolderId;
         /// <summary>
         /// The ID of the resource.
-        /// * `account_id`- The ID of the account.
-        /// * `display_name`- The name of the member account.
         /// </summary>
         public readonly string Id;
         /// <summary>

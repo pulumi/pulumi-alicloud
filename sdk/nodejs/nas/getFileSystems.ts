@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fs = alicloud_nas_file_system_foo.description.apply(description => alicloud.nas.getFileSystems({
- *     descriptionRegex: description,
+ * const fs = alicloud.nas.getFileSystems({
+ *     descriptionRegex: alicloud_nas_file_system.foo.description,
  *     protocolType: "NFS",
- * }));
- *
- * export const alicloudNasFileSystemsId = fs.systems[0].id;
+ * });
+ * export const alicloudNasFileSystemsId = fs.then(fs => fs.systems?.[0]?.id);
  * ```
  */
 export function getFileSystems(args?: GetFileSystemsArgs, opts?: pulumi.InvokeOptions): Promise<GetFileSystemsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getFileSystems:getFileSystems", {
         "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,
@@ -98,9 +95,26 @@ export interface GetFileSystemsResult {
      */
     readonly systems: outputs.nas.GetFileSystemsSystem[];
 }
-
+/**
+ * This data source provides FileSystems available to the user.
+ *
+ * > **NOTE**: Available in 1.35.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const fs = alicloud.nas.getFileSystems({
+ *     descriptionRegex: alicloud_nas_file_system.foo.description,
+ *     protocolType: "NFS",
+ * });
+ * export const alicloudNasFileSystemsId = fs.then(fs => fs.systems?.[0]?.id);
+ * ```
+ */
 export function getFileSystemsOutput(args?: GetFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileSystemsResult> {
-    return pulumi.output(args).apply(a => getFileSystems(a, opts))
+    return pulumi.output(args).apply((a: any) => getFileSystems(a, opts))
 }
 
 /**

@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.ResourceManager.GetPolicyVersions.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.ResourceManager.GetPolicyVersions.InvokeAsync(new AliCloud.ResourceManager.GetPolicyVersionsArgs
-        ///         {
-        ///             PolicyName = "tftest",
-        ///             PolicyType = "Custom",
-        ///         }));
-        ///         this.FirstPolicyVersionId = @default.Apply(@default =&gt; @default.Versions?[0]?.Id);
-        ///     }
+        ///         PolicyName = "tftest",
+        ///         PolicyType = "Custom",
+        ///     });
         /// 
-        ///     [Output("firstPolicyVersionId")]
-        ///     public Output&lt;string&gt; FirstPolicyVersionId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPolicyVersionId"] = @default.Apply(getPolicyVersionsResult =&gt; getPolicyVersionsResult).Apply(@default =&gt; @default.Apply(getPolicyVersionsResult =&gt; getPolicyVersionsResult.Versions[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyVersionsResult> InvokeAsync(GetPolicyVersionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyVersionsResult>("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", args ?? new GetPolicyVersionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyVersionsResult>("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", args ?? new GetPolicyVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
@@ -56,37 +55,36 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.ResourceManager.GetPolicyVersions.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.ResourceManager.GetPolicyVersions.InvokeAsync(new AliCloud.ResourceManager.GetPolicyVersionsArgs
-        ///         {
-        ///             PolicyName = "tftest",
-        ///             PolicyType = "Custom",
-        ///         }));
-        ///         this.FirstPolicyVersionId = @default.Apply(@default =&gt; @default.Versions?[0]?.Id);
-        ///     }
+        ///         PolicyName = "tftest",
+        ///         PolicyType = "Custom",
+        ///     });
         /// 
-        ///     [Output("firstPolicyVersionId")]
-        ///     public Output&lt;string&gt; FirstPolicyVersionId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPolicyVersionId"] = @default.Apply(getPolicyVersionsResult =&gt; getPolicyVersionsResult).Apply(@default =&gt; @default.Apply(getPolicyVersionsResult =&gt; getPolicyVersionsResult.Versions[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPolicyVersionsResult> Invoke(GetPolicyVersionsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPolicyVersionsResult>("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", args ?? new GetPolicyVersionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyVersionsResult>("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", args ?? new GetPolicyVersionsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPolicyVersionsArgs : Pulumi.InvokeArgs
+    public sealed class GetPolicyVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// Default to `false`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -121,12 +119,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetPolicyVersionsArgs()
         {
         }
+        public static new GetPolicyVersionsArgs Empty => new GetPolicyVersionsArgs();
     }
 
-    public sealed class GetPolicyVersionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPolicyVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// Default to `false`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -161,6 +160,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetPolicyVersionsInvokeArgs()
         {
         }
+        public static new GetPolicyVersionsInvokeArgs Empty => new GetPolicyVersionsInvokeArgs();
     }
 
 

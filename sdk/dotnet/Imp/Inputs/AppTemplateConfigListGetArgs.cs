@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Imp.Inputs
 {
 
-    public sealed class AppTemplateConfigListGetArgs : Pulumi.ResourceArgs
+    public sealed class AppTemplateConfigListGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Imp.Inputs
         public AppTemplateConfigListGetArgs()
         {
         }
+        public static new AppTemplateConfigListGetArgs Empty => new AppTemplateConfigListGetArgs();
     }
 }

@@ -64,6 +64,9 @@ class GetRulesResult:
     @property
     @pulumi.getter(name="configRuleState")
     def config_rule_state(self) -> Optional[str]:
+        """
+        The state of the Config Rule.
+        """
         return pulumi.get(self, "config_rule_state")
 
     @property
@@ -108,11 +111,17 @@ class GetRulesResult:
     @property
     @pulumi.getter(name="riskLevel")
     def risk_level(self) -> Optional[int]:
+        """
+        The risk level of the Config Rule.
+        """
         return pulumi.get(self, "risk_level")
 
     @property
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[str]:
+        """
+        The name of the Config Rule.
+        """
         return pulumi.get(self, "rule_name")
 
     @property

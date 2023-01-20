@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,11 +13,8 @@ import * as utilities from "../utilities";
  */
 export function getPatchBaselines(args?: GetPatchBaselinesArgs, opts?: pulumi.InvokeOptions): Promise<GetPatchBaselinesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oos/getPatchBaselines:getPatchBaselines", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -71,9 +69,13 @@ export interface GetPatchBaselinesResult {
     readonly outputFile?: string;
     readonly shareType?: string;
 }
-
+/**
+ * This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.146.0+.
+ */
 export function getPatchBaselinesOutput(args?: GetPatchBaselinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPatchBaselinesResult> {
-    return pulumi.output(args).apply(a => getPatchBaselines(a, opts))
+    return pulumi.output(args).apply((a: any) => getPatchBaselines(a, opts))
 }
 
 /**

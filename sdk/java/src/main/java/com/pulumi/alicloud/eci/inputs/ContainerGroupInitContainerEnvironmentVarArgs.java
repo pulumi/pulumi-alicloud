@@ -31,14 +31,14 @@ public final class ContainerGroupInitContainerEnvironmentVarArgs extends com.pul
     }
 
     /**
-     * The variable value of the security context that the container group runs.
+     * The value of the variable. The value can be 0 to 256 characters in length.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The variable value of the security context that the container group runs.
+     * @return The value of the variable. The value can be 0 to 256 characters in length.
      * 
      */
     public Optional<Output<String>> value() {
@@ -92,7 +92,7 @@ public final class ContainerGroupInitContainerEnvironmentVarArgs extends com.pul
         }
 
         /**
-         * @param value The variable value of the security context that the container group runs.
+         * @param value The value of the variable. The value can be 0 to 256 characters in length.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ContainerGroupInitContainerEnvironmentVarArgs extends com.pul
         }
 
         /**
-         * @param value The variable value of the security context that the container group runs.
+         * @param value The value of the variable. The value can be 0 to 256 characters in length.
          * 
          * @return builder
          * 

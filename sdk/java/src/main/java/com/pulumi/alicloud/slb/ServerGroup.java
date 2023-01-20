@@ -33,6 +33,67 @@ import javax.annotation.Nullable;
  * 
  * For information about server group and how to use it, see [Configure a server group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
+ * import com.pulumi.alicloud.slb.ServerGroup;
+ * import com.pulumi.alicloud.slb.ServerGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var slbServerGroupName = config.get(&#34;slbServerGroupName&#34;).orElse(&#34;forSlbServerGroup&#34;);
+ *         final var serverGroupZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var serverGroupNetwork = new Network(&#34;serverGroupNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(slbServerGroupName)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var serverGroupSwitch = new Switch(&#34;serverGroupSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(serverGroupNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .zoneId(serverGroupZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(slbServerGroupName)
+ *             .build());
+ * 
+ *         var serverGroupApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;serverGroupApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName(slbServerGroupName)
+ *             .vswitchId(serverGroupSwitch.id())
+ *             .instanceChargeType(&#34;PayByCLCU&#34;)
+ *             .build());
+ * 
+ *         var serverGroupServerGroup = new ServerGroup(&#34;serverGroupServerGroup&#34;, ServerGroupArgs.builder()        
+ *             .loadBalancerId(serverGroupApplicationLoadBalancer.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Block servers
  * 
  * The servers mapping supports the following:

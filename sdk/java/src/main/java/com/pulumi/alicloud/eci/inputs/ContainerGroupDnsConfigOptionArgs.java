@@ -16,14 +16,14 @@ public final class ContainerGroupDnsConfigOptionArgs extends com.pulumi.resource
     public static final ContainerGroupDnsConfigOptionArgs Empty = new ContainerGroupDnsConfigOptionArgs();
 
     /**
-     * The name of the security context that the container group runs.
+     * The name of the volume.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     public Optional<Output<String>> name() {
@@ -31,14 +31,14 @@ public final class ContainerGroupDnsConfigOptionArgs extends com.pulumi.resource
     }
 
     /**
-     * The variable value of the security context that the container group runs.
+     * The value of the variable. The value can be 0 to 256 characters in length.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The variable value of the security context that the container group runs.
+     * @return The value of the variable. The value can be 0 to 256 characters in length.
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class ContainerGroupDnsConfigOptionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the security context that the container group runs.
+         * @param name The name of the volume.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ContainerGroupDnsConfigOptionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the security context that the container group runs.
+         * @param name The name of the volume.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ContainerGroupDnsConfigOptionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param value The variable value of the security context that the container group runs.
+         * @param value The value of the variable. The value can be 0 to 256 characters in length.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ContainerGroupDnsConfigOptionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param value The variable value of the security context that the container group runs.
+         * @param value The value of the variable. The value can be 0 to 256 characters in length.
          * 
          * @return builder
          * 

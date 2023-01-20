@@ -21,34 +21,33 @@ namespace Pulumi.AliCloud.Edas
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var clusters = AliCloud.Edas.GetClusters.Invoke(new()
         ///     {
-        ///         var clusters = Output.Create(AliCloud.Edas.GetClusters.InvokeAsync(new AliCloud.Edas.GetClustersArgs
+        ///         LogicalRegionId = "cn-shenzhen:xxx",
+        ///         Ids = new[]
         ///         {
-        ///             LogicalRegionId = "cn-shenzhen:xxx",
-        ///             Ids = 
-        ///             {
-        ///                 "addfs-dfsasd",
-        ///             },
-        ///             OutputFile = "clusters.txt",
-        ///         }));
-        ///         this.FirstClusterName = data.Alicloud_alikafka_consumer_groups.Clusters.Clusters[0].Cluster_name;
-        ///     }
+        ///             "addfs-dfsasd",
+        ///         },
+        ///         OutputFile = "clusters.txt",
+        ///     });
         /// 
-        ///     [Output("firstClusterName")]
-        ///     public Output&lt;string&gt; FirstClusterName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstClusterName"] = data.Alicloud_alikafka_consumer_groups.Clusters.Clusters[0].Cluster_name,
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:edas/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:edas/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of EDAS clusters in an Alibaba Cloud account according to the specified filters.
@@ -60,38 +59,37 @@ namespace Pulumi.AliCloud.Edas
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var clusters = AliCloud.Edas.GetClusters.Invoke(new()
         ///     {
-        ///         var clusters = Output.Create(AliCloud.Edas.GetClusters.InvokeAsync(new AliCloud.Edas.GetClustersArgs
+        ///         LogicalRegionId = "cn-shenzhen:xxx",
+        ///         Ids = new[]
         ///         {
-        ///             LogicalRegionId = "cn-shenzhen:xxx",
-        ///             Ids = 
-        ///             {
-        ///                 "addfs-dfsasd",
-        ///             },
-        ///             OutputFile = "clusters.txt",
-        ///         }));
-        ///         this.FirstClusterName = data.Alicloud_alikafka_consumer_groups.Clusters.Clusters[0].Cluster_name;
-        ///     }
+        ///             "addfs-dfsasd",
+        ///         },
+        ///         OutputFile = "clusters.txt",
+        ///     });
         /// 
-        ///     [Output("firstClusterName")]
-        ///     public Output&lt;string&gt; FirstClusterName { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstClusterName"] = data.Alicloud_alikafka_consumer_groups.Clusters.Clusters[0].Cluster_name,
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:edas/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:edas/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClustersArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -123,9 +121,10 @@ namespace Pulumi.AliCloud.Edas
         public GetClustersArgs()
         {
         }
+        public static new GetClustersArgs Empty => new GetClustersArgs();
     }
 
-    public sealed class GetClustersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -157,6 +156,7 @@ namespace Pulumi.AliCloud.Edas
         public GetClustersInvokeArgs()
         {
         }
+        public static new GetClustersInvokeArgs Empty => new GetClustersInvokeArgs();
     }
 
 

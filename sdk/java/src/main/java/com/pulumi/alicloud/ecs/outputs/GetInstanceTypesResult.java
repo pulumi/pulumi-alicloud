@@ -54,6 +54,7 @@ public final class GetInstanceTypesResult {
      * 
      */
     private @Nullable Double memorySize;
+    private @Nullable Integer minimumEniIpv6AddressQuantity;
     private @Nullable String networkType;
     private @Nullable String outputFile;
     private @Nullable String sortedBy;
@@ -127,6 +128,9 @@ public final class GetInstanceTypesResult {
     public Optional<Double> memorySize() {
         return Optional.ofNullable(this.memorySize);
     }
+    public Optional<Integer> minimumEniIpv6AddressQuantity() {
+        return Optional.ofNullable(this.minimumEniIpv6AddressQuantity);
+    }
     public Optional<String> networkType() {
         return Optional.ofNullable(this.networkType);
     }
@@ -166,6 +170,7 @@ public final class GetInstanceTypesResult {
         private @Nullable Boolean isOutdated;
         private @Nullable String kubernetesNodeRole;
         private @Nullable Double memorySize;
+        private @Nullable Integer minimumEniIpv6AddressQuantity;
         private @Nullable String networkType;
         private @Nullable String outputFile;
         private @Nullable String sortedBy;
@@ -188,6 +193,7 @@ public final class GetInstanceTypesResult {
     	      this.isOutdated = defaults.isOutdated;
     	      this.kubernetesNodeRole = defaults.kubernetesNodeRole;
     	      this.memorySize = defaults.memorySize;
+    	      this.minimumEniIpv6AddressQuantity = defaults.minimumEniIpv6AddressQuantity;
     	      this.networkType = defaults.networkType;
     	      this.outputFile = defaults.outputFile;
     	      this.sortedBy = defaults.sortedBy;
@@ -272,6 +278,11 @@ public final class GetInstanceTypesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder minimumEniIpv6AddressQuantity(@Nullable Integer minimumEniIpv6AddressQuantity) {
+            this.minimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
             this.networkType = networkType;
             return this;
@@ -312,6 +323,7 @@ public final class GetInstanceTypesResult {
             o.isOutdated = isOutdated;
             o.kubernetesNodeRole = kubernetesNodeRole;
             o.memorySize = memorySize;
+            o.minimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
             o.networkType = networkType;
             o.outputFile = outputFile;
             o.sortedBy = sortedBy;

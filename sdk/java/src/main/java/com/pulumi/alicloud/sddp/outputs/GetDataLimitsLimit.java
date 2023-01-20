@@ -26,7 +26,7 @@ public final class GetDataLimitsLimit {
      */
     private String dataLimitId;
     /**
-     * @return -The type of the database.
+     * @return The type of the database.
      * 
      */
     private String engineType;
@@ -89,7 +89,7 @@ public final class GetDataLimitsLimit {
         return this.dataLimitId;
     }
     /**
-     * @return -The type of the database.
+     * @return The type of the database.
      * 
      */
     public String engineType() {

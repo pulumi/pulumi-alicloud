@@ -20,71 +20,73 @@ namespace Pulumi.AliCloud.FC
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testaccalicloudfcservice";
+    ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testaccalicloudfcservice";
-    ///         var defaultService = new AliCloud.FC.Service("defaultService", new AliCloud.FC.ServiceArgs
-    ///         {
-    ///             Description = $"{name}-description",
-    ///         });
-    ///         var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             BucketName = name,
-    ///         });
-    ///         var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new AliCloud.Oss.BucketObjectArgs
-    ///         {
-    ///             Bucket = defaultBucket.Id,
-    ///             Key = "fc/hello.zip",
-    ///             Content = @"		# -*- coding: utf-8 -*-
+    ///         Description = $"{name}-description",
+    ///     });
+    /// 
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     {
+    ///         BucketName = name,
+    ///     });
+    /// 
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
+    ///     {
+    ///         Bucket = defaultBucket.Id,
+    ///         Key = "fc/hello.zip",
+    ///         Content = @"		# -*- coding: utf-8 -*-
     /// 	def handler(event, context):
     /// 		print ""hello world""
     /// 		return 'hello world'
     /// ",
-    ///         });
-    ///         var defaultFunction = new AliCloud.FC.Function("defaultFunction", new AliCloud.FC.FunctionArgs
+    ///     });
+    /// 
+    ///     var defaultFunction = new AliCloud.FC.Function("defaultFunction", new()
+    ///     {
+    ///         Service = defaultService.Name,
+    ///         OssBucket = defaultBucket.Id,
+    ///         OssKey = defaultBucketObject.Key,
+    ///         MemorySize = 512,
+    ///         Runtime = "python2.7",
+    ///         Handler = "hello.handler",
+    ///     });
+    /// 
+    ///     var defaultCustomDomain = new AliCloud.FC.CustomDomain("defaultCustomDomain", new()
+    ///     {
+    ///         DomainName = "terraform.functioncompute.com",
+    ///         Protocol = "HTTP",
+    ///         RouteConfigs = new[]
     ///         {
-    ///             Service = defaultService.Name,
-    ///             OssBucket = defaultBucket.Id,
-    ///             OssKey = defaultBucketObject.Key,
-    ///             MemorySize = 512,
-    ///             Runtime = "python2.7",
-    ///             Handler = "hello.handler",
-    ///         });
-    ///         var defaultCustomDomain = new AliCloud.FC.CustomDomain("defaultCustomDomain", new AliCloud.FC.CustomDomainArgs
-    ///         {
-    ///             DomainName = "terraform.functioncompute.com",
-    ///             Protocol = "HTTP",
-    ///             RouteConfigs = 
+    ///             new AliCloud.FC.Inputs.CustomDomainRouteConfigArgs
     ///             {
-    ///                 new AliCloud.FC.Inputs.CustomDomainRouteConfigArgs
+    ///                 Path = "/login/*",
+    ///                 ServiceName = defaultService.Name,
+    ///                 FunctionName = defaultFunction.Name,
+    ///                 Qualifier = "v1",
+    ///                 Methods = new[]
     ///                 {
-    ///                     Path = "/login/*",
-    ///                     ServiceName = defaultService.Name,
-    ///                     FunctionName = defaultFunction.Name,
-    ///                     Qualifier = "v1",
-    ///                     Methods = 
-    ///                     {
-    ///                         "GET",
-    ///                         "POST",
-    ///                     },
+    ///                     "GET",
+    ///                     "POST",
     ///                 },
     ///             },
-    ///             CertConfig = new AliCloud.FC.Inputs.CustomDomainCertConfigArgs
-    ///             {
-    ///                 CertName = "your certificate name",
-    ///                 PrivateKey = "your private key",
-    ///                 Certificate = "your certificate data",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         CertConfig = new AliCloud.FC.Inputs.CustomDomainCertConfigArgs
+    ///         {
+    ///             CertName = "your certificate name",
+    ///             PrivateKey = "your private key",
+    ///             Certificate = "your certificate data",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -96,7 +98,7 @@ namespace Pulumi.AliCloud.FC
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fc/customDomain:CustomDomain")]
-    public partial class CustomDomain : Pulumi.CustomResource
+    public partial class CustomDomain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account id.
@@ -190,7 +192,7 @@ namespace Pulumi.AliCloud.FC
         }
     }
 
-    public sealed class CustomDomainArgs : Pulumi.ResourceArgs
+    public sealed class CustomDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration of HTTPS certificate.
@@ -225,9 +227,10 @@ namespace Pulumi.AliCloud.FC
         public CustomDomainArgs()
         {
         }
+        public static new CustomDomainArgs Empty => new CustomDomainArgs();
     }
 
-    public sealed class CustomDomainState : Pulumi.ResourceArgs
+    public sealed class CustomDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account id.
@@ -286,5 +289,6 @@ namespace Pulumi.AliCloud.FC
         public CustomDomainState()
         {
         }
+        public static new CustomDomainState Empty => new CustomDomainState();
     }
 }

@@ -17,47 +17,49 @@ namespace Pulumi.AliCloud.PolarDB
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "polardbClusterconfig";
+    ///     var creation = config.Get("creation") ?? "PolarDB";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "polardbClusterconfig";
-    ///         var creation = config.Get("creation") ?? "PolarDB";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var cluster = new AliCloud.PolarDB.Cluster("cluster", new AliCloud.PolarDB.ClusterArgs
-    ///         {
-    ///             DbType = "MySQL",
-    ///             DbVersion = "8.0",
-    ///             PayType = "PostPaid",
-    ///             DbNodeClass = "polar.mysql.x4.large",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             Description = "testDB",
-    ///         });
-    ///         var defaultDatabase = new AliCloud.PolarDB.Database("defaultDatabase", new AliCloud.PolarDB.DatabaseArgs
-    ///         {
-    ///             DbClusterId = cluster.Id,
-    ///             DbName = "tftestdatabase",
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var cluster = new AliCloud.PolarDB.Cluster("cluster", new()
+    ///     {
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         PayType = "PostPaid",
+    ///         DbNodeClass = "polar.mysql.x4.large",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Description = "testDB",
+    ///     });
+    /// 
+    ///     var defaultDatabase = new AliCloud.PolarDB.Database("defaultDatabase", new()
+    ///     {
+    ///         DbClusterId = cluster.Id,
+    ///         DbName = "tftestdatabase",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,7 +71,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/database:Database")]
-    public partial class Database : Pulumi.CustomResource
+    public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
@@ -139,7 +141,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
     }
 
-    public sealed class DatabaseArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
@@ -168,9 +170,10 @@ namespace Pulumi.AliCloud.PolarDB
         public DatabaseArgs()
         {
         }
+        public static new DatabaseArgs Empty => new DatabaseArgs();
     }
 
-    public sealed class DatabaseState : Pulumi.ResourceArgs
+    public sealed class DatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
@@ -199,5 +202,6 @@ namespace Pulumi.AliCloud.PolarDB
         public DatabaseState()
         {
         }
+        public static new DatabaseState Empty => new DatabaseState();
     }
 }

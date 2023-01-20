@@ -23,29 +23,27 @@ namespace Pulumi.AliCloud.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ecs.Image("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ecs.Image("default", new AliCloud.Ecs.ImageArgs
+    ///         Architecture = "x86_64",
+    ///         Description = "test-image",
+    ///         ImageName = "test-image",
+    ///         InstanceId = "i-bp1g6zv0ce8oghu7k***",
+    ///         Platform = "CentOS",
+    ///         ResourceGroupId = "rg-bp67acfmxazb4ph***",
+    ///         Tags = 
     ///         {
-    ///             Architecture = "x86_64",
-    ///             Description = "test-image",
-    ///             ImageName = "test-image",
-    ///             InstanceId = "i-bp1g6zv0ce8oghu7k***",
-    ///             Platform = "CentOS",
-    ///             ResourceGroupId = "rg-bp67acfmxazb4ph***",
-    ///             Tags = 
-    ///             {
-    ///                 { "FinanceDept", "FinanceDeptJoshua" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "FinanceDept", "FinanceDeptJoshua" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/image:Image")]
-    public partial class Image : Pulumi.CustomResource
+    public partial class Image : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
@@ -104,7 +102,8 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
+        /// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
+        /// Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
         /// </summary>
         [Output("platform")]
         public Output<string?> Platform { get; private set; } = null!;
@@ -171,7 +170,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class ImageArgs : Pulumi.ResourceArgs
+    public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
@@ -224,7 +223,8 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
+        /// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
+        /// Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -256,9 +256,10 @@ namespace Pulumi.AliCloud.Ecs
         public ImageArgs()
         {
         }
+        public static new ImageArgs Empty => new ImageArgs();
     }
 
-    public sealed class ImageState : Pulumi.ResourceArgs
+    public sealed class ImageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
@@ -311,7 +312,8 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
+        /// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
+        /// Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -343,5 +345,6 @@ namespace Pulumi.AliCloud.Ecs
         public ImageState()
         {
         }
+        public static new ImageState Empty => new ImageState();
     }
 }

@@ -23,34 +23,33 @@ namespace Pulumi.AliCloud.Ga
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ga.GetListeners.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ga.GetListeners.InvokeAsync(new AliCloud.Ga.GetListenersArgs
+        ///         AcceleratorId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             AcceleratorId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstGaListenerId = example.Apply(example =&gt; example.Listeners?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstGaListenerId")]
-        ///     public Output&lt;string&gt; FirstGaListenerId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGaListenerId"] = example.Apply(getListenersResult =&gt; getListenersResult.Listeners[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetListenersResult> InvokeAsync(GetListenersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:ga/getListeners:getListeners", args ?? new GetListenersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:ga/getListeners:getListeners", args ?? new GetListenersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Listeners of the current Alibaba Cloud user.
@@ -64,38 +63,37 @@ namespace Pulumi.AliCloud.Ga
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ga.GetListeners.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ga.GetListeners.InvokeAsync(new AliCloud.Ga.GetListenersArgs
+        ///         AcceleratorId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             AcceleratorId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstGaListenerId = example.Apply(example =&gt; example.Listeners?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstGaListenerId")]
-        ///     public Output&lt;string&gt; FirstGaListenerId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGaListenerId"] = example.Apply(getListenersResult =&gt; getListenersResult.Listeners[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetListenersResult> Invoke(GetListenersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetListenersResult>("alicloud:ga/getListeners:getListeners", args ?? new GetListenersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetListenersResult>("alicloud:ga/getListeners:getListeners", args ?? new GetListenersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetListenersArgs : Pulumi.InvokeArgs
+    public sealed class GetListenersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The accelerator id.
@@ -133,9 +131,10 @@ namespace Pulumi.AliCloud.Ga
         public GetListenersArgs()
         {
         }
+        public static new GetListenersArgs Empty => new GetListenersArgs();
     }
 
-    public sealed class GetListenersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetListenersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The accelerator id.
@@ -173,6 +172,7 @@ namespace Pulumi.AliCloud.Ga
         public GetListenersInvokeArgs()
         {
         }
+        public static new GetListenersInvokeArgs Empty => new GetListenersInvokeArgs();
     }
 
 

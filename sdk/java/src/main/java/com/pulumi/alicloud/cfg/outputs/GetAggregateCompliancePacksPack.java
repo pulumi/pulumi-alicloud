@@ -17,10 +17,13 @@ public final class GetAggregateCompliancePacksPack {
      * 
      */
     private String accountId;
+    /**
+     * @return The Aggregate Compliance Package Name.
+     * 
+     */
     private String aggregateCompliancePackName;
     /**
      * @return The Aggregate Compliance Package Id.
-     * * `aggregate_compliance_pack_name` -The Aggregate Compliance Package Name.
      * 
      */
     private String aggregatorCompliancePackId;
@@ -63,12 +66,15 @@ public final class GetAggregateCompliancePacksPack {
     public String accountId() {
         return this.accountId;
     }
+    /**
+     * @return The Aggregate Compliance Package Name.
+     * 
+     */
     public String aggregateCompliancePackName() {
         return this.aggregateCompliancePackName;
     }
     /**
      * @return The Aggregate Compliance Package Id.
-     * * `aggregate_compliance_pack_name` -The Aggregate Compliance Package Name.
      * 
      */
     public String aggregatorCompliancePackId() {

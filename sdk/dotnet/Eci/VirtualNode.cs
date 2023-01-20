@@ -21,65 +21,64 @@ namespace Pulumi.AliCloud.Eci
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testaccvirtualnode";
-    ///         var defaultZones = Output.Create(AliCloud.Eci.GetZones.InvokeAsync());
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Zones?[0]?.ZoneIds?[1],
-    ///             }));
-    ///         });
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///         });
-    ///         var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new AliCloud.Ecs.EipAddressArgs
-    ///         {
-    ///             AddressName = name,
-    ///         });
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync());
-    ///         var defaultVirtualNode = new AliCloud.Eci.VirtualNode("defaultVirtualNode", new AliCloud.Eci.VirtualNodeArgs
-    ///         {
-    ///             SecurityGroupId = defaultSecurityGroup.Id,
-    ///             VirtualNodeName = name,
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[1]),
-    ///             EnablePublicNetwork = false,
-    ///             EipInstanceId = defaultEipAddress.Id,
-    ///             ResourceGroupId = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Groups?[0]?.Id),
-    ///             KubeConfig = "kube config",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///             },
-    ///             Taints = 
-    ///             {
-    ///                 new AliCloud.Eci.Inputs.VirtualNodeTaintArgs
-    ///                 {
-    ///                     Effect = "NoSchedule",
-    ///                     Key = "Tf1",
-    ///                     Value = "Test1",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testaccvirtualnode";
+    ///     var defaultZones = AliCloud.Eci.GetZones.Invoke();
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[1]),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+    ///     {
+    ///         AddressName = name,
+    ///     });
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultVirtualNode = new AliCloud.Eci.VirtualNode("defaultVirtualNode", new()
+    ///     {
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         VirtualNodeName = name,
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[1]),
+    ///         EnablePublicNetwork = false,
+    ///         EipInstanceId = defaultEipAddress.Id,
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         KubeConfig = "kube config",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///         },
+    ///         Taints = new[]
+    ///         {
+    ///             new AliCloud.Eci.Inputs.VirtualNodeTaintArgs
+    ///             {
+    ///                 Effect = "NoSchedule",
+    ///                 Key = "Tf1",
+    ///                 Value = "Test1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -91,7 +90,7 @@ namespace Pulumi.AliCloud.Eci
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eci/virtualNode:VirtualNode")]
-    public partial class VirtualNode : Pulumi.CustomResource
+    public partial class VirtualNode : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Id of eip.
@@ -203,7 +202,7 @@ namespace Pulumi.AliCloud.Eci
         }
     }
 
-    public sealed class VirtualNodeArgs : Pulumi.ResourceArgs
+    public sealed class VirtualNodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Id of eip.
@@ -280,9 +279,10 @@ namespace Pulumi.AliCloud.Eci
         public VirtualNodeArgs()
         {
         }
+        public static new VirtualNodeArgs Empty => new VirtualNodeArgs();
     }
 
-    public sealed class VirtualNodeState : Pulumi.ResourceArgs
+    public sealed class VirtualNodeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Id of eip.
@@ -365,5 +365,6 @@ namespace Pulumi.AliCloud.Eci
         public VirtualNodeState()
         {
         }
+        public static new VirtualNodeState Empty => new VirtualNodeState();
     }
 }

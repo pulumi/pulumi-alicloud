@@ -45,7 +45,7 @@ public final class ContainerGroupVolume {
      */
     private @Nullable String flexVolumeOptions;
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     private @Nullable String name;
@@ -114,7 +114,7 @@ public final class ContainerGroupVolume {
         return Optional.ofNullable(this.flexVolumeOptions);
     }
     /**
-     * @return The name of the security context that the container group runs.
+     * @return The name of the volume.
      * 
      */
     public Optional<String> name() {

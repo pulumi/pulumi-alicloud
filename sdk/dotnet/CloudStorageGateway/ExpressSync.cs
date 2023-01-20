@@ -21,86 +21,92 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tftest";
+    ///     var region = config.Get("region") ?? "cn-shanghai";
+    ///     var defaultStocks = AliCloud.CloudStorageGateway.GetStocks.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tftest";
-    ///         var region = config.Get("region") ?? "cn-shanghai";
-    ///         var defaultStocks = Output.Create(AliCloud.CloudStorageGateway.GetStocks.InvokeAsync(new AliCloud.CloudStorageGateway.GetStocksArgs
-    ///         {
-    ///             GatewayClass = "Standard",
-    ///         }));
-    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = vpc.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultStocks.Apply(defaultStocks =&gt; defaultStocks.Stocks?[0]?.ZoneId),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("defaultStorageBundle", new AliCloud.CloudStorageGateway.StorageBundleArgs
-    ///         {
-    ///             StorageBundleName = name,
-    ///         });
-    ///         var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new AliCloud.CloudStorageGateway.GatewayArgs
-    ///         {
-    ///             Description = "tf-acctestDesalone",
-    ///             GatewayClass = "Standard",
-    ///             Type = "File",
-    ///             PaymentType = "PayAsYouGo",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             ReleaseAfterExpiration = true,
-    ///             PublicNetworkBandwidth = 10,
-    ///             StorageBundleId = defaultStorageBundle.Id,
-    ///             Location = "Cloud",
-    ///             GatewayName = name,
-    ///         });
-    ///         var defaultGatewayCacheDisk = new AliCloud.CloudStorageGateway.GatewayCacheDisk("defaultGatewayCacheDisk", new AliCloud.CloudStorageGateway.GatewayCacheDiskArgs
-    ///         {
-    ///             CacheDiskCategory = "cloud_efficiency",
-    ///             GatewayId = defaultGateway.Id,
-    ///             CacheDiskSizeInGb = 50,
-    ///         });
-    ///         var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             BucketName = name,
-    ///             Acl = "public-read-write",
-    ///         });
-    ///         var defaultGatewayFileShare = new AliCloud.CloudStorageGateway.GatewayFileShare("defaultGatewayFileShare", new AliCloud.CloudStorageGateway.GatewayFileShareArgs
-    ///         {
-    ///             GatewayFileShareName = name,
-    ///             GatewayId = defaultGateway.Id,
-    ///             LocalPath = defaultGatewayCacheDisk.LocalFilePath,
-    ///             OssBucketName = defaultBucket.BucketName,
-    ///             OssEndpoint = defaultBucket.ExtranetEndpoint,
-    ///             Protocol = "NFS",
-    ///             RemoteSync = true,
-    ///             PollingInterval = 4500,
-    ///             FeLimit = 0,
-    ///             BackendLimit = 0,
-    ///             CacheMode = "Cache",
-    ///             Squash = "none",
-    ///             LagPeriod = 5,
-    ///         });
-    ///         var defaultExpressSync = new AliCloud.CloudStorageGateway.ExpressSync("defaultExpressSync", new AliCloud.CloudStorageGateway.ExpressSyncArgs
-    ///         {
-    ///             BucketName = defaultGatewayFileShare.OssBucketName,
-    ///             BucketRegion = region,
-    ///             Description = name,
-    ///             ExpressSyncName = name,
-    ///         });
-    ///     }
+    ///         GatewayClass = "Standard",
+    ///     });
     /// 
-    /// }
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultStocks.Apply(getStocksResult =&gt; getStocksResult.Stocks[0]?.ZoneId),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("defaultStorageBundle", new()
+    ///     {
+    ///         StorageBundleName = name,
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new()
+    ///     {
+    ///         Description = "tf-acctestDesalone",
+    ///         GatewayClass = "Standard",
+    ///         Type = "File",
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ReleaseAfterExpiration = true,
+    ///         PublicNetworkBandwidth = 10,
+    ///         StorageBundleId = defaultStorageBundle.Id,
+    ///         Location = "Cloud",
+    ///         GatewayName = name,
+    ///     });
+    /// 
+    ///     var defaultGatewayCacheDisk = new AliCloud.CloudStorageGateway.GatewayCacheDisk("defaultGatewayCacheDisk", new()
+    ///     {
+    ///         CacheDiskCategory = "cloud_efficiency",
+    ///         GatewayId = defaultGateway.Id,
+    ///         CacheDiskSizeInGb = 50,
+    ///     });
+    /// 
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     {
+    ///         BucketName = name,
+    ///         Acl = "public-read-write",
+    ///     });
+    /// 
+    ///     var defaultGatewayFileShare = new AliCloud.CloudStorageGateway.GatewayFileShare("defaultGatewayFileShare", new()
+    ///     {
+    ///         GatewayFileShareName = name,
+    ///         GatewayId = defaultGateway.Id,
+    ///         LocalPath = defaultGatewayCacheDisk.LocalFilePath,
+    ///         OssBucketName = defaultBucket.BucketName,
+    ///         OssEndpoint = defaultBucket.ExtranetEndpoint,
+    ///         Protocol = "NFS",
+    ///         RemoteSync = true,
+    ///         PollingInterval = 4500,
+    ///         FeLimit = 0,
+    ///         BackendLimit = 0,
+    ///         CacheMode = "Cache",
+    ///         Squash = "none",
+    ///         LagPeriod = 5,
+    ///     });
+    /// 
+    ///     var defaultExpressSync = new AliCloud.CloudStorageGateway.ExpressSync("defaultExpressSync", new()
+    ///     {
+    ///         BucketName = defaultGatewayFileShare.OssBucketName,
+    ///         BucketRegion = region,
+    ///         Description = name,
+    ///         ExpressSyncName = name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -112,7 +118,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudstoragegateway/expressSync:ExpressSync")]
-    public partial class ExpressSync : Pulumi.CustomResource
+    public partial class ExpressSync : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the OSS Bucket.
@@ -188,7 +194,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         }
     }
 
-    public sealed class ExpressSyncArgs : Pulumi.ResourceArgs
+    public sealed class ExpressSyncArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the OSS Bucket.
@@ -223,9 +229,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public ExpressSyncArgs()
         {
         }
+        public static new ExpressSyncArgs Empty => new ExpressSyncArgs();
     }
 
-    public sealed class ExpressSyncState : Pulumi.ResourceArgs
+    public sealed class ExpressSyncState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the OSS Bucket.
@@ -260,5 +267,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public ExpressSyncState()
         {
         }
+        public static new ExpressSyncState Empty => new ExpressSyncState();
     }
 }

@@ -36,14 +36,14 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the customer gateway.
+     * The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
      * 
      */
     @Import(name="customerGatewayId")
     private @Nullable Output<String> customerGatewayId;
 
     /**
-     * @return The ID of the customer gateway.
+     * @return The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
      * 
      */
     public Optional<Output<String>> customerGatewayId() {
@@ -123,6 +123,21 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
      */
     public Optional<Output<GatewayVpnAttachmentIkeConfigArgs>> ikeConfig() {
         return Optional.ofNullable(this.ikeConfig);
+    }
+
+    /**
+     * The VPN gateway IP.
+     * 
+     */
+    @Import(name="internetIp")
+    private @Nullable Output<String> internetIp;
+
+    /**
+     * @return The VPN gateway IP.
+     * 
+     */
+    public Optional<Output<String>> internetIp() {
+        return Optional.ofNullable(this.internetIp);
     }
 
     /**
@@ -225,6 +240,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         this.enableNatTraversal = $.enableNatTraversal;
         this.healthCheckConfig = $.healthCheckConfig;
         this.ikeConfig = $.ikeConfig;
+        this.internetIp = $.internetIp;
         this.ipsecConfig = $.ipsecConfig;
         this.localSubnet = $.localSubnet;
         this.networkType = $.networkType;
@@ -273,7 +289,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param customerGatewayId The ID of the customer gateway.
+         * @param customerGatewayId The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
          * 
          * @return builder
          * 
@@ -284,7 +300,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param customerGatewayId The ID of the customer gateway.
+         * @param customerGatewayId The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
          * 
          * @return builder
          * 
@@ -396,6 +412,27 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
          */
         public Builder ikeConfig(GatewayVpnAttachmentIkeConfigArgs ikeConfig) {
             return ikeConfig(Output.of(ikeConfig));
+        }
+
+        /**
+         * @param internetIp The VPN gateway IP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetIp(@Nullable Output<String> internetIp) {
+            $.internetIp = internetIp;
+            return this;
+        }
+
+        /**
+         * @param internetIp The VPN gateway IP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetIp(String internetIp) {
+            return internetIp(Output.of(internetIp));
         }
 
         /**

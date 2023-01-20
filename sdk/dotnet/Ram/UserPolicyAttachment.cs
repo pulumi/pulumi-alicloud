@@ -15,25 +15,25 @@ namespace Pulumi.AliCloud.Ram
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a RAM User Policy attachment.
+    ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
-    ///         // Create a RAM User Policy attachment.
-    ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
-    ///         {
-    ///             DisplayName = "user_display_name",
-    ///             Mobile = "86-18688888888",
-    ///             Email = "hello.uuu@aaa.com",
-    ///             Comments = "yoyoyo",
-    ///             Force = true,
-    ///         });
-    ///         var policy = new AliCloud.Ram.Policy("policy", new AliCloud.Ram.PolicyArgs
-    ///         {
-    ///             Document = @"  {
+    ///         DisplayName = "user_display_name",
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var policy = new AliCloud.Ram.Policy("policy", new()
+    ///     {
+    ///         Document = @"  {
     ///     ""Statement"": [
     ///       {
     ///         ""Action"": [
@@ -50,18 +50,18 @@ namespace Pulumi.AliCloud.Ram
     ///       ""Version"": ""1""
     ///   }
     /// ",
-    ///             Description = "this is a policy test",
-    ///             Force = true,
-    ///         });
-    ///         var attach = new AliCloud.Ram.UserPolicyAttachment("attach", new AliCloud.Ram.UserPolicyAttachmentArgs
-    ///         {
-    ///             PolicyName = policy.Name,
-    ///             PolicyType = policy.Type,
-    ///             UserName = user.Name,
-    ///         });
-    ///     }
+    ///         Description = "this is a policy test",
+    ///         Force = true,
+    ///     });
     /// 
-    /// }
+    ///     var attach = new AliCloud.Ram.UserPolicyAttachment("attach", new()
+    ///     {
+    ///         PolicyName = policy.Name,
+    ///         PolicyType = policy.Type,
+    ///         UserName = user.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/userPolicyAttachment:UserPolicyAttachment")]
-    public partial class UserPolicyAttachment : Pulumi.CustomResource
+    public partial class UserPolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class UserPolicyAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class UserPolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -160,9 +160,10 @@ namespace Pulumi.AliCloud.Ram
         public UserPolicyAttachmentArgs()
         {
         }
+        public static new UserPolicyAttachmentArgs Empty => new UserPolicyAttachmentArgs();
     }
 
-    public sealed class UserPolicyAttachmentState : Pulumi.ResourceArgs
+    public sealed class UserPolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
@@ -185,5 +186,6 @@ namespace Pulumi.AliCloud.Ram
         public UserPolicyAttachmentState()
         {
         }
+        public static new UserPolicyAttachmentState Empty => new UserPolicyAttachmentState();
     }
 }

@@ -51,7 +51,7 @@ func GetRoles(ctx *pulumi.Context, args *GetRolesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getRoles.
 type GetRolesArgs struct {
-	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Resource Manager Role IDs.
 	Ids []string `pulumi:"ids"`
@@ -90,7 +90,7 @@ func GetRolesOutput(ctx *pulumi.Context, args GetRolesOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getRoles.
 type GetRolesOutputArgs struct {
-	// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Resource Manager Role IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HybridMonitorSlsTaskSlsProcessConfigExpress {
     /**
-     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The alias of the aggregation result.
      * 
      */
     private @Nullable String alias;
     /**
-     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
      * 
      */
     private @Nullable String express;
 
     private HybridMonitorSlsTaskSlsProcessConfigExpress() {}
     /**
-     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The alias of the aggregation result.
      * 
      */
     public Optional<String> alias() {
         return Optional.ofNullable(this.alias);
     }
     /**
-     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
      * 
      */
     public Optional<String> express() {

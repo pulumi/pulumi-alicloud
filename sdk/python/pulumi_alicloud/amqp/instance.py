@@ -42,9 +42,6 @@ class InstanceArgs:
         :param pulumi.Input[int] renewal_duration: RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
-               - `AutoRenewal`: Auto renewal.
-               - `ManualRenewal`: Manual renewal.
-               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] storage_size: The storage size. It is valid when `instance_type` is vip.
         """
         pulumi.set(__self__, "instance_type", instance_type)
@@ -217,9 +214,6 @@ class InstanceArgs:
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to renew an instance automatically or not. Default to "ManualRenewal".
-        - `AutoRenewal`: Auto renewal.
-        - `ManualRenewal`: Manual renewal.
-        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -271,9 +265,6 @@ class _InstanceState:
         :param pulumi.Input[int] renewal_duration: RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
-               - `AutoRenewal`: Auto renewal.
-               - `ManualRenewal`: Manual renewal.
-               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] storage_size: The storage size. It is valid when `instance_type` is vip.
         :param pulumi.Input[bool] support_eip: Whether to support EIP.
@@ -443,9 +434,6 @@ class _InstanceState:
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to renew an instance automatically or not. Default to "ManualRenewal".
-        - `AutoRenewal`: Auto renewal.
-        - `ManualRenewal`: Manual renewal.
-        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -567,9 +555,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] renewal_duration: RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
-               - `AutoRenewal`: Auto renewal.
-               - `ManualRenewal`: Manual renewal.
-               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] storage_size: The storage size. It is valid when `instance_type` is vip.
         :param pulumi.Input[bool] support_eip: Whether to support EIP.
         """
@@ -729,9 +714,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] renewal_duration: RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
-               - `AutoRenewal`: Auto renewal.
-               - `ManualRenewal`: Manual renewal.
-               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] storage_size: The storage size. It is valid when `instance_type` is vip.
         :param pulumi.Input[bool] support_eip: Whether to support EIP.
@@ -847,9 +829,6 @@ class Instance(pulumi.CustomResource):
     def renewal_status(self) -> pulumi.Output[str]:
         """
         Whether to renew an instance automatically or not. Default to "ManualRenewal".
-        - `AutoRenewal`: Auto renewal.
-        - `ManualRenewal`: Manual renewal.
-        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 

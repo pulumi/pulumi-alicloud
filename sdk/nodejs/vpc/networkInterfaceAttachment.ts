@@ -5,66 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * Bacis Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "networkInterfaceAttachment";
- * const number = config.get("number") || "2";
- * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "192.168.0.0/24"});
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     vswitchName: name,
- *     cidrBlock: "192.168.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
- *     vpcId: vpc.id,
- * });
- * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
- * const instanceType = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?[0]?.id,
- *     eniAmount: 2,
- * }));
- * const defaultImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_18.*64",
- *     mostRecent: true,
- *     owners: "system",
- * });
- * const instance: alicloud.ecs.Instance[];
- * for (const range = {value: 0}; range.value < number; range.value++) {
- *     instance.push(new alicloud.ecs.Instance(`instance-${range.value}`, {
- *         availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
- *         securityGroups: [group.id],
- *         instanceType: instanceType.then(instanceType => instanceType.instanceTypes?[0]?.id),
- *         systemDiskCategory: "cloud_efficiency",
- *         imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
- *         instanceName: name,
- *         vswitchId: vswitch.id,
- *         internetMaxBandwidthOut: 10,
- *     }));
- * }
- * const _interface: alicloud.vpc.NetworkInterface[];
- * for (const range = {value: 0}; range.value < number; range.value++) {
- *     _interface.push(new alicloud.vpc.NetworkInterface(`interface-${range.value}`, {
- *         vswitchId: vswitch.id,
- *         securityGroups: [group.id],
- *     }));
- * }
- * const attachment: alicloud.vpc.NetworkInterfaceAttachment[];
- * for (const range = {value: 0}; range.value < number; range.value++) {
- *     attachment.push(new alicloud.vpc.NetworkInterfaceAttachment(`attachment-${range.value}`, {
- *         instanceId: instance.map(__item => __item.id)[range.index],
- *         networkInterfaceId: _interface.map(__item => __item.id)[range.index],
- *     }));
- * }
- * ```
- *
  * ## Import
  *
  * Network Interfaces Attachment resource can be imported using the id, e.g.

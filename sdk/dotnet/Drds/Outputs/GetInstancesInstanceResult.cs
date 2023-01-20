@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Drds.Outputs
     public sealed class GetInstancesInstanceResult
     {
         /// <summary>
+        /// (Available in 1.196.0+) The connection string of the DRDS instance.
+        /// </summary>
+        public readonly string ConnectionString;
+        /// <summary>
         /// Creation time of the instance.
         /// </summary>
         public readonly int CreateTime;
@@ -29,6 +33,10 @@ namespace Pulumi.AliCloud.Drds.Outputs
         /// `Classic` for public classic network or `VPC` for private network.
         /// </summary>
         public readonly string NetworkType;
+        /// <summary>
+        /// (Available in 1.196.0+) The connection port of the DRDS instance.
+        /// </summary>
+        public readonly string Port;
         /// <summary>
         /// Status of the instance.
         /// </summary>
@@ -48,6 +56,8 @@ namespace Pulumi.AliCloud.Drds.Outputs
 
         [OutputConstructor]
         private GetInstancesInstanceResult(
+            string connectionString,
+
             int createTime,
 
             string description,
@@ -55,6 +65,8 @@ namespace Pulumi.AliCloud.Drds.Outputs
             string id,
 
             string networkType,
+
+            string port,
 
             string status,
 
@@ -64,10 +76,12 @@ namespace Pulumi.AliCloud.Drds.Outputs
 
             string zoneId)
         {
+            ConnectionString = connectionString;
             CreateTime = createTime;
             Description = description;
             Id = id;
             NetworkType = networkType;
+            Port = port;
             Status = status;
             Type = type;
             Version = version;

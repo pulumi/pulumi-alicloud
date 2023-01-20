@@ -100,6 +100,21 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+     * 
+     */
+    @Import(name="healthCheckType")
+    private @Nullable Output<String> healthCheckType;
+
+    /**
+     * @return Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+     * 
+     */
+    public Optional<Output<String>> healthCheckType() {
+        return Optional.ofNullable(this.healthCheckType);
+    }
+
+    /**
      * Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
      * 
      */
@@ -377,6 +392,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.desiredCapacity = $.desiredCapacity;
         this.groupDeletionProtection = $.groupDeletionProtection;
         this.groupType = $.groupType;
+        this.healthCheckType = $.healthCheckType;
         this.launchTemplateId = $.launchTemplateId;
         this.launchTemplateVersion = $.launchTemplateVersion;
         this.loadbalancerIds = $.loadbalancerIds;
@@ -532,6 +548,27 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder groupType(String groupType) {
             return groupType(Output.of(groupType));
+        }
+
+        /**
+         * @param healthCheckType Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckType(@Nullable Output<String> healthCheckType) {
+            $.healthCheckType = healthCheckType;
+            return this;
+        }
+
+        /**
+         * @param healthCheckType Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckType(String healthCheckType) {
+            return healthCheckType(Output.of(healthCheckType));
         }
 
         /**

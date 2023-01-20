@@ -21,30 +21,28 @@ namespace Pulumi.AliCloud.Cfg
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Cfg.Aggregator("example", new()
     ///     {
-    ///         var example = new AliCloud.Cfg.Aggregator("example", new AliCloud.Cfg.AggregatorArgs
+    ///         AggregatorAccounts = new[]
     ///         {
-    ///             AggregatorAccounts = 
+    ///             new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
     ///             {
-    ///                 new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
-    ///                 {
-    ///                     AccountId = "123968452689****",
-    ///                     AccountName = "tf-testacc1234",
-    ///                     AccountType = "ResourceDirectory",
-    ///                 },
+    ///                 AccountId = "123968452689****",
+    ///                 AccountName = "tf-testacc1234",
+    ///                 AccountType = "ResourceDirectory",
     ///             },
-    ///             AggregatorName = "tf-testaccConfigAggregator1234",
-    ///             Description = "tf-testaccConfigAggregator1234",
-    ///         });
-    ///     }
+    ///         },
+    ///         AggregatorName = "tf-testaccConfigAggregator1234",
+    ///         Description = "tf-testaccConfigAggregator1234",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.AliCloud.Cfg
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/aggregator:Aggregator")]
-    public partial class Aggregator : Pulumi.CustomResource
+    public partial class Aggregator : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
@@ -132,7 +130,7 @@ namespace Pulumi.AliCloud.Cfg
         }
     }
 
-    public sealed class AggregatorArgs : Pulumi.ResourceArgs
+    public sealed class AggregatorArgs : global::Pulumi.ResourceArgs
     {
         [Input("aggregatorAccounts")]
         private InputList<Inputs.AggregatorAggregatorAccountArgs>? _aggregatorAccounts;
@@ -167,9 +165,10 @@ namespace Pulumi.AliCloud.Cfg
         public AggregatorArgs()
         {
         }
+        public static new AggregatorArgs Empty => new AggregatorArgs();
     }
 
-    public sealed class AggregatorState : Pulumi.ResourceArgs
+    public sealed class AggregatorState : global::Pulumi.ResourceArgs
     {
         [Input("aggregatorAccounts")]
         private InputList<Inputs.AggregatorAggregatorAccountGetArgs>? _aggregatorAccounts;
@@ -210,5 +209,6 @@ namespace Pulumi.AliCloud.Cfg
         public AggregatorState()
         {
         }
+        public static new AggregatorState Empty => new AggregatorState();
     }
 }

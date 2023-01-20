@@ -5,20 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./config";
-export * from "./dataLimit";
-export * from "./getConfigs";
-export * from "./getDataLimits";
-export * from "./getInstances";
-export * from "./getRules";
-export * from "./instance";
-export * from "./rule";
+export { ConfigArgs, ConfigState } from "./config";
+export type Config = import("./config").Config;
+export const Config: typeof import("./config").Config = null as any;
+utilities.lazyLoad(exports, ["Config"], () => require("./config"));
 
-// Import resources to register:
-import { Config } from "./config";
-import { DataLimit } from "./dataLimit";
-import { Instance } from "./instance";
-import { Rule } from "./rule";
+export { DataLimitArgs, DataLimitState } from "./dataLimit";
+export type DataLimit = import("./dataLimit").DataLimit;
+export const DataLimit: typeof import("./dataLimit").DataLimit = null as any;
+utilities.lazyLoad(exports, ["DataLimit"], () => require("./dataLimit"));
+
+export { GetConfigsArgs, GetConfigsResult, GetConfigsOutputArgs } from "./getConfigs";
+export const getConfigs: typeof import("./getConfigs").getConfigs = null as any;
+export const getConfigsOutput: typeof import("./getConfigs").getConfigsOutput = null as any;
+utilities.lazyLoad(exports, ["getConfigs","getConfigsOutput"], () => require("./getConfigs"));
+
+export { GetDataLimitsArgs, GetDataLimitsResult, GetDataLimitsOutputArgs } from "./getDataLimits";
+export const getDataLimits: typeof import("./getDataLimits").getDataLimits = null as any;
+export const getDataLimitsOutput: typeof import("./getDataLimits").getDataLimitsOutput = null as any;
+utilities.lazyLoad(exports, ["getDataLimits","getDataLimitsOutput"], () => require("./getDataLimits"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetRulesArgs, GetRulesResult, GetRulesOutputArgs } from "./getRules";
+export const getRules: typeof import("./getRules").getRules = null as any;
+export const getRulesOutput: typeof import("./getRules").getRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getRules","getRulesOutput"], () => require("./getRules"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { RuleArgs, RuleState } from "./rule";
+export type Rule = import("./rule").Rule;
+export const Rule: typeof import("./rule").Rule = null as any;
+utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
+
 
 const _module = {
     version: utilities.getVersion(),

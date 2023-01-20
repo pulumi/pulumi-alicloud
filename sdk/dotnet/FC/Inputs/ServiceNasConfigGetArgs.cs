@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC.Inputs
 {
 
-    public sealed class ServiceNasConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceNasConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The group id of your NAS file system.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.FC.Inputs
         public ServiceNasConfigGetArgs()
         {
         }
+        public static new ServiceNasConfigGetArgs Empty => new ServiceNasConfigGetArgs();
     }
 }

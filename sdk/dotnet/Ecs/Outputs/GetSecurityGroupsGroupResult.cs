@@ -44,24 +44,22 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var taggedSecurityGroups = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
         ///     {
-        ///         var taggedSecurityGroups = Output.Create(AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///                 { "tagKey2", "tagValue2" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "tagKey1", "tagValue1" },
+        ///             { "tagKey2", "tagValue2" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;

@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("alicloud");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("alicloud");
 
         private static readonly __Value<string?> _accessKey = new __Value<string?>(() => __config.Get("accessKey"));
         /// <summary>
@@ -131,6 +131,16 @@ namespace Pulumi.AliCloud
         {
             get => _logEndpoint.Get();
             set => _logEndpoint.Set(value);
+        }
+
+        private static readonly __Value<int?> _maxRetryTimeout = new __Value<int?>(() => __config.GetInt32("maxRetryTimeout"));
+        /// <summary>
+        /// The maximum retry timeout of the request.
+        /// </summary>
+        public static int? MaxRetryTimeout
+        {
+            get => _maxRetryTimeout.Get();
+            set => _maxRetryTimeout.Set(value);
         }
 
         private static readonly __Value<string?> _mnsEndpoint = new __Value<string?>(() => __config.Get("mnsEndpoint"));
@@ -266,16 +276,19 @@ namespace Pulumi.AliCloud
                 public string? Apigateway { get; set; } = null!;
                 public string? Arms { get; set; } = null!;
                 public string? Bastionhost { get; set; } = null!;
+                public string? Bpstudio { get; set; } = null!;
                 public string? BrainIndustrial { get; set; } = null!;
                 public string? Bssopenapi { get; set; } = null!;
                 public string? Cas { get; set; } = null!;
                 public string? Cassandra { get; set; } = null!;
                 public string? Cbn { get; set; } = null!;
+                public string? Cbs { get; set; } = null!;
                 public string? Cddc { get; set; } = null!;
                 public string? Cdn { get; set; } = null!;
                 public string? Cds { get; set; } = null!;
                 public string? Clickhouse { get; set; } = null!;
                 public string? Cloudauth { get; set; } = null!;
+                public string? Cloudfirewall { get; set; } = null!;
                 public string? Cloudfw { get; set; } = null!;
                 public string? Cloudphone { get; set; } = null!;
                 public string? Cloudsso { get; set; } = null!;
@@ -283,6 +296,7 @@ namespace Pulumi.AliCloud
                 public string? Config { get; set; } = null!;
                 public string? Cr { get; set; } = null!;
                 public string? Cs { get; set; } = null!;
+                public string? Das { get; set; } = null!;
                 public string? Datahub { get; set; } = null!;
                 public string? Dataworkspublic { get; set; } = null!;
                 public string? Dbfs { get; set; } = null!;
@@ -295,11 +309,13 @@ namespace Pulumi.AliCloud
                 public string? Dg { get; set; } = null!;
                 public string? Dm { get; set; } = null!;
                 public string? DmsEnterprise { get; set; } = null!;
+                public string? Dmsenterprise { get; set; } = null!;
                 public string? Dns { get; set; } = null!;
                 public string? Drds { get; set; } = null!;
                 public string? Dts { get; set; } = null!;
                 public string? Dysms { get; set; } = null!;
                 public string? Eais { get; set; } = null!;
+                public string? Ebs { get; set; } = null!;
                 public string? Eci { get; set; } = null!;
                 public string? Ecs { get; set; } = null!;
                 public string? Edas { get; set; } = null!;
@@ -338,6 +354,7 @@ namespace Pulumi.AliCloud
                 public string? Mscopensubscription { get; set; } = null!;
                 public string? Mse { get; set; } = null!;
                 public string? Nas { get; set; } = null!;
+                public string? Nlb { get; set; } = null!;
                 public string? Ons { get; set; } = null!;
                 public string? Onsproxy { get; set; } = null!;
                 public string? Oos { get; set; } = null!;
@@ -364,11 +381,13 @@ namespace Pulumi.AliCloud
                 public string? Sgw { get; set; } = null!;
                 public string? Slb { get; set; } = null!;
                 public string? Smartag { get; set; } = null!;
+                public string? Srvcatalog { get; set; } = null!;
                 public string? Sts { get; set; } = null!;
                 public string? Swas { get; set; } = null!;
                 public string? Tag { get; set; } = null!;
                 public string? Vod { get; set; } = null!;
                 public string? Vpc { get; set; } = null!;
+                public string? Vpcpeer { get; set; } = null!;
                 public string? Vs { get; set; } = null!;
                 public string? Waf { get; set; } = null!;
                 public string? WafOpenapi { get; set; } = null!;

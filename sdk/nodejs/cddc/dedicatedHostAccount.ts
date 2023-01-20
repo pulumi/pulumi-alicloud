@@ -95,11 +95,13 @@ export class DedicatedHostAccount extends pulumi.CustomResource {
                 throw new Error("Missing required property 'dedicatedHostId'");
             }
             resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["accountType"] = args ? args.accountType : undefined;
             resourceInputs["dedicatedHostId"] = args ? args.dedicatedHostId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(DedicatedHostAccount.__pulumiType, name, resourceInputs, opts);
     }
 }

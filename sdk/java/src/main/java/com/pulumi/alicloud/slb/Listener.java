@@ -30,7 +30,6 @@ import javax.annotation.Nullable;
  * * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
  * 
  * ## Example Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -41,10 +40,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
  * import com.pulumi.alicloud.slb.Acl;
  * import com.pulumi.alicloud.slb.AclArgs;
- * import com.pulumi.alicloud.slb.inputs.AclEntryListArgs;
  * import com.pulumi.alicloud.slb.Listener;
  * import com.pulumi.alicloud.slb.ListenerArgs;
  * import com.pulumi.alicloud.slb.inputs.ListenerXForwardedForArgs;
+ * import com.pulumi.alicloud.slb.AclEntryAttachment;
+ * import com.pulumi.alicloud.slb.AclEntryAttachmentArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,29 +59,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;testcreatehttplistener&#34;);
- *         final var ipVersion = config.get(&#34;ipVersion&#34;).orElse(&#34;ipv4&#34;);
- *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *         final var slbListenerName = config.get(&#34;slbListenerName&#34;).orElse(&#34;forSlbListener&#34;);
+ *         var listenerApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;listenerApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
  *             .loadBalancerName(&#34;tf-testAccSlbListenerHttp&#34;)
  *             .internetChargeType(&#34;PayByTraffic&#34;)
- *             .internet(true)
+ *             .addressType(&#34;internet&#34;)
+ *             .instanceChargeType(&#34;PayByCLCU&#34;)
  *             .build());
  * 
- *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
- *             .ipVersion(ipVersion)
- *             .entryLists(            
- *                 AclEntryListArgs.builder()
- *                     .entry(&#34;10.10.10.0/24&#34;)
- *                     .comment(&#34;first&#34;)
- *                     .build(),
- *                 AclEntryListArgs.builder()
- *                     .entry(&#34;168.10.10.0/24&#34;)
- *                     .comment(&#34;second&#34;)
- *                     .build())
+ *         var listenerAcl = new Acl(&#34;listenerAcl&#34;, AclArgs.builder()        
+ *             .ipVersion(&#34;ipv4&#34;)
  *             .build());
  * 
- *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
- *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+ *         var listenerListener = new Listener(&#34;listenerListener&#34;, ListenerArgs.builder()        
+ *             .loadBalancerId(listenerApplicationLoadBalancer.id())
  *             .backendPort(80)
  *             .frontendPort(80)
  *             .protocol(&#34;http&#34;)
@@ -105,9 +96,21 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .aclStatus(&#34;on&#34;)
  *             .aclType(&#34;white&#34;)
- *             .aclId(defaultAcl.id())
+ *             .aclId(listenerAcl.id())
  *             .requestTimeout(80)
  *             .idleTimeout(30)
+ *             .build());
+ * 
+ *         var first = new AclEntryAttachment(&#34;first&#34;, AclEntryAttachmentArgs.builder()        
+ *             .aclId(listenerAcl.id())
+ *             .entry(&#34;10.10.10.0/24&#34;)
+ *             .comment(&#34;first&#34;)
+ *             .build());
+ * 
+ *         var second = new AclEntryAttachment(&#34;second&#34;, AclEntryAttachmentArgs.builder()        
+ *             .aclId(listenerAcl.id())
+ *             .entry(&#34;168.10.10.0/24&#34;)
+ *             .comment(&#34;second&#34;)
  *             .build());
  * 
  *     }
@@ -635,6 +638,20 @@ public class Listener extends com.pulumi.resources.CustomResource {
      */
     public Output<String> protocol() {
         return this.protocol;
+    }
+    /**
+     * Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     * 
+     */
+    @Export(name="proxyProtocolV2Enabled", type=Boolean.class, parameters={})
+    private Output<Boolean> proxyProtocolV2Enabled;
+
+    /**
+     * @return Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     * 
+     */
+    public Output<Boolean> proxyProtocolV2Enabled() {
+        return this.proxyProtocolV2Enabled;
     }
     /**
      * Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.

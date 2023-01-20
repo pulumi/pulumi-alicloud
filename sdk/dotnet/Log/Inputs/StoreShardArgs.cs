@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class StoreShardArgs : Pulumi.ResourceArgs
+    public sealed class StoreShardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The begin value of the shard range(MD5), included in the shard range.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public StoreShardArgs()
         {
         }
+        public static new StoreShardArgs Empty => new StoreShardArgs();
     }
 }

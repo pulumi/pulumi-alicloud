@@ -13,25 +13,23 @@ namespace Pulumi.AliCloud.Ram
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new RAM user.
+    ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
-    ///         // Create a new RAM user.
-    ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
-    ///         {
-    ///             Comments = "yoyoyo",
-    ///             DisplayName = "user_display_name",
-    ///             Email = "hello.uuu@aaa.com",
-    ///             Force = true,
-    ///             Mobile = "86-18688888888",
-    ///         });
-    ///     }
+    ///         Comments = "yoyoyo",
+    ///         DisplayName = "user_display_name",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Force = true,
+    ///         Mobile = "86-18688888888",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
@@ -125,7 +123,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
@@ -166,9 +164,10 @@ namespace Pulumi.AliCloud.Ram
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
@@ -209,5 +208,6 @@ namespace Pulumi.AliCloud.Ram
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

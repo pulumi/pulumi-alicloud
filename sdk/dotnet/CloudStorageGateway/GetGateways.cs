@@ -23,34 +23,34 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new()
         ///     {
-        ///         var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new AliCloud.CloudStorageGateway.StorageBundleArgs
-        ///         {
-        ///             StorageBundleName = "example_value",
-        ///         });
-        ///         var nameRegex = AliCloud.CloudStorageGateway.GetGateways.Invoke(new AliCloud.CloudStorageGateway.GetGatewaysInvokeArgs
-        ///         {
-        ///             StorageBundleId = example.Id,
-        ///             NameRegex = "^my-Gateway",
-        ///         });
-        ///         this.CloudStorageGatewayGatewayId = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
-        ///     }
+        ///         StorageBundleName = "example_value",
+        ///     });
         /// 
-        ///     [Output("cloudStorageGatewayGatewayId")]
-        ///     public Output&lt;string&gt; CloudStorageGatewayGatewayId { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CloudStorageGateway.GetGateways.Invoke(new()
+        ///     {
+        ///         StorageBundleId = example.Id,
+        ///         NameRegex = "^my-Gateway",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayGatewayId"] = nameRegex.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(GetGatewaysArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:cloudstoragegateway/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:cloudstoragegateway/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
@@ -64,38 +64,38 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new()
         ///     {
-        ///         var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new AliCloud.CloudStorageGateway.StorageBundleArgs
-        ///         {
-        ///             StorageBundleName = "example_value",
-        ///         });
-        ///         var nameRegex = AliCloud.CloudStorageGateway.GetGateways.Invoke(new AliCloud.CloudStorageGateway.GetGatewaysInvokeArgs
-        ///         {
-        ///             StorageBundleId = example.Id,
-        ///             NameRegex = "^my-Gateway",
-        ///         });
-        ///         this.CloudStorageGatewayGatewayId = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
-        ///     }
+        ///         StorageBundleName = "example_value",
+        ///     });
         /// 
-        ///     [Output("cloudStorageGatewayGatewayId")]
-        ///     public Output&lt;string&gt; CloudStorageGatewayGatewayId { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CloudStorageGateway.GetGateways.Invoke(new()
+        ///     {
+        ///         StorageBundleId = example.Id,
+        ///         NameRegex = "^my-Gateway",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayGatewayId"] = nameRegex.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:cloudstoragegateway/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:cloudstoragegateway/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGatewaysArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewaysArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -139,9 +139,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GetGatewaysArgs()
         {
         }
+        public static new GetGatewaysArgs Empty => new GetGatewaysArgs();
     }
 
-    public sealed class GetGatewaysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewaysInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -185,6 +186,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GetGatewaysInvokeArgs()
         {
         }
+        public static new GetGatewaysInvokeArgs Empty => new GetGatewaysInvokeArgs();
     }
 
 

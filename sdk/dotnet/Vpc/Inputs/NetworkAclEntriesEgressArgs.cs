@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc.Inputs
 {
 
-    public sealed class NetworkAclEntriesEgressArgs : Pulumi.ResourceArgs
+    public sealed class NetworkAclEntriesEgressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the egress entry.
+        /// The description of the ingress entry.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -25,31 +25,31 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public Input<string>? DestinationCidrIp { get; set; }
 
         /// <summary>
-        /// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+        /// The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
         /// </summary>
         [Input("entryType")]
         public Input<string>? EntryType { get; set; }
 
         /// <summary>
-        /// The name of the egress entry.
+        /// The name of the ingress entry.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The policy of the egress entry. It must be `accept` or `drop`.
+        /// The policy of the ingress entry. It must be `accept` or `drop`.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// The port of the egress entry.
+        /// The port of the ingress entry.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// The protocol of the egress entry.
+        /// The protocol of the ingress entry.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -57,5 +57,6 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public NetworkAclEntriesEgressArgs()
         {
         }
+        public static new NetworkAclEntriesEgressArgs Empty => new NetworkAclEntriesEgressArgs();
     }
 }

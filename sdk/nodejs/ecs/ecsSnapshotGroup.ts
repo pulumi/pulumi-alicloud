@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     availableDiskCategory: "cloud_essd",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?[0]?.id,
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  *     systemDiskCategory: "cloud_essd",
@@ -36,18 +36,18 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.zones?[0]?.id,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
  * }));
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
  *     description: "New security group",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
  * });
- * const defaultDisk: alicloud.ecs.Disk[];
+ * const defaultDisk: alicloud.ecs.Disk[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     defaultDisk.push(new alicloud.ecs.Disk(`defaultDisk-${range.value}`, {
  *         diskName: _var.name,
- *         zoneId: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.availabilityZones?[0]),
+ *         zoneId: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0]),
  *         category: "cloud_essd",
  *         size: 20,
  *     }));
@@ -56,15 +56,15 @@ import * as utilities from "../utilities";
  *     owners: "system",
  * });
  * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     instanceName: _var.name,
  *     hostName: "tf-testAcc",
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
  *     securityGroups: [defaultSecurityGroup.id],
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  * });
- * const defaultDiskAttachment: alicloud.ecs.DiskAttachment[];
+ * const defaultDiskAttachment: alicloud.ecs.DiskAttachment[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     defaultDiskAttachment.push(new alicloud.ecs.DiskAttachment(`defaultDiskAttachment-${range.value}`, {
  *         diskId: defaultDisk.map(__item => __item.id)[range.value],
@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  *         defaultDiskAttachment[1].diskId,
  *     ],
  *     snapshotGroupName: "example_value",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     instanceId: defaultDiskAttachment[0].instanceId,
  *     instantAccess: true,
  *     instantAccessRetentionDays: 1,

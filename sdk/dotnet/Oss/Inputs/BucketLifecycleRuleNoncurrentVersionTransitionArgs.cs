@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketLifecycleRuleNoncurrentVersionTransitionArgs : Pulumi.ResourceArgs
+    public sealed class BucketLifecycleRuleNoncurrentVersionTransitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the number of days noncurrent object versions transition.
+        /// Specifies the number of days after object creation when the specific rule action takes effect.
         /// </summary>
         [Input("days", required: true)]
         public Input<int> Days { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         /// </summary>
         [Input("storageClass", required: true)]
         public Input<string> StorageClass { get; set; } = null!;
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketLifecycleRuleNoncurrentVersionTransitionArgs()
         {
         }
+        public static new BucketLifecycleRuleNoncurrentVersionTransitionArgs Empty => new BucketLifecycleRuleNoncurrentVersionTransitionArgs();
     }
 }

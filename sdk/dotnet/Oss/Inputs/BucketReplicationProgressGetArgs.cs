@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketReplicationProgressGetArgs : Pulumi.ResourceArgs
+    public sealed class BucketReplicationProgressGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketReplicationProgressGetArgs()
         {
         }
+        public static new BucketReplicationProgressGetArgs Empty => new BucketReplicationProgressGetArgs();
     }
 }

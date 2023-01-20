@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/vbrHa:VbrHa")]
-    public partial class VbrHa : Pulumi.CustomResource
+    public partial class VbrHa : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class VbrHaArgs : Pulumi.ResourceArgs
+    public sealed class VbrHaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
@@ -142,9 +142,10 @@ namespace Pulumi.AliCloud.Vpc
         public VbrHaArgs()
         {
         }
+        public static new VbrHaArgs Empty => new VbrHaArgs();
     }
 
-    public sealed class VbrHaState : Pulumi.ResourceArgs
+    public sealed class VbrHaState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
@@ -185,5 +186,6 @@ namespace Pulumi.AliCloud.Vpc
         public VbrHaState()
         {
         }
+        public static new VbrHaState Empty => new VbrHaState();
     }
 }

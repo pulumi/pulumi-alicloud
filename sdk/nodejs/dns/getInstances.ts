@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,20 +13,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.dns.getInstances({
+ * const example = alicloud.dns.getInstances({
  *     ids: ["dns-cn-oew1npk****"],
- * }));
- *
- * export const firstInstanceId = example.instances[0].id;
+ * });
+ * export const firstInstanceId = example.then(example => example.instances?.[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getInstances:getInstances", {
         "domainType": args.domainType,
         "ids": args.ids,
@@ -70,9 +67,21 @@ export interface GetInstancesResult {
     readonly outputFile?: string;
     readonly userClientIp?: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.dns.getInstances({
+ *     ids: ["dns-cn-oew1npk****"],
+ * });
+ * export const firstInstanceId = example.then(example => example.instances?.[0]?.id);
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**

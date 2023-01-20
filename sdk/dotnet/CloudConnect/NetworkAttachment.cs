@@ -23,31 +23,30 @@ namespace Pulumi.AliCloud.CloudConnect
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var ccn = new AliCloud.CloudConnect.Network("ccn", new()
     ///     {
-    ///         var ccn = new AliCloud.CloudConnect.Network("ccn", new AliCloud.CloudConnect.NetworkArgs
-    ///         {
-    ///             IsDefault = true,
-    ///         });
-    ///         var @default = new AliCloud.CloudConnect.NetworkAttachment("default", new AliCloud.CloudConnect.NetworkAttachmentArgs
-    ///         {
-    ///             CcnId = ccn.Id,
-    ///             SagId = "sag-xxxxx",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 ccn,
-    ///             },
-    ///         });
-    ///     }
+    ///         IsDefault = true,
+    ///     });
     /// 
-    /// }
+    ///     var @default = new AliCloud.CloudConnect.NetworkAttachment("default", new()
+    ///     {
+    ///         CcnId = ccn.Id,
+    ///         SagId = "sag-xxxxx",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             ccn,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +58,7 @@ namespace Pulumi.AliCloud.CloudConnect
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudconnect/networkAttachment:NetworkAttachment")]
-    public partial class NetworkAttachment : Pulumi.CustomResource
+    public partial class NetworkAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the CCN instance.
@@ -117,7 +116,7 @@ namespace Pulumi.AliCloud.CloudConnect
         }
     }
 
-    public sealed class NetworkAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class NetworkAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CCN instance.
@@ -134,9 +133,10 @@ namespace Pulumi.AliCloud.CloudConnect
         public NetworkAttachmentArgs()
         {
         }
+        public static new NetworkAttachmentArgs Empty => new NetworkAttachmentArgs();
     }
 
-    public sealed class NetworkAttachmentState : Pulumi.ResourceArgs
+    public sealed class NetworkAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CCN instance.
@@ -153,5 +153,6 @@ namespace Pulumi.AliCloud.CloudConnect
         public NetworkAttachmentState()
         {
         }
+        public static new NetworkAttachmentState Empty => new NetworkAttachmentState();
     }
 }

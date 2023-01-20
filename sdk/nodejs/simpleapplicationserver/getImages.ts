@@ -2,16 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:simpleapplicationserver/getImages:getImages", {
         "ids": args.ids,
         "imageType": args.imageType,
@@ -28,9 +26,6 @@ export interface GetImagesArgs {
     ids?: string[];
     /**
      * The type of the image. Valid values: `app`, `custom`, `system`.
-     * * `system`: operating system (OS) image.
-     * * `app`: application image.
-     * * `custom`: custom image.
      */
     imageType?: string;
     nameRegex?: string;
@@ -57,9 +52,8 @@ export interface GetImagesResult {
     readonly outputFile?: string;
     readonly platform?: string;
 }
-
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
-    return pulumi.output(args).apply(a => getImages(a, opts))
+    return pulumi.output(args).apply((a: any) => getImages(a, opts))
 }
 
 /**
@@ -69,9 +63,6 @@ export interface GetImagesOutputArgs {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The type of the image. Valid values: `app`, `custom`, `system`.
-     * * `system`: operating system (OS) image.
-     * * `app`: application image.
-     * * `custom`: custom image.
      */
     imageType?: pulumi.Input<string>;
     nameRegex?: pulumi.Input<string>;

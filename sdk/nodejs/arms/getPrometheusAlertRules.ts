@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,20 +26,17 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const armsPrometheusAlertRuleId1 = ids.then(ids => ids.rules?[0]?.id);
+ * export const armsPrometheusAlertRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * const nameRegex = alicloud.arms.getPrometheusAlertRules({
  *     clusterId: "example_value",
  *     nameRegex: "^my-PrometheusAlertRule",
  * });
- * export const armsPrometheusAlertRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?[0]?.id);
+ * export const armsPrometheusAlertRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
  */
 export function getPrometheusAlertRules(args: GetPrometheusAlertRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheusAlertRulesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", {
         "clusterId": args.clusterId,
         "ids": args.ids,
@@ -70,8 +68,6 @@ export interface GetPrometheusAlertRulesArgs {
     outputFile?: string;
     /**
      * The status of the resource. Valid values: `0`, `1`.
-     * * `1`: open.
-     * * `0`: off.
      */
     status?: number;
     /**
@@ -98,9 +94,36 @@ export interface GetPrometheusAlertRulesResult {
     readonly status?: number;
     readonly type?: string;
 }
-
+/**
+ * This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.arms.getPrometheusAlertRules({
+ *     clusterId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const armsPrometheusAlertRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * const nameRegex = alicloud.arms.getPrometheusAlertRules({
+ *     clusterId: "example_value",
+ *     nameRegex: "^my-PrometheusAlertRule",
+ * });
+ * export const armsPrometheusAlertRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
+ * ```
+ */
 export function getPrometheusAlertRulesOutput(args: GetPrometheusAlertRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusAlertRulesResult> {
-    return pulumi.output(args).apply(a => getPrometheusAlertRules(a, opts))
+    return pulumi.output(args).apply((a: any) => getPrometheusAlertRules(a, opts))
 }
 
 /**
@@ -123,8 +146,6 @@ export interface GetPrometheusAlertRulesOutputArgs {
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `0`, `1`.
-     * * `1`: open.
-     * * `0`: off.
      */
     status?: pulumi.Input<number>;
     /**

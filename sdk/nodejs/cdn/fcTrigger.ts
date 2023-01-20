@@ -19,17 +19,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAccount = pulumi.output(alicloud.getAccount());
- * const defaultRegions = pulumi.output(alicloud.getRegions({
+ * const defaultAccount = alicloud.getAccount({});
+ * const defaultRegions = alicloud.getRegions({
  *     current: true,
- * }));
+ * });
  * const example = new alicloud.cdn.FcTrigger("example", {
  *     eventMetaName: "LogFileCreated",
  *     eventMetaVersion: "1.0.0",
  *     notes: "example_value",
- *     roleArn: pulumi.interpolate`acs:ram::${defaultAccount.id}:role/aliyuncdneventnotificationrole`,
- *     sourceArn: pulumi.interpolate`acs:cdn:*:${defaultAccount.id}:domain/example.com`,
- *     triggerArn: pulumi.interpolate`acs:fc:${defaultRegions.regions[0].id}:${defaultAccount.id}:services/FCTestService/functions/printEvent/triggers/testtrigger`,
+ *     roleArn: defaultAccount.then(defaultAccount => `acs:ram::${defaultAccount.id}:role/aliyuncdneventnotificationrole`),
+ *     sourceArn: defaultAccount.then(defaultAccount => `acs:cdn:*:${defaultAccount.id}:domain/example.com`),
+ *     triggerArn: Promise.all([defaultRegions, defaultAccount]).then(([defaultRegions, defaultAccount]) => `acs:fc:${defaultRegions.regions?.[0]?.id}:${defaultAccount.id}:services/FCTestService/functions/printEvent/triggers/testtrigger`),
  * });
  * ```
  *

@@ -19,24 +19,22 @@ namespace Pulumi.AliCloud.Kms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Kms.Secret("default", new()
     ///     {
-    ///         var @default = new AliCloud.Kms.Secret("default", new AliCloud.Kms.SecretArgs
-    ///         {
-    ///             Description = "from terraform",
-    ///             ForceDeleteWithoutRecovery = true,
-    ///             SecretData = "Secret data.",
-    ///             SecretName = "secret-foo",
-    ///             VersionId = "000000000001",
-    ///         });
-    ///     }
+    ///         Description = "from terraform",
+    ///         ForceDeleteWithoutRecovery = true,
+    ///         SecretData = "Secret data.",
+    ///         SecretName = "secret-foo",
+    ///         VersionId = "000000000001",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.Kms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kms/secret:Secret")]
-    public partial class Secret : Pulumi.CustomResource
+    public partial class Secret : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Alicloud Resource Name (ARN) of the secret.
@@ -61,6 +59,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance ID of the exclusive KMS instance.
+        /// </summary>
+        [Output("dkmsInstanceId")]
+        public Output<string?> DkmsInstanceId { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable automatic key rotation.
@@ -157,6 +161,10 @@ namespace Pulumi.AliCloud.Kms
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secretData",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -178,13 +186,19 @@ namespace Pulumi.AliCloud.Kms
         }
     }
 
-    public sealed class SecretArgs : Pulumi.ResourceArgs
+    public sealed class SecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the secret.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The instance ID of the exclusive KMS instance.
+        /// </summary>
+        [Input("dkmsInstanceId")]
+        public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
         /// Whether to enable automatic key rotation.
@@ -216,11 +230,21 @@ namespace Pulumi.AliCloud.Kms
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }
 
+        [Input("secretData", required: true)]
+        private Input<string>? _secretData;
+
         /// <summary>
         /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
         /// </summary>
-        [Input("secretData", required: true)]
-        public Input<string> SecretData { get; set; } = null!;
+        public Input<string>? SecretData
+        {
+            get => _secretData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of the secret value. Valid values: text, binary. Default to "text".
@@ -267,9 +291,10 @@ namespace Pulumi.AliCloud.Kms
         public SecretArgs()
         {
         }
+        public static new SecretArgs Empty => new SecretArgs();
     }
 
-    public sealed class SecretState : Pulumi.ResourceArgs
+    public sealed class SecretState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Alicloud Resource Name (ARN) of the secret.
@@ -282,6 +307,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The instance ID of the exclusive KMS instance.
+        /// </summary>
+        [Input("dkmsInstanceId")]
+        public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
         /// Whether to enable automatic key rotation.
@@ -319,11 +350,21 @@ namespace Pulumi.AliCloud.Kms
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }
 
+        [Input("secretData")]
+        private Input<string>? _secretData;
+
         /// <summary>
         /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
         /// </summary>
-        [Input("secretData")]
-        public Input<string>? SecretData { get; set; }
+        public Input<string>? SecretData
+        {
+            get => _secretData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of the secret value. Valid values: text, binary. Default to "text".
@@ -370,5 +411,6 @@ namespace Pulumi.AliCloud.Kms
         public SecretState()
         {
         }
+        public static new SecretState Empty => new SecretState();
     }
 }

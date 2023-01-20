@@ -11,7 +11,7 @@ import (
 )
 
 type ConnectionBgpConfig struct {
-	// Whether to enable BGP.
+	// Whether to enable Health Check.
 	Enable *bool `pulumi:"enable"`
 	// The ASN on the Alibaba Cloud side.
 	LocalAsn *string `pulumi:"localAsn"`
@@ -33,7 +33,7 @@ type ConnectionBgpConfigInput interface {
 }
 
 type ConnectionBgpConfigArgs struct {
-	// Whether to enable BGP.
+	// Whether to enable Health Check.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// The ASN on the Alibaba Cloud side.
 	LocalAsn pulumi.StringPtrInput `pulumi:"localAsn"`
@@ -120,7 +120,7 @@ func (o ConnectionBgpConfigOutput) ToConnectionBgpConfigPtrOutputWithContext(ctx
 	}).(ConnectionBgpConfigPtrOutput)
 }
 
-// Whether to enable BGP.
+// Whether to enable Health Check.
 func (o ConnectionBgpConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionBgpConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -164,7 +164,7 @@ func (o ConnectionBgpConfigPtrOutput) Elem() ConnectionBgpConfigOutput {
 	}).(ConnectionBgpConfigOutput)
 }
 
-// Whether to enable BGP.
+// Whether to enable Health Check.
 func (o ConnectionBgpConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionBgpConfig) *bool {
 		if v == nil {
@@ -207,7 +207,7 @@ func (o ConnectionBgpConfigPtrOutput) TunnelCidr() pulumi.StringPtrOutput {
 type ConnectionHealthCheckConfig struct {
 	// The destination IP address.
 	Dip *string `pulumi:"dip"`
-	// Whether to enable BGP.
+	// Whether to enable Health Check.
 	Enable *bool `pulumi:"enable"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	Interval *int `pulumi:"interval"`
@@ -231,7 +231,7 @@ type ConnectionHealthCheckConfigInput interface {
 type ConnectionHealthCheckConfigArgs struct {
 	// The destination IP address.
 	Dip pulumi.StringPtrInput `pulumi:"dip"`
-	// Whether to enable BGP.
+	// Whether to enable Health Check.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	Interval pulumi.IntPtrInput `pulumi:"interval"`
@@ -323,7 +323,7 @@ func (o ConnectionHealthCheckConfigOutput) Dip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionHealthCheckConfig) *string { return v.Dip }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable BGP.
+// Whether to enable Health Check.
 func (o ConnectionHealthCheckConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionHealthCheckConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -377,7 +377,7 @@ func (o ConnectionHealthCheckConfigPtrOutput) Dip() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable BGP.
+// Whether to enable Health Check.
 func (o ConnectionHealthCheckConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionHealthCheckConfig) *bool {
 		if v == nil {
@@ -901,7 +901,7 @@ func (o ConnectionIpsecConfigPtrOutput) IpsecPfs() pulumi.StringPtrOutput {
 }
 
 type GatewayVpnAttachmentBgpConfig struct {
-	// Whether to enable BGP.
+	// Specifies whether to enable health checks.
 	Enable *bool `pulumi:"enable"`
 	// The ASN on the Alibaba Cloud side.
 	LocalAsn *int `pulumi:"localAsn"`
@@ -923,7 +923,7 @@ type GatewayVpnAttachmentBgpConfigInput interface {
 }
 
 type GatewayVpnAttachmentBgpConfigArgs struct {
-	// Whether to enable BGP.
+	// Specifies whether to enable health checks.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// The ASN on the Alibaba Cloud side.
 	LocalAsn pulumi.IntPtrInput `pulumi:"localAsn"`
@@ -1010,7 +1010,7 @@ func (o GatewayVpnAttachmentBgpConfigOutput) ToGatewayVpnAttachmentBgpConfigPtrO
 	}).(GatewayVpnAttachmentBgpConfigPtrOutput)
 }
 
-// Whether to enable BGP.
+// Specifies whether to enable health checks.
 func (o GatewayVpnAttachmentBgpConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentBgpConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -1054,7 +1054,7 @@ func (o GatewayVpnAttachmentBgpConfigPtrOutput) Elem() GatewayVpnAttachmentBgpCo
 	}).(GatewayVpnAttachmentBgpConfigOutput)
 }
 
-// Whether to enable BGP.
+// Specifies whether to enable health checks.
 func (o GatewayVpnAttachmentBgpConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentBgpConfig) *bool {
 		if v == nil {
@@ -1097,7 +1097,7 @@ func (o GatewayVpnAttachmentBgpConfigPtrOutput) TunnelCidr() pulumi.StringPtrOut
 type GatewayVpnAttachmentHealthCheckConfig struct {
 	// The destination IP address that is used for health checks.
 	Dip *string `pulumi:"dip"`
-	// Whether to enable BGP.
+	// Specifies whether to enable health checks.
 	Enable *bool `pulumi:"enable"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	Interval *int `pulumi:"interval"`
@@ -1123,7 +1123,7 @@ type GatewayVpnAttachmentHealthCheckConfigInput interface {
 type GatewayVpnAttachmentHealthCheckConfigArgs struct {
 	// The destination IP address that is used for health checks.
 	Dip pulumi.StringPtrInput `pulumi:"dip"`
-	// Whether to enable BGP.
+	// Specifies whether to enable health checks.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	Interval pulumi.IntPtrInput `pulumi:"interval"`
@@ -1217,7 +1217,7 @@ func (o GatewayVpnAttachmentHealthCheckConfigOutput) Dip() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GatewayVpnAttachmentHealthCheckConfig) *string { return v.Dip }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable BGP.
+// Specifies whether to enable health checks.
 func (o GatewayVpnAttachmentHealthCheckConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentHealthCheckConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -1276,7 +1276,7 @@ func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Dip() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable BGP.
+// Specifies whether to enable health checks.
 func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentHealthCheckConfig) *bool {
 		if v == nil {
@@ -2110,8 +2110,11 @@ type GetConnectionsConnection struct {
 	Name string `pulumi:"name"`
 	// The remote subnet of the VPN connection.
 	RemoteSubnet string `pulumi:"remoteSubnet"`
-	// The status of the VPN connection, valid value:ike_sa_not_established, ike_sa_established, ipsec_sa_not_established, ipsec_sa_established.
-	Status string `pulumi:"status"`
+	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	Status          string                                   `pulumi:"status"`
+	VcoHealthChecks []GetConnectionsConnectionVcoHealthCheck `pulumi:"vcoHealthChecks"`
+	// The configuration information for BGP.
+	VpnBgpConfigs []GetConnectionsConnectionVpnBgpConfig `pulumi:"vpnBgpConfigs"`
 	// Use the VPN gateway ID as the search key.
 	VpnGatewayId string `pulumi:"vpnGatewayId"`
 }
@@ -2144,8 +2147,11 @@ type GetConnectionsConnectionArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The remote subnet of the VPN connection.
 	RemoteSubnet pulumi.StringInput `pulumi:"remoteSubnet"`
-	// The status of the VPN connection, valid value:ike_sa_not_established, ike_sa_established, ipsec_sa_not_established, ipsec_sa_established.
-	Status pulumi.StringInput `pulumi:"status"`
+	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	Status          pulumi.StringInput                               `pulumi:"status"`
+	VcoHealthChecks GetConnectionsConnectionVcoHealthCheckArrayInput `pulumi:"vcoHealthChecks"`
+	// The configuration information for BGP.
+	VpnBgpConfigs GetConnectionsConnectionVpnBgpConfigArrayInput `pulumi:"vpnBgpConfigs"`
 	// Use the VPN gateway ID as the search key.
 	VpnGatewayId pulumi.StringInput `pulumi:"vpnGatewayId"`
 }
@@ -2244,9 +2250,18 @@ func (o GetConnectionsConnectionOutput) RemoteSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.RemoteSubnet }).(pulumi.StringOutput)
 }
 
-// The status of the VPN connection, valid value:ike_sa_not_established, ike_sa_established, ipsec_sa_not_established, ipsec_sa_established.
+// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
 func (o GetConnectionsConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionsConnectionOutput) VcoHealthChecks() GetConnectionsConnectionVcoHealthCheckArrayOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) []GetConnectionsConnectionVcoHealthCheck { return v.VcoHealthChecks }).(GetConnectionsConnectionVcoHealthCheckArrayOutput)
+}
+
+// The configuration information for BGP.
+func (o GetConnectionsConnectionOutput) VpnBgpConfigs() GetConnectionsConnectionVpnBgpConfigArrayOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) []GetConnectionsConnectionVpnBgpConfig { return v.VpnBgpConfigs }).(GetConnectionsConnectionVpnBgpConfigArrayOutput)
 }
 
 // Use the VPN gateway ID as the search key.
@@ -2567,7 +2582,302 @@ func (o GetConnectionsConnectionIpsecConfigArrayOutput) Index(i pulumi.IntInput)
 	}).(GetConnectionsConnectionIpsecConfigOutput)
 }
 
+type GetConnectionsConnectionVcoHealthCheck struct {
+	// The destination ip address.
+	Dip *string `pulumi:"dip"`
+	// The health check on status. Valid values: `true`, `false`.
+	Enable *string `pulumi:"enable"`
+	// The time interval between health checks.
+	Interval *int `pulumi:"interval"`
+	// The number of retries for health checks issued.
+	Retry *int `pulumi:"retry"`
+	// The source ip address.
+	Sip *string `pulumi:"sip"`
+	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	Status *string `pulumi:"status"`
+}
+
+// GetConnectionsConnectionVcoHealthCheckInput is an input type that accepts GetConnectionsConnectionVcoHealthCheckArgs and GetConnectionsConnectionVcoHealthCheckOutput values.
+// You can construct a concrete instance of `GetConnectionsConnectionVcoHealthCheckInput` via:
+//
+//	GetConnectionsConnectionVcoHealthCheckArgs{...}
+type GetConnectionsConnectionVcoHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetConnectionsConnectionVcoHealthCheckOutput() GetConnectionsConnectionVcoHealthCheckOutput
+	ToGetConnectionsConnectionVcoHealthCheckOutputWithContext(context.Context) GetConnectionsConnectionVcoHealthCheckOutput
+}
+
+type GetConnectionsConnectionVcoHealthCheckArgs struct {
+	// The destination ip address.
+	Dip pulumi.StringPtrInput `pulumi:"dip"`
+	// The health check on status. Valid values: `true`, `false`.
+	Enable pulumi.StringPtrInput `pulumi:"enable"`
+	// The time interval between health checks.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// The number of retries for health checks issued.
+	Retry pulumi.IntPtrInput `pulumi:"retry"`
+	// The source ip address.
+	Sip pulumi.StringPtrInput `pulumi:"sip"`
+	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (GetConnectionsConnectionVcoHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsConnectionVcoHealthCheck)(nil)).Elem()
+}
+
+func (i GetConnectionsConnectionVcoHealthCheckArgs) ToGetConnectionsConnectionVcoHealthCheckOutput() GetConnectionsConnectionVcoHealthCheckOutput {
+	return i.ToGetConnectionsConnectionVcoHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsConnectionVcoHealthCheckArgs) ToGetConnectionsConnectionVcoHealthCheckOutputWithContext(ctx context.Context) GetConnectionsConnectionVcoHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionVcoHealthCheckOutput)
+}
+
+// GetConnectionsConnectionVcoHealthCheckArrayInput is an input type that accepts GetConnectionsConnectionVcoHealthCheckArray and GetConnectionsConnectionVcoHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsConnectionVcoHealthCheckArrayInput` via:
+//
+//	GetConnectionsConnectionVcoHealthCheckArray{ GetConnectionsConnectionVcoHealthCheckArgs{...} }
+type GetConnectionsConnectionVcoHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsConnectionVcoHealthCheckArrayOutput() GetConnectionsConnectionVcoHealthCheckArrayOutput
+	ToGetConnectionsConnectionVcoHealthCheckArrayOutputWithContext(context.Context) GetConnectionsConnectionVcoHealthCheckArrayOutput
+}
+
+type GetConnectionsConnectionVcoHealthCheckArray []GetConnectionsConnectionVcoHealthCheckInput
+
+func (GetConnectionsConnectionVcoHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsConnectionVcoHealthCheck)(nil)).Elem()
+}
+
+func (i GetConnectionsConnectionVcoHealthCheckArray) ToGetConnectionsConnectionVcoHealthCheckArrayOutput() GetConnectionsConnectionVcoHealthCheckArrayOutput {
+	return i.ToGetConnectionsConnectionVcoHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsConnectionVcoHealthCheckArray) ToGetConnectionsConnectionVcoHealthCheckArrayOutputWithContext(ctx context.Context) GetConnectionsConnectionVcoHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionVcoHealthCheckArrayOutput)
+}
+
+type GetConnectionsConnectionVcoHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsConnectionVcoHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsConnectionVcoHealthCheck)(nil)).Elem()
+}
+
+func (o GetConnectionsConnectionVcoHealthCheckOutput) ToGetConnectionsConnectionVcoHealthCheckOutput() GetConnectionsConnectionVcoHealthCheckOutput {
+	return o
+}
+
+func (o GetConnectionsConnectionVcoHealthCheckOutput) ToGetConnectionsConnectionVcoHealthCheckOutputWithContext(ctx context.Context) GetConnectionsConnectionVcoHealthCheckOutput {
+	return o
+}
+
+// The destination ip address.
+func (o GetConnectionsConnectionVcoHealthCheckOutput) Dip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVcoHealthCheck) *string { return v.Dip }).(pulumi.StringPtrOutput)
+}
+
+// The health check on status. Valid values: `true`, `false`.
+func (o GetConnectionsConnectionVcoHealthCheckOutput) Enable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVcoHealthCheck) *string { return v.Enable }).(pulumi.StringPtrOutput)
+}
+
+// The time interval between health checks.
+func (o GetConnectionsConnectionVcoHealthCheckOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVcoHealthCheck) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// The number of retries for health checks issued.
+func (o GetConnectionsConnectionVcoHealthCheckOutput) Retry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVcoHealthCheck) *int { return v.Retry }).(pulumi.IntPtrOutput)
+}
+
+// The source ip address.
+func (o GetConnectionsConnectionVcoHealthCheckOutput) Sip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVcoHealthCheck) *string { return v.Sip }).(pulumi.StringPtrOutput)
+}
+
+// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+func (o GetConnectionsConnectionVcoHealthCheckOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVcoHealthCheck) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsConnectionVcoHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsConnectionVcoHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsConnectionVcoHealthCheck)(nil)).Elem()
+}
+
+func (o GetConnectionsConnectionVcoHealthCheckArrayOutput) ToGetConnectionsConnectionVcoHealthCheckArrayOutput() GetConnectionsConnectionVcoHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetConnectionsConnectionVcoHealthCheckArrayOutput) ToGetConnectionsConnectionVcoHealthCheckArrayOutputWithContext(ctx context.Context) GetConnectionsConnectionVcoHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetConnectionsConnectionVcoHealthCheckArrayOutput) Index(i pulumi.IntInput) GetConnectionsConnectionVcoHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsConnectionVcoHealthCheck {
+		return vs[0].([]GetConnectionsConnectionVcoHealthCheck)[vs[1].(int)]
+	}).(GetConnectionsConnectionVcoHealthCheckOutput)
+}
+
+type GetConnectionsConnectionVpnBgpConfig struct {
+	// The authentication keys for BGP routing protocols.
+	AuthKey *string `pulumi:"authKey"`
+	// The ali cloud side autonomous system.
+	LocalAsn *int `pulumi:"localAsn"`
+	// The ali cloud side BGP address.
+	LocalBgpIp *string `pulumi:"localBgpIp"`
+	// The counterpart autonomous system number.
+	PeerAsn *int `pulumi:"peerAsn"`
+	// The BGP address on the other side.
+	PeerBgpIp *string `pulumi:"peerBgpIp"`
+	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	Status *string `pulumi:"status"`
+	// The ipsec tunnel segments.
+	TunnelCidr *string `pulumi:"tunnelCidr"`
+}
+
+// GetConnectionsConnectionVpnBgpConfigInput is an input type that accepts GetConnectionsConnectionVpnBgpConfigArgs and GetConnectionsConnectionVpnBgpConfigOutput values.
+// You can construct a concrete instance of `GetConnectionsConnectionVpnBgpConfigInput` via:
+//
+//	GetConnectionsConnectionVpnBgpConfigArgs{...}
+type GetConnectionsConnectionVpnBgpConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionsConnectionVpnBgpConfigOutput() GetConnectionsConnectionVpnBgpConfigOutput
+	ToGetConnectionsConnectionVpnBgpConfigOutputWithContext(context.Context) GetConnectionsConnectionVpnBgpConfigOutput
+}
+
+type GetConnectionsConnectionVpnBgpConfigArgs struct {
+	// The authentication keys for BGP routing protocols.
+	AuthKey pulumi.StringPtrInput `pulumi:"authKey"`
+	// The ali cloud side autonomous system.
+	LocalAsn pulumi.IntPtrInput `pulumi:"localAsn"`
+	// The ali cloud side BGP address.
+	LocalBgpIp pulumi.StringPtrInput `pulumi:"localBgpIp"`
+	// The counterpart autonomous system number.
+	PeerAsn pulumi.IntPtrInput `pulumi:"peerAsn"`
+	// The BGP address on the other side.
+	PeerBgpIp pulumi.StringPtrInput `pulumi:"peerBgpIp"`
+	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The ipsec tunnel segments.
+	TunnelCidr pulumi.StringPtrInput `pulumi:"tunnelCidr"`
+}
+
+func (GetConnectionsConnectionVpnBgpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsConnectionVpnBgpConfig)(nil)).Elem()
+}
+
+func (i GetConnectionsConnectionVpnBgpConfigArgs) ToGetConnectionsConnectionVpnBgpConfigOutput() GetConnectionsConnectionVpnBgpConfigOutput {
+	return i.ToGetConnectionsConnectionVpnBgpConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsConnectionVpnBgpConfigArgs) ToGetConnectionsConnectionVpnBgpConfigOutputWithContext(ctx context.Context) GetConnectionsConnectionVpnBgpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionVpnBgpConfigOutput)
+}
+
+// GetConnectionsConnectionVpnBgpConfigArrayInput is an input type that accepts GetConnectionsConnectionVpnBgpConfigArray and GetConnectionsConnectionVpnBgpConfigArrayOutput values.
+// You can construct a concrete instance of `GetConnectionsConnectionVpnBgpConfigArrayInput` via:
+//
+//	GetConnectionsConnectionVpnBgpConfigArray{ GetConnectionsConnectionVpnBgpConfigArgs{...} }
+type GetConnectionsConnectionVpnBgpConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionsConnectionVpnBgpConfigArrayOutput() GetConnectionsConnectionVpnBgpConfigArrayOutput
+	ToGetConnectionsConnectionVpnBgpConfigArrayOutputWithContext(context.Context) GetConnectionsConnectionVpnBgpConfigArrayOutput
+}
+
+type GetConnectionsConnectionVpnBgpConfigArray []GetConnectionsConnectionVpnBgpConfigInput
+
+func (GetConnectionsConnectionVpnBgpConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsConnectionVpnBgpConfig)(nil)).Elem()
+}
+
+func (i GetConnectionsConnectionVpnBgpConfigArray) ToGetConnectionsConnectionVpnBgpConfigArrayOutput() GetConnectionsConnectionVpnBgpConfigArrayOutput {
+	return i.ToGetConnectionsConnectionVpnBgpConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionsConnectionVpnBgpConfigArray) ToGetConnectionsConnectionVpnBgpConfigArrayOutputWithContext(ctx context.Context) GetConnectionsConnectionVpnBgpConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionVpnBgpConfigArrayOutput)
+}
+
+type GetConnectionsConnectionVpnBgpConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsConnectionVpnBgpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionsConnectionVpnBgpConfig)(nil)).Elem()
+}
+
+func (o GetConnectionsConnectionVpnBgpConfigOutput) ToGetConnectionsConnectionVpnBgpConfigOutput() GetConnectionsConnectionVpnBgpConfigOutput {
+	return o
+}
+
+func (o GetConnectionsConnectionVpnBgpConfigOutput) ToGetConnectionsConnectionVpnBgpConfigOutputWithContext(ctx context.Context) GetConnectionsConnectionVpnBgpConfigOutput {
+	return o
+}
+
+// The authentication keys for BGP routing protocols.
+func (o GetConnectionsConnectionVpnBgpConfigOutput) AuthKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVpnBgpConfig) *string { return v.AuthKey }).(pulumi.StringPtrOutput)
+}
+
+// The ali cloud side autonomous system.
+func (o GetConnectionsConnectionVpnBgpConfigOutput) LocalAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVpnBgpConfig) *int { return v.LocalAsn }).(pulumi.IntPtrOutput)
+}
+
+// The ali cloud side BGP address.
+func (o GetConnectionsConnectionVpnBgpConfigOutput) LocalBgpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVpnBgpConfig) *string { return v.LocalBgpIp }).(pulumi.StringPtrOutput)
+}
+
+// The counterpart autonomous system number.
+func (o GetConnectionsConnectionVpnBgpConfigOutput) PeerAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVpnBgpConfig) *int { return v.PeerAsn }).(pulumi.IntPtrOutput)
+}
+
+// The BGP address on the other side.
+func (o GetConnectionsConnectionVpnBgpConfigOutput) PeerBgpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVpnBgpConfig) *string { return v.PeerBgpIp }).(pulumi.StringPtrOutput)
+}
+
+// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+func (o GetConnectionsConnectionVpnBgpConfigOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVpnBgpConfig) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The ipsec tunnel segments.
+func (o GetConnectionsConnectionVpnBgpConfigOutput) TunnelCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConnectionsConnectionVpnBgpConfig) *string { return v.TunnelCidr }).(pulumi.StringPtrOutput)
+}
+
+type GetConnectionsConnectionVpnBgpConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionsConnectionVpnBgpConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionsConnectionVpnBgpConfig)(nil)).Elem()
+}
+
+func (o GetConnectionsConnectionVpnBgpConfigArrayOutput) ToGetConnectionsConnectionVpnBgpConfigArrayOutput() GetConnectionsConnectionVpnBgpConfigArrayOutput {
+	return o
+}
+
+func (o GetConnectionsConnectionVpnBgpConfigArrayOutput) ToGetConnectionsConnectionVpnBgpConfigArrayOutputWithContext(ctx context.Context) GetConnectionsConnectionVpnBgpConfigArrayOutput {
+	return o
+}
+
+func (o GetConnectionsConnectionVpnBgpConfigArrayOutput) Index(i pulumi.IntInput) GetConnectionsConnectionVpnBgpConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsConnectionVpnBgpConfig {
+		return vs[0].([]GetConnectionsConnectionVpnBgpConfig)[vs[1].(int)]
+	}).(GetConnectionsConnectionVpnBgpConfigOutput)
+}
+
 type GetCustomerGatewaysGateway struct {
+	// The autonomous system number of the local data center gateway device of the VPN customer gateway.
+	Asn int `pulumi:"asn"`
 	// The creation time of the VPN customer gateway.
 	CreateTime string `pulumi:"createTime"`
 	// The description of the VPN customer gateway.
@@ -2592,6 +2902,8 @@ type GetCustomerGatewaysGatewayInput interface {
 }
 
 type GetCustomerGatewaysGatewayArgs struct {
+	// The autonomous system number of the local data center gateway device of the VPN customer gateway.
+	Asn pulumi.IntInput `pulumi:"asn"`
 	// The creation time of the VPN customer gateway.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The description of the VPN customer gateway.
@@ -2655,6 +2967,11 @@ func (o GetCustomerGatewaysGatewayOutput) ToGetCustomerGatewaysGatewayOutputWith
 	return o
 }
 
+// The autonomous system number of the local data center gateway device of the VPN customer gateway.
+func (o GetCustomerGatewaysGatewayOutput) Asn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCustomerGatewaysGateway) int { return v.Asn }).(pulumi.IntOutput)
+}
+
 // The creation time of the VPN customer gateway.
 func (o GetCustomerGatewaysGatewayOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCustomerGatewaysGateway) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -2700,6 +3017,175 @@ func (o GetCustomerGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetCusto
 	}).(GetCustomerGatewaysGatewayOutput)
 }
 
+type GetGatewayVcoRoutesRoute struct {
+	// List of autonomous system numbers through which BGP routing entries pass.
+	AsPath string `pulumi:"asPath"`
+	// The creation time of the VPN destination route.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Vpn Gateway Vco Routes.
+	Id string `pulumi:"id"`
+	// The next hop of the destination route.
+	NextHop string `pulumi:"nextHop"`
+	// The destination network segment of the destination route.
+	RouteDest string `pulumi:"routeDest"`
+	// The source CIDR block of the destination route.
+	Source string `pulumi:"source"`
+	// The status of the vpn route entry.
+	Status string `pulumi:"status"`
+	// The id of the vpn connection.
+	VpnConnectionId string `pulumi:"vpnConnectionId"`
+	// The weight value of the destination route.
+	Weight int `pulumi:"weight"`
+}
+
+// GetGatewayVcoRoutesRouteInput is an input type that accepts GetGatewayVcoRoutesRouteArgs and GetGatewayVcoRoutesRouteOutput values.
+// You can construct a concrete instance of `GetGatewayVcoRoutesRouteInput` via:
+//
+//	GetGatewayVcoRoutesRouteArgs{...}
+type GetGatewayVcoRoutesRouteInput interface {
+	pulumi.Input
+
+	ToGetGatewayVcoRoutesRouteOutput() GetGatewayVcoRoutesRouteOutput
+	ToGetGatewayVcoRoutesRouteOutputWithContext(context.Context) GetGatewayVcoRoutesRouteOutput
+}
+
+type GetGatewayVcoRoutesRouteArgs struct {
+	// List of autonomous system numbers through which BGP routing entries pass.
+	AsPath pulumi.StringInput `pulumi:"asPath"`
+	// The creation time of the VPN destination route.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Vpn Gateway Vco Routes.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The next hop of the destination route.
+	NextHop pulumi.StringInput `pulumi:"nextHop"`
+	// The destination network segment of the destination route.
+	RouteDest pulumi.StringInput `pulumi:"routeDest"`
+	// The source CIDR block of the destination route.
+	Source pulumi.StringInput `pulumi:"source"`
+	// The status of the vpn route entry.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The id of the vpn connection.
+	VpnConnectionId pulumi.StringInput `pulumi:"vpnConnectionId"`
+	// The weight value of the destination route.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetGatewayVcoRoutesRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayVcoRoutesRoute)(nil)).Elem()
+}
+
+func (i GetGatewayVcoRoutesRouteArgs) ToGetGatewayVcoRoutesRouteOutput() GetGatewayVcoRoutesRouteOutput {
+	return i.ToGetGatewayVcoRoutesRouteOutputWithContext(context.Background())
+}
+
+func (i GetGatewayVcoRoutesRouteArgs) ToGetGatewayVcoRoutesRouteOutputWithContext(ctx context.Context) GetGatewayVcoRoutesRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVcoRoutesRouteOutput)
+}
+
+// GetGatewayVcoRoutesRouteArrayInput is an input type that accepts GetGatewayVcoRoutesRouteArray and GetGatewayVcoRoutesRouteArrayOutput values.
+// You can construct a concrete instance of `GetGatewayVcoRoutesRouteArrayInput` via:
+//
+//	GetGatewayVcoRoutesRouteArray{ GetGatewayVcoRoutesRouteArgs{...} }
+type GetGatewayVcoRoutesRouteArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayVcoRoutesRouteArrayOutput() GetGatewayVcoRoutesRouteArrayOutput
+	ToGetGatewayVcoRoutesRouteArrayOutputWithContext(context.Context) GetGatewayVcoRoutesRouteArrayOutput
+}
+
+type GetGatewayVcoRoutesRouteArray []GetGatewayVcoRoutesRouteInput
+
+func (GetGatewayVcoRoutesRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayVcoRoutesRoute)(nil)).Elem()
+}
+
+func (i GetGatewayVcoRoutesRouteArray) ToGetGatewayVcoRoutesRouteArrayOutput() GetGatewayVcoRoutesRouteArrayOutput {
+	return i.ToGetGatewayVcoRoutesRouteArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayVcoRoutesRouteArray) ToGetGatewayVcoRoutesRouteArrayOutputWithContext(ctx context.Context) GetGatewayVcoRoutesRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVcoRoutesRouteArrayOutput)
+}
+
+type GetGatewayVcoRoutesRouteOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayVcoRoutesRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayVcoRoutesRoute)(nil)).Elem()
+}
+
+func (o GetGatewayVcoRoutesRouteOutput) ToGetGatewayVcoRoutesRouteOutput() GetGatewayVcoRoutesRouteOutput {
+	return o
+}
+
+func (o GetGatewayVcoRoutesRouteOutput) ToGetGatewayVcoRoutesRouteOutputWithContext(ctx context.Context) GetGatewayVcoRoutesRouteOutput {
+	return o
+}
+
+// List of autonomous system numbers through which BGP routing entries pass.
+func (o GetGatewayVcoRoutesRouteOutput) AsPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVcoRoutesRoute) string { return v.AsPath }).(pulumi.StringOutput)
+}
+
+// The creation time of the VPN destination route.
+func (o GetGatewayVcoRoutesRouteOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVcoRoutesRoute) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Vpn Gateway Vco Routes.
+func (o GetGatewayVcoRoutesRouteOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVcoRoutesRoute) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The next hop of the destination route.
+func (o GetGatewayVcoRoutesRouteOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVcoRoutesRoute) string { return v.NextHop }).(pulumi.StringOutput)
+}
+
+// The destination network segment of the destination route.
+func (o GetGatewayVcoRoutesRouteOutput) RouteDest() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVcoRoutesRoute) string { return v.RouteDest }).(pulumi.StringOutput)
+}
+
+// The source CIDR block of the destination route.
+func (o GetGatewayVcoRoutesRouteOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVcoRoutesRoute) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// The status of the vpn route entry.
+func (o GetGatewayVcoRoutesRouteOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVcoRoutesRoute) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The id of the vpn connection.
+func (o GetGatewayVcoRoutesRouteOutput) VpnConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVcoRoutesRoute) string { return v.VpnConnectionId }).(pulumi.StringOutput)
+}
+
+// The weight value of the destination route.
+func (o GetGatewayVcoRoutesRouteOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayVcoRoutesRoute) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetGatewayVcoRoutesRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayVcoRoutesRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayVcoRoutesRoute)(nil)).Elem()
+}
+
+func (o GetGatewayVcoRoutesRouteArrayOutput) ToGetGatewayVcoRoutesRouteArrayOutput() GetGatewayVcoRoutesRouteArrayOutput {
+	return o
+}
+
+func (o GetGatewayVcoRoutesRouteArrayOutput) ToGetGatewayVcoRoutesRouteArrayOutputWithContext(ctx context.Context) GetGatewayVcoRoutesRouteArrayOutput {
+	return o
+}
+
+func (o GetGatewayVcoRoutesRouteArrayOutput) Index(i pulumi.IntInput) GetGatewayVcoRoutesRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayVcoRoutesRoute {
+		return vs[0].([]GetGatewayVcoRoutesRoute)[vs[1].(int)]
+	}).(GetGatewayVcoRoutesRouteOutput)
+}
+
 type GetGatewayVpnAttachmentsAttachment struct {
 	// The configurations of the BGP routing protocol.
 	BgpConfigs []GetGatewayVpnAttachmentsAttachmentBgpConfig `pulumi:"bgpConfigs"`
@@ -2717,6 +3203,8 @@ type GetGatewayVpnAttachmentsAttachment struct {
 	Id string `pulumi:"id"`
 	// Configuration negotiated in the second stage.
 	IkeConfigs []GetGatewayVpnAttachmentsAttachmentIkeConfig `pulumi:"ikeConfigs"`
+	// The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+	InternetIp string `pulumi:"internetIp"`
 	// The configuration of Phase 2 negotiations.
 	IpsecConfigs []GetGatewayVpnAttachmentsAttachmentIpsecConfig `pulumi:"ipsecConfigs"`
 	// The CIDR block of the virtual private cloud (VPC).
@@ -2761,6 +3249,8 @@ type GetGatewayVpnAttachmentsAttachmentArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Configuration negotiated in the second stage.
 	IkeConfigs GetGatewayVpnAttachmentsAttachmentIkeConfigArrayInput `pulumi:"ikeConfigs"`
+	// The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+	InternetIp pulumi.StringInput `pulumi:"internetIp"`
 	// The configuration of Phase 2 negotiations.
 	IpsecConfigs GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayInput `pulumi:"ipsecConfigs"`
 	// The CIDR block of the virtual private cloud (VPC).
@@ -2872,6 +3362,11 @@ func (o GetGatewayVpnAttachmentsAttachmentOutput) IkeConfigs() GetGatewayVpnAtta
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) []GetGatewayVpnAttachmentsAttachmentIkeConfig {
 		return v.IkeConfigs
 	}).(GetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutput)
+}
+
+// The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+func (o GetGatewayVpnAttachmentsAttachmentOutput) InternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.InternetIp }).(pulumi.StringOutput)
 }
 
 // The configuration of Phase 2 negotiations.
@@ -3057,8 +3552,9 @@ func (o GetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutput) Index(i pulumi.I
 
 type GetGatewayVpnAttachmentsAttachmentHealthCheckConfig struct {
 	// The destination IP address.
-	Dip    string `pulumi:"dip"`
-	Enable bool   `pulumi:"enable"`
+	Dip string `pulumi:"dip"`
+	// Specifies whether to enable health checks.
+	Enable bool `pulumi:"enable"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	Interval int `pulumi:"interval"`
 	// Whether to revoke the published route when the health check fails.
@@ -3084,8 +3580,9 @@ type GetGatewayVpnAttachmentsAttachmentHealthCheckConfigInput interface {
 
 type GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArgs struct {
 	// The destination IP address.
-	Dip    pulumi.StringInput `pulumi:"dip"`
-	Enable pulumi.BoolInput   `pulumi:"enable"`
+	Dip pulumi.StringInput `pulumi:"dip"`
+	// Specifies whether to enable health checks.
+	Enable pulumi.BoolInput `pulumi:"enable"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	Interval pulumi.IntInput `pulumi:"interval"`
 	// Whether to revoke the published route when the health check fails.
@@ -3154,6 +3651,7 @@ func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Dip() pulumi.
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) string { return v.Dip }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enable health checks.
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) bool { return v.Enable }).(pulumi.BoolOutput)
 }
@@ -3216,7 +3714,7 @@ type GetGatewayVpnAttachmentsAttachmentIkeConfig struct {
 	IkePfs string `pulumi:"ikePfs"`
 	// The version of the IKE protocol.
 	IkeVersion string `pulumi:"ikeVersion"`
-	// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+	// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
 	LocalId string `pulumi:"localId"`
 	// The pre-shared key.
 	Psk string `pulumi:"psk"`
@@ -3248,7 +3746,7 @@ type GetGatewayVpnAttachmentsAttachmentIkeConfigArgs struct {
 	IkePfs pulumi.StringInput `pulumi:"ikePfs"`
 	// The version of the IKE protocol.
 	IkeVersion pulumi.StringInput `pulumi:"ikeVersion"`
-	// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+	// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
 	LocalId pulumi.StringInput `pulumi:"localId"`
 	// The pre-shared key.
 	Psk pulumi.StringInput `pulumi:"psk"`
@@ -3337,7 +3835,7 @@ func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) IkeVersion() pulumi.S
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIkeConfig) string { return v.IkeVersion }).(pulumi.StringOutput)
 }
 
-// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
 func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) LocalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIkeConfig) string { return v.LocalId }).(pulumi.StringOutput)
 }
@@ -3497,6 +3995,8 @@ func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutput) Index(i pulumi
 }
 
 type GetGatewaysGateway struct {
+	// Whether to automatically propagate BGP routes to the VPC. Valid values: `true`, `false`.
+	AutoPropagate string `pulumi:"autoPropagate"`
 	// Limit search to specific business status - valid value is "Normal", "FinancialLocked".
 	BusinessStatus string `pulumi:"businessStatus"`
 	// The creation time of the VPN gateway.
@@ -3517,6 +4017,8 @@ type GetGatewaysGateway struct {
 	InternetIp string `pulumi:"internetIp"`
 	// The name of the VPN.
 	Name string `pulumi:"name"`
+	// The network type of the VPN gateway.
+	NetworkType string `pulumi:"networkType"`
 	// The Specification of the VPN
 	Specification string `pulumi:"specification"`
 	// Total count of ssl vpn connections.
@@ -3539,6 +4041,8 @@ type GetGatewaysGatewayInput interface {
 }
 
 type GetGatewaysGatewayArgs struct {
+	// Whether to automatically propagate BGP routes to the VPC. Valid values: `true`, `false`.
+	AutoPropagate pulumi.StringInput `pulumi:"autoPropagate"`
 	// Limit search to specific business status - valid value is "Normal", "FinancialLocked".
 	BusinessStatus pulumi.StringInput `pulumi:"businessStatus"`
 	// The creation time of the VPN gateway.
@@ -3559,6 +4063,8 @@ type GetGatewaysGatewayArgs struct {
 	InternetIp pulumi.StringInput `pulumi:"internetIp"`
 	// The name of the VPN.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The network type of the VPN gateway.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
 	// The Specification of the VPN
 	Specification pulumi.StringInput `pulumi:"specification"`
 	// Total count of ssl vpn connections.
@@ -3620,6 +4126,11 @@ func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutputWithContext(ctx cont
 	return o
 }
 
+// Whether to automatically propagate BGP routes to the VPC. Valid values: `true`, `false`.
+func (o GetGatewaysGatewayOutput) AutoPropagate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.AutoPropagate }).(pulumi.StringOutput)
+}
+
 // Limit search to specific business status - valid value is "Normal", "FinancialLocked".
 func (o GetGatewaysGatewayOutput) BusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.BusinessStatus }).(pulumi.StringOutput)
@@ -3668,6 +4179,11 @@ func (o GetGatewaysGatewayOutput) InternetIp() pulumi.StringOutput {
 // The name of the VPN.
 func (o GetGatewaysGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network type of the VPN gateway.
+func (o GetGatewaysGatewayOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
 // The Specification of the VPN
@@ -3737,8 +4253,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionIkeConfigArrayInput)(nil)).Elem(), GetConnectionsConnectionIkeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionIpsecConfigInput)(nil)).Elem(), GetConnectionsConnectionIpsecConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionIpsecConfigArrayInput)(nil)).Elem(), GetConnectionsConnectionIpsecConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionVcoHealthCheckInput)(nil)).Elem(), GetConnectionsConnectionVcoHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionVcoHealthCheckArrayInput)(nil)).Elem(), GetConnectionsConnectionVcoHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionVpnBgpConfigInput)(nil)).Elem(), GetConnectionsConnectionVpnBgpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionVpnBgpConfigArrayInput)(nil)).Elem(), GetConnectionsConnectionVpnBgpConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomerGatewaysGatewayInput)(nil)).Elem(), GetCustomerGatewaysGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomerGatewaysGatewayArrayInput)(nil)).Elem(), GetCustomerGatewaysGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVcoRoutesRouteInput)(nil)).Elem(), GetGatewayVcoRoutesRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVcoRoutesRouteArrayInput)(nil)).Elem(), GetGatewayVcoRoutesRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentInput)(nil)).Elem(), GetGatewayVpnAttachmentsAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentArrayInput)(nil)).Elem(), GetGatewayVpnAttachmentsAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentBgpConfigInput)(nil)).Elem(), GetGatewayVpnAttachmentsAttachmentBgpConfigArgs{})
@@ -3777,8 +4299,14 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionsConnectionIkeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionsConnectionIpsecConfigOutput{})
 	pulumi.RegisterOutputType(GetConnectionsConnectionIpsecConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsConnectionVcoHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetConnectionsConnectionVcoHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionsConnectionVpnBgpConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionsConnectionVpnBgpConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomerGatewaysGatewayOutput{})
 	pulumi.RegisterOutputType(GetCustomerGatewaysGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayVcoRoutesRouteOutput{})
+	pulumi.RegisterOutputType(GetGatewayVcoRoutesRouteArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayVpnAttachmentsAttachmentOutput{})
 	pulumi.RegisterOutputType(GetGatewayVpnAttachmentsAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayVpnAttachmentsAttachmentBgpConfigOutput{})

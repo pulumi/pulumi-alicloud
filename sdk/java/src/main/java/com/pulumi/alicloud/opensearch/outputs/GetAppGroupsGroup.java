@@ -64,8 +64,6 @@ public final class GetAppGroupsGroup {
     private Integer firstRankAlgoDeploymentId;
     /**
      * @return Whether the quota status is under approval. Valid status:
-     * * `0`: normal
-     * * `1`: Approving.
      * 
      */
     private Integer hasPendingQuotaReviewTask;
@@ -102,8 +100,6 @@ public final class GetAppGroupsGroup {
     private String processingOrderId;
     /**
      * @return Whether the production is completed. Valid values:
-     * * `0`: producing.
-     * * `1`: completed.
      * 
      */
     private Integer produced;
@@ -216,8 +212,6 @@ public final class GetAppGroupsGroup {
     }
     /**
      * @return Whether the quota status is under approval. Valid status:
-     * * `0`: normal
-     * * `1`: Approving.
      * 
      */
     public Integer hasPendingQuotaReviewTask() {
@@ -270,8 +264,6 @@ public final class GetAppGroupsGroup {
     }
     /**
      * @return Whether the production is completed. Valid values:
-     * * `0`: producing.
-     * * `1`: completed.
      * 
      */
     public Integer produced() {

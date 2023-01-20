@@ -23,26 +23,24 @@ namespace Pulumi.AliCloud.Brain
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var open = AliCloud.Brain.GetIndustrialSerice.Invoke(new()
         ///     {
-        ///         var open = Output.Create(AliCloud.Brain.GetIndustrialSerice.InvokeAsync(new AliCloud.Brain.GetIndustrialSericeArgs
-        ///         {
-        ///             Enable = "On",
-        ///         }));
-        ///     }
+        ///         Enable = "On",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIndustrialSericeResult> InvokeAsync(GetIndustrialSericeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialSericeResult>("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args ?? new GetIndustrialSericeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialSericeResult>("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args ?? new GetIndustrialSericeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
@@ -56,30 +54,28 @@ namespace Pulumi.AliCloud.Brain
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var open = AliCloud.Brain.GetIndustrialSerice.Invoke(new()
         ///     {
-        ///         var open = Output.Create(AliCloud.Brain.GetIndustrialSerice.InvokeAsync(new AliCloud.Brain.GetIndustrialSericeArgs
-        ///         {
-        ///             Enable = "On",
-        ///         }));
-        ///     }
+        ///         Enable = "On",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIndustrialSericeResult> Invoke(GetIndustrialSericeInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIndustrialSericeResult>("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args ?? new GetIndustrialSericeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIndustrialSericeResult>("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args ?? new GetIndustrialSericeInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetIndustrialSericeArgs : Pulumi.InvokeArgs
+    public sealed class GetIndustrialSericeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
@@ -90,9 +86,10 @@ namespace Pulumi.AliCloud.Brain
         public GetIndustrialSericeArgs()
         {
         }
+        public static new GetIndustrialSericeArgs Empty => new GetIndustrialSericeArgs();
     }
 
-    public sealed class GetIndustrialSericeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIndustrialSericeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
@@ -103,6 +100,7 @@ namespace Pulumi.AliCloud.Brain
         public GetIndustrialSericeInvokeArgs()
         {
         }
+        public static new GetIndustrialSericeInvokeArgs Empty => new GetIndustrialSericeInvokeArgs();
     }
 
 

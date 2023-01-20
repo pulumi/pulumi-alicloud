@@ -25,75 +25,74 @@ namespace Pulumi.AliCloud.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testaccecsset";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testaccecsset";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableDiskCategory = "cloud_efficiency",
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-    ///         {
-    ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
-    ///             CpuCoreCount = 1,
-    ///             MemorySize = 2,
-    ///         })));
-    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
-    ///             MostRecent = true,
-    ///             Owners = "system",
-    ///         }));
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Zones?[0]?.Id,
-    ///             }));
-    ///         });
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///         });
-    ///         var beijingK = new AliCloud.Ecs.EcsInstanceSet("beijingK", new AliCloud.Ecs.EcsInstanceSetArgs
-    ///         {
-    ///             Amount = 100,
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
-    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
-    ///             InstanceName = name,
-    ///             InstanceChargeType = "PostPaid",
-    ///             SystemDiskPerformanceLevel = "PL0",
-    ///             SystemDiskCategory = "cloud_essd",
-    ///             SystemDiskSize = 200,
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             SecurityGroupIds = 
-    ///             {
-    ///                 defaultSecurityGroup,
-    ///             }.Select(__item =&gt; __item.Id).ToList(),
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///     }
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var beijingK = new AliCloud.Ecs.EcsInstanceSet("beijingK", new()
+    ///     {
+    ///         Amount = 100,
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         InstanceName = name,
+    ///         InstanceChargeType = "PostPaid",
+    ///         SystemDiskPerformanceLevel = "PL0",
+    ///         SystemDiskCategory = "cloud_essd",
+    ///         SystemDiskSize = 200,
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsInstanceSet:EcsInstanceSet")]
-    public partial class EcsInstanceSet : Pulumi.CustomResource
+    public partial class EcsInstanceSet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The number of instances that you want to create. Valid values: `1` to `100`.
@@ -123,8 +122,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Indicate how to check instance ready to use.
-        /// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-        /// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         /// </summary>
         [Output("bootCheckOsWithAssistant")]
         public Output<bool?> BootCheckOsWithAssistant { get; private set; } = null!;
@@ -289,8 +286,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The security enhancement strategy.
-        /// - `Active`: Enable security enhancement strategy, it only works on system images.
-        /// - `Deactive`: Disable security enhancement strategy, it works on all images.
         /// </summary>
         [Output("securityEnhancementStrategy")]
         public Output<string?> SecurityEnhancementStrategy { get; private set; } = null!;
@@ -309,9 +304,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
-        /// - `NoSpot`: A regular Pay-As-You-Go instance.
-        /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-        /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         /// </summary>
         [Output("spotStrategy")]
         public Output<string> SpotStrategy { get; private set; } = null!;
@@ -399,6 +391,10 @@ namespace Pulumi.AliCloud.Ecs
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -420,7 +416,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsInstanceSetArgs : Pulumi.ResourceArgs
+    public sealed class EcsInstanceSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of instances that you want to create. Valid values: `1` to `100`.
@@ -450,8 +446,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Indicate how to check instance ready to use.
-        /// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-        /// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         /// </summary>
         [Input("bootCheckOsWithAssistant")]
         public Input<bool>? BootCheckOsWithAssistant { get; set; }
@@ -582,11 +576,21 @@ namespace Pulumi.AliCloud.Ecs
             set => _networkInterfaces = value;
         }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether to use the password preset in the image.
@@ -622,8 +626,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The security enhancement strategy.
-        /// - `Active`: Enable security enhancement strategy, it only works on system images.
-        /// - `Deactive`: Disable security enhancement strategy, it works on all images.
         /// </summary>
         [Input("securityEnhancementStrategy")]
         public Input<string>? SecurityEnhancementStrategy { get; set; }
@@ -648,9 +650,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
-        /// - `NoSpot`: A regular Pay-As-You-Go instance.
-        /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-        /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
@@ -724,9 +723,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsInstanceSetArgs()
         {
         }
+        public static new EcsInstanceSetArgs Empty => new EcsInstanceSetArgs();
     }
 
-    public sealed class EcsInstanceSetState : Pulumi.ResourceArgs
+    public sealed class EcsInstanceSetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of instances that you want to create. Valid values: `1` to `100`.
@@ -756,8 +756,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Indicate how to check instance ready to use.
-        /// - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-        /// - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         /// </summary>
         [Input("bootCheckOsWithAssistant")]
         public Input<bool>? BootCheckOsWithAssistant { get; set; }
@@ -900,11 +898,21 @@ namespace Pulumi.AliCloud.Ecs
             set => _networkInterfaces = value;
         }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether to use the password preset in the image.
@@ -940,8 +948,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The security enhancement strategy.
-        /// - `Active`: Enable security enhancement strategy, it only works on system images.
-        /// - `Deactive`: Disable security enhancement strategy, it works on all images.
         /// </summary>
         [Input("securityEnhancementStrategy")]
         public Input<string>? SecurityEnhancementStrategy { get; set; }
@@ -966,9 +972,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
-        /// - `NoSpot`: A regular Pay-As-You-Go instance.
-        /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-        /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
@@ -1042,5 +1045,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsInstanceSetState()
         {
         }
+        public static new EcsInstanceSetState Empty => new EcsInstanceSetState();
     }
 }

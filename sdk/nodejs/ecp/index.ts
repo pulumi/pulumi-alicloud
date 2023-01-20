@@ -5,16 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getInstanceTypes";
-export * from "./getInstances";
-export * from "./getKeyPairs";
-export * from "./getZones";
-export * from "./instance";
-export * from "./keyPair";
+export { GetInstanceTypesArgs, GetInstanceTypesResult, GetInstanceTypesOutputArgs } from "./getInstanceTypes";
+export const getInstanceTypes: typeof import("./getInstanceTypes").getInstanceTypes = null as any;
+export const getInstanceTypesOutput: typeof import("./getInstanceTypes").getInstanceTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceTypes","getInstanceTypesOutput"], () => require("./getInstanceTypes"));
 
-// Import resources to register:
-import { Instance } from "./instance";
-import { KeyPair } from "./keyPair";
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetKeyPairsArgs, GetKeyPairsResult, GetKeyPairsOutputArgs } from "./getKeyPairs";
+export const getKeyPairs: typeof import("./getKeyPairs").getKeyPairs = null as any;
+export const getKeyPairsOutput: typeof import("./getKeyPairs").getKeyPairsOutput = null as any;
+utilities.lazyLoad(exports, ["getKeyPairs","getKeyPairsOutput"], () => require("./getKeyPairs"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { KeyPairArgs, KeyPairState } from "./keyPair";
+export type KeyPair = import("./keyPair").KeyPair;
+export const KeyPair: typeof import("./keyPair").KeyPair = null as any;
+utilities.lazyLoad(exports, ["KeyPair"], () => require("./keyPair"));
+
 
 const _module = {
     version: utilities.getVersion(),

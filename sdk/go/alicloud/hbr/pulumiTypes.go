@@ -108,15 +108,15 @@ func (o OtsBackupPlanOtsDetailArrayOutput) Index(i pulumi.IntInput) OtsBackupPla
 }
 
 type OtsBackupPlanRule struct {
-	// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType *string `pulumi:"backupType"`
-	// Whether to disable the backup task. Valid values: true, false.
+	// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
 	Disabled *bool `pulumi:"disabled"`
-	// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup retention days, the minimum is 1.
 	Retention *string `pulumi:"retention"`
 	// The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
 	RuleName *string `pulumi:"ruleName"`
-	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	Schedule *string `pulumi:"schedule"`
 }
 
@@ -132,15 +132,15 @@ type OtsBackupPlanRuleInput interface {
 }
 
 type OtsBackupPlanRuleArgs struct {
-	// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringPtrInput `pulumi:"backupType"`
-	// Whether to disable the backup task. Valid values: true, false.
+	// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringPtrInput `pulumi:"retention"`
 	// The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
 	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
-	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
 }
 
@@ -195,17 +195,17 @@ func (o OtsBackupPlanRuleOutput) ToOtsBackupPlanRuleOutputWithContext(ctx contex
 	return o
 }
 
-// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+// Backup type. Valid values: `COMPLETE`.
 func (o OtsBackupPlanRuleOutput) BackupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.BackupType }).(pulumi.StringPtrOutput)
 }
 
-// Whether to disable the backup task. Valid values: true, false.
+// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
 func (o OtsBackupPlanRuleOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OtsBackupPlanRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+// Backup retention days, the minimum is 1.
 func (o OtsBackupPlanRuleOutput) Retention() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.Retention }).(pulumi.StringPtrOutput)
 }
@@ -215,7 +215,7 @@ func (o OtsBackupPlanRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 func (o OtsBackupPlanRuleOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
@@ -238,6 +238,143 @@ func (o OtsBackupPlanRuleArrayOutput) Index(i pulumi.IntInput) OtsBackupPlanRule
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OtsBackupPlanRule {
 		return vs[0].([]OtsBackupPlanRule)[vs[1].(int)]
 	}).(OtsBackupPlanRuleOutput)
+}
+
+type RestoreJobOtsDetail struct {
+	// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+	OverwriteExisting *bool `pulumi:"overwriteExisting"`
+}
+
+// RestoreJobOtsDetailInput is an input type that accepts RestoreJobOtsDetailArgs and RestoreJobOtsDetailOutput values.
+// You can construct a concrete instance of `RestoreJobOtsDetailInput` via:
+//
+//	RestoreJobOtsDetailArgs{...}
+type RestoreJobOtsDetailInput interface {
+	pulumi.Input
+
+	ToRestoreJobOtsDetailOutput() RestoreJobOtsDetailOutput
+	ToRestoreJobOtsDetailOutputWithContext(context.Context) RestoreJobOtsDetailOutput
+}
+
+type RestoreJobOtsDetailArgs struct {
+	// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+	OverwriteExisting pulumi.BoolPtrInput `pulumi:"overwriteExisting"`
+}
+
+func (RestoreJobOtsDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreJobOtsDetail)(nil)).Elem()
+}
+
+func (i RestoreJobOtsDetailArgs) ToRestoreJobOtsDetailOutput() RestoreJobOtsDetailOutput {
+	return i.ToRestoreJobOtsDetailOutputWithContext(context.Background())
+}
+
+func (i RestoreJobOtsDetailArgs) ToRestoreJobOtsDetailOutputWithContext(ctx context.Context) RestoreJobOtsDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreJobOtsDetailOutput)
+}
+
+func (i RestoreJobOtsDetailArgs) ToRestoreJobOtsDetailPtrOutput() RestoreJobOtsDetailPtrOutput {
+	return i.ToRestoreJobOtsDetailPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreJobOtsDetailArgs) ToRestoreJobOtsDetailPtrOutputWithContext(ctx context.Context) RestoreJobOtsDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreJobOtsDetailOutput).ToRestoreJobOtsDetailPtrOutputWithContext(ctx)
+}
+
+// RestoreJobOtsDetailPtrInput is an input type that accepts RestoreJobOtsDetailArgs, RestoreJobOtsDetailPtr and RestoreJobOtsDetailPtrOutput values.
+// You can construct a concrete instance of `RestoreJobOtsDetailPtrInput` via:
+//
+//	        RestoreJobOtsDetailArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreJobOtsDetailPtrInput interface {
+	pulumi.Input
+
+	ToRestoreJobOtsDetailPtrOutput() RestoreJobOtsDetailPtrOutput
+	ToRestoreJobOtsDetailPtrOutputWithContext(context.Context) RestoreJobOtsDetailPtrOutput
+}
+
+type restoreJobOtsDetailPtrType RestoreJobOtsDetailArgs
+
+func RestoreJobOtsDetailPtr(v *RestoreJobOtsDetailArgs) RestoreJobOtsDetailPtrInput {
+	return (*restoreJobOtsDetailPtrType)(v)
+}
+
+func (*restoreJobOtsDetailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreJobOtsDetail)(nil)).Elem()
+}
+
+func (i *restoreJobOtsDetailPtrType) ToRestoreJobOtsDetailPtrOutput() RestoreJobOtsDetailPtrOutput {
+	return i.ToRestoreJobOtsDetailPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreJobOtsDetailPtrType) ToRestoreJobOtsDetailPtrOutputWithContext(ctx context.Context) RestoreJobOtsDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreJobOtsDetailPtrOutput)
+}
+
+type RestoreJobOtsDetailOutput struct{ *pulumi.OutputState }
+
+func (RestoreJobOtsDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreJobOtsDetail)(nil)).Elem()
+}
+
+func (o RestoreJobOtsDetailOutput) ToRestoreJobOtsDetailOutput() RestoreJobOtsDetailOutput {
+	return o
+}
+
+func (o RestoreJobOtsDetailOutput) ToRestoreJobOtsDetailOutputWithContext(ctx context.Context) RestoreJobOtsDetailOutput {
+	return o
+}
+
+func (o RestoreJobOtsDetailOutput) ToRestoreJobOtsDetailPtrOutput() RestoreJobOtsDetailPtrOutput {
+	return o.ToRestoreJobOtsDetailPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreJobOtsDetailOutput) ToRestoreJobOtsDetailPtrOutputWithContext(ctx context.Context) RestoreJobOtsDetailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreJobOtsDetail) *RestoreJobOtsDetail {
+		return &v
+	}).(RestoreJobOtsDetailPtrOutput)
+}
+
+// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+func (o RestoreJobOtsDetailOutput) OverwriteExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreJobOtsDetail) *bool { return v.OverwriteExisting }).(pulumi.BoolPtrOutput)
+}
+
+type RestoreJobOtsDetailPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreJobOtsDetailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreJobOtsDetail)(nil)).Elem()
+}
+
+func (o RestoreJobOtsDetailPtrOutput) ToRestoreJobOtsDetailPtrOutput() RestoreJobOtsDetailPtrOutput {
+	return o
+}
+
+func (o RestoreJobOtsDetailPtrOutput) ToRestoreJobOtsDetailPtrOutputWithContext(ctx context.Context) RestoreJobOtsDetailPtrOutput {
+	return o
+}
+
+func (o RestoreJobOtsDetailPtrOutput) Elem() RestoreJobOtsDetailOutput {
+	return o.ApplyT(func(v *RestoreJobOtsDetail) RestoreJobOtsDetail {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreJobOtsDetail
+		return ret
+	}).(RestoreJobOtsDetailOutput)
+}
+
+// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+func (o RestoreJobOtsDetailPtrOutput) OverwriteExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreJobOtsDetail) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverwriteExisting
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServerBackupPlanDetail struct {
@@ -554,6 +691,12 @@ type GetBackupJobsJob struct {
 	CompleteTime string `pulumi:"completeTime"`
 	// The creation time of backup job. UNIX time seconds.
 	CreateTime string `pulumi:"createTime"`
+	// The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+	CrossAccountRoleName string `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+	CrossAccountType string `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+	CrossAccountUserId int `pulumi:"crossAccountUserId"`
 	// Error message.
 	ErrorMessage string `pulumi:"errorMessage"`
 	// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
@@ -625,6 +768,12 @@ type GetBackupJobsJobArgs struct {
 	CompleteTime pulumi.StringInput `pulumi:"completeTime"`
 	// The creation time of backup job. UNIX time seconds.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+	CrossAccountRoleName pulumi.StringInput `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+	CrossAccountType pulumi.StringInput `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+	CrossAccountUserId pulumi.IntInput `pulumi:"crossAccountUserId"`
 	// Error message.
 	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
 	// Exclude path. String of Json list. Up to 255 characters. e.g. `"[\"/home/work\"]"`
@@ -763,6 +912,21 @@ func (o GetBackupJobsJobOutput) CompleteTime() pulumi.StringOutput {
 // The creation time of backup job. UNIX time seconds.
 func (o GetBackupJobsJobOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupJobsJob) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+func (o GetBackupJobsJobOutput) CrossAccountRoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.CrossAccountRoleName }).(pulumi.StringOutput)
+}
+
+// The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+func (o GetBackupJobsJobOutput) CrossAccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) string { return v.CrossAccountType }).(pulumi.StringOutput)
+}
+
+// The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+func (o GetBackupJobsJobOutput) CrossAccountUserId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackupJobsJob) int { return v.CrossAccountUserId }).(pulumi.IntOutput)
 }
 
 // Error message.
@@ -4471,6 +4635,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanOtsDetailArrayInput)(nil)).Elem(), OtsBackupPlanOtsDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanRuleInput)(nil)).Elem(), OtsBackupPlanRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanRuleArrayInput)(nil)).Elem(), OtsBackupPlanRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreJobOtsDetailInput)(nil)).Elem(), RestoreJobOtsDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreJobOtsDetailPtrInput)(nil)).Elem(), RestoreJobOtsDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanDetailInput)(nil)).Elem(), ServerBackupPlanDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanDetailArrayInput)(nil)).Elem(), ServerBackupPlanDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupJobsFilterInput)(nil)).Elem(), GetBackupJobsFilterArgs{})
@@ -4515,6 +4681,8 @@ func init() {
 	pulumi.RegisterOutputType(OtsBackupPlanOtsDetailArrayOutput{})
 	pulumi.RegisterOutputType(OtsBackupPlanRuleOutput{})
 	pulumi.RegisterOutputType(OtsBackupPlanRuleArrayOutput{})
+	pulumi.RegisterOutputType(RestoreJobOtsDetailOutput{})
+	pulumi.RegisterOutputType(RestoreJobOtsDetailPtrOutput{})
 	pulumi.RegisterOutputType(ServerBackupPlanDetailOutput{})
 	pulumi.RegisterOutputType(ServerBackupPlanDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupJobsFilterOutput{})

@@ -80,14 +80,14 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="entrys", type=List.class, parameters={PrefixListEntry.class})
-    private Output<List<PrefixListEntry>> entrys;
+    private Output</* @Nullable */ List<PrefixListEntry>> entrys;
 
     /**
      * @return The CIDR address block list of the prefix list. See the following `Block entrys`.
      * 
      */
-    public Output<List<PrefixListEntry>> entrys() {
-        return this.entrys;
+    public Output<Optional<List<PrefixListEntry>>> entrys() {
+        return Codegen.optional(this.entrys);
     }
     /**
      * The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
@@ -145,6 +145,20 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> prefixListName() {
         return Codegen.optional(this.prefixListName);
     }
+    /**
+     * (Available in v1.196.0+) The status of the Prefix List.
+     * 
+     */
+    @Export(name="status", type=String.class, parameters={})
+    private Output<String> status;
+
+    /**
+     * @return (Available in v1.196.0+) The status of the Prefix List.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
 
     /**
      *
@@ -158,7 +172,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PrefixList(String name, PrefixListArgs args) {
+    public PrefixList(String name, @Nullable PrefixListArgs args) {
         this(name, args, null);
     }
     /**
@@ -167,7 +181,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PrefixList(String name, PrefixListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public PrefixList(String name, @Nullable PrefixListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:vpc/prefixList:PrefixList", name, args == null ? PrefixListArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

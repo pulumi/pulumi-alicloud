@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ga.Inputs
 {
 
-    public sealed class EndpointGroupPortOverridesGetArgs : Pulumi.ResourceArgs
+    public sealed class EndpointGroupPortOverridesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Forwarding port.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public EndpointGroupPortOverridesGetArgs()
         {
         }
+        public static new EndpointGroupPortOverridesGetArgs Empty => new EndpointGroupPortOverridesGetArgs();
     }
 }

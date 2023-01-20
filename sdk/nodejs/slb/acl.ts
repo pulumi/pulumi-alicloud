@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -36,22 +37,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraformslbaclconfig";
- * const ipVersion = config.get("ipVersion") || "ipv4";
- * const _default = new alicloud.slb.Acl("default", {
- *     ipVersion: ipVersion,
- *     entryLists: [
- *         {
- *             entry: "10.10.10.0/24",
- *             comment: "first",
- *         },
- *         {
- *             entry: "168.10.10.0/24",
- *             comment: "second",
- *         },
- *     ],
- * });
+ * const acl = new alicloud.slb.Acl("acl", {ipVersion: "ipv4"});
  * ```
  * ## Entry Block
  *

@@ -32,14 +32,14 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: [&#34;Availability&#34;,&#34;Average&#34;, &#34;Minimum&#34;, &#34;Maximum&#34;, &#34;Value&#34;, &#34;ErrorCodeMaximum&#34;, &#34;Sum&#34;, &#34;Count&#34;]. Default to &#34;Average&#34;.
+     * It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
      * 
      */
     @Import(name="statistics")
     private @Nullable Output<String> statistics;
 
     /**
-     * @return Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: [&#34;Availability&#34;,&#34;Average&#34;, &#34;Minimum&#34;, &#34;Maximum&#34;, &#34;Value&#34;, &#34;ErrorCodeMaximum&#34;, &#34;Sum&#34;, &#34;Count&#34;]. Default to &#34;Average&#34;.
+     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
      * 
      */
     public Optional<Output<String>> statistics() {
@@ -47,14 +47,14 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Critical level alarm threshold value, which must be a numeric value currently.
+     * It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<String> threshold;
 
     /**
-     * @return Critical level alarm threshold value, which must be a numeric value currently.
+     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
      * 
      */
     public Optional<Output<String>> threshold() {
@@ -62,14 +62,14 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+     * Critical level alarm retry times. Default to 3.
      * 
      */
     @Import(name="times")
     private @Nullable Output<Integer> times;
 
     /**
-     * @return The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+     * @return Critical level alarm retry times. Default to 3.
      * 
      */
     public Optional<Output<Integer>> times() {
@@ -125,7 +125,7 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param statistics Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: [&#34;Availability&#34;,&#34;Average&#34;, &#34;Minimum&#34;, &#34;Maximum&#34;, &#34;Value&#34;, &#34;ErrorCodeMaximum&#34;, &#34;Sum&#34;, &#34;Count&#34;]. Default to &#34;Average&#34;.
+         * @param statistics It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param statistics Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: [&#34;Availability&#34;,&#34;Average&#34;, &#34;Minimum&#34;, &#34;Maximum&#34;, &#34;Value&#34;, &#34;ErrorCodeMaximum&#34;, &#34;Sum&#34;, &#34;Count&#34;]. Default to &#34;Average&#34;.
+         * @param statistics It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param threshold Critical level alarm threshold value, which must be a numeric value currently.
+         * @param threshold It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param threshold Critical level alarm threshold value, which must be a numeric value currently.
+         * @param threshold It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param times The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+         * @param times Critical level alarm retry times. Default to 3.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class AlarmEscalationsCriticalArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param times The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+         * @param times Critical level alarm retry times. Default to 3.
          * 
          * @return builder
          * 

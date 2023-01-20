@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -11,11 +12,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.149.0+.
  */
 export function getChartNamespaces(args: GetChartNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetChartNamespacesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cr/getChartNamespaces:getChartNamespaces", {
         "ids": args.ids,
         "instanceId": args.instanceId,
@@ -58,9 +56,13 @@ export interface GetChartNamespacesResult {
     readonly namespaces: outputs.cr.GetChartNamespacesNamespace[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Cr Chart Namespaces of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.149.0+.
+ */
 export function getChartNamespacesOutput(args: GetChartNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChartNamespacesResult> {
-    return pulumi.output(args).apply(a => getChartNamespaces(a, opts))
+    return pulumi.output(args).apply((a: any) => getChartNamespaces(a, opts))
 }
 
 /**

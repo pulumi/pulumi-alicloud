@@ -30,8 +30,6 @@ public final class GetMscSubContactVerificationMessagePlainArgs extends com.pulu
 
     /**
      * How a user receives verification messages. Valid values : `1`, `2`.
-     * * `1`: Send a verification message through the user&#39;s mobile.
-     * * `2`: Send a verification message through the user&#39;s mail.
      * 
      */
     @Import(name="type", required=true)
@@ -39,8 +37,6 @@ public final class GetMscSubContactVerificationMessagePlainArgs extends com.pulu
 
     /**
      * @return How a user receives verification messages. Valid values : `1`, `2`.
-     * * `1`: Send a verification message through the user&#39;s mobile.
-     * * `2`: Send a verification message through the user&#39;s mail.
      * 
      */
     public Integer type() {
@@ -85,8 +81,6 @@ public final class GetMscSubContactVerificationMessagePlainArgs extends com.pulu
 
         /**
          * @param type How a user receives verification messages. Valid values : `1`, `2`.
-         * * `1`: Send a verification message through the user&#39;s mobile.
-         * * `2`: Send a verification message through the user&#39;s mail.
          * 
          * @return builder
          * 

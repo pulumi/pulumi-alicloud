@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ExpressConnect.Inputs
 {
 
-    public sealed class GetVirtualBorderRoutersFilterArgs : Pulumi.InvokeArgs
+    public sealed class GetVirtualBorderRoutersFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The key of the field to filter by, as defined by
@@ -34,5 +34,6 @@ namespace Pulumi.AliCloud.ExpressConnect.Inputs
         public GetVirtualBorderRoutersFilterArgs()
         {
         }
+        public static new GetVirtualBorderRoutersFilterArgs Empty => new GetVirtualBorderRoutersFilterArgs();
     }
 }

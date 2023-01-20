@@ -1545,6 +1545,112 @@ func (o EtlEtlSinkArrayOutput) Index(i pulumi.IntInput) EtlEtlSinkOutput {
 	}).(EtlEtlSinkOutput)
 }
 
+type OssExportConfigColumn struct {
+	// The name of the key.
+	Name string `pulumi:"name"`
+	// Type of configuration name.
+	Type string `pulumi:"type"`
+}
+
+// OssExportConfigColumnInput is an input type that accepts OssExportConfigColumnArgs and OssExportConfigColumnOutput values.
+// You can construct a concrete instance of `OssExportConfigColumnInput` via:
+//
+//	OssExportConfigColumnArgs{...}
+type OssExportConfigColumnInput interface {
+	pulumi.Input
+
+	ToOssExportConfigColumnOutput() OssExportConfigColumnOutput
+	ToOssExportConfigColumnOutputWithContext(context.Context) OssExportConfigColumnOutput
+}
+
+type OssExportConfigColumnArgs struct {
+	// The name of the key.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Type of configuration name.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (OssExportConfigColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OssExportConfigColumn)(nil)).Elem()
+}
+
+func (i OssExportConfigColumnArgs) ToOssExportConfigColumnOutput() OssExportConfigColumnOutput {
+	return i.ToOssExportConfigColumnOutputWithContext(context.Background())
+}
+
+func (i OssExportConfigColumnArgs) ToOssExportConfigColumnOutputWithContext(ctx context.Context) OssExportConfigColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OssExportConfigColumnOutput)
+}
+
+// OssExportConfigColumnArrayInput is an input type that accepts OssExportConfigColumnArray and OssExportConfigColumnArrayOutput values.
+// You can construct a concrete instance of `OssExportConfigColumnArrayInput` via:
+//
+//	OssExportConfigColumnArray{ OssExportConfigColumnArgs{...} }
+type OssExportConfigColumnArrayInput interface {
+	pulumi.Input
+
+	ToOssExportConfigColumnArrayOutput() OssExportConfigColumnArrayOutput
+	ToOssExportConfigColumnArrayOutputWithContext(context.Context) OssExportConfigColumnArrayOutput
+}
+
+type OssExportConfigColumnArray []OssExportConfigColumnInput
+
+func (OssExportConfigColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OssExportConfigColumn)(nil)).Elem()
+}
+
+func (i OssExportConfigColumnArray) ToOssExportConfigColumnArrayOutput() OssExportConfigColumnArrayOutput {
+	return i.ToOssExportConfigColumnArrayOutputWithContext(context.Background())
+}
+
+func (i OssExportConfigColumnArray) ToOssExportConfigColumnArrayOutputWithContext(ctx context.Context) OssExportConfigColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OssExportConfigColumnArrayOutput)
+}
+
+type OssExportConfigColumnOutput struct{ *pulumi.OutputState }
+
+func (OssExportConfigColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OssExportConfigColumn)(nil)).Elem()
+}
+
+func (o OssExportConfigColumnOutput) ToOssExportConfigColumnOutput() OssExportConfigColumnOutput {
+	return o
+}
+
+func (o OssExportConfigColumnOutput) ToOssExportConfigColumnOutputWithContext(ctx context.Context) OssExportConfigColumnOutput {
+	return o
+}
+
+// The name of the key.
+func (o OssExportConfigColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportConfigColumn) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Type of configuration name.
+func (o OssExportConfigColumnOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OssExportConfigColumn) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type OssExportConfigColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (OssExportConfigColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OssExportConfigColumn)(nil)).Elem()
+}
+
+func (o OssExportConfigColumnArrayOutput) ToOssExportConfigColumnArrayOutput() OssExportConfigColumnArrayOutput {
+	return o
+}
+
+func (o OssExportConfigColumnArrayOutput) ToOssExportConfigColumnArrayOutputWithContext(ctx context.Context) OssExportConfigColumnArrayOutput {
+	return o
+}
+
+func (o OssExportConfigColumnArrayOutput) Index(i pulumi.IntInput) OssExportConfigColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OssExportConfigColumn {
+		return vs[0].([]OssExportConfigColumn)[vs[1].(int)]
+	}).(OssExportConfigColumnOutput)
+}
+
 type OssShipperParquetConfig struct {
 	Name string `pulumi:"name"`
 	Type string `pulumi:"type"`
@@ -2856,6 +2962,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertSeverityConfigurationArrayInput)(nil)).Elem(), AlertSeverityConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EtlEtlSinkInput)(nil)).Elem(), EtlEtlSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EtlEtlSinkArrayInput)(nil)).Elem(), EtlEtlSinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OssExportConfigColumnInput)(nil)).Elem(), OssExportConfigColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OssExportConfigColumnArrayInput)(nil)).Elem(), OssExportConfigColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssShipperParquetConfigInput)(nil)).Elem(), OssShipperParquetConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssShipperParquetConfigArrayInput)(nil)).Elem(), OssShipperParquetConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StoreEncryptConfInput)(nil)).Elem(), StoreEncryptConfArgs{})
@@ -2894,6 +3002,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertSeverityConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(EtlEtlSinkOutput{})
 	pulumi.RegisterOutputType(EtlEtlSinkArrayOutput{})
+	pulumi.RegisterOutputType(OssExportConfigColumnOutput{})
+	pulumi.RegisterOutputType(OssExportConfigColumnArrayOutput{})
 	pulumi.RegisterOutputType(OssShipperParquetConfigOutput{})
 	pulumi.RegisterOutputType(OssShipperParquetConfigArrayOutput{})
 	pulumi.RegisterOutputType(StoreEncryptConfOutput{})

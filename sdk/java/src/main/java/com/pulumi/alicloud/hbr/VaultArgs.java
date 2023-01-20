@@ -32,8 +32,6 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
-     * - `KMS`: Use Alibaba Cloud Kms to encryption.
      * 
      */
     @Import(name="encryptType")
@@ -41,8 +39,6 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
-     * - `KMS`: Use Alibaba Cloud Kms to encryption.
      * 
      */
     public Optional<Output<String>> encryptType() {
@@ -66,8 +62,6 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     * - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-     * - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
      * 
      */
     @Import(name="redundancyType")
@@ -75,8 +69,6 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     * - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-     * - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
      * 
      */
     public Optional<Output<String>> redundancyType() {
@@ -181,8 +173,6 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptType Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-         * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
-         * - `KMS`: Use Alibaba Cloud Kms to encryption.
          * 
          * @return builder
          * 
@@ -194,8 +184,6 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptType Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-         * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
-         * - `KMS`: Use Alibaba Cloud Kms to encryption.
          * 
          * @return builder
          * 
@@ -227,8 +215,6 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param redundancyType The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-         * - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-         * - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
          * 
          * @return builder
          * 
@@ -240,8 +226,6 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param redundancyType The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-         * - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-         * - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
          * 
          * @return builder
          * 

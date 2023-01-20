@@ -22,6 +22,94 @@ import (
 // * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
 // * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			slbListenerName := "forSlbListener"
+//			if param := cfg.Get("slbListenerName"); param != "" {
+//				slbListenerName = param
+//			}
+//			listenerApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "listenerApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//				LoadBalancerName:   pulumi.String("tf-testAccSlbListenerHttp"),
+//				InternetChargeType: pulumi.String("PayByTraffic"),
+//				AddressType:        pulumi.String("internet"),
+//				InstanceChargeType: pulumi.String("PayByCLCU"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			listenerAcl, err := slb.NewAcl(ctx, "listenerAcl", &slb.AclArgs{
+//				IpVersion: pulumi.String("ipv4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = slb.NewListener(ctx, "listenerListener", &slb.ListenerArgs{
+//				LoadBalancerId:         listenerApplicationLoadBalancer.ID(),
+//				BackendPort:            pulumi.Int(80),
+//				FrontendPort:           pulumi.Int(80),
+//				Protocol:               pulumi.String("http"),
+//				Bandwidth:              pulumi.Int(10),
+//				StickySession:          pulumi.String("on"),
+//				StickySessionType:      pulumi.String("insert"),
+//				CookieTimeout:          pulumi.Int(86400),
+//				Cookie:                 pulumi.String("testslblistenercookie"),
+//				HealthCheck:            pulumi.String("on"),
+//				HealthCheckDomain:      pulumi.String("ali.com"),
+//				HealthCheckUri:         pulumi.String("/cons"),
+//				HealthCheckConnectPort: pulumi.Int(20),
+//				HealthyThreshold:       pulumi.Int(8),
+//				UnhealthyThreshold:     pulumi.Int(8),
+//				HealthCheckTimeout:     pulumi.Int(8),
+//				HealthCheckInterval:    pulumi.Int(5),
+//				HealthCheckHttpCode:    pulumi.String("http_2xx,http_3xx"),
+//				XForwardedFor: &slb.ListenerXForwardedForArgs{
+//					RetriveSlbIp: pulumi.Bool(true),
+//					RetriveSlbId: pulumi.Bool(true),
+//				},
+//				AclStatus:      pulumi.String("on"),
+//				AclType:        pulumi.String("white"),
+//				AclId:          listenerAcl.ID(),
+//				RequestTimeout: pulumi.Int(80),
+//				IdleTimeout:    pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = slb.NewAclEntryAttachment(ctx, "first", &slb.AclEntryAttachmentArgs{
+//				AclId:   listenerAcl.ID(),
+//				Entry:   pulumi.String("10.10.10.0/24"),
+//				Comment: pulumi.String("first"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = slb.NewAclEntryAttachment(ctx, "second", &slb.AclEntryAttachmentArgs{
+//				AclId:   listenerAcl.ID(),
+//				Entry:   pulumi.String("168.10.10.0/24"),
+//				Comment: pulumi.String("second"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Listener fields and protocol mapping
 //
 // load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
@@ -144,6 +232,8 @@ type Listener struct {
 	PersistenceTimeout pulumi.IntPtrOutput `pulumi:"persistenceTimeout"`
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
+	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	ProxyProtocolV2Enabled pulumi.BoolOutput `pulumi:"proxyProtocolV2Enabled"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrOutput `pulumi:"requestTimeout"`
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
@@ -275,6 +365,8 @@ type listenerState struct {
 	PersistenceTimeout *int `pulumi:"persistenceTimeout"`
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol *string `pulumi:"protocol"`
+	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	ProxyProtocolV2Enabled *bool `pulumi:"proxyProtocolV2Enabled"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
@@ -369,6 +461,8 @@ type ListenerState struct {
 	PersistenceTimeout pulumi.IntPtrInput
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol pulumi.StringPtrInput
+	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	ProxyProtocolV2Enabled pulumi.BoolPtrInput
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrInput
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
@@ -467,6 +561,8 @@ type listenerArgs struct {
 	PersistenceTimeout *int `pulumi:"persistenceTimeout"`
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol string `pulumi:"protocol"`
+	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	ProxyProtocolV2Enabled *bool `pulumi:"proxyProtocolV2Enabled"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
@@ -562,6 +658,8 @@ type ListenerArgs struct {
 	PersistenceTimeout pulumi.IntPtrInput
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol pulumi.StringInput
+	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	ProxyProtocolV2Enabled pulumi.BoolPtrInput
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrInput
 	// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
@@ -842,6 +940,11 @@ func (o ListenerOutput) PersistenceTimeout() pulumi.IntPtrOutput {
 // The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 func (o ListenerOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+func (o ListenerOutput) ProxyProtocolV2Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.ProxyProtocolV2Enabled }).(pulumi.BoolOutput)
 }
 
 // Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.

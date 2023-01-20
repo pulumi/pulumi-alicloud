@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cms.GetMonitorGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cms.GetMonitorGroups.InvokeAsync(new AliCloud.Cms.GetMonitorGroupsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstCmsMonitorGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstCmsMonitorGroupId")]
-        ///     public Output&lt;string&gt; FirstCmsMonitorGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCmsMonitorGroupId"] = example.Apply(getMonitorGroupsResult =&gt; getMonitorGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMonitorGroupsResult> InvokeAsync(GetMonitorGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMonitorGroupsResult>("alicloud:cms/getMonitorGroups:getMonitorGroups", args ?? new GetMonitorGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMonitorGroupsResult>("alicloud:cms/getMonitorGroups:getMonitorGroups", args ?? new GetMonitorGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cms.GetMonitorGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cms.GetMonitorGroups.InvokeAsync(new AliCloud.Cms.GetMonitorGroupsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstCmsMonitorGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstCmsMonitorGroupId")]
-        ///     public Output&lt;string&gt; FirstCmsMonitorGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCmsMonitorGroupId"] = example.Apply(getMonitorGroupsResult =&gt; getMonitorGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMonitorGroupsResult> Invoke(GetMonitorGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMonitorGroupsResult>("alicloud:cms/getMonitorGroups:getMonitorGroups", args ?? new GetMonitorGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMonitorGroupsResult>("alicloud:cms/getMonitorGroups:getMonitorGroups", args ?? new GetMonitorGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetMonitorGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetMonitorGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the tag rule.
@@ -167,9 +165,10 @@ namespace Pulumi.AliCloud.Cms
         public GetMonitorGroupsArgs()
         {
         }
+        public static new GetMonitorGroupsArgs Empty => new GetMonitorGroupsArgs();
     }
 
-    public sealed class GetMonitorGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMonitorGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the tag rule.
@@ -243,6 +242,7 @@ namespace Pulumi.AliCloud.Cms
         public GetMonitorGroupsInvokeArgs()
         {
         }
+        public static new GetMonitorGroupsInvokeArgs Empty => new GetMonitorGroupsInvokeArgs();
     }
 
 

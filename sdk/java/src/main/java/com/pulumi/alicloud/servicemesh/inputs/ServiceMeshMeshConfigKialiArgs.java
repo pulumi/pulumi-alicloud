@@ -16,14 +16,14 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
     public static final ServiceMeshMeshConfigKialiArgs Empty = new ServiceMeshMeshConfigKialiArgs();
 
     /**
-     * Whether to enable Service grid audit.
+     * Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable Service grid audit.
+     * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Whether to enable Service grid audit.
+         * @param enabled Whether to enable of the access logging. Valid values: `true` and `false`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Whether to enable Service grid audit.
+         * @param enabled Whether to enable of the access logging. Valid values: `true` and `false`.
          * 
          * @return builder
          * 

@@ -23,21 +23,19 @@ namespace Pulumi.AliCloud.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ecs.ImageSharePermission("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ecs.ImageSharePermission("default", new AliCloud.Ecs.ImageSharePermissionArgs
-    ///         {
-    ///             AccountId = "1234567890",
-    ///             ImageId = "m-bp1gxyh***",
-    ///         });
-    ///     }
+    ///         AccountId = "1234567890",
+    ///         ImageId = "m-bp1gxyh***",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes Reference0
     /// 
@@ -54,7 +52,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/imageSharePermission:ImageSharePermission")]
-    public partial class ImageSharePermission : Pulumi.CustomResource
+    public partial class ImageSharePermission : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Alibaba Cloud Account ID. It is used to share images.
@@ -112,7 +110,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class ImageSharePermissionArgs : Pulumi.ResourceArgs
+    public sealed class ImageSharePermissionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alibaba Cloud Account ID. It is used to share images.
@@ -129,9 +127,10 @@ namespace Pulumi.AliCloud.Ecs
         public ImageSharePermissionArgs()
         {
         }
+        public static new ImageSharePermissionArgs Empty => new ImageSharePermissionArgs();
     }
 
-    public sealed class ImageSharePermissionState : Pulumi.ResourceArgs
+    public sealed class ImageSharePermissionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alibaba Cloud Account ID. It is used to share images.
@@ -148,5 +147,6 @@ namespace Pulumi.AliCloud.Ecs
         public ImageSharePermissionState()
         {
         }
+        public static new ImageSharePermissionState Empty => new ImageSharePermissionState();
     }
 }

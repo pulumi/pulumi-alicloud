@@ -17,51 +17,53 @@ namespace Pulumi.AliCloud.Adb
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "ADB";
+    ///     var name = config.Get("name") ?? "adbaccountmysql";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "ADB";
-    ///         var name = config.Get("name") ?? "adbaccountmysql";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var cluster = new AliCloud.Adb.Cluster("cluster", new AliCloud.Adb.ClusterArgs
-    ///         {
-    ///             DbClusterVersion = "3.0",
-    ///             DbClusterCategory = "Cluster",
-    ///             DbNodeClass = "C8",
-    ///             DbNodeCount = 2,
-    ///             DbNodeStorage = 200,
-    ///             PayType = "PostPaid",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             Description = name,
-    ///         });
-    ///         var account = new AliCloud.Adb.Account("account", new AliCloud.Adb.AccountArgs
-    ///         {
-    ///             DbClusterId = cluster.Id,
-    ///             AccountName = "tftestnormal",
-    ///             AccountPassword = "Test12345",
-    ///             AccountDescription = name,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var cluster = new AliCloud.Adb.Cluster("cluster", new()
+    ///     {
+    ///         DbClusterVersion = "3.0",
+    ///         DbClusterCategory = "Cluster",
+    ///         DbNodeClass = "C8",
+    ///         DbNodeCount = 2,
+    ///         DbNodeStorage = 200,
+    ///         PayType = "PostPaid",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var account = new AliCloud.Adb.Account("account", new()
+    ///     {
+    ///         DbClusterId = cluster.Id,
+    ///         AccountName = "tftestnormal",
+    ///         AccountPassword = "Test12345",
+    ///         AccountDescription = name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,11 +71,11 @@ namespace Pulumi.AliCloud.Adb
     /// ADB account can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:adb/account:Account example "am-12345:tf_account"
+    ///  $ pulumi import alicloud:adb/account:Account example am-12345:tf_account
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:adb/account:Account")]
-    public partial class Account : Pulumi.CustomResource
+    public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
@@ -134,6 +136,10 @@ namespace Pulumi.AliCloud.Adb
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -155,7 +161,7 @@ namespace Pulumi.AliCloud.Adb
         }
     }
 
-    public sealed class AccountArgs : Pulumi.ResourceArgs
+    public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
@@ -169,11 +175,21 @@ namespace Pulumi.AliCloud.Adb
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
 
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Id of cluster in which account belongs.
@@ -202,9 +218,10 @@ namespace Pulumi.AliCloud.Adb
         public AccountArgs()
         {
         }
+        public static new AccountArgs Empty => new AccountArgs();
     }
 
-    public sealed class AccountState : Pulumi.ResourceArgs
+    public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
@@ -218,11 +235,21 @@ namespace Pulumi.AliCloud.Adb
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The Id of cluster in which account belongs.
@@ -251,5 +278,6 @@ namespace Pulumi.AliCloud.Adb
         public AccountState()
         {
         }
+        public static new AccountState Empty => new AccountState();
     }
 }

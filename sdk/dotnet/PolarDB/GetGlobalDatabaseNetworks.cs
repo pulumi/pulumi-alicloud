@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.PolarDB
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.PolarDB.GetGlobalDatabaseNetworks.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.PolarDB.GetGlobalDatabaseNetworks.InvokeAsync(new AliCloud.PolarDB.GetGlobalDatabaseNetworksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.PolardbGlobalDatabaseNetworkId1 = ids.Apply(ids =&gt; ids.Networks?[0]?.Id);
-        ///         var description = Output.Create(AliCloud.PolarDB.GetGlobalDatabaseNetworks.InvokeAsync(new AliCloud.PolarDB.GetGlobalDatabaseNetworksArgs
-        ///         {
-        ///             Description = "example_description",
-        ///         }));
-        ///         this.PolardbGlobalDatabaseNetworkId2 = description.Apply(description =&gt; description.Networks?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("polardbGlobalDatabaseNetworkId1")]
-        ///     public Output&lt;string&gt; PolardbGlobalDatabaseNetworkId1 { get; set; }
-        ///     [Output("polardbGlobalDatabaseNetworkId2")]
-        ///     public Output&lt;string&gt; PolardbGlobalDatabaseNetworkId2 { get; set; }
-        /// }
+        ///     var description = AliCloud.PolarDB.GetGlobalDatabaseNetworks.Invoke(new()
+        ///     {
+        ///         Description = "example_description",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["polardbGlobalDatabaseNetworkId1"] = ids.Apply(getGlobalDatabaseNetworksResult =&gt; getGlobalDatabaseNetworksResult.Networks[0]?.Id),
+        ///         ["polardbGlobalDatabaseNetworkId2"] = description.Apply(getGlobalDatabaseNetworksResult =&gt; getGlobalDatabaseNetworksResult.Networks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGlobalDatabaseNetworksResult> InvokeAsync(GetGlobalDatabaseNetworksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalDatabaseNetworksResult>("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", args ?? new GetGlobalDatabaseNetworksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalDatabaseNetworksResult>("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", args ?? new GetGlobalDatabaseNetworksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.PolarDB
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.PolarDB.GetGlobalDatabaseNetworks.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.PolarDB.GetGlobalDatabaseNetworks.InvokeAsync(new AliCloud.PolarDB.GetGlobalDatabaseNetworksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.PolardbGlobalDatabaseNetworkId1 = ids.Apply(ids =&gt; ids.Networks?[0]?.Id);
-        ///         var description = Output.Create(AliCloud.PolarDB.GetGlobalDatabaseNetworks.InvokeAsync(new AliCloud.PolarDB.GetGlobalDatabaseNetworksArgs
-        ///         {
-        ///             Description = "example_description",
-        ///         }));
-        ///         this.PolardbGlobalDatabaseNetworkId2 = description.Apply(description =&gt; description.Networks?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("polardbGlobalDatabaseNetworkId1")]
-        ///     public Output&lt;string&gt; PolardbGlobalDatabaseNetworkId1 { get; set; }
-        ///     [Output("polardbGlobalDatabaseNetworkId2")]
-        ///     public Output&lt;string&gt; PolardbGlobalDatabaseNetworkId2 { get; set; }
-        /// }
+        ///     var description = AliCloud.PolarDB.GetGlobalDatabaseNetworks.Invoke(new()
+        ///     {
+        ///         Description = "example_description",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["polardbGlobalDatabaseNetworkId1"] = ids.Apply(getGlobalDatabaseNetworksResult =&gt; getGlobalDatabaseNetworksResult.Networks[0]?.Id),
+        ///         ["polardbGlobalDatabaseNetworkId2"] = description.Apply(getGlobalDatabaseNetworksResult =&gt; getGlobalDatabaseNetworksResult.Networks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGlobalDatabaseNetworksResult> Invoke(GetGlobalDatabaseNetworksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlobalDatabaseNetworksResult>("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", args ?? new GetGlobalDatabaseNetworksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlobalDatabaseNetworksResult>("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", args ?? new GetGlobalDatabaseNetworksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGlobalDatabaseNetworksArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalDatabaseNetworksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the PolarDB cluster.
@@ -155,9 +151,10 @@ namespace Pulumi.AliCloud.PolarDB
         public GetGlobalDatabaseNetworksArgs()
         {
         }
+        public static new GetGlobalDatabaseNetworksArgs Empty => new GetGlobalDatabaseNetworksArgs();
     }
 
-    public sealed class GetGlobalDatabaseNetworksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalDatabaseNetworksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the PolarDB cluster.
@@ -207,6 +204,7 @@ namespace Pulumi.AliCloud.PolarDB
         public GetGlobalDatabaseNetworksInvokeArgs()
         {
         }
+        public static new GetGlobalDatabaseNetworksInvokeArgs Empty => new GetGlobalDatabaseNetworksInvokeArgs();
     }
 
 

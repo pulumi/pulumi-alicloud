@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const nameRegex = alicloud.sae.getNamespaces({
  *     nameRegex: "^my-Namespace",
  * });
- * export const saeNamespaceId = nameRegex.then(nameRegex => nameRegex.namespaces?[0]?.id);
+ * export const saeNamespaceId = nameRegex.then(nameRegex => nameRegex.namespaces?.[0]?.id);
  * ```
  */
 export function getNamespaces(args?: GetNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespacesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sae/getNamespaces:getNamespaces", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -67,9 +65,27 @@ export interface GetNamespacesResult {
     readonly namespaces: outputs.sae.GetNamespacesNamespace[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Sae Namespaces of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.129.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const nameRegex = alicloud.sae.getNamespaces({
+ *     nameRegex: "^my-Namespace",
+ * });
+ * export const saeNamespaceId = nameRegex.then(nameRegex => nameRegex.namespaces?.[0]?.id);
+ * ```
+ */
 export function getNamespacesOutput(args?: GetNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespacesResult> {
-    return pulumi.output(args).apply(a => getNamespaces(a, opts))
+    return pulumi.output(args).apply((a: any) => getNamespaces(a, opts))
 }
 
 /**

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -17,19 +18,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const hbase = pulumi.output(alicloud.hbase.getInstances({
+ * const hbase = alicloud.hbase.getInstances({
  *     availabilityZone: "cn-shenzhen-b",
  *     nameRegex: "tf_testAccHBase",
- * }));
+ * });
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbase/getInstances:getInstances", {
         "availabilityZone": args.availabilityZone,
         "ids": args.ids,
@@ -90,9 +88,26 @@ export interface GetInstancesResult {
      */
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * The `alicloud.hbase.getInstances` data source provides a collection of HBase instances available in Alicloud account.
+ * Filters support regular expression for the instance name, ids or availability_zone.
+ *
+ * > **NOTE:**  Available in 1.67.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const hbase = alicloud.hbase.getInstances({
+ *     availabilityZone: "cn-shenzhen-b",
+ *     nameRegex: "tf_testAccHBase",
+ * });
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**

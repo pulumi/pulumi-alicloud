@@ -18,15 +18,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultProject = new alicloud.log.Project("default", {
- *     description: "tf unit test",
- * });
- * const defaultStore = new alicloud.log.Store("default", {
+ * const defaultProject = new alicloud.log.Project("defaultProject", {description: "tf unit test"});
+ * const defaultStore = new alicloud.log.Store("defaultStore", {
  *     project: "tf-project",
  *     retentionPeriod: 3000,
  *     shardCount: 1,
  * });
  * const example = new alicloud.log.Dashboard("example", {
+ *     attribute: "{\"type\":\"grid\"}",
  *     charList: `  [
  *     {
  *       "action": {},
@@ -54,6 +53,7 @@ import * as utilities from "../utilities";
  *       }
  *     }
  *   ]
+ *
  * `,
  *     dashboardName: "tf-dashboard",
  *     projectName: "tf-project",
@@ -97,6 +97,10 @@ export class Dashboard extends pulumi.CustomResource {
     }
 
     /**
+     * Dashboard attribute.
+     */
+    public readonly attribute!: pulumi.Output<string>;
+    /**
      * Configuration of charts in the dashboard.
      */
     public readonly charList!: pulumi.Output<string>;
@@ -126,6 +130,7 @@ export class Dashboard extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardState | undefined;
+            resourceInputs["attribute"] = state ? state.attribute : undefined;
             resourceInputs["charList"] = state ? state.charList : undefined;
             resourceInputs["dashboardName"] = state ? state.dashboardName : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -141,6 +146,7 @@ export class Dashboard extends pulumi.CustomResource {
             if ((!args || args.projectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
+            resourceInputs["attribute"] = args ? args.attribute : undefined;
             resourceInputs["charList"] = args ? args.charList : undefined;
             resourceInputs["dashboardName"] = args ? args.dashboardName : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -155,6 +161,10 @@ export class Dashboard extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Dashboard resources.
  */
 export interface DashboardState {
+    /**
+     * Dashboard attribute.
+     */
+    attribute?: pulumi.Input<string>;
     /**
      * Configuration of charts in the dashboard.
      */
@@ -177,6 +187,10 @@ export interface DashboardState {
  * The set of arguments for constructing a Dashboard resource.
  */
 export interface DashboardArgs {
+    /**
+     * Dashboard attribute.
+     */
+    attribute?: pulumi.Input<string>;
     /**
      * Configuration of charts in the dashboard.
      */

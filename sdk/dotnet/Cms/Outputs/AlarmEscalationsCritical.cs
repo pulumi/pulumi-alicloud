@@ -18,15 +18,15 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string? ComparisonOperator;
         /// <summary>
-        /// Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: ["Availability","Average", "Minimum", "Maximum", "Value", "ErrorCodeMaximum", "Sum", "Count"]. Default to "Average".
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
         /// </summary>
         public readonly string? Statistics;
         /// <summary>
-        /// Critical level alarm threshold value, which must be a numeric value currently.
+        /// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
         /// </summary>
         public readonly string? Threshold;
         /// <summary>
-        /// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+        /// Critical level alarm retry times. Default to 3.
         /// </summary>
         public readonly int? Times;
 

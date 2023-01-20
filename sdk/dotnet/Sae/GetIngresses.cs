@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Sae
         /// &gt; **NOTE:** Available in v1.137.0+.
         /// </summary>
         public static Task<GetIngressesResult> InvokeAsync(GetIngressesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Sae Ingresses of the current Alibaba Cloud user.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Sae
         /// &gt; **NOTE:** Available in v1.137.0+.
         /// </summary>
         public static Output<GetIngressesResult> Invoke(GetIngressesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetIngressesArgs : Pulumi.InvokeArgs
+    public sealed class GetIngressesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -61,9 +61,10 @@ namespace Pulumi.AliCloud.Sae
         public GetIngressesArgs()
         {
         }
+        public static new GetIngressesArgs Empty => new GetIngressesArgs();
     }
 
-    public sealed class GetIngressesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIngressesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -95,6 +96,7 @@ namespace Pulumi.AliCloud.Sae
         public GetIngressesInvokeArgs()
         {
         }
+        public static new GetIngressesInvokeArgs Empty => new GetIngressesInvokeArgs();
     }
 
 

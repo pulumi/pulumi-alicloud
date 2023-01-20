@@ -602,7 +602,7 @@ public final class EcpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -642,7 +642,7 @@ public final class EcpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -682,7 +682,7 @@ public final class EcpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -722,7 +722,7 @@ public final class EcpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -762,7 +762,7 @@ public final class EcpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -802,7 +802,7 @@ public final class EcpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

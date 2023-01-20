@@ -14,17 +14,17 @@ import javax.annotation.Nullable;
 public final class ApiHttpVpcServiceConfig {
     private @Nullable String aoneName;
     /**
-     * @return The http method of backend service.
+     * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
      * 
      */
     private String method;
     /**
-     * @return System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * @return The name of the api gateway api. Defaults to null.
      * 
      */
     private String name;
     /**
-     * @return The path of backend service.
+     * @return The request path of the api.
      * 
      */
     private String path;
@@ -39,21 +39,21 @@ public final class ApiHttpVpcServiceConfig {
         return Optional.ofNullable(this.aoneName);
     }
     /**
-     * @return The http method of backend service.
+     * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
      * 
      */
     public String method() {
         return this.method;
     }
     /**
-     * @return System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * @return The name of the api gateway api. Defaults to null.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The path of backend service.
+     * @return The request path of the api.
      * 
      */
     public String path() {

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class ApplicationScalingRuleScalingRuleMetric
     {
         /// <summary>
-        /// Maximum number of instances applied.
+        /// Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         /// </summary>
         public readonly int? MaxReplicas;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationScalingRuleScalingRuleMetricMetric> Metrics;
         /// <summary>
-        /// Minimum number of instances applied.
+        /// Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         /// </summary>
         public readonly int? MinReplicas;
         /// <summary>

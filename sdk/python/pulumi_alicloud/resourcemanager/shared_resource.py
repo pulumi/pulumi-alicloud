@@ -21,7 +21,7 @@ class SharedResourceArgs:
         The set of arguments for constructing a SharedResource resource.
         :param pulumi.Input[str] resource_id: The resource ID need shared.
         :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
-        :param pulumi.Input[str] resource_type: The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        :param pulumi.Input[str] resource_type: The resource type of should shared, valid value
         """
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_share_id", resource_share_id)
@@ -55,7 +55,7 @@ class SharedResourceArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[str]:
         """
-        The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        The resource type of should shared, valid value
         """
         return pulumi.get(self, "resource_type")
 
@@ -75,7 +75,7 @@ class _SharedResourceState:
         Input properties used for looking up and filtering SharedResource resources.
         :param pulumi.Input[str] resource_id: The resource ID need shared.
         :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
-        :param pulumi.Input[str] resource_type: The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        :param pulumi.Input[str] resource_type: The resource type of should shared, valid value
         :param pulumi.Input[str] status: status.
         """
         if resource_id is not None:
@@ -115,7 +115,7 @@ class _SharedResourceState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        The resource type of should shared, valid value
         """
         return pulumi.get(self, "resource_type")
 
@@ -164,7 +164,7 @@ class SharedResource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] resource_id: The resource ID need shared.
         :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
-        :param pulumi.Input[str] resource_type: The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        :param pulumi.Input[str] resource_type: The resource type of should shared, valid value
         """
         ...
     @overload
@@ -247,7 +247,7 @@ class SharedResource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] resource_id: The resource ID need shared.
         :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
-        :param pulumi.Input[str] resource_type: The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        :param pulumi.Input[str] resource_type: The resource type of should shared, valid value
         :param pulumi.Input[str] status: status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -280,7 +280,7 @@ class SharedResource(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[str]:
         """
-        The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        The resource type of should shared, valid value
         """
         return pulumi.get(self, "resource_type")
 

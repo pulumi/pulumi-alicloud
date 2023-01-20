@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class ScalingConfigurationInstancePatternInfoGetArgs : Pulumi.ResourceArgs
+    public sealed class ScalingConfigurationInstancePatternInfoGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cores")]
         public Input<int>? Cores { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public ScalingConfigurationInstancePatternInfoGetArgs()
         {
         }
+        public static new ScalingConfigurationInstancePatternInfoGetArgs Empty => new ScalingConfigurationInstancePatternInfoGetArgs();
     }
 }

@@ -455,6 +455,8 @@ type GetInstancesInstance struct {
 	Name string `pulumi:"name"`
 	// The paid type of the instance.
 	PaidType string `pulumi:"paidType"`
+	// (Available in 1.194.0+) The number of partitions.
+	PartitionNum int `pulumi:"partitionNum"`
 	// The SASL domain point of the instance.
 	SaslDomainEndpoint string `pulumi:"saslDomainEndpoint"`
 	// The security group of the instance.
@@ -525,6 +527,8 @@ type GetInstancesInstanceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The paid type of the instance.
 	PaidType pulumi.StringInput `pulumi:"paidType"`
+	// (Available in 1.194.0+) The number of partitions.
+	PartitionNum pulumi.IntInput `pulumi:"partitionNum"`
 	// The SASL domain point of the instance.
 	SaslDomainEndpoint pulumi.StringInput `pulumi:"saslDomainEndpoint"`
 	// The security group of the instance.
@@ -677,6 +681,11 @@ func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 // The paid type of the instance.
 func (o GetInstancesInstanceOutput) PaidType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaidType }).(pulumi.StringOutput)
+}
+
+// (Available in 1.194.0+) The number of partitions.
+func (o GetInstancesInstanceOutput) PartitionNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.PartitionNum }).(pulumi.IntOutput)
 }
 
 // The SASL domain point of the instance.

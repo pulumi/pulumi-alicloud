@@ -13,7 +13,7 @@ import (
 
 // Provides a Global Accelerator (GA) Bandwidth Package Attachment resource.
 //
-// For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
+// For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/bandwidthpackageaddaccelerator).
 //
 // > **NOTE:** Available in v1.113.0+.
 //
@@ -67,11 +67,11 @@ import (
 //
 // ## Import
 //
-// Ga Bandwidth Package Attachment can be imported using the id, e.g.
+// Ga Bandwidth Package Attachment can be imported using the id. Format to `<accelerator_id>:<bandwidth_package_id>`, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example <accelerator_id>:<bandwidth_package_id>
+//	$ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example your_accelerator_id:your_bandwidth_package_id
 //
 // ```
 type BandwidthPackageAttachment struct {
@@ -81,7 +81,7 @@ type BandwidthPackageAttachment struct {
 	AcceleratorId pulumi.StringOutput `pulumi:"acceleratorId"`
 	// Accelerators bound with current Bandwidth Package.
 	Accelerators pulumi.StringArrayOutput `pulumi:"accelerators"`
-	// The ID of the bandwidth plan to disassociate.
+	// The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
 	BandwidthPackageId pulumi.StringOutput `pulumi:"bandwidthPackageId"`
 	// State of Bandwidth Package.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -126,7 +126,7 @@ type bandwidthPackageAttachmentState struct {
 	AcceleratorId *string `pulumi:"acceleratorId"`
 	// Accelerators bound with current Bandwidth Package.
 	Accelerators []string `pulumi:"accelerators"`
-	// The ID of the bandwidth plan to disassociate.
+	// The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
 	BandwidthPackageId *string `pulumi:"bandwidthPackageId"`
 	// State of Bandwidth Package.
 	Status *string `pulumi:"status"`
@@ -137,7 +137,7 @@ type BandwidthPackageAttachmentState struct {
 	AcceleratorId pulumi.StringPtrInput
 	// Accelerators bound with current Bandwidth Package.
 	Accelerators pulumi.StringArrayInput
-	// The ID of the bandwidth plan to disassociate.
+	// The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
 	BandwidthPackageId pulumi.StringPtrInput
 	// State of Bandwidth Package.
 	Status pulumi.StringPtrInput
@@ -150,7 +150,7 @@ func (BandwidthPackageAttachmentState) ElementType() reflect.Type {
 type bandwidthPackageAttachmentArgs struct {
 	// The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
 	AcceleratorId string `pulumi:"acceleratorId"`
-	// The ID of the bandwidth plan to disassociate.
+	// The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
 	BandwidthPackageId string `pulumi:"bandwidthPackageId"`
 }
 
@@ -158,7 +158,7 @@ type bandwidthPackageAttachmentArgs struct {
 type BandwidthPackageAttachmentArgs struct {
 	// The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
 	AcceleratorId pulumi.StringInput
-	// The ID of the bandwidth plan to disassociate.
+	// The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
 	BandwidthPackageId pulumi.StringInput
 }
 
@@ -259,7 +259,7 @@ func (o BandwidthPackageAttachmentOutput) Accelerators() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v *BandwidthPackageAttachment) pulumi.StringArrayOutput { return v.Accelerators }).(pulumi.StringArrayOutput)
 }
 
-// The ID of the bandwidth plan to disassociate.
+// The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
 func (o BandwidthPackageAttachmentOutput) BandwidthPackageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthPackageAttachment) pulumi.StringOutput { return v.BandwidthPackageId }).(pulumi.StringOutput)
 }

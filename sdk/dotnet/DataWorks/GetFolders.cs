@@ -23,44 +23,39 @@ namespace Pulumi.AliCloud.DataWorks
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = new AliCloud.DataWorks.Folder("default", new()
         ///     {
-        ///         var @default = new AliCloud.DataWorks.Folder("default", new AliCloud.DataWorks.FolderArgs
-        ///         {
-        ///             ProjectId = "xxxx",
-        ///             FolderPath = "Business Flow/tfTestAcc/folderDi",
-        ///         });
-        ///         var ids = Output.Tuple(@default.FolderId, @default.ProjectId).Apply(values =&gt;
-        ///         {
-        ///             var folderId = values.Item1;
-        ///             var projectId = values.Item2;
-        ///             return AliCloud.DataWorks.GetFolders.Invoke(new AliCloud.DataWorks.GetFoldersInvokeArgs
-        ///             {
-        ///                 Ids = 
-        ///                 {
-        ///                     folderId,
-        ///                 },
-        ///                 ProjectId = projectId,
-        ///                 ParentFolderPath = "Business Flow/tfTestAcc/folderDi",
-        ///             });
-        ///         });
-        ///         this.DataWorksFolderId1 = ids.Apply(ids =&gt; ids.Folders?[0]?.Id);
-        ///     }
+        ///         ProjectId = "xxxx",
+        ///         FolderPath = "Business Flow/tfTestAcc/folderDi",
+        ///     });
         /// 
-        ///     [Output("dataWorksFolderId1")]
-        ///     public Output&lt;string&gt; DataWorksFolderId1 { get; set; }
-        /// }
+        ///     var ids = AliCloud.DataWorks.GetFolders.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.FolderId,
+        ///         },
+        ///         ProjectId = @default.ProjectId,
+        ///         ParentFolderPath = "Business Flow/tfTestAcc/folderDi",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataWorksFolderId1"] = ids.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFoldersResult> InvokeAsync(GetFoldersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("alicloud:dataworks/getFolders:getFolders", args ?? new GetFoldersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("alicloud:dataworks/getFolders:getFolders", args ?? new GetFoldersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Data Works Folders of the current Alibaba Cloud user.
@@ -74,48 +69,43 @@ namespace Pulumi.AliCloud.DataWorks
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = new AliCloud.DataWorks.Folder("default", new()
         ///     {
-        ///         var @default = new AliCloud.DataWorks.Folder("default", new AliCloud.DataWorks.FolderArgs
-        ///         {
-        ///             ProjectId = "xxxx",
-        ///             FolderPath = "Business Flow/tfTestAcc/folderDi",
-        ///         });
-        ///         var ids = Output.Tuple(@default.FolderId, @default.ProjectId).Apply(values =&gt;
-        ///         {
-        ///             var folderId = values.Item1;
-        ///             var projectId = values.Item2;
-        ///             return AliCloud.DataWorks.GetFolders.Invoke(new AliCloud.DataWorks.GetFoldersInvokeArgs
-        ///             {
-        ///                 Ids = 
-        ///                 {
-        ///                     folderId,
-        ///                 },
-        ///                 ProjectId = projectId,
-        ///                 ParentFolderPath = "Business Flow/tfTestAcc/folderDi",
-        ///             });
-        ///         });
-        ///         this.DataWorksFolderId1 = ids.Apply(ids =&gt; ids.Folders?[0]?.Id);
-        ///     }
+        ///         ProjectId = "xxxx",
+        ///         FolderPath = "Business Flow/tfTestAcc/folderDi",
+        ///     });
         /// 
-        ///     [Output("dataWorksFolderId1")]
-        ///     public Output&lt;string&gt; DataWorksFolderId1 { get; set; }
-        /// }
+        ///     var ids = AliCloud.DataWorks.GetFolders.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.FolderId,
+        ///         },
+        ///         ProjectId = @default.ProjectId,
+        ///         ParentFolderPath = "Business Flow/tfTestAcc/folderDi",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataWorksFolderId1"] = ids.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("alicloud:dataworks/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("alicloud:dataworks/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetFoldersArgs : Pulumi.InvokeArgs
+    public sealed class GetFoldersArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -147,9 +137,10 @@ namespace Pulumi.AliCloud.DataWorks
         public GetFoldersArgs()
         {
         }
+        public static new GetFoldersArgs Empty => new GetFoldersArgs();
     }
 
-    public sealed class GetFoldersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFoldersInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -181,6 +172,7 @@ namespace Pulumi.AliCloud.DataWorks
         public GetFoldersInvokeArgs()
         {
         }
+        public static new GetFoldersInvokeArgs Empty => new GetFoldersInvokeArgs();
     }
 
 

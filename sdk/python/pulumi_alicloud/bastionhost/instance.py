@@ -16,30 +16,45 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
+                 bandwidth: pulumi.Input[str],
                  description: pulumi.Input[str],
                  license_code: pulumi.Input[str],
+                 plan_code: pulumi.Input[str],
                  security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 storage: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
                  ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_period_unit: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] bandwidth: The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "license_code", license_code)
+        pulumi.set(__self__, "plan_code", plan_code)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "storage", storage)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if ad_auth_servers is not None:
             pulumi.set(__self__, "ad_auth_servers", ad_auth_servers)
@@ -49,10 +64,28 @@ class InstanceArgs:
             pulumi.set(__self__, "ldap_auth_servers", ldap_auth_servers)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if renew_period is not None:
+            pulumi.set(__self__, "renew_period", renew_period)
+        if renewal_period_unit is not None:
+            pulumi.set(__self__, "renewal_period_unit", renewal_period_unit)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> pulumi.Input[str]:
+        """
+        The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bandwidth", value)
 
     @property
     @pulumi.getter
@@ -79,6 +112,18 @@ class InstanceArgs:
         pulumi.set(self, "license_code", value)
 
     @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> pulumi.Input[str]:
+        """
+        The plan code of Cloud Bastionhost instance. Valid values:
+        """
+        return pulumi.get(self, "plan_code")
+
+    @plan_code.setter
+    def plan_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plan_code", value)
+
+    @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "security_group_ids")
@@ -86,6 +131,18 @@ class InstanceArgs:
     @security_group_ids.setter
     def security_group_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter
+    def storage(self) -> pulumi.Input[str]:
+        """
+        The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        """
+        return pulumi.get(self, "storage")
+
+    @storage.setter
+    def storage(self, value: pulumi.Input[str]):
+        pulumi.set(self, "storage", value)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -145,6 +202,42 @@ class InstanceArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="renewPeriod")
+    def renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        """
+        return pulumi.get(self, "renew_period")
+
+    @renew_period.setter
+    def renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "renew_period", value)
+
+    @property
+    @pulumi.getter(name="renewalPeriodUnit")
+    def renewal_period_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        """
+        return pulumi.get(self, "renewal_period_unit")
+
+    @renewal_period_unit.setter
+    def renewal_period_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_period_unit", value)
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -173,28 +266,42 @@ class InstanceArgs:
 class _InstanceState:
     def __init__(__self__, *,
                  ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 plan_code: Optional[pulumi.Input[str]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_period_unit: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 storage: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        :param pulumi.Input[str] bandwidth: The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
         if ad_auth_servers is not None:
             pulumi.set(__self__, "ad_auth_servers", ad_auth_servers)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_public_access is not None:
@@ -205,10 +312,20 @@ class _InstanceState:
             pulumi.set(__self__, "license_code", license_code)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if plan_code is not None:
+            pulumi.set(__self__, "plan_code", plan_code)
+        if renew_period is not None:
+            pulumi.set(__self__, "renew_period", renew_period)
+        if renewal_period_unit is not None:
+            pulumi.set(__self__, "renewal_period_unit", renewal_period_unit)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if storage is not None:
+            pulumi.set(__self__, "storage", storage)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
@@ -225,6 +342,18 @@ class _InstanceState:
     @ad_auth_servers.setter
     def ad_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]]]):
         pulumi.set(self, "ad_auth_servers", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth", value)
 
     @property
     @pulumi.getter
@@ -284,6 +413,54 @@ class _InstanceState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The plan code of Cloud Bastionhost instance. Valid values:
+        """
+        return pulumi.get(self, "plan_code")
+
+    @plan_code.setter
+    def plan_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_code", value)
+
+    @property
+    @pulumi.getter(name="renewPeriod")
+    def renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        """
+        return pulumi.get(self, "renew_period")
+
+    @renew_period.setter
+    def renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "renew_period", value)
+
+    @property
+    @pulumi.getter(name="renewalPeriodUnit")
+    def renewal_period_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        """
+        return pulumi.get(self, "renewal_period_unit")
+
+    @renewal_period_unit.setter
+    def renewal_period_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_period_unit", value)
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -303,6 +480,18 @@ class _InstanceState:
     @security_group_ids.setter
     def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter
+    def storage(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        """
+        return pulumi.get(self, "storage")
+
+    @storage.setter
+    def storage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage", value)
 
     @property
     @pulumi.getter
@@ -335,13 +524,19 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 plan_code: Optional[pulumi.Input[str]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_period_unit: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 storage: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -357,11 +552,17 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        :param pulumi.Input[str] bandwidth: The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
@@ -396,13 +597,19 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 plan_code: Optional[pulumi.Input[str]] = None,
+                 renew_period: Optional[pulumi.Input[int]] = None,
+                 renewal_period_unit: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 storage: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -415,6 +622,9 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["ad_auth_servers"] = ad_auth_servers
+            if bandwidth is None and not opts.urn:
+                raise TypeError("Missing required property 'bandwidth'")
+            __props__.__dict__["bandwidth"] = bandwidth
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
@@ -424,10 +634,19 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'license_code'")
             __props__.__dict__["license_code"] = license_code
             __props__.__dict__["period"] = period
+            if plan_code is None and not opts.urn:
+                raise TypeError("Missing required property 'plan_code'")
+            __props__.__dict__["plan_code"] = plan_code
+            __props__.__dict__["renew_period"] = renew_period
+            __props__.__dict__["renewal_period_unit"] = renewal_period_unit
+            __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["resource_group_id"] = resource_group_id
             if security_group_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_ids'")
             __props__.__dict__["security_group_ids"] = security_group_ids
+            if storage is None and not opts.urn:
+                raise TypeError("Missing required property 'storage'")
+            __props__.__dict__["storage"] = storage
             __props__.__dict__["tags"] = tags
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
@@ -443,13 +662,19 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]]] = None,
+            bandwidth: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_public_access: Optional[pulumi.Input[bool]] = None,
             ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]]] = None,
             license_code: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            plan_code: Optional[pulumi.Input[str]] = None,
+            renew_period: Optional[pulumi.Input[int]] = None,
+            renewal_period_unit: Optional[pulumi.Input[str]] = None,
+            renewal_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            storage: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -460,11 +685,17 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceAdAuthServerArgs']]]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
+        :param pulumi.Input[str] bandwidth: The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
@@ -473,13 +704,19 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["ad_auth_servers"] = ad_auth_servers
+        __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_public_access"] = enable_public_access
         __props__.__dict__["ldap_auth_servers"] = ldap_auth_servers
         __props__.__dict__["license_code"] = license_code
         __props__.__dict__["period"] = period
+        __props__.__dict__["plan_code"] = plan_code
+        __props__.__dict__["renew_period"] = renew_period
+        __props__.__dict__["renewal_period_unit"] = renewal_period_unit
+        __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["storage"] = storage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -491,6 +728,14 @@ class Instance(pulumi.CustomResource):
         The AD auth server of the Instance. See the following `Block ad_auth_server`.
         """
         return pulumi.get(self, "ad_auth_servers")
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> pulumi.Output[str]:
+        """
+        The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "bandwidth")
 
     @property
     @pulumi.getter
@@ -530,8 +775,40 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "period")
 
     @property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> pulumi.Output[str]:
+        """
+        The plan code of Cloud Bastionhost instance. Valid values:
+        """
+        return pulumi.get(self, "plan_code")
+
+    @property
+    @pulumi.getter(name="renewPeriod")
+    def renew_period(self) -> pulumi.Output[Optional[int]]:
+        """
+        Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        """
+        return pulumi.get(self, "renew_period")
+
+    @property
+    @pulumi.getter(name="renewalPeriodUnit")
+    def renewal_period_unit(self) -> pulumi.Output[str]:
+        """
+        The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        """
+        return pulumi.get(self, "renewal_period_unit")
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> pulumi.Output[str]:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
         The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         """
@@ -541,6 +818,14 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter
+    def storage(self) -> pulumi.Output[str]:
+        """
+        The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+        """
+        return pulumi.get(self, "storage")
 
     @property
     @pulumi.getter

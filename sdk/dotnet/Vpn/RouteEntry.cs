@@ -15,64 +15,68 @@ namespace Pulumi.AliCloud.Vpn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableDiskCategory = "cloud_efficiency",
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "10.1.0.0/21",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "10.1.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var defaultGateway = new AliCloud.Vpn.Gateway("defaultGateway", new AliCloud.Vpn.GatewayArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             Bandwidth = 10,
-    ///             InstanceChargeType = "PayByTraffic",
-    ///             EnableSsl = false,
-    ///             VswitchId = defaultSwitch.Id,
-    ///         });
-    ///         var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new AliCloud.Vpn.CustomerGatewayArgs
-    ///         {
-    ///             IpAddress = "192.168.1.1",
-    ///         });
-    ///         var defaultConnection = new AliCloud.Vpn.Connection("defaultConnection", new AliCloud.Vpn.ConnectionArgs
-    ///         {
-    ///             CustomerGatewayId = defaultCustomerGateway.Id,
-    ///             VpnGatewayId = defaultGateway.Id,
-    ///             LocalSubnets = 
-    ///             {
-    ///                 "192.168.2.0/24",
-    ///             },
-    ///             RemoteSubnets = 
-    ///             {
-    ///                 "192.168.3.0/24",
-    ///             },
-    ///         });
-    ///         var defaultRouteEntry = new AliCloud.Vpn.RouteEntry("defaultRouteEntry", new AliCloud.Vpn.RouteEntryArgs
-    ///         {
-    ///             VpnGatewayId = defaultGateway.Id,
-    ///             RouteDest = "10.0.0.0/24",
-    ///             NextHop = defaultConnection.Id,
-    ///             Weight = 0,
-    ///             PublishVpc = false,
-    ///         });
-    ///     }
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "10.1.0.0/21",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "10.1.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.Vpn.Gateway("defaultGateway", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         Bandwidth = 10,
+    ///         InstanceChargeType = "PayByTraffic",
+    ///         EnableSsl = false,
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new()
+    ///     {
+    ///         IpAddress = "192.168.1.1",
+    ///     });
+    /// 
+    ///     var defaultConnection = new AliCloud.Vpn.Connection("defaultConnection", new()
+    ///     {
+    ///         CustomerGatewayId = defaultCustomerGateway.Id,
+    ///         VpnGatewayId = defaultGateway.Id,
+    ///         LocalSubnets = new[]
+    ///         {
+    ///             "192.168.2.0/24",
+    ///         },
+    ///         RemoteSubnets = new[]
+    ///         {
+    ///             "192.168.3.0/24",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRouteEntry = new AliCloud.Vpn.RouteEntry("defaultRouteEntry", new()
+    ///     {
+    ///         VpnGatewayId = defaultGateway.Id,
+    ///         RouteDest = "10.0.0.0/24",
+    ///         NextHop = defaultConnection.Id,
+    ///         Weight = 0,
+    ///         PublishVpc = false,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -84,7 +88,7 @@ namespace Pulumi.AliCloud.Vpn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/routeEntry:RouteEntry")]
-    public partial class RouteEntry : Pulumi.CustomResource
+    public partial class RouteEntry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The next hop of the destination route.
@@ -172,7 +176,7 @@ namespace Pulumi.AliCloud.Vpn
         }
     }
 
-    public sealed class RouteEntryArgs : Pulumi.ResourceArgs
+    public sealed class RouteEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The next hop of the destination route.
@@ -207,9 +211,10 @@ namespace Pulumi.AliCloud.Vpn
         public RouteEntryArgs()
         {
         }
+        public static new RouteEntryArgs Empty => new RouteEntryArgs();
     }
 
-    public sealed class RouteEntryState : Pulumi.ResourceArgs
+    public sealed class RouteEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The next hop of the destination route.
@@ -256,5 +261,6 @@ namespace Pulumi.AliCloud.Vpn
         public RouteEntryState()
         {
         }
+        public static new RouteEntryState Empty => new RouteEntryState();
     }
 }

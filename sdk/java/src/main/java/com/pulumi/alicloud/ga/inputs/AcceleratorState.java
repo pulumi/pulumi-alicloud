@@ -98,8 +98,6 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-     * * `Month`: billed on a monthly basis.
-     * * `Year`: billed on an annual basis.
      * 
      */
     @Import(name="pricingCycle")
@@ -107,8 +105,6 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-     * * `Month`: billed on a monthly basis.
-     * * `Year`: billed on an annual basis.
      * 
      */
     public Optional<Output<String>> pricingCycle() {
@@ -117,9 +113,6 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to renew an accelerator automatically or not. Default to &#34;Normal&#34;. Valid values:
-     * - `AutoRenewal`: Enable auto renewal.
-     * - `Normal`: Disable auto renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     @Import(name="renewalStatus")
@@ -127,9 +120,6 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to renew an accelerator automatically or not. Default to &#34;Normal&#34;. Valid values:
-     * - `AutoRenewal`: Enable auto renewal.
-     * - `Normal`: Disable auto renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     public Optional<Output<String>> renewalStatus() {
@@ -321,8 +311,6 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param pricingCycle The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-         * * `Month`: billed on a monthly basis.
-         * * `Year`: billed on an annual basis.
          * 
          * @return builder
          * 
@@ -334,8 +322,6 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param pricingCycle The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-         * * `Month`: billed on a monthly basis.
-         * * `Year`: billed on an annual basis.
          * 
          * @return builder
          * 
@@ -346,9 +332,6 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param renewalStatus Whether to renew an accelerator automatically or not. Default to &#34;Normal&#34;. Valid values:
-         * - `AutoRenewal`: Enable auto renewal.
-         * - `Normal`: Disable auto renewal.
-         * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
          * 
          * @return builder
          * 
@@ -360,9 +343,6 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param renewalStatus Whether to renew an accelerator automatically or not. Default to &#34;Normal&#34;. Valid values:
-         * - `AutoRenewal`: Enable auto renewal.
-         * - `Normal`: Disable auto renewal.
-         * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
          * 
          * @return builder
          * 

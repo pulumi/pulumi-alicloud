@@ -99,7 +99,7 @@ class GetDedicatedHostGroupsGroupResult(dict):
         :param int cpu_allocation_ratio: The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
         :param str create_time: The Created Time of the Dedicated Host Group.
         :param Sequence['GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArgs'] dedicated_host_count_group_by_host_types: The Dedicated Host Count Group by Host Type of the Dedicated Host Group.
-        :param str dedicated_host_group_desc: -The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        :param str dedicated_host_group_desc: The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         :param str dedicated_host_group_id: Dedicated Host Group ID.
         :param str deploy_type: The Deployment Type of the Dedicated Host Group.
         :param float disk_allocate_ration: The storage overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
@@ -210,7 +210,7 @@ class GetDedicatedHostGroupsGroupResult(dict):
     @pulumi.getter(name="dedicatedHostGroupDesc")
     def dedicated_host_group_desc(self) -> str:
         """
-        -The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "dedicated_host_group_desc")
 

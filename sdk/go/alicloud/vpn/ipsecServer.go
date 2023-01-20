@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -56,13 +56,13 @@ import (
 //			}
 //			vswitchId := defaultSwitches.Ids[0]
 //			defaultGateway, err := vpn.NewGateway(ctx, "defaultGateway", &vpn.GatewayArgs{
-//				VpcId:              pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId:              *pulumi.String(defaultNetworks.Ids[0]),
 //				Bandwidth:          pulumi.Int(10),
 //				EnableSsl:          pulumi.Bool(true),
 //				EnableIpsec:        pulumi.Bool(true),
 //				SslConnections:     pulumi.Int(5),
 //				InstanceChargeType: pulumi.String("PrePaid"),
-//				VswitchId:          pulumi.String(vswitchId),
+//				VswitchId:          *pulumi.String(vswitchId),
 //			})
 //			if err != nil {
 //				return err

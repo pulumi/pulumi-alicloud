@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -48,7 +49,7 @@ import * as utilities from "../utilities";
  * const defaultDesktop = new alicloud.eds.Desktop("defaultDesktop", {
  *     officeSiteId: defaultSimpleOfficeSite.id,
  *     policyGroupId: defaultEcdPolicyGroup.id,
- *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?[0]?.id),
+ *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?.[0]?.id),
  *     desktopName: _var.name,
  * });
  * const defaultCommand = new alicloud.eds.Command("defaultCommand", {
@@ -57,16 +58,13 @@ import * as utilities from "../utilities";
  *     desktopId: defaultDesktop.id,
  * });
  * const ids = alicloud.eds.getCommands({});
- * export const ecdCommandId1 = ids.then(ids => ids.commands?[0]?.id);
+ * export const ecdCommandId1 = ids.then(ids => ids.commands?.[0]?.id);
  * ```
  */
 export function getCommands(args?: GetCommandsArgs, opts?: pulumi.InvokeOptions): Promise<GetCommandsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getCommands:getCommands", {
         "commandType": args.commandType,
         "contentEncoding": args.contentEncoding,
@@ -120,9 +118,63 @@ export interface GetCommandsResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Ecd Commands of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.146.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     desktopAccessType: "Internet",
+ *     officeSiteName: "your_office_site_name",
+ * });
+ * const defaultBundles = alicloud.eds.getBundles({
+ *     bundleType: "SYSTEM",
+ *     nameRegex: "windows",
+ * });
+ * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup", {
+ *     policyGroupName: "your_policy_group_name",
+ *     clipboard: "readwrite",
+ *     localDrive: "read",
+ *     authorizeAccessPolicyRules: [{
+ *         description: "example_value",
+ *         cidrIp: "1.2.3.4/24",
+ *     }],
+ *     authorizeSecurityPolicyRules: [{
+ *         type: "inflow",
+ *         policy: "accept",
+ *         description: "example_value",
+ *         portRange: "80/80",
+ *         ipProtocol: "TCP",
+ *         priority: "1",
+ *         cidrIp: "0.0.0.0/0",
+ *     }],
+ * });
+ * const defaultDesktop = new alicloud.eds.Desktop("defaultDesktop", {
+ *     officeSiteId: defaultSimpleOfficeSite.id,
+ *     policyGroupId: defaultEcdPolicyGroup.id,
+ *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?.[0]?.id),
+ *     desktopName: _var.name,
+ * });
+ * const defaultCommand = new alicloud.eds.Command("defaultCommand", {
+ *     commandContent: "ipconfig",
+ *     commandType: "RunPowerShellScript",
+ *     desktopId: defaultDesktop.id,
+ * });
+ * const ids = alicloud.eds.getCommands({});
+ * export const ecdCommandId1 = ids.then(ids => ids.commands?.[0]?.id);
+ * ```
+ */
 export function getCommandsOutput(args?: GetCommandsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommandsResult> {
-    return pulumi.output(args).apply(a => getCommands(a, opts))
+    return pulumi.output(args).apply((a: any) => getCommands(a, opts))
 }
 
 /**

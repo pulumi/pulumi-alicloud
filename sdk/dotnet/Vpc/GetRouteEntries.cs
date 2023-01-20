@@ -21,94 +21,101 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-        ///         {
-        ///             AvailableResourceCreation = "VSwitch",
-        ///         }));
-        ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-        ///         {
-        ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
-        ///             CpuCoreCount = 1,
-        ///             MemorySize = 2,
-        ///         })));
-        ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-        ///         {
-        ///             MostRecent = true,
-        ///             NameRegex = "^ubuntu_18.*64",
-        ///             Owners = "system",
-        ///         }));
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "tf-testAccRouteEntryConfig";
-        ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
-        ///         {
-        ///             CidrBlock = "10.1.0.0/21",
-        ///         });
-        ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
-        ///         {
-        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-        ///             CidrBlock = "10.1.1.0/24",
-        ///             VpcId = fooNetwork.Id,
-        ///             VswitchName = name,
-        ///         });
-        ///         var tfTestFoo = new AliCloud.Ecs.SecurityGroup("tfTestFoo", new AliCloud.Ecs.SecurityGroupArgs
-        ///         {
-        ///             Description = "foo",
-        ///             VpcId = fooNetwork.Id,
-        ///         });
-        ///         var fooInstance = new AliCloud.Ecs.Instance("fooInstance", new AliCloud.Ecs.InstanceArgs
-        ///         {
-        ///             AllocatePublicIp = true,
-        ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
-        ///             InstanceChargeType = "PostPaid",
-        ///             InstanceName = name,
-        ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
-        ///             InternetChargeType = "PayByTraffic",
-        ///             InternetMaxBandwidthOut = 5,
-        ///             SecurityGroups = 
-        ///             {
-        ///                 tfTestFoo.Id,
-        ///             },
-        ///             SystemDiskCategory = "cloud_efficiency",
-        ///             VswitchId = fooSwitch.Id,
-        ///         });
-        ///         var fooRouteEntry = new AliCloud.Vpc.RouteEntry("fooRouteEntry", new AliCloud.Vpc.RouteEntryArgs
-        ///         {
-        ///             DestinationCidrblock = "172.11.1.1/32",
-        ///             NexthopId = fooInstance.Id,
-        ///             NexthopType = "Instance",
-        ///             RouteTableId = fooNetwork.RouteTableId,
-        ///         });
-        ///         var ingress = new AliCloud.Ecs.SecurityGroupRule("ingress", new AliCloud.Ecs.SecurityGroupRuleArgs
-        ///         {
-        ///             CidrIp = "0.0.0.0/0",
-        ///             IpProtocol = "tcp",
-        ///             NicType = "intranet",
-        ///             Policy = "accept",
-        ///             PortRange = "22/22",
-        ///             Priority = 1,
-        ///             SecurityGroupId = tfTestFoo.Id,
-        ///             Type = "ingress",
-        ///         });
-        ///         var fooRouteEntries = AliCloud.Vpc.GetRouteEntries.Invoke(new AliCloud.Vpc.GetRouteEntriesInvokeArgs
-        ///         {
-        ///             RouteTableId = fooRouteEntry.RouteTableId,
-        ///         });
-        ///     }
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
         /// 
-        /// }
+        ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         CpuCoreCount = 1,
+        ///         MemorySize = 2,
+        ///     });
+        /// 
+        ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     {
+        ///         MostRecent = true,
+        ///         NameRegex = "^ubuntu_18.*64",
+        ///         Owners = "system",
+        ///     });
+        /// 
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-testAccRouteEntryConfig";
+        ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+        ///     {
+        ///         CidrBlock = "10.1.0.0/21",
+        ///     });
+        /// 
+        ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+        ///     {
+        ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         CidrBlock = "10.1.1.0/24",
+        ///         VpcId = fooNetwork.Id,
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var tfTestFoo = new AliCloud.Ecs.SecurityGroup("tfTestFoo", new()
+        ///     {
+        ///         Description = "foo",
+        ///         VpcId = fooNetwork.Id,
+        ///     });
+        /// 
+        ///     var fooInstance = new AliCloud.Ecs.Instance("fooInstance", new()
+        ///     {
+        ///         AllocatePublicIp = true,
+        ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         InstanceChargeType = "PostPaid",
+        ///         InstanceName = name,
+        ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///         InternetChargeType = "PayByTraffic",
+        ///         InternetMaxBandwidthOut = 5,
+        ///         SecurityGroups = new[]
+        ///         {
+        ///             tfTestFoo.Id,
+        ///         },
+        ///         SystemDiskCategory = "cloud_efficiency",
+        ///         VswitchId = fooSwitch.Id,
+        ///     });
+        /// 
+        ///     var fooRouteEntry = new AliCloud.Vpc.RouteEntry("fooRouteEntry", new()
+        ///     {
+        ///         DestinationCidrblock = "172.11.1.1/32",
+        ///         NexthopId = fooInstance.Id,
+        ///         NexthopType = "Instance",
+        ///         RouteTableId = fooNetwork.RouteTableId,
+        ///     });
+        /// 
+        ///     var ingress = new AliCloud.Ecs.SecurityGroupRule("ingress", new()
+        ///     {
+        ///         CidrIp = "0.0.0.0/0",
+        ///         IpProtocol = "tcp",
+        ///         NicType = "intranet",
+        ///         Policy = "accept",
+        ///         PortRange = "22/22",
+        ///         Priority = 1,
+        ///         SecurityGroupId = tfTestFoo.Id,
+        ///         Type = "ingress",
+        ///     });
+        /// 
+        ///     var fooRouteEntries = AliCloud.Vpc.GetRouteEntries.Invoke(new()
+        ///     {
+        ///         RouteTableId = fooRouteEntry.RouteTableId,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteEntriesResult> InvokeAsync(GetRouteEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Route Entries owned by an Alibaba Cloud account.
@@ -120,98 +127,105 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-        ///         {
-        ///             AvailableResourceCreation = "VSwitch",
-        ///         }));
-        ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-        ///         {
-        ///             AvailabilityZone = defaultZones.Zones?[0]?.Id,
-        ///             CpuCoreCount = 1,
-        ///             MemorySize = 2,
-        ///         })));
-        ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-        ///         {
-        ///             MostRecent = true,
-        ///             NameRegex = "^ubuntu_18.*64",
-        ///             Owners = "system",
-        ///         }));
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "tf-testAccRouteEntryConfig";
-        ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
-        ///         {
-        ///             CidrBlock = "10.1.0.0/21",
-        ///         });
-        ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
-        ///         {
-        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-        ///             CidrBlock = "10.1.1.0/24",
-        ///             VpcId = fooNetwork.Id,
-        ///             VswitchName = name,
-        ///         });
-        ///         var tfTestFoo = new AliCloud.Ecs.SecurityGroup("tfTestFoo", new AliCloud.Ecs.SecurityGroupArgs
-        ///         {
-        ///             Description = "foo",
-        ///             VpcId = fooNetwork.Id,
-        ///         });
-        ///         var fooInstance = new AliCloud.Ecs.Instance("fooInstance", new AliCloud.Ecs.InstanceArgs
-        ///         {
-        ///             AllocatePublicIp = true,
-        ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
-        ///             InstanceChargeType = "PostPaid",
-        ///             InstanceName = name,
-        ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
-        ///             InternetChargeType = "PayByTraffic",
-        ///             InternetMaxBandwidthOut = 5,
-        ///             SecurityGroups = 
-        ///             {
-        ///                 tfTestFoo.Id,
-        ///             },
-        ///             SystemDiskCategory = "cloud_efficiency",
-        ///             VswitchId = fooSwitch.Id,
-        ///         });
-        ///         var fooRouteEntry = new AliCloud.Vpc.RouteEntry("fooRouteEntry", new AliCloud.Vpc.RouteEntryArgs
-        ///         {
-        ///             DestinationCidrblock = "172.11.1.1/32",
-        ///             NexthopId = fooInstance.Id,
-        ///             NexthopType = "Instance",
-        ///             RouteTableId = fooNetwork.RouteTableId,
-        ///         });
-        ///         var ingress = new AliCloud.Ecs.SecurityGroupRule("ingress", new AliCloud.Ecs.SecurityGroupRuleArgs
-        ///         {
-        ///             CidrIp = "0.0.0.0/0",
-        ///             IpProtocol = "tcp",
-        ///             NicType = "intranet",
-        ///             Policy = "accept",
-        ///             PortRange = "22/22",
-        ///             Priority = 1,
-        ///             SecurityGroupId = tfTestFoo.Id,
-        ///             Type = "ingress",
-        ///         });
-        ///         var fooRouteEntries = AliCloud.Vpc.GetRouteEntries.Invoke(new AliCloud.Vpc.GetRouteEntriesInvokeArgs
-        ///         {
-        ///             RouteTableId = fooRouteEntry.RouteTableId,
-        ///         });
-        ///     }
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
         /// 
-        /// }
+        ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         CpuCoreCount = 1,
+        ///         MemorySize = 2,
+        ///     });
+        /// 
+        ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     {
+        ///         MostRecent = true,
+        ///         NameRegex = "^ubuntu_18.*64",
+        ///         Owners = "system",
+        ///     });
+        /// 
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-testAccRouteEntryConfig";
+        ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+        ///     {
+        ///         CidrBlock = "10.1.0.0/21",
+        ///     });
+        /// 
+        ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+        ///     {
+        ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         CidrBlock = "10.1.1.0/24",
+        ///         VpcId = fooNetwork.Id,
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var tfTestFoo = new AliCloud.Ecs.SecurityGroup("tfTestFoo", new()
+        ///     {
+        ///         Description = "foo",
+        ///         VpcId = fooNetwork.Id,
+        ///     });
+        /// 
+        ///     var fooInstance = new AliCloud.Ecs.Instance("fooInstance", new()
+        ///     {
+        ///         AllocatePublicIp = true,
+        ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         InstanceChargeType = "PostPaid",
+        ///         InstanceName = name,
+        ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///         InternetChargeType = "PayByTraffic",
+        ///         InternetMaxBandwidthOut = 5,
+        ///         SecurityGroups = new[]
+        ///         {
+        ///             tfTestFoo.Id,
+        ///         },
+        ///         SystemDiskCategory = "cloud_efficiency",
+        ///         VswitchId = fooSwitch.Id,
+        ///     });
+        /// 
+        ///     var fooRouteEntry = new AliCloud.Vpc.RouteEntry("fooRouteEntry", new()
+        ///     {
+        ///         DestinationCidrblock = "172.11.1.1/32",
+        ///         NexthopId = fooInstance.Id,
+        ///         NexthopType = "Instance",
+        ///         RouteTableId = fooNetwork.RouteTableId,
+        ///     });
+        /// 
+        ///     var ingress = new AliCloud.Ecs.SecurityGroupRule("ingress", new()
+        ///     {
+        ///         CidrIp = "0.0.0.0/0",
+        ///         IpProtocol = "tcp",
+        ///         NicType = "intranet",
+        ///         Policy = "accept",
+        ///         PortRange = "22/22",
+        ///         Priority = 1,
+        ///         SecurityGroupId = tfTestFoo.Id,
+        ///         Type = "ingress",
+        ///     });
+        /// 
+        ///     var fooRouteEntries = AliCloud.Vpc.GetRouteEntries.Invoke(new()
+        ///     {
+        ///         RouteTableId = fooRouteEntry.RouteTableId,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouteEntriesResult> Invoke(GetRouteEntriesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRouteEntriesArgs : Pulumi.InvokeArgs
+    public sealed class GetRouteEntriesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The destination CIDR block of the route entry.
@@ -243,9 +257,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetRouteEntriesArgs()
         {
         }
+        public static new GetRouteEntriesArgs Empty => new GetRouteEntriesArgs();
     }
 
-    public sealed class GetRouteEntriesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRouteEntriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The destination CIDR block of the route entry.
@@ -277,6 +292,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetRouteEntriesInvokeArgs()
         {
         }
+        public static new GetRouteEntriesInvokeArgs Empty => new GetRouteEntriesInvokeArgs();
     }
 
 

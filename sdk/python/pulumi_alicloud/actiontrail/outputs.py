@@ -251,6 +251,7 @@ class GetInstancesInstanceResult(dict):
                  msg_retain: int,
                  name: str,
                  paid_type: str,
+                 partition_num: int,
                  sasl_domain_endpoint: str,
                  security_group: str,
                  service_status: int,
@@ -280,6 +281,7 @@ class GetInstancesInstanceResult(dict):
         :param int msg_retain: The msg retain of the instance.
         :param str name: Name of the instance.
         :param str paid_type: The paid type of the instance.
+        :param int partition_num: (Available in 1.194.0+) The number of partitions.
         :param str sasl_domain_endpoint: The SASL domain point of the instance.
         :param str security_group: The security group of the instance.
         :param int service_status: The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
@@ -309,6 +311,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "msg_retain", msg_retain)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "paid_type", paid_type)
+        pulumi.set(__self__, "partition_num", partition_num)
         pulumi.set(__self__, "sasl_domain_endpoint", sasl_domain_endpoint)
         pulumi.set(__self__, "security_group", security_group)
         pulumi.set(__self__, "service_status", service_status)
@@ -443,6 +446,14 @@ class GetInstancesInstanceResult(dict):
         The paid type of the instance.
         """
         return pulumi.get(self, "paid_type")
+
+    @property
+    @pulumi.getter(name="partitionNum")
+    def partition_num(self) -> int:
+        """
+        (Available in 1.194.0+) The number of partitions.
+        """
+        return pulumi.get(self, "partition_num")
 
     @property
     @pulumi.getter(name="saslDomainEndpoint")

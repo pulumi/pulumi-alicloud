@@ -31,8 +31,6 @@ public final class GetMscSubContactVerificationMessageArgs extends com.pulumi.re
 
     /**
      * How a user receives verification messages. Valid values : `1`, `2`.
-     * * `1`: Send a verification message through the user&#39;s mobile.
-     * * `2`: Send a verification message through the user&#39;s mail.
      * 
      */
     @Import(name="type", required=true)
@@ -40,8 +38,6 @@ public final class GetMscSubContactVerificationMessageArgs extends com.pulumi.re
 
     /**
      * @return How a user receives verification messages. Valid values : `1`, `2`.
-     * * `1`: Send a verification message through the user&#39;s mobile.
-     * * `2`: Send a verification message through the user&#39;s mail.
      * 
      */
     public Output<Integer> type() {
@@ -96,8 +92,6 @@ public final class GetMscSubContactVerificationMessageArgs extends com.pulumi.re
 
         /**
          * @param type How a user receives verification messages. Valid values : `1`, `2`.
-         * * `1`: Send a verification message through the user&#39;s mobile.
-         * * `2`: Send a verification message through the user&#39;s mail.
          * 
          * @return builder
          * 
@@ -109,8 +103,6 @@ public final class GetMscSubContactVerificationMessageArgs extends com.pulumi.re
 
         /**
          * @param type How a user receives verification messages. Valid values : `1`, `2`.
-         * * `1`: Send a verification message through the user&#39;s mobile.
-         * * `2`: Send a verification message through the user&#39;s mail.
          * 
          * @return builder
          * 

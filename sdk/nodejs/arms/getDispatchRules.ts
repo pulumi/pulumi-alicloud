@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,20 +20,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.arms.getDispatchRules({});
- * export const armsDispatchRuleId1 = ids.then(ids => ids.rules?[0]?.id);
+ * export const armsDispatchRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * const nameRegex = alicloud.arms.getDispatchRules({
  *     nameRegex: "^my-DispatchRule",
  * });
- * export const armsDispatchRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?[0]?.id);
+ * export const armsDispatchRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
  */
 export function getDispatchRules(args?: GetDispatchRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetDispatchRulesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:arms/getDispatchRules:getDispatchRules", {
         "dispatchRuleName": args.dispatchRuleName,
         "enableDetails": args.enableDetails,
@@ -81,9 +79,29 @@ export interface GetDispatchRulesResult {
     readonly outputFile?: string;
     readonly rules: outputs.arms.GetDispatchRulesRule[];
 }
-
+/**
+ * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.136.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.arms.getDispatchRules({});
+ * export const armsDispatchRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * const nameRegex = alicloud.arms.getDispatchRules({
+ *     nameRegex: "^my-DispatchRule",
+ * });
+ * export const armsDispatchRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
+ * ```
+ */
 export function getDispatchRulesOutput(args?: GetDispatchRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDispatchRulesResult> {
-    return pulumi.output(args).apply(a => getDispatchRules(a, opts))
+    return pulumi.output(args).apply((a: any) => getDispatchRules(a, opts))
 }
 
 /**

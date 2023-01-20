@@ -9,12 +9,20 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAccountsAccount {
+    /**
+     * @return The ID of the account.
+     * 
+     */
     private String accountId;
     /**
      * @return (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
      * 
      */
     private String accountName;
+    /**
+     * @return The name of the member account.
+     * 
+     */
     private String displayName;
     /**
      * @return The ID of the folder.
@@ -23,8 +31,6 @@ public final class GetAccountsAccount {
     private String folderId;
     /**
      * @return The ID of the resource.
-     * * `account_id`- The ID of the account.
-     * * `display_name`- The name of the member account.
      * 
      */
     private String id;
@@ -65,6 +71,10 @@ public final class GetAccountsAccount {
     private String type;
 
     private GetAccountsAccount() {}
+    /**
+     * @return The ID of the account.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
@@ -75,6 +85,10 @@ public final class GetAccountsAccount {
     public String accountName() {
         return this.accountName;
     }
+    /**
+     * @return The name of the member account.
+     * 
+     */
     public String displayName() {
         return this.displayName;
     }
@@ -87,8 +101,6 @@ public final class GetAccountsAccount {
     }
     /**
      * @return The ID of the resource.
-     * * `account_id`- The ID of the account.
-     * * `display_name`- The name of the member account.
      * 
      */
     public String id() {

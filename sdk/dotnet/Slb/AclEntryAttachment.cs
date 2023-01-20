@@ -19,29 +19,25 @@ namespace Pulumi.AliCloud.Slb
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var attachmentAcl = new AliCloud.Slb.Acl("attachmentAcl", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "terraformslbaclconfig";
-    ///         var ipVersion = config.Get("ipVersion") ?? "ipv4";
-    ///         var defaultAcl = new AliCloud.Slb.Acl("defaultAcl", new AliCloud.Slb.AclArgs
-    ///         {
-    ///             IpVersion = ipVersion,
-    ///         });
-    ///         var defaultAclEntryAttachment = new AliCloud.Slb.AclEntryAttachment("defaultAclEntryAttachment", new AliCloud.Slb.AclEntryAttachmentArgs
-    ///         {
-    ///             AclId = defaultAcl.Id,
-    ///             Entry = "168.10.10.0/24",
-    ///             Comment = "second",
-    ///         });
-    ///     }
+    ///         IpVersion = "ipv4",
+    ///     });
     /// 
-    /// }
+    ///     var attachmentAclEntryAttachment = new AliCloud.Slb.AclEntryAttachment("attachmentAclEntryAttachment", new()
+    ///     {
+    ///         AclId = attachmentAcl.Id,
+    ///         Entry = "168.10.10.0/24",
+    ///         Comment = "second",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +49,7 @@ namespace Pulumi.AliCloud.Slb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/aclEntryAttachment:AclEntryAttachment")]
-    public partial class AclEntryAttachment : Pulumi.CustomResource
+    public partial class AclEntryAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Acl.
@@ -117,7 +113,7 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
-    public sealed class AclEntryAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class AclEntryAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Acl.
@@ -140,9 +136,10 @@ namespace Pulumi.AliCloud.Slb
         public AclEntryAttachmentArgs()
         {
         }
+        public static new AclEntryAttachmentArgs Empty => new AclEntryAttachmentArgs();
     }
 
-    public sealed class AclEntryAttachmentState : Pulumi.ResourceArgs
+    public sealed class AclEntryAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Acl.
@@ -165,5 +162,6 @@ namespace Pulumi.AliCloud.Slb
         public AclEntryAttachmentState()
         {
         }
+        public static new AclEntryAttachmentState Empty => new AclEntryAttachmentState();
     }
 }

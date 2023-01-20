@@ -21,52 +21,50 @@ namespace Pulumi.AliCloud.Vpn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Zones?[0]?.Id,
-    ///             }));
-    ///         });
-    ///         var vswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]);
-    ///         var defaultGateway = new AliCloud.Vpn.Gateway("defaultGateway", new AliCloud.Vpn.GatewayArgs
-    ///         {
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///             Bandwidth = 10,
-    ///             EnableSsl = true,
-    ///             EnableIpsec = true,
-    ///             SslConnections = 5,
-    ///             InstanceChargeType = "PrePaid",
-    ///             VswitchId = vswitchId,
-    ///         });
-    ///         var example = new AliCloud.Vpn.IpsecServer("example", new AliCloud.Vpn.IpsecServerArgs
-    ///         {
-    ///             ClientIpPool = "example_value",
-    ///             IpsecServerName = "example_value",
-    ///             LocalSubnet = "example_value",
-    ///             VpnGatewayId = defaultGateway.Id,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var vswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]);
+    /// 
+    ///     var defaultGateway = new AliCloud.Vpn.Gateway("defaultGateway", new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         Bandwidth = 10,
+    ///         EnableSsl = true,
+    ///         EnableIpsec = true,
+    ///         SslConnections = 5,
+    ///         InstanceChargeType = "PrePaid",
+    ///         VswitchId = vswitchId,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Vpn.IpsecServer("example", new()
+    ///     {
+    ///         ClientIpPool = "example_value",
+    ///         IpsecServerName = "example_value",
+    ///         LocalSubnet = "example_value",
+    ///         VpnGatewayId = defaultGateway.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -78,7 +76,7 @@ namespace Pulumi.AliCloud.Vpn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/ipsecServer:IpsecServer")]
-    public partial class IpsecServer : Pulumi.CustomResource
+    public partial class IpsecServer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
@@ -184,7 +182,7 @@ namespace Pulumi.AliCloud.Vpn
         }
     }
 
-    public sealed class IpsecServerArgs : Pulumi.ResourceArgs
+    public sealed class IpsecServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
@@ -261,9 +259,10 @@ namespace Pulumi.AliCloud.Vpn
         public IpsecServerArgs()
         {
         }
+        public static new IpsecServerArgs Empty => new IpsecServerArgs();
     }
 
-    public sealed class IpsecServerState : Pulumi.ResourceArgs
+    public sealed class IpsecServerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
@@ -340,5 +339,6 @@ namespace Pulumi.AliCloud.Vpn
         public IpsecServerState()
         {
         }
+        public static new IpsecServerState Empty => new IpsecServerState();
     }
 }

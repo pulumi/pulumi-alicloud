@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,20 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const dataApigatway = pulumi.output(alicloud.apigateway.getApps({
+ * const dataApigatway = alicloud.apigateway.getApps({
  *     outputFile: "outapps",
- * }));
- *
- * export const firstAppId = dataApigatway.apps[0].id;
+ * });
+ * export const firstAppId = dataApigatway.then(dataApigatway => dataApigatway.apps?.[0]?.id);
  * ```
  */
 export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:apigateway/getApps:getApps", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -79,9 +76,23 @@ export interface GetAppsResult {
     readonly outputFile?: string;
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides the apps of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dataApigatway = alicloud.apigateway.getApps({
+ *     outputFile: "outapps",
+ * });
+ * export const firstAppId = dataApigatway.then(dataApigatway => dataApigatway.apps?.[0]?.id);
+ * ```
+ */
 export function getAppsOutput(args?: GetAppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppsResult> {
-    return pulumi.output(args).apply(a => getApps(a, opts))
+    return pulumi.output(args).apply((a: any) => getApps(a, opts))
 }
 
 /**

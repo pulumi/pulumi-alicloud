@@ -36,7 +36,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -62,7 +62,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("10.1.1.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,9 @@ import (
 //				return err
 //			}
 //			var defaultManagedKubernetes []*cs.ManagedKubernetes
-//			for key0, _ := range 1 == true {
+//			for index := 0; index < 1 == true; index++ {
+//				key0 := index
+//				_ := index
 //				__res, err := cs.NewManagedKubernetes(ctx, fmt.Sprintf("defaultManagedKubernetes-%v", key0), &cs.ManagedKubernetesArgs{
 //					ClusterSpec:               pulumi.String("ack.pro.small"),
 //					IsEnterpriseSecurityGroup: pulumi.Bool(true),
@@ -112,10 +114,10 @@ import (
 //			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.Any(alicloud_vswitch.Default.Id),
+//					alicloud_vswitch.Default.Id,
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),
@@ -148,10 +150,10 @@ import (
 //			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.Any(alicloud_vswitch.Default.Id),
+//					alicloud_vswitch.Default.Id,
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),
@@ -184,10 +186,10 @@ import (
 //			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.Any(alicloud_vswitch.Default.Id),
+//					alicloud_vswitch.Default.Id,
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),
@@ -226,10 +228,10 @@ import (
 //			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.Any(alicloud_vswitch.Default.Id),
+//					alicloud_vswitch.Default.Id,
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),
@@ -265,10 +267,10 @@ import (
 //			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.Any(alicloud_vswitch.Default.Id),
+//					alicloud_vswitch.Default.Id,
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),
@@ -312,10 +314,10 @@ import (
 //			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.Any(alicloud_vswitch.Default.Id),
+//					alicloud_vswitch.Default.Id,
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
 //				},
 //				SystemDiskCategory:  pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:      pulumi.Int(40),
@@ -357,10 +359,10 @@ import (
 //			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.Any(alicloud_vswitch.Default.Id),
+//					alicloud_vswitch.Default.Id,
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),
@@ -399,10 +401,10 @@ import (
 //			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.Any(alicloud_vswitch.Default.Id),
+//					alicloud_vswitch.Default.Id,
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),
@@ -445,10 +447,10 @@ import (
 //			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.Any(alicloud_vswitch.Default.Id),
+//					alicloud_vswitch.Default.Id,
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),
@@ -486,10 +488,10 @@ import (
 //			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.Any(alicloud_vswitch.Default.Id),
+//					alicloud_vswitch.Default.Id,
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),
@@ -529,20 +531,20 @@ import (
 //			_, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				ClusterId: pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.Any(alicloud_vswitch.Default.Id),
+//					alicloud_vswitch.Default.Id,
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.Any(data.Alicloud_instance_types.Default.Instance_types[0].Id),
+//					data.Alicloud_instance_types.Default.Instance_types[0].Id,
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),
 //				InstanceChargeType: pulumi.String("PostPaid"),
 //				DesiredSize:        pulumi.Int(3),
 //				KubeletConfiguration: &cs.NodePoolKubeletConfigurationArgs{
-//					RegistryPullQps: pulumi.String("0"),
-//					RegistryBurst:   pulumi.String("0"),
-//					EventRecordQps:  pulumi.String("0"),
-//					EventBurst:      pulumi.String("0"),
+//					RegistryPullQps: pulumi.String("10"),
+//					RegistryBurst:   pulumi.String("5"),
+//					EventRecordQps:  pulumi.String("10"),
+//					EventBurst:      pulumi.String("5"),
 //					EvictionHard: pulumi.AnyMap{
 //						"memory.available":            pulumi.Any("1024Mi"),
 //						"nodefs.available":            pulumi.Any(fmt.Sprintf("10%v", "%")),
@@ -555,15 +557,15 @@ import (
 //					SystemReserved: pulumi.AnyMap{
 //						"cpu":               pulumi.Any("1"),
 //						"memory":            pulumi.Any("1Gi"),
-//						"ephemeral_storage": pulumi.Any("10Gi"),
+//						"ephemeral-storage": pulumi.Any("10Gi"),
 //					},
 //					KubeReserved: pulumi.AnyMap{
 //						"cpu":    pulumi.Any("500m"),
 //						"memory": pulumi.Any("1Gi"),
 //					},
 //				},
-//				RolloutPolicy: &cs.NodePoolRolloutPolicyArgs{
-//					MaxUnavailable: pulumi.Int(1),
+//				RollingPolicy: &cs.NodePoolRollingPolicyArgs{
+//					MaxParallelism: pulumi.Int(1),
 //				},
 //			})
 //			if err != nil {
@@ -581,7 +583,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_kubernetes_node_pool.custom_nodepool cluster_id:nodepool_id
+//	$ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
 //
 // ```
 type NodePool struct {
@@ -591,7 +593,7 @@ type NodePool struct {
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
 	CisEnabled pulumi.BoolPtrOutput `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
@@ -653,11 +655,17 @@ type NodePool struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform pulumi.StringOutput `pulumi:"platform"`
+	// PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+	PolardbIds pulumi.StringArrayOutput `pulumi:"polardbIds"`
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RollingPolicy NodePoolRollingPolicyPtrOutput `pulumi:"rollingPolicy"`
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	//
+	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy NodePoolRolloutPolicyPtrOutput `pulumi:"rolloutPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringOutput `pulumi:"runtimeName"`
@@ -675,13 +683,13 @@ type NodePool struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled pulumi.BoolPtrOutput `pulumi:"socEnabled"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayOutput `pulumi:"spotPriceLimits"`
-	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
-	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
+	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
 	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
 	// The encryption Algorithm for Encrypting System Disk. It takes effect when systemDiskEncrypted is true. Valid values `aes-256` and `sm4-128`.
@@ -726,6 +734,13 @@ func NewNodePool(ctx *pulumi.Context,
 	if args.VswitchIds == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchIds'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource NodePool
 	err := ctx.RegisterResource("alicloud:cs/nodePool:NodePool", name, args, &resource, opts...)
 	if err != nil {
@@ -752,7 +767,7 @@ type nodePoolState struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
 	CisEnabled *bool `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId *string `pulumi:"clusterId"`
@@ -814,11 +829,17 @@ type nodePoolState struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform *string `pulumi:"platform"`
+	// PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+	PolardbIds []string `pulumi:"polardbIds"`
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	//
+	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy *NodePoolRolloutPolicy `pulumi:"rolloutPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName *string `pulumi:"runtimeName"`
@@ -836,12 +857,12 @@ type nodePoolState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled *bool `pulumi:"socEnabled"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
 	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
-	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
@@ -876,7 +897,7 @@ type NodePoolState struct {
 	AutoRenew pulumi.BoolPtrInput
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
 	CisEnabled pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringPtrInput
@@ -938,11 +959,17 @@ type NodePoolState struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform pulumi.StringPtrInput
+	// PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+	PolardbIds pulumi.StringArrayInput
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RollingPolicy NodePoolRollingPolicyPtrInput
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	//
+	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy NodePoolRolloutPolicyPtrInput
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringPtrInput
@@ -960,12 +987,12 @@ type NodePoolState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled pulumi.BoolPtrInput
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
-	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
@@ -1004,7 +1031,7 @@ type nodePoolArgs struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
 	CisEnabled *bool `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId string `pulumi:"clusterId"`
@@ -1066,11 +1093,17 @@ type nodePoolArgs struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform *string `pulumi:"platform"`
+	// PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+	PolardbIds []string `pulumi:"polardbIds"`
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	//
+	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy *NodePoolRolloutPolicy `pulumi:"rolloutPolicy"`
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName *string `pulumi:"runtimeName"`
@@ -1086,12 +1119,12 @@ type nodePoolArgs struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled *bool `pulumi:"socEnabled"`
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
 	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
-	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
@@ -1125,7 +1158,7 @@ type NodePoolArgs struct {
 	AutoRenew pulumi.BoolPtrInput
 	// Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
 	CisEnabled pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringInput
@@ -1187,11 +1220,17 @@ type NodePoolArgs struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead
 	Platform pulumi.StringPtrInput
+	// PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+	PolardbIds pulumi.StringArrayInput
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+	RollingPolicy NodePoolRollingPolicyPtrInput
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	//
+	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy NodePoolRolloutPolicyPtrInput
 	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
 	RuntimeName pulumi.StringPtrInput
@@ -1207,12 +1246,12 @@ type NodePoolArgs struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 	// > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 	SocEnabled pulumi.BoolPtrInput
 	// The maximum hourly price of the instance. This parameter takes effect only when `spotStrategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
-	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+	// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
@@ -1337,7 +1376,7 @@ func (o NodePoolOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
 }
 
-// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
 func (o NodePoolOutput) CisEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.CisEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1486,6 +1525,11 @@ func (o NodePoolOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Platform }).(pulumi.StringOutput)
 }
 
+// PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+func (o NodePoolOutput) PolardbIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.PolardbIds }).(pulumi.StringArrayOutput)
+}
+
 // RDS instance list, You can choose which RDS instances whitelist to add instances to.
 func (o NodePoolOutput) RdsInstances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.RdsInstances }).(pulumi.StringArrayOutput)
@@ -1496,7 +1540,14 @@ func (o NodePoolOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+func (o NodePoolOutput) RollingPolicy() NodePoolRollingPolicyPtrOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolRollingPolicyPtrOutput { return v.RollingPolicy }).(NodePoolRollingPolicyPtrOutput)
+}
+
+// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+//
+// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 func (o NodePoolOutput) RolloutPolicy() NodePoolRolloutPolicyPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolRolloutPolicyPtrOutput { return v.RolloutPolicy }).(NodePoolRolloutPolicyPtrOutput)
 }
@@ -1538,7 +1589,7 @@ func (o NodePoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
 // > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
 func (o NodePoolOutput) SocEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.SocEnabled }).(pulumi.BoolPtrOutput)
@@ -1549,9 +1600,9 @@ func (o NodePoolOutput) SpotPriceLimits() NodePoolSpotPriceLimitArrayOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolSpotPriceLimitArrayOutput { return v.SpotPriceLimits }).(NodePoolSpotPriceLimitArrayOutput)
 }
 
-// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
-func (o NodePoolOutput) SpotStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+// The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
+func (o NodePoolOutput) SpotStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.SpotStrategy }).(pulumi.StringOutput)
 }
 
 // The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.

@@ -20,21 +20,19 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.ResourceManager.ResourceGroup("example", new()
     ///     {
-    ///         var example = new AliCloud.ResourceManager.ResourceGroup("example", new AliCloud.ResourceManager.ResourceGroupArgs
-    ///         {
-    ///             DisplayName = "testrd",
-    ///             ResourceGroupName = "testrd",
-    ///         });
-    ///     }
+    ///         DisplayName = "testrd",
+    ///         ResourceGroupName = "testrd",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/resourceGroup:ResourceGroup")]
-    public partial class ResourceGroup : Pulumi.CustomResource
+    public partial class ResourceGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Alibaba Cloud account to which the resource group belongs.
@@ -66,6 +64,9 @@ namespace Pulumi.AliCloud.ResourceManager
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the resource group in all regions.
+        /// </summary>
         [Output("regionStatuses")]
         public Output<ImmutableArray<Outputs.ResourceGroupRegionStatus>> RegionStatuses { get; private set; } = null!;
 
@@ -125,7 +126,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class ResourceGroupArgs : Pulumi.ResourceArgs
+    public sealed class ResourceGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
@@ -148,9 +149,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public ResourceGroupArgs()
         {
         }
+        public static new ResourceGroupArgs Empty => new ResourceGroupArgs();
     }
 
-    public sealed class ResourceGroupState : Pulumi.ResourceArgs
+    public sealed class ResourceGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Alibaba Cloud account to which the resource group belongs.
@@ -172,6 +174,10 @@ namespace Pulumi.AliCloud.ResourceManager
 
         [Input("regionStatuses")]
         private InputList<Inputs.ResourceGroupRegionStatusGetArgs>? _regionStatuses;
+
+        /// <summary>
+        /// The status of the resource group in all regions.
+        /// </summary>
         public InputList<Inputs.ResourceGroupRegionStatusGetArgs> RegionStatuses
         {
             get => _regionStatuses ?? (_regionStatuses = new InputList<Inputs.ResourceGroupRegionStatusGetArgs>());
@@ -193,5 +199,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public ResourceGroupState()
         {
         }
+        public static new ResourceGroupState Empty => new ResourceGroupState();
     }
 }

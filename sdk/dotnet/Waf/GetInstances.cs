@@ -23,35 +23,34 @@ namespace Pulumi.AliCloud.Waf
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Waf.GetInstances.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Waf.GetInstances.InvokeAsync(new AliCloud.Waf.GetInstancesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "waf-cn-09k********",
-        ///             },
-        ///             Status = 1,
-        ///             ResourceGroupId = "rg-acfmwvv********",
-        ///             InstanceSource = "waf-cloud",
-        ///         }));
-        ///         this.TheFirstWafInstanceId = @default.Apply(@default =&gt; @default.Instances?[0]?.Id);
-        ///     }
+        ///             "waf-cn-09k********",
+        ///         },
+        ///         Status = 1,
+        ///         ResourceGroupId = "rg-acfmwvv********",
+        ///         InstanceSource = "waf-cloud",
+        ///     });
         /// 
-        ///     [Output("theFirstWafInstanceId")]
-        ///     public Output&lt;string&gt; TheFirstWafInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["theFirstWafInstanceId"] = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:waf/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:waf/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a WAF datasource to retrieve instances.
@@ -65,39 +64,38 @@ namespace Pulumi.AliCloud.Waf
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Waf.GetInstances.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Waf.GetInstances.InvokeAsync(new AliCloud.Waf.GetInstancesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "waf-cn-09k********",
-        ///             },
-        ///             Status = 1,
-        ///             ResourceGroupId = "rg-acfmwvv********",
-        ///             InstanceSource = "waf-cloud",
-        ///         }));
-        ///         this.TheFirstWafInstanceId = @default.Apply(@default =&gt; @default.Instances?[0]?.Id);
-        ///     }
+        ///             "waf-cn-09k********",
+        ///         },
+        ///         Status = 1,
+        ///         ResourceGroupId = "rg-acfmwvv********",
+        ///         InstanceSource = "waf-cloud",
+        ///     });
         /// 
-        ///     [Output("theFirstWafInstanceId")]
-        ///     public Output&lt;string&gt; TheFirstWafInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["theFirstWafInstanceId"] = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:waf/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:waf/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -135,9 +133,10 @@ namespace Pulumi.AliCloud.Waf
         public GetInstancesArgs()
         {
         }
+        public static new GetInstancesArgs Empty => new GetInstancesArgs();
     }
 
-    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -175,6 +174,7 @@ namespace Pulumi.AliCloud.Waf
         public GetInstancesInvokeArgs()
         {
         }
+        public static new GetInstancesInvokeArgs Empty => new GetInstancesInvokeArgs();
     }
 
 

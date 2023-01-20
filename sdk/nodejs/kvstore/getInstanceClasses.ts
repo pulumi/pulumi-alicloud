@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,26 +17,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const resourcesZones = pulumi.output(alicloud.getZones({
+ * const resourcesZones = alicloud.getZones({
  *     availableResourceCreation: "KVStore",
- * }));
- * const resourcesInstanceClasses = resourcesZones.apply(resourcesZones => alicloud.kvstore.getInstanceClasses({
+ * });
+ * const resourcesInstanceClasses = resourcesZones.then(resourcesZones => alicloud.kvstore.getInstanceClasses({
  *     engine: "Redis",
  *     engineVersion: "5.0",
  *     instanceChargeType: "PrePaid",
  *     outputFile: "./classes.txt",
- *     zoneId: resourcesZones.zones[0].id,
+ *     zoneId: resourcesZones.zones?.[0]?.id,
  * }));
- *
- * export const firstKvstoreInstanceClass = resourcesInstanceClasses.instanceClasses;
+ * export const firstKvstoreInstanceClass = resourcesInstanceClasses.then(resourcesInstanceClasses => resourcesInstanceClasses.instanceClasses);
  * ```
  */
 export function getInstanceClasses(args: GetInstanceClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceClassesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kvstore/getInstanceClasses:getInstanceClasses", {
         "architecture": args.architecture,
         "editionType": args.editionType,
@@ -162,9 +159,32 @@ export interface GetInstanceClassesResult {
     readonly storageType?: string;
     readonly zoneId: string;
 }
-
+/**
+ * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.49.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const resourcesZones = alicloud.getZones({
+ *     availableResourceCreation: "KVStore",
+ * });
+ * const resourcesInstanceClasses = resourcesZones.then(resourcesZones => alicloud.kvstore.getInstanceClasses({
+ *     engine: "Redis",
+ *     engineVersion: "5.0",
+ *     instanceChargeType: "PrePaid",
+ *     outputFile: "./classes.txt",
+ *     zoneId: resourcesZones.zones?.[0]?.id,
+ * }));
+ * export const firstKvstoreInstanceClass = resourcesInstanceClasses.then(resourcesInstanceClasses => resourcesInstanceClasses.instanceClasses);
+ * ```
+ */
 export function getInstanceClassesOutput(args: GetInstanceClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceClassesResult> {
-    return pulumi.output(args).apply(a => getInstanceClasses(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceClasses(a, opts))
 }
 
 /**

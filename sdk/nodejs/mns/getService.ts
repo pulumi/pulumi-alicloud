@@ -19,18 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.mns.getService({
+ * const open = alicloud.mns.getService({
  *     enable: "On",
- * }));
+ * });
  * ```
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mns/getService:getService", {
         "enable": args.enable,
     }, opts);
@@ -60,9 +57,28 @@ export interface GetServiceResult {
      */
     readonly status: string;
 }
-
+/**
+ * Using this data source can open MNS service automatically. If the service has been opened, it will return opened.
+ *
+ * For information about MNS and how to use it, see [What is MNS](https://www.alibabacloud.com/help/en/product/27412.htm).
+ *
+ * > **NOTE:** Available in v1.118.0+
+ *
+ * > **NOTE:** The MNS service is not support in the international site.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.mns.getService({
+ *     enable: "On",
+ * });
+ * ```
+ */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply(a => getService(a, opts))
+    return pulumi.output(args).apply((a: any) => getService(a, opts))
 }
 
 /**

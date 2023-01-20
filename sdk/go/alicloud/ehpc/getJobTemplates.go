@@ -42,9 +42,9 @@ import (
 //					_default.ID(),
 //				},
 //			}, nil)
-//			ctx.Export("ehpcJobTemplateId1", ids.ApplyT(func(ids ehpc.GetJobTemplatesResult) (string, error) {
-//				return ids.Id, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("ehpcJobTemplateId1", ids.ApplyT(func(ids ehpc.GetJobTemplatesResult) (*string, error) {
+//				return &ids.Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

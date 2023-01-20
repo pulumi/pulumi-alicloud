@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -24,11 +25,8 @@ import * as utilities from "../utilities";
  */
 export function getConfigurationRecorders(args?: GetConfigurationRecordersArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationRecordersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", {
         "outputFile": args.outputFile,
     }, opts);
@@ -55,9 +53,25 @@ export interface GetConfigurationRecordersResult {
      */
     readonly recorders: outputs.cfg.GetConfigurationRecordersRecorder[];
 }
-
+/**
+ * This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
+ *
+ * > **NOTE:**  Available in 1.99.0+.
+ *
+ * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cfg.getConfigurationRecorders({});
+ * export const listOfResourceTypes = data.alicloud_config_configuration_recorders["this"].recorders[0].resource_types;
+ * ```
+ */
 export function getConfigurationRecordersOutput(args?: GetConfigurationRecordersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationRecordersResult> {
-    return pulumi.output(args).apply(a => getConfigurationRecorders(a, opts))
+    return pulumi.output(args).apply((a: any) => getConfigurationRecorders(a, opts))
 }
 
 /**

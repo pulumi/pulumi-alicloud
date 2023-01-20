@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.KVStore
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var zonesIds = Output.Create(AliCloud.KVStore.GetZones.InvokeAsync());
-        ///         // Create an KVStore instance with the first matched zone
-        ///         var kvstore = new AliCloud.KVStore.Instance("kvstore", new AliCloud.KVStore.InstanceArgs
-        ///         {
-        ///             AvailabilityZone = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones?[0]?.Id),
-        ///         });
-        ///         // Other properties...
-        ///     }
+        ///     var zonesIds = AliCloud.KVStore.GetZones.Invoke();
         /// 
-        /// }
+        ///     // Create an KVStore instance with the first matched zone
+        ///     var kvstore = new AliCloud.KVStore.Instance("kvstore", new()
+        ///     {
+        ///         AvailabilityZone = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     // Other properties...
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:kvstore/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:kvstore/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -55,33 +54,32 @@ namespace Pulumi.AliCloud.KVStore
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var zonesIds = Output.Create(AliCloud.KVStore.GetZones.InvokeAsync());
-        ///         // Create an KVStore instance with the first matched zone
-        ///         var kvstore = new AliCloud.KVStore.Instance("kvstore", new AliCloud.KVStore.InstanceArgs
-        ///         {
-        ///             AvailabilityZone = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones?[0]?.Id),
-        ///         });
-        ///         // Other properties...
-        ///     }
+        ///     var zonesIds = AliCloud.KVStore.GetZones.Invoke();
         /// 
-        /// }
+        ///     // Create an KVStore instance with the first matched zone
+        ///     var kvstore = new AliCloud.KVStore.Instance("kvstore", new()
+        ///     {
+        ///         AvailabilityZone = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     // Other properties...
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:kvstore/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:kvstore/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
@@ -113,9 +111,10 @@ namespace Pulumi.AliCloud.KVStore
         public GetZonesArgs()
         {
         }
+        public static new GetZonesArgs Empty => new GetZonesArgs();
     }
 
-    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
@@ -147,6 +146,7 @@ namespace Pulumi.AliCloud.KVStore
         public GetZonesInvokeArgs()
         {
         }
+        public static new GetZonesInvokeArgs Empty => new GetZonesInvokeArgs();
     }
 
 

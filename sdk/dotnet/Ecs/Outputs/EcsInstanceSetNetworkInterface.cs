@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? PrimaryIpAddress;
         /// <summary>
-        /// -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+        /// The ID of the security group to which to assign secondary ENI.
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>

@@ -46,9 +46,17 @@ public final class DhcpOptionsSetAttachmentState extends com.pulumi.resources.Re
         return Optional.ofNullable(this.dryRun);
     }
 
+    /**
+     * The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -137,11 +145,23 @@ public final class DhcpOptionsSetAttachmentState extends com.pulumi.resources.Re
             return dryRun(Output.of(dryRun));
         }
 
+        /**
+         * @param status The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

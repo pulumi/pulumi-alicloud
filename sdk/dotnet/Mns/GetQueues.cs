@@ -12,72 +12,66 @@ namespace Pulumi.AliCloud.Mns
     public static class GetQueues
     {
         /// <summary>
-        /// This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var queues = AliCloud.Mns.GetQueues.Invoke(new()
         ///     {
-        ///         var queues = Output.Create(AliCloud.Mns.GetQueues.InvokeAsync(new AliCloud.Mns.GetQueuesArgs
-        ///         {
-        ///             NamePrefix = "tf-",
-        ///         }));
-        ///         this.FirstQueueId = queues.Apply(queues =&gt; queues.Queues?[0]?.Id);
-        ///     }
+        ///         NamePrefix = "tf-",
+        ///     });
         /// 
-        ///     [Output("firstQueueId")]
-        ///     public Output&lt;string&gt; FirstQueueId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstQueueId"] = queues.Apply(getQueuesResult =&gt; getQueuesResult.Queues[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQueuesResult> InvokeAsync(GetQueuesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQueuesResult>("alicloud:mns/getQueues:getQueues", args ?? new GetQueuesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetQueuesResult>("alicloud:mns/getQueues:getQueues", args ?? new GetQueuesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var queues = AliCloud.Mns.GetQueues.Invoke(new()
         ///     {
-        ///         var queues = Output.Create(AliCloud.Mns.GetQueues.InvokeAsync(new AliCloud.Mns.GetQueuesArgs
-        ///         {
-        ///             NamePrefix = "tf-",
-        ///         }));
-        ///         this.FirstQueueId = queues.Apply(queues =&gt; queues.Queues?[0]?.Id);
-        ///     }
+        ///         NamePrefix = "tf-",
+        ///     });
         /// 
-        ///     [Output("firstQueueId")]
-        ///     public Output&lt;string&gt; FirstQueueId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstQueueId"] = queues.Apply(getQueuesResult =&gt; getQueuesResult.Queues[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQueuesResult> Invoke(GetQueuesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQueuesResult>("alicloud:mns/getQueues:getQueues", args ?? new GetQueuesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetQueuesResult>("alicloud:mns/getQueues:getQueues", args ?? new GetQueuesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetQueuesArgs : Pulumi.InvokeArgs
+    public sealed class GetQueuesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A string to filter resulting queues by their name prefixs.
@@ -91,9 +85,10 @@ namespace Pulumi.AliCloud.Mns
         public GetQueuesArgs()
         {
         }
+        public static new GetQueuesArgs Empty => new GetQueuesArgs();
     }
 
-    public sealed class GetQueuesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetQueuesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A string to filter resulting queues by their name prefixs.
@@ -107,6 +102,7 @@ namespace Pulumi.AliCloud.Mns
         public GetQueuesInvokeArgs()
         {
         }
+        public static new GetQueuesInvokeArgs Empty => new GetQueuesInvokeArgs();
     }
 
 

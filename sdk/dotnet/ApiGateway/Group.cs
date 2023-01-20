@@ -15,20 +15,18 @@ namespace Pulumi.AliCloud.ApiGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var apiGroup = new AliCloud.ApiGateway.Group("apiGroup", new()
     ///     {
-    ///         var apiGroup = new AliCloud.ApiGateway.Group("apiGroup", new AliCloud.ApiGateway.GroupArgs
-    ///         {
-    ///             Description = "description of the api group",
-    ///         });
-    ///     }
+    ///         Description = "description of the api group",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.AliCloud.ApiGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:apigateway/group:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the api gateway group. Defaults to null.
@@ -116,7 +114,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the api gateway group. Defaults to null.
@@ -139,9 +137,10 @@ namespace Pulumi.AliCloud.ApiGateway
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 
-    public sealed class GroupState : Pulumi.ResourceArgs
+    public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the api gateway group. Defaults to null.
@@ -176,5 +175,6 @@ namespace Pulumi.AliCloud.ApiGateway
         public GroupState()
         {
         }
+        public static new GroupState Empty => new GroupState();
     }
 }

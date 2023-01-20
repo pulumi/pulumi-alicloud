@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./faceConfig";
-export * from "./getFaceConfigs";
+export { FaceConfigArgs, FaceConfigState } from "./faceConfig";
+export type FaceConfig = import("./faceConfig").FaceConfig;
+export const FaceConfig: typeof import("./faceConfig").FaceConfig = null as any;
+utilities.lazyLoad(exports, ["FaceConfig"], () => require("./faceConfig"));
 
-// Import resources to register:
-import { FaceConfig } from "./faceConfig";
+export { GetFaceConfigsArgs, GetFaceConfigsResult, GetFaceConfigsOutputArgs } from "./getFaceConfigs";
+export const getFaceConfigs: typeof import("./getFaceConfigs").getFaceConfigs = null as any;
+export const getFaceConfigsOutput: typeof import("./getFaceConfigs").getFaceConfigsOutput = null as any;
+utilities.lazyLoad(exports, ["getFaceConfigs","getFaceConfigsOutput"], () => require("./getFaceConfigs"));
+
 
 const _module = {
     version: utilities.getVersion(),

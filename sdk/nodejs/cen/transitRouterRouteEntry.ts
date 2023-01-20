@@ -61,6 +61,9 @@ export class TransitRouterRouteEntry extends pulumi.CustomResource {
      * The CIDR of the transit router route entry.
      */
     public readonly transitRouterRouteEntryDestinationCidrBlock!: pulumi.Output<string>;
+    /**
+     * The ID of the route entry.
+     */
     public /*out*/ readonly transitRouterRouteEntryId!: pulumi.Output<string>;
     /**
      * The name of the transit router route entry.
@@ -147,6 +150,9 @@ export interface TransitRouterRouteEntryState {
      * The CIDR of the transit router route entry.
      */
     transitRouterRouteEntryDestinationCidrBlock?: pulumi.Input<string>;
+    /**
+     * The ID of the route entry.
+     */
     transitRouterRouteEntryId?: pulumi.Input<string>;
     /**
      * The name of the transit router route entry.

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class AlertLabelGetArgs : Pulumi.ResourceArgs
+    public sealed class AlertLabelGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Annotations's key for new alert.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public AlertLabelGetArgs()
         {
         }
+        public static new AlertLabelGetArgs Empty => new AlertLabelGetArgs();
     }
 }

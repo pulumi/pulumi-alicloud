@@ -10,22 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ServiceMesh.Inputs
 {
 
-    public sealed class ServiceMeshMeshConfigOpaGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMeshMeshConfigOpaGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable Service grid audit.
+        /// Whether to enable of the access logging. Valid values: `true` and `false`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The CPU resource  of the limitsOPA proxy container.
+        /// The limit cpu of the Sidecar injector Pods.
         /// </summary>
         [Input("limitCpu")]
         public Input<string>? LimitCpu { get; set; }
 
         /// <summary>
-        /// The memory resource limit of the OPA proxy container.
+        /// Sidecar injector Pods on the throttle.
         /// </summary>
         [Input("limitMemory")]
         public Input<string>? LimitMemory { get; set; }
@@ -37,13 +37,13 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<string>? LogLevel { get; set; }
 
         /// <summary>
-        /// The CPU resource request of the OPA proxy container.
+        /// The requested cpu the Sidecar injector Pods.
         /// </summary>
         [Input("requestCpu")]
         public Input<string>? RequestCpu { get; set; }
 
         /// <summary>
-        /// The memory resource request of the OPA proxy container.
+        /// The requested memory the Sidecar injector Pods.
         /// </summary>
         [Input("requestMemory")]
         public Input<string>? RequestMemory { get; set; }
@@ -51,5 +51,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public ServiceMeshMeshConfigOpaGetArgs()
         {
         }
+        public static new ServiceMeshMeshConfigOpaGetArgs Empty => new ServiceMeshMeshConfigOpaGetArgs();
     }
 }

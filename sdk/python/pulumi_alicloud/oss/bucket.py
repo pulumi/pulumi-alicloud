@@ -44,7 +44,7 @@ class BucketArgs:
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input['BucketRefererConfigArgs'] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
         :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption (documented below).
-        :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input['BucketTransferAccelerationArgs'] transfer_acceleration: A transfer acceleration status of a bucket (documented below).
         :param pulumi.Input['BucketVersioningArgs'] versioning: A state of versioning (documented below).
@@ -219,7 +219,7 @@ class BucketArgs:
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         """
         return pulumi.get(self, "storage_class")
 
@@ -317,7 +317,7 @@ class _BucketState:
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input['BucketRefererConfigArgs'] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
         :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption (documented below).
-        :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input['BucketTransferAccelerationArgs'] transfer_acceleration: A transfer acceleration status of a bucket (documented below).
         :param pulumi.Input['BucketVersioningArgs'] versioning: A state of versioning (documented below).
@@ -562,7 +562,7 @@ class _BucketState:
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         """
         return pulumi.get(self, "storage_class")
 
@@ -873,7 +873,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
         :param pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']] server_side_encryption_rule: A configuration of server-side encryption (documented below).
-        :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input[pulumi.InputType['BucketTransferAccelerationArgs']] transfer_acceleration: A transfer acceleration status of a bucket (documented below).
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: A state of versioning (documented below).
@@ -1222,7 +1222,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
         :param pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']] server_side_encryption_rule: A configuration of server-side encryption (documented below).
-        :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input[pulumi.InputType['BucketTransferAccelerationArgs']] transfer_acceleration: A transfer acceleration status of a bucket (documented below).
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: A state of versioning (documented below).
@@ -1384,7 +1384,7 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         """
         return pulumi.get(self, "storage_class")
 

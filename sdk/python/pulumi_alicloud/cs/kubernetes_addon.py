@@ -302,7 +302,7 @@ class KubernetesAddon(pulumi.CustomResource):
         Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `terraform plan`.
 
         ```sh
-         $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon alicloud_cs_kubernetes_addon.my_addon <cluster_id>:<addon_name>
+         $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon <cluster_id>:<addon_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -409,7 +409,7 @@ class KubernetesAddon(pulumi.CustomResource):
         Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `terraform plan`.
 
         ```sh
-         $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon alicloud_cs_kubernetes_addon.my_addon <cluster_id>:<addon_name>
+         $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon <cluster_id>:<addon_name>
         ```
 
         :param str resource_name: The name of the resource.

@@ -41,13 +41,16 @@ type ServerGroup struct {
 	Scheduler pulumi.StringOutput `pulumi:"scheduler"`
 	// The name of the resource.
 	ServerGroupName pulumi.StringPtrOutput `pulumi:"serverGroupName"`
+	// The type of the server group. Valid values:
+	ServerGroupType pulumi.StringOutput `pulumi:"serverGroupType"`
 	// The backend server.
 	Servers ServerGroupServerArrayOutput `pulumi:"servers"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The configuration of the sticky session.
 	StickySessionConfig ServerGroupStickySessionConfigPtrOutput `pulumi:"stickySessionConfig"`
-	Tags                pulumi.MapOutput                        `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The ID of the VPC that you want to access.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 }
@@ -93,13 +96,16 @@ type serverGroupState struct {
 	Scheduler *string `pulumi:"scheduler"`
 	// The name of the resource.
 	ServerGroupName *string `pulumi:"serverGroupName"`
+	// The type of the server group. Valid values:
+	ServerGroupType *string `pulumi:"serverGroupType"`
 	// The backend server.
 	Servers []ServerGroupServer `pulumi:"servers"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The configuration of the sticky session.
 	StickySessionConfig *ServerGroupStickySessionConfig `pulumi:"stickySessionConfig"`
-	Tags                map[string]interface{}          `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the VPC that you want to access.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -117,13 +123,16 @@ type ServerGroupState struct {
 	Scheduler pulumi.StringPtrInput
 	// The name of the resource.
 	ServerGroupName pulumi.StringPtrInput
+	// The type of the server group. Valid values:
+	ServerGroupType pulumi.StringPtrInput
 	// The backend server.
 	Servers ServerGroupServerArrayInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The configuration of the sticky session.
 	StickySessionConfig ServerGroupStickySessionConfigPtrInput
-	Tags                pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The ID of the VPC that you want to access.
 	VpcId pulumi.StringPtrInput
 }
@@ -145,11 +154,14 @@ type serverGroupArgs struct {
 	Scheduler *string `pulumi:"scheduler"`
 	// The name of the resource.
 	ServerGroupName *string `pulumi:"serverGroupName"`
+	// The type of the server group. Valid values:
+	ServerGroupType *string `pulumi:"serverGroupType"`
 	// The backend server.
 	Servers []ServerGroupServer `pulumi:"servers"`
 	// The configuration of the sticky session.
 	StickySessionConfig *ServerGroupStickySessionConfig `pulumi:"stickySessionConfig"`
-	Tags                map[string]interface{}          `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the VPC that you want to access.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -168,11 +180,14 @@ type ServerGroupArgs struct {
 	Scheduler pulumi.StringPtrInput
 	// The name of the resource.
 	ServerGroupName pulumi.StringPtrInput
+	// The type of the server group. Valid values:
+	ServerGroupType pulumi.StringPtrInput
 	// The backend server.
 	Servers ServerGroupServerArrayInput
 	// The configuration of the sticky session.
 	StickySessionConfig ServerGroupStickySessionConfigPtrInput
-	Tags                pulumi.MapInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The ID of the VPC that you want to access.
 	VpcId pulumi.StringPtrInput
 }
@@ -294,6 +309,11 @@ func (o ServerGroupOutput) ServerGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringPtrOutput { return v.ServerGroupName }).(pulumi.StringPtrOutput)
 }
 
+// The type of the server group. Valid values:
+func (o ServerGroupOutput) ServerGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ServerGroupType }).(pulumi.StringOutput)
+}
+
 // The backend server.
 func (o ServerGroupOutput) Servers() ServerGroupServerArrayOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupServerArrayOutput { return v.Servers }).(ServerGroupServerArrayOutput)
@@ -309,6 +329,7 @@ func (o ServerGroupOutput) StickySessionConfig() ServerGroupStickySessionConfigP
 	return o.ApplyT(func(v *ServerGroup) ServerGroupStickySessionConfigPtrOutput { return v.StickySessionConfig }).(ServerGroupStickySessionConfigPtrOutput)
 }
 
+// A mapping of tags to assign to the resource.
 func (o ServerGroupOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

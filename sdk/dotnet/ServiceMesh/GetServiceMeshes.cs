@@ -23,50 +23,47 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.ServiceMesh.GetServiceMeshes.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.ServiceMesh.GetServiceMeshes.InvokeAsync(new AliCloud.ServiceMesh.GetServiceMeshesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.ServiceMeshServiceMeshId1 = ids.Apply(ids =&gt; ids.Meshes?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.ServiceMesh.GetServiceMeshes.InvokeAsync(new AliCloud.ServiceMesh.GetServiceMeshesArgs
-        ///         {
-        ///             NameRegex = "^my-ServiceMesh",
-        ///         }));
-        ///         this.ServiceMeshServiceMeshId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Meshes?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.ServiceMesh.GetServiceMeshes.InvokeAsync(new AliCloud.ServiceMesh.GetServiceMeshesArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             Status = "running",
-        ///         }));
-        ///         this.ServiceMeshServiceMeshId3 = status.Apply(status =&gt; status.Meshes?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("serviceMeshServiceMeshId1")]
-        ///     public Output&lt;string&gt; ServiceMeshServiceMeshId1 { get; set; }
-        ///     [Output("serviceMeshServiceMeshId2")]
-        ///     public Output&lt;string&gt; ServiceMeshServiceMeshId2 { get; set; }
-        ///     [Output("serviceMeshServiceMeshId3")]
-        ///     public Output&lt;string&gt; ServiceMeshServiceMeshId3 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.ServiceMesh.GetServiceMeshes.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ServiceMesh",
+        ///     });
+        /// 
+        ///     var status = AliCloud.ServiceMesh.GetServiceMeshes.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = "running",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["serviceMeshServiceMeshId1"] = ids.Apply(getServiceMeshesResult =&gt; getServiceMeshesResult.Meshes[0]?.Id),
+        ///         ["serviceMeshServiceMeshId2"] = nameRegex.Apply(getServiceMeshesResult =&gt; getServiceMeshesResult.Meshes[0]?.Id),
+        ///         ["serviceMeshServiceMeshId3"] = status.Apply(getServiceMeshesResult =&gt; getServiceMeshesResult.Meshes[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceMeshesResult> InvokeAsync(GetServiceMeshesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceMeshesResult>("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", args ?? new GetServiceMeshesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceMeshesResult>("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", args ?? new GetServiceMeshesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
@@ -80,54 +77,51 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.ServiceMesh.GetServiceMeshes.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.ServiceMesh.GetServiceMeshes.InvokeAsync(new AliCloud.ServiceMesh.GetServiceMeshesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.ServiceMeshServiceMeshId1 = ids.Apply(ids =&gt; ids.Meshes?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.ServiceMesh.GetServiceMeshes.InvokeAsync(new AliCloud.ServiceMesh.GetServiceMeshesArgs
-        ///         {
-        ///             NameRegex = "^my-ServiceMesh",
-        ///         }));
-        ///         this.ServiceMeshServiceMeshId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Meshes?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.ServiceMesh.GetServiceMeshes.InvokeAsync(new AliCloud.ServiceMesh.GetServiceMeshesArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             Status = "running",
-        ///         }));
-        ///         this.ServiceMeshServiceMeshId3 = status.Apply(status =&gt; status.Meshes?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("serviceMeshServiceMeshId1")]
-        ///     public Output&lt;string&gt; ServiceMeshServiceMeshId1 { get; set; }
-        ///     [Output("serviceMeshServiceMeshId2")]
-        ///     public Output&lt;string&gt; ServiceMeshServiceMeshId2 { get; set; }
-        ///     [Output("serviceMeshServiceMeshId3")]
-        ///     public Output&lt;string&gt; ServiceMeshServiceMeshId3 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.ServiceMesh.GetServiceMeshes.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ServiceMesh",
+        ///     });
+        /// 
+        ///     var status = AliCloud.ServiceMesh.GetServiceMeshes.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = "running",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["serviceMeshServiceMeshId1"] = ids.Apply(getServiceMeshesResult =&gt; getServiceMeshesResult.Meshes[0]?.Id),
+        ///         ["serviceMeshServiceMeshId2"] = nameRegex.Apply(getServiceMeshesResult =&gt; getServiceMeshesResult.Meshes[0]?.Id),
+        ///         ["serviceMeshServiceMeshId3"] = status.Apply(getServiceMeshesResult =&gt; getServiceMeshesResult.Meshes[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceMeshesResult> Invoke(GetServiceMeshesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceMeshesResult>("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", args ?? new GetServiceMeshesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceMeshesResult>("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", args ?? new GetServiceMeshesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServiceMeshesArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceMeshesArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -154,7 +148,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `running` or `initial`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -162,9 +156,10 @@ namespace Pulumi.AliCloud.ServiceMesh
         public GetServiceMeshesArgs()
         {
         }
+        public static new GetServiceMeshesArgs Empty => new GetServiceMeshesArgs();
     }
 
-    public sealed class GetServiceMeshesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceMeshesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -191,7 +186,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `running` or `initial`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -199,6 +194,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public GetServiceMeshesInvokeArgs()
         {
         }
+        public static new GetServiceMeshesInvokeArgs Empty => new GetServiceMeshesInvokeArgs();
     }
 
 
@@ -211,10 +207,19 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Service Mesh Service Meshes. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshResult> Meshes;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Service Mesh names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

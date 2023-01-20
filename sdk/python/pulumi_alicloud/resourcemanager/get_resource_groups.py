@@ -142,7 +142,7 @@ def get_resource_groups(enable_details: Optional[bool] = None,
     ```
 
 
-    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of resource group IDs.
     :param str name_regex: A regex string to filter results by resource group name.
     :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
@@ -190,7 +190,7 @@ def get_resource_groups_output(enable_details: Optional[pulumi.Input[Optional[bo
     ```
 
 
-    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of resource group IDs.
     :param str name_regex: A regex string to filter results by resource group name.
     :param str status: The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.

@@ -213,7 +213,11 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
     /**
      * Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
      * 
+     * @deprecated
+     * Field &#39;internet_slb_id&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * 
      */
+    @Deprecated /* Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
     @Export(name="internetSlbId", type=String.class, parameters={})
     private Output</* @Nullable */ String> internetSlbId;
 
@@ -227,7 +231,11 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
     /**
      * The public network SLB front-end port, range 1~65535.
      * 
+     * @deprecated
+     * Field &#39;internet_slb_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * 
      */
+    @Deprecated /* Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
     @Export(name="internetSlbPort", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> internetSlbPort;
 
@@ -241,7 +249,11 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
     /**
      * The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
      * 
+     * @deprecated
+     * Field &#39;internet_slb_protocol&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * 
      */
+    @Deprecated /* Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
     @Export(name="internetSlbProtocol", type=String.class, parameters={})
     private Output</* @Nullable */ String> internetSlbProtocol;
 
@@ -255,7 +267,11 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
     /**
      * The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
      * 
+     * @deprecated
+     * Field &#39;internet_target_port&#39; has been deprecated, New Resource &#39;alicloud_edas_k8s_slb_attachment&#39; replaces it
+     * 
      */
+    @Deprecated /* Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
     @Export(name="internetTargetPort", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> internetTargetPort;
 

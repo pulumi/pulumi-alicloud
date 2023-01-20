@@ -18,11 +18,13 @@ import javax.annotation.Nullable;
 public final class GetServerCertificatesCertificate {
     /**
      * @return Id of server certificate issued by alibaba cloud.
-     * * `alicloud_certificate_name`- Name of server certificate issued by alibaba cloud.
-     * * `is_alicloud_certificate`- Is server certificate issued by alibaba cloud or not.
      * 
      */
     private String alicloudCertificateId;
+    /**
+     * @return Name of server certificate issued by alibaba cloud.
+     * 
+     */
     private String alicloudCertificateName;
     /**
      * @return Server certificate common name.
@@ -59,6 +61,10 @@ public final class GetServerCertificatesCertificate {
      * 
      */
     private String id;
+    /**
+     * @return Is server certificate issued by alibaba cloud or not.
+     * 
+     */
     private Boolean isAlicloudCertificate;
     /**
      * @return Server certificate name.
@@ -84,13 +90,15 @@ public final class GetServerCertificatesCertificate {
     private GetServerCertificatesCertificate() {}
     /**
      * @return Id of server certificate issued by alibaba cloud.
-     * * `alicloud_certificate_name`- Name of server certificate issued by alibaba cloud.
-     * * `is_alicloud_certificate`- Is server certificate issued by alibaba cloud or not.
      * 
      */
     public String alicloudCertificateId() {
         return this.alicloudCertificateId;
     }
+    /**
+     * @return Name of server certificate issued by alibaba cloud.
+     * 
+     */
     public String alicloudCertificateName() {
         return this.alicloudCertificateName;
     }
@@ -143,6 +151,10 @@ public final class GetServerCertificatesCertificate {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Is server certificate issued by alibaba cloud or not.
+     * 
+     */
     public Boolean isAlicloudCertificate() {
         return this.isAlicloudCertificate;
     }

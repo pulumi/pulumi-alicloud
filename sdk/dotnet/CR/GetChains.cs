@@ -25,42 +25,40 @@ namespace Pulumi.AliCloud.CR
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CR.GetChains.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CR.GetChains.InvokeAsync(new AliCloud.CR.GetChainsArgs
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CrChainId1 = ids.Apply(ids =&gt; ids.Chains?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.CR.GetChains.InvokeAsync(new AliCloud.CR.GetChainsArgs
-        ///         {
-        ///             InstanceId = "example_value",
-        ///             NameRegex = "^my-Chain",
-        ///         }));
-        ///         this.CrChainId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Chains?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("crChainId1")]
-        ///     public Output&lt;string&gt; CrChainId1 { get; set; }
-        ///     [Output("crChainId2")]
-        ///     public Output&lt;string&gt; CrChainId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CR.GetChains.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///         NameRegex = "^my-Chain",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["crChainId1"] = ids.Apply(getChainsResult =&gt; getChainsResult.Chains[0]?.Id),
+        ///         ["crChainId2"] = nameRegex.Apply(getChainsResult =&gt; getChainsResult.Chains[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetChainsResult> InvokeAsync(GetChainsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChainsResult>("alicloud:cr/getChains:getChains", args ?? new GetChainsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetChainsResult>("alicloud:cr/getChains:getChains", args ?? new GetChainsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cr Chains of the current Alibaba Cloud user.
@@ -76,46 +74,44 @@ namespace Pulumi.AliCloud.CR
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.CR.GetChains.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.CR.GetChains.InvokeAsync(new AliCloud.CR.GetChainsArgs
+        ///         InstanceId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CrChainId1 = ids.Apply(ids =&gt; ids.Chains?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.CR.GetChains.InvokeAsync(new AliCloud.CR.GetChainsArgs
-        ///         {
-        ///             InstanceId = "example_value",
-        ///             NameRegex = "^my-Chain",
-        ///         }));
-        ///         this.CrChainId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Chains?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("crChainId1")]
-        ///     public Output&lt;string&gt; CrChainId1 { get; set; }
-        ///     [Output("crChainId2")]
-        ///     public Output&lt;string&gt; CrChainId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.CR.GetChains.Invoke(new()
+        ///     {
+        ///         InstanceId = "example_value",
+        ///         NameRegex = "^my-Chain",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["crChainId1"] = ids.Apply(getChainsResult =&gt; getChainsResult.Chains[0]?.Id),
+        ///         ["crChainId2"] = nameRegex.Apply(getChainsResult =&gt; getChainsResult.Chains[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetChainsResult> Invoke(GetChainsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChainsResult>("alicloud:cr/getChains:getChains", args ?? new GetChainsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetChainsResult>("alicloud:cr/getChains:getChains", args ?? new GetChainsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetChainsArgs : Pulumi.InvokeArgs
+    public sealed class GetChainsArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -162,9 +158,10 @@ namespace Pulumi.AliCloud.CR
         public GetChainsArgs()
         {
         }
+        public static new GetChainsArgs Empty => new GetChainsArgs();
     }
 
-    public sealed class GetChainsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetChainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -211,6 +208,7 @@ namespace Pulumi.AliCloud.CR
         public GetChainsInvokeArgs()
         {
         }
+        public static new GetChainsInvokeArgs Empty => new GetChainsInvokeArgs();
     }
 
 

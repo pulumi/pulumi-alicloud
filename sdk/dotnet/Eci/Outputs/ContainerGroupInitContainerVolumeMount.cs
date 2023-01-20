@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string? MountPath;
         /// <summary>
-        /// The name of the security context that the container group runs.
+        /// The name of the volume.
         /// </summary>
         public readonly string? Name;
         /// <summary>

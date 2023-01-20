@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("defaultLoadBalancer", {
@@ -105,8 +105,6 @@ export class LoadBalancer extends pulumi.CustomResource {
     public readonly deleteProtection!: pulumi.Output<string | undefined>;
     /**
      * The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-     *
-     * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
@@ -250,8 +248,6 @@ export interface LoadBalancerState {
     deleteProtection?: pulumi.Input<string>;
     /**
      * The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-     *
-     * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -330,8 +326,6 @@ export interface LoadBalancerArgs {
     deleteProtection?: pulumi.Input<string>;
     /**
      * The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-     *
-     * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**

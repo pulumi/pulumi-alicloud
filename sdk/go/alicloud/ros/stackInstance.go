@@ -58,7 +58,7 @@ import (
 //			_, err = ros.NewStackInstance(ctx, "exampleStackInstance", &ros.StackInstanceArgs{
 //				StackGroupName:         exampleStackGroup.StackGroupName,
 //				StackInstanceAccountId: pulumi.String("example_value"),
-//				StackInstanceRegionId:  pulumi.String(exampleRegions.Regions[0].RegionId),
+//				StackInstanceRegionId:  *pulumi.String(exampleRegions.Regions[0].RegionId),
 //				OperationPreferences:   pulumi.String("{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}"),
 //				ParameterOverrides: ros.StackInstanceParameterOverrideArray{
 //					&ros.StackInstanceParameterOverrideArgs{
@@ -103,11 +103,6 @@ type StackInstance struct {
 	// The region of the stack instance.
 	StackInstanceRegionId pulumi.StringOutput `pulumi:"stackInstanceRegionId"`
 	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-	// * The create or update operation is not complete.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
 	TimeoutInMinutes pulumi.StringPtrOutput `pulumi:"timeoutInMinutes"`
@@ -129,6 +124,13 @@ func NewStackInstance(ctx *pulumi.Context,
 	if args.StackInstanceRegionId == nil {
 		return nil, errors.New("invalid value for required argument 'StackInstanceRegionId'")
 	}
+	if args.ParameterOverrides != nil {
+		args.ParameterOverrides = pulumi.ToSecret(args.ParameterOverrides).(StackInstanceParameterOverrideArrayInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"parameterOverrides",
+	})
+	opts = append(opts, secrets)
 	var resource StackInstance
 	err := ctx.RegisterResource("alicloud:ros/stackInstance:StackInstance", name, args, &resource, opts...)
 	if err != nil {
@@ -166,11 +168,6 @@ type stackInstanceState struct {
 	// The region of the stack instance.
 	StackInstanceRegionId *string `pulumi:"stackInstanceRegionId"`
 	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-	// * The create or update operation is not complete.
 	Status *string `pulumi:"status"`
 	// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
 	TimeoutInMinutes *string `pulumi:"timeoutInMinutes"`
@@ -192,11 +189,6 @@ type StackInstanceState struct {
 	// The region of the stack instance.
 	StackInstanceRegionId pulumi.StringPtrInput
 	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-	// * The create or update operation is not complete.
 	Status pulumi.StringPtrInput
 	// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
 	TimeoutInMinutes pulumi.StringPtrInput
@@ -368,11 +360,6 @@ func (o StackInstanceOutput) StackInstanceRegionId() pulumi.StringOutput {
 }
 
 // The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-// * The create or update operation is not complete.
 func (o StackInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *StackInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

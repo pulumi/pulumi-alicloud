@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,23 +19,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const k8sClusters = pulumi.output(alicloud.cs.getManagedKubernetesClusters({
+ * const k8sClusters = alicloud.cs.getManagedKubernetesClusters({
  *     kubeConfigFilePrefix: "~/.kube/managed",
  *     nameRegex: "my-first-k8s",
  *     outputFile: "my-first-k8s-json",
- * }));
- *
- * export const output = k8sClusters.clusters;
+ * });
+ * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
  * ```
  */
 export function getManagedKubernetesClusters(args?: GetManagedKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedKubernetesClustersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -54,7 +50,7 @@ export interface GetManagedKubernetesClustersArgs {
      */
     ids?: string[];
     /**
-     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.187.0+, kubeConfig will not export kubeConfig if this field is not set.
      */
     kubeConfigFilePrefix?: string;
     /**
@@ -89,9 +85,29 @@ export interface GetManagedKubernetesClustersResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.35.0+
+ *
+ * > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const k8sClusters = alicloud.cs.getManagedKubernetesClusters({
+ *     kubeConfigFilePrefix: "~/.kube/managed",
+ *     nameRegex: "my-first-k8s",
+ *     outputFile: "my-first-k8s-json",
+ * });
+ * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
+ * ```
+ */
 export function getManagedKubernetesClustersOutput(args?: GetManagedKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedKubernetesClustersResult> {
-    return pulumi.output(args).apply(a => getManagedKubernetesClusters(a, opts))
+    return pulumi.output(args).apply((a: any) => getManagedKubernetesClusters(a, opts))
 }
 
 /**
@@ -104,7 +120,7 @@ export interface GetManagedKubernetesClustersOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.187.0+, kubeConfig will not export kubeConfig if this field is not set.
      */
     kubeConfigFilePrefix?: pulumi.Input<string>;
     /**

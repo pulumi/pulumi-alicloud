@@ -44,8 +44,9 @@ type GetPoliciesResult struct {
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of policies. Each element contains the following attributes:
-	Policies   []GetPoliciesPolicy `pulumi:"policies"`
-	PolicyType *string             `pulumi:"policyType"`
+	Policies []GetPoliciesPolicy `pulumi:"policies"`
+	// The type of the policy.
+	PolicyType *string `pulumi:"policyType"`
 }
 
 func GetPoliciesOutput(ctx *pulumi.Context, args GetPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetPoliciesResultOutput {
@@ -119,6 +120,7 @@ func (o GetPoliciesResultOutput) Policies() GetPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetPoliciesResult) []GetPoliciesPolicy { return v.Policies }).(GetPoliciesPolicyArrayOutput)
 }
 
+// The type of the policy.
 func (o GetPoliciesResultOutput) PolicyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoliciesResult) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
 }

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
- * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.bastionhost.HostShareKey;
  * import com.pulumi.alicloud.bastionhost.HostShareKeyArgs;
  * import com.pulumi.alicloud.bastionhost.Host;

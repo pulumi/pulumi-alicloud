@@ -35,7 +35,7 @@ type GetSystemGroupsGroup struct {
 	InProtocol string `pulumi:"inProtocol"`
 	// The use of space play Protocol multi-valued separate them with commas (,). Valid values: `flv`,`hls`, `rtmp`(Real Time Messaging Protocol).
 	OutProtocol string `pulumi:"outProtocol"`
-	// -The domain name of plan streaming used by the group.
+	// The domain name of plan streaming used by the group.
 	PlayDomain string `pulumi:"playDomain"`
 	// The domain name of push streaming used by the group.
 	PushDomain string `pulumi:"pushDomain"`
@@ -79,7 +79,7 @@ type GetSystemGroupsGroupArgs struct {
 	InProtocol pulumi.StringInput `pulumi:"inProtocol"`
 	// The use of space play Protocol multi-valued separate them with commas (,). Valid values: `flv`,`hls`, `rtmp`(Real Time Messaging Protocol).
 	OutProtocol pulumi.StringInput `pulumi:"outProtocol"`
-	// -The domain name of plan streaming used by the group.
+	// The domain name of plan streaming used by the group.
 	PlayDomain pulumi.StringInput `pulumi:"playDomain"`
 	// The domain name of push streaming used by the group.
 	PushDomain pulumi.StringInput `pulumi:"pushDomain"`
@@ -198,7 +198,7 @@ func (o GetSystemGroupsGroupOutput) OutProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSystemGroupsGroup) string { return v.OutProtocol }).(pulumi.StringOutput)
 }
 
-// -The domain name of plan streaming used by the group.
+// The domain name of plan streaming used by the group.
 func (o GetSystemGroupsGroupOutput) PlayDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSystemGroupsGroup) string { return v.PlayDomain }).(pulumi.StringOutput)
 }

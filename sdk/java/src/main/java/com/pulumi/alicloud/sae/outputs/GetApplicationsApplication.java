@@ -21,6 +21,11 @@ public final class GetApplicationsApplication {
      */
     private String acrAssumeRoleArn;
     /**
+     * @return The ID of the ACR EE instance.
+     * 
+     */
+    private String acrInstanceId;
+    /**
      * @return Application description information. No more than 1024 characters.
      * 
      */
@@ -272,6 +277,13 @@ public final class GetApplicationsApplication {
      */
     public String acrAssumeRoleArn() {
         return this.acrAssumeRoleArn;
+    }
+    /**
+     * @return The ID of the ACR EE instance.
+     * 
+     */
+    public String acrInstanceId() {
+        return this.acrInstanceId;
     }
     /**
      * @return Application description information. No more than 1024 characters.
@@ -632,6 +644,7 @@ public final class GetApplicationsApplication {
     @CustomType.Builder
     public static final class Builder {
         private String acrAssumeRoleArn;
+        private String acrInstanceId;
         private String appDescription;
         private String appName;
         private String applicationId;
@@ -688,6 +701,7 @@ public final class GetApplicationsApplication {
         public Builder(GetApplicationsApplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acrAssumeRoleArn = defaults.acrAssumeRoleArn;
+    	      this.acrInstanceId = defaults.acrInstanceId;
     	      this.appDescription = defaults.appDescription;
     	      this.appName = defaults.appName;
     	      this.applicationId = defaults.applicationId;
@@ -745,6 +759,11 @@ public final class GetApplicationsApplication {
         @CustomType.Setter
         public Builder acrAssumeRoleArn(String acrAssumeRoleArn) {
             this.acrAssumeRoleArn = Objects.requireNonNull(acrAssumeRoleArn);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder acrInstanceId(String acrInstanceId) {
+            this.acrInstanceId = Objects.requireNonNull(acrInstanceId);
             return this;
         }
         @CustomType.Setter
@@ -1016,6 +1035,7 @@ public final class GetApplicationsApplication {
         public GetApplicationsApplication build() {
             final var o = new GetApplicationsApplication();
             o.acrAssumeRoleArn = acrAssumeRoleArn;
+            o.acrInstanceId = acrInstanceId;
             o.appDescription = appDescription;
             o.appName = appName;
             o.applicationId = applicationId;

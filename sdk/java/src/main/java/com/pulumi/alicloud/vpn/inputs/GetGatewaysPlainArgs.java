@@ -34,14 +34,22 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * Indicates whether the IPsec-VPN feature is enabled.
      * 
+     * @deprecated
+     * Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
+     * 
      */
+    @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
     @Import(name="enableIpsec")
     private @Nullable Boolean enableIpsec;
 
     /**
      * @return Indicates whether the IPsec-VPN feature is enabled.
      * 
+     * @deprecated
+     * Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
+     * 
      */
+    @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
     public Optional<Boolean> enableIpsec() {
         return Optional.ofNullable(this.enableIpsec);
     }
@@ -59,6 +67,21 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
      */
     public Optional<List<String>> ids() {
         return Optional.ofNullable(this.ids);
+    }
+
+    /**
+     * Include ineffective ordering data.
+     * 
+     */
+    @Import(name="includeReservationData")
+    private @Nullable Boolean includeReservationData;
+
+    /**
+     * @return Include ineffective ordering data.
+     * 
+     */
+    public Optional<Boolean> includeReservationData() {
+        return Optional.ofNullable(this.includeReservationData);
     }
 
     /**
@@ -127,6 +150,7 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
         this.businessStatus = $.businessStatus;
         this.enableIpsec = $.enableIpsec;
         this.ids = $.ids;
+        this.includeReservationData = $.includeReservationData;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
         this.status = $.status;
@@ -167,7 +191,11 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;enable_ipsec&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version.
+         * 
          */
+        @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
         public Builder enableIpsec(@Nullable Boolean enableIpsec) {
             $.enableIpsec = enableIpsec;
             return this;
@@ -192,6 +220,17 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
+        }
+
+        /**
+         * @param includeReservationData Include ineffective ordering data.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeReservationData(@Nullable Boolean includeReservationData) {
+            $.includeReservationData = includeReservationData;
+            return this;
         }
 
         /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Sae.Inputs
 {
 
-    public sealed class IngressDefaultRuleArgs : Pulumi.ResourceArgs
+    public sealed class IngressDefaultRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target application ID.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public IngressDefaultRuleArgs()
         {
         }
+        public static new IngressDefaultRuleArgs Empty => new IngressDefaultRuleArgs();
     }
 }

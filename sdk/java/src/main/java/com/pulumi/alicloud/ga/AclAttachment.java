@@ -24,10 +24,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
+ * Global Accelerator (GA) Acl Attachment can be imported using the id. Format to `&lt;listener_id&gt;:&lt;acl_id&gt;`, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example &lt;listener_id&gt;:&lt;acl_id&gt;
+ *  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example your_listener_id:your_acl_id
  * ```
  * 
  */
@@ -49,8 +49,6 @@ public class AclAttachment extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the ACL. Valid values: `white`, `black`.
-     * - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
-     * - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
      * 
      */
     @Export(name="aclType", type=String.class, parameters={})
@@ -58,8 +56,6 @@ public class AclAttachment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the ACL. Valid values: `white`, `black`.
-     * - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
-     * - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
      * 
      */
     public Output<String> aclType() {

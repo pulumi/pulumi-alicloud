@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.CS.Outputs
     [OutputType]
     public sealed class EdgeKubernetesLogConfig
     {
+        /// <summary>
+        /// Log Service project name, cluster logs will output to this project.
+        /// </summary>
         public readonly string? Project;
+        /// <summary>
+        /// Type of collecting logs, only `SLS` are supported currently.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

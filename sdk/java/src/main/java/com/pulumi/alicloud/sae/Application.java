@@ -14,6 +14,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -35,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -109,6 +110,34 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:sae/application:Application")
 public class Application extends com.pulumi.resources.CustomResource {
+    /**
+     * The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+     * 
+     */
+    @Export(name="acrAssumeRoleArn", type=String.class, parameters={})
+    private Output</* @Nullable */ String> acrAssumeRoleArn;
+
+    /**
+     * @return The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
+     * 
+     */
+    public Output<Optional<String>> acrAssumeRoleArn() {
+        return Codegen.optional(this.acrAssumeRoleArn);
+    }
+    /**
+     * The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+     * 
+     */
+    @Export(name="acrInstanceId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> acrInstanceId;
+
+    /**
+     * @return The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
+     * 
+     */
+    public Output<Optional<String>> acrInstanceId() {
+        return Codegen.optional(this.acrInstanceId);
+    }
     /**
      * Application description information. No more than 1024 characters.
      * 
@@ -692,14 +721,14 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="securityGroupId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> securityGroupId;
+    private Output<String> securityGroupId;
 
     /**
      * @return Security group ID.
      * 
      */
-    public Output<Optional<String>> securityGroupId() {
-        return Codegen.optional(this.securityGroupId);
+    public Output<String> securityGroupId() {
+        return this.securityGroupId;
     }
     /**
      * SLS  configuration.
@@ -902,6 +931,10 @@ public class Application extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "ossAkId",
+                "ossAkSecret"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

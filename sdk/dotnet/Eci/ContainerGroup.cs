@@ -21,111 +21,151 @@ namespace Pulumi.AliCloud.Eci
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Eci.ContainerGroup("example", new()
     ///     {
-    ///         var example = new AliCloud.Eci.ContainerGroup("example", new AliCloud.Eci.ContainerGroupArgs
+    ///         ContainerGroupName = "tf-testacc-eci-gruop",
+    ///         Cpu = 8,
+    ///         Memory = 16,
+    ///         RestartPolicy = "OnFailure",
+    ///         SecurityGroupId = alicloud_security_group.Group.Id,
+    ///         VswitchId = data.Alicloud_vpcs.Default.Vpcs[0].Vswitch_ids[0],
+    ///         Tags = 
     ///         {
-    ///             ContainerGroupName = "tf-testacc-eci-gruop",
-    ///             Cpu = 8,
-    ///             Memory = 16,
-    ///             RestartPolicy = "OnFailure",
-    ///             SecurityGroupId = alicloud_security_group.Group.Id,
-    ///             VswitchId = data.Alicloud_vpcs.Default.Vpcs[0].Vswitch_ids[0],
-    ///             Tags = 
+    ///             { "TF", "create" },
+    ///         },
+    ///         Containers = new[]
+    ///         {
+    ///             new AliCloud.Eci.Inputs.ContainerGroupContainerArgs
     ///             {
-    ///                 { "TF", "create" },
-    ///             },
-    ///             Containers = 
-    ///             {
-    ///                 new AliCloud.Eci.Inputs.ContainerGroupContainerArgs
+    ///                 Image = "registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
+    ///                 Name = "nginx",
+    ///                 WorkingDir = "/tmp/nginx",
+    ///                 ImagePullPolicy = "IfNotPresent",
+    ///                 Commands = new[]
     ///                 {
-    ///                     Image = "registry-vpc.cn-beijing.aliyuncs.com/eci_open/nginx:alpine",
-    ///                     Name = "nginx",
-    ///                     WorkingDir = "/tmp/nginx",
-    ///                     ImagePullPolicy = "IfNotPresent",
-    ///                     Commands = 
+    ///                     "/bin/sh",
+    ///                     "-c",
+    ///                     "sleep 9999",
+    ///                 },
+    ///                 VolumeMounts = new[]
+    ///                 {
+    ///                     new AliCloud.Eci.Inputs.ContainerGroupContainerVolumeMountArgs
     ///                     {
-    ///                         "/bin/sh",
-    ///                         "-c",
-    ///                         "sleep 9999",
+    ///                         MountPath = "/tmp/test",
+    ///                         ReadOnly = false,
+    ///                         Name = "empty1",
     ///                     },
-    ///                     VolumeMounts = 
+    ///                 },
+    ///                 Ports = new[]
+    ///                 {
+    ///                     new AliCloud.Eci.Inputs.ContainerGroupContainerPortArgs
     ///                     {
-    ///                         new AliCloud.Eci.Inputs.ContainerGroupContainerVolumeMountArgs
+    ///                         Port = 80,
+    ///                         Protocol = "TCP",
+    ///                     },
+    ///                 },
+    ///                 EnvironmentVars = new[]
+    ///                 {
+    ///                     new AliCloud.Eci.Inputs.ContainerGroupContainerEnvironmentVarArgs
+    ///                     {
+    ///                         Key = "test",
+    ///                         Value = "nginx",
+    ///                     },
+    ///                 },
+    ///                 LivenessProbes = new[]
+    ///                 {
+    ///                     new AliCloud.Eci.Inputs.ContainerGroupContainerLivenessProbeArgs
+    ///                     {
+    ///                         PeriodSeconds = 5,
+    ///                         InitialDelaySeconds = 5,
+    ///                         SuccessThreshold = 1,
+    ///                         FailureThreshold = 3,
+    ///                         TimeoutSeconds = 1,
+    ///                         Execs = new[]
     ///                         {
-    ///                             MountPath = "/tmp/test",
-    ///                             ReadOnly = false,
-    ///                             Name = "empty1",
+    ///                             new AliCloud.Eci.Inputs.ContainerGroupContainerLivenessProbeExecArgs
+    ///                             {
+    ///                                 Commands = new[]
+    ///                                 {
+    ///                                     "cat /tmp/healthy",
+    ///                                 },
+    ///                             },
     ///                         },
     ///                     },
-    ///                     Ports = 
+    ///                 },
+    ///                 ReadinessProbes = new[]
+    ///                 {
+    ///                     new AliCloud.Eci.Inputs.ContainerGroupContainerReadinessProbeArgs
     ///                     {
-    ///                         new AliCloud.Eci.Inputs.ContainerGroupContainerPortArgs
+    ///                         PeriodSeconds = 5,
+    ///                         InitialDelaySeconds = 5,
+    ///                         SuccessThreshold = 1,
+    ///                         FailureThreshold = 3,
+    ///                         TimeoutSeconds = 1,
+    ///                         Execs = new[]
     ///                         {
-    ///                             Port = 80,
-    ///                             Protocol = "TCP",
+    ///                             new AliCloud.Eci.Inputs.ContainerGroupContainerReadinessProbeExecArgs
+    ///                             {
+    ///                                 Commands = new[]
+    ///                                 {
+    ///                                     "cat /tmp/healthy",
+    ///                                 },
+    ///                             },
     ///                         },
     ///                     },
-    ///                     EnvironmentVars = 
-    ///                     {
-    ///                         new AliCloud.Eci.Inputs.ContainerGroupContainerEnvironmentVarArgs
-    ///                         {
-    ///                             Key = "test",
-    ///                             Value = "nginx",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new AliCloud.Eci.Inputs.ContainerGroupContainerArgs
-    ///                 {
-    ///                     Image = "registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7",
-    ///                     Name = "centos",
-    ///                     Commands = 
-    ///                     {
-    ///                         "/bin/sh",
-    ///                         "-c",
-    ///                         "sleep 9999",
-    ///                     },
     ///                 },
     ///             },
-    ///             InitContainers = 
+    ///             new AliCloud.Eci.Inputs.ContainerGroupContainerArgs
     ///             {
-    ///                 new AliCloud.Eci.Inputs.ContainerGroupInitContainerArgs
+    ///                 Image = "registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7",
+    ///                 Name = "centos",
+    ///                 Commands = new[]
     ///                 {
-    ///                     Name = "init-busybox",
-    ///                     Image = "registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
-    ///                     ImagePullPolicy = "IfNotPresent",
-    ///                     Commands = 
-    ///                     {
-    ///                         "echo",
-    ///                     },
-    ///                     Args = 
-    ///                     {
-    ///                         "hello initcontainer",
-    ///                     },
+    ///                     "/bin/sh",
+    ///                     "-c",
+    ///                     "sleep 9999",
     ///                 },
     ///             },
-    ///             Volumes = 
+    ///         },
+    ///         InitContainers = new[]
+    ///         {
+    ///             new AliCloud.Eci.Inputs.ContainerGroupInitContainerArgs
     ///             {
-    ///                 new AliCloud.Eci.Inputs.ContainerGroupVolumeArgs
+    ///                 Name = "init-busybox",
+    ///                 Image = "registry-vpc.cn-beijing.aliyuncs.com/eci_open/busybox:1.30",
+    ///                 ImagePullPolicy = "IfNotPresent",
+    ///                 Commands = new[]
     ///                 {
-    ///                     Name = "empty1",
-    ///                     Type = "EmptyDirVolume",
+    ///                     "echo",
     ///                 },
-    ///                 new AliCloud.Eci.Inputs.ContainerGroupVolumeArgs
+    ///                 Args = new[]
     ///                 {
-    ///                     Name = "empty2",
-    ///                     Type = "EmptyDirVolume",
+    ///                     "hello initcontainer",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Volumes = new[]
+    ///         {
+    ///             new AliCloud.Eci.Inputs.ContainerGroupVolumeArgs
+    ///             {
+    ///                 Name = "empty1",
+    ///                 Type = "EmptyDirVolume",
+    ///             },
+    ///             new AliCloud.Eci.Inputs.ContainerGroupVolumeArgs
+    ///             {
+    ///                 Name = "empty2",
+    ///                 Type = "EmptyDirVolume",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -137,8 +177,14 @@ namespace Pulumi.AliCloud.Eci
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eci/containerGroup:ContainerGroup")]
-    public partial class ContainerGroup : Pulumi.CustomResource
+    public partial class ContainerGroup : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The ACR enterprise edition example properties.
+        /// </summary>
+        [Output("acrRegistryInfos")]
+        public Output<ImmutableArray<Outputs.ContainerGroupAcrRegistryInfo>> AcrRegistryInfos { get; private set; } = null!;
+
         /// <summary>
         /// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         /// </summary>
@@ -164,7 +210,7 @@ namespace Pulumi.AliCloud.Eci
         public Output<ImmutableArray<Outputs.ContainerGroupContainer>> Containers { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Output("cpu")]
         public Output<double> Cpu { get; private set; } = null!;
@@ -236,7 +282,7 @@ namespace Pulumi.AliCloud.Eci
         public Output<string> IntranetIp { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         [Output("memory")]
         public Output<double> Memory { get; private set; } = null!;
@@ -347,8 +393,20 @@ namespace Pulumi.AliCloud.Eci
         }
     }
 
-    public sealed class ContainerGroupArgs : Pulumi.ResourceArgs
+    public sealed class ContainerGroupArgs : global::Pulumi.ResourceArgs
     {
+        [Input("acrRegistryInfos")]
+        private InputList<Inputs.ContainerGroupAcrRegistryInfoArgs>? _acrRegistryInfos;
+
+        /// <summary>
+        /// The ACR enterprise edition example properties.
+        /// </summary>
+        public InputList<Inputs.ContainerGroupAcrRegistryInfoArgs> AcrRegistryInfos
+        {
+            get => _acrRegistryInfos ?? (_acrRegistryInfos = new InputList<Inputs.ContainerGroupAcrRegistryInfoArgs>());
+            set => _acrRegistryInfos = value;
+        }
+
         /// <summary>
         /// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         /// </summary>
@@ -380,7 +438,7 @@ namespace Pulumi.AliCloud.Eci
         }
 
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
@@ -458,7 +516,7 @@ namespace Pulumi.AliCloud.Eci
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
@@ -534,10 +592,23 @@ namespace Pulumi.AliCloud.Eci
         public ContainerGroupArgs()
         {
         }
+        public static new ContainerGroupArgs Empty => new ContainerGroupArgs();
     }
 
-    public sealed class ContainerGroupState : Pulumi.ResourceArgs
+    public sealed class ContainerGroupState : global::Pulumi.ResourceArgs
     {
+        [Input("acrRegistryInfos")]
+        private InputList<Inputs.ContainerGroupAcrRegistryInfoGetArgs>? _acrRegistryInfos;
+
+        /// <summary>
+        /// The ACR enterprise edition example properties.
+        /// </summary>
+        public InputList<Inputs.ContainerGroupAcrRegistryInfoGetArgs> AcrRegistryInfos
+        {
+            get => _acrRegistryInfos ?? (_acrRegistryInfos = new InputList<Inputs.ContainerGroupAcrRegistryInfoGetArgs>());
+            set => _acrRegistryInfos = value;
+        }
+
         /// <summary>
         /// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         /// </summary>
@@ -569,7 +640,7 @@ namespace Pulumi.AliCloud.Eci
         }
 
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
@@ -659,7 +730,7 @@ namespace Pulumi.AliCloud.Eci
         public Input<string>? IntranetIp { get; set; }
 
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
@@ -741,5 +812,6 @@ namespace Pulumi.AliCloud.Eci
         public ContainerGroupState()
         {
         }
+        public static new ContainerGroupState Empty => new ContainerGroupState();
     }
 }

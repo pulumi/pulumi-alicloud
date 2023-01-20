@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.CloudAuth
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.CloudAuth.FaceConfig("example", new()
     ///     {
-    ///         var example = new AliCloud.CloudAuth.FaceConfig("example", new AliCloud.CloudAuth.FaceConfigArgs
-    ///         {
-    ///             BizName = "example_value",
-    ///             BizType = "example_value",
-    ///         });
-    ///     }
+    ///         BizName = "example_value",
+    ///         BizType = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.CloudAuth
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudauth/faceConfig:FaceConfig")]
-    public partial class FaceConfig : Pulumi.CustomResource
+    public partial class FaceConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Scene name.
@@ -111,7 +109,7 @@ namespace Pulumi.AliCloud.CloudAuth
         }
     }
 
-    public sealed class FaceConfigArgs : Pulumi.ResourceArgs
+    public sealed class FaceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Scene name.
@@ -128,9 +126,10 @@ namespace Pulumi.AliCloud.CloudAuth
         public FaceConfigArgs()
         {
         }
+        public static new FaceConfigArgs Empty => new FaceConfigArgs();
     }
 
-    public sealed class FaceConfigState : Pulumi.ResourceArgs
+    public sealed class FaceConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Scene name.
@@ -153,5 +152,6 @@ namespace Pulumi.AliCloud.CloudAuth
         public FaceConfigState()
         {
         }
+        public static new FaceConfigState Empty => new FaceConfigState();
     }
 }

@@ -14,9 +14,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Create a alias for cloud account.
- * const alias = new alicloud.ram.AccountAlias("alias", {
- *     accountAlias: "hallo",
- * });
+ * const alias = new alicloud.ram.AccountAlias("alias", {accountAlias: "hallo"});
  * ```
  *
  * ## Import

@@ -157,7 +157,7 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
@@ -167,6 +167,8 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(RegistryEnterpriseInstance.__pulumiType, name, resourceInputs, opts);
     }
 }

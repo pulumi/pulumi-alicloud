@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,16 +17,13 @@ import * as utilities from "../utilities";
  * const slbsDs = alicloud.slb.getLoadBalancers({
  *     nameRegex: "sample_slb",
  * });
- * export const firstSlbId = slbsDs.then(slbsDs => slbsDs.slbs?[0]?.id);
+ * export const firstSlbId = slbsDs.then(slbsDs => slbsDs.slbs?.[0]?.id);
  * ```
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:slb/getLoadBalancers:getLoadBalancers", {
         "address": args.address,
         "addressIpVersion": args.addressIpVersion,
@@ -99,12 +97,12 @@ export interface GetLoadBalancersArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const taggedInstances = pulumi.output(alicloud.slb.getLoadBalancers({
+     * const taggedInstances = alicloud.slb.getLoadBalancers({
      *     tags: {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }));
+     * });
      * ```
      */
     tags?: {[key: string]: any};
@@ -182,9 +180,22 @@ export interface GetLoadBalancersResult {
      */
     readonly vswitchId?: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.slb.LoadBalancer("default", {});
+ * const slbsDs = alicloud.slb.getLoadBalancers({
+ *     nameRegex: "sample_slb",
+ * });
+ * export const firstSlbId = slbsDs.then(slbsDs => slbsDs.slbs?.[0]?.id);
+ * ```
+ */
 export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancersResult> {
-    return pulumi.output(args).apply(a => getLoadBalancers(a, opts))
+    return pulumi.output(args).apply((a: any) => getLoadBalancers(a, opts))
 }
 
 /**
@@ -234,12 +245,12 @@ export interface GetLoadBalancersOutputArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const taggedInstances = pulumi.output(alicloud.slb.getLoadBalancers({
+     * const taggedInstances = alicloud.slb.getLoadBalancers({
      *     tags: {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }));
+     * });
      * ```
      */
     tags?: pulumi.Input<{[key: string]: any}>;

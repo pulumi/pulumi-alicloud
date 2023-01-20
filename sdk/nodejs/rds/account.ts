@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const instance = new alicloud.rds.Instance("instance", {
@@ -154,7 +154,7 @@ export class Account extends pulumi.CustomResource {
             const args = argsOrState as AccountArgs | undefined;
             resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
             resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["accountType"] = args ? args.accountType : undefined;
             resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -162,11 +162,13 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountPassword", "password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }

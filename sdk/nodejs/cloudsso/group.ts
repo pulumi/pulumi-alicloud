@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.138.0+.
  *
- * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
- *
  * ## Import
  *
  * Cloud SSO Group can be imported using the id, e.g.

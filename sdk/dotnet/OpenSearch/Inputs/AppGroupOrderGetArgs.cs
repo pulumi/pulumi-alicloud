@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.OpenSearch.Inputs
 {
 
-    public sealed class AppGroupOrderGetArgs : Pulumi.ResourceArgs
+    public sealed class AppGroupOrderGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.OpenSearch.Inputs
         public AppGroupOrderGetArgs()
         {
         }
+        public static new AppGroupOrderGetArgs Empty => new AppGroupOrderGetArgs();
     }
 }

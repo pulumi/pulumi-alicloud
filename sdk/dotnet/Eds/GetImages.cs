@@ -23,89 +23,92 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
         ///     {
-        ///         var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new AliCloud.Eds.SimpleOfficeSiteArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/12",
-        ///             DesktopAccessType = "Internet",
-        ///             OfficeSiteName = "your_simple_office_site_name",
-        ///         });
-        ///         var defaultBundles = Output.Create(AliCloud.Eds.GetBundles.InvokeAsync(new AliCloud.Eds.GetBundlesArgs
-        ///         {
-        ///             BundleType = "SYSTEM",
-        ///         }));
-        ///         var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new AliCloud.Eds.EcdPolicyGroupArgs
-        ///         {
-        ///             PolicyGroupName = "your_policy_group_name",
-        ///             Clipboard = "readwrite",
-        ///             LocalDrive = "read",
-        ///             AuthorizeAccessPolicyRules = 
-        ///             {
-        ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
-        ///                 {
-        ///                     Description = "example_value",
-        ///                     CidrIp = "1.2.3.4/24",
-        ///                 },
-        ///             },
-        ///             AuthorizeSecurityPolicyRules = 
-        ///             {
-        ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
-        ///                 {
-        ///                     Type = "inflow",
-        ///                     Policy = "accept",
-        ///                     Description = "example_value",
-        ///                     PortRange = "80/80",
-        ///                     IpProtocol = "TCP",
-        ///                     Priority = "1",
-        ///                     CidrIp = "0.0.0.0/0",
-        ///                 },
-        ///             },
-        ///         });
-        ///         var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new AliCloud.Eds.DesktopArgs
-        ///         {
-        ///             OfficeSiteId = defaultSimpleOfficeSite.Id,
-        ///             PolicyGroupId = defaultEcdPolicyGroup.Id,
-        ///             BundleId = defaultBundles.Apply(defaultBundles =&gt; defaultBundles.Bundles?[1]?.Id),
-        ///             DesktopName = "your_desktop_name",
-        ///         });
-        ///         var defaultImage = new AliCloud.Eds.Image("defaultImage", new AliCloud.Eds.ImageArgs
-        ///         {
-        ///             ImageName = "your_image_name",
-        ///             DesktopId = defaultDesktop.Id,
-        ///             Description = "example_value",
-        ///         });
-        ///         var ids = AliCloud.Eds.GetImages.Invoke(new AliCloud.Eds.GetImagesInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultImage.Id,
-        ///             },
-        ///         });
-        ///         this.EcdImageId1 = ids.Apply(ids =&gt; ids.Images?[0]?.Id);
-        ///         var nameRegex = defaultImage.ImageName.Apply(imageName =&gt; AliCloud.Eds.GetImages.Invoke(new AliCloud.Eds.GetImagesInvokeArgs
-        ///         {
-        ///             NameRegex = imageName,
-        ///         }));
-        ///         this.EcdImageId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Images?[0]?.Id);
-        ///     }
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         DesktopAccessType = "Internet",
+        ///         OfficeSiteName = "your_simple_office_site_name",
+        ///     });
         /// 
-        ///     [Output("ecdImageId1")]
-        ///     public Output&lt;string&gt; EcdImageId1 { get; set; }
-        ///     [Output("ecdImageId2")]
-        ///     public Output&lt;string&gt; EcdImageId2 { get; set; }
-        /// }
+        ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
+        ///     {
+        ///         BundleType = "SYSTEM",
+        ///     });
+        /// 
+        ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new()
+        ///     {
+        ///         PolicyGroupName = "your_policy_group_name",
+        ///         Clipboard = "readwrite",
+        ///         LocalDrive = "read",
+        ///         AuthorizeAccessPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
+        ///             {
+        ///                 Description = "example_value",
+        ///                 CidrIp = "1.2.3.4/24",
+        ///             },
+        ///         },
+        ///         AuthorizeSecurityPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
+        ///             {
+        ///                 Type = "inflow",
+        ///                 Policy = "accept",
+        ///                 Description = "example_value",
+        ///                 PortRange = "80/80",
+        ///                 IpProtocol = "TCP",
+        ///                 Priority = "1",
+        ///                 CidrIp = "0.0.0.0/0",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new()
+        ///     {
+        ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+        ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
+        ///         BundleId = defaultBundles.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[1]?.Id),
+        ///         DesktopName = "your_desktop_name",
+        ///     });
+        /// 
+        ///     var defaultImage = new AliCloud.Eds.Image("defaultImage", new()
+        ///     {
+        ///         ImageName = "your_image_name",
+        ///         DesktopId = defaultDesktop.Id,
+        ///         Description = "example_value",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Eds.GetImages.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultImage.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Eds.GetImages.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultImage.ImageName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdImageId1"] = ids.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         ["ecdImageId2"] = nameRegex.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:eds/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:eds/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Images of the current Alibaba Cloud user.
@@ -119,93 +122,96 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
         ///     {
-        ///         var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new AliCloud.Eds.SimpleOfficeSiteArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/12",
-        ///             DesktopAccessType = "Internet",
-        ///             OfficeSiteName = "your_simple_office_site_name",
-        ///         });
-        ///         var defaultBundles = Output.Create(AliCloud.Eds.GetBundles.InvokeAsync(new AliCloud.Eds.GetBundlesArgs
-        ///         {
-        ///             BundleType = "SYSTEM",
-        ///         }));
-        ///         var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new AliCloud.Eds.EcdPolicyGroupArgs
-        ///         {
-        ///             PolicyGroupName = "your_policy_group_name",
-        ///             Clipboard = "readwrite",
-        ///             LocalDrive = "read",
-        ///             AuthorizeAccessPolicyRules = 
-        ///             {
-        ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
-        ///                 {
-        ///                     Description = "example_value",
-        ///                     CidrIp = "1.2.3.4/24",
-        ///                 },
-        ///             },
-        ///             AuthorizeSecurityPolicyRules = 
-        ///             {
-        ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
-        ///                 {
-        ///                     Type = "inflow",
-        ///                     Policy = "accept",
-        ///                     Description = "example_value",
-        ///                     PortRange = "80/80",
-        ///                     IpProtocol = "TCP",
-        ///                     Priority = "1",
-        ///                     CidrIp = "0.0.0.0/0",
-        ///                 },
-        ///             },
-        ///         });
-        ///         var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new AliCloud.Eds.DesktopArgs
-        ///         {
-        ///             OfficeSiteId = defaultSimpleOfficeSite.Id,
-        ///             PolicyGroupId = defaultEcdPolicyGroup.Id,
-        ///             BundleId = defaultBundles.Apply(defaultBundles =&gt; defaultBundles.Bundles?[1]?.Id),
-        ///             DesktopName = "your_desktop_name",
-        ///         });
-        ///         var defaultImage = new AliCloud.Eds.Image("defaultImage", new AliCloud.Eds.ImageArgs
-        ///         {
-        ///             ImageName = "your_image_name",
-        ///             DesktopId = defaultDesktop.Id,
-        ///             Description = "example_value",
-        ///         });
-        ///         var ids = AliCloud.Eds.GetImages.Invoke(new AliCloud.Eds.GetImagesInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultImage.Id,
-        ///             },
-        ///         });
-        ///         this.EcdImageId1 = ids.Apply(ids =&gt; ids.Images?[0]?.Id);
-        ///         var nameRegex = defaultImage.ImageName.Apply(imageName =&gt; AliCloud.Eds.GetImages.Invoke(new AliCloud.Eds.GetImagesInvokeArgs
-        ///         {
-        ///             NameRegex = imageName,
-        ///         }));
-        ///         this.EcdImageId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Images?[0]?.Id);
-        ///     }
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         DesktopAccessType = "Internet",
+        ///         OfficeSiteName = "your_simple_office_site_name",
+        ///     });
         /// 
-        ///     [Output("ecdImageId1")]
-        ///     public Output&lt;string&gt; EcdImageId1 { get; set; }
-        ///     [Output("ecdImageId2")]
-        ///     public Output&lt;string&gt; EcdImageId2 { get; set; }
-        /// }
+        ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
+        ///     {
+        ///         BundleType = "SYSTEM",
+        ///     });
+        /// 
+        ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new()
+        ///     {
+        ///         PolicyGroupName = "your_policy_group_name",
+        ///         Clipboard = "readwrite",
+        ///         LocalDrive = "read",
+        ///         AuthorizeAccessPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
+        ///             {
+        ///                 Description = "example_value",
+        ///                 CidrIp = "1.2.3.4/24",
+        ///             },
+        ///         },
+        ///         AuthorizeSecurityPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
+        ///             {
+        ///                 Type = "inflow",
+        ///                 Policy = "accept",
+        ///                 Description = "example_value",
+        ///                 PortRange = "80/80",
+        ///                 IpProtocol = "TCP",
+        ///                 Priority = "1",
+        ///                 CidrIp = "0.0.0.0/0",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new()
+        ///     {
+        ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+        ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
+        ///         BundleId = defaultBundles.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[1]?.Id),
+        ///         DesktopName = "your_desktop_name",
+        ///     });
+        /// 
+        ///     var defaultImage = new AliCloud.Eds.Image("defaultImage", new()
+        ///     {
+        ///         ImageName = "your_image_name",
+        ///         DesktopId = defaultDesktop.Id,
+        ///         Description = "example_value",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Eds.GetImages.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultImage.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Eds.GetImages.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultImage.ImageName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdImageId1"] = ids.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         ["ecdImageId2"] = nameRegex.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:eds/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:eds/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetImagesArgs : Pulumi.InvokeArgs
+    public sealed class GetImagesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The desktop type of the image.
@@ -255,9 +261,10 @@ namespace Pulumi.AliCloud.Eds
         public GetImagesArgs()
         {
         }
+        public static new GetImagesArgs Empty => new GetImagesArgs();
     }
 
-    public sealed class GetImagesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The desktop type of the image.
@@ -307,6 +314,7 @@ namespace Pulumi.AliCloud.Eds
         public GetImagesInvokeArgs()
         {
         }
+        public static new GetImagesInvokeArgs Empty => new GetImagesInvokeArgs();
     }
 
 

@@ -21,6 +21,78 @@ namespace Pulumi.AliCloud.Slb
     /// * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
     /// * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var slbListenerName = config.Get("slbListenerName") ?? "forSlbListener";
+    ///     var listenerApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer", new()
+    ///     {
+    ///         LoadBalancerName = "tf-testAccSlbListenerHttp",
+    ///         InternetChargeType = "PayByTraffic",
+    ///         AddressType = "internet",
+    ///         InstanceChargeType = "PayByCLCU",
+    ///     });
+    /// 
+    ///     var listenerAcl = new AliCloud.Slb.Acl("listenerAcl", new()
+    ///     {
+    ///         IpVersion = "ipv4",
+    ///     });
+    /// 
+    ///     var listenerListener = new AliCloud.Slb.Listener("listenerListener", new()
+    ///     {
+    ///         LoadBalancerId = listenerApplicationLoadBalancer.Id,
+    ///         BackendPort = 80,
+    ///         FrontendPort = 80,
+    ///         Protocol = "http",
+    ///         Bandwidth = 10,
+    ///         StickySession = "on",
+    ///         StickySessionType = "insert",
+    ///         CookieTimeout = 86400,
+    ///         Cookie = "testslblistenercookie",
+    ///         HealthCheck = "on",
+    ///         HealthCheckDomain = "ali.com",
+    ///         HealthCheckUri = "/cons",
+    ///         HealthCheckConnectPort = 20,
+    ///         HealthyThreshold = 8,
+    ///         UnhealthyThreshold = 8,
+    ///         HealthCheckTimeout = 8,
+    ///         HealthCheckInterval = 5,
+    ///         HealthCheckHttpCode = "http_2xx,http_3xx",
+    ///         XForwardedFor = new AliCloud.Slb.Inputs.ListenerXForwardedForArgs
+    ///         {
+    ///             RetriveSlbIp = true,
+    ///             RetriveSlbId = true,
+    ///         },
+    ///         AclStatus = "on",
+    ///         AclType = "white",
+    ///         AclId = listenerAcl.Id,
+    ///         RequestTimeout = 80,
+    ///         IdleTimeout = 30,
+    ///     });
+    /// 
+    ///     var first = new AliCloud.Slb.AclEntryAttachment("first", new()
+    ///     {
+    ///         AclId = listenerAcl.Id,
+    ///         Entry = "10.10.10.0/24",
+    ///         Comment = "first",
+    ///     });
+    /// 
+    ///     var second = new AliCloud.Slb.AclEntryAttachment("second", new()
+    ///     {
+    ///         AclId = listenerAcl.Id,
+    ///         Entry = "168.10.10.0/24",
+    ///         Comment = "second",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Listener fields and protocol mapping
     /// 
     /// load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
@@ -72,7 +144,7 @@ namespace Pulumi.AliCloud.Slb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/listener:Listener")]
-    public partial class Listener : Pulumi.CustomResource
+    public partial class Listener : global::Pulumi.CustomResource
     {
         /// <summary>
         /// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
@@ -270,6 +342,12 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        /// </summary>
+        [Output("proxyProtocolV2Enabled")]
+        public Output<bool> ProxyProtocolV2Enabled { get; private set; } = null!;
+
+        /// <summary>
         /// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         /// </summary>
         [Output("requestTimeout")]
@@ -374,7 +452,7 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
-    public sealed class ListenerArgs : Pulumi.ResourceArgs
+    public sealed class ListenerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
@@ -572,6 +650,12 @@ namespace Pulumi.AliCloud.Slb
         public Input<string> Protocol { get; set; } = null!;
 
         /// <summary>
+        /// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        /// </summary>
+        [Input("proxyProtocolV2Enabled")]
+        public Input<bool>? ProxyProtocolV2Enabled { get; set; }
+
+        /// <summary>
         /// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         /// </summary>
         [Input("requestTimeout")]
@@ -635,9 +719,10 @@ namespace Pulumi.AliCloud.Slb
         public ListenerArgs()
         {
         }
+        public static new ListenerArgs Empty => new ListenerArgs();
     }
 
-    public sealed class ListenerState : Pulumi.ResourceArgs
+    public sealed class ListenerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
@@ -835,6 +920,12 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
+        /// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+        /// </summary>
+        [Input("proxyProtocolV2Enabled")]
+        public Input<bool>? ProxyProtocolV2Enabled { get; set; }
+
+        /// <summary>
         /// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
         /// </summary>
         [Input("requestTimeout")]
@@ -898,5 +989,6 @@ namespace Pulumi.AliCloud.Slb
         public ListenerState()
         {
         }
+        public static new ListenerState Empty => new ListenerState();
     }
 }

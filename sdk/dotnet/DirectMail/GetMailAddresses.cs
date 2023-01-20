@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.DirectMail
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.DirectMail.GetMailAddresses.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.DirectMail.GetMailAddresses.InvokeAsync(new AliCloud.DirectMail.GetMailAddressesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.DirectMailMailAddressId1 = ids.Apply(ids =&gt; ids.Addresses?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("directMailMailAddressId1")]
-        ///     public Output&lt;string&gt; DirectMailMailAddressId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["directMailMailAddressId1"] = ids.Apply(getMailAddressesResult =&gt; getMailAddressesResult.Addresses[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMailAddressesResult> InvokeAsync(GetMailAddressesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMailAddressesResult>("alicloud:directmail/getMailAddresses:getMailAddresses", args ?? new GetMailAddressesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMailAddressesResult>("alicloud:directmail/getMailAddresses:getMailAddresses", args ?? new GetMailAddressesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.DirectMail
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.DirectMail.GetMailAddresses.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.DirectMail.GetMailAddresses.InvokeAsync(new AliCloud.DirectMail.GetMailAddressesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.DirectMailMailAddressId1 = ids.Apply(ids =&gt; ids.Addresses?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("directMailMailAddressId1")]
-        ///     public Output&lt;string&gt; DirectMailMailAddressId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["directMailMailAddressId1"] = ids.Apply(getMailAddressesResult =&gt; getMailAddressesResult.Addresses[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMailAddressesResult> Invoke(GetMailAddressesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMailAddressesResult>("alicloud:directmail/getMailAddresses:getMailAddresses", args ?? new GetMailAddressesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMailAddressesResult>("alicloud:directmail/getMailAddresses:getMailAddresses", args ?? new GetMailAddressesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetMailAddressesArgs : Pulumi.InvokeArgs
+    public sealed class GetMailAddressesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -129,9 +127,10 @@ namespace Pulumi.AliCloud.DirectMail
         public GetMailAddressesArgs()
         {
         }
+        public static new GetMailAddressesArgs Empty => new GetMailAddressesArgs();
     }
 
-    public sealed class GetMailAddressesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMailAddressesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -169,6 +168,7 @@ namespace Pulumi.AliCloud.DirectMail
         public GetMailAddressesInvokeArgs()
         {
         }
+        public static new GetMailAddressesInvokeArgs Empty => new GetMailAddressesInvokeArgs();
     }
 
 

@@ -77,6 +77,8 @@ type GetRulesArgs struct {
 
 // A collection of values returned by getRules.
 type GetRulesResult struct {
+	// The state of the Config Rule.
+	//
 	// Deprecated: Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.
 	ConfigRuleState *string `pulumi:"configRuleState"`
 	EnableDetails   *bool   `pulumi:"enableDetails"`
@@ -88,8 +90,10 @@ type GetRulesResult struct {
 	// A list of Config Rule names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	RiskLevel  *int     `pulumi:"riskLevel"`
-	RuleName   *string  `pulumi:"ruleName"`
+	// The risk level of the Config Rule.
+	RiskLevel *int `pulumi:"riskLevel"`
+	// The name of the Config Rule.
+	RuleName *string `pulumi:"ruleName"`
 	// A list of Config Rules. Each element contains the following attributes:
 	Rules []GetRulesRule `pulumi:"rules"`
 	// (Available in 1.124.1+) The status of config rule.
@@ -149,6 +153,8 @@ func (o GetRulesResultOutput) ToGetRulesResultOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The state of the Config Rule.
+//
 // Deprecated: Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.
 func (o GetRulesResultOutput) ConfigRuleState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.ConfigRuleState }).(pulumi.StringPtrOutput)
@@ -181,10 +187,12 @@ func (o GetRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The risk level of the Config Rule.
 func (o GetRulesResultOutput) RiskLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *int { return v.RiskLevel }).(pulumi.IntPtrOutput)
 }
 
+// The name of the Config Rule.
 func (o GetRulesResultOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.RuleName }).(pulumi.StringPtrOutput)
 }

@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ecs.EcsAutoSnapshotPolicyAttachment("example", new()
     ///     {
-    ///         var example = new AliCloud.Ecs.EcsAutoSnapshotPolicyAttachment("example", new AliCloud.Ecs.EcsAutoSnapshotPolicyAttachmentArgs
-    ///         {
-    ///             AutoSnapshotPolicyId = "s-ge465xxxx",
-    ///             DiskId = "d-gw835xxxx",
-    ///         });
-    ///     }
+    ///         AutoSnapshotPolicyId = "s-ge465xxxx",
+    ///         DiskId = "d-gw835xxxx",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment")]
-    public partial class EcsAutoSnapshotPolicyAttachment : Pulumi.CustomResource
+    public partial class EcsAutoSnapshotPolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The auto snapshot policy id.
@@ -105,7 +103,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsAutoSnapshotPolicyAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class EcsAutoSnapshotPolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The auto snapshot policy id.
@@ -122,9 +120,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsAutoSnapshotPolicyAttachmentArgs()
         {
         }
+        public static new EcsAutoSnapshotPolicyAttachmentArgs Empty => new EcsAutoSnapshotPolicyAttachmentArgs();
     }
 
-    public sealed class EcsAutoSnapshotPolicyAttachmentState : Pulumi.ResourceArgs
+    public sealed class EcsAutoSnapshotPolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The auto snapshot policy id.
@@ -141,5 +140,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsAutoSnapshotPolicyAttachmentState()
         {
         }
+        public static new EcsAutoSnapshotPolicyAttachmentState Empty => new EcsAutoSnapshotPolicyAttachmentState();
     }
 }

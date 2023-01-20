@@ -21,40 +21,40 @@ namespace Pulumi.AliCloud.RocketMQ
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "onsInstanceDatasourceName";
+        ///     var @default = new AliCloud.RocketMQ.Instance("default", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "onsInstanceDatasourceName";
-        ///         var @default = new AliCloud.RocketMQ.Instance("default", new AliCloud.RocketMQ.InstanceArgs
-        ///         {
-        ///             Remark = "default_ons_instance_remark",
-        ///         });
-        ///         var instancesDs = AliCloud.RocketMQ.GetInstances.Invoke(new AliCloud.RocketMQ.GetInstancesInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 @default.Id,
-        ///             },
-        ///             NameRegex = @default.Name,
-        ///             OutputFile = "instances.txt",
-        ///         });
-        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances?[0]?.InstanceId);
-        ///     }
+        ///         Remark = "default_ons_instance_remark",
+        ///     });
         /// 
-        ///     [Output("firstInstanceId")]
-        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
-        /// }
+        ///     var instancesDs = AliCloud.RocketMQ.GetInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///         NameRegex = @default.Name,
+        ///         OutputFile = "instances.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceId"] = instancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.InstanceId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
@@ -66,44 +66,44 @@ namespace Pulumi.AliCloud.RocketMQ
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "onsInstanceDatasourceName";
+        ///     var @default = new AliCloud.RocketMQ.Instance("default", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "onsInstanceDatasourceName";
-        ///         var @default = new AliCloud.RocketMQ.Instance("default", new AliCloud.RocketMQ.InstanceArgs
-        ///         {
-        ///             Remark = "default_ons_instance_remark",
-        ///         });
-        ///         var instancesDs = AliCloud.RocketMQ.GetInstances.Invoke(new AliCloud.RocketMQ.GetInstancesInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 @default.Id,
-        ///             },
-        ///             NameRegex = @default.Name,
-        ///             OutputFile = "instances.txt",
-        ///         });
-        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances?[0]?.InstanceId);
-        ///     }
+        ///         Remark = "default_ons_instance_remark",
+        ///     });
         /// 
-        ///     [Output("firstInstanceId")]
-        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
-        /// }
+        ///     var instancesDs = AliCloud.RocketMQ.GetInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///         NameRegex = @default.Name,
+        ///         OutputFile = "instances.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceId"] = instancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.InstanceId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to true can output more details.
@@ -153,9 +153,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public GetInstancesArgs()
         {
         }
+        public static new GetInstancesArgs Empty => new GetInstancesArgs();
     }
 
-    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to true can output more details.
@@ -205,6 +206,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public GetInstancesInvokeArgs()
         {
         }
+        public static new GetInstancesInvokeArgs Empty => new GetInstancesInvokeArgs();
     }
 
 

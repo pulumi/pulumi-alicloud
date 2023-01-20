@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: pulumi.String(defaultNetworks.Vpcs[0].Id),
+//				VpcId: *pulumi.String(defaultNetworks.Vpcs[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -70,7 +70,7 @@ import (
 //				MinSize:          pulumi.Any(_var.Min_size),
 //				MaxSize:          pulumi.Any(_var.Max_size),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.String(defaultNetworks.Vpcs[0].VswitchIds[0]),
+//					*pulumi.String(defaultNetworks.Vpcs[0].VswitchIds[0]),
 //				},
 //				RemovalPolicies: pulumi.StringArray{
 //					pulumi.String("OldestInstance"),
@@ -81,10 +81,10 @@ import (
 //				return err
 //			}
 //			defaultScalingConfiguration, err := ess.NewScalingConfiguration(ctx, "defaultScalingConfiguration", &ess.ScalingConfigurationArgs{
-//				ImageId:            pulumi.String(defaultImages.Images[0].Id),
+//				ImageId:            *pulumi.String(defaultImages.Images[0].Id),
 //				SecurityGroupId:    defaultSecurityGroup.ID(),
 //				ScalingGroupId:     defaultScalingGroup.ID(),
-//				InstanceType:       pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				InstanceType:       *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				InternetChargeType: pulumi.String("PayByTraffic"),
 //				ForceDelete:        pulumi.Bool(true),
 //				Enable:             pulumi.Bool(true),
@@ -94,7 +94,7 @@ import (
 //				return err
 //			}
 //			_, err = cs.NewKubernetesAutoscaler(ctx, "defaultKubernetesAutoscaler", &cs.KubernetesAutoscalerArgs{
-//				ClusterId: pulumi.String(defaultManagedKubernetesClusters.Clusters[0].Id),
+//				ClusterId: *pulumi.String(defaultManagedKubernetesClusters.Clusters[0].Id),
 //				Nodepools: cs.KubernetesAutoscalerNodepoolArray{
 //					&cs.KubernetesAutoscalerNodepoolArgs{
 //						Id:     defaultScalingGroup.ID(),

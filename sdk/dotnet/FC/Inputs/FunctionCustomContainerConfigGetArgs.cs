@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC.Inputs
 {
 
-    public sealed class FunctionCustomContainerConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class FunctionCustomContainerConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The args field specifies the arguments passed to the command.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.FC.Inputs
         public FunctionCustomContainerConfigGetArgs()
         {
         }
+        public static new FunctionCustomContainerConfigGetArgs Empty => new FunctionCustomContainerConfigGetArgs();
     }
 }

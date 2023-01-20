@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,20 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const recordsDs = pulumi.all([alicloud_pvtz_zone_record_foo.value, alicloud_pvtz_zone_basic.id]).apply(([value, id]) => alicloud.pvtz.getZoneRecords({
- *     keyword: value,
- *     zoneId: id,
- * }));
- *
- * export const firstRecordId = recordsDs.records[0].id;
+ * const recordsDs = alicloud.pvtz.getZoneRecords({
+ *     keyword: alicloud_pvtz_zone_record.foo.value,
+ *     zoneId: alicloud_pvtz_zone.basic.id,
+ * });
+ * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.id);
  * ```
  */
 export function getZoneRecords(args: GetZoneRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneRecordsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:pvtz/getZoneRecords:getZoneRecords", {
         "ids": args.ids,
         "keyword": args.keyword,
@@ -112,9 +109,24 @@ export interface GetZoneRecordsResult {
     readonly userClientIp?: string;
     readonly zoneId: string;
 }
-
+/**
+ * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const recordsDs = alicloud.pvtz.getZoneRecords({
+ *     keyword: alicloud_pvtz_zone_record.foo.value,
+ *     zoneId: alicloud_pvtz_zone.basic.id,
+ * });
+ * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.id);
+ * ```
+ */
 export function getZoneRecordsOutput(args: GetZoneRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneRecordsResult> {
-    return pulumi.output(args).apply(a => getZoneRecords(a, opts))
+    return pulumi.output(args).apply((a: any) => getZoneRecords(a, opts))
 }
 
 /**

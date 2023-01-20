@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,28 +22,25 @@ import * as utilities from "../utilities";
  * const ids = alicloud.ecs.getEcsSnapshotGroups({
  *     ids: ["example-id"],
  * });
- * export const ecsSnapshotGroupId1 = ids.then(ids => ids.groups?[0]?.id);
+ * export const ecsSnapshotGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
  * const nameRegex = alicloud.ecs.getEcsSnapshotGroups({
  *     nameRegex: "^my-SnapshotGroup",
  * });
- * export const ecsSnapshotGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
+ * export const ecsSnapshotGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * const status = alicloud.ecs.getEcsSnapshotGroups({
  *     status: "accomplished",
  * });
- * export const ecsSnapshotGroupId3 = status.then(status => status.groups?[0]?.id);
+ * export const ecsSnapshotGroupId3 = status.then(status => status.groups?.[0]?.id);
  * const instanceId = alicloud.ecs.getEcsSnapshotGroups({
  *     instanceId: "example-instance_id",
  * });
- * export const ecsSnapshotGroupId4 = instanceId.then(instanceId => instanceId.groups?[0]?.id);
+ * export const ecsSnapshotGroupId4 = instanceId.then(instanceId => instanceId.groups?.[0]?.id);
  * ```
  */
 export function getEcsSnapshotGroups(args?: GetEcsSnapshotGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsSnapshotGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups", {
         "ids": args.ids,
         "instanceId": args.instanceId,
@@ -103,9 +101,39 @@ export interface GetEcsSnapshotGroupsResult {
     readonly status?: string;
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.160.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ecs.getEcsSnapshotGroups({
+ *     ids: ["example-id"],
+ * });
+ * export const ecsSnapshotGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * const nameRegex = alicloud.ecs.getEcsSnapshotGroups({
+ *     nameRegex: "^my-SnapshotGroup",
+ * });
+ * export const ecsSnapshotGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * const status = alicloud.ecs.getEcsSnapshotGroups({
+ *     status: "accomplished",
+ * });
+ * export const ecsSnapshotGroupId3 = status.then(status => status.groups?.[0]?.id);
+ * const instanceId = alicloud.ecs.getEcsSnapshotGroups({
+ *     instanceId: "example-instance_id",
+ * });
+ * export const ecsSnapshotGroupId4 = instanceId.then(instanceId => instanceId.groups?.[0]?.id);
+ * ```
+ */
 export function getEcsSnapshotGroupsOutput(args?: GetEcsSnapshotGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsSnapshotGroupsResult> {
-    return pulumi.output(args).apply(a => getEcsSnapshotGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getEcsSnapshotGroups(a, opts))
 }
 
 /**

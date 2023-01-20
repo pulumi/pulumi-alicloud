@@ -18,17 +18,16 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Add a Resource Manager role.
+    ///     var example = new AliCloud.ResourceManager.Role("example", new()
     ///     {
-    ///         // Add a Resource Manager role.
-    ///         var example = new AliCloud.ResourceManager.Role("example", new AliCloud.ResourceManager.RoleArgs
-    ///         {
-    ///             AssumeRolePolicyDocument = @"     {
+    ///         AssumeRolePolicyDocument = @"     {
     ///           ""Statement"": [
     ///                {
     ///                     ""Action"": ""sts:AssumeRole"",
@@ -45,11 +44,10 @@ namespace Pulumi.AliCloud.ResourceManager
     ///      }
     /// 	 
     /// ",
-    ///             RoleName = "testrd",
-    ///         });
-    ///     }
+    ///         RoleName = "testrd",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,11 +59,10 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/role:Role")]
-    public partial class Role : Pulumi.CustomResource
+    public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The resource descriptor of the role.
-        /// * `create_date` (Removed form v1.114.0) - Role creation time.
         /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
@@ -150,7 +147,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class RoleArgs : Pulumi.ResourceArgs
+    public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The content of the permissions strategy that plays a role.
@@ -179,13 +176,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public RoleArgs()
         {
         }
+        public static new RoleArgs Empty => new RoleArgs();
     }
 
-    public sealed class RoleState : Pulumi.ResourceArgs
+    public sealed class RoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource descriptor of the role.
-        /// * `create_date` (Removed form v1.114.0) - Role creation time.
         /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
@@ -229,5 +226,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public RoleState()
         {
         }
+        public static new RoleState Empty => new RoleState();
     }
 }

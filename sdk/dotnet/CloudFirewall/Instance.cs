@@ -21,27 +21,25 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.CloudFirewall.Instance("example", new()
     ///     {
-    ///         var example = new AliCloud.CloudFirewall.Instance("example", new AliCloud.CloudFirewall.InstanceArgs
-    ///         {
-    ///             BandWidth = 10,
-    ///             CfwLog = false,
-    ///             CfwLogStorage = 1000,
-    ///             CfwService = false,
-    ///             IpNumber = 20,
-    ///             PaymentType = "Subscription",
-    ///             Period = 6,
-    ///             Spec = "premium_version",
-    ///         });
-    ///     }
+    ///         BandWidth = 10,
+    ///         CfwLog = false,
+    ///         CfwLogStorage = 1000,
+    ///         CfwService = false,
+    ///         IpNumber = 20,
+    ///         PaymentType = "Subscription",
+    ///         Period = 6,
+    ///         Spec = "premium_version",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +51,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudfirewall/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
@@ -213,7 +211,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
@@ -302,9 +300,10 @@ namespace Pulumi.AliCloud.CloudFirewall
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
@@ -423,5 +422,6 @@ namespace Pulumi.AliCloud.CloudFirewall
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

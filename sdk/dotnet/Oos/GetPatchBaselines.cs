@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Oos
         /// &gt; **NOTE:** Available in v1.146.0+.
         /// </summary>
         public static Task<GetPatchBaselinesResult> InvokeAsync(GetPatchBaselinesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Oos
         /// &gt; **NOTE:** Available in v1.146.0+.
         /// </summary>
         public static Output<GetPatchBaselinesResult> Invoke(GetPatchBaselinesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPatchBaselinesResult>("alicloud:oos/getPatchBaselines:getPatchBaselines", args ?? new GetPatchBaselinesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPatchBaselinesArgs : Pulumi.InvokeArgs
+    public sealed class GetPatchBaselinesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -73,9 +73,10 @@ namespace Pulumi.AliCloud.Oos
         public GetPatchBaselinesArgs()
         {
         }
+        public static new GetPatchBaselinesArgs Empty => new GetPatchBaselinesArgs();
     }
 
-    public sealed class GetPatchBaselinesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPatchBaselinesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -119,6 +120,7 @@ namespace Pulumi.AliCloud.Oos
         public GetPatchBaselinesInvokeArgs()
         {
         }
+        public static new GetPatchBaselinesInvokeArgs Empty => new GetPatchBaselinesInvokeArgs();
     }
 
 

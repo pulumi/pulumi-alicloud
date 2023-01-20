@@ -2,15 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getMonitorGroupInstances(args: GetMonitorGroupInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitorGroupInstancesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", {
         "ids": args.ids,
         "keyword": args.keyword,
@@ -40,9 +38,8 @@ export interface GetMonitorGroupInstancesResult {
     readonly keyword?: string;
     readonly outputFile?: string;
 }
-
 export function getMonitorGroupInstancesOutput(args: GetMonitorGroupInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitorGroupInstancesResult> {
-    return pulumi.output(args).apply(a => getMonitorGroupInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getMonitorGroupInstances(a, opts))
 }
 
 /**

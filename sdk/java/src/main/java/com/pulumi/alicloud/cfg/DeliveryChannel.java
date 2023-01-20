@@ -69,7 +69,7 @@ public class DeliveryChannel extends com.pulumi.resources.CustomResource {
         return this.deliveryChannelName;
     }
     /**
-     * - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
+     * The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
      * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
      * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
      * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
@@ -79,7 +79,7 @@ public class DeliveryChannel extends com.pulumi.resources.CustomResource {
     private Output<String> deliveryChannelTargetArn;
 
     /**
-     * @return - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
+     * @return The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
      * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
      * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
      * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
@@ -89,14 +89,14 @@ public class DeliveryChannel extends com.pulumi.resources.CustomResource {
         return this.deliveryChannelTargetArn;
     }
     /**
-     * - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+     * The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
      * 
      */
     @Export(name="deliveryChannelType", type=String.class, parameters={})
     private Output<String> deliveryChannelType;
 
     /**
-     * @return - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+     * @return The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
      * 
      */
     public Output<String> deliveryChannelType() {

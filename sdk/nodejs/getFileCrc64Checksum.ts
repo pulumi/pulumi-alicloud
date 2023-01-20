@@ -15,19 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultFileCrc64Checksum = pulumi.output(alicloud.getFileCrc64Checksum({
+ * const default = alicloud.getFileCrc64Checksum({
  *     filename: "exampleFileName",
- * }));
- *
- * export const fileCrc64Checksum = alicloud_file_crc64_checksum_defualt.checksum;
+ * });
+ * export const fileCrc64Checksum = data.alicloud_file_crc64_checksum.defualt.checksum;
  * ```
  */
 export function getFileCrc64Checksum(args: GetFileCrc64ChecksumArgs, opts?: pulumi.InvokeOptions): Promise<GetFileCrc64ChecksumResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", {
         "filename": args.filename,
         "outputFile": args.outputFile,
@@ -60,9 +56,25 @@ export interface GetFileCrc64ChecksumResult {
     readonly id: string;
     readonly outputFile?: string;
 }
-
+/**
+ * This data source compute file crc64 checksum.
+ *
+ * > **NOTE:** Available in 1.59.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.getFileCrc64Checksum({
+ *     filename: "exampleFileName",
+ * });
+ * export const fileCrc64Checksum = data.alicloud_file_crc64_checksum.defualt.checksum;
+ * ```
+ */
 export function getFileCrc64ChecksumOutput(args: GetFileCrc64ChecksumOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileCrc64ChecksumResult> {
-    return pulumi.output(args).apply(a => getFileCrc64Checksum(a, opts))
+    return pulumi.output(args).apply((a: any) => getFileCrc64Checksum(a, opts))
 }
 
 /**

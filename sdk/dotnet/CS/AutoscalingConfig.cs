@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     [AliCloudResourceType("alicloud:cs/autoscalingConfig:AutoscalingConfig")]
-    public partial class AutoscalingConfig : Pulumi.CustomResource
+    public partial class AutoscalingConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The id of kubernetes cluster.
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class AutoscalingConfigArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of kubernetes cluster.
@@ -157,9 +157,10 @@ namespace Pulumi.AliCloud.CS
         public AutoscalingConfigArgs()
         {
         }
+        public static new AutoscalingConfigArgs Empty => new AutoscalingConfigArgs();
     }
 
-    public sealed class AutoscalingConfigState : Pulumi.ResourceArgs
+    public sealed class AutoscalingConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of kubernetes cluster.
@@ -212,5 +213,6 @@ namespace Pulumi.AliCloud.CS
         public AutoscalingConfigState()
         {
         }
+        public static new AutoscalingConfigState Empty => new AutoscalingConfigState();
     }
 }

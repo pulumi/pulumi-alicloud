@@ -21,47 +21,46 @@ namespace Pulumi.AliCloud.Cdn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Domain config.
+    ///     var domain = new AliCloud.Cdn.DomainNew("domain", new()
     ///     {
-    ///         // Create a new Domain config.
-    ///         var domain = new AliCloud.Cdn.DomainNew("domain", new AliCloud.Cdn.DomainNewArgs
+    ///         DomainName = "mycdndomain.xiaozhu.com",
+    ///         CdnType = "web",
+    ///         Scope = "overseas",
+    ///         Sources = new[]
     ///         {
-    ///             DomainName = "mycdndomain.xiaozhu.com",
-    ///             CdnType = "web",
-    ///             Scope = "overseas",
-    ///             Sources = 
+    ///             new AliCloud.Cdn.Inputs.DomainNewSourceArgs
     ///             {
-    ///                 new AliCloud.Cdn.Inputs.DomainNewSourceArgs
-    ///                 {
-    ///                     Content = "1.1.1.1",
-    ///                     Type = "ipaddr",
-    ///                     Priority = 20,
-    ///                     Port = 80,
-    ///                     Weight = 15,
-    ///                 },
+    ///                 Content = "1.1.1.1",
+    ///                 Type = "ipaddr",
+    ///                 Priority = 20,
+    ///                 Port = 80,
+    ///                 Weight = 15,
     ///             },
-    ///         });
-    ///         var config = new AliCloud.Cdn.DomainConfig("config", new AliCloud.Cdn.DomainConfigArgs
-    ///         {
-    ///             DomainName = domain.DomainName,
-    ///             FunctionName = "ip_allow_list_set",
-    ///             FunctionArgs = 
-    ///             {
-    ///                 new AliCloud.Cdn.Inputs.DomainConfigFunctionArgArgs
-    ///                 {
-    ///                     ArgName = "ip_list",
-    ///                     ArgValue = "110.110.110.110",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var config = new AliCloud.Cdn.DomainConfig("config", new()
+    ///     {
+    ///         DomainName = domain.DomainName,
+    ///         FunctionName = "ip_allow_list_set",
+    ///         FunctionArgs = new[]
+    ///         {
+    ///             new AliCloud.Cdn.Inputs.DomainConfigFunctionArgArgs
+    ///             {
+    ///                 ArgName = "ip_list",
+    ///                 ArgValue = "110.110.110.110",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +76,7 @@ namespace Pulumi.AliCloud.Cdn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cdn/domainConfig:DomainConfig")]
-    public partial class DomainConfig : Pulumi.CustomResource
+    public partial class DomainConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Available in 1.132.0+) The ID of the domain config function.
@@ -153,7 +152,7 @@ namespace Pulumi.AliCloud.Cdn
         }
     }
 
-    public sealed class DomainConfigArgs : Pulumi.ResourceArgs
+    public sealed class DomainConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -182,9 +181,10 @@ namespace Pulumi.AliCloud.Cdn
         public DomainConfigArgs()
         {
         }
+        public static new DomainConfigArgs Empty => new DomainConfigArgs();
     }
 
-    public sealed class DomainConfigState : Pulumi.ResourceArgs
+    public sealed class DomainConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Available in 1.132.0+) The ID of the domain config function.
@@ -225,5 +225,6 @@ namespace Pulumi.AliCloud.Cdn
         public DomainConfigState()
         {
         }
+        public static new DomainConfigState Empty => new DomainConfigState();
     }
 }

@@ -32,14 +32,14 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     @Import(name="nodeClass", required=true)
     private Output<String> nodeClass;
 
     /**
-     * @return -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     public Output<String> nodeClass() {
@@ -125,7 +125,7 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeClass -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * @param nodeClass Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ShardingInstanceMongoListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeClass -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * @param nodeClass Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
          * 
          * @return builder
          * 

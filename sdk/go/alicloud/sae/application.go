@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -57,7 +57,7 @@ import (
 //			vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
 //				VpcId:       vpc.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -104,6 +104,10 @@ import (
 type Application struct {
 	pulumi.CustomResourceState
 
+	// The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
+	AcrAssumeRoleArn pulumi.StringPtrOutput `pulumi:"acrAssumeRoleArn"`
+	// The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
+	AcrInstanceId pulumi.StringPtrOutput `pulumi:"acrInstanceId"`
 	// Application description information. No more than 1024 characters.
 	AppDescription pulumi.StringPtrOutput `pulumi:"appDescription"`
 	// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
@@ -189,7 +193,7 @@ type Application struct {
 	// Initial number of instances.
 	Replicas pulumi.IntOutput `pulumi:"replicas"`
 	// Security group ID.
-	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
+	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// SLS  configuration.
 	SlsConfigs pulumi.StringPtrOutput `pulumi:"slsConfigs"`
 	// The status of the resource. Valid values: `RUNNING`, `STOPPED`.
@@ -232,6 +236,17 @@ func NewApplication(ctx *pulumi.Context,
 	if args.Replicas == nil {
 		return nil, errors.New("invalid value for required argument 'Replicas'")
 	}
+	if args.OssAkId != nil {
+		args.OssAkId = pulumi.ToSecret(args.OssAkId).(pulumi.StringPtrInput)
+	}
+	if args.OssAkSecret != nil {
+		args.OssAkSecret = pulumi.ToSecret(args.OssAkSecret).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"ossAkId",
+		"ossAkSecret",
+	})
+	opts = append(opts, secrets)
 	var resource Application
 	err := ctx.RegisterResource("alicloud:sae/application:Application", name, args, &resource, opts...)
 	if err != nil {
@@ -254,6 +269,10 @@ func GetApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Application resources.
 type applicationState struct {
+	// The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
+	AcrAssumeRoleArn *string `pulumi:"acrAssumeRoleArn"`
+	// The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
+	AcrInstanceId *string `pulumi:"acrInstanceId"`
 	// Application description information. No more than 1024 characters.
 	AppDescription *string `pulumi:"appDescription"`
 	// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
@@ -367,6 +386,10 @@ type applicationState struct {
 }
 
 type ApplicationState struct {
+	// The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
+	AcrAssumeRoleArn pulumi.StringPtrInput
+	// The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
+	AcrInstanceId pulumi.StringPtrInput
 	// Application description information. No more than 1024 characters.
 	AppDescription pulumi.StringPtrInput
 	// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
@@ -484,6 +507,10 @@ func (ApplicationState) ElementType() reflect.Type {
 }
 
 type applicationArgs struct {
+	// The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
+	AcrAssumeRoleArn *string `pulumi:"acrAssumeRoleArn"`
+	// The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
+	AcrInstanceId *string `pulumi:"acrInstanceId"`
 	// Application description information. No more than 1024 characters.
 	AppDescription *string `pulumi:"appDescription"`
 	// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
@@ -598,6 +625,10 @@ type applicationArgs struct {
 
 // The set of arguments for constructing a Application resource.
 type ApplicationArgs struct {
+	// The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
+	AcrAssumeRoleArn pulumi.StringPtrInput
+	// The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
+	AcrInstanceId pulumi.StringPtrInput
 	// Application description information. No more than 1024 characters.
 	AppDescription pulumi.StringPtrInput
 	// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
@@ -795,6 +826,16 @@ func (o ApplicationOutput) ToApplicationOutput() ApplicationOutput {
 
 func (o ApplicationOutput) ToApplicationOutputWithContext(ctx context.Context) ApplicationOutput {
 	return o
+}
+
+// The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
+func (o ApplicationOutput) AcrAssumeRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.AcrAssumeRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
+func (o ApplicationOutput) AcrInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.AcrInstanceId }).(pulumi.StringPtrOutput)
 }
 
 // Application description information. No more than 1024 characters.
@@ -1005,8 +1046,8 @@ func (o ApplicationOutput) Replicas() pulumi.IntOutput {
 }
 
 // Security group ID.
-func (o ApplicationOutput) SecurityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+func (o ApplicationOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
 // SLS  configuration.

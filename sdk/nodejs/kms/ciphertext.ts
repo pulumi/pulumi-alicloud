@@ -54,7 +54,6 @@ export class Ciphertext extends pulumi.CustomResource {
      */
     public /*out*/ readonly ciphertextBlob!: pulumi.Output<string>;
     /**
-     * -
      * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     public readonly encryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -94,10 +93,12 @@ export class Ciphertext extends pulumi.CustomResource {
             }
             resourceInputs["encryptionContext"] = args ? args.encryptionContext : undefined;
             resourceInputs["keyId"] = args ? args.keyId : undefined;
-            resourceInputs["plaintext"] = args ? args.plaintext : undefined;
+            resourceInputs["plaintext"] = args?.plaintext ? pulumi.secret(args.plaintext) : undefined;
             resourceInputs["ciphertextBlob"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["plaintext"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Ciphertext.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -111,7 +112,6 @@ export interface CiphertextState {
      */
     ciphertextBlob?: pulumi.Input<string>;
     /**
-     * -
      * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -130,7 +130,6 @@ export interface CiphertextState {
  */
 export interface CiphertextArgs {
     /**
-     * -
      * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

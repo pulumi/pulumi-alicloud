@@ -5,14 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./certificate";
-export * from "./getCertificates";
-export * from "./getServiceCertificates";
-export * from "./serviceCertificate";
+export { CertificateArgs, CertificateState } from "./certificate";
+export type Certificate = import("./certificate").Certificate;
+export const Certificate: typeof import("./certificate").Certificate = null as any;
+utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
 
-// Import resources to register:
-import { Certificate } from "./certificate";
-import { ServiceCertificate } from "./serviceCertificate";
+export { GetCertificatesArgs, GetCertificatesResult, GetCertificatesOutputArgs } from "./getCertificates";
+export const getCertificates: typeof import("./getCertificates").getCertificates = null as any;
+export const getCertificatesOutput: typeof import("./getCertificates").getCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificates","getCertificatesOutput"], () => require("./getCertificates"));
+
+export { GetServiceCertificatesArgs, GetServiceCertificatesResult, GetServiceCertificatesOutputArgs } from "./getServiceCertificates";
+export const getServiceCertificates: typeof import("./getServiceCertificates").getServiceCertificates = null as any;
+export const getServiceCertificatesOutput: typeof import("./getServiceCertificates").getServiceCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceCertificates","getServiceCertificatesOutput"], () => require("./getServiceCertificates"));
+
+export { ServiceCertificateArgs, ServiceCertificateState } from "./serviceCertificate";
+export type ServiceCertificate = import("./serviceCertificate").ServiceCertificate;
+export const ServiceCertificate: typeof import("./serviceCertificate").ServiceCertificate = null as any;
+utilities.lazyLoad(exports, ["ServiceCertificate"], () => require("./serviceCertificate"));
+
 
 const _module = {
     version: utilities.getVersion(),

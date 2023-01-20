@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Log
         /// &gt; **NOTE:** Available in v1.126.0+.
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("alicloud:log/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("alicloud:log/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Log Projects of the current Alibaba Cloud user.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Log
         /// &gt; **NOTE:** Available in v1.126.0+.
         /// </summary>
         public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("alicloud:log/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("alicloud:log/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetProjectsArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -61,9 +61,10 @@ namespace Pulumi.AliCloud.Log
         public GetProjectsArgs()
         {
         }
+        public static new GetProjectsArgs Empty => new GetProjectsArgs();
     }
 
-    public sealed class GetProjectsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProjectsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -95,6 +96,7 @@ namespace Pulumi.AliCloud.Log
         public GetProjectsInvokeArgs()
         {
         }
+        public static new GetProjectsInvokeArgs Empty => new GetProjectsInvokeArgs();
     }
 
 

@@ -254,7 +254,7 @@ public final class OosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oos.OosFunctions;
-     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.oos.inputs.GetApplicationsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -299,7 +299,7 @@ public final class OosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oos.OosFunctions;
-     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.oos.inputs.GetApplicationsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -344,7 +344,7 @@ public final class OosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oos.OosFunctions;
-     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.oos.inputs.GetApplicationsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -389,7 +389,7 @@ public final class OosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oos.OosFunctions;
-     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.oos.inputs.GetApplicationsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -434,7 +434,7 @@ public final class OosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oos.OosFunctions;
-     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.oos.inputs.GetApplicationsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -479,7 +479,7 @@ public final class OosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oos.OosFunctions;
-     * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
+     * import com.pulumi.alicloud.oos.inputs.GetApplicationsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -522,7 +522,7 @@ public final class OosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oos.OosFunctions;
-     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import com.pulumi.alicloud.oos.inputs.GetExecutionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -564,7 +564,7 @@ public final class OosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oos.OosFunctions;
-     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import com.pulumi.alicloud.oos.inputs.GetExecutionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -606,7 +606,7 @@ public final class OosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oos.OosFunctions;
-     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import com.pulumi.alicloud.oos.inputs.GetExecutionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -648,7 +648,7 @@ public final class OosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oos.OosFunctions;
-     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import com.pulumi.alicloud.oos.inputs.GetExecutionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -690,7 +690,7 @@ public final class OosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oos.OosFunctions;
-     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import com.pulumi.alicloud.oos.inputs.GetExecutionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -732,7 +732,7 @@ public final class OosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oos.OosFunctions;
-     * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
+     * import com.pulumi.alicloud.oos.inputs.GetExecutionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

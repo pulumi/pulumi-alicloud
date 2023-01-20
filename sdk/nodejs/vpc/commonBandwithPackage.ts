@@ -102,6 +102,10 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+     */
+    public readonly securityProtectionTypes!: pulumi.Output<string[] | undefined>;
+    /**
      * (Available in 1.120.0+) The status of bandwidth package.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -133,6 +137,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["ratio"] = state ? state.ratio : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityProtectionTypes"] = state ? state.securityProtectionTypes : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
@@ -150,6 +155,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ratio"] = args ? args.ratio : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityProtectionTypes"] = args ? args.securityProtectionTypes : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -206,6 +212,10 @@ export interface CommonBandwithPackageState {
      * The Id of resource group which the common bandwidth package belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+     */
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (Available in 1.120.0+) The status of bandwidth package.
      */
@@ -264,6 +274,10 @@ export interface CommonBandwithPackageArgs {
      * The Id of resource group which the common bandwidth package belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+     */
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The zone of bandwidth package.
      */

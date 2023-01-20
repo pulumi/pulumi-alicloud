@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class MonitorGroupInstancesInstanceArgs : Pulumi.ResourceArgs
+    public sealed class MonitorGroupInstancesInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The category of instance.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public MonitorGroupInstancesInstanceArgs()
         {
         }
+        public static new MonitorGroupInstancesInstanceArgs Empty => new MonitorGroupInstancesInstanceArgs();
     }
 }

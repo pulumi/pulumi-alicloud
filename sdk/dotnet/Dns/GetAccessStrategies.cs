@@ -23,36 +23,35 @@ namespace Pulumi.AliCloud.Dns
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dns.GetAccessStrategies.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dns.GetAccessStrategies.InvokeAsync(new AliCloud.Dns.GetAccessStrategiesArgs
+        ///         InstanceId = "example_value",
+        ///         StrategyMode = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "example_value",
-        ///             StrategyMode = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.AlidnsAccessStrategyId1 = ids.Apply(ids =&gt; ids.Strategies?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("alidnsAccessStrategyId1")]
-        ///     public Output&lt;string&gt; AlidnsAccessStrategyId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alidnsAccessStrategyId1"] = ids.Apply(getAccessStrategiesResult =&gt; getAccessStrategiesResult.Strategies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessStrategiesResult> InvokeAsync(GetAccessStrategiesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessStrategiesResult>("alicloud:dns/getAccessStrategies:getAccessStrategies", args ?? new GetAccessStrategiesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessStrategiesResult>("alicloud:dns/getAccessStrategies:getAccessStrategies", args ?? new GetAccessStrategiesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Alidns Access Strategies of the current Alibaba Cloud user.
@@ -66,40 +65,39 @@ namespace Pulumi.AliCloud.Dns
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dns.GetAccessStrategies.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dns.GetAccessStrategies.InvokeAsync(new AliCloud.Dns.GetAccessStrategiesArgs
+        ///         InstanceId = "example_value",
+        ///         StrategyMode = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "example_value",
-        ///             StrategyMode = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.AlidnsAccessStrategyId1 = ids.Apply(ids =&gt; ids.Strategies?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("alidnsAccessStrategyId1")]
-        ///     public Output&lt;string&gt; AlidnsAccessStrategyId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alidnsAccessStrategyId1"] = ids.Apply(getAccessStrategiesResult =&gt; getAccessStrategiesResult.Strategies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessStrategiesResult> Invoke(GetAccessStrategiesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccessStrategiesResult>("alicloud:dns/getAccessStrategies:getAccessStrategies", args ?? new GetAccessStrategiesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessStrategiesResult>("alicloud:dns/getAccessStrategies:getAccessStrategies", args ?? new GetAccessStrategiesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAccessStrategiesArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessStrategiesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -149,9 +147,10 @@ namespace Pulumi.AliCloud.Dns
         public GetAccessStrategiesArgs()
         {
         }
+        public static new GetAccessStrategiesArgs Empty => new GetAccessStrategiesArgs();
     }
 
-    public sealed class GetAccessStrategiesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessStrategiesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -201,6 +200,7 @@ namespace Pulumi.AliCloud.Dns
         public GetAccessStrategiesInvokeArgs()
         {
         }
+        public static new GetAccessStrategiesInvokeArgs Empty => new GetAccessStrategiesInvokeArgs();
     }
 
 

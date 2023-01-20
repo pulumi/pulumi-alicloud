@@ -264,6 +264,8 @@ class SslVpnClientCert(pulumi.CustomResource):
             __props__.__dict__["client_config"] = None
             __props__.__dict__["client_key"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["caCert", "clientCert", "clientConfig", "clientKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SslVpnClientCert, __self__).__init__(
             'alicloud:vpn/sslVpnClientCert:SslVpnClientCert',
             resource_name,

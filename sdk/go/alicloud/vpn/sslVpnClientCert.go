@@ -77,6 +77,13 @@ func NewSslVpnClientCert(ctx *pulumi.Context,
 	if args.SslVpnServerId == nil {
 		return nil, errors.New("invalid value for required argument 'SslVpnServerId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"caCert",
+		"clientCert",
+		"clientConfig",
+		"clientKey",
+	})
+	opts = append(opts, secrets)
 	var resource SslVpnClientCert
 	err := ctx.RegisterResource("alicloud:vpn/sslVpnClientCert:SslVpnClientCert", name, args, &resource, opts...)
 	if err != nil {

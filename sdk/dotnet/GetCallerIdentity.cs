@@ -21,26 +21,25 @@ namespace Pulumi.AliCloud
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(AliCloud.GetCallerIdentity.InvokeAsync());
-        ///         this.CurrentUserArn = current.Apply(current =&gt; current.Id);
-        ///     }
+        ///     var current = AliCloud.GetCallerIdentity.Invoke();
         /// 
-        ///     [Output("currentUserArn")]
-        ///     public Output&lt;string&gt; CurrentUserArn { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["currentUserArn"] = current.Apply(getCallerIdentityResult =&gt; getCallerIdentityResult.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCallerIdentityResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCallerIdentityResult>("alicloud:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCallerIdentityResult>("alicloud:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

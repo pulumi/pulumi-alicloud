@@ -19,66 +19,69 @@ namespace Pulumi.AliCloud.Cen
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new instance-grant and use it to grant one child instance of account1 to a new CEN of account 2.
+    ///     var account1 = new AliCloud.Provider("account1", new()
     ///     {
-    ///         // Create a new instance-grant and use it to grant one child instance of account1 to a new CEN of account 2.
-    ///         var account1 = new AliCloud.Provider("account1", new AliCloud.ProviderArgs
-    ///         {
-    ///             AccessKey = "access123",
-    ///             SecretKey = "secret123",
-    ///         });
-    ///         var account2 = new AliCloud.Provider("account2", new AliCloud.ProviderArgs
-    ///         {
-    ///             AccessKey = "access456",
-    ///             SecretKey = "secret456",
-    ///         });
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testAccCenInstanceGrantBasic";
-    ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Account2,
-    ///         });
-    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "192.168.0.0/16",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Account1,
-    ///         });
-    ///         var fooInstanceGrant = new AliCloud.Cen.InstanceGrant("fooInstanceGrant", new AliCloud.Cen.InstanceGrantArgs
-    ///         {
-    ///             CenId = cen.Id,
-    ///             ChildInstanceId = vpc.Id,
-    ///             CenOwnerId = "uid2",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Account1,
-    ///         });
-    ///         var fooInstanceAttachment = new AliCloud.Cen.InstanceAttachment("fooInstanceAttachment", new AliCloud.Cen.InstanceAttachmentArgs
-    ///         {
-    ///             InstanceId = cen.Id,
-    ///             ChildInstanceId = vpc.Id,
-    ///             ChildInstanceType = "VPC",
-    ///             ChildInstanceRegionId = "cn-qingdao",
-    ///             ChildInstanceOwnerId = "uid1",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Account2,
-    ///             DependsOn = 
-    ///             {
-    ///                 fooInstanceGrant,
-    ///             },
-    ///         });
-    ///     }
+    ///         AccessKey = "access123",
+    ///         SecretKey = "secret123",
+    ///     });
     /// 
-    /// }
+    ///     var account2 = new AliCloud.Provider("account2", new()
+    ///     {
+    ///         AccessKey = "access456",
+    ///         SecretKey = "secret456",
+    ///     });
+    /// 
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testAccCenInstanceGrantBasic";
+    ///     var cen = new AliCloud.Cen.Instance("cen", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Account2,
+    ///     });
+    /// 
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Account1,
+    ///     });
+    /// 
+    ///     var fooInstanceGrant = new AliCloud.Cen.InstanceGrant("fooInstanceGrant", new()
+    ///     {
+    ///         CenId = cen.Id,
+    ///         ChildInstanceId = vpc.Id,
+    ///         CenOwnerId = "uid2",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Account1,
+    ///     });
+    /// 
+    ///     var fooInstanceAttachment = new AliCloud.Cen.InstanceAttachment("fooInstanceAttachment", new()
+    ///     {
+    ///         InstanceId = cen.Id,
+    ///         ChildInstanceId = vpc.Id,
+    ///         ChildInstanceType = "VPC",
+    ///         ChildInstanceRegionId = "cn-qingdao",
+    ///         ChildInstanceOwnerId = "uid1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Account2,
+    ///         DependsOn = new[]
+    ///         {
+    ///             fooInstanceGrant,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -90,7 +93,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/instanceGrant:InstanceGrant")]
-    public partial class InstanceGrant : Pulumi.CustomResource
+    public partial class InstanceGrant : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the CEN.
@@ -154,7 +157,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class InstanceGrantArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGrantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CEN.
@@ -177,9 +180,10 @@ namespace Pulumi.AliCloud.Cen
         public InstanceGrantArgs()
         {
         }
+        public static new InstanceGrantArgs Empty => new InstanceGrantArgs();
     }
 
-    public sealed class InstanceGrantState : Pulumi.ResourceArgs
+    public sealed class InstanceGrantState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CEN.
@@ -202,5 +206,6 @@ namespace Pulumi.AliCloud.Cen
         public InstanceGrantState()
         {
         }
+        public static new InstanceGrantState Empty => new InstanceGrantState();
     }
 }

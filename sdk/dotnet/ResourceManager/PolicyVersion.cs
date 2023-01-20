@@ -15,17 +15,16 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var examplePolicy = new AliCloud.ResourceManager.Policy("examplePolicy", new()
     ///     {
-    ///         var examplePolicy = new AliCloud.ResourceManager.Policy("examplePolicy", new AliCloud.ResourceManager.PolicyArgs
-    ///         {
-    ///             PolicyName = "tftest",
-    ///             PolicyDocument = @"		{
+    ///         PolicyName = "tftest",
+    ///         PolicyDocument = @"		{
     /// 			""Statement"": [{
     /// 				""Action"": [""oss:*""],
     /// 				""Effect"": ""Allow"",
@@ -34,11 +33,12 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 			""Version"": ""1""
     /// 		}
     /// ",
-    ///         });
-    ///         var examplePolicyVersion = new AliCloud.ResourceManager.PolicyVersion("examplePolicyVersion", new AliCloud.ResourceManager.PolicyVersionArgs
-    ///         {
-    ///             PolicyName = examplePolicy.PolicyName,
-    ///             PolicyDocument = @"		{
+    ///     });
+    /// 
+    ///     var examplePolicyVersion = new AliCloud.ResourceManager.PolicyVersion("examplePolicyVersion", new()
+    ///     {
+    ///         PolicyName = examplePolicy.PolicyName,
+    ///         PolicyDocument = @"		{
     /// 			""Statement"": [{
     /// 				""Action"": [""oss:*""],
     /// 				""Effect"": ""Allow"",
@@ -47,10 +47,9 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 			""Version"": ""1""
     /// 		}
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -62,7 +61,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/policyVersion:PolicyVersion")]
-    public partial class PolicyVersion : Pulumi.CustomResource
+    public partial class PolicyVersion : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies whether to set the policy version as the default version. Default to `false`.
@@ -126,7 +125,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class PolicyVersionArgs : Pulumi.ResourceArgs
+    public sealed class PolicyVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to set the policy version as the default version. Default to `false`.
@@ -149,9 +148,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public PolicyVersionArgs()
         {
         }
+        public static new PolicyVersionArgs Empty => new PolicyVersionArgs();
     }
 
-    public sealed class PolicyVersionState : Pulumi.ResourceArgs
+    public sealed class PolicyVersionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to set the policy version as the default version. Default to `false`.
@@ -174,5 +174,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public PolicyVersionState()
         {
         }
+        public static new PolicyVersionState Empty => new PolicyVersionState();
     }
 }

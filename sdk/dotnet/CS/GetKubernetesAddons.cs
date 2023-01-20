@@ -22,29 +22,28 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.CS.GetKubernetesAddons.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesAddons.InvokeAsync(new AliCloud.CS.GetKubernetesAddonsArgs
-        ///         {
-        ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-        ///         }));
-        ///         this.Addons = @default.Apply(@default =&gt; @default.Addons);
-        ///     }
+        ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+        ///     });
         /// 
-        ///     [Output("addons")]
-        ///     public Output&lt;string&gt; Addons { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["addons"] = @default.Apply(getKubernetesAddonsResult =&gt; getKubernetesAddonsResult).Apply(@default =&gt; @default.Apply(getKubernetesAddonsResult =&gt; getKubernetesAddonsResult.Addons)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesAddonsResult> InvokeAsync(GetKubernetesAddonsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesAddonsResult>("alicloud:cs/getKubernetesAddons:getKubernetesAddons", args ?? new GetKubernetesAddonsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesAddonsResult>("alicloud:cs/getKubernetesAddons:getKubernetesAddons", args ?? new GetKubernetesAddonsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of available addons that the cluster can install.
@@ -57,33 +56,32 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.CS.GetKubernetesAddons.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesAddons.InvokeAsync(new AliCloud.CS.GetKubernetesAddonsArgs
-        ///         {
-        ///             ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
-        ///         }));
-        ///         this.Addons = @default.Apply(@default =&gt; @default.Addons);
-        ///     }
+        ///         ClusterId = alicloud_cs_managed_kubernetes.Default[0].Id,
+        ///     });
         /// 
-        ///     [Output("addons")]
-        ///     public Output&lt;string&gt; Addons { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["addons"] = @default.Apply(getKubernetesAddonsResult =&gt; getKubernetesAddonsResult).Apply(@default =&gt; @default.Apply(getKubernetesAddonsResult =&gt; getKubernetesAddonsResult.Addons)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubernetesAddonsResult> Invoke(GetKubernetesAddonsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKubernetesAddonsResult>("alicloud:cs/getKubernetesAddons:getKubernetesAddons", args ?? new GetKubernetesAddonsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesAddonsResult>("alicloud:cs/getKubernetesAddons:getKubernetesAddons", args ?? new GetKubernetesAddonsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetKubernetesAddonsArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesAddonsArgs : global::Pulumi.InvokeArgs
     {
         [Input("addons")]
         private List<Inputs.GetKubernetesAddonsAddonArgs>? _addons;
@@ -124,9 +122,10 @@ namespace Pulumi.AliCloud.CS
         public GetKubernetesAddonsArgs()
         {
         }
+        public static new GetKubernetesAddonsArgs Empty => new GetKubernetesAddonsArgs();
     }
 
-    public sealed class GetKubernetesAddonsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesAddonsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("addons")]
         private InputList<Inputs.GetKubernetesAddonsAddonInputArgs>? _addons;
@@ -167,6 +166,7 @@ namespace Pulumi.AliCloud.CS
         public GetKubernetesAddonsInvokeArgs()
         {
         }
+        public static new GetKubernetesAddonsInvokeArgs Empty => new GetKubernetesAddonsInvokeArgs();
     }
 
 

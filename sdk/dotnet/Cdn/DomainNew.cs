@@ -21,34 +21,32 @@ namespace Pulumi.AliCloud.Cdn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Domain.
+    ///     var domain = new AliCloud.Cdn.DomainNew("domain", new()
     ///     {
-    ///         // Create a new Domain.
-    ///         var domain = new AliCloud.Cdn.DomainNew("domain", new AliCloud.Cdn.DomainNewArgs
+    ///         CdnType = "web",
+    ///         DomainName = "terraform.test.com",
+    ///         Scope = "overseas",
+    ///         Sources = new[]
     ///         {
-    ///             CdnType = "web",
-    ///             DomainName = "terraform.test.com",
-    ///             Scope = "overseas",
-    ///             Sources = 
+    ///             new AliCloud.Cdn.Inputs.DomainNewSourceArgs
     ///             {
-    ///                 new AliCloud.Cdn.Inputs.DomainNewSourceArgs
-    ///                 {
-    ///                     Content = "1.1.1.1",
-    ///                     Port = 80,
-    ///                     Priority = 20,
-    ///                     Type = "ipaddr",
-    ///                     Weight = 10,
-    ///                 },
+    ///                 Content = "1.1.1.1",
+    ///                 Port = 80,
+    ///                 Priority = 20,
+    ///                 Type = "ipaddr",
+    ///                 Weight = 10,
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +58,7 @@ namespace Pulumi.AliCloud.Cdn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cdn/domainNew:DomainNew")]
-    public partial class DomainNew : Pulumi.CustomResource
+    public partial class DomainNew : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
@@ -154,7 +152,7 @@ namespace Pulumi.AliCloud.Cdn
         }
     }
 
-    public sealed class DomainNewArgs : Pulumi.ResourceArgs
+    public sealed class DomainNewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
@@ -213,9 +211,10 @@ namespace Pulumi.AliCloud.Cdn
         public DomainNewArgs()
         {
         }
+        public static new DomainNewArgs Empty => new DomainNewArgs();
     }
 
-    public sealed class DomainNewState : Pulumi.ResourceArgs
+    public sealed class DomainNewState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
@@ -280,5 +279,6 @@ namespace Pulumi.AliCloud.Cdn
         public DomainNewState()
         {
         }
+        public static new DomainNewState Empty => new DomainNewState();
     }
 }

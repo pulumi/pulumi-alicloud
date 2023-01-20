@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.Cddc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Cddc.GetDedicatedHostGroups.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Cddc.GetDedicatedHostGroups.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostGroupsArgs
-        ///         {
-        ///             Engine = "MongoDB",
-        ///         }));
-        ///         this.CddcDedicatedHostGroupId = @default.Apply(@default =&gt; @default.Id);
-        ///     }
+        ///         Engine = "MongoDB",
+        ///     });
         /// 
-        ///     [Output("cddcDedicatedHostGroupId")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cddcDedicatedHostGroupId"] = @default.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult).Apply(@default =&gt; @default.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDedicatedHostGroupsResult> InvokeAsync(GetDedicatedHostGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostGroupsResult>("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", args ?? new GetDedicatedHostGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostGroupsResult>("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", args ?? new GetDedicatedHostGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.Cddc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Cddc.GetDedicatedHostGroups.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Cddc.GetDedicatedHostGroups.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostGroupsArgs
-        ///         {
-        ///             Engine = "MongoDB",
-        ///         }));
-        ///         this.CddcDedicatedHostGroupId = @default.Apply(@default =&gt; @default.Id);
-        ///     }
+        ///         Engine = "MongoDB",
+        ///     });
         /// 
-        ///     [Output("cddcDedicatedHostGroupId")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cddcDedicatedHostGroupId"] = @default.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult).Apply(@default =&gt; @default.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDedicatedHostGroupsResult> Invoke(GetDedicatedHostGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDedicatedHostGroupsResult>("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", args ?? new GetDedicatedHostGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedHostGroupsResult>("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", args ?? new GetDedicatedHostGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDedicatedHostGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetDedicatedHostGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
@@ -117,9 +115,10 @@ namespace Pulumi.AliCloud.Cddc
         public GetDedicatedHostGroupsArgs()
         {
         }
+        public static new GetDedicatedHostGroupsArgs Empty => new GetDedicatedHostGroupsArgs();
     }
 
-    public sealed class GetDedicatedHostGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDedicatedHostGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
@@ -151,6 +150,7 @@ namespace Pulumi.AliCloud.Cddc
         public GetDedicatedHostGroupsInvokeArgs()
         {
         }
+        public static new GetDedicatedHostGroupsInvokeArgs Empty => new GetDedicatedHostGroupsInvokeArgs();
     }
 
 

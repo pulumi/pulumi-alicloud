@@ -199,16 +199,19 @@ type ProviderEndpoint struct {
 	Apigateway          *string `pulumi:"apigateway"`
 	Arms                *string `pulumi:"arms"`
 	Bastionhost         *string `pulumi:"bastionhost"`
+	Bpstudio            *string `pulumi:"bpstudio"`
 	BrainIndustrial     *string `pulumi:"brainIndustrial"`
 	Bssopenapi          *string `pulumi:"bssopenapi"`
 	Cas                 *string `pulumi:"cas"`
 	Cassandra           *string `pulumi:"cassandra"`
 	Cbn                 *string `pulumi:"cbn"`
+	Cbs                 *string `pulumi:"cbs"`
 	Cddc                *string `pulumi:"cddc"`
 	Cdn                 *string `pulumi:"cdn"`
 	Cds                 *string `pulumi:"cds"`
 	Clickhouse          *string `pulumi:"clickhouse"`
 	Cloudauth           *string `pulumi:"cloudauth"`
+	Cloudfirewall       *string `pulumi:"cloudfirewall"`
 	Cloudfw             *string `pulumi:"cloudfw"`
 	Cloudphone          *string `pulumi:"cloudphone"`
 	Cloudsso            *string `pulumi:"cloudsso"`
@@ -216,6 +219,7 @@ type ProviderEndpoint struct {
 	Config              *string `pulumi:"config"`
 	Cr                  *string `pulumi:"cr"`
 	Cs                  *string `pulumi:"cs"`
+	Das                 *string `pulumi:"das"`
 	Datahub             *string `pulumi:"datahub"`
 	Dataworkspublic     *string `pulumi:"dataworkspublic"`
 	Dbfs                *string `pulumi:"dbfs"`
@@ -228,11 +232,13 @@ type ProviderEndpoint struct {
 	Dg                  *string `pulumi:"dg"`
 	Dm                  *string `pulumi:"dm"`
 	DmsEnterprise       *string `pulumi:"dmsEnterprise"`
+	Dmsenterprise       *string `pulumi:"dmsenterprise"`
 	Dns                 *string `pulumi:"dns"`
 	Drds                *string `pulumi:"drds"`
 	Dts                 *string `pulumi:"dts"`
 	Dysms               *string `pulumi:"dysms"`
 	Eais                *string `pulumi:"eais"`
+	Ebs                 *string `pulumi:"ebs"`
 	Eci                 *string `pulumi:"eci"`
 	Ecs                 *string `pulumi:"ecs"`
 	Edas                *string `pulumi:"edas"`
@@ -271,6 +277,7 @@ type ProviderEndpoint struct {
 	Mscopensubscription *string `pulumi:"mscopensubscription"`
 	Mse                 *string `pulumi:"mse"`
 	Nas                 *string `pulumi:"nas"`
+	Nlb                 *string `pulumi:"nlb"`
 	Ons                 *string `pulumi:"ons"`
 	Onsproxy            *string `pulumi:"onsproxy"`
 	Oos                 *string `pulumi:"oos"`
@@ -297,11 +304,13 @@ type ProviderEndpoint struct {
 	Sgw                 *string `pulumi:"sgw"`
 	Slb                 *string `pulumi:"slb"`
 	Smartag             *string `pulumi:"smartag"`
+	Srvcatalog          *string `pulumi:"srvcatalog"`
 	Sts                 *string `pulumi:"sts"`
 	Swas                *string `pulumi:"swas"`
 	Tag                 *string `pulumi:"tag"`
 	Vod                 *string `pulumi:"vod"`
 	Vpc                 *string `pulumi:"vpc"`
+	Vpcpeer             *string `pulumi:"vpcpeer"`
 	Vs                  *string `pulumi:"vs"`
 	Waf                 *string `pulumi:"waf"`
 	WafOpenapi          *string `pulumi:"wafOpenapi"`
@@ -329,16 +338,19 @@ type ProviderEndpointArgs struct {
 	Apigateway          pulumi.StringPtrInput `pulumi:"apigateway"`
 	Arms                pulumi.StringPtrInput `pulumi:"arms"`
 	Bastionhost         pulumi.StringPtrInput `pulumi:"bastionhost"`
+	Bpstudio            pulumi.StringPtrInput `pulumi:"bpstudio"`
 	BrainIndustrial     pulumi.StringPtrInput `pulumi:"brainIndustrial"`
 	Bssopenapi          pulumi.StringPtrInput `pulumi:"bssopenapi"`
 	Cas                 pulumi.StringPtrInput `pulumi:"cas"`
 	Cassandra           pulumi.StringPtrInput `pulumi:"cassandra"`
 	Cbn                 pulumi.StringPtrInput `pulumi:"cbn"`
+	Cbs                 pulumi.StringPtrInput `pulumi:"cbs"`
 	Cddc                pulumi.StringPtrInput `pulumi:"cddc"`
 	Cdn                 pulumi.StringPtrInput `pulumi:"cdn"`
 	Cds                 pulumi.StringPtrInput `pulumi:"cds"`
 	Clickhouse          pulumi.StringPtrInput `pulumi:"clickhouse"`
 	Cloudauth           pulumi.StringPtrInput `pulumi:"cloudauth"`
+	Cloudfirewall       pulumi.StringPtrInput `pulumi:"cloudfirewall"`
 	Cloudfw             pulumi.StringPtrInput `pulumi:"cloudfw"`
 	Cloudphone          pulumi.StringPtrInput `pulumi:"cloudphone"`
 	Cloudsso            pulumi.StringPtrInput `pulumi:"cloudsso"`
@@ -346,6 +358,7 @@ type ProviderEndpointArgs struct {
 	Config              pulumi.StringPtrInput `pulumi:"config"`
 	Cr                  pulumi.StringPtrInput `pulumi:"cr"`
 	Cs                  pulumi.StringPtrInput `pulumi:"cs"`
+	Das                 pulumi.StringPtrInput `pulumi:"das"`
 	Datahub             pulumi.StringPtrInput `pulumi:"datahub"`
 	Dataworkspublic     pulumi.StringPtrInput `pulumi:"dataworkspublic"`
 	Dbfs                pulumi.StringPtrInput `pulumi:"dbfs"`
@@ -358,11 +371,13 @@ type ProviderEndpointArgs struct {
 	Dg                  pulumi.StringPtrInput `pulumi:"dg"`
 	Dm                  pulumi.StringPtrInput `pulumi:"dm"`
 	DmsEnterprise       pulumi.StringPtrInput `pulumi:"dmsEnterprise"`
+	Dmsenterprise       pulumi.StringPtrInput `pulumi:"dmsenterprise"`
 	Dns                 pulumi.StringPtrInput `pulumi:"dns"`
 	Drds                pulumi.StringPtrInput `pulumi:"drds"`
 	Dts                 pulumi.StringPtrInput `pulumi:"dts"`
 	Dysms               pulumi.StringPtrInput `pulumi:"dysms"`
 	Eais                pulumi.StringPtrInput `pulumi:"eais"`
+	Ebs                 pulumi.StringPtrInput `pulumi:"ebs"`
 	Eci                 pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs                 pulumi.StringPtrInput `pulumi:"ecs"`
 	Edas                pulumi.StringPtrInput `pulumi:"edas"`
@@ -401,6 +416,7 @@ type ProviderEndpointArgs struct {
 	Mscopensubscription pulumi.StringPtrInput `pulumi:"mscopensubscription"`
 	Mse                 pulumi.StringPtrInput `pulumi:"mse"`
 	Nas                 pulumi.StringPtrInput `pulumi:"nas"`
+	Nlb                 pulumi.StringPtrInput `pulumi:"nlb"`
 	Ons                 pulumi.StringPtrInput `pulumi:"ons"`
 	Onsproxy            pulumi.StringPtrInput `pulumi:"onsproxy"`
 	Oos                 pulumi.StringPtrInput `pulumi:"oos"`
@@ -427,11 +443,13 @@ type ProviderEndpointArgs struct {
 	Sgw                 pulumi.StringPtrInput `pulumi:"sgw"`
 	Slb                 pulumi.StringPtrInput `pulumi:"slb"`
 	Smartag             pulumi.StringPtrInput `pulumi:"smartag"`
+	Srvcatalog          pulumi.StringPtrInput `pulumi:"srvcatalog"`
 	Sts                 pulumi.StringPtrInput `pulumi:"sts"`
 	Swas                pulumi.StringPtrInput `pulumi:"swas"`
 	Tag                 pulumi.StringPtrInput `pulumi:"tag"`
 	Vod                 pulumi.StringPtrInput `pulumi:"vod"`
 	Vpc                 pulumi.StringPtrInput `pulumi:"vpc"`
+	Vpcpeer             pulumi.StringPtrInput `pulumi:"vpcpeer"`
 	Vs                  pulumi.StringPtrInput `pulumi:"vs"`
 	Waf                 pulumi.StringPtrInput `pulumi:"waf"`
 	WafOpenapi          pulumi.StringPtrInput `pulumi:"wafOpenapi"`
@@ -528,6 +546,10 @@ func (o ProviderEndpointOutput) Bastionhost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Bastionhost }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Bpstudio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Bpstudio }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) BrainIndustrial() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.BrainIndustrial }).(pulumi.StringPtrOutput)
 }
@@ -548,6 +570,10 @@ func (o ProviderEndpointOutput) Cbn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cbn }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Cbs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cbs }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Cddc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cddc }).(pulumi.StringPtrOutput)
 }
@@ -566,6 +592,10 @@ func (o ProviderEndpointOutput) Clickhouse() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Cloudauth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudauth }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Cloudfirewall() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudfirewall }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Cloudfw() pulumi.StringPtrOutput {
@@ -594,6 +624,10 @@ func (o ProviderEndpointOutput) Cr() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Cs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cs }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Das() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Das }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Datahub() pulumi.StringPtrOutput {
@@ -644,6 +678,10 @@ func (o ProviderEndpointOutput) DmsEnterprise() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.DmsEnterprise }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Dmsenterprise() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dmsenterprise }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Dns() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dns }).(pulumi.StringPtrOutput)
 }
@@ -662,6 +700,10 @@ func (o ProviderEndpointOutput) Dysms() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Eais() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Eais }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Ebs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ebs }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Eci() pulumi.StringPtrOutput {
@@ -816,6 +858,10 @@ func (o ProviderEndpointOutput) Nas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Nas }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Nlb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Nlb }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Ons() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ons }).(pulumi.StringPtrOutput)
 }
@@ -920,6 +966,10 @@ func (o ProviderEndpointOutput) Smartag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Smartag }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Srvcatalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Srvcatalog }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderEndpointOutput) Sts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Sts }).(pulumi.StringPtrOutput)
 }
@@ -938,6 +988,10 @@ func (o ProviderEndpointOutput) Vod() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Vpc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Vpc }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Vpcpeer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Vpcpeer }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Vs() pulumi.StringPtrOutput {

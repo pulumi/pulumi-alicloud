@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,22 +15,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const kmsKeysDs = pulumi.output(alicloud.kms.getKeys({
+ * const kmsKeysDs = alicloud.kms.getKeys({
  *     descriptionRegex: "Hello KMS",
  *     outputFile: "kms_keys.json",
- * }));
- *
- * export const firstKeyId = kmsKeysDs.keys[0].id;
+ * });
+ * export const firstKeyId = kmsKeysDs.then(kmsKeysDs => kmsKeysDs.keys?.[0]?.id);
  * ```
  */
 export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getKeys:getKeys", {
         "descriptionRegex": args.descriptionRegex,
         "enableDetails": args.enableDetails,
@@ -86,9 +82,24 @@ export interface GetKeysResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const kmsKeysDs = alicloud.kms.getKeys({
+ *     descriptionRegex: "Hello KMS",
+ *     outputFile: "kms_keys.json",
+ * });
+ * export const firstKeyId = kmsKeysDs.then(kmsKeysDs => kmsKeysDs.keys?.[0]?.id);
+ * ```
+ */
 export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
-    return pulumi.output(args).apply(a => getKeys(a, opts))
+    return pulumi.output(args).apply((a: any) => getKeys(a, opts))
 }
 
 /**

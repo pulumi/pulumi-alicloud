@@ -23,44 +23,44 @@ namespace Pulumi.AliCloud.ClickHouse
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
         ///     {
-        ///         var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new AliCloud.ClickHouse.DbClusterArgs
-        ///         {
-        ///             DbClusterVersion = "20.3.10.75",
-        ///             Category = "Basic",
-        ///             DbClusterClass = "S8",
-        ///             DbClusterNetworkType = "vpc",
-        ///             DbNodeGroupCount = 1,
-        ///             PaymentType = "PayAsYouGo",
-        ///             DbNodeStorage = "500",
-        ///             StorageType = "cloud_essd",
-        ///             VswitchId = "your_vswitch_id",
-        ///         });
-        ///         var defaultDbClusters = AliCloud.ClickHouse.GetDbClusters.Invoke(new AliCloud.ClickHouse.GetDbClustersInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultDbCluster.Id,
-        ///             },
-        ///         });
-        ///         this.DbCluster = defaultDbClusters.Apply(defaultDbClusters =&gt; defaultDbClusters.Ids?[0]);
-        ///     }
+        ///         DbClusterVersion = "20.3.10.75",
+        ///         Category = "Basic",
+        ///         DbClusterClass = "S8",
+        ///         DbClusterNetworkType = "vpc",
+        ///         DbNodeGroupCount = 1,
+        ///         PaymentType = "PayAsYouGo",
+        ///         DbNodeStorage = "500",
+        ///         StorageType = "cloud_essd",
+        ///         VswitchId = "your_vswitch_id",
+        ///     });
         /// 
-        ///     [Output("dbCluster")]
-        ///     public Output&lt;string&gt; DbCluster { get; set; }
-        /// }
+        ///     var defaultDbClusters = AliCloud.ClickHouse.GetDbClusters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDbCluster.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dbCluster"] = defaultDbClusters.Apply(getDbClustersResult =&gt; getDbClustersResult.Ids[0]),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDbClustersResult> InvokeAsync(GetDbClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDbClustersResult>("alicloud:clickhouse/getDbClusters:getDbClusters", args ?? new GetDbClustersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbClustersResult>("alicloud:clickhouse/getDbClusters:getDbClusters", args ?? new GetDbClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Click House DBCluster of the current Alibaba Cloud user.
@@ -74,48 +74,48 @@ namespace Pulumi.AliCloud.ClickHouse
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
         ///     {
-        ///         var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new AliCloud.ClickHouse.DbClusterArgs
-        ///         {
-        ///             DbClusterVersion = "20.3.10.75",
-        ///             Category = "Basic",
-        ///             DbClusterClass = "S8",
-        ///             DbClusterNetworkType = "vpc",
-        ///             DbNodeGroupCount = 1,
-        ///             PaymentType = "PayAsYouGo",
-        ///             DbNodeStorage = "500",
-        ///             StorageType = "cloud_essd",
-        ///             VswitchId = "your_vswitch_id",
-        ///         });
-        ///         var defaultDbClusters = AliCloud.ClickHouse.GetDbClusters.Invoke(new AliCloud.ClickHouse.GetDbClustersInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultDbCluster.Id,
-        ///             },
-        ///         });
-        ///         this.DbCluster = defaultDbClusters.Apply(defaultDbClusters =&gt; defaultDbClusters.Ids?[0]);
-        ///     }
+        ///         DbClusterVersion = "20.3.10.75",
+        ///         Category = "Basic",
+        ///         DbClusterClass = "S8",
+        ///         DbClusterNetworkType = "vpc",
+        ///         DbNodeGroupCount = 1,
+        ///         PaymentType = "PayAsYouGo",
+        ///         DbNodeStorage = "500",
+        ///         StorageType = "cloud_essd",
+        ///         VswitchId = "your_vswitch_id",
+        ///     });
         /// 
-        ///     [Output("dbCluster")]
-        ///     public Output&lt;string&gt; DbCluster { get; set; }
-        /// }
+        ///     var defaultDbClusters = AliCloud.ClickHouse.GetDbClusters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDbCluster.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dbCluster"] = defaultDbClusters.Apply(getDbClustersResult =&gt; getDbClustersResult.Ids[0]),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDbClustersResult> Invoke(GetDbClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDbClustersResult>("alicloud:clickhouse/getDbClusters:getDbClusters", args ?? new GetDbClustersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDbClustersResult>("alicloud:clickhouse/getDbClusters:getDbClusters", args ?? new GetDbClustersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDbClustersArgs : Pulumi.InvokeArgs
+    public sealed class GetDbClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The DBCluster description.
@@ -153,9 +153,10 @@ namespace Pulumi.AliCloud.ClickHouse
         public GetDbClustersArgs()
         {
         }
+        public static new GetDbClustersArgs Empty => new GetDbClustersArgs();
     }
 
-    public sealed class GetDbClustersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDbClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The DBCluster description.
@@ -193,6 +194,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public GetDbClustersInvokeArgs()
         {
         }
+        public static new GetDbClustersInvokeArgs Empty => new GetDbClustersInvokeArgs();
     }
 
 

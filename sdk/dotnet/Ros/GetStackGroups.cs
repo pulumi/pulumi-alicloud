@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ros
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ros.GetStackGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ros.GetStackGroups.InvokeAsync(new AliCloud.Ros.GetStackGroupsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstRosStackGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstRosStackGroupId")]
-        ///     public Output&lt;string&gt; FirstRosStackGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRosStackGroupId"] = example.Apply(getStackGroupsResult =&gt; getStackGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetStackGroupsResult> InvokeAsync(GetStackGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStackGroupsResult>("alicloud:ros/getStackGroups:getStackGroups", args ?? new GetStackGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetStackGroupsResult>("alicloud:ros/getStackGroups:getStackGroups", args ?? new GetStackGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ros
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ros.GetStackGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ros.GetStackGroups.InvokeAsync(new AliCloud.Ros.GetStackGroupsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstRosStackGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstRosStackGroupId")]
-        ///     public Output&lt;string&gt; FirstRosStackGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRosStackGroupId"] = example.Apply(getStackGroupsResult =&gt; getStackGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetStackGroupsResult> Invoke(GetStackGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStackGroupsResult>("alicloud:ros/getStackGroups:getStackGroups", args ?? new GetStackGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetStackGroupsResult>("alicloud:ros/getStackGroups:getStackGroups", args ?? new GetStackGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetStackGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetStackGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -131,9 +129,10 @@ namespace Pulumi.AliCloud.Ros
         public GetStackGroupsArgs()
         {
         }
+        public static new GetStackGroupsArgs Empty => new GetStackGroupsArgs();
     }
 
-    public sealed class GetStackGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetStackGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -171,6 +170,7 @@ namespace Pulumi.AliCloud.Ros
         public GetStackGroupsInvokeArgs()
         {
         }
+        public static new GetStackGroupsInvokeArgs Empty => new GetStackGroupsInvokeArgs();
     }
 
 

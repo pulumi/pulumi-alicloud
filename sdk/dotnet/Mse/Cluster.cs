@@ -17,31 +17,30 @@ namespace Pulumi.AliCloud.Mse
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Mse.Cluster("example", new()
     ///     {
-    ///         var example = new AliCloud.Mse.Cluster("example", new AliCloud.Mse.ClusterArgs
+    ///         AclEntryLists = new[]
     ///         {
-    ///             AclEntryLists = 
-    ///             {
-    ///                 "127.0.0.1/32",
-    ///             },
-    ///             ClusterAliasName = "tf-testAccMseCluster",
-    ///             ClusterSpecification = "MSE_SC_1_2_200_c",
-    ///             ClusterType = "Nacos-Ans",
-    ///             ClusterVersion = "NACOS_ANS_1_2_1",
-    ///             InstanceCount = 1,
-    ///             NetType = "privatenet",
-    ///             PubNetworkFlow = "1",
-    ///             VswitchId = "vsw-123456",
-    ///         });
-    ///     }
+    ///             "127.0.0.1/32",
+    ///         },
+    ///         ClusterAliasName = "tf-testAccMseCluster",
+    ///         ClusterSpecification = "MSE_SC_1_2_200_c",
+    ///         ClusterType = "Nacos-Ans",
+    ///         ClusterVersion = "NACOS_ANS_1_2_1",
+    ///         InstanceCount = 1,
+    ///         MseVersion = "mse_dev",
+    ///         NetType = "privatenet",
+    ///         PubNetworkFlow = "1",
+    ///         VswitchId = "vsw-123456",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +52,7 @@ namespace Pulumi.AliCloud.Mse
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mse/cluster:Cluster")]
-    public partial class Cluster : Pulumi.CustomResource
+    public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
@@ -74,11 +73,7 @@ namespace Pulumi.AliCloud.Mse
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The engine specification of MSE Cluster. Valid values:
-        /// `MSE_SC_1_2_200_c`：1C2G
-        /// `MSE_SC_2_4_200_c`：2C4G
-        /// `MSE_SC_4_8_200_c`：4C8G
-        /// `MSE_SC_8_16_200_c`：8C16G
+        /// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
         /// </summary>
         [Output("clusterSpecification")]
         public Output<string> ClusterSpecification { get; private set; } = null!;
@@ -90,10 +85,16 @@ namespace Pulumi.AliCloud.Mse
         public Output<string> ClusterType { get; private set; } = null!;
 
         /// <summary>
-        /// The version of MSE Cluster.
+        /// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
         /// </summary>
         [Output("clusterVersion")]
         public Output<string> ClusterVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The connection type. Valid values: `slb`.
+        /// </summary>
+        [Output("connectionType")]
+        public Output<string> ConnectionType { get; private set; } = null!;
 
         /// <summary>
         /// The type of Disk.
@@ -102,13 +103,13 @@ namespace Pulumi.AliCloud.Mse
         public Output<string?> DiskType { get; private set; } = null!;
 
         /// <summary>
-        /// The count of instance.
+        /// The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
         /// </summary>
         [Output("instanceCount")]
         public Output<int> InstanceCount { get; private set; } = null!;
 
         /// <summary>
-        /// The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        /// The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         /// </summary>
         [Output("mseVersion")]
         public Output<string> MseVersion { get; private set; } = null!;
@@ -138,10 +139,22 @@ namespace Pulumi.AliCloud.Mse
         public Output<string?> PubSlbSpecification { get; private set; } = null!;
 
         /// <summary>
+        /// The extended request parameters in the JSON format.
+        /// </summary>
+        [Output("requestPars")]
+        public Output<string?> RequestPars { get; private set; } = null!;
+
+        /// <summary>
         /// The status of MSE Cluster.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The id of VSwitch.
@@ -193,7 +206,7 @@ namespace Pulumi.AliCloud.Mse
         }
     }
 
-    public sealed class ClusterArgs : Pulumi.ResourceArgs
+    public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         [Input("aclEntryLists")]
         private InputList<string>? _aclEntryLists;
@@ -214,11 +227,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? ClusterAliasName { get; set; }
 
         /// <summary>
-        /// The engine specification of MSE Cluster. Valid values:
-        /// `MSE_SC_1_2_200_c`：1C2G
-        /// `MSE_SC_2_4_200_c`：2C4G
-        /// `MSE_SC_4_8_200_c`：4C8G
-        /// `MSE_SC_8_16_200_c`：8C16G
+        /// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
         /// </summary>
         [Input("clusterSpecification", required: true)]
         public Input<string> ClusterSpecification { get; set; } = null!;
@@ -230,10 +239,16 @@ namespace Pulumi.AliCloud.Mse
         public Input<string> ClusterType { get; set; } = null!;
 
         /// <summary>
-        /// The version of MSE Cluster.
+        /// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
         /// </summary>
         [Input("clusterVersion", required: true)]
         public Input<string> ClusterVersion { get; set; } = null!;
+
+        /// <summary>
+        /// The connection type. Valid values: `slb`.
+        /// </summary>
+        [Input("connectionType")]
+        public Input<string>? ConnectionType { get; set; }
 
         /// <summary>
         /// The type of Disk.
@@ -242,13 +257,13 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// The count of instance.
+        /// The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
         /// </summary>
         [Input("instanceCount", required: true)]
         public Input<int> InstanceCount { get; set; } = null!;
 
         /// <summary>
-        /// The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        /// The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         /// </summary>
         [Input("mseVersion")]
         public Input<string>? MseVersion { get; set; }
@@ -278,6 +293,18 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? PubSlbSpecification { get; set; }
 
         /// <summary>
+        /// The extended request parameters in the JSON format.
+        /// </summary>
+        [Input("requestPars")]
+        public Input<string>? RequestPars { get; set; }
+
+        /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The id of VSwitch.
         /// </summary>
         [Input("vswitchId")]
@@ -286,9 +313,10 @@ namespace Pulumi.AliCloud.Mse
         public ClusterArgs()
         {
         }
+        public static new ClusterArgs Empty => new ClusterArgs();
     }
 
-    public sealed class ClusterState : Pulumi.ResourceArgs
+    public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         [Input("aclEntryLists")]
         private InputList<string>? _aclEntryLists;
@@ -315,11 +343,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The engine specification of MSE Cluster. Valid values:
-        /// `MSE_SC_1_2_200_c`：1C2G
-        /// `MSE_SC_2_4_200_c`：2C4G
-        /// `MSE_SC_4_8_200_c`：4C8G
-        /// `MSE_SC_8_16_200_c`：8C16G
+        /// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
         /// </summary>
         [Input("clusterSpecification")]
         public Input<string>? ClusterSpecification { get; set; }
@@ -331,10 +355,16 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? ClusterType { get; set; }
 
         /// <summary>
-        /// The version of MSE Cluster.
+        /// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
         /// </summary>
         [Input("clusterVersion")]
         public Input<string>? ClusterVersion { get; set; }
+
+        /// <summary>
+        /// The connection type. Valid values: `slb`.
+        /// </summary>
+        [Input("connectionType")]
+        public Input<string>? ConnectionType { get; set; }
 
         /// <summary>
         /// The type of Disk.
@@ -343,13 +373,13 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// The count of instance.
+        /// The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
         /// </summary>
         [Input("instanceCount")]
         public Input<int>? InstanceCount { get; set; }
 
         /// <summary>
-        /// The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+        /// The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         /// </summary>
         [Input("mseVersion")]
         public Input<string>? MseVersion { get; set; }
@@ -379,10 +409,22 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? PubSlbSpecification { get; set; }
 
         /// <summary>
+        /// The extended request parameters in the JSON format.
+        /// </summary>
+        [Input("requestPars")]
+        public Input<string>? RequestPars { get; set; }
+
+        /// <summary>
         /// The status of MSE Cluster.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The id of VSwitch.
@@ -393,5 +435,6 @@ namespace Pulumi.AliCloud.Mse
         public ClusterState()
         {
         }
+        public static new ClusterState Empty => new ClusterState();
     }
 }

@@ -21,26 +21,25 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetHandshakes.InvokeAsync());
-        ///         this.FirstHandshakeId = example.Apply(example =&gt; example.Handshakes?[0]?.Id);
-        ///     }
+        ///     var example = AliCloud.ResourceManager.GetHandshakes.Invoke();
         /// 
-        ///     [Output("firstHandshakeId")]
-        ///     public Output&lt;string&gt; FirstHandshakeId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstHandshakeId"] = example.Apply(getHandshakesResult =&gt; getHandshakesResult.Handshakes[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHandshakesResult> InvokeAsync(GetHandshakesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHandshakesResult>("alicloud:resourcemanager/getHandshakes:getHandshakes", args ?? new GetHandshakesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHandshakesResult>("alicloud:resourcemanager/getHandshakes:getHandshakes", args ?? new GetHandshakesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Resource Manager Handshakes of the current Alibaba Cloud user.
@@ -52,33 +51,32 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetHandshakes.InvokeAsync());
-        ///         this.FirstHandshakeId = example.Apply(example =&gt; example.Handshakes?[0]?.Id);
-        ///     }
+        ///     var example = AliCloud.ResourceManager.GetHandshakes.Invoke();
         /// 
-        ///     [Output("firstHandshakeId")]
-        ///     public Output&lt;string&gt; FirstHandshakeId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstHandshakeId"] = example.Apply(getHandshakesResult =&gt; getHandshakesResult.Handshakes[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHandshakesResult> Invoke(GetHandshakesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHandshakesResult>("alicloud:resourcemanager/getHandshakes:getHandshakes", args ?? new GetHandshakesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHandshakesResult>("alicloud:resourcemanager/getHandshakes:getHandshakes", args ?? new GetHandshakesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHandshakesArgs : Pulumi.InvokeArgs
+    public sealed class GetHandshakesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// Default to `false`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -107,12 +105,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetHandshakesArgs()
         {
         }
+        public static new GetHandshakesArgs Empty => new GetHandshakesArgs();
     }
 
-    public sealed class GetHandshakesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHandshakesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// Default to `false`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -141,6 +140,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetHandshakesInvokeArgs()
         {
         }
+        public static new GetHandshakesInvokeArgs Empty => new GetHandshakesInvokeArgs();
     }
 
 

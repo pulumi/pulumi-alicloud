@@ -94,8 +94,6 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
-     * -`defense` - scrubbing threshold.
-     * -`blackhole` - DDoS mitigation threshold.
      * 
      */
     @Export(name="ddosType", type=String.class, parameters={})
@@ -103,8 +101,6 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the threshold to query. Valid values: `defense`,`blackhole`.
-     * -`defense` - scrubbing threshold.
-     * -`blackhole` - DDoS mitigation threshold.
      * 
      */
     public Output<String> ddosType() {
@@ -154,8 +150,6 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether it is the system default threshold. Value:
-     * - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-     * - `false`: indicates no, that is, you manually set the cleaning threshold.
      * 
      */
     @Export(name="isAuto", type=Boolean.class, parameters={})
@@ -163,8 +157,6 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether it is the system default threshold. Value:
-     * - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-     * - `false`: indicates no, that is, you manually set the cleaning threshold.
      * 
      */
     public Output<Boolean> isAuto() {

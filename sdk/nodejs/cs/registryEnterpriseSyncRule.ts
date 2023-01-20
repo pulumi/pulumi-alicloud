@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultRegistryEnterpriseSyncRule = new alicloud.cs.RegistryEnterpriseSyncRule("default", {
+ * const _default = new alicloud.cs.RegistryEnterpriseSyncRule("default", {
  *     instanceId: "my-source-instance-id",
  *     namespaceName: "my-source-namespace",
  *     repoName: "my-source-repo",

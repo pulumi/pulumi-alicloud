@@ -19,15 +19,15 @@ public final class PrefixListEntryArgs extends com.pulumi.resources.ResourceArgs
      * The CIDR address block of the prefix list.
      * 
      */
-    @Import(name="cidr", required=true)
-    private Output<String> cidr;
+    @Import(name="cidr")
+    private @Nullable Output<String> cidr;
 
     /**
      * @return The CIDR address block of the prefix list.
      * 
      */
-    public Output<String> cidr() {
-        return this.cidr;
+    public Optional<Output<String>> cidr() {
+        return Optional.ofNullable(this.cidr);
     }
 
     /**
@@ -76,7 +76,7 @@ public final class PrefixListEntryArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder cidr(Output<String> cidr) {
+        public Builder cidr(@Nullable Output<String> cidr) {
             $.cidr = cidr;
             return this;
         }
@@ -113,7 +113,6 @@ public final class PrefixListEntryArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public PrefixListEntryArgs build() {
-            $.cidr = Objects.requireNonNull($.cidr, "expected parameter 'cidr' to be non-null");
             return $;
         }
     }

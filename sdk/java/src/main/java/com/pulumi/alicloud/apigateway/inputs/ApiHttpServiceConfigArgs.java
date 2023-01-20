@@ -39,14 +39,14 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The http method of backend service.
+     * The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
      * 
      */
     @Import(name="method", required=true)
     private Output<String> method;
 
     /**
-     * @return The http method of backend service.
+     * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
      * 
      */
     public Output<String> method() {
@@ -54,14 +54,14 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The path of backend service.
+     * The request path of the api.
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return The path of backend service.
+     * @return The request path of the api.
      * 
      */
     public Output<String> path() {
@@ -142,7 +142,7 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param method The http method of backend service.
+         * @param method The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param method The http method of backend service.
+         * @param method The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param path The path of backend service.
+         * @param path The request path of the api.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param path The path of backend service.
+         * @param path The request path of the api.
          * 
          * @return builder
          * 

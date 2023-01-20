@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -78,10 +78,10 @@ import (
 //			_, err = eci.NewVirtualNode(ctx, "defaultVirtualNode", &eci.VirtualNodeArgs{
 //				SecurityGroupId:     defaultSecurityGroup.ID(),
 //				VirtualNodeName:     pulumi.String(name),
-//				VswitchId:           pulumi.String(defaultSwitches.Ids[1]),
+//				VswitchId:           *pulumi.String(defaultSwitches.Ids[1]),
 //				EnablePublicNetwork: pulumi.Bool(false),
 //				EipInstanceId:       defaultEipAddress.ID(),
-//				ResourceGroupId:     pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId:     *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				KubeConfig:          pulumi.String("kube config"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),

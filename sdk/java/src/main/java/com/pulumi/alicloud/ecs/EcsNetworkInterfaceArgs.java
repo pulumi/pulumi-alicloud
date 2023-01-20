@@ -35,6 +35,36 @@ public final class EcsNetworkInterfaceArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+     * 
+     */
+    @Import(name="ipv6AddressCount")
+    private @Nullable Output<Integer> ipv6AddressCount;
+
+    /**
+     * @return The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+     * 
+     */
+    public Optional<Output<Integer>> ipv6AddressCount() {
+        return Optional.ofNullable(this.ipv6AddressCount);
+    }
+
+    /**
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * 
+     */
+    @Import(name="ipv6Addresses")
+    private @Nullable Output<List<String>> ipv6Addresses;
+
+    /**
+     * @return A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * 
+     */
+    public Optional<Output<List<String>>> ipv6Addresses() {
+        return Optional.ofNullable(this.ipv6Addresses);
+    }
+
+    /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
      * 
      * @deprecated
@@ -288,6 +318,8 @@ public final class EcsNetworkInterfaceArgs extends com.pulumi.resources.Resource
 
     private EcsNetworkInterfaceArgs(EcsNetworkInterfaceArgs $) {
         this.description = $.description;
+        this.ipv6AddressCount = $.ipv6AddressCount;
+        this.ipv6Addresses = $.ipv6Addresses;
         this.name = $.name;
         this.networkInterfaceName = $.networkInterfaceName;
         this.primaryIpAddress = $.primaryIpAddress;
@@ -341,6 +373,58 @@ public final class EcsNetworkInterfaceArgs extends com.pulumi.resources.Resource
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param ipv6AddressCount The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AddressCount(@Nullable Output<Integer> ipv6AddressCount) {
+            $.ipv6AddressCount = ipv6AddressCount;
+            return this;
+        }
+
+        /**
+         * @param ipv6AddressCount The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AddressCount(Integer ipv6AddressCount) {
+            return ipv6AddressCount(Output.of(ipv6AddressCount));
+        }
+
+        /**
+         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Addresses(@Nullable Output<List<String>> ipv6Addresses) {
+            $.ipv6Addresses = ipv6Addresses;
+            return this;
+        }
+
+        /**
+         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Addresses(List<String> ipv6Addresses) {
+            return ipv6Addresses(Output.of(ipv6Addresses));
+        }
+
+        /**
+         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Addresses(String... ipv6Addresses) {
+            return ipv6Addresses(List.of(ipv6Addresses));
         }
 
         /**

@@ -21,28 +21,26 @@ namespace Pulumi.AliCloud.Alb
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Alb.Acl("example", new()
     ///     {
-    ///         var example = new AliCloud.Alb.Acl("example", new AliCloud.Alb.AclArgs
+    ///         AclEntries = new[]
     ///         {
-    ///             AclEntries = 
+    ///             new AliCloud.Alb.Inputs.AclAclEntryArgs
     ///             {
-    ///                 new AliCloud.Alb.Inputs.AclAclEntryArgs
-    ///                 {
-    ///                     Description = "example_value",
-    ///                     Entry = "10.0.0.0/24",
-    ///                 },
+    ///                 Description = "example_value",
+    ///                 Entry = "10.0.0.0/24",
     ///             },
-    ///             AclName = "example_value",
-    ///         });
-    ///     }
+    ///         },
+    ///         AclName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.AliCloud.Alb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/acl:Acl")]
-    public partial class Acl : Pulumi.CustomResource
+    public partial class Acl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
@@ -136,7 +134,7 @@ namespace Pulumi.AliCloud.Alb
         }
     }
 
-    public sealed class AclArgs : Pulumi.ResourceArgs
+    public sealed class AclArgs : global::Pulumi.ResourceArgs
     {
         [Input("aclEntries")]
         private InputList<Inputs.AclAclEntryArgs>? _aclEntries;
@@ -184,9 +182,10 @@ namespace Pulumi.AliCloud.Alb
         public AclArgs()
         {
         }
+        public static new AclArgs Empty => new AclArgs();
     }
 
-    public sealed class AclState : Pulumi.ResourceArgs
+    public sealed class AclState : global::Pulumi.ResourceArgs
     {
         [Input("aclEntries")]
         private InputList<Inputs.AclAclEntryGetArgs>? _aclEntries;
@@ -240,5 +239,6 @@ namespace Pulumi.AliCloud.Alb
         public AclState()
         {
         }
+        public static new AclState Empty => new AclState();
     }
 }

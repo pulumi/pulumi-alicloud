@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ros.Inputs
 {
 
-    public sealed class StackParameterArgs : Pulumi.ResourceArgs
+    public sealed class StackParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The parameter key.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ros.Inputs
         public StackParameterArgs()
         {
         }
+        public static new StackParameterArgs Empty => new StackParameterArgs();
     }
 }

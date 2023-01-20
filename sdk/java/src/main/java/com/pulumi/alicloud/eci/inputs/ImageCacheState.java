@@ -20,7 +20,6 @@ public final class ImageCacheState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the container group job that is used to create the image cache.
-     * * `status` -The status of the image cache.
      * 
      */
     @Import(name="containerGroupId")
@@ -28,7 +27,6 @@ public final class ImageCacheState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the container group job that is used to create the image cache.
-     * * `status` -The status of the image cache.
      * 
      */
     public Optional<Output<String>> containerGroupId() {
@@ -155,9 +153,17 @@ public final class ImageCacheState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.securityGroupId);
     }
 
+    /**
+     * The status of the image cache.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return The status of the image cache.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -229,7 +235,6 @@ public final class ImageCacheState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param containerGroupId The ID of the container group job that is used to create the image cache.
-         * * `status` -The status of the image cache.
          * 
          * @return builder
          * 
@@ -241,7 +246,6 @@ public final class ImageCacheState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param containerGroupId The ID of the container group job that is used to create the image cache.
-         * * `status` -The status of the image cache.
          * 
          * @return builder
          * 
@@ -438,11 +442,23 @@ public final class ImageCacheState extends com.pulumi.resources.ResourceArgs {
             return securityGroupId(Output.of(securityGroupId));
         }
 
+        /**
+         * @param status The status of the image cache.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status The status of the image cache.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

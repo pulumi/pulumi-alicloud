@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Dns.Outputs
     public sealed class AccessStrategyFailoverAddrPool
     {
         /// <summary>
-        /// The ID of the address pool in the primary address pool group.
+        /// The ID of the address pool in the secondary address pool group.
         /// </summary>
         public readonly string? AddrPoolId;
         /// <summary>
-        /// The weight of the address pool in the primary address pool group.
+        /// The weight of the address pool in the secondary address pool group.
         /// </summary>
         public readonly int? LbaWeight;
 

@@ -13,25 +13,23 @@ namespace Pulumi.AliCloud.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var snapshot = new AliCloud.Ecs.Snapshot("snapshot", new()
     ///     {
-    ///         var snapshot = new AliCloud.Ecs.Snapshot("snapshot", new AliCloud.Ecs.SnapshotArgs
+    ///         DiskId = alicloud_disk_attachment.Instance_attachment.Disk_id,
+    ///         Description = "this snapshot is created for testing",
+    ///         Tags = 
     ///         {
-    ///             DiskId = alicloud_disk_attachment.Instance_attachment.Disk_id,
-    ///             Description = "this snapshot is created for testing",
-    ///             Tags = 
-    ///             {
-    ///                 { "version", "1.2" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "version", "1.2" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/snapshot:Snapshot")]
-    public partial class Snapshot : Pulumi.CustomResource
+    public partial class Snapshot : global::Pulumi.CustomResource
     {
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
@@ -141,7 +139,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class SnapshotArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -201,9 +199,10 @@ namespace Pulumi.AliCloud.Ecs
         public SnapshotArgs()
         {
         }
+        public static new SnapshotArgs Empty => new SnapshotArgs();
     }
 
-    public sealed class SnapshotState : Pulumi.ResourceArgs
+    public sealed class SnapshotState : global::Pulumi.ResourceArgs
     {
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -266,5 +265,6 @@ namespace Pulumi.AliCloud.Ecs
         public SnapshotState()
         {
         }
+        public static new SnapshotState Empty => new SnapshotState();
     }
 }

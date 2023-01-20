@@ -23,7 +23,8 @@ import * as utilities from "../utilities";
  *     templateBody: `    {
  *     	"ROSTemplateFormatVersion": "2015-09-01"
  *     }
- *     `,
+ *     
+ * `,
  *     templateName: "example_value",
  * });
  * ```

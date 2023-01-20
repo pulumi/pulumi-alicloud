@@ -13,30 +13,29 @@ namespace Pulumi.AliCloud.Kms
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var key = new AliCloud.Kms.Key("key", new()
     ///     {
-    ///         var key = new AliCloud.Kms.Key("key", new AliCloud.Kms.KeyArgs
-    ///         {
-    ///             Description = "example key",
-    ///             IsEnabled = true,
-    ///         });
-    ///         var encrypted = new AliCloud.Kms.Ciphertext("encrypted", new AliCloud.Kms.CiphertextArgs
-    ///         {
-    ///             KeyId = key.Id,
-    ///             Plaintext = "example",
-    ///         });
-    ///     }
+    ///         Description = "example key",
+    ///         IsEnabled = true,
+    ///     });
     /// 
-    /// }
+    ///     var encrypted = new AliCloud.Kms.Ciphertext("encrypted", new()
+    ///     {
+    ///         KeyId = key.Id,
+    ///         Plaintext = "example",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kms/ciphertext:Ciphertext")]
-    public partial class Ciphertext : Pulumi.CustomResource
+    public partial class Ciphertext : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ciphertext of the data key encrypted with the primary CMK version.
@@ -45,7 +44,6 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> CiphertextBlob { get; private set; } = null!;
 
         /// <summary>
-        /// -
         /// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         [Output("encryptionContext")]
@@ -86,6 +84,10 @@ namespace Pulumi.AliCloud.Kms
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "plaintext",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -107,13 +109,12 @@ namespace Pulumi.AliCloud.Kms
         }
     }
 
-    public sealed class CiphertextArgs : Pulumi.ResourceArgs
+    public sealed class CiphertextArgs : global::Pulumi.ResourceArgs
     {
         [Input("encryptionContext")]
         private InputMap<string>? _encryptionContext;
 
         /// <summary>
-        /// -
         /// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         public InputMap<string> EncryptionContext
@@ -128,18 +129,29 @@ namespace Pulumi.AliCloud.Kms
         [Input("keyId", required: true)]
         public Input<string> KeyId { get; set; } = null!;
 
+        [Input("plaintext", required: true)]
+        private Input<string>? _plaintext;
+
         /// <summary>
         /// The plaintext to be encrypted which must be encoded in Base64.
         /// </summary>
-        [Input("plaintext", required: true)]
-        public Input<string> Plaintext { get; set; } = null!;
+        public Input<string>? Plaintext
+        {
+            get => _plaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _plaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public CiphertextArgs()
         {
         }
+        public static new CiphertextArgs Empty => new CiphertextArgs();
     }
 
-    public sealed class CiphertextState : Pulumi.ResourceArgs
+    public sealed class CiphertextState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ciphertext of the data key encrypted with the primary CMK version.
@@ -151,7 +163,6 @@ namespace Pulumi.AliCloud.Kms
         private InputMap<string>? _encryptionContext;
 
         /// <summary>
-        /// -
         /// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         public InputMap<string> EncryptionContext
@@ -166,14 +177,25 @@ namespace Pulumi.AliCloud.Kms
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
 
+        [Input("plaintext")]
+        private Input<string>? _plaintext;
+
         /// <summary>
         /// The plaintext to be encrypted which must be encoded in Base64.
         /// </summary>
-        [Input("plaintext")]
-        public Input<string>? Plaintext { get; set; }
+        public Input<string>? Plaintext
+        {
+            get => _plaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _plaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public CiphertextState()
         {
         }
+        public static new CiphertextState Empty => new CiphertextState();
     }
 }

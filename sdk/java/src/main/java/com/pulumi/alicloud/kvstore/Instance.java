@@ -323,18 +323,26 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="config", type=Map.class, parameters={String.class, Object.class})
-    private Output</* @Nullable */ Map<String,Object>> config;
+    private Output<Map<String,Object>> config;
 
     /**
      * @return The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
      * 
      */
-    public Output<Optional<Map<String,Object>>> config() {
-        return Codegen.optional(this.config);
+    public Output<Map<String,Object>> config() {
+        return this.config;
     }
+    /**
+     * Intranet connection address of the KVStore instance.
+     * 
+     */
     @Export(name="connectionDomain", type=String.class, parameters={})
     private Output<String> connectionDomain;
 
+    /**
+     * @return Intranet connection address of the KVStore instance.
+     * 
+     */
     public Output<String> connectionDomain() {
         return this.connectionDomain;
     }
@@ -923,14 +931,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="securityIps", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> securityIps;
+    private Output<List<String>> securityIps;
 
     /**
      * @return The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
      * 
      */
-    public Output<Optional<List<String>>> securityIps() {
-        return Codegen.optional(this.securityIps);
+    public Output<List<String>> securityIps() {
+        return this.securityIps;
     }
     /**
      * The ID of the source instance.
@@ -964,7 +972,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The status of KVStore DBInstance.
-     * * `connection_domain`- Intranet connection address of the KVStore instance.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
@@ -972,7 +979,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The status of KVStore DBInstance.
-     * * `connection_domain`- Intranet connection address of the KVStore instance.
      * 
      */
     public Output<String> status() {
@@ -1067,6 +1073,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

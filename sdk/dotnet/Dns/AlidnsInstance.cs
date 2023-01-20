@@ -21,25 +21,23 @@ namespace Pulumi.AliCloud.Dns
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Dns.AlidnsInstance("example", new()
     ///     {
-    ///         var example = new AliCloud.Dns.AlidnsInstance("example", new AliCloud.Dns.AlidnsInstanceArgs
-    ///         {
-    ///             DnsSecurity = "no",
-    ///             DomainNumbers = "2",
-    ///             Period = 1,
-    ///             RenewPeriod = 1,
-    ///             RenewalStatus = "ManualRenewal",
-    ///             VersionCode = "version_personal",
-    ///         });
-    ///     }
+    ///         DnsSecurity = "no",
+    ///         DomainNumbers = "2",
+    ///         Period = 1,
+    ///         RenewPeriod = 1,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         VersionCode = "version_personal",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +49,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/alidnsInstance:AlidnsInstance")]
-    public partial class AlidnsInstance : Pulumi.CustomResource
+    public partial class AlidnsInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Alidns security level. Valid values: `no`, `basic`, `advanced`.
@@ -145,7 +143,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class AlidnsInstanceArgs : Pulumi.ResourceArgs
+    public sealed class AlidnsInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alidns security level. Valid values: `no`, `basic`, `advanced`.
@@ -192,9 +190,10 @@ namespace Pulumi.AliCloud.Dns
         public AlidnsInstanceArgs()
         {
         }
+        public static new AlidnsInstanceArgs Empty => new AlidnsInstanceArgs();
     }
 
-    public sealed class AlidnsInstanceState : Pulumi.ResourceArgs
+    public sealed class AlidnsInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alidns security level. Valid values: `no`, `basic`, `advanced`.
@@ -247,5 +246,6 @@ namespace Pulumi.AliCloud.Dns
         public AlidnsInstanceState()
         {
         }
+        public static new AlidnsInstanceState Empty => new AlidnsInstanceState();
     }
 }

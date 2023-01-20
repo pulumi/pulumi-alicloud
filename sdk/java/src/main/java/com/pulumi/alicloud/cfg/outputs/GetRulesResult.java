@@ -16,6 +16,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRulesResult {
     /**
+     * @return The state of the Config Rule.
+     * 
      * @deprecated
      * Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
      * 
@@ -40,7 +42,15 @@ public final class GetRulesResult {
      */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The risk level of the Config Rule.
+     * 
+     */
     private @Nullable Integer riskLevel;
+    /**
+     * @return The name of the Config Rule.
+     * 
+     */
     private @Nullable String ruleName;
     /**
      * @return A list of Config Rules. Each element contains the following attributes:
@@ -55,6 +65,8 @@ public final class GetRulesResult {
 
     private GetRulesResult() {}
     /**
+     * @return The state of the Config Rule.
+     * 
      * @deprecated
      * Field &#39;config_rule_state&#39; has been deprecated from provider version 1.124.1. New field &#39;status&#39; instead.
      * 
@@ -93,9 +105,17 @@ public final class GetRulesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The risk level of the Config Rule.
+     * 
+     */
     public Optional<Integer> riskLevel() {
         return Optional.ofNullable(this.riskLevel);
     }
+    /**
+     * @return The name of the Config Rule.
+     * 
+     */
     public Optional<String> ruleName() {
         return Optional.ofNullable(this.ruleName);
     }

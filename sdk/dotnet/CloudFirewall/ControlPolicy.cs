@@ -21,28 +21,26 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.CloudFirewall.ControlPolicy("example", new()
     ///     {
-    ///         var example = new AliCloud.CloudFirewall.ControlPolicy("example", new AliCloud.CloudFirewall.ControlPolicyArgs
-    ///         {
-    ///             AclAction = "accept",
-    ///             ApplicationName = "ANY",
-    ///             Description = "example",
-    ///             Destination = "100.1.1.0/24",
-    ///             DestinationType = "net",
-    ///             Direction = "out",
-    ///             Proto = "ANY",
-    ///             Source = "1.2.3.0/24",
-    ///             SourceType = "net",
-    ///         });
-    ///     }
+    ///         AclAction = "accept",
+    ///         ApplicationName = "ANY",
+    ///         Description = "example",
+    ///         Destination = "100.1.1.0/24",
+    ///         DestinationType = "net",
+    ///         Direction = "out",
+    ///         Proto = "ANY",
+    ///         Source = "1.2.3.0/24",
+    ///         SourceType = "net",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudfirewall/controlPolicy:ControlPolicy")]
-    public partial class ControlPolicy : Pulumi.CustomResource
+    public partial class ControlPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -202,7 +200,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
     }
 
-    public sealed class ControlPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ControlPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -303,9 +301,10 @@ namespace Pulumi.AliCloud.CloudFirewall
         public ControlPolicyArgs()
         {
         }
+        public static new ControlPolicyArgs Empty => new ControlPolicyArgs();
     }
 
-    public sealed class ControlPolicyState : Pulumi.ResourceArgs
+    public sealed class ControlPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -412,5 +411,6 @@ namespace Pulumi.AliCloud.CloudFirewall
         public ControlPolicyState()
         {
         }
+        public static new ControlPolicyState Empty => new ControlPolicyState();
     }
 }

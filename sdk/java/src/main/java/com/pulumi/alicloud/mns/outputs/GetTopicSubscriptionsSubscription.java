@@ -11,10 +11,13 @@ import java.util.Objects;
 public final class GetTopicSubscriptionsSubscription {
     /**
      * @return Describe the terminal address of the message received in this subscription.
-     * * `filter_tag`- A string to filter resulting messages of the topic by their message tag.
      * 
      */
     private String endpoint;
+    /**
+     * @return A string to filter resulting messages of the topic by their message tag.
+     * 
+     */
     private String filterTag;
     /**
      * @return The ID of the topic subscription. The value is set to `name`.
@@ -23,7 +26,6 @@ public final class GetTopicSubscriptionsSubscription {
     private String id;
     /**
      * @return The name of the subscription.
-     * * `topic_name`- The topic which The subscription belongs to was named with the name.
      * 
      */
     private String name;
@@ -46,12 +48,15 @@ public final class GetTopicSubscriptionsSubscription {
     private GetTopicSubscriptionsSubscription() {}
     /**
      * @return Describe the terminal address of the message received in this subscription.
-     * * `filter_tag`- A string to filter resulting messages of the topic by their message tag.
      * 
      */
     public String endpoint() {
         return this.endpoint;
     }
+    /**
+     * @return A string to filter resulting messages of the topic by their message tag.
+     * 
+     */
     public String filterTag() {
         return this.filterTag;
     }
@@ -64,7 +69,6 @@ public final class GetTopicSubscriptionsSubscription {
     }
     /**
      * @return The name of the subscription.
-     * * `topic_name`- The topic which The subscription belongs to was named with the name.
      * 
      */
     public String name() {

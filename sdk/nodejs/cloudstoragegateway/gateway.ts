@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: vpc.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: "tf-testAccCsgName",
  * });
  * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});

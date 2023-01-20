@@ -5,20 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./bucket";
-export * from "./bucketObject";
-export * from "./bucketReplication";
-export * from "./getBucketObjects";
-export * from "./getBuckets";
-export * from "./getInstanceAttachments";
-export * from "./getInstances";
-export * from "./getService";
-export * from "./getTables";
+export { BucketArgs, BucketState } from "./bucket";
+export type Bucket = import("./bucket").Bucket;
+export const Bucket: typeof import("./bucket").Bucket = null as any;
+utilities.lazyLoad(exports, ["Bucket"], () => require("./bucket"));
 
-// Import resources to register:
-import { Bucket } from "./bucket";
-import { BucketObject } from "./bucketObject";
-import { BucketReplication } from "./bucketReplication";
+export { BucketObjectArgs, BucketObjectState } from "./bucketObject";
+export type BucketObject = import("./bucketObject").BucketObject;
+export const BucketObject: typeof import("./bucketObject").BucketObject = null as any;
+utilities.lazyLoad(exports, ["BucketObject"], () => require("./bucketObject"));
+
+export { BucketReplicationArgs, BucketReplicationState } from "./bucketReplication";
+export type BucketReplication = import("./bucketReplication").BucketReplication;
+export const BucketReplication: typeof import("./bucketReplication").BucketReplication = null as any;
+utilities.lazyLoad(exports, ["BucketReplication"], () => require("./bucketReplication"));
+
+export { GetBucketObjectsArgs, GetBucketObjectsResult, GetBucketObjectsOutputArgs } from "./getBucketObjects";
+export const getBucketObjects: typeof import("./getBucketObjects").getBucketObjects = null as any;
+export const getBucketObjectsOutput: typeof import("./getBucketObjects").getBucketObjectsOutput = null as any;
+utilities.lazyLoad(exports, ["getBucketObjects","getBucketObjectsOutput"], () => require("./getBucketObjects"));
+
+export { GetBucketsArgs, GetBucketsResult, GetBucketsOutputArgs } from "./getBuckets";
+export const getBuckets: typeof import("./getBuckets").getBuckets = null as any;
+export const getBucketsOutput: typeof import("./getBuckets").getBucketsOutput = null as any;
+utilities.lazyLoad(exports, ["getBuckets","getBucketsOutput"], () => require("./getBuckets"));
+
+export { GetInstanceAttachmentsArgs, GetInstanceAttachmentsResult, GetInstanceAttachmentsOutputArgs } from "./getInstanceAttachments";
+export const getInstanceAttachments: typeof import("./getInstanceAttachments").getInstanceAttachments = null as any;
+export const getInstanceAttachmentsOutput: typeof import("./getInstanceAttachments").getInstanceAttachmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceAttachments","getInstanceAttachmentsOutput"], () => require("./getInstanceAttachments"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { GetTablesArgs, GetTablesResult, GetTablesOutputArgs } from "./getTables";
+export const getTables: typeof import("./getTables").getTables = null as any;
+export const getTablesOutput: typeof import("./getTables").getTablesOutput = null as any;
+utilities.lazyLoad(exports, ["getTables","getTablesOutput"], () => require("./getTables"));
+
 
 const _module = {
     version: utilities.getVersion(),

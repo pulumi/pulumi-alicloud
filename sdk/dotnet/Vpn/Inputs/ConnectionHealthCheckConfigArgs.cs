@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn.Inputs
 {
 
-    public sealed class ConnectionHealthCheckConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionHealthCheckConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination IP address.
@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public Input<string>? Dip { get; set; }
 
         /// <summary>
-        /// Whether to enable BGP.
+        /// Whether to enable Health Check.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public ConnectionHealthCheckConfigArgs()
         {
         }
+        public static new ConnectionHealthCheckConfigArgs Empty => new ConnectionHealthCheckConfigArgs();
     }
 }

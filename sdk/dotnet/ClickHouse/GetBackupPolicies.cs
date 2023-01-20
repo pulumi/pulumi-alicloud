@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.ClickHouse
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ClickHouse.GetBackupPolicies.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ClickHouse.GetBackupPolicies.InvokeAsync(new AliCloud.ClickHouse.GetBackupPoliciesArgs
-        ///         {
-        ///             DbClusterId = "example_value",
-        ///         }));
-        ///         this.ClickHouseBackupPolicyId1 = example.Apply(example =&gt; example.Policies?[0]?.Id);
-        ///     }
+        ///         DbClusterId = "example_value",
+        ///     });
         /// 
-        ///     [Output("clickHouseBackupPolicyId1")]
-        ///     public Output&lt;string&gt; ClickHouseBackupPolicyId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["clickHouseBackupPolicyId1"] = example.Apply(getBackupPoliciesResult =&gt; getBackupPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackupPoliciesResult> InvokeAsync(GetBackupPoliciesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupPoliciesResult>("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", args ?? new GetBackupPoliciesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupPoliciesResult>("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", args ?? new GetBackupPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.ClickHouse
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ClickHouse.GetBackupPolicies.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ClickHouse.GetBackupPolicies.InvokeAsync(new AliCloud.ClickHouse.GetBackupPoliciesArgs
-        ///         {
-        ///             DbClusterId = "example_value",
-        ///         }));
-        ///         this.ClickHouseBackupPolicyId1 = example.Apply(example =&gt; example.Policies?[0]?.Id);
-        ///     }
+        ///         DbClusterId = "example_value",
+        ///     });
         /// 
-        ///     [Output("clickHouseBackupPolicyId1")]
-        ///     public Output&lt;string&gt; ClickHouseBackupPolicyId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["clickHouseBackupPolicyId1"] = example.Apply(getBackupPoliciesResult =&gt; getBackupPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackupPoliciesResult> Invoke(GetBackupPoliciesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupPoliciesResult>("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", args ?? new GetBackupPoliciesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupPoliciesResult>("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", args ?? new GetBackupPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBackupPoliciesArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The db cluster id.
@@ -99,9 +97,10 @@ namespace Pulumi.AliCloud.ClickHouse
         public GetBackupPoliciesArgs()
         {
         }
+        public static new GetBackupPoliciesArgs Empty => new GetBackupPoliciesArgs();
     }
 
-    public sealed class GetBackupPoliciesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The db cluster id.
@@ -115,6 +114,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public GetBackupPoliciesInvokeArgs()
         {
         }
+        public static new GetBackupPoliciesInvokeArgs Empty => new GetBackupPoliciesInvokeArgs();
     }
 
 

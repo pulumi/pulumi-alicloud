@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ServiceMesh.Inputs
 {
 
-    public sealed class ServiceMeshMeshConfigSidecarInjectorArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMeshMeshConfigSidecarInjectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to enable by Pod Annotations automatic injection Sidecar.
@@ -25,25 +25,25 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<bool>? EnableNamespacesByDefault { get; set; }
 
         /// <summary>
-        /// The CPU resource  of the limitsOPA proxy container.
+        /// The limit cpu of the Sidecar injector Pods.
         /// </summary>
         [Input("limitCpu")]
         public Input<string>? LimitCpu { get; set; }
 
         /// <summary>
-        /// The memory resource limit of the OPA proxy container.
+        /// Sidecar injector Pods on the throttle.
         /// </summary>
         [Input("limitMemory")]
         public Input<string>? LimitMemory { get; set; }
 
         /// <summary>
-        /// The CPU resource request of the OPA proxy container.
+        /// The requested cpu the Sidecar injector Pods.
         /// </summary>
         [Input("requestCpu")]
         public Input<string>? RequestCpu { get; set; }
 
         /// <summary>
-        /// The memory resource request of the OPA proxy container.
+        /// The requested memory the Sidecar injector Pods.
         /// </summary>
         [Input("requestMemory")]
         public Input<string>? RequestMemory { get; set; }
@@ -51,5 +51,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public ServiceMeshMeshConfigSidecarInjectorArgs()
         {
         }
+        public static new ServiceMeshMeshConfigSidecarInjectorArgs Empty => new ServiceMeshMeshConfigSidecarInjectorArgs();
     }
 }

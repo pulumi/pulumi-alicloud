@@ -5,20 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./consumerGroup";
-export * from "./instance";
-export * from "./instanceAllowedIpAttachment";
-export * from "./saslAcl";
-export * from "./saslUser";
-export * from "./topic";
+export { ConsumerGroupArgs, ConsumerGroupState } from "./consumerGroup";
+export type ConsumerGroup = import("./consumerGroup").ConsumerGroup;
+export const ConsumerGroup: typeof import("./consumerGroup").ConsumerGroup = null as any;
+utilities.lazyLoad(exports, ["ConsumerGroup"], () => require("./consumerGroup"));
 
-// Import resources to register:
-import { ConsumerGroup } from "./consumerGroup";
-import { Instance } from "./instance";
-import { InstanceAllowedIpAttachment } from "./instanceAllowedIpAttachment";
-import { SaslAcl } from "./saslAcl";
-import { SaslUser } from "./saslUser";
-import { Topic } from "./topic";
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { InstanceAllowedIpAttachmentArgs, InstanceAllowedIpAttachmentState } from "./instanceAllowedIpAttachment";
+export type InstanceAllowedIpAttachment = import("./instanceAllowedIpAttachment").InstanceAllowedIpAttachment;
+export const InstanceAllowedIpAttachment: typeof import("./instanceAllowedIpAttachment").InstanceAllowedIpAttachment = null as any;
+utilities.lazyLoad(exports, ["InstanceAllowedIpAttachment"], () => require("./instanceAllowedIpAttachment"));
+
+export { SaslAclArgs, SaslAclState } from "./saslAcl";
+export type SaslAcl = import("./saslAcl").SaslAcl;
+export const SaslAcl: typeof import("./saslAcl").SaslAcl = null as any;
+utilities.lazyLoad(exports, ["SaslAcl"], () => require("./saslAcl"));
+
+export { SaslUserArgs, SaslUserState } from "./saslUser";
+export type SaslUser = import("./saslUser").SaslUser;
+export const SaslUser: typeof import("./saslUser").SaslUser = null as any;
+utilities.lazyLoad(exports, ["SaslUser"], () => require("./saslUser"));
+
+export { TopicArgs, TopicState } from "./topic";
+export type Topic = import("./topic").Topic;
+export const Topic: typeof import("./topic").Topic = null as any;
+utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
+
 
 const _module = {
     version: utilities.getVersion(),

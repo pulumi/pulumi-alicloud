@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class RuleRuleConditionGetArgs : Pulumi.ResourceArgs
+    public sealed class RuleRuleConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration of the cookie. See the following `Block cookie_config`.
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<Inputs.RuleRuleConditionSourceIpConfigGetArgs>? SourceIpConfig { get; set; }
 
         /// <summary>
-        /// The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+        /// The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -63,5 +63,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public RuleRuleConditionGetArgs()
         {
         }
+        public static new RuleRuleConditionGetArgs Empty => new RuleRuleConditionGetArgs();
     }
 }

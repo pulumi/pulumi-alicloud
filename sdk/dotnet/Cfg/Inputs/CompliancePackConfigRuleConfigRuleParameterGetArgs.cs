@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cfg.Inputs
 {
 
-    public sealed class CompliancePackConfigRuleConfigRuleParameterGetArgs : Pulumi.ResourceArgs
+    public sealed class CompliancePackConfigRuleConfigRuleParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The parameter name.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Cfg.Inputs
         public CompliancePackConfigRuleConfigRuleParameterGetArgs()
         {
         }
+        public static new CompliancePackConfigRuleConfigRuleParameterGetArgs Empty => new CompliancePackConfigRuleConfigRuleParameterGetArgs();
     }
 }

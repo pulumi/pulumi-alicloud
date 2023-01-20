@@ -22,11 +22,6 @@ class ProtectionModuleArgs:
         """
         The set of arguments for constructing a ProtectionModule resource.
         :param pulumi.Input[str] defense_type: The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-               * `waf`: RegEx Protection Engine.
-               * `dld`: Big Data Deep Learning Engine.
-               * `ac_cc`: HTTP Flood Protection.
-               * `antifraud`: Data Risk Control.
-               * `normalized`: Positive Security Model.
         :param pulumi.Input[str] domain: The domain name that is added to WAF.
         :param pulumi.Input[str] instance_id: The ID of the WAF instance.
         :param pulumi.Input[int] mode: The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
@@ -36,8 +31,6 @@ class ProtectionModuleArgs:
                * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
                * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
         :param pulumi.Input[int] status: The status of the resource. Valid values: `0`, `1`.
-               * `0`: disables the protection module.
-               * `1`: enables the protection module.
         """
         pulumi.set(__self__, "defense_type", defense_type)
         pulumi.set(__self__, "domain", domain)
@@ -51,11 +44,6 @@ class ProtectionModuleArgs:
     def defense_type(self) -> pulumi.Input[str]:
         """
         The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-        * `waf`: RegEx Protection Engine.
-        * `dld`: Big Data Deep Learning Engine.
-        * `ac_cc`: HTTP Flood Protection.
-        * `antifraud`: Data Risk Control.
-        * `normalized`: Positive Security Model.
         """
         return pulumi.get(self, "defense_type")
 
@@ -109,8 +97,6 @@ class ProtectionModuleArgs:
     def status(self) -> Optional[pulumi.Input[int]]:
         """
         The status of the resource. Valid values: `0`, `1`.
-        * `0`: disables the protection module.
-        * `1`: enables the protection module.
         """
         return pulumi.get(self, "status")
 
@@ -130,11 +116,6 @@ class _ProtectionModuleState:
         """
         Input properties used for looking up and filtering ProtectionModule resources.
         :param pulumi.Input[str] defense_type: The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-               * `waf`: RegEx Protection Engine.
-               * `dld`: Big Data Deep Learning Engine.
-               * `ac_cc`: HTTP Flood Protection.
-               * `antifraud`: Data Risk Control.
-               * `normalized`: Positive Security Model.
         :param pulumi.Input[str] domain: The domain name that is added to WAF.
         :param pulumi.Input[str] instance_id: The ID of the WAF instance.
         :param pulumi.Input[int] mode: The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
@@ -144,8 +125,6 @@ class _ProtectionModuleState:
                * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
                * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
         :param pulumi.Input[int] status: The status of the resource. Valid values: `0`, `1`.
-               * `0`: disables the protection module.
-               * `1`: enables the protection module.
         """
         if defense_type is not None:
             pulumi.set(__self__, "defense_type", defense_type)
@@ -163,11 +142,6 @@ class _ProtectionModuleState:
     def defense_type(self) -> Optional[pulumi.Input[str]]:
         """
         The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-        * `waf`: RegEx Protection Engine.
-        * `dld`: Big Data Deep Learning Engine.
-        * `ac_cc`: HTTP Flood Protection.
-        * `antifraud`: Data Risk Control.
-        * `normalized`: Positive Security Model.
         """
         return pulumi.get(self, "defense_type")
 
@@ -221,8 +195,6 @@ class _ProtectionModuleState:
     def status(self) -> Optional[pulumi.Input[int]]:
         """
         The status of the resource. Valid values: `0`, `1`.
-        * `0`: disables the protection module.
-        * `1`: enables the protection module.
         """
         return pulumi.get(self, "status")
 
@@ -293,11 +265,6 @@ class ProtectionModule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] defense_type: The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-               * `waf`: RegEx Protection Engine.
-               * `dld`: Big Data Deep Learning Engine.
-               * `ac_cc`: HTTP Flood Protection.
-               * `antifraud`: Data Risk Control.
-               * `normalized`: Positive Security Model.
         :param pulumi.Input[str] domain: The domain name that is added to WAF.
         :param pulumi.Input[str] instance_id: The ID of the WAF instance.
         :param pulumi.Input[int] mode: The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
@@ -307,8 +274,6 @@ class ProtectionModule(pulumi.CustomResource):
                * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
                * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
         :param pulumi.Input[int] status: The status of the resource. Valid values: `0`, `1`.
-               * `0`: disables the protection module.
-               * `1`: enables the protection module.
         """
         ...
     @overload
@@ -429,11 +394,6 @@ class ProtectionModule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] defense_type: The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-               * `waf`: RegEx Protection Engine.
-               * `dld`: Big Data Deep Learning Engine.
-               * `ac_cc`: HTTP Flood Protection.
-               * `antifraud`: Data Risk Control.
-               * `normalized`: Positive Security Model.
         :param pulumi.Input[str] domain: The domain name that is added to WAF.
         :param pulumi.Input[str] instance_id: The ID of the WAF instance.
         :param pulumi.Input[int] mode: The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
@@ -443,8 +403,6 @@ class ProtectionModule(pulumi.CustomResource):
                * The `defense_type` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
                * The `defense_type` is `normalized`. `0`: warn mode. `1`: block mode.
         :param pulumi.Input[int] status: The status of the resource. Valid values: `0`, `1`.
-               * `0`: disables the protection module.
-               * `1`: enables the protection module.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -462,11 +420,6 @@ class ProtectionModule(pulumi.CustomResource):
     def defense_type(self) -> pulumi.Output[str]:
         """
         The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-        * `waf`: RegEx Protection Engine.
-        * `dld`: Big Data Deep Learning Engine.
-        * `ac_cc`: HTTP Flood Protection.
-        * `antifraud`: Data Risk Control.
-        * `normalized`: Positive Security Model.
         """
         return pulumi.get(self, "defense_type")
 
@@ -504,8 +457,6 @@ class ProtectionModule(pulumi.CustomResource):
     def status(self) -> pulumi.Output[Optional[int]]:
         """
         The status of the resource. Valid values: `0`, `1`.
-        * `0`: disables the protection module.
-        * `1`: enables the protection module.
         """
         return pulumi.get(self, "status")
 

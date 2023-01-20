@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.Hbr
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Hbr.Vault("example", new()
     ///     {
-    ///         var example = new AliCloud.Hbr.Vault("example", new AliCloud.Hbr.VaultArgs
-    ///         {
-    ///             VaultName = "example_value",
-    ///         });
-    ///     }
+    ///         VaultName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.Hbr
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/vault:Vault")]
-    public partial class Vault : Pulumi.CustomResource
+    public partial class Vault : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of Vault. Defaults to an empty string.
@@ -56,8 +54,6 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-        /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
-        /// - `KMS`: Use Alibaba Cloud Kms to encryption.
         /// </summary>
         [Output("encryptType")]
         public Output<string> EncryptType { get; private set; } = null!;
@@ -70,8 +66,6 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        /// - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-        /// - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         /// </summary>
         [Output("redundancyType")]
         public Output<string> RedundancyType { get; private set; } = null!;
@@ -144,7 +138,7 @@ namespace Pulumi.AliCloud.Hbr
         }
     }
 
-    public sealed class VaultArgs : Pulumi.ResourceArgs
+    public sealed class VaultArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of Vault. Defaults to an empty string.
@@ -154,8 +148,6 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-        /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
-        /// - `KMS`: Use Alibaba Cloud Kms to encryption.
         /// </summary>
         [Input("encryptType")]
         public Input<string>? EncryptType { get; set; }
@@ -168,8 +160,6 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        /// - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-        /// - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
@@ -195,9 +185,10 @@ namespace Pulumi.AliCloud.Hbr
         public VaultArgs()
         {
         }
+        public static new VaultArgs Empty => new VaultArgs();
     }
 
-    public sealed class VaultState : Pulumi.ResourceArgs
+    public sealed class VaultState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of Vault. Defaults to an empty string.
@@ -207,8 +198,6 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-        /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
-        /// - `KMS`: Use Alibaba Cloud Kms to encryption.
         /// </summary>
         [Input("encryptType")]
         public Input<string>? EncryptType { get; set; }
@@ -221,8 +210,6 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-        /// - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-        /// - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
@@ -254,5 +241,6 @@ namespace Pulumi.AliCloud.Hbr
         public VaultState()
         {
         }
+        public static new VaultState Empty => new VaultState();
     }
 }

@@ -21,34 +21,33 @@ namespace Pulumi.AliCloud.Dms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dmsEnterpriseUsersDs = AliCloud.Dms.GetEnterpriseUsers.Invoke(new()
         ///     {
-        ///         var dmsEnterpriseUsersDs = Output.Create(AliCloud.Dms.GetEnterpriseUsers.InvokeAsync(new AliCloud.Dms.GetEnterpriseUsersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "uid",
-        ///             },
-        ///             Role = "USER",
-        ///             Status = "NORMAL",
-        ///         }));
-        ///         this.FirstUserId = dmsEnterpriseUsersDs.Apply(dmsEnterpriseUsersDs =&gt; dmsEnterpriseUsersDs.Users?[0]?.Id);
-        ///     }
+        ///             "uid",
+        ///         },
+        ///         Role = "USER",
+        ///         Status = "NORMAL",
+        ///     });
         /// 
-        ///     [Output("firstUserId")]
-        ///     public Output&lt;string&gt; FirstUserId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstUserId"] = dmsEnterpriseUsersDs.Apply(getEnterpriseUsersResult =&gt; getEnterpriseUsersResult.Users[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEnterpriseUsersResult> InvokeAsync(GetEnterpriseUsersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseUsersResult>("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args ?? new GetEnterpriseUsersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseUsersResult>("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args ?? new GetEnterpriseUsersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.
@@ -60,38 +59,37 @@ namespace Pulumi.AliCloud.Dms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dmsEnterpriseUsersDs = AliCloud.Dms.GetEnterpriseUsers.Invoke(new()
         ///     {
-        ///         var dmsEnterpriseUsersDs = Output.Create(AliCloud.Dms.GetEnterpriseUsers.InvokeAsync(new AliCloud.Dms.GetEnterpriseUsersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "uid",
-        ///             },
-        ///             Role = "USER",
-        ///             Status = "NORMAL",
-        ///         }));
-        ///         this.FirstUserId = dmsEnterpriseUsersDs.Apply(dmsEnterpriseUsersDs =&gt; dmsEnterpriseUsersDs.Users?[0]?.Id);
-        ///     }
+        ///             "uid",
+        ///         },
+        ///         Role = "USER",
+        ///         Status = "NORMAL",
+        ///     });
         /// 
-        ///     [Output("firstUserId")]
-        ///     public Output&lt;string&gt; FirstUserId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstUserId"] = dmsEnterpriseUsersDs.Apply(getEnterpriseUsersResult =&gt; getEnterpriseUsersResult.Users[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEnterpriseUsersResult> Invoke(GetEnterpriseUsersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEnterpriseUsersResult>("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args ?? new GetEnterpriseUsersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseUsersResult>("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", args ?? new GetEnterpriseUsersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEnterpriseUsersArgs : Pulumi.InvokeArgs
+    public sealed class GetEnterpriseUsersArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -141,9 +139,10 @@ namespace Pulumi.AliCloud.Dms
         public GetEnterpriseUsersArgs()
         {
         }
+        public static new GetEnterpriseUsersArgs Empty => new GetEnterpriseUsersArgs();
     }
 
-    public sealed class GetEnterpriseUsersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEnterpriseUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -193,6 +192,7 @@ namespace Pulumi.AliCloud.Dms
         public GetEnterpriseUsersInvokeArgs()
         {
         }
+        public static new GetEnterpriseUsersInvokeArgs Empty => new GetEnterpriseUsersInvokeArgs();
     }
 
 

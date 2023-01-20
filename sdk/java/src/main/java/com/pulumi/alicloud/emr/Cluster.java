@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.emr.EmrFunctions;
  * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
- * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.emr.EmrFunctions;
  * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
- * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -377,7 +377,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.emr.EmrFunctions;
  * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
- * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -539,7 +539,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.emr.EmrFunctions;
  * import com.pulumi.alicloud.emr.inputs.GetMainVersionsArgs;
- * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.emr.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.emr.inputs.GetDiskTypesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -694,14 +694,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bootstrapActions);
     }
     /**
-     * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+     * Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      * 
      */
     @Export(name="chargeType", type=String.class, parameters={})
     private Output</* @Nullable */ String> chargeType;
 
     /**
-     * @return Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+     * @return Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      * 
      */
     public Output<Optional<String>> chargeType() {
@@ -890,14 +890,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.modifyClusterServiceConfig);
     }
     /**
-     * bootstrap action name.
+     * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return bootstrap action name.
+     * @return The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
      * 
      */
     public Output<String> name() {

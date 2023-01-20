@@ -29,6 +29,9 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// The unique identifier of the resource group.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// (Available in v1.114.0+) The status of the resource group in all regions.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetResourceGroupsGroupRegionStatusResult> RegionStatuses;
         /// <summary>
         /// (Available in v1.114.0+) The unique identifier of the resource group.

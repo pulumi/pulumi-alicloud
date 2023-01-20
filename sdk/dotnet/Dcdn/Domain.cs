@@ -25,31 +25,29 @@ namespace Pulumi.AliCloud.Dcdn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Dcdn.Domain("example", new()
     ///     {
-    ///         var example = new AliCloud.Dcdn.Domain("example", new AliCloud.Dcdn.DomainArgs
+    ///         DomainName = "example.com",
+    ///         Scope = "overseas",
+    ///         Sources = new[]
     ///         {
-    ///             DomainName = "example.com",
-    ///             Scope = "overseas",
-    ///             Sources = 
+    ///             new AliCloud.Dcdn.Inputs.DomainSourceArgs
     ///             {
-    ///                 new AliCloud.Dcdn.Inputs.DomainSourceArgs
-    ///                 {
-    ///                     Content = "1.1.1.1",
-    ///                     Port = 80,
-    ///                     Priority = "20",
-    ///                     Type = "ipaddr",
-    ///                 },
+    ///                 Content = "1.1.1.1",
+    ///                 Port = 80,
+    ///                 Priority = "20",
+    ///                 Type = "ipaddr",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +59,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dcdn/domain:Domain")]
-    public partial class Domain : Pulumi.CustomResource
+    public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Indicates the name of the certificate if the HTTPS protocol is enabled.
@@ -194,7 +192,7 @@ namespace Pulumi.AliCloud.Dcdn
         }
     }
 
-    public sealed class DomainArgs : Pulumi.ResourceArgs
+    public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates the name of the certificate if the HTTPS protocol is enabled.
@@ -292,9 +290,10 @@ namespace Pulumi.AliCloud.Dcdn
         public DomainArgs()
         {
         }
+        public static new DomainArgs Empty => new DomainArgs();
     }
 
-    public sealed class DomainState : Pulumi.ResourceArgs
+    public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates the name of the certificate if the HTTPS protocol is enabled.
@@ -392,5 +391,6 @@ namespace Pulumi.AliCloud.Dcdn
         public DomainState()
         {
         }
+        public static new DomainState Empty => new DomainState();
     }
 }

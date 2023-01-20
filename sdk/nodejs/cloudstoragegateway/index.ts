@@ -5,35 +5,96 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./expressSync";
-export * from "./expressSyncShareAttachment";
-export * from "./gateway";
-export * from "./gatewayBlockVolume";
-export * from "./gatewayCacheDisk";
-export * from "./gatewayFileShare";
-export * from "./gatewayLogging";
-export * from "./gatewaySmbUser";
-export * from "./getExpressSyncs";
-export * from "./getGatewayBlockVolumes";
-export * from "./getGatewayCacheDisks";
-export * from "./getGatewayFileShares";
-export * from "./getGatewaySmbUsers";
-export * from "./getGateways";
-export * from "./getService";
-export * from "./getStocks";
-export * from "./getStorageBundles";
-export * from "./storageBundle";
+export { ExpressSyncArgs, ExpressSyncState } from "./expressSync";
+export type ExpressSync = import("./expressSync").ExpressSync;
+export const ExpressSync: typeof import("./expressSync").ExpressSync = null as any;
+utilities.lazyLoad(exports, ["ExpressSync"], () => require("./expressSync"));
 
-// Import resources to register:
-import { ExpressSync } from "./expressSync";
-import { ExpressSyncShareAttachment } from "./expressSyncShareAttachment";
-import { Gateway } from "./gateway";
-import { GatewayBlockVolume } from "./gatewayBlockVolume";
-import { GatewayCacheDisk } from "./gatewayCacheDisk";
-import { GatewayFileShare } from "./gatewayFileShare";
-import { GatewayLogging } from "./gatewayLogging";
-import { GatewaySmbUser } from "./gatewaySmbUser";
-import { StorageBundle } from "./storageBundle";
+export { ExpressSyncShareAttachmentArgs, ExpressSyncShareAttachmentState } from "./expressSyncShareAttachment";
+export type ExpressSyncShareAttachment = import("./expressSyncShareAttachment").ExpressSyncShareAttachment;
+export const ExpressSyncShareAttachment: typeof import("./expressSyncShareAttachment").ExpressSyncShareAttachment = null as any;
+utilities.lazyLoad(exports, ["ExpressSyncShareAttachment"], () => require("./expressSyncShareAttachment"));
+
+export { GatewayArgs, GatewayState } from "./gateway";
+export type Gateway = import("./gateway").Gateway;
+export const Gateway: typeof import("./gateway").Gateway = null as any;
+utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+
+export { GatewayBlockVolumeArgs, GatewayBlockVolumeState } from "./gatewayBlockVolume";
+export type GatewayBlockVolume = import("./gatewayBlockVolume").GatewayBlockVolume;
+export const GatewayBlockVolume: typeof import("./gatewayBlockVolume").GatewayBlockVolume = null as any;
+utilities.lazyLoad(exports, ["GatewayBlockVolume"], () => require("./gatewayBlockVolume"));
+
+export { GatewayCacheDiskArgs, GatewayCacheDiskState } from "./gatewayCacheDisk";
+export type GatewayCacheDisk = import("./gatewayCacheDisk").GatewayCacheDisk;
+export const GatewayCacheDisk: typeof import("./gatewayCacheDisk").GatewayCacheDisk = null as any;
+utilities.lazyLoad(exports, ["GatewayCacheDisk"], () => require("./gatewayCacheDisk"));
+
+export { GatewayFileShareArgs, GatewayFileShareState } from "./gatewayFileShare";
+export type GatewayFileShare = import("./gatewayFileShare").GatewayFileShare;
+export const GatewayFileShare: typeof import("./gatewayFileShare").GatewayFileShare = null as any;
+utilities.lazyLoad(exports, ["GatewayFileShare"], () => require("./gatewayFileShare"));
+
+export { GatewayLoggingArgs, GatewayLoggingState } from "./gatewayLogging";
+export type GatewayLogging = import("./gatewayLogging").GatewayLogging;
+export const GatewayLogging: typeof import("./gatewayLogging").GatewayLogging = null as any;
+utilities.lazyLoad(exports, ["GatewayLogging"], () => require("./gatewayLogging"));
+
+export { GatewaySmbUserArgs, GatewaySmbUserState } from "./gatewaySmbUser";
+export type GatewaySmbUser = import("./gatewaySmbUser").GatewaySmbUser;
+export const GatewaySmbUser: typeof import("./gatewaySmbUser").GatewaySmbUser = null as any;
+utilities.lazyLoad(exports, ["GatewaySmbUser"], () => require("./gatewaySmbUser"));
+
+export { GetExpressSyncsArgs, GetExpressSyncsResult, GetExpressSyncsOutputArgs } from "./getExpressSyncs";
+export const getExpressSyncs: typeof import("./getExpressSyncs").getExpressSyncs = null as any;
+export const getExpressSyncsOutput: typeof import("./getExpressSyncs").getExpressSyncsOutput = null as any;
+utilities.lazyLoad(exports, ["getExpressSyncs","getExpressSyncsOutput"], () => require("./getExpressSyncs"));
+
+export { GetGatewayBlockVolumesArgs, GetGatewayBlockVolumesResult, GetGatewayBlockVolumesOutputArgs } from "./getGatewayBlockVolumes";
+export const getGatewayBlockVolumes: typeof import("./getGatewayBlockVolumes").getGatewayBlockVolumes = null as any;
+export const getGatewayBlockVolumesOutput: typeof import("./getGatewayBlockVolumes").getGatewayBlockVolumesOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayBlockVolumes","getGatewayBlockVolumesOutput"], () => require("./getGatewayBlockVolumes"));
+
+export { GetGatewayCacheDisksArgs, GetGatewayCacheDisksResult, GetGatewayCacheDisksOutputArgs } from "./getGatewayCacheDisks";
+export const getGatewayCacheDisks: typeof import("./getGatewayCacheDisks").getGatewayCacheDisks = null as any;
+export const getGatewayCacheDisksOutput: typeof import("./getGatewayCacheDisks").getGatewayCacheDisksOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayCacheDisks","getGatewayCacheDisksOutput"], () => require("./getGatewayCacheDisks"));
+
+export { GetGatewayFileSharesArgs, GetGatewayFileSharesResult, GetGatewayFileSharesOutputArgs } from "./getGatewayFileShares";
+export const getGatewayFileShares: typeof import("./getGatewayFileShares").getGatewayFileShares = null as any;
+export const getGatewayFileSharesOutput: typeof import("./getGatewayFileShares").getGatewayFileSharesOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayFileShares","getGatewayFileSharesOutput"], () => require("./getGatewayFileShares"));
+
+export { GetGatewaySmbUsersArgs, GetGatewaySmbUsersResult, GetGatewaySmbUsersOutputArgs } from "./getGatewaySmbUsers";
+export const getGatewaySmbUsers: typeof import("./getGatewaySmbUsers").getGatewaySmbUsers = null as any;
+export const getGatewaySmbUsersOutput: typeof import("./getGatewaySmbUsers").getGatewaySmbUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewaySmbUsers","getGatewaySmbUsersOutput"], () => require("./getGatewaySmbUsers"));
+
+export { GetGatewaysArgs, GetGatewaysResult, GetGatewaysOutputArgs } from "./getGateways";
+export const getGateways: typeof import("./getGateways").getGateways = null as any;
+export const getGatewaysOutput: typeof import("./getGateways").getGatewaysOutput = null as any;
+utilities.lazyLoad(exports, ["getGateways","getGatewaysOutput"], () => require("./getGateways"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { GetStocksArgs, GetStocksResult, GetStocksOutputArgs } from "./getStocks";
+export const getStocks: typeof import("./getStocks").getStocks = null as any;
+export const getStocksOutput: typeof import("./getStocks").getStocksOutput = null as any;
+utilities.lazyLoad(exports, ["getStocks","getStocksOutput"], () => require("./getStocks"));
+
+export { GetStorageBundlesArgs, GetStorageBundlesResult, GetStorageBundlesOutputArgs } from "./getStorageBundles";
+export const getStorageBundles: typeof import("./getStorageBundles").getStorageBundles = null as any;
+export const getStorageBundlesOutput: typeof import("./getStorageBundles").getStorageBundlesOutput = null as any;
+utilities.lazyLoad(exports, ["getStorageBundles","getStorageBundlesOutput"], () => require("./getStorageBundles"));
+
+export { StorageBundleArgs, StorageBundleState } from "./storageBundle";
+export type StorageBundle = import("./storageBundle").StorageBundle;
+export const StorageBundle: typeof import("./storageBundle").StorageBundle = null as any;
+utilities.lazyLoad(exports, ["StorageBundle"], () => require("./storageBundle"));
+
 
 const _module = {
     version: utilities.getVersion(),

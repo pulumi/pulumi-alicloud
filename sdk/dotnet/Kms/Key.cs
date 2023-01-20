@@ -19,22 +19,20 @@ namespace Pulumi.AliCloud.Kms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var key = new AliCloud.Kms.Key("key", new()
     ///     {
-    ///         var key = new AliCloud.Kms.Key("key", new AliCloud.Kms.KeyArgs
-    ///         {
-    ///             Description = "Hello KMS",
-    ///             PendingWindowInDays = 7,
-    ///             Status = "Enabled",
-    ///         });
-    ///     }
+    ///         Description = "Hello KMS",
+    ///         PendingWindowInDays = 7,
+    ///         Status = "Enabled",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,13 +44,10 @@ namespace Pulumi.AliCloud.Kms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kms/key:Key")]
-    public partial class Key : Pulumi.CustomResource
+    public partial class Key : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Alicloud Resource Name (ARN) of the key.
-        /// * `creation_date` -The date and time when the CMK was created. The time is displayed in UTC.
-        /// * `creator` -The creator of the CMK.
-        /// * `delete_date` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
         /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
@@ -66,12 +61,21 @@ namespace Pulumi.AliCloud.Kms
         [Output("automaticRotation")]
         public Output<string?> AutomaticRotation { get; private set; } = null!;
 
+        /// <summary>
+        /// The date and time when the CMK was created. The time is displayed in UTC.
+        /// </summary>
         [Output("creationDate")]
         public Output<string> CreationDate { get; private set; } = null!;
 
+        /// <summary>
+        /// The creator of the CMK.
+        /// </summary>
         [Output("creator")]
         public Output<string> Creator { get; private set; } = null!;
 
+        /// <summary>
+        /// The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+        /// </summary>
         [Output("deleteDate")]
         public Output<string> DeleteDate { get; private set; } = null!;
 
@@ -86,6 +90,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance ID of the exclusive KMS instance.
+        /// </summary>
+        [Output("dkmsInstanceId")]
+        public Output<string?> DkmsInstanceId { get; private set; } = null!;
 
         /// <summary>
         /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
@@ -142,12 +152,13 @@ namespace Pulumi.AliCloud.Kms
         /// For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
         /// </summary>
         [Output("origin")]
-        public Output<string?> Origin { get; private set; } = null!;
+        public Output<string> Origin { get; private set; } = null!;
 
         /// <summary>
         /// The number of days before the CMK is deleted. 
         /// During this period, the CMK is in the PendingDeletion state.
-        /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+        /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+        /// **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         /// </summary>
         [Output("pendingWindowInDays")]
         public Output<int> PendingWindowInDays { get; private set; } = null!;
@@ -232,7 +243,7 @@ namespace Pulumi.AliCloud.Kms
         }
     }
 
-    public sealed class KeyArgs : Pulumi.ResourceArgs
+    public sealed class KeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to enable automatic key rotation. Valid values: 
@@ -254,6 +265,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The instance ID of the exclusive KMS instance.
+        /// </summary>
+        [Input("dkmsInstanceId")]
+        public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
         /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
@@ -297,7 +314,8 @@ namespace Pulumi.AliCloud.Kms
         /// <summary>
         /// The number of days before the CMK is deleted. 
         /// During this period, the CMK is in the PendingDeletion state.
-        /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+        /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+        /// **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         /// </summary>
         [Input("pendingWindowInDays")]
         public Input<int>? PendingWindowInDays { get; set; }
@@ -335,15 +353,13 @@ namespace Pulumi.AliCloud.Kms
         public KeyArgs()
         {
         }
+        public static new KeyArgs Empty => new KeyArgs();
     }
 
-    public sealed class KeyState : Pulumi.ResourceArgs
+    public sealed class KeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Alicloud Resource Name (ARN) of the key.
-        /// * `creation_date` -The date and time when the CMK was created. The time is displayed in UTC.
-        /// * `creator` -The creator of the CMK.
-        /// * `delete_date` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
         /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
@@ -357,12 +373,21 @@ namespace Pulumi.AliCloud.Kms
         [Input("automaticRotation")]
         public Input<string>? AutomaticRotation { get; set; }
 
+        /// <summary>
+        /// The date and time when the CMK was created. The time is displayed in UTC.
+        /// </summary>
         [Input("creationDate")]
         public Input<string>? CreationDate { get; set; }
 
+        /// <summary>
+        /// The creator of the CMK.
+        /// </summary>
         [Input("creator")]
         public Input<string>? Creator { get; set; }
 
+        /// <summary>
+        /// The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+        /// </summary>
         [Input("deleteDate")]
         public Input<string>? DeleteDate { get; set; }
 
@@ -377,6 +402,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The instance ID of the exclusive KMS instance.
+        /// </summary>
+        [Input("dkmsInstanceId")]
+        public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
         /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
@@ -438,7 +469,8 @@ namespace Pulumi.AliCloud.Kms
         /// <summary>
         /// The number of days before the CMK is deleted. 
         /// During this period, the CMK is in the PendingDeletion state.
-        /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+        /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+        /// **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         /// </summary>
         [Input("pendingWindowInDays")]
         public Input<int>? PendingWindowInDays { get; set; }
@@ -482,5 +514,6 @@ namespace Pulumi.AliCloud.Kms
         public KeyState()
         {
         }
+        public static new KeyState Empty => new KeyState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CR.Inputs
 {
 
-    public sealed class ChainChainConfigNodeNodeConfigArgs : Pulumi.ResourceArgs
+    public sealed class ChainChainConfigNodeNodeConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("denyPolicies")]
         private InputList<Inputs.ChainChainConfigNodeNodeConfigDenyPolicyArgs>? _denyPolicies;
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.CR.Inputs
         public ChainChainConfigNodeNodeConfigArgs()
         {
         }
+        public static new ChainChainConfigNodeNodeConfigArgs Empty => new ChainChainConfigNodeNodeConfigArgs();
     }
 }

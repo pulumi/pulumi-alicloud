@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci
 {
     [AliCloudResourceType("alicloud:eci/openApiImageCache:OpenApiImageCache")]
-    public partial class OpenApiImageCache : Pulumi.CustomResource
+    public partial class OpenApiImageCache : global::Pulumi.CustomResource
     {
         [Output("containerGroupId")]
         public Output<string> ContainerGroupId { get; private set; } = null!;
@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Eci
         }
     }
 
-    public sealed class OpenApiImageCacheArgs : Pulumi.ResourceArgs
+    public sealed class OpenApiImageCacheArgs : global::Pulumi.ResourceArgs
     {
         [Input("eipInstanceId")]
         public Input<string>? EipInstanceId { get; set; }
@@ -137,9 +137,10 @@ namespace Pulumi.AliCloud.Eci
         public OpenApiImageCacheArgs()
         {
         }
+        public static new OpenApiImageCacheArgs Empty => new OpenApiImageCacheArgs();
     }
 
-    public sealed class OpenApiImageCacheState : Pulumi.ResourceArgs
+    public sealed class OpenApiImageCacheState : global::Pulumi.ResourceArgs
     {
         [Input("containerGroupId")]
         public Input<string>? ContainerGroupId { get; set; }
@@ -190,5 +191,6 @@ namespace Pulumi.AliCloud.Eci
         public OpenApiImageCacheState()
         {
         }
+        public static new OpenApiImageCacheState Empty => new OpenApiImageCacheState();
     }
 }

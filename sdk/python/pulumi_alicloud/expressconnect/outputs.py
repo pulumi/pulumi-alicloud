@@ -13,9 +13,12 @@ from . import outputs
 __all__ = [
     'GetAccessPointsPointResult',
     'GetAccessPointsPointAccessPointFeatureModelResult',
+    'GetGrantRuleToCensCenResult',
     'GetPhysicalConnectionsConnectionResult',
+    'GetVbrPconnAssociationsAssociationResult',
     'GetVirtualBorderRoutersFilterResult',
     'GetVirtualBorderRoutersRouterResult',
+    'GetVirtualPhysicalConnectionsConnectionResult',
 ]
 
 @pulumi.output_type
@@ -162,6 +165,57 @@ class GetAccessPointsPointAccessPointFeatureModelResult(dict):
         The Access Point Characteristic Value.
         """
         return pulumi.get(self, "feature_value")
+
+
+@pulumi.output_type
+class GetGrantRuleToCensCenResult(dict):
+    def __init__(__self__, *,
+                 cen_id: str,
+                 cen_owner_id: int,
+                 create_time: str,
+                 id: str):
+        """
+        :param str cen_id: The ID of the authorized CEN instance.
+        :param int cen_owner_id: The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
+        :param str create_time: The time when the instance was created.
+        :param str id: The ID of the Grant Rule To Cen. It formats as `<cen_id>:<cen_owner_id>:<instance_id>`.
+        """
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cen_owner_id", cen_owner_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> str:
+        """
+        The ID of the authorized CEN instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @property
+    @pulumi.getter(name="cenOwnerId")
+    def cen_owner_id(self) -> int:
+        """
+        The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
+        """
+        return pulumi.get(self, "cen_owner_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the instance was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Grant Rule To Cen. It formats as `<cen_id>:<cen_owner_id>:<instance_id>`.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -455,6 +509,156 @@ class GetPhysicalConnectionsConnectionResult(dict):
         Physical Private Line of Type. Default Value: VPC.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetVbrPconnAssociationsAssociationResult(dict):
+    def __init__(__self__, *,
+                 circuit_code: str,
+                 enable_ipv6: bool,
+                 id: str,
+                 local_gateway_ip: str,
+                 local_ipv6_gateway_ip: str,
+                 peer_gateway_ip: str,
+                 peer_ipv6_gateway_ip: str,
+                 peering_ipv6_subnet_mask: str,
+                 peering_subnet_mask: str,
+                 physical_connection_id: str,
+                 status: str,
+                 vbr_id: str,
+                 vlan_id: int):
+        """
+        :param str circuit_code: The circuit code provided by the operator for the physical connection.
+        :param bool enable_ipv6: Whether IPv6 is enabled.
+        :param str id: The ID of the Vbr Pconn Association.
+        :param str local_gateway_ip: The Alibaba cloud IP address of the VBR instance.
+        :param str local_ipv6_gateway_ip: The IPv6 address on the Alibaba Cloud side of the VBR instance.
+        :param str peer_gateway_ip: The client IP address of the VBR instance.
+        :param str peer_ipv6_gateway_ip: The IPv6 address of the client side of the VBR instance.
+        :param str peering_ipv6_subnet_mask: The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+        :param str peering_subnet_mask: The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+        :param str physical_connection_id: The ID of the leased line instance.
+        :param str status: The status of the resource
+        :param str vbr_id: The ID of the VBR instance.
+        :param int vlan_id: VLAN ID of the VBR.
+        """
+        pulumi.set(__self__, "circuit_code", circuit_code)
+        pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "local_gateway_ip", local_gateway_ip)
+        pulumi.set(__self__, "local_ipv6_gateway_ip", local_ipv6_gateway_ip)
+        pulumi.set(__self__, "peer_gateway_ip", peer_gateway_ip)
+        pulumi.set(__self__, "peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
+        pulumi.set(__self__, "peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
+        pulumi.set(__self__, "peering_subnet_mask", peering_subnet_mask)
+        pulumi.set(__self__, "physical_connection_id", physical_connection_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vbr_id", vbr_id)
+        pulumi.set(__self__, "vlan_id", vlan_id)
+
+    @property
+    @pulumi.getter(name="circuitCode")
+    def circuit_code(self) -> str:
+        """
+        The circuit code provided by the operator for the physical connection.
+        """
+        return pulumi.get(self, "circuit_code")
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> bool:
+        """
+        Whether IPv6 is enabled.
+        """
+        return pulumi.get(self, "enable_ipv6")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Vbr Pconn Association.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="localGatewayIp")
+    def local_gateway_ip(self) -> str:
+        """
+        The Alibaba cloud IP address of the VBR instance.
+        """
+        return pulumi.get(self, "local_gateway_ip")
+
+    @property
+    @pulumi.getter(name="localIpv6GatewayIp")
+    def local_ipv6_gateway_ip(self) -> str:
+        """
+        The IPv6 address on the Alibaba Cloud side of the VBR instance.
+        """
+        return pulumi.get(self, "local_ipv6_gateway_ip")
+
+    @property
+    @pulumi.getter(name="peerGatewayIp")
+    def peer_gateway_ip(self) -> str:
+        """
+        The client IP address of the VBR instance.
+        """
+        return pulumi.get(self, "peer_gateway_ip")
+
+    @property
+    @pulumi.getter(name="peerIpv6GatewayIp")
+    def peer_ipv6_gateway_ip(self) -> str:
+        """
+        The IPv6 address of the client side of the VBR instance.
+        """
+        return pulumi.get(self, "peer_ipv6_gateway_ip")
+
+    @property
+    @pulumi.getter(name="peeringIpv6SubnetMask")
+    def peering_ipv6_subnet_mask(self) -> str:
+        """
+        The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+        """
+        return pulumi.get(self, "peering_ipv6_subnet_mask")
+
+    @property
+    @pulumi.getter(name="peeringSubnetMask")
+    def peering_subnet_mask(self) -> str:
+        """
+        The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+        """
+        return pulumi.get(self, "peering_subnet_mask")
+
+    @property
+    @pulumi.getter(name="physicalConnectionId")
+    def physical_connection_id(self) -> str:
+        """
+        The ID of the leased line instance.
+        """
+        return pulumi.get(self, "physical_connection_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vbrId")
+    def vbr_id(self) -> str:
+        """
+        The ID of the VBR instance.
+        """
+        return pulumi.get(self, "vbr_id")
+
+    @property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> int:
+        """
+        VLAN ID of the VBR.
+        """
+        return pulumi.get(self, "vlan_id")
 
 
 @pulumi.output_type
@@ -847,5 +1051,332 @@ class GetVirtualBorderRoutersRouterResult(dict):
         The ID of the Router Interface.
         """
         return pulumi.get(self, "vlan_interface_id")
+
+
+@pulumi.output_type
+class GetVirtualPhysicalConnectionsConnectionResult(dict):
+    def __init__(__self__, *,
+                 access_point_id: str,
+                 ad_location: str,
+                 bandwidth: str,
+                 business_status: str,
+                 circuit_code: str,
+                 create_time: str,
+                 description: str,
+                 enabled_time: str,
+                 end_time: str,
+                 expect_spec: str,
+                 id: str,
+                 line_operator: str,
+                 loa_status: str,
+                 order_mode: str,
+                 parent_physical_connection_ali_uid: str,
+                 parent_physical_connection_id: str,
+                 peer_location: str,
+                 port_number: str,
+                 port_type: str,
+                 redundant_physical_connection_id: str,
+                 resource_group_id: str,
+                 spec: str,
+                 status: str,
+                 virtual_physical_connection_id: str,
+                 virtual_physical_connection_name: str,
+                 virtual_physical_connection_status: str,
+                 vlan_id: int,
+                 vpconn_ali_uid: str):
+        """
+        :param str access_point_id: The ID of the access point of the physical connection.
+        :param str ad_location: The physical location where the physical connection access device is located.
+        :param str bandwidth: The bandwidth of the physical connection. Unit: Mbps.
+        :param str business_status: The commercial status of the physical line. Value:
+               - **Normal**: activated.
+               - **Financialized**: Arrears locked.
+               - **SecurityLocked**: locked for security reasons.
+        :param str circuit_code: The circuit code provided by the operator for the physical connection.
+        :param str create_time: The creation time of the resource
+        :param str description: The description of the physical connection.
+        :param str enabled_time: The opening time of the physical connection.
+        :param str end_time: The expiration time of the shared line.Time is expressed according to ISO8601 standard and UTC time is used. The format is: YYYY-MM-DDThh:mm:ssZ.
+        :param str expect_spec: The estimated bandwidth value of the shared line. The expected bandwidth value will not take effect until the payment is completed.Unit: **M** indicates Mbps,**G** indicates Gbps.
+        :param str id: The ID of the Virtual Physical Connection.
+        :param str line_operator: Operators that provide access to physical lines. Value:-**CT**: China Telecom.-**CU**: China Unicom.-**CM**: China Mobile.-**CO**: China Other.-**Equinix**:Equinix.-**Other**: Other abroad.
+        :param str loa_status: The state of LOA. Value:-**Applying**:LOA application.-**Accept**:LOA application passed.-**Available**:LOA is Available.-**Rejected**:LOA application Rejected.-**Completing**: The dedicated line is under construction.-**Complete**: The construction of the dedicated line is completed.-**Deleted**:LOA has been Deleted.
+        :param str order_mode: The payment method of shared dedicated line. Value:-**PayByPhysicalConnectionOwner**: indicates that the owner of the physical line associated with the shared line pays.-**PayByVirtualPhysicalConnectionOwner**: indicates that the owner of the shared line pays.
+        :param str parent_physical_connection_ali_uid: The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
+        :param str parent_physical_connection_id: The ID of the instance of the physical connection.
+        :param str peer_location: The geographic location of the local data center.
+        :param str port_number: The port number of the physical connection device.
+        :param str port_type: Physical connection port type. Value:-**100Base-T**: 100 megabytes port.-**1000Base-T**: Gigabit port.-**1000Base-LX**: Gigabit single mode optical port (10km).-**10GBase-T**: 10 Gigabit port.-**10GBase-LR**: 10 Gigabit single mode optical port (10km).-**40GBase-LR**: 40 megabytes single-mode optical port.-**100GBase-LR**: 100,000 megabytes single-mode optical port.
+        :param str redundant_physical_connection_id: The ID of the redundant physical connection.
+        :param str resource_group_id: The resource group id
+        :param str spec: The bandwidth value of the shared line.Unit: **M** indicates Mbps,**G** indicates Gbps.
+        :param str status: The status of the resource
+        :param str virtual_physical_connection_id: The ID of the hosted connection
+        :param str virtual_physical_connection_name: The name of the physical connection.
+        :param str virtual_physical_connection_status: The business status of the shared line. Value:
+               - **Confirmed**: The shared line has been Confirmed to receive.
+               - **UnConfirmed**: The shared line has not been confirmed to be received.
+               - **Deleted**: The shared line has been Deleted.
+        :param int vlan_id: The VLAN ID of the shared leased line.
+        :param str vpconn_ali_uid: The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+        """
+        pulumi.set(__self__, "access_point_id", access_point_id)
+        pulumi.set(__self__, "ad_location", ad_location)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "business_status", business_status)
+        pulumi.set(__self__, "circuit_code", circuit_code)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enabled_time", enabled_time)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "expect_spec", expect_spec)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "line_operator", line_operator)
+        pulumi.set(__self__, "loa_status", loa_status)
+        pulumi.set(__self__, "order_mode", order_mode)
+        pulumi.set(__self__, "parent_physical_connection_ali_uid", parent_physical_connection_ali_uid)
+        pulumi.set(__self__, "parent_physical_connection_id", parent_physical_connection_id)
+        pulumi.set(__self__, "peer_location", peer_location)
+        pulumi.set(__self__, "port_number", port_number)
+        pulumi.set(__self__, "port_type", port_type)
+        pulumi.set(__self__, "redundant_physical_connection_id", redundant_physical_connection_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "virtual_physical_connection_id", virtual_physical_connection_id)
+        pulumi.set(__self__, "virtual_physical_connection_name", virtual_physical_connection_name)
+        pulumi.set(__self__, "virtual_physical_connection_status", virtual_physical_connection_status)
+        pulumi.set(__self__, "vlan_id", vlan_id)
+        pulumi.set(__self__, "vpconn_ali_uid", vpconn_ali_uid)
+
+    @property
+    @pulumi.getter(name="accessPointId")
+    def access_point_id(self) -> str:
+        """
+        The ID of the access point of the physical connection.
+        """
+        return pulumi.get(self, "access_point_id")
+
+    @property
+    @pulumi.getter(name="adLocation")
+    def ad_location(self) -> str:
+        """
+        The physical location where the physical connection access device is located.
+        """
+        return pulumi.get(self, "ad_location")
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> str:
+        """
+        The bandwidth of the physical connection. Unit: Mbps.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="businessStatus")
+    def business_status(self) -> str:
+        """
+        The commercial status of the physical line. Value:
+        - **Normal**: activated.
+        - **Financialized**: Arrears locked.
+        - **SecurityLocked**: locked for security reasons.
+        """
+        return pulumi.get(self, "business_status")
+
+    @property
+    @pulumi.getter(name="circuitCode")
+    def circuit_code(self) -> str:
+        """
+        The circuit code provided by the operator for the physical connection.
+        """
+        return pulumi.get(self, "circuit_code")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the physical connection.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enabledTime")
+    def enabled_time(self) -> str:
+        """
+        The opening time of the physical connection.
+        """
+        return pulumi.get(self, "enabled_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The expiration time of the shared line.Time is expressed according to ISO8601 standard and UTC time is used. The format is: YYYY-MM-DDThh:mm:ssZ.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="expectSpec")
+    def expect_spec(self) -> str:
+        """
+        The estimated bandwidth value of the shared line. The expected bandwidth value will not take effect until the payment is completed.Unit: **M** indicates Mbps,**G** indicates Gbps.
+        """
+        return pulumi.get(self, "expect_spec")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Virtual Physical Connection.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lineOperator")
+    def line_operator(self) -> str:
+        """
+        Operators that provide access to physical lines. Value:-**CT**: China Telecom.-**CU**: China Unicom.-**CM**: China Mobile.-**CO**: China Other.-**Equinix**:Equinix.-**Other**: Other abroad.
+        """
+        return pulumi.get(self, "line_operator")
+
+    @property
+    @pulumi.getter(name="loaStatus")
+    def loa_status(self) -> str:
+        """
+        The state of LOA. Value:-**Applying**:LOA application.-**Accept**:LOA application passed.-**Available**:LOA is Available.-**Rejected**:LOA application Rejected.-**Completing**: The dedicated line is under construction.-**Complete**: The construction of the dedicated line is completed.-**Deleted**:LOA has been Deleted.
+        """
+        return pulumi.get(self, "loa_status")
+
+    @property
+    @pulumi.getter(name="orderMode")
+    def order_mode(self) -> str:
+        """
+        The payment method of shared dedicated line. Value:-**PayByPhysicalConnectionOwner**: indicates that the owner of the physical line associated with the shared line pays.-**PayByVirtualPhysicalConnectionOwner**: indicates that the owner of the shared line pays.
+        """
+        return pulumi.get(self, "order_mode")
+
+    @property
+    @pulumi.getter(name="parentPhysicalConnectionAliUid")
+    def parent_physical_connection_ali_uid(self) -> str:
+        """
+        The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
+        """
+        return pulumi.get(self, "parent_physical_connection_ali_uid")
+
+    @property
+    @pulumi.getter(name="parentPhysicalConnectionId")
+    def parent_physical_connection_id(self) -> str:
+        """
+        The ID of the instance of the physical connection.
+        """
+        return pulumi.get(self, "parent_physical_connection_id")
+
+    @property
+    @pulumi.getter(name="peerLocation")
+    def peer_location(self) -> str:
+        """
+        The geographic location of the local data center.
+        """
+        return pulumi.get(self, "peer_location")
+
+    @property
+    @pulumi.getter(name="portNumber")
+    def port_number(self) -> str:
+        """
+        The port number of the physical connection device.
+        """
+        return pulumi.get(self, "port_number")
+
+    @property
+    @pulumi.getter(name="portType")
+    def port_type(self) -> str:
+        """
+        Physical connection port type. Value:-**100Base-T**: 100 megabytes port.-**1000Base-T**: Gigabit port.-**1000Base-LX**: Gigabit single mode optical port (10km).-**10GBase-T**: 10 Gigabit port.-**10GBase-LR**: 10 Gigabit single mode optical port (10km).-**40GBase-LR**: 40 megabytes single-mode optical port.-**100GBase-LR**: 100,000 megabytes single-mode optical port.
+        """
+        return pulumi.get(self, "port_type")
+
+    @property
+    @pulumi.getter(name="redundantPhysicalConnectionId")
+    def redundant_physical_connection_id(self) -> str:
+        """
+        The ID of the redundant physical connection.
+        """
+        return pulumi.get(self, "redundant_physical_connection_id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The resource group id
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> str:
+        """
+        The bandwidth value of the shared line.Unit: **M** indicates Mbps,**G** indicates Gbps.
+        """
+        return pulumi.get(self, "spec")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="virtualPhysicalConnectionId")
+    def virtual_physical_connection_id(self) -> str:
+        """
+        The ID of the hosted connection
+        """
+        return pulumi.get(self, "virtual_physical_connection_id")
+
+    @property
+    @pulumi.getter(name="virtualPhysicalConnectionName")
+    def virtual_physical_connection_name(self) -> str:
+        """
+        The name of the physical connection.
+        """
+        return pulumi.get(self, "virtual_physical_connection_name")
+
+    @property
+    @pulumi.getter(name="virtualPhysicalConnectionStatus")
+    def virtual_physical_connection_status(self) -> str:
+        """
+        The business status of the shared line. Value:
+        - **Confirmed**: The shared line has been Confirmed to receive.
+        - **UnConfirmed**: The shared line has not been confirmed to be received.
+        - **Deleted**: The shared line has been Deleted.
+        """
+        return pulumi.get(self, "virtual_physical_connection_status")
+
+    @property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> int:
+        """
+        The VLAN ID of the shared leased line.
+        """
+        return pulumi.get(self, "vlan_id")
+
+    @property
+    @pulumi.getter(name="vpconnAliUid")
+    def vpconn_ali_uid(self) -> str:
+        """
+        The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+        """
+        return pulumi.get(self, "vpconn_ali_uid")
 
 

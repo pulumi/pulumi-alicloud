@@ -15,15 +15,15 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
     {
         public readonly string? AoneName;
         /// <summary>
-        /// The http method of backend service.
+        /// The method of the api, including 'GET','POST','PUT' etc.
         /// </summary>
         public readonly string Method;
         /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        /// The name of the api gateway api. Defaults to null.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The path of backend service.
+        /// The request path of the api.
         /// </summary>
         public readonly string Path;
         /// <summary>

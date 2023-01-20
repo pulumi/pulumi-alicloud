@@ -25,26 +25,24 @@ namespace Pulumi.AliCloud.KVStore
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var open = AliCloud.KVStore.GetPermission.Invoke(new()
         ///     {
-        ///         var open = Output.Create(AliCloud.KVStore.GetPermission.InvokeAsync(new AliCloud.KVStore.GetPermissionArgs
-        ///         {
-        ///             Enable = "On",
-        ///         }));
-        ///     }
+        ///         Enable = "On",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPermissionResult> InvokeAsync(GetPermissionArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPermissionResult>("alicloud:kvstore/getPermission:getPermission", args ?? new GetPermissionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPermissionResult>("alicloud:kvstore/getPermission:getPermission", args ?? new GetPermissionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Assigns a RAM role to ApsaraDB for Redis.
@@ -60,30 +58,28 @@ namespace Pulumi.AliCloud.KVStore
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var open = AliCloud.KVStore.GetPermission.Invoke(new()
         ///     {
-        ///         var open = Output.Create(AliCloud.KVStore.GetPermission.InvokeAsync(new AliCloud.KVStore.GetPermissionArgs
-        ///         {
-        ///             Enable = "On",
-        ///         }));
-        ///     }
+        ///         Enable = "On",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPermissionResult> Invoke(GetPermissionInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPermissionResult>("alicloud:kvstore/getPermission:getPermission", args ?? new GetPermissionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPermissionResult>("alicloud:kvstore/getPermission:getPermission", args ?? new GetPermissionInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPermissionArgs : Pulumi.InvokeArgs
+    public sealed class GetPermissionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
@@ -94,9 +90,10 @@ namespace Pulumi.AliCloud.KVStore
         public GetPermissionArgs()
         {
         }
+        public static new GetPermissionArgs Empty => new GetPermissionArgs();
     }
 
-    public sealed class GetPermissionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPermissionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
@@ -107,6 +104,7 @@ namespace Pulumi.AliCloud.KVStore
         public GetPermissionInvokeArgs()
         {
         }
+        public static new GetPermissionInvokeArgs Empty => new GetPermissionInvokeArgs();
     }
 
 

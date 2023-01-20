@@ -23,27 +23,25 @@ namespace Pulumi.AliCloud.Amqp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var examples = AliCloud.Amqp.GetBindings.Invoke(new()
         ///     {
-        ///         var examples = Output.Create(AliCloud.Amqp.GetBindings.InvokeAsync(new AliCloud.Amqp.GetBindingsArgs
-        ///         {
-        ///             InstanceId = "amqp-cn-xxxxx",
-        ///             VirtualHostName = "my-vh",
-        ///         }));
-        ///     }
+        ///         InstanceId = "amqp-cn-xxxxx",
+        ///         VirtualHostName = "my-vh",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBindingsResult> InvokeAsync(GetBindingsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBindingsResult>("alicloud:amqp/getBindings:getBindings", args ?? new GetBindingsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBindingsResult>("alicloud:amqp/getBindings:getBindings", args ?? new GetBindingsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Amqp Bindings of the current Alibaba Cloud user.
@@ -57,31 +55,29 @@ namespace Pulumi.AliCloud.Amqp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var examples = AliCloud.Amqp.GetBindings.Invoke(new()
         ///     {
-        ///         var examples = Output.Create(AliCloud.Amqp.GetBindings.InvokeAsync(new AliCloud.Amqp.GetBindingsArgs
-        ///         {
-        ///             InstanceId = "amqp-cn-xxxxx",
-        ///             VirtualHostName = "my-vh",
-        ///         }));
-        ///     }
+        ///         InstanceId = "amqp-cn-xxxxx",
+        ///         VirtualHostName = "my-vh",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBindingsResult> Invoke(GetBindingsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBindingsResult>("alicloud:amqp/getBindings:getBindings", args ?? new GetBindingsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBindingsResult>("alicloud:amqp/getBindings:getBindings", args ?? new GetBindingsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBindingsArgs : Pulumi.InvokeArgs
+    public sealed class GetBindingsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Instance Id.
@@ -101,9 +97,10 @@ namespace Pulumi.AliCloud.Amqp
         public GetBindingsArgs()
         {
         }
+        public static new GetBindingsArgs Empty => new GetBindingsArgs();
     }
 
-    public sealed class GetBindingsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBindingsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Instance Id.
@@ -123,6 +120,7 @@ namespace Pulumi.AliCloud.Amqp
         public GetBindingsInvokeArgs()
         {
         }
+        public static new GetBindingsInvokeArgs Empty => new GetBindingsInvokeArgs();
     }
 
 

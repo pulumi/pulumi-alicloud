@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,50 +17,45 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccRouteEntryConfig";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }));
- * const defaultInstanceTypes = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones[0].id,
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
- * const defaultImages = pulumi.output(alicloud.ecs.getImages({
+ * const defaultImages = alicloud.ecs.getImages({
  *     mostRecent: true,
  *     nameRegex: "^ubuntu_18.*64",
  *     owners: "system",
- * }));
- * const fooNetwork = new alicloud.vpc.Network("foo", {
- *     cidrBlock: "10.1.0.0/21",
  * });
- * const fooSwitch = new alicloud.vpc.Switch("foo", {
- *     availabilityZone: defaultZones.zones[0].id,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testAccRouteEntryConfig";
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "10.1.0.0/21"});
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     cidrBlock: "10.1.1.0/24",
  *     vpcId: fooNetwork.id,
  *     vswitchName: name,
  * });
- * const tfTestFoo = new alicloud.ecs.SecurityGroup("tf_test_foo", {
+ * const tfTestFoo = new alicloud.ecs.SecurityGroup("tfTestFoo", {
  *     description: "foo",
  *     vpcId: fooNetwork.id,
  * });
- * const fooInstance = new alicloud.ecs.Instance("foo", {
+ * const fooInstance = new alicloud.ecs.Instance("fooInstance", {
  *     allocatePublicIp: true,
- *     imageId: defaultImages.images[0].id,
- *     // series III
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
  *     instanceChargeType: "PostPaid",
  *     instanceName: name,
- *     instanceType: defaultInstanceTypes.instanceTypes[0].id,
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 5,
- *     // cn-beijing
  *     securityGroups: [tfTestFoo.id],
  *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: fooSwitch.id,
  * });
- * const fooRouteEntry = new alicloud.vpc.RouteEntry("foo", {
+ * const fooRouteEntry = new alicloud.vpc.RouteEntry("fooRouteEntry", {
  *     destinationCidrblock: "172.11.1.1/32",
  *     nexthopId: fooInstance.id,
  *     nexthopType: "Instance",
@@ -75,17 +71,14 @@ import * as utilities from "../utilities";
  *     securityGroupId: tfTestFoo.id,
  *     type: "ingress",
  * });
- * const fooRouteEntries = fooRouteEntry.routeTableId.apply(routeTableId => alicloud.vpc.getRouteEntries({
- *     routeTableId: routeTableId,
- * }));
+ * const fooRouteEntries = alicloud.vpc.getRouteEntriesOutput({
+ *     routeTableId: fooRouteEntry.routeTableId,
+ * });
  * ```
  */
 export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteEntriesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getRouteEntries:getRouteEntries", {
         "cidrBlock": args.cidrBlock,
         "instanceId": args.instanceId,
@@ -148,9 +141,78 @@ export interface GetRouteEntriesResult {
      */
     readonly type?: string;
 }
-
+/**
+ * This data source provides a list of Route Entries owned by an Alibaba Cloud account.
+ *
+ * > **NOTE:** Available in 1.37.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     mostRecent: true,
+ *     nameRegex: "^ubuntu_18.*64",
+ *     owners: "system",
+ * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testAccRouteEntryConfig";
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "10.1.0.0/21"});
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     cidrBlock: "10.1.1.0/24",
+ *     vpcId: fooNetwork.id,
+ *     vswitchName: name,
+ * });
+ * const tfTestFoo = new alicloud.ecs.SecurityGroup("tfTestFoo", {
+ *     description: "foo",
+ *     vpcId: fooNetwork.id,
+ * });
+ * const fooInstance = new alicloud.ecs.Instance("fooInstance", {
+ *     allocatePublicIp: true,
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceChargeType: "PostPaid",
+ *     instanceName: name,
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 5,
+ *     securityGroups: [tfTestFoo.id],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     vswitchId: fooSwitch.id,
+ * });
+ * const fooRouteEntry = new alicloud.vpc.RouteEntry("fooRouteEntry", {
+ *     destinationCidrblock: "172.11.1.1/32",
+ *     nexthopId: fooInstance.id,
+ *     nexthopType: "Instance",
+ *     routeTableId: fooNetwork.routeTableId,
+ * });
+ * const ingress = new alicloud.ecs.SecurityGroupRule("ingress", {
+ *     cidrIp: "0.0.0.0/0",
+ *     ipProtocol: "tcp",
+ *     nicType: "intranet",
+ *     policy: "accept",
+ *     portRange: "22/22",
+ *     priority: 1,
+ *     securityGroupId: tfTestFoo.id,
+ *     type: "ingress",
+ * });
+ * const fooRouteEntries = alicloud.vpc.getRouteEntriesOutput({
+ *     routeTableId: fooRouteEntry.routeTableId,
+ * });
+ * ```
+ */
 export function getRouteEntriesOutput(args: GetRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteEntriesResult> {
-    return pulumi.output(args).apply(a => getRouteEntries(a, opts))
+    return pulumi.output(args).apply((a: any) => getRouteEntries(a, opts))
 }
 
 /**

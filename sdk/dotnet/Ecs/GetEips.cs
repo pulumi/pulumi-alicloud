@@ -18,26 +18,25 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var eipsDs = Output.Create(AliCloud.Ecs.GetEips.InvokeAsync());
-        ///         this.FirstEipId = eipsDs.Apply(eipsDs =&gt; eipsDs.Eips?[0]?.Id);
-        ///     }
+        ///     var eipsDs = AliCloud.Ecs.GetEips.Invoke();
         /// 
-        ///     [Output("firstEipId")]
-        ///     public Output&lt;string&gt; FirstEipId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEipId"] = eipsDs.Apply(getEipsResult =&gt; getEipsResult.Eips[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEipsResult> InvokeAsync(GetEipsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEipsResult>("alicloud:ecs/getEips:getEips", args ?? new GetEipsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEipsResult>("alicloud:ecs/getEips:getEips", args ?? new GetEipsArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -45,30 +44,29 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var eipsDs = Output.Create(AliCloud.Ecs.GetEips.InvokeAsync());
-        ///         this.FirstEipId = eipsDs.Apply(eipsDs =&gt; eipsDs.Eips?[0]?.Id);
-        ///     }
+        ///     var eipsDs = AliCloud.Ecs.GetEips.Invoke();
         /// 
-        ///     [Output("firstEipId")]
-        ///     public Output&lt;string&gt; FirstEipId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEipId"] = eipsDs.Apply(getEipsResult =&gt; getEipsResult.Eips[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEipsResult> Invoke(GetEipsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEipsResult>("alicloud:ecs/getEips:getEips", args ?? new GetEipsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEipsResult>("alicloud:ecs/getEips:getEips", args ?? new GetEipsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEipsArgs : Pulumi.InvokeArgs
+    public sealed class GetEipsArgs : global::Pulumi.InvokeArgs
     {
         [Input("addressName")]
         public string? AddressName { get; set; }
@@ -164,9 +162,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEipsArgs()
         {
         }
+        public static new GetEipsArgs Empty => new GetEipsArgs();
     }
 
-    public sealed class GetEipsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEipsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("addressName")]
         public Input<string>? AddressName { get; set; }
@@ -262,6 +261,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEipsInvokeArgs()
         {
         }
+        public static new GetEipsInvokeArgs Empty => new GetEipsInvokeArgs();
     }
 
 

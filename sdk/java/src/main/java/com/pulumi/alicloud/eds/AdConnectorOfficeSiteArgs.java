@@ -110,9 +110,6 @@ public final class AdConnectorOfficeSiteArgs extends com.pulumi.resources.Resour
 
     /**
      * The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-     * - `INTERNET`: connects clients to cloud desktops only over the Internet.
-     * - `VPC`: connects clients to cloud desktops only over a VPC.
-     * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
      * 
      */
     @Import(name="desktopAccessType")
@@ -120,9 +117,6 @@ public final class AdConnectorOfficeSiteArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-     * - `INTERNET`: connects clients to cloud desktops only over the Internet.
-     * - `VPC`: connects clients to cloud desktops only over a VPC.
-     * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
      * 
      */
     public Optional<Output<String>> desktopAccessType() {
@@ -479,9 +473,6 @@ public final class AdConnectorOfficeSiteArgs extends com.pulumi.resources.Resour
 
         /**
          * @param desktopAccessType The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-         * - `INTERNET`: connects clients to cloud desktops only over the Internet.
-         * - `VPC`: connects clients to cloud desktops only over a VPC.
-         * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
          * 
          * @return builder
          * 
@@ -493,9 +484,6 @@ public final class AdConnectorOfficeSiteArgs extends com.pulumi.resources.Resour
 
         /**
          * @param desktopAccessType The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-         * - `INTERNET`: connects clients to cloud desktops only over the Internet.
-         * - `VPC`: connects clients to cloud desktops only over a VPC.
-         * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
          * 
          * @return builder
          * 

@@ -49,7 +49,7 @@ class ClusterArgs:
         :param pulumi.Input[str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[str] zone_id: Zone ID, e.g. cn-huhehaote-a
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]] bootstrap_actions: Boot action parameters.
-        :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        :param pulumi.Input[str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]] configs: The custom configurations of emr-cluster service.
         :param pulumi.Input[str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         :param pulumi.Input[bool] eas_enable: High security cluster (true) or not. Default value is false.
@@ -61,7 +61,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterMetaStoreConfArgs'] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
         :param pulumi.Input[str] meta_store_type: The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
         :param pulumi.Input['ClusterModifyClusterServiceConfigArgs'] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created.
-        :param pulumi.Input[str] name: bootstrap action name.
+        :param pulumi.Input[str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] option_software_lists: Optional software list.
         :param pulumi.Input[int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
         :param pulumi.Input[str] related_cluster_id: This specify the related cluster id, if this cluster is a Gateway.
@@ -177,7 +177,7 @@ class ClusterArgs:
     @pulumi.getter(name="chargeType")
     def charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         """
         return pulumi.get(self, "charge_type")
 
@@ -321,7 +321,7 @@ class ClusterArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        bootstrap action name.
+        The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         """
         return pulumi.get(self, "name")
 
@@ -483,7 +483,7 @@ class _ClusterState:
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]] bootstrap_actions: Boot action parameters.
-        :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        :param pulumi.Input[str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]] configs: The custom configurations of emr-cluster service.
         :param pulumi.Input[str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
@@ -497,7 +497,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterMetaStoreConfArgs'] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
         :param pulumi.Input[str] meta_store_type: The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
         :param pulumi.Input['ClusterModifyClusterServiceConfigArgs'] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created.
-        :param pulumi.Input[str] name: bootstrap action name.
+        :param pulumi.Input[str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] option_software_lists: Optional software list.
         :param pulumi.Input[int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
         :param pulumi.Input[str] related_cluster_id: This specify the related cluster id, if this cluster is a Gateway.
@@ -581,7 +581,7 @@ class _ClusterState:
     @pulumi.getter(name="chargeType")
     def charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         """
         return pulumi.get(self, "charge_type")
 
@@ -749,7 +749,7 @@ class _ClusterState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        bootstrap action name.
+        The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         """
         return pulumi.get(self, "name")
 
@@ -1360,7 +1360,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]] bootstrap_actions: Boot action parameters.
-        :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        :param pulumi.Input[str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterConfigArgs']]]] configs: The custom configurations of emr-cluster service.
         :param pulumi.Input[str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
@@ -1374,7 +1374,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterMetaStoreConfArgs']] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
         :param pulumi.Input[str] meta_store_type: The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
         :param pulumi.Input[pulumi.InputType['ClusterModifyClusterServiceConfigArgs']] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created.
-        :param pulumi.Input[str] name: bootstrap action name.
+        :param pulumi.Input[str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] option_software_lists: Optional software list.
         :param pulumi.Input[int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
         :param pulumi.Input[str] related_cluster_id: This specify the related cluster id, if this cluster is a Gateway.
@@ -1956,7 +1956,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapActionArgs']]]] bootstrap_actions: Boot action parameters.
-        :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        :param pulumi.Input[str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterConfigArgs']]]] configs: The custom configurations of emr-cluster service.
         :param pulumi.Input[str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
@@ -1970,7 +1970,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterMetaStoreConfArgs']] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
         :param pulumi.Input[str] meta_store_type: The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
         :param pulumi.Input[pulumi.InputType['ClusterModifyClusterServiceConfigArgs']] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created.
-        :param pulumi.Input[str] name: bootstrap action name.
+        :param pulumi.Input[str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] option_software_lists: Optional software list.
         :param pulumi.Input[int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
         :param pulumi.Input[str] related_cluster_id: This specify the related cluster id, if this cluster is a Gateway.
@@ -2028,7 +2028,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="chargeType")
     def charge_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         """
         return pulumi.get(self, "charge_type")
 
@@ -2140,7 +2140,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        bootstrap action name.
+        The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         """
         return pulumi.get(self, "name")
 

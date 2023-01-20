@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudsso/accessConfiguration:AccessConfiguration")]
-    public partial class AccessConfiguration : Pulumi.CustomResource
+    public partial class AccessConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The AccessConfigurationId of the Access Configuration.
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.CloudSso
         }
     }
 
-    public sealed class AccessConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class AccessConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
@@ -174,9 +174,10 @@ namespace Pulumi.AliCloud.CloudSso
         public AccessConfigurationArgs()
         {
         }
+        public static new AccessConfigurationArgs Empty => new AccessConfigurationArgs();
     }
 
-    public sealed class AccessConfigurationState : Pulumi.ResourceArgs
+    public sealed class AccessConfigurationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The AccessConfigurationId of the Access Configuration.
@@ -235,5 +236,6 @@ namespace Pulumi.AliCloud.CloudSso
         public AccessConfigurationState()
         {
         }
+        public static new AccessConfigurationState Empty => new AccessConfigurationState();
     }
 }

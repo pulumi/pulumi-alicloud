@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Dfs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dfs/mountPoint:MountPoint")]
-    public partial class MountPoint : Pulumi.CustomResource
+    public partial class MountPoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Access Group.
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Dfs
         }
     }
 
-    public sealed class MountPointArgs : Pulumi.ResourceArgs
+    public sealed class MountPointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Access Group.
@@ -166,9 +166,10 @@ namespace Pulumi.AliCloud.Dfs
         public MountPointArgs()
         {
         }
+        public static new MountPointArgs Empty => new MountPointArgs();
     }
 
-    public sealed class MountPointState : Pulumi.ResourceArgs
+    public sealed class MountPointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Access Group.
@@ -221,5 +222,6 @@ namespace Pulumi.AliCloud.Dfs
         public MountPointState()
         {
         }
+        public static new MountPointState Empty => new MountPointState();
     }
 }

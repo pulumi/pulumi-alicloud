@@ -17,24 +17,22 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var snapshots = AliCloud.Ecs.GetSnapshots.Invoke(new()
         ///     {
-        ///         var snapshots = Output.Create(AliCloud.Ecs.GetSnapshots.InvokeAsync(new AliCloud.Ecs.GetSnapshotsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "s-123456890abcdef",
-        ///             },
-        ///             NameRegex = "tf-testAcc-snapshot",
-        ///         }));
-        ///     }
+        ///             "s-123456890abcdef",
+        ///         },
+        ///         NameRegex = "tf-testAcc-snapshot",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -68,7 +66,7 @@ namespace Pulumi.AliCloud.Ecs
         /// * `output_file` - (Optional) The name of output file that saves the filter results.
         /// </summary>
         public static Task<GetSnapshotsResult> InvokeAsync(GetSnapshotsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -76,24 +74,22 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var snapshots = AliCloud.Ecs.GetSnapshots.Invoke(new()
         ///     {
-        ///         var snapshots = Output.Create(AliCloud.Ecs.GetSnapshots.InvokeAsync(new AliCloud.Ecs.GetSnapshotsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "s-123456890abcdef",
-        ///             },
-        ///             NameRegex = "tf-testAcc-snapshot",
-        ///         }));
-        ///     }
+        ///             "s-123456890abcdef",
+        ///         },
+        ///         NameRegex = "tf-testAcc-snapshot",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -127,11 +123,11 @@ namespace Pulumi.AliCloud.Ecs
         /// * `output_file` - (Optional) The name of output file that saves the filter results.
         /// </summary>
         public static Output<GetSnapshotsResult> Invoke(GetSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSnapshotsArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotsArgs : global::Pulumi.InvokeArgs
     {
         [Input("category")]
         public string? Category { get; set; }
@@ -214,9 +210,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetSnapshotsArgs()
         {
         }
+        public static new GetSnapshotsArgs Empty => new GetSnapshotsArgs();
     }
 
-    public sealed class GetSnapshotsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -299,6 +296,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetSnapshotsInvokeArgs()
         {
         }
+        public static new GetSnapshotsInvokeArgs Empty => new GetSnapshotsInvokeArgs();
     }
 
 

@@ -36,14 +36,14 @@ public final class GatewayVpnAttachmentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of the customer gateway.
+     * The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
      * 
      */
     @Import(name="customerGatewayId", required=true)
     private Output<String> customerGatewayId;
 
     /**
-     * @return The ID of the customer gateway.
+     * @return The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
      * 
      */
     public Output<String> customerGatewayId() {
@@ -257,7 +257,7 @@ public final class GatewayVpnAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customerGatewayId The ID of the customer gateway.
+         * @param customerGatewayId The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class GatewayVpnAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customerGatewayId The ID of the customer gateway.
+         * @param customerGatewayId The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
          * 
          * @return builder
          * 

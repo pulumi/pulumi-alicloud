@@ -21,25 +21,23 @@ namespace Pulumi.AliCloud.ActionTrail
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new actiontrail trail.
+    ///     var @default = new AliCloud.ActionTrail.Trail("default", new()
     ///     {
-    ///         // Create a new actiontrail trail.
-    ///         var @default = new AliCloud.ActionTrail.Trail("default", new AliCloud.ActionTrail.TrailArgs
-    ///         {
-    ///             EventRw = "All",
-    ///             OssBucketName = "bucket_name",
-    ///             OssWriteRoleArn = "acs:ram::1182725xxxxxxxxxxx",
-    ///             TrailName = "action-trail",
-    ///             TrailRegion = "cn-hangzhou",
-    ///         });
-    ///     }
+    ///         EventRw = "All",
+    ///         OssBucketName = "bucket_name",
+    ///         OssWriteRoleArn = "acs:ram::1182725xxxxxxxxxxx",
+    ///         TrailName = "action-trail",
+    ///         TrailRegion = "cn-hangzhou",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +49,7 @@ namespace Pulumi.AliCloud.ActionTrail
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:actiontrail/trail:Trail")]
-    public partial class Trail : Pulumi.CustomResource
+    public partial class Trail : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
@@ -175,7 +173,7 @@ namespace Pulumi.AliCloud.ActionTrail
         }
     }
 
-    public sealed class TrailArgs : Pulumi.ResourceArgs
+    public sealed class TrailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
@@ -258,9 +256,10 @@ namespace Pulumi.AliCloud.ActionTrail
         public TrailArgs()
         {
         }
+        public static new TrailArgs Empty => new TrailArgs();
     }
 
-    public sealed class TrailState : Pulumi.ResourceArgs
+    public sealed class TrailState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
@@ -343,5 +342,6 @@ namespace Pulumi.AliCloud.ActionTrail
         public TrailState()
         {
         }
+        public static new TrailState Empty => new TrailState();
     }
 }

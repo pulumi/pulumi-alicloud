@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.DatabaseGateway
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.DatabaseGateway.GetGateways.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.DatabaseGateway.GetGateways.InvokeAsync(new AliCloud.DatabaseGateway.GetGatewaysArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.DatabaseGatewayGatewayId1 = ids.Apply(ids =&gt; ids.Gateways?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.DatabaseGateway.GetGateways.InvokeAsync(new AliCloud.DatabaseGateway.GetGatewaysArgs
-        ///         {
-        ///             NameRegex = "^my-Gateway",
-        ///         }));
-        ///         this.DatabaseGatewayGatewayId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("databaseGatewayGatewayId1")]
-        ///     public Output&lt;string&gt; DatabaseGatewayGatewayId1 { get; set; }
-        ///     [Output("databaseGatewayGatewayId2")]
-        ///     public Output&lt;string&gt; DatabaseGatewayGatewayId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.DatabaseGateway.GetGateways.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Gateway",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseGatewayGatewayId1"] = ids.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///         ["databaseGatewayGatewayId2"] = nameRegex.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(GetGatewaysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:databasegateway/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:databasegateway/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.DatabaseGateway
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.DatabaseGateway.GetGateways.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.DatabaseGateway.GetGateways.InvokeAsync(new AliCloud.DatabaseGateway.GetGatewaysArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.DatabaseGatewayGatewayId1 = ids.Apply(ids =&gt; ids.Gateways?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.DatabaseGateway.GetGateways.InvokeAsync(new AliCloud.DatabaseGateway.GetGatewaysArgs
-        ///         {
-        ///             NameRegex = "^my-Gateway",
-        ///         }));
-        ///         this.DatabaseGatewayGatewayId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("databaseGatewayGatewayId1")]
-        ///     public Output&lt;string&gt; DatabaseGatewayGatewayId1 { get; set; }
-        ///     [Output("databaseGatewayGatewayId2")]
-        ///     public Output&lt;string&gt; DatabaseGatewayGatewayId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.DatabaseGateway.GetGateways.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Gateway",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseGatewayGatewayId1"] = ids.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///         ["databaseGatewayGatewayId2"] = nameRegex.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:databasegateway/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:databasegateway/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGatewaysArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewaysArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -149,9 +145,10 @@ namespace Pulumi.AliCloud.DatabaseGateway
         public GetGatewaysArgs()
         {
         }
+        public static new GetGatewaysArgs Empty => new GetGatewaysArgs();
     }
 
-    public sealed class GetGatewaysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewaysInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -195,6 +192,7 @@ namespace Pulumi.AliCloud.DatabaseGateway
         public GetGatewaysInvokeArgs()
         {
         }
+        public static new GetGatewaysInvokeArgs Empty => new GetGatewaysInvokeArgs();
     }
 
 

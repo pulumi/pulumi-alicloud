@@ -15,7 +15,7 @@ import (
 //
 // > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 //
-// > **NOTE:** Available in 1.57.0+ .
+// > **NOTE:** Available in 1.183.0+ .
 //
 // ## Example Usage
 //
@@ -34,10 +34,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
-//				Bandwidth:     pulumi.Int(201),
-//				BaseBandwidth: pulumi.Int(20),
-//				IpCount:       pulumi.Int(100),
-//				IpType:        pulumi.String("IPv4"),
+//				Bandwidth:       -1,
+//				BaseBandwidth:   pulumi.Int(20),
+//				IpCount:         pulumi.Int(100),
+//				IpType:          pulumi.String("IPv4"),
+//				NormalBandwidth: pulumi.Int(100),
+//				Type:            pulumi.String("Enterprise"),
 //			})
 //			if err != nil {
 //				return err
@@ -70,9 +72,11 @@ type DdosBgpInstance struct {
 	IpType pulumi.StringOutput `pulumi:"ipType"`
 	// Name of the instance. This name can have a string of 1 to 63 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Normal defend bandwidth of the instance. The unit is Gbps.
+	NormalBandwidth pulumi.IntOutput `pulumi:"normalBandwidth"`
 	// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+	// Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -91,6 +95,9 @@ func NewDdosBgpInstance(ctx *pulumi.Context,
 	}
 	if args.IpType == nil {
 		return nil, errors.New("invalid value for required argument 'IpType'")
+	}
+	if args.NormalBandwidth == nil {
+		return nil, errors.New("invalid value for required argument 'NormalBandwidth'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -130,9 +137,11 @@ type ddosBgpInstanceState struct {
 	IpType *string `pulumi:"ipType"`
 	// Name of the instance. This name can have a string of 1 to 63 characters.
 	Name *string `pulumi:"name"`
+	// Normal defend bandwidth of the instance. The unit is Gbps.
+	NormalBandwidth *int `pulumi:"normalBandwidth"`
 	// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period *int `pulumi:"period"`
-	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+	// Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
 	Type *string `pulumi:"type"`
 }
 
@@ -147,9 +156,11 @@ type DdosBgpInstanceState struct {
 	IpType pulumi.StringPtrInput
 	// Name of the instance. This name can have a string of 1 to 63 characters.
 	Name pulumi.StringPtrInput
+	// Normal defend bandwidth of the instance. The unit is Gbps.
+	NormalBandwidth pulumi.IntPtrInput
 	// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period pulumi.IntPtrInput
-	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+	// Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
 	Type pulumi.StringPtrInput
 }
 
@@ -168,9 +179,11 @@ type ddosBgpInstanceArgs struct {
 	IpType string `pulumi:"ipType"`
 	// Name of the instance. This name can have a string of 1 to 63 characters.
 	Name *string `pulumi:"name"`
+	// Normal defend bandwidth of the instance. The unit is Gbps.
+	NormalBandwidth int `pulumi:"normalBandwidth"`
 	// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period *int `pulumi:"period"`
-	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+	// Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
 	Type *string `pulumi:"type"`
 }
 
@@ -186,9 +199,11 @@ type DdosBgpInstanceArgs struct {
 	IpType pulumi.StringInput
 	// Name of the instance. This name can have a string of 1 to 63 characters.
 	Name pulumi.StringPtrInput
+	// Normal defend bandwidth of the instance. The unit is Gbps.
+	NormalBandwidth pulumi.IntInput
 	// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period pulumi.IntPtrInput
-	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+	// Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
 	Type pulumi.StringPtrInput
 }
 
@@ -304,12 +319,17 @@ func (o DdosBgpInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosBgpInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Normal defend bandwidth of the instance. The unit is Gbps.
+func (o DdosBgpInstanceOutput) NormalBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *DdosBgpInstance) pulumi.IntOutput { return v.NormalBandwidth }).(pulumi.IntOutput)
+}
+
 // The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 func (o DdosBgpInstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DdosBgpInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+// Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
 func (o DdosBgpInstanceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DdosBgpInstance) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

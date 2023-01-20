@@ -52,14 +52,14 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
     }
 
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      * 
      */
     @Import(name="cpu")
     private @Nullable Output<Double> cpu;
 
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     public Optional<Output<Double>> cpu() {
@@ -68,6 +68,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
 
     /**
      * The structure of environmentVars.
+     * See Block_environment_var_in_init_container below for details.
      * See Block_environment_var_in_container below for details.
      * 
      */
@@ -76,6 +77,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
 
     /**
      * @return The structure of environmentVars.
+     * See Block_environment_var_in_init_container below for details.
      * See Block_environment_var_in_container below for details.
      * 
      */
@@ -129,14 +131,164 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
     }
 
     /**
-     * The amount of memory resources allocated to the container.
+     * Commands that you want to run in containers when you use the CLI to perform liveness probes.
+     * 
+     */
+    @Import(name="livenessProbeExecCommands")
+    private @Nullable Output<List<String>> livenessProbeExecCommands;
+
+    /**
+     * @return Commands that you want to run in containers when you use the CLI to perform liveness probes.
+     * 
+     */
+    public Optional<Output<List<String>>> livenessProbeExecCommands() {
+        return Optional.ofNullable(this.livenessProbeExecCommands);
+    }
+
+    /**
+     * The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
+     * 
+     */
+    @Import(name="livenessProbeFailureThreshold")
+    private @Nullable Output<Integer> livenessProbeFailureThreshold;
+
+    /**
+     * @return The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
+     * 
+     */
+    public Optional<Output<Integer>> livenessProbeFailureThreshold() {
+        return Optional.ofNullable(this.livenessProbeFailureThreshold);
+    }
+
+    /**
+     * The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+     * 
+     */
+    @Import(name="livenessProbeHttpGetPath")
+    private @Nullable Output<String> livenessProbeHttpGetPath;
+
+    /**
+     * @return The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+     * 
+     */
+    public Optional<Output<String>> livenessProbeHttpGetPath() {
+        return Optional.ofNullable(this.livenessProbeHttpGetPath);
+    }
+
+    /**
+     * The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+     * 
+     */
+    @Import(name="livenessProbeHttpGetPort")
+    private @Nullable Output<Integer> livenessProbeHttpGetPort;
+
+    /**
+     * @return The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+     * 
+     */
+    public Optional<Output<Integer>> livenessProbeHttpGetPort() {
+        return Optional.ofNullable(this.livenessProbeHttpGetPort);
+    }
+
+    /**
+     * The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
+     * 
+     */
+    @Import(name="livenessProbeHttpGetScheme")
+    private @Nullable Output<String> livenessProbeHttpGetScheme;
+
+    /**
+     * @return The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
+     * 
+     */
+    public Optional<Output<String>> livenessProbeHttpGetScheme() {
+        return Optional.ofNullable(this.livenessProbeHttpGetScheme);
+    }
+
+    /**
+     * The number of seconds after container has started before liveness probes are initiated.
+     * 
+     */
+    @Import(name="livenessProbeInitialDelaySeconds")
+    private @Nullable Output<Integer> livenessProbeInitialDelaySeconds;
+
+    /**
+     * @return The number of seconds after container has started before liveness probes are initiated.
+     * 
+     */
+    public Optional<Output<Integer>> livenessProbeInitialDelaySeconds() {
+        return Optional.ofNullable(this.livenessProbeInitialDelaySeconds);
+    }
+
+    /**
+     * The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+     * 
+     */
+    @Import(name="livenessProbePeriodSeconds")
+    private @Nullable Output<Integer> livenessProbePeriodSeconds;
+
+    /**
+     * @return The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+     * 
+     */
+    public Optional<Output<Integer>> livenessProbePeriodSeconds() {
+        return Optional.ofNullable(this.livenessProbePeriodSeconds);
+    }
+
+    /**
+     * The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+     * 
+     */
+    @Import(name="livenessProbeSuccessThreshold")
+    private @Nullable Output<Integer> livenessProbeSuccessThreshold;
+
+    /**
+     * @return The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+     * 
+     */
+    public Optional<Output<Integer>> livenessProbeSuccessThreshold() {
+        return Optional.ofNullable(this.livenessProbeSuccessThreshold);
+    }
+
+    /**
+     * The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
+     * 
+     */
+    @Import(name="livenessProbeTcpSocketPort")
+    private @Nullable Output<Integer> livenessProbeTcpSocketPort;
+
+    /**
+     * @return The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
+     * 
+     */
+    public Optional<Output<Integer>> livenessProbeTcpSocketPort() {
+        return Optional.ofNullable(this.livenessProbeTcpSocketPort);
+    }
+
+    /**
+     * The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+     * 
+     */
+    @Import(name="livenessProbeTimeoutSeconds")
+    private @Nullable Output<Integer> livenessProbeTimeoutSeconds;
+
+    /**
+     * @return The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+     * 
+     */
+    public Optional<Output<Integer>> livenessProbeTimeoutSeconds() {
+        return Optional.ofNullable(this.livenessProbeTimeoutSeconds);
+    }
+
+    /**
+     * The amount of memory resources allocated to the container group.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<Double> memory;
 
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     public Optional<Output<Double>> memory() {
@@ -144,14 +296,14 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
     }
 
     /**
-     * The name of the mounted volume.
+     * The name of the volume.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the mounted volume.
+     * @return The name of the volume.
      * 
      */
     public Optional<Output<String>> name() {
@@ -159,14 +311,16 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
     }
 
     /**
-     * The structure of port. See Block_port_in_container below for details.
+     * The structure of port. See Block_port_in_init_container below
+     * for details.
      * 
      */
     @Import(name="ports")
     private @Nullable Output<List<EciScalingConfigurationContainerPortArgs>> ports;
 
     /**
-     * @return The structure of port. See Block_port_in_container below for details.
+     * @return The structure of port. See Block_port_in_init_container below
+     * for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationContainerPortArgs>>> ports() {
@@ -174,7 +328,158 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
     }
 
     /**
+     * Commands that you want to run in containers when you use the CLI to perform readiness probes.
+     * 
+     */
+    @Import(name="readinessProbeExecCommands")
+    private @Nullable Output<List<String>> readinessProbeExecCommands;
+
+    /**
+     * @return Commands that you want to run in containers when you use the CLI to perform readiness probes.
+     * 
+     */
+    public Optional<Output<List<String>>> readinessProbeExecCommands() {
+        return Optional.ofNullable(this.readinessProbeExecCommands);
+    }
+
+    /**
+     * The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
+     * 
+     */
+    @Import(name="readinessProbeFailureThreshold")
+    private @Nullable Output<Integer> readinessProbeFailureThreshold;
+
+    /**
+     * @return The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
+     * 
+     */
+    public Optional<Output<Integer>> readinessProbeFailureThreshold() {
+        return Optional.ofNullable(this.readinessProbeFailureThreshold);
+    }
+
+    /**
+     * The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+     * 
+     */
+    @Import(name="readinessProbeHttpGetPath")
+    private @Nullable Output<String> readinessProbeHttpGetPath;
+
+    /**
+     * @return The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+     * 
+     */
+    public Optional<Output<String>> readinessProbeHttpGetPath() {
+        return Optional.ofNullable(this.readinessProbeHttpGetPath);
+    }
+
+    /**
+     * The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+     * 
+     */
+    @Import(name="readinessProbeHttpGetPort")
+    private @Nullable Output<Integer> readinessProbeHttpGetPort;
+
+    /**
+     * @return The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+     * 
+     */
+    public Optional<Output<Integer>> readinessProbeHttpGetPort() {
+        return Optional.ofNullable(this.readinessProbeHttpGetPort);
+    }
+
+    /**
+     * The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
+     * 
+     */
+    @Import(name="readinessProbeHttpGetScheme")
+    private @Nullable Output<String> readinessProbeHttpGetScheme;
+
+    /**
+     * @return The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
+     * 
+     */
+    public Optional<Output<String>> readinessProbeHttpGetScheme() {
+        return Optional.ofNullable(this.readinessProbeHttpGetScheme);
+    }
+
+    /**
+     * The number of seconds after container N has started before readiness probes are initiated.
+     * 
+     */
+    @Import(name="readinessProbeInitialDelaySeconds")
+    private @Nullable Output<Integer> readinessProbeInitialDelaySeconds;
+
+    /**
+     * @return The number of seconds after container N has started before readiness probes are initiated.
+     * 
+     */
+    public Optional<Output<Integer>> readinessProbeInitialDelaySeconds() {
+        return Optional.ofNullable(this.readinessProbeInitialDelaySeconds);
+    }
+
+    /**
+     * The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+     * 
+     */
+    @Import(name="readinessProbePeriodSeconds")
+    private @Nullable Output<Integer> readinessProbePeriodSeconds;
+
+    /**
+     * @return The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+     * 
+     */
+    public Optional<Output<Integer>> readinessProbePeriodSeconds() {
+        return Optional.ofNullable(this.readinessProbePeriodSeconds);
+    }
+
+    /**
+     * The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+     * 
+     */
+    @Import(name="readinessProbeSuccessThreshold")
+    private @Nullable Output<Integer> readinessProbeSuccessThreshold;
+
+    /**
+     * @return The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+     * 
+     */
+    public Optional<Output<Integer>> readinessProbeSuccessThreshold() {
+        return Optional.ofNullable(this.readinessProbeSuccessThreshold);
+    }
+
+    /**
+     * The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
+     * 
+     */
+    @Import(name="readinessProbeTcpSocketPort")
+    private @Nullable Output<Integer> readinessProbeTcpSocketPort;
+
+    /**
+     * @return The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
+     * 
+     */
+    public Optional<Output<Integer>> readinessProbeTcpSocketPort() {
+        return Optional.ofNullable(this.readinessProbeTcpSocketPort);
+    }
+
+    /**
+     * The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+     * 
+     */
+    @Import(name="readinessProbeTimeoutSeconds")
+    private @Nullable Output<Integer> readinessProbeTimeoutSeconds;
+
+    /**
+     * @return The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+     * 
+     */
+    public Optional<Output<Integer>> readinessProbeTimeoutSeconds() {
+        return Optional.ofNullable(this.readinessProbeTimeoutSeconds);
+    }
+
+    /**
      * The structure of volumeMounts.
+     * See Block_volume_mount_in_init_container below for details.
      * See Block_volume_mount_in_container below for details.
      * 
      */
@@ -183,6 +488,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
 
     /**
      * @return The structure of volumeMounts.
+     * See Block_volume_mount_in_init_container below for details.
      * See Block_volume_mount_in_container below for details.
      * 
      */
@@ -215,9 +521,29 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         this.gpu = $.gpu;
         this.image = $.image;
         this.imagePullPolicy = $.imagePullPolicy;
+        this.livenessProbeExecCommands = $.livenessProbeExecCommands;
+        this.livenessProbeFailureThreshold = $.livenessProbeFailureThreshold;
+        this.livenessProbeHttpGetPath = $.livenessProbeHttpGetPath;
+        this.livenessProbeHttpGetPort = $.livenessProbeHttpGetPort;
+        this.livenessProbeHttpGetScheme = $.livenessProbeHttpGetScheme;
+        this.livenessProbeInitialDelaySeconds = $.livenessProbeInitialDelaySeconds;
+        this.livenessProbePeriodSeconds = $.livenessProbePeriodSeconds;
+        this.livenessProbeSuccessThreshold = $.livenessProbeSuccessThreshold;
+        this.livenessProbeTcpSocketPort = $.livenessProbeTcpSocketPort;
+        this.livenessProbeTimeoutSeconds = $.livenessProbeTimeoutSeconds;
         this.memory = $.memory;
         this.name = $.name;
         this.ports = $.ports;
+        this.readinessProbeExecCommands = $.readinessProbeExecCommands;
+        this.readinessProbeFailureThreshold = $.readinessProbeFailureThreshold;
+        this.readinessProbeHttpGetPath = $.readinessProbeHttpGetPath;
+        this.readinessProbeHttpGetPort = $.readinessProbeHttpGetPort;
+        this.readinessProbeHttpGetScheme = $.readinessProbeHttpGetScheme;
+        this.readinessProbeInitialDelaySeconds = $.readinessProbeInitialDelaySeconds;
+        this.readinessProbePeriodSeconds = $.readinessProbePeriodSeconds;
+        this.readinessProbeSuccessThreshold = $.readinessProbeSuccessThreshold;
+        this.readinessProbeTcpSocketPort = $.readinessProbeTcpSocketPort;
+        this.readinessProbeTimeoutSeconds = $.readinessProbeTimeoutSeconds;
         this.volumeMounts = $.volumeMounts;
         this.workingDir = $.workingDir;
     }
@@ -303,7 +629,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container.
+         * @param cpu The amount of CPU resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -314,7 +640,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container.
+         * @param cpu The amount of CPU resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -325,6 +651,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
 
         /**
          * @param environmentVars The structure of environmentVars.
+         * See Block_environment_var_in_init_container below for details.
          * See Block_environment_var_in_container below for details.
          * 
          * @return builder
@@ -337,6 +664,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
 
         /**
          * @param environmentVars The structure of environmentVars.
+         * See Block_environment_var_in_init_container below for details.
          * See Block_environment_var_in_container below for details.
          * 
          * @return builder
@@ -348,6 +676,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
 
         /**
          * @param environmentVars The structure of environmentVars.
+         * See Block_environment_var_in_init_container below for details.
          * See Block_environment_var_in_container below for details.
          * 
          * @return builder
@@ -421,7 +750,227 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container.
+         * @param livenessProbeExecCommands Commands that you want to run in containers when you use the CLI to perform liveness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeExecCommands(@Nullable Output<List<String>> livenessProbeExecCommands) {
+            $.livenessProbeExecCommands = livenessProbeExecCommands;
+            return this;
+        }
+
+        /**
+         * @param livenessProbeExecCommands Commands that you want to run in containers when you use the CLI to perform liveness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeExecCommands(List<String> livenessProbeExecCommands) {
+            return livenessProbeExecCommands(Output.of(livenessProbeExecCommands));
+        }
+
+        /**
+         * @param livenessProbeExecCommands Commands that you want to run in containers when you use the CLI to perform liveness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeExecCommands(String... livenessProbeExecCommands) {
+            return livenessProbeExecCommands(List.of(livenessProbeExecCommands));
+        }
+
+        /**
+         * @param livenessProbeFailureThreshold The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeFailureThreshold(@Nullable Output<Integer> livenessProbeFailureThreshold) {
+            $.livenessProbeFailureThreshold = livenessProbeFailureThreshold;
+            return this;
+        }
+
+        /**
+         * @param livenessProbeFailureThreshold The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeFailureThreshold(Integer livenessProbeFailureThreshold) {
+            return livenessProbeFailureThreshold(Output.of(livenessProbeFailureThreshold));
+        }
+
+        /**
+         * @param livenessProbeHttpGetPath The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeHttpGetPath(@Nullable Output<String> livenessProbeHttpGetPath) {
+            $.livenessProbeHttpGetPath = livenessProbeHttpGetPath;
+            return this;
+        }
+
+        /**
+         * @param livenessProbeHttpGetPath The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeHttpGetPath(String livenessProbeHttpGetPath) {
+            return livenessProbeHttpGetPath(Output.of(livenessProbeHttpGetPath));
+        }
+
+        /**
+         * @param livenessProbeHttpGetPort The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeHttpGetPort(@Nullable Output<Integer> livenessProbeHttpGetPort) {
+            $.livenessProbeHttpGetPort = livenessProbeHttpGetPort;
+            return this;
+        }
+
+        /**
+         * @param livenessProbeHttpGetPort The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeHttpGetPort(Integer livenessProbeHttpGetPort) {
+            return livenessProbeHttpGetPort(Output.of(livenessProbeHttpGetPort));
+        }
+
+        /**
+         * @param livenessProbeHttpGetScheme The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeHttpGetScheme(@Nullable Output<String> livenessProbeHttpGetScheme) {
+            $.livenessProbeHttpGetScheme = livenessProbeHttpGetScheme;
+            return this;
+        }
+
+        /**
+         * @param livenessProbeHttpGetScheme The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeHttpGetScheme(String livenessProbeHttpGetScheme) {
+            return livenessProbeHttpGetScheme(Output.of(livenessProbeHttpGetScheme));
+        }
+
+        /**
+         * @param livenessProbeInitialDelaySeconds The number of seconds after container has started before liveness probes are initiated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeInitialDelaySeconds(@Nullable Output<Integer> livenessProbeInitialDelaySeconds) {
+            $.livenessProbeInitialDelaySeconds = livenessProbeInitialDelaySeconds;
+            return this;
+        }
+
+        /**
+         * @param livenessProbeInitialDelaySeconds The number of seconds after container has started before liveness probes are initiated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeInitialDelaySeconds(Integer livenessProbeInitialDelaySeconds) {
+            return livenessProbeInitialDelaySeconds(Output.of(livenessProbeInitialDelaySeconds));
+        }
+
+        /**
+         * @param livenessProbePeriodSeconds The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbePeriodSeconds(@Nullable Output<Integer> livenessProbePeriodSeconds) {
+            $.livenessProbePeriodSeconds = livenessProbePeriodSeconds;
+            return this;
+        }
+
+        /**
+         * @param livenessProbePeriodSeconds The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbePeriodSeconds(Integer livenessProbePeriodSeconds) {
+            return livenessProbePeriodSeconds(Output.of(livenessProbePeriodSeconds));
+        }
+
+        /**
+         * @param livenessProbeSuccessThreshold The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeSuccessThreshold(@Nullable Output<Integer> livenessProbeSuccessThreshold) {
+            $.livenessProbeSuccessThreshold = livenessProbeSuccessThreshold;
+            return this;
+        }
+
+        /**
+         * @param livenessProbeSuccessThreshold The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeSuccessThreshold(Integer livenessProbeSuccessThreshold) {
+            return livenessProbeSuccessThreshold(Output.of(livenessProbeSuccessThreshold));
+        }
+
+        /**
+         * @param livenessProbeTcpSocketPort The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeTcpSocketPort(@Nullable Output<Integer> livenessProbeTcpSocketPort) {
+            $.livenessProbeTcpSocketPort = livenessProbeTcpSocketPort;
+            return this;
+        }
+
+        /**
+         * @param livenessProbeTcpSocketPort The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeTcpSocketPort(Integer livenessProbeTcpSocketPort) {
+            return livenessProbeTcpSocketPort(Output.of(livenessProbeTcpSocketPort));
+        }
+
+        /**
+         * @param livenessProbeTimeoutSeconds The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeTimeoutSeconds(@Nullable Output<Integer> livenessProbeTimeoutSeconds) {
+            $.livenessProbeTimeoutSeconds = livenessProbeTimeoutSeconds;
+            return this;
+        }
+
+        /**
+         * @param livenessProbeTimeoutSeconds The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbeTimeoutSeconds(Integer livenessProbeTimeoutSeconds) {
+            return livenessProbeTimeoutSeconds(Output.of(livenessProbeTimeoutSeconds));
+        }
+
+        /**
+         * @param memory The amount of memory resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -432,7 +981,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container.
+         * @param memory The amount of memory resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -442,7 +991,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name The name of the mounted volume.
+         * @param name The name of the volume.
          * 
          * @return builder
          * 
@@ -453,7 +1002,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name The name of the mounted volume.
+         * @param name The name of the volume.
          * 
          * @return builder
          * 
@@ -463,7 +1012,8 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         }
 
         /**
-         * @param ports The structure of port. See Block_port_in_container below for details.
+         * @param ports The structure of port. See Block_port_in_init_container below
+         * for details.
          * 
          * @return builder
          * 
@@ -474,7 +1024,8 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         }
 
         /**
-         * @param ports The structure of port. See Block_port_in_container below for details.
+         * @param ports The structure of port. See Block_port_in_init_container below
+         * for details.
          * 
          * @return builder
          * 
@@ -484,7 +1035,8 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         }
 
         /**
-         * @param ports The structure of port. See Block_port_in_container below for details.
+         * @param ports The structure of port. See Block_port_in_init_container below
+         * for details.
          * 
          * @return builder
          * 
@@ -494,7 +1046,228 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         }
 
         /**
+         * @param readinessProbeExecCommands Commands that you want to run in containers when you use the CLI to perform readiness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeExecCommands(@Nullable Output<List<String>> readinessProbeExecCommands) {
+            $.readinessProbeExecCommands = readinessProbeExecCommands;
+            return this;
+        }
+
+        /**
+         * @param readinessProbeExecCommands Commands that you want to run in containers when you use the CLI to perform readiness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeExecCommands(List<String> readinessProbeExecCommands) {
+            return readinessProbeExecCommands(Output.of(readinessProbeExecCommands));
+        }
+
+        /**
+         * @param readinessProbeExecCommands Commands that you want to run in containers when you use the CLI to perform readiness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeExecCommands(String... readinessProbeExecCommands) {
+            return readinessProbeExecCommands(List.of(readinessProbeExecCommands));
+        }
+
+        /**
+         * @param readinessProbeFailureThreshold The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeFailureThreshold(@Nullable Output<Integer> readinessProbeFailureThreshold) {
+            $.readinessProbeFailureThreshold = readinessProbeFailureThreshold;
+            return this;
+        }
+
+        /**
+         * @param readinessProbeFailureThreshold The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeFailureThreshold(Integer readinessProbeFailureThreshold) {
+            return readinessProbeFailureThreshold(Output.of(readinessProbeFailureThreshold));
+        }
+
+        /**
+         * @param readinessProbeHttpGetPath The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeHttpGetPath(@Nullable Output<String> readinessProbeHttpGetPath) {
+            $.readinessProbeHttpGetPath = readinessProbeHttpGetPath;
+            return this;
+        }
+
+        /**
+         * @param readinessProbeHttpGetPath The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeHttpGetPath(String readinessProbeHttpGetPath) {
+            return readinessProbeHttpGetPath(Output.of(readinessProbeHttpGetPath));
+        }
+
+        /**
+         * @param readinessProbeHttpGetPort The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeHttpGetPort(@Nullable Output<Integer> readinessProbeHttpGetPort) {
+            $.readinessProbeHttpGetPort = readinessProbeHttpGetPort;
+            return this;
+        }
+
+        /**
+         * @param readinessProbeHttpGetPort The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeHttpGetPort(Integer readinessProbeHttpGetPort) {
+            return readinessProbeHttpGetPort(Output.of(readinessProbeHttpGetPort));
+        }
+
+        /**
+         * @param readinessProbeHttpGetScheme The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeHttpGetScheme(@Nullable Output<String> readinessProbeHttpGetScheme) {
+            $.readinessProbeHttpGetScheme = readinessProbeHttpGetScheme;
+            return this;
+        }
+
+        /**
+         * @param readinessProbeHttpGetScheme The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeHttpGetScheme(String readinessProbeHttpGetScheme) {
+            return readinessProbeHttpGetScheme(Output.of(readinessProbeHttpGetScheme));
+        }
+
+        /**
+         * @param readinessProbeInitialDelaySeconds The number of seconds after container N has started before readiness probes are initiated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeInitialDelaySeconds(@Nullable Output<Integer> readinessProbeInitialDelaySeconds) {
+            $.readinessProbeInitialDelaySeconds = readinessProbeInitialDelaySeconds;
+            return this;
+        }
+
+        /**
+         * @param readinessProbeInitialDelaySeconds The number of seconds after container N has started before readiness probes are initiated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeInitialDelaySeconds(Integer readinessProbeInitialDelaySeconds) {
+            return readinessProbeInitialDelaySeconds(Output.of(readinessProbeInitialDelaySeconds));
+        }
+
+        /**
+         * @param readinessProbePeriodSeconds The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbePeriodSeconds(@Nullable Output<Integer> readinessProbePeriodSeconds) {
+            $.readinessProbePeriodSeconds = readinessProbePeriodSeconds;
+            return this;
+        }
+
+        /**
+         * @param readinessProbePeriodSeconds The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbePeriodSeconds(Integer readinessProbePeriodSeconds) {
+            return readinessProbePeriodSeconds(Output.of(readinessProbePeriodSeconds));
+        }
+
+        /**
+         * @param readinessProbeSuccessThreshold The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeSuccessThreshold(@Nullable Output<Integer> readinessProbeSuccessThreshold) {
+            $.readinessProbeSuccessThreshold = readinessProbeSuccessThreshold;
+            return this;
+        }
+
+        /**
+         * @param readinessProbeSuccessThreshold The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeSuccessThreshold(Integer readinessProbeSuccessThreshold) {
+            return readinessProbeSuccessThreshold(Output.of(readinessProbeSuccessThreshold));
+        }
+
+        /**
+         * @param readinessProbeTcpSocketPort The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeTcpSocketPort(@Nullable Output<Integer> readinessProbeTcpSocketPort) {
+            $.readinessProbeTcpSocketPort = readinessProbeTcpSocketPort;
+            return this;
+        }
+
+        /**
+         * @param readinessProbeTcpSocketPort The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeTcpSocketPort(Integer readinessProbeTcpSocketPort) {
+            return readinessProbeTcpSocketPort(Output.of(readinessProbeTcpSocketPort));
+        }
+
+        /**
+         * @param readinessProbeTimeoutSeconds The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeTimeoutSeconds(@Nullable Output<Integer> readinessProbeTimeoutSeconds) {
+            $.readinessProbeTimeoutSeconds = readinessProbeTimeoutSeconds;
+            return this;
+        }
+
+        /**
+         * @param readinessProbeTimeoutSeconds The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessProbeTimeoutSeconds(Integer readinessProbeTimeoutSeconds) {
+            return readinessProbeTimeoutSeconds(Output.of(readinessProbeTimeoutSeconds));
+        }
+
+        /**
          * @param volumeMounts The structure of volumeMounts.
+         * See Block_volume_mount_in_init_container below for details.
          * See Block_volume_mount_in_container below for details.
          * 
          * @return builder
@@ -507,6 +1280,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
 
         /**
          * @param volumeMounts The structure of volumeMounts.
+         * See Block_volume_mount_in_init_container below for details.
          * See Block_volume_mount_in_container below for details.
          * 
          * @return builder
@@ -518,6 +1292,7 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
 
         /**
          * @param volumeMounts The structure of volumeMounts.
+         * See Block_volume_mount_in_init_container below for details.
          * See Block_volume_mount_in_container below for details.
          * 
          * @return builder

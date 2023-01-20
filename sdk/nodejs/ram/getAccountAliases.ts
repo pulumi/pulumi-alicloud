@@ -13,20 +13,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const aliasDs = pulumi.output(alicloud.ram.getAccountAliases({
+ * const aliasDs = alicloud.ram.getAccountAliases({
  *     outputFile: "alias.txt",
- * }));
- *
- * export const accountAlias = aliasDs.accountAlias;
+ * });
+ * export const accountAlias = aliasDs.then(aliasDs => aliasDs.accountAlias);
  * ```
  */
 export function getAccountAliases(args?: GetAccountAliasesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ram/getAccountAliases:getAccountAliases", {
         "outputFile": args.outputFile,
     }, opts);
@@ -53,9 +49,23 @@ export interface GetAccountAliasesResult {
     readonly id: string;
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides an alias for the Alibaba Cloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const aliasDs = alicloud.ram.getAccountAliases({
+ *     outputFile: "alias.txt",
+ * });
+ * export const accountAlias = aliasDs.then(aliasDs => aliasDs.accountAlias);
+ * ```
+ */
 export function getAccountAliasesOutput(args?: GetAccountAliasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAliasesResult> {
-    return pulumi.output(args).apply(a => getAccountAliases(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccountAliases(a, opts))
 }
 
 /**

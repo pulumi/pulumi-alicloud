@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,20 +20,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.alb.getAcls({});
- * export const albAclId1 = ids.then(ids => ids.acls?[0]?.id);
+ * export const albAclId1 = ids.then(ids => ids.acls?.[0]?.id);
  * const nameRegex = alicloud.alb.getAcls({
  *     nameRegex: "^my-Acl",
  * });
- * export const albAclId2 = nameRegex.then(nameRegex => nameRegex.acls?[0]?.id);
+ * export const albAclId2 = nameRegex.then(nameRegex => nameRegex.acls?.[0]?.id);
  * ```
  */
 export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:alb/getAcls:getAcls", {
         "aclIds": args.aclIds,
         "aclName": args.aclName,
@@ -99,9 +97,29 @@ export interface GetAclsResult {
     readonly resourceGroupId?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.133.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.alb.getAcls({});
+ * export const albAclId1 = ids.then(ids => ids.acls?.[0]?.id);
+ * const nameRegex = alicloud.alb.getAcls({
+ *     nameRegex: "^my-Acl",
+ * });
+ * export const albAclId2 = nameRegex.then(nameRegex => nameRegex.acls?.[0]?.id);
+ * ```
+ */
 export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclsResult> {
-    return pulumi.output(args).apply(a => getAcls(a, opts))
+    return pulumi.output(args).apply((a: any) => getAcls(a, opts))
 }
 
 /**

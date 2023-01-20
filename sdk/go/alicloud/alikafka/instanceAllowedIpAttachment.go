@@ -54,18 +54,18 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-//				TopicQuota:    pulumi.Int(50),
+//				PartitionNum:  pulumi.Int(50),
 //				DiskType:      pulumi.Int(1),
 //				DiskSize:      pulumi.Int(500),
 //				DeployType:    pulumi.Int(5),
 //				IoMax:         pulumi.Int(20),
-//				VswitchId:     pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:     *pulumi.String(defaultSwitches.Ids[0]),
 //				SecurityGroup: defaultSecurityGroup.ID(),
 //			})
 //			if err != nil {
@@ -101,8 +101,6 @@ type InstanceAllowedIpAttachment struct {
 	// The allowed ip. It can be a CIDR block.
 	AllowedIp pulumi.StringOutput `pulumi:"allowedIp"`
 	// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
-	// - `vpc`: IP address whitelist for VPC access.
-	// - `internet`: IP address whitelist for Internet access.
 	AllowedType pulumi.StringOutput `pulumi:"allowedType"`
 	// The ID of the instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -156,8 +154,6 @@ type instanceAllowedIpAttachmentState struct {
 	// The allowed ip. It can be a CIDR block.
 	AllowedIp *string `pulumi:"allowedIp"`
 	// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
-	// - `vpc`: IP address whitelist for VPC access.
-	// - `internet`: IP address whitelist for Internet access.
 	AllowedType *string `pulumi:"allowedType"`
 	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
@@ -171,8 +167,6 @@ type InstanceAllowedIpAttachmentState struct {
 	// The allowed ip. It can be a CIDR block.
 	AllowedIp pulumi.StringPtrInput
 	// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
-	// - `vpc`: IP address whitelist for VPC access.
-	// - `internet`: IP address whitelist for Internet access.
 	AllowedType pulumi.StringPtrInput
 	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput
@@ -190,8 +184,6 @@ type instanceAllowedIpAttachmentArgs struct {
 	// The allowed ip. It can be a CIDR block.
 	AllowedIp string `pulumi:"allowedIp"`
 	// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
-	// - `vpc`: IP address whitelist for VPC access.
-	// - `internet`: IP address whitelist for Internet access.
 	AllowedType string `pulumi:"allowedType"`
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -206,8 +198,6 @@ type InstanceAllowedIpAttachmentArgs struct {
 	// The allowed ip. It can be a CIDR block.
 	AllowedIp pulumi.StringInput
 	// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
-	// - `vpc`: IP address whitelist for VPC access.
-	// - `internet`: IP address whitelist for Internet access.
 	AllowedType pulumi.StringInput
 	// The ID of the instance.
 	InstanceId pulumi.StringInput
@@ -310,8 +300,6 @@ func (o InstanceAllowedIpAttachmentOutput) AllowedIp() pulumi.StringOutput {
 }
 
 // The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
-// - `vpc`: IP address whitelist for VPC access.
-// - `internet`: IP address whitelist for Internet access.
 func (o InstanceAllowedIpAttachmentOutput) AllowedType() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceAllowedIpAttachment) pulumi.StringOutput { return v.AllowedType }).(pulumi.StringOutput)
 }

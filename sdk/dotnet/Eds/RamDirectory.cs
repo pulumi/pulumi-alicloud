@@ -21,42 +21,38 @@ namespace Pulumi.AliCloud.Eds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultZones = Output.Create(AliCloud.Eds.GetZones.InvokeAsync());
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Ids?[0],
-    ///             }));
-    ///         });
-    ///         var defaultRamDirectory = new AliCloud.Eds.RamDirectory("defaultRamDirectory", new AliCloud.Eds.RamDirectoryArgs
-    ///         {
-    ///             DesktopAccessType = "INTERNET",
-    ///             EnableAdminAccess = true,
-    ///             EnableInternetAccess = true,
-    ///             RamDirectoryName = @var.Name,
-    ///             VswitchIds = 
-    ///             {
-    ///                 defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             },
-    ///         });
-    ///     }
+    ///     var defaultZones = AliCloud.Eds.GetZones.Invoke();
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultRamDirectory = new AliCloud.Eds.RamDirectory("defaultRamDirectory", new()
+    ///     {
+    ///         DesktopAccessType = "INTERNET",
+    ///         EnableAdminAccess = true,
+    ///         EnableInternetAccess = true,
+    ///         RamDirectoryName = @var.Name,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -68,7 +64,7 @@ namespace Pulumi.AliCloud.Eds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/ramDirectory:RamDirectory")]
-    public partial class RamDirectory : Pulumi.CustomResource
+    public partial class RamDirectory : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
@@ -150,7 +146,7 @@ namespace Pulumi.AliCloud.Eds
         }
     }
 
-    public sealed class RamDirectoryArgs : Pulumi.ResourceArgs
+    public sealed class RamDirectoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
@@ -191,9 +187,10 @@ namespace Pulumi.AliCloud.Eds
         public RamDirectoryArgs()
         {
         }
+        public static new RamDirectoryArgs Empty => new RamDirectoryArgs();
     }
 
-    public sealed class RamDirectoryState : Pulumi.ResourceArgs
+    public sealed class RamDirectoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
@@ -240,5 +237,6 @@ namespace Pulumi.AliCloud.Eds
         public RamDirectoryState()
         {
         }
+        public static new RamDirectoryState Empty => new RamDirectoryState();
     }
 }

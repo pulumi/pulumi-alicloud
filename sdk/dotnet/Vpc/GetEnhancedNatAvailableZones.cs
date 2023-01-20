@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.Vpc
     public static class GetEnhancedNatAvailableZones
     {
         public static Task<GetEnhancedNatAvailableZonesResult> InvokeAsync(GetEnhancedNatAvailableZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesArgs(), options.WithDefaults());
 
         public static Output<GetEnhancedNatAvailableZonesResult> Invoke(GetEnhancedNatAvailableZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEnhancedNatAvailableZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetEnhancedNatAvailableZonesArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -27,9 +27,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetEnhancedNatAvailableZonesArgs()
         {
         }
+        public static new GetEnhancedNatAvailableZonesArgs Empty => new GetEnhancedNatAvailableZonesArgs();
     }
 
-    public sealed class GetEnhancedNatAvailableZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEnhancedNatAvailableZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -37,6 +38,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetEnhancedNatAvailableZonesInvokeArgs()
         {
         }
+        public static new GetEnhancedNatAvailableZonesInvokeArgs Empty => new GetEnhancedNatAvailableZonesInvokeArgs();
     }
 
 

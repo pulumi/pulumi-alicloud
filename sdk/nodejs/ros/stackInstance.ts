@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -39,7 +40,7 @@ import * as utilities from "../utilities";
  * const exampleStackInstance = new alicloud.ros.StackInstance("exampleStackInstance", {
  *     stackGroupName: exampleStackGroup.stackGroupName,
  *     stackInstanceAccountId: "example_value",
- *     stackInstanceRegionId: exampleRegions.then(exampleRegions => exampleRegions.regions?[0]?.regionId),
+ *     stackInstanceRegionId: exampleRegions.then(exampleRegions => exampleRegions.regions?.[0]?.regionId),
  *     operationPreferences: "{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}",
  *     parameterOverrides: [{
  *         parameterValue: "VpcName",
@@ -113,12 +114,7 @@ export class StackInstance extends pulumi.CustomResource {
      */
     public readonly stackInstanceRegionId!: pulumi.Output<string>;
     /**
-     * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
-     * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-     * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-     * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-     * * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-     * * The create or update operation is not complete.
+     * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -161,7 +157,7 @@ export class StackInstance extends pulumi.CustomResource {
             }
             resourceInputs["operationDescription"] = args ? args.operationDescription : undefined;
             resourceInputs["operationPreferences"] = args ? args.operationPreferences : undefined;
-            resourceInputs["parameterOverrides"] = args ? args.parameterOverrides : undefined;
+            resourceInputs["parameterOverrides"] = args?.parameterOverrides ? pulumi.secret(args.parameterOverrides) : undefined;
             resourceInputs["retainStacks"] = args ? args.retainStacks : undefined;
             resourceInputs["stackGroupName"] = args ? args.stackGroupName : undefined;
             resourceInputs["stackInstanceAccountId"] = args ? args.stackInstanceAccountId : undefined;
@@ -170,6 +166,8 @@ export class StackInstance extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["parameterOverrides"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(StackInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -207,12 +205,7 @@ export interface StackInstanceState {
      */
     stackInstanceRegionId?: pulumi.Input<string>;
     /**
-     * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
-     * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-     * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-     * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-     * * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-     * * The create or update operation is not complete.
+     * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
      */
     status?: pulumi.Input<string>;
     /**

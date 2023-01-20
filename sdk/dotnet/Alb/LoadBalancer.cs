@@ -25,24 +25,28 @@ namespace Pulumi.AliCloud.Alb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/loadBalancer:LoadBalancer")]
-    public partial class LoadBalancer : Pulumi.CustomResource
+    public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Access Logging Configuration Structure.
+        /// The Access Logging Configuration Structure. See the following `Block access_log_config`.
         /// </summary>
         [Output("accessLogConfig")]
         public Output<Outputs.LoadBalancerAccessLogConfig?> AccessLogConfig { get; private set; } = null!;
 
         /// <summary>
         /// The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-        /// *`Fixed`: The ALB instance uses a fixed IP address.
-        /// *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
         /// </summary>
         [Output("addressAllocatedMode")]
         public Output<string?> AddressAllocatedMode { get; private set; } = null!;
 
         /// <summary>
-        /// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+        /// The IP version. Valid values: `Ipv4`, `DualStack`.
+        /// </summary>
+        [Output("addressIpVersion")]
+        public Output<string> AddressIpVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
         /// </summary>
         [Output("addressType")]
         public Output<string> AddressType { get; private set; } = null!;
@@ -66,13 +70,13 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of the billing method.
+        /// The configuration of the billing method. See the following `Block load_balancer_billing_config`.
         /// </summary>
         [Output("loadBalancerBillingConfig")]
         public Output<Outputs.LoadBalancerLoadBalancerBillingConfig> LoadBalancerBillingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+        /// The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
         /// </summary>
         [Output("loadBalancerEdition")]
         public Output<string> LoadBalancerEdition { get; private set; } = null!;
@@ -84,7 +88,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> LoadBalancerName { get; private set; } = null!;
 
         /// <summary>
-        /// Modify the Protection Configuration.
+        /// Modify the Protection Configuration. See the following `Block modification_protection_config`.
         /// </summary>
         [Output("modificationProtectionConfig")]
         public Output<Outputs.LoadBalancerModificationProtectionConfig> ModificationProtectionConfig { get; private set; } = null!;
@@ -114,7 +118,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones.
+        /// The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
         /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.LoadBalancerZoneMapping>> ZoneMappings { get; private set; } = null!;
@@ -163,24 +167,28 @@ namespace Pulumi.AliCloud.Alb
         }
     }
 
-    public sealed class LoadBalancerArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Access Logging Configuration Structure.
+        /// The Access Logging Configuration Structure. See the following `Block access_log_config`.
         /// </summary>
         [Input("accessLogConfig")]
         public Input<Inputs.LoadBalancerAccessLogConfigArgs>? AccessLogConfig { get; set; }
 
         /// <summary>
         /// The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-        /// *`Fixed`: The ALB instance uses a fixed IP address.
-        /// *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
         /// </summary>
         [Input("addressAllocatedMode")]
         public Input<string>? AddressAllocatedMode { get; set; }
 
         /// <summary>
-        /// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+        /// The IP version. Valid values: `Ipv4`, `DualStack`.
+        /// </summary>
+        [Input("addressIpVersion")]
+        public Input<string>? AddressIpVersion { get; set; }
+
+        /// <summary>
+        /// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
         /// </summary>
         [Input("addressType", required: true)]
         public Input<string> AddressType { get; set; } = null!;
@@ -198,13 +206,13 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The configuration of the billing method.
+        /// The configuration of the billing method. See the following `Block load_balancer_billing_config`.
         /// </summary>
         [Input("loadBalancerBillingConfig", required: true)]
         public Input<Inputs.LoadBalancerLoadBalancerBillingConfigArgs> LoadBalancerBillingConfig { get; set; } = null!;
 
         /// <summary>
-        /// The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+        /// The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
         /// </summary>
         [Input("loadBalancerEdition", required: true)]
         public Input<string> LoadBalancerEdition { get; set; } = null!;
@@ -216,7 +224,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string> LoadBalancerName { get; set; } = null!;
 
         /// <summary>
-        /// Modify the Protection Configuration.
+        /// Modify the Protection Configuration. See the following `Block modification_protection_config`.
         /// </summary>
         [Input("modificationProtectionConfig")]
         public Input<Inputs.LoadBalancerModificationProtectionConfigArgs>? ModificationProtectionConfig { get; set; }
@@ -249,7 +257,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.LoadBalancerZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones.
+        /// The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingArgs> ZoneMappings
         {
@@ -260,26 +268,31 @@ namespace Pulumi.AliCloud.Alb
         public LoadBalancerArgs()
         {
         }
+        public static new LoadBalancerArgs Empty => new LoadBalancerArgs();
     }
 
-    public sealed class LoadBalancerState : Pulumi.ResourceArgs
+    public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Access Logging Configuration Structure.
+        /// The Access Logging Configuration Structure. See the following `Block access_log_config`.
         /// </summary>
         [Input("accessLogConfig")]
         public Input<Inputs.LoadBalancerAccessLogConfigGetArgs>? AccessLogConfig { get; set; }
 
         /// <summary>
         /// The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-        /// *`Fixed`: The ALB instance uses a fixed IP address.
-        /// *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
         /// </summary>
         [Input("addressAllocatedMode")]
         public Input<string>? AddressAllocatedMode { get; set; }
 
         /// <summary>
-        /// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+        /// The IP version. Valid values: `Ipv4`, `DualStack`.
+        /// </summary>
+        [Input("addressIpVersion")]
+        public Input<string>? AddressIpVersion { get; set; }
+
+        /// <summary>
+        /// The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `address_type` can be modified.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -303,13 +316,13 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The configuration of the billing method.
+        /// The configuration of the billing method. See the following `Block load_balancer_billing_config`.
         /// </summary>
         [Input("loadBalancerBillingConfig")]
         public Input<Inputs.LoadBalancerLoadBalancerBillingConfigGetArgs>? LoadBalancerBillingConfig { get; set; }
 
         /// <summary>
-        /// The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+        /// The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
         /// </summary>
         [Input("loadBalancerEdition")]
         public Input<string>? LoadBalancerEdition { get; set; }
@@ -321,7 +334,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? LoadBalancerName { get; set; }
 
         /// <summary>
-        /// Modify the Protection Configuration.
+        /// Modify the Protection Configuration. See the following `Block modification_protection_config`.
         /// </summary>
         [Input("modificationProtectionConfig")]
         public Input<Inputs.LoadBalancerModificationProtectionConfigGetArgs>? ModificationProtectionConfig { get; set; }
@@ -360,7 +373,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.LoadBalancerZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones.
+        /// The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingGetArgs> ZoneMappings
         {
@@ -371,5 +384,6 @@ namespace Pulumi.AliCloud.Alb
         public LoadBalancerState()
         {
         }
+        public static new LoadBalancerState Empty => new LoadBalancerState();
     }
 }

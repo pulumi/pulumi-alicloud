@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Rds
         /// &gt; **NOTE:** Available in v1.73.0+.
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:rds/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:rds/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Rds
         /// &gt; **NOTE:** Available in v1.73.0+.
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:rds/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:rds/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
@@ -82,9 +82,10 @@ namespace Pulumi.AliCloud.Rds
         public GetZonesArgs()
         {
         }
+        public static new GetZonesArgs Empty => new GetZonesArgs();
     }
 
-    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
@@ -137,6 +138,7 @@ namespace Pulumi.AliCloud.Rds
         public GetZonesInvokeArgs()
         {
         }
+        public static new GetZonesInvokeArgs Empty => new GetZonesInvokeArgs();
     }
 
 

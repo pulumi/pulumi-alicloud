@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC.Inputs
 {
 
-    public sealed class ServiceVpcConfigArgs : Pulumi.ResourceArgs
+    public sealed class ServiceVpcConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A security group ID associated with the Function Compute Service.
@@ -36,5 +36,6 @@ namespace Pulumi.AliCloud.FC.Inputs
         public ServiceVpcConfigArgs()
         {
         }
+        public static new ServiceVpcConfigArgs Empty => new ServiceVpcConfigArgs();
     }
 }

@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.ResourceManager
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ResourceManager.GetControlPolicyAttachments.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetControlPolicyAttachments.InvokeAsync(new AliCloud.ResourceManager.GetControlPolicyAttachmentsArgs
-        ///         {
-        ///             TargetId = "example_value",
-        ///         }));
-        ///         this.FirstResourceManagerControlPolicyAttachmentId = example.Apply(example =&gt; example.Attachments?[0]?.Id);
-        ///     }
+        ///         TargetId = "example_value",
+        ///     });
         /// 
-        ///     [Output("firstResourceManagerControlPolicyAttachmentId")]
-        ///     public Output&lt;string&gt; FirstResourceManagerControlPolicyAttachmentId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstResourceManagerControlPolicyAttachmentId"] = example.Apply(getControlPolicyAttachmentsResult =&gt; getControlPolicyAttachmentsResult.Attachments[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetControlPolicyAttachmentsResult> InvokeAsync(GetControlPolicyAttachmentsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetControlPolicyAttachmentsResult>("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", args ?? new GetControlPolicyAttachmentsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetControlPolicyAttachmentsResult>("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", args ?? new GetControlPolicyAttachmentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.ResourceManager
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ResourceManager.GetControlPolicyAttachments.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetControlPolicyAttachments.InvokeAsync(new AliCloud.ResourceManager.GetControlPolicyAttachmentsArgs
-        ///         {
-        ///             TargetId = "example_value",
-        ///         }));
-        ///         this.FirstResourceManagerControlPolicyAttachmentId = example.Apply(example =&gt; example.Attachments?[0]?.Id);
-        ///     }
+        ///         TargetId = "example_value",
+        ///     });
         /// 
-        ///     [Output("firstResourceManagerControlPolicyAttachmentId")]
-        ///     public Output&lt;string&gt; FirstResourceManagerControlPolicyAttachmentId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstResourceManagerControlPolicyAttachmentId"] = example.Apply(getControlPolicyAttachmentsResult =&gt; getControlPolicyAttachmentsResult.Attachments[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetControlPolicyAttachmentsResult> Invoke(GetControlPolicyAttachmentsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetControlPolicyAttachmentsResult>("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", args ?? new GetControlPolicyAttachmentsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetControlPolicyAttachmentsResult>("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", args ?? new GetControlPolicyAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetControlPolicyAttachmentsArgs : Pulumi.InvokeArgs
+    public sealed class GetControlPolicyAttachmentsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
@@ -111,9 +109,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetControlPolicyAttachmentsArgs()
         {
         }
+        public static new GetControlPolicyAttachmentsArgs Empty => new GetControlPolicyAttachmentsArgs();
     }
 
-    public sealed class GetControlPolicyAttachmentsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetControlPolicyAttachmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
@@ -139,6 +138,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetControlPolicyAttachmentsInvokeArgs()
         {
         }
+        public static new GetControlPolicyAttachmentsInvokeArgs Empty => new GetControlPolicyAttachmentsInvokeArgs();
     }
 
 

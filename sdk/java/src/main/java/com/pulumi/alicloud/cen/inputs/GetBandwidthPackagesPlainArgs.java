@@ -32,14 +32,14 @@ public final class GetBandwidthPackagesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+     * Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
      * 
      */
     @Import(name="includeReservationData")
     private @Nullable Boolean includeReservationData;
 
     /**
-     * @return -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+     * @return Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
      * 
      */
     public Optional<Boolean> includeReservationData() {
@@ -149,7 +149,7 @@ public final class GetBandwidthPackagesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param includeReservationData -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+         * @param includeReservationData Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
          * 
          * @return builder
          * 

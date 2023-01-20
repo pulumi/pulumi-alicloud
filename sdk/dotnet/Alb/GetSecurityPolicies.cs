@@ -23,33 +23,31 @@ namespace Pulumi.AliCloud.Alb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Alb.GetSecurityPolicies.InvokeAsync());
-        ///         this.AlbSecurityPolicyId1 = ids.Apply(ids =&gt; ids.Policies?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Alb.GetSecurityPolicies.InvokeAsync(new AliCloud.Alb.GetSecurityPoliciesArgs
-        ///         {
-        ///             NameRegex = "^my-SecurityPolicy",
-        ///         }));
-        ///         this.AlbSecurityPolicyId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Policies?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Alb.GetSecurityPolicies.Invoke();
         /// 
-        ///     [Output("albSecurityPolicyId1")]
-        ///     public Output&lt;string&gt; AlbSecurityPolicyId1 { get; set; }
-        ///     [Output("albSecurityPolicyId2")]
-        ///     public Output&lt;string&gt; AlbSecurityPolicyId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Alb.GetSecurityPolicies.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-SecurityPolicy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albSecurityPolicyId1"] = ids.Apply(getSecurityPoliciesResult =&gt; getSecurityPoliciesResult.Policies[0]?.Id),
+        ///         ["albSecurityPolicyId2"] = nameRegex.Apply(getSecurityPoliciesResult =&gt; getSecurityPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecurityPoliciesResult> InvokeAsync(GetSecurityPoliciesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityPoliciesResult>("alicloud:alb/getSecurityPolicies:getSecurityPolicies", args ?? new GetSecurityPoliciesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecurityPoliciesResult>("alicloud:alb/getSecurityPolicies:getSecurityPolicies", args ?? new GetSecurityPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Alb Security Policies of the current Alibaba Cloud user.
@@ -63,37 +61,35 @@ namespace Pulumi.AliCloud.Alb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Alb.GetSecurityPolicies.InvokeAsync());
-        ///         this.AlbSecurityPolicyId1 = ids.Apply(ids =&gt; ids.Policies?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Alb.GetSecurityPolicies.InvokeAsync(new AliCloud.Alb.GetSecurityPoliciesArgs
-        ///         {
-        ///             NameRegex = "^my-SecurityPolicy",
-        ///         }));
-        ///         this.AlbSecurityPolicyId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Policies?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Alb.GetSecurityPolicies.Invoke();
         /// 
-        ///     [Output("albSecurityPolicyId1")]
-        ///     public Output&lt;string&gt; AlbSecurityPolicyId1 { get; set; }
-        ///     [Output("albSecurityPolicyId2")]
-        ///     public Output&lt;string&gt; AlbSecurityPolicyId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Alb.GetSecurityPolicies.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-SecurityPolicy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albSecurityPolicyId1"] = ids.Apply(getSecurityPoliciesResult =&gt; getSecurityPoliciesResult.Policies[0]?.Id),
+        ///         ["albSecurityPolicyId2"] = nameRegex.Apply(getSecurityPoliciesResult =&gt; getSecurityPoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSecurityPoliciesResult> Invoke(GetSecurityPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecurityPoliciesResult>("alicloud:alb/getSecurityPolicies:getSecurityPolicies", args ?? new GetSecurityPoliciesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecurityPoliciesResult>("alicloud:alb/getSecurityPolicies:getSecurityPolicies", args ?? new GetSecurityPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSecurityPoliciesArgs : Pulumi.InvokeArgs
+    public sealed class GetSecurityPoliciesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -157,9 +153,10 @@ namespace Pulumi.AliCloud.Alb
         public GetSecurityPoliciesArgs()
         {
         }
+        public static new GetSecurityPoliciesArgs Empty => new GetSecurityPoliciesArgs();
     }
 
-    public sealed class GetSecurityPoliciesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecurityPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -223,6 +220,7 @@ namespace Pulumi.AliCloud.Alb
         public GetSecurityPoliciesInvokeArgs()
         {
         }
+        public static new GetSecurityPoliciesInvokeArgs Empty => new GetSecurityPoliciesInvokeArgs();
     }
 
 

@@ -7,12 +7,14 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cms.GroupMetricRuleArgs;
 import com.pulumi.alicloud.cms.inputs.GroupMetricRuleState;
 import com.pulumi.alicloud.cms.outputs.GroupMetricRuleEscalations;
+import com.pulumi.alicloud.cms.outputs.GroupMetricRuleTarget;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -168,14 +170,14 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
         return this.emailSubject;
     }
     /**
-     * Alarm level. See the block for escalations.
+     * Alarm level. See the following `Block escalations`.
      * 
      */
     @Export(name="escalations", type=GroupMetricRuleEscalations.class, parameters={})
     private Output<GroupMetricRuleEscalations> escalations;
 
     /**
-     * @return Alarm level. See the block for escalations.
+     * @return Alarm level. See the following `Block escalations`.
      * 
      */
     public Output<GroupMetricRuleEscalations> escalations() {
@@ -270,14 +272,14 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="period", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> period;
+    private Output<Integer> period;
 
     /**
      * @return The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
      * 
      */
-    public Output<Optional<Integer>> period() {
-        return Codegen.optional(this.period);
+    public Output<Integer> period() {
+        return this.period;
     }
     /**
      * The ID of the alert rule.
@@ -320,6 +322,20 @@ public class GroupMetricRule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The information about the resource for which alerts are triggered. See the following `Block targets`.
+     * 
+     */
+    @Export(name="targets", type=List.class, parameters={GroupMetricRuleTarget.class})
+    private Output<List<GroupMetricRuleTarget>> targets;
+
+    /**
+     * @return The information about the resource for which alerts are triggered. See the following `Block targets`.
+     * 
+     */
+    public Output<List<GroupMetricRuleTarget>> targets() {
+        return this.targets;
     }
     /**
      * The callback URL.

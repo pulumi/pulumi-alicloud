@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -20,15 +21,12 @@ import * as utilities from "../utilities";
  *     vpnGatewayId: "example_vpn_gateway_id",
  *     ids: ["example_id"],
  * });
- * export const vpnIpsecServerId1 = ids.then(ids => ids.entries?[0]?.id);
+ * export const vpnIpsecServerId1 = ids.then(ids => ids.entries?.[0]?.id);
  * ```
  */
 export function getPbrRouteEntries(args: GetPbrRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetPbrRouteEntriesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", {
         "ids": args.ids,
         "outputFile": args.outputFile,
@@ -70,9 +68,26 @@ export interface GetPbrRouteEntriesResult {
      */
     readonly vpnGatewayId: string;
 }
-
+/**
+ * > **NOTE:** Available in v1.162.0+.
+ *
+ * The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getPbrRouteEntries({
+ *     vpnGatewayId: "example_vpn_gateway_id",
+ *     ids: ["example_id"],
+ * });
+ * export const vpnIpsecServerId1 = ids.then(ids => ids.entries?.[0]?.id);
+ * ```
+ */
 export function getPbrRouteEntriesOutput(args: GetPbrRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPbrRouteEntriesResult> {
-    return pulumi.output(args).apply(a => getPbrRouteEntries(a, opts))
+    return pulumi.output(args).apply((a: any) => getPbrRouteEntries(a, opts))
 }
 
 /**

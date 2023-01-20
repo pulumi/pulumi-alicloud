@@ -5,19 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./account";
-export * from "./connection";
-export * from "./elasticInstance";
-export * from "./getAccounts";
-export * from "./getInstances";
-export * from "./getZones";
-export * from "./instance";
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
 
-// Import resources to register:
-import { Account } from "./account";
-import { Connection } from "./connection";
-import { ElasticInstance } from "./elasticInstance";
-import { Instance } from "./instance";
+export { ConnectionArgs, ConnectionState } from "./connection";
+export type Connection = import("./connection").Connection;
+export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+
+export { DbInstancePlanArgs, DbInstancePlanState } from "./dbInstancePlan";
+export type DbInstancePlan = import("./dbInstancePlan").DbInstancePlan;
+export const DbInstancePlan: typeof import("./dbInstancePlan").DbInstancePlan = null as any;
+utilities.lazyLoad(exports, ["DbInstancePlan"], () => require("./dbInstancePlan"));
+
+export { ElasticInstanceArgs, ElasticInstanceState } from "./elasticInstance";
+export type ElasticInstance = import("./elasticInstance").ElasticInstance;
+export const ElasticInstance: typeof import("./elasticInstance").ElasticInstance = null as any;
+utilities.lazyLoad(exports, ["ElasticInstance"], () => require("./elasticInstance"));
+
+export { GetAccountsArgs, GetAccountsResult, GetAccountsOutputArgs } from "./getAccounts";
+export const getAccounts: typeof import("./getAccounts").getAccounts = null as any;
+export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getAccounts","getAccountsOutput"], () => require("./getAccounts"));
+
+export { GetDbInstancePlansArgs, GetDbInstancePlansResult, GetDbInstancePlansOutputArgs } from "./getDbInstancePlans";
+export const getDbInstancePlans: typeof import("./getDbInstancePlans").getDbInstancePlans = null as any;
+export const getDbInstancePlansOutput: typeof import("./getDbInstancePlans").getDbInstancePlansOutput = null as any;
+utilities.lazyLoad(exports, ["getDbInstancePlans","getDbInstancePlansOutput"], () => require("./getDbInstancePlans"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -27,6 +59,8 @@ const _module = {
                 return new Account(name, <any>undefined, { urn })
             case "alicloud:gpdb/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "alicloud:gpdb/dbInstancePlan:DbInstancePlan":
+                return new DbInstancePlan(name, <any>undefined, { urn })
             case "alicloud:gpdb/elasticInstance:ElasticInstance":
                 return new ElasticInstance(name, <any>undefined, { urn })
             case "alicloud:gpdb/instance:Instance":
@@ -38,5 +72,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/connection", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbInstancePlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/elasticInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/instance", _module)

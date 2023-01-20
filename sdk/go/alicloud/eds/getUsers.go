@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the Elastic Desktop Service(EDS) Users of the current Alibaba Cloud user.
+// This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.142.0+.
 //

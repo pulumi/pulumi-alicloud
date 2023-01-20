@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const resolutionLinesDs = pulumi.output(alicloud.dns.getResolutionLines({
+ * const resolutionLinesDs = alicloud.dns.getResolutionLines({
  *     lineCodes: ["cn_unicom_shanxi"],
  *     outputFile: "support_lines.txt",
- * }));
- *
- * export const firstLineCode = resolutionLinesDs.lines[0].lineCode;
+ * });
+ * export const firstLineCode = resolutionLinesDs.then(resolutionLinesDs => resolutionLinesDs.lines?.[0]?.lineCode);
  * ```
  */
 export function getResolutionLines(args?: GetResolutionLinesArgs, opts?: pulumi.InvokeOptions): Promise<GetResolutionLinesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getResolutionLines:getResolutionLines", {
         "domainName": args.domainName,
         "lang": args.lang,
@@ -96,9 +93,26 @@ export interface GetResolutionLinesResult {
     readonly outputFile?: string;
     readonly userClientIp?: string;
 }
-
+/**
+ * This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in 1.60.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const resolutionLinesDs = alicloud.dns.getResolutionLines({
+ *     lineCodes: ["cn_unicom_shanxi"],
+ *     outputFile: "support_lines.txt",
+ * });
+ * export const firstLineCode = resolutionLinesDs.then(resolutionLinesDs => resolutionLinesDs.lines?.[0]?.lineCode);
+ * ```
+ */
 export function getResolutionLinesOutput(args?: GetResolutionLinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResolutionLinesResult> {
-    return pulumi.output(args).apply(a => getResolutionLines(a, opts))
+    return pulumi.output(args).apply((a: any) => getResolutionLines(a, opts))
 }
 
 /**

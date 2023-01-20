@@ -17,6 +17,7 @@ __all__ = ['EciScalingConfigurationArgs', 'EciScalingConfiguration']
 class EciScalingConfigurationArgs:
     def __init__(__self__, *,
                  scaling_group_id: pulumi.Input[str],
+                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  auto_create_eip: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
@@ -46,12 +47,15 @@ class EciScalingConfigurationArgs:
         """
         The set of arguments for constructing a EciScalingConfiguration resource.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a eci scaling configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. The details see
+               Block `acr_registry_info`.See Block acr_registry_info below for
+               details.
         :param pulumi.Input[bool] active: Whether active current eci scaling configuration in the specified scaling group. Note that only
                one configuration can be active. Default to `false`.
         :param pulumi.Input[bool] auto_create_eip: Whether create eip automatically.
         :param pulumi.Input[str] container_group_name: The name of the container group.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]] containers: The list of containers.See Block container below for details.
-        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
+        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] dns_policy: dns policy of contain group.
@@ -68,7 +72,7 @@ class EciScalingConfigurationArgs:
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]] init_containers: The list of initContainers.See Block init_container below for
                details.
-        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
+        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: ID of resource group.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
@@ -89,6 +93,8 @@ class EciScalingConfigurationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]] volumes: The list of volumes.See Block volume below for details.
         """
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if acr_registry_infos is not None:
+            pulumi.set(__self__, "acr_registry_infos", acr_registry_infos)
         if active is not None:
             pulumi.set(__self__, "active", active)
         if auto_create_eip is not None:
@@ -155,6 +161,20 @@ class EciScalingConfigurationArgs:
         pulumi.set(self, "scaling_group_id", value)
 
     @property
+    @pulumi.getter(name="acrRegistryInfos")
+    def acr_registry_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]]]:
+        """
+        Information about the Container Registry Enterprise Edition instance. The details see
+        Block `acr_registry_info`.See Block acr_registry_info below for
+        details.
+        """
+        return pulumi.get(self, "acr_registry_infos")
+
+    @acr_registry_infos.setter
+    def acr_registry_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]]]):
+        pulumi.set(self, "acr_registry_infos", value)
+
+    @property
     @pulumi.getter
     def active(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -207,7 +227,7 @@ class EciScalingConfigurationArgs:
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input[float]]:
         """
-        The amount of CPU resources allocated to the container.
+        The amount of CPU resources allocated to the container group.
         """
         return pulumi.get(self, "cpu")
 
@@ -356,7 +376,7 @@ class EciScalingConfigurationArgs:
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input[float]]:
         """
-        The amount of memory resources allocated to the container.
+        The amount of memory resources allocated to the container group.
         """
         return pulumi.get(self, "memory")
 
@@ -485,6 +505,7 @@ class EciScalingConfigurationArgs:
 @pulumi.input_type
 class _EciScalingConfigurationState:
     def __init__(__self__, *,
+                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  auto_create_eip: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
@@ -514,12 +535,15 @@ class _EciScalingConfigurationState:
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]] = None):
         """
         Input properties used for looking up and filtering EciScalingConfiguration resources.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. The details see
+               Block `acr_registry_info`.See Block acr_registry_info below for
+               details.
         :param pulumi.Input[bool] active: Whether active current eci scaling configuration in the specified scaling group. Note that only
                one configuration can be active. Default to `false`.
         :param pulumi.Input[bool] auto_create_eip: Whether create eip automatically.
         :param pulumi.Input[str] container_group_name: The name of the container group.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]] containers: The list of containers.See Block container below for details.
-        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
+        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] dns_policy: dns policy of contain group.
@@ -536,7 +560,7 @@ class _EciScalingConfigurationState:
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]] init_containers: The list of initContainers.See Block init_container below for
                details.
-        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
+        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: ID of resource group.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
@@ -557,6 +581,8 @@ class _EciScalingConfigurationState:
                a null string.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]] volumes: The list of volumes.See Block volume below for details.
         """
+        if acr_registry_infos is not None:
+            pulumi.set(__self__, "acr_registry_infos", acr_registry_infos)
         if active is not None:
             pulumi.set(__self__, "active", active)
         if auto_create_eip is not None:
@@ -613,6 +639,20 @@ class _EciScalingConfigurationState:
             pulumi.set(__self__, "volumes", volumes)
 
     @property
+    @pulumi.getter(name="acrRegistryInfos")
+    def acr_registry_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]]]:
+        """
+        Information about the Container Registry Enterprise Edition instance. The details see
+        Block `acr_registry_info`.See Block acr_registry_info below for
+        details.
+        """
+        return pulumi.get(self, "acr_registry_infos")
+
+    @acr_registry_infos.setter
+    def acr_registry_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]]]):
+        pulumi.set(self, "acr_registry_infos", value)
+
+    @property
     @pulumi.getter
     def active(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -665,7 +705,7 @@ class _EciScalingConfigurationState:
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input[float]]:
         """
-        The amount of CPU resources allocated to the container.
+        The amount of CPU resources allocated to the container group.
         """
         return pulumi.get(self, "cpu")
 
@@ -814,7 +854,7 @@ class _EciScalingConfigurationState:
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input[float]]:
         """
-        The amount of memory resources allocated to the container.
+        The amount of memory resources allocated to the container group.
         """
         return pulumi.get(self, "memory")
 
@@ -957,6 +997,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  auto_create_eip: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
@@ -1043,12 +1084,15 @@ class EciScalingConfiguration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. The details see
+               Block `acr_registry_info`.See Block acr_registry_info below for
+               details.
         :param pulumi.Input[bool] active: Whether active current eci scaling configuration in the specified scaling group. Note that only
                one configuration can be active. Default to `false`.
         :param pulumi.Input[bool] auto_create_eip: Whether create eip automatically.
         :param pulumi.Input[str] container_group_name: The name of the container group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]] containers: The list of containers.See Block container below for details.
-        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
+        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] dns_policy: dns policy of contain group.
@@ -1065,7 +1109,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]] init_containers: The list of initContainers.See Block init_container below for
                details.
-        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
+        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: ID of resource group.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
@@ -1163,6 +1207,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  auto_create_eip: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
@@ -1199,6 +1244,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EciScalingConfigurationArgs.__new__(EciScalingConfigurationArgs)
 
+            __props__.__dict__["acr_registry_infos"] = acr_registry_infos
             __props__.__dict__["active"] = active
             __props__.__dict__["auto_create_eip"] = auto_create_eip
             __props__.__dict__["container_group_name"] = container_group_name
@@ -1238,6 +1284,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]]] = None,
             active: Optional[pulumi.Input[bool]] = None,
             auto_create_eip: Optional[pulumi.Input[bool]] = None,
             container_group_name: Optional[pulumi.Input[str]] = None,
@@ -1272,12 +1319,15 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. The details see
+               Block `acr_registry_info`.See Block acr_registry_info below for
+               details.
         :param pulumi.Input[bool] active: Whether active current eci scaling configuration in the specified scaling group. Note that only
                one configuration can be active. Default to `false`.
         :param pulumi.Input[bool] auto_create_eip: Whether create eip automatically.
         :param pulumi.Input[str] container_group_name: The name of the container group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]] containers: The list of containers.See Block container below for details.
-        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
+        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] dns_policy: dns policy of contain group.
@@ -1294,7 +1344,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]] init_containers: The list of initContainers.See Block init_container below for
                details.
-        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
+        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: ID of resource group.
         :param pulumi.Input[str] restart_policy: The restart policy of the container group. Default to `Always`.
@@ -1319,6 +1369,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
 
         __props__ = _EciScalingConfigurationState.__new__(_EciScalingConfigurationState)
 
+        __props__.__dict__["acr_registry_infos"] = acr_registry_infos
         __props__.__dict__["active"] = active
         __props__.__dict__["auto_create_eip"] = auto_create_eip
         __props__.__dict__["container_group_name"] = container_group_name
@@ -1347,6 +1398,16 @@ class EciScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["volumes"] = volumes
         return EciScalingConfiguration(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="acrRegistryInfos")
+    def acr_registry_infos(self) -> pulumi.Output[Optional[Sequence['outputs.EciScalingConfigurationAcrRegistryInfo']]]:
+        """
+        Information about the Container Registry Enterprise Edition instance. The details see
+        Block `acr_registry_info`.See Block acr_registry_info below for
+        details.
+        """
+        return pulumi.get(self, "acr_registry_infos")
 
     @property
     @pulumi.getter
@@ -1385,7 +1446,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter
     def cpu(self) -> pulumi.Output[Optional[float]]:
         """
-        The amount of CPU resources allocated to the container.
+        The amount of CPU resources allocated to the container group.
         """
         return pulumi.get(self, "cpu")
 
@@ -1486,7 +1547,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter
     def memory(self) -> pulumi.Output[Optional[float]]:
         """
-        The amount of memory resources allocated to the container.
+        The amount of memory resources allocated to the container group.
         """
         return pulumi.get(self, "memory")
 

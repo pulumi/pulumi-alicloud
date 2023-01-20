@@ -11,6 +11,8 @@ import (
 )
 
 type GetInstancesInstance struct {
+	// (Available in 1.196.0+) The connection string of the DRDS instance.
+	ConnectionString string `pulumi:"connectionString"`
 	// Creation time of the instance.
 	CreateTime int `pulumi:"createTime"`
 	// The DRDS instance description.
@@ -19,6 +21,8 @@ type GetInstancesInstance struct {
 	Id string `pulumi:"id"`
 	// `Classic` for public classic network or `VPC` for private network.
 	NetworkType string `pulumi:"networkType"`
+	// (Available in 1.196.0+) The connection port of the DRDS instance.
+	Port string `pulumi:"port"`
 	// Status of the instance.
 	Status string `pulumi:"status"`
 	// The DRDS Instance type.
@@ -41,6 +45,8 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
+	// (Available in 1.196.0+) The connection string of the DRDS instance.
+	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
 	// Creation time of the instance.
 	CreateTime pulumi.IntInput `pulumi:"createTime"`
 	// The DRDS instance description.
@@ -49,6 +55,8 @@ type GetInstancesInstanceArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// `Classic` for public classic network or `VPC` for private network.
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// (Available in 1.196.0+) The connection port of the DRDS instance.
+	Port pulumi.StringInput `pulumi:"port"`
 	// Status of the instance.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The DRDS Instance type.
@@ -110,6 +118,11 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
+// (Available in 1.196.0+) The connection string of the DRDS instance.
+func (o GetInstancesInstanceOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
 // Creation time of the instance.
 func (o GetInstancesInstanceOutput) CreateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.CreateTime }).(pulumi.IntOutput)
@@ -128,6 +141,11 @@ func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 // `Classic` for public classic network or `VPC` for private network.
 func (o GetInstancesInstanceOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// (Available in 1.196.0+) The connection port of the DRDS instance.
+func (o GetInstancesInstanceOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Port }).(pulumi.StringOutput)
 }
 
 // Status of the instance.

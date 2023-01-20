@@ -23,26 +23,24 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Eds.GetBundles.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Eds.GetBundles.InvokeAsync(new AliCloud.Eds.GetBundlesArgs
-        ///         {
-        ///             BundleType = "SYSTEM",
-        ///         }));
-        ///     }
+        ///         BundleType = "SYSTEM",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBundlesResult> InvokeAsync(GetBundlesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd bundles of the current Alibaba Cloud user.
@@ -56,30 +54,28 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Eds.GetBundles.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Eds.GetBundles.InvokeAsync(new AliCloud.Eds.GetBundlesArgs
-        ///         {
-        ///             BundleType = "SYSTEM",
-        ///         }));
-        ///     }
+        ///         BundleType = "SYSTEM",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBundlesResult> Invoke(GetBundlesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBundlesArgs : Pulumi.InvokeArgs
+    public sealed class GetBundlesArgs : global::Pulumi.InvokeArgs
     {
         [Input("bundleIds")]
         private List<string>? _bundleIds;
@@ -123,9 +119,10 @@ namespace Pulumi.AliCloud.Eds
         public GetBundlesArgs()
         {
         }
+        public static new GetBundlesArgs Empty => new GetBundlesArgs();
     }
 
-    public sealed class GetBundlesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBundlesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("bundleIds")]
         private InputList<string>? _bundleIds;
@@ -169,6 +166,7 @@ namespace Pulumi.AliCloud.Eds
         public GetBundlesInvokeArgs()
         {
         }
+        public static new GetBundlesInvokeArgs Empty => new GetBundlesInvokeArgs();
     }
 
 

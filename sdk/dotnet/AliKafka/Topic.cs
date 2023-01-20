@@ -22,50 +22,52 @@ namespace Pulumi.AliCloud.AliKafka
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new AliCloud.AliKafka.InstanceArgs
-    ///         {
-    ///             TopicQuota = 50,
-    ///             DiskType = 1,
-    ///             DiskSize = 500,
-    ///             DeployType = 5,
-    ///             IoMax = 20,
-    ///             VswitchId = defaultSwitch.Id,
-    ///         });
-    ///         var config = new Config();
-    ///         var topic = config.Get("topic") ?? "alikafkaTopicName";
-    ///         var defaultTopic = new AliCloud.AliKafka.Topic("defaultTopic", new AliCloud.AliKafka.TopicArgs
-    ///         {
-    ///             InstanceId = defaultInstance.Id,
-    ///             TopicName = topic,
-    ///             LocalTopic = false,
-    ///             CompactTopic = false,
-    ///             PartitionNum = 12,
-    ///             Remark = "dafault_kafka_topic_remark",
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
+    ///     {
+    ///         PartitionNum = 50,
+    ///         DiskType = 1,
+    ///         DiskSize = 500,
+    ///         DeployType = 5,
+    ///         IoMax = 20,
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var config = new Config();
+    ///     var topic = config.Get("topic") ?? "alikafkaTopicName";
+    ///     var defaultTopic = new AliCloud.AliKafka.Topic("defaultTopic", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         TopicName = topic,
+    ///         LocalTopic = false,
+    ///         CompactTopic = false,
+    ///         PartitionNum = 12,
+    ///         Remark = "dafault_kafka_topic_remark",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -73,7 +75,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// ### Timeouts The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration-0-11/resources.html#timeouts) for certain actions* `create` - (Defaults to 10 mins) Used when creating the topic (until it reaches the initial `Running` status).
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/topic:Topic")]
-    public partial class Topic : Pulumi.CustomResource
+    public partial class Topic : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the topic is compactTopic or not. Compact topic must be a localTopic.
@@ -161,7 +163,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
     }
 
-    public sealed class TopicArgs : Pulumi.ResourceArgs
+    public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the topic is compactTopic or not. Compact topic must be a localTopic.
@@ -214,9 +216,10 @@ namespace Pulumi.AliCloud.AliKafka
         public TopicArgs()
         {
         }
+        public static new TopicArgs Empty => new TopicArgs();
     }
 
-    public sealed class TopicState : Pulumi.ResourceArgs
+    public sealed class TopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the topic is compactTopic or not. Compact topic must be a localTopic.
@@ -269,5 +272,6 @@ namespace Pulumi.AliCloud.AliKafka
         public TopicState()
         {
         }
+        public static new TopicState Empty => new TopicState();
     }
 }

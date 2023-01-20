@@ -15,86 +15,87 @@ namespace Pulumi.AliCloud.CS
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "ask-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "ask-example";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "10.1.0.0/21",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VswitchName = name,
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "10.1.1.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var serverless = new AliCloud.CS.ServerlessKubernetes("serverless", new AliCloud.CS.ServerlessKubernetesArgs
-    ///         {
-    ///             NamePrefix = name,
-    ///             VpcId = defaultNetwork.Id,
-    ///             VswitchIds = 
-    ///             {
-    ///                 defaultSwitch.Id,
-    ///             },
-    ///             NewNatGateway = true,
-    ///             EndpointPublicAccessEnabled = true,
-    ///             DeletionProtection = false,
-    ///             LoadBalancerSpec = "slb.s2.small",
-    ///             TimeZone = "Asia/Shanghai",
-    ///             ServiceCidr = "172.21.0.0/20",
-    ///             ServiceDiscoveryTypes = 
-    ///             {
-    ///                 "PrivateZone",
-    ///             },
-    ///             LoggingType = "SLS",
-    ///             Tags = 
-    ///             {
-    ///                 { "k-aa", "v-aa" },
-    ///                 { "k-bb", "v-aa" },
-    ///             },
-    ///             Addons = 
-    ///             {
-    ///                 new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
-    ///                 {
-    ///                     Name = "alb-ingress-controller",
-    ///                 },
-    ///                 new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
-    ///                 {
-    ///                     Name = "metrics-server",
-    ///                 },
-    ///                 new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
-    ///                 {
-    ///                     Name = "knative",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.1.0.0/21",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "10.1.1.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var serverless = new AliCloud.CS.ServerlessKubernetes("serverless", new()
+    ///     {
+    ///         NamePrefix = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         NewNatGateway = true,
+    ///         EndpointPublicAccessEnabled = true,
+    ///         DeletionProtection = false,
+    ///         LoadBalancerSpec = "slb.s2.small",
+    ///         TimeZone = "Asia/Shanghai",
+    ///         ServiceCidr = "172.21.0.0/20",
+    ///         ServiceDiscoveryTypes = new[]
+    ///         {
+    ///             "PrivateZone",
+    ///         },
+    ///         LoggingType = "SLS",
+    ///         Tags = 
+    ///         {
+    ///             { "k-aa", "v-aa" },
+    ///             { "k-bb", "v-aa" },
+    ///         },
+    ///         Addons = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
+    ///             {
+    ///                 Name = "alb-ingress-controller",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
+    ///             {
+    ///                 Name = "metrics-server",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ServerlessKubernetesAddonArgs
+    ///             {
+    ///                 Name = "knative",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// Serverless Kubernetes cluster can be imported using the id, e.g.
+    /// Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/serverlessKubernetes:ServerlessKubernetes")]
-    public partial class ServerlessKubernetes : Pulumi.CustomResource
+    public partial class ServerlessKubernetes : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ) You can specific network plugin,log component,ingress component and so on.Detailed below.
@@ -140,7 +141,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Output("enableRrsa")]
         public Output<bool?> EnableRrsa { get; private set; } = null!;
@@ -176,7 +177,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> LoggingType { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        /// The kubernetes cluster's name. It is the only in one Alicloud account.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -204,6 +205,12 @@ namespace Pulumi.AliCloud.CS
 
         [Output("retainResources")]
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        /// </summary>
+        [Output("rrsaMetadata")]
+        public Output<Outputs.ServerlessKubernetesRrsaMetadata> RrsaMetadata { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -315,7 +322,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class ServerlessKubernetesArgs : Pulumi.ResourceArgs
+    public sealed class ServerlessKubernetesArgs : global::Pulumi.ResourceArgs
     {
         [Input("addons")]
         private InputList<Inputs.ServerlessKubernetesAddonArgs>? _addons;
@@ -367,7 +374,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Input("enableRrsa")]
         public Input<bool>? EnableRrsa { get; set; }
@@ -403,7 +410,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? LoggingType { get; set; }
 
         /// <summary>
-        /// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        /// The kubernetes cluster's name. It is the only in one Alicloud account.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -436,6 +443,12 @@ namespace Pulumi.AliCloud.CS
             get => _retainResources ?? (_retainResources = new InputList<string>());
             set => _retainResources = value;
         }
+
+        /// <summary>
+        /// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        /// </summary>
+        [Input("rrsaMetadata")]
+        public Input<Inputs.ServerlessKubernetesRrsaMetadataArgs>? RrsaMetadata { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -524,9 +537,10 @@ namespace Pulumi.AliCloud.CS
         public ServerlessKubernetesArgs()
         {
         }
+        public static new ServerlessKubernetesArgs Empty => new ServerlessKubernetesArgs();
     }
 
-    public sealed class ServerlessKubernetesState : Pulumi.ResourceArgs
+    public sealed class ServerlessKubernetesState : global::Pulumi.ResourceArgs
     {
         [Input("addons")]
         private InputList<Inputs.ServerlessKubernetesAddonGetArgs>? _addons;
@@ -578,7 +592,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Whether to enable cluster to support rrsa for version 1.22.3+. Default to `false`. Once the rrsa function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         /// </summary>
         [Input("enableRrsa")]
         public Input<bool>? EnableRrsa { get; set; }
@@ -614,7 +628,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? LoggingType { get; set; }
 
         /// <summary>
-        /// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        /// The kubernetes cluster's name. It is the only in one Alicloud account.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -647,6 +661,12 @@ namespace Pulumi.AliCloud.CS
             get => _retainResources ?? (_retainResources = new InputList<string>());
             set => _retainResources = value;
         }
+
+        /// <summary>
+        /// (Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
+        /// </summary>
+        [Input("rrsaMetadata")]
+        public Input<Inputs.ServerlessKubernetesRrsaMetadataGetArgs>? RrsaMetadata { get; set; }
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -735,5 +755,6 @@ namespace Pulumi.AliCloud.CS
         public ServerlessKubernetesState()
         {
         }
+        public static new ServerlessKubernetesState Empty => new ServerlessKubernetesState();
     }
 }

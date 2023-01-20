@@ -23,26 +23,25 @@ namespace Pulumi.AliCloud.Eci
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.Eci.GetZones.InvokeAsync());
-        ///         this.FirstEciZonesId = @default.Apply(@default =&gt; @default.Zones?[0]?.ZoneIds?[0]);
-        ///     }
+        ///     var @default = AliCloud.Eci.GetZones.Invoke();
         /// 
-        ///     [Output("firstEciZonesId")]
-        ///     public Output&lt;string&gt; FirstEciZonesId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEciZonesId"] = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[0])),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:eci/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:eci/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
@@ -56,30 +55,29 @@ namespace Pulumi.AliCloud.Eci
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.Eci.GetZones.InvokeAsync());
-        ///         this.FirstEciZonesId = @default.Apply(@default =&gt; @default.Zones?[0]?.ZoneIds?[0]);
-        ///     }
+        ///     var @default = AliCloud.Eci.GetZones.Invoke();
         /// 
-        ///     [Output("firstEciZonesId")]
-        ///     public Output&lt;string&gt; FirstEciZonesId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEciZonesId"] = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[0])),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:eci/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:eci/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -87,9 +85,10 @@ namespace Pulumi.AliCloud.Eci
         public GetZonesArgs()
         {
         }
+        public static new GetZonesArgs Empty => new GetZonesArgs();
     }
 
-    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -97,6 +96,7 @@ namespace Pulumi.AliCloud.Eci
         public GetZonesInvokeArgs()
         {
         }
+        public static new GetZonesInvokeArgs Empty => new GetZonesInvokeArgs();
     }
 
 

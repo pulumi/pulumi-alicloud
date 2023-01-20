@@ -31,15 +31,28 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+	ArbiterVswitchId pulumi.StringPtrOutput `pulumi:"arbiterVswitchId"`
+	// The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+	ArbiterZoneId pulumi.StringPtrOutput `pulumi:"arbiterZoneId"`
+	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+	ArchVersion pulumi.StringPtrOutput `pulumi:"archVersion"`
 	// The cold storage capacity of the instance. Unit: GB.
 	ColdStorage pulumi.IntOutput `pulumi:"coldStorage"`
-	// The core num.
+	// The core num. **NOTE:** Field `coreNum` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
+	//
+	// Deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.
 	CoreNum pulumi.IntPtrOutput `pulumi:"coreNum"`
-	// The core spec.
-	CoreSpec pulumi.StringPtrOutput `pulumi:"coreSpec"`
+	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+	CoreSingleStorage pulumi.IntPtrOutput `pulumi:"coreSingleStorage"`
+	// The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+	//   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+	CoreSpec pulumi.StringOutput `pulumi:"coreSpec"`
 	// The deletion protection of instance.
 	DeletionProection pulumi.BoolOutput `pulumi:"deletionProection"`
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
 	DiskCategory pulumi.StringOutput `pulumi:"diskCategory"`
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration pulumi.StringPtrOutput `pulumi:"duration"`
@@ -62,13 +75,23 @@ type Instance struct {
 	// The name of the instance.
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
-	InstanceStorage pulumi.StringPtrOutput `pulumi:"instanceStorage"`
+	InstanceStorage pulumi.StringOutput `pulumi:"instanceStorage"`
 	// The ip white list of instance.
 	IpWhiteLists pulumi.StringArrayOutput `pulumi:"ipWhiteLists"`
+	// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloudEfficiency`, `cloudSsd`.
+	LogDiskCategory pulumi.StringPtrOutput `pulumi:"logDiskCategory"`
+	// The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+	LogNum pulumi.IntPtrOutput `pulumi:"logNum"`
+	// The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+	LogSingleStorage pulumi.IntPtrOutput `pulumi:"logSingleStorage"`
+	// The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+	LogSpec pulumi.StringPtrOutput `pulumi:"logSpec"`
 	// The count of lindorm tunnel service.
 	LtsNodeCount pulumi.IntOutput `pulumi:"ltsNodeCount"`
 	// The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
 	LtsNodeSpecification pulumi.StringOutput `pulumi:"ltsNodeSpecification"`
+	// The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+	MultiZoneCombination pulumi.StringPtrOutput `pulumi:"multiZoneCombination"`
 	// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The count of phoenix.
@@ -77,32 +100,47 @@ type Instance struct {
 	PhoenixNodeSpecification pulumi.StringOutput `pulumi:"phoenixNodeSpecification"`
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
+	// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+	PrimaryVswitchId pulumi.StringPtrOutput `pulumi:"primaryVswitchId"`
+	// Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+	PrimaryZoneId pulumi.StringPtrOutput `pulumi:"primaryZoneId"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The count of search engine.
 	SearchEngineNodeCount pulumi.IntOutput `pulumi:"searchEngineNodeCount"`
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	SearchEngineSpecification pulumi.StringOutput `pulumi:"searchEngineSpecification"`
+	// (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindormMultizone`, `serverlessLindorm`, `lindormStandalone`, `lts`.
+	ServiceType pulumi.StringOutput `pulumi:"serviceType"`
+	// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+	StandbyVswitchId pulumi.StringPtrOutput `pulumi:"standbyVswitchId"`
+	// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+	StandbyZoneId pulumi.StringPtrOutput `pulumi:"standbyZoneId"`
 	// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The count of table engine.
 	TableEngineNodeCount pulumi.IntOutput `pulumi:"tableEngineNodeCount"`
-	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+	// The specification of  table engine. Valid values:
+	// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
 	TableEngineSpecification pulumi.StringOutput `pulumi:"tableEngineSpecification"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount pulumi.IntOutput `pulumi:"timeSeriesEngineNodeCount"`
-	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+	// The specification of time series engine.
+	// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
 	TimeSeriesEngineSpecification pulumi.StringOutput `pulumi:"timeSeriesEngineSpecification"`
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
 	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
 	TimeSeriresEngineSpecification pulumi.StringOutput `pulumi:"timeSeriresEngineSpecification"`
-	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+	// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
 	//
 	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType pulumi.StringPtrOutput `pulumi:"upgradeType"`
+	// The VPC ID of the instance.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -147,15 +185,28 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+	ArbiterVswitchId *string `pulumi:"arbiterVswitchId"`
+	// The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+	ArbiterZoneId *string `pulumi:"arbiterZoneId"`
+	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+	ArchVersion *string `pulumi:"archVersion"`
 	// The cold storage capacity of the instance. Unit: GB.
 	ColdStorage *int `pulumi:"coldStorage"`
-	// The core num.
+	// The core num. **NOTE:** Field `coreNum` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
+	//
+	// Deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.
 	CoreNum *int `pulumi:"coreNum"`
-	// The core spec.
+	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+	CoreSingleStorage *int `pulumi:"coreSingleStorage"`
+	// The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+	//   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec *string `pulumi:"coreSpec"`
 	// The deletion protection of instance.
 	DeletionProection *bool `pulumi:"deletionProection"`
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
 	DiskCategory *string `pulumi:"diskCategory"`
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration *string `pulumi:"duration"`
@@ -181,10 +232,20 @@ type instanceState struct {
 	InstanceStorage *string `pulumi:"instanceStorage"`
 	// The ip white list of instance.
 	IpWhiteLists []string `pulumi:"ipWhiteLists"`
+	// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloudEfficiency`, `cloudSsd`.
+	LogDiskCategory *string `pulumi:"logDiskCategory"`
+	// The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+	LogNum *int `pulumi:"logNum"`
+	// The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+	LogSingleStorage *int `pulumi:"logSingleStorage"`
+	// The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+	LogSpec *string `pulumi:"logSpec"`
 	// The count of lindorm tunnel service.
 	LtsNodeCount *int `pulumi:"ltsNodeCount"`
 	// The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
 	LtsNodeSpecification *string `pulumi:"ltsNodeSpecification"`
+	// The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+	MultiZoneCombination *string `pulumi:"multiZoneCombination"`
 	// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The count of phoenix.
@@ -193,32 +254,47 @@ type instanceState struct {
 	PhoenixNodeSpecification *string `pulumi:"phoenixNodeSpecification"`
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+	PrimaryVswitchId *string `pulumi:"primaryVswitchId"`
+	// Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+	PrimaryZoneId *string `pulumi:"primaryZoneId"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The count of search engine.
 	SearchEngineNodeCount *int `pulumi:"searchEngineNodeCount"`
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	SearchEngineSpecification *string `pulumi:"searchEngineSpecification"`
+	// (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindormMultizone`, `serverlessLindorm`, `lindormStandalone`, `lts`.
+	ServiceType *string `pulumi:"serviceType"`
+	// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+	StandbyVswitchId *string `pulumi:"standbyVswitchId"`
+	// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+	StandbyZoneId *string `pulumi:"standbyZoneId"`
 	// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
 	Status *string `pulumi:"status"`
 	// The count of table engine.
 	TableEngineNodeCount *int `pulumi:"tableEngineNodeCount"`
-	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+	// The specification of  table engine. Valid values:
+	// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
 	TableEngineSpecification *string `pulumi:"tableEngineSpecification"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount *int `pulumi:"timeSeriesEngineNodeCount"`
-	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+	// The specification of time series engine.
+	// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
 	TimeSeriesEngineSpecification *string `pulumi:"timeSeriesEngineSpecification"`
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
 	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
 	TimeSeriresEngineSpecification *string `pulumi:"timeSeriresEngineSpecification"`
-	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+	// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
 	//
 	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType *string `pulumi:"upgradeType"`
+	// The VPC ID of the instance.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -226,15 +302,28 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+	ArbiterVswitchId pulumi.StringPtrInput
+	// The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+	ArbiterZoneId pulumi.StringPtrInput
+	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+	ArchVersion pulumi.StringPtrInput
 	// The cold storage capacity of the instance. Unit: GB.
 	ColdStorage pulumi.IntPtrInput
-	// The core num.
+	// The core num. **NOTE:** Field `coreNum` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
+	//
+	// Deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.
 	CoreNum pulumi.IntPtrInput
-	// The core spec.
+	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+	CoreSingleStorage pulumi.IntPtrInput
+	// The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+	//   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec pulumi.StringPtrInput
 	// The deletion protection of instance.
 	DeletionProection pulumi.BoolPtrInput
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
 	DiskCategory pulumi.StringPtrInput
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration pulumi.StringPtrInput
@@ -260,10 +349,20 @@ type InstanceState struct {
 	InstanceStorage pulumi.StringPtrInput
 	// The ip white list of instance.
 	IpWhiteLists pulumi.StringArrayInput
+	// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloudEfficiency`, `cloudSsd`.
+	LogDiskCategory pulumi.StringPtrInput
+	// The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+	LogNum pulumi.IntPtrInput
+	// The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+	LogSingleStorage pulumi.IntPtrInput
+	// The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+	LogSpec pulumi.StringPtrInput
 	// The count of lindorm tunnel service.
 	LtsNodeCount pulumi.IntPtrInput
 	// The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
 	LtsNodeSpecification pulumi.StringPtrInput
+	// The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+	MultiZoneCombination pulumi.StringPtrInput
 	// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringPtrInput
 	// The count of phoenix.
@@ -272,32 +371,47 @@ type InstanceState struct {
 	PhoenixNodeSpecification pulumi.StringPtrInput
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle pulumi.StringPtrInput
+	// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+	PrimaryVswitchId pulumi.StringPtrInput
+	// Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+	PrimaryZoneId pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The count of search engine.
 	SearchEngineNodeCount pulumi.IntPtrInput
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	SearchEngineSpecification pulumi.StringPtrInput
+	// (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindormMultizone`, `serverlessLindorm`, `lindormStandalone`, `lts`.
+	ServiceType pulumi.StringPtrInput
+	// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+	StandbyVswitchId pulumi.StringPtrInput
+	// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+	StandbyZoneId pulumi.StringPtrInput
 	// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
 	Status pulumi.StringPtrInput
 	// The count of table engine.
 	TableEngineNodeCount pulumi.IntPtrInput
-	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+	// The specification of  table engine. Valid values:
+	// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
 	TableEngineSpecification pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount pulumi.IntPtrInput
-	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+	// The specification of time series engine.
+	// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
 	TimeSeriesEngineSpecification pulumi.StringPtrInput
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
 	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
 	TimeSeriresEngineSpecification pulumi.StringPtrInput
-	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+	// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
 	//
 	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType pulumi.StringPtrInput
+	// The VPC ID of the instance.
+	VpcId pulumi.StringPtrInput
 	// The vswitch id.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the instance.
@@ -309,15 +423,28 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+	ArbiterVswitchId *string `pulumi:"arbiterVswitchId"`
+	// The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+	ArbiterZoneId *string `pulumi:"arbiterZoneId"`
+	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+	ArchVersion *string `pulumi:"archVersion"`
 	// The cold storage capacity of the instance. Unit: GB.
 	ColdStorage *int `pulumi:"coldStorage"`
-	// The core num.
+	// The core num. **NOTE:** Field `coreNum` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
+	//
+	// Deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.
 	CoreNum *int `pulumi:"coreNum"`
-	// The core spec.
+	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+	CoreSingleStorage *int `pulumi:"coreSingleStorage"`
+	// The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+	//   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec *string `pulumi:"coreSpec"`
 	// The deletion protection of instance.
 	DeletionProection *bool `pulumi:"deletionProection"`
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
 	DiskCategory string `pulumi:"diskCategory"`
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration *string `pulumi:"duration"`
@@ -333,10 +460,20 @@ type instanceArgs struct {
 	InstanceStorage *string `pulumi:"instanceStorage"`
 	// The ip white list of instance.
 	IpWhiteLists []string `pulumi:"ipWhiteLists"`
+	// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloudEfficiency`, `cloudSsd`.
+	LogDiskCategory *string `pulumi:"logDiskCategory"`
+	// The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+	LogNum *int `pulumi:"logNum"`
+	// The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+	LogSingleStorage *int `pulumi:"logSingleStorage"`
+	// The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+	LogSpec *string `pulumi:"logSpec"`
 	// The count of lindorm tunnel service.
 	LtsNodeCount *int `pulumi:"ltsNodeCount"`
 	// The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
 	LtsNodeSpecification *string `pulumi:"ltsNodeSpecification"`
+	// The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+	MultiZoneCombination *string `pulumi:"multiZoneCombination"`
 	// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType string `pulumi:"paymentType"`
 	// The count of phoenix.
@@ -345,30 +482,43 @@ type instanceArgs struct {
 	PhoenixNodeSpecification *string `pulumi:"phoenixNodeSpecification"`
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+	PrimaryVswitchId *string `pulumi:"primaryVswitchId"`
+	// Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+	PrimaryZoneId *string `pulumi:"primaryZoneId"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The count of search engine.
 	SearchEngineNodeCount *int `pulumi:"searchEngineNodeCount"`
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	SearchEngineSpecification *string `pulumi:"searchEngineSpecification"`
+	// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+	StandbyVswitchId *string `pulumi:"standbyVswitchId"`
+	// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+	StandbyZoneId *string `pulumi:"standbyZoneId"`
 	// The count of table engine.
 	TableEngineNodeCount *int `pulumi:"tableEngineNodeCount"`
-	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+	// The specification of  table engine. Valid values:
+	// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
 	TableEngineSpecification *string `pulumi:"tableEngineSpecification"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount *int `pulumi:"timeSeriesEngineNodeCount"`
-	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+	// The specification of time series engine.
+	// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
 	TimeSeriesEngineSpecification *string `pulumi:"timeSeriesEngineSpecification"`
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
 	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
 	TimeSeriresEngineSpecification *string `pulumi:"timeSeriresEngineSpecification"`
-	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+	// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
 	//
 	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType *string `pulumi:"upgradeType"`
+	// The VPC ID of the instance.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -377,15 +527,28 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+	ArbiterVswitchId pulumi.StringPtrInput
+	// The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+	ArbiterZoneId pulumi.StringPtrInput
+	// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+	ArchVersion pulumi.StringPtrInput
 	// The cold storage capacity of the instance. Unit: GB.
 	ColdStorage pulumi.IntPtrInput
-	// The core num.
+	// The core num. **NOTE:** Field `coreNum` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
+	//
+	// Deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.
 	CoreNum pulumi.IntPtrInput
-	// The core spec.
+	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+	CoreSingleStorage pulumi.IntPtrInput
+	// The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+	//   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec pulumi.StringPtrInput
 	// The deletion protection of instance.
 	DeletionProection pulumi.BoolPtrInput
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
 	DiskCategory pulumi.StringInput
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration pulumi.StringPtrInput
@@ -401,10 +564,20 @@ type InstanceArgs struct {
 	InstanceStorage pulumi.StringPtrInput
 	// The ip white list of instance.
 	IpWhiteLists pulumi.StringArrayInput
+	// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloudEfficiency`, `cloudSsd`.
+	LogDiskCategory pulumi.StringPtrInput
+	// The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+	LogNum pulumi.IntPtrInput
+	// The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+	LogSingleStorage pulumi.IntPtrInput
+	// The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+	LogSpec pulumi.StringPtrInput
 	// The count of lindorm tunnel service.
 	LtsNodeCount pulumi.IntPtrInput
 	// The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
 	LtsNodeSpecification pulumi.StringPtrInput
+	// The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+	MultiZoneCombination pulumi.StringPtrInput
 	// The billing method. Valid values: `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringInput
 	// The count of phoenix.
@@ -413,30 +586,43 @@ type InstanceArgs struct {
 	PhoenixNodeSpecification pulumi.StringPtrInput
 	// The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
 	PricingCycle pulumi.StringPtrInput
+	// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+	PrimaryVswitchId pulumi.StringPtrInput
+	// Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+	PrimaryZoneId pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The count of search engine.
 	SearchEngineNodeCount pulumi.IntPtrInput
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	SearchEngineSpecification pulumi.StringPtrInput
+	// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+	StandbyVswitchId pulumi.StringPtrInput
+	// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+	StandbyZoneId pulumi.StringPtrInput
 	// The count of table engine.
 	TableEngineNodeCount pulumi.IntPtrInput
-	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+	// The specification of  table engine. Valid values:
+	// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
 	TableEngineSpecification pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount pulumi.IntPtrInput
-	// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+	// The specification of time series engine.
+	// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
 	TimeSeriesEngineSpecification pulumi.StringPtrInput
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
 	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
 	TimeSeriresEngineSpecification pulumi.StringPtrInput
-	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+	// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
 	//
 	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 	UpgradeType pulumi.StringPtrInput
+	// The VPC ID of the instance.
+	VpcId pulumi.StringPtrInput
 	// The vswitch id.
 	VswitchId pulumi.StringInput
 	// The zone ID of the instance.
@@ -530,19 +716,44 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+func (o InstanceOutput) ArbiterVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ArbiterVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+func (o InstanceOutput) ArbiterZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ArbiterZoneId }).(pulumi.StringPtrOutput)
+}
+
+// The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+func (o InstanceOutput) ArchVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ArchVersion }).(pulumi.StringPtrOutput)
+}
+
 // The cold storage capacity of the instance. Unit: GB.
 func (o InstanceOutput) ColdStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ColdStorage }).(pulumi.IntOutput)
 }
 
-// The core num.
+// The core num. **NOTE:** Field `coreNum` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
+//
+// Deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.
 func (o InstanceOutput) CoreNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.CoreNum }).(pulumi.IntPtrOutput)
 }
 
-// The core spec.
-func (o InstanceOutput) CoreSpec() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CoreSpec }).(pulumi.StringPtrOutput)
+// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+func (o InstanceOutput) CoreSingleStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.CoreSingleStorage }).(pulumi.IntPtrOutput)
+}
+
+// The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
+//   - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+//   - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+//     `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+func (o InstanceOutput) CoreSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CoreSpec }).(pulumi.StringOutput)
 }
 
 // The deletion protection of instance.
@@ -550,7 +761,7 @@ func (o InstanceOutput) DeletionProection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.DeletionProection }).(pulumi.BoolOutput)
 }
 
-// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
+// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
 func (o InstanceOutput) DiskCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DiskCategory }).(pulumi.StringOutput)
 }
@@ -606,13 +817,33 @@ func (o InstanceOutput) InstanceName() pulumi.StringPtrOutput {
 }
 
 // The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
-func (o InstanceOutput) InstanceStorage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceStorage }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) InstanceStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceStorage }).(pulumi.StringOutput)
 }
 
 // The ip white list of instance.
 func (o InstanceOutput) IpWhiteLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.IpWhiteLists }).(pulumi.StringArrayOutput)
+}
+
+// The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloudEfficiency`, `cloudSsd`.
+func (o InstanceOutput) LogDiskCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.LogDiskCategory }).(pulumi.StringPtrOutput)
+}
+
+// The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+func (o InstanceOutput) LogNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.LogNum }).(pulumi.IntPtrOutput)
+}
+
+// The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+func (o InstanceOutput) LogSingleStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.LogSingleStorage }).(pulumi.IntPtrOutput)
+}
+
+// The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+func (o InstanceOutput) LogSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.LogSpec }).(pulumi.StringPtrOutput)
 }
 
 // The count of lindorm tunnel service.
@@ -623,6 +854,11 @@ func (o InstanceOutput) LtsNodeCount() pulumi.IntOutput {
 // The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
 func (o InstanceOutput) LtsNodeSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.LtsNodeSpecification }).(pulumi.StringOutput)
+}
+
+// The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+func (o InstanceOutput) MultiZoneCombination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.MultiZoneCombination }).(pulumi.StringPtrOutput)
 }
 
 // The billing method. Valid values: `PayAsYouGo` and `Subscription`.
@@ -645,6 +881,16 @@ func (o InstanceOutput) PricingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
 }
 
+// Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+func (o InstanceOutput) PrimaryVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PrimaryVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+func (o InstanceOutput) PrimaryZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PrimaryZoneId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the resource group.
 func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
@@ -660,6 +906,21 @@ func (o InstanceOutput) SearchEngineSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SearchEngineSpecification }).(pulumi.StringOutput)
 }
 
+// (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindormMultizone`, `serverlessLindorm`, `lindormStandalone`, `lts`.
+func (o InstanceOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+func (o InstanceOutput) StandbyVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.StandbyVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+func (o InstanceOutput) StandbyZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.StandbyZoneId }).(pulumi.StringPtrOutput)
+}
+
 // The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
@@ -670,7 +931,8 @@ func (o InstanceOutput) TableEngineNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TableEngineNodeCount }).(pulumi.IntOutput)
 }
 
-// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+// The specification of  table engine. Valid values:
+// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
 func (o InstanceOutput) TableEngineSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TableEngineSpecification }).(pulumi.StringOutput)
 }
@@ -685,7 +947,8 @@ func (o InstanceOutput) TimeSeriesEngineNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TimeSeriesEngineNodeCount }).(pulumi.IntOutput)
 }
 
-// The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+// The specification of time series engine.
+// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
 func (o InstanceOutput) TimeSeriesEngineSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TimeSeriesEngineSpecification }).(pulumi.StringOutput)
 }
@@ -697,11 +960,17 @@ func (o InstanceOutput) TimeSeriresEngineSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TimeSeriresEngineSpecification }).(pulumi.StringOutput)
 }
 
-// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
 //
 // Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
 func (o InstanceOutput) UpgradeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UpgradeType }).(pulumi.StringPtrOutput)
+}
+
+// The VPC ID of the instance.
+func (o InstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The vswitch id.

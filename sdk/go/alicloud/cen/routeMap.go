@@ -28,8 +28,8 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -41,14 +41,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = providers.Newalicloud(ctx, "vpc00Region", &providers.alicloudArgs{
-//				Region: "cn-hangzhou",
+//			_, err = alicloud.NewProvider(ctx, "vpc00Region", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = providers.Newalicloud(ctx, "vpc01Region", &providers.alicloudArgs{
-//				Region: "cn-shanghai",
+//			_, err = alicloud.NewProvider(ctx, "vpc01Region", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-shanghai"),
 //			})
 //			if err != nil {
 //				return err

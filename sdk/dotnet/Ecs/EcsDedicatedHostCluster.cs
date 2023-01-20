@@ -21,28 +21,27 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleZones = Output.Create(AliCloud.GetZones.InvokeAsync());
-    ///         var exampleEcsDedicatedHostCluster = new AliCloud.Ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster", new AliCloud.Ecs.EcsDedicatedHostClusterArgs
-    ///         {
-    ///             DedicatedHostClusterName = "example_value",
-    ///             Description = "example_value",
-    ///             ZoneId = exampleZones.Apply(exampleZones =&gt; exampleZones.Zones?[0]?.Id),
-    ///             Tags = 
-    ///             {
-    ///                 { "Create", "TF" },
-    ///                 { "For", "DDH_Cluster_Test" },
-    ///             },
-    ///         });
-    ///     }
+    ///     var exampleZones = AliCloud.GetZones.Invoke();
     /// 
-    /// }
+    ///     var exampleEcsDedicatedHostCluster = new AliCloud.Ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster", new()
+    ///     {
+    ///         DedicatedHostClusterName = "example_value",
+    ///         Description = "example_value",
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Tags = 
+    ///         {
+    ///             { "Create", "TF" },
+    ///             { "For", "DDH_Cluster_Test" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +53,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsDedicatedHostCluster:EcsDedicatedHostCluster")]
-    public partial class EcsDedicatedHostCluster : Pulumi.CustomResource
+    public partial class EcsDedicatedHostCluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the dedicated host cluster. The name must be `2` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot contain `http://` or `https://`.
@@ -130,7 +129,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsDedicatedHostClusterArgs : Pulumi.ResourceArgs
+    public sealed class EcsDedicatedHostClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the dedicated host cluster. The name must be `2` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot contain `http://` or `https://`.
@@ -171,9 +170,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsDedicatedHostClusterArgs()
         {
         }
+        public static new EcsDedicatedHostClusterArgs Empty => new EcsDedicatedHostClusterArgs();
     }
 
-    public sealed class EcsDedicatedHostClusterState : Pulumi.ResourceArgs
+    public sealed class EcsDedicatedHostClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the dedicated host cluster. The name must be `2` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot contain `http://` or `https://`.
@@ -214,5 +214,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsDedicatedHostClusterState()
         {
         }
+        public static new EcsDedicatedHostClusterState Empty => new EcsDedicatedHostClusterState();
     }
 }

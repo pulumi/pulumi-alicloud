@@ -23,42 +23,41 @@ namespace Pulumi.AliCloud.Mhub
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "example_value";
+        ///     var @default = new AliCloud.Mhub.App("default", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "example_value";
-        ///         var @default = new AliCloud.Mhub.App("default", new AliCloud.Mhub.AppArgs
-        ///         {
-        ///             AppName = name,
-        ///             ProductId = alicloud_mhub_product.Default.Id,
-        ///             PackageName = "com.test.android",
-        ///             Type = "2",
-        ///         });
-        ///         var ids = Output.Create(AliCloud.Mhub.GetApps.InvokeAsync());
-        ///         this.MhubAppId1 = ids.Apply(ids =&gt; ids.Apps?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Mhub.GetApps.InvokeAsync(new AliCloud.Mhub.GetAppsArgs
-        ///         {
-        ///             NameRegex = "^my-App",
-        ///         }));
-        ///         this.MhubAppId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Apps?[0]?.Id);
-        ///     }
+        ///         AppName = name,
+        ///         ProductId = alicloud_mhub_product.Default.Id,
+        ///         PackageName = "com.test.android",
+        ///         Type = "2",
+        ///     });
         /// 
-        ///     [Output("mhubAppId1")]
-        ///     public Output&lt;string&gt; MhubAppId1 { get; set; }
-        ///     [Output("mhubAppId2")]
-        ///     public Output&lt;string&gt; MhubAppId2 { get; set; }
-        /// }
+        ///     var ids = AliCloud.Mhub.GetApps.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Mhub.GetApps.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-App",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mhubAppId1"] = ids.Apply(getAppsResult =&gt; getAppsResult.Apps[0]?.Id),
+        ///         ["mhubAppId2"] = nameRegex.Apply(getAppsResult =&gt; getAppsResult.Apps[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppsResult> InvokeAsync(GetAppsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppsResult>("alicloud:mhub/getApps:getApps", args ?? new GetAppsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppsResult>("alicloud:mhub/getApps:getApps", args ?? new GetAppsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mhub Apps of the current Alibaba Cloud user.
@@ -72,46 +71,45 @@ namespace Pulumi.AliCloud.Mhub
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "example_value";
+        ///     var @default = new AliCloud.Mhub.App("default", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "example_value";
-        ///         var @default = new AliCloud.Mhub.App("default", new AliCloud.Mhub.AppArgs
-        ///         {
-        ///             AppName = name,
-        ///             ProductId = alicloud_mhub_product.Default.Id,
-        ///             PackageName = "com.test.android",
-        ///             Type = "2",
-        ///         });
-        ///         var ids = Output.Create(AliCloud.Mhub.GetApps.InvokeAsync());
-        ///         this.MhubAppId1 = ids.Apply(ids =&gt; ids.Apps?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Mhub.GetApps.InvokeAsync(new AliCloud.Mhub.GetAppsArgs
-        ///         {
-        ///             NameRegex = "^my-App",
-        ///         }));
-        ///         this.MhubAppId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Apps?[0]?.Id);
-        ///     }
+        ///         AppName = name,
+        ///         ProductId = alicloud_mhub_product.Default.Id,
+        ///         PackageName = "com.test.android",
+        ///         Type = "2",
+        ///     });
         /// 
-        ///     [Output("mhubAppId1")]
-        ///     public Output&lt;string&gt; MhubAppId1 { get; set; }
-        ///     [Output("mhubAppId2")]
-        ///     public Output&lt;string&gt; MhubAppId2 { get; set; }
-        /// }
+        ///     var ids = AliCloud.Mhub.GetApps.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Mhub.GetApps.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-App",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mhubAppId1"] = ids.Apply(getAppsResult =&gt; getAppsResult.Apps[0]?.Id),
+        ///         ["mhubAppId2"] = nameRegex.Apply(getAppsResult =&gt; getAppsResult.Apps[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAppsResult> Invoke(GetAppsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAppsResult>("alicloud:mhub/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppsResult>("alicloud:mhub/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAppsArgs : Pulumi.InvokeArgs
+    public sealed class GetAppsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -155,9 +153,10 @@ namespace Pulumi.AliCloud.Mhub
         public GetAppsArgs()
         {
         }
+        public static new GetAppsArgs Empty => new GetAppsArgs();
     }
 
-    public sealed class GetAppsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAppsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -201,6 +200,7 @@ namespace Pulumi.AliCloud.Mhub
         public GetAppsInvokeArgs()
         {
         }
+        public static new GetAppsInvokeArgs Empty => new GetAppsInvokeArgs();
     }
 
 

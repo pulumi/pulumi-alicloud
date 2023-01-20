@@ -26,9 +26,6 @@ class HanaBackupPlanArgs:
         """
         The set of arguments for constructing a HanaBackupPlan resource.
         :param pulumi.Input[str] backup_type: The backup type. Valid values:
-               - `COMPLETE`: full backup.
-               - `INCREMENTAL`: incremental backup.
-               - `DIFFERENTIAL`: differential backup.
         :param pulumi.Input[str] cluster_id: The ID of the SAP HANA instance.
         :param pulumi.Input[str] database_name: The name of the database.
         :param pulumi.Input[str] plan_name: The name of the backup plan.
@@ -56,9 +53,6 @@ class HanaBackupPlanArgs:
     def backup_type(self) -> pulumi.Input[str]:
         """
         The backup type. Valid values:
-        - `COMPLETE`: full backup.
-        - `INCREMENTAL`: incremental backup.
-        - `DIFFERENTIAL`: differential backup.
         """
         return pulumi.get(self, "backup_type")
 
@@ -180,9 +174,6 @@ class _HanaBackupPlanState:
         Input properties used for looking up and filtering HanaBackupPlan resources.
         :param pulumi.Input[str] backup_prefix: The backup prefix.
         :param pulumi.Input[str] backup_type: The backup type. Valid values:
-               - `COMPLETE`: full backup.
-               - `INCREMENTAL`: incremental backup.
-               - `DIFFERENTIAL`: differential backup.
         :param pulumi.Input[str] cluster_id: The ID of the SAP HANA instance.
         :param pulumi.Input[str] database_name: The name of the database.
         :param pulumi.Input[str] plan_id: The id of the plan.
@@ -230,9 +221,6 @@ class _HanaBackupPlanState:
     def backup_type(self) -> Optional[pulumi.Input[str]]:
         """
         The backup type. Valid values:
-        - `COMPLETE`: full backup.
-        - `INCREMENTAL`: incremental backup.
-        - `DIFFERENTIAL`: differential backup.
         """
         return pulumi.get(self, "backup_type")
 
@@ -404,9 +392,6 @@ class HanaBackupPlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_prefix: The backup prefix.
         :param pulumi.Input[str] backup_type: The backup type. Valid values:
-               - `COMPLETE`: full backup.
-               - `INCREMENTAL`: incremental backup.
-               - `DIFFERENTIAL`: differential backup.
         :param pulumi.Input[str] cluster_id: The ID of the SAP HANA instance.
         :param pulumi.Input[str] database_name: The name of the database.
         :param pulumi.Input[str] plan_name: The name of the backup plan.
@@ -553,9 +538,6 @@ class HanaBackupPlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_prefix: The backup prefix.
         :param pulumi.Input[str] backup_type: The backup type. Valid values:
-               - `COMPLETE`: full backup.
-               - `INCREMENTAL`: incremental backup.
-               - `DIFFERENTIAL`: differential backup.
         :param pulumi.Input[str] cluster_id: The ID of the SAP HANA instance.
         :param pulumi.Input[str] database_name: The name of the database.
         :param pulumi.Input[str] plan_id: The id of the plan.
@@ -594,9 +576,6 @@ class HanaBackupPlan(pulumi.CustomResource):
     def backup_type(self) -> pulumi.Output[str]:
         """
         The backup type. Valid values:
-        - `COMPLETE`: full backup.
-        - `INCREMENTAL`: incremental backup.
-        - `DIFFERENTIAL`: differential backup.
         """
         return pulumi.get(self, "backup_type")
 

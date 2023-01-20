@@ -21,108 +21,110 @@ namespace Pulumi.AliCloud.Sae
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = defaultNetworks.Apply(defaultNetworks =&gt; Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///         {
-    ///             VpcId = defaultNetworks.Ids?[0],
-    ///         })));
-    ///         var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new AliCloud.Sae.NamespaceArgs
-    ///         {
-    ///             NamespaceDescription = "example_value",
-    ///             NamespaceId = "example_value",
-    ///             NamespaceName = "example_value",
-    ///         });
-    ///         var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new AliCloud.Sae.ApplicationArgs
-    ///         {
-    ///             AppDescription = "example_value",
-    ///             AppName = "example_value",
-    ///             NamespaceId = defaultNamespace.NamespaceId,
-    ///             ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
-    ///             PackageType = "Image",
-    ///             Jdk = "Open JDK 8",
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///             Timezone = "Asia/Shanghai",
-    ///             Replicas = 5,
-    ///             Cpu = 500,
-    ///             Memory = 2048,
-    ///         });
-    ///         var example = new AliCloud.Sae.ApplicationScalingRule("example", new AliCloud.Sae.ApplicationScalingRuleArgs
-    ///         {
-    ///             AppId = defaultApplication.Id,
-    ///             ScalingRuleName = "example-value",
-    ///             ScalingRuleEnable = true,
-    ///             ScalingRuleType = "mix",
-    ///             ScalingRuleTimer = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerArgs
-    ///             {
-    ///                 BeginDate = "2022-02-25",
-    ///                 EndDate = "2022-03-25",
-    ///                 Period = "* * *",
-    ///                 Schedules = 
-    ///                 {
-    ///                     new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerScheduleArgs
-    ///                     {
-    ///                         AtTime = "08:00",
-    ///                         MaxReplicas = 10,
-    ///                         MinReplicas = 3,
-    ///                     },
-    ///                     new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerScheduleArgs
-    ///                     {
-    ///                         AtTime = "20:00",
-    ///                         MaxReplicas = 50,
-    ///                         MinReplicas = 3,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             ScalingRuleMetric = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricArgs
-    ///             {
-    ///                 MaxReplicas = 50,
-    ///                 MinReplicas = 3,
-    ///                 Metrics = 
-    ///                 {
-    ///                     new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
-    ///                     {
-    ///                         MetricType = "CPU",
-    ///                         MetricTargetAverageUtilization = 20,
-    ///                     },
-    ///                     new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
-    ///                     {
-    ///                         MetricType = "MEMORY",
-    ///                         MetricTargetAverageUtilization = 30,
-    ///                     },
-    ///                     new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
-    ///                     {
-    ///                         MetricType = "tcpActiveConn",
-    ///                         MetricTargetAverageUtilization = 20,
-    ///                     },
-    ///                 },
-    ///                 ScaleUpRules = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs
-    ///                 {
-    ///                     Step = 10,
-    ///                     Disabled = false,
-    ///                     StabilizationWindowSeconds = 0,
-    ///                 },
-    ///                 ScaleDownRules = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs
-    ///                 {
-    ///                     Step = 10,
-    ///                     Disabled = false,
-    ///                     StabilizationWindowSeconds = 10,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         NameRegex = "default-NODELETING",
+    ///     });
     /// 
-    /// }
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
+    ///     {
+    ///         NamespaceDescription = "example_value",
+    ///         NamespaceId = "example_value",
+    ///         NamespaceName = "example_value",
+    ///     });
+    /// 
+    ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
+    ///     {
+    ///         AppDescription = "example_value",
+    ///         AppName = "example_value",
+    ///         NamespaceId = defaultNamespace.NamespaceId,
+    ///         ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+    ///         PackageType = "Image",
+    ///         Jdk = "Open JDK 8",
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         Timezone = "Asia/Shanghai",
+    ///         Replicas = 5,
+    ///         Cpu = 500,
+    ///         Memory = 2048,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Sae.ApplicationScalingRule("example", new()
+    ///     {
+    ///         AppId = defaultApplication.Id,
+    ///         ScalingRuleName = "example-value",
+    ///         ScalingRuleEnable = true,
+    ///         ScalingRuleType = "mix",
+    ///         ScalingRuleTimer = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerArgs
+    ///         {
+    ///             BeginDate = "2022-02-25",
+    ///             EndDate = "2022-03-25",
+    ///             Period = "* * *",
+    ///             Schedules = new[]
+    ///             {
+    ///                 new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerScheduleArgs
+    ///                 {
+    ///                     AtTime = "08:00",
+    ///                     MaxReplicas = 10,
+    ///                     MinReplicas = 3,
+    ///                 },
+    ///                 new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleTimerScheduleArgs
+    ///                 {
+    ///                     AtTime = "20:00",
+    ///                     MaxReplicas = 50,
+    ///                     MinReplicas = 3,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ScalingRuleMetric = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricArgs
+    ///         {
+    ///             MaxReplicas = 50,
+    ///             MinReplicas = 3,
+    ///             Metrics = new[]
+    ///             {
+    ///                 new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
+    ///                 {
+    ///                     MetricType = "CPU",
+    ///                     MetricTargetAverageUtilization = 20,
+    ///                 },
+    ///                 new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
+    ///                 {
+    ///                     MetricType = "MEMORY",
+    ///                     MetricTargetAverageUtilization = 30,
+    ///                 },
+    ///                 new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricMetricArgs
+    ///                 {
+    ///                     MetricType = "tcpActiveConn",
+    ///                     MetricTargetAverageUtilization = 20,
+    ///                 },
+    ///             },
+    ///             ScaleUpRules = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs
+    ///             {
+    ///                 Step = 10,
+    ///                 Disabled = false,
+    ///                 StabilizationWindowSeconds = 0,
+    ///             },
+    ///             ScaleDownRules = new AliCloud.Sae.Inputs.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs
+    ///             {
+    ///                 Step = 10,
+    ///                 Disabled = false,
+    ///                 StabilizationWindowSeconds = 10,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -134,7 +136,7 @@ namespace Pulumi.AliCloud.Sae
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sae/applicationScalingRule:ApplicationScalingRule")]
-    public partial class ApplicationScalingRule : Pulumi.CustomResource
+    public partial class ApplicationScalingRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Application ID.
@@ -228,7 +230,7 @@ namespace Pulumi.AliCloud.Sae
         }
     }
 
-    public sealed class ApplicationScalingRuleArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationScalingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Application ID.
@@ -281,9 +283,10 @@ namespace Pulumi.AliCloud.Sae
         public ApplicationScalingRuleArgs()
         {
         }
+        public static new ApplicationScalingRuleArgs Empty => new ApplicationScalingRuleArgs();
     }
 
-    public sealed class ApplicationScalingRuleState : Pulumi.ResourceArgs
+    public sealed class ApplicationScalingRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Application ID.
@@ -336,5 +339,6 @@ namespace Pulumi.AliCloud.Sae
         public ApplicationScalingRuleState()
         {
         }
+        public static new ApplicationScalingRuleState Empty => new ApplicationScalingRuleState();
     }
 }

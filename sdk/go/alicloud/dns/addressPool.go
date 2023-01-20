@@ -31,7 +31,7 @@ type AddressPool struct {
 
 	// The name of the address pool.
 	AddressPoolName pulumi.StringOutput `pulumi:"addressPoolName"`
-	// The address that you want to add to the address pool.
+	// The address lists of the Address Pool. See the following `Block address`.
 	Addresses AddressPoolAddressArrayOutput `pulumi:"addresses"`
 	// The ID of the instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -87,7 +87,7 @@ func GetAddressPool(ctx *pulumi.Context,
 type addressPoolState struct {
 	// The name of the address pool.
 	AddressPoolName *string `pulumi:"addressPoolName"`
-	// The address that you want to add to the address pool.
+	// The address lists of the Address Pool. See the following `Block address`.
 	Addresses []AddressPoolAddress `pulumi:"addresses"`
 	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
@@ -100,7 +100,7 @@ type addressPoolState struct {
 type AddressPoolState struct {
 	// The name of the address pool.
 	AddressPoolName pulumi.StringPtrInput
-	// The address that you want to add to the address pool.
+	// The address lists of the Address Pool. See the following `Block address`.
 	Addresses AddressPoolAddressArrayInput
 	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput
@@ -117,7 +117,7 @@ func (AddressPoolState) ElementType() reflect.Type {
 type addressPoolArgs struct {
 	// The name of the address pool.
 	AddressPoolName string `pulumi:"addressPoolName"`
-	// The address that you want to add to the address pool.
+	// The address lists of the Address Pool. See the following `Block address`.
 	Addresses []AddressPoolAddress `pulumi:"addresses"`
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -131,7 +131,7 @@ type addressPoolArgs struct {
 type AddressPoolArgs struct {
 	// The name of the address pool.
 	AddressPoolName pulumi.StringInput
-	// The address that you want to add to the address pool.
+	// The address lists of the Address Pool. See the following `Block address`.
 	Addresses AddressPoolAddressArrayInput
 	// The ID of the instance.
 	InstanceId pulumi.StringInput
@@ -233,7 +233,7 @@ func (o AddressPoolOutput) AddressPoolName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressPool) pulumi.StringOutput { return v.AddressPoolName }).(pulumi.StringOutput)
 }
 
-// The address that you want to add to the address pool.
+// The address lists of the Address Pool. See the following `Block address`.
 func (o AddressPoolOutput) Addresses() AddressPoolAddressArrayOutput {
 	return o.ApplyT(func(v *AddressPool) AddressPoolAddressArrayOutput { return v.Addresses }).(AddressPoolAddressArrayOutput)
 }

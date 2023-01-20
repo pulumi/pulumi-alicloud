@@ -20,52 +20,54 @@ namespace Pulumi.AliCloud.Rds
     /// ### Create a RDS MySQL clone instance
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testaccdbinstance";
+    ///     var creation = config.Get("creation") ?? "Rds";
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testaccdbinstance";
-    ///         var creation = config.Get("creation") ?? "Rds";
-    ///         var exampleZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = exampleNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = exampleZones.Apply(exampleZones =&gt; exampleZones.Zones?[0]?.Id),
-    ///         });
-    ///         var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new AliCloud.Rds.InstanceArgs
-    ///         {
-    ///             Engine = "MySQL",
-    ///             EngineVersion = "5.6",
-    ///             InstanceType = "rds.mysql.s2.large",
-    ///             InstanceStorage = 30,
-    ///             InstanceChargeType = "Postpaid",
-    ///             InstanceName = name,
-    ///             VswitchId = exampleSwitch.Id,
-    ///             MonitoringPeriod = 60,
-    ///         });
-    ///         var exampleRdsCloneDbInstance = new AliCloud.Rds.RdsCloneDbInstance("exampleRdsCloneDbInstance", new AliCloud.Rds.RdsCloneDbInstanceArgs
-    ///         {
-    ///             SourceDbInstanceId = exampleInstance.Id,
-    ///             DbInstanceStorageType = "local_ssd",
-    ///             PaymentType = "PayAsYouGo",
-    ///             RestoreTime = "2021-11-24T11:25:00Z",
-    ///             DbInstanceStorage = 30,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
+    ///         InstanceType = "rds.mysql.s2.large",
+    ///         InstanceStorage = 30,
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = name,
+    ///         VswitchId = exampleSwitch.Id,
+    ///         MonitoringPeriod = 60,
+    ///     });
+    /// 
+    ///     var exampleRdsCloneDbInstance = new AliCloud.Rds.RdsCloneDbInstance("exampleRdsCloneDbInstance", new()
+    ///     {
+    ///         SourceDbInstanceId = exampleInstance.Id,
+    ///         DbInstanceStorageType = "local_ssd",
+    ///         PaymentType = "PayAsYouGo",
+    ///         RestoreTime = "2021-11-24T11:25:00Z",
+    ///         DbInstanceStorage = 30,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +79,7 @@ namespace Pulumi.AliCloud.Rds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance")]
-    public partial class RdsCloneDbInstance : Pulumi.CustomResource
+    public partial class RdsCloneDbInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
@@ -515,7 +517,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
-    public sealed class RdsCloneDbInstanceArgs : Pulumi.ResourceArgs
+    public sealed class RdsCloneDbInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
@@ -924,9 +926,10 @@ namespace Pulumi.AliCloud.Rds
         public RdsCloneDbInstanceArgs()
         {
         }
+        public static new RdsCloneDbInstanceArgs Empty => new RdsCloneDbInstanceArgs();
     }
 
-    public sealed class RdsCloneDbInstanceState : Pulumi.ResourceArgs
+    public sealed class RdsCloneDbInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
@@ -1341,5 +1344,6 @@ namespace Pulumi.AliCloud.Rds
         public RdsCloneDbInstanceState()
         {
         }
+        public static new RdsCloneDbInstanceState Empty => new RdsCloneDbInstanceState();
     }
 }

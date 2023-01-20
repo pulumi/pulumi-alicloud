@@ -431,14 +431,14 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="muteUntil", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> muteUntil;
+    private Output<Integer> muteUntil;
 
     /**
      * @return Timestamp, notifications before closing again.
      * 
      */
-    public Output<Optional<Integer>> muteUntil() {
-        return Codegen.optional(this.muteUntil);
+    public Output<Integer> muteUntil() {
+        return this.muteUntil;
     }
     /**
      * Switch for whether new alert fires when no data happens, default is false.

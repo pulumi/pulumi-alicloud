@@ -23,20 +23,18 @@ namespace Pulumi.AliCloud.Mhub
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Mhub.Product("example", new()
     ///     {
-    ///         var example = new AliCloud.Mhub.Product("example", new AliCloud.Mhub.ProductArgs
-    ///         {
-    ///             ProductName = "example_value",
-    ///         });
-    ///     }
+    ///         ProductName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.Mhub
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mhub/product:Product")]
-    public partial class Product : Pulumi.CustomResource
+    public partial class Product : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ProductName.
@@ -100,7 +98,7 @@ namespace Pulumi.AliCloud.Mhub
         }
     }
 
-    public sealed class ProductArgs : Pulumi.ResourceArgs
+    public sealed class ProductArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ProductName.
@@ -111,9 +109,10 @@ namespace Pulumi.AliCloud.Mhub
         public ProductArgs()
         {
         }
+        public static new ProductArgs Empty => new ProductArgs();
     }
 
-    public sealed class ProductState : Pulumi.ResourceArgs
+    public sealed class ProductState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ProductName.
@@ -124,5 +123,6 @@ namespace Pulumi.AliCloud.Mhub
         public ProductState()
         {
         }
+        public static new ProductState Empty => new ProductState();
     }
 }

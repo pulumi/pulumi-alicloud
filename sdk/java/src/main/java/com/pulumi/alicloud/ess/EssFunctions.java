@@ -37,8 +37,6 @@ public final class EssFunctions {
      * 
      * &gt; **NOTE** Available in 1.72.0+
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetAlarmsResult> getAlarms() {
         return getAlarms(GetAlarmsArgs.Empty, InvokeOptions.Empty);
@@ -47,8 +45,6 @@ public final class EssFunctions {
      * This data source provides available alarm resources.
      * 
      * &gt; **NOTE** Available in 1.72.0+
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAlarmsResult> getAlarmsPlain() {
@@ -59,8 +55,6 @@ public final class EssFunctions {
      * 
      * &gt; **NOTE** Available in 1.72.0+
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetAlarmsResult> getAlarms(GetAlarmsArgs args) {
         return getAlarms(args, InvokeOptions.Empty);
@@ -69,8 +63,6 @@ public final class EssFunctions {
      * This data source provides available alarm resources.
      * 
      * &gt; **NOTE** Available in 1.72.0+
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAlarmsResult> getAlarmsPlain(GetAlarmsPlainArgs args) {
@@ -81,8 +73,6 @@ public final class EssFunctions {
      * 
      * &gt; **NOTE** Available in 1.72.0+
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetAlarmsResult> getAlarms(GetAlarmsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ess/getAlarms:getAlarms", TypeShape.of(GetAlarmsResult.class), args, Utilities.withVersion(options));
@@ -91,8 +81,6 @@ public final class EssFunctions {
      * This data source provides available alarm resources.
      * 
      * &gt; **NOTE** Available in 1.72.0+
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAlarmsResult> getAlarmsPlain(GetAlarmsPlainArgs args, InvokeOptions options) {

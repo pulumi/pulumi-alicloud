@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds.Inputs
 {
 
-    public sealed class RdsCloneDbInstanceParameterGetArgs : Pulumi.ResourceArgs
+    public sealed class RdsCloneDbInstanceParameterGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Rds.Inputs
         public RdsCloneDbInstanceParameterGetArgs()
         {
         }
+        public static new RdsCloneDbInstanceParameterGetArgs Empty => new RdsCloneDbInstanceParameterGetArgs();
     }
 }

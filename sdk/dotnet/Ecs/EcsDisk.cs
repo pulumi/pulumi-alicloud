@@ -21,30 +21,28 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ecs.EcsDisk("example", new()
     ///     {
-    ///         var example = new AliCloud.Ecs.EcsDisk("example", new AliCloud.Ecs.EcsDiskArgs
+    ///         Category = "cloud_efficiency",
+    ///         Description = "Hello ecs disk.",
+    ///         DiskName = "tf-test",
+    ///         Encrypted = true,
+    ///         KmsKeyId = "2a6767f0-a16c-4679-a60f-13bf*****",
+    ///         Size = 30,
+    ///         Tags = 
     ///         {
-    ///             Category = "cloud_efficiency",
-    ///             Description = "Hello ecs disk.",
-    ///             DiskName = "tf-test",
-    ///             Encrypted = true,
-    ///             KmsKeyId = "2a6767f0-a16c-4679-a60f-13bf*****",
-    ///             Size = 30,
-    ///             Tags = 
-    ///             {
-    ///                 { "Name", "TerraformTest" },
-    ///             },
-    ///             ZoneId = "cn-beijing-b",
-    ///         });
-    ///     }
+    ///             { "Name", "TerraformTest" },
+    ///         },
+    ///         ZoneId = "cn-beijing-b",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsDisk:EcsDisk")]
-    public partial class EcsDisk : Pulumi.CustomResource
+    public partial class EcsDisk : global::Pulumi.CustomResource
     {
         [Output("advancedFeatures")]
         public Output<string?> AdvancedFeatures { get; private set; } = null!;
@@ -68,7 +66,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. Default is `cloud_efficiency`.
+        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
         /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
@@ -102,8 +100,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-        /// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-        /// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -150,10 +146,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
         /// </summary>
         [Output("performanceLevel")]
         public Output<string> PerformanceLevel { get; private set; } = null!;
@@ -202,8 +195,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-        /// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-        /// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -258,7 +249,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsDiskArgs : Pulumi.ResourceArgs
+    public sealed class EcsDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("advancedFeatures")]
         public Input<string>? AdvancedFeatures { get; set; }
@@ -270,7 +261,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. Default is `cloud_efficiency`.
+        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -304,8 +295,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-        /// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-        /// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -352,10 +341,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
@@ -404,8 +390,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-        /// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-        /// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -419,9 +403,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsDiskArgs()
         {
         }
+        public static new EcsDiskArgs Empty => new EcsDiskArgs();
     }
 
-    public sealed class EcsDiskState : Pulumi.ResourceArgs
+    public sealed class EcsDiskState : global::Pulumi.ResourceArgs
     {
         [Input("advancedFeatures")]
         public Input<string>? AdvancedFeatures { get; set; }
@@ -433,7 +418,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. Default is `cloud_efficiency`.
+        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -467,8 +452,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-        /// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-        /// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -515,10 +498,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
@@ -573,8 +553,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-        /// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-        /// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -588,5 +566,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsDiskState()
         {
         }
+        public static new EcsDiskState Empty => new EcsDiskState();
     }
 }

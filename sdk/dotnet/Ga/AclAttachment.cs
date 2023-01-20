@@ -18,14 +18,14 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// ## Import
     /// 
-    /// Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
+    /// Global Accelerator (GA) Acl Attachment can be imported using the id. Format to `&lt;listener_id&gt;:&lt;acl_id&gt;`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example &lt;listener_id&gt;:&lt;acl_id&gt;
+    ///  $ pulumi import alicloud:ga/aclAttachment:AclAttachment example your_listener_id:your_acl_id
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/aclAttachment:AclAttachment")]
-    public partial class AclAttachment : Pulumi.CustomResource
+    public partial class AclAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of an ACL.
@@ -34,9 +34,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> AclId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the ACL. Valid values: `white`, `black`. 
-        /// - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
-        /// - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
+        /// The type of the ACL. Valid values: `white`, `black`.
         /// </summary>
         [Output("aclType")]
         public Output<string> AclType { get; private set; } = null!;
@@ -103,7 +101,7 @@ namespace Pulumi.AliCloud.Ga
         }
     }
 
-    public sealed class AclAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class AclAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of an ACL.
@@ -112,9 +110,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string> AclId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the ACL. Valid values: `white`, `black`. 
-        /// - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
-        /// - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
+        /// The type of the ACL. Valid values: `white`, `black`.
         /// </summary>
         [Input("aclType", required: true)]
         public Input<string> AclType { get; set; } = null!;
@@ -134,9 +130,10 @@ namespace Pulumi.AliCloud.Ga
         public AclAttachmentArgs()
         {
         }
+        public static new AclAttachmentArgs Empty => new AclAttachmentArgs();
     }
 
-    public sealed class AclAttachmentState : Pulumi.ResourceArgs
+    public sealed class AclAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of an ACL.
@@ -145,9 +142,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// The type of the ACL. Valid values: `white`, `black`. 
-        /// - `white`: Only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where applications only allow specific IP addresses. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access global acceleration listeners. If whitelist access is enabled, but no IP is added to the access policy group, the global acceleration listener will not forward the request.
-        /// - `black`: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where applications restrict access to specific IP addresses. If blacklist access is enabled and no IP is added to the access policy group, the global acceleration listener forwards all requests.
+        /// The type of the ACL. Valid values: `white`, `black`.
         /// </summary>
         [Input("aclType")]
         public Input<string>? AclType { get; set; }
@@ -173,5 +168,6 @@ namespace Pulumi.AliCloud.Ga
         public AclAttachmentState()
         {
         }
+        public static new AclAttachmentState Empty => new AclAttachmentState();
     }
 }

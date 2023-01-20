@@ -63,7 +63,7 @@ export class AlbServerGroupAttachment extends pulumi.CustomResource {
      */
     public readonly forceAttach!: pulumi.Output<boolean | undefined>;
     /**
-     * - The port will be used for Alb Server Group backend server.
+     * The port will be used for Alb Server Group backend server.
      */
     public readonly port!: pulumi.Output<number>;
     /**
@@ -132,7 +132,7 @@ export interface AlbServerGroupAttachmentState {
      */
     forceAttach?: pulumi.Input<boolean>;
     /**
-     * - The port will be used for Alb Server Group backend server.
+     * The port will be used for Alb Server Group backend server.
      */
     port?: pulumi.Input<number>;
     /**
@@ -159,7 +159,7 @@ export interface AlbServerGroupAttachmentArgs {
      */
     forceAttach?: pulumi.Input<boolean>;
     /**
-     * - The port will be used for Alb Server Group backend server.
+     * The port will be used for Alb Server Group backend server.
      */
     port: pulumi.Input<number>;
     /**

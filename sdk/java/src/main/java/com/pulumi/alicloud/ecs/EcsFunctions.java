@@ -8,6 +8,8 @@ import com.pulumi.alicloud.ecs.inputs.GetActivationsArgs;
 import com.pulumi.alicloud.ecs.inputs.GetActivationsPlainArgs;
 import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesArgs;
 import com.pulumi.alicloud.ecs.inputs.GetAutoSnapshotPoliciesPlainArgs;
+import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
+import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsPlainArgs;
 import com.pulumi.alicloud.ecs.inputs.GetCommandsArgs;
 import com.pulumi.alicloud.ecs.inputs.GetCommandsPlainArgs;
 import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
@@ -46,10 +48,14 @@ import com.pulumi.alicloud.ecs.inputs.GetEipAddressesArgs;
 import com.pulumi.alicloud.ecs.inputs.GetEipAddressesPlainArgs;
 import com.pulumi.alicloud.ecs.inputs.GetEipsArgs;
 import com.pulumi.alicloud.ecs.inputs.GetEipsPlainArgs;
+import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
+import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesPlainArgs;
 import com.pulumi.alicloud.ecs.inputs.GetHpcClustersArgs;
 import com.pulumi.alicloud.ecs.inputs.GetHpcClustersPlainArgs;
 import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
 import com.pulumi.alicloud.ecs.inputs.GetImagesPlainArgs;
+import com.pulumi.alicloud.ecs.inputs.GetInstanceKeywordsArgs;
+import com.pulumi.alicloud.ecs.inputs.GetInstanceKeywordsPlainArgs;
 import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesArgs;
 import com.pulumi.alicloud.ecs.inputs.GetInstanceTypeFamiliesPlainArgs;
 import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
@@ -68,6 +74,7 @@ import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
 import com.pulumi.alicloud.ecs.inputs.GetSnapshotsPlainArgs;
 import com.pulumi.alicloud.ecs.outputs.GetActivationsResult;
 import com.pulumi.alicloud.ecs.outputs.GetAutoSnapshotPoliciesResult;
+import com.pulumi.alicloud.ecs.outputs.GetCapacityReservationsResult;
 import com.pulumi.alicloud.ecs.outputs.GetCommandsResult;
 import com.pulumi.alicloud.ecs.outputs.GetDedicatedHostsResult;
 import com.pulumi.alicloud.ecs.outputs.GetDisksResult;
@@ -87,8 +94,10 @@ import com.pulumi.alicloud.ecs.outputs.GetEcsSnapshotsResult;
 import com.pulumi.alicloud.ecs.outputs.GetEcsStorageCapacityUnitsResult;
 import com.pulumi.alicloud.ecs.outputs.GetEipAddressesResult;
 import com.pulumi.alicloud.ecs.outputs.GetEipsResult;
+import com.pulumi.alicloud.ecs.outputs.GetElasticityAssurancesResult;
 import com.pulumi.alicloud.ecs.outputs.GetHpcClustersResult;
 import com.pulumi.alicloud.ecs.outputs.GetImagesResult;
+import com.pulumi.alicloud.ecs.outputs.GetInstanceKeywordsResult;
 import com.pulumi.alicloud.ecs.outputs.GetInstanceTypeFamiliesResult;
 import com.pulumi.alicloud.ecs.outputs.GetInstanceTypesResult;
 import com.pulumi.alicloud.ecs.outputs.GetInstancesResult;
@@ -603,6 +612,264 @@ public final class EcsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", TypeShape.of(GetAutoSnapshotPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides Ecs Capacity Reservation available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
+     *             .ids(alicloud_ecs_capacity_reservation.default().id())
+     *             .nameRegex(alicloud_ecs_capacity_reservation.default().name())
+     *             .instanceType(&#34;ecs.c6.large&#34;)
+     *             .platform(&#34;linux&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudEcsCapacityReservationExampleId&#34;, default_.reservations()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCapacityReservationsResult> getCapacityReservations() {
+        return getCapacityReservations(GetCapacityReservationsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ecs Capacity Reservation available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
+     *             .ids(alicloud_ecs_capacity_reservation.default().id())
+     *             .nameRegex(alicloud_ecs_capacity_reservation.default().name())
+     *             .instanceType(&#34;ecs.c6.large&#34;)
+     *             .platform(&#34;linux&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudEcsCapacityReservationExampleId&#34;, default_.reservations()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCapacityReservationsResult> getCapacityReservationsPlain() {
+        return getCapacityReservationsPlain(GetCapacityReservationsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ecs Capacity Reservation available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
+     *             .ids(alicloud_ecs_capacity_reservation.default().id())
+     *             .nameRegex(alicloud_ecs_capacity_reservation.default().name())
+     *             .instanceType(&#34;ecs.c6.large&#34;)
+     *             .platform(&#34;linux&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudEcsCapacityReservationExampleId&#34;, default_.reservations()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCapacityReservationsResult> getCapacityReservations(GetCapacityReservationsArgs args) {
+        return getCapacityReservations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ecs Capacity Reservation available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
+     *             .ids(alicloud_ecs_capacity_reservation.default().id())
+     *             .nameRegex(alicloud_ecs_capacity_reservation.default().name())
+     *             .instanceType(&#34;ecs.c6.large&#34;)
+     *             .platform(&#34;linux&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudEcsCapacityReservationExampleId&#34;, default_.reservations()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCapacityReservationsResult> getCapacityReservationsPlain(GetCapacityReservationsPlainArgs args) {
+        return getCapacityReservationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ecs Capacity Reservation available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
+     *             .ids(alicloud_ecs_capacity_reservation.default().id())
+     *             .nameRegex(alicloud_ecs_capacity_reservation.default().name())
+     *             .instanceType(&#34;ecs.c6.large&#34;)
+     *             .platform(&#34;linux&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudEcsCapacityReservationExampleId&#34;, default_.reservations()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCapacityReservationsResult> getCapacityReservations(GetCapacityReservationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ecs/getCapacityReservations:getCapacityReservations", TypeShape.of(GetCapacityReservationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ecs Capacity Reservation available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetCapacityReservationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
+     *             .ids(alicloud_ecs_capacity_reservation.default().id())
+     *             .nameRegex(alicloud_ecs_capacity_reservation.default().name())
+     *             .instanceType(&#34;ecs.c6.large&#34;)
+     *             .platform(&#34;linux&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudEcsCapacityReservationExampleId&#34;, default_.reservations()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCapacityReservationsResult> getCapacityReservationsPlain(GetCapacityReservationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ecs/getCapacityReservations:getCapacityReservations", TypeShape.of(GetCapacityReservationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the Ecs Commands of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.116.0+.
@@ -873,7 +1140,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -915,7 +1182,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -957,7 +1224,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -999,7 +1266,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1041,7 +1308,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1083,7 +1350,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetDedicatedHostsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5617,6 +5884,246 @@ public final class EcsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getEips:getEips", TypeShape.of(GetEipsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides Ecs Elasticity Assurance available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
+     *             .ids(alicloud_ecs_elasticity_assurance.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetElasticityAssurancesResult> getElasticityAssurances() {
+        return getElasticityAssurances(GetElasticityAssurancesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ecs Elasticity Assurance available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
+     *             .ids(alicloud_ecs_elasticity_assurance.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetElasticityAssurancesResult> getElasticityAssurancesPlain() {
+        return getElasticityAssurancesPlain(GetElasticityAssurancesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ecs Elasticity Assurance available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
+     *             .ids(alicloud_ecs_elasticity_assurance.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetElasticityAssurancesResult> getElasticityAssurances(GetElasticityAssurancesArgs args) {
+        return getElasticityAssurances(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ecs Elasticity Assurance available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
+     *             .ids(alicloud_ecs_elasticity_assurance.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetElasticityAssurancesResult> getElasticityAssurancesPlain(GetElasticityAssurancesPlainArgs args) {
+        return getElasticityAssurancesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ecs Elasticity Assurance available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
+     *             .ids(alicloud_ecs_elasticity_assurance.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetElasticityAssurancesResult> getElasticityAssurances(GetElasticityAssurancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", TypeShape.of(GetElasticityAssurancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ecs Elasticity Assurance available to the user.
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetElasticityAssurancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
+     *             .ids(alicloud_ecs_elasticity_assurance.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetElasticityAssurancesResult> getElasticityAssurancesPlain(GetElasticityAssurancesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", TypeShape.of(GetElasticityAssurancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.116.0+.
@@ -6115,6 +6622,170 @@ public final class EcsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
+     * 
+     * &gt; **NOTE:** Available in v1.196.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceKeywordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = EcsFunctions.getInstanceKeywords(GetInstanceKeywordsArgs.builder()
+     *             .key(&#34;account&#34;)
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountKeywords&#34;, resources.applyValue(getInstanceKeywordsResult -&gt; getInstanceKeywordsResult.keywords()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceKeywordsResult> getInstanceKeywords(GetInstanceKeywordsArgs args) {
+        return getInstanceKeywords(args, InvokeOptions.Empty);
+    }
+    /**
+     * Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
+     * 
+     * &gt; **NOTE:** Available in v1.196.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceKeywordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = EcsFunctions.getInstanceKeywords(GetInstanceKeywordsArgs.builder()
+     *             .key(&#34;account&#34;)
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountKeywords&#34;, resources.applyValue(getInstanceKeywordsResult -&gt; getInstanceKeywordsResult.keywords()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceKeywordsResult> getInstanceKeywordsPlain(GetInstanceKeywordsPlainArgs args) {
+        return getInstanceKeywordsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
+     * 
+     * &gt; **NOTE:** Available in v1.196.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceKeywordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = EcsFunctions.getInstanceKeywords(GetInstanceKeywordsArgs.builder()
+     *             .key(&#34;account&#34;)
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountKeywords&#34;, resources.applyValue(getInstanceKeywordsResult -&gt; getInstanceKeywordsResult.keywords()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceKeywordsResult> getInstanceKeywords(GetInstanceKeywordsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ecs/getInstanceKeywords:getInstanceKeywords", TypeShape.of(GetInstanceKeywordsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
+     * 
+     * &gt; **NOTE:** Available in v1.196.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceKeywordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var resources = EcsFunctions.getInstanceKeywords(GetInstanceKeywordsArgs.builder()
+     *             .key(&#34;account&#34;)
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;accountKeywords&#34;, resources.applyValue(getInstanceKeywordsResult -&gt; getInstanceKeywordsResult.keywords()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceKeywordsResult> getInstanceKeywordsPlain(GetInstanceKeywordsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ecs/getInstanceKeywords:getInstanceKeywords", TypeShape.of(GetInstanceKeywordsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the ECS instance type families of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in 1.54.0+
@@ -6375,7 +7046,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
@@ -6423,7 +7094,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
@@ -6471,7 +7142,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
@@ -6519,7 +7190,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
@@ -6567,7 +7238,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
@@ -6615,7 +7286,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
      * import java.util.List;
@@ -6659,7 +7330,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6699,7 +7370,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6739,7 +7410,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6779,7 +7450,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6819,7 +7490,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6859,7 +7530,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6899,7 +7570,7 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPair;
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6940,7 +7611,7 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPair;
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6981,7 +7652,7 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPair;
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -7022,7 +7693,7 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPair;
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -7063,7 +7734,7 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPair;
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -7104,7 +7775,7 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.ecs.KeyPair;
      * import com.pulumi.alicloud.ecs.KeyPairArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetKeyPairsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -7145,7 +7816,7 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Switch;
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
@@ -7265,7 +7936,7 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Switch;
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
@@ -7385,7 +8056,7 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Switch;
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
@@ -7505,7 +8176,7 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Switch;
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
@@ -7625,7 +8296,7 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Switch;
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
@@ -7745,7 +8416,7 @@ public final class EcsFunctions {
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Switch;
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
@@ -8367,7 +9038,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -8431,7 +9102,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -8495,7 +9166,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -8559,7 +9230,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -8623,7 +9294,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -8687,7 +9358,7 @@ public final class EcsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
-     * import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetSnapshotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

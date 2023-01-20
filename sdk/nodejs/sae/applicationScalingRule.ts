@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -24,7 +25,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
+ *     vpcId: defaultNetworks.ids?.[0],
  * }));
  * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
  *     namespaceDescription: "example_value",
@@ -38,8 +39,8 @@ import * as utilities from "../utilities";
  *     imageUrl: "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
  *     packageType: "Image",
  *     jdk: "Open JDK 8",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
  *     timezone: "Asia/Shanghai",
  *     replicas: 5,
  *     cpu: 500,

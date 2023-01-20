@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,26 +19,19 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceDatasourceName";
- *
- * const defaultInstance = new alicloud.rocketmq.Instance("default", {
- *     remark: "default_ons_instance_remark",
- * });
- * const instancesDs = pulumi.all([defaultInstance.id, defaultInstance.name]).apply(([id, name]) => alicloud.rocketmq.getInstances({
- *     ids: [id],
- *     nameRegex: name,
+ * const _default = new alicloud.rocketmq.Instance("default", {remark: "default_ons_instance_remark"});
+ * const instancesDs = alicloud.rocketmq.getInstancesOutput({
+ *     ids: [_default.id],
+ *     nameRegex: _default.name,
  *     outputFile: "instances.txt",
- * }));
- *
- * export const firstInstanceId = instancesDs.instances[0].instanceId;
+ * });
+ * export const firstInstanceId = instancesDs.apply(instancesDs => instancesDs.instances?.[0]?.instanceId);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rocketmq/getInstances:getInstances", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -107,9 +101,30 @@ export interface GetInstancesResult {
      */
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in 1.52.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "onsInstanceDatasourceName";
+ * const _default = new alicloud.rocketmq.Instance("default", {remark: "default_ons_instance_remark"});
+ * const instancesDs = alicloud.rocketmq.getInstancesOutput({
+ *     ids: [_default.id],
+ *     nameRegex: _default.name,
+ *     outputFile: "instances.txt",
+ * });
+ * export const firstInstanceId = instancesDs.apply(instancesDs => instancesDs.instances?.[0]?.instanceId);
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**

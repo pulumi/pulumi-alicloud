@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.Ipv6Gateway;
  * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
  * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
  * import com.pulumi.alicloud.vpc.Ipv6EgressRule;

@@ -21,31 +21,30 @@ namespace Pulumi.AliCloud.Ddos
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ecs.EipAddress("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ecs.EipAddress("default", new AliCloud.Ecs.EipAddressArgs
-    ///         {
-    ///             AddressName = @var.Name,
-    ///             Isp = "BGP",
-    ///             InternetChargeType = "PayByBandwidth",
-    ///             PaymentType = "PayAsYouGo",
-    ///         });
-    ///         var example = new AliCloud.Ddos.BasicDefenseThreshold("example", new AliCloud.Ddos.BasicDefenseThresholdArgs
-    ///         {
-    ///             InstanceId = @default.Id,
-    ///             DdosType = "defense",
-    ///             InstanceType = "eip",
-    ///             Bps = 390,
-    ///             Pps = 90000,
-    ///         });
-    ///     }
+    ///         AddressName = @var.Name,
+    ///         Isp = "BGP",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         PaymentType = "PayAsYouGo",
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.Ddos.BasicDefenseThreshold("example", new()
+    ///     {
+    ///         InstanceId = @default.Id,
+    ///         DdosType = "defense",
+    ///         InstanceType = "eip",
+    ///         Bps = 390,
+    ///         Pps = 90000,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +56,7 @@ namespace Pulumi.AliCloud.Ddos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ddos/basicDefenseThreshold:BasicDefenseThreshold")]
-    public partial class BasicDefenseThreshold : Pulumi.CustomResource
+    public partial class BasicDefenseThreshold : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
@@ -67,8 +66,6 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// The type of the threshold to query. Valid values: `defense`,`blackhole`.
-        /// -`defense` - scrubbing threshold.
-        /// -`blackhole` - DDoS mitigation threshold.
         /// </summary>
         [Output("ddosType")]
         public Output<string> DdosType { get; private set; } = null!;
@@ -93,8 +90,6 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// Whether it is the system default threshold. Value:
-        /// - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-        /// - `false`: indicates no, that is, you manually set the cleaning threshold.
         /// </summary>
         [Output("isAuto")]
         public Output<bool> IsAuto { get; private set; } = null!;
@@ -161,7 +156,7 @@ namespace Pulumi.AliCloud.Ddos
         }
     }
 
-    public sealed class BasicDefenseThresholdArgs : Pulumi.ResourceArgs
+    public sealed class BasicDefenseThresholdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
@@ -171,8 +166,6 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// The type of the threshold to query. Valid values: `defense`,`blackhole`.
-        /// -`defense` - scrubbing threshold.
-        /// -`blackhole` - DDoS mitigation threshold.
         /// </summary>
         [Input("ddosType", required: true)]
         public Input<string> DdosType { get; set; } = null!;
@@ -197,8 +190,6 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// Whether it is the system default threshold. Value:
-        /// - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-        /// - `false`: indicates no, that is, you manually set the cleaning threshold.
         /// </summary>
         [Input("isAuto")]
         public Input<bool>? IsAuto { get; set; }
@@ -212,9 +203,10 @@ namespace Pulumi.AliCloud.Ddos
         public BasicDefenseThresholdArgs()
         {
         }
+        public static new BasicDefenseThresholdArgs Empty => new BasicDefenseThresholdArgs();
     }
 
-    public sealed class BasicDefenseThresholdState : Pulumi.ResourceArgs
+    public sealed class BasicDefenseThresholdState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
@@ -224,8 +216,6 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// The type of the threshold to query. Valid values: `defense`,`blackhole`.
-        /// -`defense` - scrubbing threshold.
-        /// -`blackhole` - DDoS mitigation threshold.
         /// </summary>
         [Input("ddosType")]
         public Input<string>? DdosType { get; set; }
@@ -250,8 +240,6 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// Whether it is the system default threshold. Value:
-        /// - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-        /// - `false`: indicates no, that is, you manually set the cleaning threshold.
         /// </summary>
         [Input("isAuto")]
         public Input<bool>? IsAuto { get; set; }
@@ -277,5 +265,6 @@ namespace Pulumi.AliCloud.Ddos
         public BasicDefenseThresholdState()
         {
         }
+        public static new BasicDefenseThresholdState Empty => new BasicDefenseThresholdState();
     }
 }

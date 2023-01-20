@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,15 +23,12 @@ import * as utilities from "../utilities";
  *     instanceId: "ddoscoo-cn-6ja1rl4j****",
  *     ids: ["ddoscoo-cn-6ja1rl4j****:7001:tcp"],
  * });
- * export const firstDdoscooPortId = example.then(example => example.ports?[0]?.id);
+ * export const firstDdoscooPortId = example.then(example => example.ports?.[0]?.id);
  * ```
  */
 export function getDdosCooPorts(args: GetDdosCooPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooPortsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", {
         "frontendPort": args.frontendPort,
         "frontendProtocol": args.frontendProtocol,
@@ -78,9 +76,28 @@ export interface GetDdosCooPortsResult {
     readonly outputFile?: string;
     readonly ports: outputs.ddos.GetDdosCooPortsPort[];
 }
-
+/**
+ * This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.123.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ddos.getDdosCooPorts({
+ *     instanceId: "ddoscoo-cn-6ja1rl4j****",
+ *     ids: ["ddoscoo-cn-6ja1rl4j****:7001:tcp"],
+ * });
+ * export const firstDdoscooPortId = example.then(example => example.ports?.[0]?.id);
+ * ```
+ */
 export function getDdosCooPortsOutput(args: GetDdosCooPortsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooPortsResult> {
-    return pulumi.output(args).apply(a => getDdosCooPorts(a, opts))
+    return pulumi.output(args).apply((a: any) => getDdosCooPorts(a, opts))
 }
 
 /**

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eds
 {
     /// <summary>
-    /// Provides a Elastic Desktop Service(EDS) User resource.
+    /// Provides a Elastic Desktop Service (ECD) User resource.
     /// 
-    /// For information about Elastic Desktop Service(EDS) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
+    /// For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
     /// 
     /// &gt; **NOTE:** Available in v1.142.0+.
     /// 
@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Eds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Eds.User("example", new()
     ///     {
-    ///         var example = new AliCloud.Eds.User("example", new AliCloud.Eds.UserArgs
-    ///         {
-    ///             Email = "your_email",
-    ///             EndUserId = "example_value",
-    ///         });
-    ///     }
+    ///         Email = "your_email",
+    ///         EndUserId = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Eds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The email of the user email.
@@ -102,6 +100,10 @@ namespace Pulumi.AliCloud.Eds
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -123,7 +125,7 @@ namespace Pulumi.AliCloud.Eds
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The email of the user email.
@@ -137,11 +139,21 @@ namespace Pulumi.AliCloud.Eds
         [Input("endUserId", required: true)]
         public Input<string> EndUserId { get; set; } = null!;
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the user password.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The phone of the mobile phone number.
@@ -158,9 +170,10 @@ namespace Pulumi.AliCloud.Eds
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The email of the user email.
@@ -174,11 +187,21 @@ namespace Pulumi.AliCloud.Eds
         [Input("endUserId")]
         public Input<string>? EndUserId { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the user password.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The phone of the mobile phone number.
@@ -195,5 +218,6 @@ namespace Pulumi.AliCloud.Eds
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

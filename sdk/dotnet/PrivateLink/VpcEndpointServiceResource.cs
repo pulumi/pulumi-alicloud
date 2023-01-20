@@ -21,22 +21,20 @@ namespace Pulumi.AliCloud.PrivateLink
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.PrivateLink.VpcEndpointServiceResource("example", new()
     ///     {
-    ///         var example = new AliCloud.PrivateLink.VpcEndpointServiceResource("example", new AliCloud.PrivateLink.VpcEndpointServiceResourceArgs
-    ///         {
-    ///             ResourceId = "lb-gw8nuym5xxxxx",
-    ///             ResourceType = "slb",
-    ///             ServiceId = "epsrv-gw8ii1xxxx",
-    ///         });
-    ///     }
+    ///         ResourceId = "lb-gw8nuym5xxxxx",
+    ///         ResourceType = "slb",
+    ///         ServiceId = "epsrv-gw8ii1xxxx",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.PrivateLink
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource")]
-    public partial class VpcEndpointServiceResource : Pulumi.CustomResource
+    public partial class VpcEndpointServiceResource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The dry run.
@@ -118,7 +116,7 @@ namespace Pulumi.AliCloud.PrivateLink
         }
     }
 
-    public sealed class VpcEndpointServiceResourceArgs : Pulumi.ResourceArgs
+    public sealed class VpcEndpointServiceResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
@@ -147,9 +145,10 @@ namespace Pulumi.AliCloud.PrivateLink
         public VpcEndpointServiceResourceArgs()
         {
         }
+        public static new VpcEndpointServiceResourceArgs Empty => new VpcEndpointServiceResourceArgs();
     }
 
-    public sealed class VpcEndpointServiceResourceState : Pulumi.ResourceArgs
+    public sealed class VpcEndpointServiceResourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
@@ -178,5 +177,6 @@ namespace Pulumi.AliCloud.PrivateLink
         public VpcEndpointServiceResourceState()
         {
         }
+        public static new VpcEndpointServiceResourceState Empty => new VpcEndpointServiceResourceState();
     }
 }

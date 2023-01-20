@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:pvtz/ruleAttachment:RuleAttachment")]
-    public partial class RuleAttachment : Pulumi.CustomResource
+    public partial class RuleAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the rule.
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Pvtz
         }
     }
 
-    public sealed class RuleAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class RuleAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the rule.
@@ -106,9 +106,10 @@ namespace Pulumi.AliCloud.Pvtz
         public RuleAttachmentArgs()
         {
         }
+        public static new RuleAttachmentArgs Empty => new RuleAttachmentArgs();
     }
 
-    public sealed class RuleAttachmentState : Pulumi.ResourceArgs
+    public sealed class RuleAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the rule.
@@ -131,5 +132,6 @@ namespace Pulumi.AliCloud.Pvtz
         public RuleAttachmentState()
         {
         }
+        public static new RuleAttachmentState Empty => new RuleAttachmentState();
     }
 }

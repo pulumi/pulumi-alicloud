@@ -48,12 +48,6 @@ public final class GtmInstanceAlertConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * The Alarm Event Type.
-     * - `ADDR_ALERT`: Address not available.
-     * - `ADDR_RESUME`: Address Recovery available.
-     * - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
-     * - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
-     * - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
-     * - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
      * 
      */
     @Import(name="noticeType")
@@ -61,12 +55,6 @@ public final class GtmInstanceAlertConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The Alarm Event Type.
-     * - `ADDR_ALERT`: Address not available.
-     * - `ADDR_RESUME`: Address Recovery available.
-     * - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
-     * - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
-     * - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
-     * - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
      * 
      */
     public Optional<Output<String>> noticeType() {
@@ -159,12 +147,6 @@ public final class GtmInstanceAlertConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param noticeType The Alarm Event Type.
-         * - `ADDR_ALERT`: Address not available.
-         * - `ADDR_RESUME`: Address Recovery available.
-         * - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
-         * - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
-         * - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
-         * - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
          * 
          * @return builder
          * 
@@ -176,12 +158,6 @@ public final class GtmInstanceAlertConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param noticeType The Alarm Event Type.
-         * - `ADDR_ALERT`: Address not available.
-         * - `ADDR_RESUME`: Address Recovery available.
-         * - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
-         * - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
-         * - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
-         * - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
          * 
          * @return builder
          * 

@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./dbInstance";
-export * from "./getDbInstances";
+export { DbInstanceArgs, DbInstanceState } from "./dbInstance";
+export type DbInstance = import("./dbInstance").DbInstance;
+export const DbInstance: typeof import("./dbInstance").DbInstance = null as any;
+utilities.lazyLoad(exports, ["DbInstance"], () => require("./dbInstance"));
 
-// Import resources to register:
-import { DbInstance } from "./dbInstance";
+export { GetDbInstancesArgs, GetDbInstancesResult, GetDbInstancesOutputArgs } from "./getDbInstances";
+export const getDbInstances: typeof import("./getDbInstances").getDbInstances = null as any;
+export const getDbInstancesOutput: typeof import("./getDbInstances").getDbInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getDbInstances","getDbInstancesOutput"], () => require("./getDbInstances"));
+
 
 const _module = {
     version: utilities.getVersion(),

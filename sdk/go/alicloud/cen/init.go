@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BandwidthPackage{}
 	case "alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment":
 		r = &BandwidthPackageAttachment{}
+	case "alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment":
+		r = &ChildInstanceRouteEntryToAttachment{}
 	case "alicloud:cen/flowLog:FlowLog":
 		r = &FlowLog{}
 	case "alicloud:cen/instance:Instance":
@@ -35,6 +37,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceAttachment{}
 	case "alicloud:cen/instanceGrant:InstanceGrant":
 		r = &InstanceGrant{}
+	case "alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy":
+		r = &InterRegionTrafficQosPolicy{}
+	case "alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue":
+		r = &InterRegionTrafficQosQueue{}
 	case "alicloud:cen/privateZone:PrivateZone":
 		r = &PrivateZone{}
 	case "alicloud:cen/routeEntry:RouteEntry":
@@ -47,8 +53,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TrafficMarkingPolicy{}
 	case "alicloud:cen/transitRouter:TransitRouter":
 		r = &TransitRouter{}
+	case "alicloud:cen/transitRouterCidr:TransitRouterCidr":
+		r = &TransitRouterCidr{}
+	case "alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment":
+		r = &TransitRouterGrantAttachment{}
+	case "alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain":
+		r = &TransitRouterMulticastDomain{}
+	case "alicloud:cen/transitRouterMulticastDomainAssociation:TransitRouterMulticastDomainAssociation":
+		r = &TransitRouterMulticastDomainAssociation{}
+	case "alicloud:cen/transitRouterMulticastDomainMember:TransitRouterMulticastDomainMember":
+		r = &TransitRouterMulticastDomainMember{}
+	case "alicloud:cen/transitRouterMulticastDomainPeerMember:TransitRouterMulticastDomainPeerMember":
+		r = &TransitRouterMulticastDomainPeerMember{}
+	case "alicloud:cen/transitRouterMulticastDomainSource:TransitRouterMulticastDomainSource":
+		r = &TransitRouterMulticastDomainSource{}
 	case "alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment":
 		r = &TransitRouterPeerAttachment{}
+	case "alicloud:cen/transitRouterPrefixListAssociation:TransitRouterPrefixListAssociation":
+		r = &TransitRouterPrefixListAssociation{}
 	case "alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry":
 		r = &TransitRouterRouteEntry{}
 	case "alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable":
@@ -61,6 +83,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TransitRouterVbrAttachment{}
 	case "alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment":
 		r = &TransitRouterVpcAttachment{}
+	case "alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment":
+		r = &TransitRouterVpnAttachment{}
 	case "alicloud:cen/vbrHealthCheck:VbrHealthCheck":
 		r = &VbrHealthCheck{}
 	default:
@@ -93,6 +117,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"cen/childInstanceRouteEntryToAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"cen/flowLog",
 		&module{version},
 	)
@@ -109,6 +138,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cen/instanceGrant",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/interRegionTrafficQosPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/interRegionTrafficQosQueue",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -143,7 +182,47 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"cen/transitRouterCidr",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterGrantAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterMulticastDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterMulticastDomainAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterMulticastDomainMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterMulticastDomainPeerMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterMulticastDomainSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"cen/transitRouterPeerAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterPrefixListAssociation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -174,6 +253,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cen/transitRouterVpcAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cen/transitRouterVpnAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,20 +22,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.cms.getEventRules({
  *     ids: ["example_id"],
  * });
- * export const cmsEventRuleId1 = ids.then(ids => ids.rules?[0]?.id);
+ * export const cmsEventRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * const nameRegex = alicloud.cms.getEventRules({
  *     nameRegex: "^my-EventRule",
  * });
- * export const cmsEventRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?[0]?.id);
+ * export const cmsEventRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
  */
 export function getEventRules(args?: GetEventRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetEventRulesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getEventRules:getEventRules", {
         "ids": args.ids,
         "namePrefix": args.namePrefix,
@@ -89,9 +87,31 @@ export interface GetEventRulesResult {
     readonly rules: outputs.cms.GetEventRulesRule[];
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.182.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cms.getEventRules({
+ *     ids: ["example_id"],
+ * });
+ * export const cmsEventRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * const nameRegex = alicloud.cms.getEventRules({
+ *     nameRegex: "^my-EventRule",
+ * });
+ * export const cmsEventRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
+ * ```
+ */
 export function getEventRulesOutput(args?: GetEventRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventRulesResult> {
-    return pulumi.output(args).apply(a => getEventRules(a, opts))
+    return pulumi.output(args).apply((a: any) => getEventRules(a, opts))
 }
 
 /**

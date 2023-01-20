@@ -17,10 +17,12 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// The time when the invitation expires.
         /// </summary>
         public readonly string ExpireTime;
+        /// <summary>
+        /// The ID of the invitation.
+        /// </summary>
         public readonly string HandshakeId;
         /// <summary>
         /// The ID of the resource.
-        /// * `handshake_id`- The ID of the invitation.
         /// </summary>
         public readonly string Id;
         /// <summary>

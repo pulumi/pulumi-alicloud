@@ -4,13 +4,25 @@
 package com.pulumi.alicloud.dms;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.dms.inputs.GetEnterpriseDatabasesArgs;
+import com.pulumi.alicloud.dms.inputs.GetEnterpriseDatabasesPlainArgs;
 import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
 import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesPlainArgs;
+import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesPlainArgs;
+import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
+import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesPlainArgs;
+import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxyAccessesArgs;
+import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxyAccessesPlainArgs;
 import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersArgs;
 import com.pulumi.alicloud.dms.inputs.GetEnterpriseUsersPlainArgs;
 import com.pulumi.alicloud.dms.inputs.GetUserTenantsArgs;
 import com.pulumi.alicloud.dms.inputs.GetUserTenantsPlainArgs;
+import com.pulumi.alicloud.dms.outputs.GetEnterpriseDatabasesResult;
 import com.pulumi.alicloud.dms.outputs.GetEnterpriseInstancesResult;
+import com.pulumi.alicloud.dms.outputs.GetEnterpriseLogicDatabasesResult;
+import com.pulumi.alicloud.dms.outputs.GetEnterpriseProxiesResult;
+import com.pulumi.alicloud.dms.outputs.GetEnterpriseProxyAccessesResult;
 import com.pulumi.alicloud.dms.outputs.GetEnterpriseUsersResult;
 import com.pulumi.alicloud.dms.outputs.GetUserTenantsResult;
 import com.pulumi.core.Output;
@@ -20,6 +32,170 @@ import com.pulumi.deployment.InvokeOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DmsFunctions {
+    /**
+     * This data source provides DMS Enterprise Database available to the user.[What is Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-listdatabases)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DmsFunctions.getEnterpriseDatabases(GetEnterpriseDatabasesArgs.builder()
+     *             .nameRegex(&#34;test2&#34;)
+     *             .instanceId(&#34;2195118&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsEnterpriseDatabaseExampleId&#34;, default_.databases()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnterpriseDatabasesResult> getEnterpriseDatabases(GetEnterpriseDatabasesArgs args) {
+        return getEnterpriseDatabases(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides DMS Enterprise Database available to the user.[What is Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-listdatabases)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DmsFunctions.getEnterpriseDatabases(GetEnterpriseDatabasesArgs.builder()
+     *             .nameRegex(&#34;test2&#34;)
+     *             .instanceId(&#34;2195118&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsEnterpriseDatabaseExampleId&#34;, default_.databases()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnterpriseDatabasesResult> getEnterpriseDatabasesPlain(GetEnterpriseDatabasesPlainArgs args) {
+        return getEnterpriseDatabasesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides DMS Enterprise Database available to the user.[What is Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-listdatabases)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DmsFunctions.getEnterpriseDatabases(GetEnterpriseDatabasesArgs.builder()
+     *             .nameRegex(&#34;test2&#34;)
+     *             .instanceId(&#34;2195118&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsEnterpriseDatabaseExampleId&#34;, default_.databases()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnterpriseDatabasesResult> getEnterpriseDatabases(GetEnterpriseDatabasesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", TypeShape.of(GetEnterpriseDatabasesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides DMS Enterprise Database available to the user.[What is Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-listdatabases)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DmsFunctions.getEnterpriseDatabases(GetEnterpriseDatabasesArgs.builder()
+     *             .nameRegex(&#34;test2&#34;)
+     *             .instanceId(&#34;2195118&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsEnterpriseDatabaseExampleId&#34;, default_.databases()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnterpriseDatabasesResult> getEnterpriseDatabasesPlain(GetEnterpriseDatabasesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", TypeShape.of(GetEnterpriseDatabasesResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
      * 
@@ -283,6 +459,728 @@ public final class DmsFunctions {
      */
     public static CompletableFuture<GetEnterpriseInstancesResult> getEnterpriseInstancesPlain(GetEnterpriseInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", TypeShape.of(GetEnterpriseInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType(&#34;mysql&#34;)
+     *             .searchKey(&#34;tf-test-no-deleting&#34;)
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsEnterpriseLogicDatabaseExampleId&#34;, default_.databases()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases() {
+        return getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType(&#34;mysql&#34;)
+     *             .searchKey(&#34;tf-test-no-deleting&#34;)
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsEnterpriseLogicDatabaseExampleId&#34;, default_.databases()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabasesPlain() {
+        return getEnterpriseLogicDatabasesPlain(GetEnterpriseLogicDatabasesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType(&#34;mysql&#34;)
+     *             .searchKey(&#34;tf-test-no-deleting&#34;)
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsEnterpriseLogicDatabaseExampleId&#34;, default_.databases()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs args) {
+        return getEnterpriseLogicDatabases(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType(&#34;mysql&#34;)
+     *             .searchKey(&#34;tf-test-no-deleting&#34;)
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsEnterpriseLogicDatabaseExampleId&#34;, default_.databases()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabasesPlain(GetEnterpriseLogicDatabasesPlainArgs args) {
+        return getEnterpriseLogicDatabasesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType(&#34;mysql&#34;)
+     *             .searchKey(&#34;tf-test-no-deleting&#34;)
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsEnterpriseLogicDatabaseExampleId&#34;, default_.databases()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", TypeShape.of(GetEnterpriseLogicDatabasesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides DMS Enterprise Logic Database available to the user.[What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
+     *             .instanceType(&#34;mysql&#34;)
+     *             .searchKey(&#34;tf-test-no-deleting&#34;)
+     *             .build());
+     * 
+     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
+     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()))
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsEnterpriseLogicDatabaseExampleId&#34;, default_.databases()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabasesPlain(GetEnterpriseLogicDatabasesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", TypeShape.of(GetEnterpriseLogicDatabasesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.188.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     * 
+     *         ctx.export(&#34;dmsEnterpriseProxyId1&#34;, ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnterpriseProxiesResult> getEnterpriseProxies() {
+        return getEnterpriseProxies(GetEnterpriseProxiesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.188.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     * 
+     *         ctx.export(&#34;dmsEnterpriseProxyId1&#34;, ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnterpriseProxiesResult> getEnterpriseProxiesPlain() {
+        return getEnterpriseProxiesPlain(GetEnterpriseProxiesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.188.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     * 
+     *         ctx.export(&#34;dmsEnterpriseProxyId1&#34;, ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnterpriseProxiesResult> getEnterpriseProxies(GetEnterpriseProxiesArgs args) {
+        return getEnterpriseProxies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.188.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     * 
+     *         ctx.export(&#34;dmsEnterpriseProxyId1&#34;, ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnterpriseProxiesResult> getEnterpriseProxiesPlain(GetEnterpriseProxiesPlainArgs args) {
+        return getEnterpriseProxiesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.188.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     * 
+     *         ctx.export(&#34;dmsEnterpriseProxyId1&#34;, ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnterpriseProxiesResult> getEnterpriseProxies(GetEnterpriseProxiesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dms/getEnterpriseProxies:getEnterpriseProxies", TypeShape.of(GetEnterpriseProxiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.188.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     * 
+     *         ctx.export(&#34;dmsEnterpriseProxyId1&#34;, ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnterpriseProxiesResult> getEnterpriseProxiesPlain(GetEnterpriseProxiesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:dms/getEnterpriseProxies:getEnterpriseProxies", TypeShape.of(GetEnterpriseProxiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.EnterpriseProxyAccess;
+     * import com.pulumi.alicloud.dms.EnterpriseProxyAccessArgs;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxyAccessesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess(&#34;defaultEnterpriseProxyAccess&#34;, EnterpriseProxyAccessArgs.builder()        
+     *             .indepPassword(&#34;PASSWORD-DEMO&#34;)
+     *             .proxyId(1881)
+     *             .indepAccount(&#34;dmstest&#34;)
+     *             .userId(104442)
+     *             .build());
+     * 
+     *         final var defaultEnterpriseProxyAccesses = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
+     *             .ids(defaultEnterpriseProxyAccess.id())
+     *             .proxyId(1881)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult).applyValue(defaultEnterpriseProxyAccesses -&gt; defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult.accesses()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnterpriseProxyAccessesResult> getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs args) {
+        return getEnterpriseProxyAccesses(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.EnterpriseProxyAccess;
+     * import com.pulumi.alicloud.dms.EnterpriseProxyAccessArgs;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxyAccessesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess(&#34;defaultEnterpriseProxyAccess&#34;, EnterpriseProxyAccessArgs.builder()        
+     *             .indepPassword(&#34;PASSWORD-DEMO&#34;)
+     *             .proxyId(1881)
+     *             .indepAccount(&#34;dmstest&#34;)
+     *             .userId(104442)
+     *             .build());
+     * 
+     *         final var defaultEnterpriseProxyAccesses = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
+     *             .ids(defaultEnterpriseProxyAccess.id())
+     *             .proxyId(1881)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult).applyValue(defaultEnterpriseProxyAccesses -&gt; defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult.accesses()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnterpriseProxyAccessesResult> getEnterpriseProxyAccessesPlain(GetEnterpriseProxyAccessesPlainArgs args) {
+        return getEnterpriseProxyAccessesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.EnterpriseProxyAccess;
+     * import com.pulumi.alicloud.dms.EnterpriseProxyAccessArgs;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxyAccessesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess(&#34;defaultEnterpriseProxyAccess&#34;, EnterpriseProxyAccessArgs.builder()        
+     *             .indepPassword(&#34;PASSWORD-DEMO&#34;)
+     *             .proxyId(1881)
+     *             .indepAccount(&#34;dmstest&#34;)
+     *             .userId(104442)
+     *             .build());
+     * 
+     *         final var defaultEnterpriseProxyAccesses = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
+     *             .ids(defaultEnterpriseProxyAccess.id())
+     *             .proxyId(1881)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult).applyValue(defaultEnterpriseProxyAccesses -&gt; defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult.accesses()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetEnterpriseProxyAccessesResult> getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dms/getEnterpriseProxyAccesses:getEnterpriseProxyAccesses", TypeShape.of(GetEnterpriseProxyAccessesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dms.EnterpriseProxyAccess;
+     * import com.pulumi.alicloud.dms.EnterpriseProxyAccessArgs;
+     * import com.pulumi.alicloud.dms.DmsFunctions;
+     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseProxyAccessesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess(&#34;defaultEnterpriseProxyAccess&#34;, EnterpriseProxyAccessArgs.builder()        
+     *             .indepPassword(&#34;PASSWORD-DEMO&#34;)
+     *             .proxyId(1881)
+     *             .indepAccount(&#34;dmstest&#34;)
+     *             .userId(104442)
+     *             .build());
+     * 
+     *         final var defaultEnterpriseProxyAccesses = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
+     *             .ids(defaultEnterpriseProxyAccess.id())
+     *             .proxyId(1881)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult).applyValue(defaultEnterpriseProxyAccesses -&gt; defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult.accesses()[0].id())));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetEnterpriseProxyAccessesResult> getEnterpriseProxyAccessesPlain(GetEnterpriseProxyAccessesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:dms/getEnterpriseProxyAccesses:getEnterpriseProxyAccesses", TypeShape.of(GetEnterpriseProxyAccessesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.

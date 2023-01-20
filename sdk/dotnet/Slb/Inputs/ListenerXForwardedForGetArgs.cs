@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb.Inputs
 {
 
-    public sealed class ListenerXForwardedForGetArgs : Pulumi.ResourceArgs
+    public sealed class ListenerXForwardedForGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("retriveClientIp")]
         public Input<bool>? RetriveClientIp { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.AliCloud.Slb.Inputs
         public ListenerXForwardedForGetArgs()
         {
         }
+        public static new ListenerXForwardedForGetArgs Empty => new ListenerXForwardedForGetArgs();
     }
 }

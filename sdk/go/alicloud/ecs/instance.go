@@ -63,6 +63,14 @@ type Instance struct {
 	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
 	HpcClusterId pulumi.StringPtrOutput `pulumi:"hpcClusterId"`
+	// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+	HttpEndpoint pulumi.StringOutput `pulumi:"httpEndpoint"`
+	// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+	HttpPutResponseHopLimit pulumi.IntOutput `pulumi:"httpPutResponseHopLimit"`
+	// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+	HttpTokens pulumi.StringOutput `pulumi:"httpTokens"`
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// Whether to change instance disks charge type when changing instance charge type.
@@ -84,6 +92,10 @@ type Instance struct {
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrOutput `pulumi:"ioOptimized"`
+	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+	Ipv6AddressCount pulumi.IntOutput `pulumi:"ipv6AddressCount"`
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	Ipv6Addresses pulumi.StringArrayOutput `pulumi:"ipv6Addresses"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrOutput `pulumi:"isOutdated"`
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
@@ -110,9 +122,6 @@ type Instance struct {
 	// The instance public ip.
 	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
-	// - `AutoRenewal`: Enable auto renewal.
-	// - `Normal`: Disable auto renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
@@ -128,6 +137,8 @@ type Instance struct {
 	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
+	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+	SpotDuration pulumi.IntOutput `pulumi:"spotDuration"`
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit pulumi.Float64PtrOutput `pulumi:"spotPriceLimit"`
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
@@ -137,21 +148,19 @@ type Instance struct {
 	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode pulumi.StringOutput `pulumi:"stoppedMode"`
 	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
-	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrOutput `pulumi:"systemDiskDescription"`
 	// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrOutput `pulumi:"systemDiskEncryptAlgorithm"`
-	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-	// - `true`: encrypts the system disk.
-	// - `false`: does not encrypt the system disk.
+	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
 	SystemDiskEncrypted pulumi.BoolPtrOutput `pulumi:"systemDiskEncrypted"`
 	// The ID of the Key Management Service (KMS) key to be used for the system disk.
 	SystemDiskKmsKeyId pulumi.StringPtrOutput `pulumi:"systemDiskKmsKeyId"`
@@ -193,6 +202,13 @@ func NewInstance(ctx *pulumi.Context,
 	if args.SecurityGroups == nil {
 		return nil, errors.New("invalid value for required argument 'SecurityGroups'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:ecs/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -255,6 +271,14 @@ type instanceState struct {
 	HostName *string `pulumi:"hostName"`
 	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
 	HpcClusterId *string `pulumi:"hpcClusterId"`
+	// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+	HttpEndpoint *string `pulumi:"httpEndpoint"`
+	// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
+	// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+	HttpTokens *string `pulumi:"httpTokens"`
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId *string `pulumi:"imageId"`
 	// Whether to change instance disks charge type when changing instance charge type.
@@ -276,6 +300,10 @@ type instanceState struct {
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized *string `pulumi:"ioOptimized"`
+	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated *bool `pulumi:"isOutdated"`
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
@@ -302,9 +330,6 @@ type instanceState struct {
 	// The instance public ip.
 	PublicIp *string `pulumi:"publicIp"`
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
-	// - `AutoRenewal`: Enable auto renewal.
-	// - `Normal`: Disable auto renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -320,6 +345,8 @@ type instanceState struct {
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	SecurityGroups []string `pulumi:"securityGroups"`
+	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+	SpotDuration *int `pulumi:"spotDuration"`
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
@@ -329,21 +356,19 @@ type instanceState struct {
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
 	Status *string `pulumi:"status"`
-	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode *string `pulumi:"stoppedMode"`
 	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
 	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
-	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
 	// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
 	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
-	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-	// - `true`: encrypts the system disk.
-	// - `false`: does not encrypt the system disk.
+	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
 	SystemDiskEncrypted *bool `pulumi:"systemDiskEncrypted"`
 	// The ID of the Key Management Service (KMS) key to be used for the system disk.
 	SystemDiskKmsKeyId *string `pulumi:"systemDiskKmsKeyId"`
@@ -410,6 +435,14 @@ type InstanceState struct {
 	HostName pulumi.StringPtrInput
 	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
 	HpcClusterId pulumi.StringPtrInput
+	// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+	HttpEndpoint pulumi.StringPtrInput
+	// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+	HttpPutResponseHopLimit pulumi.IntPtrInput
+	// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+	HttpTokens pulumi.StringPtrInput
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId pulumi.StringPtrInput
 	// Whether to change instance disks charge type when changing instance charge type.
@@ -431,6 +464,10 @@ type InstanceState struct {
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrInput
+	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+	Ipv6AddressCount pulumi.IntPtrInput
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	Ipv6Addresses pulumi.StringArrayInput
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrInput
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
@@ -457,9 +494,6 @@ type InstanceState struct {
 	// The instance public ip.
 	PublicIp pulumi.StringPtrInput
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
-	// - `AutoRenewal`: Enable auto renewal.
-	// - `Normal`: Disable auto renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -475,6 +509,8 @@ type InstanceState struct {
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// A list of security group ids to associate with.
 	SecurityGroups pulumi.StringArrayInput
+	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+	SpotDuration pulumi.IntPtrInput
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
@@ -484,21 +520,19 @@ type InstanceState struct {
 	SpotStrategy pulumi.StringPtrInput
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
 	Status pulumi.StringPtrInput
-	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode pulumi.StringPtrInput
 	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
 	SubnetId pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
-	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrInput
 	// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
-	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-	// - `true`: encrypts the system disk.
-	// - `false`: does not encrypt the system disk.
+	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
 	SystemDiskEncrypted pulumi.BoolPtrInput
 	// The ID of the Key Management Service (KMS) key to be used for the system disk.
 	SystemDiskKmsKeyId pulumi.StringPtrInput
@@ -567,6 +601,14 @@ type instanceArgs struct {
 	HostName *string `pulumi:"hostName"`
 	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
 	HpcClusterId *string `pulumi:"hpcClusterId"`
+	// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+	HttpEndpoint *string `pulumi:"httpEndpoint"`
+	// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
+	// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+	HttpTokens *string `pulumi:"httpTokens"`
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId string `pulumi:"imageId"`
 	// Whether to change instance disks charge type when changing instance charge type.
@@ -588,6 +630,10 @@ type instanceArgs struct {
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized *string `pulumi:"ioOptimized"`
+	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated *bool `pulumi:"isOutdated"`
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
@@ -612,9 +658,6 @@ type instanceArgs struct {
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
 	PrivateIp *string `pulumi:"privateIp"`
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
-	// - `AutoRenewal`: Enable auto renewal.
-	// - `Normal`: Disable auto renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -630,6 +673,8 @@ type instanceArgs struct {
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	SecurityGroups []string `pulumi:"securityGroups"`
+	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+	SpotDuration *int `pulumi:"spotDuration"`
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
@@ -639,21 +684,19 @@ type instanceArgs struct {
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
 	Status *string `pulumi:"status"`
-	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode *string `pulumi:"stoppedMode"`
 	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
 	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
-	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
 	// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
 	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
-	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-	// - `true`: encrypts the system disk.
-	// - `false`: does not encrypt the system disk.
+	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
 	SystemDiskEncrypted *bool `pulumi:"systemDiskEncrypted"`
 	// The ID of the Key Management Service (KMS) key to be used for the system disk.
 	SystemDiskKmsKeyId *string `pulumi:"systemDiskKmsKeyId"`
@@ -719,6 +762,14 @@ type InstanceArgs struct {
 	HostName pulumi.StringPtrInput
 	// The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
 	HpcClusterId pulumi.StringPtrInput
+	// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+	HttpEndpoint pulumi.StringPtrInput
+	// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+	HttpPutResponseHopLimit pulumi.IntPtrInput
+	// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+	// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+	HttpTokens pulumi.StringPtrInput
 	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId pulumi.StringInput
 	// Whether to change instance disks charge type when changing instance charge type.
@@ -740,6 +791,10 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrInput
+	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+	Ipv6AddressCount pulumi.IntPtrInput
+	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+	Ipv6Addresses pulumi.StringArrayInput
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrInput
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
@@ -764,9 +819,6 @@ type InstanceArgs struct {
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
 	PrivateIp pulumi.StringPtrInput
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
-	// - `AutoRenewal`: Enable auto renewal.
-	// - `Normal`: Disable auto renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -782,6 +834,8 @@ type InstanceArgs struct {
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// A list of security group ids to associate with.
 	SecurityGroups pulumi.StringArrayInput
+	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+	SpotDuration pulumi.IntPtrInput
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
@@ -791,21 +845,19 @@ type InstanceArgs struct {
 	SpotStrategy pulumi.StringPtrInput
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
 	Status pulumi.StringPtrInput
-	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 	StoppedMode pulumi.StringPtrInput
 	// Deprecated: Field 'subnet_id' has been deprecated from version 1.177.0, and use field 'vswitch_id' to replace.
 	SubnetId pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
-	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrInput
 	// The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
-	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-	// - `true`: encrypts the system disk.
-	// - `false`: does not encrypt the system disk.
+	// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
 	SystemDiskEncrypted pulumi.BoolPtrInput
 	// The ID of the Key Management Service (KMS) key to be used for the system disk.
 	SystemDiskKmsKeyId pulumi.StringPtrInput
@@ -1000,6 +1052,23 @@ func (o InstanceOutput) HpcClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.HpcClusterId }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+func (o InstanceOutput) HttpEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HttpEndpoint }).(pulumi.StringOutput)
+}
+
+// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+func (o InstanceOutput) HttpPutResponseHopLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.HttpPutResponseHopLimit }).(pulumi.IntOutput)
+}
+
+// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+// - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+func (o InstanceOutput) HttpTokens() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HttpTokens }).(pulumi.StringOutput)
+}
+
 // The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 func (o InstanceOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
@@ -1046,6 +1115,16 @@ func (o InstanceOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutput {
 // Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 func (o InstanceOutput) IoOptimized() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.IoOptimized }).(pulumi.StringPtrOutput)
+}
+
+// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
+func (o InstanceOutput) Ipv6AddressCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Ipv6AddressCount }).(pulumi.IntOutput)
+}
+
+// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+func (o InstanceOutput) Ipv6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
 }
 
 // Whether to use outdated instance type. Default to false.
@@ -1113,9 +1192,6 @@ func (o InstanceOutput) PublicIp() pulumi.StringOutput {
 }
 
 // Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
-// - `AutoRenewal`: Enable auto renewal.
-// - `Normal`: Disable auto renewal.
-// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 func (o InstanceOutput) RenewalStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RenewalStatus }).(pulumi.StringPtrOutput)
 }
@@ -1152,6 +1228,11 @@ func (o InstanceOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
 
+// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+func (o InstanceOutput) SpotDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SpotDuration }).(pulumi.IntOutput)
+}
+
 // The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 func (o InstanceOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.Float64PtrOutput { return v.SpotPriceLimit }).(pulumi.Float64PtrOutput)
@@ -1170,7 +1251,7 @@ func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
 func (o InstanceOutput) StoppedMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StoppedMode }).(pulumi.StringOutput)
 }
@@ -1185,7 +1266,7 @@ func (o InstanceOutput) SystemDiskAutoSnapshotPolicyId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskAutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available in 1.184.0+.
 func (o InstanceOutput) SystemDiskCategory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskCategory }).(pulumi.StringPtrOutput)
 }
@@ -1200,9 +1281,7 @@ func (o InstanceOutput) SystemDiskEncryptAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskEncryptAlgorithm }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-// - `true`: encrypts the system disk.
-// - `false`: does not encrypt the system disk.
+// Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
 func (o InstanceOutput) SystemDiskEncrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.SystemDiskEncrypted }).(pulumi.BoolPtrOutput)
 }

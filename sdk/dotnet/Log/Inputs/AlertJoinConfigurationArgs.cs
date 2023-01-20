@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class AlertJoinConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class AlertJoinConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Join condition.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public AlertJoinConfigurationArgs()
         {
         }
+        public static new AlertJoinConfigurationArgs Empty => new AlertJoinConfigurationArgs();
     }
 }

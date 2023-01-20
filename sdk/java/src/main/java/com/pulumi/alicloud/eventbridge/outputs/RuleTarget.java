@@ -3,24 +3,37 @@
 
 package com.pulumi.alicloud.eventbridge.outputs;
 
+import com.pulumi.alicloud.eventbridge.outputs.RuleTargetDeadLetterQueue;
 import com.pulumi.alicloud.eventbridge.outputs.RuleTargetParamList;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleTarget {
+    /**
+     * @return Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+     * 
+     */
+    private @Nullable RuleTargetDeadLetterQueue deadLetterQueue;
     /**
      * @return The endpoint of target.
      * 
      */
     private String endpoint;
     /**
-     * @return A list of param.
+     * @return A list of param. See the following `Block param_list`.
      * 
      */
     private List<RuleTargetParamList> paramLists;
+    /**
+     * @return The retry policy that is used to push the event. Valid values:
+     * 
+     */
+    private @Nullable String pushRetryStrategy;
     /**
      * @return The ID of target.
      * 
@@ -34,6 +47,13 @@ public final class RuleTarget {
 
     private RuleTarget() {}
     /**
+     * @return Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+     * 
+     */
+    public Optional<RuleTargetDeadLetterQueue> deadLetterQueue() {
+        return Optional.ofNullable(this.deadLetterQueue);
+    }
+    /**
      * @return The endpoint of target.
      * 
      */
@@ -41,11 +61,18 @@ public final class RuleTarget {
         return this.endpoint;
     }
     /**
-     * @return A list of param.
+     * @return A list of param. See the following `Block param_list`.
      * 
      */
     public List<RuleTargetParamList> paramLists() {
         return this.paramLists;
+    }
+    /**
+     * @return The retry policy that is used to push the event. Valid values:
+     * 
+     */
+    public Optional<String> pushRetryStrategy() {
+        return Optional.ofNullable(this.pushRetryStrategy);
     }
     /**
      * @return The ID of target.
@@ -71,19 +98,28 @@ public final class RuleTarget {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable RuleTargetDeadLetterQueue deadLetterQueue;
         private String endpoint;
         private List<RuleTargetParamList> paramLists;
+        private @Nullable String pushRetryStrategy;
         private String targetId;
         private String type;
         public Builder() {}
         public Builder(RuleTarget defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deadLetterQueue = defaults.deadLetterQueue;
     	      this.endpoint = defaults.endpoint;
     	      this.paramLists = defaults.paramLists;
+    	      this.pushRetryStrategy = defaults.pushRetryStrategy;
     	      this.targetId = defaults.targetId;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder deadLetterQueue(@Nullable RuleTargetDeadLetterQueue deadLetterQueue) {
+            this.deadLetterQueue = deadLetterQueue;
+            return this;
+        }
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
@@ -98,6 +134,11 @@ public final class RuleTarget {
             return paramLists(List.of(paramLists));
         }
         @CustomType.Setter
+        public Builder pushRetryStrategy(@Nullable String pushRetryStrategy) {
+            this.pushRetryStrategy = pushRetryStrategy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder targetId(String targetId) {
             this.targetId = Objects.requireNonNull(targetId);
             return this;
@@ -109,8 +150,10 @@ public final class RuleTarget {
         }
         public RuleTarget build() {
             final var o = new RuleTarget();
+            o.deadLetterQueue = deadLetterQueue;
             o.endpoint = endpoint;
             o.paramLists = paramLists;
+            o.pushRetryStrategy = pushRetryStrategy;
             o.targetId = targetId;
             o.type = type;
             return o;

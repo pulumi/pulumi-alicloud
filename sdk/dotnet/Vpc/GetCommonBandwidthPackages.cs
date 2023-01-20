@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new()
         ///     {
-        ///         var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new AliCloud.Vpc.CommonBandwithPackageArgs
-        ///         {
-        ///             Bandwidth = "2",
-        ///             Description = "tf-testAcc-CommonBandwidthPackage",
-        ///         });
-        ///         var fooCommonBandwidthPackages = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new AliCloud.Vpc.GetCommonBandwidthPackagesInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 fooCommonBandwithPackage.Id,
-        ///             },
-        ///             NameRegex = "^tf-testAcc.*",
-        ///         });
-        ///     }
+        ///         Bandwidth = "2",
+        ///         Description = "tf-testAcc-CommonBandwidthPackage",
+        ///     });
         /// 
-        /// }
+        ///     var fooCommonBandwidthPackages = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             fooCommonBandwithPackage.Id,
+        ///         },
+        ///         NameRegex = "^tf-testAcc.*",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.Vpc
         ///   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
         /// </summary>
         public static Task<GetCommonBandwidthPackagesResult> InvokeAsync(GetCommonBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
@@ -68,29 +67,28 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new()
         ///     {
-        ///         var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new AliCloud.Vpc.CommonBandwithPackageArgs
-        ///         {
-        ///             Bandwidth = "2",
-        ///             Description = "tf-testAcc-CommonBandwidthPackage",
-        ///         });
-        ///         var fooCommonBandwidthPackages = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new AliCloud.Vpc.GetCommonBandwidthPackagesInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 fooCommonBandwithPackage.Id,
-        ///             },
-        ///             NameRegex = "^tf-testAcc.*",
-        ///         });
-        ///     }
+        ///         Bandwidth = "2",
+        ///         Description = "tf-testAcc-CommonBandwidthPackage",
+        ///     });
         /// 
-        /// }
+        ///     var fooCommonBandwidthPackages = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             fooCommonBandwithPackage.Id,
+        ///         },
+        ///         NameRegex = "^tf-testAcc.*",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -103,11 +101,11 @@ namespace Pulumi.AliCloud.Vpc
         ///   * `bandwidth_package_ip_relation_status` - The IP relation status of bandwidth package.
         /// </summary>
         public static Output<GetCommonBandwidthPackagesResult> Invoke(GetCommonBandwidthPackagesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCommonBandwidthPackagesArgs : Pulumi.InvokeArgs
+    public sealed class GetCommonBandwidthPackagesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of bandwidth package.
@@ -163,9 +161,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetCommonBandwidthPackagesArgs()
         {
         }
+        public static new GetCommonBandwidthPackagesArgs Empty => new GetCommonBandwidthPackagesArgs();
     }
 
-    public sealed class GetCommonBandwidthPackagesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCommonBandwidthPackagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of bandwidth package.
@@ -221,6 +220,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetCommonBandwidthPackagesInvokeArgs()
         {
         }
+        public static new GetCommonBandwidthPackagesInvokeArgs Empty => new GetCommonBandwidthPackagesInvokeArgs();
     }
 
 

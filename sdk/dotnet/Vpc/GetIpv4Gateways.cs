@@ -23,33 +23,31 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetIpv4Gateways.InvokeAsync());
-        ///         this.VpcIpv4GatewayId1 = ids.Apply(ids =&gt; ids.Gateways?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetIpv4Gateways.InvokeAsync(new AliCloud.Vpc.GetIpv4GatewaysArgs
-        ///         {
-        ///             NameRegex = "^my-Ipv4Gateway",
-        ///         }));
-        ///         this.VpcIpv4GatewayId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Vpc.GetIpv4Gateways.Invoke();
         /// 
-        ///     [Output("vpcIpv4GatewayId1")]
-        ///     public Output&lt;string&gt; VpcIpv4GatewayId1 { get; set; }
-        ///     [Output("vpcIpv4GatewayId2")]
-        ///     public Output&lt;string&gt; VpcIpv4GatewayId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetIpv4Gateways.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Ipv4Gateway",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcIpv4GatewayId1"] = ids.Apply(getIpv4GatewaysResult =&gt; getIpv4GatewaysResult.Gateways[0]?.Id),
+        ///         ["vpcIpv4GatewayId2"] = nameRegex.Apply(getIpv4GatewaysResult =&gt; getIpv4GatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpv4GatewaysResult> InvokeAsync(GetIpv4GatewaysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv4GatewaysResult>("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", args ?? new GetIpv4GatewaysArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpv4GatewaysResult>("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", args ?? new GetIpv4GatewaysArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
@@ -63,37 +61,35 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetIpv4Gateways.InvokeAsync());
-        ///         this.VpcIpv4GatewayId1 = ids.Apply(ids =&gt; ids.Gateways?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetIpv4Gateways.InvokeAsync(new AliCloud.Vpc.GetIpv4GatewaysArgs
-        ///         {
-        ///             NameRegex = "^my-Ipv4Gateway",
-        ///         }));
-        ///         this.VpcIpv4GatewayId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Vpc.GetIpv4Gateways.Invoke();
         /// 
-        ///     [Output("vpcIpv4GatewayId1")]
-        ///     public Output&lt;string&gt; VpcIpv4GatewayId1 { get; set; }
-        ///     [Output("vpcIpv4GatewayId2")]
-        ///     public Output&lt;string&gt; VpcIpv4GatewayId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetIpv4Gateways.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Ipv4Gateway",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcIpv4GatewayId1"] = ids.Apply(getIpv4GatewaysResult =&gt; getIpv4GatewaysResult.Gateways[0]?.Id),
+        ///         ["vpcIpv4GatewayId2"] = nameRegex.Apply(getIpv4GatewaysResult =&gt; getIpv4GatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpv4GatewaysResult> Invoke(GetIpv4GatewaysInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpv4GatewaysResult>("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", args ?? new GetIpv4GatewaysInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpv4GatewaysResult>("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", args ?? new GetIpv4GatewaysInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetIpv4GatewaysArgs : Pulumi.InvokeArgs
+    public sealed class GetIpv4GatewaysArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -137,9 +133,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetIpv4GatewaysArgs()
         {
         }
+        public static new GetIpv4GatewaysArgs Empty => new GetIpv4GatewaysArgs();
     }
 
-    public sealed class GetIpv4GatewaysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIpv4GatewaysInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -183,6 +180,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetIpv4GatewaysInvokeArgs()
         {
         }
+        public static new GetIpv4GatewaysInvokeArgs Empty => new GetIpv4GatewaysInvokeArgs();
     }
 
 

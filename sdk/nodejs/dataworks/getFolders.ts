@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -27,15 +28,12 @@ import * as utilities from "../utilities";
  *     projectId: projectId,
  *     parentFolderPath: "Business Flow/tfTestAcc/folderDi",
  * }));
- * export const dataWorksFolderId1 = ids.apply(ids => ids.folders?[0]?.id);
+ * export const dataWorksFolderId1 = ids.apply(ids => ids.folders?.[0]?.id);
  * ```
  */
 export function getFolders(args: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dataworks/getFolders:getFolders", {
         "ids": args.ids,
         "outputFile": args.outputFile,
@@ -77,9 +75,33 @@ export interface GetFoldersResult {
     readonly parentFolderPath: string;
     readonly projectId: string;
 }
-
+/**
+ * This data source provides the Data Works Folders of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.131.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.dataworks.Folder("default", {
+ *     projectId: "xxxx",
+ *     folderPath: "Business Flow/tfTestAcc/folderDi",
+ * });
+ * const ids = pulumi.all([_default.folderId, _default.projectId]).apply(([folderId, projectId]) => alicloud.dataworks.getFoldersOutput({
+ *     ids: [folderId],
+ *     projectId: projectId,
+ *     parentFolderPath: "Business Flow/tfTestAcc/folderDi",
+ * }));
+ * export const dataWorksFolderId1 = ids.apply(ids => ids.folders?.[0]?.id);
+ * ```
+ */
 export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
-    return pulumi.output(args).apply(a => getFolders(a, opts))
+    return pulumi.output(args).apply((a: any) => getFolders(a, opts))
 }
 
 /**

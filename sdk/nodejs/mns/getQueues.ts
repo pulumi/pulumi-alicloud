@@ -2,32 +2,27 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const queues = pulumi.output(alicloud.mns.getQueues({
+ * const queues = alicloud.mns.getQueues({
  *     namePrefix: "tf-",
- * }));
- *
- * export const firstQueueId = queues.queues[0].id;
+ * });
+ * export const firstQueueId = queues.then(queues => queues.queues?.[0]?.id);
  * ```
  */
 export function getQueues(args?: GetQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetQueuesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mns/getQueues:getQueues", {
         "namePrefix": args.namePrefix,
         "outputFile": args.outputFile,
@@ -64,9 +59,21 @@ export interface GetQueuesResult {
      */
     readonly queues: outputs.mns.GetQueuesQueue[];
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const queues = alicloud.mns.getQueues({
+ *     namePrefix: "tf-",
+ * });
+ * export const firstQueueId = queues.then(queues => queues.queues?.[0]?.id);
+ * ```
+ */
 export function getQueuesOutput(args?: GetQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueuesResult> {
-    return pulumi.output(args).apply(a => getQueues(a, opts))
+    return pulumi.output(args).apply((a: any) => getQueues(a, opts))
 }
 
 /**

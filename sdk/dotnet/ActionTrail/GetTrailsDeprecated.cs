@@ -13,14 +13,14 @@ namespace Pulumi.AliCloud.ActionTrail
     public static class GetTrailsDeprecated
     {
         public static Task<GetTrailsDeprecatedResult> InvokeAsync(GetTrailsDeprecatedArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTrailsDeprecatedResult>("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args ?? new GetTrailsDeprecatedArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrailsDeprecatedResult>("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args ?? new GetTrailsDeprecatedArgs(), options.WithDefaults());
 
         public static Output<GetTrailsDeprecatedResult> Invoke(GetTrailsDeprecatedInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTrailsDeprecatedResult>("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args ?? new GetTrailsDeprecatedInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTrailsDeprecatedResult>("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args ?? new GetTrailsDeprecatedInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTrailsDeprecatedArgs : Pulumi.InvokeArgs
+    public sealed class GetTrailsDeprecatedArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -51,9 +51,10 @@ namespace Pulumi.AliCloud.ActionTrail
         public GetTrailsDeprecatedArgs()
         {
         }
+        public static new GetTrailsDeprecatedArgs Empty => new GetTrailsDeprecatedArgs();
     }
 
-    public sealed class GetTrailsDeprecatedInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTrailsDeprecatedInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -84,6 +85,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public GetTrailsDeprecatedInvokeArgs()
         {
         }
+        public static new GetTrailsDeprecatedInvokeArgs Empty => new GetTrailsDeprecatedInvokeArgs();
     }
 
 

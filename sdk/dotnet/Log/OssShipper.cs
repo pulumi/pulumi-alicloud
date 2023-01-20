@@ -20,47 +20,47 @@ namespace Pulumi.AliCloud.Log
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         var exampleProject = new AliCloud.Log.Project("exampleProject", new AliCloud.Log.ProjectArgs
+    ///         Description = "created by terraform",
+    ///         Tags = 
     ///         {
-    ///             Description = "created by terraform",
-    ///             Tags = 
-    ///             {
-    ///                 { "test", "test" },
-    ///             },
-    ///         });
-    ///         var exampleStore = new AliCloud.Log.Store("exampleStore", new AliCloud.Log.StoreArgs
-    ///         {
-    ///             Project = exampleProject.Name,
-    ///             RetentionPeriod = 3650,
-    ///             ShardCount = 3,
-    ///             AutoSplit = true,
-    ///             MaxSplitShardCount = 60,
-    ///             AppendMeta = true,
-    ///         });
-    ///         var exampleOssShipper = new AliCloud.Log.OssShipper("exampleOssShipper", new AliCloud.Log.OssShipperArgs
-    ///         {
-    ///             ProjectName = exampleProject.Name,
-    ///             LogstoreName = exampleStore.Name,
-    ///             ShipperName = "oss_shipper_name",
-    ///             OssBucket = "test_bucket",
-    ///             OssPrefix = "root",
-    ///             BufferInterval = 300,
-    ///             BufferSize = 250,
-    ///             CompressType = "none",
-    ///             PathFormat = "%Y/%m/%d/%H/%M",
-    ///             Format = "json",
-    ///             JsonEnableTag = true,
-    ///         });
-    ///     }
+    ///             { "test", "test" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var exampleOssShipper = new AliCloud.Log.OssShipper("exampleOssShipper", new()
+    ///     {
+    ///         ProjectName = exampleProject.Name,
+    ///         LogstoreName = exampleStore.Name,
+    ///         ShipperName = "oss_shipper_name",
+    ///         OssBucket = "test_bucket",
+    ///         OssPrefix = "root",
+    ///         BufferInterval = 300,
+    ///         BufferSize = 250,
+    ///         CompressType = "none",
+    ///         PathFormat = "%Y/%m/%d/%H/%M",
+    ///         Format = "json",
+    ///         JsonEnableTag = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/ossShipper:OssShipper")]
-    public partial class OssShipper : Pulumi.CustomResource
+    public partial class OssShipper : global::Pulumi.CustomResource
     {
         /// <summary>
         /// How often is it delivered every interval.
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class OssShipperArgs : Pulumi.ResourceArgs
+    public sealed class OssShipperArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How often is it delivered every interval.
@@ -341,9 +341,10 @@ namespace Pulumi.AliCloud.Log
         public OssShipperArgs()
         {
         }
+        public static new OssShipperArgs Empty => new OssShipperArgs();
     }
 
-    public sealed class OssShipperState : Pulumi.ResourceArgs
+    public sealed class OssShipperState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How often is it delivered every interval.
@@ -462,5 +463,6 @@ namespace Pulumi.AliCloud.Log
         public OssShipperState()
         {
         }
+        public static new OssShipperState Empty => new OssShipperState();
     }
 }

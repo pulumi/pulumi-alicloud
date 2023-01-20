@@ -15,26 +15,24 @@ namespace Pulumi.AliCloud.FC
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.FC.LayerVersion("example", new()
     ///     {
-    ///         var example = new AliCloud.FC.LayerVersion("example", new AliCloud.FC.LayerVersionArgs
+    ///         CompatibleRuntimes = new[]
     ///         {
-    ///             CompatibleRuntimes = 
-    ///             {
-    ///                 "nodejs12",
-    ///             },
-    ///             LayerName = "your_layer_name",
-    ///             OssBucketName = "your_code_oss_bucket_name",
-    ///             OssObjectName = "your_code_oss_object_name",
-    ///         });
-    ///     }
+    ///             "nodejs12",
+    ///         },
+    ///         LayerName = "your_layer_name",
+    ///         OssBucketName = "your_code_oss_bucket_name",
+    ///         OssObjectName = "your_code_oss_object_name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.FC
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fc/layerVersion:LayerVersion")]
-    public partial class LayerVersion : Pulumi.CustomResource
+    public partial class LayerVersion : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The access mode of Layer Version.
@@ -158,7 +156,7 @@ namespace Pulumi.AliCloud.FC
         }
     }
 
-    public sealed class LayerVersionArgs : Pulumi.ResourceArgs
+    public sealed class LayerVersionArgs : global::Pulumi.ResourceArgs
     {
         [Input("compatibleRuntimes", required: true)]
         private InputList<string>? _compatibleRuntimes;
@@ -211,9 +209,10 @@ namespace Pulumi.AliCloud.FC
         public LayerVersionArgs()
         {
         }
+        public static new LayerVersionArgs Empty => new LayerVersionArgs();
     }
 
-    public sealed class LayerVersionState : Pulumi.ResourceArgs
+    public sealed class LayerVersionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access mode of Layer Version.
@@ -290,5 +289,6 @@ namespace Pulumi.AliCloud.FC
         public LayerVersionState()
         {
         }
+        public static new LayerVersionState Empty => new LayerVersionState();
     }
 }

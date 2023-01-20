@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,16 +20,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.hbr.getReplicationVaultRegions({});
- * export const hbrReplicationVaultRegionRegionId1 = _default.then(_default => _default.regions?[0]?.replicationRegionId);
+ * export const hbrReplicationVaultRegionRegionId1 = _default.then(_default => _default.regions?.[0]?.replicationRegionId);
  * ```
  */
 export function getReplicationVaultRegions(args?: GetReplicationVaultRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationVaultRegionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", {
         "outputFile": args.outputFile,
     }, opts);
@@ -52,9 +50,25 @@ export interface GetReplicationVaultRegionsResult {
     readonly outputFile?: string;
     readonly regions: outputs.hbr.GetReplicationVaultRegionsRegion[];
 }
-
+/**
+ * This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.152.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.hbr.getReplicationVaultRegions({});
+ * export const hbrReplicationVaultRegionRegionId1 = _default.then(_default => _default.regions?.[0]?.replicationRegionId);
+ * ```
+ */
 export function getReplicationVaultRegionsOutput(args?: GetReplicationVaultRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationVaultRegionsResult> {
-    return pulumi.output(args).apply(a => getReplicationVaultRegions(a, opts))
+    return pulumi.output(args).apply((a: any) => getReplicationVaultRegions(a, opts))
 }
 
 /**

@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -51,7 +51,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       vpc.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String("tf-testAccCsgName"),
 //			})
 //			if err != nil {

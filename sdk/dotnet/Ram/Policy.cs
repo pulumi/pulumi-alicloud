@@ -13,19 +13,18 @@ namespace Pulumi.AliCloud.Ram
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new RAM Policy.
+    ///     var policy = new AliCloud.Ram.Policy("policy", new()
     ///     {
-    ///         // Create a new RAM Policy.
-    ///         var policy = new AliCloud.Ram.Policy("policy", new AliCloud.Ram.PolicyArgs
-    ///         {
-    ///             Description = "this is a policy test",
-    ///             Force = true,
-    ///             PolicyDocument = @"  {
+    ///         Description = "this is a policy test",
+    ///         Force = true,
+    ///         PolicyDocument = @"  {
     ///     ""Statement"": [
     ///       {
     ///         ""Action"": [
@@ -43,11 +42,10 @@ namespace Pulumi.AliCloud.Ram
     ///   }
     ///   
     /// ",
-    ///             PolicyName = "policyName",
-    ///         });
-    ///     }
+    ///         PolicyName = "policyName",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +57,7 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/policy:Policy")]
-    public partial class Policy : Pulumi.CustomResource
+    public partial class Policy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The policy attachment count.
@@ -183,7 +181,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class PolicyArgs : Pulumi.ResourceArgs
+    public sealed class PolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
@@ -249,9 +247,10 @@ namespace Pulumi.AliCloud.Ram
         public PolicyArgs()
         {
         }
+        public static new PolicyArgs Empty => new PolicyArgs();
     }
 
-    public sealed class PolicyState : Pulumi.ResourceArgs
+    public sealed class PolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The policy attachment count.
@@ -341,5 +340,6 @@ namespace Pulumi.AliCloud.Ram
         public PolicyState()
         {
         }
+        public static new PolicyState Empty => new PolicyState();
     }
 }

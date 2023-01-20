@@ -18,6 +18,9 @@ __all__ = [
     'GetDomainsDomainSourceResult',
     'GetIpaDomainsDomainResult',
     'GetIpaDomainsDomainSourceResult',
+    'GetWafDomainsDomainResult',
+    'GetWafDomainsDomainDefenseSceneResult',
+    'GetWafPoliciesPolicyResult',
 ]
 
 @pulumi.output_type
@@ -612,5 +615,191 @@ class GetIpaDomainsDomainSourceResult(dict):
         The weight of the origin server if multiple origin servers are specified.
         """
         return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetWafDomainsDomainResult(dict):
+    def __init__(__self__, *,
+                 client_ip_tag: str,
+                 defense_scenes: Sequence['outputs.GetWafDomainsDomainDefenseSceneResult'],
+                 domain_name: str,
+                 id: str):
+        """
+        :param str client_ip_tag: The client ip tag.
+        :param Sequence['GetWafDomainsDomainDefenseSceneArgs'] defense_scenes: Protection policy type.
+        :param str domain_name: The accelerated domain name.
+        :param str id: The ID of the Waf Domain.
+        """
+        pulumi.set(__self__, "client_ip_tag", client_ip_tag)
+        pulumi.set(__self__, "defense_scenes", defense_scenes)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="clientIpTag")
+    def client_ip_tag(self) -> str:
+        """
+        The client ip tag.
+        """
+        return pulumi.get(self, "client_ip_tag")
+
+    @property
+    @pulumi.getter(name="defenseScenes")
+    def defense_scenes(self) -> Sequence['outputs.GetWafDomainsDomainDefenseSceneResult']:
+        """
+        Protection policy type.
+        """
+        return pulumi.get(self, "defense_scenes")
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> str:
+        """
+        The accelerated domain name.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Waf Domain.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetWafDomainsDomainDefenseSceneResult(dict):
+    def __init__(__self__, *,
+                 defense_scene: str,
+                 policy_id: str):
+        """
+        :param str defense_scene: The type of protection policy.
+        :param str policy_id: The protection policy ID.
+        """
+        pulumi.set(__self__, "defense_scene", defense_scene)
+        pulumi.set(__self__, "policy_id", policy_id)
+
+    @property
+    @pulumi.getter(name="defenseScene")
+    def defense_scene(self) -> str:
+        """
+        The type of protection policy.
+        """
+        return pulumi.get(self, "defense_scene")
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> str:
+        """
+        The protection policy ID.
+        """
+        return pulumi.get(self, "policy_id")
+
+
+@pulumi.output_type
+class GetWafPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 dcdn_waf_policy_id: str,
+                 defense_scene: str,
+                 domain_count: int,
+                 gmt_modified: str,
+                 id: str,
+                 policy_name: str,
+                 policy_type: str,
+                 rule_count: str,
+                 status: str):
+        """
+        :param str dcdn_waf_policy_id: The first ID of the resource.
+        :param str defense_scene: The type of protection policy.
+        :param int domain_count: The number of domain names that use this protection policy.
+        :param str gmt_modified: The time when the protection policy was modified.
+        :param str id: The ID of the Waf Policy.
+        :param str policy_name: The name of the protection policy.
+        :param str policy_type: The type of the protection policy.
+        :param str rule_count: The number of protection rules in this protection policy.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "dcdn_waf_policy_id", dcdn_waf_policy_id)
+        pulumi.set(__self__, "defense_scene", defense_scene)
+        pulumi.set(__self__, "domain_count", domain_count)
+        pulumi.set(__self__, "gmt_modified", gmt_modified)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "policy_type", policy_type)
+        pulumi.set(__self__, "rule_count", rule_count)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="dcdnWafPolicyId")
+    def dcdn_waf_policy_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "dcdn_waf_policy_id")
+
+    @property
+    @pulumi.getter(name="defenseScene")
+    def defense_scene(self) -> str:
+        """
+        The type of protection policy.
+        """
+        return pulumi.get(self, "defense_scene")
+
+    @property
+    @pulumi.getter(name="domainCount")
+    def domain_count(self) -> int:
+        """
+        The number of domain names that use this protection policy.
+        """
+        return pulumi.get(self, "domain_count")
+
+    @property
+    @pulumi.getter(name="gmtModified")
+    def gmt_modified(self) -> str:
+        """
+        The time when the protection policy was modified.
+        """
+        return pulumi.get(self, "gmt_modified")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Waf Policy.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> str:
+        """
+        The name of the protection policy.
+        """
+        return pulumi.get(self, "policy_name")
+
+    @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> str:
+        """
+        The type of the protection policy.
+        """
+        return pulumi.get(self, "policy_type")
+
+    @property
+    @pulumi.getter(name="ruleCount")
+    def rule_count(self) -> str:
+        """
+        The number of protection rules in this protection policy.
+        """
+        return pulumi.get(self, "rule_count")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
 
 

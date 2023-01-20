@@ -31,9 +31,6 @@ public final class GetMountTargetsResult {
     private List<String> ids;
     /**
      * @return MountTargetDomain of the MountTarget.
-     * * `type`- Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
-     * * `network_type`- (Available 1.95.0+) NetworkType of The MountTarget.
-     * * `status`- (Available 1.95.0+) The status of the mount target.
      * 
      * @deprecated
      * Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
@@ -41,8 +38,16 @@ public final class GetMountTargetsResult {
      */
     @Deprecated /* Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it. */
     private @Nullable String mountTargetDomain;
+    /**
+     * @return (Available 1.95.0+) NetworkType of The MountTarget.
+     * 
+     */
     private @Nullable String networkType;
     private @Nullable String outputFile;
+    /**
+     * @return (Available 1.95.0+) The status of the mount target.
+     * 
+     */
     private @Nullable String status;
     /**
      * @return A list of MountTargetDomains. Each element contains the following attributes:
@@ -50,6 +55,8 @@ public final class GetMountTargetsResult {
      */
     private List<GetMountTargetsTarget> targets;
     /**
+     * @return Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+     * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
      * 
@@ -94,9 +101,6 @@ public final class GetMountTargetsResult {
     }
     /**
      * @return MountTargetDomain of the MountTarget.
-     * * `type`- Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
-     * * `network_type`- (Available 1.95.0+) NetworkType of The MountTarget.
-     * * `status`- (Available 1.95.0+) The status of the mount target.
      * 
      * @deprecated
      * Field &#39;mount_target_domain&#39; has been deprecated from provider version 1.53.0. New field &#39;ids&#39; replaces it.
@@ -106,12 +110,20 @@ public final class GetMountTargetsResult {
     public Optional<String> mountTargetDomain() {
         return Optional.ofNullable(this.mountTargetDomain);
     }
+    /**
+     * @return (Available 1.95.0+) NetworkType of The MountTarget.
+     * 
+     */
     public Optional<String> networkType() {
         return Optional.ofNullable(this.networkType);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return (Available 1.95.0+) The status of the mount target.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
@@ -123,6 +135,8 @@ public final class GetMountTargetsResult {
         return this.targets;
     }
     /**
+     * @return Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
+     * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.95.0. New field &#39;network_type&#39; replaces it.
      * 

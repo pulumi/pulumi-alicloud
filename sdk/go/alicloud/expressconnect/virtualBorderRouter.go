@@ -43,7 +43,7 @@ import (
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    pulumi.String(nameRegex.Connections[0].Id),
+//				PhysicalConnectionId:    *pulumi.String(nameRegex.Connections[0].Id),
 //				VirtualBorderRouterName: pulumi.String("example_value"),
 //				VlanId:                  pulumi.Int(1),
 //				MinRxInterval:           pulumi.Int(1000),
@@ -74,7 +74,7 @@ type VirtualBorderRouter struct {
 	// The associated physical connections.
 	AssociatedPhysicalConnections pulumi.StringPtrOutput `pulumi:"associatedPhysicalConnections"`
 	// The bandwidth.
-	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
+	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// Operators for physical connection circuit provided coding.
 	CircuitCode pulumi.StringPtrOutput `pulumi:"circuitCode"`
 	// The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
@@ -83,6 +83,8 @@ type VirtualBorderRouter struct {
 	DetectMultiplier pulumi.IntOutput `pulumi:"detectMultiplier"`
 	// Whether to Enable IPv6. Valid values: `false`, `true`.
 	EnableIpv6 pulumi.BoolOutput `pulumi:"enableIpv6"`
+	// Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+	IncludeCrossAccountVbr pulumi.BoolOutput `pulumi:"includeCrossAccountVbr"`
 	// Alibaba Cloud-Connected IPv4 address.
 	LocalGatewayIp pulumi.StringOutput `pulumi:"localGatewayIp"`
 	// Alibaba Cloud-Connected IPv6 Address.
@@ -169,6 +171,8 @@ type virtualBorderRouterState struct {
 	DetectMultiplier *int `pulumi:"detectMultiplier"`
 	// Whether to Enable IPv6. Valid values: `false`, `true`.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
+	// Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+	IncludeCrossAccountVbr *bool `pulumi:"includeCrossAccountVbr"`
 	// Alibaba Cloud-Connected IPv4 address.
 	LocalGatewayIp *string `pulumi:"localGatewayIp"`
 	// Alibaba Cloud-Connected IPv6 Address.
@@ -212,6 +216,8 @@ type VirtualBorderRouterState struct {
 	DetectMultiplier pulumi.IntPtrInput
 	// Whether to Enable IPv6. Valid values: `false`, `true`.
 	EnableIpv6 pulumi.BoolPtrInput
+	// Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+	IncludeCrossAccountVbr pulumi.BoolPtrInput
 	// Alibaba Cloud-Connected IPv4 address.
 	LocalGatewayIp pulumi.StringPtrInput
 	// Alibaba Cloud-Connected IPv6 Address.
@@ -259,6 +265,8 @@ type virtualBorderRouterArgs struct {
 	DetectMultiplier *int `pulumi:"detectMultiplier"`
 	// Whether to Enable IPv6. Valid values: `false`, `true`.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
+	// Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+	IncludeCrossAccountVbr *bool `pulumi:"includeCrossAccountVbr"`
 	// Alibaba Cloud-Connected IPv4 address.
 	LocalGatewayIp string `pulumi:"localGatewayIp"`
 	// Alibaba Cloud-Connected IPv6 Address.
@@ -301,6 +309,8 @@ type VirtualBorderRouterArgs struct {
 	DetectMultiplier pulumi.IntPtrInput
 	// Whether to Enable IPv6. Valid values: `false`, `true`.
 	EnableIpv6 pulumi.BoolPtrInput
+	// Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+	IncludeCrossAccountVbr pulumi.BoolPtrInput
 	// Alibaba Cloud-Connected IPv4 address.
 	LocalGatewayIp pulumi.StringInput
 	// Alibaba Cloud-Connected IPv6 Address.
@@ -422,8 +432,8 @@ func (o VirtualBorderRouterOutput) AssociatedPhysicalConnections() pulumi.String
 }
 
 // The bandwidth.
-func (o VirtualBorderRouterOutput) Bandwidth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.IntPtrOutput { return v.Bandwidth }).(pulumi.IntPtrOutput)
+func (o VirtualBorderRouterOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
 // Operators for physical connection circuit provided coding.
@@ -444,6 +454,11 @@ func (o VirtualBorderRouterOutput) DetectMultiplier() pulumi.IntOutput {
 // Whether to Enable IPv6. Valid values: `false`, `true`.
 func (o VirtualBorderRouterOutput) EnableIpv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.BoolOutput { return v.EnableIpv6 }).(pulumi.BoolOutput)
+}
+
+// Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+func (o VirtualBorderRouterOutput) IncludeCrossAccountVbr() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.BoolOutput { return v.IncludeCrossAccountVbr }).(pulumi.BoolOutput)
 }
 
 // Alibaba Cloud-Connected IPv4 address.

@@ -26,33 +26,33 @@ namespace Pulumi.AliCloud.Nas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
     ///     {
-    ///         var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new AliCloud.Nas.FileSystemArgs
-    ///         {
-    ///             ProtocolType = "NFS",
-    ///             StorageType = "Performance",
-    ///             Description = "test file system",
-    ///         });
-    ///         var exampleAccessGroup = new AliCloud.Nas.AccessGroup("exampleAccessGroup", new AliCloud.Nas.AccessGroupArgs
-    ///         {
-    ///             AccessGroupName = "test_name",
-    ///             AccessGroupType = "Classic",
-    ///             Description = "test access group",
-    ///         });
-    ///         var exampleMountTarget = new AliCloud.Nas.MountTarget("exampleMountTarget", new AliCloud.Nas.MountTargetArgs
-    ///         {
-    ///             FileSystemId = exampleFileSystem.Id,
-    ///             AccessGroupName = exampleAccessGroup.AccessGroupName,
-    ///         });
-    ///     }
+    ///         ProtocolType = "NFS",
+    ///         StorageType = "Performance",
+    ///         Description = "test file system",
+    ///     });
     /// 
-    /// }
+    ///     var exampleAccessGroup = new AliCloud.Nas.AccessGroup("exampleAccessGroup", new()
+    ///     {
+    ///         AccessGroupName = "test_name",
+    ///         AccessGroupType = "Classic",
+    ///         Description = "test access group",
+    ///     });
+    /// 
+    ///     var exampleMountTarget = new AliCloud.Nas.MountTarget("exampleMountTarget", new()
+    ///     {
+    ///         FileSystemId = exampleFileSystem.Id,
+    ///         AccessGroupName = exampleAccessGroup.AccessGroupName,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Nas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/mountTarget:MountTarget")]
-    public partial class MountTarget : Pulumi.CustomResource
+    public partial class MountTarget : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the permission group that applies to the mount target.
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
-    public sealed class MountTargetArgs : Pulumi.ResourceArgs
+    public sealed class MountTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the permission group that applies to the mount target.
@@ -183,9 +183,10 @@ namespace Pulumi.AliCloud.Nas
         public MountTargetArgs()
         {
         }
+        public static new MountTargetArgs Empty => new MountTargetArgs();
     }
 
-    public sealed class MountTargetState : Pulumi.ResourceArgs
+    public sealed class MountTargetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the permission group that applies to the mount target.
@@ -226,5 +227,6 @@ namespace Pulumi.AliCloud.Nas
         public MountTargetState()
         {
         }
+        public static new MountTargetState Empty => new MountTargetState();
     }
 }

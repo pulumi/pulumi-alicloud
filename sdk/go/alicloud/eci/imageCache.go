@@ -64,7 +64,6 @@ type ImageCache struct {
 	pulumi.CustomResourceState
 
 	// The ID of the container group job that is used to create the image cache.
-	// * `status` -The status of the image cache.
 	ContainerGroupId pulumi.StringOutput `pulumi:"containerGroupId"`
 	// The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
 	EipInstanceId pulumi.StringPtrOutput `pulumi:"eipInstanceId"`
@@ -82,7 +81,8 @@ type ImageCache struct {
 	RetentionDays pulumi.IntPtrOutput `pulumi:"retentionDays"`
 	// The ID of the security group. You do not need to specify the same security group as the container group.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	Status          pulumi.StringOutput `pulumi:"status"`
+	// The status of the image cache.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The zone id to cache image.
@@ -131,7 +131,6 @@ func GetImageCache(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ImageCache resources.
 type imageCacheState struct {
 	// The ID of the container group job that is used to create the image cache.
-	// * `status` -The status of the image cache.
 	ContainerGroupId *string `pulumi:"containerGroupId"`
 	// The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
 	EipInstanceId *string `pulumi:"eipInstanceId"`
@@ -149,7 +148,8 @@ type imageCacheState struct {
 	RetentionDays *int `pulumi:"retentionDays"`
 	// The ID of the security group. You do not need to specify the same security group as the container group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	Status          *string `pulumi:"status"`
+	// The status of the image cache.
+	Status *string `pulumi:"status"`
 	// The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone id to cache image.
@@ -158,7 +158,6 @@ type imageCacheState struct {
 
 type ImageCacheState struct {
 	// The ID of the container group job that is used to create the image cache.
-	// * `status` -The status of the image cache.
 	ContainerGroupId pulumi.StringPtrInput
 	// The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
 	EipInstanceId pulumi.StringPtrInput
@@ -176,7 +175,8 @@ type ImageCacheState struct {
 	RetentionDays pulumi.IntPtrInput
 	// The ID of the security group. You do not need to specify the same security group as the container group.
 	SecurityGroupId pulumi.StringPtrInput
-	Status          pulumi.StringPtrInput
+	// The status of the image cache.
+	Status pulumi.StringPtrInput
 	// The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
 	VswitchId pulumi.StringPtrInput
 	// The zone id to cache image.
@@ -322,7 +322,6 @@ func (o ImageCacheOutput) ToImageCacheOutputWithContext(ctx context.Context) Ima
 }
 
 // The ID of the container group job that is used to create the image cache.
-// * `status` -The status of the image cache.
 func (o ImageCacheOutput) ContainerGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImageCache) pulumi.StringOutput { return v.ContainerGroupId }).(pulumi.StringOutput)
 }
@@ -367,6 +366,7 @@ func (o ImageCacheOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImageCache) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
+// The status of the image cache.
 func (o ImageCacheOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImageCache) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

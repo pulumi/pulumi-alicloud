@@ -6,7 +6,9 @@ package com.pulumi.alicloud.cen;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -47,6 +49,36 @@ public final class TransitRouterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+     * 
+     */
+    @Import(name="supportMulticast")
+    private @Nullable Output<Boolean> supportMulticast;
+
+    /**
+     * @return Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+     * 
+     */
+    public Optional<Output<Boolean>> supportMulticast() {
+        return Optional.ofNullable(this.supportMulticast);
+    }
+
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The description of the transit router.
      * 
      */
@@ -81,6 +113,8 @@ public final class TransitRouterArgs extends com.pulumi.resources.ResourceArgs {
     private TransitRouterArgs(TransitRouterArgs $) {
         this.cenId = $.cenId;
         this.dryRun = $.dryRun;
+        this.supportMulticast = $.supportMulticast;
+        this.tags = $.tags;
         this.transitRouterDescription = $.transitRouterDescription;
         this.transitRouterName = $.transitRouterName;
     }
@@ -143,6 +177,48 @@ public final class TransitRouterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
+        }
+
+        /**
+         * @param supportMulticast Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportMulticast(@Nullable Output<Boolean> supportMulticast) {
+            $.supportMulticast = supportMulticast;
+            return this;
+        }
+
+        /**
+         * @param supportMulticast Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportMulticast(Boolean supportMulticast) {
+            return supportMulticast(Output.of(supportMulticast));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

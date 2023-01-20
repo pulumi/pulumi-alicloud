@@ -21,55 +21,58 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleStocks = AliCloud.CloudStorageGateway.GetStocks.Invoke(new()
     ///     {
-    ///         var exampleStocks = Output.Create(AliCloud.CloudStorageGateway.GetStocks.InvokeAsync(new AliCloud.CloudStorageGateway.GetStocksArgs
-    ///         {
-    ///             GatewayClass = "Standard",
-    ///         }));
-    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = "example_value",
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = vpc.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = exampleStocks.Apply(exampleStocks =&gt; exampleStocks.Stocks?[0]?.ZoneId),
-    ///             VswitchName = "example_value",
-    ///         });
-    ///         var exampleStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("exampleStorageBundle", new AliCloud.CloudStorageGateway.StorageBundleArgs
-    ///         {
-    ///             StorageBundleName = "example_value",
-    ///         });
-    ///         var exampleGateway = new AliCloud.CloudStorageGateway.Gateway("exampleGateway", new AliCloud.CloudStorageGateway.GatewayArgs
-    ///         {
-    ///             Description = "tf-acctestDesalone",
-    ///             GatewayClass = "Standard",
-    ///             Type = "File",
-    ///             PaymentType = "PayAsYouGo",
-    ///             VswitchId = exampleSwitch.Id,
-    ///             ReleaseAfterExpiration = true,
-    ///             PublicNetworkBandwidth = 10,
-    ///             StorageBundleId = exampleStorageBundle.Id,
-    ///             Location = "Cloud",
-    ///             GatewayName = "example_value",
-    ///         });
-    ///         var exampleGatewayCacheDisk = new AliCloud.CloudStorageGateway.GatewayCacheDisk("exampleGatewayCacheDisk", new AliCloud.CloudStorageGateway.GatewayCacheDiskArgs
-    ///         {
-    ///             CacheDiskCategory = "cloud_efficiency",
-    ///             GatewayId = alicloud_cloud_storage_gateway_gateways.Example.Id,
-    ///             CacheDiskSizeInGb = 50,
-    ///         });
-    ///     }
+    ///         GatewayClass = "Standard",
+    ///     });
     /// 
-    /// }
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         VpcName = "example_value",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = exampleStocks.Apply(getStocksResult =&gt; getStocksResult.Stocks[0]?.ZoneId),
+    ///         VswitchName = "example_value",
+    ///     });
+    /// 
+    ///     var exampleStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("exampleStorageBundle", new()
+    ///     {
+    ///         StorageBundleName = "example_value",
+    ///     });
+    /// 
+    ///     var exampleGateway = new AliCloud.CloudStorageGateway.Gateway("exampleGateway", new()
+    ///     {
+    ///         Description = "tf-acctestDesalone",
+    ///         GatewayClass = "Standard",
+    ///         Type = "File",
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         ReleaseAfterExpiration = true,
+    ///         PublicNetworkBandwidth = 10,
+    ///         StorageBundleId = exampleStorageBundle.Id,
+    ///         Location = "Cloud",
+    ///         GatewayName = "example_value",
+    ///     });
+    /// 
+    ///     var exampleGatewayCacheDisk = new AliCloud.CloudStorageGateway.GatewayCacheDisk("exampleGatewayCacheDisk", new()
+    ///     {
+    ///         CacheDiskCategory = "cloud_efficiency",
+    ///         GatewayId = alicloud_cloud_storage_gateway_gateways.Example.Id,
+    ///         CacheDiskSizeInGb = 50,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -81,7 +84,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk")]
-    public partial class GatewayCacheDisk : Pulumi.CustomResource
+    public partial class GatewayCacheDisk : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
@@ -163,7 +166,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         }
     }
 
-    public sealed class GatewayCacheDiskArgs : Pulumi.ResourceArgs
+    public sealed class GatewayCacheDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
@@ -186,9 +189,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GatewayCacheDiskArgs()
         {
         }
+        public static new GatewayCacheDiskArgs Empty => new GatewayCacheDiskArgs();
     }
 
-    public sealed class GatewayCacheDiskState : Pulumi.ResourceArgs
+    public sealed class GatewayCacheDiskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
@@ -229,5 +233,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GatewayCacheDiskState()
         {
         }
+        public static new GatewayCacheDiskState Empty => new GatewayCacheDiskState();
     }
 }

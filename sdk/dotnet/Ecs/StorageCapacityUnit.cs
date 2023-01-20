@@ -21,22 +21,20 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ecs.StorageCapacityUnit("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ecs.StorageCapacityUnit("default", new AliCloud.Ecs.StorageCapacityUnitArgs
-    ///         {
-    ///             Capacity = 20,
-    ///             Description = "tftestdescription",
-    ///             StorageCapacityUnitName = "tftestname",
-    ///         });
-    ///     }
+    ///         Capacity = 20,
+    ///         Description = "tftestdescription",
+    ///         StorageCapacityUnitName = "tftestname",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/storageCapacityUnit:StorageCapacityUnit")]
-    public partial class StorageCapacityUnit : Pulumi.CustomResource
+    public partial class StorageCapacityUnit : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
@@ -138,7 +136,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class StorageCapacityUnitArgs : Pulumi.ResourceArgs
+    public sealed class StorageCapacityUnitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
@@ -181,9 +179,10 @@ namespace Pulumi.AliCloud.Ecs
         public StorageCapacityUnitArgs()
         {
         }
+        public static new StorageCapacityUnitArgs Empty => new StorageCapacityUnitArgs();
     }
 
-    public sealed class StorageCapacityUnitState : Pulumi.ResourceArgs
+    public sealed class StorageCapacityUnitState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
@@ -232,5 +231,6 @@ namespace Pulumi.AliCloud.Ecs
         public StorageCapacityUnitState()
         {
         }
+        public static new StorageCapacityUnitState Empty => new StorageCapacityUnitState();
     }
 }

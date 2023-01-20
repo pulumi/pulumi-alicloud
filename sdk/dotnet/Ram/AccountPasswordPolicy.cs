@@ -15,44 +15,38 @@ namespace Pulumi.AliCloud.Ram
     /// Empty resource sets defaults values for every property.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new AliCloud.Ram.AccountPasswordPolicy("default", new AliCloud.Ram.AccountPasswordPolicyArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var @default = new AliCloud.Ram.AccountPasswordPolicy("default");
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var corporate = new AliCloud.Ram.AccountPasswordPolicy("corporate", new()
     ///     {
-    ///         var corporate = new AliCloud.Ram.AccountPasswordPolicy("corporate", new AliCloud.Ram.AccountPasswordPolicyArgs
-    ///         {
-    ///             HardExpiry = true,
-    ///             MaxLoginAttempts = 3,
-    ///             MaxPasswordAge = 12,
-    ///             MinimumPasswordLength = 9,
-    ///             PasswordReusePrevention = 5,
-    ///             RequireLowercaseCharacters = false,
-    ///             RequireNumbers = false,
-    ///             RequireSymbols = false,
-    ///             RequireUppercaseCharacters = false,
-    ///         });
-    ///     }
+    ///         HardExpiry = true,
+    ///         MaxLoginAttempts = 3,
+    ///         MaxPasswordAge = 12,
+    ///         MinimumPasswordLength = 9,
+    ///         PasswordReusePrevention = 5,
+    ///         RequireLowercaseCharacters = false,
+    ///         RequireNumbers = false,
+    ///         RequireSymbols = false,
+    ///         RequireUppercaseCharacters = false,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// For not specified values sets defaults.
     /// 
@@ -65,7 +59,7 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy")]
-    public partial class AccountPasswordPolicy : Pulumi.CustomResource
+    public partial class AccountPasswordPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies if a password can expire in a hard way. Default to false.
@@ -165,7 +159,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class AccountPasswordPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AccountPasswordPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies if a password can expire in a hard way. Default to false.
@@ -224,9 +218,10 @@ namespace Pulumi.AliCloud.Ram
         public AccountPasswordPolicyArgs()
         {
         }
+        public static new AccountPasswordPolicyArgs Empty => new AccountPasswordPolicyArgs();
     }
 
-    public sealed class AccountPasswordPolicyState : Pulumi.ResourceArgs
+    public sealed class AccountPasswordPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies if a password can expire in a hard way. Default to false.
@@ -285,5 +280,6 @@ namespace Pulumi.AliCloud.Ram
         public AccountPasswordPolicyState()
         {
         }
+        public static new AccountPasswordPolicyState Empty => new AccountPasswordPolicyState();
     }
 }

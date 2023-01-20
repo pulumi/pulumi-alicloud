@@ -143,6 +143,7 @@ class _EcsKeyPairState:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering EcsKeyPair resources.
+        :param pulumi.Input[str] finger_print: The finger print of the key pair.
         :param pulumi.Input[str] key_file: The key file.
         :param pulumi.Input[str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
         :param pulumi.Input[str] key_pair_name: The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
@@ -173,6 +174,9 @@ class _EcsKeyPairState:
     @property
     @pulumi.getter(name="fingerPrint")
     def finger_print(self) -> Optional[pulumi.Input[str]]:
+        """
+        The finger print of the key pair.
+        """
         return pulumi.get(self, "finger_print")
 
     @finger_print.setter
@@ -420,6 +424,7 @@ class EcsKeyPair(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] finger_print: The finger print of the key pair.
         :param pulumi.Input[str] key_file: The key file.
         :param pulumi.Input[str] key_name: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
         :param pulumi.Input[str] key_pair_name: The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
@@ -444,6 +449,9 @@ class EcsKeyPair(pulumi.CustomResource):
     @property
     @pulumi.getter(name="fingerPrint")
     def finger_print(self) -> pulumi.Output[str]:
+        """
+        The finger print of the key pair.
+        """
         return pulumi.get(self, "finger_print")
 
     @property

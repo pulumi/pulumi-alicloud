@@ -390,6 +390,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The id of the VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
      * If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
      * 
      */
@@ -461,6 +476,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.slbConnAddrs = $.slbConnAddrs;
         this.tags = $.tags;
         this.uiProxyConnAddrs = $.uiProxyConnAddrs;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.zkConnAddrs = $.zkConnAddrs;
         this.zoneId = $.zoneId;
@@ -1022,6 +1038,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uiProxyConnAddrs(InstanceUiProxyConnAddrArgs... uiProxyConnAddrs) {
             return uiProxyConnAddrs(List.of(uiProxyConnAddrs));
+        }
+
+        /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         /**

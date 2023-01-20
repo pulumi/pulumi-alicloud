@@ -19,29 +19,28 @@ namespace Pulumi.AliCloud.ApiGateway
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dataApigatwayApis = AliCloud.ApiGateway.GetApis.Invoke(new()
         ///     {
-        ///         var dataApigatwayApis = Output.Create(AliCloud.ApiGateway.GetApis.InvokeAsync(new AliCloud.ApiGateway.GetApisArgs
-        ///         {
-        ///             OutputFile = "output_ApiGatawayApis",
-        ///         }));
-        ///         this.FirstApiId = data.Alicloud_api_gateway_apis.Data_apigatway.Apis[0].Id;
-        ///     }
+        ///         OutputFile = "output_ApiGatawayApis",
+        ///     });
         /// 
-        ///     [Output("firstApiId")]
-        ///     public Output&lt;string&gt; FirstApiId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstApiId"] = data.Alicloud_api_gateway_apis.Data_apigatway.Apis[0].Id,
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApisResult> InvokeAsync(GetApisArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApisResult>("alicloud:apigateway/getApis:getApis", args ?? new GetApisArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetApisResult>("alicloud:apigateway/getApis:getApis", args ?? new GetApisArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the apis of the current Alibaba Cloud user.
@@ -51,33 +50,32 @@ namespace Pulumi.AliCloud.ApiGateway
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dataApigatwayApis = AliCloud.ApiGateway.GetApis.Invoke(new()
         ///     {
-        ///         var dataApigatwayApis = Output.Create(AliCloud.ApiGateway.GetApis.InvokeAsync(new AliCloud.ApiGateway.GetApisArgs
-        ///         {
-        ///             OutputFile = "output_ApiGatawayApis",
-        ///         }));
-        ///         this.FirstApiId = data.Alicloud_api_gateway_apis.Data_apigatway.Apis[0].Id;
-        ///     }
+        ///         OutputFile = "output_ApiGatawayApis",
+        ///     });
         /// 
-        ///     [Output("firstApiId")]
-        ///     public Output&lt;string&gt; FirstApiId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstApiId"] = data.Alicloud_api_gateway_apis.Data_apigatway.Apis[0].Id,
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetApisResult> Invoke(GetApisInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApisResult>("alicloud:apigateway/getApis:getApis", args ?? new GetApisInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetApisResult>("alicloud:apigateway/getApis:getApis", args ?? new GetApisInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetApisArgs : Pulumi.InvokeArgs
+    public sealed class GetApisArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
@@ -115,9 +113,10 @@ namespace Pulumi.AliCloud.ApiGateway
         public GetApisArgs()
         {
         }
+        public static new GetApisArgs Empty => new GetApisArgs();
     }
 
-    public sealed class GetApisInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetApisInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
@@ -155,6 +154,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public GetApisInvokeArgs()
         {
         }
+        public static new GetApisInvokeArgs Empty => new GetApisInvokeArgs();
     }
 
 

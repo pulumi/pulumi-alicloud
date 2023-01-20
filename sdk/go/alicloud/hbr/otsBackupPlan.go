@@ -110,9 +110,15 @@ import (
 type OtsBackupPlan struct {
 	pulumi.CustomResourceState
 
-	// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringOutput `pulumi:"backupType"`
-	// Whether to disable the backup task. Valid values: true, false.
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName pulumi.StringPtrOutput `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType pulumi.StringOutput `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId pulumi.IntPtrOutput `pulumi:"crossAccountUserId"`
+	// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// The name of the Table store instance. **Note:** Required while sourceType equals `OTS_TABLE`.
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
@@ -120,11 +126,11 @@ type OtsBackupPlan struct {
 	OtsBackupPlanName pulumi.StringOutput `pulumi:"otsBackupPlanName"`
 	// The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	OtsDetails OtsBackupPlanOtsDetailArrayOutput `pulumi:"otsDetails"`
-	// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringOutput `pulumi:"retention"`
 	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules OtsBackupPlanRuleArrayOutput `pulumi:"rules"`
-	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	//
 	// Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
@@ -170,9 +176,15 @@ func GetOtsBackupPlan(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OtsBackupPlan resources.
 type otsBackupPlanState struct {
-	// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType *string `pulumi:"backupType"`
-	// Whether to disable the backup task. Valid values: true, false.
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType *string `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId *int `pulumi:"crossAccountUserId"`
+	// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
 	Disabled *bool `pulumi:"disabled"`
 	// The name of the Table store instance. **Note:** Required while sourceType equals `OTS_TABLE`.
 	InstanceName *string `pulumi:"instanceName"`
@@ -180,11 +192,11 @@ type otsBackupPlanState struct {
 	OtsBackupPlanName *string `pulumi:"otsBackupPlanName"`
 	// The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	OtsDetails []OtsBackupPlanOtsDetail `pulumi:"otsDetails"`
-	// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup retention days, the minimum is 1.
 	Retention *string `pulumi:"retention"`
 	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules []OtsBackupPlanRule `pulumi:"rules"`
-	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	//
 	// Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
 	Schedule *string `pulumi:"schedule"`
@@ -193,9 +205,15 @@ type otsBackupPlanState struct {
 }
 
 type OtsBackupPlanState struct {
-	// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringPtrInput
-	// Whether to disable the backup task. Valid values: true, false.
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName pulumi.StringPtrInput
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType pulumi.StringPtrInput
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId pulumi.IntPtrInput
+	// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
 	Disabled pulumi.BoolPtrInput
 	// The name of the Table store instance. **Note:** Required while sourceType equals `OTS_TABLE`.
 	InstanceName pulumi.StringPtrInput
@@ -203,11 +221,11 @@ type OtsBackupPlanState struct {
 	OtsBackupPlanName pulumi.StringPtrInput
 	// The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	OtsDetails OtsBackupPlanOtsDetailArrayInput
-	// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringPtrInput
 	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules OtsBackupPlanRuleArrayInput
-	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	//
 	// Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
 	Schedule pulumi.StringPtrInput
@@ -220,9 +238,15 @@ func (OtsBackupPlanState) ElementType() reflect.Type {
 }
 
 type otsBackupPlanArgs struct {
-	// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType string `pulumi:"backupType"`
-	// Whether to disable the backup task. Valid values: true, false.
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType *string `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId *int `pulumi:"crossAccountUserId"`
+	// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
 	Disabled *bool `pulumi:"disabled"`
 	// The name of the Table store instance. **Note:** Required while sourceType equals `OTS_TABLE`.
 	InstanceName *string `pulumi:"instanceName"`
@@ -230,11 +254,11 @@ type otsBackupPlanArgs struct {
 	OtsBackupPlanName string `pulumi:"otsBackupPlanName"`
 	// The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	OtsDetails []OtsBackupPlanOtsDetail `pulumi:"otsDetails"`
-	// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules []OtsBackupPlanRule `pulumi:"rules"`
-	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	//
 	// Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
 	Schedule *string `pulumi:"schedule"`
@@ -244,9 +268,15 @@ type otsBackupPlanArgs struct {
 
 // The set of arguments for constructing a OtsBackupPlan resource.
 type OtsBackupPlanArgs struct {
-	// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup type. Valid values: `COMPLETE`.
 	BackupType pulumi.StringInput
-	// Whether to disable the backup task. Valid values: true, false.
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName pulumi.StringPtrInput
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType pulumi.StringPtrInput
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId pulumi.IntPtrInput
+	// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
 	Disabled pulumi.BoolPtrInput
 	// The name of the Table store instance. **Note:** Required while sourceType equals `OTS_TABLE`.
 	InstanceName pulumi.StringPtrInput
@@ -254,11 +284,11 @@ type OtsBackupPlanArgs struct {
 	OtsBackupPlanName pulumi.StringInput
 	// The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	OtsDetails OtsBackupPlanOtsDetailArrayInput
-	// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput
 	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules OtsBackupPlanRuleArrayInput
-	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	//
 	// Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
 	Schedule pulumi.StringPtrInput
@@ -353,12 +383,27 @@ func (o OtsBackupPlanOutput) ToOtsBackupPlanOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+// Backup type. Valid values: `COMPLETE`.
 func (o OtsBackupPlanOutput) BackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *OtsBackupPlan) pulumi.StringOutput { return v.BackupType }).(pulumi.StringOutput)
 }
 
-// Whether to disable the backup task. Valid values: true, false.
+// The role name created in the original account RAM backup by the cross account managed by the current account.
+func (o OtsBackupPlanOutput) CrossAccountRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OtsBackupPlan) pulumi.StringPtrOutput { return v.CrossAccountRoleName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+func (o OtsBackupPlanOutput) CrossAccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v *OtsBackupPlan) pulumi.StringOutput { return v.CrossAccountType }).(pulumi.StringOutput)
+}
+
+// The original account ID of the cross account backup managed by the current account.
+func (o OtsBackupPlanOutput) CrossAccountUserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OtsBackupPlan) pulumi.IntPtrOutput { return v.CrossAccountUserId }).(pulumi.IntPtrOutput)
+}
+
+// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
 func (o OtsBackupPlanOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OtsBackupPlan) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -378,7 +423,7 @@ func (o OtsBackupPlanOutput) OtsDetails() OtsBackupPlanOtsDetailArrayOutput {
 	return o.ApplyT(func(v *OtsBackupPlan) OtsBackupPlanOtsDetailArrayOutput { return v.OtsDetails }).(OtsBackupPlanOtsDetailArrayOutput)
 }
 
-// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+// Backup retention days, the minimum is 1.
 func (o OtsBackupPlanOutput) Retention() pulumi.StringOutput {
 	return o.ApplyT(func(v *OtsBackupPlan) pulumi.StringOutput { return v.Retention }).(pulumi.StringOutput)
 }
@@ -388,7 +433,7 @@ func (o OtsBackupPlanOutput) Rules() OtsBackupPlanRuleArrayOutput {
 	return o.ApplyT(func(v *OtsBackupPlan) OtsBackupPlanRuleArrayOutput { return v.Rules }).(OtsBackupPlanRuleArrayOutput)
 }
 
-// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 //
 // Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
 func (o OtsBackupPlanOutput) Schedule() pulumi.StringPtrOutput {

@@ -5,34 +5,81 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./acl";
-export * from "./aclRule";
-export * from "./clientUser";
-export * from "./dnatEntry";
-export * from "./getGroups";
-export * from "./getInstances";
-export * from "./getService";
-export * from "./getTopics";
-export * from "./group";
-export * from "./instance";
-export * from "./qos";
-export * from "./qosCar";
-export * from "./qosPolicy";
-export * from "./snatEntry";
-export * from "./topic";
+export { AclArgs, AclState } from "./acl";
+export type Acl = import("./acl").Acl;
+export const Acl: typeof import("./acl").Acl = null as any;
+utilities.lazyLoad(exports, ["Acl"], () => require("./acl"));
 
-// Import resources to register:
-import { Acl } from "./acl";
-import { AclRule } from "./aclRule";
-import { ClientUser } from "./clientUser";
-import { DnatEntry } from "./dnatEntry";
-import { Group } from "./group";
-import { Instance } from "./instance";
-import { Qos } from "./qos";
-import { QosCar } from "./qosCar";
-import { QosPolicy } from "./qosPolicy";
-import { SnatEntry } from "./snatEntry";
-import { Topic } from "./topic";
+export { AclRuleArgs, AclRuleState } from "./aclRule";
+export type AclRule = import("./aclRule").AclRule;
+export const AclRule: typeof import("./aclRule").AclRule = null as any;
+utilities.lazyLoad(exports, ["AclRule"], () => require("./aclRule"));
+
+export { ClientUserArgs, ClientUserState } from "./clientUser";
+export type ClientUser = import("./clientUser").ClientUser;
+export const ClientUser: typeof import("./clientUser").ClientUser = null as any;
+utilities.lazyLoad(exports, ["ClientUser"], () => require("./clientUser"));
+
+export { DnatEntryArgs, DnatEntryState } from "./dnatEntry";
+export type DnatEntry = import("./dnatEntry").DnatEntry;
+export const DnatEntry: typeof import("./dnatEntry").DnatEntry = null as any;
+utilities.lazyLoad(exports, ["DnatEntry"], () => require("./dnatEntry"));
+
+export { GetGroupsArgs, GetGroupsResult, GetGroupsOutputArgs } from "./getGroups";
+export const getGroups: typeof import("./getGroups").getGroups = null as any;
+export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { GetTopicsArgs, GetTopicsResult, GetTopicsOutputArgs } from "./getTopics";
+export const getTopics: typeof import("./getTopics").getTopics = null as any;
+export const getTopicsOutput: typeof import("./getTopics").getTopicsOutput = null as any;
+utilities.lazyLoad(exports, ["getTopics","getTopicsOutput"], () => require("./getTopics"));
+
+export { GroupArgs, GroupState } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { QosArgs, QosState } from "./qos";
+export type Qos = import("./qos").Qos;
+export const Qos: typeof import("./qos").Qos = null as any;
+utilities.lazyLoad(exports, ["Qos"], () => require("./qos"));
+
+export { QosCarArgs, QosCarState } from "./qosCar";
+export type QosCar = import("./qosCar").QosCar;
+export const QosCar: typeof import("./qosCar").QosCar = null as any;
+utilities.lazyLoad(exports, ["QosCar"], () => require("./qosCar"));
+
+export { QosPolicyArgs, QosPolicyState } from "./qosPolicy";
+export type QosPolicy = import("./qosPolicy").QosPolicy;
+export const QosPolicy: typeof import("./qosPolicy").QosPolicy = null as any;
+utilities.lazyLoad(exports, ["QosPolicy"], () => require("./qosPolicy"));
+
+export { SnatEntryArgs, SnatEntryState } from "./snatEntry";
+export type SnatEntry = import("./snatEntry").SnatEntry;
+export const SnatEntry: typeof import("./snatEntry").SnatEntry = null as any;
+utilities.lazyLoad(exports, ["SnatEntry"], () => require("./snatEntry"));
+
+export { TopicArgs, TopicState } from "./topic";
+export type Topic = import("./topic").Topic;
+export const Topic: typeof import("./topic").Topic = null as any;
+utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
+
 
 const _module = {
     version: utilities.getVersion(),

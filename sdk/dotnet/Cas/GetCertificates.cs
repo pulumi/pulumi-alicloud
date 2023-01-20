@@ -18,30 +18,29 @@ namespace Pulumi.AliCloud.Cas
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var certs = AliCloud.Cas.GetCertificates.Invoke(new()
         ///     {
-        ///         var certs = Output.Create(AliCloud.Cas.GetCertificates.InvokeAsync(new AliCloud.Cas.GetCertificatesArgs
-        ///         {
-        ///             NameRegex = "^cas",
-        ///             OutputFile = $"{path.Module}/cas_certificates.json",
-        ///         }));
-        ///         this.Cert = certs.Apply(certs =&gt; certs.Certificates?[0]?.Id);
-        ///     }
+        ///         NameRegex = "^cas",
+        ///         OutputFile = $"{path.Module}/cas_certificates.json",
+        ///     });
         /// 
-        ///     [Output("cert")]
-        ///     public Output&lt;string&gt; Cert { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cert"] = certs.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificatesResult> InvokeAsync(GetCertificatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? new GetCertificatesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? new GetCertificatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -49,34 +48,33 @@ namespace Pulumi.AliCloud.Cas
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var certs = AliCloud.Cas.GetCertificates.Invoke(new()
         ///     {
-        ///         var certs = Output.Create(AliCloud.Cas.GetCertificates.InvokeAsync(new AliCloud.Cas.GetCertificatesArgs
-        ///         {
-        ///             NameRegex = "^cas",
-        ///             OutputFile = $"{path.Module}/cas_certificates.json",
-        ///         }));
-        ///         this.Cert = certs.Apply(certs =&gt; certs.Certificates?[0]?.Id);
-        ///     }
+        ///         NameRegex = "^cas",
+        ///         OutputFile = $"{path.Module}/cas_certificates.json",
+        ///     });
         /// 
-        ///     [Output("cert")]
-        ///     public Output&lt;string&gt; Cert { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cert"] = certs.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCertificatesResult> Invoke(GetCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? new GetCertificatesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? new GetCertificatesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCertificatesArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificatesArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -108,9 +106,10 @@ namespace Pulumi.AliCloud.Cas
         public GetCertificatesArgs()
         {
         }
+        public static new GetCertificatesArgs Empty => new GetCertificatesArgs();
     }
 
-    public sealed class GetCertificatesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -142,6 +141,7 @@ namespace Pulumi.AliCloud.Cas
         public GetCertificatesInvokeArgs()
         {
         }
+        public static new GetCertificatesInvokeArgs Empty => new GetCertificatesInvokeArgs();
     }
 
 

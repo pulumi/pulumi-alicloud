@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class RuleRuleActionTrafficMirrorConfigArgs : Pulumi.ResourceArgs
+    public sealed class RuleRuleActionTrafficMirrorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public RuleRuleActionTrafficMirrorConfigArgs()
         {
         }
+        public static new RuleRuleActionTrafficMirrorConfigArgs Empty => new RuleRuleActionTrafficMirrorConfigArgs();
     }
 }

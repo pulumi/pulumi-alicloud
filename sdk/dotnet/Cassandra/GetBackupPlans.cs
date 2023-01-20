@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.Cassandra
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cassandra.GetBackupPlans.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cassandra.GetBackupPlans.InvokeAsync(new AliCloud.Cassandra.GetBackupPlansArgs
-        ///         {
-        ///             ClusterId = "example_value",
-        ///         }));
-        ///         this.FirstCassandraBackupPlanId = example.Apply(example =&gt; example.Plans?[0]?.Id);
-        ///     }
+        ///         ClusterId = "example_value",
+        ///     });
         /// 
-        ///     [Output("firstCassandraBackupPlanId")]
-        ///     public Output&lt;string&gt; FirstCassandraBackupPlanId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCassandraBackupPlanId"] = example.Apply(getBackupPlansResult =&gt; getBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackupPlansResult> InvokeAsync(GetBackupPlansArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupPlansResult>("alicloud:cassandra/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupPlansResult>("alicloud:cassandra/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.Cassandra
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cassandra.GetBackupPlans.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cassandra.GetBackupPlans.InvokeAsync(new AliCloud.Cassandra.GetBackupPlansArgs
-        ///         {
-        ///             ClusterId = "example_value",
-        ///         }));
-        ///         this.FirstCassandraBackupPlanId = example.Apply(example =&gt; example.Plans?[0]?.Id);
-        ///     }
+        ///         ClusterId = "example_value",
+        ///     });
         /// 
-        ///     [Output("firstCassandraBackupPlanId")]
-        ///     public Output&lt;string&gt; FirstCassandraBackupPlanId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCassandraBackupPlanId"] = example.Apply(getBackupPlansResult =&gt; getBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackupPlansResult> Invoke(GetBackupPlansInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupPlansResult>("alicloud:cassandra/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlansResult>("alicloud:cassandra/getBackupPlans:getBackupPlans", args ?? new GetBackupPlansInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBackupPlansArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupPlansArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the cluster for the backup.
@@ -99,9 +97,10 @@ namespace Pulumi.AliCloud.Cassandra
         public GetBackupPlansArgs()
         {
         }
+        public static new GetBackupPlansArgs Empty => new GetBackupPlansArgs();
     }
 
-    public sealed class GetBackupPlansInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupPlansInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the cluster for the backup.
@@ -115,6 +114,7 @@ namespace Pulumi.AliCloud.Cassandra
         public GetBackupPlansInvokeArgs()
         {
         }
+        public static new GetBackupPlansInvokeArgs Empty => new GetBackupPlansInvokeArgs();
     }
 
 

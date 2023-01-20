@@ -281,6 +281,193 @@ func (o DirectorySamlIdentityProviderConfigurationPtrOutput) SsoStatus() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAccessAssignmentsAssignment struct {
+	// Access configuration ID.
+	AccessConfigurationId string `pulumi:"accessConfigurationId"`
+	// The name of the access configuration.
+	AccessConfigurationName string `pulumi:"accessConfigurationName"`
+	// Directory ID.
+	DirectoryId string `pulumi:"directoryId"`
+	// The ID of the Access Assignment.
+	Id string `pulumi:"id"`
+	// The ID of the access assignment.
+	PrincipalId string `pulumi:"principalId"`
+	// Cloud SSO identity name.
+	PrincipalName string `pulumi:"principalName"`
+	// Create the identity type of the access assignment, which can be a user or a user group.
+	PrincipalType string `pulumi:"principalType"`
+	// The ID of the target to create the resource range.
+	TargetId string `pulumi:"targetId"`
+	// Task target name.
+	TargetName string `pulumi:"targetName"`
+	// The path name of the task target in the resource directory.
+	TargetPathName string `pulumi:"targetPathName"`
+	// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+	TargetType string `pulumi:"targetType"`
+}
+
+// GetAccessAssignmentsAssignmentInput is an input type that accepts GetAccessAssignmentsAssignmentArgs and GetAccessAssignmentsAssignmentOutput values.
+// You can construct a concrete instance of `GetAccessAssignmentsAssignmentInput` via:
+//
+//	GetAccessAssignmentsAssignmentArgs{...}
+type GetAccessAssignmentsAssignmentInput interface {
+	pulumi.Input
+
+	ToGetAccessAssignmentsAssignmentOutput() GetAccessAssignmentsAssignmentOutput
+	ToGetAccessAssignmentsAssignmentOutputWithContext(context.Context) GetAccessAssignmentsAssignmentOutput
+}
+
+type GetAccessAssignmentsAssignmentArgs struct {
+	// Access configuration ID.
+	AccessConfigurationId pulumi.StringInput `pulumi:"accessConfigurationId"`
+	// The name of the access configuration.
+	AccessConfigurationName pulumi.StringInput `pulumi:"accessConfigurationName"`
+	// Directory ID.
+	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
+	// The ID of the Access Assignment.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the access assignment.
+	PrincipalId pulumi.StringInput `pulumi:"principalId"`
+	// Cloud SSO identity name.
+	PrincipalName pulumi.StringInput `pulumi:"principalName"`
+	// Create the identity type of the access assignment, which can be a user or a user group.
+	PrincipalType pulumi.StringInput `pulumi:"principalType"`
+	// The ID of the target to create the resource range.
+	TargetId pulumi.StringInput `pulumi:"targetId"`
+	// Task target name.
+	TargetName pulumi.StringInput `pulumi:"targetName"`
+	// The path name of the task target in the resource directory.
+	TargetPathName pulumi.StringInput `pulumi:"targetPathName"`
+	// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+	TargetType pulumi.StringInput `pulumi:"targetType"`
+}
+
+func (GetAccessAssignmentsAssignmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessAssignmentsAssignment)(nil)).Elem()
+}
+
+func (i GetAccessAssignmentsAssignmentArgs) ToGetAccessAssignmentsAssignmentOutput() GetAccessAssignmentsAssignmentOutput {
+	return i.ToGetAccessAssignmentsAssignmentOutputWithContext(context.Background())
+}
+
+func (i GetAccessAssignmentsAssignmentArgs) ToGetAccessAssignmentsAssignmentOutputWithContext(ctx context.Context) GetAccessAssignmentsAssignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessAssignmentsAssignmentOutput)
+}
+
+// GetAccessAssignmentsAssignmentArrayInput is an input type that accepts GetAccessAssignmentsAssignmentArray and GetAccessAssignmentsAssignmentArrayOutput values.
+// You can construct a concrete instance of `GetAccessAssignmentsAssignmentArrayInput` via:
+//
+//	GetAccessAssignmentsAssignmentArray{ GetAccessAssignmentsAssignmentArgs{...} }
+type GetAccessAssignmentsAssignmentArrayInput interface {
+	pulumi.Input
+
+	ToGetAccessAssignmentsAssignmentArrayOutput() GetAccessAssignmentsAssignmentArrayOutput
+	ToGetAccessAssignmentsAssignmentArrayOutputWithContext(context.Context) GetAccessAssignmentsAssignmentArrayOutput
+}
+
+type GetAccessAssignmentsAssignmentArray []GetAccessAssignmentsAssignmentInput
+
+func (GetAccessAssignmentsAssignmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessAssignmentsAssignment)(nil)).Elem()
+}
+
+func (i GetAccessAssignmentsAssignmentArray) ToGetAccessAssignmentsAssignmentArrayOutput() GetAccessAssignmentsAssignmentArrayOutput {
+	return i.ToGetAccessAssignmentsAssignmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccessAssignmentsAssignmentArray) ToGetAccessAssignmentsAssignmentArrayOutputWithContext(ctx context.Context) GetAccessAssignmentsAssignmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessAssignmentsAssignmentArrayOutput)
+}
+
+type GetAccessAssignmentsAssignmentOutput struct{ *pulumi.OutputState }
+
+func (GetAccessAssignmentsAssignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessAssignmentsAssignment)(nil)).Elem()
+}
+
+func (o GetAccessAssignmentsAssignmentOutput) ToGetAccessAssignmentsAssignmentOutput() GetAccessAssignmentsAssignmentOutput {
+	return o
+}
+
+func (o GetAccessAssignmentsAssignmentOutput) ToGetAccessAssignmentsAssignmentOutputWithContext(ctx context.Context) GetAccessAssignmentsAssignmentOutput {
+	return o
+}
+
+// Access configuration ID.
+func (o GetAccessAssignmentsAssignmentOutput) AccessConfigurationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.AccessConfigurationId }).(pulumi.StringOutput)
+}
+
+// The name of the access configuration.
+func (o GetAccessAssignmentsAssignmentOutput) AccessConfigurationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.AccessConfigurationName }).(pulumi.StringOutput)
+}
+
+// Directory ID.
+func (o GetAccessAssignmentsAssignmentOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The ID of the Access Assignment.
+func (o GetAccessAssignmentsAssignmentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the access assignment.
+func (o GetAccessAssignmentsAssignmentOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// Cloud SSO identity name.
+func (o GetAccessAssignmentsAssignmentOutput) PrincipalName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.PrincipalName }).(pulumi.StringOutput)
+}
+
+// Create the identity type of the access assignment, which can be a user or a user group.
+func (o GetAccessAssignmentsAssignmentOutput) PrincipalType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+// The ID of the target to create the resource range.
+func (o GetAccessAssignmentsAssignmentOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.TargetId }).(pulumi.StringOutput)
+}
+
+// Task target name.
+func (o GetAccessAssignmentsAssignmentOutput) TargetName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.TargetName }).(pulumi.StringOutput)
+}
+
+// The path name of the task target in the resource directory.
+func (o GetAccessAssignmentsAssignmentOutput) TargetPathName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.TargetPathName }).(pulumi.StringOutput)
+}
+
+// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+func (o GetAccessAssignmentsAssignmentOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessAssignmentsAssignment) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+type GetAccessAssignmentsAssignmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccessAssignmentsAssignmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessAssignmentsAssignment)(nil)).Elem()
+}
+
+func (o GetAccessAssignmentsAssignmentArrayOutput) ToGetAccessAssignmentsAssignmentArrayOutput() GetAccessAssignmentsAssignmentArrayOutput {
+	return o
+}
+
+func (o GetAccessAssignmentsAssignmentArrayOutput) ToGetAccessAssignmentsAssignmentArrayOutputWithContext(ctx context.Context) GetAccessAssignmentsAssignmentArrayOutput {
+	return o
+}
+
+func (o GetAccessAssignmentsAssignmentArrayOutput) Index(i pulumi.IntInput) GetAccessAssignmentsAssignmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessAssignmentsAssignment {
+		return vs[0].([]GetAccessAssignmentsAssignment)[vs[1].(int)]
+	}).(GetAccessAssignmentsAssignmentOutput)
+}
+
 type GetAccessConfigurationsConfiguration struct {
 	// The AccessConfigurationId of the Access Configuration.
 	AccessConfigurationId string `pulumi:"accessConfigurationId"`
@@ -1759,6 +1946,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessConfigurationPermissionPolicyArrayInput)(nil)).Elem(), AccessConfigurationPermissionPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectorySamlIdentityProviderConfigurationInput)(nil)).Elem(), DirectorySamlIdentityProviderConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectorySamlIdentityProviderConfigurationPtrInput)(nil)).Elem(), DirectorySamlIdentityProviderConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessAssignmentsAssignmentInput)(nil)).Elem(), GetAccessAssignmentsAssignmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessAssignmentsAssignmentArrayInput)(nil)).Elem(), GetAccessAssignmentsAssignmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessConfigurationsConfigurationInput)(nil)).Elem(), GetAccessConfigurationsConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessConfigurationsConfigurationArrayInput)(nil)).Elem(), GetAccessConfigurationsConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessConfigurationsConfigurationPermissionPolicyInput)(nil)).Elem(), GetAccessConfigurationsConfigurationPermissionPolicyArgs{})
@@ -1781,6 +1970,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessConfigurationPermissionPolicyArrayOutput{})
 	pulumi.RegisterOutputType(DirectorySamlIdentityProviderConfigurationOutput{})
 	pulumi.RegisterOutputType(DirectorySamlIdentityProviderConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(GetAccessAssignmentsAssignmentOutput{})
+	pulumi.RegisterOutputType(GetAccessAssignmentsAssignmentArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessConfigurationsConfigurationOutput{})
 	pulumi.RegisterOutputType(GetAccessConfigurationsConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessConfigurationsConfigurationPermissionPolicyOutput{})

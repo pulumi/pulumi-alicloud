@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc.Inputs
 {
 
-    public sealed class PrefixListEntryArgs : Pulumi.ResourceArgs
+    public sealed class PrefixListEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CIDR address block of the prefix list.
         /// </summary>
-        [Input("cidr", required: true)]
-        public Input<string> Cidr { get; set; } = null!;
+        [Input("cidr")]
+        public Input<string>? Cidr { get; set; }
 
         /// <summary>
         /// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public PrefixListEntryArgs()
         {
         }
+        public static new PrefixListEntryArgs Empty => new PrefixListEntryArgs();
     }
 }

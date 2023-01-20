@@ -43,7 +43,7 @@ type Switch struct {
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The name of the switch. Defaults to null.
 	VswitchName pulumi.StringOutput `pulumi:"vswitchName"`
-	// The AZ for the switch.
+	// The AZ for the switch. **Note:** Required for a VPC switch.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -102,7 +102,7 @@ type switchState struct {
 	VpcId *string `pulumi:"vpcId"`
 	// The name of the switch. Defaults to null.
 	VswitchName *string `pulumi:"vswitchName"`
-	// The AZ for the switch.
+	// The AZ for the switch. **Note:** Required for a VPC switch.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -127,7 +127,7 @@ type SwitchState struct {
 	VpcId pulumi.StringPtrInput
 	// The name of the switch. Defaults to null.
 	VswitchName pulumi.StringPtrInput
-	// The AZ for the switch.
+	// The AZ for the switch. **Note:** Required for a VPC switch.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -154,7 +154,7 @@ type switchArgs struct {
 	VpcId string `pulumi:"vpcId"`
 	// The name of the switch. Defaults to null.
 	VswitchName *string `pulumi:"vswitchName"`
-	// The AZ for the switch.
+	// The AZ for the switch. **Note:** Required for a VPC switch.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -178,7 +178,7 @@ type SwitchArgs struct {
 	VpcId pulumi.StringInput
 	// The name of the switch. Defaults to null.
 	VswitchName pulumi.StringPtrInput
-	// The AZ for the switch.
+	// The AZ for the switch. **Note:** Required for a VPC switch.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -313,7 +313,7 @@ func (o SwitchOutput) VswitchName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.VswitchName }).(pulumi.StringOutput)
 }
 
-// The AZ for the switch.
+// The AZ for the switch. **Note:** Required for a VPC switch.
 func (o SwitchOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

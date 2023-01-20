@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.DirectMail
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.DirectMail.Receivers("example", new()
     ///     {
-    ///         var example = new AliCloud.DirectMail.Receivers("example", new AliCloud.DirectMail.ReceiversArgs
-    ///         {
-    ///             ReceiversAlias = "tf-vme8@onaliyun.com",
-    ///             ReceiversName = "vme8",
-    ///         });
-    ///     }
+    ///         ReceiversAlias = "tf-vme8@onaliyun.com",
+    ///         ReceiversName = "vme8",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.DirectMail
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:directmail/receivers:Receivers")]
-    public partial class Receivers : Pulumi.CustomResource
+    public partial class Receivers : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of receivers and 1-50 characters in length.
@@ -117,7 +115,7 @@ namespace Pulumi.AliCloud.DirectMail
         }
     }
 
-    public sealed class ReceiversArgs : Pulumi.ResourceArgs
+    public sealed class ReceiversArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of receivers and 1-50 characters in length.
@@ -140,9 +138,10 @@ namespace Pulumi.AliCloud.DirectMail
         public ReceiversArgs()
         {
         }
+        public static new ReceiversArgs Empty => new ReceiversArgs();
     }
 
-    public sealed class ReceiversState : Pulumi.ResourceArgs
+    public sealed class ReceiversState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of receivers and 1-50 characters in length.
@@ -171,5 +170,6 @@ namespace Pulumi.AliCloud.DirectMail
         public ReceiversState()
         {
         }
+        public static new ReceiversState Empty => new ReceiversState();
     }
 }

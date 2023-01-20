@@ -3,17 +3,35 @@
 
 package com.pulumi.alicloud.eventbridge.inputs;
 
+import com.pulumi.alicloud.eventbridge.inputs.RuleTargetDeadLetterQueueArgs;
 import com.pulumi.alicloud.eventbridge.inputs.RuleTargetParamListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RuleTargetArgs Empty = new RuleTargetArgs();
+
+    /**
+     * Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+     * 
+     */
+    @Import(name="deadLetterQueue")
+    private @Nullable Output<RuleTargetDeadLetterQueueArgs> deadLetterQueue;
+
+    /**
+     * @return Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+     * 
+     */
+    public Optional<Output<RuleTargetDeadLetterQueueArgs>> deadLetterQueue() {
+        return Optional.ofNullable(this.deadLetterQueue);
+    }
 
     /**
      * The endpoint of target.
@@ -31,18 +49,33 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of param.
+     * A list of param. See the following `Block param_list`.
      * 
      */
     @Import(name="paramLists", required=true)
     private Output<List<RuleTargetParamListArgs>> paramLists;
 
     /**
-     * @return A list of param.
+     * @return A list of param. See the following `Block param_list`.
      * 
      */
     public Output<List<RuleTargetParamListArgs>> paramLists() {
         return this.paramLists;
+    }
+
+    /**
+     * The retry policy that is used to push the event. Valid values:
+     * 
+     */
+    @Import(name="pushRetryStrategy")
+    private @Nullable Output<String> pushRetryStrategy;
+
+    /**
+     * @return The retry policy that is used to push the event. Valid values:
+     * 
+     */
+    public Optional<Output<String>> pushRetryStrategy() {
+        return Optional.ofNullable(this.pushRetryStrategy);
     }
 
     /**
@@ -78,8 +111,10 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     private RuleTargetArgs() {}
 
     private RuleTargetArgs(RuleTargetArgs $) {
+        this.deadLetterQueue = $.deadLetterQueue;
         this.endpoint = $.endpoint;
         this.paramLists = $.paramLists;
+        this.pushRetryStrategy = $.pushRetryStrategy;
         this.targetId = $.targetId;
         this.type = $.type;
     }
@@ -100,6 +135,27 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RuleTargetArgs defaults) {
             $ = new RuleTargetArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deadLetterQueue Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deadLetterQueue(@Nullable Output<RuleTargetDeadLetterQueueArgs> deadLetterQueue) {
+            $.deadLetterQueue = deadLetterQueue;
+            return this;
+        }
+
+        /**
+         * @param deadLetterQueue Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deadLetterQueue(RuleTargetDeadLetterQueueArgs deadLetterQueue) {
+            return deadLetterQueue(Output.of(deadLetterQueue));
         }
 
         /**
@@ -124,7 +180,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramLists A list of param.
+         * @param paramLists A list of param. See the following `Block param_list`.
          * 
          * @return builder
          * 
@@ -135,7 +191,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramLists A list of param.
+         * @param paramLists A list of param. See the following `Block param_list`.
          * 
          * @return builder
          * 
@@ -145,13 +201,34 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramLists A list of param.
+         * @param paramLists A list of param. See the following `Block param_list`.
          * 
          * @return builder
          * 
          */
         public Builder paramLists(RuleTargetParamListArgs... paramLists) {
             return paramLists(List.of(paramLists));
+        }
+
+        /**
+         * @param pushRetryStrategy The retry policy that is used to push the event. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pushRetryStrategy(@Nullable Output<String> pushRetryStrategy) {
+            $.pushRetryStrategy = pushRetryStrategy;
+            return this;
+        }
+
+        /**
+         * @param pushRetryStrategy The retry policy that is used to push the event. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pushRetryStrategy(String pushRetryStrategy) {
+            return pushRetryStrategy(Output.of(pushRetryStrategy));
         }
 
         /**

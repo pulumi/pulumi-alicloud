@@ -23,22 +23,20 @@ namespace Pulumi.AliCloud.Ga
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ga.Accelerator("example", new()
     ///     {
-    ///         var example = new AliCloud.Ga.Accelerator("example", new AliCloud.Ga.AcceleratorArgs
-    ///         {
-    ///             AutoUseCoupon = true,
-    ///             Duration = 1,
-    ///             Spec = "1",
-    ///         });
-    ///     }
+    ///         AutoUseCoupon = true,
+    ///         Duration = 1,
+    ///         Spec = "1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.Ga
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/accelerator:Accelerator")]
-    public partial class Accelerator : Pulumi.CustomResource
+    public partial class Accelerator : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Name of the GA instance.
@@ -86,17 +84,12 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-        /// * `Month`: billed on a monthly basis.
-        /// * `Year`: billed on an annual basis.
         /// </summary>
         [Output("pricingCycle")]
         public Output<string> PricingCycle { get; private set; } = null!;
 
         /// <summary>
         /// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
-        /// - `AutoRenewal`: Enable auto renewal.
-        /// - `Normal`: Disable auto renewal.
-        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
@@ -163,7 +156,7 @@ namespace Pulumi.AliCloud.Ga
         }
     }
 
-    public sealed class AcceleratorArgs : Pulumi.ResourceArgs
+    public sealed class AcceleratorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Name of the GA instance.
@@ -199,17 +192,12 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-        /// * `Month`: billed on a monthly basis.
-        /// * `Year`: billed on an annual basis.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
         /// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
-        /// - `AutoRenewal`: Enable auto renewal.
-        /// - `Normal`: Disable auto renewal.
-        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -229,9 +217,10 @@ namespace Pulumi.AliCloud.Ga
         public AcceleratorArgs()
         {
         }
+        public static new AcceleratorArgs Empty => new AcceleratorArgs();
     }
 
-    public sealed class AcceleratorState : Pulumi.ResourceArgs
+    public sealed class AcceleratorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Name of the GA instance.
@@ -267,17 +256,12 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-        /// * `Month`: billed on a monthly basis.
-        /// * `Year`: billed on an annual basis.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
         /// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
-        /// - `AutoRenewal`: Enable auto renewal.
-        /// - `Normal`: Disable auto renewal.
-        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -303,5 +287,6 @@ namespace Pulumi.AliCloud.Ga
         public AcceleratorState()
         {
         }
+        public static new AcceleratorState Empty => new AcceleratorState();
     }
 }

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.FC
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fc/trigger:Trigger")]
-    public partial class Trigger : Pulumi.CustomResource
+    public partial class Trigger : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.FC
         }
     }
 
-    public sealed class TriggerArgs : Pulumi.ResourceArgs
+    public sealed class TriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
@@ -190,9 +190,10 @@ namespace Pulumi.AliCloud.FC
         public TriggerArgs()
         {
         }
+        public static new TriggerArgs Empty => new TriggerArgs();
     }
 
-    public sealed class TriggerState : Pulumi.ResourceArgs
+    public sealed class TriggerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
@@ -263,5 +264,6 @@ namespace Pulumi.AliCloud.FC
         public TriggerState()
         {
         }
+        public static new TriggerState Empty => new TriggerState();
     }
 }

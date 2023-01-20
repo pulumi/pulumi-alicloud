@@ -23,87 +23,79 @@ namespace Pulumi.AliCloud.Nas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new AliCloud.Nas.FileSystem("foo", new()
     ///     {
-    ///         var foo = new AliCloud.Nas.FileSystem("foo", new AliCloud.Nas.FileSystemArgs
-    ///         {
-    ///             Description = "tf-testAccNasConfig",
-    ///             EncryptType = 1,
-    ///             ProtocolType = "NFS",
-    ///             StorageType = "Performance",
-    ///         });
-    ///     }
+    ///         Description = "tf-testAccNasConfig",
+    ///         EncryptType = 1,
+    ///         ProtocolType = "NFS",
+    ///         StorageType = "Performance",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new AliCloud.Nas.FileSystem("foo", new()
     ///     {
-    ///         var foo = new AliCloud.Nas.FileSystem("foo", new AliCloud.Nas.FileSystemArgs
-    ///         {
-    ///             Capacity = 100,
-    ///             Description = "tf-testAccNasConfig",
-    ///             FileSystemType = "extreme",
-    ///             ProtocolType = "NFS",
-    ///             StorageType = "standard",
-    ///             ZoneId = "cn-hangzhou-f",
-    ///         });
-    ///     }
+    ///         Capacity = 100,
+    ///         Description = "tf-testAccNasConfig",
+    ///         FileSystemType = "extreme",
+    ///         ProtocolType = "NFS",
+    ///         StorageType = "standard",
+    ///         ZoneId = "cn-hangzhou-f",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultZones = AliCloud.Nas.GetZones.Invoke(new()
     ///     {
-    ///         var defaultZones = Output.Create(AliCloud.Nas.GetZones.InvokeAsync(new AliCloud.Nas.GetZonesArgs
-    ///         {
-    ///             FileSystemType = "cpfs",
-    ///         }));
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Zones?[0]?.ZoneId,
-    ///             }));
-    ///         });
-    ///         var foo = new AliCloud.Nas.FileSystem("foo", new AliCloud.Nas.FileSystemArgs
-    ///         {
-    ///             ProtocolType = "cpfs",
-    ///             StorageType = "advance_200",
-    ///             FileSystemType = "cpfs",
-    ///             Capacity = 3600,
-    ///             Description = "tf-testacc",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.ZoneId),
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///         });
-    ///     }
+    ///         FileSystemType = "cpfs",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///     });
+    /// 
+    ///     var foo = new AliCloud.Nas.FileSystem("foo", new()
+    ///     {
+    ///         ProtocolType = "cpfs",
+    ///         StorageType = "advance_200",
+    ///         FileSystemType = "cpfs",
+    ///         Capacity = 3600,
+    ///         Description = "tf-testacc",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -115,7 +107,7 @@ namespace Pulumi.AliCloud.Nas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/fileSystem:FileSystem")]
-    public partial class FileSystem : Pulumi.CustomResource
+    public partial class FileSystem : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
@@ -238,7 +230,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
-    public sealed class FileSystemArgs : Pulumi.ResourceArgs
+    public sealed class FileSystemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
@@ -326,9 +318,10 @@ namespace Pulumi.AliCloud.Nas
         public FileSystemArgs()
         {
         }
+        public static new FileSystemArgs Empty => new FileSystemArgs();
     }
 
-    public sealed class FileSystemState : Pulumi.ResourceArgs
+    public sealed class FileSystemState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
@@ -416,5 +409,6 @@ namespace Pulumi.AliCloud.Nas
         public FileSystemState()
         {
         }
+        public static new FileSystemState Empty => new FileSystemState();
     }
 }

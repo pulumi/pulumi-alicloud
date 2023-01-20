@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfigProxy
     {
         /// <summary>
-        /// The CPU resource  of the limitsOPA proxy container.
+        /// The limit cpu of the Sidecar injector Pods.
         /// </summary>
         public readonly string? LimitCpu;
         /// <summary>
-        /// The memory resource limit of the OPA proxy container.
+        /// Sidecar injector Pods on the throttle.
         /// </summary>
         public readonly string? LimitMemory;
         /// <summary>
-        /// The CPU resource request of the OPA proxy container.
+        /// The requested cpu the Sidecar injector Pods.
         /// </summary>
         public readonly string? RequestCpu;
         /// <summary>
-        /// The memory resource request of the OPA proxy container.
+        /// The requested memory the Sidecar injector Pods.
         /// </summary>
         public readonly string? RequestMemory;
 

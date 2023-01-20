@@ -242,11 +242,13 @@ class DedicatedHostAccount(pulumi.CustomResource):
             __props__.__dict__["account_name"] = account_name
             if account_password is None and not opts.urn:
                 raise TypeError("Missing required property 'account_password'")
-            __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             __props__.__dict__["account_type"] = account_type
             if dedicated_host_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dedicated_host_id'")
             __props__.__dict__["dedicated_host_id"] = dedicated_host_id
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DedicatedHostAccount, __self__).__init__(
             'alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount',
             resource_name,

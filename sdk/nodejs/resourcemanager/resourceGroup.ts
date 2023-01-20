@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -75,6 +76,9 @@ export class ResourceGroup extends pulumi.CustomResource {
      * @deprecated Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The status of the resource group in all regions.
+     */
     public /*out*/ readonly regionStatuses!: pulumi.Output<outputs.resourcemanager.ResourceGroupRegionStatus[]>;
     /**
      * The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
@@ -139,6 +143,9 @@ export interface ResourceGroupState {
      * @deprecated Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The status of the resource group in all regions.
+     */
     regionStatuses?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceGroupRegionStatus>[]>;
     /**
      * The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.

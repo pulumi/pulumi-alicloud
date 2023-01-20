@@ -13,22 +13,20 @@ namespace Pulumi.AliCloud.Ram
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new RAM Group.
+    ///     var @group = new AliCloud.Ram.Group("group", new()
     ///     {
-    ///         // Create a new RAM Group.
-    ///         var @group = new AliCloud.Ram.Group("group", new AliCloud.Ram.GroupArgs
-    ///         {
-    ///             Comments = "this is a group comments.",
-    ///             Force = true,
-    ///         });
-    ///     }
+    ///         Comments = "this is a group comments.",
+    ///         Force = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/group:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
@@ -104,7 +102,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
@@ -127,9 +125,10 @@ namespace Pulumi.AliCloud.Ram
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 
-    public sealed class GroupState : Pulumi.ResourceArgs
+    public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
@@ -152,5 +151,6 @@ namespace Pulumi.AliCloud.Ram
         public GroupState()
         {
         }
+        public static new GroupState Empty => new GroupState();
     }
 }

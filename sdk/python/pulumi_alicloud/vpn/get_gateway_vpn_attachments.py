@@ -52,6 +52,10 @@ class GetGatewayVpnAttachmentsResult:
         pulumi.set(__self__, "status", status)
         if vpn_gateway_id and not isinstance(vpn_gateway_id, str):
             raise TypeError("Expected argument 'vpn_gateway_id' to be a str")
+        if vpn_gateway_id is not None:
+            warnings.warn("""The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.""", DeprecationWarning)
+            pulumi.log.warn("""vpn_gateway_id is deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.""")
+
         pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
 
     @property
@@ -151,13 +155,15 @@ def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
     pulumi.export("vpnGatewayVpnAttachmentId1", ids.attachments[0].id)
     name_regex = alicloud.vpn.get_gateway_vpn_attachments(name_regex="^my-VpnAttachment")
     pulumi.export("vpnGatewayVpnAttachmentId2", name_regex.attachments[0].id)
+    pulumi.export("localId", data["alicloud_vpn_gateway_vpn_attachments"]["vpn_attachments"]["attachments"][0]["ike_config"][0]["local_id"])
+    pulumi.export("internetIp", data["alicloud_vpn_gateway_vpn_attachments"]["vpn_attachments"]["attachments"][0]["internet_ip"])
     ```
 
 
     :param Sequence[str] ids: A list of Vpn Attachment IDs.
     :param str name_regex: A regex string to filter results by Vpn Attachment name.
     :param str status: The status of the resource.
-    :param str vpn_gateway_id: The ID of the VPN gateway.
+    :param str vpn_gateway_id: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -209,12 +215,14 @@ def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
     pulumi.export("vpnGatewayVpnAttachmentId1", ids.attachments[0].id)
     name_regex = alicloud.vpn.get_gateway_vpn_attachments(name_regex="^my-VpnAttachment")
     pulumi.export("vpnGatewayVpnAttachmentId2", name_regex.attachments[0].id)
+    pulumi.export("localId", data["alicloud_vpn_gateway_vpn_attachments"]["vpn_attachments"]["attachments"][0]["ike_config"][0]["local_id"])
+    pulumi.export("internetIp", data["alicloud_vpn_gateway_vpn_attachments"]["vpn_attachments"]["attachments"][0]["internet_ip"])
     ```
 
 
     :param Sequence[str] ids: A list of Vpn Attachment IDs.
     :param str name_regex: A regex string to filter results by Vpn Attachment name.
     :param str status: The status of the resource.
-    :param str vpn_gateway_id: The ID of the VPN gateway.
+    :param str vpn_gateway_id: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
     """
     ...

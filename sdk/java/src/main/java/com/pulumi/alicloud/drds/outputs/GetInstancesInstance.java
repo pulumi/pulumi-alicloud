@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetInstancesInstance {
     /**
+     * @return (Available in 1.196.0+) The connection string of the DRDS instance.
+     * 
+     */
+    private String connectionString;
+    /**
      * @return Creation time of the instance.
      * 
      */
@@ -30,6 +35,11 @@ public final class GetInstancesInstance {
      * 
      */
     private String networkType;
+    /**
+     * @return (Available in 1.196.0+) The connection port of the DRDS instance.
+     * 
+     */
+    private String port;
     /**
      * @return Status of the instance.
      * 
@@ -52,6 +62,13 @@ public final class GetInstancesInstance {
     private String zoneId;
 
     private GetInstancesInstance() {}
+    /**
+     * @return (Available in 1.196.0+) The connection string of the DRDS instance.
+     * 
+     */
+    public String connectionString() {
+        return this.connectionString;
+    }
     /**
      * @return Creation time of the instance.
      * 
@@ -79,6 +96,13 @@ public final class GetInstancesInstance {
      */
     public String networkType() {
         return this.networkType;
+    }
+    /**
+     * @return (Available in 1.196.0+) The connection port of the DRDS instance.
+     * 
+     */
+    public String port() {
+        return this.port;
     }
     /**
      * @return Status of the instance.
@@ -118,10 +142,12 @@ public final class GetInstancesInstance {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String connectionString;
         private Integer createTime;
         private String description;
         private String id;
         private String networkType;
+        private String port;
         private String status;
         private String type;
         private Integer version;
@@ -129,16 +155,23 @@ public final class GetInstancesInstance {
         public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.connectionString = defaults.connectionString;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.networkType = defaults.networkType;
+    	      this.port = defaults.port;
     	      this.status = defaults.status;
     	      this.type = defaults.type;
     	      this.version = defaults.version;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder connectionString(String connectionString) {
+            this.connectionString = Objects.requireNonNull(connectionString);
+            return this;
+        }
         @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
@@ -157,6 +190,11 @@ public final class GetInstancesInstance {
         @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder port(String port) {
+            this.port = Objects.requireNonNull(port);
             return this;
         }
         @CustomType.Setter
@@ -181,10 +219,12 @@ public final class GetInstancesInstance {
         }
         public GetInstancesInstance build() {
             final var o = new GetInstancesInstance();
+            o.connectionString = connectionString;
             o.createTime = createTime;
             o.description = description;
             o.id = id;
             o.networkType = networkType;
+            o.port = port;
             o.status = status;
             o.type = type;
             o.version = version;

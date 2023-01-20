@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
  * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
@@ -182,8 +182,6 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
     }
     /**
      * Indicate how to check instance ready to use.
-     * - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-     * - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
      * 
      */
     @Export(name="bootCheckOsWithAssistant", type=Boolean.class, parameters={})
@@ -191,8 +189,6 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Indicate how to check instance ready to use.
-     * - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-     * - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
      * 
      */
     public Output<Optional<Boolean>> bootCheckOsWithAssistant() {
@@ -568,8 +564,6 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
     }
     /**
      * The security enhancement strategy.
-     * - `Active`: Enable security enhancement strategy, it only works on system images.
-     * - `Deactive`: Disable security enhancement strategy, it works on all images.
      * 
      */
     @Export(name="securityEnhancementStrategy", type=String.class, parameters={})
@@ -577,8 +571,6 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The security enhancement strategy.
-     * - `Active`: Enable security enhancement strategy, it only works on system images.
-     * - `Deactive`: Disable security enhancement strategy, it works on all images.
      * 
      */
     public Output<Optional<String>> securityEnhancementStrategy() {
@@ -614,9 +606,6 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
     }
     /**
      * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
-     * - `NoSpot`: A regular Pay-As-You-Go instance.
-     * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
      * 
      */
     @Export(name="spotStrategy", type=String.class, parameters={})
@@ -624,9 +613,6 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
-     * - `NoSpot`: A regular Pay-As-You-Go instance.
-     * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
      * 
      */
     public Output<String> spotStrategy() {
@@ -805,6 +791,9 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

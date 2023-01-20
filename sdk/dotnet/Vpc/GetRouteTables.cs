@@ -21,45 +21,46 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "route-tables-datasource-example-name";
+        ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "route-tables-datasource-example-name";
-        ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/12",
-        ///             VpcName = name,
-        ///         });
-        ///         var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new AliCloud.Vpc.RouteTableArgs
-        ///         {
-        ///             Description = name,
-        ///             RouteTableName = name,
-        ///             VpcId = fooNetwork.Id,
-        ///         });
-        ///         var fooRouteTables = AliCloud.Vpc.GetRouteTables.Invoke(new AliCloud.Vpc.GetRouteTablesInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 fooRouteTable.Id,
-        ///             },
-        ///         });
-        ///         this.RouteTableIds = fooRouteTables.Apply(fooRouteTables =&gt; fooRouteTables.Ids);
-        ///     }
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = name,
+        ///     });
         /// 
-        ///     [Output("routeTableIds")]
-        ///     public Output&lt;string&gt; RouteTableIds { get; set; }
-        /// }
+        ///     var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new()
+        ///     {
+        ///         Description = name,
+        ///         RouteTableName = name,
+        ///         VpcId = fooNetwork.Id,
+        ///     });
+        /// 
+        ///     var fooRouteTables = AliCloud.Vpc.GetRouteTables.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             fooRouteTable.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["routeTableIds"] = fooRouteTables.Apply(getRouteTablesResult =&gt; getRouteTablesResult.Ids),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteTablesResult> InvokeAsync(GetRouteTablesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? new GetRouteTablesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? new GetRouteTablesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Route Tables owned by an Alibaba Cloud account.
@@ -71,49 +72,50 @@ namespace Pulumi.AliCloud.Vpc
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "route-tables-datasource-example-name";
+        ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "route-tables-datasource-example-name";
-        ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/12",
-        ///             VpcName = name,
-        ///         });
-        ///         var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new AliCloud.Vpc.RouteTableArgs
-        ///         {
-        ///             Description = name,
-        ///             RouteTableName = name,
-        ///             VpcId = fooNetwork.Id,
-        ///         });
-        ///         var fooRouteTables = AliCloud.Vpc.GetRouteTables.Invoke(new AliCloud.Vpc.GetRouteTablesInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 fooRouteTable.Id,
-        ///             },
-        ///         });
-        ///         this.RouteTableIds = fooRouteTables.Apply(fooRouteTables =&gt; fooRouteTables.Ids);
-        ///     }
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = name,
+        ///     });
         /// 
-        ///     [Output("routeTableIds")]
-        ///     public Output&lt;string&gt; RouteTableIds { get; set; }
-        /// }
+        ///     var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new()
+        ///     {
+        ///         Description = name,
+        ///         RouteTableName = name,
+        ///         VpcId = fooNetwork.Id,
+        ///     });
+        /// 
+        ///     var fooRouteTables = AliCloud.Vpc.GetRouteTables.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             fooRouteTable.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["routeTableIds"] = fooRouteTables.Apply(getRouteTablesResult =&gt; getRouteTablesResult.Ids),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouteTablesResult> Invoke(GetRouteTablesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? new GetRouteTablesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? new GetRouteTablesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRouteTablesArgs : Pulumi.InvokeArgs
+    public sealed class GetRouteTablesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -193,9 +195,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetRouteTablesArgs()
         {
         }
+        public static new GetRouteTablesArgs Empty => new GetRouteTablesArgs();
     }
 
-    public sealed class GetRouteTablesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRouteTablesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -275,6 +278,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetRouteTablesInvokeArgs()
         {
         }
+        public static new GetRouteTablesInvokeArgs Empty => new GetRouteTablesInvokeArgs();
     }
 
 

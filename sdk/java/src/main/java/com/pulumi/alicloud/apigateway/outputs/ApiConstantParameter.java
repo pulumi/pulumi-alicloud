@@ -12,17 +12,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApiConstantParameter {
     /**
-     * @return The description of Constant parameter.
+     * @return The description of the api. Defaults to null.
      * 
      */
     private @Nullable String description;
     /**
-     * @return System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
+     * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
      */
     private String in;
     /**
-     * @return System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * @return The name of the api gateway api. Defaults to null.
      * 
      */
     private String name;
@@ -34,21 +34,21 @@ public final class ApiConstantParameter {
 
     private ApiConstantParameter() {}
     /**
-     * @return The description of Constant parameter.
+     * @return The description of the api. Defaults to null.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
+     * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
      */
     public String in() {
         return this.in;
     }
     /**
-     * @return System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * @return The name of the api gateway api. Defaults to null.
      * 
      */
     public String name() {

@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.DatabaseFilesystem.GetInstances.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.DatabaseFilesystem.GetInstances.InvokeAsync(new AliCloud.DatabaseFilesystem.GetInstancesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.DbfsInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.DatabaseFilesystem.GetInstances.InvokeAsync(new AliCloud.DatabaseFilesystem.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "^my-Instance",
-        ///         }));
-        ///         this.DbfsInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("dbfsInstanceId1")]
-        ///     public Output&lt;string&gt; DbfsInstanceId1 { get; set; }
-        ///     [Output("dbfsInstanceId2")]
-        ///     public Output&lt;string&gt; DbfsInstanceId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.DatabaseFilesystem.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dbfsInstanceId1"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["dbfsInstanceId2"] = nameRegex.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:databasefilesystem/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:databasefilesystem/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the DBFS Instances of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.DatabaseFilesystem.GetInstances.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.DatabaseFilesystem.GetInstances.InvokeAsync(new AliCloud.DatabaseFilesystem.GetInstancesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.DbfsInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.DatabaseFilesystem.GetInstances.InvokeAsync(new AliCloud.DatabaseFilesystem.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "^my-Instance",
-        ///         }));
-        ///         this.DbfsInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("dbfsInstanceId1")]
-        ///     public Output&lt;string&gt; DbfsInstanceId1 { get; set; }
-        ///     [Output("dbfsInstanceId2")]
-        ///     public Output&lt;string&gt; DbfsInstanceId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.DatabaseFilesystem.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dbfsInstanceId1"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["dbfsInstanceId2"] = nameRegex.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:databasefilesystem/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:databasefilesystem/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -137,9 +133,10 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public GetInstancesArgs()
         {
         }
+        public static new GetInstancesArgs Empty => new GetInstancesArgs();
     }
 
-    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -171,6 +168,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public GetInstancesInvokeArgs()
         {
         }
+        public static new GetInstancesInvokeArgs Empty => new GetInstancesInvokeArgs();
     }
 
 

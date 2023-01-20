@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class Cluster extends pulumi.CustomResource {
@@ -112,7 +113,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
             resourceInputs["needSlb"] = args ? args.needSlb : undefined;
             resourceInputs["nodeNumber"] = args ? args.nodeNumber : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["releaseEip"] = args ? args.releaseEip : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -123,6 +124,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["vpcId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }

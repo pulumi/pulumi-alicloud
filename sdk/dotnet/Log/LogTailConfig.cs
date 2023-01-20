@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/logTailConfig:LogTailConfig")]
-    public partial class LogTailConfig : Pulumi.CustomResource
+    public partial class LogTailConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class LogTailConfigArgs : Pulumi.ResourceArgs
+    public sealed class LogTailConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
@@ -154,9 +154,10 @@ namespace Pulumi.AliCloud.Log
         public LogTailConfigArgs()
         {
         }
+        public static new LogTailConfigArgs Empty => new LogTailConfigArgs();
     }
 
-    public sealed class LogTailConfigState : Pulumi.ResourceArgs
+    public sealed class LogTailConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
@@ -203,5 +204,6 @@ namespace Pulumi.AliCloud.Log
         public LogTailConfigState()
         {
         }
+        public static new LogTailConfigState Empty => new LogTailConfigState();
     }
 }

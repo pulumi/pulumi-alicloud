@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,7 +26,7 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const cddcDedicatedHostId1 = ids.then(ids => ids.hosts?[0]?.id);
+ * export const cddcDedicatedHostId1 = ids.then(ids => ids.hosts?.[0]?.id);
  * const status = alicloud.cddc.getDedicatedHosts({
  *     dedicatedHostGroupId: "example_value",
  *     ids: [
@@ -34,7 +35,7 @@ import * as utilities from "../utilities";
  *     ],
  *     status: "1",
  * });
- * export const cddcDedicatedHostId2 = status.then(status => status.hosts?[0]?.id);
+ * export const cddcDedicatedHostId2 = status.then(status => status.hosts?.[0]?.id);
  * const zoneId = alicloud.cddc.getDedicatedHosts({
  *     dedicatedHostGroupId: "example_value",
  *     ids: [
@@ -43,7 +44,7 @@ import * as utilities from "../utilities";
  *     ],
  *     zoneId: "example_value",
  * });
- * export const cddcDedicatedHostId3 = zoneId.then(zoneId => zoneId.hosts?[0]?.id);
+ * export const cddcDedicatedHostId3 = zoneId.then(zoneId => zoneId.hosts?.[0]?.id);
  * const allocationStatus = alicloud.cddc.getDedicatedHosts({
  *     dedicatedHostGroupId: "example_value",
  *     ids: [
@@ -52,7 +53,7 @@ import * as utilities from "../utilities";
  *     ],
  *     allocationStatus: "Allocatable",
  * });
- * export const cddcDedicatedHostId4 = allocationStatus.then(allocationStatus => allocationStatus.hosts?[0]?.id);
+ * export const cddcDedicatedHostId4 = allocationStatus.then(allocationStatus => allocationStatus.hosts?.[0]?.id);
  * const hostType = alicloud.cddc.getDedicatedHosts({
  *     dedicatedHostGroupId: "example_value",
  *     ids: [
@@ -61,15 +62,12 @@ import * as utilities from "../utilities";
  *     ],
  *     hostType: "dhg_cloud_ssd",
  * });
- * export const cddcDedicatedHostId5 = hostType.then(hostType => hostType.hosts?[0]?.id);
+ * export const cddcDedicatedHostId5 = hostType.then(hostType => hostType.hosts?.[0]?.id);
  * ```
  */
 export function getDedicatedHosts(args: GetDedicatedHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", {
         "allocationStatus": args.allocationStatus,
         "dedicatedHostGroupId": args.dedicatedHostGroupId,
@@ -147,9 +145,67 @@ export interface GetDedicatedHostsResult {
     readonly tags?: {[key: string]: any};
     readonly zoneId?: string;
 }
-
+/**
+ * This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.147.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cddc.getDedicatedHosts({
+ *     dedicatedHostGroupId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const cddcDedicatedHostId1 = ids.then(ids => ids.hosts?.[0]?.id);
+ * const status = alicloud.cddc.getDedicatedHosts({
+ *     dedicatedHostGroupId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ *     status: "1",
+ * });
+ * export const cddcDedicatedHostId2 = status.then(status => status.hosts?.[0]?.id);
+ * const zoneId = alicloud.cddc.getDedicatedHosts({
+ *     dedicatedHostGroupId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ *     zoneId: "example_value",
+ * });
+ * export const cddcDedicatedHostId3 = zoneId.then(zoneId => zoneId.hosts?.[0]?.id);
+ * const allocationStatus = alicloud.cddc.getDedicatedHosts({
+ *     dedicatedHostGroupId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ *     allocationStatus: "Allocatable",
+ * });
+ * export const cddcDedicatedHostId4 = allocationStatus.then(allocationStatus => allocationStatus.hosts?.[0]?.id);
+ * const hostType = alicloud.cddc.getDedicatedHosts({
+ *     dedicatedHostGroupId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ *     hostType: "dhg_cloud_ssd",
+ * });
+ * export const cddcDedicatedHostId5 = hostType.then(hostType => hostType.hosts?.[0]?.id);
+ * ```
+ */
 export function getDedicatedHostsOutput(args: GetDedicatedHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostsResult> {
-    return pulumi.output(args).apply(a => getDedicatedHosts(a, opts))
+    return pulumi.output(args).apply((a: any) => getDedicatedHosts(a, opts))
 }
 
 /**

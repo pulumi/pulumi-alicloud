@@ -30,10 +30,6 @@ type SecretParameter struct {
 	pulumi.CustomResourceState
 
 	// The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-	// * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-	// * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-	// * `MinLength`: The minimum length of the encryption parameter.
-	// * `MaxLength`: The maximum length of the encryption parameter.
 	Constraints pulumi.StringPtrOutput `pulumi:"constraints"`
 	// The description of the encryption parameter. The description must be `1` to `200` characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -64,6 +60,13 @@ func NewSecretParameter(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
+	if args.Value != nil {
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	var resource SecretParameter
 	err := ctx.RegisterResource("alicloud:oos/secretParameter:SecretParameter", name, args, &resource, opts...)
 	if err != nil {
@@ -87,10 +90,6 @@ func GetSecretParameter(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SecretParameter resources.
 type secretParameterState struct {
 	// The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-	// * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-	// * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-	// * `MinLength`: The minimum length of the encryption parameter.
-	// * `MaxLength`: The maximum length of the encryption parameter.
 	Constraints *string `pulumi:"constraints"`
 	// The description of the encryption parameter. The description must be `1` to `200` characters in length.
 	Description *string `pulumi:"description"`
@@ -110,10 +109,6 @@ type secretParameterState struct {
 
 type SecretParameterState struct {
 	// The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-	// * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-	// * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-	// * `MinLength`: The minimum length of the encryption parameter.
-	// * `MaxLength`: The maximum length of the encryption parameter.
 	Constraints pulumi.StringPtrInput
 	// The description of the encryption parameter. The description must be `1` to `200` characters in length.
 	Description pulumi.StringPtrInput
@@ -137,10 +132,6 @@ func (SecretParameterState) ElementType() reflect.Type {
 
 type secretParameterArgs struct {
 	// The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-	// * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-	// * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-	// * `MinLength`: The minimum length of the encryption parameter.
-	// * `MaxLength`: The maximum length of the encryption parameter.
 	Constraints *string `pulumi:"constraints"`
 	// The description of the encryption parameter. The description must be `1` to `200` characters in length.
 	Description *string `pulumi:"description"`
@@ -161,10 +152,6 @@ type secretParameterArgs struct {
 // The set of arguments for constructing a SecretParameter resource.
 type SecretParameterArgs struct {
 	// The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-	// * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-	// * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-	// * `MinLength`: The minimum length of the encryption parameter.
-	// * `MaxLength`: The maximum length of the encryption parameter.
 	Constraints pulumi.StringPtrInput
 	// The description of the encryption parameter. The description must be `1` to `200` characters in length.
 	Description pulumi.StringPtrInput
@@ -270,10 +257,6 @@ func (o SecretParameterOutput) ToSecretParameterOutputWithContext(ctx context.Co
 }
 
 // The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-// * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-// * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-// * `MinLength`: The minimum length of the encryption parameter.
-// * `MaxLength`: The maximum length of the encryption parameter.
 func (o SecretParameterOutput) Constraints() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretParameter) pulumi.StringPtrOutput { return v.Constraints }).(pulumi.StringPtrOutput)
 }

@@ -23,40 +23,40 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultSystemGroup = new AliCloud.VideoSurveillance.SystemGroup("defaultSystemGroup", new()
         ///     {
-        ///         var defaultSystemGroup = new AliCloud.VideoSurveillance.SystemGroup("defaultSystemGroup", new AliCloud.VideoSurveillance.SystemGroupArgs
-        ///         {
-        ///             GroupName = "groupname",
-        ///             InProtocol = "rtmp",
-        ///             OutProtocol = "flv",
-        ///             PlayDomain = "your_plan_domain",
-        ///             PushDomain = "your_push_domain",
-        ///         });
-        ///         var defaultSystemGroups = AliCloud.VideoSurveillance.GetSystemGroups.Invoke(new AliCloud.VideoSurveillance.GetSystemGroupsInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultSystemGroup.Id,
-        ///             },
-        ///         });
-        ///         this.VsGroup = defaultSystemGroups.Apply(defaultSystemGroups =&gt; defaultSystemGroups.Ids?[0]);
-        ///     }
+        ///         GroupName = "groupname",
+        ///         InProtocol = "rtmp",
+        ///         OutProtocol = "flv",
+        ///         PlayDomain = "your_plan_domain",
+        ///         PushDomain = "your_push_domain",
+        ///     });
         /// 
-        ///     [Output("vsGroup")]
-        ///     public Output&lt;string&gt; VsGroup { get; set; }
-        /// }
+        ///     var defaultSystemGroups = AliCloud.VideoSurveillance.GetSystemGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultSystemGroup.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vsGroup"] = defaultSystemGroups.Apply(getSystemGroupsResult =&gt; getSystemGroupsResult.Ids[0]),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSystemGroupsResult> InvokeAsync(GetSystemGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSystemGroupsResult>("alicloud:videosurveillance/getSystemGroups:getSystemGroups", args ?? new GetSystemGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSystemGroupsResult>("alicloud:videosurveillance/getSystemGroups:getSystemGroups", args ?? new GetSystemGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
@@ -70,44 +70,44 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultSystemGroup = new AliCloud.VideoSurveillance.SystemGroup("defaultSystemGroup", new()
         ///     {
-        ///         var defaultSystemGroup = new AliCloud.VideoSurveillance.SystemGroup("defaultSystemGroup", new AliCloud.VideoSurveillance.SystemGroupArgs
-        ///         {
-        ///             GroupName = "groupname",
-        ///             InProtocol = "rtmp",
-        ///             OutProtocol = "flv",
-        ///             PlayDomain = "your_plan_domain",
-        ///             PushDomain = "your_push_domain",
-        ///         });
-        ///         var defaultSystemGroups = AliCloud.VideoSurveillance.GetSystemGroups.Invoke(new AliCloud.VideoSurveillance.GetSystemGroupsInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultSystemGroup.Id,
-        ///             },
-        ///         });
-        ///         this.VsGroup = defaultSystemGroups.Apply(defaultSystemGroups =&gt; defaultSystemGroups.Ids?[0]);
-        ///     }
+        ///         GroupName = "groupname",
+        ///         InProtocol = "rtmp",
+        ///         OutProtocol = "flv",
+        ///         PlayDomain = "your_plan_domain",
+        ///         PushDomain = "your_push_domain",
+        ///     });
         /// 
-        ///     [Output("vsGroup")]
-        ///     public Output&lt;string&gt; VsGroup { get; set; }
-        /// }
+        ///     var defaultSystemGroups = AliCloud.VideoSurveillance.GetSystemGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultSystemGroup.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vsGroup"] = defaultSystemGroups.Apply(getSystemGroupsResult =&gt; getSystemGroupsResult.Ids[0]),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSystemGroupsResult> Invoke(GetSystemGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSystemGroupsResult>("alicloud:videosurveillance/getSystemGroups:getSystemGroups", args ?? new GetSystemGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSystemGroupsResult>("alicloud:videosurveillance/getSystemGroups:getSystemGroups", args ?? new GetSystemGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSystemGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetSystemGroupsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -151,9 +151,10 @@ namespace Pulumi.AliCloud.VideoSurveillance
         public GetSystemGroupsArgs()
         {
         }
+        public static new GetSystemGroupsArgs Empty => new GetSystemGroupsArgs();
     }
 
-    public sealed class GetSystemGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSystemGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -197,6 +198,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         public GetSystemGroupsInvokeArgs()
         {
         }
+        public static new GetSystemGroupsInvokeArgs Empty => new GetSystemGroupsInvokeArgs();
     }
 
 

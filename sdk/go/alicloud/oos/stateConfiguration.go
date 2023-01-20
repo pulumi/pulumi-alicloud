@@ -44,7 +44,7 @@ import (
 //				Description:        pulumi.Any(_var.Name),
 //				ScheduleType:       pulumi.String("rate"),
 //				ScheduleExpression: pulumi.String("1 hour"),
-//				ResourceGroupId:    pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:    *pulumi.String(defaultResourceGroups.Ids[0]),
 //				Targets:            pulumi.String("{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}"),
 //				Parameters:         pulumi.String("{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}"),
 //				Tags: pulumi.AnyMap{

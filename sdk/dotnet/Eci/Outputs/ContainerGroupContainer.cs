@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         public readonly double? Cpu;
         /// <summary>
@@ -42,17 +42,25 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string? ImagePullPolicy;
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// The health check of the container.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ContainerGroupContainerLivenessProbe> LivenessProbes;
+        /// <summary>
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         public readonly double? Memory;
         /// <summary>
-        /// The name of the security context that the container group runs.
+        /// The name of the volume.
         /// </summary>
         public readonly string Name;
         /// <summary>
         /// The structure of port.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerPort> Ports;
+        /// <summary>
+        /// The health check of the container.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ContainerGroupContainerReadinessProbe> ReadinessProbes;
         public readonly bool? Ready;
         public readonly int? RestartCount;
         /// <summary>
@@ -80,11 +88,15 @@ namespace Pulumi.AliCloud.Eci.Outputs
 
             string? imagePullPolicy,
 
+            ImmutableArray<Outputs.ContainerGroupContainerLivenessProbe> livenessProbes,
+
             double? memory,
 
             string name,
 
             ImmutableArray<Outputs.ContainerGroupContainerPort> ports,
+
+            ImmutableArray<Outputs.ContainerGroupContainerReadinessProbe> readinessProbes,
 
             bool? ready,
 
@@ -101,9 +113,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
             Gpu = gpu;
             Image = image;
             ImagePullPolicy = imagePullPolicy;
+            LivenessProbes = livenessProbes;
             Memory = memory;
             Name = name;
             Ports = ports;
+            ReadinessProbes = readinessProbes;
             Ready = ready;
             RestartCount = restartCount;
             VolumeMounts = volumeMounts;

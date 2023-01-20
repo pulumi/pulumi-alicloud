@@ -111,10 +111,9 @@ class GetTopicSubscriptionsSubscriptionResult(dict):
                  topic_name: str):
         """
         :param str endpoint: Describe the terminal address of the message received in this subscription.
-               * `filter_tag`- A string to filter resulting messages of the topic by their message tag.
+        :param str filter_tag: A string to filter resulting messages of the topic by their message tag.
         :param str id: The ID of the topic subscription. The value is set to `name`.
         :param str name: The name of the subscription.
-               * `topic_name`- The topic which The subscription belongs to was named with the name.
         :param str notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users.
         :param str notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails.
         :param str topic_name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
@@ -132,13 +131,15 @@ class GetTopicSubscriptionsSubscriptionResult(dict):
     def endpoint(self) -> str:
         """
         Describe the terminal address of the message received in this subscription.
-        * `filter_tag`- A string to filter resulting messages of the topic by their message tag.
         """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="filterTag")
     def filter_tag(self) -> str:
+        """
+        A string to filter resulting messages of the topic by their message tag.
+        """
         return pulumi.get(self, "filter_tag")
 
     @property
@@ -154,7 +155,6 @@ class GetTopicSubscriptionsSubscriptionResult(dict):
     def name(self) -> str:
         """
         The name of the subscription.
-        * `topic_name`- The topic which The subscription belongs to was named with the name.
         """
         return pulumi.get(self, "name")
 

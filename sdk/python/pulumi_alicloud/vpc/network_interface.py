@@ -16,6 +16,8 @@ class NetworkInterfaceArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
@@ -44,6 +46,10 @@ class NetworkInterfaceArgs:
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv6_address_count is not None:
+            pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+        if ipv6_addresses is not None:
+            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
@@ -109,6 +115,24 @@ class NetworkInterfaceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipv6AddressCount")
+    def ipv6_address_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ipv6_address_count")
+
+    @ipv6_address_count.setter
+    def ipv6_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv6_address_count", value)
+
+    @property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ipv6_addresses")
+
+    @ipv6_addresses.setter
+    def ipv6_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv6_addresses", value)
 
     @property
     @pulumi.getter
@@ -253,6 +277,8 @@ class NetworkInterfaceArgs:
 class _NetworkInterfaceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mac: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
@@ -284,6 +310,10 @@ class _NetworkInterfaceState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv6_address_count is not None:
+            pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+        if ipv6_addresses is not None:
+            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
         if mac is not None:
             pulumi.set(__self__, "mac", mac)
         if name is not None:
@@ -343,6 +373,24 @@ class _NetworkInterfaceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipv6AddressCount")
+    def ipv6_address_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ipv6_address_count")
+
+    @ipv6_address_count.setter
+    def ipv6_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv6_address_count", value)
+
+    @property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ipv6_addresses")
+
+    @ipv6_addresses.setter
+    def ipv6_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv6_addresses", value)
 
     @property
     @pulumi.getter
@@ -522,6 +570,8 @@ class NetworkInterface(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
@@ -558,8 +608,9 @@ class NetworkInterface(pulumi.CustomResource):
             vpc_id=vpc.id)
         group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
         default_network_interface = alicloud.vpc.NetworkInterface("defaultNetworkInterface",
+            network_interface_name=name,
             vswitch_id=vswitch.id,
-            security_groups=[group.id],
+            security_group_ids=[group.id],
             private_ip="192.168.0.2",
             private_ips_count=3)
         ```
@@ -611,8 +662,9 @@ class NetworkInterface(pulumi.CustomResource):
             vpc_id=vpc.id)
         group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
         default_network_interface = alicloud.vpc.NetworkInterface("defaultNetworkInterface",
+            network_interface_name=name,
             vswitch_id=vswitch.id,
-            security_groups=[group.id],
+            security_group_ids=[group.id],
             private_ip="192.168.0.2",
             private_ips_count=3)
         ```
@@ -641,6 +693,8 @@ class NetworkInterface(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
@@ -665,6 +719,8 @@ class NetworkInterface(pulumi.CustomResource):
             __props__ = NetworkInterfaceArgs.__new__(NetworkInterfaceArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["ipv6_address_count"] = ipv6_address_count
+            __props__.__dict__["ipv6_addresses"] = ipv6_addresses
             if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
                 pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
@@ -709,6 +765,8 @@ class NetworkInterface(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            ipv6_address_count: Optional[pulumi.Input[int]] = None,
+            ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             mac: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interface_name: Optional[pulumi.Input[str]] = None,
@@ -748,6 +806,8 @@ class NetworkInterface(pulumi.CustomResource):
         __props__ = _NetworkInterfaceState.__new__(_NetworkInterfaceState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["ipv6_address_count"] = ipv6_address_count
+        __props__.__dict__["ipv6_addresses"] = ipv6_addresses
         __props__.__dict__["mac"] = mac
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interface_name"] = network_interface_name
@@ -773,6 +833,16 @@ class NetworkInterface(pulumi.CustomResource):
         Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="ipv6AddressCount")
+    def ipv6_address_count(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "ipv6_address_count")
+
+    @property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> pulumi.Output[Sequence[str]]:
+        return pulumi.get(self, "ipv6_addresses")
 
     @property
     @pulumi.getter

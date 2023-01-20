@@ -21,32 +21,31 @@ namespace Pulumi.AliCloud.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Dns.GetAlidnsInstances.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Dns.GetAlidnsInstances.InvokeAsync(new AliCloud.Dns.GetAlidnsInstancesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "dns-cn-oew1npk****",
-        ///             },
-        ///         }));
-        ///         this.FirstInstanceId = example.Apply(example =&gt; example.Instances?[0]?.Id);
-        ///     }
+        ///             "dns-cn-oew1npk****",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstInstanceId")]
-        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceId"] = example.Apply(getAlidnsInstancesResult =&gt; getAlidnsInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlidnsInstancesResult> InvokeAsync(GetAlidnsInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlidnsInstancesResult>("alicloud:dns/getAlidnsInstances:getAlidnsInstances", args ?? new GetAlidnsInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlidnsInstancesResult>("alicloud:dns/getAlidnsInstances:getAlidnsInstances", args ?? new GetAlidnsInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of Alidns instances in an Alibaba Cloud account according to the specified filters.
@@ -58,36 +57,35 @@ namespace Pulumi.AliCloud.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Dns.GetAlidnsInstances.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Dns.GetAlidnsInstances.InvokeAsync(new AliCloud.Dns.GetAlidnsInstancesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "dns-cn-oew1npk****",
-        ///             },
-        ///         }));
-        ///         this.FirstInstanceId = example.Apply(example =&gt; example.Instances?[0]?.Id);
-        ///     }
+        ///             "dns-cn-oew1npk****",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstInstanceId")]
-        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceId"] = example.Apply(getAlidnsInstancesResult =&gt; getAlidnsInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAlidnsInstancesResult> Invoke(GetAlidnsInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAlidnsInstancesResult>("alicloud:dns/getAlidnsInstances:getAlidnsInstances", args ?? new GetAlidnsInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAlidnsInstancesResult>("alicloud:dns/getAlidnsInstances:getAlidnsInstances", args ?? new GetAlidnsInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAlidnsInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetAlidnsInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of domain.
@@ -125,9 +123,10 @@ namespace Pulumi.AliCloud.Dns
         public GetAlidnsInstancesArgs()
         {
         }
+        public static new GetAlidnsInstancesArgs Empty => new GetAlidnsInstancesArgs();
     }
 
-    public sealed class GetAlidnsInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAlidnsInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of domain.
@@ -165,6 +164,7 @@ namespace Pulumi.AliCloud.Dns
         public GetAlidnsInstancesInvokeArgs()
         {
         }
+        public static new GetAlidnsInstancesInvokeArgs Empty => new GetAlidnsInstancesInvokeArgs();
     }
 
 

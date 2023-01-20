@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.Rds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Rds.GetRdsBackups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Rds.GetRdsBackups.InvokeAsync(new AliCloud.Rds.GetRdsBackupsArgs
-        ///         {
-        ///             DbInstanceId = "example_value",
-        ///         }));
-        ///         this.FirstRdsBackupId = example.Apply(example =&gt; example.Backups?[0]?.Id);
-        ///     }
+        ///         DbInstanceId = "example_value",
+        ///     });
         /// 
-        ///     [Output("firstRdsBackupId")]
-        ///     public Output&lt;string&gt; FirstRdsBackupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRdsBackupId"] = example.Apply(getRdsBackupsResult =&gt; getRdsBackupsResult.Backups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRdsBackupsResult> InvokeAsync(GetRdsBackupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRdsBackupsResult>("alicloud:rds/getRdsBackups:getRdsBackups", args ?? new GetRdsBackupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRdsBackupsResult>("alicloud:rds/getRdsBackups:getRdsBackups", args ?? new GetRdsBackupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Rds Backups of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.Rds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Rds.GetRdsBackups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Rds.GetRdsBackups.InvokeAsync(new AliCloud.Rds.GetRdsBackupsArgs
-        ///         {
-        ///             DbInstanceId = "example_value",
-        ///         }));
-        ///         this.FirstRdsBackupId = example.Apply(example =&gt; example.Backups?[0]?.Id);
-        ///     }
+        ///         DbInstanceId = "example_value",
+        ///     });
         /// 
-        ///     [Output("firstRdsBackupId")]
-        ///     public Output&lt;string&gt; FirstRdsBackupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRdsBackupId"] = example.Apply(getRdsBackupsResult =&gt; getRdsBackupsResult.Backups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRdsBackupsResult> Invoke(GetRdsBackupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRdsBackupsResult>("alicloud:rds/getRdsBackups:getRdsBackups", args ?? new GetRdsBackupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRdsBackupsResult>("alicloud:rds/getRdsBackups:getRdsBackups", args ?? new GetRdsBackupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRdsBackupsArgs : Pulumi.InvokeArgs
+    public sealed class GetRdsBackupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// BackupMode.
@@ -142,9 +140,10 @@ namespace Pulumi.AliCloud.Rds
         public GetRdsBackupsArgs()
         {
         }
+        public static new GetRdsBackupsArgs Empty => new GetRdsBackupsArgs();
     }
 
-    public sealed class GetRdsBackupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRdsBackupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// BackupMode.
@@ -201,6 +200,7 @@ namespace Pulumi.AliCloud.Rds
         public GetRdsBackupsInvokeArgs()
         {
         }
+        public static new GetRdsBackupsInvokeArgs Empty => new GetRdsBackupsInvokeArgs();
     }
 
 

@@ -21,32 +21,31 @@ namespace Pulumi.AliCloud.Dfs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "example_name";
+    ///     var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("defaultAccessGroup", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "example_name";
-    ///         var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("defaultAccessGroup", new AliCloud.Dfs.AccessGroupArgs
-    ///         {
-    ///             NetworkType = "VPC",
-    ///             AccessGroupName = name,
-    ///             Description = name,
-    ///         });
-    ///         var defaultAccessRule = new AliCloud.Dfs.AccessRule("defaultAccessRule", new AliCloud.Dfs.AccessRuleArgs
-    ///         {
-    ///             NetworkSegment = "192.0.2.0/24",
-    ///             AccessGroupId = defaultAccessGroup.Id,
-    ///             Description = name,
-    ///             RwAccessType = "RDWR",
-    ///             Priority = 10,
-    ///         });
-    ///     }
+    ///         NetworkType = "VPC",
+    ///         AccessGroupName = name,
+    ///         Description = name,
+    ///     });
     /// 
-    /// }
+    ///     var defaultAccessRule = new AliCloud.Dfs.AccessRule("defaultAccessRule", new()
+    ///     {
+    ///         NetworkSegment = "192.0.2.0/24",
+    ///         AccessGroupId = defaultAccessGroup.Id,
+    ///         Description = name,
+    ///         RwAccessType = "RDWR",
+    ///         Priority = 10,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +57,7 @@ namespace Pulumi.AliCloud.Dfs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dfs/accessRule:AccessRule")]
-    public partial class AccessRule : Pulumi.CustomResource
+    public partial class AccessRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The resource ID of Access Group.
@@ -140,7 +139,7 @@ namespace Pulumi.AliCloud.Dfs
         }
     }
 
-    public sealed class AccessRuleArgs : Pulumi.ResourceArgs
+    public sealed class AccessRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource ID of Access Group.
@@ -175,9 +174,10 @@ namespace Pulumi.AliCloud.Dfs
         public AccessRuleArgs()
         {
         }
+        public static new AccessRuleArgs Empty => new AccessRuleArgs();
     }
 
-    public sealed class AccessRuleState : Pulumi.ResourceArgs
+    public sealed class AccessRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource ID of Access Group.
@@ -218,5 +218,6 @@ namespace Pulumi.AliCloud.Dfs
         public AccessRuleState()
         {
         }
+        public static new AccessRuleState Empty => new AccessRuleState();
     }
 }

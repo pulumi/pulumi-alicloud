@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstFnfFlowId = example.then(example => example.flows?[0]?.id);
+ * export const firstFnfFlowId = example.then(example => example.flows?.[0]?.id);
  * ```
  */
 export function getFlows(args?: GetFlowsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:fnf/getFlows:getFlows", {
         "ids": args.ids,
         "limit": args.limit,
@@ -74,9 +72,28 @@ export interface GetFlowsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Fnf Flows of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.105.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.fnf.getFlows({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstFnfFlowId = example.then(example => example.flows?.[0]?.id);
+ * ```
+ */
 export function getFlowsOutput(args?: GetFlowsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowsResult> {
-    return pulumi.output(args).apply(a => getFlows(a, opts))
+    return pulumi.output(args).apply((a: any) => getFlows(a, opts))
 }
 
 /**

@@ -21,26 +21,25 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.ResourceManager.GetAccounts.InvokeAsync());
-        ///         this.FirstAccountId = @default.Apply(@default =&gt; @default.Accounts?[0]?.Id);
-        ///     }
+        ///     var @default = AliCloud.ResourceManager.GetAccounts.Invoke();
         /// 
-        ///     [Output("firstAccountId")]
-        ///     public Output&lt;string&gt; FirstAccountId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAccountId"] = @default.Apply(getAccountsResult =&gt; getAccountsResult).Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:resourcemanager/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:resourcemanager/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
@@ -52,30 +51,29 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @default = Output.Create(AliCloud.ResourceManager.GetAccounts.InvokeAsync());
-        ///         this.FirstAccountId = @default.Apply(@default =&gt; @default.Accounts?[0]?.Id);
-        ///     }
+        ///     var @default = AliCloud.ResourceManager.GetAccounts.Invoke();
         /// 
-        ///     [Output("firstAccountId")]
-        ///     public Output&lt;string&gt; FirstAccountId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAccountId"] = @default.Apply(getAccountsResult =&gt; getAccountsResult).Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:resourcemanager/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:resourcemanager/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAccountsArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -107,9 +105,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetAccountsArgs()
         {
         }
+        public static new GetAccountsArgs Empty => new GetAccountsArgs();
     }
 
-    public sealed class GetAccountsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -141,6 +140,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetAccountsInvokeArgs()
         {
         }
+        public static new GetAccountsInvokeArgs Empty => new GetAccountsInvokeArgs();
     }
 
 

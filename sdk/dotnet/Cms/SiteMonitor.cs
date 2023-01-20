@@ -20,31 +20,29 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new AliCloud.Cms.SiteMonitor("basic", new()
     ///     {
-    ///         var basic = new AliCloud.Cms.SiteMonitor("basic", new AliCloud.Cms.SiteMonitorArgs
+    ///         Address = "http://www.alibabacloud.com",
+    ///         Interval = 5,
+    ///         IspCities = new[]
     ///         {
-    ///             Address = "http://www.alibabacloud.com",
-    ///             Interval = 5,
-    ///             IspCities = 
+    ///             new AliCloud.Cms.Inputs.SiteMonitorIspCityArgs
     ///             {
-    ///                 new AliCloud.Cms.Inputs.SiteMonitorIspCityArgs
-    ///                 {
-    ///                     City = "546",
-    ///                     Isp = "465",
-    ///                 },
+    ///                 City = "546",
+    ///                 Isp = "465",
     ///             },
-    ///             TaskName = "tf-testAccCmsSiteMonitor_basic",
-    ///             TaskType = "HTTP",
-    ///         });
-    ///     }
+    ///         },
+    ///         TaskName = "tf-testAccCmsSiteMonitor_basic",
+    ///         TaskType = "HTTP",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/siteMonitor:SiteMonitor")]
-    public partial class SiteMonitor : Pulumi.CustomResource
+    public partial class SiteMonitor : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The URL or IP address monitored by the site monitoring task.
@@ -153,7 +151,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class SiteMonitorArgs : Pulumi.ResourceArgs
+    public sealed class SiteMonitorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URL or IP address monitored by the site monitoring task.
@@ -212,9 +210,10 @@ namespace Pulumi.AliCloud.Cms
         public SiteMonitorArgs()
         {
         }
+        public static new SiteMonitorArgs Empty => new SiteMonitorArgs();
     }
 
-    public sealed class SiteMonitorState : Pulumi.ResourceArgs
+    public sealed class SiteMonitorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URL or IP address monitored by the site monitoring task.
@@ -282,5 +281,6 @@ namespace Pulumi.AliCloud.Cms
         public SiteMonitorState()
         {
         }
+        public static new SiteMonitorState Empty => new SiteMonitorState();
     }
 }

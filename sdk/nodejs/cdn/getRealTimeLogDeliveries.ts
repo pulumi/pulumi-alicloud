@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,15 +22,12 @@ import * as utilities from "../utilities";
  * const example = alicloud.cdn.getRealTimeLogDeliveries({
  *     domain: "example_value",
  * });
- * export const cdnRealTimeLogDelivery1 = example.then(example => example.deliveries?[0]?.id);
+ * export const cdnRealTimeLogDelivery1 = example.then(example => example.deliveries?.[0]?.id);
  * ```
  */
 export function getRealTimeLogDeliveries(args: GetRealTimeLogDeliveriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRealTimeLogDeliveriesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", {
         "domain": args.domain,
         "outputFile": args.outputFile,
@@ -47,7 +45,7 @@ export interface GetRealTimeLogDeliveriesArgs {
     domain: string;
     outputFile?: string;
     /**
-     * -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
      */
     status?: string;
 }
@@ -65,9 +63,27 @@ export interface GetRealTimeLogDeliveriesResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.134.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cdn.getRealTimeLogDeliveries({
+ *     domain: "example_value",
+ * });
+ * export const cdnRealTimeLogDelivery1 = example.then(example => example.deliveries?.[0]?.id);
+ * ```
+ */
 export function getRealTimeLogDeliveriesOutput(args: GetRealTimeLogDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRealTimeLogDeliveriesResult> {
-    return pulumi.output(args).apply(a => getRealTimeLogDeliveries(a, opts))
+    return pulumi.output(args).apply((a: any) => getRealTimeLogDeliveries(a, opts))
 }
 
 /**
@@ -80,7 +96,7 @@ export interface GetRealTimeLogDeliveriesOutputArgs {
     domain: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
-     * -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
      */
     status?: pulumi.Input<string>;
 }

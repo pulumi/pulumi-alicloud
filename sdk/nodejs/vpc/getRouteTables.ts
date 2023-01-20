@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,30 +19,25 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "route-tables-datasource-example-name";
- *
- * const fooNetwork = new alicloud.vpc.Network("foo", {
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
  *     cidrBlock: "172.16.0.0/12",
  *     vpcName: name,
  * });
- * const fooRouteTable = new alicloud.vpc.RouteTable("foo", {
+ * const fooRouteTable = new alicloud.vpc.RouteTable("fooRouteTable", {
  *     description: name,
  *     routeTableName: name,
  *     vpcId: fooNetwork.id,
  * });
- * const fooRouteTables = fooRouteTable.id.apply(id => alicloud.vpc.getRouteTables({
- *     ids: [id],
- * }));
- *
- * export const routeTableIds = fooRouteTables.ids!;
+ * const fooRouteTables = alicloud.vpc.getRouteTablesOutput({
+ *     ids: [fooRouteTable.id],
+ * });
+ * export const routeTableIds = fooRouteTables.apply(fooRouteTables => fooRouteTables.ids);
  * ```
  */
 export function getRouteTables(args?: GetRouteTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTablesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getRouteTables:getRouteTables", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -154,9 +150,36 @@ export interface GetRouteTablesResult {
      */
     readonly vpcId?: string;
 }
-
+/**
+ * This data source provides a list of Route Tables owned by an Alibaba Cloud account.
+ *
+ * > **NOTE:** Available in 1.36.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "route-tables-datasource-example-name";
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
+ * });
+ * const fooRouteTable = new alicloud.vpc.RouteTable("fooRouteTable", {
+ *     description: name,
+ *     routeTableName: name,
+ *     vpcId: fooNetwork.id,
+ * });
+ * const fooRouteTables = alicloud.vpc.getRouteTablesOutput({
+ *     ids: [fooRouteTable.id],
+ * });
+ * export const routeTableIds = fooRouteTables.apply(fooRouteTables => fooRouteTables.ids);
+ * ```
+ */
 export function getRouteTablesOutput(args?: GetRouteTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteTablesResult> {
-    return pulumi.output(args).apply(a => getRouteTables(a, opts))
+    return pulumi.output(args).apply((a: any) => getRouteTables(a, opts))
 }
 
 /**

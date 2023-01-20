@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,18 +17,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.resourcemanager.getPolicyAttachments());
- *
- * export const firstAttachmentId = example.attachments[0].id;
+ * const example = alicloud.resourcemanager.getPolicyAttachments({});
+ * export const firstAttachmentId = example.then(example => example.attachments?.[0]?.id);
  * ```
  */
 export function getPolicyAttachments(args?: GetPolicyAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyAttachmentsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", {
         "language": args.language,
         "outputFile": args.outputFile,
@@ -88,18 +85,44 @@ export interface GetPolicyAttachmentsResult {
     readonly ids: string[];
     readonly language?: string;
     readonly outputFile?: string;
+    /**
+     * The name of the policy.
+     */
     readonly policyName?: string;
+    /**
+     * The type of the policy.
+     */
     readonly policyType?: string;
+    /**
+     * The name of the object to which the policy is attached.
+     */
     readonly principalName?: string;
+    /**
+     * The type of the object to which the policy is attached.
+     */
     readonly principalType?: string;
     /**
      * The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
      */
     readonly resourceGroupId?: string;
 }
-
+/**
+ * This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
+ *
+ * > **NOTE:**  Available in 1.93.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.resourcemanager.getPolicyAttachments({});
+ * export const firstAttachmentId = example.then(example => example.attachments?.[0]?.id);
+ * ```
+ */
 export function getPolicyAttachmentsOutput(args?: GetPolicyAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyAttachmentsResult> {
-    return pulumi.output(args).apply(a => getPolicyAttachments(a, opts))
+    return pulumi.output(args).apply((a: any) => getPolicyAttachments(a, opts))
 }
 
 /**

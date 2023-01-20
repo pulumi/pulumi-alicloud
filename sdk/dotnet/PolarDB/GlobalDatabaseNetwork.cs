@@ -21,45 +21,47 @@ namespace Pulumi.AliCloud.PolarDB
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = defaultNetworks.Apply(defaultNetworks =&gt; Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///         {
-    ///             VpcId = defaultNetworks.Ids?[0],
-    ///         })));
-    ///         var defaultNodeClasses = defaultSwitches.Apply(defaultSwitches =&gt; Output.Create(AliCloud.PolarDB.GetNodeClasses.InvokeAsync(new AliCloud.PolarDB.GetNodeClassesArgs
-    ///         {
-    ///             ZoneId = defaultSwitches.Vswitches?[0]?.ZoneId,
-    ///             PayType = "PostPaid",
-    ///             DbType = "MySQL",
-    ///             DbVersion = "8.0",
-    ///         })));
-    ///         var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new AliCloud.PolarDB.ClusterArgs
-    ///         {
-    ///             DbType = "MySQL",
-    ///             DbVersion = "8.0",
-    ///             PayType = "PostPaid",
-    ///             DbNodeClass = defaultNodeClasses.Apply(defaultNodeClasses =&gt; defaultNodeClasses.Classes?[0]?.SupportedEngines?[0]?.AvailableResources?[0]?.DbNodeClass),
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             Description = "example_value",
-    ///         });
-    ///         var defaultGlobalDatabaseNetwork = new AliCloud.PolarDB.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", new AliCloud.PolarDB.GlobalDatabaseNetworkArgs
-    ///         {
-    ///             DbClusterId = defaultCluster.Id,
-    ///             Description = "example_value",
-    ///         });
-    ///     }
+    ///         NameRegex = "default-NODELETING",
+    ///     });
     /// 
-    /// }
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultNodeClasses = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
+    ///         PayType = "PostPaid",
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new()
+    ///     {
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         PayType = "PostPaid",
+    ///         DbNodeClass = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         Description = "example_value",
+    ///     });
+    /// 
+    ///     var defaultGlobalDatabaseNetwork = new AliCloud.PolarDB.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", new()
+    ///     {
+    ///         DbClusterId = defaultCluster.Id,
+    ///         Description = "example_value",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +73,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork")]
-    public partial class GlobalDatabaseNetwork : Pulumi.CustomResource
+    public partial class GlobalDatabaseNetwork : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the primary cluster.
@@ -135,7 +137,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
     }
 
-    public sealed class GlobalDatabaseNetworkArgs : Pulumi.ResourceArgs
+    public sealed class GlobalDatabaseNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the primary cluster.
@@ -152,9 +154,10 @@ namespace Pulumi.AliCloud.PolarDB
         public GlobalDatabaseNetworkArgs()
         {
         }
+        public static new GlobalDatabaseNetworkArgs Empty => new GlobalDatabaseNetworkArgs();
     }
 
-    public sealed class GlobalDatabaseNetworkState : Pulumi.ResourceArgs
+    public sealed class GlobalDatabaseNetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the primary cluster.
@@ -177,5 +180,6 @@ namespace Pulumi.AliCloud.PolarDB
         public GlobalDatabaseNetworkState()
         {
         }
+        public static new GlobalDatabaseNetworkState Empty => new GlobalDatabaseNetworkState();
     }
 }

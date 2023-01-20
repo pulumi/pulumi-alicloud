@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,23 +17,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const resources = pulumi.output(alicloud.rds.getInstanceEngines({
+ * const resources = alicloud.rds.getInstanceEngines({
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceChargeType: "PostPaid",
  *     outputFile: "./engines.txt",
- * }));
- *
- * export const firstDbCategory = resources.instanceEngines[0].category;
+ * });
+ * export const firstDbCategory = resources.then(resources => resources.instanceEngines?.[0]?.category);
  * ```
  */
 export function getInstanceEngines(args?: GetInstanceEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceEnginesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getInstanceEngines:getInstanceEngines", {
         "category": args.category,
         "dbInstanceStorageType": args.dbInstanceStorageType,
@@ -114,9 +111,28 @@ export interface GetInstanceEnginesResult {
     readonly outputFile?: string;
     readonly zoneId?: string;
 }
-
+/**
+ * This data source provides the RDS instance engines resource available info of Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.46.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const resources = alicloud.rds.getInstanceEngines({
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     instanceChargeType: "PostPaid",
+ *     outputFile: "./engines.txt",
+ * });
+ * export const firstDbCategory = resources.then(resources => resources.instanceEngines?.[0]?.category);
+ * ```
+ */
 export function getInstanceEnginesOutput(args?: GetInstanceEnginesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceEnginesResult> {
-    return pulumi.output(args).apply(a => getInstanceEngines(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceEngines(a, opts))
 }
 
 /**

@@ -116,6 +116,1709 @@ func (o AddressBookEcsTagArrayOutput) Index(i pulumi.IntInput) AddressBookEcsTag
 	}).(AddressBookEcsTagOutput)
 }
 
+type FirewallVpcFirewallCenLocalVpc struct {
+	// The connection ID of the network instance.
+	AttachmentId *string `pulumi:"attachmentId"`
+	// The connection name of the network instance.
+	AttachmentName *string `pulumi:"attachmentName"`
+	// The list of network segments protected by the VPC firewall.
+	DefendCidrLists []string `pulumi:"defendCidrLists"`
+	// List of elastic network cards.
+	EniLists        []FirewallVpcFirewallCenLocalVpcEniList `pulumi:"eniLists"`
+	ManualVswitchId *string                                 `pulumi:"manualVswitchId"`
+	// The ID of the VPC instance that created the VPC firewall.
+	NetworkInstanceId string `pulumi:"networkInstanceId"`
+	// The name of the network instance.
+	NetworkInstanceName *string `pulumi:"networkInstanceName"`
+	// The type of the network instance. Value: **VPC * *.
+	NetworkInstanceType *string `pulumi:"networkInstanceType"`
+	// The UID of the Alibaba Cloud account to which the VPC belongs.
+	OwnerId *string `pulumi:"ownerId"`
+	// The region ID of the VPC.
+	RegionNo *string `pulumi:"regionNo"`
+	// Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
+	RouteMode *string `pulumi:"routeMode"`
+	// Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
+	SupportManualMode *string `pulumi:"supportManualMode"`
+	// The ID of the CEN-TR instance.
+	TransitRouterId *string `pulumi:"transitRouterId"`
+	// The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
+	TransitRouterType *string `pulumi:"transitRouterType"`
+	// The VPC network segment list.
+	VpcCidrTableLists []FirewallVpcFirewallCenLocalVpcVpcCidrTableList `pulumi:"vpcCidrTableLists"`
+	// The ID of the VPC instance.
+	VpcId *string `pulumi:"vpcId"`
+	// The instance name of the VPC.
+	VpcName *string `pulumi:"vpcName"`
+}
+
+// FirewallVpcFirewallCenLocalVpcInput is an input type that accepts FirewallVpcFirewallCenLocalVpcArgs and FirewallVpcFirewallCenLocalVpcOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallCenLocalVpcInput` via:
+//
+//	FirewallVpcFirewallCenLocalVpcArgs{...}
+type FirewallVpcFirewallCenLocalVpcInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallCenLocalVpcOutput() FirewallVpcFirewallCenLocalVpcOutput
+	ToFirewallVpcFirewallCenLocalVpcOutputWithContext(context.Context) FirewallVpcFirewallCenLocalVpcOutput
+}
+
+type FirewallVpcFirewallCenLocalVpcArgs struct {
+	// The connection ID of the network instance.
+	AttachmentId pulumi.StringPtrInput `pulumi:"attachmentId"`
+	// The connection name of the network instance.
+	AttachmentName pulumi.StringPtrInput `pulumi:"attachmentName"`
+	// The list of network segments protected by the VPC firewall.
+	DefendCidrLists pulumi.StringArrayInput `pulumi:"defendCidrLists"`
+	// List of elastic network cards.
+	EniLists        FirewallVpcFirewallCenLocalVpcEniListArrayInput `pulumi:"eniLists"`
+	ManualVswitchId pulumi.StringPtrInput                           `pulumi:"manualVswitchId"`
+	// The ID of the VPC instance that created the VPC firewall.
+	NetworkInstanceId pulumi.StringInput `pulumi:"networkInstanceId"`
+	// The name of the network instance.
+	NetworkInstanceName pulumi.StringPtrInput `pulumi:"networkInstanceName"`
+	// The type of the network instance. Value: **VPC * *.
+	NetworkInstanceType pulumi.StringPtrInput `pulumi:"networkInstanceType"`
+	// The UID of the Alibaba Cloud account to which the VPC belongs.
+	OwnerId pulumi.StringPtrInput `pulumi:"ownerId"`
+	// The region ID of the VPC.
+	RegionNo pulumi.StringPtrInput `pulumi:"regionNo"`
+	// Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
+	RouteMode pulumi.StringPtrInput `pulumi:"routeMode"`
+	// Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
+	SupportManualMode pulumi.StringPtrInput `pulumi:"supportManualMode"`
+	// The ID of the CEN-TR instance.
+	TransitRouterId pulumi.StringPtrInput `pulumi:"transitRouterId"`
+	// The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
+	TransitRouterType pulumi.StringPtrInput `pulumi:"transitRouterType"`
+	// The VPC network segment list.
+	VpcCidrTableLists FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayInput `pulumi:"vpcCidrTableLists"`
+	// The ID of the VPC instance.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// The instance name of the VPC.
+	VpcName pulumi.StringPtrInput `pulumi:"vpcName"`
+}
+
+func (FirewallVpcFirewallCenLocalVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallCenLocalVpc)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallCenLocalVpcArgs) ToFirewallVpcFirewallCenLocalVpcOutput() FirewallVpcFirewallCenLocalVpcOutput {
+	return i.ToFirewallVpcFirewallCenLocalVpcOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallCenLocalVpcArgs) ToFirewallVpcFirewallCenLocalVpcOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcOutput)
+}
+
+func (i FirewallVpcFirewallCenLocalVpcArgs) ToFirewallVpcFirewallCenLocalVpcPtrOutput() FirewallVpcFirewallCenLocalVpcPtrOutput {
+	return i.ToFirewallVpcFirewallCenLocalVpcPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallCenLocalVpcArgs) ToFirewallVpcFirewallCenLocalVpcPtrOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcOutput).ToFirewallVpcFirewallCenLocalVpcPtrOutputWithContext(ctx)
+}
+
+// FirewallVpcFirewallCenLocalVpcPtrInput is an input type that accepts FirewallVpcFirewallCenLocalVpcArgs, FirewallVpcFirewallCenLocalVpcPtr and FirewallVpcFirewallCenLocalVpcPtrOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallCenLocalVpcPtrInput` via:
+//
+//	        FirewallVpcFirewallCenLocalVpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type FirewallVpcFirewallCenLocalVpcPtrInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallCenLocalVpcPtrOutput() FirewallVpcFirewallCenLocalVpcPtrOutput
+	ToFirewallVpcFirewallCenLocalVpcPtrOutputWithContext(context.Context) FirewallVpcFirewallCenLocalVpcPtrOutput
+}
+
+type firewallVpcFirewallCenLocalVpcPtrType FirewallVpcFirewallCenLocalVpcArgs
+
+func FirewallVpcFirewallCenLocalVpcPtr(v *FirewallVpcFirewallCenLocalVpcArgs) FirewallVpcFirewallCenLocalVpcPtrInput {
+	return (*firewallVpcFirewallCenLocalVpcPtrType)(v)
+}
+
+func (*firewallVpcFirewallCenLocalVpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallVpcFirewallCenLocalVpc)(nil)).Elem()
+}
+
+func (i *firewallVpcFirewallCenLocalVpcPtrType) ToFirewallVpcFirewallCenLocalVpcPtrOutput() FirewallVpcFirewallCenLocalVpcPtrOutput {
+	return i.ToFirewallVpcFirewallCenLocalVpcPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallVpcFirewallCenLocalVpcPtrType) ToFirewallVpcFirewallCenLocalVpcPtrOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcPtrOutput)
+}
+
+type FirewallVpcFirewallCenLocalVpcOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallCenLocalVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallCenLocalVpc)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallCenLocalVpcOutput) ToFirewallVpcFirewallCenLocalVpcOutput() FirewallVpcFirewallCenLocalVpcOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcOutput) ToFirewallVpcFirewallCenLocalVpcOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcOutput) ToFirewallVpcFirewallCenLocalVpcPtrOutput() FirewallVpcFirewallCenLocalVpcPtrOutput {
+	return o.ToFirewallVpcFirewallCenLocalVpcPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallVpcFirewallCenLocalVpcOutput) ToFirewallVpcFirewallCenLocalVpcPtrOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallVpcFirewallCenLocalVpc) *FirewallVpcFirewallCenLocalVpc {
+		return &v
+	}).(FirewallVpcFirewallCenLocalVpcPtrOutput)
+}
+
+// The connection ID of the network instance.
+func (o FirewallVpcFirewallCenLocalVpcOutput) AttachmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.AttachmentId }).(pulumi.StringPtrOutput)
+}
+
+// The connection name of the network instance.
+func (o FirewallVpcFirewallCenLocalVpcOutput) AttachmentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.AttachmentName }).(pulumi.StringPtrOutput)
+}
+
+// The list of network segments protected by the VPC firewall.
+func (o FirewallVpcFirewallCenLocalVpcOutput) DefendCidrLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) []string { return v.DefendCidrLists }).(pulumi.StringArrayOutput)
+}
+
+// List of elastic network cards.
+func (o FirewallVpcFirewallCenLocalVpcOutput) EniLists() FirewallVpcFirewallCenLocalVpcEniListArrayOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) []FirewallVpcFirewallCenLocalVpcEniList { return v.EniLists }).(FirewallVpcFirewallCenLocalVpcEniListArrayOutput)
+}
+
+func (o FirewallVpcFirewallCenLocalVpcOutput) ManualVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.ManualVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPC instance that created the VPC firewall.
+func (o FirewallVpcFirewallCenLocalVpcOutput) NetworkInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) string { return v.NetworkInstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the network instance.
+func (o FirewallVpcFirewallCenLocalVpcOutput) NetworkInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.NetworkInstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the network instance. Value: **VPC * *.
+func (o FirewallVpcFirewallCenLocalVpcOutput) NetworkInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.NetworkInstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The UID of the Alibaba Cloud account to which the VPC belongs.
+func (o FirewallVpcFirewallCenLocalVpcOutput) OwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.OwnerId }).(pulumi.StringPtrOutput)
+}
+
+// The region ID of the VPC.
+func (o FirewallVpcFirewallCenLocalVpcOutput) RegionNo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.RegionNo }).(pulumi.StringPtrOutput)
+}
+
+// Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
+func (o FirewallVpcFirewallCenLocalVpcOutput) RouteMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.RouteMode }).(pulumi.StringPtrOutput)
+}
+
+// Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
+func (o FirewallVpcFirewallCenLocalVpcOutput) SupportManualMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.SupportManualMode }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the CEN-TR instance.
+func (o FirewallVpcFirewallCenLocalVpcOutput) TransitRouterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.TransitRouterId }).(pulumi.StringPtrOutput)
+}
+
+// The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
+func (o FirewallVpcFirewallCenLocalVpcOutput) TransitRouterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.TransitRouterType }).(pulumi.StringPtrOutput)
+}
+
+// The VPC network segment list.
+func (o FirewallVpcFirewallCenLocalVpcOutput) VpcCidrTableLists() FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) []FirewallVpcFirewallCenLocalVpcVpcCidrTableList {
+		return v.VpcCidrTableLists
+	}).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput)
+}
+
+// The ID of the VPC instance.
+func (o FirewallVpcFirewallCenLocalVpcOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// The instance name of the VPC.
+func (o FirewallVpcFirewallCenLocalVpcOutput) VpcName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpc) *string { return v.VpcName }).(pulumi.StringPtrOutput)
+}
+
+type FirewallVpcFirewallCenLocalVpcPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallCenLocalVpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallVpcFirewallCenLocalVpc)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) ToFirewallVpcFirewallCenLocalVpcPtrOutput() FirewallVpcFirewallCenLocalVpcPtrOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) ToFirewallVpcFirewallCenLocalVpcPtrOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcPtrOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) Elem() FirewallVpcFirewallCenLocalVpcOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) FirewallVpcFirewallCenLocalVpc {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallVpcFirewallCenLocalVpc
+		return ret
+	}).(FirewallVpcFirewallCenLocalVpcOutput)
+}
+
+// The connection ID of the network instance.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) AttachmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AttachmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The connection name of the network instance.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) AttachmentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AttachmentName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of network segments protected by the VPC firewall.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) DefendCidrLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DefendCidrLists
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of elastic network cards.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) EniLists() FirewallVpcFirewallCenLocalVpcEniListArrayOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) []FirewallVpcFirewallCenLocalVpcEniList {
+		if v == nil {
+			return nil
+		}
+		return v.EniLists
+	}).(FirewallVpcFirewallCenLocalVpcEniListArrayOutput)
+}
+
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) ManualVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManualVswitchId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPC instance that created the VPC firewall.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) NetworkInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkInstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the network instance.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) NetworkInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInstanceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the network instance. Value: **VPC * *.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) NetworkInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The UID of the Alibaba Cloud account to which the VPC belongs.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) OwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OwnerId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region ID of the VPC.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) RegionNo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionNo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) RouteMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RouteMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) SupportManualMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SupportManualMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the CEN-TR instance.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) TransitRouterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransitRouterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) TransitRouterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransitRouterType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VPC network segment list.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) VpcCidrTableLists() FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) []FirewallVpcFirewallCenLocalVpcVpcCidrTableList {
+		if v == nil {
+			return nil
+		}
+		return v.VpcCidrTableLists
+	}).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput)
+}
+
+// The ID of the VPC instance.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance name of the VPC.
+func (o FirewallVpcFirewallCenLocalVpcPtrOutput) VpcName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallCenLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcName
+	}).(pulumi.StringPtrOutput)
+}
+
+type FirewallVpcFirewallCenLocalVpcEniList struct {
+	// The ID of the instance of the ENI in the VPC.
+	EniId *string `pulumi:"eniId"`
+	// The private IP address of the ENI in the VPC.
+	EniPrivateIpAddress *string `pulumi:"eniPrivateIpAddress"`
+}
+
+// FirewallVpcFirewallCenLocalVpcEniListInput is an input type that accepts FirewallVpcFirewallCenLocalVpcEniListArgs and FirewallVpcFirewallCenLocalVpcEniListOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallCenLocalVpcEniListInput` via:
+//
+//	FirewallVpcFirewallCenLocalVpcEniListArgs{...}
+type FirewallVpcFirewallCenLocalVpcEniListInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallCenLocalVpcEniListOutput() FirewallVpcFirewallCenLocalVpcEniListOutput
+	ToFirewallVpcFirewallCenLocalVpcEniListOutputWithContext(context.Context) FirewallVpcFirewallCenLocalVpcEniListOutput
+}
+
+type FirewallVpcFirewallCenLocalVpcEniListArgs struct {
+	// The ID of the instance of the ENI in the VPC.
+	EniId pulumi.StringPtrInput `pulumi:"eniId"`
+	// The private IP address of the ENI in the VPC.
+	EniPrivateIpAddress pulumi.StringPtrInput `pulumi:"eniPrivateIpAddress"`
+}
+
+func (FirewallVpcFirewallCenLocalVpcEniListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcEniList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallCenLocalVpcEniListArgs) ToFirewallVpcFirewallCenLocalVpcEniListOutput() FirewallVpcFirewallCenLocalVpcEniListOutput {
+	return i.ToFirewallVpcFirewallCenLocalVpcEniListOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallCenLocalVpcEniListArgs) ToFirewallVpcFirewallCenLocalVpcEniListOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcEniListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcEniListOutput)
+}
+
+// FirewallVpcFirewallCenLocalVpcEniListArrayInput is an input type that accepts FirewallVpcFirewallCenLocalVpcEniListArray and FirewallVpcFirewallCenLocalVpcEniListArrayOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallCenLocalVpcEniListArrayInput` via:
+//
+//	FirewallVpcFirewallCenLocalVpcEniListArray{ FirewallVpcFirewallCenLocalVpcEniListArgs{...} }
+type FirewallVpcFirewallCenLocalVpcEniListArrayInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallCenLocalVpcEniListArrayOutput() FirewallVpcFirewallCenLocalVpcEniListArrayOutput
+	ToFirewallVpcFirewallCenLocalVpcEniListArrayOutputWithContext(context.Context) FirewallVpcFirewallCenLocalVpcEniListArrayOutput
+}
+
+type FirewallVpcFirewallCenLocalVpcEniListArray []FirewallVpcFirewallCenLocalVpcEniListInput
+
+func (FirewallVpcFirewallCenLocalVpcEniListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallCenLocalVpcEniList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallCenLocalVpcEniListArray) ToFirewallVpcFirewallCenLocalVpcEniListArrayOutput() FirewallVpcFirewallCenLocalVpcEniListArrayOutput {
+	return i.ToFirewallVpcFirewallCenLocalVpcEniListArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallCenLocalVpcEniListArray) ToFirewallVpcFirewallCenLocalVpcEniListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcEniListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcEniListArrayOutput)
+}
+
+type FirewallVpcFirewallCenLocalVpcEniListOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallCenLocalVpcEniListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcEniList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallCenLocalVpcEniListOutput) ToFirewallVpcFirewallCenLocalVpcEniListOutput() FirewallVpcFirewallCenLocalVpcEniListOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcEniListOutput) ToFirewallVpcFirewallCenLocalVpcEniListOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcEniListOutput {
+	return o
+}
+
+// The ID of the instance of the ENI in the VPC.
+func (o FirewallVpcFirewallCenLocalVpcEniListOutput) EniId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpcEniList) *string { return v.EniId }).(pulumi.StringPtrOutput)
+}
+
+// The private IP address of the ENI in the VPC.
+func (o FirewallVpcFirewallCenLocalVpcEniListOutput) EniPrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpcEniList) *string { return v.EniPrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+type FirewallVpcFirewallCenLocalVpcEniListArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallCenLocalVpcEniListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallCenLocalVpcEniList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallCenLocalVpcEniListArrayOutput) ToFirewallVpcFirewallCenLocalVpcEniListArrayOutput() FirewallVpcFirewallCenLocalVpcEniListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcEniListArrayOutput) ToFirewallVpcFirewallCenLocalVpcEniListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcEniListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcEniListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallCenLocalVpcEniListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallVpcFirewallCenLocalVpcEniList {
+		return vs[0].([]FirewallVpcFirewallCenLocalVpcEniList)[vs[1].(int)]
+	}).(FirewallVpcFirewallCenLocalVpcEniListOutput)
+}
+
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableList struct {
+	// The list of route entries in the VPC.
+	RouteEntryLists []FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList `pulumi:"routeEntryLists"`
+	// The ID of the route table of the VPC.
+	RouteTableId *string `pulumi:"routeTableId"`
+}
+
+// FirewallVpcFirewallCenLocalVpcVpcCidrTableListInput is an input type that accepts FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs and FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallCenLocalVpcVpcCidrTableListInput` via:
+//
+//	FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs{...}
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput() FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput
+	ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListOutputWithContext(context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput
+}
+
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs struct {
+	// The list of route entries in the VPC.
+	RouteEntryLists FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayInput `pulumi:"routeEntryLists"`
+	// The ID of the route table of the VPC.
+	RouteTableId pulumi.StringPtrInput `pulumi:"routeTableId"`
+}
+
+func (FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcVpcCidrTableList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput() FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput {
+	return i.ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput)
+}
+
+// FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayInput is an input type that accepts FirewallVpcFirewallCenLocalVpcVpcCidrTableListArray and FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayInput` via:
+//
+//	FirewallVpcFirewallCenLocalVpcVpcCidrTableListArray{ FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs{...} }
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput() FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput
+	ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutputWithContext(context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput
+}
+
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListArray []FirewallVpcFirewallCenLocalVpcVpcCidrTableListInput
+
+func (FirewallVpcFirewallCenLocalVpcVpcCidrTableListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallCenLocalVpcVpcCidrTableList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListArray) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput() FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput {
+	return i.ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListArray) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput)
+}
+
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcVpcCidrTableList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput() FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput {
+	return o
+}
+
+// The list of route entries in the VPC.
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput) RouteEntryLists() FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpcVpcCidrTableList) []FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList {
+		return v.RouteEntryLists
+	}).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput)
+}
+
+// The ID of the route table of the VPC.
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput) RouteTableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpcVpcCidrTableList) *string { return v.RouteTableId }).(pulumi.StringPtrOutput)
+}
+
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallCenLocalVpcVpcCidrTableList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput() FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallVpcFirewallCenLocalVpcVpcCidrTableList {
+		return vs[0].([]FirewallVpcFirewallCenLocalVpcVpcCidrTableList)[vs[1].(int)]
+	}).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput)
+}
+
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList struct {
+	// The target network segment of the VPC.
+	DestinationCidr *string `pulumi:"destinationCidr"`
+	// The ID of the next hop instance in the VPC.
+	NextHopInstanceId *string `pulumi:"nextHopInstanceId"`
+}
+
+// FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListInput is an input type that accepts FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs and FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListInput` via:
+//
+//	FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs{...}
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput() FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput
+	ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutputWithContext(context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput
+}
+
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs struct {
+	// The target network segment of the VPC.
+	DestinationCidr pulumi.StringPtrInput `pulumi:"destinationCidr"`
+	// The ID of the next hop instance in the VPC.
+	NextHopInstanceId pulumi.StringPtrInput `pulumi:"nextHopInstanceId"`
+}
+
+func (FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput() FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput {
+	return i.ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput)
+}
+
+// FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayInput is an input type that accepts FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArray and FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayInput` via:
+//
+//	FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArray{ FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs{...} }
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput() FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput
+	ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutputWithContext(context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput
+}
+
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArray []FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListInput
+
+func (FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArray) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput() FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput {
+	return i.ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArray) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput)
+}
+
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput() FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput {
+	return o
+}
+
+// The target network segment of the VPC.
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput) DestinationCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList) *string { return v.DestinationCidr }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the next hop instance in the VPC.
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput) NextHopInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList) *string {
+		return v.NextHopInstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput() FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) ToFirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList {
+		return vs[0].([]FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList)[vs[1].(int)]
+	}).(FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput)
+}
+
+type FirewallVpcFirewallLocalVpc struct {
+	// The ID of the instance of the Eni in the local VPC.
+	EniId *string `pulumi:"eniId"`
+	// The private IP address of the elastic network card in the local VPC.
+	EniPrivateIpAddress *string `pulumi:"eniPrivateIpAddress"`
+	// The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+	LocalVpcCidrTableLists []FirewallVpcFirewallLocalVpcLocalVpcCidrTableList `pulumi:"localVpcCidrTableLists"`
+	// The region ID of the local VPC.
+	RegionNo string `pulumi:"regionNo"`
+	// The ID of the router interface in the local VPC.
+	RouterInterfaceId *string `pulumi:"routerInterfaceId"`
+	// The ID of the local VPC instance.
+	VpcId string `pulumi:"vpcId"`
+	// The instance name of the local VPC.
+	VpcName *string `pulumi:"vpcName"`
+}
+
+// FirewallVpcFirewallLocalVpcInput is an input type that accepts FirewallVpcFirewallLocalVpcArgs and FirewallVpcFirewallLocalVpcOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallLocalVpcInput` via:
+//
+//	FirewallVpcFirewallLocalVpcArgs{...}
+type FirewallVpcFirewallLocalVpcInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallLocalVpcOutput() FirewallVpcFirewallLocalVpcOutput
+	ToFirewallVpcFirewallLocalVpcOutputWithContext(context.Context) FirewallVpcFirewallLocalVpcOutput
+}
+
+type FirewallVpcFirewallLocalVpcArgs struct {
+	// The ID of the instance of the Eni in the local VPC.
+	EniId pulumi.StringPtrInput `pulumi:"eniId"`
+	// The private IP address of the elastic network card in the local VPC.
+	EniPrivateIpAddress pulumi.StringPtrInput `pulumi:"eniPrivateIpAddress"`
+	// The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+	LocalVpcCidrTableLists FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayInput `pulumi:"localVpcCidrTableLists"`
+	// The region ID of the local VPC.
+	RegionNo pulumi.StringInput `pulumi:"regionNo"`
+	// The ID of the router interface in the local VPC.
+	RouterInterfaceId pulumi.StringPtrInput `pulumi:"routerInterfaceId"`
+	// The ID of the local VPC instance.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The instance name of the local VPC.
+	VpcName pulumi.StringPtrInput `pulumi:"vpcName"`
+}
+
+func (FirewallVpcFirewallLocalVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallLocalVpc)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallLocalVpcArgs) ToFirewallVpcFirewallLocalVpcOutput() FirewallVpcFirewallLocalVpcOutput {
+	return i.ToFirewallVpcFirewallLocalVpcOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallLocalVpcArgs) ToFirewallVpcFirewallLocalVpcOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcOutput)
+}
+
+func (i FirewallVpcFirewallLocalVpcArgs) ToFirewallVpcFirewallLocalVpcPtrOutput() FirewallVpcFirewallLocalVpcPtrOutput {
+	return i.ToFirewallVpcFirewallLocalVpcPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallLocalVpcArgs) ToFirewallVpcFirewallLocalVpcPtrOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcOutput).ToFirewallVpcFirewallLocalVpcPtrOutputWithContext(ctx)
+}
+
+// FirewallVpcFirewallLocalVpcPtrInput is an input type that accepts FirewallVpcFirewallLocalVpcArgs, FirewallVpcFirewallLocalVpcPtr and FirewallVpcFirewallLocalVpcPtrOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallLocalVpcPtrInput` via:
+//
+//	        FirewallVpcFirewallLocalVpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type FirewallVpcFirewallLocalVpcPtrInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallLocalVpcPtrOutput() FirewallVpcFirewallLocalVpcPtrOutput
+	ToFirewallVpcFirewallLocalVpcPtrOutputWithContext(context.Context) FirewallVpcFirewallLocalVpcPtrOutput
+}
+
+type firewallVpcFirewallLocalVpcPtrType FirewallVpcFirewallLocalVpcArgs
+
+func FirewallVpcFirewallLocalVpcPtr(v *FirewallVpcFirewallLocalVpcArgs) FirewallVpcFirewallLocalVpcPtrInput {
+	return (*firewallVpcFirewallLocalVpcPtrType)(v)
+}
+
+func (*firewallVpcFirewallLocalVpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallVpcFirewallLocalVpc)(nil)).Elem()
+}
+
+func (i *firewallVpcFirewallLocalVpcPtrType) ToFirewallVpcFirewallLocalVpcPtrOutput() FirewallVpcFirewallLocalVpcPtrOutput {
+	return i.ToFirewallVpcFirewallLocalVpcPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallVpcFirewallLocalVpcPtrType) ToFirewallVpcFirewallLocalVpcPtrOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcPtrOutput)
+}
+
+type FirewallVpcFirewallLocalVpcOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallLocalVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallLocalVpc)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallLocalVpcOutput) ToFirewallVpcFirewallLocalVpcOutput() FirewallVpcFirewallLocalVpcOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallLocalVpcOutput) ToFirewallVpcFirewallLocalVpcOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallLocalVpcOutput) ToFirewallVpcFirewallLocalVpcPtrOutput() FirewallVpcFirewallLocalVpcPtrOutput {
+	return o.ToFirewallVpcFirewallLocalVpcPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallVpcFirewallLocalVpcOutput) ToFirewallVpcFirewallLocalVpcPtrOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallVpcFirewallLocalVpc) *FirewallVpcFirewallLocalVpc {
+		return &v
+	}).(FirewallVpcFirewallLocalVpcPtrOutput)
+}
+
+// The ID of the instance of the Eni in the local VPC.
+func (o FirewallVpcFirewallLocalVpcOutput) EniId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) *string { return v.EniId }).(pulumi.StringPtrOutput)
+}
+
+// The private IP address of the elastic network card in the local VPC.
+func (o FirewallVpcFirewallLocalVpcOutput) EniPrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) *string { return v.EniPrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+func (o FirewallVpcFirewallLocalVpcOutput) LocalVpcCidrTableLists() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) []FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
+		return v.LocalVpcCidrTableLists
+	}).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput)
+}
+
+// The region ID of the local VPC.
+func (o FirewallVpcFirewallLocalVpcOutput) RegionNo() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) string { return v.RegionNo }).(pulumi.StringOutput)
+}
+
+// The ID of the router interface in the local VPC.
+func (o FirewallVpcFirewallLocalVpcOutput) RouterInterfaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) *string { return v.RouterInterfaceId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the local VPC instance.
+func (o FirewallVpcFirewallLocalVpcOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The instance name of the local VPC.
+func (o FirewallVpcFirewallLocalVpcOutput) VpcName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallLocalVpc) *string { return v.VpcName }).(pulumi.StringPtrOutput)
+}
+
+type FirewallVpcFirewallLocalVpcPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallLocalVpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallVpcFirewallLocalVpc)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallLocalVpcPtrOutput) ToFirewallVpcFirewallLocalVpcPtrOutput() FirewallVpcFirewallLocalVpcPtrOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallLocalVpcPtrOutput) ToFirewallVpcFirewallLocalVpcPtrOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcPtrOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallLocalVpcPtrOutput) Elem() FirewallVpcFirewallLocalVpcOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) FirewallVpcFirewallLocalVpc {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallVpcFirewallLocalVpc
+		return ret
+	}).(FirewallVpcFirewallLocalVpcOutput)
+}
+
+// The ID of the instance of the Eni in the local VPC.
+func (o FirewallVpcFirewallLocalVpcPtrOutput) EniId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EniId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private IP address of the elastic network card in the local VPC.
+func (o FirewallVpcFirewallLocalVpcPtrOutput) EniPrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EniPrivateIpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The network segment list of the local VPC.See the following `Block LocalVpcCidrTableList`.
+func (o FirewallVpcFirewallLocalVpcPtrOutput) LocalVpcCidrTableLists() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) []FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
+		if v == nil {
+			return nil
+		}
+		return v.LocalVpcCidrTableLists
+	}).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput)
+}
+
+// The region ID of the local VPC.
+func (o FirewallVpcFirewallLocalVpcPtrOutput) RegionNo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegionNo
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the router interface in the local VPC.
+func (o FirewallVpcFirewallLocalVpcPtrOutput) RouterInterfaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RouterInterfaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the local VPC instance.
+func (o FirewallVpcFirewallLocalVpcPtrOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance name of the local VPC.
+func (o FirewallVpcFirewallLocalVpcPtrOutput) VpcName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallLocalVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcName
+	}).(pulumi.StringPtrOutput)
+}
+
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableList struct {
+	// The list of route entries of the local VPC.See the following `Block LocalRouteEntryList`.
+	LocalRouteEntryLists []FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList `pulumi:"localRouteEntryLists"`
+	// The ID of the route table of the local VPC.
+	LocalRouteTableId string `pulumi:"localRouteTableId"`
+}
+
+// FirewallVpcFirewallLocalVpcLocalVpcCidrTableListInput is an input type that accepts FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs and FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallLocalVpcLocalVpcCidrTableListInput` via:
+//
+//	FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs{...}
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput
+	ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutputWithContext(context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput
+}
+
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs struct {
+	// The list of route entries of the local VPC.See the following `Block LocalRouteEntryList`.
+	LocalRouteEntryLists FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput `pulumi:"localRouteEntryLists"`
+	// The ID of the route table of the local VPC.
+	LocalRouteTableId pulumi.StringInput `pulumi:"localRouteTableId"`
+}
+
+func (FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallLocalVpcLocalVpcCidrTableList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput {
+	return i.ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput)
+}
+
+// FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayInput is an input type that accepts FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArray and FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayInput` via:
+//
+//	FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArray{ FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs{...} }
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput
+	ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutputWithContext(context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput
+}
+
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArray []FirewallVpcFirewallLocalVpcLocalVpcCidrTableListInput
+
+func (FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallLocalVpcLocalVpcCidrTableList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArray) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
+	return i.ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArray) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput)
+}
+
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallLocalVpcLocalVpcCidrTableList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput {
+	return o
+}
+
+// The list of route entries of the local VPC.See the following `Block LocalRouteEntryList`.
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput) LocalRouteEntryLists() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallLocalVpcLocalVpcCidrTableList) []FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList {
+		return v.LocalRouteEntryLists
+	}).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput)
+}
+
+// The ID of the route table of the local VPC.
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput) LocalRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallLocalVpcLocalVpcCidrTableList) string { return v.LocalRouteTableId }).(pulumi.StringOutput)
+}
+
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallLocalVpcLocalVpcCidrTableList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
+		return vs[0].([]FirewallVpcFirewallLocalVpcLocalVpcCidrTableList)[vs[1].(int)]
+	}).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput)
+}
+
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList struct {
+	// The target network segment of the local VPC.
+	LocalDestinationCidr string `pulumi:"localDestinationCidr"`
+	// The ID of the next-hop instance in the local VPC.
+	LocalNextHopInstanceId string `pulumi:"localNextHopInstanceId"`
+}
+
+// FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListInput is an input type that accepts FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs and FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListInput` via:
+//
+//	FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs{...}
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput
+	ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutputWithContext(context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput
+}
+
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs struct {
+	// The target network segment of the local VPC.
+	LocalDestinationCidr pulumi.StringInput `pulumi:"localDestinationCidr"`
+	// The ID of the next-hop instance in the local VPC.
+	LocalNextHopInstanceId pulumi.StringInput `pulumi:"localNextHopInstanceId"`
+}
+
+func (FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
+	return i.ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput)
+}
+
+// FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput is an input type that accepts FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray and FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput` via:
+//
+//	FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray{ FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs{...} }
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput
+	ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutputWithContext(context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput
+}
+
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray []FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListInput
+
+func (FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
+	return i.ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput)
+}
+
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
+	return o
+}
+
+// The target network segment of the local VPC.
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) LocalDestinationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList) string {
+		return v.LocalDestinationCidr
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the next-hop instance in the local VPC.
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) LocalNextHopInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList) string {
+		return v.LocalNextHopInstanceId
+	}).(pulumi.StringOutput)
+}
+
+type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) ToFirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList {
+		return vs[0].([]FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList)[vs[1].(int)]
+	}).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput)
+}
+
+type FirewallVpcFirewallPeerVpc struct {
+	// The ID of the instance of the Eni in the local VPC.
+	EniId *string `pulumi:"eniId"`
+	// The private IP address of the elastic network card in the local VPC.
+	EniPrivateIpAddress *string `pulumi:"eniPrivateIpAddress"`
+	// The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+	PeerVpcCidrTableLists []FirewallVpcFirewallPeerVpcPeerVpcCidrTableList `pulumi:"peerVpcCidrTableLists"`
+	// The region ID of the local VPC.
+	RegionNo string `pulumi:"regionNo"`
+	// The ID of the router interface in the local VPC.
+	RouterInterfaceId *string `pulumi:"routerInterfaceId"`
+	// The ID of the local VPC instance.
+	VpcId string `pulumi:"vpcId"`
+	// The instance name of the local VPC.
+	VpcName *string `pulumi:"vpcName"`
+}
+
+// FirewallVpcFirewallPeerVpcInput is an input type that accepts FirewallVpcFirewallPeerVpcArgs and FirewallVpcFirewallPeerVpcOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallPeerVpcInput` via:
+//
+//	FirewallVpcFirewallPeerVpcArgs{...}
+type FirewallVpcFirewallPeerVpcInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallPeerVpcOutput() FirewallVpcFirewallPeerVpcOutput
+	ToFirewallVpcFirewallPeerVpcOutputWithContext(context.Context) FirewallVpcFirewallPeerVpcOutput
+}
+
+type FirewallVpcFirewallPeerVpcArgs struct {
+	// The ID of the instance of the Eni in the local VPC.
+	EniId pulumi.StringPtrInput `pulumi:"eniId"`
+	// The private IP address of the elastic network card in the local VPC.
+	EniPrivateIpAddress pulumi.StringPtrInput `pulumi:"eniPrivateIpAddress"`
+	// The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+	PeerVpcCidrTableLists FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayInput `pulumi:"peerVpcCidrTableLists"`
+	// The region ID of the local VPC.
+	RegionNo pulumi.StringInput `pulumi:"regionNo"`
+	// The ID of the router interface in the local VPC.
+	RouterInterfaceId pulumi.StringPtrInput `pulumi:"routerInterfaceId"`
+	// The ID of the local VPC instance.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The instance name of the local VPC.
+	VpcName pulumi.StringPtrInput `pulumi:"vpcName"`
+}
+
+func (FirewallVpcFirewallPeerVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallPeerVpc)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallPeerVpcArgs) ToFirewallVpcFirewallPeerVpcOutput() FirewallVpcFirewallPeerVpcOutput {
+	return i.ToFirewallVpcFirewallPeerVpcOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallPeerVpcArgs) ToFirewallVpcFirewallPeerVpcOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcOutput)
+}
+
+func (i FirewallVpcFirewallPeerVpcArgs) ToFirewallVpcFirewallPeerVpcPtrOutput() FirewallVpcFirewallPeerVpcPtrOutput {
+	return i.ToFirewallVpcFirewallPeerVpcPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallPeerVpcArgs) ToFirewallVpcFirewallPeerVpcPtrOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcOutput).ToFirewallVpcFirewallPeerVpcPtrOutputWithContext(ctx)
+}
+
+// FirewallVpcFirewallPeerVpcPtrInput is an input type that accepts FirewallVpcFirewallPeerVpcArgs, FirewallVpcFirewallPeerVpcPtr and FirewallVpcFirewallPeerVpcPtrOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallPeerVpcPtrInput` via:
+//
+//	        FirewallVpcFirewallPeerVpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type FirewallVpcFirewallPeerVpcPtrInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallPeerVpcPtrOutput() FirewallVpcFirewallPeerVpcPtrOutput
+	ToFirewallVpcFirewallPeerVpcPtrOutputWithContext(context.Context) FirewallVpcFirewallPeerVpcPtrOutput
+}
+
+type firewallVpcFirewallPeerVpcPtrType FirewallVpcFirewallPeerVpcArgs
+
+func FirewallVpcFirewallPeerVpcPtr(v *FirewallVpcFirewallPeerVpcArgs) FirewallVpcFirewallPeerVpcPtrInput {
+	return (*firewallVpcFirewallPeerVpcPtrType)(v)
+}
+
+func (*firewallVpcFirewallPeerVpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallVpcFirewallPeerVpc)(nil)).Elem()
+}
+
+func (i *firewallVpcFirewallPeerVpcPtrType) ToFirewallVpcFirewallPeerVpcPtrOutput() FirewallVpcFirewallPeerVpcPtrOutput {
+	return i.ToFirewallVpcFirewallPeerVpcPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallVpcFirewallPeerVpcPtrType) ToFirewallVpcFirewallPeerVpcPtrOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcPtrOutput)
+}
+
+type FirewallVpcFirewallPeerVpcOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallPeerVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallPeerVpc)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallPeerVpcOutput) ToFirewallVpcFirewallPeerVpcOutput() FirewallVpcFirewallPeerVpcOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcOutput) ToFirewallVpcFirewallPeerVpcOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcOutput) ToFirewallVpcFirewallPeerVpcPtrOutput() FirewallVpcFirewallPeerVpcPtrOutput {
+	return o.ToFirewallVpcFirewallPeerVpcPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallVpcFirewallPeerVpcOutput) ToFirewallVpcFirewallPeerVpcPtrOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallVpcFirewallPeerVpc) *FirewallVpcFirewallPeerVpc {
+		return &v
+	}).(FirewallVpcFirewallPeerVpcPtrOutput)
+}
+
+// The ID of the instance of the Eni in the local VPC.
+func (o FirewallVpcFirewallPeerVpcOutput) EniId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) *string { return v.EniId }).(pulumi.StringPtrOutput)
+}
+
+// The private IP address of the elastic network card in the local VPC.
+func (o FirewallVpcFirewallPeerVpcOutput) EniPrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) *string { return v.EniPrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+func (o FirewallVpcFirewallPeerVpcOutput) PeerVpcCidrTableLists() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) []FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
+		return v.PeerVpcCidrTableLists
+	}).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput)
+}
+
+// The region ID of the local VPC.
+func (o FirewallVpcFirewallPeerVpcOutput) RegionNo() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) string { return v.RegionNo }).(pulumi.StringOutput)
+}
+
+// The ID of the router interface in the local VPC.
+func (o FirewallVpcFirewallPeerVpcOutput) RouterInterfaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) *string { return v.RouterInterfaceId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the local VPC instance.
+func (o FirewallVpcFirewallPeerVpcOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The instance name of the local VPC.
+func (o FirewallVpcFirewallPeerVpcOutput) VpcName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallPeerVpc) *string { return v.VpcName }).(pulumi.StringPtrOutput)
+}
+
+type FirewallVpcFirewallPeerVpcPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallPeerVpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallVpcFirewallPeerVpc)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallPeerVpcPtrOutput) ToFirewallVpcFirewallPeerVpcPtrOutput() FirewallVpcFirewallPeerVpcPtrOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcPtrOutput) ToFirewallVpcFirewallPeerVpcPtrOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPtrOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcPtrOutput) Elem() FirewallVpcFirewallPeerVpcOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) FirewallVpcFirewallPeerVpc {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallVpcFirewallPeerVpc
+		return ret
+	}).(FirewallVpcFirewallPeerVpcOutput)
+}
+
+// The ID of the instance of the Eni in the local VPC.
+func (o FirewallVpcFirewallPeerVpcPtrOutput) EniId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EniId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private IP address of the elastic network card in the local VPC.
+func (o FirewallVpcFirewallPeerVpcPtrOutput) EniPrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EniPrivateIpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
+func (o FirewallVpcFirewallPeerVpcPtrOutput) PeerVpcCidrTableLists() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) []FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
+		if v == nil {
+			return nil
+		}
+		return v.PeerVpcCidrTableLists
+	}).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput)
+}
+
+// The region ID of the local VPC.
+func (o FirewallVpcFirewallPeerVpcPtrOutput) RegionNo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegionNo
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the router interface in the local VPC.
+func (o FirewallVpcFirewallPeerVpcPtrOutput) RouterInterfaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RouterInterfaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the local VPC instance.
+func (o FirewallVpcFirewallPeerVpcPtrOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance name of the local VPC.
+func (o FirewallVpcFirewallPeerVpcPtrOutput) VpcName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallPeerVpc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcName
+	}).(pulumi.StringPtrOutput)
+}
+
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableList struct {
+	// Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+	PeerRouteEntryLists []FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList `pulumi:"peerRouteEntryLists"`
+	// The ID of the route table of the peer VPC.
+	PeerRouteTableId string `pulumi:"peerRouteTableId"`
+}
+
+// FirewallVpcFirewallPeerVpcPeerVpcCidrTableListInput is an input type that accepts FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs and FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallPeerVpcPeerVpcCidrTableListInput` via:
+//
+//	FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs{...}
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput
+	ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutputWithContext(context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput
+}
+
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs struct {
+	// Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+	PeerRouteEntryLists FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput `pulumi:"peerRouteEntryLists"`
+	// The ID of the route table of the peer VPC.
+	PeerRouteTableId pulumi.StringInput `pulumi:"peerRouteTableId"`
+}
+
+func (FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallPeerVpcPeerVpcCidrTableList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput {
+	return i.ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput)
+}
+
+// FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayInput is an input type that accepts FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray and FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayInput` via:
+//
+//	FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray{ FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs{...} }
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput
+	ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutputWithContext(context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput
+}
+
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray []FirewallVpcFirewallPeerVpcPeerVpcCidrTableListInput
+
+func (FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallPeerVpcPeerVpcCidrTableList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
+	return i.ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput)
+}
+
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallPeerVpcPeerVpcCidrTableList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput {
+	return o
+}
+
+// Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput) PeerRouteEntryLists() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallPeerVpcPeerVpcCidrTableList) []FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList {
+		return v.PeerRouteEntryLists
+	}).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput)
+}
+
+// The ID of the route table of the peer VPC.
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput) PeerRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallPeerVpcPeerVpcCidrTableList) string { return v.PeerRouteTableId }).(pulumi.StringOutput)
+}
+
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallPeerVpcPeerVpcCidrTableList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
+		return vs[0].([]FirewallVpcFirewallPeerVpcPeerVpcCidrTableList)[vs[1].(int)]
+	}).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput)
+}
+
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList struct {
+	// The target network segment of the peer VPC.
+	PeerDestinationCidr string `pulumi:"peerDestinationCidr"`
+	// The ID of the next-hop instance in the peer VPC.
+	PeerNextHopInstanceId string `pulumi:"peerNextHopInstanceId"`
+}
+
+// FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput is an input type that accepts FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs and FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput` via:
+//
+//	FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs{...}
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput
+	ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutputWithContext(context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput
+}
+
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs struct {
+	// The target network segment of the peer VPC.
+	PeerDestinationCidr pulumi.StringInput `pulumi:"peerDestinationCidr"`
+	// The ID of the next-hop instance in the peer VPC.
+	PeerNextHopInstanceId pulumi.StringInput `pulumi:"peerNextHopInstanceId"`
+}
+
+func (FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
+	return i.ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput)
+}
+
+// FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput is an input type that accepts FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray and FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput values.
+// You can construct a concrete instance of `FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput` via:
+//
+//	FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray{ FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs{...} }
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput interface {
+	pulumi.Input
+
+	ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput
+	ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutputWithContext(context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput
+}
+
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray []FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput
+
+func (FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList)(nil)).Elem()
+}
+
+func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
+	return i.ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput)
+}
+
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
+	return o
+}
+
+// The target network segment of the peer VPC.
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) PeerDestinationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList) string {
+		return v.PeerDestinationCidr
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the next-hop instance in the peer VPC.
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) PeerNextHopInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList) string {
+		return v.PeerNextHopInstanceId
+	}).(pulumi.StringOutput)
+}
+
+type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList)(nil)).Elem()
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) ToFirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutputWithContext(ctx context.Context) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
+	return o
+}
+
+func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) Index(i pulumi.IntInput) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList {
+		return vs[0].([]FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList)[vs[1].(int)]
+	}).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput)
+}
+
 type GetAddressBooksBook struct {
 	// The addresses in the Address Book.
 	AddressLists []string `pulumi:"addressLists"`
@@ -674,6 +2377,154 @@ func (o GetControlPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetControl
 	}).(GetControlPoliciesPolicyOutput)
 }
 
+type GetInstanceMembersMember struct {
+	// When the cloud firewall member account was added.> use second-level timestamp format.
+	CreateTime int    `pulumi:"createTime"`
+	Id         string `pulumi:"id"`
+	// Remarks of cloud firewall member accounts.
+	MemberDesc string `pulumi:"memberDesc"`
+	// The name of the cloud firewall member account.
+	MemberDisplayName string `pulumi:"memberDisplayName"`
+	// The UID of the cloud firewall member account.
+	MemberUid string `pulumi:"memberUid"`
+	// The last modification time of the cloud firewall member account.> use second-level timestamp format.
+	ModifyTime int `pulumi:"modifyTime"`
+	// The resource attribute field that represents the resource status.
+	Status string `pulumi:"status"`
+}
+
+// GetInstanceMembersMemberInput is an input type that accepts GetInstanceMembersMemberArgs and GetInstanceMembersMemberOutput values.
+// You can construct a concrete instance of `GetInstanceMembersMemberInput` via:
+//
+//	GetInstanceMembersMemberArgs{...}
+type GetInstanceMembersMemberInput interface {
+	pulumi.Input
+
+	ToGetInstanceMembersMemberOutput() GetInstanceMembersMemberOutput
+	ToGetInstanceMembersMemberOutputWithContext(context.Context) GetInstanceMembersMemberOutput
+}
+
+type GetInstanceMembersMemberArgs struct {
+	// When the cloud firewall member account was added.> use second-level timestamp format.
+	CreateTime pulumi.IntInput    `pulumi:"createTime"`
+	Id         pulumi.StringInput `pulumi:"id"`
+	// Remarks of cloud firewall member accounts.
+	MemberDesc pulumi.StringInput `pulumi:"memberDesc"`
+	// The name of the cloud firewall member account.
+	MemberDisplayName pulumi.StringInput `pulumi:"memberDisplayName"`
+	// The UID of the cloud firewall member account.
+	MemberUid pulumi.StringInput `pulumi:"memberUid"`
+	// The last modification time of the cloud firewall member account.> use second-level timestamp format.
+	ModifyTime pulumi.IntInput `pulumi:"modifyTime"`
+	// The resource attribute field that represents the resource status.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetInstanceMembersMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMembersMember)(nil)).Elem()
+}
+
+func (i GetInstanceMembersMemberArgs) ToGetInstanceMembersMemberOutput() GetInstanceMembersMemberOutput {
+	return i.ToGetInstanceMembersMemberOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMembersMemberArgs) ToGetInstanceMembersMemberOutputWithContext(ctx context.Context) GetInstanceMembersMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMembersMemberOutput)
+}
+
+// GetInstanceMembersMemberArrayInput is an input type that accepts GetInstanceMembersMemberArray and GetInstanceMembersMemberArrayOutput values.
+// You can construct a concrete instance of `GetInstanceMembersMemberArrayInput` via:
+//
+//	GetInstanceMembersMemberArray{ GetInstanceMembersMemberArgs{...} }
+type GetInstanceMembersMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceMembersMemberArrayOutput() GetInstanceMembersMemberArrayOutput
+	ToGetInstanceMembersMemberArrayOutputWithContext(context.Context) GetInstanceMembersMemberArrayOutput
+}
+
+type GetInstanceMembersMemberArray []GetInstanceMembersMemberInput
+
+func (GetInstanceMembersMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMembersMember)(nil)).Elem()
+}
+
+func (i GetInstanceMembersMemberArray) ToGetInstanceMembersMemberArrayOutput() GetInstanceMembersMemberArrayOutput {
+	return i.ToGetInstanceMembersMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceMembersMemberArray) ToGetInstanceMembersMemberArrayOutputWithContext(ctx context.Context) GetInstanceMembersMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceMembersMemberArrayOutput)
+}
+
+type GetInstanceMembersMemberOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMembersMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceMembersMember)(nil)).Elem()
+}
+
+func (o GetInstanceMembersMemberOutput) ToGetInstanceMembersMemberOutput() GetInstanceMembersMemberOutput {
+	return o
+}
+
+func (o GetInstanceMembersMemberOutput) ToGetInstanceMembersMemberOutputWithContext(ctx context.Context) GetInstanceMembersMemberOutput {
+	return o
+}
+
+// When the cloud firewall member account was added.> use second-level timestamp format.
+func (o GetInstanceMembersMemberOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMembersMember) int { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceMembersMemberOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceMembersMember) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Remarks of cloud firewall member accounts.
+func (o GetInstanceMembersMemberOutput) MemberDesc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceMembersMember) string { return v.MemberDesc }).(pulumi.StringOutput)
+}
+
+// The name of the cloud firewall member account.
+func (o GetInstanceMembersMemberOutput) MemberDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceMembersMember) string { return v.MemberDisplayName }).(pulumi.StringOutput)
+}
+
+// The UID of the cloud firewall member account.
+func (o GetInstanceMembersMemberOutput) MemberUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceMembersMember) string { return v.MemberUid }).(pulumi.StringOutput)
+}
+
+// The last modification time of the cloud firewall member account.> use second-level timestamp format.
+func (o GetInstanceMembersMemberOutput) ModifyTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceMembersMember) int { return v.ModifyTime }).(pulumi.IntOutput)
+}
+
+// The resource attribute field that represents the resource status.
+func (o GetInstanceMembersMemberOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceMembersMember) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetInstanceMembersMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceMembersMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceMembersMember)(nil)).Elem()
+}
+
+func (o GetInstanceMembersMemberArrayOutput) ToGetInstanceMembersMemberArrayOutput() GetInstanceMembersMemberArrayOutput {
+	return o
+}
+
+func (o GetInstanceMembersMemberArrayOutput) ToGetInstanceMembersMemberArrayOutputWithContext(ctx context.Context) GetInstanceMembersMemberArrayOutput {
+	return o
+}
+
+func (o GetInstanceMembersMemberArrayOutput) Index(i pulumi.IntInput) GetInstanceMembersMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceMembersMember {
+		return vs[0].([]GetInstanceMembersMember)[vs[1].(int)]
+	}).(GetInstanceMembersMemberOutput)
+}
+
 type GetInstancesInstance struct {
 	// The Creation time of the resource.
 	CreateTime string `pulumi:"createTime"`
@@ -834,25 +2685,2020 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	}).(GetInstancesInstanceOutput)
 }
 
+type GetVpcFirewallCensCen struct {
+	// The ID of the CEN instance.
+	CenId string `pulumi:"cenId"`
+	// Intercommunication type, value: `expressconnect`: Express Channel `cen`: Cloud Enterprise Network
+	ConnectType string `pulumi:"connectType"`
+	// The ID of the CEN instance.
+	Id string `pulumi:"id"`
+	// The details of the VPC.
+	LocalVpcs []GetVpcFirewallCensCenLocalVpc `pulumi:"localVpcs"`
+	// The ID of the VPC instance that created the VPC firewall.
+	NetworkInstanceId string `pulumi:"networkInstanceId"`
+	// Firewall switch status
+	Status string `pulumi:"status"`
+	// VPC firewall ID
+	VpcFirewallId string `pulumi:"vpcFirewallId"`
+	// The name of the VPC firewall instance.
+	VpcFirewallName string `pulumi:"vpcFirewallName"`
+}
+
+// GetVpcFirewallCensCenInput is an input type that accepts GetVpcFirewallCensCenArgs and GetVpcFirewallCensCenOutput values.
+// You can construct a concrete instance of `GetVpcFirewallCensCenInput` via:
+//
+//	GetVpcFirewallCensCenArgs{...}
+type GetVpcFirewallCensCenInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallCensCenOutput() GetVpcFirewallCensCenOutput
+	ToGetVpcFirewallCensCenOutputWithContext(context.Context) GetVpcFirewallCensCenOutput
+}
+
+type GetVpcFirewallCensCenArgs struct {
+	// The ID of the CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// Intercommunication type, value: `expressconnect`: Express Channel `cen`: Cloud Enterprise Network
+	ConnectType pulumi.StringInput `pulumi:"connectType"`
+	// The ID of the CEN instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The details of the VPC.
+	LocalVpcs GetVpcFirewallCensCenLocalVpcArrayInput `pulumi:"localVpcs"`
+	// The ID of the VPC instance that created the VPC firewall.
+	NetworkInstanceId pulumi.StringInput `pulumi:"networkInstanceId"`
+	// Firewall switch status
+	Status pulumi.StringInput `pulumi:"status"`
+	// VPC firewall ID
+	VpcFirewallId pulumi.StringInput `pulumi:"vpcFirewallId"`
+	// The name of the VPC firewall instance.
+	VpcFirewallName pulumi.StringInput `pulumi:"vpcFirewallName"`
+}
+
+func (GetVpcFirewallCensCenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallCensCen)(nil)).Elem()
+}
+
+func (i GetVpcFirewallCensCenArgs) ToGetVpcFirewallCensCenOutput() GetVpcFirewallCensCenOutput {
+	return i.ToGetVpcFirewallCensCenOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallCensCenArgs) ToGetVpcFirewallCensCenOutputWithContext(ctx context.Context) GetVpcFirewallCensCenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenOutput)
+}
+
+// GetVpcFirewallCensCenArrayInput is an input type that accepts GetVpcFirewallCensCenArray and GetVpcFirewallCensCenArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallCensCenArrayInput` via:
+//
+//	GetVpcFirewallCensCenArray{ GetVpcFirewallCensCenArgs{...} }
+type GetVpcFirewallCensCenArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallCensCenArrayOutput() GetVpcFirewallCensCenArrayOutput
+	ToGetVpcFirewallCensCenArrayOutputWithContext(context.Context) GetVpcFirewallCensCenArrayOutput
+}
+
+type GetVpcFirewallCensCenArray []GetVpcFirewallCensCenInput
+
+func (GetVpcFirewallCensCenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallCensCen)(nil)).Elem()
+}
+
+func (i GetVpcFirewallCensCenArray) ToGetVpcFirewallCensCenArrayOutput() GetVpcFirewallCensCenArrayOutput {
+	return i.ToGetVpcFirewallCensCenArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallCensCenArray) ToGetVpcFirewallCensCenArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenArrayOutput)
+}
+
+type GetVpcFirewallCensCenOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallCensCenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallCensCen)(nil)).Elem()
+}
+
+func (o GetVpcFirewallCensCenOutput) ToGetVpcFirewallCensCenOutput() GetVpcFirewallCensCenOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenOutput) ToGetVpcFirewallCensCenOutputWithContext(ctx context.Context) GetVpcFirewallCensCenOutput {
+	return o
+}
+
+// The ID of the CEN instance.
+func (o GetVpcFirewallCensCenOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCen) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// Intercommunication type, value: `expressconnect`: Express Channel `cen`: Cloud Enterprise Network
+func (o GetVpcFirewallCensCenOutput) ConnectType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCen) string { return v.ConnectType }).(pulumi.StringOutput)
+}
+
+// The ID of the CEN instance.
+func (o GetVpcFirewallCensCenOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCen) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The details of the VPC.
+func (o GetVpcFirewallCensCenOutput) LocalVpcs() GetVpcFirewallCensCenLocalVpcArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCen) []GetVpcFirewallCensCenLocalVpc { return v.LocalVpcs }).(GetVpcFirewallCensCenLocalVpcArrayOutput)
+}
+
+// The ID of the VPC instance that created the VPC firewall.
+func (o GetVpcFirewallCensCenOutput) NetworkInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCen) string { return v.NetworkInstanceId }).(pulumi.StringOutput)
+}
+
+// Firewall switch status
+func (o GetVpcFirewallCensCenOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCen) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// VPC firewall ID
+func (o GetVpcFirewallCensCenOutput) VpcFirewallId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCen) string { return v.VpcFirewallId }).(pulumi.StringOutput)
+}
+
+// The name of the VPC firewall instance.
+func (o GetVpcFirewallCensCenOutput) VpcFirewallName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCen) string { return v.VpcFirewallName }).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallCensCenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallCensCenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallCensCen)(nil)).Elem()
+}
+
+func (o GetVpcFirewallCensCenArrayOutput) ToGetVpcFirewallCensCenArrayOutput() GetVpcFirewallCensCenArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenArrayOutput) ToGetVpcFirewallCensCenArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallCensCenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallCensCen {
+		return vs[0].([]GetVpcFirewallCensCen)[vs[1].(int)]
+	}).(GetVpcFirewallCensCenOutput)
+}
+
+type GetVpcFirewallCensCenLocalVpc struct {
+	AttachmentId   string `pulumi:"attachmentId"`
+	AttachmentName string `pulumi:"attachmentName"`
+	// The list of network segments protected by the VPC firewall.
+	DefendCidrLists []string                               `pulumi:"defendCidrLists"`
+	EniLists        []GetVpcFirewallCensCenLocalVpcEniList `pulumi:"eniLists"`
+	ManualVswitchId string                                 `pulumi:"manualVswitchId"`
+	// The ID of the VPC instance that created the VPC firewall.
+	NetworkInstanceId string `pulumi:"networkInstanceId"`
+	// The name of the network instance.
+	NetworkInstanceName string `pulumi:"networkInstanceName"`
+	// The type of the network instance. Value: **VPC * *.
+	NetworkInstanceType string `pulumi:"networkInstanceType"`
+	// The UID of the Alibaba Cloud account to which the VPC belongs.
+	OwnerId string `pulumi:"ownerId"`
+	// The region ID of the VPC.
+	RegionNo string `pulumi:"regionNo"`
+	// Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
+	RouteMode string `pulumi:"routeMode"`
+	// Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
+	SupportManualMode string `pulumi:"supportManualMode"`
+	TransitRouterId   string `pulumi:"transitRouterId"`
+	// The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
+	TransitRouterType string `pulumi:"transitRouterType"`
+	// The VPC network segment list.
+	VpcCidrTableLists []GetVpcFirewallCensCenLocalVpcVpcCidrTableList `pulumi:"vpcCidrTableLists"`
+	// The ID of the VPC instance.
+	VpcId string `pulumi:"vpcId"`
+	// The instance name of the VPC.
+	VpcName string `pulumi:"vpcName"`
+}
+
+// GetVpcFirewallCensCenLocalVpcInput is an input type that accepts GetVpcFirewallCensCenLocalVpcArgs and GetVpcFirewallCensCenLocalVpcOutput values.
+// You can construct a concrete instance of `GetVpcFirewallCensCenLocalVpcInput` via:
+//
+//	GetVpcFirewallCensCenLocalVpcArgs{...}
+type GetVpcFirewallCensCenLocalVpcInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallCensCenLocalVpcOutput() GetVpcFirewallCensCenLocalVpcOutput
+	ToGetVpcFirewallCensCenLocalVpcOutputWithContext(context.Context) GetVpcFirewallCensCenLocalVpcOutput
+}
+
+type GetVpcFirewallCensCenLocalVpcArgs struct {
+	AttachmentId   pulumi.StringInput `pulumi:"attachmentId"`
+	AttachmentName pulumi.StringInput `pulumi:"attachmentName"`
+	// The list of network segments protected by the VPC firewall.
+	DefendCidrLists pulumi.StringArrayInput                        `pulumi:"defendCidrLists"`
+	EniLists        GetVpcFirewallCensCenLocalVpcEniListArrayInput `pulumi:"eniLists"`
+	ManualVswitchId pulumi.StringInput                             `pulumi:"manualVswitchId"`
+	// The ID of the VPC instance that created the VPC firewall.
+	NetworkInstanceId pulumi.StringInput `pulumi:"networkInstanceId"`
+	// The name of the network instance.
+	NetworkInstanceName pulumi.StringInput `pulumi:"networkInstanceName"`
+	// The type of the network instance. Value: **VPC * *.
+	NetworkInstanceType pulumi.StringInput `pulumi:"networkInstanceType"`
+	// The UID of the Alibaba Cloud account to which the VPC belongs.
+	OwnerId pulumi.StringInput `pulumi:"ownerId"`
+	// The region ID of the VPC.
+	RegionNo pulumi.StringInput `pulumi:"regionNo"`
+	// Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
+	RouteMode pulumi.StringInput `pulumi:"routeMode"`
+	// Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
+	SupportManualMode pulumi.StringInput `pulumi:"supportManualMode"`
+	TransitRouterId   pulumi.StringInput `pulumi:"transitRouterId"`
+	// The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
+	TransitRouterType pulumi.StringInput `pulumi:"transitRouterType"`
+	// The VPC network segment list.
+	VpcCidrTableLists GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayInput `pulumi:"vpcCidrTableLists"`
+	// The ID of the VPC instance.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The instance name of the VPC.
+	VpcName pulumi.StringInput `pulumi:"vpcName"`
+}
+
+func (GetVpcFirewallCensCenLocalVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallCensCenLocalVpc)(nil)).Elem()
+}
+
+func (i GetVpcFirewallCensCenLocalVpcArgs) ToGetVpcFirewallCensCenLocalVpcOutput() GetVpcFirewallCensCenLocalVpcOutput {
+	return i.ToGetVpcFirewallCensCenLocalVpcOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallCensCenLocalVpcArgs) ToGetVpcFirewallCensCenLocalVpcOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcOutput)
+}
+
+// GetVpcFirewallCensCenLocalVpcArrayInput is an input type that accepts GetVpcFirewallCensCenLocalVpcArray and GetVpcFirewallCensCenLocalVpcArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallCensCenLocalVpcArrayInput` via:
+//
+//	GetVpcFirewallCensCenLocalVpcArray{ GetVpcFirewallCensCenLocalVpcArgs{...} }
+type GetVpcFirewallCensCenLocalVpcArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallCensCenLocalVpcArrayOutput() GetVpcFirewallCensCenLocalVpcArrayOutput
+	ToGetVpcFirewallCensCenLocalVpcArrayOutputWithContext(context.Context) GetVpcFirewallCensCenLocalVpcArrayOutput
+}
+
+type GetVpcFirewallCensCenLocalVpcArray []GetVpcFirewallCensCenLocalVpcInput
+
+func (GetVpcFirewallCensCenLocalVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallCensCenLocalVpc)(nil)).Elem()
+}
+
+func (i GetVpcFirewallCensCenLocalVpcArray) ToGetVpcFirewallCensCenLocalVpcArrayOutput() GetVpcFirewallCensCenLocalVpcArrayOutput {
+	return i.ToGetVpcFirewallCensCenLocalVpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallCensCenLocalVpcArray) ToGetVpcFirewallCensCenLocalVpcArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcArrayOutput)
+}
+
+type GetVpcFirewallCensCenLocalVpcOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallCensCenLocalVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallCensCenLocalVpc)(nil)).Elem()
+}
+
+func (o GetVpcFirewallCensCenLocalVpcOutput) ToGetVpcFirewallCensCenLocalVpcOutput() GetVpcFirewallCensCenLocalVpcOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcOutput) ToGetVpcFirewallCensCenLocalVpcOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcOutput) AttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.AttachmentId }).(pulumi.StringOutput)
+}
+
+func (o GetVpcFirewallCensCenLocalVpcOutput) AttachmentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.AttachmentName }).(pulumi.StringOutput)
+}
+
+// The list of network segments protected by the VPC firewall.
+func (o GetVpcFirewallCensCenLocalVpcOutput) DefendCidrLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) []string { return v.DefendCidrLists }).(pulumi.StringArrayOutput)
+}
+
+func (o GetVpcFirewallCensCenLocalVpcOutput) EniLists() GetVpcFirewallCensCenLocalVpcEniListArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) []GetVpcFirewallCensCenLocalVpcEniList { return v.EniLists }).(GetVpcFirewallCensCenLocalVpcEniListArrayOutput)
+}
+
+func (o GetVpcFirewallCensCenLocalVpcOutput) ManualVswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.ManualVswitchId }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC instance that created the VPC firewall.
+func (o GetVpcFirewallCensCenLocalVpcOutput) NetworkInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.NetworkInstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the network instance.
+func (o GetVpcFirewallCensCenLocalVpcOutput) NetworkInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.NetworkInstanceName }).(pulumi.StringOutput)
+}
+
+// The type of the network instance. Value: **VPC * *.
+func (o GetVpcFirewallCensCenLocalVpcOutput) NetworkInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.NetworkInstanceType }).(pulumi.StringOutput)
+}
+
+// The UID of the Alibaba Cloud account to which the VPC belongs.
+func (o GetVpcFirewallCensCenLocalVpcOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// The region ID of the VPC.
+func (o GetVpcFirewallCensCenLocalVpcOutput) RegionNo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.RegionNo }).(pulumi.StringOutput)
+}
+
+// Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
+func (o GetVpcFirewallCensCenLocalVpcOutput) RouteMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.RouteMode }).(pulumi.StringOutput)
+}
+
+// Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
+func (o GetVpcFirewallCensCenLocalVpcOutput) SupportManualMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.SupportManualMode }).(pulumi.StringOutput)
+}
+
+func (o GetVpcFirewallCensCenLocalVpcOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.TransitRouterId }).(pulumi.StringOutput)
+}
+
+// The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
+func (o GetVpcFirewallCensCenLocalVpcOutput) TransitRouterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.TransitRouterType }).(pulumi.StringOutput)
+}
+
+// The VPC network segment list.
+func (o GetVpcFirewallCensCenLocalVpcOutput) VpcCidrTableLists() GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) []GetVpcFirewallCensCenLocalVpcVpcCidrTableList {
+		return v.VpcCidrTableLists
+	}).(GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput)
+}
+
+// The ID of the VPC instance.
+func (o GetVpcFirewallCensCenLocalVpcOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The instance name of the VPC.
+func (o GetVpcFirewallCensCenLocalVpcOutput) VpcName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.VpcName }).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallCensCenLocalVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallCensCenLocalVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallCensCenLocalVpc)(nil)).Elem()
+}
+
+func (o GetVpcFirewallCensCenLocalVpcArrayOutput) ToGetVpcFirewallCensCenLocalVpcArrayOutput() GetVpcFirewallCensCenLocalVpcArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcArrayOutput) ToGetVpcFirewallCensCenLocalVpcArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallCensCenLocalVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallCensCenLocalVpc {
+		return vs[0].([]GetVpcFirewallCensCenLocalVpc)[vs[1].(int)]
+	}).(GetVpcFirewallCensCenLocalVpcOutput)
+}
+
+type GetVpcFirewallCensCenLocalVpcEniList struct {
+	EniId               string `pulumi:"eniId"`
+	EniPrivateIpAddress string `pulumi:"eniPrivateIpAddress"`
+}
+
+// GetVpcFirewallCensCenLocalVpcEniListInput is an input type that accepts GetVpcFirewallCensCenLocalVpcEniListArgs and GetVpcFirewallCensCenLocalVpcEniListOutput values.
+// You can construct a concrete instance of `GetVpcFirewallCensCenLocalVpcEniListInput` via:
+//
+//	GetVpcFirewallCensCenLocalVpcEniListArgs{...}
+type GetVpcFirewallCensCenLocalVpcEniListInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallCensCenLocalVpcEniListOutput() GetVpcFirewallCensCenLocalVpcEniListOutput
+	ToGetVpcFirewallCensCenLocalVpcEniListOutputWithContext(context.Context) GetVpcFirewallCensCenLocalVpcEniListOutput
+}
+
+type GetVpcFirewallCensCenLocalVpcEniListArgs struct {
+	EniId               pulumi.StringInput `pulumi:"eniId"`
+	EniPrivateIpAddress pulumi.StringInput `pulumi:"eniPrivateIpAddress"`
+}
+
+func (GetVpcFirewallCensCenLocalVpcEniListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcEniList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallCensCenLocalVpcEniListArgs) ToGetVpcFirewallCensCenLocalVpcEniListOutput() GetVpcFirewallCensCenLocalVpcEniListOutput {
+	return i.ToGetVpcFirewallCensCenLocalVpcEniListOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallCensCenLocalVpcEniListArgs) ToGetVpcFirewallCensCenLocalVpcEniListOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcEniListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcEniListOutput)
+}
+
+// GetVpcFirewallCensCenLocalVpcEniListArrayInput is an input type that accepts GetVpcFirewallCensCenLocalVpcEniListArray and GetVpcFirewallCensCenLocalVpcEniListArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallCensCenLocalVpcEniListArrayInput` via:
+//
+//	GetVpcFirewallCensCenLocalVpcEniListArray{ GetVpcFirewallCensCenLocalVpcEniListArgs{...} }
+type GetVpcFirewallCensCenLocalVpcEniListArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallCensCenLocalVpcEniListArrayOutput() GetVpcFirewallCensCenLocalVpcEniListArrayOutput
+	ToGetVpcFirewallCensCenLocalVpcEniListArrayOutputWithContext(context.Context) GetVpcFirewallCensCenLocalVpcEniListArrayOutput
+}
+
+type GetVpcFirewallCensCenLocalVpcEniListArray []GetVpcFirewallCensCenLocalVpcEniListInput
+
+func (GetVpcFirewallCensCenLocalVpcEniListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallCensCenLocalVpcEniList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallCensCenLocalVpcEniListArray) ToGetVpcFirewallCensCenLocalVpcEniListArrayOutput() GetVpcFirewallCensCenLocalVpcEniListArrayOutput {
+	return i.ToGetVpcFirewallCensCenLocalVpcEniListArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallCensCenLocalVpcEniListArray) ToGetVpcFirewallCensCenLocalVpcEniListArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcEniListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcEniListArrayOutput)
+}
+
+type GetVpcFirewallCensCenLocalVpcEniListOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallCensCenLocalVpcEniListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcEniList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallCensCenLocalVpcEniListOutput) ToGetVpcFirewallCensCenLocalVpcEniListOutput() GetVpcFirewallCensCenLocalVpcEniListOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcEniListOutput) ToGetVpcFirewallCensCenLocalVpcEniListOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcEniListOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcEniListOutput) EniId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpcEniList) string { return v.EniId }).(pulumi.StringOutput)
+}
+
+func (o GetVpcFirewallCensCenLocalVpcEniListOutput) EniPrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpcEniList) string { return v.EniPrivateIpAddress }).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallCensCenLocalVpcEniListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallCensCenLocalVpcEniListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallCensCenLocalVpcEniList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallCensCenLocalVpcEniListArrayOutput) ToGetVpcFirewallCensCenLocalVpcEniListArrayOutput() GetVpcFirewallCensCenLocalVpcEniListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcEniListArrayOutput) ToGetVpcFirewallCensCenLocalVpcEniListArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcEniListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcEniListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallCensCenLocalVpcEniListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallCensCenLocalVpcEniList {
+		return vs[0].([]GetVpcFirewallCensCenLocalVpcEniList)[vs[1].(int)]
+	}).(GetVpcFirewallCensCenLocalVpcEniListOutput)
+}
+
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableList struct {
+	// The list of route entries in the VPC.
+	RouteEntryLists []GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList `pulumi:"routeEntryLists"`
+	// The ID of the route table of the VPC.
+	RouteTableId string `pulumi:"routeTableId"`
+}
+
+// GetVpcFirewallCensCenLocalVpcVpcCidrTableListInput is an input type that accepts GetVpcFirewallCensCenLocalVpcVpcCidrTableListArgs and GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput values.
+// You can construct a concrete instance of `GetVpcFirewallCensCenLocalVpcVpcCidrTableListInput` via:
+//
+//	GetVpcFirewallCensCenLocalVpcVpcCidrTableListArgs{...}
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput() GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput
+	ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListOutputWithContext(context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput
+}
+
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListArgs struct {
+	// The list of route entries in the VPC.
+	RouteEntryLists GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayInput `pulumi:"routeEntryLists"`
+	// The ID of the route table of the VPC.
+	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
+}
+
+func (GetVpcFirewallCensCenLocalVpcVpcCidrTableListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcVpcCidrTableList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListArgs) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput() GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput {
+	return i.ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListArgs) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput)
+}
+
+// GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayInput is an input type that accepts GetVpcFirewallCensCenLocalVpcVpcCidrTableListArray and GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayInput` via:
+//
+//	GetVpcFirewallCensCenLocalVpcVpcCidrTableListArray{ GetVpcFirewallCensCenLocalVpcVpcCidrTableListArgs{...} }
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput() GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput
+	ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutputWithContext(context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput
+}
+
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListArray []GetVpcFirewallCensCenLocalVpcVpcCidrTableListInput
+
+func (GetVpcFirewallCensCenLocalVpcVpcCidrTableListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallCensCenLocalVpcVpcCidrTableList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListArray) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput() GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput {
+	return i.ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListArray) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput)
+}
+
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcVpcCidrTableList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput() GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput {
+	return o
+}
+
+// The list of route entries in the VPC.
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput) RouteEntryLists() GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpcVpcCidrTableList) []GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList {
+		return v.RouteEntryLists
+	}).(GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput)
+}
+
+// The ID of the route table of the VPC.
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpcVpcCidrTableList) string { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallCensCenLocalVpcVpcCidrTableList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput() GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallCensCenLocalVpcVpcCidrTableList {
+		return vs[0].([]GetVpcFirewallCensCenLocalVpcVpcCidrTableList)[vs[1].(int)]
+	}).(GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput)
+}
+
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList struct {
+	// The target network segment of the VPC.
+	DestinationCidr string `pulumi:"destinationCidr"`
+	// The ID of the next hop instance in the VPC.
+	NextHopInstanceId string `pulumi:"nextHopInstanceId"`
+}
+
+// GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListInput is an input type that accepts GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArgs and GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput values.
+// You can construct a concrete instance of `GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListInput` via:
+//
+//	GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArgs{...}
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput() GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput
+	ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutputWithContext(context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput
+}
+
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArgs struct {
+	// The target network segment of the VPC.
+	DestinationCidr pulumi.StringInput `pulumi:"destinationCidr"`
+	// The ID of the next hop instance in the VPC.
+	NextHopInstanceId pulumi.StringInput `pulumi:"nextHopInstanceId"`
+}
+
+func (GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArgs) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput() GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput {
+	return i.ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArgs) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput)
+}
+
+// GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayInput is an input type that accepts GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArray and GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayInput` via:
+//
+//	GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArray{ GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArgs{...} }
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput() GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput
+	ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutputWithContext(context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput
+}
+
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArray []GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListInput
+
+func (GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArray) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput() GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput {
+	return i.ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArray) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput)
+}
+
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput() GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput {
+	return o
+}
+
+// The target network segment of the VPC.
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput) DestinationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList) string { return v.DestinationCidr }).(pulumi.StringOutput)
+}
+
+// The ID of the next hop instance in the VPC.
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput) NextHopInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList) string { return v.NextHopInstanceId }).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput() GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) ToGetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutputWithContext(ctx context.Context) GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList {
+		return vs[0].([]GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList)[vs[1].(int)]
+	}).(GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput)
+}
+
+type GetVpcFirewallControlPoliciesPolicy struct {
+	// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+	AclAction string `pulumi:"aclAction"`
+	// Access control over VPC firewalls strategy unique identifier.
+	AclUuid string `pulumi:"aclUuid"`
+	// Policy specifies the application ID.
+	ApplicationId string `pulumi:"applicationId"`
+	// Access control over VPC firewalls policies support the application types.
+	ApplicationName string `pulumi:"applicationName"`
+	// Access control over VPC firewalls description of the strategy information.
+	Description string `pulumi:"description"`
+	// Access control over VPC firewalls strategy access traffic of the destination port.
+	DestPort string `pulumi:"destPort"`
+	// Access control policy in the access traffic of the destination port address book name.
+	DestPortGroup string `pulumi:"destPortGroup"`
+	// Port Address Book port list.
+	DestPortGroupPorts []string `pulumi:"destPortGroupPorts"`
+	// Access control over VPC firewalls strategy access traffic of the destination port type.
+	DestPortType string `pulumi:"destPortType"`
+	// Access control over VPC firewalls strategy the destination address in.
+	Destination string `pulumi:"destination"`
+	// Destination address book defined in the address list.
+	DestinationGroupCidrs []string `pulumi:"destinationGroupCidrs"`
+	// The destination address book type in the access control policy. Value: `ip`, `domain`.
+	DestinationGroupType string `pulumi:"destinationGroupType"`
+	// Access control over VPC firewalls strategy in the destination address of the type.
+	DestinationType string `pulumi:"destinationType"`
+	// Control strategy of hits per second.
+	HitTimes int `pulumi:"hitTimes"`
+	// The ID of the Cloud Firewall Vpc Firewall Control Policy.
+	Id string `pulumi:"id"`
+	// The UID of the member account of the current Alibaba cloud account.
+	MemberUid string `pulumi:"memberUid"`
+	// Access control over VPC firewalls policies will go into effect of priority. The priority value starts from 1, the smaller the priority number, the higher the priority. -1 represents the lowest priority.
+	Order int `pulumi:"order"`
+	// Access control over VPC firewalls strategy access traffic of the protocol type.
+	Proto string `pulumi:"proto"`
+	// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+	Release bool `pulumi:"release"`
+	// Access control over VPC firewalls strategy in the source address.
+	Source string `pulumi:"source"`
+	// SOURCE address of the address list.
+	SourceGroupCidrs []string `pulumi:"sourceGroupCidrs"`
+	// The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+	SourceGroupType string `pulumi:"sourceGroupType"`
+	// Access control over VPC firewalls policy source address type.
+	SourceType string `pulumi:"sourceType"`
+	// The ID of the VPC firewall instance.
+	VpcFirewallId string `pulumi:"vpcFirewallId"`
+}
+
+// GetVpcFirewallControlPoliciesPolicyInput is an input type that accepts GetVpcFirewallControlPoliciesPolicyArgs and GetVpcFirewallControlPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetVpcFirewallControlPoliciesPolicyInput` via:
+//
+//	GetVpcFirewallControlPoliciesPolicyArgs{...}
+type GetVpcFirewallControlPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallControlPoliciesPolicyOutput() GetVpcFirewallControlPoliciesPolicyOutput
+	ToGetVpcFirewallControlPoliciesPolicyOutputWithContext(context.Context) GetVpcFirewallControlPoliciesPolicyOutput
+}
+
+type GetVpcFirewallControlPoliciesPolicyArgs struct {
+	// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+	AclAction pulumi.StringInput `pulumi:"aclAction"`
+	// Access control over VPC firewalls strategy unique identifier.
+	AclUuid pulumi.StringInput `pulumi:"aclUuid"`
+	// Policy specifies the application ID.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// Access control over VPC firewalls policies support the application types.
+	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
+	// Access control over VPC firewalls description of the strategy information.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Access control over VPC firewalls strategy access traffic of the destination port.
+	DestPort pulumi.StringInput `pulumi:"destPort"`
+	// Access control policy in the access traffic of the destination port address book name.
+	DestPortGroup pulumi.StringInput `pulumi:"destPortGroup"`
+	// Port Address Book port list.
+	DestPortGroupPorts pulumi.StringArrayInput `pulumi:"destPortGroupPorts"`
+	// Access control over VPC firewalls strategy access traffic of the destination port type.
+	DestPortType pulumi.StringInput `pulumi:"destPortType"`
+	// Access control over VPC firewalls strategy the destination address in.
+	Destination pulumi.StringInput `pulumi:"destination"`
+	// Destination address book defined in the address list.
+	DestinationGroupCidrs pulumi.StringArrayInput `pulumi:"destinationGroupCidrs"`
+	// The destination address book type in the access control policy. Value: `ip`, `domain`.
+	DestinationGroupType pulumi.StringInput `pulumi:"destinationGroupType"`
+	// Access control over VPC firewalls strategy in the destination address of the type.
+	DestinationType pulumi.StringInput `pulumi:"destinationType"`
+	// Control strategy of hits per second.
+	HitTimes pulumi.IntInput `pulumi:"hitTimes"`
+	// The ID of the Cloud Firewall Vpc Firewall Control Policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The UID of the member account of the current Alibaba cloud account.
+	MemberUid pulumi.StringInput `pulumi:"memberUid"`
+	// Access control over VPC firewalls policies will go into effect of priority. The priority value starts from 1, the smaller the priority number, the higher the priority. -1 represents the lowest priority.
+	Order pulumi.IntInput `pulumi:"order"`
+	// Access control over VPC firewalls strategy access traffic of the protocol type.
+	Proto pulumi.StringInput `pulumi:"proto"`
+	// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+	Release pulumi.BoolInput `pulumi:"release"`
+	// Access control over VPC firewalls strategy in the source address.
+	Source pulumi.StringInput `pulumi:"source"`
+	// SOURCE address of the address list.
+	SourceGroupCidrs pulumi.StringArrayInput `pulumi:"sourceGroupCidrs"`
+	// The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+	SourceGroupType pulumi.StringInput `pulumi:"sourceGroupType"`
+	// Access control over VPC firewalls policy source address type.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// The ID of the VPC firewall instance.
+	VpcFirewallId pulumi.StringInput `pulumi:"vpcFirewallId"`
+}
+
+func (GetVpcFirewallControlPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallControlPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetVpcFirewallControlPoliciesPolicyArgs) ToGetVpcFirewallControlPoliciesPolicyOutput() GetVpcFirewallControlPoliciesPolicyOutput {
+	return i.ToGetVpcFirewallControlPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallControlPoliciesPolicyArgs) ToGetVpcFirewallControlPoliciesPolicyOutputWithContext(ctx context.Context) GetVpcFirewallControlPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallControlPoliciesPolicyOutput)
+}
+
+// GetVpcFirewallControlPoliciesPolicyArrayInput is an input type that accepts GetVpcFirewallControlPoliciesPolicyArray and GetVpcFirewallControlPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallControlPoliciesPolicyArrayInput` via:
+//
+//	GetVpcFirewallControlPoliciesPolicyArray{ GetVpcFirewallControlPoliciesPolicyArgs{...} }
+type GetVpcFirewallControlPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallControlPoliciesPolicyArrayOutput() GetVpcFirewallControlPoliciesPolicyArrayOutput
+	ToGetVpcFirewallControlPoliciesPolicyArrayOutputWithContext(context.Context) GetVpcFirewallControlPoliciesPolicyArrayOutput
+}
+
+type GetVpcFirewallControlPoliciesPolicyArray []GetVpcFirewallControlPoliciesPolicyInput
+
+func (GetVpcFirewallControlPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallControlPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetVpcFirewallControlPoliciesPolicyArray) ToGetVpcFirewallControlPoliciesPolicyArrayOutput() GetVpcFirewallControlPoliciesPolicyArrayOutput {
+	return i.ToGetVpcFirewallControlPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallControlPoliciesPolicyArray) ToGetVpcFirewallControlPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetVpcFirewallControlPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallControlPoliciesPolicyArrayOutput)
+}
+
+type GetVpcFirewallControlPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallControlPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallControlPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetVpcFirewallControlPoliciesPolicyOutput) ToGetVpcFirewallControlPoliciesPolicyOutput() GetVpcFirewallControlPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetVpcFirewallControlPoliciesPolicyOutput) ToGetVpcFirewallControlPoliciesPolicyOutputWithContext(ctx context.Context) GetVpcFirewallControlPoliciesPolicyOutput {
+	return o
+}
+
+// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+func (o GetVpcFirewallControlPoliciesPolicyOutput) AclAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.AclAction }).(pulumi.StringOutput)
+}
+
+// Access control over VPC firewalls strategy unique identifier.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) AclUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.AclUuid }).(pulumi.StringOutput)
+}
+
+// Policy specifies the application ID.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// Access control over VPC firewalls policies support the application types.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) ApplicationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.ApplicationName }).(pulumi.StringOutput)
+}
+
+// Access control over VPC firewalls description of the strategy information.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Access control over VPC firewalls strategy access traffic of the destination port.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) DestPort() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.DestPort }).(pulumi.StringOutput)
+}
+
+// Access control policy in the access traffic of the destination port address book name.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) DestPortGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.DestPortGroup }).(pulumi.StringOutput)
+}
+
+// Port Address Book port list.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) DestPortGroupPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) []string { return v.DestPortGroupPorts }).(pulumi.StringArrayOutput)
+}
+
+// Access control over VPC firewalls strategy access traffic of the destination port type.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) DestPortType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.DestPortType }).(pulumi.StringOutput)
+}
+
+// Access control over VPC firewalls strategy the destination address in.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+// Destination address book defined in the address list.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) DestinationGroupCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) []string { return v.DestinationGroupCidrs }).(pulumi.StringArrayOutput)
+}
+
+// The destination address book type in the access control policy. Value: `ip`, `domain`.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) DestinationGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.DestinationGroupType }).(pulumi.StringOutput)
+}
+
+// Access control over VPC firewalls strategy in the destination address of the type.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) DestinationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.DestinationType }).(pulumi.StringOutput)
+}
+
+// Control strategy of hits per second.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) HitTimes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) int { return v.HitTimes }).(pulumi.IntOutput)
+}
+
+// The ID of the Cloud Firewall Vpc Firewall Control Policy.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The UID of the member account of the current Alibaba cloud account.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) MemberUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.MemberUid }).(pulumi.StringOutput)
+}
+
+// Access control over VPC firewalls policies will go into effect of priority. The priority value starts from 1, the smaller the priority number, the higher the priority. -1 represents the lowest priority.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) int { return v.Order }).(pulumi.IntOutput)
+}
+
+// Access control over VPC firewalls strategy access traffic of the protocol type.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) Proto() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.Proto }).(pulumi.StringOutput)
+}
+
+// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+func (o GetVpcFirewallControlPoliciesPolicyOutput) Release() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) bool { return v.Release }).(pulumi.BoolOutput)
+}
+
+// Access control over VPC firewalls strategy in the source address.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// SOURCE address of the address list.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) SourceGroupCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) []string { return v.SourceGroupCidrs }).(pulumi.StringArrayOutput)
+}
+
+// The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) SourceGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.SourceGroupType }).(pulumi.StringOutput)
+}
+
+// Access control over VPC firewalls policy source address type.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC firewall instance.
+func (o GetVpcFirewallControlPoliciesPolicyOutput) VpcFirewallId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallControlPoliciesPolicy) string { return v.VpcFirewallId }).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallControlPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallControlPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallControlPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetVpcFirewallControlPoliciesPolicyArrayOutput) ToGetVpcFirewallControlPoliciesPolicyArrayOutput() GetVpcFirewallControlPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallControlPoliciesPolicyArrayOutput) ToGetVpcFirewallControlPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetVpcFirewallControlPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallControlPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallControlPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallControlPoliciesPolicy {
+		return vs[0].([]GetVpcFirewallControlPoliciesPolicy)[vs[1].(int)]
+	}).(GetVpcFirewallControlPoliciesPolicyOutput)
+}
+
+type GetVpcFirewallsFirewall struct {
+	// Bandwidth specifications for high-speed channels. Unit: Mbps.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+	ConnectType string `pulumi:"connectType"`
+	// The name of the VPC firewall instance and the value same as `vpcFirewallId`.
+	Id string `pulumi:"id"`
+	// The details of the local VPC.
+	LocalVpcs []GetVpcFirewallsFirewallLocalVpc `pulumi:"localVpcs"`
+	// The details of the peer VPC.
+	PeerVpcs []GetVpcFirewallsFirewallPeerVpc `pulumi:"peerVpcs"`
+	// The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+	RegionStatus string `pulumi:"regionStatus"`
+	// The status of the resource
+	Status string `pulumi:"status"`
+	// The ID of the VPC firewall instance.
+	VpcFirewallId string `pulumi:"vpcFirewallId"`
+	// The name of the VPC firewall instance.
+	VpcFirewallName string `pulumi:"vpcFirewallName"`
+}
+
+// GetVpcFirewallsFirewallInput is an input type that accepts GetVpcFirewallsFirewallArgs and GetVpcFirewallsFirewallOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallInput` via:
+//
+//	GetVpcFirewallsFirewallArgs{...}
+type GetVpcFirewallsFirewallInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallOutput() GetVpcFirewallsFirewallOutput
+	ToGetVpcFirewallsFirewallOutputWithContext(context.Context) GetVpcFirewallsFirewallOutput
+}
+
+type GetVpcFirewallsFirewallArgs struct {
+	// Bandwidth specifications for high-speed channels. Unit: Mbps.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+	ConnectType pulumi.StringInput `pulumi:"connectType"`
+	// The name of the VPC firewall instance and the value same as `vpcFirewallId`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The details of the local VPC.
+	LocalVpcs GetVpcFirewallsFirewallLocalVpcArrayInput `pulumi:"localVpcs"`
+	// The details of the peer VPC.
+	PeerVpcs GetVpcFirewallsFirewallPeerVpcArrayInput `pulumi:"peerVpcs"`
+	// The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+	RegionStatus pulumi.StringInput `pulumi:"regionStatus"`
+	// The status of the resource
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the VPC firewall instance.
+	VpcFirewallId pulumi.StringInput `pulumi:"vpcFirewallId"`
+	// The name of the VPC firewall instance.
+	VpcFirewallName pulumi.StringInput `pulumi:"vpcFirewallName"`
+}
+
+func (GetVpcFirewallsFirewallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewall)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallArgs) ToGetVpcFirewallsFirewallOutput() GetVpcFirewallsFirewallOutput {
+	return i.ToGetVpcFirewallsFirewallOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallArgs) ToGetVpcFirewallsFirewallOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallOutput)
+}
+
+// GetVpcFirewallsFirewallArrayInput is an input type that accepts GetVpcFirewallsFirewallArray and GetVpcFirewallsFirewallArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallArrayInput` via:
+//
+//	GetVpcFirewallsFirewallArray{ GetVpcFirewallsFirewallArgs{...} }
+type GetVpcFirewallsFirewallArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallArrayOutput() GetVpcFirewallsFirewallArrayOutput
+	ToGetVpcFirewallsFirewallArrayOutputWithContext(context.Context) GetVpcFirewallsFirewallArrayOutput
+}
+
+type GetVpcFirewallsFirewallArray []GetVpcFirewallsFirewallInput
+
+func (GetVpcFirewallsFirewallArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewall)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallArray) ToGetVpcFirewallsFirewallArrayOutput() GetVpcFirewallsFirewallArrayOutput {
+	return i.ToGetVpcFirewallsFirewallArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallArray) ToGetVpcFirewallsFirewallArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallArrayOutput)
+}
+
+type GetVpcFirewallsFirewallOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewall)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallOutput) ToGetVpcFirewallsFirewallOutput() GetVpcFirewallsFirewallOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallOutput) ToGetVpcFirewallsFirewallOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallOutput {
+	return o
+}
+
+// Bandwidth specifications for high-speed channels. Unit: Mbps.
+func (o GetVpcFirewallsFirewallOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewall) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
+func (o GetVpcFirewallsFirewallOutput) ConnectType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewall) string { return v.ConnectType }).(pulumi.StringOutput)
+}
+
+// The name of the VPC firewall instance and the value same as `vpcFirewallId`.
+func (o GetVpcFirewallsFirewallOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewall) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The details of the local VPC.
+func (o GetVpcFirewallsFirewallOutput) LocalVpcs() GetVpcFirewallsFirewallLocalVpcArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewall) []GetVpcFirewallsFirewallLocalVpc { return v.LocalVpcs }).(GetVpcFirewallsFirewallLocalVpcArrayOutput)
+}
+
+// The details of the peer VPC.
+func (o GetVpcFirewallsFirewallOutput) PeerVpcs() GetVpcFirewallsFirewallPeerVpcArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewall) []GetVpcFirewallsFirewallPeerVpc { return v.PeerVpcs }).(GetVpcFirewallsFirewallPeerVpcArrayOutput)
+}
+
+// The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
+func (o GetVpcFirewallsFirewallOutput) RegionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewall) string { return v.RegionStatus }).(pulumi.StringOutput)
+}
+
+// The status of the resource
+func (o GetVpcFirewallsFirewallOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewall) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC firewall instance.
+func (o GetVpcFirewallsFirewallOutput) VpcFirewallId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewall) string { return v.VpcFirewallId }).(pulumi.StringOutput)
+}
+
+// The name of the VPC firewall instance.
+func (o GetVpcFirewallsFirewallOutput) VpcFirewallName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewall) string { return v.VpcFirewallName }).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallsFirewallArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewall)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallArrayOutput) ToGetVpcFirewallsFirewallArrayOutput() GetVpcFirewallsFirewallArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallArrayOutput) ToGetVpcFirewallsFirewallArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallsFirewall {
+		return vs[0].([]GetVpcFirewallsFirewall)[vs[1].(int)]
+	}).(GetVpcFirewallsFirewallOutput)
+}
+
+type GetVpcFirewallsFirewallLocalVpc struct {
+	EniId               string `pulumi:"eniId"`
+	EniPrivateIpAddress string `pulumi:"eniPrivateIpAddress"`
+	// The network segment list of the local VPC.
+	LocalVpcCidrTableLists []GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList `pulumi:"localVpcCidrTableLists"`
+	// The region ID of the peer VPC.
+	RegionNo          string `pulumi:"regionNo"`
+	RouterInterfaceId string `pulumi:"routerInterfaceId"`
+	// The ID of the peer VPC instance.
+	VpcId string `pulumi:"vpcId"`
+	// The instance name of the peer VPC.
+	VpcName string `pulumi:"vpcName"`
+}
+
+// GetVpcFirewallsFirewallLocalVpcInput is an input type that accepts GetVpcFirewallsFirewallLocalVpcArgs and GetVpcFirewallsFirewallLocalVpcOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallLocalVpcInput` via:
+//
+//	GetVpcFirewallsFirewallLocalVpcArgs{...}
+type GetVpcFirewallsFirewallLocalVpcInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallLocalVpcOutput() GetVpcFirewallsFirewallLocalVpcOutput
+	ToGetVpcFirewallsFirewallLocalVpcOutputWithContext(context.Context) GetVpcFirewallsFirewallLocalVpcOutput
+}
+
+type GetVpcFirewallsFirewallLocalVpcArgs struct {
+	EniId               pulumi.StringInput `pulumi:"eniId"`
+	EniPrivateIpAddress pulumi.StringInput `pulumi:"eniPrivateIpAddress"`
+	// The network segment list of the local VPC.
+	LocalVpcCidrTableLists GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayInput `pulumi:"localVpcCidrTableLists"`
+	// The region ID of the peer VPC.
+	RegionNo          pulumi.StringInput `pulumi:"regionNo"`
+	RouterInterfaceId pulumi.StringInput `pulumi:"routerInterfaceId"`
+	// The ID of the peer VPC instance.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The instance name of the peer VPC.
+	VpcName pulumi.StringInput `pulumi:"vpcName"`
+}
+
+func (GetVpcFirewallsFirewallLocalVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewallLocalVpc)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallLocalVpcArgs) ToGetVpcFirewallsFirewallLocalVpcOutput() GetVpcFirewallsFirewallLocalVpcOutput {
+	return i.ToGetVpcFirewallsFirewallLocalVpcOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallLocalVpcArgs) ToGetVpcFirewallsFirewallLocalVpcOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallLocalVpcOutput)
+}
+
+// GetVpcFirewallsFirewallLocalVpcArrayInput is an input type that accepts GetVpcFirewallsFirewallLocalVpcArray and GetVpcFirewallsFirewallLocalVpcArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallLocalVpcArrayInput` via:
+//
+//	GetVpcFirewallsFirewallLocalVpcArray{ GetVpcFirewallsFirewallLocalVpcArgs{...} }
+type GetVpcFirewallsFirewallLocalVpcArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallLocalVpcArrayOutput() GetVpcFirewallsFirewallLocalVpcArrayOutput
+	ToGetVpcFirewallsFirewallLocalVpcArrayOutputWithContext(context.Context) GetVpcFirewallsFirewallLocalVpcArrayOutput
+}
+
+type GetVpcFirewallsFirewallLocalVpcArray []GetVpcFirewallsFirewallLocalVpcInput
+
+func (GetVpcFirewallsFirewallLocalVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewallLocalVpc)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallLocalVpcArray) ToGetVpcFirewallsFirewallLocalVpcArrayOutput() GetVpcFirewallsFirewallLocalVpcArrayOutput {
+	return i.ToGetVpcFirewallsFirewallLocalVpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallLocalVpcArray) ToGetVpcFirewallsFirewallLocalVpcArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallLocalVpcArrayOutput)
+}
+
+type GetVpcFirewallsFirewallLocalVpcOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallLocalVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewallLocalVpc)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcOutput) ToGetVpcFirewallsFirewallLocalVpcOutput() GetVpcFirewallsFirewallLocalVpcOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcOutput) ToGetVpcFirewallsFirewallLocalVpcOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcOutput) EniId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpc) string { return v.EniId }).(pulumi.StringOutput)
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcOutput) EniPrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpc) string { return v.EniPrivateIpAddress }).(pulumi.StringOutput)
+}
+
+// The network segment list of the local VPC.
+func (o GetVpcFirewallsFirewallLocalVpcOutput) LocalVpcCidrTableLists() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpc) []GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList {
+		return v.LocalVpcCidrTableLists
+	}).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput)
+}
+
+// The region ID of the peer VPC.
+func (o GetVpcFirewallsFirewallLocalVpcOutput) RegionNo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpc) string { return v.RegionNo }).(pulumi.StringOutput)
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcOutput) RouterInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpc) string { return v.RouterInterfaceId }).(pulumi.StringOutput)
+}
+
+// The ID of the peer VPC instance.
+func (o GetVpcFirewallsFirewallLocalVpcOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpc) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The instance name of the peer VPC.
+func (o GetVpcFirewallsFirewallLocalVpcOutput) VpcName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpc) string { return v.VpcName }).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallsFirewallLocalVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallLocalVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewallLocalVpc)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcArrayOutput) ToGetVpcFirewallsFirewallLocalVpcArrayOutput() GetVpcFirewallsFirewallLocalVpcArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcArrayOutput) ToGetVpcFirewallsFirewallLocalVpcArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallLocalVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallsFirewallLocalVpc {
+		return vs[0].([]GetVpcFirewallsFirewallLocalVpc)[vs[1].(int)]
+	}).(GetVpcFirewallsFirewallLocalVpcOutput)
+}
+
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList struct {
+	// The list of route entries of the local VPC.
+	LocalRouteEntryLists []GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList `pulumi:"localRouteEntryLists"`
+	// The ID of the route table of the local VPC.
+	LocalRouteTableId string `pulumi:"localRouteTableId"`
+}
+
+// GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListInput is an input type that accepts GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArgs and GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListInput` via:
+//
+//	GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArgs{...}
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput
+	ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutputWithContext(context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput
+}
+
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArgs struct {
+	// The list of route entries of the local VPC.
+	LocalRouteEntryLists GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput `pulumi:"localRouteEntryLists"`
+	// The ID of the route table of the local VPC.
+	LocalRouteTableId pulumi.StringInput `pulumi:"localRouteTableId"`
+}
+
+func (GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArgs) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput {
+	return i.ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArgs) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput)
+}
+
+// GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayInput is an input type that accepts GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArray and GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayInput` via:
+//
+//	GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArray{ GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArgs{...} }
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput
+	ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutputWithContext(context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput
+}
+
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArray []GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListInput
+
+func (GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArray) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
+	return i.ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArray) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput)
+}
+
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput {
+	return o
+}
+
+// The list of route entries of the local VPC.
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput) LocalRouteEntryLists() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList) []GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList {
+		return v.LocalRouteEntryLists
+	}).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput)
+}
+
+// The ID of the route table of the local VPC.
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput) LocalRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList) string { return v.LocalRouteTableId }).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList {
+		return vs[0].([]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList)[vs[1].(int)]
+	}).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput)
+}
+
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList struct {
+	// The target network segment of the local VPC.
+	LocalDestinationCidr string `pulumi:"localDestinationCidr"`
+	// The ID of the next-hop instance in the local VPC.
+	LocalNextHopInstanceId string `pulumi:"localNextHopInstanceId"`
+}
+
+// GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListInput is an input type that accepts GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs and GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListInput` via:
+//
+//	GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs{...}
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput
+	ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutputWithContext(context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput
+}
+
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs struct {
+	// The target network segment of the local VPC.
+	LocalDestinationCidr pulumi.StringInput `pulumi:"localDestinationCidr"`
+	// The ID of the next-hop instance in the local VPC.
+	LocalNextHopInstanceId pulumi.StringInput `pulumi:"localNextHopInstanceId"`
+}
+
+func (GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
+	return i.ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput)
+}
+
+// GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput is an input type that accepts GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray and GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput` via:
+//
+//	GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray{ GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs{...} }
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput
+	ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutputWithContext(context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput
+}
+
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray []GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListInput
+
+func (GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
+	return i.ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput)
+}
+
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
+	return o
+}
+
+// The target network segment of the local VPC.
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) LocalDestinationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList) string {
+		return v.LocalDestinationCidr
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the next-hop instance in the local VPC.
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) LocalNextHopInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList) string {
+		return v.LocalNextHopInstanceId
+	}).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput() GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) ToGetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList {
+		return vs[0].([]GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList)[vs[1].(int)]
+	}).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput)
+}
+
+type GetVpcFirewallsFirewallPeerVpc struct {
+	EniId               string `pulumi:"eniId"`
+	EniPrivateIpAddress string `pulumi:"eniPrivateIpAddress"`
+	// The network segment list of the peer VPC.
+	PeerVpcCidrTableLists []GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList `pulumi:"peerVpcCidrTableLists"`
+	// The region ID of the peer VPC.
+	RegionNo          string `pulumi:"regionNo"`
+	RouterInterfaceId string `pulumi:"routerInterfaceId"`
+	// The ID of the peer VPC instance.
+	VpcId string `pulumi:"vpcId"`
+	// The instance name of the peer VPC.
+	VpcName string `pulumi:"vpcName"`
+}
+
+// GetVpcFirewallsFirewallPeerVpcInput is an input type that accepts GetVpcFirewallsFirewallPeerVpcArgs and GetVpcFirewallsFirewallPeerVpcOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallPeerVpcInput` via:
+//
+//	GetVpcFirewallsFirewallPeerVpcArgs{...}
+type GetVpcFirewallsFirewallPeerVpcInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallPeerVpcOutput() GetVpcFirewallsFirewallPeerVpcOutput
+	ToGetVpcFirewallsFirewallPeerVpcOutputWithContext(context.Context) GetVpcFirewallsFirewallPeerVpcOutput
+}
+
+type GetVpcFirewallsFirewallPeerVpcArgs struct {
+	EniId               pulumi.StringInput `pulumi:"eniId"`
+	EniPrivateIpAddress pulumi.StringInput `pulumi:"eniPrivateIpAddress"`
+	// The network segment list of the peer VPC.
+	PeerVpcCidrTableLists GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayInput `pulumi:"peerVpcCidrTableLists"`
+	// The region ID of the peer VPC.
+	RegionNo          pulumi.StringInput `pulumi:"regionNo"`
+	RouterInterfaceId pulumi.StringInput `pulumi:"routerInterfaceId"`
+	// The ID of the peer VPC instance.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The instance name of the peer VPC.
+	VpcName pulumi.StringInput `pulumi:"vpcName"`
+}
+
+func (GetVpcFirewallsFirewallPeerVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpc)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallPeerVpcArgs) ToGetVpcFirewallsFirewallPeerVpcOutput() GetVpcFirewallsFirewallPeerVpcOutput {
+	return i.ToGetVpcFirewallsFirewallPeerVpcOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallPeerVpcArgs) ToGetVpcFirewallsFirewallPeerVpcOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallPeerVpcOutput)
+}
+
+// GetVpcFirewallsFirewallPeerVpcArrayInput is an input type that accepts GetVpcFirewallsFirewallPeerVpcArray and GetVpcFirewallsFirewallPeerVpcArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallPeerVpcArrayInput` via:
+//
+//	GetVpcFirewallsFirewallPeerVpcArray{ GetVpcFirewallsFirewallPeerVpcArgs{...} }
+type GetVpcFirewallsFirewallPeerVpcArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallPeerVpcArrayOutput() GetVpcFirewallsFirewallPeerVpcArrayOutput
+	ToGetVpcFirewallsFirewallPeerVpcArrayOutputWithContext(context.Context) GetVpcFirewallsFirewallPeerVpcArrayOutput
+}
+
+type GetVpcFirewallsFirewallPeerVpcArray []GetVpcFirewallsFirewallPeerVpcInput
+
+func (GetVpcFirewallsFirewallPeerVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewallPeerVpc)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallPeerVpcArray) ToGetVpcFirewallsFirewallPeerVpcArrayOutput() GetVpcFirewallsFirewallPeerVpcArrayOutput {
+	return i.ToGetVpcFirewallsFirewallPeerVpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallPeerVpcArray) ToGetVpcFirewallsFirewallPeerVpcArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallPeerVpcArrayOutput)
+}
+
+type GetVpcFirewallsFirewallPeerVpcOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallPeerVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpc)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcOutput) ToGetVpcFirewallsFirewallPeerVpcOutput() GetVpcFirewallsFirewallPeerVpcOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcOutput) ToGetVpcFirewallsFirewallPeerVpcOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcOutput) EniId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpc) string { return v.EniId }).(pulumi.StringOutput)
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcOutput) EniPrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpc) string { return v.EniPrivateIpAddress }).(pulumi.StringOutput)
+}
+
+// The network segment list of the peer VPC.
+func (o GetVpcFirewallsFirewallPeerVpcOutput) PeerVpcCidrTableLists() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpc) []GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList {
+		return v.PeerVpcCidrTableLists
+	}).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput)
+}
+
+// The region ID of the peer VPC.
+func (o GetVpcFirewallsFirewallPeerVpcOutput) RegionNo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpc) string { return v.RegionNo }).(pulumi.StringOutput)
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcOutput) RouterInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpc) string { return v.RouterInterfaceId }).(pulumi.StringOutput)
+}
+
+// The ID of the peer VPC instance.
+func (o GetVpcFirewallsFirewallPeerVpcOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpc) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The instance name of the peer VPC.
+func (o GetVpcFirewallsFirewallPeerVpcOutput) VpcName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpc) string { return v.VpcName }).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallsFirewallPeerVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallPeerVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewallPeerVpc)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcArrayOutput) ToGetVpcFirewallsFirewallPeerVpcArrayOutput() GetVpcFirewallsFirewallPeerVpcArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcArrayOutput) ToGetVpcFirewallsFirewallPeerVpcArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallPeerVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallsFirewallPeerVpc {
+		return vs[0].([]GetVpcFirewallsFirewallPeerVpc)[vs[1].(int)]
+	}).(GetVpcFirewallsFirewallPeerVpcOutput)
+}
+
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList struct {
+	// Peer VPC route entry list information.
+	PeerRouteEntryLists []GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList `pulumi:"peerRouteEntryLists"`
+	// The ID of the route table of the peer VPC.
+	PeerRouteTableId string `pulumi:"peerRouteTableId"`
+}
+
+// GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListInput is an input type that accepts GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArgs and GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListInput` via:
+//
+//	GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArgs{...}
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput
+	ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutputWithContext(context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput
+}
+
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArgs struct {
+	// Peer VPC route entry list information.
+	PeerRouteEntryLists GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput `pulumi:"peerRouteEntryLists"`
+	// The ID of the route table of the peer VPC.
+	PeerRouteTableId pulumi.StringInput `pulumi:"peerRouteTableId"`
+}
+
+func (GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArgs) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput {
+	return i.ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArgs) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput)
+}
+
+// GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayInput is an input type that accepts GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArray and GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayInput` via:
+//
+//	GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArray{ GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArgs{...} }
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput
+	ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutputWithContext(context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput
+}
+
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArray []GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListInput
+
+func (GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArray) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
+	return i.ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArray) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput)
+}
+
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput {
+	return o
+}
+
+// Peer VPC route entry list information.
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput) PeerRouteEntryLists() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList) []GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList {
+		return v.PeerRouteEntryLists
+	}).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput)
+}
+
+// The ID of the route table of the peer VPC.
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput) PeerRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList) string { return v.PeerRouteTableId }).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList {
+		return vs[0].([]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList)[vs[1].(int)]
+	}).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput)
+}
+
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList struct {
+	// The target network segment of the peer VPC.
+	PeerDestinationCidr string `pulumi:"peerDestinationCidr"`
+	// The ID of the next-hop instance in the peer VPC.
+	PeerNextHopInstanceId string `pulumi:"peerNextHopInstanceId"`
+}
+
+// GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput is an input type that accepts GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs and GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput` via:
+//
+//	GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs{...}
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput
+	ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutputWithContext(context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput
+}
+
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs struct {
+	// The target network segment of the peer VPC.
+	PeerDestinationCidr pulumi.StringInput `pulumi:"peerDestinationCidr"`
+	// The ID of the next-hop instance in the peer VPC.
+	PeerNextHopInstanceId pulumi.StringInput `pulumi:"peerNextHopInstanceId"`
+}
+
+func (GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
+	return i.ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput)
+}
+
+// GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput is an input type that accepts GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray and GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput values.
+// You can construct a concrete instance of `GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput` via:
+//
+//	GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray{ GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs{...} }
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput
+	ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutputWithContext(context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput
+}
+
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray []GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput
+
+func (GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList)(nil)).Elem()
+}
+
+func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
+	return i.ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput)
+}
+
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
+	return o
+}
+
+// The target network segment of the peer VPC.
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) PeerDestinationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList) string {
+		return v.PeerDestinationCidr
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the next-hop instance in the peer VPC.
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) PeerNextHopInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList) string {
+		return v.PeerNextHopInstanceId
+	}).(pulumi.StringOutput)
+}
+
+type GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList)(nil)).Elem()
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput() GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) ToGetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutputWithContext(ctx context.Context) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
+	return o
+}
+
+func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput) Index(i pulumi.IntInput) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList {
+		return vs[0].([]GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList)[vs[1].(int)]
+	}).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookEcsTagInput)(nil)).Elem(), AddressBookEcsTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookEcsTagArrayInput)(nil)).Elem(), AddressBookEcsTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcInput)(nil)).Elem(), FirewallVpcFirewallCenLocalVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcPtrInput)(nil)).Elem(), FirewallVpcFirewallCenLocalVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcEniListInput)(nil)).Elem(), FirewallVpcFirewallCenLocalVpcEniListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcEniListArrayInput)(nil)).Elem(), FirewallVpcFirewallCenLocalVpcEniListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcVpcCidrTableListInput)(nil)).Elem(), FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayInput)(nil)).Elem(), FirewallVpcFirewallCenLocalVpcVpcCidrTableListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListInput)(nil)).Elem(), FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayInput)(nil)).Elem(), FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallLocalVpcInput)(nil)).Elem(), FirewallVpcFirewallLocalVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallLocalVpcPtrInput)(nil)).Elem(), FirewallVpcFirewallLocalVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallLocalVpcLocalVpcCidrTableListInput)(nil)).Elem(), FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayInput)(nil)).Elem(), FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListInput)(nil)).Elem(), FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput)(nil)).Elem(), FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallPeerVpcInput)(nil)).Elem(), FirewallVpcFirewallPeerVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallPeerVpcPtrInput)(nil)).Elem(), FirewallVpcFirewallPeerVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallPeerVpcPeerVpcCidrTableListInput)(nil)).Elem(), FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayInput)(nil)).Elem(), FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput)(nil)).Elem(), FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput)(nil)).Elem(), FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookInput)(nil)).Elem(), GetAddressBooksBookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookArrayInput)(nil)).Elem(), GetAddressBooksBookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookEcsTagInput)(nil)).Elem(), GetAddressBooksBookEcsTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookEcsTagArrayInput)(nil)).Elem(), GetAddressBooksBookEcsTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlPoliciesPolicyInput)(nil)).Elem(), GetControlPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlPoliciesPolicyArrayInput)(nil)).Elem(), GetControlPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMembersMemberInput)(nil)).Elem(), GetInstanceMembersMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMembersMemberArrayInput)(nil)).Elem(), GetInstanceMembersMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenInput)(nil)).Elem(), GetVpcFirewallCensCenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenArrayInput)(nil)).Elem(), GetVpcFirewallCensCenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcInput)(nil)).Elem(), GetVpcFirewallCensCenLocalVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcArrayInput)(nil)).Elem(), GetVpcFirewallCensCenLocalVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcEniListInput)(nil)).Elem(), GetVpcFirewallCensCenLocalVpcEniListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcEniListArrayInput)(nil)).Elem(), GetVpcFirewallCensCenLocalVpcEniListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcVpcCidrTableListInput)(nil)).Elem(), GetVpcFirewallCensCenLocalVpcVpcCidrTableListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayInput)(nil)).Elem(), GetVpcFirewallCensCenLocalVpcVpcCidrTableListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListInput)(nil)).Elem(), GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayInput)(nil)).Elem(), GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallControlPoliciesPolicyInput)(nil)).Elem(), GetVpcFirewallControlPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallControlPoliciesPolicyArrayInput)(nil)).Elem(), GetVpcFirewallControlPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallInput)(nil)).Elem(), GetVpcFirewallsFirewallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallArrayInput)(nil)).Elem(), GetVpcFirewallsFirewallArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallLocalVpcInput)(nil)).Elem(), GetVpcFirewallsFirewallLocalVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallLocalVpcArrayInput)(nil)).Elem(), GetVpcFirewallsFirewallLocalVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListInput)(nil)).Elem(), GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayInput)(nil)).Elem(), GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListInput)(nil)).Elem(), GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput)(nil)).Elem(), GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcInput)(nil)).Elem(), GetVpcFirewallsFirewallPeerVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcArrayInput)(nil)).Elem(), GetVpcFirewallsFirewallPeerVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListInput)(nil)).Elem(), GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayInput)(nil)).Elem(), GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput)(nil)).Elem(), GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput)(nil)).Elem(), GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray{})
 	pulumi.RegisterOutputType(AddressBookEcsTagOutput{})
 	pulumi.RegisterOutputType(AddressBookEcsTagArrayOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallCenLocalVpcOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallCenLocalVpcPtrOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallCenLocalVpcEniListOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallCenLocalVpcEniListArrayOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallCenLocalVpcVpcCidrTableListOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallCenLocalVpcVpcCidrTableListArrayOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallLocalVpcOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallLocalVpcPtrOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallPeerVpcOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallPeerVpcPtrOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput{})
+	pulumi.RegisterOutputType(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookArrayOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookEcsTagOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookEcsTagArrayOutput{})
 	pulumi.RegisterOutputType(GetControlPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetControlPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceMembersMemberOutput{})
+	pulumi.RegisterOutputType(GetInstanceMembersMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallCensCenOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallCensCenArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallCensCenLocalVpcOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallCensCenLocalVpcArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallCensCenLocalVpcEniListOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallCensCenLocalVpcEniListArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallCensCenLocalVpcVpcCidrTableListOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallCensCenLocalVpcVpcCidrTableListArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallControlPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallControlPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallLocalVpcOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallLocalVpcArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallPeerVpcOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallPeerVpcArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput{})
+	pulumi.RegisterOutputType(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput{})
 }

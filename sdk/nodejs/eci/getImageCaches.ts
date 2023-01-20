@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,11 +13,8 @@ import * as utilities from "../utilities";
  */
 export function getImageCaches(args?: GetImageCachesArgs, opts?: pulumi.InvokeOptions): Promise<GetImageCachesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eci/getImageCaches:getImageCaches", {
         "ids": args.ids,
         "image": args.image,
@@ -95,9 +93,13 @@ export interface GetImageCachesResult {
      */
     readonly status?: string;
 }
-
+/**
+ * Provides a collection of ECI Image Cache to the specified filters.
+ *
+ * > **NOTE:** Available in 1.90.0+.
+ */
 export function getImageCachesOutput(args?: GetImageCachesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageCachesResult> {
-    return pulumi.output(args).apply(a => getImageCaches(a, opts))
+    return pulumi.output(args).apply((a: any) => getImageCaches(a, opts))
 }
 
 /**

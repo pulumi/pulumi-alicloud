@@ -29,7 +29,7 @@ public final class GetPrometheusAlertRulesRule {
      */
     private String dispatchRuleId;
     /**
-     * @return -The duration of the alert.
+     * @return The duration of the alert.
      * 
      */
     private String duration;
@@ -44,7 +44,7 @@ public final class GetPrometheusAlertRulesRule {
      */
     private String id;
     /**
-     * @return -The labels of the resource.
+     * @return The labels of the resource.
      * 
      */
     private List<GetPrometheusAlertRulesRuleLabel> labels;
@@ -70,8 +70,6 @@ public final class GetPrometheusAlertRulesRule {
     private String prometheusAlertRuleName;
     /**
      * @return The status of the resource. Valid values: `0`, `1`.
-     * * `1`: open.
-     * * `0`: off.
      * 
      */
     private Integer status;
@@ -104,7 +102,7 @@ public final class GetPrometheusAlertRulesRule {
         return this.dispatchRuleId;
     }
     /**
-     * @return -The duration of the alert.
+     * @return The duration of the alert.
      * 
      */
     public String duration() {
@@ -125,7 +123,7 @@ public final class GetPrometheusAlertRulesRule {
         return this.id;
     }
     /**
-     * @return -The labels of the resource.
+     * @return The labels of the resource.
      * 
      */
     public List<GetPrometheusAlertRulesRuleLabel> labels() {
@@ -161,8 +159,6 @@ public final class GetPrometheusAlertRulesRule {
     }
     /**
      * @return The status of the resource. Valid values: `0`, `1`.
-     * * `1`: open.
-     * * `0`: off.
      * 
      */
     public Integer status() {

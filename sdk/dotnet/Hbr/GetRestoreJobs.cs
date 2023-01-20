@@ -23,43 +23,37 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultEcsBackupPlans = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
         ///     {
-        ///         var defaultEcsBackupPlans = Output.Create(AliCloud.Hbr.GetEcsBackupPlans.InvokeAsync(new AliCloud.Hbr.GetEcsBackupPlansArgs
-        ///         {
-        ///             NameRegex = "plan-name",
-        ///         }));
-        ///         var defaultRestoreJobs = Output.Tuple(defaultEcsBackupPlans, defaultEcsBackupPlans).Apply(values =&gt;
-        ///         {
-        ///             var defaultEcsBackupPlans = values.Item1;
-        ///             var defaultEcsBackupPlans1 = values.Item2;
-        ///             return Output.Create(AliCloud.Hbr.GetRestoreJobs.InvokeAsync(new AliCloud.Hbr.GetRestoreJobsArgs
-        ///             {
-        ///                 RestoreType = "ECS_FILE",
-        ///                 VaultIds = 
-        ///                 {
-        ///                     defaultEcsBackupPlans.Plans?[0]?.VaultId,
-        ///                 },
-        ///                 TargetInstanceIds = 
-        ///                 {
-        ///                     defaultEcsBackupPlans1.Plans?[0]?.InstanceId,
-        ///                 },
-        ///             }));
-        ///         });
-        ///     }
+        ///         NameRegex = "plan-name",
+        ///     });
         /// 
-        /// }
+        ///     var defaultRestoreJobs = AliCloud.Hbr.GetRestoreJobs.Invoke(new()
+        ///     {
+        ///         RestoreType = "ECS_FILE",
+        ///         VaultIds = new[]
+        ///         {
+        ///             defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///         },
+        ///         TargetInstanceIds = new[]
+        ///         {
+        ///             defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRestoreJobsResult> InvokeAsync(GetRestoreJobsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRestoreJobsResult>("alicloud:hbr/getRestoreJobs:getRestoreJobs", args ?? new GetRestoreJobsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRestoreJobsResult>("alicloud:hbr/getRestoreJobs:getRestoreJobs", args ?? new GetRestoreJobsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
@@ -73,47 +67,41 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultEcsBackupPlans = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
         ///     {
-        ///         var defaultEcsBackupPlans = Output.Create(AliCloud.Hbr.GetEcsBackupPlans.InvokeAsync(new AliCloud.Hbr.GetEcsBackupPlansArgs
-        ///         {
-        ///             NameRegex = "plan-name",
-        ///         }));
-        ///         var defaultRestoreJobs = Output.Tuple(defaultEcsBackupPlans, defaultEcsBackupPlans).Apply(values =&gt;
-        ///         {
-        ///             var defaultEcsBackupPlans = values.Item1;
-        ///             var defaultEcsBackupPlans1 = values.Item2;
-        ///             return Output.Create(AliCloud.Hbr.GetRestoreJobs.InvokeAsync(new AliCloud.Hbr.GetRestoreJobsArgs
-        ///             {
-        ///                 RestoreType = "ECS_FILE",
-        ///                 VaultIds = 
-        ///                 {
-        ///                     defaultEcsBackupPlans.Plans?[0]?.VaultId,
-        ///                 },
-        ///                 TargetInstanceIds = 
-        ///                 {
-        ///                     defaultEcsBackupPlans1.Plans?[0]?.InstanceId,
-        ///                 },
-        ///             }));
-        ///         });
-        ///     }
+        ///         NameRegex = "plan-name",
+        ///     });
         /// 
-        /// }
+        ///     var defaultRestoreJobs = AliCloud.Hbr.GetRestoreJobs.Invoke(new()
+        ///     {
+        ///         RestoreType = "ECS_FILE",
+        ///         VaultIds = new[]
+        ///         {
+        ///             defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///         },
+        ///         TargetInstanceIds = new[]
+        ///         {
+        ///             defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRestoreJobsResult> Invoke(GetRestoreJobsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRestoreJobsResult>("alicloud:hbr/getRestoreJobs:getRestoreJobs", args ?? new GetRestoreJobsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRestoreJobsResult>("alicloud:hbr/getRestoreJobs:getRestoreJobs", args ?? new GetRestoreJobsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRestoreJobsArgs : Pulumi.InvokeArgs
+    public sealed class GetRestoreJobsArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -205,9 +193,10 @@ namespace Pulumi.AliCloud.Hbr
         public GetRestoreJobsArgs()
         {
         }
+        public static new GetRestoreJobsArgs Empty => new GetRestoreJobsArgs();
     }
 
-    public sealed class GetRestoreJobsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRestoreJobsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -299,6 +288,7 @@ namespace Pulumi.AliCloud.Hbr
         public GetRestoreJobsInvokeArgs()
         {
         }
+        public static new GetRestoreJobsInvokeArgs Empty => new GetRestoreJobsInvokeArgs();
     }
 
 

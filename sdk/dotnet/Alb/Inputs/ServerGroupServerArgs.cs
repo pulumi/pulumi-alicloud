@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ServerGroupServerArgs : Pulumi.ResourceArgs
+    public sealed class ServerGroupServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the server.
@@ -19,28 +19,42 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The port that is used by the server. Valid values: `1` to `65535`.
+        /// The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The ID of the ECS instance, ENI instance or ECI instance.
+        /// Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
         /// </summary>
-        [Input("serverId")]
-        public Input<string>? ServerId { get; set; }
+        [Input("remoteIpEnabled")]
+        public Input<bool>? RemoteIpEnabled { get; set; }
 
         /// <summary>
-        /// The IP address of the ENI instance when it is in the inclusive ENI mode.
+        /// The ID of the backend server.
+        /// - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
+        /// - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
+        /// - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+        /// </summary>
+        [Input("serverId", required: true)]
+        public Input<string> ServerId { get; set; } = null!;
+
+        /// <summary>
+        /// The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
         /// </summary>
         [Input("serverIp")]
         public Input<string>? ServerIp { get; set; }
 
         /// <summary>
-        /// The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+        /// The type of the server. The type of the server. Valid values: 
+        /// - Ecs: an ECS instance.
+        /// - Eni: an ENI.
+        /// - Eci: an elastic container instance.
+        /// - Ip(Available in v1.194.0+): an IP address.
+        /// - fc(Available in v1.194.0+): a function.
         /// </summary>
-        [Input("serverType")]
-        public Input<string>? ServerType { get; set; }
+        [Input("serverType", required: true)]
+        public Input<string> ServerType { get; set; } = null!;
 
         /// <summary>
         /// The status of the resource.
@@ -50,7 +64,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
         /// <summary>
         /// The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-        /// requests are forwarded to the server.
+        /// requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
@@ -58,5 +72,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public ServerGroupServerArgs()
         {
         }
+        public static new ServerGroupServerArgs Empty => new ServerGroupServerArgs();
     }
 }

@@ -11,10 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConfigurationRecordersRecorder {
+    /**
+     * @return The ID of the Alicloud account.
+     * 
+     */
     private String accountId;
     /**
      * @return The ID of the Config Configuration Recorder. Value as the `account_id`.
-     * * `account_id`- The ID of the Alicloud account.
      * 
      */
     private String id;
@@ -40,12 +43,15 @@ public final class GetConfigurationRecordersRecorder {
     private String status;
 
     private GetConfigurationRecordersRecorder() {}
+    /**
+     * @return The ID of the Alicloud account.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
     /**
      * @return The ID of the Config Configuration Recorder. Value as the `account_id`.
-     * * `account_id`- The ID of the Alicloud account.
      * 
      */
     public String id() {

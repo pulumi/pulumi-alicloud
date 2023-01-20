@@ -31,9 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -193,7 +193,7 @@ import javax.annotation.Nullable;
  * Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `terraform plan`.
  * 
  * ```sh
- *  $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon alicloud_cs_kubernetes_addon.my_addon &lt;cluster_id&gt;:&lt;addon_name&gt;
+ *  $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon &lt;cluster_id&gt;:&lt;addon_name&gt;
  * ```
  * 
  */

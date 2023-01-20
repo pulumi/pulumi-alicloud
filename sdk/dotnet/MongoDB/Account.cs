@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mongodb/account:Account")]
-    public partial class Account : Pulumi.CustomResource
+    public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the account.
@@ -84,6 +84,10 @@ namespace Pulumi.AliCloud.MongoDB
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -105,7 +109,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
     }
 
-    public sealed class AccountArgs : Pulumi.ResourceArgs
+    public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the account.
@@ -121,13 +125,23 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
 
+        [Input("accountPassword", required: true)]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// The Password of the Account.
         /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
         /// * The password must be `8` to `32` characters in length.
         /// </summary>
-        [Input("accountPassword", required: true)]
-        public Input<string> AccountPassword { get; set; } = null!;
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The ID of the instance.
@@ -138,9 +152,10 @@ namespace Pulumi.AliCloud.MongoDB
         public AccountArgs()
         {
         }
+        public static new AccountArgs Empty => new AccountArgs();
     }
 
-    public sealed class AccountState : Pulumi.ResourceArgs
+    public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the account.
@@ -156,13 +171,23 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// The Password of the Account.
         /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
         /// * The password must be `8` to `32` characters in length.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The ID of the instance.
@@ -179,5 +204,6 @@ namespace Pulumi.AliCloud.MongoDB
         public AccountState()
         {
         }
+        public static new AccountState Empty => new AccountState();
     }
 }

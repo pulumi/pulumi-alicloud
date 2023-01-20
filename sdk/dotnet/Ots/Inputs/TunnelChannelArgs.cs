@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ots.Inputs
 {
 
-    public sealed class TunnelChannelArgs : Pulumi.ResourceArgs
+    public sealed class TunnelChannelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the channel.
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Ots.Inputs
         public TunnelChannelArgs()
         {
         }
+        public static new TunnelChannelArgs Empty => new TunnelChannelArgs();
     }
 }

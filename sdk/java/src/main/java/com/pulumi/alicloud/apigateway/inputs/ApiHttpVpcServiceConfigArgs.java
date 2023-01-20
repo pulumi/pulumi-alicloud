@@ -24,14 +24,14 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The http method of backend service.
+     * The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
      * 
      */
     @Import(name="method", required=true)
     private Output<String> method;
 
     /**
-     * @return The http method of backend service.
+     * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
      * 
      */
     public Output<String> method() {
@@ -39,14 +39,14 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * The name of the api gateway api. Defaults to null.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * @return The name of the api gateway api. Defaults to null.
      * 
      */
     public Output<String> name() {
@@ -54,14 +54,14 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The path of backend service.
+     * The request path of the api.
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return The path of backend service.
+     * @return The request path of the api.
      * 
      */
     public Output<String> path() {
@@ -121,7 +121,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param method The http method of backend service.
+         * @param method The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param method The http method of backend service.
+         * @param method The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+         * @param name The name of the api gateway api. Defaults to null.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+         * @param name The name of the api gateway api. Defaults to null.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param path The path of backend service.
+         * @param path The request path of the api.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ApiHttpVpcServiceConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param path The path of backend service.
+         * @param path The request path of the api.
          * 
          * @return builder
          * 

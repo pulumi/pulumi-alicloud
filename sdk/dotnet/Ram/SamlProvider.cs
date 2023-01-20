@@ -21,22 +21,20 @@ namespace Pulumi.AliCloud.Ram
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Ram.SamlProvider("example", new()
     ///     {
-    ///         var example = new AliCloud.Ram.SamlProvider("example", new AliCloud.Ram.SamlProviderArgs
-    ///         {
-    ///             Description = "For Terraform Test",
-    ///             EncodedsamlMetadataDocument = "your encodedsaml metadata document",
-    ///             SamlProviderName = "tf-testAcc",
-    ///         });
-    ///     }
+    ///         Description = "For Terraform Test",
+    ///         EncodedsamlMetadataDocument = "your encodedsaml metadata document",
+    ///         SamlProviderName = "tf-testAcc",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/samlProvider:SamlProvider")]
-    public partial class SamlProvider : Pulumi.CustomResource
+    public partial class SamlProvider : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the IdP.
@@ -124,7 +122,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class SamlProviderArgs : Pulumi.ResourceArgs
+    public sealed class SamlProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of SAML Provider.
@@ -147,9 +145,10 @@ namespace Pulumi.AliCloud.Ram
         public SamlProviderArgs()
         {
         }
+        public static new SamlProviderArgs Empty => new SamlProviderArgs();
     }
 
-    public sealed class SamlProviderState : Pulumi.ResourceArgs
+    public sealed class SamlProviderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the IdP.
@@ -184,5 +183,6 @@ namespace Pulumi.AliCloud.Ram
         public SamlProviderState()
         {
         }
+        public static new SamlProviderState Empty => new SamlProviderState();
     }
 }

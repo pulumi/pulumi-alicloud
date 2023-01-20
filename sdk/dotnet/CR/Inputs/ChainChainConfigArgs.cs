@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CR.Inputs
 {
 
-    public sealed class ChainChainConfigArgs : Pulumi.ResourceArgs
+    public sealed class ChainChainConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("nodes")]
         private InputList<Inputs.ChainChainConfigNodeArgs>? _nodes;
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.CR.Inputs
         public ChainChainConfigArgs()
         {
         }
+        public static new ChainChainConfigArgs Empty => new ChainChainConfigArgs();
     }
 }

@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Nas
         /// &gt; **NOTE**: Available in 1.35.0+
         /// </summary>
         public static Task<GetAccessRulesResult> InvokeAsync(GetAccessRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? new GetAccessRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? new GetAccessRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides AccessRule available to the user.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Nas
         /// &gt; **NOTE**: Available in 1.35.0+
         /// </summary>
         public static Output<GetAccessRulesResult> Invoke(GetAccessRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? new GetAccessRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? new GetAccessRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAccessRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessRulesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter results by a specific AccessGroupName.
@@ -73,9 +73,10 @@ namespace Pulumi.AliCloud.Nas
         public GetAccessRulesArgs()
         {
         }
+        public static new GetAccessRulesArgs Empty => new GetAccessRulesArgs();
     }
 
-    public sealed class GetAccessRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter results by a specific AccessGroupName.
@@ -119,6 +120,7 @@ namespace Pulumi.AliCloud.Nas
         public GetAccessRulesInvokeArgs()
         {
         }
+        public static new GetAccessRulesInvokeArgs Empty => new GetAccessRulesInvokeArgs();
     }
 
 

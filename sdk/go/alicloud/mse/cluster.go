@@ -38,6 +38,7 @@ import (
 //				ClusterType:          pulumi.String("Nacos-Ans"),
 //				ClusterVersion:       pulumi.String("NACOS_ANS_1_2_1"),
 //				InstanceCount:        pulumi.Int(1),
+//				MseVersion:           pulumi.String("mse_dev"),
 //				NetType:              pulumi.String("privatenet"),
 //				PubNetworkFlow:       pulumi.String("1"),
 //				VswitchId:            pulumi.String("vsw-123456"),
@@ -69,21 +70,19 @@ type Cluster struct {
 	ClusterAliasName pulumi.StringPtrOutput `pulumi:"clusterAliasName"`
 	// (Available in v1.162.0+)  The id of Cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// The engine specification of MSE Cluster. Valid values:
-	// `MSE_SC_1_2_200_c`：1C2G
-	// `MSE_SC_2_4_200_c`：2C4G
-	// `MSE_SC_4_8_200_c`：4C8G
-	// `MSE_SC_8_16_200_c`：8C16G
+	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
 	ClusterSpecification pulumi.StringOutput `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
-	// The version of MSE Cluster.
+	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
 	ClusterVersion pulumi.StringOutput `pulumi:"clusterVersion"`
+	// The connection type. Valid values: `slb`.
+	ConnectionType pulumi.StringOutput `pulumi:"connectionType"`
 	// The type of Disk.
 	DiskType pulumi.StringPtrOutput `pulumi:"diskType"`
-	// The count of instance.
+	// The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
 	InstanceCount pulumi.IntOutput `pulumi:"instanceCount"`
-	// The version of MSE. Valid values: `mseBasic` or `msePro`.
+	// The version of MSE. Valid values: `mseDev` or `msePro`.
 	MseVersion pulumi.StringOutput `pulumi:"mseVersion"`
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringOutput `pulumi:"netType"`
@@ -93,8 +92,12 @@ type Cluster struct {
 	PubNetworkFlow pulumi.StringOutput `pulumi:"pubNetworkFlow"`
 	// The specification of public network SLB.
 	PubSlbSpecification pulumi.StringPtrOutput `pulumi:"pubSlbSpecification"`
+	// The extended request parameters in the JSON format.
+	RequestPars pulumi.StringPtrOutput `pulumi:"requestPars"`
 	// The status of MSE Cluster.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The id of the VPC.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The id of VSwitch.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 }
@@ -152,21 +155,19 @@ type clusterState struct {
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
 	// (Available in v1.162.0+)  The id of Cluster.
 	ClusterId *string `pulumi:"clusterId"`
-	// The engine specification of MSE Cluster. Valid values:
-	// `MSE_SC_1_2_200_c`：1C2G
-	// `MSE_SC_2_4_200_c`：2C4G
-	// `MSE_SC_4_8_200_c`：4C8G
-	// `MSE_SC_8_16_200_c`：8C16G
+	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
 	ClusterSpecification *string `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType *string `pulumi:"clusterType"`
-	// The version of MSE Cluster.
+	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
 	ClusterVersion *string `pulumi:"clusterVersion"`
+	// The connection type. Valid values: `slb`.
+	ConnectionType *string `pulumi:"connectionType"`
 	// The type of Disk.
 	DiskType *string `pulumi:"diskType"`
-	// The count of instance.
+	// The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
 	InstanceCount *int `pulumi:"instanceCount"`
-	// The version of MSE. Valid values: `mseBasic` or `msePro`.
+	// The version of MSE. Valid values: `mseDev` or `msePro`.
 	MseVersion *string `pulumi:"mseVersion"`
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType *string `pulumi:"netType"`
@@ -176,8 +177,12 @@ type clusterState struct {
 	PubNetworkFlow *string `pulumi:"pubNetworkFlow"`
 	// The specification of public network SLB.
 	PubSlbSpecification *string `pulumi:"pubSlbSpecification"`
+	// The extended request parameters in the JSON format.
+	RequestPars *string `pulumi:"requestPars"`
 	// The status of MSE Cluster.
 	Status *string `pulumi:"status"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The id of VSwitch.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -189,21 +194,19 @@ type ClusterState struct {
 	ClusterAliasName pulumi.StringPtrInput
 	// (Available in v1.162.0+)  The id of Cluster.
 	ClusterId pulumi.StringPtrInput
-	// The engine specification of MSE Cluster. Valid values:
-	// `MSE_SC_1_2_200_c`：1C2G
-	// `MSE_SC_2_4_200_c`：2C4G
-	// `MSE_SC_4_8_200_c`：4C8G
-	// `MSE_SC_8_16_200_c`：8C16G
+	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
 	ClusterSpecification pulumi.StringPtrInput
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringPtrInput
-	// The version of MSE Cluster.
+	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
 	ClusterVersion pulumi.StringPtrInput
+	// The connection type. Valid values: `slb`.
+	ConnectionType pulumi.StringPtrInput
 	// The type of Disk.
 	DiskType pulumi.StringPtrInput
-	// The count of instance.
+	// The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
 	InstanceCount pulumi.IntPtrInput
-	// The version of MSE. Valid values: `mseBasic` or `msePro`.
+	// The version of MSE. Valid values: `mseDev` or `msePro`.
 	MseVersion pulumi.StringPtrInput
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringPtrInput
@@ -213,8 +216,12 @@ type ClusterState struct {
 	PubNetworkFlow pulumi.StringPtrInput
 	// The specification of public network SLB.
 	PubSlbSpecification pulumi.StringPtrInput
+	// The extended request parameters in the JSON format.
+	RequestPars pulumi.StringPtrInput
 	// The status of MSE Cluster.
 	Status pulumi.StringPtrInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// The id of VSwitch.
 	VswitchId pulumi.StringPtrInput
 }
@@ -228,21 +235,19 @@ type clusterArgs struct {
 	AclEntryLists []string `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
-	// The engine specification of MSE Cluster. Valid values:
-	// `MSE_SC_1_2_200_c`：1C2G
-	// `MSE_SC_2_4_200_c`：2C4G
-	// `MSE_SC_4_8_200_c`：4C8G
-	// `MSE_SC_8_16_200_c`：8C16G
+	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
 	ClusterSpecification string `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType string `pulumi:"clusterType"`
-	// The version of MSE Cluster.
+	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
 	ClusterVersion string `pulumi:"clusterVersion"`
+	// The connection type. Valid values: `slb`.
+	ConnectionType *string `pulumi:"connectionType"`
 	// The type of Disk.
 	DiskType *string `pulumi:"diskType"`
-	// The count of instance.
+	// The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
 	InstanceCount int `pulumi:"instanceCount"`
-	// The version of MSE. Valid values: `mseBasic` or `msePro`.
+	// The version of MSE. Valid values: `mseDev` or `msePro`.
 	MseVersion *string `pulumi:"mseVersion"`
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType string `pulumi:"netType"`
@@ -252,6 +257,10 @@ type clusterArgs struct {
 	PubNetworkFlow string `pulumi:"pubNetworkFlow"`
 	// The specification of public network SLB.
 	PubSlbSpecification *string `pulumi:"pubSlbSpecification"`
+	// The extended request parameters in the JSON format.
+	RequestPars *string `pulumi:"requestPars"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The id of VSwitch.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -262,21 +271,19 @@ type ClusterArgs struct {
 	AclEntryLists pulumi.StringArrayInput
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput
-	// The engine specification of MSE Cluster. Valid values:
-	// `MSE_SC_1_2_200_c`：1C2G
-	// `MSE_SC_2_4_200_c`：2C4G
-	// `MSE_SC_4_8_200_c`：4C8G
-	// `MSE_SC_8_16_200_c`：8C16G
+	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
 	ClusterSpecification pulumi.StringInput
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringInput
-	// The version of MSE Cluster.
+	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
 	ClusterVersion pulumi.StringInput
+	// The connection type. Valid values: `slb`.
+	ConnectionType pulumi.StringPtrInput
 	// The type of Disk.
 	DiskType pulumi.StringPtrInput
-	// The count of instance.
+	// The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
 	InstanceCount pulumi.IntInput
-	// The version of MSE. Valid values: `mseBasic` or `msePro`.
+	// The version of MSE. Valid values: `mseDev` or `msePro`.
 	MseVersion pulumi.StringPtrInput
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringInput
@@ -286,6 +293,10 @@ type ClusterArgs struct {
 	PubNetworkFlow pulumi.StringInput
 	// The specification of public network SLB.
 	PubSlbSpecification pulumi.StringPtrInput
+	// The extended request parameters in the JSON format.
+	RequestPars pulumi.StringPtrInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// The id of VSwitch.
 	VswitchId pulumi.StringPtrInput
 }
@@ -392,11 +403,7 @@ func (o ClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The engine specification of MSE Cluster. Valid values:
-// `MSE_SC_1_2_200_c`：1C2G
-// `MSE_SC_2_4_200_c`：2C4G
-// `MSE_SC_4_8_200_c`：4C8G
-// `MSE_SC_8_16_200_c`：8C16G
+// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
 func (o ClusterOutput) ClusterSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterSpecification }).(pulumi.StringOutput)
 }
@@ -406,9 +413,14 @@ func (o ClusterOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterType }).(pulumi.StringOutput)
 }
 
-// The version of MSE Cluster.
+// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
 func (o ClusterOutput) ClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterVersion }).(pulumi.StringOutput)
+}
+
+// The connection type. Valid values: `slb`.
+func (o ClusterOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ConnectionType }).(pulumi.StringOutput)
 }
 
 // The type of Disk.
@@ -416,12 +428,12 @@ func (o ClusterOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// The count of instance.
+// The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
 func (o ClusterOutput) InstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.InstanceCount }).(pulumi.IntOutput)
 }
 
-// The version of MSE. Valid values: `mseBasic` or `msePro`.
+// The version of MSE. Valid values: `mseDev` or `msePro`.
 func (o ClusterOutput) MseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MseVersion }).(pulumi.StringOutput)
 }
@@ -446,9 +458,19 @@ func (o ClusterOutput) PubSlbSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PubSlbSpecification }).(pulumi.StringPtrOutput)
 }
 
+// The extended request parameters in the JSON format.
+func (o ClusterOutput) RequestPars() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.RequestPars }).(pulumi.StringPtrOutput)
+}
+
 // The status of MSE Cluster.
 func (o ClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The id of the VPC.
+func (o ClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The id of VSwitch.

@@ -4,11 +4,17 @@
 package com.pulumi.alicloud.vpn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetCustomerGatewaysGateway {
+    /**
+     * @return The autonomous system number of the local data center gateway device of the VPN customer gateway.
+     * 
+     */
+    private Integer asn;
     /**
      * @return The creation time of the VPN customer gateway.
      * 
@@ -36,6 +42,13 @@ public final class GetCustomerGatewaysGateway {
     private String name;
 
     private GetCustomerGatewaysGateway() {}
+    /**
+     * @return The autonomous system number of the local data center gateway device of the VPN customer gateway.
+     * 
+     */
+    public Integer asn() {
+        return this.asn;
+    }
     /**
      * @return The creation time of the VPN customer gateway.
      * 
@@ -81,6 +94,7 @@ public final class GetCustomerGatewaysGateway {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer asn;
         private String createTime;
         private String description;
         private String id;
@@ -89,6 +103,7 @@ public final class GetCustomerGatewaysGateway {
         public Builder() {}
         public Builder(GetCustomerGatewaysGateway defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.asn = defaults.asn;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
@@ -96,6 +111,11 @@ public final class GetCustomerGatewaysGateway {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
+        public Builder asn(Integer asn) {
+            this.asn = Objects.requireNonNull(asn);
+            return this;
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
@@ -123,6 +143,7 @@ public final class GetCustomerGatewaysGateway {
         }
         public GetCustomerGatewaysGateway build() {
             final var o = new GetCustomerGatewaysGateway();
+            o.asn = asn;
             o.createTime = createTime;
             o.description = description;
             o.id = id;

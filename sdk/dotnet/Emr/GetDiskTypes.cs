@@ -22,33 +22,32 @@ namespace Pulumi.AliCloud.Emr
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Emr.GetDiskTypes.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Emr.GetDiskTypes.InvokeAsync(new AliCloud.Emr.GetDiskTypesArgs
-        ///         {
-        ///             ClusterType = "HADOOP",
-        ///             DestinationResource = "DataDisk",
-        ///             InstanceChargeType = "PostPaid",
-        ///             InstanceType = "ecs.g5.xlarge",
-        ///             ZoneId = "cn-huhehaote-a",
-        ///         }));
-        ///         this.DataDiskType = @default.Apply(@default =&gt; @default.Types?[0]?.Value);
-        ///     }
+        ///         ClusterType = "HADOOP",
+        ///         DestinationResource = "DataDisk",
+        ///         InstanceChargeType = "PostPaid",
+        ///         InstanceType = "ecs.g5.xlarge",
+        ///         ZoneId = "cn-huhehaote-a",
+        ///     });
         /// 
-        ///     [Output("dataDiskType")]
-        ///     public Output&lt;string&gt; DataDiskType { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataDiskType"] = @default.Apply(getDiskTypesResult =&gt; getDiskTypesResult).Apply(@default =&gt; @default.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDiskTypesResult> InvokeAsync(GetDiskTypesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? new GetDiskTypesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? new GetDiskTypesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.emr.getDiskTypes` data source provides a collection of data disk and 
@@ -61,37 +60,36 @@ namespace Pulumi.AliCloud.Emr
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Emr.GetDiskTypes.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Emr.GetDiskTypes.InvokeAsync(new AliCloud.Emr.GetDiskTypesArgs
-        ///         {
-        ///             ClusterType = "HADOOP",
-        ///             DestinationResource = "DataDisk",
-        ///             InstanceChargeType = "PostPaid",
-        ///             InstanceType = "ecs.g5.xlarge",
-        ///             ZoneId = "cn-huhehaote-a",
-        ///         }));
-        ///         this.DataDiskType = @default.Apply(@default =&gt; @default.Types?[0]?.Value);
-        ///     }
+        ///         ClusterType = "HADOOP",
+        ///         DestinationResource = "DataDisk",
+        ///         InstanceChargeType = "PostPaid",
+        ///         InstanceType = "ecs.g5.xlarge",
+        ///         ZoneId = "cn-huhehaote-a",
+        ///     });
         /// 
-        ///     [Output("dataDiskType")]
-        ///     public Output&lt;string&gt; DataDiskType { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataDiskType"] = @default.Apply(getDiskTypesResult =&gt; getDiskTypesResult).Apply(@default =&gt; @default.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDiskTypesResult> Invoke(GetDiskTypesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? new GetDiskTypesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? new GetDiskTypesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDiskTypesArgs : Pulumi.InvokeArgs
+    public sealed class GetDiskTypesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
@@ -129,9 +127,10 @@ namespace Pulumi.AliCloud.Emr
         public GetDiskTypesArgs()
         {
         }
+        public static new GetDiskTypesArgs Empty => new GetDiskTypesArgs();
     }
 
-    public sealed class GetDiskTypesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDiskTypesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
@@ -169,6 +168,7 @@ namespace Pulumi.AliCloud.Emr
         public GetDiskTypesInvokeArgs()
         {
         }
+        public static new GetDiskTypesInvokeArgs Empty => new GetDiskTypesInvokeArgs();
     }
 
 

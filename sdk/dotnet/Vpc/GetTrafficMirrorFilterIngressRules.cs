@@ -23,45 +23,43 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetTrafficMirrorFilterIngressRules.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilterIngressRules.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFilterIngressRulesArgs
+        ///         TrafficMirrorFilterId = "example_traffic_mirror_filter_id",
+        ///         Ids = new[]
         ///         {
-        ///             TrafficMirrorFilterId = "example_traffic_mirror_filter_id",
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpcTrafficMirrorFilterIngressRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilterIngressRules.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFilterIngressRulesArgs
-        ///         {
-        ///             TrafficMirrorFilterId = "example_traffic_mirror_filter_id",
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             Status = "Created",
-        ///         }));
-        ///         this.VpcTrafficMirrorFilterIngressRuleId2 = status.Apply(status =&gt; status.Rules?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcTrafficMirrorFilterIngressRuleId1")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterIngressRuleId1 { get; set; }
-        ///     [Output("vpcTrafficMirrorFilterIngressRuleId2")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterIngressRuleId2 { get; set; }
-        /// }
+        ///     var status = AliCloud.Vpc.GetTrafficMirrorFilterIngressRules.Invoke(new()
+        ///     {
+        ///         TrafficMirrorFilterId = "example_traffic_mirror_filter_id",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = "Created",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcTrafficMirrorFilterIngressRuleId1"] = ids.Apply(getTrafficMirrorFilterIngressRulesResult =&gt; getTrafficMirrorFilterIngressRulesResult.Rules[0]?.Id),
+        ///         ["vpcTrafficMirrorFilterIngressRuleId2"] = status.Apply(getTrafficMirrorFilterIngressRulesResult =&gt; getTrafficMirrorFilterIngressRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrafficMirrorFilterIngressRulesResult> InvokeAsync(GetTrafficMirrorFilterIngressRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorFilterIngressRulesResult>("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args ?? new GetTrafficMirrorFilterIngressRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorFilterIngressRulesResult>("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args ?? new GetTrafficMirrorFilterIngressRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
@@ -75,49 +73,47 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetTrafficMirrorFilterIngressRules.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilterIngressRules.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFilterIngressRulesArgs
+        ///         TrafficMirrorFilterId = "example_traffic_mirror_filter_id",
+        ///         Ids = new[]
         ///         {
-        ///             TrafficMirrorFilterId = "example_traffic_mirror_filter_id",
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpcTrafficMirrorFilterIngressRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetTrafficMirrorFilterIngressRules.InvokeAsync(new AliCloud.Vpc.GetTrafficMirrorFilterIngressRulesArgs
-        ///         {
-        ///             TrafficMirrorFilterId = "example_traffic_mirror_filter_id",
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             Status = "Created",
-        ///         }));
-        ///         this.VpcTrafficMirrorFilterIngressRuleId2 = status.Apply(status =&gt; status.Rules?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcTrafficMirrorFilterIngressRuleId1")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterIngressRuleId1 { get; set; }
-        ///     [Output("vpcTrafficMirrorFilterIngressRuleId2")]
-        ///     public Output&lt;string&gt; VpcTrafficMirrorFilterIngressRuleId2 { get; set; }
-        /// }
+        ///     var status = AliCloud.Vpc.GetTrafficMirrorFilterIngressRules.Invoke(new()
+        ///     {
+        ///         TrafficMirrorFilterId = "example_traffic_mirror_filter_id",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = "Created",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcTrafficMirrorFilterIngressRuleId1"] = ids.Apply(getTrafficMirrorFilterIngressRulesResult =&gt; getTrafficMirrorFilterIngressRulesResult.Rules[0]?.Id),
+        ///         ["vpcTrafficMirrorFilterIngressRuleId2"] = status.Apply(getTrafficMirrorFilterIngressRulesResult =&gt; getTrafficMirrorFilterIngressRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTrafficMirrorFilterIngressRulesResult> Invoke(GetTrafficMirrorFilterIngressRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorFilterIngressRulesResult>("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args ?? new GetTrafficMirrorFilterIngressRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorFilterIngressRulesResult>("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args ?? new GetTrafficMirrorFilterIngressRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTrafficMirrorFilterIngressRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetTrafficMirrorFilterIngressRulesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -149,9 +145,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetTrafficMirrorFilterIngressRulesArgs()
         {
         }
+        public static new GetTrafficMirrorFilterIngressRulesArgs Empty => new GetTrafficMirrorFilterIngressRulesArgs();
     }
 
-    public sealed class GetTrafficMirrorFilterIngressRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTrafficMirrorFilterIngressRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -183,6 +180,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetTrafficMirrorFilterIngressRulesInvokeArgs()
         {
         }
+        public static new GetTrafficMirrorFilterIngressRulesInvokeArgs Empty => new GetTrafficMirrorFilterIngressRulesInvokeArgs();
     }
 
 

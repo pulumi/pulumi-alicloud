@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn.Inputs
 {
 
-    public sealed class DomainAuthConfigArgs : Pulumi.ResourceArgs
+    public sealed class DomainAuthConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         public DomainAuthConfigArgs()
         {
         }
+        public static new DomainAuthConfigArgs Empty => new DomainAuthConfigArgs();
     }
 }

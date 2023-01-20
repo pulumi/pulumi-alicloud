@@ -21,67 +21,69 @@ namespace Pulumi.AliCloud.Eds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
     ///     {
-    ///         var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new AliCloud.Eds.SimpleOfficeSiteArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///             DesktopAccessType = "Internet",
-    ///             OfficeSiteName = "your_office_site_name",
-    ///         });
-    ///         var defaultBundles = Output.Create(AliCloud.Eds.GetBundles.InvokeAsync(new AliCloud.Eds.GetBundlesArgs
-    ///         {
-    ///             BundleType = "SYSTEM",
-    ///             NameRegex = "windows",
-    ///         }));
-    ///         var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new AliCloud.Eds.EcdPolicyGroupArgs
-    ///         {
-    ///             PolicyGroupName = "your_policy_group_name",
-    ///             Clipboard = "readwrite",
-    ///             LocalDrive = "read",
-    ///             AuthorizeAccessPolicyRules = 
-    ///             {
-    ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
-    ///                 {
-    ///                     Description = "example_value",
-    ///                     CidrIp = "1.2.3.4/24",
-    ///                 },
-    ///             },
-    ///             AuthorizeSecurityPolicyRules = 
-    ///             {
-    ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
-    ///                 {
-    ///                     Type = "inflow",
-    ///                     Policy = "accept",
-    ///                     Description = "example_value",
-    ///                     PortRange = "80/80",
-    ///                     IpProtocol = "TCP",
-    ///                     Priority = "1",
-    ///                     CidrIp = "0.0.0.0/0",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new AliCloud.Eds.DesktopArgs
-    ///         {
-    ///             OfficeSiteId = defaultSimpleOfficeSite.Id,
-    ///             PolicyGroupId = defaultEcdPolicyGroup.Id,
-    ///             BundleId = defaultBundles.Apply(defaultBundles =&gt; defaultBundles.Bundles?[0]?.Id),
-    ///             DesktopName = @var.Name,
-    ///         });
-    ///         var defaultCommand = new AliCloud.Eds.Command("defaultCommand", new AliCloud.Eds.CommandArgs
-    ///         {
-    ///             CommandContent = "ipconfig",
-    ///             CommandType = "RunPowerShellScript",
-    ///             DesktopId = defaultDesktop.Id,
-    ///         });
-    ///     }
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         DesktopAccessType = "Internet",
+    ///         OfficeSiteName = "your_office_site_name",
+    ///     });
     /// 
-    /// }
+    ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
+    ///     {
+    ///         BundleType = "SYSTEM",
+    ///         NameRegex = "windows",
+    ///     });
+    /// 
+    ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new()
+    ///     {
+    ///         PolicyGroupName = "your_policy_group_name",
+    ///         Clipboard = "readwrite",
+    ///         LocalDrive = "read",
+    ///         AuthorizeAccessPolicyRules = new[]
+    ///         {
+    ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
+    ///             {
+    ///                 Description = "example_value",
+    ///                 CidrIp = "1.2.3.4/24",
+    ///             },
+    ///         },
+    ///         AuthorizeSecurityPolicyRules = new[]
+    ///         {
+    ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
+    ///             {
+    ///                 Type = "inflow",
+    ///                 Policy = "accept",
+    ///                 Description = "example_value",
+    ///                 PortRange = "80/80",
+    ///                 IpProtocol = "TCP",
+    ///                 Priority = "1",
+    ///                 CidrIp = "0.0.0.0/0",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new()
+    ///     {
+    ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+    ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
+    ///         BundleId = defaultBundles.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id),
+    ///         DesktopName = @var.Name,
+    ///     });
+    /// 
+    ///     var defaultCommand = new AliCloud.Eds.Command("defaultCommand", new()
+    ///     {
+    ///         CommandContent = "ipconfig",
+    ///         CommandType = "RunPowerShellScript",
+    ///         DesktopId = defaultDesktop.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -93,7 +95,7 @@ namespace Pulumi.AliCloud.Eds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/command:Command")]
-    public partial class Command : Pulumi.CustomResource
+    public partial class Command : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Contents of the Script to Base64 Encoded Transmission.
@@ -175,7 +177,7 @@ namespace Pulumi.AliCloud.Eds
         }
     }
 
-    public sealed class CommandArgs : Pulumi.ResourceArgs
+    public sealed class CommandArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Contents of the Script to Base64 Encoded Transmission.
@@ -210,9 +212,10 @@ namespace Pulumi.AliCloud.Eds
         public CommandArgs()
         {
         }
+        public static new CommandArgs Empty => new CommandArgs();
     }
 
-    public sealed class CommandState : Pulumi.ResourceArgs
+    public sealed class CommandState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Contents of the Script to Base64 Encoded Transmission.
@@ -253,5 +256,6 @@ namespace Pulumi.AliCloud.Eds
         public CommandState()
         {
         }
+        public static new CommandState Empty => new CommandState();
     }
 }

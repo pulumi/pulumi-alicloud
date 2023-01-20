@@ -25,8 +25,8 @@ class AccessStrategyDefaultAddrPoolArgs:
                  addr_pool_id: pulumi.Input[str],
                  lba_weight: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] addr_pool_id: The ID of the address pool in the primary address pool group.
-        :param pulumi.Input[int] lba_weight: The weight of the address pool in the primary address pool group.
+        :param pulumi.Input[str] addr_pool_id: The ID of the address pool in the secondary address pool group.
+        :param pulumi.Input[int] lba_weight: The weight of the address pool in the secondary address pool group.
         """
         pulumi.set(__self__, "addr_pool_id", addr_pool_id)
         if lba_weight is not None:
@@ -36,7 +36,7 @@ class AccessStrategyDefaultAddrPoolArgs:
     @pulumi.getter(name="addrPoolId")
     def addr_pool_id(self) -> pulumi.Input[str]:
         """
-        The ID of the address pool in the primary address pool group.
+        The ID of the address pool in the secondary address pool group.
         """
         return pulumi.get(self, "addr_pool_id")
 
@@ -48,7 +48,7 @@ class AccessStrategyDefaultAddrPoolArgs:
     @pulumi.getter(name="lbaWeight")
     def lba_weight(self) -> Optional[pulumi.Input[int]]:
         """
-        The weight of the address pool in the primary address pool group.
+        The weight of the address pool in the secondary address pool group.
         """
         return pulumi.get(self, "lba_weight")
 
@@ -63,8 +63,8 @@ class AccessStrategyFailoverAddrPoolArgs:
                  addr_pool_id: Optional[pulumi.Input[str]] = None,
                  lba_weight: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] addr_pool_id: The ID of the address pool in the primary address pool group.
-        :param pulumi.Input[int] lba_weight: The weight of the address pool in the primary address pool group.
+        :param pulumi.Input[str] addr_pool_id: The ID of the address pool in the secondary address pool group.
+        :param pulumi.Input[int] lba_weight: The weight of the address pool in the secondary address pool group.
         """
         if addr_pool_id is not None:
             pulumi.set(__self__, "addr_pool_id", addr_pool_id)
@@ -75,7 +75,7 @@ class AccessStrategyFailoverAddrPoolArgs:
     @pulumi.getter(name="addrPoolId")
     def addr_pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the address pool in the primary address pool group.
+        The ID of the address pool in the secondary address pool group.
         """
         return pulumi.get(self, "addr_pool_id")
 
@@ -87,7 +87,7 @@ class AccessStrategyFailoverAddrPoolArgs:
     @pulumi.getter(name="lbaWeight")
     def lba_weight(self) -> Optional[pulumi.Input[int]]:
         """
-        The weight of the address pool in the primary address pool group.
+        The weight of the address pool in the secondary address pool group.
         """
         return pulumi.get(self, "lba_weight")
 
@@ -128,10 +128,8 @@ class AddressPoolAddressArgs:
                  lba_weight: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] address: The address that you want to add to the address pool.
+        :param pulumi.Input[str] address: The address lists of the Address Pool. See the following `Block address`.
         :param pulumi.Input[str] attribute_info: The source region of the address. expressed as a JSON string. The structure is as follows:
-               * `LineCodes`: List of home lineCodes.
-               * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
         :param pulumi.Input[str] mode: The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
         :param pulumi.Input[int] lba_weight: The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
         :param pulumi.Input[str] remark: The description of the address.
@@ -148,7 +146,7 @@ class AddressPoolAddressArgs:
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
         """
-        The address that you want to add to the address pool.
+        The address lists of the Address Pool. See the following `Block address`.
         """
         return pulumi.get(self, "address")
 
@@ -161,8 +159,6 @@ class AddressPoolAddressArgs:
     def attribute_info(self) -> pulumi.Input[str]:
         """
         The source region of the address. expressed as a JSON string. The structure is as follows:
-        * `LineCodes`: List of home lineCodes.
-        * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
         """
         return pulumi.get(self, "attribute_info")
 
@@ -255,12 +251,6 @@ class GtmInstanceAlertConfigArgs:
         :param pulumi.Input[bool] dingtalk_notice: Whether to configure DingTalk notifications. Valid values: `true`, `false`.
         :param pulumi.Input[bool] email_notice: Whether to configure mail notification. Valid values: `true`, `false`.
         :param pulumi.Input[str] notice_type: The Alarm Event Type.
-               - `ADDR_ALERT`: Address not available.
-               - `ADDR_RESUME`: Address Recovery available.
-               - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
-               - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
-               - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
-               - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
         :param pulumi.Input[bool] sms_notice: Whether to configure SMS notification. Valid values: `true`, `false`.
         """
         if dingtalk_notice is not None:
@@ -301,12 +291,6 @@ class GtmInstanceAlertConfigArgs:
     def notice_type(self) -> Optional[pulumi.Input[str]]:
         """
         The Alarm Event Type.
-        - `ADDR_ALERT`: Address not available.
-        - `ADDR_RESUME`: Address Recovery available.
-        - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
-        - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
-        - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
-        - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
         """
         return pulumi.get(self, "notice_type")
 

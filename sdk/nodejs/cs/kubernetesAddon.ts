@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?[0]?.id,
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  *     kubernetesNodeRole: "Worker",
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     vswitchName: name,
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "10.1.1.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
  * const defaultKeyPair = new alicloud.ecs.KeyPair("defaultKeyPair", {keyPairName: name});
  * let defaultManagedKubernetes: alicloud.cs.ManagedKubernetes | undefined;
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *         podCidr: "172.20.0.0/16",
  *         serviceCidr: "172.21.0.0/20",
  *         workerVswitchIds: [defaultSwitch.id],
- *         workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id)],
+ *         workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id)],
  *     });
  * }
  * ```
@@ -103,7 +103,7 @@ import * as utilities from "../utilities";
  * Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `terraform plan`.
  *
  * ```sh
- *  $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon alicloud_cs_kubernetes_addon.my_addon <cluster_id>:<addon_name>
+ *  $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon <cluster_id>:<addon_name>
  * ```
  */
 export class KubernetesAddon extends pulumi.CustomResource {

@@ -15,9 +15,11 @@ namespace Pulumi.AliCloud.CS.Outputs
     {
         /// <summary>
         /// ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-        /// * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
         /// </summary>
         public readonly bool? IsOwner;
+        /// <summary>
+        /// Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+        /// </summary>
         public readonly bool? IsRamRole;
         /// <summary>
         /// The permission settings to manage ACK clusters.

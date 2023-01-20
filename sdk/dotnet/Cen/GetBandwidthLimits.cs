@@ -19,32 +19,31 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var bwl = AliCloud.Cen.GetBandwidthLimits.Invoke(new()
         ///     {
-        ///         var bwl = Output.Create(AliCloud.Cen.GetBandwidthLimits.InvokeAsync(new AliCloud.Cen.GetBandwidthLimitsArgs
+        ///         InstanceIds = new[]
         ///         {
-        ///             InstanceIds = 
-        ///             {
-        ///                 "cen-id1",
-        ///             },
-        ///         }));
-        ///         this.FirstCenBandwidthLimitsLocalRegionId = bwl.Apply(bwl =&gt; bwl.Limits?[0]?.LocalRegionId);
-        ///     }
+        ///             "cen-id1",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstCenBandwidthLimitsLocalRegionId")]
-        ///     public Output&lt;string&gt; FirstCenBandwidthLimitsLocalRegionId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCenBandwidthLimitsLocalRegionId"] = bwl.Apply(getBandwidthLimitsResult =&gt; getBandwidthLimitsResult.Limits[0]?.LocalRegionId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBandwidthLimitsResult> InvokeAsync(GetBandwidthLimitsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthLimitsResult>("alicloud:cen/getBandwidthLimits:getBandwidthLimits", args ?? new GetBandwidthLimitsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthLimitsResult>("alicloud:cen/getBandwidthLimits:getBandwidthLimits", args ?? new GetBandwidthLimitsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN Bandwidth Limits available to the user.
@@ -54,36 +53,35 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var bwl = AliCloud.Cen.GetBandwidthLimits.Invoke(new()
         ///     {
-        ///         var bwl = Output.Create(AliCloud.Cen.GetBandwidthLimits.InvokeAsync(new AliCloud.Cen.GetBandwidthLimitsArgs
+        ///         InstanceIds = new[]
         ///         {
-        ///             InstanceIds = 
-        ///             {
-        ///                 "cen-id1",
-        ///             },
-        ///         }));
-        ///         this.FirstCenBandwidthLimitsLocalRegionId = bwl.Apply(bwl =&gt; bwl.Limits?[0]?.LocalRegionId);
-        ///     }
+        ///             "cen-id1",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstCenBandwidthLimitsLocalRegionId")]
-        ///     public Output&lt;string&gt; FirstCenBandwidthLimitsLocalRegionId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCenBandwidthLimitsLocalRegionId"] = bwl.Apply(getBandwidthLimitsResult =&gt; getBandwidthLimitsResult.Limits[0]?.LocalRegionId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBandwidthLimitsResult> Invoke(GetBandwidthLimitsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBandwidthLimitsResult>("alicloud:cen/getBandwidthLimits:getBandwidthLimits", args ?? new GetBandwidthLimitsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBandwidthLimitsResult>("alicloud:cen/getBandwidthLimits:getBandwidthLimits", args ?? new GetBandwidthLimitsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBandwidthLimitsArgs : Pulumi.InvokeArgs
+    public sealed class GetBandwidthLimitsArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceIds")]
         private List<string>? _instanceIds;
@@ -103,9 +101,10 @@ namespace Pulumi.AliCloud.Cen
         public GetBandwidthLimitsArgs()
         {
         }
+        public static new GetBandwidthLimitsArgs Empty => new GetBandwidthLimitsArgs();
     }
 
-    public sealed class GetBandwidthLimitsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBandwidthLimitsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceIds")]
         private InputList<string>? _instanceIds;
@@ -125,6 +124,7 @@ namespace Pulumi.AliCloud.Cen
         public GetBandwidthLimitsInvokeArgs()
         {
         }
+        public static new GetBandwidthLimitsInvokeArgs Empty => new GetBandwidthLimitsInvokeArgs();
     }
 
 

@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ddos
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ddos.GetDdosCooPorts.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ddos.GetDdosCooPorts.InvokeAsync(new AliCloud.Ddos.GetDdosCooPortsArgs
+        ///         InstanceId = "ddoscoo-cn-6ja1rl4j****",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "ddoscoo-cn-6ja1rl4j****",
-        ///             Ids = 
-        ///             {
-        ///                 "ddoscoo-cn-6ja1rl4j****:7001:tcp",
-        ///             },
-        ///         }));
-        ///         this.FirstDdoscooPortId = example.Apply(example =&gt; example.Ports?[0]?.Id);
-        ///     }
+        ///             "ddoscoo-cn-6ja1rl4j****:7001:tcp",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstDdoscooPortId")]
-        ///     public Output&lt;string&gt; FirstDdoscooPortId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDdoscooPortId"] = example.Apply(getDdosCooPortsResult =&gt; getDdosCooPortsResult.Ports[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDdosCooPortsResult> InvokeAsync(GetDdosCooPortsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooPortsResult>("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args ?? new GetDdosCooPortsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooPortsResult>("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args ?? new GetDdosCooPortsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ddos
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ddos.GetDdosCooPorts.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ddos.GetDdosCooPorts.InvokeAsync(new AliCloud.Ddos.GetDdosCooPortsArgs
+        ///         InstanceId = "ddoscoo-cn-6ja1rl4j****",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "ddoscoo-cn-6ja1rl4j****",
-        ///             Ids = 
-        ///             {
-        ///                 "ddoscoo-cn-6ja1rl4j****:7001:tcp",
-        ///             },
-        ///         }));
-        ///         this.FirstDdoscooPortId = example.Apply(example =&gt; example.Ports?[0]?.Id);
-        ///     }
+        ///             "ddoscoo-cn-6ja1rl4j****:7001:tcp",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstDdoscooPortId")]
-        ///     public Output&lt;string&gt; FirstDdoscooPortId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDdoscooPortId"] = example.Apply(getDdosCooPortsResult =&gt; getDdosCooPortsResult.Ports[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDdosCooPortsResult> Invoke(GetDdosCooPortsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDdosCooPortsResult>("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args ?? new GetDdosCooPortsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDdosCooPortsResult>("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args ?? new GetDdosCooPortsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDdosCooPortsArgs : Pulumi.InvokeArgs
+    public sealed class GetDdosCooPortsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The forwarding port.
@@ -131,9 +129,10 @@ namespace Pulumi.AliCloud.Ddos
         public GetDdosCooPortsArgs()
         {
         }
+        public static new GetDdosCooPortsArgs Empty => new GetDdosCooPortsArgs();
     }
 
-    public sealed class GetDdosCooPortsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDdosCooPortsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The forwarding port.
@@ -171,6 +170,7 @@ namespace Pulumi.AliCloud.Ddos
         public GetDdosCooPortsInvokeArgs()
         {
         }
+        public static new GetDdosCooPortsInvokeArgs Empty => new GetDdosCooPortsInvokeArgs();
     }
 
 

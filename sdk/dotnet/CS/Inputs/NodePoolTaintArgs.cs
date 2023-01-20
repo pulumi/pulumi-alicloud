@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class NodePoolTaintArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolTaintArgs : global::Pulumi.ResourceArgs
     {
         [Input("effect")]
         public Input<string>? Effect { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public NodePoolTaintArgs()
         {
         }
+        public static new NodePoolTaintArgs Empty => new NodePoolTaintArgs();
     }
 }

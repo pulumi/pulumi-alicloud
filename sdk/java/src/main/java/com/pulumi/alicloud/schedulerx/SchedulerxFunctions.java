@@ -29,7 +29,7 @@ public final class SchedulerxFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.schedulerx.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -74,7 +74,7 @@ public final class SchedulerxFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.schedulerx.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -119,7 +119,7 @@ public final class SchedulerxFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.schedulerx.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -164,7 +164,7 @@ public final class SchedulerxFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.schedulerx.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -209,7 +209,7 @@ public final class SchedulerxFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.schedulerx.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -254,7 +254,7 @@ public final class SchedulerxFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.schedulerx.SchedulerxFunctions;
-     * import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
+     * import com.pulumi.alicloud.schedulerx.inputs.GetNamespacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

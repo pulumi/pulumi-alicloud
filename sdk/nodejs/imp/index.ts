@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./appTemplate";
-export * from "./getAppTemplates";
+export { AppTemplateArgs, AppTemplateState } from "./appTemplate";
+export type AppTemplate = import("./appTemplate").AppTemplate;
+export const AppTemplate: typeof import("./appTemplate").AppTemplate = null as any;
+utilities.lazyLoad(exports, ["AppTemplate"], () => require("./appTemplate"));
 
-// Import resources to register:
-import { AppTemplate } from "./appTemplate";
+export { GetAppTemplatesArgs, GetAppTemplatesResult, GetAppTemplatesOutputArgs } from "./getAppTemplates";
+export const getAppTemplates: typeof import("./getAppTemplates").getAppTemplates = null as any;
+export const getAppTemplatesOutput: typeof import("./getAppTemplates").getAppTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getAppTemplates","getAppTemplatesOutput"], () => require("./getAppTemplates"));
+
 
 const _module = {
     version: utilities.getVersion(),

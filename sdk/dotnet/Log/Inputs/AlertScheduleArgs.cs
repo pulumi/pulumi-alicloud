@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class AlertScheduleArgs : Pulumi.ResourceArgs
+    public sealed class AlertScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cron expression when type is Cron.
@@ -57,5 +57,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public AlertScheduleArgs()
         {
         }
+        public static new AlertScheduleArgs Empty => new AlertScheduleArgs();
     }
 }

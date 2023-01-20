@@ -24,12 +24,12 @@ import * as utilities from "../utilities";
  *     status: "Running",
  * });
  * const exampleIpv6Addresses = exampleInstances.then(exampleInstances => alicloud.vpc.getIpv6Addresses({
- *     associatedInstanceId: exampleInstances.instances?[0]?.id,
+ *     associatedInstanceId: exampleInstances.instances?.[0]?.id,
  *     status: "Available",
  * }));
  * const exampleIpv6InternetBandwidth = new alicloud.vpc.Ipv6InternetBandwidth("exampleIpv6InternetBandwidth", {
- *     ipv6AddressId: exampleIpv6Addresses.then(exampleIpv6Addresses => exampleIpv6Addresses.addresses?[0]?.id),
- *     ipv6GatewayId: exampleIpv6Addresses.then(exampleIpv6Addresses => exampleIpv6Addresses.addresses?[0]?.ipv6GatewayId),
+ *     ipv6AddressId: exampleIpv6Addresses.then(exampleIpv6Addresses => exampleIpv6Addresses.addresses?.[0]?.id),
+ *     ipv6GatewayId: exampleIpv6Addresses.then(exampleIpv6Addresses => exampleIpv6Addresses.addresses?.[0]?.ipv6GatewayId),
  *     internetChargeType: "PayByBandwidth",
  *     bandwidth: 20,
  * });

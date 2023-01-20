@@ -45,9 +45,9 @@ import (
 //					defaultRule.ID(),
 //				},
 //			}, nil)
-//			ctx.Export("sddpRuleId", defaultRules.ApplyT(func(defaultRules sddp.GetRulesResult) (string, error) {
-//				return defaultRules.Id, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("sddpRuleId", defaultRules.ApplyT(func(defaultRules sddp.GetRulesResult) (*string, error) {
+//				return &defaultRules.Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

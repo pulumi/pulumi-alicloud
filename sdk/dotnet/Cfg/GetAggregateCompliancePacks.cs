@@ -23,34 +23,33 @@ namespace Pulumi.AliCloud.Cfg
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cfg.GetAggregateCompliancePacks.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetAggregateCompliancePacks.InvokeAsync(new AliCloud.Cfg.GetAggregateCompliancePacksArgs
+        ///         AggregatorId = "ca-3a9b626622af001d****",
+        ///         Ids = new[]
         ///         {
-        ///             AggregatorId = "ca-3a9b626622af001d****",
-        ///             Ids = 
-        ///             {
-        ///                 "cp-152a626622af00bc****",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstConfigAggregateCompliancePackId = example.Apply(example =&gt; example.Packs?[0]?.Id);
-        ///     }
+        ///             "cp-152a626622af00bc****",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstConfigAggregateCompliancePackId")]
-        ///     public Output&lt;string&gt; FirstConfigAggregateCompliancePackId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigAggregateCompliancePackId"] = example.Apply(getAggregateCompliancePacksResult =&gt; getAggregateCompliancePacksResult.Packs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAggregateCompliancePacksResult> InvokeAsync(GetAggregateCompliancePacksArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAggregateCompliancePacksResult>("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", args ?? new GetAggregateCompliancePacksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAggregateCompliancePacksResult>("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", args ?? new GetAggregateCompliancePacksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Config Aggregate Compliance Packs of the current Alibaba Cloud user.
@@ -64,38 +63,37 @@ namespace Pulumi.AliCloud.Cfg
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cfg.GetAggregateCompliancePacks.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetAggregateCompliancePacks.InvokeAsync(new AliCloud.Cfg.GetAggregateCompliancePacksArgs
+        ///         AggregatorId = "ca-3a9b626622af001d****",
+        ///         Ids = new[]
         ///         {
-        ///             AggregatorId = "ca-3a9b626622af001d****",
-        ///             Ids = 
-        ///             {
-        ///                 "cp-152a626622af00bc****",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstConfigAggregateCompliancePackId = example.Apply(example =&gt; example.Packs?[0]?.Id);
-        ///     }
+        ///             "cp-152a626622af00bc****",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstConfigAggregateCompliancePackId")]
-        ///     public Output&lt;string&gt; FirstConfigAggregateCompliancePackId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigAggregateCompliancePackId"] = example.Apply(getAggregateCompliancePacksResult =&gt; getAggregateCompliancePacksResult.Packs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAggregateCompliancePacksResult> Invoke(GetAggregateCompliancePacksInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAggregateCompliancePacksResult>("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", args ?? new GetAggregateCompliancePacksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAggregateCompliancePacksResult>("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", args ?? new GetAggregateCompliancePacksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAggregateCompliancePacksArgs : Pulumi.InvokeArgs
+    public sealed class GetAggregateCompliancePacksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of aggregator.
@@ -139,9 +137,10 @@ namespace Pulumi.AliCloud.Cfg
         public GetAggregateCompliancePacksArgs()
         {
         }
+        public static new GetAggregateCompliancePacksArgs Empty => new GetAggregateCompliancePacksArgs();
     }
 
-    public sealed class GetAggregateCompliancePacksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAggregateCompliancePacksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of aggregator.
@@ -185,6 +184,7 @@ namespace Pulumi.AliCloud.Cfg
         public GetAggregateCompliancePacksInvokeArgs()
         {
         }
+        public static new GetAggregateCompliancePacksInvokeArgs Empty => new GetAggregateCompliancePacksInvokeArgs();
     }
 
 

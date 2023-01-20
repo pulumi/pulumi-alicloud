@@ -16,14 +16,14 @@ public final class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs extends com.pulum
     public static final EcdPolicyGroupAuthorizeAccessPolicyRuleArgs Empty = new EcdPolicyGroupAuthorizeAccessPolicyRuleArgs();
 
     /**
-     * The cidrip of authorize access rule.
+     * The cidrip of security rules.
      * 
      */
     @Import(name="cidrIp")
     private @Nullable Output<String> cidrIp;
 
     /**
-     * @return The cidrip of authorize access rule.
+     * @return The cidrip of security rules.
      * 
      */
     public Optional<Output<String>> cidrIp() {
@@ -31,14 +31,14 @@ public final class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs extends com.pulum
     }
 
     /**
-     * The description of authorize access rule.
+     * The description of security rules.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of authorize access rule.
+     * @return The description of security rules.
      * 
      */
     public Optional<Output<String>> description() {
@@ -71,7 +71,7 @@ public final class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs extends com.pulum
         }
 
         /**
-         * @param cidrIp The cidrip of authorize access rule.
+         * @param cidrIp The cidrip of security rules.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs extends com.pulum
         }
 
         /**
-         * @param cidrIp The cidrip of authorize access rule.
+         * @param cidrIp The cidrip of security rules.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs extends com.pulum
         }
 
         /**
-         * @param description The description of authorize access rule.
+         * @param description The description of security rules.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs extends com.pulum
         }
 
         /**
-         * @param description The description of authorize access rule.
+         * @param description The description of security rules.
          * 
          * @return builder
          * 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketReplicationDestinationArgs : Pulumi.ResourceArgs
+    public sealed class BucketReplicationDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination bucket to which the data is replicated.
@@ -30,5 +30,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketReplicationDestinationArgs()
         {
         }
+        public static new BucketReplicationDestinationArgs Empty => new BucketReplicationDestinationArgs();
     }
 }

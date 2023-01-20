@@ -15,27 +15,26 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
     ///     {
-    ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///             VpcName = "vpc-example-name",
-    ///         });
-    ///         var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new AliCloud.Vpc.RouteTableArgs
-    ///         {
-    ///             VpcId = fooNetwork.Id,
-    ///             RouteTableName = "route-table-example-name",
-    ///             Description = "route-table-example-description",
-    ///         });
-    ///     }
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = "vpc-example-name",
+    ///     });
     /// 
-    /// }
+    ///     var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new()
+    ///     {
+    ///         VpcId = fooNetwork.Id,
+    ///         RouteTableName = "route-table-example-name",
+    ///         Description = "route-table-example-description",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,8 +46,14 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/routeTable:RouteTable")]
-    public partial class RouteTable : Pulumi.CustomResource
+    public partial class RouteTable : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The type of routing table created. Valid values are `VSwitch` and `Gateway`
+        /// </summary>
+        [Output("associateType")]
+        public Output<string> AssociateType { get; private set; } = null!;
+
         /// <summary>
         /// The description of the route table instance.
         /// </summary>
@@ -129,8 +134,14 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class RouteTableArgs : Pulumi.ResourceArgs
+    public sealed class RouteTableArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of routing table created. Valid values are `VSwitch` and `Gateway`
+        /// </summary>
+        [Input("associateType")]
+        public Input<string>? AssociateType { get; set; }
+
         /// <summary>
         /// The description of the route table instance.
         /// </summary>
@@ -170,10 +181,17 @@ namespace Pulumi.AliCloud.Vpc
         public RouteTableArgs()
         {
         }
+        public static new RouteTableArgs Empty => new RouteTableArgs();
     }
 
-    public sealed class RouteTableState : Pulumi.ResourceArgs
+    public sealed class RouteTableState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of routing table created. Valid values are `VSwitch` and `Gateway`
+        /// </summary>
+        [Input("associateType")]
+        public Input<string>? AssociateType { get; set; }
+
         /// <summary>
         /// The description of the route table instance.
         /// </summary>
@@ -219,5 +237,6 @@ namespace Pulumi.AliCloud.Vpc
         public RouteTableState()
         {
         }
+        public static new RouteTableState Empty => new RouteTableState();
     }
 }

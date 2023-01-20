@@ -22,34 +22,32 @@ namespace Pulumi.AliCloud.Cfg
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Audit ECS instances under VPC using preset rules
+    ///     var example = new AliCloud.Cfg.Rule("example", new()
     ///     {
-    ///         // Audit ECS instances under VPC using preset rules
-    ///         var example = new AliCloud.Cfg.Rule("example", new AliCloud.Cfg.RuleArgs
+    ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
+    ///         Description = "ecs instances in vpc",
+    ///         InputParameters = 
     ///         {
-    ///             ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
-    ///             Description = "ecs instances in vpc",
-    ///             InputParameters = 
-    ///             {
-    ///                 { "vpcIds", "vpc-uf6gksw4ctjd******" },
-    ///             },
-    ///             ResourceTypesScopes = 
-    ///             {
-    ///                 "ACS::ECS::Instance",
-    ///             },
-    ///             RiskLevel = 1,
-    ///             RuleName = "instances-in-vpc",
-    ///             SourceIdentifier = "ecs-instances-in-vpc",
-    ///             SourceOwner = "ALIYUN",
-    ///         });
-    ///     }
+    ///             { "vpcIds", "vpc-uf6gksw4ctjd******" },
+    ///         },
+    ///         ResourceTypesScopes = new[]
+    ///         {
+    ///             "ACS::ECS::Instance",
+    ///         },
+    ///         RiskLevel = 1,
+    ///         RuleName = "instances-in-vpc",
+    ///         SourceIdentifier = "ecs-instances-in-vpc",
+    ///         SourceOwner = "ALIYUN",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +59,7 @@ namespace Pulumi.AliCloud.Cfg
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/rule:Rule")]
-    public partial class Rule : Pulumi.CustomResource
+    public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
@@ -215,7 +213,7 @@ namespace Pulumi.AliCloud.Cfg
         }
     }
 
-    public sealed class RuleArgs : Pulumi.ResourceArgs
+    public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
@@ -347,9 +345,10 @@ namespace Pulumi.AliCloud.Cfg
         public RuleArgs()
         {
         }
+        public static new RuleArgs Empty => new RuleArgs();
     }
 
-    public sealed class RuleState : Pulumi.ResourceArgs
+    public sealed class RuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
@@ -481,5 +480,6 @@ namespace Pulumi.AliCloud.Cfg
         public RuleState()
         {
         }
+        public static new RuleState Empty => new RuleState();
     }
 }

@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.Ess
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ds = AliCloud.Ess.GetScheduledTasks.Invoke(new()
         ///     {
-        ///         var ds = Output.Create(AliCloud.Ess.GetScheduledTasks.InvokeAsync(new AliCloud.Ess.GetScheduledTasksArgs
-        ///         {
-        ///             NameRegex = "scheduled_task_name",
-        ///             ScheduledTaskId = "scheduled_task_id",
-        ///         }));
-        ///         this.FirstScheduledTask = ds.Apply(ds =&gt; ds.Tasks?[0]?.Id);
-        ///     }
+        ///         NameRegex = "scheduled_task_name",
+        ///         ScheduledTaskId = "scheduled_task_id",
+        ///     });
         /// 
-        ///     [Output("firstScheduledTask")]
-        ///     public Output&lt;string&gt; FirstScheduledTask { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstScheduledTask"] = ds.Apply(getScheduledTasksResult =&gt; getScheduledTasksResult.Tasks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetScheduledTasksResult> InvokeAsync(GetScheduledTasksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetScheduledTasksResult>("alicloud:ess/getScheduledTasks:getScheduledTasks", args ?? new GetScheduledTasksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetScheduledTasksResult>("alicloud:ess/getScheduledTasks:getScheduledTasks", args ?? new GetScheduledTasksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides available scheduled task resources. 
@@ -56,34 +55,33 @@ namespace Pulumi.AliCloud.Ess
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ds = AliCloud.Ess.GetScheduledTasks.Invoke(new()
         ///     {
-        ///         var ds = Output.Create(AliCloud.Ess.GetScheduledTasks.InvokeAsync(new AliCloud.Ess.GetScheduledTasksArgs
-        ///         {
-        ///             NameRegex = "scheduled_task_name",
-        ///             ScheduledTaskId = "scheduled_task_id",
-        ///         }));
-        ///         this.FirstScheduledTask = ds.Apply(ds =&gt; ds.Tasks?[0]?.Id);
-        ///     }
+        ///         NameRegex = "scheduled_task_name",
+        ///         ScheduledTaskId = "scheduled_task_id",
+        ///     });
         /// 
-        ///     [Output("firstScheduledTask")]
-        ///     public Output&lt;string&gt; FirstScheduledTask { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstScheduledTask"] = ds.Apply(getScheduledTasksResult =&gt; getScheduledTasksResult.Tasks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetScheduledTasksResult> Invoke(GetScheduledTasksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetScheduledTasksResult>("alicloud:ess/getScheduledTasks:getScheduledTasks", args ?? new GetScheduledTasksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetScheduledTasksResult>("alicloud:ess/getScheduledTasks:getScheduledTasks", args ?? new GetScheduledTasksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetScheduledTasksArgs : Pulumi.InvokeArgs
+    public sealed class GetScheduledTasksArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -121,9 +119,10 @@ namespace Pulumi.AliCloud.Ess
         public GetScheduledTasksArgs()
         {
         }
+        public static new GetScheduledTasksArgs Empty => new GetScheduledTasksArgs();
     }
 
-    public sealed class GetScheduledTasksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetScheduledTasksInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -161,6 +160,7 @@ namespace Pulumi.AliCloud.Ess
         public GetScheduledTasksInvokeArgs()
         {
         }
+        public static new GetScheduledTasksInvokeArgs Empty => new GetScheduledTasksInvokeArgs();
     }
 
 

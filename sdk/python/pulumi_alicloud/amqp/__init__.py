@@ -11,8 +11,10 @@ from .get_bindings import *
 from .get_exchanges import *
 from .get_instances import *
 from .get_queues import *
+from .get_static_accounts import *
 from .get_virtual_hosts import *
 from .instance import *
 from .queue import *
+from .static_account import *
 from .virtual_host import *
 from . import outputs

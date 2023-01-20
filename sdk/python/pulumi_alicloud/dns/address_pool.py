@@ -24,7 +24,7 @@ class AddressPoolArgs:
         """
         The set of arguments for constructing a AddressPool resource.
         :param pulumi.Input[str] address_pool_name: The name of the address pool.
-        :param pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]] addresses: The address that you want to add to the address pool.
+        :param pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]] addresses: The address lists of the Address Pool. See the following `Block address`.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
@@ -51,7 +51,7 @@ class AddressPoolArgs:
     @pulumi.getter
     def addresses(self) -> pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]]:
         """
-        The address that you want to add to the address pool.
+        The address lists of the Address Pool. See the following `Block address`.
         """
         return pulumi.get(self, "addresses")
 
@@ -107,7 +107,7 @@ class _AddressPoolState:
         """
         Input properties used for looking up and filtering AddressPool resources.
         :param pulumi.Input[str] address_pool_name: The name of the address pool.
-        :param pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]] addresses: The address that you want to add to the address pool.
+        :param pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]] addresses: The address lists of the Address Pool. See the following `Block address`.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
@@ -139,7 +139,7 @@ class _AddressPoolState:
     @pulumi.getter
     def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]]]:
         """
-        The address that you want to add to the address pool.
+        The address lists of the Address Pool. See the following `Block address`.
         """
         return pulumi.get(self, "addresses")
 
@@ -213,7 +213,7 @@ class AddressPool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_pool_name: The name of the address pool.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]] addresses: The address that you want to add to the address pool.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]] addresses: The address lists of the Address Pool. See the following `Block address`.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
@@ -306,7 +306,7 @@ class AddressPool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_pool_name: The name of the address pool.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]] addresses: The address that you want to add to the address pool.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]] addresses: The address lists of the Address Pool. See the following `Block address`.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
@@ -334,7 +334,7 @@ class AddressPool(pulumi.CustomResource):
     @pulumi.getter
     def addresses(self) -> pulumi.Output[Sequence['outputs.AddressPoolAddress']]:
         """
-        The address that you want to add to the address pool.
+        The address lists of the Address Pool. See the following `Block address`.
         """
         return pulumi.get(self, "addresses")
 

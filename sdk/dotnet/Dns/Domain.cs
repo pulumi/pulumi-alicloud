@@ -13,21 +13,19 @@ namespace Pulumi.AliCloud.Dns
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Add a new Domain.
+    ///     var dns = new AliCloud.Dns.Domain("dns", new()
     ///     {
-    ///         // Add a new Domain.
-    ///         var dns = new AliCloud.Dns.Domain("dns", new AliCloud.Dns.DomainArgs
-    ///         {
-    ///             GroupId = "85ab8713-4a30-4de4-9d20-155ff830f651",
-    ///         });
-    ///     }
+    ///         GroupId = "85ab8713-4a30-4de4-9d20-155ff830f651",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.AliCloud.Dns
     /// </summary>
     [Obsolete(@"This resource has been deprecated in favour of DnsDomain")]
     [AliCloudResourceType("alicloud:dns/domain:Domain")]
-    public partial class Domain : Pulumi.CustomResource
+    public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of the dns server name.
@@ -116,7 +114,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class DomainArgs : Pulumi.ResourceArgs
+    public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Id of the group in which the domain will add. If not supplied, then use default group.
@@ -139,9 +137,10 @@ namespace Pulumi.AliCloud.Dns
         public DomainArgs()
         {
         }
+        public static new DomainArgs Empty => new DomainArgs();
     }
 
-    public sealed class DomainState : Pulumi.ResourceArgs
+    public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         [Input("dnsServers")]
         private InputList<string>? _dnsServers;
@@ -182,5 +181,6 @@ namespace Pulumi.AliCloud.Dns
         public DomainState()
         {
         }
+        public static new DomainState Empty => new DomainState();
     }
 }

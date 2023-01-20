@@ -21,43 +21,39 @@ namespace Pulumi.AliCloud.Mse
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Zones?[0]?.Id,
-    ///             }));
-    ///         });
-    ///         var example = new AliCloud.Mse.Gateway("example", new AliCloud.Mse.GatewayArgs
-    ///         {
-    ///             GatewayName = "example_value",
-    ///             Replica = 2,
-    ///             Spec = "MSE_GTW_2_4_200_c",
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             BackupVswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[1]),
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Mse.Gateway("example", new()
+    ///     {
+    ///         GatewayName = "example_value",
+    ///         Replica = 2,
+    ///         Spec = "MSE_GTW_2_4_200_c",
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         BackupVswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[1]),
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,7 +65,7 @@ namespace Pulumi.AliCloud.Mse
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mse/gateway:Gateway")]
-    public partial class Gateway : Pulumi.CustomResource
+    public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The backup vswitch id.
@@ -187,7 +183,7 @@ namespace Pulumi.AliCloud.Mse
         }
     }
 
-    public sealed class GatewayArgs : Pulumi.ResourceArgs
+    public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The backup vswitch id.
@@ -252,9 +248,10 @@ namespace Pulumi.AliCloud.Mse
         public GatewayArgs()
         {
         }
+        public static new GatewayArgs Empty => new GatewayArgs();
     }
 
-    public sealed class GatewayState : Pulumi.ResourceArgs
+    public sealed class GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The backup vswitch id.
@@ -337,5 +334,6 @@ namespace Pulumi.AliCloud.Mse
         public GatewayState()
         {
         }
+        public static new GatewayState Empty => new GatewayState();
     }
 }

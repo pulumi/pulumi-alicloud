@@ -23,65 +23,61 @@ namespace Pulumi.AliCloud.Oos
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Oos.GetParameters.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Oos.GetParameters.InvokeAsync(new AliCloud.Oos.GetParametersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "my-Parameter",
-        ///             },
-        ///         }));
-        ///         this.OosParameterId1 = ids.Apply(ids =&gt; ids.Parameters?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Oos.GetParameters.InvokeAsync(new AliCloud.Oos.GetParametersArgs
-        ///         {
-        ///             NameRegex = "^my-Parameter",
-        ///         }));
-        ///         this.OosParameterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Parameters?[0]?.Id);
-        ///         var resourceGroupId = Output.Create(AliCloud.Oos.GetParameters.InvokeAsync(new AliCloud.Oos.GetParametersArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "my-Parameter",
-        ///             },
-        ///             ResourceGroupId = "example_value",
-        ///         }));
-        ///         this.OosParameterId3 = resourceGroupId.Apply(resourceGroupId =&gt; resourceGroupId.Parameters?[0]?.Id);
-        ///         var tags = Output.Create(AliCloud.Oos.GetParameters.InvokeAsync(new AliCloud.Oos.GetParametersArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "my-Parameter",
-        ///             },
-        ///             Tags = 
-        ///             {
-        ///                 { "Created", "TF" },
-        ///                 { "For", "OosParameter" },
-        ///             },
-        ///         }));
-        ///         this.OosParameterId4 = tags.Apply(tags =&gt; tags.Parameters?[0]?.Id);
-        ///     }
+        ///             "my-Parameter",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("oosParameterId1")]
-        ///     public Output&lt;string&gt; OosParameterId1 { get; set; }
-        ///     [Output("oosParameterId2")]
-        ///     public Output&lt;string&gt; OosParameterId2 { get; set; }
-        ///     [Output("oosParameterId3")]
-        ///     public Output&lt;string&gt; OosParameterId3 { get; set; }
-        ///     [Output("oosParameterId4")]
-        ///     public Output&lt;string&gt; OosParameterId4 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Parameter",
+        ///     });
+        /// 
+        ///     var resourceGroupId = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Parameter",
+        ///         },
+        ///         ResourceGroupId = "example_value",
+        ///     });
+        /// 
+        ///     var tags = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Parameter",
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "OosParameter" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oosParameterId1"] = ids.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosParameterId2"] = nameRegex.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosParameterId3"] = resourceGroupId.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosParameterId4"] = tags.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetParametersResult> InvokeAsync(GetParametersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetParametersResult>("alicloud:oos/getParameters:getParameters", args ?? new GetParametersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetParametersResult>("alicloud:oos/getParameters:getParameters", args ?? new GetParametersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Oos Parameters of the current Alibaba Cloud user.
@@ -95,69 +91,65 @@ namespace Pulumi.AliCloud.Oos
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Oos.GetParameters.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Oos.GetParameters.InvokeAsync(new AliCloud.Oos.GetParametersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "my-Parameter",
-        ///             },
-        ///         }));
-        ///         this.OosParameterId1 = ids.Apply(ids =&gt; ids.Parameters?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Oos.GetParameters.InvokeAsync(new AliCloud.Oos.GetParametersArgs
-        ///         {
-        ///             NameRegex = "^my-Parameter",
-        ///         }));
-        ///         this.OosParameterId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Parameters?[0]?.Id);
-        ///         var resourceGroupId = Output.Create(AliCloud.Oos.GetParameters.InvokeAsync(new AliCloud.Oos.GetParametersArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "my-Parameter",
-        ///             },
-        ///             ResourceGroupId = "example_value",
-        ///         }));
-        ///         this.OosParameterId3 = resourceGroupId.Apply(resourceGroupId =&gt; resourceGroupId.Parameters?[0]?.Id);
-        ///         var tags = Output.Create(AliCloud.Oos.GetParameters.InvokeAsync(new AliCloud.Oos.GetParametersArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "my-Parameter",
-        ///             },
-        ///             Tags = 
-        ///             {
-        ///                 { "Created", "TF" },
-        ///                 { "For", "OosParameter" },
-        ///             },
-        ///         }));
-        ///         this.OosParameterId4 = tags.Apply(tags =&gt; tags.Parameters?[0]?.Id);
-        ///     }
+        ///             "my-Parameter",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("oosParameterId1")]
-        ///     public Output&lt;string&gt; OosParameterId1 { get; set; }
-        ///     [Output("oosParameterId2")]
-        ///     public Output&lt;string&gt; OosParameterId2 { get; set; }
-        ///     [Output("oosParameterId3")]
-        ///     public Output&lt;string&gt; OosParameterId3 { get; set; }
-        ///     [Output("oosParameterId4")]
-        ///     public Output&lt;string&gt; OosParameterId4 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Parameter",
+        ///     });
+        /// 
+        ///     var resourceGroupId = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Parameter",
+        ///         },
+        ///         ResourceGroupId = "example_value",
+        ///     });
+        /// 
+        ///     var tags = AliCloud.Oos.GetParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "my-Parameter",
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "OosParameter" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oosParameterId1"] = ids.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosParameterId2"] = nameRegex.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosParameterId3"] = resourceGroupId.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///         ["oosParameterId4"] = tags.Apply(getParametersResult =&gt; getParametersResult.Parameters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetParametersResult> Invoke(GetParametersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetParametersResult>("alicloud:oos/getParameters:getParameters", args ?? new GetParametersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetParametersResult>("alicloud:oos/getParameters:getParameters", args ?? new GetParametersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetParametersArgs : Pulumi.InvokeArgs
+    public sealed class GetParametersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -225,9 +217,10 @@ namespace Pulumi.AliCloud.Oos
         public GetParametersArgs()
         {
         }
+        public static new GetParametersArgs Empty => new GetParametersArgs();
     }
 
-    public sealed class GetParametersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetParametersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -295,6 +288,7 @@ namespace Pulumi.AliCloud.Oos
         public GetParametersInvokeArgs()
         {
         }
+        public static new GetParametersInvokeArgs Empty => new GetParametersInvokeArgs();
     }
 
 

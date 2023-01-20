@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:simpleapplicationserver/customImage:CustomImage")]
-    public partial class CustomImage : Pulumi.CustomResource
+    public partial class CustomImage : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         }
     }
 
-    public sealed class CustomImageArgs : Pulumi.ResourceArgs
+    public sealed class CustomImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
@@ -136,9 +136,10 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public CustomImageArgs()
         {
         }
+        public static new CustomImageArgs Empty => new CustomImageArgs();
     }
 
-    public sealed class CustomImageState : Pulumi.ResourceArgs
+    public sealed class CustomImageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
@@ -173,5 +174,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public CustomImageState()
         {
         }
+        public static new CustomImageState Empty => new CustomImageState();
     }
 }

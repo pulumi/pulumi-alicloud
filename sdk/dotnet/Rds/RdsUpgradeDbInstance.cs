@@ -20,57 +20,59 @@ namespace Pulumi.AliCloud.Rds
     /// ### Create a RDS MySQL upgrade instance
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testaccdbinstance";
+    ///     var creation = config.Get("creation") ?? "Rds";
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testaccdbinstance";
-    ///         var creation = config.Get("creation") ?? "Rds";
-    ///         var exampleZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = exampleNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = exampleZones.Apply(exampleZones =&gt; exampleZones.Zones?[0]?.Id),
-    ///         });
-    ///         var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new AliCloud.Rds.InstanceArgs
-    ///         {
-    ///             Engine = "PostgreSQL",
-    ///             EngineVersion = "12.0",
-    ///             InstanceType = "pg.n2.small.2c",
-    ///             InstanceStorage = 20,
-    ///             InstanceChargeType = "Postpaid",
-    ///             InstanceName = name,
-    ///             VswitchId = exampleSwitch.Id,
-    ///         });
-    ///         var exampleRdsUpgradeDbInstance = new AliCloud.Rds.RdsUpgradeDbInstance("exampleRdsUpgradeDbInstance", new AliCloud.Rds.RdsUpgradeDbInstanceArgs
-    ///         {
-    ///             SourceDbInstanceId = exampleInstance.Id,
-    ///             TargetMajorVersion = "13.0",
-    ///             DbInstanceClass = "pg.n2.small.2c",
-    ///             DbInstanceStorage = 20,
-    ///             InstanceNetworkType = "VPC",
-    ///             DbInstanceStorageType = "cloud_ssd",
-    ///             CollectStatMode = "After",
-    ///             SwitchOver = "false",
-    ///             PaymentType = "PayAsYouGo",
-    ///             DbInstanceDescription = name,
-    ///             VswitchId = exampleSwitch.Id,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
+    ///     {
+    ///         Engine = "PostgreSQL",
+    ///         EngineVersion = "12.0",
+    ///         InstanceType = "pg.n2.small.2c",
+    ///         InstanceStorage = 20,
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = name,
+    ///         VswitchId = exampleSwitch.Id,
+    ///     });
+    /// 
+    ///     var exampleRdsUpgradeDbInstance = new AliCloud.Rds.RdsUpgradeDbInstance("exampleRdsUpgradeDbInstance", new()
+    ///     {
+    ///         SourceDbInstanceId = exampleInstance.Id,
+    ///         TargetMajorVersion = "13.0",
+    ///         DbInstanceClass = "pg.n2.small.2c",
+    ///         DbInstanceStorage = 20,
+    ///         InstanceNetworkType = "VPC",
+    ///         DbInstanceStorageType = "cloud_ssd",
+    ///         CollectStatMode = "After",
+    ///         SwitchOver = "false",
+    ///         PaymentType = "PayAsYouGo",
+    ///         DbInstanceDescription = name,
+    ///         VswitchId = exampleSwitch.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -82,7 +84,7 @@ namespace Pulumi.AliCloud.Rds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/rdsUpgradeDbInstance:RdsUpgradeDbInstance")]
-    public partial class RdsUpgradeDbInstance : Pulumi.CustomResource
+    public partial class RdsUpgradeDbInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
@@ -496,7 +498,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
-    public sealed class RdsUpgradeDbInstanceArgs : Pulumi.ResourceArgs
+    public sealed class RdsUpgradeDbInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
@@ -881,9 +883,10 @@ namespace Pulumi.AliCloud.Rds
         public RdsUpgradeDbInstanceArgs()
         {
         }
+        public static new RdsUpgradeDbInstanceArgs Empty => new RdsUpgradeDbInstanceArgs();
     }
 
-    public sealed class RdsUpgradeDbInstanceState : Pulumi.ResourceArgs
+    public sealed class RdsUpgradeDbInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
@@ -1274,5 +1277,6 @@ namespace Pulumi.AliCloud.Rds
         public RdsUpgradeDbInstanceState()
         {
         }
+        public static new RdsUpgradeDbInstanceState Empty => new RdsUpgradeDbInstanceState();
     }
 }

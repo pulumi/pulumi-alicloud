@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,15 +22,12 @@ import * as utilities from "../utilities";
  * const example = alicloud.privatelink.getVpcEndpointZones({
  *     endpointId: "ep-gw8boxxxxx",
  * });
- * export const firstPrivatelinkVpcEndpointZoneId = example.then(example => example.zones?[0]?.id);
+ * export const firstPrivatelinkVpcEndpointZoneId = example.then(example => example.zones?.[0]?.id);
  * ```
  */
 export function getVpcEndpointZones(args: GetVpcEndpointZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointZonesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", {
         "endpointId": args.endpointId,
         "outputFile": args.outputFile,
@@ -66,9 +64,27 @@ export interface GetVpcEndpointZonesResult {
     readonly status?: string;
     readonly zones: outputs.privatelink.GetVpcEndpointZonesZone[];
 }
-
+/**
+ * This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.111.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.privatelink.getVpcEndpointZones({
+ *     endpointId: "ep-gw8boxxxxx",
+ * });
+ * export const firstPrivatelinkVpcEndpointZoneId = example.then(example => example.zones?.[0]?.id);
+ * ```
+ */
 export function getVpcEndpointZonesOutput(args: GetVpcEndpointZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointZonesResult> {
-    return pulumi.output(args).apply(a => getVpcEndpointZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getVpcEndpointZones(a, opts))
 }
 
 /**

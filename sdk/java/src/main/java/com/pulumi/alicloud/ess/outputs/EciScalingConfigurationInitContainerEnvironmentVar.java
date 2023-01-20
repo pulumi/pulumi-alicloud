@@ -14,6 +14,7 @@ public final class EciScalingConfigurationInitContainerEnvironmentVar {
     /**
      * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
      * digits, and underscores (_). It cannot start with a digit.
+     * digits, and underscores (_). It cannot start with a digit.
      * 
      */
     private @Nullable String key;
@@ -26,6 +27,7 @@ public final class EciScalingConfigurationInitContainerEnvironmentVar {
     private EciScalingConfigurationInitContainerEnvironmentVar() {}
     /**
      * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+     * digits, and underscores (_). It cannot start with a digit.
      * digits, and underscores (_). It cannot start with a digit.
      * 
      */

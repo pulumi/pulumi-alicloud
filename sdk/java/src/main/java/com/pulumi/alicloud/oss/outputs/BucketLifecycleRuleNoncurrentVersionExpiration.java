@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class BucketLifecycleRuleNoncurrentVersionExpiration {
     /**
-     * @return Specifies the number of days noncurrent object versions transition.
+     * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     private Integer days;
 
     private BucketLifecycleRuleNoncurrentVersionExpiration() {}
     /**
-     * @return Specifies the number of days noncurrent object versions transition.
+     * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     public Integer days() {

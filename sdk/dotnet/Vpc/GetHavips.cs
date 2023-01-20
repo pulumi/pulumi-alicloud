@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Vpc.GetHavips.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Vpc.GetHavips.InvokeAsync(new AliCloud.Vpc.GetHavipsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstHavipId = example.Apply(example =&gt; example.Havips?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstHavipId")]
-        ///     public Output&lt;string&gt; FirstHavipId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstHavipId"] = example.Apply(getHavipsResult =&gt; getHavipsResult.Havips[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHavipsResult> InvokeAsync(GetHavipsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHavipsResult>("alicloud:vpc/getHavips:getHavips", args ?? new GetHavipsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHavipsResult>("alicloud:vpc/getHavips:getHavips", args ?? new GetHavipsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Havips of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Vpc.GetHavips.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Vpc.GetHavips.InvokeAsync(new AliCloud.Vpc.GetHavipsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstHavipId = example.Apply(example =&gt; example.Havips?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstHavipId")]
-        ///     public Output&lt;string&gt; FirstHavipId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstHavipId"] = example.Apply(getHavipsResult =&gt; getHavipsResult.Havips[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHavipsResult> Invoke(GetHavipsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHavipsResult>("alicloud:vpc/getHavips:getHavips", args ?? new GetHavipsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHavipsResult>("alicloud:vpc/getHavips:getHavips", args ?? new GetHavipsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHavipsArgs : Pulumi.InvokeArgs
+    public sealed class GetHavipsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -125,9 +123,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetHavipsArgs()
         {
         }
+        public static new GetHavipsArgs Empty => new GetHavipsArgs();
     }
 
-    public sealed class GetHavipsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHavipsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -159,6 +158,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetHavipsInvokeArgs()
         {
         }
+        public static new GetHavipsInvokeArgs Empty => new GetHavipsInvokeArgs();
     }
 
 

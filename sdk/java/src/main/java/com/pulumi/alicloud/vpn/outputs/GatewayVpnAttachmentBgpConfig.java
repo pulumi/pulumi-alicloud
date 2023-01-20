@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayVpnAttachmentBgpConfig {
     /**
-     * @return Whether to enable BGP.
+     * @return Specifies whether to enable health checks.
      * 
      */
     private @Nullable Boolean enable;
@@ -36,7 +36,7 @@ public final class GatewayVpnAttachmentBgpConfig {
 
     private GatewayVpnAttachmentBgpConfig() {}
     /**
-     * @return Whether to enable BGP.
+     * @return Specifies whether to enable health checks.
      * 
      */
     public Optional<Boolean> enable() {

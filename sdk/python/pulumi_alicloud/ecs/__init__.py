@@ -8,6 +8,7 @@ import typing
 from .activation import *
 from .auto_provisioning_group import *
 from .auto_snapshot_policy import *
+from .capacity_reservation import *
 from .command import *
 from .copy_image import *
 from .dedicated_host import *
@@ -35,8 +36,10 @@ from .ecs_snapshot_group import *
 from .eip import *
 from .eip_address import *
 from .eip_association import *
+from .elasticity_assurance import *
 from .get_activations import *
 from .get_auto_snapshot_policies import *
+from .get_capacity_reservations import *
 from .get_commands import *
 from .get_dedicated_hosts import *
 from .get_disks import *
@@ -56,8 +59,10 @@ from .get_ecs_snapshots import *
 from .get_ecs_storage_capacity_units import *
 from .get_eip_addresses import *
 from .get_eips import *
+from .get_elasticity_assurances import *
 from .get_hpc_clusters import *
 from .get_images import *
+from .get_instance_keywords import *
 from .get_instance_type_families import *
 from .get_instance_types import *
 from .get_instances import *

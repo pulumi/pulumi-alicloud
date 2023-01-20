@@ -5,52 +5,156 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./adConnectorDirectory";
-export * from "./adConnectorOfficeSite";
-export * from "./bundle";
-export * from "./command";
-export * from "./customProperty";
-export * from "./desktop";
-export * from "./ecdPolicyGroup";
-export * from "./getAdConnectorDirectories";
-export * from "./getAdConnectorOfficeSites";
-export * from "./getBundles";
-export * from "./getCommands";
-export * from "./getCustomProperties";
-export * from "./getDesktopTypes";
-export * from "./getDesktops";
-export * from "./getImages";
-export * from "./getNasFileSystems";
-export * from "./getNetworkPackages";
-export * from "./getPolicyGroups";
-export * from "./getRamDirectories";
-export * from "./getSimpleOfficeSites";
-export * from "./getSnapshots";
-export * from "./getUsers";
-export * from "./getZones";
-export * from "./image";
-export * from "./nasFileSystem";
-export * from "./networkPackage";
-export * from "./ramDirectory";
-export * from "./simpleOfficeSite";
-export * from "./snapshot";
-export * from "./user";
+export { AdConnectorDirectoryArgs, AdConnectorDirectoryState } from "./adConnectorDirectory";
+export type AdConnectorDirectory = import("./adConnectorDirectory").AdConnectorDirectory;
+export const AdConnectorDirectory: typeof import("./adConnectorDirectory").AdConnectorDirectory = null as any;
+utilities.lazyLoad(exports, ["AdConnectorDirectory"], () => require("./adConnectorDirectory"));
 
-// Import resources to register:
-import { AdConnectorDirectory } from "./adConnectorDirectory";
-import { AdConnectorOfficeSite } from "./adConnectorOfficeSite";
-import { Bundle } from "./bundle";
-import { Command } from "./command";
-import { CustomProperty } from "./customProperty";
-import { Desktop } from "./desktop";
-import { EcdPolicyGroup } from "./ecdPolicyGroup";
-import { Image } from "./image";
-import { NasFileSystem } from "./nasFileSystem";
-import { NetworkPackage } from "./networkPackage";
-import { RamDirectory } from "./ramDirectory";
-import { SimpleOfficeSite } from "./simpleOfficeSite";
-import { Snapshot } from "./snapshot";
-import { User } from "./user";
+export { AdConnectorOfficeSiteArgs, AdConnectorOfficeSiteState } from "./adConnectorOfficeSite";
+export type AdConnectorOfficeSite = import("./adConnectorOfficeSite").AdConnectorOfficeSite;
+export const AdConnectorOfficeSite: typeof import("./adConnectorOfficeSite").AdConnectorOfficeSite = null as any;
+utilities.lazyLoad(exports, ["AdConnectorOfficeSite"], () => require("./adConnectorOfficeSite"));
+
+export { BundleArgs, BundleState } from "./bundle";
+export type Bundle = import("./bundle").Bundle;
+export const Bundle: typeof import("./bundle").Bundle = null as any;
+utilities.lazyLoad(exports, ["Bundle"], () => require("./bundle"));
+
+export { CommandArgs, CommandState } from "./command";
+export type Command = import("./command").Command;
+export const Command: typeof import("./command").Command = null as any;
+utilities.lazyLoad(exports, ["Command"], () => require("./command"));
+
+export { CustomPropertyArgs, CustomPropertyState } from "./customProperty";
+export type CustomProperty = import("./customProperty").CustomProperty;
+export const CustomProperty: typeof import("./customProperty").CustomProperty = null as any;
+utilities.lazyLoad(exports, ["CustomProperty"], () => require("./customProperty"));
+
+export { DesktopArgs, DesktopState } from "./desktop";
+export type Desktop = import("./desktop").Desktop;
+export const Desktop: typeof import("./desktop").Desktop = null as any;
+utilities.lazyLoad(exports, ["Desktop"], () => require("./desktop"));
+
+export { EcdPolicyGroupArgs, EcdPolicyGroupState } from "./ecdPolicyGroup";
+export type EcdPolicyGroup = import("./ecdPolicyGroup").EcdPolicyGroup;
+export const EcdPolicyGroup: typeof import("./ecdPolicyGroup").EcdPolicyGroup = null as any;
+utilities.lazyLoad(exports, ["EcdPolicyGroup"], () => require("./ecdPolicyGroup"));
+
+export { GetAdConnectorDirectoriesArgs, GetAdConnectorDirectoriesResult, GetAdConnectorDirectoriesOutputArgs } from "./getAdConnectorDirectories";
+export const getAdConnectorDirectories: typeof import("./getAdConnectorDirectories").getAdConnectorDirectories = null as any;
+export const getAdConnectorDirectoriesOutput: typeof import("./getAdConnectorDirectories").getAdConnectorDirectoriesOutput = null as any;
+utilities.lazyLoad(exports, ["getAdConnectorDirectories","getAdConnectorDirectoriesOutput"], () => require("./getAdConnectorDirectories"));
+
+export { GetAdConnectorOfficeSitesArgs, GetAdConnectorOfficeSitesResult, GetAdConnectorOfficeSitesOutputArgs } from "./getAdConnectorOfficeSites";
+export const getAdConnectorOfficeSites: typeof import("./getAdConnectorOfficeSites").getAdConnectorOfficeSites = null as any;
+export const getAdConnectorOfficeSitesOutput: typeof import("./getAdConnectorOfficeSites").getAdConnectorOfficeSitesOutput = null as any;
+utilities.lazyLoad(exports, ["getAdConnectorOfficeSites","getAdConnectorOfficeSitesOutput"], () => require("./getAdConnectorOfficeSites"));
+
+export { GetBundlesArgs, GetBundlesResult, GetBundlesOutputArgs } from "./getBundles";
+export const getBundles: typeof import("./getBundles").getBundles = null as any;
+export const getBundlesOutput: typeof import("./getBundles").getBundlesOutput = null as any;
+utilities.lazyLoad(exports, ["getBundles","getBundlesOutput"], () => require("./getBundles"));
+
+export { GetCommandsArgs, GetCommandsResult, GetCommandsOutputArgs } from "./getCommands";
+export const getCommands: typeof import("./getCommands").getCommands = null as any;
+export const getCommandsOutput: typeof import("./getCommands").getCommandsOutput = null as any;
+utilities.lazyLoad(exports, ["getCommands","getCommandsOutput"], () => require("./getCommands"));
+
+export { GetCustomPropertiesArgs, GetCustomPropertiesResult, GetCustomPropertiesOutputArgs } from "./getCustomProperties";
+export const getCustomProperties: typeof import("./getCustomProperties").getCustomProperties = null as any;
+export const getCustomPropertiesOutput: typeof import("./getCustomProperties").getCustomPropertiesOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomProperties","getCustomPropertiesOutput"], () => require("./getCustomProperties"));
+
+export { GetDesktopTypesArgs, GetDesktopTypesResult, GetDesktopTypesOutputArgs } from "./getDesktopTypes";
+export const getDesktopTypes: typeof import("./getDesktopTypes").getDesktopTypes = null as any;
+export const getDesktopTypesOutput: typeof import("./getDesktopTypes").getDesktopTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getDesktopTypes","getDesktopTypesOutput"], () => require("./getDesktopTypes"));
+
+export { GetDesktopsArgs, GetDesktopsResult, GetDesktopsOutputArgs } from "./getDesktops";
+export const getDesktops: typeof import("./getDesktops").getDesktops = null as any;
+export const getDesktopsOutput: typeof import("./getDesktops").getDesktopsOutput = null as any;
+utilities.lazyLoad(exports, ["getDesktops","getDesktopsOutput"], () => require("./getDesktops"));
+
+export { GetImagesArgs, GetImagesResult, GetImagesOutputArgs } from "./getImages";
+export const getImages: typeof import("./getImages").getImages = null as any;
+export const getImagesOutput: typeof import("./getImages").getImagesOutput = null as any;
+utilities.lazyLoad(exports, ["getImages","getImagesOutput"], () => require("./getImages"));
+
+export { GetNasFileSystemsArgs, GetNasFileSystemsResult, GetNasFileSystemsOutputArgs } from "./getNasFileSystems";
+export const getNasFileSystems: typeof import("./getNasFileSystems").getNasFileSystems = null as any;
+export const getNasFileSystemsOutput: typeof import("./getNasFileSystems").getNasFileSystemsOutput = null as any;
+utilities.lazyLoad(exports, ["getNasFileSystems","getNasFileSystemsOutput"], () => require("./getNasFileSystems"));
+
+export { GetNetworkPackagesArgs, GetNetworkPackagesResult, GetNetworkPackagesOutputArgs } from "./getNetworkPackages";
+export const getNetworkPackages: typeof import("./getNetworkPackages").getNetworkPackages = null as any;
+export const getNetworkPackagesOutput: typeof import("./getNetworkPackages").getNetworkPackagesOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkPackages","getNetworkPackagesOutput"], () => require("./getNetworkPackages"));
+
+export { GetPolicyGroupsArgs, GetPolicyGroupsResult, GetPolicyGroupsOutputArgs } from "./getPolicyGroups";
+export const getPolicyGroups: typeof import("./getPolicyGroups").getPolicyGroups = null as any;
+export const getPolicyGroupsOutput: typeof import("./getPolicyGroups").getPolicyGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicyGroups","getPolicyGroupsOutput"], () => require("./getPolicyGroups"));
+
+export { GetRamDirectoriesArgs, GetRamDirectoriesResult, GetRamDirectoriesOutputArgs } from "./getRamDirectories";
+export const getRamDirectories: typeof import("./getRamDirectories").getRamDirectories = null as any;
+export const getRamDirectoriesOutput: typeof import("./getRamDirectories").getRamDirectoriesOutput = null as any;
+utilities.lazyLoad(exports, ["getRamDirectories","getRamDirectoriesOutput"], () => require("./getRamDirectories"));
+
+export { GetSimpleOfficeSitesArgs, GetSimpleOfficeSitesResult, GetSimpleOfficeSitesOutputArgs } from "./getSimpleOfficeSites";
+export const getSimpleOfficeSites: typeof import("./getSimpleOfficeSites").getSimpleOfficeSites = null as any;
+export const getSimpleOfficeSitesOutput: typeof import("./getSimpleOfficeSites").getSimpleOfficeSitesOutput = null as any;
+utilities.lazyLoad(exports, ["getSimpleOfficeSites","getSimpleOfficeSitesOutput"], () => require("./getSimpleOfficeSites"));
+
+export { GetSnapshotsArgs, GetSnapshotsResult, GetSnapshotsOutputArgs } from "./getSnapshots";
+export const getSnapshots: typeof import("./getSnapshots").getSnapshots = null as any;
+export const getSnapshotsOutput: typeof import("./getSnapshots").getSnapshotsOutput = null as any;
+utilities.lazyLoad(exports, ["getSnapshots","getSnapshotsOutput"], () => require("./getSnapshots"));
+
+export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
+export { ImageArgs, ImageState } from "./image";
+export type Image = import("./image").Image;
+export const Image: typeof import("./image").Image = null as any;
+utilities.lazyLoad(exports, ["Image"], () => require("./image"));
+
+export { NasFileSystemArgs, NasFileSystemState } from "./nasFileSystem";
+export type NasFileSystem = import("./nasFileSystem").NasFileSystem;
+export const NasFileSystem: typeof import("./nasFileSystem").NasFileSystem = null as any;
+utilities.lazyLoad(exports, ["NasFileSystem"], () => require("./nasFileSystem"));
+
+export { NetworkPackageArgs, NetworkPackageState } from "./networkPackage";
+export type NetworkPackage = import("./networkPackage").NetworkPackage;
+export const NetworkPackage: typeof import("./networkPackage").NetworkPackage = null as any;
+utilities.lazyLoad(exports, ["NetworkPackage"], () => require("./networkPackage"));
+
+export { RamDirectoryArgs, RamDirectoryState } from "./ramDirectory";
+export type RamDirectory = import("./ramDirectory").RamDirectory;
+export const RamDirectory: typeof import("./ramDirectory").RamDirectory = null as any;
+utilities.lazyLoad(exports, ["RamDirectory"], () => require("./ramDirectory"));
+
+export { SimpleOfficeSiteArgs, SimpleOfficeSiteState } from "./simpleOfficeSite";
+export type SimpleOfficeSite = import("./simpleOfficeSite").SimpleOfficeSite;
+export const SimpleOfficeSite: typeof import("./simpleOfficeSite").SimpleOfficeSite = null as any;
+utilities.lazyLoad(exports, ["SimpleOfficeSite"], () => require("./simpleOfficeSite"));
+
+export { SnapshotArgs, SnapshotState } from "./snapshot";
+export type Snapshot = import("./snapshot").Snapshot;
+export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
+utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
 
 const _module = {
     version: utilities.getVersion(),

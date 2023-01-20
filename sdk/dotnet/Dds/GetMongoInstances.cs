@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.Dds
     public static class GetMongoInstances
     {
         public static Task<GetMongoInstancesResult> InvokeAsync(GetMongoInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? new GetMongoInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? new GetMongoInstancesArgs(), options.WithDefaults());
 
         public static Output<GetMongoInstancesResult> Invoke(GetMongoInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? new GetMongoInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? new GetMongoInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetMongoInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetMongoInstancesArgs : global::Pulumi.InvokeArgs
     {
         [Input("availabilityZone")]
         public string? AvailabilityZone { get; set; }
@@ -55,9 +55,10 @@ namespace Pulumi.AliCloud.Dds
         public GetMongoInstancesArgs()
         {
         }
+        public static new GetMongoInstancesArgs Empty => new GetMongoInstancesArgs();
     }
 
-    public sealed class GetMongoInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMongoInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -93,6 +94,7 @@ namespace Pulumi.AliCloud.Dds
         public GetMongoInstancesInvokeArgs()
         {
         }
+        public static new GetMongoInstancesInvokeArgs Empty => new GetMongoInstancesInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds.Inputs
 {
 
-    public sealed class RdsCloneDbInstancePgHbaConfArgs : Pulumi.ResourceArgs
+    public sealed class RdsCloneDbInstancePgHbaConfArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
@@ -66,5 +66,6 @@ namespace Pulumi.AliCloud.Rds.Inputs
         public RdsCloneDbInstancePgHbaConfArgs()
         {
         }
+        public static new RdsCloneDbInstancePgHbaConfArgs Empty => new RdsCloneDbInstancePgHbaConfArgs();
     }
 }

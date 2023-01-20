@@ -18,14 +18,14 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetZonesArgs Empty = new GetZonesArgs();
 
     /**
-     * -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+     * Default to `false`. Set it to true can output more details.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+     * @return Default to `false`. Set it to true can output more details.
      * 
      */
     public Optional<Output<Boolean>> enableDetails() {
@@ -189,7 +189,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+         * @param enableDetails Default to `false`. Set it to true can output more details.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+         * @param enableDetails Default to `false`. Set it to true can output more details.
          * 
          * @return builder
          * 

@@ -27,6 +27,12 @@ public final class GetGatewayVpnAttachmentsResult {
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
     private @Nullable String status;
+    /**
+     * @deprecated
+     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+     * 
+     */
+    @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
     private @Nullable String vpnGatewayId;
 
     private GetGatewayVpnAttachmentsResult() {}
@@ -61,6 +67,12 @@ public final class GetGatewayVpnAttachmentsResult {
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @deprecated
+     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+     * 
+     */
+    @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
     public Optional<String> vpnGatewayId() {
         return Optional.ofNullable(this.vpnGatewayId);
     }

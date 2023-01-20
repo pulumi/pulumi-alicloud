@@ -17,18 +17,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.dcdn.getService({
+ * const open = alicloud.dcdn.getService({
  *     enable: "On",
- * }));
+ * });
  * ```
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dcdn/getService:getService", {
         "enable": args.enable,
     }, opts);
@@ -58,9 +55,26 @@ export interface GetServiceResult {
      */
     readonly status: string;
 }
-
+/**
+ * Using this data source can open DCDN service automatically. If the service has been opened, it will return opened.
+ *
+ * For information about DCDN and how to use it, see [What is DCDN](https://help.aliyun.com/document_detail/197288.html).
+ *
+ * > **NOTE:** Available in v1.111.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.dcdn.getService({
+ *     enable: "On",
+ * });
+ * ```
+ */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply(a => getService(a, opts))
+    return pulumi.output(args).apply((a: any) => getService(a, opts))
 }
 
 /**

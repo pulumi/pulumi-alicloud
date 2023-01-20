@@ -25,13 +25,18 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** The instance with shared loadBalancerSpec doesn&#39;t support domainExtension.
  * 
  * ## Example Usage
- * 
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
  * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
  * import com.pulumi.alicloud.slb.ServerCertificate;
@@ -53,13 +58,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new ApplicationLoadBalancer(&#34;instance&#34;, ApplicationLoadBalancerArgs.builder()        
- *             .loadBalancerName(&#34;tffTestDomainExtension&#34;)
- *             .internetChargeType(&#34;PayByTraffic&#34;)
- *             .internet(&#34;true&#34;)
+ *         final var config = ctx.config();
+ *         final var slbDomainExtensionName = config.get(&#34;slbDomainExtensionName&#34;).orElse(&#34;forDomainExtension&#34;);
+ *         final var domainExtensionZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var foo = new ServerCertificate(&#34;foo&#34;, ServerCertificateArgs.builder()        
+ *         var domainExtensionNetwork = new Network(&#34;domainExtensionNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(slbDomainExtensionName)
+ *             .build());
+ * 
+ *         var domainExtensionSwitch = new Switch(&#34;domainExtensionSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(domainExtensionNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .zoneId(domainExtensionZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(slbDomainExtensionName)
+ *             .build());
+ * 
+ *         var instance = new ApplicationLoadBalancer(&#34;instance&#34;, ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName(slbDomainExtensionName)
+ *             .addressType(&#34;intranet&#34;)
+ *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
+ *             .vswitchId(domainExtensionSwitch.id())
+ *             .build());
+ * 
+ *         var domainExtensionServerCertificate = new ServerCertificate(&#34;domainExtensionServerCertificate&#34;, ServerCertificateArgs.builder()        
  *             .serverCertificate(&#34;&#34;&#34;
  * -----BEGIN CERTIFICATE-----
  * MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
@@ -130,14 +153,14 @@ import javax.annotation.Nullable;
  *             .healthCheckInterval(5)
  *             .healthCheckHttpCode(&#34;http_2xx,http_3xx&#34;)
  *             .bandwidth(10)
- *             .sslCertificateId(foo.id())
+ *             .serverCertificateId(domainExtensionServerCertificate.id())
  *             .build());
  * 
  *         var example1 = new DomainExtension(&#34;example1&#34;, DomainExtensionArgs.builder()        
  *             .loadBalancerId(instance.id())
  *             .frontendPort(https.frontendPort())
  *             .domain(&#34;www.test.com&#34;)
- *             .serverCertificateId(foo.id())
+ *             .serverCertificateId(domainExtensionServerCertificate.id())
  *             .build());
  * 
  *     }

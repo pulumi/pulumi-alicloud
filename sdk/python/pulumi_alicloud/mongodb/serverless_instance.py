@@ -825,7 +825,7 @@ class ServerlessInstance(pulumi.CustomResource):
 
             if account_password is None and not opts.urn:
                 raise TypeError("Missing required property 'account_password'")
-            __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             __props__.__dict__["auto_renew"] = auto_renew
             if capacity_unit is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_unit'")
@@ -856,6 +856,8 @@ class ServerlessInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ServerlessInstance, __self__).__init__(
             'alicloud:mongodb/serverlessInstance:ServerlessInstance',
             resource_name,

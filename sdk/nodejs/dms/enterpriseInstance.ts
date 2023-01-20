@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEnterpriseInstance = new alicloud.dms.EnterpriseInstance("default", {
+ * const _default = new alicloud.dms.EnterpriseInstance("default", {
  *     databasePassword: "Yourpassword123",
  *     databaseUser: "your_user_name",
- *     dbaUid: Number.parseFloat("1182725234xxxxxxx"),
+ *     dbaUid: "1182725234xxxxxxx",
  *     ecsRegion: "cn-shanghai",
  *     envType: "test",
  *     exportTimeout: 600,
@@ -273,7 +273,7 @@ export class EnterpriseInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'safeRule'");
             }
             resourceInputs["dataLinkName"] = args ? args.dataLinkName : undefined;
-            resourceInputs["databasePassword"] = args ? args.databasePassword : undefined;
+            resourceInputs["databasePassword"] = args?.databasePassword ? pulumi.secret(args.databasePassword) : undefined;
             resourceInputs["databaseUser"] = args ? args.databaseUser : undefined;
             resourceInputs["dbaId"] = args ? args.dbaId : undefined;
             resourceInputs["dbaUid"] = args ? args.dbaUid : undefined;
@@ -303,6 +303,8 @@ export class EnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["databasePassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(EnterpriseInstance.__pulumiType, name, resourceInputs, opts);
     }
 }

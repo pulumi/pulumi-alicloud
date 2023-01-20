@@ -12,6 +12,7 @@ from .. import _utilities
 __all__ = [
     'ClusterDbClusterIpArrayArgs',
     'ClusterParameterArgs',
+    'ParameterGroupParameterArgs',
 ]
 
 @pulumi.input_type
@@ -25,7 +26,8 @@ class ClusterDbClusterIpArrayArgs:
                **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
         :param pulumi.Input[str] modify_mode: The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
                **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+               Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         """
         if db_cluster_ip_array_name is not None:
             pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
@@ -64,7 +66,8 @@ class ClusterDbClusterIpArrayArgs:
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+        Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         """
         return pulumi.get(self, "security_ips")
 
@@ -98,5 +101,42 @@ class ClusterParameterArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ParameterGroupParameterArgs:
+    def __init__(__self__, *,
+                 param_name: pulumi.Input[str],
+                 param_value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] param_name: The name of a parameter in the parameter template.
+        :param pulumi.Input[str] param_value: The value of a parameter in the parameter template.
+        """
+        pulumi.set(__self__, "param_name", param_name)
+        pulumi.set(__self__, "param_value", param_value)
+
+    @property
+    @pulumi.getter(name="paramName")
+    def param_name(self) -> pulumi.Input[str]:
+        """
+        The name of a parameter in the parameter template.
+        """
+        return pulumi.get(self, "param_name")
+
+    @param_name.setter
+    def param_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "param_name", value)
+
+    @property
+    @pulumi.getter(name="paramValue")
+    def param_value(self) -> pulumi.Input[str]:
+        """
+        The value of a parameter in the parameter template.
+        """
+        return pulumi.get(self, "param_value")
+
+    @param_value.setter
+    def param_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "param_value", value)
 
 

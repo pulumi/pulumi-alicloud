@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.Dms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Dms.GetUserTenants.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Dms.GetUserTenants.InvokeAsync(new AliCloud.Dms.GetUserTenantsArgs
-        ///         {
-        ///             Status = "ACTIVE",
-        ///         }));
-        ///         this.Tid = @default.Apply(@default =&gt; @default.Ids?[0]);
-        ///     }
+        ///         Status = "ACTIVE",
+        ///     });
         /// 
-        ///     [Output("tid")]
-        ///     public Output&lt;string&gt; Tid { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["tid"] = @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult).Apply(@default =&gt; @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0])),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserTenantsResult> InvokeAsync(GetUserTenantsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserTenantsResult>("alicloud:dms/getUserTenants:getUserTenants", args ?? new GetUserTenantsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserTenantsResult>("alicloud:dms/getUserTenants:getUserTenants", args ?? new GetUserTenantsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of DMS User Tenants in an Alibaba Cloud account according to the specified filters.
@@ -55,33 +54,32 @@ namespace Pulumi.AliCloud.Dms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Dms.GetUserTenants.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Dms.GetUserTenants.InvokeAsync(new AliCloud.Dms.GetUserTenantsArgs
-        ///         {
-        ///             Status = "ACTIVE",
-        ///         }));
-        ///         this.Tid = @default.Apply(@default =&gt; @default.Ids?[0]);
-        ///     }
+        ///         Status = "ACTIVE",
+        ///     });
         /// 
-        ///     [Output("tid")]
-        ///     public Output&lt;string&gt; Tid { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["tid"] = @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult).Apply(@default =&gt; @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0])),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetUserTenantsResult> Invoke(GetUserTenantsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUserTenantsResult>("alicloud:dms/getUserTenants:getUserTenants", args ?? new GetUserTenantsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserTenantsResult>("alicloud:dms/getUserTenants:getUserTenants", args ?? new GetUserTenantsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetUserTenantsArgs : Pulumi.InvokeArgs
+    public sealed class GetUserTenantsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -107,9 +105,10 @@ namespace Pulumi.AliCloud.Dms
         public GetUserTenantsArgs()
         {
         }
+        public static new GetUserTenantsArgs Empty => new GetUserTenantsArgs();
     }
 
-    public sealed class GetUserTenantsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUserTenantsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -135,6 +134,7 @@ namespace Pulumi.AliCloud.Dms
         public GetUserTenantsInvokeArgs()
         {
         }
+        public static new GetUserTenantsInvokeArgs Empty => new GetUserTenantsInvokeArgs();
     }
 
 

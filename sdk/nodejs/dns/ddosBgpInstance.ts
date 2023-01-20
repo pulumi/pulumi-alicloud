@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
  *
- * > **NOTE:** Available in 1.57.0+ .
+ * > **NOTE:** Available in 1.183.0+ .
  *
  * ## Example Usage
  *
@@ -20,10 +20,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
- *     bandwidth: 201,
+ *     bandwidth: -1,
  *     baseBandwidth: 20,
  *     ipCount: 100,
  *     ipType: "IPv4",
+ *     normalBandwidth: 100,
+ *     type: "Enterprise",
  * });
  * ```
  *
@@ -87,11 +89,15 @@ export class DdosBgpInstance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Normal defend bandwidth of the instance. The unit is Gbps.
+     */
+    public readonly normalBandwidth!: pulumi.Output<number>;
+    /**
      * The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+     * Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -116,6 +122,7 @@ export class DdosBgpInstance extends pulumi.CustomResource {
             resourceInputs["ipCount"] = state ? state.ipCount : undefined;
             resourceInputs["ipType"] = state ? state.ipType : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["normalBandwidth"] = state ? state.normalBandwidth : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
@@ -129,11 +136,15 @@ export class DdosBgpInstance extends pulumi.CustomResource {
             if ((!args || args.ipType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipType'");
             }
+            if ((!args || args.normalBandwidth === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'normalBandwidth'");
+            }
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["baseBandwidth"] = args ? args.baseBandwidth : undefined;
             resourceInputs["ipCount"] = args ? args.ipCount : undefined;
             resourceInputs["ipType"] = args ? args.ipType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["normalBandwidth"] = args ? args.normalBandwidth : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         }
@@ -167,11 +178,15 @@ export interface DdosBgpInstanceState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Normal defend bandwidth of the instance. The unit is Gbps.
+     */
+    normalBandwidth?: pulumi.Input<number>;
+    /**
      * The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
      */
     period?: pulumi.Input<number>;
     /**
-     * Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+     * Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
      */
     type?: pulumi.Input<string>;
 }
@@ -201,11 +216,15 @@ export interface DdosBgpInstanceArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * Normal defend bandwidth of the instance. The unit is Gbps.
+     */
+    normalBandwidth: pulumi.Input<number>;
+    /**
      * The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
      */
     period?: pulumi.Input<number>;
     /**
-     * Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
+     * Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
      */
     type?: pulumi.Input<string>;
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,15 +22,12 @@ import * as utilities from "../utilities";
  * const example = alicloud.privatelink.getVpcEndpointServiceUsers({
  *     serviceId: "epsrv-gw81c6vxxxxxx",
  * });
- * export const firstPrivatelinkVpcEndpointServiceUserId = example.then(example => example.users?[0]?.id);
+ * export const firstPrivatelinkVpcEndpointServiceUserId = example.then(example => example.users?.[0]?.id);
  * ```
  */
 export function getVpcEndpointServiceUsers(args: GetVpcEndpointServiceUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServiceUsersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:privatelink/getVpcEndpointServiceUsers:getVpcEndpointServiceUsers", {
         "outputFile": args.outputFile,
         "serviceId": args.serviceId,
@@ -66,9 +64,27 @@ export interface GetVpcEndpointServiceUsersResult {
     readonly userId?: string;
     readonly users: outputs.privatelink.GetVpcEndpointServiceUsersUser[];
 }
-
+/**
+ * This data source provides the Privatelink Vpc Endpoint Service Users of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.110.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.privatelink.getVpcEndpointServiceUsers({
+ *     serviceId: "epsrv-gw81c6vxxxxxx",
+ * });
+ * export const firstPrivatelinkVpcEndpointServiceUserId = example.then(example => example.users?.[0]?.id);
+ * ```
+ */
 export function getVpcEndpointServiceUsersOutput(args: GetVpcEndpointServiceUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointServiceUsersResult> {
-    return pulumi.output(args).apply(a => getVpcEndpointServiceUsers(a, opts))
+    return pulumi.output(args).apply((a: any) => getVpcEndpointServiceUsers(a, opts))
 }
 
 /**

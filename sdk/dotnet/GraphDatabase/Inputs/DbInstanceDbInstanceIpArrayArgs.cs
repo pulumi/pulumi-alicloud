@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.GraphDatabase.Inputs
 {
 
-    public sealed class DbInstanceDbInstanceIpArrayArgs : Pulumi.ResourceArgs
+    public sealed class DbInstanceDbInstanceIpArrayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.GraphDatabase.Inputs
         public DbInstanceDbInstanceIpArrayArgs()
         {
         }
+        public static new DbInstanceDbInstanceIpArrayArgs Empty => new DbInstanceDbInstanceIpArrayArgs();
     }
 }

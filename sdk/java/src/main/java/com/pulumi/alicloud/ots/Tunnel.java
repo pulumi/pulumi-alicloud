@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * OTS tunnel can be imported using id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ots/tunnel:Tunnel foo &#34;&lt;instance_name&gt;:&lt;table_name&gt;:&lt;tunnel_name&gt;&#34;
+ *  $ pulumi import alicloud:ots/tunnel:Tunnel foo &lt;instance_name&gt;:&lt;table_name&gt;:&lt;tunnel_name&gt;
  * ```
  * 
  */

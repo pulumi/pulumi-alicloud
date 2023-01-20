@@ -21,34 +21,32 @@ namespace Pulumi.AliCloud.Oos
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testaccoossetting";
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testaccoossetting";
-    ///         var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             BucketName = name,
-    ///             Acl = "public-read-write",
-    ///         });
-    ///         var defaultProject = new AliCloud.Log.Project("defaultProject", new AliCloud.Log.ProjectArgs
-    ///         {
-    ///         });
-    ///         var defaultServiceSetting = new AliCloud.Oos.ServiceSetting("defaultServiceSetting", new AliCloud.Oos.ServiceSettingArgs
-    ///         {
-    ///             DeliveryOssEnabled = true,
-    ///             DeliveryOssKeyPrefix = "path1/",
-    ///             DeliveryOssBucketName = defaultBucket.BucketName,
-    ///             DeliverySlsEnabled = true,
-    ///             DeliverySlsProjectName = defaultProject.Name,
-    ///         });
-    ///     }
+    ///         BucketName = name,
+    ///         Acl = "public-read-write",
+    ///     });
     /// 
-    /// }
+    ///     var defaultProject = new AliCloud.Log.Project("defaultProject");
+    /// 
+    ///     var defaultServiceSetting = new AliCloud.Oos.ServiceSetting("defaultServiceSetting", new()
+    ///     {
+    ///         DeliveryOssEnabled = true,
+    ///         DeliveryOssKeyPrefix = "path1/",
+    ///         DeliveryOssBucketName = defaultBucket.BucketName,
+    ///         DeliverySlsEnabled = true,
+    ///         DeliverySlsProjectName = defaultProject.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +58,7 @@ namespace Pulumi.AliCloud.Oos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oos/serviceSetting:ServiceSetting")]
-    public partial class ServiceSetting : Pulumi.CustomResource
+    public partial class ServiceSetting : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
@@ -136,7 +134,7 @@ namespace Pulumi.AliCloud.Oos
         }
     }
 
-    public sealed class ServiceSettingArgs : Pulumi.ResourceArgs
+    public sealed class ServiceSettingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
@@ -171,9 +169,10 @@ namespace Pulumi.AliCloud.Oos
         public ServiceSettingArgs()
         {
         }
+        public static new ServiceSettingArgs Empty => new ServiceSettingArgs();
     }
 
-    public sealed class ServiceSettingState : Pulumi.ResourceArgs
+    public sealed class ServiceSettingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
@@ -208,5 +207,6 @@ namespace Pulumi.AliCloud.Oos
         public ServiceSettingState()
         {
         }
+        public static new ServiceSettingState Empty => new ServiceSettingState();
     }
 }

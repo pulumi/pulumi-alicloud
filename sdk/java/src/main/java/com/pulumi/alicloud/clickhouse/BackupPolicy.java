@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
  * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
  * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.clickhouse.DbCluster;
  * import com.pulumi.alicloud.clickhouse.DbClusterArgs;

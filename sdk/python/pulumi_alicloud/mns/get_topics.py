@@ -91,8 +91,6 @@ def get_topics(name_prefix: Optional[str] = None,
                output_file: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTopicsResult:
     """
-    This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
-
     ## Example Usage
 
     ```python
@@ -125,8 +123,6 @@ def get_topics_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicsResult]:
     """
-    This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
-
     ## Example Usage
 
     ```python

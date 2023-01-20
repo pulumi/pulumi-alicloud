@@ -19,201 +19,192 @@ namespace Pulumi.AliCloud.Oss
     /// Private Bucket
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket_acl = new AliCloud.Oss.Bucket("bucket-acl", new()
     ///     {
-    ///         var bucket_acl = new AliCloud.Oss.Bucket("bucket-acl", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             Acl = "private",
-    ///             BucketName = "bucket-170309-acl",
-    ///         });
-    ///     }
+    ///         Acl = "private",
+    ///         BucketName = "bucket-170309-acl",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Static Website
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket_website = new AliCloud.Oss.Bucket("bucket-website", new()
     ///     {
-    ///         var bucket_website = new AliCloud.Oss.Bucket("bucket-website", new AliCloud.Oss.BucketArgs
+    ///         BucketName = "bucket-170309-website",
+    ///         Website = new AliCloud.Oss.Inputs.BucketWebsiteArgs
     ///         {
-    ///             BucketName = "bucket-170309-website",
-    ///             Website = new AliCloud.Oss.Inputs.BucketWebsiteArgs
-    ///             {
-    ///                 ErrorDocument = "error.html",
-    ///                 IndexDocument = "index.html",
-    ///             },
-    ///         });
-    ///     }
+    ///             ErrorDocument = "error.html",
+    ///             IndexDocument = "index.html",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Enable Logging
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket_target = new AliCloud.Oss.Bucket("bucket-target", new()
     ///     {
-    ///         var bucket_target = new AliCloud.Oss.Bucket("bucket-target", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             BucketName = "bucket-170309-acl",
-    ///             Acl = "public-read",
-    ///         });
-    ///         var bucket_logging = new AliCloud.Oss.Bucket("bucket-logging", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             BucketName = "bucket-170309-logging",
-    ///             Logging = new AliCloud.Oss.Inputs.BucketLoggingArgs
-    ///             {
-    ///                 TargetBucket = bucket_target.Id,
-    ///                 TargetPrefix = "log/",
-    ///             },
-    ///         });
-    ///     }
+    ///         BucketName = "bucket-170309-acl",
+    ///         Acl = "public-read",
+    ///     });
     /// 
-    /// }
+    ///     var bucket_logging = new AliCloud.Oss.Bucket("bucket-logging", new()
+    ///     {
+    ///         BucketName = "bucket-170309-logging",
+    ///         Logging = new AliCloud.Oss.Inputs.BucketLoggingArgs
+    ///         {
+    ///             TargetBucket = bucket_target.Id,
+    ///             TargetPrefix = "log/",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// Referer configuration
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket_referer = new AliCloud.Oss.Bucket("bucket-referer", new()
     ///     {
-    ///         var bucket_referer = new AliCloud.Oss.Bucket("bucket-referer", new AliCloud.Oss.BucketArgs
+    ///         Acl = "private",
+    ///         BucketName = "bucket-170309-referer",
+    ///         RefererConfig = new AliCloud.Oss.Inputs.BucketRefererConfigArgs
     ///         {
-    ///             Acl = "private",
-    ///             BucketName = "bucket-170309-referer",
-    ///             RefererConfig = new AliCloud.Oss.Inputs.BucketRefererConfigArgs
+    ///             AllowEmpty = false,
+    ///             Referers = new[]
     ///             {
-    ///                 AllowEmpty = false,
-    ///                 Referers = 
-    ///                 {
-    ///                     "http://www.aliyun.com",
-    ///                     "https://www.aliyun.com",
-    ///                 },
+    ///                 "http://www.aliyun.com",
+    ///                 "https://www.aliyun.com",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Set lifecycle rule
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket_lifecycle = new AliCloud.Oss.Bucket("bucket-lifecycle", new()
     ///     {
-    ///         var bucket_lifecycle = new AliCloud.Oss.Bucket("bucket-lifecycle", new AliCloud.Oss.BucketArgs
+    ///         Acl = "public-read",
+    ///         BucketName = "bucket-170309-lifecycle",
+    ///         LifecycleRules = new[]
     ///         {
-    ///             Acl = "public-read",
-    ///             BucketName = "bucket-170309-lifecycle",
-    ///             LifecycleRules = 
+    ///             new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
     ///             {
-    ///                 new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
+    ///                 AbortMultipartUploads = new[]
     ///                 {
-    ///                     AbortMultipartUploads = 
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleAbortMultipartUploadArgs
     ///                     {
-    ///                         new AliCloud.Oss.Inputs.BucketLifecycleRuleAbortMultipartUploadArgs
-    ///                         {
-    ///                             Days = 128,
-    ///                         },
+    ///                         Days = 128,
     ///                     },
-    ///                     Enabled = true,
-    ///                     Id = "rule-abort-multipart-upload",
-    ///                     Prefix = "path3/",
     ///                 },
+    ///                 Enabled = true,
+    ///                 Id = "rule-abort-multipart-upload",
+    ///                 Prefix = "path3/",
     ///             },
-    ///         });
-    ///         var bucket_versioning_lifecycle = new AliCloud.Oss.Bucket("bucket-versioning-lifecycle", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             Acl = "private",
-    ///             BucketName = "bucket-170309-lifecycle",
-    ///             LifecycleRules = 
-    ///             {
-    ///                 new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
-    ///                 {
-    ///                     Enabled = true,
-    ///                     Expirations = 
-    ///                     {
-    ///                         new AliCloud.Oss.Inputs.BucketLifecycleRuleExpirationArgs
-    ///                         {
-    ///                             ExpiredObjectDeleteMarker = true,
-    ///                         },
-    ///                     },
-    ///                     Id = "rule-versioning",
-    ///                     NoncurrentVersionExpirations = 
-    ///                     {
-    ///                         new AliCloud.Oss.Inputs.BucketLifecycleRuleNoncurrentVersionExpirationArgs
-    ///                         {
-    ///                             Days = 240,
-    ///                         },
-    ///                     },
-    ///                     NoncurrentVersionTransitions = 
-    ///                     {
-    ///                         new AliCloud.Oss.Inputs.BucketLifecycleRuleNoncurrentVersionTransitionArgs
-    ///                         {
-    ///                             Days = 180,
-    ///                             StorageClass = "Archive",
-    ///                         },
-    ///                         new AliCloud.Oss.Inputs.BucketLifecycleRuleNoncurrentVersionTransitionArgs
-    ///                         {
-    ///                             Days = 60,
-    ///                             StorageClass = "IA",
-    ///                         },
-    ///                     },
-    ///                     Prefix = "path1/",
-    ///                 },
-    ///             },
-    ///             Versioning = new AliCloud.Oss.Inputs.BucketVersioningArgs
-    ///             {
-    ///                 Status = "Enabled",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var bucket_versioning_lifecycle = new AliCloud.Oss.Bucket("bucket-versioning-lifecycle", new()
+    ///     {
+    ///         Acl = "private",
+    ///         BucketName = "bucket-170309-lifecycle",
+    ///         LifecycleRules = new[]
+    ///         {
+    ///             new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Expirations = new[]
+    ///                 {
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleExpirationArgs
+    ///                     {
+    ///                         ExpiredObjectDeleteMarker = true,
+    ///                     },
+    ///                 },
+    ///                 Id = "rule-versioning",
+    ///                 NoncurrentVersionExpirations = new[]
+    ///                 {
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleNoncurrentVersionExpirationArgs
+    ///                     {
+    ///                         Days = 240,
+    ///                     },
+    ///                 },
+    ///                 NoncurrentVersionTransitions = new[]
+    ///                 {
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleNoncurrentVersionTransitionArgs
+    ///                     {
+    ///                         Days = 180,
+    ///                         StorageClass = "Archive",
+    ///                     },
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleNoncurrentVersionTransitionArgs
+    ///                     {
+    ///                         Days = 60,
+    ///                         StorageClass = "IA",
+    ///                     },
+    ///                 },
+    ///                 Prefix = "path1/",
+    ///             },
+    ///         },
+    ///         Versioning = new AliCloud.Oss.Inputs.BucketVersioningArgs
+    ///         {
+    ///             Status = "Enabled",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// Set bucket policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket_policy = new AliCloud.Oss.Bucket("bucket-policy", new()
     ///     {
-    ///         var bucket_policy = new AliCloud.Oss.Bucket("bucket-policy", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             Acl = "private",
-    ///             BucketName = "bucket-170309-policy",
-    ///             Policy = @"  {""Statement"":
+    ///         Acl = "private",
+    ///         BucketName = "bucket-170309-policy",
+    ///         Policy = @"  {""Statement"":
     ///       [{""Action"":
     ///           [""oss:PutObject"", ""oss:GetObject"", ""oss:DeleteBucket""],
     ///         ""Effect"":""Allow"",
@@ -222,147 +213,134 @@ namespace Pulumi.AliCloud.Oss
     ///    ""Version"":""1""}
     ///   
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// IA Bucket
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket_storageclass = new AliCloud.Oss.Bucket("bucket-storageclass", new()
     ///     {
-    ///         var bucket_storageclass = new AliCloud.Oss.Bucket("bucket-storageclass", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             BucketName = "bucket-170309-storageclass",
-    ///             StorageClass = "IA",
-    ///         });
-    ///     }
+    ///         BucketName = "bucket-170309-storageclass",
+    ///         StorageClass = "IA",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Set bucket server-side encryption rule
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket_sserule = new AliCloud.Oss.Bucket("bucket-sserule", new()
     ///     {
-    ///         var bucket_sserule = new AliCloud.Oss.Bucket("bucket-sserule", new AliCloud.Oss.BucketArgs
+    ///         Acl = "private",
+    ///         BucketName = "bucket-170309-sserule",
+    ///         ServerSideEncryptionRule = new AliCloud.Oss.Inputs.BucketServerSideEncryptionRuleArgs
     ///         {
-    ///             Acl = "private",
-    ///             BucketName = "bucket-170309-sserule",
-    ///             ServerSideEncryptionRule = new AliCloud.Oss.Inputs.BucketServerSideEncryptionRuleArgs
-    ///             {
-    ///                 KmsMasterKeyId = "your kms key id",
-    ///                 SseAlgorithm = "KMS",
-    ///             },
-    ///         });
-    ///     }
+    ///             KmsMasterKeyId = "your kms key id",
+    ///             SseAlgorithm = "KMS",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Set bucket tags
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket_tags = new AliCloud.Oss.Bucket("bucket-tags", new()
     ///     {
-    ///         var bucket_tags = new AliCloud.Oss.Bucket("bucket-tags", new AliCloud.Oss.BucketArgs
+    ///         Acl = "private",
+    ///         BucketName = "bucket-170309-tags",
+    ///         Tags = 
     ///         {
-    ///             Acl = "private",
-    ///             BucketName = "bucket-170309-tags",
-    ///             Tags = 
-    ///             {
-    ///                 { "key1", "value1" },
-    ///                 { "key2", "value2" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "key1", "value1" },
+    ///             { "key2", "value2" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Enable bucket versioning
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket_versioning = new AliCloud.Oss.Bucket("bucket-versioning", new()
     ///     {
-    ///         var bucket_versioning = new AliCloud.Oss.Bucket("bucket-versioning", new AliCloud.Oss.BucketArgs
+    ///         Acl = "private",
+    ///         BucketName = "bucket-170309-versioning",
+    ///         Versioning = new AliCloud.Oss.Inputs.BucketVersioningArgs
     ///         {
-    ///             Acl = "private",
-    ///             BucketName = "bucket-170309-versioning",
-    ///             Versioning = new AliCloud.Oss.Inputs.BucketVersioningArgs
-    ///             {
-    ///                 Status = "Enabled",
-    ///             },
-    ///         });
-    ///     }
+    ///             Status = "Enabled",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Set bucket redundancy type
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket_redundancytype = new AliCloud.Oss.Bucket("bucket-redundancytype", new()
     ///     {
-    ///         var bucket_redundancytype = new AliCloud.Oss.Bucket("bucket-redundancytype", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             BucketName = "bucket_name",
-    ///             RedundancyType = "ZRS",
-    ///         });
-    ///     }
+    ///         BucketName = "bucket_name",
+    ///         RedundancyType = "ZRS",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Set bucket accelerate configuration
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket_accelerate = new AliCloud.Oss.Bucket("bucket-accelerate", new()
     ///     {
-    ///         var bucket_accelerate = new AliCloud.Oss.Bucket("bucket-accelerate", new AliCloud.Oss.BucketArgs
+    ///         BucketName = "bucket_name",
+    ///         TransferAcceleration = new AliCloud.Oss.Inputs.BucketTransferAccelerationArgs
     ///         {
-    ///             BucketName = "bucket_name",
-    ///             TransferAcceleration = new AliCloud.Oss.Inputs.BucketTransferAccelerationArgs
-    ///             {
-    ///                 Enabled = false,
-    ///             },
-    ///         });
-    ///     }
+    ///             Enabled = false,
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -374,7 +352,7 @@ namespace Pulumi.AliCloud.Oss
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:oss/bucket:Bucket")]
-    public partial class Bucket : Pulumi.CustomResource
+    public partial class Bucket : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
@@ -470,7 +448,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<Outputs.BucketServerSideEncryptionRule?> ServerSideEncryptionRule { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         /// </summary>
         [Output("storageClass")]
         public Output<string?> StorageClass { get; private set; } = null!;
@@ -543,7 +521,7 @@ namespace Pulumi.AliCloud.Oss
         }
     }
 
-    public sealed class BucketArgs : Pulumi.ResourceArgs
+    public sealed class BucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
@@ -621,7 +599,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<Inputs.BucketServerSideEncryptionRuleArgs>? ServerSideEncryptionRule { get; set; }
 
         /// <summary>
-        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
@@ -659,9 +637,10 @@ namespace Pulumi.AliCloud.Oss
         public BucketArgs()
         {
         }
+        public static new BucketArgs Empty => new BucketArgs();
     }
 
-    public sealed class BucketState : Pulumi.ResourceArgs
+    public sealed class BucketState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
@@ -769,7 +748,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<Inputs.BucketServerSideEncryptionRuleGetArgs>? ServerSideEncryptionRule { get; set; }
 
         /// <summary>
-        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
@@ -807,5 +786,6 @@ namespace Pulumi.AliCloud.Oss
         public BucketState()
         {
         }
+        public static new BucketState Empty => new BucketState();
     }
 }

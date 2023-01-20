@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.Command;
  * import com.pulumi.alicloud.ecs.CommandArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.ecs.EcsInvocation;
  * import com.pulumi.alicloud.ecs.EcsInvocationArgs;
  * import java.util.List;

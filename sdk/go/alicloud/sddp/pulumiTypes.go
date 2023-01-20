@@ -22,9 +22,6 @@ type GetConfigsConfig struct {
 	// The ID of the Config.
 	Id string `pulumi:"id"`
 	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
-	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
-	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
-	// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
 	Value string `pulumi:"value"`
 }
 
@@ -51,9 +48,6 @@ type GetConfigsConfigArgs struct {
 	// The ID of the Config.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
-	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
-	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
-	// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -134,9 +128,6 @@ func (o GetConfigsConfigOutput) Id() pulumi.StringOutput {
 }
 
 // The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
-// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
-// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
-// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
 func (o GetConfigsConfigOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConfigsConfig) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -168,7 +159,7 @@ type GetDataLimitsLimit struct {
 	CheckStatus int `pulumi:"checkStatus"`
 	// The first ID of the resource.
 	DataLimitId string `pulumi:"dataLimitId"`
-	// -The type of the database.
+	// The type of the database.
 	EngineType string `pulumi:"engineType"`
 	// The ID of the Data Limit.
 	Id string `pulumi:"id"`
@@ -204,7 +195,7 @@ type GetDataLimitsLimitArgs struct {
 	CheckStatus pulumi.IntInput `pulumi:"checkStatus"`
 	// The first ID of the resource.
 	DataLimitId pulumi.StringInput `pulumi:"dataLimitId"`
-	// -The type of the database.
+	// The type of the database.
 	EngineType pulumi.StringInput `pulumi:"engineType"`
 	// The ID of the Data Limit.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -288,7 +279,7 @@ func (o GetDataLimitsLimitOutput) DataLimitId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataLimitsLimit) string { return v.DataLimitId }).(pulumi.StringOutput)
 }
 
-// -The type of the database.
+// The type of the database.
 func (o GetDataLimitsLimitOutput) EngineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataLimitsLimit) string { return v.EngineType }).(pulumi.StringOutput)
 }

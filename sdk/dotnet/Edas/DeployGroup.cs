@@ -19,21 +19,19 @@ namespace Pulumi.AliCloud.Edas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Edas.DeployGroup("default", new()
     ///     {
-    ///         var @default = new AliCloud.Edas.DeployGroup("default", new AliCloud.Edas.DeployGroupArgs
-    ///         {
-    ///             AppId = @var.App_id,
-    ///             GroupName = @var.Group_name,
-    ///         });
-    ///     }
+    ///         AppId = @var.App_id,
+    ///         GroupName = @var.Group_name,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +43,7 @@ namespace Pulumi.AliCloud.Edas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:edas/deployGroup:DeployGroup")]
-    public partial class DeployGroup : Pulumi.CustomResource
+    public partial class DeployGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the application that you want to deploy.
@@ -109,7 +107,7 @@ namespace Pulumi.AliCloud.Edas
         }
     }
 
-    public sealed class DeployGroupArgs : Pulumi.ResourceArgs
+    public sealed class DeployGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the application that you want to deploy.
@@ -126,9 +124,10 @@ namespace Pulumi.AliCloud.Edas
         public DeployGroupArgs()
         {
         }
+        public static new DeployGroupArgs Empty => new DeployGroupArgs();
     }
 
-    public sealed class DeployGroupState : Pulumi.ResourceArgs
+    public sealed class DeployGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the application that you want to deploy.
@@ -151,5 +150,6 @@ namespace Pulumi.AliCloud.Edas
         public DeployGroupState()
         {
         }
+        public static new DeployGroupState Empty => new DeployGroupState();
     }
 }

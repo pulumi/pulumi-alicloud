@@ -19,16 +19,24 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
     public static final AclArgs Empty = new AclArgs();
 
     /**
-     * The entries of the Acl. See the following `Block acl_entries`.
+     * The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
+     * 
+     * @deprecated
+     * Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_ga_acl_entry_attachment&#39;.
      * 
      */
+    @Deprecated /* Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'. */
     @Import(name="aclEntries")
     private @Nullable Output<List<AclAclEntryArgs>> aclEntries;
 
     /**
-     * @return The entries of the Acl. See the following `Block acl_entries`.
+     * @return The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
+     * 
+     * @deprecated
+     * Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_ga_acl_entry_attachment&#39;.
      * 
      */
+    @Deprecated /* Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'. */
     public Optional<Output<List<AclAclEntryArgs>>> aclEntries() {
         return Optional.ofNullable(this.aclEntries);
     }
@@ -106,32 +114,44 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntries The entries of the Acl. See the following `Block acl_entries`.
+         * @param aclEntries The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_ga_acl_entry_attachment&#39;.
+         * 
          */
+        @Deprecated /* Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'. */
         public Builder aclEntries(@Nullable Output<List<AclAclEntryArgs>> aclEntries) {
             $.aclEntries = aclEntries;
             return this;
         }
 
         /**
-         * @param aclEntries The entries of the Acl. See the following `Block acl_entries`.
+         * @param aclEntries The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_ga_acl_entry_attachment&#39;.
+         * 
          */
+        @Deprecated /* Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'. */
         public Builder aclEntries(List<AclAclEntryArgs> aclEntries) {
             return aclEntries(Output.of(aclEntries));
         }
 
         /**
-         * @param aclEntries The entries of the Acl. See the following `Block acl_entries`.
+         * @param aclEntries The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_ga_acl_entry_attachment&#39;.
+         * 
          */
+        @Deprecated /* Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'. */
         public Builder aclEntries(AclAclEntryArgs... aclEntries) {
             return aclEntries(List.of(aclEntries));
         }

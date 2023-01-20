@@ -110,9 +110,17 @@ public class DhcpOptionsSetAttachment extends com.pulumi.resources.CustomResourc
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
+    /**
+     * The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+     * 
+     */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
+    /**
+     * @return The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }

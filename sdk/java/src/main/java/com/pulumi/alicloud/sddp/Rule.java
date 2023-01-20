@@ -71,8 +71,6 @@ import javax.annotation.Nullable;
 public class Rule extends com.pulumi.resources.CustomResource {
     /**
      * Sensitive Data Identification Rules for the Type of. Valid values:
-     * * `0`: Keyword.
-     * * `2`: Regular expression.
      * 
      */
     @Export(name="category", type=Integer.class, parameters={})
@@ -80,8 +78,6 @@ public class Rule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Sensitive Data Identification Rules for the Type of. Valid values:
-     * * `0`: Keyword.
-     * * `2`: Regular expression.
      * 
      */
     public Output<Integer> category() {
@@ -117,8 +113,6 @@ public class Rule extends com.pulumi.resources.CustomResource {
     }
     /**
      * Sensitive Data Identification Rules of Type. Valid values:
-     * * `0`: the Built-in.
-     * * `1`: The User-Defined.
      * 
      */
     @Export(name="customType", type=Integer.class, parameters={})
@@ -126,8 +120,6 @@ public class Rule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Sensitive Data Identification Rules of Type. Valid values:
-     * * `0`: the Built-in.
-     * * `1`: The User-Defined.
      * 
      */
     public Output<Integer> customType() {
@@ -149,8 +141,6 @@ public class Rule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The Request and Receive the Language of the Message Type. Valid values:
-     * * `zh`: Chinese.
-     * * `en`: English.
      * 
      */
     @Export(name="lang", type=String.class, parameters={})
@@ -158,8 +148,6 @@ public class Rule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The Request and Receive the Language of the Message Type. Valid values:
-     * * `zh`: Chinese.
-     * * `en`: English.
      * 
      */
     public Output<Optional<String>> lang() {
@@ -181,9 +169,6 @@ public class Rule extends com.pulumi.resources.CustomResource {
     }
     /**
      * Product ID. Valid values:
-     * * `1`:MaxCompute
-     * * `2`:OSS
-     * * `5`:RDS.
      * 
      */
     @Export(name="productId", type=String.class, parameters={})
@@ -191,9 +176,6 @@ public class Rule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Product ID. Valid values:
-     * * `1`:MaxCompute
-     * * `2`:OSS
-     * * `5`:RDS.
      * 
      */
     public Output<Optional<String>> productId() {
@@ -201,10 +183,6 @@ public class Rule extends com.pulumi.resources.CustomResource {
     }
     /**
      * Sensitive Data Identification Rules of Risk Level ID. Valid values:
-     * * `2`:S1, Weak Risk Level.
-     * * `3`:S2, Medium Risk Level.
-     * * `4`:S3 High Risk Level.
-     * * `5`:S4, the Highest Risk Level.
      * 
      */
     @Export(name="riskLevelId", type=String.class, parameters={})
@@ -212,10 +190,6 @@ public class Rule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:
-     * * `2`:S1, Weak Risk Level.
-     * * `3`:S2, Medium Risk Level.
-     * * `4`:S3 High Risk Level.
-     * * `5`:S4, the Highest Risk Level.
      * 
      */
     public Output<Optional<String>> riskLevelId() {
@@ -293,9 +267,6 @@ public class Rule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The Level of Risk. Valid values:
-     * * `1`: Weak warn Level.
-     * * `2`: Medium Risk Level.
-     * * `3`: High Risk Level.
      * 
      */
     @Export(name="warnLevel", type=Integer.class, parameters={})
@@ -303,9 +274,6 @@ public class Rule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The Level of Risk. Valid values:
-     * * `1`: Weak warn Level.
-     * * `2`: Medium Risk Level.
-     * * `3`: High Risk Level.
      * 
      */
     public Output<Optional<Integer>> warnLevel() {

@@ -11,6 +11,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AScriptExtAttribute',
     'AclAclEntry',
     'ListenerAccessLogTracingConfig',
     'ListenerAclConfig',
@@ -52,6 +53,8 @@ __all__ = [
     'ServerGroupStickySessionConfig',
     'GetAclsAclResult',
     'GetAclsAclAclEntryResult',
+    'GetAscriptsAscriptResult',
+    'GetAscriptsAscriptExtAttributeResult',
     'GetHealthCheckTemplatesTemplateResult',
     'GetListenersListenerResult',
     'GetListenersListenerAccessLogTracingConfigResult',
@@ -98,8 +101,59 @@ __all__ = [
     'GetServerGroupsGroupHealthCheckConfigResult',
     'GetServerGroupsGroupServerResult',
     'GetServerGroupsGroupStickySessionConfigResult',
+    'GetSystemSecurityPoliciesPolicyResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class AScriptExtAttribute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeKey":
+            suggest = "attribute_key"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AScriptExtAttribute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AScriptExtAttribute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AScriptExtAttribute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_key: Optional[str] = None,
+                 attribute_value: Optional[str] = None):
+        """
+        :param str attribute_key: The key of the extended attribute.
+        :param str attribute_value: The value of the extended attribute.
+        """
+        if attribute_key is not None:
+            pulumi.set(__self__, "attribute_key", attribute_key)
+        if attribute_value is not None:
+            pulumi.set(__self__, "attribute_value", attribute_value)
+
+    @property
+    @pulumi.getter(name="attributeKey")
+    def attribute_key(self) -> Optional[str]:
+        """
+        The key of the extended attribute.
+        """
+        return pulumi.get(self, "attribute_key")
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> Optional[str]:
+        """
+        The value of the extended attribute.
+        """
+        return pulumi.get(self, "attribute_value")
+
 
 @pulumi.output_type
 class AclAclEntry(dict):
@@ -803,7 +857,7 @@ class LoadBalancerModificationProtectionConfig(dict):
                  reason: Optional[str] = None,
                  status: Optional[str] = None):
         """
-        :param str reason: The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        :param str reason: The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
         :param str status: Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
         """
         if reason is not None:
@@ -815,7 +869,7 @@ class LoadBalancerModificationProtectionConfig(dict):
     @pulumi.getter
     def reason(self) -> Optional[str]:
         """
-        The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
         """
         return pulumi.get(self, "reason")
 
@@ -919,7 +973,7 @@ class RuleRuleAction(dict):
                  traffic_mirror_config: Optional['outputs.RuleRuleActionTrafficMirrorConfig'] = None):
         """
         :param int order: The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
-        :param str type: The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+        :param str type: The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
         :param 'RuleRuleActionFixedResponseConfigArgs' fixed_response_config: The configuration of the fixed response. See the following `Block fixed_response_config`.
         :param 'RuleRuleActionForwardGroupConfigArgs' forward_group_config: The forward response action within ALB. See the following `Block forward_group_config`.
         :param 'RuleRuleActionInsertHeaderConfigArgs' insert_header_config: The configuration of the inserted header field. See the following `Block insert_header_config`.
@@ -957,7 +1011,7 @@ class RuleRuleAction(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+        The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
         """
         return pulumi.get(self, "type")
 
@@ -1046,7 +1100,7 @@ class RuleRuleActionFixedResponseConfig(dict):
         """
         :param str content: The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
         :param str content_type: The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
-        :param str http_code: The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+        :param str http_code: The redirect method. Valid values:301, 302, 303, 307, and 308.
         """
         pulumi.set(__self__, "content", content)
         if content_type is not None:
@@ -1074,7 +1128,7 @@ class RuleRuleActionFixedResponseConfig(dict):
     @pulumi.getter(name="httpCode")
     def http_code(self) -> Optional[str]:
         """
-        The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+        The redirect method. Valid values:301, 302, 303, 307, and 308.
         """
         return pulumi.get(self, "http_code")
 
@@ -1184,7 +1238,7 @@ class RuleRuleActionForwardGroupConfigServerGroupTuple(dict):
                  weight: Optional[int] = None):
         """
         :param str server_group_id: The ID of the destination server group to which requests are forwarded.
-        :param int weight: The Weight of server group.
+        :param int weight: The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
         """
         if server_group_id is not None:
             pulumi.set(__self__, "server_group_id", server_group_id)
@@ -1203,7 +1257,7 @@ class RuleRuleActionForwardGroupConfigServerGroupTuple(dict):
     @pulumi.getter
     def weight(self) -> Optional[int]:
         """
-        The Weight of server group.
+        The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
         """
         return pulumi.get(self, "weight")
 
@@ -1232,8 +1286,8 @@ class RuleRuleActionInsertHeaderConfig(dict):
                  value: Optional[str] = None,
                  value_type: Optional[str] = None):
         """
-        :param str key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
-        :param str value: The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+        :param str key: The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+        :param str value: The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \\ | < > &.
         :param str value_type: Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
         """
         if key is not None:
@@ -1247,7 +1301,7 @@ class RuleRuleActionInsertHeaderConfig(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+        The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
         """
         return pulumi.get(self, "key")
 
@@ -1255,7 +1309,7 @@ class RuleRuleActionInsertHeaderConfig(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+        The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \\ | < > &.
         """
         return pulumi.get(self, "value")
 
@@ -1295,12 +1349,12 @@ class RuleRuleActionRedirectConfig(dict):
                  protocol: Optional[str] = None,
                  query: Optional[str] = None):
         """
-        :param str host: The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-        :param str http_code: The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
-        :param str path: The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+        :param str host: The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        :param str http_code: The redirect method. Valid values:301, 302, 303, 307, and 308.
+        :param str path: The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
         :param str port: The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
         :param str protocol: The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
-        :param str query: The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+        :param str query: The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
         """
         if host is not None:
             pulumi.set(__self__, "host", host)
@@ -1319,7 +1373,7 @@ class RuleRuleActionRedirectConfig(dict):
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
-        The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
         """
         return pulumi.get(self, "host")
 
@@ -1327,7 +1381,7 @@ class RuleRuleActionRedirectConfig(dict):
     @pulumi.getter(name="httpCode")
     def http_code(self) -> Optional[str]:
         """
-        The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+        The redirect method. Valid values:301, 302, 303, 307, and 308.
         """
         return pulumi.get(self, "http_code")
 
@@ -1335,7 +1389,7 @@ class RuleRuleActionRedirectConfig(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+        The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
         """
         return pulumi.get(self, "path")
 
@@ -1359,7 +1413,7 @@ class RuleRuleActionRedirectConfig(dict):
     @pulumi.getter
     def query(self) -> Optional[str]:
         """
-        The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+        The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
         """
         return pulumi.get(self, "query")
 
@@ -1371,9 +1425,9 @@ class RuleRuleActionRewriteConfig(dict):
                  path: Optional[str] = None,
                  query: Optional[str] = None):
         """
-        :param str host: The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-        :param str path: The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
-        :param str query: The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+        :param str host: The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        :param str path: The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+        :param str query: The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
         """
         if host is not None:
             pulumi.set(__self__, "host", host)
@@ -1386,7 +1440,7 @@ class RuleRuleActionRewriteConfig(dict):
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
-        The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
         """
         return pulumi.get(self, "host")
 
@@ -1394,7 +1448,7 @@ class RuleRuleActionRewriteConfig(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+        The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
         """
         return pulumi.get(self, "path")
 
@@ -1402,7 +1456,7 @@ class RuleRuleActionRewriteConfig(dict):
     @pulumi.getter
     def query(self) -> Optional[str]:
         """
-        The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+        The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
         """
         return pulumi.get(self, "query")
 
@@ -1589,7 +1643,7 @@ class RuleRuleCondition(dict):
                  query_string_config: Optional['outputs.RuleRuleConditionQueryStringConfig'] = None,
                  source_ip_config: Optional['outputs.RuleRuleConditionSourceIpConfig'] = None):
         """
-        :param str type: The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+        :param str type: The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
         :param 'RuleRuleConditionCookieConfigArgs' cookie_config: The configuration of the cookie. See the following `Block cookie_config`.
         :param 'RuleRuleConditionHeaderConfigArgs' header_config: The configuration of the header field. See the following `Block header_config`.
         :param 'RuleRuleConditionHostConfigArgs' host_config: The configuration of the host field. See the following `Block host_config`.
@@ -1618,7 +1672,7 @@ class RuleRuleCondition(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit` and `TrafficMirror`. **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action. **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+        The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
         """
         return pulumi.get(self, "type")
 
@@ -1684,7 +1738,7 @@ class RuleRuleConditionCookieConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence['outputs.RuleRuleConditionCookieConfigValue']] = None):
         """
-        :param Sequence['RuleRuleConditionCookieConfigValueArgs'] values: The query string.
+        :param Sequence['RuleRuleConditionCookieConfigValueArgs'] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -1693,7 +1747,7 @@ class RuleRuleConditionCookieConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence['outputs.RuleRuleConditionCookieConfigValue']]:
         """
-        The query string.
+        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         return pulumi.get(self, "values")
 
@@ -1704,8 +1758,8 @@ class RuleRuleConditionCookieConfigValue(dict):
                  key: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
-        :param str value: The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+        :param str key: The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+        :param str value: The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \\ | < > &.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1716,7 +1770,7 @@ class RuleRuleConditionCookieConfigValue(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+        The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
         """
         return pulumi.get(self, "key")
 
@@ -1724,7 +1778,7 @@ class RuleRuleConditionCookieConfigValue(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+        The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \\ | < > &.
         """
         return pulumi.get(self, "value")
 
@@ -1735,8 +1789,8 @@ class RuleRuleConditionHeaderConfig(dict):
                  key: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
         """
-        :param str key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
-        :param Sequence[str] values: The query string.
+        :param str key: The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+        :param Sequence[str] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1747,7 +1801,7 @@ class RuleRuleConditionHeaderConfig(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+        The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
         """
         return pulumi.get(self, "key")
 
@@ -1755,7 +1809,7 @@ class RuleRuleConditionHeaderConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The query string.
+        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         return pulumi.get(self, "values")
 
@@ -1765,7 +1819,7 @@ class RuleRuleConditionHostConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] values: The query string.
+        :param Sequence[str] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -1774,7 +1828,7 @@ class RuleRuleConditionHostConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The query string.
+        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         return pulumi.get(self, "values")
 
@@ -1784,7 +1838,7 @@ class RuleRuleConditionMethodConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] values: The query string.
+        :param Sequence[str] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -1793,7 +1847,7 @@ class RuleRuleConditionMethodConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The query string.
+        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         return pulumi.get(self, "values")
 
@@ -1803,7 +1857,7 @@ class RuleRuleConditionPathConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] values: The query string.
+        :param Sequence[str] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -1812,7 +1866,7 @@ class RuleRuleConditionPathConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The query string.
+        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         return pulumi.get(self, "values")
 
@@ -1822,7 +1876,7 @@ class RuleRuleConditionQueryStringConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence['outputs.RuleRuleConditionQueryStringConfigValue']] = None):
         """
-        :param Sequence['RuleRuleConditionQueryStringConfigValueArgs'] values: The query string.
+        :param Sequence['RuleRuleConditionQueryStringConfigValueArgs'] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -1831,7 +1885,7 @@ class RuleRuleConditionQueryStringConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence['outputs.RuleRuleConditionQueryStringConfigValue']]:
         """
-        The query string.
+        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         return pulumi.get(self, "values")
 
@@ -1842,8 +1896,8 @@ class RuleRuleConditionQueryStringConfigValue(dict):
                  key: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
-        :param str value: The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+        :param str key: The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+        :param str value: The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \\ | < > &.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1854,7 +1908,7 @@ class RuleRuleConditionQueryStringConfigValue(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
+        The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
         """
         return pulumi.get(self, "key")
 
@@ -1862,7 +1916,7 @@ class RuleRuleConditionQueryStringConfigValue(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). Valid values: `ClientSrcPort`, `ClientSrcIp`, `Protocol`, `SLBId`, `SLBPort`, `UserDefined`.
+        The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \\ | < > &.
         """
         return pulumi.get(self, "value")
 
@@ -1872,7 +1926,7 @@ class RuleRuleConditionSourceIpConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] values: The query string.
+        :param Sequence[str] values: The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -1881,7 +1935,7 @@ class RuleRuleConditionSourceIpConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The query string.
+        The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch >= 32 && ch < 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
         """
         return pulumi.get(self, "values")
 
@@ -2115,10 +2169,12 @@ class ServerGroupServer(dict):
         suggest = None
         if key == "serverId":
             suggest = "server_id"
-        elif key == "serverIp":
-            suggest = "server_ip"
         elif key == "serverType":
             suggest = "server_type"
+        elif key == "remoteIpEnabled":
+            suggest = "remote_ip_enabled"
+        elif key == "serverIp":
+            suggest = "server_ip"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServerGroupServer. Access the value via the '{suggest}' property getter instead.")
@@ -2132,37 +2188,71 @@ class ServerGroupServer(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 server_id: str,
+                 server_type: str,
                  description: Optional[str] = None,
                  port: Optional[int] = None,
-                 server_id: Optional[str] = None,
+                 remote_ip_enabled: Optional[bool] = None,
                  server_ip: Optional[str] = None,
-                 server_type: Optional[str] = None,
                  status: Optional[str] = None,
                  weight: Optional[int] = None):
         """
+        :param str server_id: The ID of the backend server.
+               - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
+               - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
+               - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+        :param str server_type: The type of the server. The type of the server. Valid values: 
+               - Ecs: an ECS instance.
+               - Eni: an ENI.
+               - Eci: an elastic container instance.
+               - Ip(Available in v1.194.0+): an IP address.
+               - fc(Available in v1.194.0+): a function.
         :param str description: The description of the server.
-        :param int port: The port that is used by the server. Valid values: `1` to `65535`.
-        :param str server_id: The ID of the ECS instance, ENI instance or ECI instance.
-        :param str server_ip: The IP address of the ENI instance when it is in the inclusive ENI mode.
-        :param str server_type: The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+        :param int port: The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
+        :param bool remote_ip_enabled: Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
+        :param str server_ip: The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
         :param str status: The status of the resource.
         :param int weight: The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-               requests are forwarded to the server.
+               requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
         """
+        pulumi.set(__self__, "server_id", server_id)
+        pulumi.set(__self__, "server_type", server_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if port is not None:
             pulumi.set(__self__, "port", port)
-        if server_id is not None:
-            pulumi.set(__self__, "server_id", server_id)
+        if remote_ip_enabled is not None:
+            pulumi.set(__self__, "remote_ip_enabled", remote_ip_enabled)
         if server_ip is not None:
             pulumi.set(__self__, "server_ip", server_ip)
-        if server_type is not None:
-            pulumi.set(__self__, "server_type", server_type)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="serverId")
+    def server_id(self) -> str:
+        """
+        The ID of the backend server.
+        - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
+        - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
+        - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+        """
+        return pulumi.get(self, "server_id")
+
+    @property
+    @pulumi.getter(name="serverType")
+    def server_type(self) -> str:
+        """
+        The type of the server. The type of the server. Valid values: 
+        - Ecs: an ECS instance.
+        - Eni: an ENI.
+        - Eci: an elastic container instance.
+        - Ip(Available in v1.194.0+): an IP address.
+        - fc(Available in v1.194.0+): a function.
+        """
+        return pulumi.get(self, "server_type")
 
     @property
     @pulumi.getter
@@ -2176,33 +2266,25 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        The port that is used by the server. Valid values: `1` to `65535`.
+        The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
         """
         return pulumi.get(self, "port")
 
     @property
-    @pulumi.getter(name="serverId")
-    def server_id(self) -> Optional[str]:
+    @pulumi.getter(name="remoteIpEnabled")
+    def remote_ip_enabled(self) -> Optional[bool]:
         """
-        The ID of the ECS instance, ENI instance or ECI instance.
+        Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
         """
-        return pulumi.get(self, "server_id")
+        return pulumi.get(self, "remote_ip_enabled")
 
     @property
     @pulumi.getter(name="serverIp")
     def server_ip(self) -> Optional[str]:
         """
-        The IP address of the ENI instance when it is in the inclusive ENI mode.
+        The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
         """
         return pulumi.get(self, "server_ip")
-
-    @property
-    @pulumi.getter(name="serverType")
-    def server_type(self) -> Optional[str]:
-        """
-        The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
-        """
-        return pulumi.get(self, "server_type")
 
     @property
     @pulumi.getter
@@ -2217,7 +2299,7 @@ class ServerGroupServer(dict):
     def weight(self) -> Optional[int]:
         """
         The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-        requests are forwarded to the server.
+        requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
         """
         return pulumi.get(self, "weight")
 
@@ -2422,6 +2504,155 @@ class GetAclsAclAclEntryResult(dict):
         The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetAscriptsAscriptResult(dict):
+    def __init__(__self__, *,
+                 ascript_id: str,
+                 ascript_name: str,
+                 enabled: bool,
+                 ext_attribute_enabled: bool,
+                 ext_attributes: Sequence['outputs.GetAscriptsAscriptExtAttributeResult'],
+                 id: str,
+                 listener_id: str,
+                 load_balancer_id: str,
+                 position: str,
+                 script_content: str,
+                 status: str):
+        """
+        :param str ascript_id: Script identification.
+        :param str ascript_name: Script name.
+        :param bool enabled: Whether scripts are enabled.
+        :param bool ext_attribute_enabled: Whether extension parameters are enabled.
+        :param Sequence['GetAscriptsAscriptExtAttributeArgs'] ext_attributes: Extended attribute list.
+        :param str listener_id: Listener ID of script attribution
+        :param str position: Script execution location.
+        :param str script_content: Script content.
+        :param str status: Script status.
+        """
+        pulumi.set(__self__, "ascript_id", ascript_id)
+        pulumi.set(__self__, "ascript_name", ascript_name)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "ext_attribute_enabled", ext_attribute_enabled)
+        pulumi.set(__self__, "ext_attributes", ext_attributes)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        pulumi.set(__self__, "position", position)
+        pulumi.set(__self__, "script_content", script_content)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="ascriptId")
+    def ascript_id(self) -> str:
+        """
+        Script identification.
+        """
+        return pulumi.get(self, "ascript_id")
+
+    @property
+    @pulumi.getter(name="ascriptName")
+    def ascript_name(self) -> str:
+        """
+        Script name.
+        """
+        return pulumi.get(self, "ascript_name")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether scripts are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="extAttributeEnabled")
+    def ext_attribute_enabled(self) -> bool:
+        """
+        Whether extension parameters are enabled.
+        """
+        return pulumi.get(self, "ext_attribute_enabled")
+
+    @property
+    @pulumi.getter(name="extAttributes")
+    def ext_attributes(self) -> Sequence['outputs.GetAscriptsAscriptExtAttributeResult']:
+        """
+        Extended attribute list.
+        """
+        return pulumi.get(self, "ext_attributes")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> str:
+        """
+        Listener ID of script attribution
+        """
+        return pulumi.get(self, "listener_id")
+
+    @property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> str:
+        return pulumi.get(self, "load_balancer_id")
+
+    @property
+    @pulumi.getter
+    def position(self) -> str:
+        """
+        Script execution location.
+        """
+        return pulumi.get(self, "position")
+
+    @property
+    @pulumi.getter(name="scriptContent")
+    def script_content(self) -> str:
+        """
+        Script content.
+        """
+        return pulumi.get(self, "script_content")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Script status.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetAscriptsAscriptExtAttributeResult(dict):
+    def __init__(__self__, *,
+                 attribute_key: str,
+                 attribute_value: str):
+        """
+        :param str attribute_key: The key of the extended attribute.
+        :param str attribute_value: The value of the extended attribute.
+        """
+        pulumi.set(__self__, "attribute_key", attribute_key)
+        pulumi.set(__self__, "attribute_value", attribute_value)
+
+    @property
+    @pulumi.getter(name="attributeKey")
+    def attribute_key(self) -> str:
+        """
+        The key of the extended attribute.
+        """
+        return pulumi.get(self, "attribute_key")
+
+    @property
+    @pulumi.getter(name="attributeValue")
+    def attribute_value(self) -> str:
+        """
+        The value of the extended attribute.
+        """
+        return pulumi.get(self, "attribute_value")
 
 
 @pulumi.output_type
@@ -4914,6 +5145,57 @@ class GetServerGroupsGroupStickySessionConfigResult(dict):
         The method that is used to handle a cookie. Values: `Server` and `Insert`.
         """
         return pulumi.get(self, "sticky_session_type")
+
+
+@pulumi.output_type
+class GetSystemSecurityPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 ciphers: Sequence[str],
+                 id: str,
+                 security_policy_id: str,
+                 tls_versions: Sequence[str]):
+        """
+        :param Sequence[str] ciphers: The supported cipher suites, which are determined by the TLS protocol version.
+        :param str id: The ID of the Security Policy.
+        :param str security_policy_id: The first ID of the resource.
+        :param Sequence[str] tls_versions: The TLS protocol versions are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
+        """
+        pulumi.set(__self__, "ciphers", ciphers)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "security_policy_id", security_policy_id)
+        pulumi.set(__self__, "tls_versions", tls_versions)
+
+    @property
+    @pulumi.getter
+    def ciphers(self) -> Sequence[str]:
+        """
+        The supported cipher suites, which are determined by the TLS protocol version.
+        """
+        return pulumi.get(self, "ciphers")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Security Policy.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="securityPolicyId")
+    def security_policy_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "security_policy_id")
+
+    @property
+    @pulumi.getter(name="tlsVersions")
+    def tls_versions(self) -> Sequence[str]:
+        """
+        The TLS protocol versions are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
+        """
+        return pulumi.get(self, "tls_versions")
 
 
 @pulumi.output_type

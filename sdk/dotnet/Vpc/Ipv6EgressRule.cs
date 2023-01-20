@@ -21,44 +21,46 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = "example_value",
-    ///             EnableIpv6 = true,
-    ///         });
-    ///         var exampleIpv6Gateway = new AliCloud.Vpc.Ipv6Gateway("exampleIpv6Gateway", new AliCloud.Vpc.Ipv6GatewayArgs
-    ///         {
-    ///             Ipv6GatewayName = "example_value",
-    ///             VpcId = defaultNetwork.Id,
-    ///         });
-    ///         var defaultInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
-    ///         {
-    ///             NameRegex = "ecs_with_ipv6_address",
-    ///             Status = "Running",
-    ///         }));
-    ///         var defaultIpv6Addresses = defaultInstances.Apply(defaultInstances =&gt; Output.Create(AliCloud.Vpc.GetIpv6Addresses.InvokeAsync(new AliCloud.Vpc.GetIpv6AddressesArgs
-    ///         {
-    ///             AssociatedInstanceId = defaultInstances.Instances?[0]?.Id,
-    ///             Status = "Available",
-    ///         })));
-    ///         var exampleIpv6EgressRule = new AliCloud.Vpc.Ipv6EgressRule("exampleIpv6EgressRule", new AliCloud.Vpc.Ipv6EgressRuleArgs
-    ///         {
-    ///             InstanceId = defaultIpv6Addresses.Apply(defaultIpv6Addresses =&gt; defaultIpv6Addresses.Ids?[0]),
-    ///             Ipv6EgressRuleName = "example_value",
-    ///             Description = "example_value",
-    ///             Ipv6GatewayId = exampleIpv6Gateway.Id,
-    ///             InstanceType = "Ipv6Address",
-    ///         });
-    ///     }
+    ///         VpcName = "example_value",
+    ///         EnableIpv6 = true,
+    ///     });
     /// 
-    /// }
+    ///     var exampleIpv6Gateway = new AliCloud.Vpc.Ipv6Gateway("exampleIpv6Gateway", new()
+    ///     {
+    ///         Ipv6GatewayName = "example_value",
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstances = AliCloud.Ecs.GetInstances.Invoke(new()
+    ///     {
+    ///         NameRegex = "ecs_with_ipv6_address",
+    ///         Status = "Running",
+    ///     });
+    /// 
+    ///     var defaultIpv6Addresses = AliCloud.Vpc.GetIpv6Addresses.Invoke(new()
+    ///     {
+    ///         AssociatedInstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+    ///         Status = "Available",
+    ///     });
+    /// 
+    ///     var exampleIpv6EgressRule = new AliCloud.Vpc.Ipv6EgressRule("exampleIpv6EgressRule", new()
+    ///     {
+    ///         InstanceId = defaultIpv6Addresses.Apply(getIpv6AddressesResult =&gt; getIpv6AddressesResult.Ids[0]),
+    ///         Ipv6EgressRuleName = "example_value",
+    ///         Description = "example_value",
+    ///         Ipv6GatewayId = exampleIpv6Gateway.Id,
+    ///         InstanceType = "Ipv6Address",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -70,7 +72,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/ipv6EgressRule:Ipv6EgressRule")]
-    public partial class Ipv6EgressRule : Pulumi.CustomResource
+    public partial class Ipv6EgressRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
@@ -152,7 +154,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class Ipv6EgressRuleArgs : Pulumi.ResourceArgs
+    public sealed class Ipv6EgressRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
@@ -187,9 +189,10 @@ namespace Pulumi.AliCloud.Vpc
         public Ipv6EgressRuleArgs()
         {
         }
+        public static new Ipv6EgressRuleArgs Empty => new Ipv6EgressRuleArgs();
     }
 
-    public sealed class Ipv6EgressRuleState : Pulumi.ResourceArgs
+    public sealed class Ipv6EgressRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
@@ -230,5 +233,6 @@ namespace Pulumi.AliCloud.Vpc
         public Ipv6EgressRuleState()
         {
         }
+        public static new Ipv6EgressRuleState Empty => new Ipv6EgressRuleState();
     }
 }

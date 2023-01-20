@@ -87,17 +87,18 @@ type GetMountTargetsResult struct {
 	// A list of MountTargetDomain.
 	Ids []string `pulumi:"ids"`
 	// MountTargetDomain of the MountTarget.
-	// * `type`- Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
-	// * `networkType`- (Available 1.95.0+) NetworkType of The MountTarget.
-	// * `status`- (Available 1.95.0+) The status of the mount target.
 	//
 	// Deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
 	MountTargetDomain *string `pulumi:"mountTargetDomain"`
-	NetworkType       *string `pulumi:"networkType"`
-	OutputFile        *string `pulumi:"outputFile"`
-	Status            *string `pulumi:"status"`
+	// (Available 1.95.0+) NetworkType of The MountTarget.
+	NetworkType *string `pulumi:"networkType"`
+	OutputFile  *string `pulumi:"outputFile"`
+	// (Available 1.95.0+) The status of the mount target.
+	Status *string `pulumi:"status"`
 	// A list of MountTargetDomains. Each element contains the following attributes:
 	Targets []GetMountTargetsTarget `pulumi:"targets"`
+	// Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.
 	Type *string `pulumi:"type"`
 	// VpcId of The MountTarget.
@@ -185,15 +186,13 @@ func (o GetMountTargetsResultOutput) Ids() pulumi.StringArrayOutput {
 }
 
 // MountTargetDomain of the MountTarget.
-// * `type`- Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
-// * `networkType`- (Available 1.95.0+) NetworkType of The MountTarget.
-// * `status`- (Available 1.95.0+) The status of the mount target.
 //
 // Deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
 func (o GetMountTargetsResultOutput) MountTargetDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.MountTargetDomain }).(pulumi.StringPtrOutput)
 }
 
+// (Available 1.95.0+) NetworkType of The MountTarget.
 func (o GetMountTargetsResultOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
@@ -202,6 +201,7 @@ func (o GetMountTargetsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// (Available 1.95.0+) The status of the mount target.
 func (o GetMountTargetsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -211,6 +211,8 @@ func (o GetMountTargetsResultOutput) Targets() GetMountTargetsTargetArrayOutput 
 	return o.ApplyT(func(v GetMountTargetsResult) []GetMountTargetsTarget { return v.Targets }).(GetMountTargetsTargetArrayOutput)
 }
 
+// Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
+//
 // Deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.
 func (o GetMountTargetsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMountTargetsResult) *string { return v.Type }).(pulumi.StringPtrOutput)

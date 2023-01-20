@@ -10,15 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class GetKubernetesPermissionPermissionArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesPermissionPermissionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-        /// * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
         /// </summary>
         [Input("isOwner")]
         public bool? IsOwner { get; set; }
 
+        /// <summary>
+        /// Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+        /// </summary>
         [Input("isRamRole")]
         public bool? IsRamRole { get; set; }
 
@@ -49,5 +51,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public GetKubernetesPermissionPermissionArgs()
         {
         }
+        public static new GetKubernetesPermissionPermissionArgs Empty => new GetKubernetesPermissionPermissionArgs();
     }
 }

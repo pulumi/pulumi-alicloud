@@ -21,24 +21,22 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ecs.EcsDeploymentSet("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ecs.EcsDeploymentSet("default", new AliCloud.Ecs.EcsDeploymentSetArgs
-    ///         {
-    ///             DeploymentSetName = "example_value",
-    ///             Description = "example_value",
-    ///             Domain = "Default",
-    ///             Granularity = "Host",
-    ///             Strategy = "Availability",
-    ///         });
-    ///     }
+    ///         DeploymentSetName = "example_value",
+    ///         Description = "example_value",
+    ///         Domain = "Default",
+    ///         Granularity = "Host",
+    ///         Strategy = "Availability",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet")]
-    public partial class EcsDeploymentSet : Pulumi.CustomResource
+    public partial class EcsDeploymentSet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
@@ -132,7 +130,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsDeploymentSetArgs : Pulumi.ResourceArgs
+    public sealed class EcsDeploymentSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
@@ -173,9 +171,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsDeploymentSetArgs()
         {
         }
+        public static new EcsDeploymentSetArgs Empty => new EcsDeploymentSetArgs();
     }
 
-    public sealed class EcsDeploymentSetState : Pulumi.ResourceArgs
+    public sealed class EcsDeploymentSetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
@@ -216,5 +215,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsDeploymentSetState()
         {
         }
+        public static new EcsDeploymentSetState Empty => new EcsDeploymentSetState();
     }
 }

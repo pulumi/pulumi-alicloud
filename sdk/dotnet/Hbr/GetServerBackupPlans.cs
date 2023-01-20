@@ -23,44 +23,44 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Ecs.GetInstances.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
+        ///         NameRegex = "no-deleteing-hbr-ecs-server-backup-plan",
+        ///         Status = "Running",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Hbr.GetServerBackupPlans.Invoke(new()
+        ///     {
+        ///         Filters = new[]
         ///         {
-        ///             NameRegex = "no-deleteing-hbr-ecs-server-backup-plan",
-        ///             Status = "Running",
-        ///         }));
-        ///         var ids = @default.Apply(@default =&gt; Output.Create(AliCloud.Hbr.GetServerBackupPlans.InvokeAsync(new AliCloud.Hbr.GetServerBackupPlansArgs
-        ///         {
-        ///             Filters = 
+        ///             new AliCloud.Hbr.Inputs.GetServerBackupPlansFilterInputArgs
         ///             {
-        ///                 new AliCloud.Hbr.Inputs.GetServerBackupPlansFilterArgs
+        ///                 Key = "instanceId",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "instanceId",
-        ///                     Values = 
-        ///                     {
-        ///                         @default.Instances?[0]?.Id,
-        ///                     },
+        ///                     @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
         ///                 },
         ///             },
-        ///         })));
-        ///         this.HbrServerBackupPlanId1 = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
-        ///     }
+        ///         },
+        ///     });
         /// 
-        ///     [Output("hbrServerBackupPlanId1")]
-        ///     public Output&lt;string&gt; HbrServerBackupPlanId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrServerBackupPlanId1"] = ids.Apply(getServerBackupPlansResult =&gt; getServerBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerBackupPlansResult> InvokeAsync(GetServerBackupPlansArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerBackupPlansResult>("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args ?? new GetServerBackupPlansArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerBackupPlansResult>("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args ?? new GetServerBackupPlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
@@ -74,48 +74,48 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Ecs.GetInstances.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
+        ///         NameRegex = "no-deleteing-hbr-ecs-server-backup-plan",
+        ///         Status = "Running",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Hbr.GetServerBackupPlans.Invoke(new()
+        ///     {
+        ///         Filters = new[]
         ///         {
-        ///             NameRegex = "no-deleteing-hbr-ecs-server-backup-plan",
-        ///             Status = "Running",
-        ///         }));
-        ///         var ids = @default.Apply(@default =&gt; Output.Create(AliCloud.Hbr.GetServerBackupPlans.InvokeAsync(new AliCloud.Hbr.GetServerBackupPlansArgs
-        ///         {
-        ///             Filters = 
+        ///             new AliCloud.Hbr.Inputs.GetServerBackupPlansFilterInputArgs
         ///             {
-        ///                 new AliCloud.Hbr.Inputs.GetServerBackupPlansFilterArgs
+        ///                 Key = "instanceId",
+        ///                 Values = new[]
         ///                 {
-        ///                     Key = "instanceId",
-        ///                     Values = 
-        ///                     {
-        ///                         @default.Instances?[0]?.Id,
-        ///                     },
+        ///                     @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
         ///                 },
         ///             },
-        ///         })));
-        ///         this.HbrServerBackupPlanId1 = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
-        ///     }
+        ///         },
+        ///     });
         /// 
-        ///     [Output("hbrServerBackupPlanId1")]
-        ///     public Output&lt;string&gt; HbrServerBackupPlanId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrServerBackupPlanId1"] = ids.Apply(getServerBackupPlansResult =&gt; getServerBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerBackupPlansResult> Invoke(GetServerBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerBackupPlansResult>("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args ?? new GetServerBackupPlansInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerBackupPlansResult>("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", args ?? new GetServerBackupPlansInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServerBackupPlansArgs : Pulumi.InvokeArgs
+    public sealed class GetServerBackupPlansArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetServerBackupPlansFilterArgs>? _filters;
@@ -147,9 +147,10 @@ namespace Pulumi.AliCloud.Hbr
         public GetServerBackupPlansArgs()
         {
         }
+        public static new GetServerBackupPlansArgs Empty => new GetServerBackupPlansArgs();
     }
 
-    public sealed class GetServerBackupPlansInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServerBackupPlansInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetServerBackupPlansFilterInputArgs>? _filters;
@@ -181,6 +182,7 @@ namespace Pulumi.AliCloud.Hbr
         public GetServerBackupPlansInvokeArgs()
         {
         }
+        public static new GetServerBackupPlansInvokeArgs Empty => new GetServerBackupPlansInvokeArgs();
     }
 
 

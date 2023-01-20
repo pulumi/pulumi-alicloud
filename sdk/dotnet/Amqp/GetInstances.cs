@@ -23,40 +23,38 @@ namespace Pulumi.AliCloud.Amqp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Amqp.GetInstances.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Amqp.GetInstances.InvokeAsync(new AliCloud.Amqp.GetInstancesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "amqp-abc12345",
-        ///                 "amqp-abc34567",
-        ///             },
-        ///         }));
-        ///         this.AmqpInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Amqp.GetInstances.InvokeAsync(new AliCloud.Amqp.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "^my-Instance",
-        ///         }));
-        ///         this.AmqpInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
-        ///     }
+        ///             "amqp-abc12345",
+        ///             "amqp-abc34567",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("amqpInstanceId1")]
-        ///     public Output&lt;string&gt; AmqpInstanceId1 { get; set; }
-        ///     [Output("amqpInstanceId2")]
-        ///     public Output&lt;string&gt; AmqpInstanceId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Amqp.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["amqpInstanceId1"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["amqpInstanceId2"] = nameRegex.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:amqp/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:amqp/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Amqp Instances of the current Alibaba Cloud user.
@@ -70,44 +68,42 @@ namespace Pulumi.AliCloud.Amqp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Amqp.GetInstances.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Amqp.GetInstances.InvokeAsync(new AliCloud.Amqp.GetInstancesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "amqp-abc12345",
-        ///                 "amqp-abc34567",
-        ///             },
-        ///         }));
-        ///         this.AmqpInstanceId1 = ids.Apply(ids =&gt; ids.Instances?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Amqp.GetInstances.InvokeAsync(new AliCloud.Amqp.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "^my-Instance",
-        ///         }));
-        ///         this.AmqpInstanceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Instances?[0]?.Id);
-        ///     }
+        ///             "amqp-abc12345",
+        ///             "amqp-abc34567",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("amqpInstanceId1")]
-        ///     public Output&lt;string&gt; AmqpInstanceId1 { get; set; }
-        ///     [Output("amqpInstanceId2")]
-        ///     public Output&lt;string&gt; AmqpInstanceId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Amqp.GetInstances.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["amqpInstanceId1"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["amqpInstanceId2"] = nameRegex.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:amqp/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:amqp/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -145,9 +141,10 @@ namespace Pulumi.AliCloud.Amqp
         public GetInstancesArgs()
         {
         }
+        public static new GetInstancesArgs Empty => new GetInstancesArgs();
     }
 
-    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -185,6 +182,7 @@ namespace Pulumi.AliCloud.Amqp
         public GetInstancesInvokeArgs()
         {
         }
+        public static new GetInstancesInvokeArgs Empty => new GetInstancesInvokeArgs();
     }
 
 

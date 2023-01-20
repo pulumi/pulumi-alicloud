@@ -18,14 +18,14 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
     public static final ClusterAdditionalVolumeArgs Empty = new ClusterAdditionalVolumeArgs();
 
     /**
-     * The queue of the nodes to which the additional file system is attached.
+     * The queue to which the compute nodes are added.
      * 
      */
     @Import(name="jobQueue")
     private @Nullable Output<String> jobQueue;
 
     /**
-     * @return The queue of the nodes to which the additional file system is attached.
+     * @return The queue to which the compute nodes are added.
      * 
      */
     public Optional<Output<String>> jobQueue() {
@@ -63,14 +63,14 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The remote directory to which the additional file system is mounted.
+     * The remote directory to which the file system is mounted.
      * 
      */
     @Import(name="remoteDirectory")
     private @Nullable Output<String> remoteDirectory;
 
     /**
-     * @return The remote directory to which the additional file system is mounted.
+     * @return The remote directory to which the file system is mounted.
      * 
      */
     public Optional<Output<String>> remoteDirectory() {
@@ -93,14 +93,14 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the additional file system.
+     * The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      * 
      */
     @Import(name="volumeId")
     private @Nullable Output<String> volumeId;
 
     /**
-     * @return The ID of the additional file system.
+     * @return The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      * 
      */
     public Optional<Output<String>> volumeId() {
@@ -123,14 +123,18 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The mount target of the additional file system.
+     * The mount target of the file system. Take note of the following information:
+     * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+     * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      * 
      */
     @Import(name="volumeMountpoint")
     private @Nullable Output<String> volumeMountpoint;
 
     /**
-     * @return The mount target of the additional file system.
+     * @return The mount target of the file system. Take note of the following information:
+     * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+     * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      * 
      */
     public Optional<Output<String>> volumeMountpoint() {
@@ -138,14 +142,14 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+     * The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      * 
      */
     @Import(name="volumeProtocol")
     private @Nullable Output<String> volumeProtocol;
 
     /**
-     * @return The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+     * @return The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      * 
      */
     public Optional<Output<String>> volumeProtocol() {
@@ -153,14 +157,14 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The type of the additional shared storage. Only NAS file systems are supported.
+     * The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      * 
      */
     @Import(name="volumeType")
     private @Nullable Output<String> volumeType;
 
     /**
-     * @return The type of the additional shared storage. Only NAS file systems are supported.
+     * @return The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      * 
      */
     public Optional<Output<String>> volumeType() {
@@ -201,7 +205,7 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param jobQueue The queue of the nodes to which the additional file system is attached.
+         * @param jobQueue The queue to which the compute nodes are added.
          * 
          * @return builder
          * 
@@ -212,7 +216,7 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param jobQueue The queue of the nodes to which the additional file system is attached.
+         * @param jobQueue The queue to which the compute nodes are added.
          * 
          * @return builder
          * 
@@ -264,7 +268,7 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param remoteDirectory The remote directory to which the additional file system is mounted.
+         * @param remoteDirectory The remote directory to which the file system is mounted.
          * 
          * @return builder
          * 
@@ -275,7 +279,7 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param remoteDirectory The remote directory to which the additional file system is mounted.
+         * @param remoteDirectory The remote directory to which the file system is mounted.
          * 
          * @return builder
          * 
@@ -316,7 +320,7 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeId The ID of the additional file system.
+         * @param volumeId The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
          * 
          * @return builder
          * 
@@ -327,7 +331,7 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeId The ID of the additional file system.
+         * @param volumeId The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
          * 
          * @return builder
          * 
@@ -358,7 +362,9 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeMountpoint The mount target of the additional file system.
+         * @param volumeMountpoint The mount target of the file system. Take note of the following information:
+         * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+         * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
          * 
          * @return builder
          * 
@@ -369,7 +375,9 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeMountpoint The mount target of the additional file system.
+         * @param volumeMountpoint The mount target of the file system. Take note of the following information:
+         * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+         * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
          * 
          * @return builder
          * 
@@ -379,7 +387,7 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeProtocol The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+         * @param volumeProtocol The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
          * 
          * @return builder
          * 
@@ -390,7 +398,7 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeProtocol The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+         * @param volumeProtocol The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
          * 
          * @return builder
          * 
@@ -400,7 +408,7 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeType The type of the additional shared storage. Only NAS file systems are supported.
+         * @param volumeType The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
          * 
          * @return builder
          * 
@@ -411,7 +419,7 @@ public final class ClusterAdditionalVolumeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param volumeType The type of the additional shared storage. Only NAS file systems are supported.
+         * @param volumeType The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
          * 
          * @return builder
          * 

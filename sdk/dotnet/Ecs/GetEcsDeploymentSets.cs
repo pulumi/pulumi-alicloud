@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ecs.GetEcsDeploymentSets.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsDeploymentSets.InvokeAsync(new AliCloud.Ecs.GetEcsDeploymentSetsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.EcsDeploymentSetId1 = ids.Apply(ids =&gt; ids.Sets?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Ecs.GetEcsDeploymentSets.InvokeAsync(new AliCloud.Ecs.GetEcsDeploymentSetsArgs
-        ///         {
-        ///             NameRegex = "^my-DeploymentSet",
-        ///         }));
-        ///         this.EcsDeploymentSetId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Sets?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ecsDeploymentSetId1")]
-        ///     public Output&lt;string&gt; EcsDeploymentSetId1 { get; set; }
-        ///     [Output("ecsDeploymentSetId2")]
-        ///     public Output&lt;string&gt; EcsDeploymentSetId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Ecs.GetEcsDeploymentSets.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-DeploymentSet",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsDeploymentSetId1"] = ids.Apply(getEcsDeploymentSetsResult =&gt; getEcsDeploymentSetsResult.Sets[0]?.Id),
+        ///         ["ecsDeploymentSetId2"] = nameRegex.Apply(getEcsDeploymentSetsResult =&gt; getEcsDeploymentSetsResult.Sets[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsDeploymentSetsResult> InvokeAsync(GetEcsDeploymentSetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsDeploymentSetsResult>("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args ?? new GetEcsDeploymentSetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsDeploymentSetsResult>("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args ?? new GetEcsDeploymentSetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ecs.GetEcsDeploymentSets.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsDeploymentSets.InvokeAsync(new AliCloud.Ecs.GetEcsDeploymentSetsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.EcsDeploymentSetId1 = ids.Apply(ids =&gt; ids.Sets?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Ecs.GetEcsDeploymentSets.InvokeAsync(new AliCloud.Ecs.GetEcsDeploymentSetsArgs
-        ///         {
-        ///             NameRegex = "^my-DeploymentSet",
-        ///         }));
-        ///         this.EcsDeploymentSetId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Sets?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ecsDeploymentSetId1")]
-        ///     public Output&lt;string&gt; EcsDeploymentSetId1 { get; set; }
-        ///     [Output("ecsDeploymentSetId2")]
-        ///     public Output&lt;string&gt; EcsDeploymentSetId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Ecs.GetEcsDeploymentSets.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-DeploymentSet",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsDeploymentSetId1"] = ids.Apply(getEcsDeploymentSetsResult =&gt; getEcsDeploymentSetsResult.Sets[0]?.Id),
+        ///         ["ecsDeploymentSetId2"] = nameRegex.Apply(getEcsDeploymentSetsResult =&gt; getEcsDeploymentSetsResult.Sets[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsDeploymentSetsResult> Invoke(GetEcsDeploymentSetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsDeploymentSetsResult>("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args ?? new GetEcsDeploymentSetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsDeploymentSetsResult>("alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets", args ?? new GetEcsDeploymentSetsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsDeploymentSetsArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsDeploymentSetsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the deployment set.
@@ -143,9 +139,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsDeploymentSetsArgs()
         {
         }
+        public static new GetEcsDeploymentSetsArgs Empty => new GetEcsDeploymentSetsArgs();
     }
 
-    public sealed class GetEcsDeploymentSetsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsDeploymentSetsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the deployment set.
@@ -183,6 +180,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsDeploymentSetsInvokeArgs()
         {
         }
+        public static new GetEcsDeploymentSetsInvokeArgs Empty => new GetEcsDeploymentSetsInvokeArgs();
     }
 
 

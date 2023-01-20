@@ -361,8 +361,8 @@ class PrometheusAlertRuleAnnotation(dict):
                  name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str name: The name of the annotation.
-        :param str value: The value of the annotation.
+        :param str name: The name of the label.
+        :param str value: The value of the label.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -373,7 +373,7 @@ class PrometheusAlertRuleAnnotation(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the annotation.
+        The name of the label.
         """
         return pulumi.get(self, "name")
 
@@ -381,7 +381,7 @@ class PrometheusAlertRuleAnnotation(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the annotation.
+        The value of the label.
         """
         return pulumi.get(self, "value")
 
@@ -392,8 +392,8 @@ class PrometheusAlertRuleLabel(dict):
                  name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str name: The name of the annotation.
-        :param str value: The value of the annotation.
+        :param str name: The name of the label.
+        :param str value: The value of the label.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -404,7 +404,7 @@ class PrometheusAlertRuleLabel(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the annotation.
+        The name of the label.
         """
         return pulumi.get(self, "name")
 
@@ -412,7 +412,7 @@ class PrometheusAlertRuleLabel(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the annotation.
+        The value of the label.
         """
         return pulumi.get(self, "value")
 
@@ -899,17 +899,15 @@ class GetPrometheusAlertRulesRuleResult(dict):
         :param Sequence['GetPrometheusAlertRulesRuleAnnotationArgs'] annotations: The annotations of the alert rule.
         :param str cluster_id: The ID of the cluster.
         :param str dispatch_rule_id: The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
-        :param str duration: -The duration of the alert.
+        :param str duration: The duration of the alert.
         :param str expression: The alert rule expression that follows the PromQL syntax..
         :param str id: The ID of the Prometheus Alert Rule.
-        :param Sequence['GetPrometheusAlertRulesRuleLabelArgs'] labels: -The labels of the resource.
+        :param Sequence['GetPrometheusAlertRulesRuleLabelArgs'] labels: The labels of the resource.
         :param str message: The message of the alert notification.
         :param str notify_type: The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
         :param str prometheus_alert_rule_id: The first ID of the resource.
         :param str prometheus_alert_rule_name: The name of the resource.
         :param int status: The status of the resource. Valid values: `0`, `1`.
-               * `1`: open.
-               * `0`: off.
         :param str type: The type of the alert rule.
         """
         pulumi.set(__self__, "annotations", annotations)
@@ -954,7 +952,7 @@ class GetPrometheusAlertRulesRuleResult(dict):
     @pulumi.getter
     def duration(self) -> str:
         """
-        -The duration of the alert.
+        The duration of the alert.
         """
         return pulumi.get(self, "duration")
 
@@ -978,7 +976,7 @@ class GetPrometheusAlertRulesRuleResult(dict):
     @pulumi.getter
     def labels(self) -> Sequence['outputs.GetPrometheusAlertRulesRuleLabelResult']:
         """
-        -The labels of the resource.
+        The labels of the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1019,8 +1017,6 @@ class GetPrometheusAlertRulesRuleResult(dict):
     def status(self) -> int:
         """
         The status of the resource. Valid values: `0`, `1`.
-        * `1`: open.
-        * `0`: off.
         """
         return pulumi.get(self, "status")
 

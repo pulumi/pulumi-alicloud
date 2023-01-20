@@ -21,33 +21,32 @@ namespace Pulumi.AliCloud.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var kmsAliases = AliCloud.Kms.GetAliases.Invoke(new()
         ///     {
-        ///         var kmsAliases = Output.Create(AliCloud.Kms.GetAliases.InvokeAsync(new AliCloud.Kms.GetAliasesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "d89e8a53-b708-41aa-8c67-6873axxx",
-        ///             },
-        ///             NameRegex = "alias/tf-testKmsAlias_123",
-        ///         }));
-        ///         this.FirstKeyId = data.Alicloud_kms_keys.Kms_keys_ds.Keys[0].Id;
-        ///     }
+        ///             "d89e8a53-b708-41aa-8c67-6873axxx",
+        ///         },
+        ///         NameRegex = "alias/tf-testKmsAlias_123",
+        ///     });
         /// 
-        ///     [Output("firstKeyId")]
-        ///     public Output&lt;string&gt; FirstKeyId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstKeyId"] = data.Alicloud_kms_keys.Kms_keys_ds.Keys[0].Id,
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAliasesResult> InvokeAsync(GetAliasesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAliasesResult>("alicloud:kms/getAliases:getAliases", args ?? new GetAliasesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAliasesResult>("alicloud:kms/getAliases:getAliases", args ?? new GetAliasesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
@@ -59,37 +58,36 @@ namespace Pulumi.AliCloud.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var kmsAliases = AliCloud.Kms.GetAliases.Invoke(new()
         ///     {
-        ///         var kmsAliases = Output.Create(AliCloud.Kms.GetAliases.InvokeAsync(new AliCloud.Kms.GetAliasesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "d89e8a53-b708-41aa-8c67-6873axxx",
-        ///             },
-        ///             NameRegex = "alias/tf-testKmsAlias_123",
-        ///         }));
-        ///         this.FirstKeyId = data.Alicloud_kms_keys.Kms_keys_ds.Keys[0].Id;
-        ///     }
+        ///             "d89e8a53-b708-41aa-8c67-6873axxx",
+        ///         },
+        ///         NameRegex = "alias/tf-testKmsAlias_123",
+        ///     });
         /// 
-        ///     [Output("firstKeyId")]
-        ///     public Output&lt;string&gt; FirstKeyId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstKeyId"] = data.Alicloud_kms_keys.Kms_keys_ds.Keys[0].Id,
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAliasesResult> Invoke(GetAliasesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAliasesResult>("alicloud:kms/getAliases:getAliases", args ?? new GetAliasesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAliasesResult>("alicloud:kms/getAliases:getAliases", args ?? new GetAliasesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAliasesArgs : Pulumi.InvokeArgs
+    public sealed class GetAliasesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -115,9 +113,10 @@ namespace Pulumi.AliCloud.Kms
         public GetAliasesArgs()
         {
         }
+        public static new GetAliasesArgs Empty => new GetAliasesArgs();
     }
 
-    public sealed class GetAliasesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAliasesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -143,6 +142,7 @@ namespace Pulumi.AliCloud.Kms
         public GetAliasesInvokeArgs()
         {
         }
+        public static new GetAliasesInvokeArgs Empty => new GetAliasesInvokeArgs();
     }
 
 

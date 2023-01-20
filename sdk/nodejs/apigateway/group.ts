@@ -13,9 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const apiGroup = new alicloud.apigateway.Group("apiGroup", {
- *     description: "description of the api group",
- * });
+ * const apiGroup = new alicloud.apigateway.Group("apiGroup", {description: "description of the api group"});
  * ```
  *
  * ## Import

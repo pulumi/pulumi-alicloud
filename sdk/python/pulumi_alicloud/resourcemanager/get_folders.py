@@ -101,6 +101,9 @@ class GetFoldersResult:
     @property
     @pulumi.getter(name="parentFolderId")
     def parent_folder_id(self) -> Optional[str]:
+        """
+        (Available in v1.114.0+)The ID of the parent folder.
+        """
         return pulumi.get(self, "parent_folder_id")
 
     @property
@@ -151,7 +154,7 @@ def get_folders(enable_details: Optional[bool] = None,
     ```
 
 
-    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of resource manager folders IDs.
     :param str name_regex: A regex string to filter results by folder name.
     :param str parent_folder_id: The ID of the parent folder.
@@ -205,7 +208,7 @@ def get_folders_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     ```
 
 
-    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of resource manager folders IDs.
     :param str name_regex: A regex string to filter results by folder name.
     :param str parent_folder_id: The ID of the parent folder.

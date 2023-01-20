@@ -25,6 +25,8 @@ type Instance struct {
 
 	// The AD auth server of the Instance. See the following `Block adAuthServer`.
 	AdAuthServers InstanceAdAuthServerArrayOutput `pulumi:"adAuthServers"`
+	// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
@@ -34,9 +36,19 @@ type Instance struct {
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
 	Period      pulumi.IntPtrOutput `pulumi:"period"`
+	// The plan code of Cloud Bastionhost instance. Valid values:
+	PlanCode pulumi.StringOutput `pulumi:"planCode"`
+	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
+	RenewPeriod pulumi.IntPtrOutput `pulumi:"renewPeriod"`
+	// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+	RenewalPeriodUnit pulumi.StringOutput `pulumi:"renewalPeriodUnit"`
+	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
+	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId  pulumi.StringPtrOutput   `pulumi:"resourceGroupId"`
+	ResourceGroupId  pulumi.StringOutput      `pulumi:"resourceGroupId"`
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+	Storage pulumi.StringOutput `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// VSwitch ID configured to Bastionhost.
@@ -50,14 +62,23 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Bandwidth == nil {
+		return nil, errors.New("invalid value for required argument 'Bandwidth'")
+	}
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
 	}
 	if args.LicenseCode == nil {
 		return nil, errors.New("invalid value for required argument 'LicenseCode'")
 	}
+	if args.PlanCode == nil {
+		return nil, errors.New("invalid value for required argument 'PlanCode'")
+	}
 	if args.SecurityGroupIds == nil {
 		return nil, errors.New("invalid value for required argument 'SecurityGroupIds'")
+	}
+	if args.Storage == nil {
+		return nil, errors.New("invalid value for required argument 'Storage'")
 	}
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
@@ -86,6 +107,8 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// The AD auth server of the Instance. See the following `Block adAuthServer`.
 	AdAuthServers []InstanceAdAuthServer `pulumi:"adAuthServers"`
+	// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+	Bandwidth *string `pulumi:"bandwidth"`
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description *string `pulumi:"description"`
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
@@ -95,9 +118,19 @@ type instanceState struct {
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode *string `pulumi:"licenseCode"`
 	Period      *int    `pulumi:"period"`
+	// The plan code of Cloud Bastionhost instance. Valid values:
+	PlanCode *string `pulumi:"planCode"`
+	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
+	RenewPeriod *int `pulumi:"renewPeriod"`
+	// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+	RenewalPeriodUnit *string `pulumi:"renewalPeriodUnit"`
+	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
+	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId  *string  `pulumi:"resourceGroupId"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+	Storage *string `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// VSwitch ID configured to Bastionhost.
@@ -107,6 +140,8 @@ type instanceState struct {
 type InstanceState struct {
 	// The AD auth server of the Instance. See the following `Block adAuthServer`.
 	AdAuthServers InstanceAdAuthServerArrayInput
+	// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+	Bandwidth pulumi.StringPtrInput
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringPtrInput
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
@@ -116,9 +151,19 @@ type InstanceState struct {
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
+	// The plan code of Cloud Bastionhost instance. Valid values:
+	PlanCode pulumi.StringPtrInput
+	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
+	RenewPeriod pulumi.IntPtrInput
+	// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+	RenewalPeriodUnit pulumi.StringPtrInput
+	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
+	RenewalStatus pulumi.StringPtrInput
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId  pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
+	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+	Storage pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// VSwitch ID configured to Bastionhost.
@@ -132,6 +177,8 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// The AD auth server of the Instance. See the following `Block adAuthServer`.
 	AdAuthServers []InstanceAdAuthServer `pulumi:"adAuthServers"`
+	// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+	Bandwidth string `pulumi:"bandwidth"`
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description string `pulumi:"description"`
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
@@ -141,9 +188,19 @@ type instanceArgs struct {
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode string `pulumi:"licenseCode"`
 	Period      *int   `pulumi:"period"`
+	// The plan code of Cloud Bastionhost instance. Valid values:
+	PlanCode string `pulumi:"planCode"`
+	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
+	RenewPeriod *int `pulumi:"renewPeriod"`
+	// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+	RenewalPeriodUnit *string `pulumi:"renewalPeriodUnit"`
+	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
+	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId  *string  `pulumi:"resourceGroupId"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+	Storage string `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// VSwitch ID configured to Bastionhost.
@@ -154,6 +211,8 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// The AD auth server of the Instance. See the following `Block adAuthServer`.
 	AdAuthServers InstanceAdAuthServerArrayInput
+	// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+	Bandwidth pulumi.StringInput
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringInput
 	// Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
@@ -163,9 +222,19 @@ type InstanceArgs struct {
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringInput
 	Period      pulumi.IntPtrInput
+	// The plan code of Cloud Bastionhost instance. Valid values:
+	PlanCode pulumi.StringInput
+	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
+	RenewPeriod pulumi.IntPtrInput
+	// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+	RenewalPeriodUnit pulumi.StringPtrInput
+	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
+	RenewalStatus pulumi.StringPtrInput
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
 	ResourceGroupId  pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
+	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+	Storage pulumi.StringInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// VSwitch ID configured to Bastionhost.
@@ -264,6 +333,11 @@ func (o InstanceOutput) AdAuthServers() InstanceAdAuthServerArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceAdAuthServerArrayOutput { return v.AdAuthServers }).(InstanceAdAuthServerArrayOutput)
 }
 
+// The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+func (o InstanceOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
 // Description of the instance. This name can have a string of 1 to 63 characters.
 func (o InstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -288,13 +362,38 @@ func (o InstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
+// The plan code of Cloud Bastionhost instance. Valid values:
+func (o InstanceOutput) PlanCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PlanCode }).(pulumi.StringOutput)
+}
+
+// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
+func (o InstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.RenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+func (o InstanceOutput) RenewalPeriodUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalPeriodUnit }).(pulumi.StringOutput)
+}
+
+// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
+func (o InstanceOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
 // The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-func (o InstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 func (o InstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+func (o InstanceOutput) Storage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Storage }).(pulumi.StringOutput)
 }
 
 // A mapping of tags to assign to the resource.

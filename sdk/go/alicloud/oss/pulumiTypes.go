@@ -146,7 +146,7 @@ func (o BucketCorsRuleArrayOutput) Index(i pulumi.IntInput) BucketCorsRuleOutput
 type BucketLifecycleRule struct {
 	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
 	AbortMultipartUploads []BucketLifecycleRuleAbortMultipartUpload `pulumi:"abortMultipartUploads"`
-	// Specifies the accelerate status of a bucket.
+	// Specifies lifecycle rule status.
 	Enabled bool `pulumi:"enabled"`
 	// Specifies a period in the object's expire (documented below).
 	Expirations []BucketLifecycleRuleExpiration `pulumi:"expirations"`
@@ -176,7 +176,7 @@ type BucketLifecycleRuleInput interface {
 type BucketLifecycleRuleArgs struct {
 	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
 	AbortMultipartUploads BucketLifecycleRuleAbortMultipartUploadArrayInput `pulumi:"abortMultipartUploads"`
-	// Specifies the accelerate status of a bucket.
+	// Specifies lifecycle rule status.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Specifies a period in the object's expire (documented below).
 	Expirations BucketLifecycleRuleExpirationArrayInput `pulumi:"expirations"`
@@ -248,7 +248,7 @@ func (o BucketLifecycleRuleOutput) AbortMultipartUploads() BucketLifecycleRuleAb
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleAbortMultipartUpload { return v.AbortMultipartUploads }).(BucketLifecycleRuleAbortMultipartUploadArrayOutput)
 }
 
-// Specifies the accelerate status of a bucket.
+// Specifies lifecycle rule status.
 func (o BucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -308,9 +308,9 @@ func (o BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) BucketLifecycle
 }
 
 type BucketLifecycleRuleAbortMultipartUpload struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
-	// Specifies the number of days noncurrent object versions transition.
+	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days *int `pulumi:"days"`
 }
 
@@ -326,9 +326,9 @@ type BucketLifecycleRuleAbortMultipartUploadInput interface {
 }
 
 type BucketLifecycleRuleAbortMultipartUploadArgs struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
-	// Specifies the number of days noncurrent object versions transition.
+	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days pulumi.IntPtrInput `pulumi:"days"`
 }
 
@@ -383,12 +383,12 @@ func (o BucketLifecycleRuleAbortMultipartUploadOutput) ToBucketLifecycleRuleAbor
 	return o
 }
 
-// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 func (o BucketLifecycleRuleAbortMultipartUploadOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleAbortMultipartUpload) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days noncurrent object versions transition.
+// Specifies the number of days after object creation when the specific rule action takes effect.
 func (o BucketLifecycleRuleAbortMultipartUploadOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleAbortMultipartUpload) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
@@ -414,11 +414,11 @@ func (o BucketLifecycleRuleAbortMultipartUploadArrayOutput) Index(i pulumi.IntIn
 }
 
 type BucketLifecycleRuleExpiration struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
 	// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 	Date *string `pulumi:"date"`
-	// Specifies the number of days noncurrent object versions transition.
+	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days *int `pulumi:"days"`
 	// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
 	ExpiredObjectDeleteMarker *bool `pulumi:"expiredObjectDeleteMarker"`
@@ -436,11 +436,11 @@ type BucketLifecycleRuleExpirationInput interface {
 }
 
 type BucketLifecycleRuleExpirationArgs struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
 	// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 	Date pulumi.StringPtrInput `pulumi:"date"`
-	// Specifies the number of days noncurrent object versions transition.
+	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days pulumi.IntPtrInput `pulumi:"days"`
 	// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
 	ExpiredObjectDeleteMarker pulumi.BoolPtrInput `pulumi:"expiredObjectDeleteMarker"`
@@ -497,7 +497,7 @@ func (o BucketLifecycleRuleExpirationOutput) ToBucketLifecycleRuleExpirationOutp
 	return o
 }
 
-// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 func (o BucketLifecycleRuleExpirationOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
 }
@@ -507,7 +507,7 @@ func (o BucketLifecycleRuleExpirationOutput) Date() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days noncurrent object versions transition.
+// Specifies the number of days after object creation when the specific rule action takes effect.
 func (o BucketLifecycleRuleExpirationOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
@@ -538,7 +538,7 @@ func (o BucketLifecycleRuleExpirationArrayOutput) Index(i pulumi.IntInput) Bucke
 }
 
 type BucketLifecycleRuleNoncurrentVersionExpiration struct {
-	// Specifies the number of days noncurrent object versions transition.
+	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days int `pulumi:"days"`
 }
 
@@ -554,7 +554,7 @@ type BucketLifecycleRuleNoncurrentVersionExpirationInput interface {
 }
 
 type BucketLifecycleRuleNoncurrentVersionExpirationArgs struct {
-	// Specifies the number of days noncurrent object versions transition.
+	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days pulumi.IntInput `pulumi:"days"`
 }
 
@@ -609,7 +609,7 @@ func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) ToBucketLifecycleR
 	return o
 }
 
-// Specifies the number of days noncurrent object versions transition.
+// Specifies the number of days after object creation when the specific rule action takes effect.
 func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionExpiration) int { return v.Days }).(pulumi.IntOutput)
 }
@@ -635,9 +635,9 @@ func (o BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput) Index(i pulum
 }
 
 type BucketLifecycleRuleNoncurrentVersionTransition struct {
-	// Specifies the number of days noncurrent object versions transition.
+	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days int `pulumi:"days"`
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -653,9 +653,9 @@ type BucketLifecycleRuleNoncurrentVersionTransitionInput interface {
 }
 
 type BucketLifecycleRuleNoncurrentVersionTransitionArgs struct {
-	// Specifies the number of days noncurrent object versions transition.
+	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days pulumi.IntInput `pulumi:"days"`
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
@@ -710,12 +710,12 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) ToBucketLifecycleR
 	return o
 }
 
-// Specifies the number of days noncurrent object versions transition.
+// Specifies the number of days after object creation when the specific rule action takes effect.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) int { return v.Days }).(pulumi.IntOutput)
 }
 
-// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) string { return v.StorageClass }).(pulumi.StringOutput)
 }
@@ -741,11 +741,11 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput) Index(i pulum
 }
 
 type BucketLifecycleRuleTransition struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
-	// Specifies the number of days noncurrent object versions transition.
+	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days *int `pulumi:"days"`
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
 	StorageClass *string `pulumi:"storageClass"`
 }
 
@@ -761,11 +761,11 @@ type BucketLifecycleRuleTransitionInput interface {
 }
 
 type BucketLifecycleRuleTransitionArgs struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
-	// Specifies the number of days noncurrent object versions transition.
+	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days pulumi.IntPtrInput `pulumi:"days"`
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
 }
 
@@ -820,17 +820,17 @@ func (o BucketLifecycleRuleTransitionOutput) ToBucketLifecycleRuleTransitionOutp
 	return o
 }
 
-// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 func (o BucketLifecycleRuleTransitionOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days noncurrent object versions transition.
+// Specifies the number of days after object creation when the specific rule action takes effect.
 func (o BucketLifecycleRuleTransitionOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
 func (o BucketLifecycleRuleTransitionOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
 }
@@ -2201,7 +2201,7 @@ func (o BucketServerSideEncryptionRulePtrOutput) SseAlgorithm() pulumi.StringPtr
 }
 
 type BucketTransferAcceleration struct {
-	// Specifies the accelerate status of a bucket.
+	// Specifies lifecycle rule status.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -2217,7 +2217,7 @@ type BucketTransferAccelerationInput interface {
 }
 
 type BucketTransferAccelerationArgs struct {
-	// Specifies the accelerate status of a bucket.
+	// Specifies lifecycle rule status.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -2298,7 +2298,7 @@ func (o BucketTransferAccelerationOutput) ToBucketTransferAccelerationPtrOutputW
 	}).(BucketTransferAccelerationPtrOutput)
 }
 
-// Specifies the accelerate status of a bucket.
+// Specifies lifecycle rule status.
 func (o BucketTransferAccelerationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketTransferAcceleration) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -2327,7 +2327,7 @@ func (o BucketTransferAccelerationPtrOutput) Elem() BucketTransferAccelerationOu
 	}).(BucketTransferAccelerationOutput)
 }
 
-// Specifies the accelerate status of a bucket.
+// Specifies lifecycle rule status.
 func (o BucketTransferAccelerationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BucketTransferAcceleration) *bool {
 		if v == nil {
@@ -4125,6 +4125,7 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetTablesTable struct {
+	DefinedColumns []GetTablesTableDefinedColumn `pulumi:"definedColumns"`
 	// ID of the table. The value is `<instance_name>:<table_name>`.
 	Id string `pulumi:"id"`
 	// The name of OTS instance.
@@ -4151,6 +4152,7 @@ type GetTablesTableInput interface {
 }
 
 type GetTablesTableArgs struct {
+	DefinedColumns GetTablesTableDefinedColumnArrayInput `pulumi:"definedColumns"`
 	// ID of the table. The value is `<instance_name>:<table_name>`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of OTS instance.
@@ -4216,6 +4218,10 @@ func (o GetTablesTableOutput) ToGetTablesTableOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o GetTablesTableOutput) DefinedColumns() GetTablesTableDefinedColumnArrayOutput {
+	return o.ApplyT(func(v GetTablesTable) []GetTablesTableDefinedColumn { return v.DefinedColumns }).(GetTablesTableDefinedColumnArrayOutput)
+}
+
 // ID of the table. The value is `<instance_name>:<table_name>`.
 func (o GetTablesTableOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTable) string { return v.Id }).(pulumi.StringOutput)
@@ -4264,6 +4270,106 @@ func (o GetTablesTableArrayOutput) Index(i pulumi.IntInput) GetTablesTableOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTable {
 		return vs[0].([]GetTablesTable)[vs[1].(int)]
 	}).(GetTablesTableOutput)
+}
+
+type GetTablesTableDefinedColumn struct {
+	Name string `pulumi:"name"`
+	Type string `pulumi:"type"`
+}
+
+// GetTablesTableDefinedColumnInput is an input type that accepts GetTablesTableDefinedColumnArgs and GetTablesTableDefinedColumnOutput values.
+// You can construct a concrete instance of `GetTablesTableDefinedColumnInput` via:
+//
+//	GetTablesTableDefinedColumnArgs{...}
+type GetTablesTableDefinedColumnInput interface {
+	pulumi.Input
+
+	ToGetTablesTableDefinedColumnOutput() GetTablesTableDefinedColumnOutput
+	ToGetTablesTableDefinedColumnOutputWithContext(context.Context) GetTablesTableDefinedColumnOutput
+}
+
+type GetTablesTableDefinedColumnArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetTablesTableDefinedColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTableDefinedColumn)(nil)).Elem()
+}
+
+func (i GetTablesTableDefinedColumnArgs) ToGetTablesTableDefinedColumnOutput() GetTablesTableDefinedColumnOutput {
+	return i.ToGetTablesTableDefinedColumnOutputWithContext(context.Background())
+}
+
+func (i GetTablesTableDefinedColumnArgs) ToGetTablesTableDefinedColumnOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableDefinedColumnOutput)
+}
+
+// GetTablesTableDefinedColumnArrayInput is an input type that accepts GetTablesTableDefinedColumnArray and GetTablesTableDefinedColumnArrayOutput values.
+// You can construct a concrete instance of `GetTablesTableDefinedColumnArrayInput` via:
+//
+//	GetTablesTableDefinedColumnArray{ GetTablesTableDefinedColumnArgs{...} }
+type GetTablesTableDefinedColumnArrayInput interface {
+	pulumi.Input
+
+	ToGetTablesTableDefinedColumnArrayOutput() GetTablesTableDefinedColumnArrayOutput
+	ToGetTablesTableDefinedColumnArrayOutputWithContext(context.Context) GetTablesTableDefinedColumnArrayOutput
+}
+
+type GetTablesTableDefinedColumnArray []GetTablesTableDefinedColumnInput
+
+func (GetTablesTableDefinedColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTableDefinedColumn)(nil)).Elem()
+}
+
+func (i GetTablesTableDefinedColumnArray) ToGetTablesTableDefinedColumnArrayOutput() GetTablesTableDefinedColumnArrayOutput {
+	return i.ToGetTablesTableDefinedColumnArrayOutputWithContext(context.Background())
+}
+
+func (i GetTablesTableDefinedColumnArray) ToGetTablesTableDefinedColumnArrayOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableDefinedColumnArrayOutput)
+}
+
+type GetTablesTableDefinedColumnOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTableDefinedColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTableDefinedColumn)(nil)).Elem()
+}
+
+func (o GetTablesTableDefinedColumnOutput) ToGetTablesTableDefinedColumnOutput() GetTablesTableDefinedColumnOutput {
+	return o
+}
+
+func (o GetTablesTableDefinedColumnOutput) ToGetTablesTableDefinedColumnOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnOutput {
+	return o
+}
+
+func (o GetTablesTableDefinedColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTableDefinedColumn) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetTablesTableDefinedColumnOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTableDefinedColumn) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetTablesTableDefinedColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTableDefinedColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTableDefinedColumn)(nil)).Elem()
+}
+
+func (o GetTablesTableDefinedColumnArrayOutput) ToGetTablesTableDefinedColumnArrayOutput() GetTablesTableDefinedColumnArrayOutput {
+	return o
+}
+
+func (o GetTablesTableDefinedColumnArrayOutput) ToGetTablesTableDefinedColumnArrayOutputWithContext(ctx context.Context) GetTablesTableDefinedColumnArrayOutput {
+	return o
+}
+
+func (o GetTablesTableDefinedColumnArrayOutput) Index(i pulumi.IntInput) GetTablesTableDefinedColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTableDefinedColumn {
+		return vs[0].([]GetTablesTableDefinedColumn)[vs[1].(int)]
+	}).(GetTablesTableDefinedColumnOutput)
 }
 
 type GetTablesTablePrimaryKey struct {
@@ -4425,6 +4531,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableInput)(nil)).Elem(), GetTablesTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableArrayInput)(nil)).Elem(), GetTablesTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableDefinedColumnInput)(nil)).Elem(), GetTablesTableDefinedColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableDefinedColumnArrayInput)(nil)).Elem(), GetTablesTableDefinedColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyInput)(nil)).Elem(), GetTablesTablePrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyArrayInput)(nil)).Elem(), GetTablesTablePrimaryKeyArray{})
 	pulumi.RegisterOutputType(BucketCorsRuleOutput{})
@@ -4485,6 +4593,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetTablesTableOutput{})
 	pulumi.RegisterOutputType(GetTablesTableArrayOutput{})
+	pulumi.RegisterOutputType(GetTablesTableDefinedColumnOutput{})
+	pulumi.RegisterOutputType(GetTablesTableDefinedColumnArrayOutput{})
 	pulumi.RegisterOutputType(GetTablesTablePrimaryKeyOutput{})
 	pulumi.RegisterOutputType(GetTablesTablePrimaryKeyArrayOutput{})
 }

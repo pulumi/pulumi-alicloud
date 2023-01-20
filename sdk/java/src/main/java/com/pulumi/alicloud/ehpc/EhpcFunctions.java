@@ -32,7 +32,7 @@ public final class EhpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -79,7 +79,7 @@ public final class EhpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -126,7 +126,7 @@ public final class EhpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -173,7 +173,7 @@ public final class EhpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -220,7 +220,7 @@ public final class EhpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -267,7 +267,7 @@ public final class EhpcFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

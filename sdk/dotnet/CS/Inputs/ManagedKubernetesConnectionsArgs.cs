@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class ManagedKubernetesConnectionsArgs : Pulumi.ResourceArgs
+    public sealed class ManagedKubernetesConnectionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// API Server Internet endpoint.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public ManagedKubernetesConnectionsArgs()
         {
         }
+        public static new ManagedKubernetesConnectionsArgs Empty => new ManagedKubernetesConnectionsArgs();
     }
 }

@@ -26,6 +26,7 @@ class ProviderArgs:
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]] = None,
                  fc: Optional[pulumi.Input[str]] = None,
                  log_endpoint: Optional[pulumi.Input[str]] = None,
+                 max_retry_timeout: Optional[pulumi.Input[int]] = None,
                  mns_endpoint: Optional[pulumi.Input[str]] = None,
                  ots_instance_name: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
@@ -50,6 +51,7 @@ class ProviderArgs:
         :param pulumi.Input[str] credentials_uri: The URI of sidecar credentials service.
         :param pulumi.Input[str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
                of the Alibaba Cloud console.
+        :param pulumi.Input[int] max_retry_timeout: The maximum retry timeout of the request.
         :param pulumi.Input[str] profile: The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
         :param pulumi.Input[str] region: The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
         :param pulumi.Input[str] secret_key: The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
@@ -91,6 +93,8 @@ class ProviderArgs:
             pulumi.log.warn("""log_endpoint is deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""")
         if log_endpoint is not None:
             pulumi.set(__self__, "log_endpoint", log_endpoint)
+        if max_retry_timeout is not None:
+            pulumi.set(__self__, "max_retry_timeout", max_retry_timeout)
         if mns_endpoint is not None:
             warnings.warn("""Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""", DeprecationWarning)
             pulumi.log.warn("""mns_endpoint is deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""")
@@ -250,6 +254,18 @@ class ProviderArgs:
         pulumi.set(self, "log_endpoint", value)
 
     @property
+    @pulumi.getter(name="maxRetryTimeout")
+    def max_retry_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum retry timeout of the request.
+        """
+        return pulumi.get(self, "max_retry_timeout")
+
+    @max_retry_timeout.setter
+    def max_retry_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_retry_timeout", value)
+
+    @property
     @pulumi.getter(name="mnsEndpoint")
     def mns_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "mns_endpoint")
@@ -400,6 +416,7 @@ class Provider(pulumi.ProviderResource):
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderEndpointArgs']]]]] = None,
                  fc: Optional[pulumi.Input[str]] = None,
                  log_endpoint: Optional[pulumi.Input[str]] = None,
+                 max_retry_timeout: Optional[pulumi.Input[int]] = None,
                  mns_endpoint: Optional[pulumi.Input[str]] = None,
                  ots_instance_name: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
@@ -431,6 +448,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] credentials_uri: The URI of sidecar credentials service.
         :param pulumi.Input[str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
                of the Alibaba Cloud console.
+        :param pulumi.Input[int] max_retry_timeout: The maximum retry timeout of the request.
         :param pulumi.Input[str] profile: The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
         :param pulumi.Input[str] region: The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
         :param pulumi.Input[str] secret_key: The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
@@ -480,6 +498,7 @@ class Provider(pulumi.ProviderResource):
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderEndpointArgs']]]]] = None,
                  fc: Optional[pulumi.Input[str]] = None,
                  log_endpoint: Optional[pulumi.Input[str]] = None,
+                 max_retry_timeout: Optional[pulumi.Input[int]] = None,
                  mns_endpoint: Optional[pulumi.Input[str]] = None,
                  ots_instance_name: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
@@ -520,6 +539,7 @@ class Provider(pulumi.ProviderResource):
                 warnings.warn("""Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""", DeprecationWarning)
                 pulumi.log.warn("""log_endpoint is deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""")
             __props__.__dict__["log_endpoint"] = log_endpoint
+            __props__.__dict__["max_retry_timeout"] = pulumi.Output.from_input(max_retry_timeout).apply(pulumi.runtime.to_json) if max_retry_timeout is not None else None
             if mns_endpoint is not None and not opts.urn:
                 warnings.warn("""Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""", DeprecationWarning)
                 pulumi.log.warn("""mns_endpoint is deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""")

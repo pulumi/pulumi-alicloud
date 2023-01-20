@@ -21,23 +21,21 @@ namespace Pulumi.AliCloud.Eds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Eds.SimpleOfficeSite("default", new()
     ///     {
-    ///         var @default = new AliCloud.Eds.SimpleOfficeSite("default", new AliCloud.Eds.SimpleOfficeSiteArgs
-    ///         {
-    ///             Bandwidth = 5,
-    ///             CidrBlock = "172.16.0.0/12",
-    ///             DesktopAccessType = "Internet",
-    ///             OfficeSiteName = "site_name",
-    ///         });
-    ///     }
+    ///         Bandwidth = 5,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         DesktopAccessType = "Internet",
+    ///         OfficeSiteName = "site_name",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.Eds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/simpleOfficeSite:SimpleOfficeSite")]
-    public partial class SimpleOfficeSite : Pulumi.CustomResource
+    public partial class SimpleOfficeSite : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
@@ -167,7 +165,7 @@ namespace Pulumi.AliCloud.Eds
         }
     }
 
-    public sealed class SimpleOfficeSiteArgs : Pulumi.ResourceArgs
+    public sealed class SimpleOfficeSiteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
@@ -238,9 +236,10 @@ namespace Pulumi.AliCloud.Eds
         public SimpleOfficeSiteArgs()
         {
         }
+        public static new SimpleOfficeSiteArgs Empty => new SimpleOfficeSiteArgs();
     }
 
-    public sealed class SimpleOfficeSiteState : Pulumi.ResourceArgs
+    public sealed class SimpleOfficeSiteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
@@ -317,5 +316,6 @@ namespace Pulumi.AliCloud.Eds
         public SimpleOfficeSiteState()
         {
         }
+        public static new SimpleOfficeSiteState Empty => new SimpleOfficeSiteState();
     }
 }

@@ -128,7 +128,7 @@ def get_policy_versions(enable_details: Optional[bool] = None,
     ```
 
 
-    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of policy version IDs.
     :param str policy_name: The name of the policy.
     :param str policy_type: The type of the policy. Valid values:`Custom` and `System`.
@@ -176,7 +176,7 @@ def get_policy_versions_output(enable_details: Optional[pulumi.Input[Optional[bo
     ```
 
 
-    :param bool enable_details: -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+    :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of policy version IDs.
     :param str policy_name: The name of the policy.
     :param str policy_type: The type of the policy. Valid values:`Custom` and `System`.

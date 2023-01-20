@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,20 +22,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.ehpc.getClusters({
  *     ids: ["example_id"],
  * });
- * export const ehpcClusterId1 = ids.then(ids => ids.clusters?[0]?.id);
+ * export const ehpcClusterId1 = ids.then(ids => ids.clusters?.[0]?.id);
  * const nameRegex = alicloud.ehpc.getClusters({
  *     nameRegex: "^my-Cluster",
  * });
- * export const ehpcClusterId2 = nameRegex.then(nameRegex => nameRegex.clusters?[0]?.id);
+ * export const ehpcClusterId2 = nameRegex.then(nameRegex => nameRegex.clusters?.[0]?.id);
  * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ehpc/getClusters:getClusters", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -83,9 +81,31 @@ export interface GetClustersResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Ehpc Clusters of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.173.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ehpc.getClusters({
+ *     ids: ["example_id"],
+ * });
+ * export const ehpcClusterId1 = ids.then(ids => ids.clusters?.[0]?.id);
+ * const nameRegex = alicloud.ehpc.getClusters({
+ *     nameRegex: "^my-Cluster",
+ * });
+ * export const ehpcClusterId2 = nameRegex.then(nameRegex => nameRegex.clusters?.[0]?.id);
+ * ```
+ */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
-    return pulumi.output(args).apply(a => getClusters(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusters(a, opts))
 }
 
 /**

@@ -247,6 +247,55 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+     * 
+     */
+    @Import(name="httpEndpoint")
+    private @Nullable Output<String> httpEndpoint;
+
+    /**
+     * @return Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+     * 
+     */
+    public Optional<Output<String>> httpEndpoint() {
+        return Optional.ofNullable(this.httpEndpoint);
+    }
+
+    /**
+     * The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+     * 
+     */
+    @Import(name="httpPutResponseHopLimit")
+    private @Nullable Output<Integer> httpPutResponseHopLimit;
+
+    /**
+     * @return The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+     * 
+     */
+    public Optional<Output<Integer>> httpPutResponseHopLimit() {
+        return Optional.ofNullable(this.httpPutResponseHopLimit);
+    }
+
+    /**
+     * Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+     * - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+     * - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+     * 
+     */
+    @Import(name="httpTokens")
+    private @Nullable Output<String> httpTokens;
+
+    /**
+     * @return Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+     * - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+     * - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+     * 
+     */
+    public Optional<Output<String>> httpTokens() {
+        return Optional.ofNullable(this.httpTokens);
+    }
+
+    /**
      * The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
@@ -387,6 +436,36 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
     public Optional<Output<String>> ioOptimized() {
         return Optional.ofNullable(this.ioOptimized);
+    }
+
+    /**
+     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+     * 
+     */
+    @Import(name="ipv6AddressCount")
+    private @Nullable Output<Integer> ipv6AddressCount;
+
+    /**
+     * @return The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+     * 
+     */
+    public Optional<Output<Integer>> ipv6AddressCount() {
+        return Optional.ofNullable(this.ipv6AddressCount);
+    }
+
+    /**
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * 
+     */
+    @Import(name="ipv6Addresses")
+    private @Nullable Output<List<String>> ipv6Addresses;
+
+    /**
+     * @return A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * 
+     */
+    public Optional<Output<List<String>>> ipv6Addresses() {
+        return Optional.ofNullable(this.ipv6Addresses);
     }
 
     /**
@@ -563,9 +642,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
-     * - `AutoRenewal`: Enable auto renewal.
-     * - `Normal`: Disable auto renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     @Import(name="renewalStatus")
@@ -573,9 +649,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
-     * - `AutoRenewal`: Enable auto renewal.
-     * - `Normal`: Disable auto renewal.
-     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     public Optional<Output<String>> renewalStatus() {
@@ -677,6 +750,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+     * 
+     */
+    @Import(name="spotDuration")
+    private @Nullable Output<Integer> spotDuration;
+
+    /**
+     * @return The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+     * 
+     */
+    public Optional<Output<Integer>> spotDuration() {
+        return Optional.ofNullable(this.spotDuration);
+    }
+
+    /**
      * The hourly price threshold of a instance, and it takes effect only when parameter &#39;spot_strategy&#39; is &#39;SpotWithPriceLimit&#39;. Three decimals is allowed at most.
      * 
      */
@@ -728,14 +816,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see &#34;Enable the economical mode&#34; in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+     * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see &#34;Enable the economical mode&#34; in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
      * 
      */
     @Import(name="stoppedMode")
     private @Nullable Output<String> stoppedMode;
 
     /**
-     * @return The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see &#34;Enable the economical mode&#34; in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+     * @return The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see &#34;Enable the economical mode&#34; in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
      * 
      */
     public Optional<Output<String>> stoppedMode() {
@@ -777,14 +865,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+     * Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
      * 
      */
     @Import(name="systemDiskCategory")
     private @Nullable Output<String> systemDiskCategory;
 
     /**
-     * @return Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+     * @return Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
      * 
      */
     public Optional<Output<String>> systemDiskCategory() {
@@ -822,18 +910,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-     * - `true`: encrypts the system disk.
-     * - `false`: does not encrypt the system disk.
+     * Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
      * 
      */
     @Import(name="systemDiskEncrypted")
     private @Nullable Output<Boolean> systemDiskEncrypted;
 
     /**
-     * @return Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-     * - `true`: encrypts the system disk.
-     * - `false`: does not encrypt the system disk.
+     * @return Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> systemDiskEncrypted() {
@@ -999,6 +1083,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.forceDelete = $.forceDelete;
         this.hostName = $.hostName;
         this.hpcClusterId = $.hpcClusterId;
+        this.httpEndpoint = $.httpEndpoint;
+        this.httpPutResponseHopLimit = $.httpPutResponseHopLimit;
+        this.httpTokens = $.httpTokens;
         this.imageId = $.imageId;
         this.includeDataDisks = $.includeDataDisks;
         this.instanceChargeType = $.instanceChargeType;
@@ -1008,6 +1095,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.internetMaxBandwidthIn = $.internetMaxBandwidthIn;
         this.internetMaxBandwidthOut = $.internetMaxBandwidthOut;
         this.ioOptimized = $.ioOptimized;
+        this.ipv6AddressCount = $.ipv6AddressCount;
+        this.ipv6Addresses = $.ipv6Addresses;
         this.isOutdated = $.isOutdated;
         this.keyName = $.keyName;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
@@ -1027,6 +1116,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.secondaryPrivateIps = $.secondaryPrivateIps;
         this.securityEnhancementStrategy = $.securityEnhancementStrategy;
         this.securityGroups = $.securityGroups;
+        this.spotDuration = $.spotDuration;
         this.spotPriceLimit = $.spotPriceLimit;
         this.spotStrategy = $.spotStrategy;
         this.status = $.status;
@@ -1378,6 +1468,73 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param httpEndpoint Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpEndpoint(@Nullable Output<String> httpEndpoint) {
+            $.httpEndpoint = httpEndpoint;
+            return this;
+        }
+
+        /**
+         * @param httpEndpoint Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpEndpoint(String httpEndpoint) {
+            return httpEndpoint(Output.of(httpEndpoint));
+        }
+
+        /**
+         * @param httpPutResponseHopLimit The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpPutResponseHopLimit(@Nullable Output<Integer> httpPutResponseHopLimit) {
+            $.httpPutResponseHopLimit = httpPutResponseHopLimit;
+            return this;
+        }
+
+        /**
+         * @param httpPutResponseHopLimit The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpPutResponseHopLimit(Integer httpPutResponseHopLimit) {
+            return httpPutResponseHopLimit(Output.of(httpPutResponseHopLimit));
+        }
+
+        /**
+         * @param httpTokens Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+         * - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+         * - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpTokens(@Nullable Output<String> httpTokens) {
+            $.httpTokens = httpTokens;
+            return this;
+        }
+
+        /**
+         * @param httpTokens Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+         * - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+         * - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpTokens(String httpTokens) {
+            return httpTokens(Output.of(httpTokens));
+        }
+
+        /**
          * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
          * 
          * @return builder
@@ -1568,6 +1725,58 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template. */
         public Builder ioOptimized(String ioOptimized) {
             return ioOptimized(Output.of(ioOptimized));
+        }
+
+        /**
+         * @param ipv6AddressCount The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AddressCount(@Nullable Output<Integer> ipv6AddressCount) {
+            $.ipv6AddressCount = ipv6AddressCount;
+            return this;
+        }
+
+        /**
+         * @param ipv6AddressCount The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AddressCount(Integer ipv6AddressCount) {
+            return ipv6AddressCount(Output.of(ipv6AddressCount));
+        }
+
+        /**
+         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Addresses(@Nullable Output<List<String>> ipv6Addresses) {
+            $.ipv6Addresses = ipv6Addresses;
+            return this;
+        }
+
+        /**
+         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Addresses(List<String> ipv6Addresses) {
+            return ipv6Addresses(Output.of(ipv6Addresses));
+        }
+
+        /**
+         * @param ipv6Addresses A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Addresses(String... ipv6Addresses) {
+            return ipv6Addresses(List.of(ipv6Addresses));
         }
 
         /**
@@ -1812,9 +2021,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param renewalStatus Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
-         * - `AutoRenewal`: Enable auto renewal.
-         * - `Normal`: Disable auto renewal.
-         * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
          * 
          * @return builder
          * 
@@ -1826,9 +2032,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param renewalStatus Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
-         * - `AutoRenewal`: Enable auto renewal.
-         * - `Normal`: Disable auto renewal.
-         * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
          * 
          * @return builder
          * 
@@ -1988,6 +2191,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param spotDuration The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotDuration(@Nullable Output<Integer> spotDuration) {
+            $.spotDuration = spotDuration;
+            return this;
+        }
+
+        /**
+         * @param spotDuration The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotDuration(Integer spotDuration) {
+            return spotDuration(Output.of(spotDuration));
+        }
+
+        /**
          * @param spotPriceLimit The hourly price threshold of a instance, and it takes effect only when parameter &#39;spot_strategy&#39; is &#39;SpotWithPriceLimit&#39;. Three decimals is allowed at most.
          * 
          * @return builder
@@ -2057,7 +2281,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stoppedMode The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see &#34;Enable the economical mode&#34; in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+         * @param stoppedMode The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see &#34;Enable the economical mode&#34; in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
          * 
          * @return builder
          * 
@@ -2068,7 +2292,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stoppedMode The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see &#34;Enable the economical mode&#34; in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+         * @param stoppedMode The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see &#34;Enable the economical mode&#34; in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
          * 
          * @return builder
          * 
@@ -2124,7 +2348,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategory Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+         * @param systemDiskCategory Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
          * 
          * @return builder
          * 
@@ -2135,7 +2359,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategory Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+         * @param systemDiskCategory Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
          * 
          * @return builder
          * 
@@ -2187,9 +2411,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskEncrypted Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-         * - `true`: encrypts the system disk.
-         * - `false`: does not encrypt the system disk.
+         * @param systemDiskEncrypted Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
          * 
          * @return builder
          * 
@@ -2200,9 +2422,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskEncrypted Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-         * - `true`: encrypts the system disk.
-         * - `false`: does not encrypt the system disk.
+         * @param systemDiskEncrypted Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
          * 
          * @return builder
          * 

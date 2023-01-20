@@ -5,131 +5,416 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./activation";
-export * from "./autoProvisioningGroup";
-export * from "./autoSnapshotPolicy";
-export * from "./command";
-export * from "./copyImage";
-export * from "./dedicatedHost";
-export * from "./disk";
-export * from "./diskAttachment";
-export * from "./ecsAutoSnapshotPolicyAttachment";
-export * from "./ecsDedicatedHostCluster";
-export * from "./ecsDeploymentSet";
-export * from "./ecsDisk";
-export * from "./ecsDiskAttachment";
-export * from "./ecsImageComponent";
-export * from "./ecsImagePipeline";
-export * from "./ecsInstanceSet";
-export * from "./ecsInvocation";
-export * from "./ecsKeyPair";
-export * from "./ecsKeyPairAttachment";
-export * from "./ecsLaunchTemplate";
-export * from "./ecsNetworkInterface";
-export * from "./ecsNetworkInterfaceAttachment";
-export * from "./ecsNetworkInterfacePermission";
-export * from "./ecsPrefixList";
-export * from "./ecsSessionManagerStatus";
-export * from "./ecsSnapshot";
-export * from "./ecsSnapshotGroup";
-export * from "./eip";
-export * from "./eipAddress";
-export * from "./eipAssociation";
-export * from "./getActivations";
-export * from "./getAutoSnapshotPolicies";
-export * from "./getCommands";
-export * from "./getDedicatedHosts";
-export * from "./getDisks";
-export * from "./getEcsDedicatedHostClusters";
-export * from "./getEcsDeploymentSets";
-export * from "./getEcsDisks";
-export * from "./getEcsImageComponents";
-export * from "./getEcsImagePipeline";
-export * from "./getEcsInvocations";
-export * from "./getEcsKeyPairs";
-export * from "./getEcsLaunchTemplates";
-export * from "./getEcsNetworkInterfacePermissions";
-export * from "./getEcsNetworkInterfaces";
-export * from "./getEcsPrefixLists";
-export * from "./getEcsSnapshotGroups";
-export * from "./getEcsSnapshots";
-export * from "./getEcsStorageCapacityUnits";
-export * from "./getEipAddresses";
-export * from "./getEips";
-export * from "./getHpcClusters";
-export * from "./getImages";
-export * from "./getInstanceTypeFamilies";
-export * from "./getInstanceTypes";
-export * from "./getInstances";
-export * from "./getKeyPairs";
-export * from "./getNetworkInterfaces";
-export * from "./getSecurityGroupRules";
-export * from "./getSecurityGroups";
-export * from "./getSnapshots";
-export * from "./hpcCluster";
-export * from "./image";
-export * from "./imageCopy";
-export * from "./imageExport";
-export * from "./imageImport";
-export * from "./imageSharePermission";
-export * from "./instance";
-export * from "./keyPair";
-export * from "./keyPairAttachment";
-export * from "./launchTemplate";
-export * from "./reservedInstance";
-export * from "./securityGroup";
-export * from "./securityGroupRule";
-export * from "./snapshot";
-export * from "./snapshotPolicy";
-export * from "./storageCapacityUnit";
+export { ActivationArgs, ActivationState } from "./activation";
+export type Activation = import("./activation").Activation;
+export const Activation: typeof import("./activation").Activation = null as any;
+utilities.lazyLoad(exports, ["Activation"], () => require("./activation"));
 
-// Import resources to register:
-import { Activation } from "./activation";
-import { AutoProvisioningGroup } from "./autoProvisioningGroup";
-import { AutoSnapshotPolicy } from "./autoSnapshotPolicy";
-import { Command } from "./command";
-import { CopyImage } from "./copyImage";
-import { DedicatedHost } from "./dedicatedHost";
-import { Disk } from "./disk";
-import { DiskAttachment } from "./diskAttachment";
-import { EcsAutoSnapshotPolicyAttachment } from "./ecsAutoSnapshotPolicyAttachment";
-import { EcsDedicatedHostCluster } from "./ecsDedicatedHostCluster";
-import { EcsDeploymentSet } from "./ecsDeploymentSet";
-import { EcsDisk } from "./ecsDisk";
-import { EcsDiskAttachment } from "./ecsDiskAttachment";
-import { EcsImageComponent } from "./ecsImageComponent";
-import { EcsImagePipeline } from "./ecsImagePipeline";
-import { EcsInstanceSet } from "./ecsInstanceSet";
-import { EcsInvocation } from "./ecsInvocation";
-import { EcsKeyPair } from "./ecsKeyPair";
-import { EcsKeyPairAttachment } from "./ecsKeyPairAttachment";
-import { EcsLaunchTemplate } from "./ecsLaunchTemplate";
-import { EcsNetworkInterface } from "./ecsNetworkInterface";
-import { EcsNetworkInterfaceAttachment } from "./ecsNetworkInterfaceAttachment";
-import { EcsNetworkInterfacePermission } from "./ecsNetworkInterfacePermission";
-import { EcsPrefixList } from "./ecsPrefixList";
-import { EcsSessionManagerStatus } from "./ecsSessionManagerStatus";
-import { EcsSnapshot } from "./ecsSnapshot";
-import { EcsSnapshotGroup } from "./ecsSnapshotGroup";
-import { Eip } from "./eip";
-import { EipAddress } from "./eipAddress";
-import { EipAssociation } from "./eipAssociation";
-import { HpcCluster } from "./hpcCluster";
-import { Image } from "./image";
-import { ImageCopy } from "./imageCopy";
-import { ImageExport } from "./imageExport";
-import { ImageImport } from "./imageImport";
-import { ImageSharePermission } from "./imageSharePermission";
-import { Instance } from "./instance";
-import { KeyPair } from "./keyPair";
-import { KeyPairAttachment } from "./keyPairAttachment";
-import { LaunchTemplate } from "./launchTemplate";
-import { ReservedInstance } from "./reservedInstance";
-import { SecurityGroup } from "./securityGroup";
-import { SecurityGroupRule } from "./securityGroupRule";
-import { Snapshot } from "./snapshot";
-import { SnapshotPolicy } from "./snapshotPolicy";
-import { StorageCapacityUnit } from "./storageCapacityUnit";
+export { AutoProvisioningGroupArgs, AutoProvisioningGroupState } from "./autoProvisioningGroup";
+export type AutoProvisioningGroup = import("./autoProvisioningGroup").AutoProvisioningGroup;
+export const AutoProvisioningGroup: typeof import("./autoProvisioningGroup").AutoProvisioningGroup = null as any;
+utilities.lazyLoad(exports, ["AutoProvisioningGroup"], () => require("./autoProvisioningGroup"));
+
+export { AutoSnapshotPolicyArgs, AutoSnapshotPolicyState } from "./autoSnapshotPolicy";
+export type AutoSnapshotPolicy = import("./autoSnapshotPolicy").AutoSnapshotPolicy;
+export const AutoSnapshotPolicy: typeof import("./autoSnapshotPolicy").AutoSnapshotPolicy = null as any;
+utilities.lazyLoad(exports, ["AutoSnapshotPolicy"], () => require("./autoSnapshotPolicy"));
+
+export { CapacityReservationArgs, CapacityReservationState } from "./capacityReservation";
+export type CapacityReservation = import("./capacityReservation").CapacityReservation;
+export const CapacityReservation: typeof import("./capacityReservation").CapacityReservation = null as any;
+utilities.lazyLoad(exports, ["CapacityReservation"], () => require("./capacityReservation"));
+
+export { CommandArgs, CommandState } from "./command";
+export type Command = import("./command").Command;
+export const Command: typeof import("./command").Command = null as any;
+utilities.lazyLoad(exports, ["Command"], () => require("./command"));
+
+export { CopyImageArgs, CopyImageState } from "./copyImage";
+export type CopyImage = import("./copyImage").CopyImage;
+export const CopyImage: typeof import("./copyImage").CopyImage = null as any;
+utilities.lazyLoad(exports, ["CopyImage"], () => require("./copyImage"));
+
+export { DedicatedHostArgs, DedicatedHostState } from "./dedicatedHost";
+export type DedicatedHost = import("./dedicatedHost").DedicatedHost;
+export const DedicatedHost: typeof import("./dedicatedHost").DedicatedHost = null as any;
+utilities.lazyLoad(exports, ["DedicatedHost"], () => require("./dedicatedHost"));
+
+export { DiskArgs, DiskState } from "./disk";
+export type Disk = import("./disk").Disk;
+export const Disk: typeof import("./disk").Disk = null as any;
+utilities.lazyLoad(exports, ["Disk"], () => require("./disk"));
+
+export { DiskAttachmentArgs, DiskAttachmentState } from "./diskAttachment";
+export type DiskAttachment = import("./diskAttachment").DiskAttachment;
+export const DiskAttachment: typeof import("./diskAttachment").DiskAttachment = null as any;
+utilities.lazyLoad(exports, ["DiskAttachment"], () => require("./diskAttachment"));
+
+export { EcsAutoSnapshotPolicyAttachmentArgs, EcsAutoSnapshotPolicyAttachmentState } from "./ecsAutoSnapshotPolicyAttachment";
+export type EcsAutoSnapshotPolicyAttachment = import("./ecsAutoSnapshotPolicyAttachment").EcsAutoSnapshotPolicyAttachment;
+export const EcsAutoSnapshotPolicyAttachment: typeof import("./ecsAutoSnapshotPolicyAttachment").EcsAutoSnapshotPolicyAttachment = null as any;
+utilities.lazyLoad(exports, ["EcsAutoSnapshotPolicyAttachment"], () => require("./ecsAutoSnapshotPolicyAttachment"));
+
+export { EcsDedicatedHostClusterArgs, EcsDedicatedHostClusterState } from "./ecsDedicatedHostCluster";
+export type EcsDedicatedHostCluster = import("./ecsDedicatedHostCluster").EcsDedicatedHostCluster;
+export const EcsDedicatedHostCluster: typeof import("./ecsDedicatedHostCluster").EcsDedicatedHostCluster = null as any;
+utilities.lazyLoad(exports, ["EcsDedicatedHostCluster"], () => require("./ecsDedicatedHostCluster"));
+
+export { EcsDeploymentSetArgs, EcsDeploymentSetState } from "./ecsDeploymentSet";
+export type EcsDeploymentSet = import("./ecsDeploymentSet").EcsDeploymentSet;
+export const EcsDeploymentSet: typeof import("./ecsDeploymentSet").EcsDeploymentSet = null as any;
+utilities.lazyLoad(exports, ["EcsDeploymentSet"], () => require("./ecsDeploymentSet"));
+
+export { EcsDiskArgs, EcsDiskState } from "./ecsDisk";
+export type EcsDisk = import("./ecsDisk").EcsDisk;
+export const EcsDisk: typeof import("./ecsDisk").EcsDisk = null as any;
+utilities.lazyLoad(exports, ["EcsDisk"], () => require("./ecsDisk"));
+
+export { EcsDiskAttachmentArgs, EcsDiskAttachmentState } from "./ecsDiskAttachment";
+export type EcsDiskAttachment = import("./ecsDiskAttachment").EcsDiskAttachment;
+export const EcsDiskAttachment: typeof import("./ecsDiskAttachment").EcsDiskAttachment = null as any;
+utilities.lazyLoad(exports, ["EcsDiskAttachment"], () => require("./ecsDiskAttachment"));
+
+export { EcsImageComponentArgs, EcsImageComponentState } from "./ecsImageComponent";
+export type EcsImageComponent = import("./ecsImageComponent").EcsImageComponent;
+export const EcsImageComponent: typeof import("./ecsImageComponent").EcsImageComponent = null as any;
+utilities.lazyLoad(exports, ["EcsImageComponent"], () => require("./ecsImageComponent"));
+
+export { EcsImagePipelineArgs, EcsImagePipelineState } from "./ecsImagePipeline";
+export type EcsImagePipeline = import("./ecsImagePipeline").EcsImagePipeline;
+export const EcsImagePipeline: typeof import("./ecsImagePipeline").EcsImagePipeline = null as any;
+utilities.lazyLoad(exports, ["EcsImagePipeline"], () => require("./ecsImagePipeline"));
+
+export { EcsInstanceSetArgs, EcsInstanceSetState } from "./ecsInstanceSet";
+export type EcsInstanceSet = import("./ecsInstanceSet").EcsInstanceSet;
+export const EcsInstanceSet: typeof import("./ecsInstanceSet").EcsInstanceSet = null as any;
+utilities.lazyLoad(exports, ["EcsInstanceSet"], () => require("./ecsInstanceSet"));
+
+export { EcsInvocationArgs, EcsInvocationState } from "./ecsInvocation";
+export type EcsInvocation = import("./ecsInvocation").EcsInvocation;
+export const EcsInvocation: typeof import("./ecsInvocation").EcsInvocation = null as any;
+utilities.lazyLoad(exports, ["EcsInvocation"], () => require("./ecsInvocation"));
+
+export { EcsKeyPairArgs, EcsKeyPairState } from "./ecsKeyPair";
+export type EcsKeyPair = import("./ecsKeyPair").EcsKeyPair;
+export const EcsKeyPair: typeof import("./ecsKeyPair").EcsKeyPair = null as any;
+utilities.lazyLoad(exports, ["EcsKeyPair"], () => require("./ecsKeyPair"));
+
+export { EcsKeyPairAttachmentArgs, EcsKeyPairAttachmentState } from "./ecsKeyPairAttachment";
+export type EcsKeyPairAttachment = import("./ecsKeyPairAttachment").EcsKeyPairAttachment;
+export const EcsKeyPairAttachment: typeof import("./ecsKeyPairAttachment").EcsKeyPairAttachment = null as any;
+utilities.lazyLoad(exports, ["EcsKeyPairAttachment"], () => require("./ecsKeyPairAttachment"));
+
+export { EcsLaunchTemplateArgs, EcsLaunchTemplateState } from "./ecsLaunchTemplate";
+export type EcsLaunchTemplate = import("./ecsLaunchTemplate").EcsLaunchTemplate;
+export const EcsLaunchTemplate: typeof import("./ecsLaunchTemplate").EcsLaunchTemplate = null as any;
+utilities.lazyLoad(exports, ["EcsLaunchTemplate"], () => require("./ecsLaunchTemplate"));
+
+export { EcsNetworkInterfaceArgs, EcsNetworkInterfaceState } from "./ecsNetworkInterface";
+export type EcsNetworkInterface = import("./ecsNetworkInterface").EcsNetworkInterface;
+export const EcsNetworkInterface: typeof import("./ecsNetworkInterface").EcsNetworkInterface = null as any;
+utilities.lazyLoad(exports, ["EcsNetworkInterface"], () => require("./ecsNetworkInterface"));
+
+export { EcsNetworkInterfaceAttachmentArgs, EcsNetworkInterfaceAttachmentState } from "./ecsNetworkInterfaceAttachment";
+export type EcsNetworkInterfaceAttachment = import("./ecsNetworkInterfaceAttachment").EcsNetworkInterfaceAttachment;
+export const EcsNetworkInterfaceAttachment: typeof import("./ecsNetworkInterfaceAttachment").EcsNetworkInterfaceAttachment = null as any;
+utilities.lazyLoad(exports, ["EcsNetworkInterfaceAttachment"], () => require("./ecsNetworkInterfaceAttachment"));
+
+export { EcsNetworkInterfacePermissionArgs, EcsNetworkInterfacePermissionState } from "./ecsNetworkInterfacePermission";
+export type EcsNetworkInterfacePermission = import("./ecsNetworkInterfacePermission").EcsNetworkInterfacePermission;
+export const EcsNetworkInterfacePermission: typeof import("./ecsNetworkInterfacePermission").EcsNetworkInterfacePermission = null as any;
+utilities.lazyLoad(exports, ["EcsNetworkInterfacePermission"], () => require("./ecsNetworkInterfacePermission"));
+
+export { EcsPrefixListArgs, EcsPrefixListState } from "./ecsPrefixList";
+export type EcsPrefixList = import("./ecsPrefixList").EcsPrefixList;
+export const EcsPrefixList: typeof import("./ecsPrefixList").EcsPrefixList = null as any;
+utilities.lazyLoad(exports, ["EcsPrefixList"], () => require("./ecsPrefixList"));
+
+export { EcsSessionManagerStatusArgs, EcsSessionManagerStatusState } from "./ecsSessionManagerStatus";
+export type EcsSessionManagerStatus = import("./ecsSessionManagerStatus").EcsSessionManagerStatus;
+export const EcsSessionManagerStatus: typeof import("./ecsSessionManagerStatus").EcsSessionManagerStatus = null as any;
+utilities.lazyLoad(exports, ["EcsSessionManagerStatus"], () => require("./ecsSessionManagerStatus"));
+
+export { EcsSnapshotArgs, EcsSnapshotState } from "./ecsSnapshot";
+export type EcsSnapshot = import("./ecsSnapshot").EcsSnapshot;
+export const EcsSnapshot: typeof import("./ecsSnapshot").EcsSnapshot = null as any;
+utilities.lazyLoad(exports, ["EcsSnapshot"], () => require("./ecsSnapshot"));
+
+export { EcsSnapshotGroupArgs, EcsSnapshotGroupState } from "./ecsSnapshotGroup";
+export type EcsSnapshotGroup = import("./ecsSnapshotGroup").EcsSnapshotGroup;
+export const EcsSnapshotGroup: typeof import("./ecsSnapshotGroup").EcsSnapshotGroup = null as any;
+utilities.lazyLoad(exports, ["EcsSnapshotGroup"], () => require("./ecsSnapshotGroup"));
+
+export { EipArgs, EipState } from "./eip";
+export type Eip = import("./eip").Eip;
+export const Eip: typeof import("./eip").Eip = null as any;
+utilities.lazyLoad(exports, ["Eip"], () => require("./eip"));
+
+export { EipAddressArgs, EipAddressState } from "./eipAddress";
+export type EipAddress = import("./eipAddress").EipAddress;
+export const EipAddress: typeof import("./eipAddress").EipAddress = null as any;
+utilities.lazyLoad(exports, ["EipAddress"], () => require("./eipAddress"));
+
+export { EipAssociationArgs, EipAssociationState } from "./eipAssociation";
+export type EipAssociation = import("./eipAssociation").EipAssociation;
+export const EipAssociation: typeof import("./eipAssociation").EipAssociation = null as any;
+utilities.lazyLoad(exports, ["EipAssociation"], () => require("./eipAssociation"));
+
+export { ElasticityAssuranceArgs, ElasticityAssuranceState } from "./elasticityAssurance";
+export type ElasticityAssurance = import("./elasticityAssurance").ElasticityAssurance;
+export const ElasticityAssurance: typeof import("./elasticityAssurance").ElasticityAssurance = null as any;
+utilities.lazyLoad(exports, ["ElasticityAssurance"], () => require("./elasticityAssurance"));
+
+export { GetActivationsArgs, GetActivationsResult, GetActivationsOutputArgs } from "./getActivations";
+export const getActivations: typeof import("./getActivations").getActivations = null as any;
+export const getActivationsOutput: typeof import("./getActivations").getActivationsOutput = null as any;
+utilities.lazyLoad(exports, ["getActivations","getActivationsOutput"], () => require("./getActivations"));
+
+export { GetAutoSnapshotPoliciesArgs, GetAutoSnapshotPoliciesResult, GetAutoSnapshotPoliciesOutputArgs } from "./getAutoSnapshotPolicies";
+export const getAutoSnapshotPolicies: typeof import("./getAutoSnapshotPolicies").getAutoSnapshotPolicies = null as any;
+export const getAutoSnapshotPoliciesOutput: typeof import("./getAutoSnapshotPolicies").getAutoSnapshotPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getAutoSnapshotPolicies","getAutoSnapshotPoliciesOutput"], () => require("./getAutoSnapshotPolicies"));
+
+export { GetCapacityReservationsArgs, GetCapacityReservationsResult, GetCapacityReservationsOutputArgs } from "./getCapacityReservations";
+export const getCapacityReservations: typeof import("./getCapacityReservations").getCapacityReservations = null as any;
+export const getCapacityReservationsOutput: typeof import("./getCapacityReservations").getCapacityReservationsOutput = null as any;
+utilities.lazyLoad(exports, ["getCapacityReservations","getCapacityReservationsOutput"], () => require("./getCapacityReservations"));
+
+export { GetCommandsArgs, GetCommandsResult, GetCommandsOutputArgs } from "./getCommands";
+export const getCommands: typeof import("./getCommands").getCommands = null as any;
+export const getCommandsOutput: typeof import("./getCommands").getCommandsOutput = null as any;
+utilities.lazyLoad(exports, ["getCommands","getCommandsOutput"], () => require("./getCommands"));
+
+export { GetDedicatedHostsArgs, GetDedicatedHostsResult, GetDedicatedHostsOutputArgs } from "./getDedicatedHosts";
+export const getDedicatedHosts: typeof import("./getDedicatedHosts").getDedicatedHosts = null as any;
+export const getDedicatedHostsOutput: typeof import("./getDedicatedHosts").getDedicatedHostsOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedHosts","getDedicatedHostsOutput"], () => require("./getDedicatedHosts"));
+
+export { GetDisksArgs, GetDisksResult, GetDisksOutputArgs } from "./getDisks";
+export const getDisks: typeof import("./getDisks").getDisks = null as any;
+export const getDisksOutput: typeof import("./getDisks").getDisksOutput = null as any;
+utilities.lazyLoad(exports, ["getDisks","getDisksOutput"], () => require("./getDisks"));
+
+export { GetEcsDedicatedHostClustersArgs, GetEcsDedicatedHostClustersResult, GetEcsDedicatedHostClustersOutputArgs } from "./getEcsDedicatedHostClusters";
+export const getEcsDedicatedHostClusters: typeof import("./getEcsDedicatedHostClusters").getEcsDedicatedHostClusters = null as any;
+export const getEcsDedicatedHostClustersOutput: typeof import("./getEcsDedicatedHostClusters").getEcsDedicatedHostClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsDedicatedHostClusters","getEcsDedicatedHostClustersOutput"], () => require("./getEcsDedicatedHostClusters"));
+
+export { GetEcsDeploymentSetsArgs, GetEcsDeploymentSetsResult, GetEcsDeploymentSetsOutputArgs } from "./getEcsDeploymentSets";
+export const getEcsDeploymentSets: typeof import("./getEcsDeploymentSets").getEcsDeploymentSets = null as any;
+export const getEcsDeploymentSetsOutput: typeof import("./getEcsDeploymentSets").getEcsDeploymentSetsOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsDeploymentSets","getEcsDeploymentSetsOutput"], () => require("./getEcsDeploymentSets"));
+
+export { GetEcsDisksArgs, GetEcsDisksResult, GetEcsDisksOutputArgs } from "./getEcsDisks";
+export const getEcsDisks: typeof import("./getEcsDisks").getEcsDisks = null as any;
+export const getEcsDisksOutput: typeof import("./getEcsDisks").getEcsDisksOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsDisks","getEcsDisksOutput"], () => require("./getEcsDisks"));
+
+export { GetEcsImageComponentsArgs, GetEcsImageComponentsResult, GetEcsImageComponentsOutputArgs } from "./getEcsImageComponents";
+export const getEcsImageComponents: typeof import("./getEcsImageComponents").getEcsImageComponents = null as any;
+export const getEcsImageComponentsOutput: typeof import("./getEcsImageComponents").getEcsImageComponentsOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsImageComponents","getEcsImageComponentsOutput"], () => require("./getEcsImageComponents"));
+
+export { GetEcsImagePipelineArgs, GetEcsImagePipelineResult, GetEcsImagePipelineOutputArgs } from "./getEcsImagePipeline";
+export const getEcsImagePipeline: typeof import("./getEcsImagePipeline").getEcsImagePipeline = null as any;
+export const getEcsImagePipelineOutput: typeof import("./getEcsImagePipeline").getEcsImagePipelineOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsImagePipeline","getEcsImagePipelineOutput"], () => require("./getEcsImagePipeline"));
+
+export { GetEcsInvocationsArgs, GetEcsInvocationsResult, GetEcsInvocationsOutputArgs } from "./getEcsInvocations";
+export const getEcsInvocations: typeof import("./getEcsInvocations").getEcsInvocations = null as any;
+export const getEcsInvocationsOutput: typeof import("./getEcsInvocations").getEcsInvocationsOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsInvocations","getEcsInvocationsOutput"], () => require("./getEcsInvocations"));
+
+export { GetEcsKeyPairsArgs, GetEcsKeyPairsResult, GetEcsKeyPairsOutputArgs } from "./getEcsKeyPairs";
+export const getEcsKeyPairs: typeof import("./getEcsKeyPairs").getEcsKeyPairs = null as any;
+export const getEcsKeyPairsOutput: typeof import("./getEcsKeyPairs").getEcsKeyPairsOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsKeyPairs","getEcsKeyPairsOutput"], () => require("./getEcsKeyPairs"));
+
+export { GetEcsLaunchTemplatesArgs, GetEcsLaunchTemplatesResult, GetEcsLaunchTemplatesOutputArgs } from "./getEcsLaunchTemplates";
+export const getEcsLaunchTemplates: typeof import("./getEcsLaunchTemplates").getEcsLaunchTemplates = null as any;
+export const getEcsLaunchTemplatesOutput: typeof import("./getEcsLaunchTemplates").getEcsLaunchTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsLaunchTemplates","getEcsLaunchTemplatesOutput"], () => require("./getEcsLaunchTemplates"));
+
+export { GetEcsNetworkInterfacePermissionsArgs, GetEcsNetworkInterfacePermissionsResult, GetEcsNetworkInterfacePermissionsOutputArgs } from "./getEcsNetworkInterfacePermissions";
+export const getEcsNetworkInterfacePermissions: typeof import("./getEcsNetworkInterfacePermissions").getEcsNetworkInterfacePermissions = null as any;
+export const getEcsNetworkInterfacePermissionsOutput: typeof import("./getEcsNetworkInterfacePermissions").getEcsNetworkInterfacePermissionsOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsNetworkInterfacePermissions","getEcsNetworkInterfacePermissionsOutput"], () => require("./getEcsNetworkInterfacePermissions"));
+
+export { GetEcsNetworkInterfacesArgs, GetEcsNetworkInterfacesResult, GetEcsNetworkInterfacesOutputArgs } from "./getEcsNetworkInterfaces";
+export const getEcsNetworkInterfaces: typeof import("./getEcsNetworkInterfaces").getEcsNetworkInterfaces = null as any;
+export const getEcsNetworkInterfacesOutput: typeof import("./getEcsNetworkInterfaces").getEcsNetworkInterfacesOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsNetworkInterfaces","getEcsNetworkInterfacesOutput"], () => require("./getEcsNetworkInterfaces"));
+
+export { GetEcsPrefixListsArgs, GetEcsPrefixListsResult, GetEcsPrefixListsOutputArgs } from "./getEcsPrefixLists";
+export const getEcsPrefixLists: typeof import("./getEcsPrefixLists").getEcsPrefixLists = null as any;
+export const getEcsPrefixListsOutput: typeof import("./getEcsPrefixLists").getEcsPrefixListsOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsPrefixLists","getEcsPrefixListsOutput"], () => require("./getEcsPrefixLists"));
+
+export { GetEcsSnapshotGroupsArgs, GetEcsSnapshotGroupsResult, GetEcsSnapshotGroupsOutputArgs } from "./getEcsSnapshotGroups";
+export const getEcsSnapshotGroups: typeof import("./getEcsSnapshotGroups").getEcsSnapshotGroups = null as any;
+export const getEcsSnapshotGroupsOutput: typeof import("./getEcsSnapshotGroups").getEcsSnapshotGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsSnapshotGroups","getEcsSnapshotGroupsOutput"], () => require("./getEcsSnapshotGroups"));
+
+export { GetEcsSnapshotsArgs, GetEcsSnapshotsResult, GetEcsSnapshotsOutputArgs } from "./getEcsSnapshots";
+export const getEcsSnapshots: typeof import("./getEcsSnapshots").getEcsSnapshots = null as any;
+export const getEcsSnapshotsOutput: typeof import("./getEcsSnapshots").getEcsSnapshotsOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsSnapshots","getEcsSnapshotsOutput"], () => require("./getEcsSnapshots"));
+
+export { GetEcsStorageCapacityUnitsArgs, GetEcsStorageCapacityUnitsResult, GetEcsStorageCapacityUnitsOutputArgs } from "./getEcsStorageCapacityUnits";
+export const getEcsStorageCapacityUnits: typeof import("./getEcsStorageCapacityUnits").getEcsStorageCapacityUnits = null as any;
+export const getEcsStorageCapacityUnitsOutput: typeof import("./getEcsStorageCapacityUnits").getEcsStorageCapacityUnitsOutput = null as any;
+utilities.lazyLoad(exports, ["getEcsStorageCapacityUnits","getEcsStorageCapacityUnitsOutput"], () => require("./getEcsStorageCapacityUnits"));
+
+export { GetEipAddressesArgs, GetEipAddressesResult, GetEipAddressesOutputArgs } from "./getEipAddresses";
+export const getEipAddresses: typeof import("./getEipAddresses").getEipAddresses = null as any;
+export const getEipAddressesOutput: typeof import("./getEipAddresses").getEipAddressesOutput = null as any;
+utilities.lazyLoad(exports, ["getEipAddresses","getEipAddressesOutput"], () => require("./getEipAddresses"));
+
+export { GetEipsArgs, GetEipsResult, GetEipsOutputArgs } from "./getEips";
+export const getEips: typeof import("./getEips").getEips = null as any;
+export const getEipsOutput: typeof import("./getEips").getEipsOutput = null as any;
+utilities.lazyLoad(exports, ["getEips","getEipsOutput"], () => require("./getEips"));
+
+export { GetElasticityAssurancesArgs, GetElasticityAssurancesResult, GetElasticityAssurancesOutputArgs } from "./getElasticityAssurances";
+export const getElasticityAssurances: typeof import("./getElasticityAssurances").getElasticityAssurances = null as any;
+export const getElasticityAssurancesOutput: typeof import("./getElasticityAssurances").getElasticityAssurancesOutput = null as any;
+utilities.lazyLoad(exports, ["getElasticityAssurances","getElasticityAssurancesOutput"], () => require("./getElasticityAssurances"));
+
+export { GetHpcClustersArgs, GetHpcClustersResult, GetHpcClustersOutputArgs } from "./getHpcClusters";
+export const getHpcClusters: typeof import("./getHpcClusters").getHpcClusters = null as any;
+export const getHpcClustersOutput: typeof import("./getHpcClusters").getHpcClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getHpcClusters","getHpcClustersOutput"], () => require("./getHpcClusters"));
+
+export { GetImagesArgs, GetImagesResult, GetImagesOutputArgs } from "./getImages";
+export const getImages: typeof import("./getImages").getImages = null as any;
+export const getImagesOutput: typeof import("./getImages").getImagesOutput = null as any;
+utilities.lazyLoad(exports, ["getImages","getImagesOutput"], () => require("./getImages"));
+
+export { GetInstanceKeywordsArgs, GetInstanceKeywordsResult, GetInstanceKeywordsOutputArgs } from "./getInstanceKeywords";
+export const getInstanceKeywords: typeof import("./getInstanceKeywords").getInstanceKeywords = null as any;
+export const getInstanceKeywordsOutput: typeof import("./getInstanceKeywords").getInstanceKeywordsOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceKeywords","getInstanceKeywordsOutput"], () => require("./getInstanceKeywords"));
+
+export { GetInstanceTypeFamiliesArgs, GetInstanceTypeFamiliesResult, GetInstanceTypeFamiliesOutputArgs } from "./getInstanceTypeFamilies";
+export const getInstanceTypeFamilies: typeof import("./getInstanceTypeFamilies").getInstanceTypeFamilies = null as any;
+export const getInstanceTypeFamiliesOutput: typeof import("./getInstanceTypeFamilies").getInstanceTypeFamiliesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceTypeFamilies","getInstanceTypeFamiliesOutput"], () => require("./getInstanceTypeFamilies"));
+
+export { GetInstanceTypesArgs, GetInstanceTypesResult, GetInstanceTypesOutputArgs } from "./getInstanceTypes";
+export const getInstanceTypes: typeof import("./getInstanceTypes").getInstanceTypes = null as any;
+export const getInstanceTypesOutput: typeof import("./getInstanceTypes").getInstanceTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceTypes","getInstanceTypesOutput"], () => require("./getInstanceTypes"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetKeyPairsArgs, GetKeyPairsResult, GetKeyPairsOutputArgs } from "./getKeyPairs";
+export const getKeyPairs: typeof import("./getKeyPairs").getKeyPairs = null as any;
+export const getKeyPairsOutput: typeof import("./getKeyPairs").getKeyPairsOutput = null as any;
+utilities.lazyLoad(exports, ["getKeyPairs","getKeyPairsOutput"], () => require("./getKeyPairs"));
+
+export { GetNetworkInterfacesArgs, GetNetworkInterfacesResult, GetNetworkInterfacesOutputArgs } from "./getNetworkInterfaces";
+export const getNetworkInterfaces: typeof import("./getNetworkInterfaces").getNetworkInterfaces = null as any;
+export const getNetworkInterfacesOutput: typeof import("./getNetworkInterfaces").getNetworkInterfacesOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkInterfaces","getNetworkInterfacesOutput"], () => require("./getNetworkInterfaces"));
+
+export { GetSecurityGroupRulesArgs, GetSecurityGroupRulesResult, GetSecurityGroupRulesOutputArgs } from "./getSecurityGroupRules";
+export const getSecurityGroupRules: typeof import("./getSecurityGroupRules").getSecurityGroupRules = null as any;
+export const getSecurityGroupRulesOutput: typeof import("./getSecurityGroupRules").getSecurityGroupRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityGroupRules","getSecurityGroupRulesOutput"], () => require("./getSecurityGroupRules"));
+
+export { GetSecurityGroupsArgs, GetSecurityGroupsResult, GetSecurityGroupsOutputArgs } from "./getSecurityGroups";
+export const getSecurityGroups: typeof import("./getSecurityGroups").getSecurityGroups = null as any;
+export const getSecurityGroupsOutput: typeof import("./getSecurityGroups").getSecurityGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityGroups","getSecurityGroupsOutput"], () => require("./getSecurityGroups"));
+
+export { GetSnapshotsArgs, GetSnapshotsResult, GetSnapshotsOutputArgs } from "./getSnapshots";
+export const getSnapshots: typeof import("./getSnapshots").getSnapshots = null as any;
+export const getSnapshotsOutput: typeof import("./getSnapshots").getSnapshotsOutput = null as any;
+utilities.lazyLoad(exports, ["getSnapshots","getSnapshotsOutput"], () => require("./getSnapshots"));
+
+export { HpcClusterArgs, HpcClusterState } from "./hpcCluster";
+export type HpcCluster = import("./hpcCluster").HpcCluster;
+export const HpcCluster: typeof import("./hpcCluster").HpcCluster = null as any;
+utilities.lazyLoad(exports, ["HpcCluster"], () => require("./hpcCluster"));
+
+export { ImageArgs, ImageState } from "./image";
+export type Image = import("./image").Image;
+export const Image: typeof import("./image").Image = null as any;
+utilities.lazyLoad(exports, ["Image"], () => require("./image"));
+
+export { ImageCopyArgs, ImageCopyState } from "./imageCopy";
+export type ImageCopy = import("./imageCopy").ImageCopy;
+export const ImageCopy: typeof import("./imageCopy").ImageCopy = null as any;
+utilities.lazyLoad(exports, ["ImageCopy"], () => require("./imageCopy"));
+
+export { ImageExportArgs, ImageExportState } from "./imageExport";
+export type ImageExport = import("./imageExport").ImageExport;
+export const ImageExport: typeof import("./imageExport").ImageExport = null as any;
+utilities.lazyLoad(exports, ["ImageExport"], () => require("./imageExport"));
+
+export { ImageImportArgs, ImageImportState } from "./imageImport";
+export type ImageImport = import("./imageImport").ImageImport;
+export const ImageImport: typeof import("./imageImport").ImageImport = null as any;
+utilities.lazyLoad(exports, ["ImageImport"], () => require("./imageImport"));
+
+export { ImageSharePermissionArgs, ImageSharePermissionState } from "./imageSharePermission";
+export type ImageSharePermission = import("./imageSharePermission").ImageSharePermission;
+export const ImageSharePermission: typeof import("./imageSharePermission").ImageSharePermission = null as any;
+utilities.lazyLoad(exports, ["ImageSharePermission"], () => require("./imageSharePermission"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { KeyPairArgs, KeyPairState } from "./keyPair";
+export type KeyPair = import("./keyPair").KeyPair;
+export const KeyPair: typeof import("./keyPair").KeyPair = null as any;
+utilities.lazyLoad(exports, ["KeyPair"], () => require("./keyPair"));
+
+export { KeyPairAttachmentArgs, KeyPairAttachmentState } from "./keyPairAttachment";
+export type KeyPairAttachment = import("./keyPairAttachment").KeyPairAttachment;
+export const KeyPairAttachment: typeof import("./keyPairAttachment").KeyPairAttachment = null as any;
+utilities.lazyLoad(exports, ["KeyPairAttachment"], () => require("./keyPairAttachment"));
+
+export { LaunchTemplateArgs, LaunchTemplateState } from "./launchTemplate";
+export type LaunchTemplate = import("./launchTemplate").LaunchTemplate;
+export const LaunchTemplate: typeof import("./launchTemplate").LaunchTemplate = null as any;
+utilities.lazyLoad(exports, ["LaunchTemplate"], () => require("./launchTemplate"));
+
+export { ReservedInstanceArgs, ReservedInstanceState } from "./reservedInstance";
+export type ReservedInstance = import("./reservedInstance").ReservedInstance;
+export const ReservedInstance: typeof import("./reservedInstance").ReservedInstance = null as any;
+utilities.lazyLoad(exports, ["ReservedInstance"], () => require("./reservedInstance"));
+
+export { SecurityGroupArgs, SecurityGroupState } from "./securityGroup";
+export type SecurityGroup = import("./securityGroup").SecurityGroup;
+export const SecurityGroup: typeof import("./securityGroup").SecurityGroup = null as any;
+utilities.lazyLoad(exports, ["SecurityGroup"], () => require("./securityGroup"));
+
+export { SecurityGroupRuleArgs, SecurityGroupRuleState } from "./securityGroupRule";
+export type SecurityGroupRule = import("./securityGroupRule").SecurityGroupRule;
+export const SecurityGroupRule: typeof import("./securityGroupRule").SecurityGroupRule = null as any;
+utilities.lazyLoad(exports, ["SecurityGroupRule"], () => require("./securityGroupRule"));
+
+export { SnapshotArgs, SnapshotState } from "./snapshot";
+export type Snapshot = import("./snapshot").Snapshot;
+export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
+utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
+
+export { SnapshotPolicyArgs, SnapshotPolicyState } from "./snapshotPolicy";
+export type SnapshotPolicy = import("./snapshotPolicy").SnapshotPolicy;
+export const SnapshotPolicy: typeof import("./snapshotPolicy").SnapshotPolicy = null as any;
+utilities.lazyLoad(exports, ["SnapshotPolicy"], () => require("./snapshotPolicy"));
+
+export { StorageCapacityUnitArgs, StorageCapacityUnitState } from "./storageCapacityUnit";
+export type StorageCapacityUnit = import("./storageCapacityUnit").StorageCapacityUnit;
+export const StorageCapacityUnit: typeof import("./storageCapacityUnit").StorageCapacityUnit = null as any;
+utilities.lazyLoad(exports, ["StorageCapacityUnit"], () => require("./storageCapacityUnit"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -141,6 +426,8 @@ const _module = {
                 return new AutoProvisioningGroup(name, <any>undefined, { urn })
             case "alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy":
                 return new AutoSnapshotPolicy(name, <any>undefined, { urn })
+            case "alicloud:ecs/capacityReservation:CapacityReservation":
+                return new CapacityReservation(name, <any>undefined, { urn })
             case "alicloud:ecs/command:Command":
                 return new Command(name, <any>undefined, { urn })
             case "alicloud:ecs/copyImage:CopyImage":
@@ -195,6 +482,8 @@ const _module = {
                 return new EipAddress(name, <any>undefined, { urn })
             case "alicloud:ecs/eipAssociation:EipAssociation":
                 return new EipAssociation(name, <any>undefined, { urn })
+            case "alicloud:ecs/elasticityAssurance:ElasticityAssurance":
+                return new ElasticityAssurance(name, <any>undefined, { urn })
             case "alicloud:ecs/hpcCluster:HpcCluster":
                 return new HpcCluster(name, <any>undefined, { urn })
             case "alicloud:ecs/image:Image":
@@ -235,6 +524,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "ecs/activation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/autoProvisioningGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/autoSnapshotPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/capacityReservation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/command", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/copyImage", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/dedicatedHost", _module)
@@ -262,6 +552,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSnapshotGroup", _modul
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eipAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eipAssociation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/elasticityAssurance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/hpcCluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/image", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/imageCopy", _module)

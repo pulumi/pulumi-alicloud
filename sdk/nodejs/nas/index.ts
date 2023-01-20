@@ -5,40 +5,121 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./accessGroup";
-export * from "./accessRule";
-export * from "./autoSnapshotPolicy";
-export * from "./dataFlow";
-export * from "./fileSystem";
-export * from "./fileset";
-export * from "./getAccessGroups";
-export * from "./getAccessRules";
-export * from "./getAutoSnapshotPolicies";
-export * from "./getDataFlows";
-export * from "./getFileSystems";
-export * from "./getFilesets";
-export * from "./getLifecyclePolicies";
-export * from "./getMountTargets";
-export * from "./getProtocols";
-export * from "./getService";
-export * from "./getSnapshots";
-export * from "./getZones";
-export * from "./lifecyclePolicy";
-export * from "./mountTarget";
-export * from "./recycleBin";
-export * from "./snapshot";
+export { AccessGroupArgs, AccessGroupState } from "./accessGroup";
+export type AccessGroup = import("./accessGroup").AccessGroup;
+export const AccessGroup: typeof import("./accessGroup").AccessGroup = null as any;
+utilities.lazyLoad(exports, ["AccessGroup"], () => require("./accessGroup"));
 
-// Import resources to register:
-import { AccessGroup } from "./accessGroup";
-import { AccessRule } from "./accessRule";
-import { AutoSnapshotPolicy } from "./autoSnapshotPolicy";
-import { DataFlow } from "./dataFlow";
-import { FileSystem } from "./fileSystem";
-import { Fileset } from "./fileset";
-import { LifecyclePolicy } from "./lifecyclePolicy";
-import { MountTarget } from "./mountTarget";
-import { RecycleBin } from "./recycleBin";
-import { Snapshot } from "./snapshot";
+export { AccessRuleArgs, AccessRuleState } from "./accessRule";
+export type AccessRule = import("./accessRule").AccessRule;
+export const AccessRule: typeof import("./accessRule").AccessRule = null as any;
+utilities.lazyLoad(exports, ["AccessRule"], () => require("./accessRule"));
+
+export { AutoSnapshotPolicyArgs, AutoSnapshotPolicyState } from "./autoSnapshotPolicy";
+export type AutoSnapshotPolicy = import("./autoSnapshotPolicy").AutoSnapshotPolicy;
+export const AutoSnapshotPolicy: typeof import("./autoSnapshotPolicy").AutoSnapshotPolicy = null as any;
+utilities.lazyLoad(exports, ["AutoSnapshotPolicy"], () => require("./autoSnapshotPolicy"));
+
+export { DataFlowArgs, DataFlowState } from "./dataFlow";
+export type DataFlow = import("./dataFlow").DataFlow;
+export const DataFlow: typeof import("./dataFlow").DataFlow = null as any;
+utilities.lazyLoad(exports, ["DataFlow"], () => require("./dataFlow"));
+
+export { FileSystemArgs, FileSystemState } from "./fileSystem";
+export type FileSystem = import("./fileSystem").FileSystem;
+export const FileSystem: typeof import("./fileSystem").FileSystem = null as any;
+utilities.lazyLoad(exports, ["FileSystem"], () => require("./fileSystem"));
+
+export { FilesetArgs, FilesetState } from "./fileset";
+export type Fileset = import("./fileset").Fileset;
+export const Fileset: typeof import("./fileset").Fileset = null as any;
+utilities.lazyLoad(exports, ["Fileset"], () => require("./fileset"));
+
+export { GetAccessGroupsArgs, GetAccessGroupsResult, GetAccessGroupsOutputArgs } from "./getAccessGroups";
+export const getAccessGroups: typeof import("./getAccessGroups").getAccessGroups = null as any;
+export const getAccessGroupsOutput: typeof import("./getAccessGroups").getAccessGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessGroups","getAccessGroupsOutput"], () => require("./getAccessGroups"));
+
+export { GetAccessRulesArgs, GetAccessRulesResult, GetAccessRulesOutputArgs } from "./getAccessRules";
+export const getAccessRules: typeof import("./getAccessRules").getAccessRules = null as any;
+export const getAccessRulesOutput: typeof import("./getAccessRules").getAccessRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessRules","getAccessRulesOutput"], () => require("./getAccessRules"));
+
+export { GetAutoSnapshotPoliciesArgs, GetAutoSnapshotPoliciesResult, GetAutoSnapshotPoliciesOutputArgs } from "./getAutoSnapshotPolicies";
+export const getAutoSnapshotPolicies: typeof import("./getAutoSnapshotPolicies").getAutoSnapshotPolicies = null as any;
+export const getAutoSnapshotPoliciesOutput: typeof import("./getAutoSnapshotPolicies").getAutoSnapshotPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getAutoSnapshotPolicies","getAutoSnapshotPoliciesOutput"], () => require("./getAutoSnapshotPolicies"));
+
+export { GetDataFlowsArgs, GetDataFlowsResult, GetDataFlowsOutputArgs } from "./getDataFlows";
+export const getDataFlows: typeof import("./getDataFlows").getDataFlows = null as any;
+export const getDataFlowsOutput: typeof import("./getDataFlows").getDataFlowsOutput = null as any;
+utilities.lazyLoad(exports, ["getDataFlows","getDataFlowsOutput"], () => require("./getDataFlows"));
+
+export { GetFileSystemsArgs, GetFileSystemsResult, GetFileSystemsOutputArgs } from "./getFileSystems";
+export const getFileSystems: typeof import("./getFileSystems").getFileSystems = null as any;
+export const getFileSystemsOutput: typeof import("./getFileSystems").getFileSystemsOutput = null as any;
+utilities.lazyLoad(exports, ["getFileSystems","getFileSystemsOutput"], () => require("./getFileSystems"));
+
+export { GetFilesetsArgs, GetFilesetsResult, GetFilesetsOutputArgs } from "./getFilesets";
+export const getFilesets: typeof import("./getFilesets").getFilesets = null as any;
+export const getFilesetsOutput: typeof import("./getFilesets").getFilesetsOutput = null as any;
+utilities.lazyLoad(exports, ["getFilesets","getFilesetsOutput"], () => require("./getFilesets"));
+
+export { GetLifecyclePoliciesArgs, GetLifecyclePoliciesResult, GetLifecyclePoliciesOutputArgs } from "./getLifecyclePolicies";
+export const getLifecyclePolicies: typeof import("./getLifecyclePolicies").getLifecyclePolicies = null as any;
+export const getLifecyclePoliciesOutput: typeof import("./getLifecyclePolicies").getLifecyclePoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getLifecyclePolicies","getLifecyclePoliciesOutput"], () => require("./getLifecyclePolicies"));
+
+export { GetMountTargetsArgs, GetMountTargetsResult, GetMountTargetsOutputArgs } from "./getMountTargets";
+export const getMountTargets: typeof import("./getMountTargets").getMountTargets = null as any;
+export const getMountTargetsOutput: typeof import("./getMountTargets").getMountTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getMountTargets","getMountTargetsOutput"], () => require("./getMountTargets"));
+
+export { GetProtocolsArgs, GetProtocolsResult, GetProtocolsOutputArgs } from "./getProtocols";
+export const getProtocols: typeof import("./getProtocols").getProtocols = null as any;
+export const getProtocolsOutput: typeof import("./getProtocols").getProtocolsOutput = null as any;
+utilities.lazyLoad(exports, ["getProtocols","getProtocolsOutput"], () => require("./getProtocols"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { GetSnapshotsArgs, GetSnapshotsResult, GetSnapshotsOutputArgs } from "./getSnapshots";
+export const getSnapshots: typeof import("./getSnapshots").getSnapshots = null as any;
+export const getSnapshotsOutput: typeof import("./getSnapshots").getSnapshotsOutput = null as any;
+utilities.lazyLoad(exports, ["getSnapshots","getSnapshotsOutput"], () => require("./getSnapshots"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
+export { LifecyclePolicyArgs, LifecyclePolicyState } from "./lifecyclePolicy";
+export type LifecyclePolicy = import("./lifecyclePolicy").LifecyclePolicy;
+export const LifecyclePolicy: typeof import("./lifecyclePolicy").LifecyclePolicy = null as any;
+utilities.lazyLoad(exports, ["LifecyclePolicy"], () => require("./lifecyclePolicy"));
+
+export { MountTargetArgs, MountTargetState } from "./mountTarget";
+export type MountTarget = import("./mountTarget").MountTarget;
+export const MountTarget: typeof import("./mountTarget").MountTarget = null as any;
+utilities.lazyLoad(exports, ["MountTarget"], () => require("./mountTarget"));
+
+export { RecycleBinArgs, RecycleBinState } from "./recycleBin";
+export type RecycleBin = import("./recycleBin").RecycleBin;
+export const RecycleBin: typeof import("./recycleBin").RecycleBin = null as any;
+utilities.lazyLoad(exports, ["RecycleBin"], () => require("./recycleBin"));
+
+export { SmbAclAttachmentArgs, SmbAclAttachmentState } from "./smbAclAttachment";
+export type SmbAclAttachment = import("./smbAclAttachment").SmbAclAttachment;
+export const SmbAclAttachment: typeof import("./smbAclAttachment").SmbAclAttachment = null as any;
+utilities.lazyLoad(exports, ["SmbAclAttachment"], () => require("./smbAclAttachment"));
+
+export { SnapshotArgs, SnapshotState } from "./snapshot";
+export type Snapshot = import("./snapshot").Snapshot;
+export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
+utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -62,6 +143,8 @@ const _module = {
                 return new MountTarget(name, <any>undefined, { urn })
             case "alicloud:nas/recycleBin:RecycleBin":
                 return new RecycleBin(name, <any>undefined, { urn })
+            case "alicloud:nas/smbAclAttachment:SmbAclAttachment":
+                return new SmbAclAttachment(name, <any>undefined, { urn })
             case "alicloud:nas/snapshot:Snapshot":
                 return new Snapshot(name, <any>undefined, { urn })
             default:
@@ -78,4 +161,5 @@ pulumi.runtime.registerResourceModule("alicloud", "nas/fileset", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/lifecyclePolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/mountTarget", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/recycleBin", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nas/smbAclAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/snapshot", _module)

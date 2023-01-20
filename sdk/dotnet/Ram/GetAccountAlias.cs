@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.Ram
     public static class GetAccountAlias
     {
         public static Task<GetAccountAliasResult> InvokeAsync(GetAccountAliasArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? new GetAccountAliasArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? new GetAccountAliasArgs(), options.WithDefaults());
 
         public static Output<GetAccountAliasResult> Invoke(GetAccountAliasInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? new GetAccountAliasInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? new GetAccountAliasInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAccountAliasArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountAliasArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -27,9 +27,10 @@ namespace Pulumi.AliCloud.Ram
         public GetAccountAliasArgs()
         {
         }
+        public static new GetAccountAliasArgs Empty => new GetAccountAliasArgs();
     }
 
-    public sealed class GetAccountAliasInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountAliasInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -37,6 +38,7 @@ namespace Pulumi.AliCloud.Ram
         public GetAccountAliasInvokeArgs()
         {
         }
+        public static new GetAccountAliasInvokeArgs Empty => new GetAccountAliasInvokeArgs();
     }
 
 

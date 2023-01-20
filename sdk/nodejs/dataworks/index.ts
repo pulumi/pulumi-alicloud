@@ -5,12 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./folder";
-export * from "./getFolders";
-export * from "./getService";
+export { FolderArgs, FolderState } from "./folder";
+export type Folder = import("./folder").Folder;
+export const Folder: typeof import("./folder").Folder = null as any;
+utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
 
-// Import resources to register:
-import { Folder } from "./folder";
+export { GetFoldersArgs, GetFoldersResult, GetFoldersOutputArgs } from "./getFolders";
+export const getFolders: typeof import("./getFolders").getFolders = null as any;
+export const getFoldersOutput: typeof import("./getFolders").getFoldersOutput = null as any;
+utilities.lazyLoad(exports, ["getFolders","getFoldersOutput"], () => require("./getFolders"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
 
 const _module = {
     version: utilities.getVersion(),

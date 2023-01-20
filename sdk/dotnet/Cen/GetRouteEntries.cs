@@ -19,30 +19,29 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var entry = AliCloud.Cen.GetRouteEntries.Invoke(new()
         ///     {
-        ///         var entry = Output.Create(AliCloud.Cen.GetRouteEntries.InvokeAsync(new AliCloud.Cen.GetRouteEntriesArgs
-        ///         {
-        ///             InstanceId = "cen-id1",
-        ///             RouteTableId = "vtb-id1",
-        ///         }));
-        ///         this.FirstRouteEntriesRouteEntryCidrBlock = entry.Apply(entry =&gt; entry.Entries?[0]?.CidrBlock);
-        ///     }
+        ///         InstanceId = "cen-id1",
+        ///         RouteTableId = "vtb-id1",
+        ///     });
         /// 
-        ///     [Output("firstRouteEntriesRouteEntryCidrBlock")]
-        ///     public Output&lt;string&gt; FirstRouteEntriesRouteEntryCidrBlock { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRouteEntriesRouteEntryCidrBlock"] = entry.Apply(getRouteEntriesResult =&gt; getRouteEntriesResult.Entries[0]?.CidrBlock),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteEntriesResult> InvokeAsync(GetRouteEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:cen/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:cen/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN Route Entries available to the user.
@@ -52,34 +51,33 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var entry = AliCloud.Cen.GetRouteEntries.Invoke(new()
         ///     {
-        ///         var entry = Output.Create(AliCloud.Cen.GetRouteEntries.InvokeAsync(new AliCloud.Cen.GetRouteEntriesArgs
-        ///         {
-        ///             InstanceId = "cen-id1",
-        ///             RouteTableId = "vtb-id1",
-        ///         }));
-        ///         this.FirstRouteEntriesRouteEntryCidrBlock = entry.Apply(entry =&gt; entry.Entries?[0]?.CidrBlock);
-        ///     }
+        ///         InstanceId = "cen-id1",
+        ///         RouteTableId = "vtb-id1",
+        ///     });
         /// 
-        ///     [Output("firstRouteEntriesRouteEntryCidrBlock")]
-        ///     public Output&lt;string&gt; FirstRouteEntriesRouteEntryCidrBlock { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRouteEntriesRouteEntryCidrBlock"] = entry.Apply(getRouteEntriesResult =&gt; getRouteEntriesResult.Entries[0]?.CidrBlock),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouteEntriesResult> Invoke(GetRouteEntriesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRouteEntriesResult>("alicloud:cen/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouteEntriesResult>("alicloud:cen/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRouteEntriesArgs : Pulumi.InvokeArgs
+    public sealed class GetRouteEntriesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The destination CIDR block of the route entry to query.
@@ -105,9 +103,10 @@ namespace Pulumi.AliCloud.Cen
         public GetRouteEntriesArgs()
         {
         }
+        public static new GetRouteEntriesArgs Empty => new GetRouteEntriesArgs();
     }
 
-    public sealed class GetRouteEntriesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRouteEntriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The destination CIDR block of the route entry to query.
@@ -133,6 +132,7 @@ namespace Pulumi.AliCloud.Cen
         public GetRouteEntriesInvokeArgs()
         {
         }
+        public static new GetRouteEntriesInvokeArgs Empty => new GetRouteEntriesInvokeArgs();
     }
 
 

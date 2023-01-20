@@ -19,27 +19,25 @@ namespace Pulumi.AliCloud.Edas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Edas.ApplicationScale("default", new()
     ///     {
-    ///         var @default = new AliCloud.Edas.ApplicationScale("default", new AliCloud.Edas.ApplicationScaleArgs
-    ///         {
-    ///             AppId = @var.App_id,
-    ///             DeployGroup = @var.Deploy_group,
-    ///             EcuInfos = @var.Ecu_info,
-    ///             ForceStatus = @var.Force_status,
-    ///         });
-    ///     }
+    ///         AppId = @var.App_id,
+    ///         DeployGroup = @var.Deploy_group,
+    ///         EcuInfos = @var.Ecu_info,
+    ///         ForceStatus = @var.Force_status,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:edas/applicationScale:ApplicationScale")]
-    public partial class ApplicationScale : Pulumi.CustomResource
+    public partial class ApplicationScale : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the application that you want to deploy.
@@ -115,7 +113,7 @@ namespace Pulumi.AliCloud.Edas
         }
     }
 
-    public sealed class ApplicationScaleArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationScaleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the application that you want to deploy.
@@ -150,9 +148,10 @@ namespace Pulumi.AliCloud.Edas
         public ApplicationScaleArgs()
         {
         }
+        public static new ApplicationScaleArgs Empty => new ApplicationScaleArgs();
     }
 
-    public sealed class ApplicationScaleState : Pulumi.ResourceArgs
+    public sealed class ApplicationScaleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the application that you want to deploy.
@@ -193,5 +192,6 @@ namespace Pulumi.AliCloud.Edas
         public ApplicationScaleState()
         {
         }
+        public static new ApplicationScaleState Empty => new ApplicationScaleState();
     }
 }

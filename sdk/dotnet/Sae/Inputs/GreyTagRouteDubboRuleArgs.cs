@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Sae.Inputs
 {
 
-    public sealed class GreyTagRouteDubboRuleArgs : Pulumi.ResourceArgs
+    public sealed class GreyTagRouteDubboRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
@@ -57,5 +57,6 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public GreyTagRouteDubboRuleArgs()
         {
         }
+        public static new GreyTagRouteDubboRuleArgs Empty => new GreyTagRouteDubboRuleArgs();
     }
 }

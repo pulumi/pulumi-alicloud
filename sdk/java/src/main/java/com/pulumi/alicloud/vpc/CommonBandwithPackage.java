@@ -13,6 +13,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -210,6 +211,20 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
+    }
+    /**
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+     * 
+     */
+    @Export(name="securityProtectionTypes", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> securityProtectionTypes;
+
+    /**
+     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+     * 
+     */
+    public Output<Optional<List<String>>> securityProtectionTypes() {
+        return Codegen.optional(this.securityProtectionTypes);
     }
     /**
      * (Available in 1.120.0+) The status of bandwidth package.

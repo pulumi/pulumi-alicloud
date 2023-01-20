@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ehpc.Inputs
 {
 
-    public sealed class ClusterAdditionalVolumeRoleGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAdditionalVolumeRoleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the nodes to which the additional file system is attached.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Ehpc.Inputs
         public ClusterAdditionalVolumeRoleGetArgs()
         {
         }
+        public static new ClusterAdditionalVolumeRoleGetArgs Empty => new ClusterAdditionalVolumeRoleGetArgs();
     }
 }

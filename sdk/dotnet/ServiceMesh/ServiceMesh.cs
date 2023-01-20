@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:servicemesh/serviceMesh:ServiceMesh")]
-    public partial class ServiceMesh : Pulumi.CustomResource
+    public partial class ServiceMesh : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The array of the cluster ids.
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// The name of the resource.
         /// </summary>
         [Output("serviceMeshName")]
-        public Output<string?> ServiceMeshName { get; private set; } = null!;
+        public Output<string> ServiceMeshName { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource. Valid values: `running` or `initial`.
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         }
     }
 
-    public sealed class ServiceMeshArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMeshArgs : global::Pulumi.ResourceArgs
     {
         [Input("clusterIds")]
         private InputList<string>? _clusterIds;
@@ -208,9 +208,10 @@ namespace Pulumi.AliCloud.ServiceMesh
         public ServiceMeshArgs()
         {
         }
+        public static new ServiceMeshArgs Empty => new ServiceMeshArgs();
     }
 
-    public sealed class ServiceMeshState : Pulumi.ResourceArgs
+    public sealed class ServiceMeshState : global::Pulumi.ResourceArgs
     {
         [Input("clusterIds")]
         private InputList<string>? _clusterIds;
@@ -287,5 +288,6 @@ namespace Pulumi.AliCloud.ServiceMesh
         public ServiceMeshState()
         {
         }
+        public static new ServiceMeshState Empty => new ServiceMeshState();
     }
 }

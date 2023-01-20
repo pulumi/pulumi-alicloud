@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Hbr.Inputs
 {
 
-    public sealed class GetServerBackupPlansFilterInputArgs : Pulumi.ResourceArgs
+    public sealed class GetServerBackupPlansFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         public GetServerBackupPlansFilterInputArgs()
         {
         }
+        public static new GetServerBackupPlansFilterInputArgs Empty => new GetServerBackupPlansFilterInputArgs();
     }
 }

@@ -149,14 +149,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.vswitchName;
     }
     /**
-     * The AZ for the switch.
+     * The AZ for the switch. **Note:** Required for a VPC switch.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The AZ for the switch.
+     * @return The AZ for the switch. **Note:** Required for a VPC switch.
      * 
      */
     public Output<String> zoneId() {

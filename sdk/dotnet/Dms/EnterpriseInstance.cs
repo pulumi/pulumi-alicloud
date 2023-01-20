@@ -18,34 +18,32 @@ namespace Pulumi.AliCloud.Dms
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Dms.EnterpriseInstance("default", new()
     ///     {
-    ///         var @default = new AliCloud.Dms.EnterpriseInstance("default", new AliCloud.Dms.EnterpriseInstanceArgs
-    ///         {
-    ///             DatabasePassword = "Yourpassword123",
-    ///             DatabaseUser = "your_user_name",
-    ///             DbaUid = "1182725234xxxxxxx",
-    ///             EcsRegion = "cn-shanghai",
-    ///             EnvType = "test",
-    ///             ExportTimeout = 600,
-    ///             Host = "rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com",
-    ///             InstanceName = "your_alias_name",
-    ///             InstanceSource = "RDS",
-    ///             InstanceType = "MySQL",
-    ///             NetworkType = "VPC",
-    ///             Port = 3306,
-    ///             QueryTimeout = 60,
-    ///             SafeRule = "自由操作",
-    ///             Tid = 12345,
-    ///         });
-    ///     }
+    ///         DatabasePassword = "Yourpassword123",
+    ///         DatabaseUser = "your_user_name",
+    ///         DbaUid = "1182725234xxxxxxx",
+    ///         EcsRegion = "cn-shanghai",
+    ///         EnvType = "test",
+    ///         ExportTimeout = 600,
+    ///         Host = "rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com",
+    ///         InstanceName = "your_alias_name",
+    ///         InstanceSource = "RDS",
+    ///         InstanceType = "MySQL",
+    ///         NetworkType = "VPC",
+    ///         Port = 3306,
+    ///         QueryTimeout = 60,
+    ///         SafeRule = "自由操作",
+    ///         Tid = 12345,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.AliCloud.Dms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dms/enterpriseInstance:EnterpriseInstance")]
-    public partial class EnterpriseInstance : Pulumi.CustomResource
+    public partial class EnterpriseInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Cross-database query datalink name.
@@ -256,6 +254,10 @@ namespace Pulumi.AliCloud.Dms
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "databasePassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -277,7 +279,7 @@ namespace Pulumi.AliCloud.Dms
         }
     }
 
-    public sealed class EnterpriseInstanceArgs : Pulumi.ResourceArgs
+    public sealed class EnterpriseInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cross-database query datalink name.
@@ -285,11 +287,21 @@ namespace Pulumi.AliCloud.Dms
         [Input("dataLinkName")]
         public Input<string>? DataLinkName { get; set; }
 
+        [Input("databasePassword", required: true)]
+        private Input<string>? _databasePassword;
+
         /// <summary>
         /// Database access password.
         /// </summary>
-        [Input("databasePassword", required: true)]
-        public Input<string> DatabasePassword { get; set; } = null!;
+        public Input<string>? DatabasePassword
+        {
+            get => _databasePassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _databasePassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Database access account.
@@ -438,9 +450,10 @@ namespace Pulumi.AliCloud.Dms
         public EnterpriseInstanceArgs()
         {
         }
+        public static new EnterpriseInstanceArgs Empty => new EnterpriseInstanceArgs();
     }
 
-    public sealed class EnterpriseInstanceState : Pulumi.ResourceArgs
+    public sealed class EnterpriseInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cross-database query datalink name.
@@ -448,11 +461,21 @@ namespace Pulumi.AliCloud.Dms
         [Input("dataLinkName")]
         public Input<string>? DataLinkName { get; set; }
 
+        [Input("databasePassword")]
+        private Input<string>? _databasePassword;
+
         /// <summary>
         /// Database access password.
         /// </summary>
-        [Input("databasePassword")]
-        public Input<string>? DatabasePassword { get; set; }
+        public Input<string>? DatabasePassword
+        {
+            get => _databasePassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _databasePassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Database access account.
@@ -619,5 +642,6 @@ namespace Pulumi.AliCloud.Dms
         public EnterpriseInstanceState()
         {
         }
+        public static new EnterpriseInstanceState Empty => new EnterpriseInstanceState();
     }
 }

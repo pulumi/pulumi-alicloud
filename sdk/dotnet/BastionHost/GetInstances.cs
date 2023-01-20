@@ -23,30 +23,29 @@ namespace Pulumi.AliCloud.BastionHost
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instanceInstances = AliCloud.BastionHost.GetInstances.Invoke(new()
         ///     {
-        ///         var instanceInstances = Output.Create(AliCloud.BastionHost.GetInstances.InvokeAsync(new AliCloud.BastionHost.GetInstancesArgs
-        ///         {
-        ///             DescriptionRegex = "^bastionhost",
-        ///         }));
-        ///         this.Instance = alicloud_bastionhost_instances.Instance.Select(__item =&gt; __item.Id).ToList();
-        ///     }
+        ///         DescriptionRegex = "^bastionhost",
+        ///     });
         /// 
-        ///     [Output("instance")]
-        ///     public Output&lt;string&gt; Instance { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instance"] = alicloud_bastionhost_instances.Instance.Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:bastionhost/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:bastionhost/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **NOTE:** From the version 1.132.0, the data source has been renamed to `alicloud.bastionhost.getInstances`.
@@ -60,34 +59,33 @@ namespace Pulumi.AliCloud.BastionHost
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instanceInstances = AliCloud.BastionHost.GetInstances.Invoke(new()
         ///     {
-        ///         var instanceInstances = Output.Create(AliCloud.BastionHost.GetInstances.InvokeAsync(new AliCloud.BastionHost.GetInstancesArgs
-        ///         {
-        ///             DescriptionRegex = "^bastionhost",
-        ///         }));
-        ///         this.Instance = alicloud_bastionhost_instances.Instance.Select(__item =&gt; __item.Id).ToList();
-        ///     }
+        ///         DescriptionRegex = "^bastionhost",
+        ///     });
         /// 
-        ///     [Output("instance")]
-        ///     public Output&lt;string&gt; Instance { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instance"] = alicloud_bastionhost_instances.Instance.Select(__item =&gt; __item.Id).ToList(),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:bastionhost/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:bastionhost/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A regex string to filter results by the instance description.
@@ -119,23 +117,21 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// A map of tags assigned to the bastionhost instance. It must be in the format:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instance = AliCloud.BastionHost.GetInstances.Invoke(new()
         ///     {
-        ///         var instance = Output.Create(AliCloud.BastionHost.GetInstances.InvokeAsync(new AliCloud.BastionHost.GetInstancesArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "tagKey1", "tagValue1" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public Dictionary<string, object> Tags
@@ -147,9 +143,10 @@ namespace Pulumi.AliCloud.BastionHost
         public GetInstancesArgs()
         {
         }
+        public static new GetInstancesArgs Empty => new GetInstancesArgs();
     }
 
-    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A regex string to filter results by the instance description.
@@ -181,23 +178,21 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// A map of tags assigned to the bastionhost instance. It must be in the format:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instance = AliCloud.BastionHost.GetInstances.Invoke(new()
         ///     {
-        ///         var instance = Output.Create(AliCloud.BastionHost.GetInstances.InvokeAsync(new AliCloud.BastionHost.GetInstancesArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "tagKey1", "tagValue1" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public InputMap<object> Tags
@@ -209,6 +204,7 @@ namespace Pulumi.AliCloud.BastionHost
         public GetInstancesInvokeArgs()
         {
         }
+        public static new GetInstancesInvokeArgs Empty => new GetInstancesInvokeArgs();
     }
 
 

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["3e74e684-cbb5-xxxx"],
  *     nameRegex: "tf-testAcc",
  * });
- * export const firstBrainIndustrialPidOrganizationId = example.then(example => example.organizations?[0]?.id);
+ * export const firstBrainIndustrialPidOrganizationId = example.then(example => example.organizations?.[0]?.id);
  * ```
  */
 export function getIndustrialPidOrganizations(args?: GetIndustrialPidOrganizationsArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialPidOrganizationsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -74,9 +72,28 @@ export interface GetIndustrialPidOrganizationsResult {
     readonly outputFile?: string;
     readonly parentOrganizationId?: string;
 }
-
+/**
+ * This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.113.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.brain.getIndustrialPidOrganizations({
+ *     ids: ["3e74e684-cbb5-xxxx"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstBrainIndustrialPidOrganizationId = example.then(example => example.organizations?.[0]?.id);
+ * ```
+ */
 export function getIndustrialPidOrganizationsOutput(args?: GetIndustrialPidOrganizationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialPidOrganizationsResult> {
-    return pulumi.output(args).apply(a => getIndustrialPidOrganizations(a, opts))
+    return pulumi.output(args).apply((a: any) => getIndustrialPidOrganizations(a, opts))
 }
 
 /**

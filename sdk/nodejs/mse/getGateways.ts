@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,24 +22,21 @@ import * as utilities from "../utilities";
  * const ids = alicloud.mse.getGateways({
  *     ids: ["example_id"],
  * });
- * export const mseGatewayId1 = ids.then(ids => ids.gateways?[0]?.id);
+ * export const mseGatewayId1 = ids.then(ids => ids.gateways?.[0]?.id);
  * const nameRegex = alicloud.mse.getGateways({
  *     nameRegex: "^my-Gateway",
  * });
- * export const mseGatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways?[0]?.id);
+ * export const mseGatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways?.[0]?.id);
  * const status = alicloud.mse.getGateways({
  *     status: "2",
  * });
- * export const mseGatewayId3 = status.then(status => status.gateways?[0]?.id);
+ * export const mseGatewayId3 = status.then(status => status.gateways?.[0]?.id);
  * ```
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mse/getGateways:getGateways", {
         "enableDetails": args.enableDetails,
         "gatewayName": args.gatewayName,
@@ -99,9 +97,35 @@ export interface GetGatewaysResult {
     readonly status?: string;
     readonly vpcId?: string;
 }
-
+/**
+ * This data source provides the Mse Gateways of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.157.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.mse.getGateways({
+ *     ids: ["example_id"],
+ * });
+ * export const mseGatewayId1 = ids.then(ids => ids.gateways?.[0]?.id);
+ * const nameRegex = alicloud.mse.getGateways({
+ *     nameRegex: "^my-Gateway",
+ * });
+ * export const mseGatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways?.[0]?.id);
+ * const status = alicloud.mse.getGateways({
+ *     status: "2",
+ * });
+ * export const mseGatewayId3 = status.then(status => status.gateways?.[0]?.id);
+ * ```
+ */
 export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
-    return pulumi.output(args).apply(a => getGateways(a, opts))
+    return pulumi.output(args).apply((a: any) => getGateways(a, opts))
 }
 
 /**

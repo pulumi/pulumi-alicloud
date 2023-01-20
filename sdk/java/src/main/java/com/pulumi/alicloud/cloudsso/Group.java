@@ -21,8 +21,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available in v1.138.0+.
  * 
- * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
- * 
  * ## Import
  * 
  * Cloud SSO Group can be imported using the id, e.g.

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -47,6 +48,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly adAuthServers!: pulumi.Output<outputs.bastionhost.InstanceAdAuthServer[]>;
     /**
+     * The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+     */
+    public readonly bandwidth!: pulumi.Output<string>;
+    /**
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     public readonly description!: pulumi.Output<string>;
@@ -64,10 +69,30 @@ export class Instance extends pulumi.CustomResource {
     public readonly licenseCode!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<number | undefined>;
     /**
+     * The plan code of Cloud Bastionhost instance. Valid values:
+     */
+    public readonly planCode!: pulumi.Output<string>;
+    /**
+     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
+     */
+    public readonly renewPeriod!: pulumi.Output<number | undefined>;
+    /**
+     * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+     */
+    public readonly renewalPeriodUnit!: pulumi.Output<string>;
+    /**
+     * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
+     */
+    public readonly renewalStatus!: pulumi.Output<string>;
+    /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     public readonly securityGroupIds!: pulumi.Output<string[]>;
+    /**
+     * The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+     */
+    public readonly storage!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -91,37 +116,58 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["adAuthServers"] = state ? state.adAuthServers : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enablePublicAccess"] = state ? state.enablePublicAccess : undefined;
             resourceInputs["ldapAuthServers"] = state ? state.ldapAuthServers : undefined;
             resourceInputs["licenseCode"] = state ? state.licenseCode : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["planCode"] = state ? state.planCode : undefined;
+            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
+            resourceInputs["renewalPeriodUnit"] = state ? state.renewalPeriodUnit : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["storage"] = state ? state.storage : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
+            if ((!args || args.bandwidth === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'bandwidth'");
+            }
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
             if ((!args || args.licenseCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'licenseCode'");
             }
+            if ((!args || args.planCode === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'planCode'");
+            }
             if ((!args || args.securityGroupIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupIds'");
+            }
+            if ((!args || args.storage === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'storage'");
             }
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
             resourceInputs["adAuthServers"] = args ? args.adAuthServers : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enablePublicAccess"] = args ? args.enablePublicAccess : undefined;
             resourceInputs["ldapAuthServers"] = args ? args.ldapAuthServers : undefined;
             resourceInputs["licenseCode"] = args ? args.licenseCode : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["planCode"] = args ? args.planCode : undefined;
+            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
+            resourceInputs["renewalPeriodUnit"] = args ? args.renewalPeriodUnit : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["storage"] = args ? args.storage : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
@@ -138,6 +184,10 @@ export interface InstanceState {
      * The AD auth server of the Instance. See the following `Block adAuthServer`.
      */
     adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[]>;
+    /**
+     * The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+     */
+    bandwidth?: pulumi.Input<string>;
     /**
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
@@ -156,10 +206,30 @@ export interface InstanceState {
     licenseCode?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     /**
+     * The plan code of Cloud Bastionhost instance. Valid values:
+     */
+    planCode?: pulumi.Input<string>;
+    /**
+     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
+     */
+    renewPeriod?: pulumi.Input<number>;
+    /**
+     * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+     */
+    renewalPeriodUnit?: pulumi.Input<string>;
+    /**
+     * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
+     */
+    renewalStatus?: pulumi.Input<string>;
+    /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+     */
+    storage?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -179,6 +249,10 @@ export interface InstanceArgs {
      */
     adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[]>;
     /**
+     * The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+     */
+    bandwidth: pulumi.Input<string>;
+    /**
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     description: pulumi.Input<string>;
@@ -196,10 +270,30 @@ export interface InstanceArgs {
     licenseCode: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     /**
+     * The plan code of Cloud Bastionhost instance. Valid values:
+     */
+    planCode: pulumi.Input<string>;
+    /**
+     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
+     */
+    renewPeriod?: pulumi.Input<number>;
+    /**
+     * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+     */
+    renewalPeriodUnit?: pulumi.Input<string>;
+    /**
+     * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
+     */
+    renewalStatus?: pulumi.Input<string>;
+    /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+     */
+    storage: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

@@ -5,6 +5,8 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .extension_provider import *
+from .get_extension_providers import *
 from .get_service_meshes import *
 from .get_versions import *
 from .service_mesh import *

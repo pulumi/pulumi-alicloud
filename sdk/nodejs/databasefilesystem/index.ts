@@ -5,18 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getInstances";
-export * from "./getSnapshots";
-export * from "./instance";
-export * from "./instanceAttachment";
-export * from "./serviceLinkedRole";
-export * from "./snapshot";
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
 
-// Import resources to register:
-import { Instance } from "./instance";
-import { InstanceAttachment } from "./instanceAttachment";
-import { ServiceLinkedRole } from "./serviceLinkedRole";
-import { Snapshot } from "./snapshot";
+export { GetSnapshotsArgs, GetSnapshotsResult, GetSnapshotsOutputArgs } from "./getSnapshots";
+export const getSnapshots: typeof import("./getSnapshots").getSnapshots = null as any;
+export const getSnapshotsOutput: typeof import("./getSnapshots").getSnapshotsOutput = null as any;
+utilities.lazyLoad(exports, ["getSnapshots","getSnapshotsOutput"], () => require("./getSnapshots"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { InstanceAttachmentArgs, InstanceAttachmentState } from "./instanceAttachment";
+export type InstanceAttachment = import("./instanceAttachment").InstanceAttachment;
+export const InstanceAttachment: typeof import("./instanceAttachment").InstanceAttachment = null as any;
+utilities.lazyLoad(exports, ["InstanceAttachment"], () => require("./instanceAttachment"));
+
+export { ServiceLinkedRoleArgs, ServiceLinkedRoleState } from "./serviceLinkedRole";
+export type ServiceLinkedRole = import("./serviceLinkedRole").ServiceLinkedRole;
+export const ServiceLinkedRole: typeof import("./serviceLinkedRole").ServiceLinkedRole = null as any;
+utilities.lazyLoad(exports, ["ServiceLinkedRole"], () => require("./serviceLinkedRole"));
+
+export { SnapshotArgs, SnapshotState } from "./snapshot";
+export type Snapshot = import("./snapshot").Snapshot;
+export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
+utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
+
 
 const _module = {
     version: utilities.getVersion(),

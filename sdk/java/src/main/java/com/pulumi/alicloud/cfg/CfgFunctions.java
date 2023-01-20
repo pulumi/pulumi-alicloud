@@ -1815,7 +1815,7 @@ public final class CfgFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1858,7 +1858,7 @@ public final class CfgFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1901,7 +1901,7 @@ public final class CfgFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1944,7 +1944,7 @@ public final class CfgFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1987,7 +1987,7 @@ public final class CfgFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2030,7 +2030,7 @@ public final class CfgFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cfg.CfgFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetRulesArgs;
+     * import com.pulumi.alicloud.cfg.inputs.GetRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

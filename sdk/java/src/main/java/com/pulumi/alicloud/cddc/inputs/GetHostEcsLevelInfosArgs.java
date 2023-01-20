@@ -54,10 +54,6 @@ public final class GetHostEcsLevelInfosArgs extends com.pulumi.resources.InvokeA
 
     /**
      * The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
-     * * `local_ssd`: specifies that the host uses local SSDs.
-     * * `cloud_essd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-     * * `cloud_essd2`: specifies that the host uses ESSDs of PL2.
-     * * `cloud_essd3`: specifies that the host uses ESSDs of PL3.
      * 
      */
     @Import(name="storageType", required=true)
@@ -65,10 +61,6 @@ public final class GetHostEcsLevelInfosArgs extends com.pulumi.resources.InvokeA
 
     /**
      * @return The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
-     * * `local_ssd`: specifies that the host uses local SSDs.
-     * * `cloud_essd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-     * * `cloud_essd2`: specifies that the host uses ESSDs of PL2.
-     * * `cloud_essd3`: specifies that the host uses ESSDs of PL3.
      * 
      */
     public Output<String> storageType() {
@@ -171,10 +163,6 @@ public final class GetHostEcsLevelInfosArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param storageType The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
-         * * `local_ssd`: specifies that the host uses local SSDs.
-         * * `cloud_essd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-         * * `cloud_essd2`: specifies that the host uses ESSDs of PL2.
-         * * `cloud_essd3`: specifies that the host uses ESSDs of PL3.
          * 
          * @return builder
          * 
@@ -186,10 +174,6 @@ public final class GetHostEcsLevelInfosArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param storageType The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
-         * * `local_ssd`: specifies that the host uses local SSDs.
-         * * `cloud_essd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-         * * `cloud_essd2`: specifies that the host uses ESSDs of PL2.
-         * * `cloud_essd3`: specifies that the host uses ESSDs of PL3.
          * 
          * @return builder
          * 

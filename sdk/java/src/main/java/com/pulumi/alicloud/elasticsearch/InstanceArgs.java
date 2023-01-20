@@ -82,7 +82,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The single data node storage space.
-     * - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
      * 
      */
     @Import(name="dataNodeDiskSize", required=true)
@@ -90,7 +89,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The single data node storage space.
-     * - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
      * 
      */
     public Output<Integer> dataNodeDiskSize() {
@@ -599,7 +597,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataNodeDiskSize The single data node storage space.
-         * - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
          * 
          * @return builder
          * 
@@ -611,7 +608,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataNodeDiskSize The single data node storage space.
-         * - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
          * 
          * @return builder
          * 

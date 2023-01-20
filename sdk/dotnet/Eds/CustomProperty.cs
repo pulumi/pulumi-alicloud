@@ -23,27 +23,25 @@ namespace Pulumi.AliCloud.Eds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Eds.CustomProperty("example", new()
     ///     {
-    ///         var example = new AliCloud.Eds.CustomProperty("example", new AliCloud.Eds.CustomPropertyArgs
+    ///         PropertyKey = "example_key",
+    ///         PropertyValues = new[]
     ///         {
-    ///             PropertyKey = "example_key",
-    ///             PropertyValues = 
+    ///             new AliCloud.Eds.Inputs.CustomPropertyPropertyValueArgs
     ///             {
-    ///                 new AliCloud.Eds.Inputs.CustomPropertyPropertyValueArgs
-    ///                 {
-    ///                     PropertyValue = "example_value",
-    ///                 },
+    ///                 PropertyValue = "example_value",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.AliCloud.Eds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/customProperty:CustomProperty")]
-    public partial class CustomProperty : Pulumi.CustomResource
+    public partial class CustomProperty : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Custom attribute key.
@@ -113,7 +111,7 @@ namespace Pulumi.AliCloud.Eds
         }
     }
 
-    public sealed class CustomPropertyArgs : Pulumi.ResourceArgs
+    public sealed class CustomPropertyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Custom attribute key.
@@ -136,9 +134,10 @@ namespace Pulumi.AliCloud.Eds
         public CustomPropertyArgs()
         {
         }
+        public static new CustomPropertyArgs Empty => new CustomPropertyArgs();
     }
 
-    public sealed class CustomPropertyState : Pulumi.ResourceArgs
+    public sealed class CustomPropertyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Custom attribute key.
@@ -161,5 +160,6 @@ namespace Pulumi.AliCloud.Eds
         public CustomPropertyState()
         {
         }
+        public static new CustomPropertyState Empty => new CustomPropertyState();
     }
 }

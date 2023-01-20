@@ -48,6 +48,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.adAuthServers;
     }
     /**
+     * The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+     * 
+     */
+    @Export(name="bandwidth", type=String.class, parameters={})
+    private Output<String> bandwidth;
+
+    /**
+     * @return The bandwidth of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: Mbit/s.
+     * 
+     */
+    public Output<String> bandwidth() {
+        return this.bandwidth;
+    }
+    /**
      * Description of the instance. This name can have a string of 1 to 63 characters.
      * 
      */
@@ -110,24 +124,94 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
+     * The plan code of Cloud Bastionhost instance. Valid values:
+     * 
+     */
+    @Export(name="planCode", type=String.class, parameters={})
+    private Output<String> planCode;
+
+    /**
+     * @return The plan code of Cloud Bastionhost instance. Valid values:
+     * 
+     */
+    public Output<String> planCode() {
+        return this.planCode;
+    }
+    /**
+     * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+     * 
+     */
+    @Export(name="renewPeriod", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> renewPeriod;
+
+    /**
+     * @return Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+     * 
+     */
+    public Output<Optional<Integer>> renewPeriod() {
+        return Codegen.optional(this.renewPeriod);
+    }
+    /**
+     * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+     * 
+     */
+    @Export(name="renewalPeriodUnit", type=String.class, parameters={})
+    private Output<String> renewalPeriodUnit;
+
+    /**
+     * @return The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+     * 
+     */
+    public Output<String> renewalPeriodUnit() {
+        return this.renewalPeriodUnit;
+    }
+    /**
+     * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+     * 
+     */
+    @Export(name="renewalStatus", type=String.class, parameters={})
+    private Output<String> renewalStatus;
+
+    /**
+     * @return Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+     * 
+     */
+    public Output<String> renewalStatus() {
+        return this.renewalStatus;
+    }
+    /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> resourceGroupId;
+    private Output<String> resourceGroupId;
 
     /**
      * @return The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      * 
      */
-    public Output<Optional<String>> resourceGroupId() {
-        return Codegen.optional(this.resourceGroupId);
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     @Export(name="securityGroupIds", type=List.class, parameters={String.class})
     private Output<List<String>> securityGroupIds;
 
     public Output<List<String>> securityGroupIds() {
         return this.securityGroupIds;
+    }
+    /**
+     * The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+     * 
+     */
+    @Export(name="storage", type=String.class, parameters={})
+    private Output<String> storage;
+
+    /**
+     * @return The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
+     * 
+     */
+    public Output<String> storage() {
+        return this.storage;
     }
     /**
      * A mapping of tags to assign to the resource.

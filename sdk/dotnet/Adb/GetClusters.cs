@@ -17,30 +17,29 @@ namespace Pulumi.AliCloud.Adb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var adbClustersDs = AliCloud.Adb.GetClusters.Invoke(new()
         ///     {
-        ///         var adbClustersDs = Output.Create(AliCloud.Adb.GetClusters.InvokeAsync(new AliCloud.Adb.GetClustersArgs
-        ///         {
-        ///             DescriptionRegex = "am-\\w+",
-        ///             Status = "Running",
-        ///         }));
-        ///         this.FirstAdbClusterId = adbClustersDs.Apply(adbClustersDs =&gt; adbClustersDs.Clusters?[0]?.Id);
-        ///     }
+        ///         DescriptionRegex = "am-\\w+",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("firstAdbClusterId")]
-        ///     public Output&lt;string&gt; FirstAdbClusterId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAdbClusterId"] = adbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -48,34 +47,33 @@ namespace Pulumi.AliCloud.Adb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var adbClustersDs = AliCloud.Adb.GetClusters.Invoke(new()
         ///     {
-        ///         var adbClustersDs = Output.Create(AliCloud.Adb.GetClusters.InvokeAsync(new AliCloud.Adb.GetClustersArgs
-        ///         {
-        ///             DescriptionRegex = "am-\\w+",
-        ///             Status = "Running",
-        ///         }));
-        ///         this.FirstAdbClusterId = adbClustersDs.Apply(adbClustersDs =&gt; adbClustersDs.Clusters?[0]?.Id);
-        ///     }
+        ///         DescriptionRegex = "am-\\w+",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("firstAdbClusterId")]
-        ///     public Output&lt;string&gt; FirstAdbClusterId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAdbClusterId"] = adbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClustersArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The description of the ADB cluster.
@@ -139,9 +137,10 @@ namespace Pulumi.AliCloud.Adb
         public GetClustersArgs()
         {
         }
+        public static new GetClustersArgs Empty => new GetClustersArgs();
     }
 
-    public sealed class GetClustersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The description of the ADB cluster.
@@ -205,6 +204,7 @@ namespace Pulumi.AliCloud.Adb
         public GetClustersInvokeArgs()
         {
         }
+        public static new GetClustersInvokeArgs Empty => new GetClustersInvokeArgs();
     }
 
 

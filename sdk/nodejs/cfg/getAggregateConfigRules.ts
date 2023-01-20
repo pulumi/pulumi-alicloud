@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -23,15 +24,12 @@ import * as utilities from "../utilities";
  *     ids: ["cr-5154626622af0034****"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstConfigAggregateConfigRuleId = example.then(example => example.rules?[0]?.id);
+ * export const firstConfigAggregateConfigRuleId = example.then(example => example.rules?.[0]?.id);
  * ```
  */
 export function getAggregateConfigRules(args: GetAggregateConfigRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregateConfigRulesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", {
         "aggregateConfigRuleName": args.aggregateConfigRuleName,
         "aggregatorId": args.aggregatorId,
@@ -89,7 +87,6 @@ export interface GetAggregateConfigRulesResult {
     readonly aggregateConfigRuleName?: string;
     /**
      * The ID of Aggregator.
-     * * `compliance` -The Compliance information.
      */
     readonly aggregatorId: string;
     readonly enableDetails?: boolean;
@@ -117,9 +114,29 @@ export interface GetAggregateConfigRulesResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.124.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cfg.getAggregateConfigRules({
+ *     aggregatorId: "ca-3a9b626622af001d****",
+ *     ids: ["cr-5154626622af0034****"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstConfigAggregateConfigRuleId = example.then(example => example.rules?.[0]?.id);
+ * ```
+ */
 export function getAggregateConfigRulesOutput(args: GetAggregateConfigRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateConfigRulesResult> {
-    return pulumi.output(args).apply(a => getAggregateConfigRules(a, opts))
+    return pulumi.output(args).apply((a: any) => getAggregateConfigRules(a, opts))
 }
 
 /**

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const local = new alicloud.bastionhost.User("Local", {
+ * const local = new alicloud.bastionhost.User("local", {
  *     instanceId: "example_value",
  *     mobile: "13312345678",
  *     mobileCountryCode: "CN",
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     source: "Local",
  *     userName: "my-local-user",
  * });
- * const ram = new alicloud.bastionhost.User("Ram", {
+ * const ram = new alicloud.bastionhost.User("ram", {
  *     instanceId: "example_value",
  *     mobile: "13312345678",
  *     mobileCountryCode: "CN",
@@ -186,7 +186,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["mobile"] = args ? args.mobile : undefined;
             resourceInputs["mobileCountryCode"] = args ? args.mobileCountryCode : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["sourceUserId"] = args ? args.sourceUserId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
@@ -194,6 +194,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
 }

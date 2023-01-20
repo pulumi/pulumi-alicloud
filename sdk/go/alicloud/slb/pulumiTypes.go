@@ -2512,6 +2512,8 @@ type GetListenersSlbListener struct {
 	PersistenceTimeout int `pulumi:"persistenceTimeout"`
 	// Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
 	Protocol string `pulumi:"protocol"`
+	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	ProxyProtocolV2Enabled bool `pulumi:"proxyProtocolV2Enabled"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout int `pulumi:"requestTimeout"`
 	// Algorithm used to distribute traffic. Possible values: `wrr` (weighted round robin), `wlc` (weighted least connection) and `rr` (round robin).
@@ -2603,6 +2605,8 @@ type GetListenersSlbListenerArgs struct {
 	PersistenceTimeout pulumi.IntInput `pulumi:"persistenceTimeout"`
 	// Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	ProxyProtocolV2Enabled pulumi.BoolInput `pulumi:"proxyProtocolV2Enabled"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntInput `pulumi:"requestTimeout"`
 	// Algorithm used to distribute traffic. Possible values: `wrr` (weighted round robin), `wlc` (weighted least connection) and `rr` (round robin).
@@ -2803,6 +2807,11 @@ func (o GetListenersSlbListenerOutput) PersistenceTimeout() pulumi.IntOutput {
 // Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
 func (o GetListenersSlbListenerOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersSlbListener) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+func (o GetListenersSlbListenerOutput) ProxyProtocolV2Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListenersSlbListener) bool { return v.ProxyProtocolV2Enabled }).(pulumi.BoolOutput)
 }
 
 // Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
@@ -4269,9 +4278,8 @@ func (o GetRulesSlbRuleArrayOutput) Index(i pulumi.IntInput) GetRulesSlbRuleOutp
 
 type GetServerCertificatesCertificate struct {
 	// Id of server certificate issued by alibaba cloud.
-	// * `alicloudCertificateName`- Name of server certificate issued by alibaba cloud.
-	// * `isAlicloudCertificate`- Is server certificate issued by alibaba cloud or not.
-	AlicloudCertificateId   string `pulumi:"alicloudCertificateId"`
+	AlicloudCertificateId string `pulumi:"alicloudCertificateId"`
+	// Name of server certificate issued by alibaba cloud.
 	AlicloudCertificateName string `pulumi:"alicloudCertificateName"`
 	// Server certificate common name.
 	CommonName string `pulumi:"commonName"`
@@ -4286,8 +4294,9 @@ type GetServerCertificatesCertificate struct {
 	// Server certificate fingerprint.
 	Fingerprint string `pulumi:"fingerprint"`
 	// Server certificate ID.
-	Id                    string `pulumi:"id"`
-	IsAlicloudCertificate bool   `pulumi:"isAlicloudCertificate"`
+	Id string `pulumi:"id"`
+	// Is server certificate issued by alibaba cloud or not.
+	IsAlicloudCertificate bool `pulumi:"isAlicloudCertificate"`
 	// Server certificate name.
 	Name string `pulumi:"name"`
 	// The Id of resource group which the slb server certificates belongs.
@@ -4311,9 +4320,8 @@ type GetServerCertificatesCertificateInput interface {
 
 type GetServerCertificatesCertificateArgs struct {
 	// Id of server certificate issued by alibaba cloud.
-	// * `alicloudCertificateName`- Name of server certificate issued by alibaba cloud.
-	// * `isAlicloudCertificate`- Is server certificate issued by alibaba cloud or not.
-	AlicloudCertificateId   pulumi.StringInput `pulumi:"alicloudCertificateId"`
+	AlicloudCertificateId pulumi.StringInput `pulumi:"alicloudCertificateId"`
+	// Name of server certificate issued by alibaba cloud.
 	AlicloudCertificateName pulumi.StringInput `pulumi:"alicloudCertificateName"`
 	// Server certificate common name.
 	CommonName pulumi.StringInput `pulumi:"commonName"`
@@ -4328,8 +4336,9 @@ type GetServerCertificatesCertificateArgs struct {
 	// Server certificate fingerprint.
 	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
 	// Server certificate ID.
-	Id                    pulumi.StringInput `pulumi:"id"`
-	IsAlicloudCertificate pulumi.BoolInput   `pulumi:"isAlicloudCertificate"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// Is server certificate issued by alibaba cloud or not.
+	IsAlicloudCertificate pulumi.BoolInput `pulumi:"isAlicloudCertificate"`
 	// Server certificate name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The Id of resource group which the slb server certificates belongs.
@@ -4392,12 +4401,11 @@ func (o GetServerCertificatesCertificateOutput) ToGetServerCertificatesCertifica
 }
 
 // Id of server certificate issued by alibaba cloud.
-// * `alicloudCertificateName`- Name of server certificate issued by alibaba cloud.
-// * `isAlicloudCertificate`- Is server certificate issued by alibaba cloud or not.
 func (o GetServerCertificatesCertificateOutput) AlicloudCertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerCertificatesCertificate) string { return v.AlicloudCertificateId }).(pulumi.StringOutput)
 }
 
+// Name of server certificate issued by alibaba cloud.
 func (o GetServerCertificatesCertificateOutput) AlicloudCertificateName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerCertificatesCertificate) string { return v.AlicloudCertificateName }).(pulumi.StringOutput)
 }
@@ -4437,6 +4445,7 @@ func (o GetServerCertificatesCertificateOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerCertificatesCertificate) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Is server certificate issued by alibaba cloud or not.
 func (o GetServerCertificatesCertificateOutput) IsAlicloudCertificate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerCertificatesCertificate) bool { return v.IsAlicloudCertificate }).(pulumi.BoolOutput)
 }

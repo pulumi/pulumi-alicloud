@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ListenerDefaultActionForwardGroupConfigArgs : Pulumi.ResourceArgs
+    public sealed class ListenerDefaultActionForwardGroupConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("serverGroupTuples", required: true)]
         private InputList<Inputs.ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs>? _serverGroupTuples;
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public ListenerDefaultActionForwardGroupConfigArgs()
         {
         }
+        public static new ListenerDefaultActionForwardGroupConfigArgs Empty => new ListenerDefaultActionForwardGroupConfigArgs();
     }
 }

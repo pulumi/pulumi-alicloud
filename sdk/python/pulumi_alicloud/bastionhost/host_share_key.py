@@ -303,12 +303,14 @@ class HostShareKey(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
-            __props__.__dict__["pass_phrase"] = pass_phrase
+            __props__.__dict__["pass_phrase"] = None if pass_phrase is None else pulumi.Output.secret(pass_phrase)
             if private_key is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key'")
-            __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             __props__.__dict__["host_share_key_id"] = None
             __props__.__dict__["private_key_finger_print"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["passPhrase", "privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(HostShareKey, __self__).__init__(
             'alicloud:bastionhost/hostShareKey:HostShareKey',
             resource_name,

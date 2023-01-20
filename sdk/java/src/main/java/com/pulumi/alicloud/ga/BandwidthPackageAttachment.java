@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Global Accelerator (GA) Bandwidth Package Attachment resource.
  * 
- * For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
+ * For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/bandwidthpackageaddaccelerator).
  * 
  * &gt; **NOTE:** Available in v1.113.0+.
  * 
@@ -75,10 +75,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Ga Bandwidth Package Attachment can be imported using the id, e.g.
+ * Ga Bandwidth Package Attachment can be imported using the id. Format to `&lt;accelerator_id&gt;:&lt;bandwidth_package_id&gt;`, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example &lt;accelerator_id&gt;:&lt;bandwidth_package_id&gt;
+ *  $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example your_accelerator_id:your_bandwidth_package_id
  * ```
  * 
  */
@@ -113,14 +113,14 @@ public class BandwidthPackageAttachment extends com.pulumi.resources.CustomResou
         return this.accelerators;
     }
     /**
-     * The ID of the bandwidth plan to disassociate.
+     * The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
      * 
      */
     @Export(name="bandwidthPackageId", type=String.class, parameters={})
     private Output<String> bandwidthPackageId;
 
     /**
-     * @return The ID of the bandwidth plan to disassociate.
+     * @return The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
      * 
      */
     public Output<String> bandwidthPackageId() {

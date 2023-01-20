@@ -19,33 +19,30 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instancesDs = AliCloud.Ecs.GetInstances.Invoke(new()
         ///     {
-        ///         var instancesDs = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "web_server",
-        ///             Status = "Running",
-        ///         }));
-        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances?[0]?.Id);
-        ///         this.InstanceIds = instancesDs.Apply(instancesDs =&gt; instancesDs.Ids);
-        ///     }
+        ///         NameRegex = "web_server",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("firstInstanceId")]
-        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
-        ///     [Output("instanceIds")]
-        ///     public Output&lt;string&gt; InstanceIds { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceId"] = instancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["instanceIds"] = instancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Ids),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:ecs/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:ecs/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
@@ -55,37 +52,34 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instancesDs = AliCloud.Ecs.GetInstances.Invoke(new()
         ///     {
-        ///         var instancesDs = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "web_server",
-        ///             Status = "Running",
-        ///         }));
-        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances?[0]?.Id);
-        ///         this.InstanceIds = instancesDs.Apply(instancesDs =&gt; instancesDs.Ids);
-        ///     }
+        ///         NameRegex = "web_server",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("firstInstanceId")]
-        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
-        ///     [Output("instanceIds")]
-        ///     public Output&lt;string&gt; InstanceIds { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstInstanceId"] = instancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["instanceIds"] = instancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Ids),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:ecs/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:ecs/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Availability zone where instances are located.
@@ -150,24 +144,22 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var taggedInstances = AliCloud.Ecs.GetInstances.Invoke(new()
         ///     {
-        ///         var taggedInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///                 { "tagKey2", "tagValue2" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "tagKey1", "tagValue1" },
+        ///             { "tagKey2", "tagValue2" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public Dictionary<string, object> Tags
@@ -191,9 +183,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetInstancesArgs()
         {
         }
+        public static new GetInstancesArgs Empty => new GetInstancesArgs();
     }
 
-    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Availability zone where instances are located.
@@ -258,24 +251,22 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var taggedInstances = AliCloud.Ecs.GetInstances.Invoke(new()
         ///     {
-        ///         var taggedInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///                 { "tagKey2", "tagValue2" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "tagKey1", "tagValue1" },
+        ///             { "tagKey2", "tagValue2" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public InputMap<object> Tags
@@ -299,6 +290,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetInstancesInvokeArgs()
         {
         }
+        public static new GetInstancesInvokeArgs Empty => new GetInstancesInvokeArgs();
     }
 
 

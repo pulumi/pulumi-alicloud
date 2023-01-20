@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Emr.Inputs
 {
 
-    public sealed class ClusterHostGroupGetArgs : Pulumi.ResourceArgs
+    public sealed class ClusterHostGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+        /// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         /// </summary>
         [Input("chargeType")]
         public Input<string>? ChargeType { get; set; }
@@ -108,5 +108,6 @@ namespace Pulumi.AliCloud.Emr.Inputs
         public ClusterHostGroupGetArgs()
         {
         }
+        public static new ClusterHostGroupGetArgs Empty => new ClusterHostGroupGetArgs();
     }
 }

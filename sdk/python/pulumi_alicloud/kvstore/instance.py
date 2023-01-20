@@ -986,6 +986,7 @@ class _InstanceState:
         :param pulumi.Input[str] business_info: The ID of the event or the business information.
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, Any]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        :param pulumi.Input[str] connection_domain: Intranet connection address of the KVStore instance.
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] coupon_no: The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
@@ -1032,7 +1033,6 @@ class _InstanceState:
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
                Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
         :param pulumi.Input[str] status: The status of KVStore DBInstance.
-               * `connection_domain`- Intranet connection address of the KVStore instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_auth_mode: Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
@@ -1318,6 +1318,9 @@ class _InstanceState:
     @property
     @pulumi.getter(name="connectionDomain")
     def connection_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Intranet connection address of the KVStore instance.
+        """
         return pulumi.get(self, "connection_domain")
 
     @connection_domain.setter
@@ -1843,7 +1846,6 @@ class _InstanceState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The status of KVStore DBInstance.
-        * `connection_domain`- Intranet connection address of the KVStore instance.
         """
         return pulumi.get(self, "status")
 
@@ -2337,7 +2339,7 @@ class Instance(pulumi.CustomResource):
                 warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
                 pulumi.log.warn("""parameters is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
             __props__.__dict__["parameters"] = parameters
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["port"] = port
@@ -2363,6 +2365,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["end_time"] = None
             __props__.__dict__["qps"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'alicloud:kvstore/instance:Instance',
             resource_name,
@@ -2451,6 +2455,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] business_info: The ID of the event or the business information.
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, Any]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+        :param pulumi.Input[str] connection_domain: Intranet connection address of the KVStore instance.
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] coupon_no: The coupon code. Default to: `youhuiquan_promotion_option_id_for_blank`.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
@@ -2497,7 +2502,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`. 
                Note: This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only)
         :param pulumi.Input[str] status: The status of KVStore DBInstance.
-               * `connection_domain`- Intranet connection address of the KVStore instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_auth_mode: Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
@@ -2651,7 +2655,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def config(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
         """
@@ -2660,6 +2664,9 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="connectionDomain")
     def connection_domain(self) -> pulumi.Output[str]:
+        """
+        Intranet connection address of the KVStore instance.
+        """
         return pulumi.get(self, "connection_domain")
 
     @property
@@ -2981,7 +2988,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def security_ips(self) -> pulumi.Output[Sequence[str]]:
         """
         The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         """
@@ -3009,7 +3016,6 @@ class Instance(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         The status of KVStore DBInstance.
-        * `connection_domain`- Intranet connection address of the KVStore instance.
         """
         return pulumi.get(self, "status")
 

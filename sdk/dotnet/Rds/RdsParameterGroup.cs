@@ -21,36 +21,34 @@ namespace Pulumi.AliCloud.Rds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Rds.RdsParameterGroup("default", new()
     ///     {
-    ///         var @default = new AliCloud.Rds.RdsParameterGroup("default", new AliCloud.Rds.RdsParameterGroupArgs
+    ///         Engine = "mysql",
+    ///         EngineVersion = "5.7",
+    ///         ParamDetails = new[]
     ///         {
-    ///             Engine = "mysql",
-    ///             EngineVersion = "5.7",
-    ///             ParamDetails = 
+    ///             new AliCloud.Rds.Inputs.RdsParameterGroupParamDetailArgs
     ///             {
-    ///                 new AliCloud.Rds.Inputs.RdsParameterGroupParamDetailArgs
-    ///                 {
-    ///                     ParamName = "back_log",
-    ///                     ParamValue = "4000",
-    ///                 },
-    ///                 new AliCloud.Rds.Inputs.RdsParameterGroupParamDetailArgs
-    ///                 {
-    ///                     ParamName = "wait_timeout",
-    ///                     ParamValue = "86460",
-    ///                 },
+    ///                 ParamName = "back_log",
+    ///                 ParamValue = "4000",
     ///             },
-    ///             ParameterGroupDesc = "test",
-    ///             ParameterGroupName = "test1234",
-    ///         });
-    ///     }
+    ///             new AliCloud.Rds.Inputs.RdsParameterGroupParamDetailArgs
+    ///             {
+    ///                 ParamName = "wait_timeout",
+    ///                 ParamValue = "86460",
+    ///             },
+    ///         },
+    ///         ParameterGroupDesc = "test",
+    ///         ParameterGroupName = "test1234",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -62,7 +60,7 @@ namespace Pulumi.AliCloud.Rds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/rdsParameterGroup:RdsParameterGroup")]
-    public partial class RdsParameterGroup : Pulumi.CustomResource
+    public partial class RdsParameterGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The database engine. Valid values: `mysql`, `mariadb`.
@@ -138,7 +136,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
-    public sealed class RdsParameterGroupArgs : Pulumi.ResourceArgs
+    public sealed class RdsParameterGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The database engine. Valid values: `mysql`, `mariadb`.
@@ -179,9 +177,10 @@ namespace Pulumi.AliCloud.Rds
         public RdsParameterGroupArgs()
         {
         }
+        public static new RdsParameterGroupArgs Empty => new RdsParameterGroupArgs();
     }
 
-    public sealed class RdsParameterGroupState : Pulumi.ResourceArgs
+    public sealed class RdsParameterGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The database engine. Valid values: `mysql`, `mariadb`.
@@ -222,5 +221,6 @@ namespace Pulumi.AliCloud.Rds
         public RdsParameterGroupState()
         {
         }
+        public static new RdsParameterGroupState Empty => new RdsParameterGroupState();
     }
 }

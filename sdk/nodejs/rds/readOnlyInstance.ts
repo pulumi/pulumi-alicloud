@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -24,7 +25,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
@@ -126,6 +127,14 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
+     * The attribute of the IP address whitelist. By default, this parameter is empty.
+     */
+    public readonly dbInstanceIpArrayAttribute!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the IP address whitelist. Default value: Default.
+     */
+    public readonly dbInstanceIpArrayName!: pulumi.Output<string | undefined>;
+    /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
@@ -160,6 +169,13 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      */
     public readonly masterDbInstanceId!: pulumi.Output<string>;
     /**
+     * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+     * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+     * - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+     * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+     */
+    public readonly modifyMode!: pulumi.Output<string | undefined>;
+    /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
      */
     public readonly parameters!: pulumi.Output<outputs.rds.ReadOnlyInstanceParameter[]>;
@@ -180,6 +196,14 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      * The ID of resource group which the DB read-only instance belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * The type of IP address in the IP address whitelist.
+     */
+    public readonly securityIpType!: pulumi.Output<string | undefined>;
+    /**
+     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     */
+    public readonly securityIps!: pulumi.Output<string[]>;
     /**
      * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      */
@@ -232,6 +256,14 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
+     * The network type of the IP address whitelist. Default value: MIX. Valid values:
+     * - Classic: classic network in enhanced whitelist mode
+     * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+     * - MIX: standard whitelist mode
+     * > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+     */
+    public readonly whitelistNetworkType!: pulumi.Output<string | undefined>;
+    /**
      * The Zone to launch the DB instance.
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -256,6 +288,8 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["clientCertRevocationList"] = state ? state.clientCertRevocationList : undefined;
             resourceInputs["clientCrlEnabled"] = state ? state.clientCrlEnabled : undefined;
             resourceInputs["connectionString"] = state ? state.connectionString : undefined;
+            resourceInputs["dbInstanceIpArrayAttribute"] = state ? state.dbInstanceIpArrayAttribute : undefined;
+            resourceInputs["dbInstanceIpArrayName"] = state ? state.dbInstanceIpArrayName : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
@@ -264,10 +298,13 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["instanceStorage"] = state ? state.instanceStorage : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["masterDbInstanceId"] = state ? state.masterDbInstanceId : undefined;
+            resourceInputs["modifyMode"] = state ? state.modifyMode : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["replicationAcl"] = state ? state.replicationAcl : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityIpType"] = state ? state.securityIpType : undefined;
+            resourceInputs["securityIps"] = state ? state.securityIps : undefined;
             resourceInputs["serverCert"] = state ? state.serverCert : undefined;
             resourceInputs["serverKey"] = state ? state.serverKey : undefined;
             resourceInputs["sslEnabled"] = state ? state.sslEnabled : undefined;
@@ -277,6 +314,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["upgradeDbInstanceKernelVersion"] = state ? state.upgradeDbInstanceKernelVersion : undefined;
             resourceInputs["upgradeTime"] = state ? state.upgradeTime : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["whitelistNetworkType"] = state ? state.whitelistNetworkType : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ReadOnlyInstanceArgs | undefined;
@@ -298,6 +336,8 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
             resourceInputs["clientCertRevocationList"] = args ? args.clientCertRevocationList : undefined;
             resourceInputs["clientCrlEnabled"] = args ? args.clientCrlEnabled : undefined;
+            resourceInputs["dbInstanceIpArrayAttribute"] = args ? args.dbInstanceIpArrayAttribute : undefined;
+            resourceInputs["dbInstanceIpArrayName"] = args ? args.dbInstanceIpArrayName : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
             resourceInputs["forceRestart"] = args ? args.forceRestart : undefined;
@@ -305,9 +345,12 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["instanceStorage"] = args ? args.instanceStorage : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["masterDbInstanceId"] = args ? args.masterDbInstanceId : undefined;
+            resourceInputs["modifyMode"] = args ? args.modifyMode : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["replicationAcl"] = args ? args.replicationAcl : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityIpType"] = args ? args.securityIpType : undefined;
+            resourceInputs["securityIps"] = args ? args.securityIps : undefined;
             resourceInputs["serverCert"] = args ? args.serverCert : undefined;
             resourceInputs["serverKey"] = args ? args.serverKey : undefined;
             resourceInputs["sslEnabled"] = args ? args.sslEnabled : undefined;
@@ -317,6 +360,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["upgradeDbInstanceKernelVersion"] = args ? args.upgradeDbInstanceKernelVersion : undefined;
             resourceInputs["upgradeTime"] = args ? args.upgradeTime : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["whitelistNetworkType"] = args ? args.whitelistNetworkType : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["engine"] = undefined /*out*/;
@@ -370,6 +414,14 @@ export interface ReadOnlyInstanceState {
      */
     connectionString?: pulumi.Input<string>;
     /**
+     * The attribute of the IP address whitelist. By default, this parameter is empty.
+     */
+    dbInstanceIpArrayAttribute?: pulumi.Input<string>;
+    /**
+     * The name of the IP address whitelist. Default value: Default.
+     */
+    dbInstanceIpArrayName?: pulumi.Input<string>;
+    /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
@@ -404,6 +456,13 @@ export interface ReadOnlyInstanceState {
      */
     masterDbInstanceId?: pulumi.Input<string>;
     /**
+     * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+     * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+     * - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+     * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+     */
+    modifyMode?: pulumi.Input<string>;
+    /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.ReadOnlyInstanceParameter>[]>;
@@ -424,6 +483,14 @@ export interface ReadOnlyInstanceState {
      * The ID of resource group which the DB read-only instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The type of IP address in the IP address whitelist.
+     */
+    securityIpType?: pulumi.Input<string>;
+    /**
+     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     */
+    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      */
@@ -475,6 +542,14 @@ export interface ReadOnlyInstanceState {
      * The virtual switch ID to launch DB instances in one VPC.
      */
     vswitchId?: pulumi.Input<string>;
+    /**
+     * The network type of the IP address whitelist. Default value: MIX. Valid values:
+     * - Classic: classic network in enhanced whitelist mode
+     * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+     * - MIX: standard whitelist mode
+     * > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+     */
+    whitelistNetworkType?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance.
      */
@@ -520,6 +595,14 @@ export interface ReadOnlyInstanceArgs {
      */
     clientCrlEnabled?: pulumi.Input<number>;
     /**
+     * The attribute of the IP address whitelist. By default, this parameter is empty.
+     */
+    dbInstanceIpArrayAttribute?: pulumi.Input<string>;
+    /**
+     * The name of the IP address whitelist. Default value: Default.
+     */
+    dbInstanceIpArrayName?: pulumi.Input<string>;
+    /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
@@ -550,6 +633,13 @@ export interface ReadOnlyInstanceArgs {
      */
     masterDbInstanceId: pulumi.Input<string>;
     /**
+     * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+     * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+     * - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+     * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+     */
+    modifyMode?: pulumi.Input<string>;
+    /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.ReadOnlyInstanceParameter>[]>;
@@ -566,6 +656,14 @@ export interface ReadOnlyInstanceArgs {
      * The ID of resource group which the DB read-only instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The type of IP address in the IP address whitelist.
+     */
+    securityIpType?: pulumi.Input<string>;
+    /**
+     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     */
+    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `sslEnabled  = 1`.
      */
@@ -617,6 +715,14 @@ export interface ReadOnlyInstanceArgs {
      * The virtual switch ID to launch DB instances in one VPC.
      */
     vswitchId?: pulumi.Input<string>;
+    /**
+     * The network type of the IP address whitelist. Default value: MIX. Valid values:
+     * - Classic: classic network in enhanced whitelist mode
+     * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+     * - MIX: standard whitelist mode
+     * > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+     */
+    whitelistNetworkType?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance.
      */

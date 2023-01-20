@@ -43,33 +43,13 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraformslbaclconfig"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			ipVersion := "ipv4"
-//			if param := cfg.Get("ipVersion"); param != "" {
-//				ipVersion = param
-//			}
-//			_, err := slb.NewAcl(ctx, "default", &slb.AclArgs{
-//				IpVersion: pulumi.String(ipVersion),
-//				EntryLists: slb.AclEntryListArray{
-//					&slb.AclEntryListArgs{
-//						Entry:   pulumi.String("10.10.10.0/24"),
-//						Comment: pulumi.String("first"),
-//					},
-//					&slb.AclEntryListArgs{
-//						Entry:   pulumi.String("168.10.10.0/24"),
-//						Comment: pulumi.String("second"),
-//					},
-//				},
+//			_, err := slb.NewAcl(ctx, "acl", &slb.AclArgs{
+//				IpVersion: pulumi.String("ipv4"),
 //			})
 //			if err != nil {
 //				return err

@@ -50,7 +50,7 @@ public final class GetDedicatedHostGroupsGroup {
      */
     private List<GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType> dedicatedHostCountGroupByHostTypes;
     /**
-     * @return -The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+     * @return The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     private String dedicatedHostGroupDesc;
@@ -206,7 +206,7 @@ public final class GetDedicatedHostGroupsGroup {
         return this.dedicatedHostCountGroupByHostTypes;
     }
     /**
-     * @return -The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+     * @return The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     public String dedicatedHostGroupDesc() {

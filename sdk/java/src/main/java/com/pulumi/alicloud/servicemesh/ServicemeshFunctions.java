@@ -4,10 +4,13 @@
 package com.pulumi.alicloud.servicemesh;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.servicemesh.inputs.GetExtensionProvidersArgs;
+import com.pulumi.alicloud.servicemesh.inputs.GetExtensionProvidersPlainArgs;
 import com.pulumi.alicloud.servicemesh.inputs.GetServiceMeshesArgs;
 import com.pulumi.alicloud.servicemesh.inputs.GetServiceMeshesPlainArgs;
 import com.pulumi.alicloud.servicemesh.inputs.GetVersionsArgs;
 import com.pulumi.alicloud.servicemesh.inputs.GetVersionsPlainArgs;
+import com.pulumi.alicloud.servicemesh.outputs.GetExtensionProvidersResult;
 import com.pulumi.alicloud.servicemesh.outputs.GetServiceMeshesResult;
 import com.pulumi.alicloud.servicemesh.outputs.GetVersionsResult;
 import com.pulumi.core.Output;
@@ -17,6 +20,210 @@ import com.pulumi.deployment.InvokeOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class ServicemeshFunctions {
+    /**
+     * This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.191.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
+     * import com.pulumi.alicloud.servicemesh.inputs.GetExtensionProvidersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
+     *             .type(&#34;httpextauth&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;serviceMeshExtensionProvidersId1&#34;, ids.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
+     *             .nameRegex(&#34;^my-ServiceMeshExtensionProvider&#34;)
+     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
+     *             .type(&#34;httpextauth&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;serviceMeshExtensionProvidersId2&#34;, nameRegex.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetExtensionProvidersResult> getExtensionProviders(GetExtensionProvidersArgs args) {
+        return getExtensionProviders(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.191.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
+     * import com.pulumi.alicloud.servicemesh.inputs.GetExtensionProvidersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
+     *             .type(&#34;httpextauth&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;serviceMeshExtensionProvidersId1&#34;, ids.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
+     *             .nameRegex(&#34;^my-ServiceMeshExtensionProvider&#34;)
+     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
+     *             .type(&#34;httpextauth&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;serviceMeshExtensionProvidersId2&#34;, nameRegex.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetExtensionProvidersResult> getExtensionProvidersPlain(GetExtensionProvidersPlainArgs args) {
+        return getExtensionProvidersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.191.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
+     * import com.pulumi.alicloud.servicemesh.inputs.GetExtensionProvidersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
+     *             .type(&#34;httpextauth&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;serviceMeshExtensionProvidersId1&#34;, ids.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
+     *             .nameRegex(&#34;^my-ServiceMeshExtensionProvider&#34;)
+     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
+     *             .type(&#34;httpextauth&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;serviceMeshExtensionProvidersId2&#34;, nameRegex.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetExtensionProvidersResult> getExtensionProviders(GetExtensionProvidersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:servicemesh/getExtensionProviders:getExtensionProviders", TypeShape.of(GetExtensionProvidersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.191.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
+     * import com.pulumi.alicloud.servicemesh.inputs.GetExtensionProvidersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
+     *             .type(&#34;httpextauth&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;serviceMeshExtensionProvidersId1&#34;, ids.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
+     *             .nameRegex(&#34;^my-ServiceMeshExtensionProvider&#34;)
+     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
+     *             .type(&#34;httpextauth&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;serviceMeshExtensionProvidersId2&#34;, nameRegex.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetExtensionProvidersResult> getExtensionProvidersPlain(GetExtensionProvidersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:servicemesh/getExtensionProviders:getExtensionProviders", TypeShape.of(GetExtensionProvidersResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
      * 

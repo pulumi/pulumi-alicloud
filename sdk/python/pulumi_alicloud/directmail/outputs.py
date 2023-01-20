@@ -407,7 +407,7 @@ class GetReceiversReceiverseResult(dict):
         :param str create_time: The creation time of the resource.
         :param str description: The description.
         :param str id: The ID of the Receivers.
-        :param str receivers_alias: -The Receivers Alias.
+        :param str receivers_alias: The Receivers Alias.
         :param str receivers_id: The first ID of the resource.
         :param str receivers_name: The name of the resource.
         :param int status: The status of the resource.
@@ -448,7 +448,7 @@ class GetReceiversReceiverseResult(dict):
     @pulumi.getter(name="receiversAlias")
     def receivers_alias(self) -> str:
         """
-        -The Receivers Alias.
+        The Receivers Alias.
         """
         return pulumi.get(self, "receivers_alias")
 

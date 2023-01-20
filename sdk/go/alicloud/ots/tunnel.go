@@ -93,7 +93,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:ots/tunnel:Tunnel foo "<instance_name>:<table_name>:<tunnel_name>"
+//	$ pulumi import alicloud:ots/tunnel:Tunnel foo <instance_name>:<table_name>:<tunnel_name>
 //
 // ```
 type Tunnel struct {

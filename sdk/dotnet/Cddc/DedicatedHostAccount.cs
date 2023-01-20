@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Cddc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount")]
-    public partial class DedicatedHostAccount : Pulumi.CustomResource
+    public partial class DedicatedHostAccount : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
@@ -76,6 +76,10 @@ namespace Pulumi.AliCloud.Cddc
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -97,7 +101,7 @@ namespace Pulumi.AliCloud.Cddc
         }
     }
 
-    public sealed class DedicatedHostAccountArgs : Pulumi.ResourceArgs
+    public sealed class DedicatedHostAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
@@ -105,11 +109,21 @@ namespace Pulumi.AliCloud.Cddc
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
 
+        [Input("accountPassword", required: true)]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
         /// </summary>
-        [Input("accountPassword", required: true)]
-        public Input<string> AccountPassword { get; set; } = null!;
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
@@ -126,9 +140,10 @@ namespace Pulumi.AliCloud.Cddc
         public DedicatedHostAccountArgs()
         {
         }
+        public static new DedicatedHostAccountArgs Empty => new DedicatedHostAccountArgs();
     }
 
-    public sealed class DedicatedHostAccountState : Pulumi.ResourceArgs
+    public sealed class DedicatedHostAccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
@@ -136,11 +151,21 @@ namespace Pulumi.AliCloud.Cddc
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
+        [Input("accountPassword")]
+        private Input<string>? _accountPassword;
+
         /// <summary>
         /// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
         /// </summary>
-        [Input("accountPassword")]
-        public Input<string>? AccountPassword { get; set; }
+        public Input<string>? AccountPassword
+        {
+            get => _accountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
@@ -157,5 +182,6 @@ namespace Pulumi.AliCloud.Cddc
         public DedicatedHostAccountState()
         {
         }
+        public static new DedicatedHostAccountState Empty => new DedicatedHostAccountState();
     }
 }

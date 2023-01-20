@@ -21,29 +21,27 @@ namespace Pulumi.AliCloud.Dns
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Dns.CustomLine("default", new()
     ///     {
-    ///         var @default = new AliCloud.Dns.CustomLine("default", new AliCloud.Dns.CustomLineArgs
+    ///         CustomLineName = "tf-testacc",
+    ///         DomainName = "your_domain_name",
+    ///         IpSegmentLists = new[]
     ///         {
-    ///             CustomLineName = "tf-testacc",
-    ///             DomainName = "your_domain_name",
-    ///             IpSegmentLists = 
+    ///             new AliCloud.Dns.Inputs.CustomLineIpSegmentListArgs
     ///             {
-    ///                 new AliCloud.Dns.Inputs.CustomLineIpSegmentListArgs
-    ///                 {
-    ///                     EndIp = "192.0.2.125",
-    ///                     StartIp = "192.0.2.123",
-    ///                 },
+    ///                 EndIp = "192.0.2.125",
+    ///                 StartIp = "192.0.2.123",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/customLine:CustomLine")]
-    public partial class CustomLine : Pulumi.CustomResource
+    public partial class CustomLine : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the Custom Line.
@@ -125,7 +123,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class CustomLineArgs : Pulumi.ResourceArgs
+    public sealed class CustomLineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Custom Line.
@@ -160,9 +158,10 @@ namespace Pulumi.AliCloud.Dns
         public CustomLineArgs()
         {
         }
+        public static new CustomLineArgs Empty => new CustomLineArgs();
     }
 
-    public sealed class CustomLineState : Pulumi.ResourceArgs
+    public sealed class CustomLineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Custom Line.
@@ -197,5 +196,6 @@ namespace Pulumi.AliCloud.Dns
         public CustomLineState()
         {
         }
+        public static new CustomLineState Empty => new CustomLineState();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Ga
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/additionalCertificate:AdditionalCertificate")]
-    public partial class AdditionalCertificate : Pulumi.CustomResource
+    public partial class AdditionalCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the GA instance.
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Ga
         }
     }
 
-    public sealed class AdditionalCertificateArgs : Pulumi.ResourceArgs
+    public sealed class AdditionalCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the GA instance.
@@ -124,9 +124,10 @@ namespace Pulumi.AliCloud.Ga
         public AdditionalCertificateArgs()
         {
         }
+        public static new AdditionalCertificateArgs Empty => new AdditionalCertificateArgs();
     }
 
-    public sealed class AdditionalCertificateState : Pulumi.ResourceArgs
+    public sealed class AdditionalCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the GA instance.
@@ -155,5 +156,6 @@ namespace Pulumi.AliCloud.Ga
         public AdditionalCertificateState()
         {
         }
+        public static new AdditionalCertificateState Empty => new AdditionalCertificateState();
     }
 }

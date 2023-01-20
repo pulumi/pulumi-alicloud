@@ -57,7 +57,7 @@ type GetDomainsArgs struct {
 	GroupId *string `pulumi:"groupId"`
 	// A regex string to filter results by the group name.
 	GroupNameRegex *string `pulumi:"groupNameRegex"`
-	// - A list of domain IDs.
+	// A list of domain IDs.
 	Ids []string `pulumi:"ids"`
 	// Cloud analysis product ID.
 	InstanceId *string `pulumi:"instanceId"`
@@ -133,7 +133,7 @@ type GetDomainsOutputArgs struct {
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
 	// A regex string to filter results by the group name.
 	GroupNameRegex pulumi.StringPtrInput `pulumi:"groupNameRegex"`
-	// - A list of domain IDs.
+	// A list of domain IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// Cloud analysis product ID.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`

@@ -21,35 +21,35 @@ namespace Pulumi.AliCloud.Cdn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultAccount = Output.Create(AliCloud.GetAccount.InvokeAsync());
-    ///         var defaultRegions = Output.Create(AliCloud.GetRegions.InvokeAsync(new AliCloud.GetRegionsArgs
-    ///         {
-    ///             Current = true,
-    ///         }));
-    ///         var example = new AliCloud.Cdn.FcTrigger("example", new AliCloud.Cdn.FcTriggerArgs
-    ///         {
-    ///             EventMetaName = "LogFileCreated",
-    ///             EventMetaVersion = "1.0.0",
-    ///             Notes = "example_value",
-    ///             RoleArn = defaultAccount.Apply(defaultAccount =&gt; $"acs:ram::{defaultAccount.Id}:role/aliyuncdneventnotificationrole"),
-    ///             SourceArn = defaultAccount.Apply(defaultAccount =&gt; $"acs:cdn:*:{defaultAccount.Id}:domain/example.com"),
-    ///             TriggerArn = Output.Tuple(defaultRegions, defaultAccount).Apply(values =&gt;
-    ///             {
-    ///                 var defaultRegions = values.Item1;
-    ///                 var defaultAccount = values.Item2;
-    ///                 return $"acs:fc:{defaultRegions.Regions?[0]?.Id}:{defaultAccount.Id}:services/FCTestService/functions/printEvent/triggers/testtrigger";
-    ///             }),
-    ///         });
-    ///     }
+    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
     /// 
-    /// }
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Cdn.FcTrigger("example", new()
+    ///     {
+    ///         EventMetaName = "LogFileCreated",
+    ///         EventMetaVersion = "1.0.0",
+    ///         Notes = "example_value",
+    ///         RoleArn = $"acs:ram::{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:role/aliyuncdneventnotificationrole",
+    ///         SourceArn = $"acs:cdn:*:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:domain/example.com",
+    ///         TriggerArn = Output.Tuple(defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult), defaultAccount.Apply(getAccountResult =&gt; getAccountResult)).Apply(values =&gt;
+    ///         {
+    ///             var defaultRegions = values.Item1;
+    ///             var defaultAccount = values.Item2;
+    ///             return $"acs:fc:{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:services/FCTestService/functions/printEvent/triggers/testtrigger";
+    ///         }),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Cdn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cdn/fcTrigger:FcTrigger")]
-    public partial class FcTrigger : Pulumi.CustomResource
+    public partial class FcTrigger : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the Event.
@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.Cdn
         }
     }
 
-    public sealed class FcTriggerArgs : Pulumi.ResourceArgs
+    public sealed class FcTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Event.
@@ -196,9 +196,10 @@ namespace Pulumi.AliCloud.Cdn
         public FcTriggerArgs()
         {
         }
+        public static new FcTriggerArgs Empty => new FcTriggerArgs();
     }
 
-    public sealed class FcTriggerState : Pulumi.ResourceArgs
+    public sealed class FcTriggerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Event.
@@ -245,5 +246,6 @@ namespace Pulumi.AliCloud.Cdn
         public FcTriggerState()
         {
         }
+        public static new FcTriggerState Empty => new FcTriggerState();
     }
 }

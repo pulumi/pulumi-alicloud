@@ -22,16 +22,31 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, availability_zone=None, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None, tags=None, vswitch_id=None):
+    def __init__(__self__, availability_zone=None, db_instance_categories=None, db_instance_modes=None, description=None, enable_details=None, id=None, ids=None, instance_network_type=None, instances=None, name_regex=None, names=None, output_file=None, resource_group_id=None, status=None, tags=None, vswitch_id=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
+        if db_instance_categories and not isinstance(db_instance_categories, str):
+            raise TypeError("Expected argument 'db_instance_categories' to be a str")
+        pulumi.set(__self__, "db_instance_categories", db_instance_categories)
+        if db_instance_modes and not isinstance(db_instance_modes, str):
+            raise TypeError("Expected argument 'db_instance_modes' to be a str")
+        pulumi.set(__self__, "db_instance_modes", db_instance_modes)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if instance_network_type and not isinstance(instance_network_type, str):
+            raise TypeError("Expected argument 'instance_network_type' to be a str")
+        pulumi.set(__self__, "instance_network_type", instance_network_type)
         if instances and not isinstance(instances, list):
             raise TypeError("Expected argument 'instances' to be a list")
         pulumi.set(__self__, "instances", instances)
@@ -44,6 +59,12 @@ class GetInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if resource_group_id and not isinstance(resource_group_id, str):
+            raise TypeError("Expected argument 'resource_group_id' to be a str")
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
@@ -54,10 +75,27 @@ class GetInstancesResult:
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[str]:
-        """
-        Instance availability zone.
-        """
         return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter(name="dbInstanceCategories")
+    def db_instance_categories(self) -> Optional[str]:
+        return pulumi.get(self, "db_instance_categories")
+
+    @property
+    @pulumi.getter(name="dbInstanceModes")
+    def db_instance_modes(self) -> Optional[str]:
+        return pulumi.get(self, "db_instance_modes")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -70,17 +108,16 @@ class GetInstancesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
-        """
-        The ids list of AnalyticDB for PostgreSQL instances.
-        """
         return pulumi.get(self, "ids")
+
+    @property
+    @pulumi.getter(name="instanceNetworkType")
+    def instance_network_type(self) -> Optional[str]:
+        return pulumi.get(self, "instance_network_type")
 
     @property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
-        """
-        A list of AnalyticDB for PostgreSQL instances. Its every element contains the following attributes:
-        """
         return pulumi.get(self, "instances")
 
     @property
@@ -91,15 +128,22 @@ class GetInstancesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
-        """
-        The names list of AnalyticDB for PostgreSQL instance.
-        """
         return pulumi.get(self, "names")
 
     @property
     @pulumi.getter(name="outputFile")
     def output_file(self) -> Optional[str]:
         return pulumi.get(self, "output_file")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[str]:
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
@@ -119,53 +163,80 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             yield self
         return GetInstancesResult(
             availability_zone=self.availability_zone,
+            db_instance_categories=self.db_instance_categories,
+            db_instance_modes=self.db_instance_modes,
+            description=self.description,
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
+            instance_network_type=self.instance_network_type,
             instances=self.instances,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            resource_group_id=self.resource_group_id,
+            status=self.status,
             tags=self.tags,
             vswitch_id=self.vswitch_id)
 
 
 def get_instances(availability_zone: Optional[str] = None,
+                  db_instance_categories: Optional[str] = None,
+                  db_instance_modes: Optional[str] = None,
+                  description: Optional[str] = None,
+                  enable_details: Optional[bool] = None,
                   ids: Optional[Sequence[str]] = None,
+                  instance_network_type: Optional[str] = None,
                   name_regex: Optional[str] = None,
                   output_file: Optional[str] = None,
+                  resource_group_id: Optional[str] = None,
+                  status: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   vswitch_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The `gpdb.get_instances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
-    Filters support regular expression for the instance name or availability_zone.
+    This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
 
     > **NOTE:**  Available in 1.47.0+
 
     ## Example Usage
 
+    Basic Usage
+
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    gpdb = alicloud.gpdb.get_instances(availability_zone="cn-beijing-c",
-        name_regex="gp-.+\\\\d+",
-        output_file="instances.txt")
-    pulumi.export("instanceId", gpdb.instances[0].id)
+    ids = alicloud.gpdb.get_instances()
+    pulumi.export("gpdbDbInstanceId1", ids.instances[0].id)
     ```
 
 
     :param str availability_zone: Instance availability zone.
-    :param Sequence[str] ids: A list of instance IDs.
+    :param str db_instance_categories: The db instance categories.
+    :param str db_instance_modes: The db instance modes.
+    :param str description: The description of the instance.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: The ids list of AnalyticDB for PostgreSQL instances.
+    :param str instance_network_type: The network type of the instance.
     :param str name_regex: A regex string to apply to the instance name.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
-    :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
+    :param str resource_group_id: The ID of the enterprise resource group to which the instance belongs.
+    :param str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+    :param Mapping[str, Any] tags: The tags of the instance.
+    :param str vswitch_id: The vswitch id.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
+    __args__['dbInstanceCategories'] = db_instance_categories
+    __args__['dbInstanceModes'] = db_instance_modes
+    __args__['description'] = description
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
+    __args__['instanceNetworkType'] = instance_network_type
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['status'] = status
     __args__['tags'] = tags
     __args__['vswitchId'] = vswitch_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -173,47 +244,67 @@ def get_instances(availability_zone: Optional[str] = None,
 
     return AwaitableGetInstancesResult(
         availability_zone=__ret__.availability_zone,
+        db_instance_categories=__ret__.db_instance_categories,
+        db_instance_modes=__ret__.db_instance_modes,
+        description=__ret__.description,
+        enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
+        instance_network_type=__ret__.instance_network_type,
         instances=__ret__.instances,
         name_regex=__ret__.name_regex,
         names=__ret__.names,
         output_file=__ret__.output_file,
+        resource_group_id=__ret__.resource_group_id,
+        status=__ret__.status,
         tags=__ret__.tags,
         vswitch_id=__ret__.vswitch_id)
 
 
 @_utilities.lift_output_func(get_instances)
 def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
+                         db_instance_categories: Optional[pulumi.Input[Optional[str]]] = None,
+                         db_instance_modes: Optional[pulumi.Input[Optional[str]]] = None,
+                         description: Optional[pulumi.Input[Optional[str]]] = None,
+                         enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                         instance_network_type: Optional[pulumi.Input[Optional[str]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         status: Optional[pulumi.Input[Optional[str]]] = None,
                          tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                          vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    The `gpdb.get_instances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
-    Filters support regular expression for the instance name or availability_zone.
+    This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
 
     > **NOTE:**  Available in 1.47.0+
 
     ## Example Usage
 
+    Basic Usage
+
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    gpdb = alicloud.gpdb.get_instances(availability_zone="cn-beijing-c",
-        name_regex="gp-.+\\\\d+",
-        output_file="instances.txt")
-    pulumi.export("instanceId", gpdb.instances[0].id)
+    ids = alicloud.gpdb.get_instances()
+    pulumi.export("gpdbDbInstanceId1", ids.instances[0].id)
     ```
 
 
     :param str availability_zone: Instance availability zone.
-    :param Sequence[str] ids: A list of instance IDs.
+    :param str db_instance_categories: The db instance categories.
+    :param str db_instance_modes: The db instance modes.
+    :param str description: The description of the instance.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: The ids list of AnalyticDB for PostgreSQL instances.
+    :param str instance_network_type: The network type of the instance.
     :param str name_regex: A regex string to apply to the instance name.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
-    :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
+    :param str resource_group_id: The ID of the enterprise resource group to which the instance belongs.
+    :param str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+    :param Mapping[str, Any] tags: The tags of the instance.
+    :param str vswitch_id: The vswitch id.
     """
     ...

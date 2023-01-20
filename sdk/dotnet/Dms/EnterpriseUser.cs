@@ -17,26 +17,24 @@ namespace Pulumi.AliCloud.Dms
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Dms.EnterpriseUser("example", new()
     ///     {
-    ///         var example = new AliCloud.Dms.EnterpriseUser("example", new AliCloud.Dms.EnterpriseUserArgs
+    ///         Mobile = "1591066xxxx",
+    ///         RoleNames = new[]
     ///         {
-    ///             Mobile = "1591066xxxx",
-    ///             RoleNames = 
-    ///             {
-    ///                 "DBA",
-    ///             },
-    ///             Uid = "uid",
-    ///             UserName = "tf-test",
-    ///         });
-    ///     }
+    ///             "DBA",
+    ///         },
+    ///         Uid = "uid",
+    ///         UserName = "tf-test",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.Dms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dms/enterpriseUser:EnterpriseUser")]
-    public partial class EnterpriseUser : Pulumi.CustomResource
+    public partial class EnterpriseUser : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Maximum number of inquiries on the day.
@@ -148,7 +146,7 @@ namespace Pulumi.AliCloud.Dms
         }
     }
 
-    public sealed class EnterpriseUserArgs : Pulumi.ResourceArgs
+    public sealed class EnterpriseUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of inquiries on the day.
@@ -213,9 +211,10 @@ namespace Pulumi.AliCloud.Dms
         public EnterpriseUserArgs()
         {
         }
+        public static new EnterpriseUserArgs Empty => new EnterpriseUserArgs();
     }
 
-    public sealed class EnterpriseUserState : Pulumi.ResourceArgs
+    public sealed class EnterpriseUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of inquiries on the day.
@@ -280,5 +279,6 @@ namespace Pulumi.AliCloud.Dms
         public EnterpriseUserState()
         {
         }
+        public static new EnterpriseUserState Empty => new EnterpriseUserState();
     }
 }

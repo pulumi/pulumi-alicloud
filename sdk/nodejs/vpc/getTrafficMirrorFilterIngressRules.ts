@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,21 +23,18 @@ import * as utilities from "../utilities";
  *     trafficMirrorFilterId: "example_traffic_mirror_filter_id",
  *     ids: ["example_id"],
  * });
- * export const vpcTrafficMirrorFilterIngressRuleId1 = ids.then(ids => ids.rules?[0]?.id);
+ * export const vpcTrafficMirrorFilterIngressRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * const status = alicloud.vpc.getTrafficMirrorFilterIngressRules({
  *     trafficMirrorFilterId: "example_traffic_mirror_filter_id",
  *     ids: ["example_id"],
  *     status: "Created",
  * });
- * export const vpcTrafficMirrorFilterIngressRuleId2 = status.then(status => status.rules?[0]?.id);
+ * export const vpcTrafficMirrorFilterIngressRuleId2 = status.then(status => status.rules?.[0]?.id);
  * ```
  */
 export function getTrafficMirrorFilterIngressRules(args: GetTrafficMirrorFilterIngressRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorFilterIngressRulesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", {
         "ids": args.ids,
         "outputFile": args.outputFile,
@@ -78,9 +76,34 @@ export interface GetTrafficMirrorFilterIngressRulesResult {
     readonly status?: string;
     readonly trafficMirrorFilterId: string;
 }
-
+/**
+ * This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.141.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getTrafficMirrorFilterIngressRules({
+ *     trafficMirrorFilterId: "example_traffic_mirror_filter_id",
+ *     ids: ["example_id"],
+ * });
+ * export const vpcTrafficMirrorFilterIngressRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
+ * const status = alicloud.vpc.getTrafficMirrorFilterIngressRules({
+ *     trafficMirrorFilterId: "example_traffic_mirror_filter_id",
+ *     ids: ["example_id"],
+ *     status: "Created",
+ * });
+ * export const vpcTrafficMirrorFilterIngressRuleId2 = status.then(status => status.rules?.[0]?.id);
+ * ```
+ */
 export function getTrafficMirrorFilterIngressRulesOutput(args: GetTrafficMirrorFilterIngressRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorFilterIngressRulesResult> {
-    return pulumi.output(args).apply(a => getTrafficMirrorFilterIngressRules(a, opts))
+    return pulumi.output(args).apply((a: any) => getTrafficMirrorFilterIngressRules(a, opts))
 }
 
 /**

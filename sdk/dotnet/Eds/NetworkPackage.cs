@@ -21,27 +21,26 @@ namespace Pulumi.AliCloud.Eds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Eds.SimpleOfficeSite("default", new()
     ///     {
-    ///         var @default = new AliCloud.Eds.SimpleOfficeSite("default", new AliCloud.Eds.SimpleOfficeSiteArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///             DesktopAccessType = "Internet",
-    ///             OfficeSiteName = "your_office_site_name",
-    ///         });
-    ///         var example = new AliCloud.Eds.NetworkPackage("example", new AliCloud.Eds.NetworkPackageArgs
-    ///         {
-    ///             Bandwidth = 10,
-    ///             OfficeSiteId = @default.Id,
-    ///         });
-    ///     }
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         DesktopAccessType = "Internet",
+    ///         OfficeSiteName = "your_office_site_name",
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.Eds.NetworkPackage("example", new()
+    ///     {
+    ///         Bandwidth = 10,
+    ///         OfficeSiteId = @default.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,7 +52,7 @@ namespace Pulumi.AliCloud.Eds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/networkPackage:NetworkPackage")]
-    public partial class NetworkPackage : Pulumi.CustomResource
+    public partial class NetworkPackage : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
@@ -123,7 +122,7 @@ namespace Pulumi.AliCloud.Eds
         }
     }
 
-    public sealed class NetworkPackageArgs : Pulumi.ResourceArgs
+    public sealed class NetworkPackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
@@ -140,9 +139,10 @@ namespace Pulumi.AliCloud.Eds
         public NetworkPackageArgs()
         {
         }
+        public static new NetworkPackageArgs Empty => new NetworkPackageArgs();
     }
 
-    public sealed class NetworkPackageState : Pulumi.ResourceArgs
+    public sealed class NetworkPackageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
@@ -171,5 +171,6 @@ namespace Pulumi.AliCloud.Eds
         public NetworkPackageState()
         {
         }
+        public static new NetworkPackageState Empty => new NetworkPackageState();
     }
 }

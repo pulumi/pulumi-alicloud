@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.QuickBI
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.QuickBI.GetUsers.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.QuickBI.GetUsers.InvokeAsync(new AliCloud.QuickBI.GetUsersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.QuickBiUserId1 = ids.Apply(ids =&gt; ids.Users?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("quickBiUserId1")]
-        ///     public Output&lt;string&gt; QuickBiUserId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["quickBiUserId1"] = ids.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:quickbi/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:quickbi/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Quick BI Users of the current Alibaba Cloud user.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.QuickBI
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.QuickBI.GetUsers.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.QuickBI.GetUsers.InvokeAsync(new AliCloud.QuickBI.GetUsersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.QuickBiUserId1 = ids.Apply(ids =&gt; ids.Users?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("quickBiUserId1")]
-        ///     public Output&lt;string&gt; QuickBiUserId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["quickBiUserId1"] = ids.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:quickbi/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:quickbi/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetUsersArgs : Pulumi.InvokeArgs
+    public sealed class GetUsersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -123,9 +121,10 @@ namespace Pulumi.AliCloud.QuickBI
         public GetUsersArgs()
         {
         }
+        public static new GetUsersArgs Empty => new GetUsersArgs();
     }
 
-    public sealed class GetUsersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -157,6 +156,7 @@ namespace Pulumi.AliCloud.QuickBI
         public GetUsersInvokeArgs()
         {
         }
+        public static new GetUsersInvokeArgs Empty => new GetUsersInvokeArgs();
     }
 
 

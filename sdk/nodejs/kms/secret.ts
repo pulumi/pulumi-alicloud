@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSecret = new alicloud.kms.Secret("default", {
+ * const _default = new alicloud.kms.Secret("default", {
  *     description: "from terraform",
  *     forceDeleteWithoutRecovery: true,
  *     secretData: "Secret data.",
@@ -70,6 +70,10 @@ export class Secret extends pulumi.CustomResource {
      * The description of the secret.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The instance ID of the exclusive KMS instance.
+     */
+    public readonly dkmsInstanceId!: pulumi.Output<string | undefined>;
     /**
      * Whether to enable automatic key rotation.
      */
@@ -134,6 +138,7 @@ export class Secret extends pulumi.CustomResource {
             const state = argsOrState as SecretState | undefined;
             resourceInputs["arn"] = state ? state.arn : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dkmsInstanceId"] = state ? state.dkmsInstanceId : undefined;
             resourceInputs["enableAutomaticRotation"] = state ? state.enableAutomaticRotation : undefined;
             resourceInputs["encryptionKeyId"] = state ? state.encryptionKeyId : undefined;
             resourceInputs["forceDeleteWithoutRecovery"] = state ? state.forceDeleteWithoutRecovery : undefined;
@@ -158,12 +163,13 @@ export class Secret extends pulumi.CustomResource {
                 throw new Error("Missing required property 'versionId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dkmsInstanceId"] = args ? args.dkmsInstanceId : undefined;
             resourceInputs["enableAutomaticRotation"] = args ? args.enableAutomaticRotation : undefined;
             resourceInputs["encryptionKeyId"] = args ? args.encryptionKeyId : undefined;
             resourceInputs["forceDeleteWithoutRecovery"] = args ? args.forceDeleteWithoutRecovery : undefined;
             resourceInputs["recoveryWindowInDays"] = args ? args.recoveryWindowInDays : undefined;
             resourceInputs["rotationInterval"] = args ? args.rotationInterval : undefined;
-            resourceInputs["secretData"] = args ? args.secretData : undefined;
+            resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
             resourceInputs["secretDataType"] = args ? args.secretDataType : undefined;
             resourceInputs["secretName"] = args ? args.secretName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -173,6 +179,8 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["plannedDeleteTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secretData"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Secret.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -189,6 +197,10 @@ export interface SecretState {
      * The description of the secret.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The instance ID of the exclusive KMS instance.
+     */
+    dkmsInstanceId?: pulumi.Input<string>;
     /**
      * Whether to enable automatic key rotation.
      */
@@ -247,6 +259,10 @@ export interface SecretArgs {
      * The description of the secret.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The instance ID of the exclusive KMS instance.
+     */
+    dkmsInstanceId?: pulumi.Input<string>;
     /**
      * Whether to enable automatic key rotation.
      */

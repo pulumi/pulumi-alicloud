@@ -21,50 +21,46 @@ namespace Pulumi.AliCloud.Slb
     /// * using server_certificate/private content as string example
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // create a server certificate
+    ///     var foo = new AliCloud.Slb.ServerCertificate("foo", new()
     ///     {
-    ///         // create a server certificate
-    ///         var foo = new AliCloud.Slb.ServerCertificate("foo", new AliCloud.Slb.ServerCertificateArgs
-    ///         {
-    ///             PrivateKey = @"-----BEGIN RSA PRIVATE KEY-----
+    ///         PrivateKey = @"-----BEGIN RSA PRIVATE KEY-----
     /// MIICXAIBAAKBgQDO0knDrlNdiys******ErVpjsckAaOW/JDG5PCSwkaMxk=
     /// -----END RSA PRIVATE KEY-----
     /// ",
-    ///             Certificate = @"-----BEGIN CERTIFICATE-----
+    ///         Certificate = @"-----BEGIN CERTIFICATE-----
     /// MIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=
     /// -----END CERTIFICATE-----
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// * using server_certificate/private file example
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // create a server certificate
+    ///     var foo = new AliCloud.Slb.ServerCertificate("foo", new()
     ///     {
-    ///         // create a server certificate
-    ///         var foo = new AliCloud.Slb.ServerCertificate("foo", new AliCloud.Slb.ServerCertificateArgs
-    ///         {
-    ///             Certificate = File.ReadAllText($"{path.Module}/server_certificate.pem"),
-    ///             PrivateKey = File.ReadAllText($"{path.Module}/private_key.pem"),
-    ///         });
-    ///     }
+    ///         Certificate = File.ReadAllText($"{path.Module}/server_certificate.pem"),
+    ///         PrivateKey = File.ReadAllText($"{path.Module}/private_key.pem"),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -76,7 +72,7 @@ namespace Pulumi.AliCloud.Slb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/serverCertificate:ServerCertificate")]
-    public partial class ServerCertificate : Pulumi.CustomResource
+    public partial class ServerCertificate : global::Pulumi.CustomResource
     {
         [Output("alicloudCertifacteId")]
         public Output<string?> AlicloudCertifacteId { get; private set; } = null!;
@@ -176,7 +172,7 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
-    public sealed class ServerCertificateArgs : Pulumi.ResourceArgs
+    public sealed class ServerCertificateArgs : global::Pulumi.ResourceArgs
     {
         [Input("alicloudCertifacteId")]
         public Input<string>? AlicloudCertifacteId { get; set; }
@@ -241,9 +237,10 @@ namespace Pulumi.AliCloud.Slb
         public ServerCertificateArgs()
         {
         }
+        public static new ServerCertificateArgs Empty => new ServerCertificateArgs();
     }
 
-    public sealed class ServerCertificateState : Pulumi.ResourceArgs
+    public sealed class ServerCertificateState : global::Pulumi.ResourceArgs
     {
         [Input("alicloudCertifacteId")]
         public Input<string>? AlicloudCertifacteId { get; set; }
@@ -308,5 +305,6 @@ namespace Pulumi.AliCloud.Slb
         public ServerCertificateState()
         {
         }
+        public static new ServerCertificateState Empty => new ServerCertificateState();
     }
 }

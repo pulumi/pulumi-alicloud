@@ -17,64 +17,68 @@ namespace Pulumi.AliCloud.PolarDB
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "PolarDB";
+    ///     var name = config.Get("name") ?? "dbaccountprivilegebasic";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "PolarDB";
-    ///         var name = config.Get("name") ?? "dbaccountprivilegebasic";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var cluster = new AliCloud.PolarDB.Cluster("cluster", new AliCloud.PolarDB.ClusterArgs
-    ///         {
-    ///             DbType = "MySQL",
-    ///             DbVersion = "8.0",
-    ///             PayType = "PostPaid",
-    ///             DbNodeClass = "polar.mysql.x4.large",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             Description = name,
-    ///         });
-    ///         var db = new AliCloud.PolarDB.Database("db", new AliCloud.PolarDB.DatabaseArgs
-    ///         {
-    ///             DbClusterId = cluster.Id,
-    ///             DbName = "tftestdatabase",
-    ///         });
-    ///         var account = new AliCloud.PolarDB.Account("account", new AliCloud.PolarDB.AccountArgs
-    ///         {
-    ///             DbClusterId = cluster.Id,
-    ///             AccountName = "tftestnormal",
-    ///             AccountPassword = "Test12345",
-    ///             AccountDescription = name,
-    ///         });
-    ///         var privilege = new AliCloud.PolarDB.AccountPrivilege("privilege", new AliCloud.PolarDB.AccountPrivilegeArgs
-    ///         {
-    ///             DbClusterId = cluster.Id,
-    ///             AccountName = account.AccountName,
-    ///             Privilege = "ReadOnly",
-    ///             DbNames = 
-    ///             {
-    ///                 db.DbName,
-    ///             },
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var cluster = new AliCloud.PolarDB.Cluster("cluster", new()
+    ///     {
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         PayType = "PostPaid",
+    ///         DbNodeClass = "polar.mysql.x4.large",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var db = new AliCloud.PolarDB.Database("db", new()
+    ///     {
+    ///         DbClusterId = cluster.Id,
+    ///         DbName = "tftestdatabase",
+    ///     });
+    /// 
+    ///     var account = new AliCloud.PolarDB.Account("account", new()
+    ///     {
+    ///         DbClusterId = cluster.Id,
+    ///         AccountName = "tftestnormal",
+    ///         AccountPassword = "Test12345",
+    ///         AccountDescription = name,
+    ///     });
+    /// 
+    ///     var privilege = new AliCloud.PolarDB.AccountPrivilege("privilege", new()
+    ///     {
+    ///         DbClusterId = cluster.Id,
+    ///         AccountName = account.AccountName,
+    ///         Privilege = "ReadOnly",
+    ///         DbNames = new[]
+    ///         {
+    ///             db.DbName,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -86,7 +90,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/accountPrivilege:AccountPrivilege")]
-    public partial class AccountPrivilege : Pulumi.CustomResource
+    public partial class AccountPrivilege : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A specified account name.
@@ -156,7 +160,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
     }
 
-    public sealed class AccountPrivilegeArgs : Pulumi.ResourceArgs
+    public sealed class AccountPrivilegeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A specified account name.
@@ -191,9 +195,10 @@ namespace Pulumi.AliCloud.PolarDB
         public AccountPrivilegeArgs()
         {
         }
+        public static new AccountPrivilegeArgs Empty => new AccountPrivilegeArgs();
     }
 
-    public sealed class AccountPrivilegeState : Pulumi.ResourceArgs
+    public sealed class AccountPrivilegeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A specified account name.
@@ -228,5 +233,6 @@ namespace Pulumi.AliCloud.PolarDB
         public AccountPrivilegeState()
         {
         }
+        public static new AccountPrivilegeState Empty => new AccountPrivilegeState();
     }
 }

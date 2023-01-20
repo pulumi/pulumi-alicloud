@@ -20,30 +20,28 @@ namespace Pulumi.AliCloud.FC
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.FC.Alias("example", new()
     ///     {
-    ///         var example = new AliCloud.FC.Alias("example", new AliCloud.FC.AliasArgs
+    ///         AliasName = "my_alias",
+    ///         Description = "a sample description",
+    ///         RoutingConfig = new AliCloud.FC.Inputs.AliasRoutingConfigArgs
     ///         {
-    ///             AliasName = "my_alias",
-    ///             Description = "a sample description",
-    ///             RoutingConfig = new AliCloud.FC.Inputs.AliasRoutingConfigArgs
+    ///             AdditionalVersionWeights = 
     ///             {
-    ///                 AdditionalVersionWeights = 
-    ///                 {
-    ///                     { "2", 0.5 },
-    ///                 },
+    ///                 { "2", 0.5 },
     ///             },
-    ///             ServiceName = "my_service_name",
-    ///             ServiceVersion = "1",
-    ///         });
-    ///     }
+    ///         },
+    ///         ServiceName = "my_service_name",
+    ///         ServiceVersion = "1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.AliCloud.FC
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fc/alias:Alias")]
-    public partial class Alias : Pulumi.CustomResource
+    public partial class Alias : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name for the alias you are creating.
@@ -131,7 +129,7 @@ namespace Pulumi.AliCloud.FC
         }
     }
 
-    public sealed class AliasArgs : Pulumi.ResourceArgs
+    public sealed class AliasArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name for the alias you are creating.
@@ -166,9 +164,10 @@ namespace Pulumi.AliCloud.FC
         public AliasArgs()
         {
         }
+        public static new AliasArgs Empty => new AliasArgs();
     }
 
-    public sealed class AliasState : Pulumi.ResourceArgs
+    public sealed class AliasState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name for the alias you are creating.
@@ -203,5 +202,6 @@ namespace Pulumi.AliCloud.FC
         public AliasState()
         {
         }
+        public static new AliasState Empty => new AliasState();
     }
 }

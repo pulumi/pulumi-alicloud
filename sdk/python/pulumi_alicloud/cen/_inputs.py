@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'TransitRouterVpcAttachmentZoneMappingArgs',
+    'TransitRouterVpnAttachmentZoneArgs',
 ]
 
 @pulumi.input_type
@@ -49,6 +50,28 @@ class TransitRouterVpcAttachmentZoneMappingArgs:
 
     @zone_id.setter
     def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
+@pulumi.input_type
+class TransitRouterVpnAttachmentZoneArgs:
+    def __init__(__self__, *,
+                 zone_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] zone_id: The id of the zone.
+        """
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The id of the zone.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
 
 

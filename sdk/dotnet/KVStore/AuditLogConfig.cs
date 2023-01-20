@@ -19,22 +19,20 @@ namespace Pulumi.AliCloud.KVStore
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.KVStore.AuditLogConfig("example", new()
     ///     {
-    ///         var example = new AliCloud.KVStore.AuditLogConfig("example", new AliCloud.KVStore.AuditLogConfigArgs
-    ///         {
-    ///             DbAudit = true,
-    ///             InstanceId = "r-abc123455",
-    ///             Retention = 1,
-    ///         });
-    ///     }
+    ///         DbAudit = true,
+    ///         InstanceId = "r-abc123455",
+    ///         Retention = 1,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.KVStore
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kvstore/auditLogConfig:AuditLogConfig")]
-    public partial class AuditLogConfig : Pulumi.CustomResource
+    public partial class AuditLogConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Instance Creation Time.
@@ -124,7 +122,7 @@ namespace Pulumi.AliCloud.KVStore
         }
     }
 
-    public sealed class AuditLogConfigArgs : Pulumi.ResourceArgs
+    public sealed class AuditLogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates Whether to Enable the Audit Log.  Valid value: 
@@ -149,9 +147,10 @@ namespace Pulumi.AliCloud.KVStore
         public AuditLogConfigArgs()
         {
         }
+        public static new AuditLogConfigArgs Empty => new AuditLogConfigArgs();
     }
 
-    public sealed class AuditLogConfigState : Pulumi.ResourceArgs
+    public sealed class AuditLogConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Instance Creation Time.
@@ -188,5 +187,6 @@ namespace Pulumi.AliCloud.KVStore
         public AuditLogConfigState()
         {
         }
+        public static new AuditLogConfigState Empty => new AuditLogConfigState();
     }
 }

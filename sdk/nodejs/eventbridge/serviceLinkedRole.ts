@@ -17,9 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const serviceLinkedRole = new alicloud.eventbridge.ServiceLinkedRole("service_linked_role", {
- *     productName: "AliyunServiceRoleForEventBridgeSendToMNS",
- * });
+ * const serviceLinkedRole = new alicloud.eventbridge.ServiceLinkedRole("serviceLinkedRole", {productName: "AliyunServiceRoleForEventBridgeSendToMNS"});
  * ```
  *
  * ## Import

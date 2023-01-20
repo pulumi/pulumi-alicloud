@@ -19,20 +19,18 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var serviceLinkedRole = new AliCloud.DatabaseFilesystem.ServiceLinkedRole("serviceLinkedRole", new()
     ///     {
-    ///         var serviceLinkedRole = new AliCloud.DatabaseFilesystem.ServiceLinkedRole("serviceLinkedRole", new AliCloud.DatabaseFilesystem.ServiceLinkedRoleArgs
-    ///         {
-    ///             ProductName = "AliyunServiceRoleForDbfs",
-    ///         });
-    ///     }
+    ///         ProductName = "AliyunServiceRoleForDbfs",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:databasefilesystem/serviceLinkedRole:ServiceLinkedRole")]
-    public partial class ServiceLinkedRole : Pulumi.CustomResource
+    public partial class ServiceLinkedRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
@@ -102,7 +100,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         }
     }
 
-    public sealed class ServiceLinkedRoleArgs : Pulumi.ResourceArgs
+    public sealed class ServiceLinkedRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
@@ -113,9 +111,10 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public ServiceLinkedRoleArgs()
         {
         }
+        public static new ServiceLinkedRoleArgs Empty => new ServiceLinkedRoleArgs();
     }
 
-    public sealed class ServiceLinkedRoleState : Pulumi.ResourceArgs
+    public sealed class ServiceLinkedRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
@@ -132,5 +131,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public ServiceLinkedRoleState()
         {
         }
+        public static new ServiceLinkedRoleState Empty => new ServiceLinkedRoleState();
     }
 }

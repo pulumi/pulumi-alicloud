@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.Waf
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Waf.Certificate("default", new()
     ///     {
-    ///         var @default = new AliCloud.Waf.Certificate("default", new AliCloud.Waf.CertificateArgs
-    ///         {
-    ///             CertificateContents = "your_certificate",
-    ///             CertificateName = "your_certificate_name",
-    ///             Domain = "your_domain_name",
-    ///             InstanceId = "your_instance_id",
-    ///             PrivateKey = "your_private_key",
-    ///         });
-    ///         var default2 = new AliCloud.Waf.Certificate("default2", new AliCloud.Waf.CertificateArgs
-    ///         {
-    ///             CertificateId = "your_certificate_id",
-    ///             Domain = "your_domain_name",
-    ///             InstanceId = "your_instance_id",
-    ///         });
-    ///     }
+    ///         CertificateContents = "your_certificate",
+    ///         CertificateName = "your_certificate_name",
+    ///         Domain = "your_domain_name",
+    ///         InstanceId = "your_instance_id",
+    ///         PrivateKey = "your_private_key",
+    ///     });
     /// 
-    /// }
+    ///     var default2 = new AliCloud.Waf.Certificate("default2", new()
+    ///     {
+    ///         CertificateId = "your_certificate_id",
+    ///         Domain = "your_domain_name",
+    ///         InstanceId = "your_instance_id",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.Waf
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:waf/certificate:Certificate")]
-    public partial class Certificate : Pulumi.CustomResource
+    public partial class Certificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Certificate file content.
@@ -138,7 +137,7 @@ namespace Pulumi.AliCloud.Waf
         }
     }
 
-    public sealed class CertificateArgs : Pulumi.ResourceArgs
+    public sealed class CertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Certificate file content.
@@ -179,9 +178,10 @@ namespace Pulumi.AliCloud.Waf
         public CertificateArgs()
         {
         }
+        public static new CertificateArgs Empty => new CertificateArgs();
     }
 
-    public sealed class CertificateState : Pulumi.ResourceArgs
+    public sealed class CertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Certificate file content.
@@ -222,5 +222,6 @@ namespace Pulumi.AliCloud.Waf
         public CertificateState()
         {
         }
+        public static new CertificateState Empty => new CertificateState();
     }
 }

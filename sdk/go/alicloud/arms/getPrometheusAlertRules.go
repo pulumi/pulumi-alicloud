@@ -74,8 +74,6 @@ type GetPrometheusAlertRulesArgs struct {
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource. Valid values: `0`, `1`.
-	// * `1`: open.
-	// * `0`: off.
 	Status *int `pulumi:"status"`
 	// The type of the alert rule.
 	Type *string `pulumi:"type"`
@@ -120,8 +118,6 @@ type GetPrometheusAlertRulesOutputArgs struct {
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource. Valid values: `0`, `1`.
-	// * `1`: open.
-	// * `0`: off.
 	Status pulumi.IntPtrInput `pulumi:"status"`
 	// The type of the alert rule.
 	Type pulumi.StringPtrInput `pulumi:"type"`

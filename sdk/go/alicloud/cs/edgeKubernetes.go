@@ -13,16 +13,17 @@ import (
 
 // ## Import
 //
-// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`
+// Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes alicloud_cs_edge_kubernetes.main cluster-id
+//	$ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
 //
 // ```
 type EdgeKubernetes struct {
 	pulumi.CustomResourceState
 
+	// The addon you want to install in cluster.
 	Addons EdgeKubernetesAddonArrayOutput `pulumi:"addons"`
 	// The ID of availability zone.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
@@ -33,8 +34,13 @@ type EdgeKubernetes struct {
 	// The path of client key, like `~/.kube/client-key.pem`.
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
-	ClusterCaCert pulumi.StringPtrOutput          `pulumi:"clusterCaCert"`
-	Connections   EdgeKubernetesConnectionsOutput `pulumi:"connections"`
+	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
+	// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+	// * ack.standard : Standard edge clusters.
+	// * ack.pro.small : Professional edge clusters.
+	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
+	// Map of kubernetes cluster connection information.
+	Connections EdgeKubernetesConnectionsOutput `pulumi:"connections"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
@@ -46,8 +52,15 @@ type EdgeKubernetes struct {
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
 	// The path of kube config, like `~/.kube/config`.
-	KubeConfig pulumi.StringPtrOutput           `pulumi:"kubeConfig"`
-	LogConfig  EdgeKubernetesLogConfigPtrOutput `pulumi:"logConfig"`
+	//
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
+	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
+	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
+	// A list of one element containing information about the associated log store. It contains the following attributes:
+	//
+	// Deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
+	LogConfig EdgeKubernetesLogConfigPtrOutput `pulumi:"logConfig"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       pulumi.StringOutput    `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
@@ -62,16 +75,20 @@ type EdgeKubernetes struct {
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrOutput `pulumi:"podCidr"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode    pulumi.StringPtrOutput   `pulumi:"proxyMode"`
+	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput      `pulumi:"resourceGroupId"`
 	RetainResources pulumi.StringArrayOutput `pulumi:"retainResources"`
+	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+	Runtime EdgeKubernetesRuntimePtrOutput `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
-	SlbInternet pulumi.StringOutput    `pulumi:"slbInternet"`
+	// The public ip of load balancer.
+	SlbInternet pulumi.StringOutput `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled pulumi.BoolPtrOutput `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
@@ -94,13 +111,17 @@ type EdgeKubernetes struct {
 	WorkerDiskSize pulumi.IntPtrOutput `pulumi:"workerDiskSize"`
 	// Worker node system disk auto snapshot policy.
 	WorkerDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"workerDiskSnapshotPolicyId"`
-	WorkerInstanceChargeType   pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
-	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+	// Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+	WorkerInstanceChargeType pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
+	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
 	WorkerInstanceTypes pulumi.StringArrayOutput `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes.
 	WorkerNodes EdgeKubernetesWorkerNodeArrayOutput `pulumi:"workerNodes"`
 	// The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-	WorkerNumber     pulumi.IntOutput         `pulumi:"workerNumber"`
+	WorkerNumber pulumi.IntOutput `pulumi:"workerNumber"`
+	// The RamRole Name attached to worker node.
+	WorkerRamRoleName pulumi.StringOutput `pulumi:"workerRamRoleName"`
+	// The vswitches used by workers.
 	WorkerVswitchIds pulumi.StringArrayOutput `pulumi:"workerVswitchIds"`
 }
 
@@ -120,6 +141,13 @@ func NewEdgeKubernetes(ctx *pulumi.Context,
 	if args.WorkerVswitchIds == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerVswitchIds'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource EdgeKubernetes
 	err := ctx.RegisterResource("alicloud:cs/edgeKubernetes:EdgeKubernetes", name, args, &resource, opts...)
 	if err != nil {
@@ -142,6 +170,7 @@ func GetEdgeKubernetes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EdgeKubernetes resources.
 type edgeKubernetesState struct {
+	// The addon you want to install in cluster.
 	Addons []EdgeKubernetesAddon `pulumi:"addons"`
 	// The ID of availability zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -152,8 +181,13 @@ type edgeKubernetesState struct {
 	// The path of client key, like `~/.kube/client-key.pem`.
 	ClientKey *string `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
-	ClusterCaCert *string                    `pulumi:"clusterCaCert"`
-	Connections   *EdgeKubernetesConnections `pulumi:"connections"`
+	ClusterCaCert *string `pulumi:"clusterCaCert"`
+	// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+	// * ack.standard : Standard edge clusters.
+	// * ack.pro.small : Professional edge clusters.
+	ClusterSpec *string `pulumi:"clusterSpec"`
+	// Map of kubernetes cluster connection information.
+	Connections *EdgeKubernetesConnections `pulumi:"connections"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
@@ -165,8 +199,15 @@ type edgeKubernetesState struct {
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName *string `pulumi:"keyName"`
 	// The path of kube config, like `~/.kube/config`.
-	KubeConfig *string                  `pulumi:"kubeConfig"`
-	LogConfig  *EdgeKubernetesLogConfig `pulumi:"logConfig"`
+	//
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
+	KubeConfig *string `pulumi:"kubeConfig"`
+	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
+	// A list of one element containing information about the associated log store. It contains the following attributes:
+	//
+	// Deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
+	LogConfig *EdgeKubernetesLogConfig `pulumi:"logConfig"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -181,15 +222,19 @@ type edgeKubernetesState struct {
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode    *string  `pulumi:"proxyMode"`
+	ProxyMode *string `pulumi:"proxyMode"`
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	RetainResources []string `pulumi:"retainResources"`
+	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+	Runtime *EdgeKubernetesRuntime `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
+	// The public ip of load balancer.
 	SlbInternet *string `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
@@ -213,17 +258,22 @@ type edgeKubernetesState struct {
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker node system disk auto snapshot policy.
 	WorkerDiskSnapshotPolicyId *string `pulumi:"workerDiskSnapshotPolicyId"`
-	WorkerInstanceChargeType   *string `pulumi:"workerInstanceChargeType"`
-	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+	// Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
+	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes.
 	WorkerNodes []EdgeKubernetesWorkerNode `pulumi:"workerNodes"`
 	// The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-	WorkerNumber     *int     `pulumi:"workerNumber"`
+	WorkerNumber *int `pulumi:"workerNumber"`
+	// The RamRole Name attached to worker node.
+	WorkerRamRoleName *string `pulumi:"workerRamRoleName"`
+	// The vswitches used by workers.
 	WorkerVswitchIds []string `pulumi:"workerVswitchIds"`
 }
 
 type EdgeKubernetesState struct {
+	// The addon you want to install in cluster.
 	Addons EdgeKubernetesAddonArrayInput
 	// The ID of availability zone.
 	AvailabilityZone pulumi.StringPtrInput
@@ -235,7 +285,12 @@ type EdgeKubernetesState struct {
 	ClientKey pulumi.StringPtrInput
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrInput
-	Connections   EdgeKubernetesConnectionsPtrInput
+	// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+	// * ack.standard : Standard edge clusters.
+	// * ack.pro.small : Professional edge clusters.
+	ClusterSpec pulumi.StringPtrInput
+	// Map of kubernetes cluster connection information.
+	Connections EdgeKubernetesConnectionsPtrInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
@@ -247,8 +302,15 @@ type EdgeKubernetesState struct {
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName pulumi.StringPtrInput
 	// The path of kube config, like `~/.kube/config`.
+	//
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrInput
-	LogConfig  EdgeKubernetesLogConfigPtrInput
+	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec pulumi.StringPtrInput
+	// A list of one element containing information about the associated log store. It contains the following attributes:
+	//
+	// Deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
+	LogConfig EdgeKubernetesLogConfigPtrInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
@@ -263,15 +325,19 @@ type EdgeKubernetesState struct {
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode    pulumi.StringPtrInput
+	ProxyMode pulumi.StringPtrInput
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetainResources pulumi.StringArrayInput
+	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+	Runtime EdgeKubernetesRuntimePtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
+	// The public ip of load balancer.
 	SlbInternet pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled pulumi.BoolPtrInput
@@ -295,13 +361,17 @@ type EdgeKubernetesState struct {
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker node system disk auto snapshot policy.
 	WorkerDiskSnapshotPolicyId pulumi.StringPtrInput
-	WorkerInstanceChargeType   pulumi.StringPtrInput
-	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+	// Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+	WorkerInstanceChargeType pulumi.StringPtrInput
+	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
 	WorkerInstanceTypes pulumi.StringArrayInput
 	// List of cluster worker nodes.
 	WorkerNodes EdgeKubernetesWorkerNodeArrayInput
 	// The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-	WorkerNumber     pulumi.IntPtrInput
+	WorkerNumber pulumi.IntPtrInput
+	// The RamRole Name attached to worker node.
+	WorkerRamRoleName pulumi.StringPtrInput
+	// The vswitches used by workers.
 	WorkerVswitchIds pulumi.StringArrayInput
 }
 
@@ -310,6 +380,7 @@ func (EdgeKubernetesState) ElementType() reflect.Type {
 }
 
 type edgeKubernetesArgs struct {
+	// The addon you want to install in cluster.
 	Addons []EdgeKubernetesAddon `pulumi:"addons"`
 	// The ID of availability zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -319,6 +390,10 @@ type edgeKubernetesArgs struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
+	// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+	// * ack.standard : Standard edge clusters.
+	// * ack.pro.small : Professional edge clusters.
+	ClusterSpec *string `pulumi:"clusterSpec"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
@@ -330,8 +405,15 @@ type edgeKubernetesArgs struct {
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName *string `pulumi:"keyName"`
 	// The path of kube config, like `~/.kube/config`.
-	KubeConfig *string                  `pulumi:"kubeConfig"`
-	LogConfig  *EdgeKubernetesLogConfig `pulumi:"logConfig"`
+	//
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
+	KubeConfig *string `pulumi:"kubeConfig"`
+	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
+	// A list of one element containing information about the associated log store. It contains the following attributes:
+	//
+	// Deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
+	LogConfig *EdgeKubernetesLogConfig `pulumi:"logConfig"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -344,11 +426,14 @@ type edgeKubernetesArgs struct {
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode    *string  `pulumi:"proxyMode"`
+	ProxyMode *string `pulumi:"proxyMode"`
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances []string `pulumi:"rdsInstances"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	RetainResources []string `pulumi:"retainResources"`
+	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+	Runtime *EdgeKubernetesRuntime `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -371,16 +456,19 @@ type edgeKubernetesArgs struct {
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker node system disk auto snapshot policy.
 	WorkerDiskSnapshotPolicyId *string `pulumi:"workerDiskSnapshotPolicyId"`
-	WorkerInstanceChargeType   *string `pulumi:"workerInstanceChargeType"`
-	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+	// Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
+	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
 	// The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-	WorkerNumber     int      `pulumi:"workerNumber"`
+	WorkerNumber int `pulumi:"workerNumber"`
+	// The vswitches used by workers.
 	WorkerVswitchIds []string `pulumi:"workerVswitchIds"`
 }
 
 // The set of arguments for constructing a EdgeKubernetes resource.
 type EdgeKubernetesArgs struct {
+	// The addon you want to install in cluster.
 	Addons EdgeKubernetesAddonArrayInput
 	// The ID of availability zone.
 	AvailabilityZone pulumi.StringPtrInput
@@ -390,6 +478,10 @@ type EdgeKubernetesArgs struct {
 	ClientKey pulumi.StringPtrInput
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrInput
+	// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+	// * ack.standard : Standard edge clusters.
+	// * ack.pro.small : Professional edge clusters.
+	ClusterSpec pulumi.StringPtrInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// Default false, when you want to change `vpcId`, you have to set this field to true, then the cluster will be recreated.
@@ -401,8 +493,15 @@ type EdgeKubernetesArgs struct {
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName pulumi.StringPtrInput
 	// The path of kube config, like `~/.kube/config`.
+	//
+	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrInput
-	LogConfig  EdgeKubernetesLogConfigPtrInput
+	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	LoadBalancerSpec pulumi.StringPtrInput
+	// A list of one element containing information about the associated log store. It contains the following attributes:
+	//
+	// Deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
+	LogConfig EdgeKubernetesLogConfigPtrInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
@@ -415,11 +514,14 @@ type EdgeKubernetesArgs struct {
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-	ProxyMode    pulumi.StringPtrInput
+	ProxyMode pulumi.StringPtrInput
+	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetainResources pulumi.StringArrayInput
+	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+	Runtime EdgeKubernetesRuntimePtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -442,11 +544,13 @@ type EdgeKubernetesArgs struct {
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker node system disk auto snapshot policy.
 	WorkerDiskSnapshotPolicyId pulumi.StringPtrInput
-	WorkerInstanceChargeType   pulumi.StringPtrInput
-	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+	// Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+	WorkerInstanceChargeType pulumi.StringPtrInput
+	// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
 	WorkerInstanceTypes pulumi.StringArrayInput
 	// The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-	WorkerNumber     pulumi.IntInput
+	WorkerNumber pulumi.IntInput
+	// The vswitches used by workers.
 	WorkerVswitchIds pulumi.StringArrayInput
 }
 
@@ -537,6 +641,7 @@ func (o EdgeKubernetesOutput) ToEdgeKubernetesOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The addon you want to install in cluster.
 func (o EdgeKubernetesOutput) Addons() EdgeKubernetesAddonArrayOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesAddonArrayOutput { return v.Addons }).(EdgeKubernetesAddonArrayOutput)
 }
@@ -566,6 +671,14 @@ func (o EdgeKubernetesOutput) ClusterCaCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.ClusterCaCert }).(pulumi.StringPtrOutput)
 }
 
+// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+// * ack.standard : Standard edge clusters.
+// * ack.pro.small : Professional edge clusters.
+func (o EdgeKubernetesOutput) ClusterSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
+}
+
+// Map of kubernetes cluster connection information.
 func (o EdgeKubernetesOutput) Connections() EdgeKubernetesConnectionsOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesConnectionsOutput { return v.Connections }).(EdgeKubernetesConnectionsOutput)
 }
@@ -596,10 +709,20 @@ func (o EdgeKubernetesOutput) KeyName() pulumi.StringPtrOutput {
 }
 
 // The path of kube config, like `~/.kube/config`.
+//
+// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 func (o EdgeKubernetesOutput) KubeConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.KubeConfig }).(pulumi.StringPtrOutput)
 }
 
+// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+func (o EdgeKubernetesOutput) LoadBalancerSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
+}
+
+// A list of one element containing information about the associated log store. It contains the following attributes:
+//
+// Deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
 func (o EdgeKubernetesOutput) LogConfig() EdgeKubernetesLogConfigPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesLogConfigPtrOutput { return v.LogConfig }).(EdgeKubernetesLogConfigPtrOutput)
 }
@@ -643,6 +766,7 @@ func (o EdgeKubernetesOutput) ProxyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.ProxyMode }).(pulumi.StringPtrOutput)
 }
 
+// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 func (o EdgeKubernetesOutput) RdsInstances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringArrayOutput { return v.RdsInstances }).(pulumi.StringArrayOutput)
 }
@@ -656,6 +780,11 @@ func (o EdgeKubernetesOutput) RetainResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
 }
 
+// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+func (o EdgeKubernetesOutput) Runtime() EdgeKubernetesRuntimePtrOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesRuntimePtrOutput { return v.Runtime }).(EdgeKubernetesRuntimePtrOutput)
+}
+
 // The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 func (o EdgeKubernetesOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
@@ -666,6 +795,7 @@ func (o EdgeKubernetesOutput) ServiceCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.ServiceCidr }).(pulumi.StringPtrOutput)
 }
 
+// The public ip of load balancer.
 func (o EdgeKubernetesOutput) SlbInternet() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.SlbInternet }).(pulumi.StringOutput)
 }
@@ -725,11 +855,12 @@ func (o EdgeKubernetesOutput) WorkerDiskSnapshotPolicyId() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.WorkerDiskSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
 func (o EdgeKubernetesOutput) WorkerInstanceChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringPtrOutput { return v.WorkerInstanceChargeType }).(pulumi.StringPtrOutput)
 }
 
-// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type
+// The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
 func (o EdgeKubernetesOutput) WorkerInstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringArrayOutput { return v.WorkerInstanceTypes }).(pulumi.StringArrayOutput)
 }
@@ -744,6 +875,12 @@ func (o EdgeKubernetesOutput) WorkerNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.IntOutput { return v.WorkerNumber }).(pulumi.IntOutput)
 }
 
+// The RamRole Name attached to worker node.
+func (o EdgeKubernetesOutput) WorkerRamRoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.WorkerRamRoleName }).(pulumi.StringOutput)
+}
+
+// The vswitches used by workers.
 func (o EdgeKubernetesOutput) WorkerVswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringArrayOutput { return v.WorkerVswitchIds }).(pulumi.StringArrayOutput)
 }

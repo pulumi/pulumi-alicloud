@@ -21,16 +21,15 @@ namespace Pulumi.AliCloud.FNF
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ram.Role("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ram.Role("default", new AliCloud.Ram.RoleArgs
-    ///         {
-    ///             Document = @"  {
+    ///         Document = @"  {
     ///     ""Statement"": [
     ///       {
     ///         ""Action"": ""sts:AssumeRole"",
@@ -45,22 +44,22 @@ namespace Pulumi.AliCloud.FNF
     ///     ""Version"": ""1""
     ///   }
     /// ",
-    ///         });
-    ///         var example = new AliCloud.FNF.Flow("example", new AliCloud.FNF.FlowArgs
-    ///         {
-    ///             Definition = @"  version: v1beta1
+    ///     });
+    /// 
+    ///     var example = new AliCloud.FNF.Flow("example", new()
+    ///     {
+    ///         Definition = @"  version: v1beta1
     ///   type: flow
     ///   steps:
     ///     - type: pass
     ///       name: helloworld
     /// ",
-    ///             RoleArn = @default.Arn,
-    ///             Description = "Test for terraform fnf_flow.",
-    ///             Type = "FDL",
-    ///         });
-    ///     }
+    ///         RoleArn = @default.Arn,
+    ///         Description = "Test for terraform fnf_flow.",
+    ///         Type = "FDL",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +71,7 @@ namespace Pulumi.AliCloud.FNF
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fnf/flow:Flow")]
-    public partial class Flow : Pulumi.CustomResource
+    public partial class Flow : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
@@ -160,7 +159,7 @@ namespace Pulumi.AliCloud.FNF
         }
     }
 
-    public sealed class FlowArgs : Pulumi.ResourceArgs
+    public sealed class FlowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
@@ -195,9 +194,10 @@ namespace Pulumi.AliCloud.FNF
         public FlowArgs()
         {
         }
+        public static new FlowArgs Empty => new FlowArgs();
     }
 
-    public sealed class FlowState : Pulumi.ResourceArgs
+    public sealed class FlowState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
@@ -244,5 +244,6 @@ namespace Pulumi.AliCloud.FNF
         public FlowState()
         {
         }
+        public static new FlowState Empty => new FlowState();
     }
 }

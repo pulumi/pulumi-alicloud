@@ -23,51 +23,51 @@ namespace Pulumi.AliCloud.CloudConnect
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ccnAccount = new AliCloud.Provider("ccnAccount", new AliCloud.ProviderArgs
-    ///         {
-    ///         });
-    ///         var cenAccount = new AliCloud.Provider("cenAccount", new AliCloud.ProviderArgs
-    ///         {
-    ///             Region = "cn-hangzhou",
-    ///             AccessKey = "xxxxxx",
-    ///             SecretKey = "xxxxxx",
-    ///         });
-    ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Cen_account,
-    ///         });
-    ///         var ccn = new AliCloud.CloudConnect.Network("ccn", new AliCloud.CloudConnect.NetworkArgs
-    ///         {
-    ///             IsDefault = true,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Ccn_account,
-    ///         });
-    ///         var @default = new AliCloud.CloudConnect.NetworkGrant("default", new AliCloud.CloudConnect.NetworkGrantArgs
-    ///         {
-    ///             CcnId = ccn.Id,
-    ///             CenId = cen.Id,
-    ///             CenUid = "xxxxxx",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 ccn,
-    ///                 cen,
-    ///             },
-    ///         });
-    ///     }
+    ///     var ccnAccount = new AliCloud.Provider("ccnAccount");
     /// 
-    /// }
+    ///     var cenAccount = new AliCloud.Provider("cenAccount", new()
+    ///     {
+    ///         Region = "cn-hangzhou",
+    ///         AccessKey = "xxxxxx",
+    ///         SecretKey = "xxxxxx",
+    ///     });
+    /// 
+    ///     var cen = new AliCloud.Cen.Instance("cen", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Cen_account,
+    ///     });
+    /// 
+    ///     var ccn = new AliCloud.CloudConnect.Network("ccn", new()
+    ///     {
+    ///         IsDefault = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Ccn_account,
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.CloudConnect.NetworkGrant("default", new()
+    ///     {
+    ///         CcnId = ccn.Id,
+    ///         CenId = cen.Id,
+    ///         CenUid = "xxxxxx",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             ccn,
+    ///             cen,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.CloudConnect
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudconnect/networkGrant:NetworkGrant")]
-    public partial class NetworkGrant : Pulumi.CustomResource
+    public partial class NetworkGrant : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the CCN instance.
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.CloudConnect
         }
     }
 
-    public sealed class NetworkGrantArgs : Pulumi.ResourceArgs
+    public sealed class NetworkGrantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CCN instance.
@@ -166,9 +166,10 @@ namespace Pulumi.AliCloud.CloudConnect
         public NetworkGrantArgs()
         {
         }
+        public static new NetworkGrantArgs Empty => new NetworkGrantArgs();
     }
 
-    public sealed class NetworkGrantState : Pulumi.ResourceArgs
+    public sealed class NetworkGrantState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CCN instance.
@@ -191,5 +192,6 @@ namespace Pulumi.AliCloud.CloudConnect
         public NetworkGrantState()
         {
         }
+        public static new NetworkGrantState Empty => new NetworkGrantState();
     }
 }

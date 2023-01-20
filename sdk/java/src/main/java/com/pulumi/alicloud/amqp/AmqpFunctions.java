@@ -12,12 +12,15 @@ import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
 import com.pulumi.alicloud.amqp.inputs.GetInstancesPlainArgs;
 import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
 import com.pulumi.alicloud.amqp.inputs.GetQueuesPlainArgs;
+import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
+import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsPlainArgs;
 import com.pulumi.alicloud.amqp.inputs.GetVirtualHostsArgs;
 import com.pulumi.alicloud.amqp.inputs.GetVirtualHostsPlainArgs;
 import com.pulumi.alicloud.amqp.outputs.GetBindingsResult;
 import com.pulumi.alicloud.amqp.outputs.GetExchangesResult;
 import com.pulumi.alicloud.amqp.outputs.GetInstancesResult;
 import com.pulumi.alicloud.amqp.outputs.GetQueuesResult;
+import com.pulumi.alicloud.amqp.outputs.GetStaticAccountsResult;
 import com.pulumi.alicloud.amqp.outputs.GetVirtualHostsResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -421,7 +424,7 @@ public final class AmqpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -470,7 +473,7 @@ public final class AmqpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -519,7 +522,7 @@ public final class AmqpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -568,7 +571,7 @@ public final class AmqpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -617,7 +620,7 @@ public final class AmqpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -666,7 +669,7 @@ public final class AmqpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -911,6 +914,246 @@ public final class AmqpFunctions {
      */
     public static CompletableFuture<GetQueuesResult> getQueuesPlain(GetQueuesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:amqp/getQueues:getQueues", TypeShape.of(GetQueuesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AmqpFunctions.getStaticAccounts(GetStaticAccountsArgs.builder()
+     *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAmqpStaticAccountExampleId&#34;, default_.accounts()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetStaticAccountsResult> getStaticAccounts() {
+        return getStaticAccounts(GetStaticAccountsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AmqpFunctions.getStaticAccounts(GetStaticAccountsArgs.builder()
+     *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAmqpStaticAccountExampleId&#34;, default_.accounts()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetStaticAccountsResult> getStaticAccountsPlain() {
+        return getStaticAccountsPlain(GetStaticAccountsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AmqpFunctions.getStaticAccounts(GetStaticAccountsArgs.builder()
+     *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAmqpStaticAccountExampleId&#34;, default_.accounts()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetStaticAccountsResult> getStaticAccounts(GetStaticAccountsArgs args) {
+        return getStaticAccounts(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AmqpFunctions.getStaticAccounts(GetStaticAccountsArgs.builder()
+     *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAmqpStaticAccountExampleId&#34;, default_.accounts()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetStaticAccountsResult> getStaticAccountsPlain(GetStaticAccountsPlainArgs args) {
+        return getStaticAccountsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AmqpFunctions.getStaticAccounts(GetStaticAccountsArgs.builder()
+     *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAmqpStaticAccountExampleId&#34;, default_.accounts()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetStaticAccountsResult> getStaticAccounts(GetStaticAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:amqp/getStaticAccounts:getStaticAccounts", TypeShape.of(GetStaticAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = AmqpFunctions.getStaticAccounts(GetStaticAccountsArgs.builder()
+     *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudAmqpStaticAccountExampleId&#34;, default_.accounts()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetStaticAccountsResult> getStaticAccountsPlain(GetStaticAccountsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:amqp/getStaticAccounts:getStaticAccounts", TypeShape.of(GetStaticAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.

@@ -29,6 +29,7 @@ class FunctionArgs:
                  initializer: Optional[pulumi.Input[str]] = None,
                  instance_concurrency: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  memory_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
@@ -38,7 +39,7 @@ class FunctionArgs:
         """
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[str] handler: The function [entry point](https://www.alibabacloud.com/help/doc-detail/157704.htm) in your code.
-        :param pulumi.Input[str] runtime: See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+        :param pulumi.Input[str] runtime: See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[int] ca_port: The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
         :param pulumi.Input[str] code_checksum: The checksum (crc64) of the function code.
@@ -50,6 +51,7 @@ class FunctionArgs:
         :param pulumi.Input[str] initializer: The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
         :param pulumi.Input[int] instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
         :param pulumi.Input[str] instance_type: The instance type of the function.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: The configuration for layers.
         :param pulumi.Input[int] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         :param pulumi.Input[str] name: The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only function name. It is conflict with "name".
@@ -80,6 +82,8 @@ class FunctionArgs:
             pulumi.set(__self__, "instance_concurrency", instance_concurrency)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if layers is not None:
+            pulumi.set(__self__, "layers", layers)
         if memory_size is not None:
             pulumi.set(__self__, "memory_size", memory_size)
         if name is not None:
@@ -109,7 +113,7 @@ class FunctionArgs:
     @pulumi.getter
     def runtime(self) -> pulumi.Input[str]:
         """
-        See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+        See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
         """
         return pulumi.get(self, "runtime")
 
@@ -250,6 +254,18 @@ class FunctionArgs:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter
+    def layers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The configuration for layers.
+        """
+        return pulumi.get(self, "layers")
+
+    @layers.setter
+    def layers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "layers", value)
+
+    @property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -338,6 +354,7 @@ class _FunctionState:
                  instance_concurrency: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  last_modified: Optional[pulumi.Input[str]] = None,
+                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  memory_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
@@ -361,12 +378,13 @@ class _FunctionState:
         :param pulumi.Input[int] instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
         :param pulumi.Input[str] instance_type: The instance type of the function.
         :param pulumi.Input[str] last_modified: The date this resource was last modified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: The configuration for layers.
         :param pulumi.Input[int] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         :param pulumi.Input[str] name: The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only function name. It is conflict with "name".
         :param pulumi.Input[str] oss_bucket: The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
         :param pulumi.Input[str] oss_key: The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
-        :param pulumi.Input[str] runtime: See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+        :param pulumi.Input[str] runtime: See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[int] timeout: The amount of time your function has to run in seconds.
         """
@@ -396,6 +414,8 @@ class _FunctionState:
             pulumi.set(__self__, "instance_type", instance_type)
         if last_modified is not None:
             pulumi.set(__self__, "last_modified", last_modified)
+        if layers is not None:
+            pulumi.set(__self__, "layers", layers)
         if memory_size is not None:
             pulumi.set(__self__, "memory_size", memory_size)
         if name is not None:
@@ -570,6 +590,18 @@ class _FunctionState:
         pulumi.set(self, "last_modified", value)
 
     @property
+    @pulumi.getter
+    def layers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The configuration for layers.
+        """
+        return pulumi.get(self, "layers")
+
+    @layers.setter
+    def layers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "layers", value)
+
+    @property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -633,7 +665,7 @@ class _FunctionState:
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[str]]:
         """
-        See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+        See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
         """
         return pulumi.get(self, "runtime")
 
@@ -682,6 +714,7 @@ class Function(pulumi.CustomResource):
                  initializer: Optional[pulumi.Input[str]] = None,
                  instance_concurrency: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  memory_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
@@ -713,12 +746,13 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] initializer: The entry point of the function's [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
         :param pulumi.Input[int] instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
         :param pulumi.Input[str] instance_type: The instance type of the function.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: The configuration for layers.
         :param pulumi.Input[int] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         :param pulumi.Input[str] name: The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only function name. It is conflict with "name".
         :param pulumi.Input[str] oss_bucket: The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
         :param pulumi.Input[str] oss_key: The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
-        :param pulumi.Input[str] runtime: See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+        :param pulumi.Input[str] runtime: See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[int] timeout: The amount of time your function has to run in seconds.
         """
@@ -763,6 +797,7 @@ class Function(pulumi.CustomResource):
                  initializer: Optional[pulumi.Input[str]] = None,
                  instance_concurrency: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  memory_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
@@ -793,6 +828,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["initializer"] = initializer
             __props__.__dict__["instance_concurrency"] = instance_concurrency
             __props__.__dict__["instance_type"] = instance_type
+            __props__.__dict__["layers"] = layers
             __props__.__dict__["memory_size"] = memory_size
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
@@ -830,6 +866,7 @@ class Function(pulumi.CustomResource):
             instance_concurrency: Optional[pulumi.Input[int]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             last_modified: Optional[pulumi.Input[str]] = None,
+            layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             memory_size: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
@@ -858,12 +895,13 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[int] instance_concurrency: The maximum number of requests can be executed concurrently within the single function instance.
         :param pulumi.Input[str] instance_type: The instance type of the function.
         :param pulumi.Input[str] last_modified: The date this resource was last modified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: The configuration for layers.
         :param pulumi.Input[int] memory_size: Amount of memory in MB your function can use at runtime. Defaults to `128`. Limits to [128, 32768].
         :param pulumi.Input[str] name: The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only function name. It is conflict with "name".
         :param pulumi.Input[str] oss_bucket: The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
         :param pulumi.Input[str] oss_key: The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
-        :param pulumi.Input[str] runtime: See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+        :param pulumi.Input[str] runtime: See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[int] timeout: The amount of time your function has to run in seconds.
         """
@@ -884,6 +922,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["instance_concurrency"] = instance_concurrency
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["last_modified"] = last_modified
+        __props__.__dict__["layers"] = layers
         __props__.__dict__["memory_size"] = memory_size
         __props__.__dict__["name"] = name
         __props__.__dict__["name_prefix"] = name_prefix
@@ -999,6 +1038,14 @@ class Function(pulumi.CustomResource):
         return pulumi.get(self, "last_modified")
 
     @property
+    @pulumi.getter
+    def layers(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The configuration for layers.
+        """
+        return pulumi.get(self, "layers")
+
+    @property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> pulumi.Output[Optional[int]]:
         """
@@ -1042,7 +1089,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def runtime(self) -> pulumi.Output[str]:
         """
-        See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
+        See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
         """
         return pulumi.get(self, "runtime")
 

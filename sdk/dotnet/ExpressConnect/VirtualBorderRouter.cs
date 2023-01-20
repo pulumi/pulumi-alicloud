@@ -21,32 +21,31 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var nameRegex = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
-    ///         var nameRegex = Output.Create(AliCloud.ExpressConnect.GetPhysicalConnections.InvokeAsync(new AliCloud.ExpressConnect.GetPhysicalConnectionsArgs
-    ///         {
-    ///             NameRegex = "^my-PhysicalConnection",
-    ///         }));
-    ///         var example = new AliCloud.ExpressConnect.VirtualBorderRouter("example", new AliCloud.ExpressConnect.VirtualBorderRouterArgs
-    ///         {
-    ///             LocalGatewayIp = "10.0.0.1",
-    ///             PeerGatewayIp = "10.0.0.2",
-    ///             PeeringSubnetMask = "255.255.255.252",
-    ///             PhysicalConnectionId = nameRegex.Apply(nameRegex =&gt; nameRegex.Connections?[0]?.Id),
-    ///             VirtualBorderRouterName = "example_value",
-    ///             VlanId = 1,
-    ///             MinRxInterval = 1000,
-    ///             MinTxInterval = 1000,
-    ///             DetectMultiplier = 10,
-    ///         });
-    ///     }
+    ///         NameRegex = "^my-PhysicalConnection",
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.ExpressConnect.VirtualBorderRouter("example", new()
+    ///     {
+    ///         LocalGatewayIp = "10.0.0.1",
+    ///         PeerGatewayIp = "10.0.0.2",
+    ///         PeeringSubnetMask = "255.255.255.252",
+    ///         PhysicalConnectionId = nameRegex.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         VirtualBorderRouterName = "example_value",
+    ///         VlanId = 1,
+    ///         MinRxInterval = 1000,
+    ///         MinTxInterval = 1000,
+    ///         DetectMultiplier = 10,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +57,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter")]
-    public partial class VirtualBorderRouter : Pulumi.CustomResource
+    public partial class VirtualBorderRouter : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The associated physical connections.
@@ -70,7 +69,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// The bandwidth.
         /// </summary>
         [Output("bandwidth")]
-        public Output<int?> Bandwidth { get; private set; } = null!;
+        public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
         /// Operators for physical connection circuit provided coding.
@@ -95,6 +94,12 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         [Output("enableIpv6")]
         public Output<bool> EnableIpv6 { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+        /// </summary>
+        [Output("includeCrossAccountVbr")]
+        public Output<bool> IncludeCrossAccountVbr { get; private set; } = null!;
 
         /// <summary>
         /// Alibaba Cloud-Connected IPv4 address.
@@ -224,7 +229,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         }
     }
 
-    public sealed class VirtualBorderRouterArgs : Pulumi.ResourceArgs
+    public sealed class VirtualBorderRouterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The associated physical connections.
@@ -261,6 +266,12 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
+
+        /// <summary>
+        /// Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+        /// </summary>
+        [Input("includeCrossAccountVbr")]
+        public Input<bool>? IncludeCrossAccountVbr { get; set; }
 
         /// <summary>
         /// Alibaba Cloud-Connected IPv4 address.
@@ -343,9 +354,10 @@ namespace Pulumi.AliCloud.ExpressConnect
         public VirtualBorderRouterArgs()
         {
         }
+        public static new VirtualBorderRouterArgs Empty => new VirtualBorderRouterArgs();
     }
 
-    public sealed class VirtualBorderRouterState : Pulumi.ResourceArgs
+    public sealed class VirtualBorderRouterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The associated physical connections.
@@ -382,6 +394,12 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
+
+        /// <summary>
+        /// Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
+        /// </summary>
+        [Input("includeCrossAccountVbr")]
+        public Input<bool>? IncludeCrossAccountVbr { get; set; }
 
         /// <summary>
         /// Alibaba Cloud-Connected IPv4 address.
@@ -470,5 +488,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         public VirtualBorderRouterState()
         {
         }
+        public static new VirtualBorderRouterState Empty => new VirtualBorderRouterState();
     }
 }

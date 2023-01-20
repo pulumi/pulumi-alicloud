@@ -30,6 +30,12 @@ __all__ = [
     'GetAclsAclAclEntryResult',
     'GetAdditionalCertificatesCertificateResult',
     'GetBandwidthPackagesPackageResult',
+    'GetBasicAccelerateIpEndpointRelationsRelationResult',
+    'GetBasicAccelerateIpsIpResult',
+    'GetBasicAcceleratorsAcceleratorResult',
+    'GetBasicAcceleratorsAcceleratorBasicBandwidthPackageResult',
+    'GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageResult',
+    'GetBasicEndpointsEndpointResult',
     'GetEndpointGroupsGroupResult',
     'GetEndpointGroupsGroupEndpointConfigurationResult',
     'GetEndpointGroupsGroupPortOverrideResult',
@@ -410,7 +416,7 @@ class ForwardingRuleRuleConditionHostConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] values: The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        :param Sequence[str] values: The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -419,7 +425,7 @@ class ForwardingRuleRuleConditionHostConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
         """
         return pulumi.get(self, "values")
 
@@ -429,7 +435,7 @@ class ForwardingRuleRuleConditionPathConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] values: The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        :param Sequence[str] values: The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
         """
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -438,7 +444,7 @@ class ForwardingRuleRuleConditionPathConfig(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
         """
         return pulumi.get(self, "values")
 
@@ -1092,6 +1098,576 @@ class GetBandwidthPackagesPackageResult(dict):
         The type of the bandwidth packet. China station only supports return to basic.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetBasicAccelerateIpEndpointRelationsRelationResult(dict):
+    def __init__(__self__, *,
+                 accelerate_ip_id: str,
+                 accelerator_id: str,
+                 basic_endpoint_name: str,
+                 endpoint_address: str,
+                 endpoint_id: str,
+                 endpoint_sub_address: str,
+                 endpoint_sub_address_type: str,
+                 endpoint_type: str,
+                 endpoint_zone_id: str,
+                 id: str,
+                 ip_address: str,
+                 status: str):
+        """
+        :param str accelerate_ip_id: The ID of the Basic Accelerate IP.
+        :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.
+        :param str basic_endpoint_name: The name of the Basic Endpoint.
+        :param str endpoint_address: The address of the Basic Endpoint.
+        :param str endpoint_id: The ID of the Basic Endpoint.
+        :param str endpoint_sub_address: The sub address of the Basic Endpoint.
+        :param str endpoint_sub_address_type: The sub address type of the Basic Endpoint.
+        :param str endpoint_type: The type of the Basic Endpoint.
+        :param str endpoint_zone_id: The zone id of the Basic Endpoint.
+        :param str id: The id of the Global Accelerator Basic Accelerate Ip Endpoint Relation. It formats as `<accelerator_id>:<accelerate_ip_id>:<endpoint_id>`.
+        :param str ip_address: The address of the Basic Accelerate IP.
+        :param str status: The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
+        """
+        pulumi.set(__self__, "accelerate_ip_id", accelerate_ip_id)
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "basic_endpoint_name", basic_endpoint_name)
+        pulumi.set(__self__, "endpoint_address", endpoint_address)
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "endpoint_sub_address", endpoint_sub_address)
+        pulumi.set(__self__, "endpoint_sub_address_type", endpoint_sub_address_type)
+        pulumi.set(__self__, "endpoint_type", endpoint_type)
+        pulumi.set(__self__, "endpoint_zone_id", endpoint_zone_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accelerateIpId")
+    def accelerate_ip_id(self) -> str:
+        """
+        The ID of the Basic Accelerate IP.
+        """
+        return pulumi.get(self, "accelerate_ip_id")
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> str:
+        """
+        The ID of the Global Accelerator Basic Accelerator instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @property
+    @pulumi.getter(name="basicEndpointName")
+    def basic_endpoint_name(self) -> str:
+        """
+        The name of the Basic Endpoint.
+        """
+        return pulumi.get(self, "basic_endpoint_name")
+
+    @property
+    @pulumi.getter(name="endpointAddress")
+    def endpoint_address(self) -> str:
+        """
+        The address of the Basic Endpoint.
+        """
+        return pulumi.get(self, "endpoint_address")
+
+    @property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> str:
+        """
+        The ID of the Basic Endpoint.
+        """
+        return pulumi.get(self, "endpoint_id")
+
+    @property
+    @pulumi.getter(name="endpointSubAddress")
+    def endpoint_sub_address(self) -> str:
+        """
+        The sub address of the Basic Endpoint.
+        """
+        return pulumi.get(self, "endpoint_sub_address")
+
+    @property
+    @pulumi.getter(name="endpointSubAddressType")
+    def endpoint_sub_address_type(self) -> str:
+        """
+        The sub address type of the Basic Endpoint.
+        """
+        return pulumi.get(self, "endpoint_sub_address_type")
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> str:
+        """
+        The type of the Basic Endpoint.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @property
+    @pulumi.getter(name="endpointZoneId")
+    def endpoint_zone_id(self) -> str:
+        """
+        The zone id of the Basic Endpoint.
+        """
+        return pulumi.get(self, "endpoint_zone_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the Global Accelerator Basic Accelerate Ip Endpoint Relation. It formats as `<accelerator_id>:<accelerate_ip_id>:<endpoint_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        The address of the Basic Accelerate IP.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetBasicAccelerateIpsIpResult(dict):
+    def __init__(__self__, *,
+                 accelerate_ip_address: str,
+                 accelerate_ip_id: str,
+                 accelerator_id: str,
+                 id: str,
+                 ip_set_id: str,
+                 status: str):
+        """
+        :param str accelerate_ip_address: The address of the Basic Accelerate IP.
+        :param str accelerate_ip_id: The id of the Basic Accelerate IP.
+        :param str accelerator_id: The id of the Global Accelerator Basic Accelerator instance.
+        :param str id: The id of the Basic Accelerate IP.
+        :param str ip_set_id: The ID of the Basic Ip Set.
+        :param str status: The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
+        """
+        pulumi.set(__self__, "accelerate_ip_address", accelerate_ip_address)
+        pulumi.set(__self__, "accelerate_ip_id", accelerate_ip_id)
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_set_id", ip_set_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="accelerateIpAddress")
+    def accelerate_ip_address(self) -> str:
+        """
+        The address of the Basic Accelerate IP.
+        """
+        return pulumi.get(self, "accelerate_ip_address")
+
+    @property
+    @pulumi.getter(name="accelerateIpId")
+    def accelerate_ip_id(self) -> str:
+        """
+        The id of the Basic Accelerate IP.
+        """
+        return pulumi.get(self, "accelerate_ip_id")
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> str:
+        """
+        The id of the Global Accelerator Basic Accelerator instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the Basic Accelerate IP.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipSetId")
+    def ip_set_id(self) -> str:
+        """
+        The ID of the Basic Ip Set.
+        """
+        return pulumi.get(self, "ip_set_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetBasicAcceleratorsAcceleratorResult(dict):
+    def __init__(__self__, *,
+                 bandwidth_billing_type: str,
+                 basic_accelerator_id: str,
+                 basic_accelerator_name: str,
+                 basic_bandwidth_packages: Sequence['outputs.GetBasicAcceleratorsAcceleratorBasicBandwidthPackageResult'],
+                 basic_endpoint_group_id: str,
+                 basic_ip_set_id: str,
+                 create_time: int,
+                 cross_domain_bandwidth_packages: Sequence['outputs.GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageResult'],
+                 description: str,
+                 expired_time: int,
+                 id: str,
+                 instance_charge_type: str,
+                 region_id: str,
+                 status: str):
+        """
+        :param str bandwidth_billing_type: The bandwidth billing method.
+        :param str basic_accelerator_id: The id of the Global Accelerator Basic Accelerator instance.
+        :param str basic_accelerator_name: The name of the Global Accelerator Basic Accelerator instance.
+        :param Sequence['GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArgs'] basic_bandwidth_packages: The details about the basic bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance.
+        :param str basic_endpoint_group_id: The ID of the endpoint group that is associated with the Global Accelerator Basic Accelerator instance.
+        :param str basic_ip_set_id: The ID of the acceleration region.
+        :param int create_time: The timestamp that indicates when the Global Accelerator Basic Accelerator instance was created.
+        :param Sequence['GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs'] cross_domain_bandwidth_packages: The details about the cross-region acceleration bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance. **NOTE:** This array is returned only for Global Accelerator Basic Accelerator instances that are created on the International site.
+        :param str description: The description of the Global Accelerator Basic Accelerator instance.
+        :param int expired_time: The timestamp that indicates when the Global Accelerator Basic Accelerator instance was expired.
+        :param str id: The id of the Global Accelerator Basic Accelerator.
+        :param str instance_charge_type: The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+        :param str region_id: The ID of the region where the Global Accelerator Basic Accelerator instance is deployed.
+        :param str status: The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
+        """
+        pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
+        pulumi.set(__self__, "basic_accelerator_id", basic_accelerator_id)
+        pulumi.set(__self__, "basic_accelerator_name", basic_accelerator_name)
+        pulumi.set(__self__, "basic_bandwidth_packages", basic_bandwidth_packages)
+        pulumi.set(__self__, "basic_endpoint_group_id", basic_endpoint_group_id)
+        pulumi.set(__self__, "basic_ip_set_id", basic_ip_set_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "cross_domain_bandwidth_packages", cross_domain_bandwidth_packages)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expired_time", expired_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="bandwidthBillingType")
+    def bandwidth_billing_type(self) -> str:
+        """
+        The bandwidth billing method.
+        """
+        return pulumi.get(self, "bandwidth_billing_type")
+
+    @property
+    @pulumi.getter(name="basicAcceleratorId")
+    def basic_accelerator_id(self) -> str:
+        """
+        The id of the Global Accelerator Basic Accelerator instance.
+        """
+        return pulumi.get(self, "basic_accelerator_id")
+
+    @property
+    @pulumi.getter(name="basicAcceleratorName")
+    def basic_accelerator_name(self) -> str:
+        """
+        The name of the Global Accelerator Basic Accelerator instance.
+        """
+        return pulumi.get(self, "basic_accelerator_name")
+
+    @property
+    @pulumi.getter(name="basicBandwidthPackages")
+    def basic_bandwidth_packages(self) -> Sequence['outputs.GetBasicAcceleratorsAcceleratorBasicBandwidthPackageResult']:
+        """
+        The details about the basic bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance.
+        """
+        return pulumi.get(self, "basic_bandwidth_packages")
+
+    @property
+    @pulumi.getter(name="basicEndpointGroupId")
+    def basic_endpoint_group_id(self) -> str:
+        """
+        The ID of the endpoint group that is associated with the Global Accelerator Basic Accelerator instance.
+        """
+        return pulumi.get(self, "basic_endpoint_group_id")
+
+    @property
+    @pulumi.getter(name="basicIpSetId")
+    def basic_ip_set_id(self) -> str:
+        """
+        The ID of the acceleration region.
+        """
+        return pulumi.get(self, "basic_ip_set_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> int:
+        """
+        The timestamp that indicates when the Global Accelerator Basic Accelerator instance was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="crossDomainBandwidthPackages")
+    def cross_domain_bandwidth_packages(self) -> Sequence['outputs.GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageResult']:
+        """
+        The details about the cross-region acceleration bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance. **NOTE:** This array is returned only for Global Accelerator Basic Accelerator instances that are created on the International site.
+        """
+        return pulumi.get(self, "cross_domain_bandwidth_packages")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Global Accelerator Basic Accelerator instance.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> int:
+        """
+        The timestamp that indicates when the Global Accelerator Basic Accelerator instance was expired.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the Global Accelerator Basic Accelerator.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> str:
+        """
+        The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The ID of the region where the Global Accelerator Basic Accelerator instance is deployed.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetBasicAcceleratorsAcceleratorBasicBandwidthPackageResult(dict):
+    def __init__(__self__, *,
+                 bandwidth: int,
+                 bandwidth_type: str,
+                 instance_id: str):
+        """
+        :param int bandwidth: The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
+        :param str bandwidth_type: The type of the bandwidth that is provided by the basic bandwidth plan.
+        :param str instance_id: The ID of the cross-region acceleration bandwidth plan.
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "bandwidth_type", bandwidth_type)
+        pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="bandwidthType")
+    def bandwidth_type(self) -> str:
+        """
+        The type of the bandwidth that is provided by the basic bandwidth plan.
+        """
+        return pulumi.get(self, "bandwidth_type")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the cross-region acceleration bandwidth plan.
+        """
+        return pulumi.get(self, "instance_id")
+
+
+@pulumi.output_type
+class GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageResult(dict):
+    def __init__(__self__, *,
+                 bandwidth: int,
+                 instance_id: str):
+        """
+        :param int bandwidth: The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
+        :param str instance_id: The ID of the cross-region acceleration bandwidth plan.
+        """
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the cross-region acceleration bandwidth plan.
+        """
+        return pulumi.get(self, "instance_id")
+
+
+@pulumi.output_type
+class GetBasicEndpointsEndpointResult(dict):
+    def __init__(__self__, *,
+                 accelerator_id: str,
+                 basic_endpoint_name: str,
+                 endpoint_address: str,
+                 endpoint_group_id: str,
+                 endpoint_id: str,
+                 endpoint_sub_address: str,
+                 endpoint_sub_address_type: str,
+                 endpoint_type: str,
+                 endpoint_zone_id: str,
+                 id: str,
+                 status: str):
+        """
+        :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.
+        :param str basic_endpoint_name: The name of the Basic Endpoint.
+        :param str endpoint_address: The address of the Basic Endpoint.
+        :param str endpoint_group_id: The ID of the Basic Endpoint Group.
+        :param str endpoint_id: The ID of the Basic Endpoint.
+        :param str endpoint_sub_address: The sub address of the Basic Endpoint.
+        :param str endpoint_sub_address_type: The sub address type of the Basic Endpoint.
+        :param str endpoint_type: The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
+        :param str endpoint_zone_id: The zone id of the Basic Endpoint.
+        :param str id: The id of the Global Accelerator Basic Endpoint. It formats as `<endpoint_group_id>:<endpoint_id>`.
+        :param str status: The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "basic_endpoint_name", basic_endpoint_name)
+        pulumi.set(__self__, "endpoint_address", endpoint_address)
+        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "endpoint_sub_address", endpoint_sub_address)
+        pulumi.set(__self__, "endpoint_sub_address_type", endpoint_sub_address_type)
+        pulumi.set(__self__, "endpoint_type", endpoint_type)
+        pulumi.set(__self__, "endpoint_zone_id", endpoint_zone_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> str:
+        """
+        The ID of the Global Accelerator Basic Accelerator instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @property
+    @pulumi.getter(name="basicEndpointName")
+    def basic_endpoint_name(self) -> str:
+        """
+        The name of the Basic Endpoint.
+        """
+        return pulumi.get(self, "basic_endpoint_name")
+
+    @property
+    @pulumi.getter(name="endpointAddress")
+    def endpoint_address(self) -> str:
+        """
+        The address of the Basic Endpoint.
+        """
+        return pulumi.get(self, "endpoint_address")
+
+    @property
+    @pulumi.getter(name="endpointGroupId")
+    def endpoint_group_id(self) -> str:
+        """
+        The ID of the Basic Endpoint Group.
+        """
+        return pulumi.get(self, "endpoint_group_id")
+
+    @property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> str:
+        """
+        The ID of the Basic Endpoint.
+        """
+        return pulumi.get(self, "endpoint_id")
+
+    @property
+    @pulumi.getter(name="endpointSubAddress")
+    def endpoint_sub_address(self) -> str:
+        """
+        The sub address of the Basic Endpoint.
+        """
+        return pulumi.get(self, "endpoint_sub_address")
+
+    @property
+    @pulumi.getter(name="endpointSubAddressType")
+    def endpoint_sub_address_type(self) -> str:
+        """
+        The sub address type of the Basic Endpoint.
+        """
+        return pulumi.get(self, "endpoint_sub_address_type")
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> str:
+        """
+        The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @property
+    @pulumi.getter(name="endpointZoneId")
+    def endpoint_zone_id(self) -> str:
+        """
+        The zone id of the Basic Endpoint.
+        """
+        return pulumi.get(self, "endpoint_zone_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the Global Accelerator Basic Endpoint. It formats as `<endpoint_group_id>:<endpoint_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

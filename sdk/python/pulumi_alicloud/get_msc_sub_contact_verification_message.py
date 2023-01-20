@@ -100,8 +100,6 @@ def get_msc_sub_contact_verification_message(contact_id: Optional[str] = None,
 
     :param str contact_id: The ID of the Contact.
     :param int type: How a user receives verification messages. Valid values : `1`, `2`.
-           * `1`: Send a verification message through the user's mobile.
-           * `2`: Send a verification message through the user's mail.
     """
     __args__ = dict()
     __args__['contactId'] = contact_id
@@ -143,7 +141,5 @@ def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.
 
     :param str contact_id: The ID of the Contact.
     :param int type: How a user receives verification messages. Valid values : `1`, `2`.
-           * `1`: Send a verification message through the user's mobile.
-           * `2`: Send a verification message through the user's mail.
     """
     ...

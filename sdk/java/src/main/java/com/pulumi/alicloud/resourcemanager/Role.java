@@ -82,7 +82,6 @@ import javax.annotation.Nullable;
 public class Role extends com.pulumi.resources.CustomResource {
     /**
      * The resource descriptor of the role.
-     * * `create_date` (Removed form v1.114.0) - Role creation time.
      * 
      */
     @Export(name="arn", type=String.class, parameters={})
@@ -90,7 +89,6 @@ public class Role extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource descriptor of the role.
-     * * `create_date` (Removed form v1.114.0) - Role creation time.
      * 
      */
     public Output<String> arn() {

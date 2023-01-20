@@ -17,9 +17,17 @@ public final class EcsKeyPairState extends com.pulumi.resources.ResourceArgs {
 
     public static final EcsKeyPairState Empty = new EcsKeyPairState();
 
+    /**
+     * The finger print of the key pair.
+     * 
+     */
     @Import(name="fingerPrint")
     private @Nullable Output<String> fingerPrint;
 
+    /**
+     * @return The finger print of the key pair.
+     * 
+     */
     public Optional<Output<String>> fingerPrint() {
         return Optional.ofNullable(this.fingerPrint);
     }
@@ -160,11 +168,23 @@ public final class EcsKeyPairState extends com.pulumi.resources.ResourceArgs {
             $ = new EcsKeyPairState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fingerPrint The finger print of the key pair.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fingerPrint(@Nullable Output<String> fingerPrint) {
             $.fingerPrint = fingerPrint;
             return this;
         }
 
+        /**
+         * @param fingerPrint The finger print of the key pair.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fingerPrint(String fingerPrint) {
             return fingerPrint(Output.of(fingerPrint));
         }

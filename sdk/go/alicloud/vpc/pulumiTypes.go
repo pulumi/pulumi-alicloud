@@ -223,17 +223,17 @@ func (o NetworkAclAttachmentResourceArrayOutput) Index(i pulumi.IntInput) Networ
 }
 
 type NetworkAclEgressAclEntry struct {
-	// The description of egress entries.
+	// The description of the network acl instance.
 	Description *string `pulumi:"description"`
 	// The destination cidr ip of egress entries.
 	DestinationCidrIp *string `pulumi:"destinationCidrIp"`
-	// The entry name of egress entries.
+	// The entry name of ingress entries.
 	NetworkAclEntryName *string `pulumi:"networkAclEntryName"`
-	// The policy of egress entries. Valid values `accept` and `drop`.
+	// The policy of ingress entries. Valid values `accept` and `drop`.
 	Policy *string `pulumi:"policy"`
-	// The port of egress entries.
+	// The port of ingress entries.
 	Port *string `pulumi:"port"`
-	// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+	// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -249,17 +249,17 @@ type NetworkAclEgressAclEntryInput interface {
 }
 
 type NetworkAclEgressAclEntryArgs struct {
-	// The description of egress entries.
+	// The description of the network acl instance.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The destination cidr ip of egress entries.
 	DestinationCidrIp pulumi.StringPtrInput `pulumi:"destinationCidrIp"`
-	// The entry name of egress entries.
+	// The entry name of ingress entries.
 	NetworkAclEntryName pulumi.StringPtrInput `pulumi:"networkAclEntryName"`
-	// The policy of egress entries. Valid values `accept` and `drop`.
+	// The policy of ingress entries. Valid values `accept` and `drop`.
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// The port of egress entries.
+	// The port of ingress entries.
 	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+	// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -314,7 +314,7 @@ func (o NetworkAclEgressAclEntryOutput) ToNetworkAclEgressAclEntryOutputWithCont
 	return o
 }
 
-// The description of egress entries.
+// The description of the network acl instance.
 func (o NetworkAclEgressAclEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -324,22 +324,22 @@ func (o NetworkAclEgressAclEntryOutput) DestinationCidrIp() pulumi.StringPtrOutp
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.DestinationCidrIp }).(pulumi.StringPtrOutput)
 }
 
-// The entry name of egress entries.
+// The entry name of ingress entries.
 func (o NetworkAclEgressAclEntryOutput) NetworkAclEntryName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.NetworkAclEntryName }).(pulumi.StringPtrOutput)
 }
 
-// The policy of egress entries. Valid values `accept` and `drop`.
+// The policy of ingress entries. Valid values `accept` and `drop`.
 func (o NetworkAclEgressAclEntryOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The port of egress entries.
+// The port of ingress entries.
 func (o NetworkAclEgressAclEntryOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
 func (o NetworkAclEgressAclEntryOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -365,19 +365,19 @@ func (o NetworkAclEgressAclEntryArrayOutput) Index(i pulumi.IntInput) NetworkAcl
 }
 
 type NetworkAclEntriesEgress struct {
-	// The description of the egress entry.
+	// The description of the ingress entry.
 	Description *string `pulumi:"description"`
 	// The destination ip of the egress entry.
 	DestinationCidrIp *string `pulumi:"destinationCidrIp"`
-	// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+	// The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
 	EntryType *string `pulumi:"entryType"`
-	// The name of the egress entry.
+	// The name of the ingress entry.
 	Name *string `pulumi:"name"`
-	// The policy of the egress entry. It must be `accept` or `drop`.
+	// The policy of the ingress entry. It must be `accept` or `drop`.
 	Policy *string `pulumi:"policy"`
-	// The port of the egress entry.
+	// The port of the ingress entry.
 	Port *string `pulumi:"port"`
-	// The protocol of the egress entry.
+	// The protocol of the ingress entry.
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -393,19 +393,19 @@ type NetworkAclEntriesEgressInput interface {
 }
 
 type NetworkAclEntriesEgressArgs struct {
-	// The description of the egress entry.
+	// The description of the ingress entry.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The destination ip of the egress entry.
 	DestinationCidrIp pulumi.StringPtrInput `pulumi:"destinationCidrIp"`
-	// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+	// The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
 	EntryType pulumi.StringPtrInput `pulumi:"entryType"`
-	// The name of the egress entry.
+	// The name of the ingress entry.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The policy of the egress entry. It must be `accept` or `drop`.
+	// The policy of the ingress entry. It must be `accept` or `drop`.
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// The port of the egress entry.
+	// The port of the ingress entry.
 	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The protocol of the egress entry.
+	// The protocol of the ingress entry.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -460,7 +460,7 @@ func (o NetworkAclEntriesEgressOutput) ToNetworkAclEntriesEgressOutputWithContex
 	return o
 }
 
-// The description of the egress entry.
+// The description of the ingress entry.
 func (o NetworkAclEntriesEgressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -470,27 +470,27 @@ func (o NetworkAclEntriesEgressOutput) DestinationCidrIp() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.DestinationCidrIp }).(pulumi.StringPtrOutput)
 }
 
-// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+// The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
 func (o NetworkAclEntriesEgressOutput) EntryType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.EntryType }).(pulumi.StringPtrOutput)
 }
 
-// The name of the egress entry.
+// The name of the ingress entry.
 func (o NetworkAclEntriesEgressOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The policy of the egress entry. It must be `accept` or `drop`.
+// The policy of the ingress entry. It must be `accept` or `drop`.
 func (o NetworkAclEntriesEgressOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The port of the egress entry.
+// The port of the ingress entry.
 func (o NetworkAclEntriesEgressOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of the egress entry.
+// The protocol of the ingress entry.
 func (o NetworkAclEntriesEgressOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -516,17 +516,17 @@ func (o NetworkAclEntriesEgressArrayOutput) Index(i pulumi.IntInput) NetworkAclE
 }
 
 type NetworkAclEntriesIngress struct {
-	// The description of the egress entry.
+	// The description of the ingress entry.
 	Description *string `pulumi:"description"`
-	// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+	// The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
 	EntryType *string `pulumi:"entryType"`
-	// The name of the egress entry.
+	// The name of the ingress entry.
 	Name *string `pulumi:"name"`
-	// The policy of the egress entry. It must be `accept` or `drop`.
+	// The policy of the ingress entry. It must be `accept` or `drop`.
 	Policy *string `pulumi:"policy"`
-	// The port of the egress entry.
+	// The port of the ingress entry.
 	Port *string `pulumi:"port"`
-	// The protocol of the egress entry.
+	// The protocol of the ingress entry.
 	Protocol *string `pulumi:"protocol"`
 	// The source ip of the ingress entry.
 	SourceCidrIp *string `pulumi:"sourceCidrIp"`
@@ -544,17 +544,17 @@ type NetworkAclEntriesIngressInput interface {
 }
 
 type NetworkAclEntriesIngressArgs struct {
-	// The description of the egress entry.
+	// The description of the ingress entry.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+	// The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
 	EntryType pulumi.StringPtrInput `pulumi:"entryType"`
-	// The name of the egress entry.
+	// The name of the ingress entry.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The policy of the egress entry. It must be `accept` or `drop`.
+	// The policy of the ingress entry. It must be `accept` or `drop`.
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// The port of the egress entry.
+	// The port of the ingress entry.
 	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The protocol of the egress entry.
+	// The protocol of the ingress entry.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// The source ip of the ingress entry.
 	SourceCidrIp pulumi.StringPtrInput `pulumi:"sourceCidrIp"`
@@ -611,32 +611,32 @@ func (o NetworkAclEntriesIngressOutput) ToNetworkAclEntriesIngressOutputWithCont
 	return o
 }
 
-// The description of the egress entry.
+// The description of the ingress entry.
 func (o NetworkAclEntriesIngressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+// The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
 func (o NetworkAclEntriesIngressOutput) EntryType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.EntryType }).(pulumi.StringPtrOutput)
 }
 
-// The name of the egress entry.
+// The name of the ingress entry.
 func (o NetworkAclEntriesIngressOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The policy of the egress entry. It must be `accept` or `drop`.
+// The policy of the ingress entry. It must be `accept` or `drop`.
 func (o NetworkAclEntriesIngressOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The port of the egress entry.
+// The port of the ingress entry.
 func (o NetworkAclEntriesIngressOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of the egress entry.
+// The protocol of the ingress entry.
 func (o NetworkAclEntriesIngressOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -667,15 +667,15 @@ func (o NetworkAclEntriesIngressArrayOutput) Index(i pulumi.IntInput) NetworkAcl
 }
 
 type NetworkAclIngressAclEntry struct {
-	// The description of egress entries.
+	// The description of the network acl instance.
 	Description *string `pulumi:"description"`
-	// The entry name of egress entries.
+	// The entry name of ingress entries.
 	NetworkAclEntryName *string `pulumi:"networkAclEntryName"`
-	// The policy of egress entries. Valid values `accept` and `drop`.
+	// The policy of ingress entries. Valid values `accept` and `drop`.
 	Policy *string `pulumi:"policy"`
-	// The port of egress entries.
+	// The port of ingress entries.
 	Port *string `pulumi:"port"`
-	// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+	// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
 	Protocol *string `pulumi:"protocol"`
 	// The source cidr ip of ingress entries.
 	SourceCidrIp *string `pulumi:"sourceCidrIp"`
@@ -693,15 +693,15 @@ type NetworkAclIngressAclEntryInput interface {
 }
 
 type NetworkAclIngressAclEntryArgs struct {
-	// The description of egress entries.
+	// The description of the network acl instance.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The entry name of egress entries.
+	// The entry name of ingress entries.
 	NetworkAclEntryName pulumi.StringPtrInput `pulumi:"networkAclEntryName"`
-	// The policy of egress entries. Valid values `accept` and `drop`.
+	// The policy of ingress entries. Valid values `accept` and `drop`.
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// The port of egress entries.
+	// The port of ingress entries.
 	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+	// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// The source cidr ip of ingress entries.
 	SourceCidrIp pulumi.StringPtrInput `pulumi:"sourceCidrIp"`
@@ -758,27 +758,27 @@ func (o NetworkAclIngressAclEntryOutput) ToNetworkAclIngressAclEntryOutputWithCo
 	return o
 }
 
-// The description of egress entries.
+// The description of the network acl instance.
 func (o NetworkAclIngressAclEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The entry name of egress entries.
+// The entry name of ingress entries.
 func (o NetworkAclIngressAclEntryOutput) NetworkAclEntryName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.NetworkAclEntryName }).(pulumi.StringPtrOutput)
 }
 
-// The policy of egress entries. Valid values `accept` and `drop`.
+// The policy of ingress entries. Valid values `accept` and `drop`.
 func (o NetworkAclIngressAclEntryOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The port of egress entries.
+// The port of ingress entries.
 func (o NetworkAclIngressAclEntryOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
 func (o NetworkAclIngressAclEntryOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -916,7 +916,7 @@ func (o NetworkAclResourceArrayOutput) Index(i pulumi.IntInput) NetworkAclResour
 
 type PrefixListEntry struct {
 	// The CIDR address block of the prefix list.
-	Cidr string `pulumi:"cidr"`
+	Cidr *string `pulumi:"cidr"`
 	// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 }
@@ -934,7 +934,7 @@ type PrefixListEntryInput interface {
 
 type PrefixListEntryArgs struct {
 	// The CIDR address block of the prefix list.
-	Cidr pulumi.StringInput `pulumi:"cidr"`
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
 	// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 }
@@ -991,8 +991,8 @@ func (o PrefixListEntryOutput) ToPrefixListEntryOutputWithContext(ctx context.Co
 }
 
 // The CIDR address block of the prefix list.
-func (o PrefixListEntryOutput) Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v PrefixListEntry) string { return v.Cidr }).(pulumi.StringOutput)
+func (o PrefixListEntryOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrefixListEntry) *string { return v.Cidr }).(pulumi.StringPtrOutput)
 }
 
 // The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
@@ -5764,6 +5764,193 @@ func (o GetPbrRouteEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetPbrRoute
 	}).(GetPbrRouteEntriesEntryOutput)
 }
 
+type GetPeerConnectionsConnection struct {
+	// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
+	AcceptingAliUid int `pulumi:"acceptingAliUid"`
+	// The region ID of the recipient of the VPC peering connection to be created.
+	AcceptingRegionId string `pulumi:"acceptingRegionId"`
+	// The VPC ID of the receiving end of the VPC peer connection.
+	AcceptingVpcId string `pulumi:"acceptingVpcId"`
+	// The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the VPC peer connection to be created.
+	Description string `pulumi:"description"`
+	// The ID of the PeerConnection.
+	Id string `pulumi:"id"`
+	// The first ID of the resource.
+	PeerConnectionId string `pulumi:"peerConnectionId"`
+	// The name of the resource.
+	PeerConnectionName string `pulumi:"peerConnectionName"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// The ID of the requester VPC.
+	VpcId string `pulumi:"vpcId"`
+}
+
+// GetPeerConnectionsConnectionInput is an input type that accepts GetPeerConnectionsConnectionArgs and GetPeerConnectionsConnectionOutput values.
+// You can construct a concrete instance of `GetPeerConnectionsConnectionInput` via:
+//
+//	GetPeerConnectionsConnectionArgs{...}
+type GetPeerConnectionsConnectionInput interface {
+	pulumi.Input
+
+	ToGetPeerConnectionsConnectionOutput() GetPeerConnectionsConnectionOutput
+	ToGetPeerConnectionsConnectionOutputWithContext(context.Context) GetPeerConnectionsConnectionOutput
+}
+
+type GetPeerConnectionsConnectionArgs struct {
+	// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
+	AcceptingAliUid pulumi.IntInput `pulumi:"acceptingAliUid"`
+	// The region ID of the recipient of the VPC peering connection to be created.
+	AcceptingRegionId pulumi.StringInput `pulumi:"acceptingRegionId"`
+	// The VPC ID of the receiving end of the VPC peer connection.
+	AcceptingVpcId pulumi.StringInput `pulumi:"acceptingVpcId"`
+	// The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the VPC peer connection to be created.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the PeerConnection.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The first ID of the resource.
+	PeerConnectionId pulumi.StringInput `pulumi:"peerConnectionId"`
+	// The name of the resource.
+	PeerConnectionName pulumi.StringInput `pulumi:"peerConnectionName"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the requester VPC.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (GetPeerConnectionsConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPeerConnectionsConnection)(nil)).Elem()
+}
+
+func (i GetPeerConnectionsConnectionArgs) ToGetPeerConnectionsConnectionOutput() GetPeerConnectionsConnectionOutput {
+	return i.ToGetPeerConnectionsConnectionOutputWithContext(context.Background())
+}
+
+func (i GetPeerConnectionsConnectionArgs) ToGetPeerConnectionsConnectionOutputWithContext(ctx context.Context) GetPeerConnectionsConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPeerConnectionsConnectionOutput)
+}
+
+// GetPeerConnectionsConnectionArrayInput is an input type that accepts GetPeerConnectionsConnectionArray and GetPeerConnectionsConnectionArrayOutput values.
+// You can construct a concrete instance of `GetPeerConnectionsConnectionArrayInput` via:
+//
+//	GetPeerConnectionsConnectionArray{ GetPeerConnectionsConnectionArgs{...} }
+type GetPeerConnectionsConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetPeerConnectionsConnectionArrayOutput() GetPeerConnectionsConnectionArrayOutput
+	ToGetPeerConnectionsConnectionArrayOutputWithContext(context.Context) GetPeerConnectionsConnectionArrayOutput
+}
+
+type GetPeerConnectionsConnectionArray []GetPeerConnectionsConnectionInput
+
+func (GetPeerConnectionsConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPeerConnectionsConnection)(nil)).Elem()
+}
+
+func (i GetPeerConnectionsConnectionArray) ToGetPeerConnectionsConnectionArrayOutput() GetPeerConnectionsConnectionArrayOutput {
+	return i.ToGetPeerConnectionsConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetPeerConnectionsConnectionArray) ToGetPeerConnectionsConnectionArrayOutputWithContext(ctx context.Context) GetPeerConnectionsConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPeerConnectionsConnectionArrayOutput)
+}
+
+type GetPeerConnectionsConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetPeerConnectionsConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPeerConnectionsConnection)(nil)).Elem()
+}
+
+func (o GetPeerConnectionsConnectionOutput) ToGetPeerConnectionsConnectionOutput() GetPeerConnectionsConnectionOutput {
+	return o
+}
+
+func (o GetPeerConnectionsConnectionOutput) ToGetPeerConnectionsConnectionOutputWithContext(ctx context.Context) GetPeerConnectionsConnectionOutput {
+	return o
+}
+
+// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
+func (o GetPeerConnectionsConnectionOutput) AcceptingAliUid() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPeerConnectionsConnection) int { return v.AcceptingAliUid }).(pulumi.IntOutput)
+}
+
+// The region ID of the recipient of the VPC peering connection to be created.
+func (o GetPeerConnectionsConnectionOutput) AcceptingRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.AcceptingRegionId }).(pulumi.StringOutput)
+}
+
+// The VPC ID of the receiving end of the VPC peer connection.
+func (o GetPeerConnectionsConnectionOutput) AcceptingVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.AcceptingVpcId }).(pulumi.StringOutput)
+}
+
+// The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
+func (o GetPeerConnectionsConnectionOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPeerConnectionsConnection) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The creation time of the resource.
+func (o GetPeerConnectionsConnectionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the VPC peer connection to be created.
+func (o GetPeerConnectionsConnectionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the PeerConnection.
+func (o GetPeerConnectionsConnectionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetPeerConnectionsConnectionOutput) PeerConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.PeerConnectionId }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetPeerConnectionsConnectionOutput) PeerConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.PeerConnectionName }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetPeerConnectionsConnectionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the requester VPC.
+func (o GetPeerConnectionsConnectionOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type GetPeerConnectionsConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPeerConnectionsConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPeerConnectionsConnection)(nil)).Elem()
+}
+
+func (o GetPeerConnectionsConnectionArrayOutput) ToGetPeerConnectionsConnectionArrayOutput() GetPeerConnectionsConnectionArrayOutput {
+	return o
+}
+
+func (o GetPeerConnectionsConnectionArrayOutput) ToGetPeerConnectionsConnectionArrayOutputWithContext(ctx context.Context) GetPeerConnectionsConnectionArrayOutput {
+	return o
+}
+
+func (o GetPeerConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) GetPeerConnectionsConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPeerConnectionsConnection {
+		return vs[0].([]GetPeerConnectionsConnection)[vs[1].(int)]
+	}).(GetPeerConnectionsConnectionOutput)
+}
+
 type GetPrefixListsList struct {
 	// The time when the prefix list was created.
 	CreateTime string `pulumi:"createTime"`
@@ -6037,6 +6224,353 @@ func (o GetPrefixListsListEntryArrayOutput) Index(i pulumi.IntInput) GetPrefixLi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrefixListsListEntry {
 		return vs[0].([]GetPrefixListsListEntry)[vs[1].(int)]
 	}).(GetPrefixListsListEntryOutput)
+}
+
+type GetPublicIpAddressPoolCidrBlocksBlock struct {
+	// The CIDR block.
+	CidrBlock string `pulumi:"cidrBlock"`
+	// The time when the CIDR block was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Public Ip Address Pool Cidr Block.
+	Id string `pulumi:"id"`
+	// The ID of the Vpc Public IP address pool.
+	PublicIpAddressPoolId string `pulumi:"publicIpAddressPoolId"`
+	// The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
+	Status string `pulumi:"status"`
+	// The number of occupied IP addresses in the CIDR block.
+	TotalIpNum int `pulumi:"totalIpNum"`
+	// The total number of available IP addresses in the CIDR block.
+	UsedIpNum int `pulumi:"usedIpNum"`
+}
+
+// GetPublicIpAddressPoolCidrBlocksBlockInput is an input type that accepts GetPublicIpAddressPoolCidrBlocksBlockArgs and GetPublicIpAddressPoolCidrBlocksBlockOutput values.
+// You can construct a concrete instance of `GetPublicIpAddressPoolCidrBlocksBlockInput` via:
+//
+//	GetPublicIpAddressPoolCidrBlocksBlockArgs{...}
+type GetPublicIpAddressPoolCidrBlocksBlockInput interface {
+	pulumi.Input
+
+	ToGetPublicIpAddressPoolCidrBlocksBlockOutput() GetPublicIpAddressPoolCidrBlocksBlockOutput
+	ToGetPublicIpAddressPoolCidrBlocksBlockOutputWithContext(context.Context) GetPublicIpAddressPoolCidrBlocksBlockOutput
+}
+
+type GetPublicIpAddressPoolCidrBlocksBlockArgs struct {
+	// The CIDR block.
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// The time when the CIDR block was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Public Ip Address Pool Cidr Block.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the Vpc Public IP address pool.
+	PublicIpAddressPoolId pulumi.StringInput `pulumi:"publicIpAddressPoolId"`
+	// The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The number of occupied IP addresses in the CIDR block.
+	TotalIpNum pulumi.IntInput `pulumi:"totalIpNum"`
+	// The total number of available IP addresses in the CIDR block.
+	UsedIpNum pulumi.IntInput `pulumi:"usedIpNum"`
+}
+
+func (GetPublicIpAddressPoolCidrBlocksBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPublicIpAddressPoolCidrBlocksBlock)(nil)).Elem()
+}
+
+func (i GetPublicIpAddressPoolCidrBlocksBlockArgs) ToGetPublicIpAddressPoolCidrBlocksBlockOutput() GetPublicIpAddressPoolCidrBlocksBlockOutput {
+	return i.ToGetPublicIpAddressPoolCidrBlocksBlockOutputWithContext(context.Background())
+}
+
+func (i GetPublicIpAddressPoolCidrBlocksBlockArgs) ToGetPublicIpAddressPoolCidrBlocksBlockOutputWithContext(ctx context.Context) GetPublicIpAddressPoolCidrBlocksBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPublicIpAddressPoolCidrBlocksBlockOutput)
+}
+
+// GetPublicIpAddressPoolCidrBlocksBlockArrayInput is an input type that accepts GetPublicIpAddressPoolCidrBlocksBlockArray and GetPublicIpAddressPoolCidrBlocksBlockArrayOutput values.
+// You can construct a concrete instance of `GetPublicIpAddressPoolCidrBlocksBlockArrayInput` via:
+//
+//	GetPublicIpAddressPoolCidrBlocksBlockArray{ GetPublicIpAddressPoolCidrBlocksBlockArgs{...} }
+type GetPublicIpAddressPoolCidrBlocksBlockArrayInput interface {
+	pulumi.Input
+
+	ToGetPublicIpAddressPoolCidrBlocksBlockArrayOutput() GetPublicIpAddressPoolCidrBlocksBlockArrayOutput
+	ToGetPublicIpAddressPoolCidrBlocksBlockArrayOutputWithContext(context.Context) GetPublicIpAddressPoolCidrBlocksBlockArrayOutput
+}
+
+type GetPublicIpAddressPoolCidrBlocksBlockArray []GetPublicIpAddressPoolCidrBlocksBlockInput
+
+func (GetPublicIpAddressPoolCidrBlocksBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPublicIpAddressPoolCidrBlocksBlock)(nil)).Elem()
+}
+
+func (i GetPublicIpAddressPoolCidrBlocksBlockArray) ToGetPublicIpAddressPoolCidrBlocksBlockArrayOutput() GetPublicIpAddressPoolCidrBlocksBlockArrayOutput {
+	return i.ToGetPublicIpAddressPoolCidrBlocksBlockArrayOutputWithContext(context.Background())
+}
+
+func (i GetPublicIpAddressPoolCidrBlocksBlockArray) ToGetPublicIpAddressPoolCidrBlocksBlockArrayOutputWithContext(ctx context.Context) GetPublicIpAddressPoolCidrBlocksBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPublicIpAddressPoolCidrBlocksBlockArrayOutput)
+}
+
+type GetPublicIpAddressPoolCidrBlocksBlockOutput struct{ *pulumi.OutputState }
+
+func (GetPublicIpAddressPoolCidrBlocksBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPublicIpAddressPoolCidrBlocksBlock)(nil)).Elem()
+}
+
+func (o GetPublicIpAddressPoolCidrBlocksBlockOutput) ToGetPublicIpAddressPoolCidrBlocksBlockOutput() GetPublicIpAddressPoolCidrBlocksBlockOutput {
+	return o
+}
+
+func (o GetPublicIpAddressPoolCidrBlocksBlockOutput) ToGetPublicIpAddressPoolCidrBlocksBlockOutputWithContext(ctx context.Context) GetPublicIpAddressPoolCidrBlocksBlockOutput {
+	return o
+}
+
+// The CIDR block.
+func (o GetPublicIpAddressPoolCidrBlocksBlockOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolCidrBlocksBlock) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The time when the CIDR block was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
+func (o GetPublicIpAddressPoolCidrBlocksBlockOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolCidrBlocksBlock) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Public Ip Address Pool Cidr Block.
+func (o GetPublicIpAddressPoolCidrBlocksBlockOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolCidrBlocksBlock) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the Vpc Public IP address pool.
+func (o GetPublicIpAddressPoolCidrBlocksBlockOutput) PublicIpAddressPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolCidrBlocksBlock) string { return v.PublicIpAddressPoolId }).(pulumi.StringOutput)
+}
+
+// The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
+func (o GetPublicIpAddressPoolCidrBlocksBlockOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolCidrBlocksBlock) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The number of occupied IP addresses in the CIDR block.
+func (o GetPublicIpAddressPoolCidrBlocksBlockOutput) TotalIpNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolCidrBlocksBlock) int { return v.TotalIpNum }).(pulumi.IntOutput)
+}
+
+// The total number of available IP addresses in the CIDR block.
+func (o GetPublicIpAddressPoolCidrBlocksBlockOutput) UsedIpNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolCidrBlocksBlock) int { return v.UsedIpNum }).(pulumi.IntOutput)
+}
+
+type GetPublicIpAddressPoolCidrBlocksBlockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPublicIpAddressPoolCidrBlocksBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPublicIpAddressPoolCidrBlocksBlock)(nil)).Elem()
+}
+
+func (o GetPublicIpAddressPoolCidrBlocksBlockArrayOutput) ToGetPublicIpAddressPoolCidrBlocksBlockArrayOutput() GetPublicIpAddressPoolCidrBlocksBlockArrayOutput {
+	return o
+}
+
+func (o GetPublicIpAddressPoolCidrBlocksBlockArrayOutput) ToGetPublicIpAddressPoolCidrBlocksBlockArrayOutputWithContext(ctx context.Context) GetPublicIpAddressPoolCidrBlocksBlockArrayOutput {
+	return o
+}
+
+func (o GetPublicIpAddressPoolCidrBlocksBlockArrayOutput) Index(i pulumi.IntInput) GetPublicIpAddressPoolCidrBlocksBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPublicIpAddressPoolCidrBlocksBlock {
+		return vs[0].([]GetPublicIpAddressPoolCidrBlocksBlock)[vs[1].(int)]
+	}).(GetPublicIpAddressPoolCidrBlocksBlockOutput)
+}
+
+type GetPublicIpAddressPoolsPool struct {
+	// The time when the Vpc Public Ip Address Pool was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the Vpc Public Ip Address Pool.
+	Description string `pulumi:"description"`
+	// The ID of the Vpc Public Ip Address Pool.
+	Id string `pulumi:"id"`
+	// Indicates whether the Vpc Public Ip Address Pool has idle IP addresses.
+	IpAddressRemaining bool `pulumi:"ipAddressRemaining"`
+	// The Internet service provider.
+	Isp string `pulumi:"isp"`
+	// The ID of the Vpc Public Ip Address Pool.
+	PublicIpAddressPoolId string `pulumi:"publicIpAddressPoolId"`
+	// The name of the Vpc Public Ip Address Pool.
+	PublicIpAddressPoolName string `pulumi:"publicIpAddressPoolName"`
+	// The region ID of the Vpc Public Ip Address Pool.
+	RegionId string `pulumi:"regionId"`
+	// The status of the Vpc Public Ip Address Pool.
+	Status string `pulumi:"status"`
+	// The total number of IP addresses in the Vpc Public Ip Address Pool.
+	TotalIpNum int `pulumi:"totalIpNum"`
+	// The number of occupied IP addresses in the Vpc Public Ip Address Pool.
+	UsedIpNum int `pulumi:"usedIpNum"`
+	// The user type.
+	UserType string `pulumi:"userType"`
+}
+
+// GetPublicIpAddressPoolsPoolInput is an input type that accepts GetPublicIpAddressPoolsPoolArgs and GetPublicIpAddressPoolsPoolOutput values.
+// You can construct a concrete instance of `GetPublicIpAddressPoolsPoolInput` via:
+//
+//	GetPublicIpAddressPoolsPoolArgs{...}
+type GetPublicIpAddressPoolsPoolInput interface {
+	pulumi.Input
+
+	ToGetPublicIpAddressPoolsPoolOutput() GetPublicIpAddressPoolsPoolOutput
+	ToGetPublicIpAddressPoolsPoolOutputWithContext(context.Context) GetPublicIpAddressPoolsPoolOutput
+}
+
+type GetPublicIpAddressPoolsPoolArgs struct {
+	// The time when the Vpc Public Ip Address Pool was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the Vpc Public Ip Address Pool.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Vpc Public Ip Address Pool.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Indicates whether the Vpc Public Ip Address Pool has idle IP addresses.
+	IpAddressRemaining pulumi.BoolInput `pulumi:"ipAddressRemaining"`
+	// The Internet service provider.
+	Isp pulumi.StringInput `pulumi:"isp"`
+	// The ID of the Vpc Public Ip Address Pool.
+	PublicIpAddressPoolId pulumi.StringInput `pulumi:"publicIpAddressPoolId"`
+	// The name of the Vpc Public Ip Address Pool.
+	PublicIpAddressPoolName pulumi.StringInput `pulumi:"publicIpAddressPoolName"`
+	// The region ID of the Vpc Public Ip Address Pool.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The status of the Vpc Public Ip Address Pool.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The total number of IP addresses in the Vpc Public Ip Address Pool.
+	TotalIpNum pulumi.IntInput `pulumi:"totalIpNum"`
+	// The number of occupied IP addresses in the Vpc Public Ip Address Pool.
+	UsedIpNum pulumi.IntInput `pulumi:"usedIpNum"`
+	// The user type.
+	UserType pulumi.StringInput `pulumi:"userType"`
+}
+
+func (GetPublicIpAddressPoolsPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPublicIpAddressPoolsPool)(nil)).Elem()
+}
+
+func (i GetPublicIpAddressPoolsPoolArgs) ToGetPublicIpAddressPoolsPoolOutput() GetPublicIpAddressPoolsPoolOutput {
+	return i.ToGetPublicIpAddressPoolsPoolOutputWithContext(context.Background())
+}
+
+func (i GetPublicIpAddressPoolsPoolArgs) ToGetPublicIpAddressPoolsPoolOutputWithContext(ctx context.Context) GetPublicIpAddressPoolsPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPublicIpAddressPoolsPoolOutput)
+}
+
+// GetPublicIpAddressPoolsPoolArrayInput is an input type that accepts GetPublicIpAddressPoolsPoolArray and GetPublicIpAddressPoolsPoolArrayOutput values.
+// You can construct a concrete instance of `GetPublicIpAddressPoolsPoolArrayInput` via:
+//
+//	GetPublicIpAddressPoolsPoolArray{ GetPublicIpAddressPoolsPoolArgs{...} }
+type GetPublicIpAddressPoolsPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetPublicIpAddressPoolsPoolArrayOutput() GetPublicIpAddressPoolsPoolArrayOutput
+	ToGetPublicIpAddressPoolsPoolArrayOutputWithContext(context.Context) GetPublicIpAddressPoolsPoolArrayOutput
+}
+
+type GetPublicIpAddressPoolsPoolArray []GetPublicIpAddressPoolsPoolInput
+
+func (GetPublicIpAddressPoolsPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPublicIpAddressPoolsPool)(nil)).Elem()
+}
+
+func (i GetPublicIpAddressPoolsPoolArray) ToGetPublicIpAddressPoolsPoolArrayOutput() GetPublicIpAddressPoolsPoolArrayOutput {
+	return i.ToGetPublicIpAddressPoolsPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetPublicIpAddressPoolsPoolArray) ToGetPublicIpAddressPoolsPoolArrayOutputWithContext(ctx context.Context) GetPublicIpAddressPoolsPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPublicIpAddressPoolsPoolArrayOutput)
+}
+
+type GetPublicIpAddressPoolsPoolOutput struct{ *pulumi.OutputState }
+
+func (GetPublicIpAddressPoolsPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPublicIpAddressPoolsPool)(nil)).Elem()
+}
+
+func (o GetPublicIpAddressPoolsPoolOutput) ToGetPublicIpAddressPoolsPoolOutput() GetPublicIpAddressPoolsPoolOutput {
+	return o
+}
+
+func (o GetPublicIpAddressPoolsPoolOutput) ToGetPublicIpAddressPoolsPoolOutputWithContext(ctx context.Context) GetPublicIpAddressPoolsPoolOutput {
+	return o
+}
+
+// The time when the Vpc Public Ip Address Pool was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
+func (o GetPublicIpAddressPoolsPoolOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the Vpc Public Ip Address Pool.
+func (o GetPublicIpAddressPoolsPoolOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Vpc Public Ip Address Pool.
+func (o GetPublicIpAddressPoolsPoolOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Indicates whether the Vpc Public Ip Address Pool has idle IP addresses.
+func (o GetPublicIpAddressPoolsPoolOutput) IpAddressRemaining() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) bool { return v.IpAddressRemaining }).(pulumi.BoolOutput)
+}
+
+// The Internet service provider.
+func (o GetPublicIpAddressPoolsPoolOutput) Isp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.Isp }).(pulumi.StringOutput)
+}
+
+// The ID of the Vpc Public Ip Address Pool.
+func (o GetPublicIpAddressPoolsPoolOutput) PublicIpAddressPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.PublicIpAddressPoolId }).(pulumi.StringOutput)
+}
+
+// The name of the Vpc Public Ip Address Pool.
+func (o GetPublicIpAddressPoolsPoolOutput) PublicIpAddressPoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.PublicIpAddressPoolName }).(pulumi.StringOutput)
+}
+
+// The region ID of the Vpc Public Ip Address Pool.
+func (o GetPublicIpAddressPoolsPoolOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The status of the Vpc Public Ip Address Pool.
+func (o GetPublicIpAddressPoolsPoolOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The total number of IP addresses in the Vpc Public Ip Address Pool.
+func (o GetPublicIpAddressPoolsPoolOutput) TotalIpNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) int { return v.TotalIpNum }).(pulumi.IntOutput)
+}
+
+// The number of occupied IP addresses in the Vpc Public Ip Address Pool.
+func (o GetPublicIpAddressPoolsPoolOutput) UsedIpNum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) int { return v.UsedIpNum }).(pulumi.IntOutput)
+}
+
+// The user type.
+func (o GetPublicIpAddressPoolsPoolOutput) UserType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.UserType }).(pulumi.StringOutput)
+}
+
+type GetPublicIpAddressPoolsPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPublicIpAddressPoolsPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPublicIpAddressPoolsPool)(nil)).Elem()
+}
+
+func (o GetPublicIpAddressPoolsPoolArrayOutput) ToGetPublicIpAddressPoolsPoolArrayOutput() GetPublicIpAddressPoolsPoolArrayOutput {
+	return o
+}
+
+func (o GetPublicIpAddressPoolsPoolArrayOutput) ToGetPublicIpAddressPoolsPoolArrayOutputWithContext(ctx context.Context) GetPublicIpAddressPoolsPoolArrayOutput {
+	return o
+}
+
+func (o GetPublicIpAddressPoolsPoolArrayOutput) Index(i pulumi.IntInput) GetPublicIpAddressPoolsPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPublicIpAddressPoolsPool {
+		return vs[0].([]GetPublicIpAddressPoolsPool)[vs[1].(int)]
+	}).(GetPublicIpAddressPoolsPoolOutput)
 }
 
 type GetRouteEntriesEntry struct {
@@ -7148,6 +7682,8 @@ type GetSwitchesVswitch struct {
 	Description string `pulumi:"description"`
 	// ID of the VSwitch.
 	Id string `pulumi:"id"`
+	// The IPv6 CIDR block of the switch.
+	Ipv6CidrBlock string `pulumi:"ipv6CidrBlock"`
 	// Indicate whether the VSwitch is created by the system.
 	IsDefault bool `pulumi:"isDefault"`
 	// Name of the VSwitch.
@@ -7192,6 +7728,8 @@ type GetSwitchesVswitchArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// ID of the VSwitch.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The IPv6 CIDR block of the switch.
+	Ipv6CidrBlock pulumi.StringInput `pulumi:"ipv6CidrBlock"`
 	// Indicate whether the VSwitch is created by the system.
 	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
 	// Name of the VSwitch.
@@ -7288,6 +7826,11 @@ func (o GetSwitchesVswitchOutput) Description() pulumi.StringOutput {
 // ID of the VSwitch.
 func (o GetSwitchesVswitchOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IPv6 CIDR block of the switch.
+func (o GetSwitchesVswitchOutput) Ipv6CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.Ipv6CidrBlock }).(pulumi.StringOutput)
 }
 
 // Indicate whether the VSwitch is created by the system.
@@ -8330,10 +8873,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksVpcArrayInput)(nil)).Elem(), GetNetworksVpcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPbrRouteEntriesEntryInput)(nil)).Elem(), GetPbrRouteEntriesEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPbrRouteEntriesEntryArrayInput)(nil)).Elem(), GetPbrRouteEntriesEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPeerConnectionsConnectionInput)(nil)).Elem(), GetPeerConnectionsConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPeerConnectionsConnectionArrayInput)(nil)).Elem(), GetPeerConnectionsConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrefixListsListInput)(nil)).Elem(), GetPrefixListsListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrefixListsListArrayInput)(nil)).Elem(), GetPrefixListsListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrefixListsListEntryInput)(nil)).Elem(), GetPrefixListsListEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrefixListsListEntryArrayInput)(nil)).Elem(), GetPrefixListsListEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPublicIpAddressPoolCidrBlocksBlockInput)(nil)).Elem(), GetPublicIpAddressPoolCidrBlocksBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPublicIpAddressPoolCidrBlocksBlockArrayInput)(nil)).Elem(), GetPublicIpAddressPoolCidrBlocksBlockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPublicIpAddressPoolsPoolInput)(nil)).Elem(), GetPublicIpAddressPoolsPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPublicIpAddressPoolsPoolArrayInput)(nil)).Elem(), GetPublicIpAddressPoolsPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteEntriesEntryInput)(nil)).Elem(), GetRouteEntriesEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteEntriesEntryArrayInput)(nil)).Elem(), GetRouteEntriesEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteTablesTableInput)(nil)).Elem(), GetRouteTablesTableArgs{})
@@ -8428,10 +8977,16 @@ func init() {
 	pulumi.RegisterOutputType(GetNetworksVpcArrayOutput{})
 	pulumi.RegisterOutputType(GetPbrRouteEntriesEntryOutput{})
 	pulumi.RegisterOutputType(GetPbrRouteEntriesEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetPeerConnectionsConnectionOutput{})
+	pulumi.RegisterOutputType(GetPeerConnectionsConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetPrefixListsListOutput{})
 	pulumi.RegisterOutputType(GetPrefixListsListArrayOutput{})
 	pulumi.RegisterOutputType(GetPrefixListsListEntryOutput{})
 	pulumi.RegisterOutputType(GetPrefixListsListEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetPublicIpAddressPoolCidrBlocksBlockOutput{})
+	pulumi.RegisterOutputType(GetPublicIpAddressPoolCidrBlocksBlockArrayOutput{})
+	pulumi.RegisterOutputType(GetPublicIpAddressPoolsPoolOutput{})
+	pulumi.RegisterOutputType(GetPublicIpAddressPoolsPoolArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteEntriesEntryOutput{})
 	pulumi.RegisterOutputType(GetRouteEntriesEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteTablesTableOutput{})

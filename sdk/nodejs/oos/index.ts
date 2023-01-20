@@ -5,34 +5,91 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./application";
-export * from "./applicationGroup";
-export * from "./execution";
-export * from "./getApplicationGroups";
-export * from "./getApplications";
-export * from "./getExecutions";
-export * from "./getParameters";
-export * from "./getPatchBaselines";
-export * from "./getSecretParameters";
-export * from "./getStateConfigurations";
-export * from "./getTemplates";
-export * from "./parameter";
-export * from "./patchBaseline";
-export * from "./secretParameter";
-export * from "./serviceSetting";
-export * from "./stateConfiguration";
-export * from "./template";
+export { ApplicationArgs, ApplicationState } from "./application";
+export type Application = import("./application").Application;
+export const Application: typeof import("./application").Application = null as any;
+utilities.lazyLoad(exports, ["Application"], () => require("./application"));
 
-// Import resources to register:
-import { Application } from "./application";
-import { ApplicationGroup } from "./applicationGroup";
-import { Execution } from "./execution";
-import { Parameter } from "./parameter";
-import { PatchBaseline } from "./patchBaseline";
-import { SecretParameter } from "./secretParameter";
-import { ServiceSetting } from "./serviceSetting";
-import { StateConfiguration } from "./stateConfiguration";
-import { Template } from "./template";
+export { ApplicationGroupArgs, ApplicationGroupState } from "./applicationGroup";
+export type ApplicationGroup = import("./applicationGroup").ApplicationGroup;
+export const ApplicationGroup: typeof import("./applicationGroup").ApplicationGroup = null as any;
+utilities.lazyLoad(exports, ["ApplicationGroup"], () => require("./applicationGroup"));
+
+export { ExecutionArgs, ExecutionState } from "./execution";
+export type Execution = import("./execution").Execution;
+export const Execution: typeof import("./execution").Execution = null as any;
+utilities.lazyLoad(exports, ["Execution"], () => require("./execution"));
+
+export { GetApplicationGroupsArgs, GetApplicationGroupsResult, GetApplicationGroupsOutputArgs } from "./getApplicationGroups";
+export const getApplicationGroups: typeof import("./getApplicationGroups").getApplicationGroups = null as any;
+export const getApplicationGroupsOutput: typeof import("./getApplicationGroups").getApplicationGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getApplicationGroups","getApplicationGroupsOutput"], () => require("./getApplicationGroups"));
+
+export { GetApplicationsArgs, GetApplicationsResult, GetApplicationsOutputArgs } from "./getApplications";
+export const getApplications: typeof import("./getApplications").getApplications = null as any;
+export const getApplicationsOutput: typeof import("./getApplications").getApplicationsOutput = null as any;
+utilities.lazyLoad(exports, ["getApplications","getApplicationsOutput"], () => require("./getApplications"));
+
+export { GetExecutionsArgs, GetExecutionsResult, GetExecutionsOutputArgs } from "./getExecutions";
+export const getExecutions: typeof import("./getExecutions").getExecutions = null as any;
+export const getExecutionsOutput: typeof import("./getExecutions").getExecutionsOutput = null as any;
+utilities.lazyLoad(exports, ["getExecutions","getExecutionsOutput"], () => require("./getExecutions"));
+
+export { GetParametersArgs, GetParametersResult, GetParametersOutputArgs } from "./getParameters";
+export const getParameters: typeof import("./getParameters").getParameters = null as any;
+export const getParametersOutput: typeof import("./getParameters").getParametersOutput = null as any;
+utilities.lazyLoad(exports, ["getParameters","getParametersOutput"], () => require("./getParameters"));
+
+export { GetPatchBaselinesArgs, GetPatchBaselinesResult, GetPatchBaselinesOutputArgs } from "./getPatchBaselines";
+export const getPatchBaselines: typeof import("./getPatchBaselines").getPatchBaselines = null as any;
+export const getPatchBaselinesOutput: typeof import("./getPatchBaselines").getPatchBaselinesOutput = null as any;
+utilities.lazyLoad(exports, ["getPatchBaselines","getPatchBaselinesOutput"], () => require("./getPatchBaselines"));
+
+export { GetSecretParametersArgs, GetSecretParametersResult, GetSecretParametersOutputArgs } from "./getSecretParameters";
+export const getSecretParameters: typeof import("./getSecretParameters").getSecretParameters = null as any;
+export const getSecretParametersOutput: typeof import("./getSecretParameters").getSecretParametersOutput = null as any;
+utilities.lazyLoad(exports, ["getSecretParameters","getSecretParametersOutput"], () => require("./getSecretParameters"));
+
+export { GetStateConfigurationsArgs, GetStateConfigurationsResult, GetStateConfigurationsOutputArgs } from "./getStateConfigurations";
+export const getStateConfigurations: typeof import("./getStateConfigurations").getStateConfigurations = null as any;
+export const getStateConfigurationsOutput: typeof import("./getStateConfigurations").getStateConfigurationsOutput = null as any;
+utilities.lazyLoad(exports, ["getStateConfigurations","getStateConfigurationsOutput"], () => require("./getStateConfigurations"));
+
+export { GetTemplatesArgs, GetTemplatesResult, GetTemplatesOutputArgs } from "./getTemplates";
+export const getTemplates: typeof import("./getTemplates").getTemplates = null as any;
+export const getTemplatesOutput: typeof import("./getTemplates").getTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getTemplates","getTemplatesOutput"], () => require("./getTemplates"));
+
+export { ParameterArgs, ParameterState } from "./parameter";
+export type Parameter = import("./parameter").Parameter;
+export const Parameter: typeof import("./parameter").Parameter = null as any;
+utilities.lazyLoad(exports, ["Parameter"], () => require("./parameter"));
+
+export { PatchBaselineArgs, PatchBaselineState } from "./patchBaseline";
+export type PatchBaseline = import("./patchBaseline").PatchBaseline;
+export const PatchBaseline: typeof import("./patchBaseline").PatchBaseline = null as any;
+utilities.lazyLoad(exports, ["PatchBaseline"], () => require("./patchBaseline"));
+
+export { SecretParameterArgs, SecretParameterState } from "./secretParameter";
+export type SecretParameter = import("./secretParameter").SecretParameter;
+export const SecretParameter: typeof import("./secretParameter").SecretParameter = null as any;
+utilities.lazyLoad(exports, ["SecretParameter"], () => require("./secretParameter"));
+
+export { ServiceSettingArgs, ServiceSettingState } from "./serviceSetting";
+export type ServiceSetting = import("./serviceSetting").ServiceSetting;
+export const ServiceSetting: typeof import("./serviceSetting").ServiceSetting = null as any;
+utilities.lazyLoad(exports, ["ServiceSetting"], () => require("./serviceSetting"));
+
+export { StateConfigurationArgs, StateConfigurationState } from "./stateConfiguration";
+export type StateConfiguration = import("./stateConfiguration").StateConfiguration;
+export const StateConfiguration: typeof import("./stateConfiguration").StateConfiguration = null as any;
+utilities.lazyLoad(exports, ["StateConfiguration"], () => require("./stateConfiguration"));
+
+export { TemplateArgs, TemplateState } from "./template";
+export type Template = import("./template").Template;
+export const Template: typeof import("./template").Template = null as any;
+utilities.lazyLoad(exports, ["Template"], () => require("./template"));
+
 
 const _module = {
     version: utilities.getVersion(),

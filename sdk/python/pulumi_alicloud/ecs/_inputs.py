@@ -26,6 +26,7 @@ __all__ = [
     'LaunchTemplateDataDiskArgs',
     'LaunchTemplateNetworkInterfacesArgs',
     'LaunchTemplateSystemDiskArgs',
+    'ReservedInstanceOperationLockArgs',
     'GetDedicatedHostsOperationLockArgs',
     'GetDisksOperationLockArgs',
     'GetEcsDisksOperationLockArgs',
@@ -332,7 +333,7 @@ class EcsInstanceSetNetworkInterfaceArgs:
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] security_group_id: -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+        :param pulumi.Input[str] security_group_id: The ID of the security group to which to assign secondary ENI.
         :param pulumi.Input[str] description: The description of ENI.
         :param pulumi.Input[str] network_interface_name: The name of ENI.
         :param pulumi.Input[str] primary_ip_address: The primary private IP address of ENI.
@@ -352,7 +353,7 @@ class EcsInstanceSetNetworkInterfaceArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[str]:
         """
-        -(Required, ForceNew) The ID of the security group to which to assign secondary ENI.
+        The ID of the security group to which to assign secondary ENI.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -421,13 +422,13 @@ class EcsLaunchTemplateDataDiskArgs:
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] category: The category of the disk.
-        :param pulumi.Input[bool] delete_with_instance: Indicates whether the data disk is released with the instance.
-        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] category: The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+        :param pulumi.Input[bool] delete_with_instance: Specifies whether to release the system disk when the instance is released. Default to `true`.
+        :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] encrypted: Encrypted the data in this disk.
-        :param pulumi.Input[str] name: The name of the data disk.
-        :param pulumi.Input[str] performance_level: The performance level of the ESSD used as the data disk.
-        :param pulumi.Input[int] size: The size of the data disk.
+        :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        :param pulumi.Input[str] performance_level: The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+        :param pulumi.Input[int] size: Size of the system disk, measured in GB. Value range: [20, 500].
         :param pulumi.Input[str] snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         if category is not None:
@@ -451,7 +452,7 @@ class EcsLaunchTemplateDataDiskArgs:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        The category of the disk.
+        The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
         """
         return pulumi.get(self, "category")
 
@@ -463,7 +464,7 @@ class EcsLaunchTemplateDataDiskArgs:
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the data disk is released with the instance.
+        Specifies whether to release the system disk when the instance is released. Default to `true`.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -475,7 +476,7 @@ class EcsLaunchTemplateDataDiskArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -499,7 +500,7 @@ class EcsLaunchTemplateDataDiskArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the data disk.
+        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -511,7 +512,7 @@ class EcsLaunchTemplateDataDiskArgs:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The performance level of the ESSD used as the data disk.
+        The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -523,7 +524,7 @@ class EcsLaunchTemplateDataDiskArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        The size of the data disk.
+        Size of the system disk, measured in GB. Value range: [20, 500].
         """
         return pulumi.get(self, "size")
 
@@ -553,11 +554,11 @@ class EcsLaunchTemplateNetworkInterfacesArgs:
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: The description of the data disk.
-        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         :param pulumi.Input[str] primary_ip: The primary private IP address of the ENI.
-        :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        :param pulumi.Input[str] security_group_id: The security group ID.
+        :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -574,7 +575,7 @@ class EcsLaunchTemplateNetworkInterfacesArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -586,7 +587,7 @@ class EcsLaunchTemplateNetworkInterfacesArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the data disk.
+        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -610,7 +611,7 @@ class EcsLaunchTemplateNetworkInterfacesArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group ID must be one in the same VPC.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -622,7 +623,7 @@ class EcsLaunchTemplateNetworkInterfacesArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        When creating a VPC-Connected instance, you must specify its VSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -642,13 +643,13 @@ class EcsLaunchTemplateSystemDiskArgs:
                  performance_level: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] category: The category of the disk.
-        :param pulumi.Input[bool] delete_with_instance: Indicates whether the data disk is released with the instance.
-        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] category: The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+        :param pulumi.Input[bool] delete_with_instance: Specifies whether to release the system disk when the instance is released. Default to `true`.
+        :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[str] iops: The Iops.
-        :param pulumi.Input[str] name: The name of the data disk.
-        :param pulumi.Input[str] performance_level: The performance level of the ESSD used as the data disk.
-        :param pulumi.Input[int] size: The size of the data disk.
+        :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        :param pulumi.Input[str] performance_level: The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+        :param pulumi.Input[int] size: Size of the system disk, measured in GB. Value range: [20, 500].
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -669,7 +670,7 @@ class EcsLaunchTemplateSystemDiskArgs:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        The category of the disk.
+        The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
         """
         return pulumi.get(self, "category")
 
@@ -681,7 +682,7 @@ class EcsLaunchTemplateSystemDiskArgs:
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether the data disk is released with the instance.
+        Specifies whether to release the system disk when the instance is released. Default to `true`.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -693,7 +694,7 @@ class EcsLaunchTemplateSystemDiskArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -717,7 +718,7 @@ class EcsLaunchTemplateSystemDiskArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the data disk.
+        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -729,7 +730,7 @@ class EcsLaunchTemplateSystemDiskArgs:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The performance level of the ESSD used as the data disk.
+        The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -741,7 +742,7 @@ class EcsLaunchTemplateSystemDiskArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        The size of the data disk.
+        Size of the system disk, measured in GB. Value range: [20, 500].
         """
         return pulumi.get(self, "size")
 
@@ -967,6 +968,7 @@ class InstanceDataDiskArgs:
                  category: Optional[pulumi.Input[str]] = None,
                  delete_with_instance: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 device: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -981,23 +983,13 @@ class InstanceDataDiskArgs:
                - ephemeral_ssd: [5, 800]
         :param pulumi.Input[str] auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] category: The category of the disk:
-               - `cloud`: The general cloud disk.
-               - `cloud_efficiency`: The efficiency cloud disk.
-               - `cloud_ssd`: The SSD cloud disk.
-               - `cloud_essd`: The ESSD cloud disk.
-               - `ephemeral_ssd`: The local SSD disk.
-               Default to `cloud_efficiency`.
         :param pulumi.Input[bool] delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
         :param pulumi.Input[str] description: The description of the data disk.
-        :param pulumi.Input[bool] encrypted: -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+        :param pulumi.Input[str] device: The mount point of the data disk.
+        :param pulumi.Input[bool] encrypted: Encrypted the data in this disk. Default value: `false`.
         :param pulumi.Input[str] kms_key_id: The KMS key ID corresponding to the Nth data disk.
         :param pulumi.Input[str] name: The name of the data disk.
         :param pulumi.Input[str] performance_level: The performance level of the ESSD used as data disk:
-               - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-               - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-               - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-               - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-               Default to `PL1`.
         :param pulumi.Input[str] snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         pulumi.set(__self__, "size", size)
@@ -1009,6 +1001,8 @@ class InstanceDataDiskArgs:
             pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if kms_key_id is not None:
@@ -1054,12 +1048,6 @@ class InstanceDataDiskArgs:
     def category(self) -> Optional[pulumi.Input[str]]:
         """
         The category of the disk:
-        - `cloud`: The general cloud disk.
-        - `cloud_efficiency`: The efficiency cloud disk.
-        - `cloud_ssd`: The SSD cloud disk.
-        - `cloud_essd`: The ESSD cloud disk.
-        - `ephemeral_ssd`: The local SSD disk.
-        Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
 
@@ -1093,9 +1081,21 @@ class InstanceDataDiskArgs:
 
     @property
     @pulumi.getter
+    def device(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mount point of the data disk.
+        """
+        return pulumi.get(self, "device")
+
+    @device.setter
+    def device(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device", value)
+
+    @property
+    @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
-        -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+        Encrypted the data in this disk. Default value: `false`.
         """
         return pulumi.get(self, "encrypted")
 
@@ -1132,11 +1132,6 @@ class InstanceDataDiskArgs:
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
         The performance level of the ESSD used as data disk:
-        - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-        Default to `PL1`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -1216,7 +1211,7 @@ class LaunchTemplateDataDiskArgs:
                - cloud_essd: ESSD cloud Disks.
         :param pulumi.Input[bool] delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
         :param pulumi.Input[str] description: The description of the data disk.
-        :param pulumi.Input[bool] encrypted: -(Optional, Bool) Encrypted the data in this disk.
+        :param pulumi.Input[bool] encrypted: Encrypted the data in this disk.
         :param pulumi.Input[str] name: The name of the data disk.
         :param pulumi.Input[int] size: The size of the data disk.
                - cloud：[5, 2000]
@@ -1288,7 +1283,7 @@ class LaunchTemplateDataDiskArgs:
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
-        -(Optional, Bool) Encrypted the data in this disk.
+        Encrypted the data in this disk.
         """
         return pulumi.get(self, "encrypted")
 
@@ -1563,6 +1558,29 @@ class LaunchTemplateSystemDiskArgs:
     @size.setter
     def size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size", value)
+
+
+@pulumi.input_type
+class ReservedInstanceOperationLockArgs:
+    def __init__(__self__, *,
+                 lock_reason: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] lock_reason: The reason why the reserved instance was locked.
+        """
+        if lock_reason is not None:
+            pulumi.set(__self__, "lock_reason", lock_reason)
+
+    @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason why the reserved instance was locked.
+        """
+        return pulumi.get(self, "lock_reason")
+
+    @lock_reason.setter
+    def lock_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lock_reason", value)
 
 
 @pulumi.input_type

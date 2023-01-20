@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultApplication = new alicloud.oos.Application("defaultApplication", {
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     applicationName: "example_value",
  *     description: "example_value",
  *     tags: {

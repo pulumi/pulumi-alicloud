@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Pvtz.Inputs
 {
 
-    public sealed class ZoneUserInfoArgs : Pulumi.ResourceArgs
+    public sealed class ZoneUserInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("regionIds")]
         private InputList<string>? _regionIds;
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Pvtz.Inputs
         public ZoneUserInfoArgs()
         {
         }
+        public static new ZoneUserInfoArgs Empty => new ZoneUserInfoArgs();
     }
 }

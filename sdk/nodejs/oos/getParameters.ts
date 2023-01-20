@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,16 @@ import * as utilities from "../utilities";
  * const ids = alicloud.oos.getParameters({
  *     ids: ["my-Parameter"],
  * });
- * export const oosParameterId1 = ids.then(ids => ids.parameters?[0]?.id);
+ * export const oosParameterId1 = ids.then(ids => ids.parameters?.[0]?.id);
  * const nameRegex = alicloud.oos.getParameters({
  *     nameRegex: "^my-Parameter",
  * });
- * export const oosParameterId2 = nameRegex.then(nameRegex => nameRegex.parameters?[0]?.id);
+ * export const oosParameterId2 = nameRegex.then(nameRegex => nameRegex.parameters?.[0]?.id);
  * const resourceGroupId = alicloud.oos.getParameters({
  *     ids: ["my-Parameter"],
  *     resourceGroupId: "example_value",
  * });
- * export const oosParameterId3 = resourceGroupId.then(resourceGroupId => resourceGroupId.parameters?[0]?.id);
+ * export const oosParameterId3 = resourceGroupId.then(resourceGroupId => resourceGroupId.parameters?.[0]?.id);
  * const tags = alicloud.oos.getParameters({
  *     ids: ["my-Parameter"],
  *     tags: {
@@ -38,16 +39,13 @@ import * as utilities from "../utilities";
  *         For: "OosParameter",
  *     },
  * });
- * export const oosParameterId4 = tags.then(tags => tags.parameters?[0]?.id);
+ * export const oosParameterId4 = tags.then(tags => tags.parameters?.[0]?.id);
  * ```
  */
 export function getParameters(args?: GetParametersArgs, opts?: pulumi.InvokeOptions): Promise<GetParametersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oos/getParameters:getParameters", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -120,9 +118,44 @@ export interface GetParametersResult {
     readonly tags?: {[key: string]: any};
     readonly type?: string;
 }
-
+/**
+ * This data source provides the Oos Parameters of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.147.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.oos.getParameters({
+ *     ids: ["my-Parameter"],
+ * });
+ * export const oosParameterId1 = ids.then(ids => ids.parameters?.[0]?.id);
+ * const nameRegex = alicloud.oos.getParameters({
+ *     nameRegex: "^my-Parameter",
+ * });
+ * export const oosParameterId2 = nameRegex.then(nameRegex => nameRegex.parameters?.[0]?.id);
+ * const resourceGroupId = alicloud.oos.getParameters({
+ *     ids: ["my-Parameter"],
+ *     resourceGroupId: "example_value",
+ * });
+ * export const oosParameterId3 = resourceGroupId.then(resourceGroupId => resourceGroupId.parameters?.[0]?.id);
+ * const tags = alicloud.oos.getParameters({
+ *     ids: ["my-Parameter"],
+ *     tags: {
+ *         Created: "TF",
+ *         For: "OosParameter",
+ *     },
+ * });
+ * export const oosParameterId4 = tags.then(tags => tags.parameters?.[0]?.id);
+ * ```
+ */
 export function getParametersOutput(args?: GetParametersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetParametersResult> {
-    return pulumi.output(args).apply(a => getParameters(a, opts))
+    return pulumi.output(args).apply((a: any) => getParameters(a, opts))
 }
 
 /**

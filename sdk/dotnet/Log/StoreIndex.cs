@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/storeIndex:StoreIndex")]
-    public partial class StoreIndex : Pulumi.CustomResource
+    public partial class StoreIndex : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List configurations of field search index. Valid item as follows:
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class StoreIndexArgs : Pulumi.ResourceArgs
+    public sealed class StoreIndexArgs : global::Pulumi.ResourceArgs
     {
         [Input("fieldSearches")]
         private InputList<Inputs.StoreIndexFieldSearchArgs>? _fieldSearches;
@@ -124,9 +124,10 @@ namespace Pulumi.AliCloud.Log
         public StoreIndexArgs()
         {
         }
+        public static new StoreIndexArgs Empty => new StoreIndexArgs();
     }
 
-    public sealed class StoreIndexState : Pulumi.ResourceArgs
+    public sealed class StoreIndexState : global::Pulumi.ResourceArgs
     {
         [Input("fieldSearches")]
         private InputList<Inputs.StoreIndexFieldSearchGetArgs>? _fieldSearches;
@@ -161,5 +162,6 @@ namespace Pulumi.AliCloud.Log
         public StoreIndexState()
         {
         }
+        public static new StoreIndexState Empty => new StoreIndexState();
     }
 }

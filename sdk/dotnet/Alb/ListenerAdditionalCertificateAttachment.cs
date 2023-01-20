@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Alb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/listenerAdditionalCertificateAttachment:ListenerAdditionalCertificateAttachment")]
-    public partial class ListenerAdditionalCertificateAttachment : Pulumi.CustomResource
+    public partial class ListenerAdditionalCertificateAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Certificate ID.
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Alb
         }
     }
 
-    public sealed class ListenerAdditionalCertificateAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class ListenerAdditionalCertificateAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Certificate ID.
@@ -112,9 +112,10 @@ namespace Pulumi.AliCloud.Alb
         public ListenerAdditionalCertificateAttachmentArgs()
         {
         }
+        public static new ListenerAdditionalCertificateAttachmentArgs Empty => new ListenerAdditionalCertificateAttachmentArgs();
     }
 
-    public sealed class ListenerAdditionalCertificateAttachmentState : Pulumi.ResourceArgs
+    public sealed class ListenerAdditionalCertificateAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Certificate ID.
@@ -143,5 +144,6 @@ namespace Pulumi.AliCloud.Alb
         public ListenerAdditionalCertificateAttachmentState()
         {
         }
+        public static new ListenerAdditionalCertificateAttachmentState Empty => new ListenerAdditionalCertificateAttachmentState();
     }
 }

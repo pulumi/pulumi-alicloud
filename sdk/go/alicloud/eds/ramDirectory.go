@@ -57,7 +57,7 @@ import (
 //				EnableInternetAccess: pulumi.Bool(true),
 //				RamDirectoryName:     pulumi.Any(_var.Name),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.String(defaultSwitches.Ids[0]),
+//					*pulumi.String(defaultSwitches.Ids[0]),
 //				},
 //			})
 //			if err != nil {

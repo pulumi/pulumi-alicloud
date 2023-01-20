@@ -32,7 +32,6 @@ public final class GetPlaintextArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * - 
      * (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      * 
      */
@@ -40,8 +39,7 @@ public final class GetPlaintextArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<Map<String,String>> encryptionContext;
 
     /**
-     * @return -
-     * (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     * @return (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      * 
      */
     public Optional<Output<Map<String,String>>> encryptionContext() {
@@ -95,8 +93,7 @@ public final class GetPlaintextArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param encryptionContext -
-         * (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+         * @param encryptionContext (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
          * 
          * @return builder
          * 
@@ -107,8 +104,7 @@ public final class GetPlaintextArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param encryptionContext -
-         * (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+         * @param encryptionContext (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
          * 
          * @return builder
          * 

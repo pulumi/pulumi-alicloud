@@ -11,7 +11,9 @@ from .. import _utilities
 
 __all__ = [
     'GetClustersClusterResult',
+    'GetDBClusterLakeVersionsVersionResult',
     'GetDBClustersClusterResult',
+    'GetResourceGroupsGroupResult',
     'GetZonesZoneResult',
 ]
 
@@ -392,6 +394,244 @@ class GetClustersClusterResult(dict):
 
 
 @pulumi.output_type
+class GetDBClusterLakeVersionsVersionResult(dict):
+    def __init__(__self__, *,
+                 commodity_code: str,
+                 compute_resource: str,
+                 connection_string: str,
+                 create_time: str,
+                 db_cluster_id: str,
+                 db_cluster_version: str,
+                 engine: str,
+                 engine_version: str,
+                 expire_time: str,
+                 expired: str,
+                 id: str,
+                 lock_mode: str,
+                 lock_reason: str,
+                 payment_type: str,
+                 port: str,
+                 resource_group_id: str,
+                 status: str,
+                 storage_resource: str,
+                 vpc_id: str,
+                 vswitch_id: str,
+                 zone_id: str):
+        """
+        :param str commodity_code: The name of the service.
+        :param str compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries.
+        :param str connection_string: The endpoint of the cluster.
+        :param str create_time: The CreateTime of the ADB cluster.
+        :param str db_cluster_id: The ID of the DBCluster.
+        :param str db_cluster_version: The db cluster version.
+        :param str engine: The engine of the database.
+        :param str engine_version: The engine version of the database.
+        :param str expire_time: The time when the cluster expires.
+        :param str expired: Indicates whether the cluster has expired.
+        :param str id: The ID of the DBCluster.
+        :param str lock_mode: The lock mode of the cluster.
+        :param str lock_reason: The reason why the cluster is locked.
+        :param str payment_type: The payment type of the resource.
+        :param str port: The port that is used to access the cluster.
+        :param str resource_group_id: The ID of the resource group.
+        :param str status: The status of the resource.
+        :param str storage_resource: The specifications of storage resources in elastic mode. The resources are used for data read and write operations.
+        :param str vpc_id: The vpc id.
+        :param str vswitch_id: The vswitch id.
+        :param str zone_id: The zone ID  of the resource.
+        """
+        pulumi.set(__self__, "commodity_code", commodity_code)
+        pulumi.set(__self__, "compute_resource", compute_resource)
+        pulumi.set(__self__, "connection_string", connection_string)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "expired", expired)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "lock_mode", lock_mode)
+        pulumi.set(__self__, "lock_reason", lock_reason)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_resource", storage_resource)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="commodityCode")
+    def commodity_code(self) -> str:
+        """
+        The name of the service.
+        """
+        return pulumi.get(self, "commodity_code")
+
+    @property
+    @pulumi.getter(name="computeResource")
+    def compute_resource(self) -> str:
+        """
+        The specifications of computing resources in elastic mode. The increase of resources can speed up queries.
+        """
+        return pulumi.get(self, "compute_resource")
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> str:
+        """
+        The endpoint of the cluster.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The CreateTime of the ADB cluster.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dbClusterId")
+    def db_cluster_id(self) -> str:
+        """
+        The ID of the DBCluster.
+        """
+        return pulumi.get(self, "db_cluster_id")
+
+    @property
+    @pulumi.getter(name="dbClusterVersion")
+    def db_cluster_version(self) -> str:
+        """
+        The db cluster version.
+        """
+        return pulumi.get(self, "db_cluster_version")
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        """
+        The engine of the database.
+        """
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> str:
+        """
+        The engine version of the database.
+        """
+        return pulumi.get(self, "engine_version")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        The time when the cluster expires.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def expired(self) -> str:
+        """
+        Indicates whether the cluster has expired.
+        """
+        return pulumi.get(self, "expired")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the DBCluster.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lockMode")
+    def lock_mode(self) -> str:
+        """
+        The lock mode of the cluster.
+        """
+        return pulumi.get(self, "lock_mode")
+
+    @property
+    @pulumi.getter(name="lockReason")
+    def lock_reason(self) -> str:
+        """
+        The reason why the cluster is locked.
+        """
+        return pulumi.get(self, "lock_reason")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the resource.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def port(self) -> str:
+        """
+        The port that is used to access the cluster.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageResource")
+    def storage_resource(self) -> str:
+        """
+        The specifications of storage resources in elastic mode. The resources are used for data read and write operations.
+        """
+        return pulumi.get(self, "storage_resource")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The vpc id.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The vswitch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID  of the resource.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
 class GetDBClustersClusterResult(dict):
     def __init__(__self__, *,
                  auto_renew_period: int,
@@ -457,7 +697,7 @@ class GetDBClustersClusterResult(dict):
         :param str dts_job_id: The ID of the data synchronization task in Data Transmission Service (DTS). This parameter is valid only for analytic instances.
         :param int elastic_io_resource: The elastic io resource.
         :param str engine: The engine of the database.
-        :param str engine_version: The engine version of the database..
+        :param str engine_version: The engine version of the database.
         :param str executor_count: The number of nodes. The node resources are used for data computing in elastic mode.
         :param str expire_time: The time when the cluster expires.
         :param str expired: Indicates whether the cluster has expired.
@@ -680,7 +920,7 @@ class GetDBClustersClusterResult(dict):
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> str:
         """
-        The engine version of the database..
+        The engine version of the database.
         """
         return pulumi.get(self, "engine_version")
 
@@ -861,6 +1101,96 @@ class GetDBClustersClusterResult(dict):
         The zone ID  of the resource.
         """
         return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetResourceGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 db_cluster_id: str,
+                 group_name: str,
+                 group_type: str,
+                 id: str,
+                 node_num: int,
+                 user: str):
+        """
+        :param str create_time: Creation time.
+        :param str db_cluster_id: DBClusterId
+        :param str group_name: The name of the resource pool, which cannot exceed 64 bytes in length.
+        :param str group_type: Query type, value description:
+               * **etl**: Batch query mode.
+               * **interactive**: interactive Query mode
+               * **default_type**: the default query mode.
+        :param str id: The `key` of the resource supplied above.The value is formulated as `<db_cluster_id>:<group_name>`.
+        :param int node_num: The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+        :param str user: Binding User.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "group_type", group_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "node_num", node_num)
+        pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dbClusterId")
+    def db_cluster_id(self) -> str:
+        """
+        DBClusterId
+        """
+        return pulumi.get(self, "db_cluster_id")
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> str:
+        """
+        The name of the resource pool, which cannot exceed 64 bytes in length.
+        """
+        return pulumi.get(self, "group_name")
+
+    @property
+    @pulumi.getter(name="groupType")
+    def group_type(self) -> str:
+        """
+        Query type, value description:
+        * **etl**: Batch query mode.
+        * **interactive**: interactive Query mode
+        * **default_type**: the default query mode.
+        """
+        return pulumi.get(self, "group_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The `key` of the resource supplied above.The value is formulated as `<db_cluster_id>:<group_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nodeNum")
+    def node_num(self) -> int:
+        """
+        The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+        """
+        return pulumi.get(self, "node_num")
+
+    @property
+    @pulumi.getter
+    def user(self) -> str:
+        """
+        Binding User.
+        """
+        return pulumi.get(self, "user")
 
 
 @pulumi.output_type

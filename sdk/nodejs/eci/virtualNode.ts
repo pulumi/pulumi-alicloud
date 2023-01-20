@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -27,19 +28,19 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.zones?[0]?.zoneIds?[1],
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.zoneIds?.[1],
  * }));
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0])});
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
  * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {addressName: name});
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultVirtualNode = new alicloud.eci.VirtualNode("defaultVirtualNode", {
  *     securityGroupId: defaultSecurityGroup.id,
  *     virtualNodeName: name,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[1]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[1]),
  *     enablePublicNetwork: false,
  *     eipInstanceId: defaultEipAddress.id,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     kubeConfig: "kube config",
  *     tags: {
  *         Created: "TF",

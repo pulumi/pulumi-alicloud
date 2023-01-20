@@ -13,12 +13,15 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides an ALIKAFKA instance resource.
+ * 
+ * For information about ALIKAFKA instance and how to use it, see [What is ALIKAFKA instance](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-startinstance).
  * 
  * &gt; **NOTE:** Available in 1.59.0+
  * 
@@ -39,7 +42,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -82,7 +85,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .topicQuota(&#34;50&#34;)
+ *             .partitionNum(&#34;50&#34;)
  *             .diskType(&#34;1&#34;)
  *             .diskSize(&#34;500&#34;)
  *             .deployType(&#34;4&#34;)
@@ -251,6 +254,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.paidType);
     }
     /**
+     * The number of partitions.
+     * 
+     */
+    @Export(name="partitionNum", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> partitionNum;
+
+    /**
+     * @return The number of partitions.
+     * 
+     */
+    public Output<Optional<Integer>> partitionNum() {
+        return Codegen.optional(this.partitionNum);
+    }
+    /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      * 
      */
@@ -263,6 +280,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> securityGroup() {
         return this.securityGroup;
+    }
+    /**
+     * The zones among which you want to deploy the instance.
+     * 
+     */
+    @Export(name="selectedZones", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> selectedZones;
+
+    /**
+     * @return The zones among which you want to deploy the instance.
+     * 
+     */
+    public Output<Optional<List<String>>> selectedZones() {
+        return Codegen.optional(this.selectedZones);
     }
     /**
      * The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
@@ -329,28 +360,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+     * The max num of topic can be creation of the instance.
+     * It has been deprecated from version 1.194.0 and using `partition_num` instead.
+     * 
+     * @deprecated
+     * Attribute &#39;topic_quota&#39; has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
      * 
      */
+    @Deprecated /* Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
     @Export(name="topicQuota", type=Integer.class, parameters={})
     private Output<Integer> topicQuota;
 
     /**
-     * @return The max num of topic can be creation of the instance. When modify this value, it only adjusts to a greater value.
+     * @return The max num of topic can be creation of the instance.
+     * It has been deprecated from version 1.194.0 and using `partition_num` instead.
      * 
      */
     public Output<Integer> topicQuota() {
         return this.topicQuota;
     }
     /**
-     * The ID of attaching VPC to instance.
+     * The VPC ID of the instance.
      * 
      */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output<String> vpcId;
 
     /**
-     * @return The ID of attaching VPC to instance.
+     * @return The VPC ID of the instance.
      * 
      */
     public Output<String> vpcId() {
@@ -371,14 +408,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.vswitchId;
     }
     /**
-     * The Zone to launch the kafka instance.
+     * The zone ID of the instance.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the kafka instance.
+     * @return The zone ID of the instance.
      * 
      */
     public Output<String> zoneId() {

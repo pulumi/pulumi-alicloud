@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/bandwidthPackage:BandwidthPackage")]
-    public partial class BandwidthPackage : Pulumi.CustomResource
+    public partial class BandwidthPackage : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        /// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class BandwidthPackageArgs : Pulumi.ResourceArgs
+    public sealed class BandwidthPackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        /// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -203,9 +203,10 @@ namespace Pulumi.AliCloud.Cen
         public BandwidthPackageArgs()
         {
         }
+        public static new BandwidthPackageArgs Empty => new BandwidthPackageArgs();
     }
 
-    public sealed class BandwidthPackageState : Pulumi.ResourceArgs
+    public sealed class BandwidthPackageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
@@ -269,7 +270,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        /// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -286,5 +287,6 @@ namespace Pulumi.AliCloud.Cen
         public BandwidthPackageState()
         {
         }
+        public static new BandwidthPackageState Empty => new BandwidthPackageState();
     }
 }

@@ -750,10 +750,12 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'security_group_id'")
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["status"] = status
-            __props__.__dict__["vnc_password"] = vnc_password
+            __props__.__dict__["vnc_password"] = None if vnc_password is None else pulumi.Output.secret(vnc_password)
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["vncPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'alicloud:ecp/instance:Instance',
             resource_name,

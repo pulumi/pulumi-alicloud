@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Ecs
     /// </summary>
     [Obsolete(@"This resource has been deprecated in favour of the EipAddress resource")]
     [AliCloudResourceType("alicloud:ecs/eip:Eip")]
-    public partial class Eip : Pulumi.CustomResource
+    public partial class Eip : global::Pulumi.CustomResource
     {
         [Output("activityId")]
         public Output<string?> ActivityId { get; private set; } = null!;
@@ -96,11 +96,17 @@ namespace Pulumi.AliCloud.Ecs
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
+        [Output("publicIpAddressPoolId")]
+        public Output<string?> PublicIpAddressPoolId { get; private set; } = null!;
+
         /// <summary>
         /// The Id of resource group which the eip belongs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        [Output("securityProtectionTypes")]
+        public Output<ImmutableArray<string>> SecurityProtectionTypes { get; private set; } = null!;
 
         /// <summary>
         /// The EIP current status.
@@ -158,7 +164,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EipArgs : Pulumi.ResourceArgs
+    public sealed class EipArgs : global::Pulumi.ResourceArgs
     {
         [Input("activityId")]
         public Input<string>? ActivityId { get; set; }
@@ -228,11 +234,22 @@ namespace Pulumi.AliCloud.Ecs
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        [Input("publicIpAddressPoolId")]
+        public Input<string>? PublicIpAddressPoolId { get; set; }
+
         /// <summary>
         /// The Id of resource group which the eip belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("securityProtectionTypes")]
+        private InputList<string>? _securityProtectionTypes;
+        public InputList<string> SecurityProtectionTypes
+        {
+            get => _securityProtectionTypes ?? (_securityProtectionTypes = new InputList<string>());
+            set => _securityProtectionTypes = value;
+        }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -249,9 +266,10 @@ namespace Pulumi.AliCloud.Ecs
         public EipArgs()
         {
         }
+        public static new EipArgs Empty => new EipArgs();
     }
 
-    public sealed class EipState : Pulumi.ResourceArgs
+    public sealed class EipState : global::Pulumi.ResourceArgs
     {
         [Input("activityId")]
         public Input<string>? ActivityId { get; set; }
@@ -327,11 +345,22 @@ namespace Pulumi.AliCloud.Ecs
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        [Input("publicIpAddressPoolId")]
+        public Input<string>? PublicIpAddressPoolId { get; set; }
+
         /// <summary>
         /// The Id of resource group which the eip belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("securityProtectionTypes")]
+        private InputList<string>? _securityProtectionTypes;
+        public InputList<string> SecurityProtectionTypes
+        {
+            get => _securityProtectionTypes ?? (_securityProtectionTypes = new InputList<string>());
+            set => _securityProtectionTypes = value;
+        }
 
         /// <summary>
         /// The EIP current status.
@@ -354,5 +383,6 @@ namespace Pulumi.AliCloud.Ecs
         public EipState()
         {
         }
+        public static new EipState Empty => new EipState();
     }
 }

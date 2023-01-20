@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
  * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
  * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.clickhouse.DbCluster;
  * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
@@ -190,8 +190,6 @@ public class Account extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-     * -`true`: grants DDL permissions to the database account.
-     * -`false`: does not grant DDL permissions to the database account.
      * 
      */
     @Export(name="ddlAuthority", type=Boolean.class, parameters={})
@@ -199,8 +197,6 @@ public class Account extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
-     * -`true`: grants DDL permissions to the database account.
-     * -`false`: does not grant DDL permissions to the database account.
      * 
      */
     public Output<Boolean> ddlAuthority() {

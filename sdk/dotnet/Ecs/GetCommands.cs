@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetCommands.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetCommands.InvokeAsync(new AliCloud.Ecs.GetCommandsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "E2RY53-xxxx",
-        ///             },
-        ///             NameRegex = "tf-testAcc",
-        ///         }));
-        ///         this.FirstEcsCommandId = example.Apply(example =&gt; example.Commands?[0]?.Id);
-        ///     }
+        ///             "E2RY53-xxxx",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
         /// 
-        ///     [Output("firstEcsCommandId")]
-        ///     public Output&lt;string&gt; FirstEcsCommandId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsCommandId"] = example.Apply(getCommandsResult =&gt; getCommandsResult.Commands[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCommandsResult> InvokeAsync(GetCommandsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCommandsResult>("alicloud:ecs/getCommands:getCommands", args ?? new GetCommandsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCommandsResult>("alicloud:ecs/getCommands:getCommands", args ?? new GetCommandsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Commands of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetCommands.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetCommands.InvokeAsync(new AliCloud.Ecs.GetCommandsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "E2RY53-xxxx",
-        ///             },
-        ///             NameRegex = "tf-testAcc",
-        ///         }));
-        ///         this.FirstEcsCommandId = example.Apply(example =&gt; example.Commands?[0]?.Id);
-        ///     }
+        ///             "E2RY53-xxxx",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
         /// 
-        ///     [Output("firstEcsCommandId")]
-        ///     public Output&lt;string&gt; FirstEcsCommandId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstEcsCommandId"] = example.Apply(getCommandsResult =&gt; getCommandsResult.Commands[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCommandsResult> Invoke(GetCommandsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCommandsResult>("alicloud:ecs/getCommands:getCommands", args ?? new GetCommandsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCommandsResult>("alicloud:ecs/getCommands:getCommands", args ?? new GetCommandsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCommandsArgs : Pulumi.InvokeArgs
+    public sealed class GetCommandsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Public order provider.
@@ -149,9 +147,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetCommandsArgs()
         {
         }
+        public static new GetCommandsArgs Empty => new GetCommandsArgs();
     }
 
-    public sealed class GetCommandsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCommandsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Public order provider.
@@ -207,6 +206,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetCommandsInvokeArgs()
         {
         }
+        public static new GetCommandsInvokeArgs Empty => new GetCommandsInvokeArgs();
     }
 
 

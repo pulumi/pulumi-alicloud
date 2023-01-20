@@ -75,6 +75,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:graphdatabase/dbInstance:DbInstance")
 public class DbInstance extends com.pulumi.resources.CustomResource {
     /**
+     * (Available in 1.196.0+)  The connection string of the instance.
+     * 
+     */
+    @Export(name="connectionString", type=String.class, parameters={})
+    private Output<String> connectionString;
+
+    /**
+     * @return (Available in 1.196.0+)  The connection string of the instance.
+     * 
+     */
+    public Output<String> connectionString() {
+        return this.connectionString;
+    }
+    /**
      * The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
      * 
      */
@@ -199,6 +213,20 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> paymentType() {
         return this.paymentType;
+    }
+    /**
+     * (Available in 1.196.0+) The connection port of the instance.
+     * 
+     */
+    @Export(name="port", type=String.class, parameters={})
+    private Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) The connection port of the instance.
+     * 
+     */
+    public Output<String> port() {
+        return this.port;
     }
     /**
      * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.

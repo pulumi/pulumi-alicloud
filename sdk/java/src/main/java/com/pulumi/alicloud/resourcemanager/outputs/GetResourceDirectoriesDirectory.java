@@ -11,12 +11,18 @@ import java.util.Objects;
 public final class GetResourceDirectoriesDirectory {
     /**
      * @return The ID of resource directory.
-     * * `master_account_id`- The ID of the master account.
-     * * `master_account_name`- The name of the master account.
      * 
      */
     private String id;
+    /**
+     * @return The ID of the master account.
+     * 
+     */
     private String masterAccountId;
+    /**
+     * @return The name of the master account.
+     * 
+     */
     private String masterAccountName;
     /**
      * @return The ID of the resource directory.
@@ -37,16 +43,22 @@ public final class GetResourceDirectoriesDirectory {
     private GetResourceDirectoriesDirectory() {}
     /**
      * @return The ID of resource directory.
-     * * `master_account_id`- The ID of the master account.
-     * * `master_account_name`- The name of the master account.
      * 
      */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The ID of the master account.
+     * 
+     */
     public String masterAccountId() {
         return this.masterAccountId;
     }
+    /**
+     * @return The name of the master account.
+     * 
+     */
     public String masterAccountName() {
         return this.masterAccountName;
     }

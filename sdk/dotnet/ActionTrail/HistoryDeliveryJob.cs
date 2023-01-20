@@ -27,40 +27,42 @@ namespace Pulumi.AliCloud.ActionTrail
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         var exampleRegions = Output.Create(AliCloud.GetRegions.InvokeAsync(new AliCloud.GetRegionsArgs
-    ///         {
-    ///             Current = true,
-    ///         }));
-    ///         var exampleAccount = Output.Create(AliCloud.GetAccount.InvokeAsync());
-    ///         var exampleProject = new AliCloud.Log.Project("exampleProject", new AliCloud.Log.ProjectArgs
-    ///         {
-    ///             Description = "tf actiontrail test",
-    ///         });
-    ///         var exampleTrail = new AliCloud.ActionTrail.Trail("exampleTrail", new AliCloud.ActionTrail.TrailArgs
-    ///         {
-    ///             TrailName = "example_value",
-    ///             SlsProjectArn = Output.Tuple(exampleRegions, exampleAccount, exampleProject.Name).Apply(values =&gt;
-    ///             {
-    ///                 var exampleRegions = values.Item1;
-    ///                 var exampleAccount = values.Item2;
-    ///                 var name = values.Item3;
-    ///                 return $"acs:log:{exampleRegions.Regions?[0]?.Id}:{exampleAccount.Id}:project/{name}";
-    ///             }),
-    ///         });
-    ///         var exampleHistoryDeliveryJob = new AliCloud.ActionTrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", new AliCloud.ActionTrail.HistoryDeliveryJobArgs
-    ///         {
-    ///             TrailName = exampleTrail.Id,
-    ///         });
-    ///     }
+    ///         Current = true,
+    ///     });
     /// 
-    /// }
+    ///     var exampleAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     {
+    ///         Description = "tf actiontrail test",
+    ///     });
+    /// 
+    ///     var exampleTrail = new AliCloud.ActionTrail.Trail("exampleTrail", new()
+    ///     {
+    ///         TrailName = "example_value",
+    ///         SlsProjectArn = Output.Tuple(exampleRegions.Apply(getRegionsResult =&gt; getRegionsResult), exampleAccount.Apply(getAccountResult =&gt; getAccountResult), exampleProject.Name).Apply(values =&gt;
+    ///         {
+    ///             var exampleRegions = values.Item1;
+    ///             var exampleAccount = values.Item2;
+    ///             var name = values.Item3;
+    ///             return $"acs:log:{exampleRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{exampleAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{name}";
+    ///         }),
+    ///     });
+    /// 
+    ///     var exampleHistoryDeliveryJob = new AliCloud.ActionTrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", new()
+    ///     {
+    ///         TrailName = exampleTrail.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +74,7 @@ namespace Pulumi.AliCloud.ActionTrail
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob")]
-    public partial class HistoryDeliveryJob : Pulumi.CustomResource
+    public partial class HistoryDeliveryJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
@@ -130,7 +132,7 @@ namespace Pulumi.AliCloud.ActionTrail
         }
     }
 
-    public sealed class HistoryDeliveryJobArgs : Pulumi.ResourceArgs
+    public sealed class HistoryDeliveryJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the trail for which you want to create a historical event delivery task.
@@ -141,9 +143,10 @@ namespace Pulumi.AliCloud.ActionTrail
         public HistoryDeliveryJobArgs()
         {
         }
+        public static new HistoryDeliveryJobArgs Empty => new HistoryDeliveryJobArgs();
     }
 
-    public sealed class HistoryDeliveryJobState : Pulumi.ResourceArgs
+    public sealed class HistoryDeliveryJobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
@@ -160,5 +163,6 @@ namespace Pulumi.AliCloud.ActionTrail
         public HistoryDeliveryJobState()
         {
         }
+        public static new HistoryDeliveryJobState Empty => new HistoryDeliveryJobState();
     }
 }

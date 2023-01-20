@@ -225,7 +225,6 @@ class ReplicationVault(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         config = pulumi.Config()
         name = config.get("name")
@@ -234,12 +233,12 @@ class ReplicationVault(pulumi.CustomResource):
         region_source = config.get("regionSource")
         if region_source is None:
             region_source = "you Replication value source region"
-        source = pulumi.providers.Alicloud("source", region=region_source)
+        source = alicloud.Provider("source", region=region_source)
         default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name,
         opts=pulumi.ResourceOptions(provider=alicloud["source"]))
         default_replication_vault_regions = alicloud.hbr.get_replication_vault_regions()
         region_replication = default_replication_vault_regions.regions[0].replication_region_id
-        replication = pulumi.providers.Alicloud("replication", region=region_replication)
+        replication = alicloud.Provider("replication", region=region_replication)
         default_replication_vault = alicloud.hbr.ReplicationVault("defaultReplicationVault",
             replication_source_region_id=region_replication,
             replication_source_vault_id=default_vault.id,
@@ -285,7 +284,6 @@ class ReplicationVault(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         config = pulumi.Config()
         name = config.get("name")
@@ -294,12 +292,12 @@ class ReplicationVault(pulumi.CustomResource):
         region_source = config.get("regionSource")
         if region_source is None:
             region_source = "you Replication value source region"
-        source = pulumi.providers.Alicloud("source", region=region_source)
+        source = alicloud.Provider("source", region=region_source)
         default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name,
         opts=pulumi.ResourceOptions(provider=alicloud["source"]))
         default_replication_vault_regions = alicloud.hbr.get_replication_vault_regions()
         region_replication = default_replication_vault_regions.regions[0].replication_region_id
-        replication = pulumi.providers.Alicloud("replication", region=region_replication)
+        replication = alicloud.Provider("replication", region=region_replication)
         default_replication_vault = alicloud.hbr.ReplicationVault("defaultReplicationVault",
             replication_source_region_id=region_replication,
             replication_source_vault_id=default_vault.id,

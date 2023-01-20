@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,15 +23,12 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     networkInterfaceId: "example_value",
  * });
- * export const ecsNetworkInterfacePermissionId1 = ids.then(ids => ids.permissions?[0]?.id);
+ * export const ecsNetworkInterfacePermissionId1 = ids.then(ids => ids.permissions?.[0]?.id);
  * ```
  */
 export function getEcsNetworkInterfacePermissions(args: GetEcsNetworkInterfacePermissionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsNetworkInterfacePermissionsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", {
         "ids": args.ids,
         "networkInterfaceId": args.networkInterfaceId,
@@ -79,9 +77,28 @@ export interface GetEcsNetworkInterfacePermissionsResult {
     readonly status?: string;
     readonly totalCount: number;
 }
-
+/**
+ * This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.166.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ecs.getEcsNetworkInterfacePermissions({
+ *     ids: ["example_value"],
+ *     networkInterfaceId: "example_value",
+ * });
+ * export const ecsNetworkInterfacePermissionId1 = ids.then(ids => ids.permissions?.[0]?.id);
+ * ```
+ */
 export function getEcsNetworkInterfacePermissionsOutput(args: GetEcsNetworkInterfacePermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsNetworkInterfacePermissionsResult> {
-    return pulumi.output(args).apply(a => getEcsNetworkInterfacePermissions(a, opts))
+    return pulumi.output(args).apply((a: any) => getEcsNetworkInterfacePermissions(a, opts))
 }
 
 /**

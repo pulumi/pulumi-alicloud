@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudsso/accessManagement:AccessManagement")]
-    public partial class AccessManagement : Pulumi.CustomResource
+    public partial class AccessManagement : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Access configuration ID.
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.CloudSso
         }
     }
 
-    public sealed class AccessManagementArgs : Pulumi.ResourceArgs
+    public sealed class AccessManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Access configuration ID.
@@ -164,9 +164,10 @@ namespace Pulumi.AliCloud.CloudSso
         public AccessManagementArgs()
         {
         }
+        public static new AccessManagementArgs Empty => new AccessManagementArgs();
     }
 
-    public sealed class AccessManagementState : Pulumi.ResourceArgs
+    public sealed class AccessManagementState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Access configuration ID.
@@ -213,5 +214,6 @@ namespace Pulumi.AliCloud.CloudSso
         public AccessManagementState()
         {
         }
+        public static new AccessManagementState Empty => new AccessManagementState();
     }
 }

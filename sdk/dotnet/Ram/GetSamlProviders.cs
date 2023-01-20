@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ram
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ram.GetSamlProviders.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ram.GetSamlProviders.InvokeAsync(new AliCloud.Ram.GetSamlProvidersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "samlProviderName",
-        ///             },
-        ///             NameRegex = "tf-testAcc",
-        ///         }));
-        ///         this.FirstRamSamlProviderId = example.Apply(example =&gt; example.Providers?[0]?.Id);
-        ///     }
+        ///             "samlProviderName",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
         /// 
-        ///     [Output("firstRamSamlProviderId")]
-        ///     public Output&lt;string&gt; FirstRamSamlProviderId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRamSamlProviderId"] = example.Apply(getSamlProvidersResult =&gt; getSamlProvidersResult.Providers[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSamlProvidersResult> InvokeAsync(GetSamlProvidersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSamlProvidersResult>("alicloud:ram/getSamlProviders:getSamlProviders", args ?? new GetSamlProvidersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSamlProvidersResult>("alicloud:ram/getSamlProviders:getSamlProviders", args ?? new GetSamlProvidersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ram
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ram.GetSamlProviders.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ram.GetSamlProviders.InvokeAsync(new AliCloud.Ram.GetSamlProvidersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "samlProviderName",
-        ///             },
-        ///             NameRegex = "tf-testAcc",
-        ///         }));
-        ///         this.FirstRamSamlProviderId = example.Apply(example =&gt; example.Providers?[0]?.Id);
-        ///     }
+        ///             "samlProviderName",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
         /// 
-        ///     [Output("firstRamSamlProviderId")]
-        ///     public Output&lt;string&gt; FirstRamSamlProviderId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRamSamlProviderId"] = example.Apply(getSamlProvidersResult =&gt; getSamlProvidersResult.Providers[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSamlProvidersResult> Invoke(GetSamlProvidersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSamlProvidersResult>("alicloud:ram/getSamlProviders:getSamlProviders", args ?? new GetSamlProvidersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSamlProvidersResult>("alicloud:ram/getSamlProviders:getSamlProviders", args ?? new GetSamlProvidersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSamlProvidersArgs : Pulumi.InvokeArgs
+    public sealed class GetSamlProvidersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -125,9 +123,10 @@ namespace Pulumi.AliCloud.Ram
         public GetSamlProvidersArgs()
         {
         }
+        public static new GetSamlProvidersArgs Empty => new GetSamlProvidersArgs();
     }
 
-    public sealed class GetSamlProvidersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSamlProvidersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -159,6 +158,7 @@ namespace Pulumi.AliCloud.Ram
         public GetSamlProvidersInvokeArgs()
         {
         }
+        public static new GetSamlProvidersInvokeArgs Empty => new GetSamlProvidersInvokeArgs();
     }
 
 

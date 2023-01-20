@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultCluster = new alicloud.adb.Cluster("defaultCluster", {
@@ -135,6 +135,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
+     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     */
+    public /*out*/ readonly port!: pulumi.Output<string>;
+    /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
     public readonly renewalStatus!: pulumi.Output<string>;
@@ -190,6 +194,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["payType"] = state ? state.payType : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
@@ -230,6 +235,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -299,6 +305,10 @@ export interface ClusterState {
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
     period?: pulumi.Input<number>;
+    /**
+     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     */
+    port?: pulumi.Input<string>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */

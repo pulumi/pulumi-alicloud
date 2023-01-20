@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class ContainerGroupContainerGetArgs : Pulumi.ResourceArgs
+    public sealed class ContainerGroupContainerGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         }
 
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
@@ -72,14 +72,26 @@ namespace Pulumi.AliCloud.Eci.Inputs
         [Input("imagePullPolicy")]
         public Input<string>? ImagePullPolicy { get; set; }
 
+        [Input("livenessProbes")]
+        private InputList<Inputs.ContainerGroupContainerLivenessProbeGetArgs>? _livenessProbes;
+
         /// <summary>
-        /// The amount of memory resources allocated to the container.
+        /// The health check of the container.
+        /// </summary>
+        public InputList<Inputs.ContainerGroupContainerLivenessProbeGetArgs> LivenessProbes
+        {
+            get => _livenessProbes ?? (_livenessProbes = new InputList<Inputs.ContainerGroupContainerLivenessProbeGetArgs>());
+            set => _livenessProbes = value;
+        }
+
+        /// <summary>
+        /// The amount of memory resources allocated to the container group.
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
 
         /// <summary>
-        /// The name of the security context that the container group runs.
+        /// The name of the volume.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -94,6 +106,18 @@ namespace Pulumi.AliCloud.Eci.Inputs
         {
             get => _ports ?? (_ports = new InputList<Inputs.ContainerGroupContainerPortGetArgs>());
             set => _ports = value;
+        }
+
+        [Input("readinessProbes")]
+        private InputList<Inputs.ContainerGroupContainerReadinessProbeGetArgs>? _readinessProbes;
+
+        /// <summary>
+        /// The health check of the container.
+        /// </summary>
+        public InputList<Inputs.ContainerGroupContainerReadinessProbeGetArgs> ReadinessProbes
+        {
+            get => _readinessProbes ?? (_readinessProbes = new InputList<Inputs.ContainerGroupContainerReadinessProbeGetArgs>());
+            set => _readinessProbes = value;
         }
 
         [Input("ready")]
@@ -123,5 +147,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public ContainerGroupContainerGetArgs()
         {
         }
+        public static new ContainerGroupContainerGetArgs Empty => new ContainerGroupContainerGetArgs();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,21 +15,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const foo = pulumi.output(alicloud.vpc.getSslVpnServers({
+ * const foo = alicloud.vpc.getSslVpnServers({
  *     ids: ["fake-server-id"],
  *     nameRegex: "^foo",
  *     outputFile: "/tmp/sslserver",
  *     vpnGatewayId: "fake-vpn-id",
- * }));
+ * });
  * ```
  */
 export function getSslVpnServers(args?: GetSslVpnServersArgs, opts?: pulumi.InvokeOptions): Promise<GetSslVpnServersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getSslVpnServers:getSslVpnServers", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -86,9 +84,25 @@ export interface GetSslVpnServersResult {
      */
     readonly vpnGatewayId?: string;
 }
-
+/**
+ * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.vpc.getSslVpnServers({
+ *     ids: ["fake-server-id"],
+ *     nameRegex: "^foo",
+ *     outputFile: "/tmp/sslserver",
+ *     vpnGatewayId: "fake-vpn-id",
+ * });
+ * ```
+ */
 export function getSslVpnServersOutput(args?: GetSslVpnServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslVpnServersResult> {
-    return pulumi.output(args).apply(a => getSslVpnServers(a, opts))
+    return pulumi.output(args).apply((a: any) => getSslVpnServers(a, opts))
 }
 
 /**

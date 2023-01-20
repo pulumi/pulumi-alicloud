@@ -74,13 +74,8 @@ type Accelerator struct {
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntOutput `pulumi:"duration"`
 	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-	// * `Month`: billed on a monthly basis.
-	// * `Year`: billed on an annual basis.
 	PricingCycle pulumi.StringOutput `pulumi:"pricingCycle"`
 	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
-	// - `AutoRenewal`: Enable auto renewal.
-	// - `Normal`: Disable auto renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The instance type of the GA instance. Specification of global acceleration instance, value:
 	// `1`: Small 1.
@@ -142,13 +137,8 @@ type acceleratorState struct {
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration *int `pulumi:"duration"`
 	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-	// * `Month`: billed on a monthly basis.
-	// * `Year`: billed on an annual basis.
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
-	// - `AutoRenewal`: Enable auto renewal.
-	// - `Normal`: Disable auto renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The instance type of the GA instance. Specification of global acceleration instance, value:
 	// `1`: Small 1.
@@ -176,13 +166,8 @@ type AcceleratorState struct {
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntPtrInput
 	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-	// * `Month`: billed on a monthly basis.
-	// * `Year`: billed on an annual basis.
 	PricingCycle pulumi.StringPtrInput
 	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
-	// - `AutoRenewal`: Enable auto renewal.
-	// - `Normal`: Disable auto renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
 	// The instance type of the GA instance. Specification of global acceleration instance, value:
 	// `1`: Small 1.
@@ -214,13 +199,8 @@ type acceleratorArgs struct {
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration int `pulumi:"duration"`
 	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-	// * `Month`: billed on a monthly basis.
-	// * `Year`: billed on an annual basis.
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
-	// - `AutoRenewal`: Enable auto renewal.
-	// - `Normal`: Disable auto renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The instance type of the GA instance. Specification of global acceleration instance, value:
 	// `1`: Small 1.
@@ -247,13 +227,8 @@ type AcceleratorArgs struct {
 	// * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
 	Duration pulumi.IntInput
 	// The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-	// * `Month`: billed on a monthly basis.
-	// * `Year`: billed on an annual basis.
 	PricingCycle pulumi.StringPtrInput
 	// Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
-	// - `AutoRenewal`: Enable auto renewal.
-	// - `Normal`: Disable auto renewal.
-	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
 	// The instance type of the GA instance. Specification of global acceleration instance, value:
 	// `1`: Small 1.
@@ -380,16 +355,11 @@ func (o AcceleratorOutput) Duration() pulumi.IntOutput {
 }
 
 // The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
-// * `Month`: billed on a monthly basis.
-// * `Year`: billed on an annual basis.
 func (o AcceleratorOutput) PricingCycle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.PricingCycle }).(pulumi.StringOutput)
 }
 
 // Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
-// - `AutoRenewal`: Enable auto renewal.
-// - `Normal`: Disable auto renewal.
-// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 func (o AcceleratorOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }

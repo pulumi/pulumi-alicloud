@@ -11,10 +11,14 @@ import (
 )
 
 type RuleTarget struct {
+	// Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block deadLetterQueue`.
+	DeadLetterQueue *RuleTargetDeadLetterQueue `pulumi:"deadLetterQueue"`
 	// The endpoint of target.
 	Endpoint string `pulumi:"endpoint"`
-	// A list of param.
+	// A list of param. See the following `Block paramList`.
 	ParamLists []RuleTargetParamList `pulumi:"paramLists"`
+	// The retry policy that is used to push the event. Valid values:
+	PushRetryStrategy *string `pulumi:"pushRetryStrategy"`
 	// The ID of target.
 	TargetId string `pulumi:"targetId"`
 	// The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
@@ -33,10 +37,14 @@ type RuleTargetInput interface {
 }
 
 type RuleTargetArgs struct {
+	// Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block deadLetterQueue`.
+	DeadLetterQueue RuleTargetDeadLetterQueuePtrInput `pulumi:"deadLetterQueue"`
 	// The endpoint of target.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-	// A list of param.
+	// A list of param. See the following `Block paramList`.
 	ParamLists RuleTargetParamListArrayInput `pulumi:"paramLists"`
+	// The retry policy that is used to push the event. Valid values:
+	PushRetryStrategy pulumi.StringPtrInput `pulumi:"pushRetryStrategy"`
 	// The ID of target.
 	TargetId pulumi.StringInput `pulumi:"targetId"`
 	// The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
@@ -94,14 +102,24 @@ func (o RuleTargetOutput) ToRuleTargetOutputWithContext(ctx context.Context) Rul
 	return o
 }
 
+// Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block deadLetterQueue`.
+func (o RuleTargetOutput) DeadLetterQueue() RuleTargetDeadLetterQueuePtrOutput {
+	return o.ApplyT(func(v RuleTarget) *RuleTargetDeadLetterQueue { return v.DeadLetterQueue }).(RuleTargetDeadLetterQueuePtrOutput)
+}
+
 // The endpoint of target.
 func (o RuleTargetOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleTarget) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// A list of param.
+// A list of param. See the following `Block paramList`.
 func (o RuleTargetOutput) ParamLists() RuleTargetParamListArrayOutput {
 	return o.ApplyT(func(v RuleTarget) []RuleTargetParamList { return v.ParamLists }).(RuleTargetParamListArrayOutput)
+}
+
+// The retry policy that is used to push the event. Valid values:
+func (o RuleTargetOutput) PushRetryStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleTarget) *string { return v.PushRetryStrategy }).(pulumi.StringPtrOutput)
 }
 
 // The ID of target.
@@ -132,6 +150,143 @@ func (o RuleTargetArrayOutput) Index(i pulumi.IntInput) RuleTargetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleTarget {
 		return vs[0].([]RuleTarget)[vs[1].(int)]
 	}).(RuleTargetOutput)
+}
+
+type RuleTargetDeadLetterQueue struct {
+	// The srn of the dead letter queue.
+	Arn *string `pulumi:"arn"`
+}
+
+// RuleTargetDeadLetterQueueInput is an input type that accepts RuleTargetDeadLetterQueueArgs and RuleTargetDeadLetterQueueOutput values.
+// You can construct a concrete instance of `RuleTargetDeadLetterQueueInput` via:
+//
+//	RuleTargetDeadLetterQueueArgs{...}
+type RuleTargetDeadLetterQueueInput interface {
+	pulumi.Input
+
+	ToRuleTargetDeadLetterQueueOutput() RuleTargetDeadLetterQueueOutput
+	ToRuleTargetDeadLetterQueueOutputWithContext(context.Context) RuleTargetDeadLetterQueueOutput
+}
+
+type RuleTargetDeadLetterQueueArgs struct {
+	// The srn of the dead letter queue.
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+}
+
+func (RuleTargetDeadLetterQueueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleTargetDeadLetterQueue)(nil)).Elem()
+}
+
+func (i RuleTargetDeadLetterQueueArgs) ToRuleTargetDeadLetterQueueOutput() RuleTargetDeadLetterQueueOutput {
+	return i.ToRuleTargetDeadLetterQueueOutputWithContext(context.Background())
+}
+
+func (i RuleTargetDeadLetterQueueArgs) ToRuleTargetDeadLetterQueueOutputWithContext(ctx context.Context) RuleTargetDeadLetterQueueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetDeadLetterQueueOutput)
+}
+
+func (i RuleTargetDeadLetterQueueArgs) ToRuleTargetDeadLetterQueuePtrOutput() RuleTargetDeadLetterQueuePtrOutput {
+	return i.ToRuleTargetDeadLetterQueuePtrOutputWithContext(context.Background())
+}
+
+func (i RuleTargetDeadLetterQueueArgs) ToRuleTargetDeadLetterQueuePtrOutputWithContext(ctx context.Context) RuleTargetDeadLetterQueuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetDeadLetterQueueOutput).ToRuleTargetDeadLetterQueuePtrOutputWithContext(ctx)
+}
+
+// RuleTargetDeadLetterQueuePtrInput is an input type that accepts RuleTargetDeadLetterQueueArgs, RuleTargetDeadLetterQueuePtr and RuleTargetDeadLetterQueuePtrOutput values.
+// You can construct a concrete instance of `RuleTargetDeadLetterQueuePtrInput` via:
+//
+//	        RuleTargetDeadLetterQueueArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleTargetDeadLetterQueuePtrInput interface {
+	pulumi.Input
+
+	ToRuleTargetDeadLetterQueuePtrOutput() RuleTargetDeadLetterQueuePtrOutput
+	ToRuleTargetDeadLetterQueuePtrOutputWithContext(context.Context) RuleTargetDeadLetterQueuePtrOutput
+}
+
+type ruleTargetDeadLetterQueuePtrType RuleTargetDeadLetterQueueArgs
+
+func RuleTargetDeadLetterQueuePtr(v *RuleTargetDeadLetterQueueArgs) RuleTargetDeadLetterQueuePtrInput {
+	return (*ruleTargetDeadLetterQueuePtrType)(v)
+}
+
+func (*ruleTargetDeadLetterQueuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleTargetDeadLetterQueue)(nil)).Elem()
+}
+
+func (i *ruleTargetDeadLetterQueuePtrType) ToRuleTargetDeadLetterQueuePtrOutput() RuleTargetDeadLetterQueuePtrOutput {
+	return i.ToRuleTargetDeadLetterQueuePtrOutputWithContext(context.Background())
+}
+
+func (i *ruleTargetDeadLetterQueuePtrType) ToRuleTargetDeadLetterQueuePtrOutputWithContext(ctx context.Context) RuleTargetDeadLetterQueuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleTargetDeadLetterQueuePtrOutput)
+}
+
+type RuleTargetDeadLetterQueueOutput struct{ *pulumi.OutputState }
+
+func (RuleTargetDeadLetterQueueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleTargetDeadLetterQueue)(nil)).Elem()
+}
+
+func (o RuleTargetDeadLetterQueueOutput) ToRuleTargetDeadLetterQueueOutput() RuleTargetDeadLetterQueueOutput {
+	return o
+}
+
+func (o RuleTargetDeadLetterQueueOutput) ToRuleTargetDeadLetterQueueOutputWithContext(ctx context.Context) RuleTargetDeadLetterQueueOutput {
+	return o
+}
+
+func (o RuleTargetDeadLetterQueueOutput) ToRuleTargetDeadLetterQueuePtrOutput() RuleTargetDeadLetterQueuePtrOutput {
+	return o.ToRuleTargetDeadLetterQueuePtrOutputWithContext(context.Background())
+}
+
+func (o RuleTargetDeadLetterQueueOutput) ToRuleTargetDeadLetterQueuePtrOutputWithContext(ctx context.Context) RuleTargetDeadLetterQueuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleTargetDeadLetterQueue) *RuleTargetDeadLetterQueue {
+		return &v
+	}).(RuleTargetDeadLetterQueuePtrOutput)
+}
+
+// The srn of the dead letter queue.
+func (o RuleTargetDeadLetterQueueOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleTargetDeadLetterQueue) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+type RuleTargetDeadLetterQueuePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleTargetDeadLetterQueuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleTargetDeadLetterQueue)(nil)).Elem()
+}
+
+func (o RuleTargetDeadLetterQueuePtrOutput) ToRuleTargetDeadLetterQueuePtrOutput() RuleTargetDeadLetterQueuePtrOutput {
+	return o
+}
+
+func (o RuleTargetDeadLetterQueuePtrOutput) ToRuleTargetDeadLetterQueuePtrOutputWithContext(ctx context.Context) RuleTargetDeadLetterQueuePtrOutput {
+	return o
+}
+
+func (o RuleTargetDeadLetterQueuePtrOutput) Elem() RuleTargetDeadLetterQueueOutput {
+	return o.ApplyT(func(v *RuleTargetDeadLetterQueue) RuleTargetDeadLetterQueue {
+		if v != nil {
+			return *v
+		}
+		var ret RuleTargetDeadLetterQueue
+		return ret
+	}).(RuleTargetDeadLetterQueueOutput)
+}
+
+// The srn of the dead letter queue.
+func (o RuleTargetDeadLetterQueuePtrOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleTargetDeadLetterQueue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Arn
+	}).(pulumi.StringPtrOutput)
 }
 
 type RuleTargetParamList struct {
@@ -799,6 +954,8 @@ func (o GetRulesRuleTargetArrayOutput) Index(i pulumi.IntInput) GetRulesRuleTarg
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetInput)(nil)).Elem(), RuleTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetArrayInput)(nil)).Elem(), RuleTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetDeadLetterQueueInput)(nil)).Elem(), RuleTargetDeadLetterQueueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetDeadLetterQueuePtrInput)(nil)).Elem(), RuleTargetDeadLetterQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetParamListInput)(nil)).Elem(), RuleTargetParamListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleTargetParamListArrayInput)(nil)).Elem(), RuleTargetParamListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEventBusesBusInput)(nil)).Elem(), GetEventBusesBusArgs{})
@@ -811,6 +968,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesRuleTargetArrayInput)(nil)).Elem(), GetRulesRuleTargetArray{})
 	pulumi.RegisterOutputType(RuleTargetOutput{})
 	pulumi.RegisterOutputType(RuleTargetArrayOutput{})
+	pulumi.RegisterOutputType(RuleTargetDeadLetterQueueOutput{})
+	pulumi.RegisterOutputType(RuleTargetDeadLetterQueuePtrOutput{})
 	pulumi.RegisterOutputType(RuleTargetParamListOutput{})
 	pulumi.RegisterOutputType(RuleTargetParamListArrayOutput{})
 	pulumi.RegisterOutputType(GetEventBusesBusOutput{})

@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.CR
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_namespace = new AliCloud.CR.Namespace("my-namespace", new()
     ///     {
-    ///         var my_namespace = new AliCloud.CR.Namespace("my-namespace", new AliCloud.CR.NamespaceArgs
-    ///         {
-    ///             AutoCreate = false,
-    ///             DefaultVisibility = "PUBLIC",
-    ///         });
-    ///     }
+    ///         AutoCreate = false,
+    ///         DefaultVisibility = "PUBLIC",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.CR
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cr/namespace:Namespace")]
-    public partial class Namespace : Pulumi.CustomResource
+    public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
@@ -111,7 +109,7 @@ namespace Pulumi.AliCloud.CR
         }
     }
 
-    public sealed class NamespaceArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
@@ -134,9 +132,10 @@ namespace Pulumi.AliCloud.CR
         public NamespaceArgs()
         {
         }
+        public static new NamespaceArgs Empty => new NamespaceArgs();
     }
 
-    public sealed class NamespaceState : Pulumi.ResourceArgs
+    public sealed class NamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
@@ -159,5 +158,6 @@ namespace Pulumi.AliCloud.CR
         public NamespaceState()
         {
         }
+        public static new NamespaceState Empty => new NamespaceState();
     }
 }

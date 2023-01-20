@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// &gt; **NOTE:** Available in v1.157.0+.
         /// </summary>
         public static Task<GetShardingNetworkPrivateAddressesResult> InvokeAsync(GetShardingNetworkPrivateAddressesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetShardingNetworkPrivateAddressesResult>("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", args ?? new GetShardingNetworkPrivateAddressesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetShardingNetworkPrivateAddressesResult>("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", args ?? new GetShardingNetworkPrivateAddressesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.MongoDB
         /// &gt; **NOTE:** Available in v1.157.0+.
         /// </summary>
         public static Output<GetShardingNetworkPrivateAddressesResult> Invoke(GetShardingNetworkPrivateAddressesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetShardingNetworkPrivateAddressesResult>("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", args ?? new GetShardingNetworkPrivateAddressesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetShardingNetworkPrivateAddressesResult>("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", args ?? new GetShardingNetworkPrivateAddressesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetShardingNetworkPrivateAddressesArgs : Pulumi.InvokeArgs
+    public sealed class GetShardingNetworkPrivateAddressesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The db instance id.
@@ -55,9 +55,10 @@ namespace Pulumi.AliCloud.MongoDB
         public GetShardingNetworkPrivateAddressesArgs()
         {
         }
+        public static new GetShardingNetworkPrivateAddressesArgs Empty => new GetShardingNetworkPrivateAddressesArgs();
     }
 
-    public sealed class GetShardingNetworkPrivateAddressesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetShardingNetworkPrivateAddressesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The db instance id.
@@ -83,6 +84,7 @@ namespace Pulumi.AliCloud.MongoDB
         public GetShardingNetworkPrivateAddressesInvokeArgs()
         {
         }
+        public static new GetShardingNetworkPrivateAddressesInvokeArgs Empty => new GetShardingNetworkPrivateAddressesInvokeArgs();
     }
 
 

@@ -19,26 +19,25 @@ namespace Pulumi.AliCloud
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(AliCloud.GetAccount.InvokeAsync());
-        ///         this.CurrentAccountId = current.Apply(current =&gt; current.Id);
-        ///     }
+        ///     var current = AliCloud.GetAccount.Invoke();
         /// 
-        ///     [Output("currentAccountId")]
-        ///     public Output&lt;string&gt; CurrentAccountId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["currentAccountId"] = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("alicloud:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("alicloud:index/getAccount:getAccount", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

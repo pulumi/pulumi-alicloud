@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class LoadBalancerModificationProtectionConfigArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerModificationProtectionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        /// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
         /// </summary>
         [Input("reason")]
         public Input<string>? Reason { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public LoadBalancerModificationProtectionConfigArgs()
         {
         }
+        public static new LoadBalancerModificationProtectionConfigArgs Empty => new LoadBalancerModificationProtectionConfigArgs();
     }
 }

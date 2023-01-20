@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:pvtz/endpoint:Endpoint")]
-    public partial class Endpoint : Pulumi.CustomResource
+    public partial class Endpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the resource.
@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Pvtz
         }
     }
 
-    public sealed class EndpointArgs : Pulumi.ResourceArgs
+    public sealed class EndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the resource.
@@ -148,9 +148,10 @@ namespace Pulumi.AliCloud.Pvtz
         public EndpointArgs()
         {
         }
+        public static new EndpointArgs Empty => new EndpointArgs();
     }
 
-    public sealed class EndpointState : Pulumi.ResourceArgs
+    public sealed class EndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the resource.
@@ -197,5 +198,6 @@ namespace Pulumi.AliCloud.Pvtz
         public EndpointState()
         {
         }
+        public static new EndpointState Empty => new EndpointState();
     }
 }

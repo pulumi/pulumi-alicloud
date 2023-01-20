@@ -975,7 +975,7 @@ class ShardingInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ShardingInstanceArgs.__new__(ShardingInstanceArgs)
 
-            __props__.__dict__["account_password"] = account_password
+            __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["backup_periods"] = backup_periods
             __props__.__dict__["backup_time"] = backup_time
@@ -1007,6 +1007,8 @@ class ShardingInstance(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["config_server_lists"] = None
             __props__.__dict__["retention_period"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ShardingInstance, __self__).__init__(
             'alicloud:mongodb/shardingInstance:ShardingInstance',
             resource_name,

@@ -21,47 +21,49 @@ namespace Pulumi.AliCloud.AliKafka
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tftest";
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tftest";
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "^default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = defaultNetworks.Apply(defaultNetworks =&gt; Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///         {
-    ///             VpcId = defaultNetworks.Ids?[0],
-    ///         })));
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///         });
-    ///         var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new AliCloud.AliKafka.InstanceArgs
-    ///         {
-    ///             TopicQuota = 50,
-    ///             DiskType = 1,
-    ///             DiskSize = 500,
-    ///             DeployType = 5,
-    ///             IoMax = 20,
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             SecurityGroup = defaultSecurityGroup.Id,
-    ///         });
-    ///         var defaultInstanceAllowedIpAttachment = new AliCloud.AliKafka.InstanceAllowedIpAttachment("defaultInstanceAllowedIpAttachment", new AliCloud.AliKafka.InstanceAllowedIpAttachmentArgs
-    ///         {
-    ///             AllowedIp = "114.237.9.78/32",
-    ///             AllowedType = "vpc",
-    ///             InstanceId = defaultInstance.Id,
-    ///             PortRange = "9092/9092",
-    ///         });
-    ///     }
+    ///         NameRegex = "^default-NODELETING",
+    ///     });
     /// 
-    /// }
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
+    ///     {
+    ///         PartitionNum = 50,
+    ///         DiskType = 1,
+    ///         DiskSize = 500,
+    ///         DeployType = 5,
+    ///         IoMax = 20,
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         SecurityGroup = defaultSecurityGroup.Id,
+    ///     });
+    /// 
+    ///     var defaultInstanceAllowedIpAttachment = new AliCloud.AliKafka.InstanceAllowedIpAttachment("defaultInstanceAllowedIpAttachment", new()
+    ///     {
+    ///         AllowedIp = "114.237.9.78/32",
+    ///         AllowedType = "vpc",
+    ///         InstanceId = defaultInstance.Id,
+    ///         PortRange = "9092/9092",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -73,7 +75,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment")]
-    public partial class InstanceAllowedIpAttachment : Pulumi.CustomResource
+    public partial class InstanceAllowedIpAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The allowed ip. It can be a CIDR block.
@@ -83,8 +85,6 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-        /// - `vpc`: IP address whitelist for VPC access.
-        /// - `internet`: IP address whitelist for Internet access.
         /// </summary>
         [Output("allowedType")]
         public Output<string> AllowedType { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
     }
 
-    public sealed class InstanceAllowedIpAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class InstanceAllowedIpAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The allowed ip. It can be a CIDR block.
@@ -157,8 +157,6 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-        /// - `vpc`: IP address whitelist for VPC access.
-        /// - `internet`: IP address whitelist for Internet access.
         /// </summary>
         [Input("allowedType", required: true)]
         public Input<string> AllowedType { get; set; } = null!;
@@ -180,9 +178,10 @@ namespace Pulumi.AliCloud.AliKafka
         public InstanceAllowedIpAttachmentArgs()
         {
         }
+        public static new InstanceAllowedIpAttachmentArgs Empty => new InstanceAllowedIpAttachmentArgs();
     }
 
-    public sealed class InstanceAllowedIpAttachmentState : Pulumi.ResourceArgs
+    public sealed class InstanceAllowedIpAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The allowed ip. It can be a CIDR block.
@@ -192,8 +191,6 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
-        /// - `vpc`: IP address whitelist for VPC access.
-        /// - `internet`: IP address whitelist for Internet access.
         /// </summary>
         [Input("allowedType")]
         public Input<string>? AllowedType { get; set; }
@@ -215,5 +212,6 @@ namespace Pulumi.AliCloud.AliKafka
         public InstanceAllowedIpAttachmentState()
         {
         }
+        public static new InstanceAllowedIpAttachmentState Empty => new InstanceAllowedIpAttachmentState();
     }
 }

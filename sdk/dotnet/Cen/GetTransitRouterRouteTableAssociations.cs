@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Cen.GetTransitRouterRouteTableAssociations.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Cen.GetTransitRouterRouteTableAssociations.InvokeAsync(new AliCloud.Cen.GetTransitRouterRouteTableAssociationsArgs
-        ///         {
-        ///             TransitRouterRouteTableId = "rtb-id1",
-        ///         }));
-        ///         this.FirstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = @default.Apply(@default =&gt; @default.Associations?[0]?.ResourceType);
-        ///     }
+        ///         TransitRouterRouteTableId = "rtb-id1",
+        ///     });
         /// 
-        ///     [Output("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType")]
-        ///     public Output&lt;string&gt; FirstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(getTransitRouterRouteTableAssociationsResult =&gt; getTransitRouterRouteTableAssociationsResult).Apply(@default =&gt; @default.Apply(getTransitRouterRouteTableAssociationsResult =&gt; getTransitRouterRouteTableAssociationsResult.Associations[0]?.ResourceType)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTransitRouterRouteTableAssociationsResult> InvokeAsync(GetTransitRouterRouteTableAssociationsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteTableAssociationsResult>("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args ?? new GetTransitRouterRouteTableAssociationsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteTableAssociationsResult>("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args ?? new GetTransitRouterRouteTableAssociationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
@@ -55,33 +54,32 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Cen.GetTransitRouterRouteTableAssociations.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Cen.GetTransitRouterRouteTableAssociations.InvokeAsync(new AliCloud.Cen.GetTransitRouterRouteTableAssociationsArgs
-        ///         {
-        ///             TransitRouterRouteTableId = "rtb-id1",
-        ///         }));
-        ///         this.FirstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = @default.Apply(@default =&gt; @default.Associations?[0]?.ResourceType);
-        ///     }
+        ///         TransitRouterRouteTableId = "rtb-id1",
+        ///     });
         /// 
-        ///     [Output("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType")]
-        ///     public Output&lt;string&gt; FirstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(getTransitRouterRouteTableAssociationsResult =&gt; getTransitRouterRouteTableAssociationsResult).Apply(@default =&gt; @default.Apply(getTransitRouterRouteTableAssociationsResult =&gt; getTransitRouterRouteTableAssociationsResult.Associations[0]?.ResourceType)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTransitRouterRouteTableAssociationsResult> Invoke(GetTransitRouterRouteTableAssociationsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTableAssociationsResult>("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args ?? new GetTransitRouterRouteTableAssociationsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTableAssociationsResult>("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args ?? new GetTransitRouterRouteTableAssociationsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTransitRouterRouteTableAssociationsArgs : Pulumi.InvokeArgs
+    public sealed class GetTransitRouterRouteTableAssociationsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -113,9 +111,10 @@ namespace Pulumi.AliCloud.Cen
         public GetTransitRouterRouteTableAssociationsArgs()
         {
         }
+        public static new GetTransitRouterRouteTableAssociationsArgs Empty => new GetTransitRouterRouteTableAssociationsArgs();
     }
 
-    public sealed class GetTransitRouterRouteTableAssociationsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTransitRouterRouteTableAssociationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -147,6 +146,7 @@ namespace Pulumi.AliCloud.Cen
         public GetTransitRouterRouteTableAssociationsInvokeArgs()
         {
         }
+        public static new GetTransitRouterRouteTableAssociationsInvokeArgs Empty => new GetTransitRouterRouteTableAssociationsInvokeArgs();
     }
 
 

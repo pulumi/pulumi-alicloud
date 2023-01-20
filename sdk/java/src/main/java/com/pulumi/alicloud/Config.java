@@ -80,6 +80,13 @@ public final class Config {
     public Optional<String> logEndpoint() {
         return Codegen.stringProp("logEndpoint").config(config).get();
     }
+/**
+ * The maximum retry timeout of the request.
+ * 
+ */
+    public Optional<Integer> maxRetryTimeout() {
+        return Codegen.integerProp("maxRetryTimeout").config(config).get();
+    }
     public Optional<String> mnsEndpoint() {
         return Codegen.stringProp("mnsEndpoint").config(config).get();
     }

@@ -62,7 +62,7 @@ import (
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				DbNodeStorage:        pulumi.String("500"),
 //				StorageType:          pulumi.String("cloud_essd"),
-//				VswitchId:            pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:            *pulumi.String(defaultSwitches.Ids[0]),
 //				DbClusterAccessWhiteLists: clickhouse.DbClusterDbClusterAccessWhiteListArray{
 //					&clickhouse.DbClusterDbClusterAccessWhiteListArgs{
 //						DbClusterIpArrayAttribute: pulumi.String("test"),
@@ -94,6 +94,8 @@ type DbCluster struct {
 
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category pulumi.StringOutput `pulumi:"category"`
+	// (Available in 1.196.0+) - The connection string of the cluster.
+	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The db cluster access white list.
 	DbClusterAccessWhiteLists DbClusterDbClusterAccessWhiteListArrayOutput `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
@@ -104,7 +106,7 @@ type DbCluster struct {
 	DbClusterDescription pulumi.StringOutput `pulumi:"dbClusterDescription"`
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType pulumi.StringOutput `pulumi:"dbClusterNetworkType"`
-	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
 	DbClusterVersion pulumi.StringOutput `pulumi:"dbClusterVersion"`
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount pulumi.IntOutput `pulumi:"dbNodeGroupCount"`
@@ -120,14 +122,20 @@ type DbCluster struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
+	// (Available in 1.196.0+) The connection port of the cluster.
+	Port pulumi.StringOutput `pulumi:"port"`
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// The used time of DBCluster.
 	UsedTime pulumi.StringPtrOutput `pulumi:"usedTime"`
+	// The id of the VPC.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vswitch id of DBCluster.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	// The zone ID of the instance.
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewDbCluster registers a new resource with the given unique name, arguments, and options.
@@ -185,6 +193,8 @@ func GetDbCluster(ctx *pulumi.Context,
 type dbClusterState struct {
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category *string `pulumi:"category"`
+	// (Available in 1.196.0+) - The connection string of the cluster.
+	ConnectionString *string `pulumi:"connectionString"`
 	// The db cluster access white list.
 	DbClusterAccessWhiteLists []DbClusterDbClusterAccessWhiteList `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
@@ -195,7 +205,7 @@ type dbClusterState struct {
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType *string `pulumi:"dbClusterNetworkType"`
-	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount *int `pulumi:"dbNodeGroupCount"`
@@ -211,19 +221,27 @@ type dbClusterState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
 	Period *string `pulumi:"period"`
+	// (Available in 1.196.0+) The connection port of the cluster.
+	Port *string `pulumi:"port"`
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status *string `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType *string `pulumi:"storageType"`
 	// The used time of DBCluster.
 	UsedTime *string `pulumi:"usedTime"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id of DBCluster.
 	VswitchId *string `pulumi:"vswitchId"`
+	// The zone ID of the instance.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type DbClusterState struct {
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category pulumi.StringPtrInput
+	// (Available in 1.196.0+) - The connection string of the cluster.
+	ConnectionString pulumi.StringPtrInput
 	// The db cluster access white list.
 	DbClusterAccessWhiteLists DbClusterDbClusterAccessWhiteListArrayInput
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
@@ -234,7 +252,7 @@ type DbClusterState struct {
 	DbClusterDescription pulumi.StringPtrInput
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType pulumi.StringPtrInput
-	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
 	DbClusterVersion pulumi.StringPtrInput
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount pulumi.IntPtrInput
@@ -250,14 +268,20 @@ type DbClusterState struct {
 	PaymentType pulumi.StringPtrInput
 	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrInput
+	// (Available in 1.196.0+) The connection port of the cluster.
+	Port pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringPtrInput
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType pulumi.StringPtrInput
 	// The used time of DBCluster.
 	UsedTime pulumi.StringPtrInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// The vswitch id of DBCluster.
 	VswitchId pulumi.StringPtrInput
+	// The zone ID of the instance.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (DbClusterState) ElementType() reflect.Type {
@@ -277,7 +301,7 @@ type dbClusterArgs struct {
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType string `pulumi:"dbClusterNetworkType"`
-	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
 	DbClusterVersion string `pulumi:"dbClusterVersion"`
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount int `pulumi:"dbNodeGroupCount"`
@@ -299,8 +323,12 @@ type dbClusterArgs struct {
 	StorageType string `pulumi:"storageType"`
 	// The used time of DBCluster.
 	UsedTime *string `pulumi:"usedTime"`
+	// The id of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id of DBCluster.
 	VswitchId *string `pulumi:"vswitchId"`
+	// The zone ID of the instance.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a DbCluster resource.
@@ -317,7 +345,7 @@ type DbClusterArgs struct {
 	DbClusterDescription pulumi.StringPtrInput
 	// The DBCluster network type. Valid values: `vpc`.
 	DbClusterNetworkType pulumi.StringInput
-	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+	// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
 	DbClusterVersion pulumi.StringInput
 	// The db node group count. The number should between 1 and 48.
 	DbNodeGroupCount pulumi.IntInput
@@ -339,8 +367,12 @@ type DbClusterArgs struct {
 	StorageType pulumi.StringInput
 	// The used time of DBCluster.
 	UsedTime pulumi.StringPtrInput
+	// The id of the VPC.
+	VpcId pulumi.StringPtrInput
 	// The vswitch id of DBCluster.
 	VswitchId pulumi.StringPtrInput
+	// The zone ID of the instance.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (DbClusterArgs) ElementType() reflect.Type {
@@ -435,6 +467,11 @@ func (o DbClusterOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
 
+// (Available in 1.196.0+) - The connection string of the cluster.
+func (o DbClusterOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
 // The db cluster access white list.
 func (o DbClusterOutput) DbClusterAccessWhiteLists() DbClusterDbClusterAccessWhiteListArrayOutput {
 	return o.ApplyT(func(v *DbCluster) DbClusterDbClusterAccessWhiteListArrayOutput { return v.DbClusterAccessWhiteLists }).(DbClusterDbClusterAccessWhiteListArrayOutput)
@@ -457,7 +494,7 @@ func (o DbClusterOutput) DbClusterNetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.DbClusterNetworkType }).(pulumi.StringOutput)
 }
 
-// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
 func (o DbClusterOutput) DbClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.DbClusterVersion }).(pulumi.StringOutput)
 }
@@ -497,6 +534,11 @@ func (o DbClusterOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
 }
 
+// (Available in 1.196.0+) The connection port of the cluster.
+func (o DbClusterOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
 // The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 func (o DbClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
@@ -512,9 +554,19 @@ func (o DbClusterOutput) UsedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.UsedTime }).(pulumi.StringPtrOutput)
 }
 
+// The id of the VPC.
+func (o DbClusterOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
 // The vswitch id of DBCluster.
 func (o DbClusterOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The zone ID of the instance.
+func (o DbClusterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type DbClusterArrayOutput struct{ *pulumi.OutputState }

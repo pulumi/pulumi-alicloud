@@ -50,9 +50,9 @@ import (
 //				return err
 //			}
 //			_, err = ddos.NewBgpIp(ctx, "defaultBgpIp", &ddos.BgpIpArgs{
-//				InstanceId:      pulumi.String(defaultDdosBgpInstances.Ids[0]),
+//				InstanceId:      *pulumi.String(defaultDdosBgpInstances.Ids[0]),
 //				Ip:              defaultEipAddress.IpAddress,
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err

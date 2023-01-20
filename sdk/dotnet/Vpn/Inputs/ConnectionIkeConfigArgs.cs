@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn.Inputs
 {
 
-    public sealed class ConnectionIkeConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionIkeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 . Default value: md5
@@ -69,5 +69,6 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public ConnectionIkeConfigArgs()
         {
         }
+        public static new ConnectionIkeConfigArgs Empty => new ConnectionIkeConfigArgs();
     }
 }

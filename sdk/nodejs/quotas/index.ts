@@ -5,18 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./applicationInfo";
-export * from "./getApplicationInfos";
-export * from "./getQuotaAlarms";
-export * from "./getQuotaApplications";
-export * from "./getQuotas";
-export * from "./quotaAlarm";
-export * from "./quotaApplication";
+export { ApplicationInfoArgs, ApplicationInfoState } from "./applicationInfo";
+export type ApplicationInfo = import("./applicationInfo").ApplicationInfo;
+export const ApplicationInfo: typeof import("./applicationInfo").ApplicationInfo = null as any;
+utilities.lazyLoad(exports, ["ApplicationInfo"], () => require("./applicationInfo"));
 
-// Import resources to register:
-import { ApplicationInfo } from "./applicationInfo";
-import { QuotaAlarm } from "./quotaAlarm";
-import { QuotaApplication } from "./quotaApplication";
+export { GetApplicationInfosArgs, GetApplicationInfosResult, GetApplicationInfosOutputArgs } from "./getApplicationInfos";
+export const getApplicationInfos: typeof import("./getApplicationInfos").getApplicationInfos = null as any;
+export const getApplicationInfosOutput: typeof import("./getApplicationInfos").getApplicationInfosOutput = null as any;
+utilities.lazyLoad(exports, ["getApplicationInfos","getApplicationInfosOutput"], () => require("./getApplicationInfos"));
+
+export { GetQuotaAlarmsArgs, GetQuotaAlarmsResult, GetQuotaAlarmsOutputArgs } from "./getQuotaAlarms";
+export const getQuotaAlarms: typeof import("./getQuotaAlarms").getQuotaAlarms = null as any;
+export const getQuotaAlarmsOutput: typeof import("./getQuotaAlarms").getQuotaAlarmsOutput = null as any;
+utilities.lazyLoad(exports, ["getQuotaAlarms","getQuotaAlarmsOutput"], () => require("./getQuotaAlarms"));
+
+export { GetQuotaApplicationsArgs, GetQuotaApplicationsResult, GetQuotaApplicationsOutputArgs } from "./getQuotaApplications";
+export const getQuotaApplications: typeof import("./getQuotaApplications").getQuotaApplications = null as any;
+export const getQuotaApplicationsOutput: typeof import("./getQuotaApplications").getQuotaApplicationsOutput = null as any;
+utilities.lazyLoad(exports, ["getQuotaApplications","getQuotaApplicationsOutput"], () => require("./getQuotaApplications"));
+
+export { GetQuotasArgs, GetQuotasResult, GetQuotasOutputArgs } from "./getQuotas";
+export const getQuotas: typeof import("./getQuotas").getQuotas = null as any;
+export const getQuotasOutput: typeof import("./getQuotas").getQuotasOutput = null as any;
+utilities.lazyLoad(exports, ["getQuotas","getQuotasOutput"], () => require("./getQuotas"));
+
+export { QuotaAlarmArgs, QuotaAlarmState } from "./quotaAlarm";
+export type QuotaAlarm = import("./quotaAlarm").QuotaAlarm;
+export const QuotaAlarm: typeof import("./quotaAlarm").QuotaAlarm = null as any;
+utilities.lazyLoad(exports, ["QuotaAlarm"], () => require("./quotaAlarm"));
+
+export { QuotaApplicationArgs, QuotaApplicationState } from "./quotaApplication";
+export type QuotaApplication = import("./quotaApplication").QuotaApplication;
+export const QuotaApplication: typeof import("./quotaApplication").QuotaApplication = null as any;
+utilities.lazyLoad(exports, ["QuotaApplication"], () => require("./quotaApplication"));
+
 
 const _module = {
     version: utilities.getVersion(),

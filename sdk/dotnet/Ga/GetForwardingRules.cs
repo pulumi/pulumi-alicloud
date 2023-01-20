@@ -23,34 +23,33 @@ namespace Pulumi.AliCloud.Ga
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ga.GetForwardingRules.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ga.GetForwardingRules.InvokeAsync(new AliCloud.Ga.GetForwardingRulesArgs
+        ///         AcceleratorId = "example_value",
+        ///         ListenerId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             AcceleratorId = "example_value",
-        ///             ListenerId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.FirstGaForwardingRuleId = example.Apply(example =&gt; example.ForwardingRules?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstGaForwardingRuleId")]
-        ///     public Output&lt;string&gt; FirstGaForwardingRuleId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGaForwardingRuleId"] = example.Apply(getForwardingRulesResult =&gt; getForwardingRulesResult.ForwardingRules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetForwardingRulesResult> InvokeAsync(GetForwardingRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRulesResult>("alicloud:ga/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRulesResult>("alicloud:ga/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Global Accelerator (GA) Forwarding Rules of the current Alibaba Cloud user.
@@ -64,38 +63,37 @@ namespace Pulumi.AliCloud.Ga
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ga.GetForwardingRules.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ga.GetForwardingRules.InvokeAsync(new AliCloud.Ga.GetForwardingRulesArgs
+        ///         AcceleratorId = "example_value",
+        ///         ListenerId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             AcceleratorId = "example_value",
-        ///             ListenerId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.FirstGaForwardingRuleId = example.Apply(example =&gt; example.ForwardingRules?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("firstGaForwardingRuleId")]
-        ///     public Output&lt;string&gt; FirstGaForwardingRuleId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGaForwardingRuleId"] = example.Apply(getForwardingRulesResult =&gt; getForwardingRulesResult.ForwardingRules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetForwardingRulesResult> Invoke(GetForwardingRulesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetForwardingRulesResult>("alicloud:ga/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetForwardingRulesResult>("alicloud:ga/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetForwardingRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetForwardingRulesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Global Accelerator instance.
@@ -133,9 +131,10 @@ namespace Pulumi.AliCloud.Ga
         public GetForwardingRulesArgs()
         {
         }
+        public static new GetForwardingRulesArgs Empty => new GetForwardingRulesArgs();
     }
 
-    public sealed class GetForwardingRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetForwardingRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Global Accelerator instance.
@@ -173,6 +172,7 @@ namespace Pulumi.AliCloud.Ga
         public GetForwardingRulesInvokeArgs()
         {
         }
+        public static new GetForwardingRulesInvokeArgs Empty => new GetForwardingRulesInvokeArgs();
     }
 
 

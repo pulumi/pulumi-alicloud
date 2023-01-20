@@ -21,31 +21,30 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var saslUsersDs = AliCloud.ActionTrail.GetSaslUsers.Invoke(new()
         ///     {
-        ///         var saslUsersDs = Output.Create(AliCloud.ActionTrail.GetSaslUsers.InvokeAsync(new AliCloud.ActionTrail.GetSaslUsersArgs
-        ///         {
-        ///             InstanceId = "xxx",
-        ///             NameRegex = "username",
-        ///             OutputFile = "saslUsers.txt",
-        ///         }));
-        ///         this.FirstSaslUsername = saslUsersDs.Apply(saslUsersDs =&gt; saslUsersDs.Users?[0]?.Username);
-        ///     }
+        ///         InstanceId = "xxx",
+        ///         NameRegex = "username",
+        ///         OutputFile = "saslUsers.txt",
+        ///     });
         /// 
-        ///     [Output("firstSaslUsername")]
-        ///     public Output&lt;string&gt; FirstSaslUsername { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSaslUsername"] = saslUsersDs.Apply(getSaslUsersResult =&gt; getSaslUsersResult.Users[0]?.Username),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSaslUsersResult> InvokeAsync(GetSaslUsersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? new GetSaslUsersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? new GetSaslUsersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
@@ -57,35 +56,34 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var saslUsersDs = AliCloud.ActionTrail.GetSaslUsers.Invoke(new()
         ///     {
-        ///         var saslUsersDs = Output.Create(AliCloud.ActionTrail.GetSaslUsers.InvokeAsync(new AliCloud.ActionTrail.GetSaslUsersArgs
-        ///         {
-        ///             InstanceId = "xxx",
-        ///             NameRegex = "username",
-        ///             OutputFile = "saslUsers.txt",
-        ///         }));
-        ///         this.FirstSaslUsername = saslUsersDs.Apply(saslUsersDs =&gt; saslUsersDs.Users?[0]?.Username);
-        ///     }
+        ///         InstanceId = "xxx",
+        ///         NameRegex = "username",
+        ///         OutputFile = "saslUsers.txt",
+        ///     });
         /// 
-        ///     [Output("firstSaslUsername")]
-        ///     public Output&lt;string&gt; FirstSaslUsername { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSaslUsername"] = saslUsersDs.Apply(getSaslUsersResult =&gt; getSaslUsersResult.Users[0]?.Username),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSaslUsersResult> Invoke(GetSaslUsersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? new GetSaslUsersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? new GetSaslUsersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSaslUsersArgs : Pulumi.InvokeArgs
+    public sealed class GetSaslUsersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the ALIKAFKA Instance that owns the sasl users.
@@ -105,9 +103,10 @@ namespace Pulumi.AliCloud.ActionTrail
         public GetSaslUsersArgs()
         {
         }
+        public static new GetSaslUsersArgs Empty => new GetSaslUsersArgs();
     }
 
-    public sealed class GetSaslUsersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSaslUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the ALIKAFKA Instance that owns the sasl users.
@@ -127,6 +126,7 @@ namespace Pulumi.AliCloud.ActionTrail
         public GetSaslUsersInvokeArgs()
         {
         }
+        public static new GetSaslUsersInvokeArgs Empty => new GetSaslUsersInvokeArgs();
     }
 
 

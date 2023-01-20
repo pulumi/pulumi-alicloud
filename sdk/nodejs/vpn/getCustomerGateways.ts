@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,23 +15,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const foo = pulumi.output(alicloud.vpn.getCustomerGateways({
+ * const foo = alicloud.vpn.getCustomerGateways({
  *     ids: [
  *         "fake-id1",
  *         "fake-id2",
  *     ],
  *     nameRegex: "testAcc*",
  *     outputFile: "/tmp/cgws",
- * }));
+ * });
  * ```
  */
 export function getCustomerGateways(args?: GetCustomerGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomerGatewaysResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpn/getCustomerGateways:getCustomerGateways", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -68,14 +66,38 @@ export interface GetCustomerGatewaysResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * IDs of VPN customer gateway.
+     */
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * names of VPN customer gateway.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.vpn.getCustomerGateways({
+ *     ids: [
+ *         "fake-id1",
+ *         "fake-id2",
+ *     ],
+ *     nameRegex: "testAcc*",
+ *     outputFile: "/tmp/cgws",
+ * });
+ * ```
+ */
 export function getCustomerGatewaysOutput(args?: GetCustomerGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomerGatewaysResult> {
-    return pulumi.output(args).apply(a => getCustomerGateways(a, opts))
+    return pulumi.output(args).apply((a: any) => getCustomerGateways(a, opts))
 }
 
 /**

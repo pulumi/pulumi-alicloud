@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
@@ -128,6 +128,34 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+     * 
+     */
+    @Export(name="ipv6AddressCount", type=Integer.class, parameters={})
+    private Output<Integer> ipv6AddressCount;
+
+    /**
+     * @return The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+     * 
+     */
+    public Output<Integer> ipv6AddressCount() {
+        return this.ipv6AddressCount;
+    }
+    /**
+     * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * 
+     */
+    @Export(name="ipv6Addresses", type=List.class, parameters={String.class})
+    private Output<List<String>> ipv6Addresses;
+
+    /**
+     * @return A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+     * 
+     */
+    public Output<List<String>> ipv6Addresses() {
+        return this.ipv6Addresses;
     }
     /**
      * The MAC address of the ENI.

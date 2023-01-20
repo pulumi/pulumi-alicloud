@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class EciScalingConfigurationHostAliasGetArgs : Pulumi.ResourceArgs
+    public sealed class EciScalingConfigurationHostAliasGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("hostnames")]
         private InputList<string>? _hostnames;
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public EciScalingConfigurationHostAliasGetArgs()
         {
         }
+        public static new EciScalingConfigurationHostAliasGetArgs Empty => new EciScalingConfigurationHostAliasGetArgs();
     }
 }

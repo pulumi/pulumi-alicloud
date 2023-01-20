@@ -17,18 +17,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.log.getService({
+ * const open = alicloud.log.getService({
  *     enable: "On",
- * }));
+ * });
  * ```
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:log/getService:getService", {
         "enable": args.enable,
     }, opts);
@@ -58,9 +55,26 @@ export interface GetServiceResult {
      */
     readonly status: string;
 }
-
+/**
+ * Using this data source can enable Log service automatically. If the service has been enabled, it will return `Opened`.
+ *
+ * For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
+ *
+ * > **NOTE:** Available in v1.96.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.log.getService({
+ *     enable: "On",
+ * });
+ * ```
+ */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply(a => getService(a, opts))
+    return pulumi.output(args).apply((a: any) => getService(a, opts))
 }
 
 /**

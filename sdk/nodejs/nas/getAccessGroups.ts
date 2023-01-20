@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  *     accessGroupType: "Classic",
  *     description: "tf-testAccAccessGroupsdatasource",
  * });
- * export const alicloudNasAccessGroupsId = example.then(example => example.groups?[0]?.id);
+ * export const alicloudNasAccessGroupsId = example.then(example => example.groups?.[0]?.id);
  * ```
  */
 export function getAccessGroups(args?: GetAccessGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getAccessGroups:getAccessGroups", {
         "accessGroupName": args.accessGroupName,
         "accessGroupType": args.accessGroupType,
@@ -123,9 +121,27 @@ export interface GetAccessGroupsResult {
     readonly type?: string;
     readonly useutcDateTime?: boolean;
 }
-
+/**
+ * This data source provides user-available access groups. Use when you can create mount points
+ *
+ * > NOTE: Available in 1.35.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.nas.getAccessGroups({
+ *     nameRegex: "^foo",
+ *     accessGroupType: "Classic",
+ *     description: "tf-testAccAccessGroupsdatasource",
+ * });
+ * export const alicloudNasAccessGroupsId = example.then(example => example.groups?.[0]?.id);
+ * ```
+ */
 export function getAccessGroupsOutput(args?: GetAccessGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessGroupsResult> {
-    return pulumi.output(args).apply(a => getAccessGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccessGroups(a, opts))
 }
 
 /**

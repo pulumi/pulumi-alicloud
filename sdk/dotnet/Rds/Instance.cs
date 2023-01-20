@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Rds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -70,6 +70,16 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("caType")]
         public Output<string> CaType { get; private set; } = null!;
+
+        /// <summary>
+        /// The RDS edition of the instance. Valid values:
+        /// * **Basic**: Basic Edition.
+        /// * **HighAvailability**: High-availability Edition.
+        /// * **AlwaysOn**: Cluster Edition.
+        /// * **Finance**: Enterprise Edition.
+        /// </summary>
+        [Output("category")]
+        public Output<string> Category { get; private set; } = null!;
 
         /// <summary>
         /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
@@ -156,6 +166,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// The method to update the engine version.  Default value: Immediate. Valid values:
+        /// - Immediate: The change immediately takes effect.
+        /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        /// </summary>
+        [Output("effectiveTime")]
+        public Output<string?> EffectiveTime { get; private set; } = null!;
 
         /// <summary>
         /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -452,6 +470,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> UpgradeTime { get; private set; } = null!;
 
         /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         /// </summary>
         [Output("vswitchId")]
@@ -530,7 +554,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -587,6 +611,16 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("caType")]
         public Input<string>? CaType { get; set; }
+
+        /// <summary>
+        /// The RDS edition of the instance. Valid values:
+        /// * **Basic**: Basic Edition.
+        /// * **HighAvailability**: High-availability Edition.
+        /// * **AlwaysOn**: Cluster Edition.
+        /// * **Finance**: Enterprise Edition.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
 
         /// <summary>
         /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
@@ -667,6 +701,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// The method to update the engine version.  Default value: Immediate. Valid values:
+        /// - Immediate: The change immediately takes effect.
+        /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        /// </summary>
+        [Input("effectiveTime")]
+        public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
         /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -987,6 +1029,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? UpgradeTime { get; set; }
 
         /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         /// </summary>
         [Input("vswitchId")]
@@ -1024,9 +1072,10 @@ namespace Pulumi.AliCloud.Rds
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -1083,6 +1132,16 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("caType")]
         public Input<string>? CaType { get; set; }
+
+        /// <summary>
+        /// The RDS edition of the instance. Valid values:
+        /// * **Basic**: Basic Edition.
+        /// * **HighAvailability**: High-availability Edition.
+        /// * **AlwaysOn**: Cluster Edition.
+        /// * **Finance**: Enterprise Edition.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
 
         /// <summary>
         /// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
@@ -1169,6 +1228,14 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// The method to update the engine version.  Default value: Immediate. Valid values:
+        /// - Immediate: The change immediately takes effect.
+        /// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        /// </summary>
+        [Input("effectiveTime")]
+        public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
         /// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -1495,6 +1562,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? UpgradeTime { get; set; }
 
         /// <summary>
+        /// The VPC ID of the instance.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         /// </summary>
         [Input("vswitchId")]
@@ -1532,5 +1605,6 @@ namespace Pulumi.AliCloud.Rds
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

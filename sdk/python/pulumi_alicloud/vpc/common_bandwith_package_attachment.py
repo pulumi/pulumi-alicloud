@@ -15,14 +15,18 @@ __all__ = ['CommonBandwithPackageAttachmentArgs', 'CommonBandwithPackageAttachme
 class CommonBandwithPackageAttachmentArgs:
     def __init__(__self__, *,
                  bandwidth_package_id: pulumi.Input[str],
-                 instance_id: pulumi.Input[str]):
+                 instance_id: pulumi.Input[str],
+                 bandwidth_package_bandwidth: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CommonBandwithPackageAttachment resource.
         :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
+        :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
         """
         pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
         pulumi.set(__self__, "instance_id", instance_id)
+        if bandwidth_package_bandwidth is not None:
+            pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
 
     @property
     @pulumi.getter(name="bandwidthPackageId")
@@ -48,21 +52,49 @@ class CommonBandwithPackageAttachmentArgs:
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
 
+    @property
+    @pulumi.getter(name="bandwidthPackageBandwidth")
+    def bandwidth_package_bandwidth(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "bandwidth_package_bandwidth")
+
+    @bandwidth_package_bandwidth.setter
+    def bandwidth_package_bandwidth(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth_package_bandwidth", value)
+
 
 @pulumi.input_type
 class _CommonBandwithPackageAttachmentState:
     def __init__(__self__, *,
+                 bandwidth_package_bandwidth: Optional[pulumi.Input[str]] = None,
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CommonBandwithPackageAttachment resources.
+        :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
         :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
         """
+        if bandwidth_package_bandwidth is not None:
+            pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
         if bandwidth_package_id is not None:
             pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter(name="bandwidthPackageBandwidth")
+    def bandwidth_package_bandwidth(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "bandwidth_package_bandwidth")
+
+    @bandwidth_package_bandwidth.setter
+    def bandwidth_package_bandwidth(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth_package_bandwidth", value)
 
     @property
     @pulumi.getter(name="bandwidthPackageId")
@@ -94,6 +126,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bandwidth_package_bandwidth: Optional[pulumi.Input[str]] = None,
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -127,6 +160,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
         :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
         """
@@ -179,6 +213,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bandwidth_package_bandwidth: Optional[pulumi.Input[str]] = None,
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -190,6 +225,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CommonBandwithPackageAttachmentArgs.__new__(CommonBandwithPackageAttachmentArgs)
 
+            __props__.__dict__["bandwidth_package_bandwidth"] = bandwidth_package_bandwidth
             if bandwidth_package_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth_package_id'")
             __props__.__dict__["bandwidth_package_id"] = bandwidth_package_id
@@ -206,6 +242,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth_package_bandwidth: Optional[pulumi.Input[str]] = None,
             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None) -> 'CommonBandwithPackageAttachment':
         """
@@ -215,6 +252,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
         :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
         """
@@ -222,9 +260,18 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
         __props__ = _CommonBandwithPackageAttachmentState.__new__(_CommonBandwithPackageAttachmentState)
 
+        __props__.__dict__["bandwidth_package_bandwidth"] = bandwidth_package_bandwidth
         __props__.__dict__["bandwidth_package_id"] = bandwidth_package_id
         __props__.__dict__["instance_id"] = instance_id
         return CommonBandwithPackageAttachment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bandwidthPackageBandwidth")
+    def bandwidth_package_bandwidth(self) -> pulumi.Output[str]:
+        """
+        The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        """
+        return pulumi.get(self, "bandwidth_package_bandwidth")
 
     @property
     @pulumi.getter(name="bandwidthPackageId")

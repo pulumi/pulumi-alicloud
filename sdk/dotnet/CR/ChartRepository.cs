@@ -21,34 +21,34 @@ namespace Pulumi.AliCloud.CR
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", new()
     ///     {
-    ///         var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", new AliCloud.CR.RegistryEnterpriseInstanceArgs
-    ///         {
-    ///             PaymentType = "Subscription",
-    ///             Period = 1,
-    ///             InstanceType = "Advanced",
-    ///             InstanceName = "name",
-    ///         });
-    ///         var defaultChartNamespace = new AliCloud.CR.ChartNamespace("defaultChartNamespace", new AliCloud.CR.ChartNamespaceArgs
-    ///         {
-    ///             InstanceId = defaultRegistryEnterpriseInstance.Id,
-    ///             NamespaceName = "name",
-    ///         });
-    ///         var defaultChartRepository = new AliCloud.CR.ChartRepository("defaultChartRepository", new AliCloud.CR.ChartRepositoryArgs
-    ///         {
-    ///             RepoNamespaceName = defaultChartNamespace.NamespaceName,
-    ///             InstanceId = local.Instance,
-    ///             RepoName = "repo_name",
-    ///         });
-    ///     }
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = "name",
+    ///     });
     /// 
-    /// }
+    ///     var defaultChartNamespace = new AliCloud.CR.ChartNamespace("defaultChartNamespace", new()
+    ///     {
+    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
+    ///         NamespaceName = "name",
+    ///     });
+    /// 
+    ///     var defaultChartRepository = new AliCloud.CR.ChartRepository("defaultChartRepository", new()
+    ///     {
+    ///         RepoNamespaceName = defaultChartNamespace.NamespaceName,
+    ///         InstanceId = local.Instance,
+    ///         RepoName = "repo_name",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.CR
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cr/chartRepository:ChartRepository")]
-    public partial class ChartRepository : Pulumi.CustomResource
+    public partial class ChartRepository : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Container Registry instance.
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.CR
         }
     }
 
-    public sealed class ChartRepositoryArgs : Pulumi.ResourceArgs
+    public sealed class ChartRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Container Registry instance.
@@ -171,9 +171,10 @@ namespace Pulumi.AliCloud.CR
         public ChartRepositoryArgs()
         {
         }
+        public static new ChartRepositoryArgs Empty => new ChartRepositoryArgs();
     }
 
-    public sealed class ChartRepositoryState : Pulumi.ResourceArgs
+    public sealed class ChartRepositoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Container Registry instance.
@@ -208,5 +209,6 @@ namespace Pulumi.AliCloud.CR
         public ChartRepositoryState()
         {
         }
+        public static new ChartRepositoryState Empty => new ChartRepositoryState();
     }
 }

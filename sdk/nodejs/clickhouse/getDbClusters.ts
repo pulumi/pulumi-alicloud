@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -32,16 +33,13 @@ import * as utilities from "../utilities";
  * const defaultDbClusters = alicloud.clickhouse.getDbClustersOutput({
  *     ids: [defaultDbCluster.id],
  * });
- * export const dbCluster = defaultDbClusters.apply(defaultDbClusters => defaultDbClusters.ids?[0]);
+ * export const dbCluster = defaultDbClusters.apply(defaultDbClusters => defaultDbClusters.ids?.[0]);
  * ```
  */
 export function getDbClusters(args?: GetDbClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDbClustersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:clickhouse/getDbClusters:getDbClusters", {
         "dbClusterDescription": args.dbClusterDescription,
         "enableDetails": args.enableDetails,
@@ -89,9 +87,38 @@ export interface GetDbClustersResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Click House DBCluster of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.134.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
+ *     dbClusterVersion: "20.3.10.75",
+ *     category: "Basic",
+ *     dbClusterClass: "S8",
+ *     dbClusterNetworkType: "vpc",
+ *     dbNodeGroupCount: 1,
+ *     paymentType: "PayAsYouGo",
+ *     dbNodeStorage: "500",
+ *     storageType: "cloud_essd",
+ *     vswitchId: "your_vswitch_id",
+ * });
+ * const defaultDbClusters = alicloud.clickhouse.getDbClustersOutput({
+ *     ids: [defaultDbCluster.id],
+ * });
+ * export const dbCluster = defaultDbClusters.apply(defaultDbClusters => defaultDbClusters.ids?.[0]);
+ * ```
+ */
 export function getDbClustersOutput(args?: GetDbClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbClustersResult> {
-    return pulumi.output(args).apply(a => getDbClusters(a, opts))
+    return pulumi.output(args).apply((a: any) => getDbClusters(a, opts))
 }
 
 /**

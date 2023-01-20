@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,21 +15,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const foo = pulumi.output(alicloud.vpn.getConnections({
+ * const foo = alicloud.vpn.getConnections({
  *     customerGatewayId: "fake-cgw-id",
  *     ids: ["fake-conn-id"],
  *     outputFile: "/tmp/vpnconn",
  *     vpnGatewayId: "fake-vpn-id",
- * }));
+ * });
  * ```
  */
 export function getConnections(args?: GetConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpn/getConnections:getConnections", {
         "customerGatewayId": args.customerGatewayId,
         "ids": args.ids,
@@ -95,9 +93,25 @@ export interface GetConnectionsResult {
      */
     readonly vpnGatewayId?: string;
 }
-
+/**
+ * The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const foo = alicloud.vpn.getConnections({
+ *     customerGatewayId: "fake-cgw-id",
+ *     ids: ["fake-conn-id"],
+ *     outputFile: "/tmp/vpnconn",
+ *     vpnGatewayId: "fake-vpn-id",
+ * });
+ * ```
+ */
 export function getConnectionsOutput(args?: GetConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionsResult> {
-    return pulumi.output(args).apply(a => getConnections(a, opts))
+    return pulumi.output(args).apply((a: any) => getConnections(a, opts))
 }
 
 /**

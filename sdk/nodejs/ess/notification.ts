@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *         "AUTOSCALING:SCALE_OUT_SUCCESS",
  *         "AUTOSCALING:SCALE_OUT_ERROR",
  *     ],
- *     notificationArn: pulumi.all([defaultRegions, defaultAccount, defaultQueue.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:ess:${defaultRegions.regions?[0]?.id}:${defaultAccount.id}:queue/${name}`),
+ *     notificationArn: pulumi.all([defaultRegions, defaultAccount, defaultQueue.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:ess:${defaultRegions.regions?.[0]?.id}:${defaultAccount.id}:queue/${name}`),
  * });
  * ```
  *

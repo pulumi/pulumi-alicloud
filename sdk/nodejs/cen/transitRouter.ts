@@ -78,6 +78,14 @@ export class TransitRouter extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+     */
+    public readonly supportMulticast!: pulumi.Output<boolean | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * The description of the transit router.
      */
     public readonly transitRouterDescription!: pulumi.Output<string | undefined>;
@@ -110,6 +118,8 @@ export class TransitRouter extends pulumi.CustomResource {
             resourceInputs["cenId"] = state ? state.cenId : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["supportMulticast"] = state ? state.supportMulticast : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["transitRouterDescription"] = state ? state.transitRouterDescription : undefined;
             resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
             resourceInputs["transitRouterName"] = state ? state.transitRouterName : undefined;
@@ -121,6 +131,8 @@ export class TransitRouter extends pulumi.CustomResource {
             }
             resourceInputs["cenId"] = args ? args.cenId : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["supportMulticast"] = args ? args.supportMulticast : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["transitRouterDescription"] = args ? args.transitRouterDescription : undefined;
             resourceInputs["transitRouterName"] = args ? args.transitRouterName : undefined;
             resourceInputs["status"] = undefined /*out*/;
@@ -148,6 +160,14 @@ export interface TransitRouterState {
      * The associating status of the Transit Router.
      */
     status?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+     */
+    supportMulticast?: pulumi.Input<boolean>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The description of the transit router.
      */
@@ -178,6 +198,14 @@ export interface TransitRouterArgs {
      * The dry run.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+     */
+    supportMulticast?: pulumi.Input<boolean>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The description of the transit router.
      */

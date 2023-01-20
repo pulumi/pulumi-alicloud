@@ -721,14 +721,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serverSideEncryptionRule);
     }
     /**
-     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+     * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34; and &#34;Archive&#34;. Defaults to &#34;Standard&#34;.
      * 
      */
     @Export(name="storageClass", type=String.class, parameters={})
     private Output</* @Nullable */ String> storageClass;
 
     /**
-     * @return Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34; and &#34;Archive&#34;. Defaults to &#34;Standard&#34;.
      * 
      */
     public Output<Optional<String>> storageClass() {

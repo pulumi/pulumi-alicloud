@@ -117,9 +117,9 @@ func (o CustomPropertyPropertyValueArrayOutput) Index(i pulumi.IntInput) CustomP
 }
 
 type EcdPolicyGroupAuthorizeAccessPolicyRule struct {
-	// The cidrip of authorize access rule.
+	// The cidrip of security rules.
 	CidrIp *string `pulumi:"cidrIp"`
-	// The description of authorize access rule.
+	// The description of security rules.
 	Description *string `pulumi:"description"`
 }
 
@@ -135,9 +135,9 @@ type EcdPolicyGroupAuthorizeAccessPolicyRuleInput interface {
 }
 
 type EcdPolicyGroupAuthorizeAccessPolicyRuleArgs struct {
-	// The cidrip of authorize access rule.
+	// The cidrip of security rules.
 	CidrIp pulumi.StringPtrInput `pulumi:"cidrIp"`
-	// The description of authorize access rule.
+	// The description of security rules.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 }
 
@@ -192,12 +192,12 @@ func (o EcdPolicyGroupAuthorizeAccessPolicyRuleOutput) ToEcdPolicyGroupAuthorize
 	return o
 }
 
-// The cidrip of authorize access rule.
+// The cidrip of security rules.
 func (o EcdPolicyGroupAuthorizeAccessPolicyRuleOutput) CidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcdPolicyGroupAuthorizeAccessPolicyRule) *string { return v.CidrIp }).(pulumi.StringPtrOutput)
 }
 
-// The description of authorize access rule.
+// The description of security rules.
 func (o EcdPolicyGroupAuthorizeAccessPolicyRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcdPolicyGroupAuthorizeAccessPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -223,9 +223,9 @@ func (o EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput) Index(i pulumi.IntIn
 }
 
 type EcdPolicyGroupAuthorizeSecurityPolicyRule struct {
-	// The cidrip of authorize access rule.
+	// The cidrip of security rules.
 	CidrIp *string `pulumi:"cidrIp"`
-	// The description of authorize access rule.
+	// The description of security rules.
 	Description *string `pulumi:"description"`
 	// The ip protocol of security rules.
 	IpProtocol *string `pulumi:"ipProtocol"`
@@ -251,9 +251,9 @@ type EcdPolicyGroupAuthorizeSecurityPolicyRuleInput interface {
 }
 
 type EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs struct {
-	// The cidrip of authorize access rule.
+	// The cidrip of security rules.
 	CidrIp pulumi.StringPtrInput `pulumi:"cidrIp"`
-	// The description of authorize access rule.
+	// The description of security rules.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The ip protocol of security rules.
 	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
@@ -318,12 +318,12 @@ func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput) ToEcdPolicyGroupAuthori
 	return o
 }
 
-// The cidrip of authorize access rule.
+// The cidrip of security rules.
 func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput) CidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcdPolicyGroupAuthorizeSecurityPolicyRule) *string { return v.CidrIp }).(pulumi.StringPtrOutput)
 }
 
-// The description of authorize access rule.
+// The description of security rules.
 func (o EcdPolicyGroupAuthorizeSecurityPolicyRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcdPolicyGroupAuthorizeSecurityPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -4898,7 +4898,7 @@ type GetSnapshotsSnapshot struct {
 	RemainTime int `pulumi:"remainTime"`
 	// The ID of the snapshot.
 	SnapshotId string `pulumi:"snapshotId"`
-	// -The name of the snapshot.
+	// The name of the snapshot.
 	SnapshotName string `pulumi:"snapshotName"`
 	// The type of the snapshot.
 	SnapshotType string `pulumi:"snapshotType"`
@@ -4936,7 +4936,7 @@ type GetSnapshotsSnapshotArgs struct {
 	RemainTime pulumi.IntInput `pulumi:"remainTime"`
 	// The ID of the snapshot.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
-	// -The name of the snapshot.
+	// The name of the snapshot.
 	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
 	// The type of the snapshot.
 	SnapshotType pulumi.StringInput `pulumi:"snapshotType"`
@@ -5034,7 +5034,7 @@ func (o GetSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// -The name of the snapshot.
+// The name of the snapshot.
 func (o GetSnapshotsSnapshotOutput) SnapshotName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotName }).(pulumi.StringOutput)
 }

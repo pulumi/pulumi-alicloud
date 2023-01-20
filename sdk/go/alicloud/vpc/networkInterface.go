@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -48,7 +48,7 @@ import (
 //			}
 //			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
-//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
 //				VpcId:     vpc.ID(),
 //			})
 //			if err != nil {
@@ -61,8 +61,9 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewNetworkInterface(ctx, "defaultNetworkInterface", &vpc.NetworkInterfaceArgs{
-//				VswitchId: vswitch.ID(),
-//				SecurityGroups: pulumi.StringArray{
+//				NetworkInterfaceName: pulumi.String(name),
+//				VswitchId:            vswitch.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
 //					group.ID(),
 //				},
 //				PrivateIp:       pulumi.String("192.168.0.2"),
@@ -90,7 +91,9 @@ type NetworkInterface struct {
 	pulumi.CustomResourceState
 
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description      pulumi.StringPtrOutput   `pulumi:"description"`
+	Ipv6AddressCount pulumi.IntOutput         `pulumi:"ipv6AddressCount"`
+	Ipv6Addresses    pulumi.StringArrayOutput `pulumi:"ipv6Addresses"`
 	// (Available in 1.54.0+) The MAC address of an ENI.
 	Mac pulumi.StringOutput `pulumi:"mac"`
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -161,7 +164,9 @@ func GetNetworkInterface(ctx *pulumi.Context,
 // Input properties used for looking up and filtering NetworkInterface resources.
 type networkInterfaceState struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-	Description *string `pulumi:"description"`
+	Description      *string  `pulumi:"description"`
+	Ipv6AddressCount *int     `pulumi:"ipv6AddressCount"`
+	Ipv6Addresses    []string `pulumi:"ipv6Addresses"`
 	// (Available in 1.54.0+) The MAC address of an ENI.
 	Mac *string `pulumi:"mac"`
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -201,7 +206,9 @@ type networkInterfaceState struct {
 
 type NetworkInterfaceState struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-	Description pulumi.StringPtrInput
+	Description      pulumi.StringPtrInput
+	Ipv6AddressCount pulumi.IntPtrInput
+	Ipv6Addresses    pulumi.StringArrayInput
 	// (Available in 1.54.0+) The MAC address of an ENI.
 	Mac pulumi.StringPtrInput
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -245,7 +252,9 @@ func (NetworkInterfaceState) ElementType() reflect.Type {
 
 type networkInterfaceArgs struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-	Description *string `pulumi:"description"`
+	Description      *string  `pulumi:"description"`
+	Ipv6AddressCount *int     `pulumi:"ipv6AddressCount"`
+	Ipv6Addresses    []string `pulumi:"ipv6Addresses"`
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
@@ -283,7 +292,9 @@ type networkInterfaceArgs struct {
 // The set of arguments for constructing a NetworkInterface resource.
 type NetworkInterfaceArgs struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-	Description pulumi.StringPtrInput
+	Description      pulumi.StringPtrInput
+	Ipv6AddressCount pulumi.IntPtrInput
+	Ipv6Addresses    pulumi.StringArrayInput
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
@@ -408,6 +419,14 @@ func (o NetworkInterfaceOutput) ToNetworkInterfaceOutputWithContext(ctx context.
 // Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 func (o NetworkInterfaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o NetworkInterfaceOutput) Ipv6AddressCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.IntOutput { return v.Ipv6AddressCount }).(pulumi.IntOutput)
+}
+
+func (o NetworkInterfaceOutput) Ipv6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringArrayOutput { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
 }
 
 // (Available in 1.54.0+) The MAC address of an ENI.

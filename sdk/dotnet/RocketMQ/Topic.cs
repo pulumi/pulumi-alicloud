@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.RocketMQ
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "onsInstanceName";
+    ///     var topic = config.Get("topic") ?? "onsTopicName";
+    ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "onsInstanceName";
-    ///         var topic = config.Get("topic") ?? "onsTopicName";
-    ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
-    ///         {
-    ///             Remark = "default_ons_instance_remark",
-    ///         });
-    ///         var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new AliCloud.RocketMQ.TopicArgs
-    ///         {
-    ///             TopicName = topic,
-    ///             InstanceId = defaultInstance.Id,
-    ///             MessageType = 0,
-    ///             Remark = "dafault_ons_topic_remark",
-    ///         });
-    ///     }
+    ///         Remark = "default_ons_instance_remark",
+    ///     });
     /// 
-    /// }
+    ///     var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new()
+    ///     {
+    ///         TopicName = topic,
+    ///         InstanceId = defaultInstance.Id,
+    ///         MessageType = 0,
+    ///         Remark = "dafault_ons_topic_remark",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/topic:Topic")]
-    public partial class Topic : Pulumi.CustomResource
+    public partial class Topic : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID of the ONS Instance that owns the topics.
@@ -146,7 +145,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
-    public sealed class TopicArgs : Pulumi.ResourceArgs
+    public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the ONS Instance that owns the topics.
@@ -201,9 +200,10 @@ namespace Pulumi.AliCloud.RocketMQ
         public TopicArgs()
         {
         }
+        public static new TopicArgs Empty => new TopicArgs();
     }
 
-    public sealed class TopicState : Pulumi.ResourceArgs
+    public sealed class TopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the ONS Instance that owns the topics.
@@ -258,5 +258,6 @@ namespace Pulumi.AliCloud.RocketMQ
         public TopicState()
         {
         }
+        public static new TopicState Empty => new TopicState();
     }
 }

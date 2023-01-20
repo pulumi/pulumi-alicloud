@@ -20,6 +20,10 @@ public final class GetScalingGroupsGroup {
      * 
      */
     private Integer activeCapacity;
+    /**
+     * @return Active scaling configuration for scaling group.
+     * 
+     */
     private String activeScalingConfiguration;
     /**
      * @return Default cooldown time of scaling group.
@@ -88,7 +92,6 @@ public final class GetScalingGroupsGroup {
     private String modificationTime;
     /**
      * @return Name of the scaling group.
-     * * `active_scaling_configuration` -Active scaling configuration for scaling group.
      * 
      */
     private String name;
@@ -156,6 +159,10 @@ public final class GetScalingGroupsGroup {
     public Integer activeCapacity() {
         return this.activeCapacity;
     }
+    /**
+     * @return Active scaling configuration for scaling group.
+     * 
+     */
     public String activeScalingConfiguration() {
         return this.activeScalingConfiguration;
     }
@@ -252,7 +259,6 @@ public final class GetScalingGroupsGroup {
     }
     /**
      * @return Name of the scaling group.
-     * * `active_scaling_configuration` -Active scaling configuration for scaling group.
      * 
      */
     public String name() {

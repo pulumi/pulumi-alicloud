@@ -433,6 +433,360 @@ func (o GetPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetPoliciesPolicy
 	}).(GetPoliciesPolicyOutput)
 }
 
+type GetPolicyDocumentStatement struct {
+	// Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
+	Actions []string `pulumi:"actions"`
+	// Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+	Conditions []GetPolicyDocumentStatementCondition `pulumi:"conditions"`
+	// This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
+	Effect *string `pulumi:"effect"`
+	// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+	Principals []GetPolicyDocumentStatementPrincipal `pulumi:"principals"`
+	// List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
+	Resources []string `pulumi:"resources"`
+}
+
+// GetPolicyDocumentStatementInput is an input type that accepts GetPolicyDocumentStatementArgs and GetPolicyDocumentStatementOutput values.
+// You can construct a concrete instance of `GetPolicyDocumentStatementInput` via:
+//
+//	GetPolicyDocumentStatementArgs{...}
+type GetPolicyDocumentStatementInput interface {
+	pulumi.Input
+
+	ToGetPolicyDocumentStatementOutput() GetPolicyDocumentStatementOutput
+	ToGetPolicyDocumentStatementOutputWithContext(context.Context) GetPolicyDocumentStatementOutput
+}
+
+type GetPolicyDocumentStatementArgs struct {
+	// Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+	Conditions GetPolicyDocumentStatementConditionArrayInput `pulumi:"conditions"`
+	// This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+	Principals GetPolicyDocumentStatementPrincipalArrayInput `pulumi:"principals"`
+	// List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (GetPolicyDocumentStatementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyDocumentStatement)(nil)).Elem()
+}
+
+func (i GetPolicyDocumentStatementArgs) ToGetPolicyDocumentStatementOutput() GetPolicyDocumentStatementOutput {
+	return i.ToGetPolicyDocumentStatementOutputWithContext(context.Background())
+}
+
+func (i GetPolicyDocumentStatementArgs) ToGetPolicyDocumentStatementOutputWithContext(ctx context.Context) GetPolicyDocumentStatementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyDocumentStatementOutput)
+}
+
+// GetPolicyDocumentStatementArrayInput is an input type that accepts GetPolicyDocumentStatementArray and GetPolicyDocumentStatementArrayOutput values.
+// You can construct a concrete instance of `GetPolicyDocumentStatementArrayInput` via:
+//
+//	GetPolicyDocumentStatementArray{ GetPolicyDocumentStatementArgs{...} }
+type GetPolicyDocumentStatementArrayInput interface {
+	pulumi.Input
+
+	ToGetPolicyDocumentStatementArrayOutput() GetPolicyDocumentStatementArrayOutput
+	ToGetPolicyDocumentStatementArrayOutputWithContext(context.Context) GetPolicyDocumentStatementArrayOutput
+}
+
+type GetPolicyDocumentStatementArray []GetPolicyDocumentStatementInput
+
+func (GetPolicyDocumentStatementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyDocumentStatement)(nil)).Elem()
+}
+
+func (i GetPolicyDocumentStatementArray) ToGetPolicyDocumentStatementArrayOutput() GetPolicyDocumentStatementArrayOutput {
+	return i.ToGetPolicyDocumentStatementArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolicyDocumentStatementArray) ToGetPolicyDocumentStatementArrayOutputWithContext(ctx context.Context) GetPolicyDocumentStatementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyDocumentStatementArrayOutput)
+}
+
+type GetPolicyDocumentStatementOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyDocumentStatementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyDocumentStatement)(nil)).Elem()
+}
+
+func (o GetPolicyDocumentStatementOutput) ToGetPolicyDocumentStatementOutput() GetPolicyDocumentStatementOutput {
+	return o
+}
+
+func (o GetPolicyDocumentStatementOutput) ToGetPolicyDocumentStatementOutputWithContext(ctx context.Context) GetPolicyDocumentStatementOutput {
+	return o
+}
+
+// Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
+func (o GetPolicyDocumentStatementOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPolicyDocumentStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+func (o GetPolicyDocumentStatementOutput) Conditions() GetPolicyDocumentStatementConditionArrayOutput {
+	return o.ApplyT(func(v GetPolicyDocumentStatement) []GetPolicyDocumentStatementCondition { return v.Conditions }).(GetPolicyDocumentStatementConditionArrayOutput)
+}
+
+// This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
+func (o GetPolicyDocumentStatementOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyDocumentStatement) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+// Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+func (o GetPolicyDocumentStatementOutput) Principals() GetPolicyDocumentStatementPrincipalArrayOutput {
+	return o.ApplyT(func(v GetPolicyDocumentStatement) []GetPolicyDocumentStatementPrincipal { return v.Principals }).(GetPolicyDocumentStatementPrincipalArrayOutput)
+}
+
+// List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
+func (o GetPolicyDocumentStatementOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPolicyDocumentStatement) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type GetPolicyDocumentStatementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyDocumentStatementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyDocumentStatement)(nil)).Elem()
+}
+
+func (o GetPolicyDocumentStatementArrayOutput) ToGetPolicyDocumentStatementArrayOutput() GetPolicyDocumentStatementArrayOutput {
+	return o
+}
+
+func (o GetPolicyDocumentStatementArrayOutput) ToGetPolicyDocumentStatementArrayOutputWithContext(ctx context.Context) GetPolicyDocumentStatementArrayOutput {
+	return o
+}
+
+func (o GetPolicyDocumentStatementArrayOutput) Index(i pulumi.IntInput) GetPolicyDocumentStatementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyDocumentStatement {
+		return vs[0].([]GetPolicyDocumentStatement)[vs[1].(int)]
+	}).(GetPolicyDocumentStatementOutput)
+}
+
+type GetPolicyDocumentStatementCondition struct {
+	// The operator of the condition.
+	Operator string `pulumi:"operator"`
+	// The values of the condition.
+	Values []string `pulumi:"values"`
+	// The variable of the condition.
+	Variable string `pulumi:"variable"`
+}
+
+// GetPolicyDocumentStatementConditionInput is an input type that accepts GetPolicyDocumentStatementConditionArgs and GetPolicyDocumentStatementConditionOutput values.
+// You can construct a concrete instance of `GetPolicyDocumentStatementConditionInput` via:
+//
+//	GetPolicyDocumentStatementConditionArgs{...}
+type GetPolicyDocumentStatementConditionInput interface {
+	pulumi.Input
+
+	ToGetPolicyDocumentStatementConditionOutput() GetPolicyDocumentStatementConditionOutput
+	ToGetPolicyDocumentStatementConditionOutputWithContext(context.Context) GetPolicyDocumentStatementConditionOutput
+}
+
+type GetPolicyDocumentStatementConditionArgs struct {
+	// The operator of the condition.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The values of the condition.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+	// The variable of the condition.
+	Variable pulumi.StringInput `pulumi:"variable"`
+}
+
+func (GetPolicyDocumentStatementConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyDocumentStatementCondition)(nil)).Elem()
+}
+
+func (i GetPolicyDocumentStatementConditionArgs) ToGetPolicyDocumentStatementConditionOutput() GetPolicyDocumentStatementConditionOutput {
+	return i.ToGetPolicyDocumentStatementConditionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyDocumentStatementConditionArgs) ToGetPolicyDocumentStatementConditionOutputWithContext(ctx context.Context) GetPolicyDocumentStatementConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyDocumentStatementConditionOutput)
+}
+
+// GetPolicyDocumentStatementConditionArrayInput is an input type that accepts GetPolicyDocumentStatementConditionArray and GetPolicyDocumentStatementConditionArrayOutput values.
+// You can construct a concrete instance of `GetPolicyDocumentStatementConditionArrayInput` via:
+//
+//	GetPolicyDocumentStatementConditionArray{ GetPolicyDocumentStatementConditionArgs{...} }
+type GetPolicyDocumentStatementConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetPolicyDocumentStatementConditionArrayOutput() GetPolicyDocumentStatementConditionArrayOutput
+	ToGetPolicyDocumentStatementConditionArrayOutputWithContext(context.Context) GetPolicyDocumentStatementConditionArrayOutput
+}
+
+type GetPolicyDocumentStatementConditionArray []GetPolicyDocumentStatementConditionInput
+
+func (GetPolicyDocumentStatementConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyDocumentStatementCondition)(nil)).Elem()
+}
+
+func (i GetPolicyDocumentStatementConditionArray) ToGetPolicyDocumentStatementConditionArrayOutput() GetPolicyDocumentStatementConditionArrayOutput {
+	return i.ToGetPolicyDocumentStatementConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolicyDocumentStatementConditionArray) ToGetPolicyDocumentStatementConditionArrayOutputWithContext(ctx context.Context) GetPolicyDocumentStatementConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyDocumentStatementConditionArrayOutput)
+}
+
+type GetPolicyDocumentStatementConditionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyDocumentStatementConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyDocumentStatementCondition)(nil)).Elem()
+}
+
+func (o GetPolicyDocumentStatementConditionOutput) ToGetPolicyDocumentStatementConditionOutput() GetPolicyDocumentStatementConditionOutput {
+	return o
+}
+
+func (o GetPolicyDocumentStatementConditionOutput) ToGetPolicyDocumentStatementConditionOutputWithContext(ctx context.Context) GetPolicyDocumentStatementConditionOutput {
+	return o
+}
+
+// The operator of the condition.
+func (o GetPolicyDocumentStatementConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyDocumentStatementCondition) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The values of the condition.
+func (o GetPolicyDocumentStatementConditionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPolicyDocumentStatementCondition) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+// The variable of the condition.
+func (o GetPolicyDocumentStatementConditionOutput) Variable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyDocumentStatementCondition) string { return v.Variable }).(pulumi.StringOutput)
+}
+
+type GetPolicyDocumentStatementConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyDocumentStatementConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyDocumentStatementCondition)(nil)).Elem()
+}
+
+func (o GetPolicyDocumentStatementConditionArrayOutput) ToGetPolicyDocumentStatementConditionArrayOutput() GetPolicyDocumentStatementConditionArrayOutput {
+	return o
+}
+
+func (o GetPolicyDocumentStatementConditionArrayOutput) ToGetPolicyDocumentStatementConditionArrayOutputWithContext(ctx context.Context) GetPolicyDocumentStatementConditionArrayOutput {
+	return o
+}
+
+func (o GetPolicyDocumentStatementConditionArrayOutput) Index(i pulumi.IntInput) GetPolicyDocumentStatementConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyDocumentStatementCondition {
+		return vs[0].([]GetPolicyDocumentStatementCondition)[vs[1].(int)]
+	}).(GetPolicyDocumentStatementConditionOutput)
+}
+
+type GetPolicyDocumentStatementPrincipal struct {
+	// The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+	Entity string `pulumi:"entity"`
+	// The identifiers of the principal.
+	Identifiers []string `pulumi:"identifiers"`
+}
+
+// GetPolicyDocumentStatementPrincipalInput is an input type that accepts GetPolicyDocumentStatementPrincipalArgs and GetPolicyDocumentStatementPrincipalOutput values.
+// You can construct a concrete instance of `GetPolicyDocumentStatementPrincipalInput` via:
+//
+//	GetPolicyDocumentStatementPrincipalArgs{...}
+type GetPolicyDocumentStatementPrincipalInput interface {
+	pulumi.Input
+
+	ToGetPolicyDocumentStatementPrincipalOutput() GetPolicyDocumentStatementPrincipalOutput
+	ToGetPolicyDocumentStatementPrincipalOutputWithContext(context.Context) GetPolicyDocumentStatementPrincipalOutput
+}
+
+type GetPolicyDocumentStatementPrincipalArgs struct {
+	// The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+	Entity pulumi.StringInput `pulumi:"entity"`
+	// The identifiers of the principal.
+	Identifiers pulumi.StringArrayInput `pulumi:"identifiers"`
+}
+
+func (GetPolicyDocumentStatementPrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyDocumentStatementPrincipal)(nil)).Elem()
+}
+
+func (i GetPolicyDocumentStatementPrincipalArgs) ToGetPolicyDocumentStatementPrincipalOutput() GetPolicyDocumentStatementPrincipalOutput {
+	return i.ToGetPolicyDocumentStatementPrincipalOutputWithContext(context.Background())
+}
+
+func (i GetPolicyDocumentStatementPrincipalArgs) ToGetPolicyDocumentStatementPrincipalOutputWithContext(ctx context.Context) GetPolicyDocumentStatementPrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyDocumentStatementPrincipalOutput)
+}
+
+// GetPolicyDocumentStatementPrincipalArrayInput is an input type that accepts GetPolicyDocumentStatementPrincipalArray and GetPolicyDocumentStatementPrincipalArrayOutput values.
+// You can construct a concrete instance of `GetPolicyDocumentStatementPrincipalArrayInput` via:
+//
+//	GetPolicyDocumentStatementPrincipalArray{ GetPolicyDocumentStatementPrincipalArgs{...} }
+type GetPolicyDocumentStatementPrincipalArrayInput interface {
+	pulumi.Input
+
+	ToGetPolicyDocumentStatementPrincipalArrayOutput() GetPolicyDocumentStatementPrincipalArrayOutput
+	ToGetPolicyDocumentStatementPrincipalArrayOutputWithContext(context.Context) GetPolicyDocumentStatementPrincipalArrayOutput
+}
+
+type GetPolicyDocumentStatementPrincipalArray []GetPolicyDocumentStatementPrincipalInput
+
+func (GetPolicyDocumentStatementPrincipalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyDocumentStatementPrincipal)(nil)).Elem()
+}
+
+func (i GetPolicyDocumentStatementPrincipalArray) ToGetPolicyDocumentStatementPrincipalArrayOutput() GetPolicyDocumentStatementPrincipalArrayOutput {
+	return i.ToGetPolicyDocumentStatementPrincipalArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolicyDocumentStatementPrincipalArray) ToGetPolicyDocumentStatementPrincipalArrayOutputWithContext(ctx context.Context) GetPolicyDocumentStatementPrincipalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyDocumentStatementPrincipalArrayOutput)
+}
+
+type GetPolicyDocumentStatementPrincipalOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyDocumentStatementPrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyDocumentStatementPrincipal)(nil)).Elem()
+}
+
+func (o GetPolicyDocumentStatementPrincipalOutput) ToGetPolicyDocumentStatementPrincipalOutput() GetPolicyDocumentStatementPrincipalOutput {
+	return o
+}
+
+func (o GetPolicyDocumentStatementPrincipalOutput) ToGetPolicyDocumentStatementPrincipalOutputWithContext(ctx context.Context) GetPolicyDocumentStatementPrincipalOutput {
+	return o
+}
+
+// The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+func (o GetPolicyDocumentStatementPrincipalOutput) Entity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyDocumentStatementPrincipal) string { return v.Entity }).(pulumi.StringOutput)
+}
+
+// The identifiers of the principal.
+func (o GetPolicyDocumentStatementPrincipalOutput) Identifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPolicyDocumentStatementPrincipal) []string { return v.Identifiers }).(pulumi.StringArrayOutput)
+}
+
+type GetPolicyDocumentStatementPrincipalArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyDocumentStatementPrincipalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyDocumentStatementPrincipal)(nil)).Elem()
+}
+
+func (o GetPolicyDocumentStatementPrincipalArrayOutput) ToGetPolicyDocumentStatementPrincipalArrayOutput() GetPolicyDocumentStatementPrincipalArrayOutput {
+	return o
+}
+
+func (o GetPolicyDocumentStatementPrincipalArrayOutput) ToGetPolicyDocumentStatementPrincipalArrayOutputWithContext(ctx context.Context) GetPolicyDocumentStatementPrincipalArrayOutput {
+	return o
+}
+
+func (o GetPolicyDocumentStatementPrincipalArrayOutput) Index(i pulumi.IntInput) GetPolicyDocumentStatementPrincipalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyDocumentStatementPrincipal {
+		return vs[0].([]GetPolicyDocumentStatementPrincipal)[vs[1].(int)]
+	}).(GetPolicyDocumentStatementPrincipalOutput)
+}
+
 type GetRolesRole struct {
 	// Resource descriptor of the role.
 	Arn string `pulumi:"arn"`
@@ -866,6 +1220,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPoliciesPolicyInput)(nil)).Elem(), GetPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPoliciesPolicyArrayInput)(nil)).Elem(), GetPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyDocumentStatementInput)(nil)).Elem(), GetPolicyDocumentStatementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyDocumentStatementArrayInput)(nil)).Elem(), GetPolicyDocumentStatementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyDocumentStatementConditionInput)(nil)).Elem(), GetPolicyDocumentStatementConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyDocumentStatementConditionArrayInput)(nil)).Elem(), GetPolicyDocumentStatementConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyDocumentStatementPrincipalInput)(nil)).Elem(), GetPolicyDocumentStatementPrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyDocumentStatementPrincipalArrayInput)(nil)).Elem(), GetPolicyDocumentStatementPrincipalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesRoleInput)(nil)).Elem(), GetRolesRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesRoleArrayInput)(nil)).Elem(), GetRolesRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSamlProvidersProviderInput)(nil)).Elem(), GetSamlProvidersProviderArgs{})
@@ -878,6 +1238,12 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyDocumentStatementOutput{})
+	pulumi.RegisterOutputType(GetPolicyDocumentStatementArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyDocumentStatementConditionOutput{})
+	pulumi.RegisterOutputType(GetPolicyDocumentStatementConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyDocumentStatementPrincipalOutput{})
+	pulumi.RegisterOutputType(GetPolicyDocumentStatementPrincipalArrayOutput{})
 	pulumi.RegisterOutputType(GetRolesRoleOutput{})
 	pulumi.RegisterOutputType(GetRolesRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetSamlProvidersProviderOutput{})

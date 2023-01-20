@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,20 +26,17 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const dcdnIpaDomainId1 = ids.then(ids => ids.domains?[0]?.id);
+ * export const dcdnIpaDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
  * const status = alicloud.dcdn.getIpaDomains({
  *     status: "online",
  * });
- * export const dcdnIpaDomainId2 = status.then(status => status.domains?[0]?.id);
+ * export const dcdnIpaDomainId2 = status.then(status => status.domains?.[0]?.id);
  * ```
  */
 export function getIpaDomains(args?: GetIpaDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpaDomainsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dcdn/getIpaDomains:getIpaDomains", {
         "domainName": args.domainName,
         "enableDetails": args.enableDetails,
@@ -87,9 +85,35 @@ export interface GetIpaDomainsResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.158.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dcdn.getIpaDomains({
+ *     domainName: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const dcdnIpaDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
+ * const status = alicloud.dcdn.getIpaDomains({
+ *     status: "online",
+ * });
+ * export const dcdnIpaDomainId2 = status.then(status => status.domains?.[0]?.id);
+ * ```
+ */
 export function getIpaDomainsOutput(args?: GetIpaDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpaDomainsResult> {
-    return pulumi.output(args).apply(a => getIpaDomains(a, opts))
+    return pulumi.output(args).apply((a: any) => getIpaDomains(a, opts))
 }
 
 /**

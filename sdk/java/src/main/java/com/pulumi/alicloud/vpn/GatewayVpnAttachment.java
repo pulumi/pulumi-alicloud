@@ -43,6 +43,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
  * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentBgpConfigArgs;
  * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentHealthCheckConfigArgs;
+ * import com.pulumi.alicloud.vpn.VpnFunctions;
+ * import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -104,6 +106,12 @@ import javax.annotation.Nullable;
  *             .vpnAttachmentName(var_.name())
  *             .build());
  * 
+ *         final var vpnAttachments = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
+ *             .ids(alicloud_vpn_gateway_vpn_attachment.vpn_attachment1().id())
+ *             .build());
+ * 
+ *         ctx.export(&#34;localId&#34;, vpnAttachments.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].ikeConfigs()[0].localId()));
+ *         ctx.export(&#34;internetIp&#34;, vpnAttachments.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].internetIp()));
  *     }
  * }
  * ```
@@ -134,14 +142,14 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
         return this.bgpConfig;
     }
     /**
-     * The ID of the customer gateway.
+     * The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
      * 
      */
     @Export(name="customerGatewayId", type=String.class, parameters={})
     private Output<String> customerGatewayId;
 
     /**
-     * @return The ID of the customer gateway.
+     * @return The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
      * 
      */
     public Output<String> customerGatewayId() {
@@ -216,6 +224,20 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      */
     public Output<GatewayVpnAttachmentIkeConfig> ikeConfig() {
         return this.ikeConfig;
+    }
+    /**
+     * The VPN gateway IP.
+     * 
+     */
+    @Export(name="internetIp", type=String.class, parameters={})
+    private Output<String> internetIp;
+
+    /**
+     * @return The VPN gateway IP.
+     * 
+     */
+    public Output<String> internetIp() {
+        return this.internetIp;
     }
     /**
      * Configuration negotiated in the second stage. See the following `Block ipsec_config`.

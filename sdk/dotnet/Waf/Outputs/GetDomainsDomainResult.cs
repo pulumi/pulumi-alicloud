@@ -67,8 +67,6 @@ namespace Pulumi.AliCloud.Waf.Outputs
         public readonly string LoadBalancing;
         /// <summary>
         /// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-        /// * `key`: The key of label.
-        /// * `value`: The value of label.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainLogHeaderResult> LogHeaders;
         /// <summary>

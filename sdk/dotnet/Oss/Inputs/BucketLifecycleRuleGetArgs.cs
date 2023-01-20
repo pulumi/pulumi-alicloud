@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketLifecycleRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class BucketLifecycleRuleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("abortMultipartUploads")]
         private InputList<Inputs.BucketLifecycleRuleAbortMultipartUploadGetArgs>? _abortMultipartUploads;
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
         }
 
         /// <summary>
-        /// Specifies the accelerate status of a bucket.
+        /// Specifies lifecycle rule status.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -93,5 +93,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketLifecycleRuleGetArgs()
         {
         }
+        public static new BucketLifecycleRuleGetArgs Empty => new BucketLifecycleRuleGetArgs();
     }
 }

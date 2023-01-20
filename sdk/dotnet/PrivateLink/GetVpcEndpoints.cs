@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.PrivateLink
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.PrivateLink.GetVpcEndpoints.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.PrivateLink.GetVpcEndpoints.InvokeAsync(new AliCloud.PrivateLink.GetVpcEndpointsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstPrivatelinkVpcEndpointId = example.Apply(example =&gt; example.Endpoints?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstPrivatelinkVpcEndpointId")]
-        ///     public Output&lt;string&gt; FirstPrivatelinkVpcEndpointId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPrivatelinkVpcEndpointId"] = example.Apply(getVpcEndpointsResult =&gt; getVpcEndpointsResult.Endpoints[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVpcEndpointsResult> InvokeAsync(GetVpcEndpointsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointsResult>("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", args ?? new GetVpcEndpointsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointsResult>("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", args ?? new GetVpcEndpointsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.PrivateLink
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.PrivateLink.GetVpcEndpoints.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.PrivateLink.GetVpcEndpoints.InvokeAsync(new AliCloud.PrivateLink.GetVpcEndpointsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstPrivatelinkVpcEndpointId = example.Apply(example =&gt; example.Endpoints?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstPrivatelinkVpcEndpointId")]
-        ///     public Output&lt;string&gt; FirstPrivatelinkVpcEndpointId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPrivatelinkVpcEndpointId"] = example.Apply(getVpcEndpointsResult =&gt; getVpcEndpointsResult.Endpoints[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVpcEndpointsResult> Invoke(GetVpcEndpointsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcEndpointsResult>("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", args ?? new GetVpcEndpointsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcEndpointsResult>("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", args ?? new GetVpcEndpointsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetVpcEndpointsArgs : Pulumi.InvokeArgs
+    public sealed class GetVpcEndpointsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The status of Connection.
@@ -155,9 +153,10 @@ namespace Pulumi.AliCloud.PrivateLink
         public GetVpcEndpointsArgs()
         {
         }
+        public static new GetVpcEndpointsArgs Empty => new GetVpcEndpointsArgs();
     }
 
-    public sealed class GetVpcEndpointsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVpcEndpointsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The status of Connection.
@@ -219,6 +218,7 @@ namespace Pulumi.AliCloud.PrivateLink
         public GetVpcEndpointsInvokeArgs()
         {
         }
+        public static new GetVpcEndpointsInvokeArgs Empty => new GetVpcEndpointsInvokeArgs();
     }
 
 

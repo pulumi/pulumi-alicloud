@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ecs.GetEcsImagePipeline.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsImagePipeline.InvokeAsync(new AliCloud.Ecs.GetEcsImagePipelineArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.EcsImagePipelineId1 = ids.Apply(ids =&gt; ids.Pipelines?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Ecs.GetEcsImagePipeline.InvokeAsync(new AliCloud.Ecs.GetEcsImagePipelineArgs
-        ///         {
-        ///             NameRegex = "^my-ImagePipeline",
-        ///         }));
-        ///         this.EcsImagePipelineId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Pipelines?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ecsImagePipelineId1")]
-        ///     public Output&lt;string&gt; EcsImagePipelineId1 { get; set; }
-        ///     [Output("ecsImagePipelineId2")]
-        ///     public Output&lt;string&gt; EcsImagePipelineId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Ecs.GetEcsImagePipeline.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ImagePipeline",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsImagePipelineId1"] = ids.Apply(getEcsImagePipelineResult =&gt; getEcsImagePipelineResult.Pipelines[0]?.Id),
+        ///         ["ecsImagePipelineId2"] = nameRegex.Apply(getEcsImagePipelineResult =&gt; getEcsImagePipelineResult.Pipelines[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsImagePipelineResult> InvokeAsync(GetEcsImagePipelineArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsImagePipelineResult>("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", args ?? new GetEcsImagePipelineArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsImagePipelineResult>("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", args ?? new GetEcsImagePipelineArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ecs.GetEcsImagePipeline.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsImagePipeline.InvokeAsync(new AliCloud.Ecs.GetEcsImagePipelineArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///         }));
-        ///         this.EcsImagePipelineId1 = ids.Apply(ids =&gt; ids.Pipelines?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Ecs.GetEcsImagePipeline.InvokeAsync(new AliCloud.Ecs.GetEcsImagePipelineArgs
-        ///         {
-        ///             NameRegex = "^my-ImagePipeline",
-        ///         }));
-        ///         this.EcsImagePipelineId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Pipelines?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ecsImagePipelineId1")]
-        ///     public Output&lt;string&gt; EcsImagePipelineId1 { get; set; }
-        ///     [Output("ecsImagePipelineId2")]
-        ///     public Output&lt;string&gt; EcsImagePipelineId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Ecs.GetEcsImagePipeline.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-ImagePipeline",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsImagePipelineId1"] = ids.Apply(getEcsImagePipelineResult =&gt; getEcsImagePipelineResult.Pipelines[0]?.Id),
+        ///         ["ecsImagePipelineId2"] = nameRegex.Apply(getEcsImagePipelineResult =&gt; getEcsImagePipelineResult.Pipelines[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsImagePipelineResult> Invoke(GetEcsImagePipelineInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsImagePipelineResult>("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", args ?? new GetEcsImagePipelineInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsImagePipelineResult>("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", args ?? new GetEcsImagePipelineInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsImagePipelineArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsImagePipelineArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -155,9 +151,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsImagePipelineArgs()
         {
         }
+        public static new GetEcsImagePipelineArgs Empty => new GetEcsImagePipelineArgs();
     }
 
-    public sealed class GetEcsImagePipelineInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsImagePipelineInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -207,6 +204,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsImagePipelineInvokeArgs()
         {
         }
+        public static new GetEcsImagePipelineInvokeArgs Empty => new GetEcsImagePipelineInvokeArgs();
     }
 
 

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ecp
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecp/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The auto pay.
@@ -161,6 +161,10 @@ namespace Pulumi.AliCloud.Ecp
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "vncPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -182,7 +186,7 @@ namespace Pulumi.AliCloud.Ecp
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The auto pay.
@@ -281,12 +285,22 @@ namespace Pulumi.AliCloud.Ecp
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("vncPassword")]
+        private Input<string>? _vncPassword;
+
         /// <summary>
         /// Cloud mobile phone VNC password. The password must be six characters in length and must
         /// contain only uppercase, lowercase English letters and Arabic numerals.
         /// </summary>
-        [Input("vncPassword")]
-        public Input<string>? VncPassword { get; set; }
+        public Input<string>? VncPassword
+        {
+            get => _vncPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _vncPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The vswitch id.
@@ -297,9 +311,10 @@ namespace Pulumi.AliCloud.Ecp
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The auto pay.
@@ -398,12 +413,22 @@ namespace Pulumi.AliCloud.Ecp
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("vncPassword")]
+        private Input<string>? _vncPassword;
+
         /// <summary>
         /// Cloud mobile phone VNC password. The password must be six characters in length and must
         /// contain only uppercase, lowercase English letters and Arabic numerals.
         /// </summary>
-        [Input("vncPassword")]
-        public Input<string>? VncPassword { get; set; }
+        public Input<string>? VncPassword
+        {
+            get => _vncPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _vncPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The vswitch id.
@@ -414,5 +439,6 @@ namespace Pulumi.AliCloud.Ecp
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

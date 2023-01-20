@@ -19,18 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.videosurveillance.getService({
+ * const open = alicloud.videosurveillance.getService({
  *     enable: "On",
- * }));
+ * });
  * ```
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:videosurveillance/getService:getService", {
         "enable": args.enable,
     }, opts);
@@ -60,9 +57,28 @@ export interface GetServiceResult {
      */
     readonly status: string;
 }
-
+/**
+ * Using this data source can open Video Surveillance System service automatically. If the service has been opened, it will return opened.
+ *
+ * For information about Video Surveillance System and how to use it, see [What is VS](https://help.aliyun.com/product/108765.html).
+ *
+ * > **NOTE:** Available in v1.116.0+
+ *
+ * > **NOTE:** The Video Surveillance System service is not support in the international site.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.videosurveillance.getService({
+ *     enable: "On",
+ * });
+ * ```
+ */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply(a => getService(a, opts))
+    return pulumi.output(args).apply((a: any) => getService(a, opts))
 }
 
 /**

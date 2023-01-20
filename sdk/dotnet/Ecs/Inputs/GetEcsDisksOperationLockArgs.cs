@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class GetEcsDisksOperationLockInputArgs : Pulumi.ResourceArgs
+    public sealed class GetEcsDisksOperationLockInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("lockReason")]
         public Input<string>? LockReason { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public GetEcsDisksOperationLockInputArgs()
         {
         }
+        public static new GetEcsDisksOperationLockInputArgs Empty => new GetEcsDisksOperationLockInputArgs();
     }
 }

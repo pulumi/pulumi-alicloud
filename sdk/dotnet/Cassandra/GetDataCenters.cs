@@ -22,27 +22,25 @@ namespace Pulumi.AliCloud.Cassandra
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var cassandra = AliCloud.Cassandra.GetDataCenters.Invoke(new()
         ///     {
-        ///         var cassandra = Output.Create(AliCloud.Cassandra.GetDataCenters.InvokeAsync(new AliCloud.Cassandra.GetDataCentersArgs
-        ///         {
-        ///             ClusterId = "cds-xxxxx",
-        ///             NameRegex = "tf_testAccCassandra_dc",
-        ///         }));
-        ///     }
+        ///         ClusterId = "cds-xxxxx",
+        ///         NameRegex = "tf_testAccCassandra_dc",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDataCentersResult> InvokeAsync(GetDataCentersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
@@ -55,31 +53,29 @@ namespace Pulumi.AliCloud.Cassandra
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var cassandra = AliCloud.Cassandra.GetDataCenters.Invoke(new()
         ///     {
-        ///         var cassandra = Output.Create(AliCloud.Cassandra.GetDataCenters.InvokeAsync(new AliCloud.Cassandra.GetDataCentersArgs
-        ///         {
-        ///             ClusterId = "cds-xxxxx",
-        ///             NameRegex = "tf_testAccCassandra_dc",
-        ///         }));
-        ///     }
+        ///         ClusterId = "cds-xxxxx",
+        ///         NameRegex = "tf_testAccCassandra_dc",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDataCentersResult> Invoke(GetDataCentersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDataCentersArgs : Pulumi.InvokeArgs
+    public sealed class GetDataCentersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id of dataCenters belongs to.
@@ -111,9 +107,10 @@ namespace Pulumi.AliCloud.Cassandra
         public GetDataCentersArgs()
         {
         }
+        public static new GetDataCentersArgs Empty => new GetDataCentersArgs();
     }
 
-    public sealed class GetDataCentersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDataCentersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The cluster id of dataCenters belongs to.
@@ -145,6 +142,7 @@ namespace Pulumi.AliCloud.Cassandra
         public GetDataCentersInvokeArgs()
         {
         }
+        public static new GetDataCentersInvokeArgs Empty => new GetDataCentersInvokeArgs();
     }
 
 

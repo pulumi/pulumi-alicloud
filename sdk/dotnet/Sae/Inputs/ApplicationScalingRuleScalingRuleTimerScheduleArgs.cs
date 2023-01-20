@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Sae.Inputs
 {
 
-    public sealed class ApplicationScalingRuleScalingRuleTimerScheduleArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationScalingRuleScalingRuleTimerScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Trigger point in time. When supporting format: minutes, for example: `08:00`.
@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public Input<string>? AtTime { get; set; }
 
         /// <summary>
-        /// Maximum number of instances applied.
+        /// Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         /// </summary>
         [Input("maxReplicas")]
         public Input<int>? MaxReplicas { get; set; }
 
         /// <summary>
-        /// Minimum number of instances applied.
+        /// Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         /// </summary>
         [Input("minReplicas")]
         public Input<int>? MinReplicas { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public ApplicationScalingRuleScalingRuleTimerScheduleArgs()
         {
         }
+        public static new ApplicationScalingRuleScalingRuleTimerScheduleArgs Empty => new ApplicationScalingRuleScalingRuleTimerScheduleArgs();
     }
 }

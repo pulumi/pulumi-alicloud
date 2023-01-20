@@ -8,11 +8,15 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'PolicyStatement',
     'GetGroupsGroupResult',
     'GetPoliciesPolicyResult',
+    'GetPolicyDocumentStatementResult',
+    'GetPolicyDocumentStatementConditionResult',
+    'GetPolicyDocumentStatementPrincipalResult',
     'GetRolesRoleResult',
     'GetSamlProvidersProviderResult',
     'GetUsersUserResult',
@@ -231,6 +235,141 @@ class GetPoliciesPolicyResult(dict):
         The ID of default policy.
         """
         return pulumi.get(self, "version_id")
+
+
+@pulumi.output_type
+class GetPolicyDocumentStatementResult(dict):
+    def __init__(__self__, *,
+                 actions: Sequence[str],
+                 conditions: Optional[Sequence['outputs.GetPolicyDocumentStatementConditionResult']] = None,
+                 effect: Optional[str] = None,
+                 principals: Optional[Sequence['outputs.GetPolicyDocumentStatementPrincipalResult']] = None,
+                 resources: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] actions: Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
+        :param Sequence['GetPolicyDocumentStatementConditionArgs'] conditions: Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+        :param str effect: This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
+        :param Sequence['GetPolicyDocumentStatementPrincipalArgs'] principals: Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+        :param Sequence[str] resources: List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
+        """
+        pulumi.set(__self__, "actions", actions)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if principals is not None:
+            pulumi.set(__self__, "principals", principals)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence[str]:
+        """
+        Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
+        """
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.GetPolicyDocumentStatementConditionResult']]:
+        """
+        Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def principals(self) -> Optional[Sequence['outputs.GetPolicyDocumentStatementPrincipalResult']]:
+        """
+        Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+        """
+        return pulumi.get(self, "principals")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence[str]]:
+        """
+        List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class GetPolicyDocumentStatementConditionResult(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 values: Sequence[str],
+                 variable: str):
+        """
+        :param str operator: The operator of the condition.
+        :param Sequence[str] values: The values of the condition.
+        :param str variable: The variable of the condition.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+        pulumi.set(__self__, "variable", variable)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator of the condition.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values of the condition.
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter
+    def variable(self) -> str:
+        """
+        The variable of the condition.
+        """
+        return pulumi.get(self, "variable")
+
+
+@pulumi.output_type
+class GetPolicyDocumentStatementPrincipalResult(dict):
+    def __init__(__self__, *,
+                 entity: str,
+                 identifiers: Sequence[str]):
+        """
+        :param str entity: The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+        :param Sequence[str] identifiers: The identifiers of the principal.
+        """
+        pulumi.set(__self__, "entity", entity)
+        pulumi.set(__self__, "identifiers", identifiers)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> str:
+        """
+        The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+        """
+        return pulumi.get(self, "entity")
+
+    @property
+    @pulumi.getter
+    def identifiers(self) -> Sequence[str]:
+        """
+        The identifiers of the principal.
+        """
+        return pulumi.get(self, "identifiers")
 
 
 @pulumi.output_type

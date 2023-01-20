@@ -143,14 +143,13 @@ class BandwidthLimit(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-testAccCenBandwidthLimitConfig"
-        fra = pulumi.providers.Alicloud("fra", region="eu-central-1")
-        sh = pulumi.providers.Alicloud("sh", region="cn-shanghai")
+        fra = alicloud.Provider("fra", region="eu-central-1")
+        sh = alicloud.Provider("sh", region="cn-shanghai")
         vpc1 = alicloud.vpc.Network("vpc1",
             vpc_name=name,
             cidr_block="192.168.0.0/16",
@@ -225,14 +224,13 @@ class BandwidthLimit(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_pulumi as pulumi
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-testAccCenBandwidthLimitConfig"
-        fra = pulumi.providers.Alicloud("fra", region="eu-central-1")
-        sh = pulumi.providers.Alicloud("sh", region="cn-shanghai")
+        fra = alicloud.Provider("fra", region="eu-central-1")
+        sh = alicloud.Provider("sh", region="cn-shanghai")
         vpc1 = alicloud.vpc.Network("vpc1",
             vpc_name=name,
             cidr_block="192.168.0.0/16",

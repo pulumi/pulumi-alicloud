@@ -46,7 +46,7 @@ public final class GetSnapshotsSnapshot {
      */
     private String snapshotId;
     /**
-     * @return -The name of the snapshot.
+     * @return The name of the snapshot.
      * 
      */
     private String snapshotName;
@@ -122,7 +122,7 @@ public final class GetSnapshotsSnapshot {
         return this.snapshotId;
     }
     /**
-     * @return -The name of the snapshot.
+     * @return The name of the snapshot.
      * 
      */
     public String snapshotName() {

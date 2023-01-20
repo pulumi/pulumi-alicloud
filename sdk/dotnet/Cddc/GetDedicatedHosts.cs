@@ -23,86 +23,81 @@ namespace Pulumi.AliCloud.Cddc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Cddc.GetDedicatedHosts.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostsArgs
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             DedicatedHostGroupId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CddcDedicatedHostId1 = ids.Apply(ids =&gt; ids.Hosts?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Cddc.GetDedicatedHosts.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostsArgs
-        ///         {
-        ///             DedicatedHostGroupId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///             Status = "1",
-        ///         }));
-        ///         this.CddcDedicatedHostId2 = status.Apply(status =&gt; status.Hosts?[0]?.Id);
-        ///         var zoneId = Output.Create(AliCloud.Cddc.GetDedicatedHosts.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostsArgs
-        ///         {
-        ///             DedicatedHostGroupId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///             ZoneId = "example_value",
-        ///         }));
-        ///         this.CddcDedicatedHostId3 = zoneId.Apply(zoneId =&gt; zoneId.Hosts?[0]?.Id);
-        ///         var allocationStatus = Output.Create(AliCloud.Cddc.GetDedicatedHosts.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostsArgs
-        ///         {
-        ///             DedicatedHostGroupId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///             AllocationStatus = "Allocatable",
-        ///         }));
-        ///         this.CddcDedicatedHostId4 = allocationStatus.Apply(allocationStatus =&gt; allocationStatus.Hosts?[0]?.Id);
-        ///         var hostType = Output.Create(AliCloud.Cddc.GetDedicatedHosts.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostsArgs
-        ///         {
-        ///             DedicatedHostGroupId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///             HostType = "dhg_cloud_ssd",
-        ///         }));
-        ///         this.CddcDedicatedHostId5 = hostType.Apply(hostType =&gt; hostType.Hosts?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cddcDedicatedHostId1")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostId1 { get; set; }
-        ///     [Output("cddcDedicatedHostId2")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostId2 { get; set; }
-        ///     [Output("cddcDedicatedHostId3")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostId3 { get; set; }
-        ///     [Output("cddcDedicatedHostId4")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostId4 { get; set; }
-        ///     [Output("cddcDedicatedHostId5")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostId5 { get; set; }
-        /// }
+        ///     var status = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         Status = "1",
+        ///     });
+        /// 
+        ///     var zoneId = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         ZoneId = "example_value",
+        ///     });
+        /// 
+        ///     var allocationStatus = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         AllocationStatus = "Allocatable",
+        ///     });
+        /// 
+        ///     var hostType = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         HostType = "dhg_cloud_ssd",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cddcDedicatedHostId1"] = ids.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["cddcDedicatedHostId2"] = status.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["cddcDedicatedHostId3"] = zoneId.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["cddcDedicatedHostId4"] = allocationStatus.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["cddcDedicatedHostId5"] = hostType.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDedicatedHostsResult> InvokeAsync(GetDedicatedHostsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostsResult>("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostsResult>("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
@@ -116,90 +111,85 @@ namespace Pulumi.AliCloud.Cddc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Cddc.GetDedicatedHosts.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostsArgs
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             DedicatedHostGroupId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.CddcDedicatedHostId1 = ids.Apply(ids =&gt; ids.Hosts?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Cddc.GetDedicatedHosts.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostsArgs
-        ///         {
-        ///             DedicatedHostGroupId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///             Status = "1",
-        ///         }));
-        ///         this.CddcDedicatedHostId2 = status.Apply(status =&gt; status.Hosts?[0]?.Id);
-        ///         var zoneId = Output.Create(AliCloud.Cddc.GetDedicatedHosts.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostsArgs
-        ///         {
-        ///             DedicatedHostGroupId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///             ZoneId = "example_value",
-        ///         }));
-        ///         this.CddcDedicatedHostId3 = zoneId.Apply(zoneId =&gt; zoneId.Hosts?[0]?.Id);
-        ///         var allocationStatus = Output.Create(AliCloud.Cddc.GetDedicatedHosts.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostsArgs
-        ///         {
-        ///             DedicatedHostGroupId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///             AllocationStatus = "Allocatable",
-        ///         }));
-        ///         this.CddcDedicatedHostId4 = allocationStatus.Apply(allocationStatus =&gt; allocationStatus.Hosts?[0]?.Id);
-        ///         var hostType = Output.Create(AliCloud.Cddc.GetDedicatedHosts.InvokeAsync(new AliCloud.Cddc.GetDedicatedHostsArgs
-        ///         {
-        ///             DedicatedHostGroupId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///             HostType = "dhg_cloud_ssd",
-        ///         }));
-        ///         this.CddcDedicatedHostId5 = hostType.Apply(hostType =&gt; hostType.Hosts?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cddcDedicatedHostId1")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostId1 { get; set; }
-        ///     [Output("cddcDedicatedHostId2")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostId2 { get; set; }
-        ///     [Output("cddcDedicatedHostId3")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostId3 { get; set; }
-        ///     [Output("cddcDedicatedHostId4")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostId4 { get; set; }
-        ///     [Output("cddcDedicatedHostId5")]
-        ///     public Output&lt;string&gt; CddcDedicatedHostId5 { get; set; }
-        /// }
+        ///     var status = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         Status = "1",
+        ///     });
+        /// 
+        ///     var zoneId = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         ZoneId = "example_value",
+        ///     });
+        /// 
+        ///     var allocationStatus = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         AllocationStatus = "Allocatable",
+        ///     });
+        /// 
+        ///     var hostType = AliCloud.Cddc.GetDedicatedHosts.Invoke(new()
+        ///     {
+        ///         DedicatedHostGroupId = "example_value",
+        ///         Ids = new[]
+        ///         {
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///         HostType = "dhg_cloud_ssd",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cddcDedicatedHostId1"] = ids.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["cddcDedicatedHostId2"] = status.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["cddcDedicatedHostId3"] = zoneId.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["cddcDedicatedHostId4"] = allocationStatus.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///         ["cddcDedicatedHostId5"] = hostType.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDedicatedHostsResult> Invoke(GetDedicatedHostsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDedicatedHostsResult>("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedHostsResult>("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDedicatedHostsArgs : Pulumi.InvokeArgs
+    public sealed class GetDedicatedHostsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
@@ -273,9 +263,10 @@ namespace Pulumi.AliCloud.Cddc
         public GetDedicatedHostsArgs()
         {
         }
+        public static new GetDedicatedHostsArgs Empty => new GetDedicatedHostsArgs();
     }
 
-    public sealed class GetDedicatedHostsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDedicatedHostsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
@@ -349,6 +340,7 @@ namespace Pulumi.AliCloud.Cddc
         public GetDedicatedHostsInvokeArgs()
         {
         }
+        public static new GetDedicatedHostsInvokeArgs Empty => new GetDedicatedHostsInvokeArgs();
     }
 
 

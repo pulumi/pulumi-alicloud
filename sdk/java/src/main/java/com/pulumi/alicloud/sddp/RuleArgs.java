@@ -18,8 +18,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Sensitive Data Identification Rules for the Type of. Valid values:
-     * * `0`: Keyword.
-     * * `2`: Regular expression.
      * 
      */
     @Import(name="category", required=true)
@@ -27,8 +25,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Sensitive Data Identification Rules for the Type of. Valid values:
-     * * `0`: Keyword.
-     * * `2`: Regular expression.
      * 
      */
     public Output<Integer> category() {
@@ -67,8 +63,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Sensitive Data Identification Rules of Type. Valid values:
-     * * `0`: the Built-in.
-     * * `1`: The User-Defined.
      * 
      */
     @Import(name="customType")
@@ -76,8 +70,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Sensitive Data Identification Rules of Type. Valid values:
-     * * `0`: the Built-in.
-     * * `1`: The User-Defined.
      * 
      */
     public Optional<Output<Integer>> customType() {
@@ -101,8 +93,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The Request and Receive the Language of the Message Type. Valid values:
-     * * `zh`: Chinese.
-     * * `en`: English.
      * 
      */
     @Import(name="lang")
@@ -110,8 +100,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The Request and Receive the Language of the Message Type. Valid values:
-     * * `zh`: Chinese.
-     * * `en`: English.
      * 
      */
     public Optional<Output<String>> lang() {
@@ -135,9 +123,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Product ID. Valid values:
-     * * `1`:MaxCompute
-     * * `2`:OSS
-     * * `5`:RDS.
      * 
      */
     @Import(name="productId")
@@ -145,9 +130,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Product ID. Valid values:
-     * * `1`:MaxCompute
-     * * `2`:OSS
-     * * `5`:RDS.
      * 
      */
     public Optional<Output<String>> productId() {
@@ -156,10 +138,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Sensitive Data Identification Rules of Risk Level ID. Valid values:
-     * * `2`:S1, Weak Risk Level.
-     * * `3`:S2, Medium Risk Level.
-     * * `4`:S3 High Risk Level.
-     * * `5`:S4, the Highest Risk Level.
      * 
      */
     @Import(name="riskLevelId")
@@ -167,10 +145,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:
-     * * `2`:S1, Weak Risk Level.
-     * * `3`:S2, Medium Risk Level.
-     * * `4`:S3 High Risk Level.
-     * * `5`:S4, the Highest Risk Level.
      * 
      */
     public Optional<Output<String>> riskLevelId() {
@@ -254,9 +228,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The Level of Risk. Valid values:
-     * * `1`: Weak warn Level.
-     * * `2`: Medium Risk Level.
-     * * `3`: High Risk Level.
      * 
      */
     @Import(name="warnLevel")
@@ -264,9 +235,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The Level of Risk. Valid values:
-     * * `1`: Weak warn Level.
-     * * `2`: Medium Risk Level.
-     * * `3`: High Risk Level.
      * 
      */
     public Optional<Output<Integer>> warnLevel() {
@@ -313,8 +281,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param category Sensitive Data Identification Rules for the Type of. Valid values:
-         * * `0`: Keyword.
-         * * `2`: Regular expression.
          * 
          * @return builder
          * 
@@ -326,8 +292,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param category Sensitive Data Identification Rules for the Type of. Valid values:
-         * * `0`: Keyword.
-         * * `2`: Regular expression.
          * 
          * @return builder
          * 
@@ -380,8 +344,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param customType Sensitive Data Identification Rules of Type. Valid values:
-         * * `0`: the Built-in.
-         * * `1`: The User-Defined.
          * 
          * @return builder
          * 
@@ -393,8 +355,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param customType Sensitive Data Identification Rules of Type. Valid values:
-         * * `0`: the Built-in.
-         * * `1`: The User-Defined.
          * 
          * @return builder
          * 
@@ -426,8 +386,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param lang The Request and Receive the Language of the Message Type. Valid values:
-         * * `zh`: Chinese.
-         * * `en`: English.
          * 
          * @return builder
          * 
@@ -439,8 +397,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param lang The Request and Receive the Language of the Message Type. Valid values:
-         * * `zh`: Chinese.
-         * * `en`: English.
          * 
          * @return builder
          * 
@@ -472,9 +428,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param productId Product ID. Valid values:
-         * * `1`:MaxCompute
-         * * `2`:OSS
-         * * `5`:RDS.
          * 
          * @return builder
          * 
@@ -486,9 +439,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param productId Product ID. Valid values:
-         * * `1`:MaxCompute
-         * * `2`:OSS
-         * * `5`:RDS.
          * 
          * @return builder
          * 
@@ -499,10 +449,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param riskLevelId Sensitive Data Identification Rules of Risk Level ID. Valid values:
-         * * `2`:S1, Weak Risk Level.
-         * * `3`:S2, Medium Risk Level.
-         * * `4`:S3 High Risk Level.
-         * * `5`:S4, the Highest Risk Level.
          * 
          * @return builder
          * 
@@ -514,10 +460,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param riskLevelId Sensitive Data Identification Rules of Risk Level ID. Valid values:
-         * * `2`:S1, Weak Risk Level.
-         * * `3`:S2, Medium Risk Level.
-         * * `4`:S3 High Risk Level.
-         * * `5`:S4, the Highest Risk Level.
          * 
          * @return builder
          * 
@@ -633,9 +575,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param warnLevel The Level of Risk. Valid values:
-         * * `1`: Weak warn Level.
-         * * `2`: Medium Risk Level.
-         * * `3`: High Risk Level.
          * 
          * @return builder
          * 
@@ -647,9 +586,6 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param warnLevel The Level of Risk. Valid values:
-         * * `1`: Weak warn Level.
-         * * `2`: Medium Risk Level.
-         * * `3`: High Risk Level.
          * 
          * @return builder
          * 

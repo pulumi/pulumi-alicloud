@@ -21,89 +21,91 @@ namespace Pulumi.AliCloud.Oss
     /// Set bucket replication configuration
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var cross_region_replication = new AliCloud.Oss.BucketReplication("cross-region-replication", new()
     ///     {
-    ///         var cross_region_replication = new AliCloud.Oss.BucketReplication("cross-region-replication", new AliCloud.Oss.BucketReplicationArgs
+    ///         Action = "ALL",
+    ///         Bucket = "bucket-in-hangzhou",
+    ///         Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
     ///         {
-    ///             Action = "ALL",
-    ///             Bucket = "bucket-in-hangzhou",
-    ///             Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
-    ///             {
-    ///                 Bucket = "bucket-in-beijing",
-    ///                 Location = "oss-cn-beijing",
-    ///             },
-    ///         });
-    ///         var same_region_replication = new AliCloud.Oss.BucketReplication("same-region-replication", new AliCloud.Oss.BucketReplicationArgs
-    ///         {
-    ///             Action = "ALL",
-    ///             Bucket = "bucket-in-hangzhou",
-    ///             Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
-    ///             {
-    ///                 Bucket = "bucket-in-hangzhou-1",
-    ///                 Location = "oss-cn-hangzhou",
-    ///             },
-    ///         });
-    ///         var replication_with_prefix = new AliCloud.Oss.BucketReplication("replication-with-prefix", new AliCloud.Oss.BucketReplicationArgs
-    ///         {
-    ///             Action = "ALL",
-    ///             Bucket = "bucket-1",
-    ///             Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
-    ///             {
-    ///                 Bucket = "bucket-2",
-    ///                 Location = "oss-cn-hangzhou",
-    ///             },
-    ///             HistoricalObjectReplication = "disabled",
-    ///             PrefixSet = new AliCloud.Oss.Inputs.BucketReplicationPrefixSetArgs
-    ///             {
-    ///                 Prefixes = 
-    ///                 {
-    ///                     "prefix1/",
-    ///                     "prefix2/",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var replication_with_specific_action = new AliCloud.Oss.BucketReplication("replication-with-specific-action", new AliCloud.Oss.BucketReplicationArgs
-    ///         {
-    ///             Action = "PUT",
-    ///             Bucket = "bucket-1",
-    ///             Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
-    ///             {
-    ///                 Bucket = "bucket-2",
-    ///                 Location = "oss-cn-hangzhou",
-    ///             },
-    ///             HistoricalObjectReplication = "disabled",
-    ///         });
-    ///         var replication_with_kms_encryption = new AliCloud.Oss.BucketReplication("replication-with-kms-encryption", new AliCloud.Oss.BucketReplicationArgs
-    ///         {
-    ///             Action = "ALL",
-    ///             Bucket = "bucket-1",
-    ///             Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
-    ///             {
-    ///                 Bucket = "bucket-2",
-    ///                 Location = "oss-cn-hangzhou",
-    ///             },
-    ///             EncryptionConfiguration = new AliCloud.Oss.Inputs.BucketReplicationEncryptionConfigurationArgs
-    ///             {
-    ///                 ReplicaKmsKeyId = "&lt;your kms key id&gt;",
-    ///             },
-    ///             HistoricalObjectReplication = "disabled",
-    ///             SourceSelectionCriteria = new AliCloud.Oss.Inputs.BucketReplicationSourceSelectionCriteriaArgs
-    ///             {
-    ///                 SseKmsEncryptedObjects = new AliCloud.Oss.Inputs.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs
-    ///                 {
-    ///                     Status = "Enabled",
-    ///                 },
-    ///             },
-    ///             SyncRole = "&lt;your ram role&gt;",
-    ///         });
-    ///     }
+    ///             Bucket = "bucket-in-beijing",
+    ///             Location = "oss-cn-beijing",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var same_region_replication = new AliCloud.Oss.BucketReplication("same-region-replication", new()
+    ///     {
+    ///         Action = "ALL",
+    ///         Bucket = "bucket-in-hangzhou",
+    ///         Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
+    ///         {
+    ///             Bucket = "bucket-in-hangzhou-1",
+    ///             Location = "oss-cn-hangzhou",
+    ///         },
+    ///     });
+    /// 
+    ///     var replication_with_prefix = new AliCloud.Oss.BucketReplication("replication-with-prefix", new()
+    ///     {
+    ///         Action = "ALL",
+    ///         Bucket = "bucket-1",
+    ///         Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
+    ///         {
+    ///             Bucket = "bucket-2",
+    ///             Location = "oss-cn-hangzhou",
+    ///         },
+    ///         HistoricalObjectReplication = "disabled",
+    ///         PrefixSet = new AliCloud.Oss.Inputs.BucketReplicationPrefixSetArgs
+    ///         {
+    ///             Prefixes = new[]
+    ///             {
+    ///                 "prefix1/",
+    ///                 "prefix2/",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var replication_with_specific_action = new AliCloud.Oss.BucketReplication("replication-with-specific-action", new()
+    ///     {
+    ///         Action = "PUT",
+    ///         Bucket = "bucket-1",
+    ///         Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
+    ///         {
+    ///             Bucket = "bucket-2",
+    ///             Location = "oss-cn-hangzhou",
+    ///         },
+    ///         HistoricalObjectReplication = "disabled",
+    ///     });
+    /// 
+    ///     var replication_with_kms_encryption = new AliCloud.Oss.BucketReplication("replication-with-kms-encryption", new()
+    ///     {
+    ///         Action = "ALL",
+    ///         Bucket = "bucket-1",
+    ///         Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
+    ///         {
+    ///             Bucket = "bucket-2",
+    ///             Location = "oss-cn-hangzhou",
+    ///         },
+    ///         EncryptionConfiguration = new AliCloud.Oss.Inputs.BucketReplicationEncryptionConfigurationArgs
+    ///         {
+    ///             ReplicaKmsKeyId = "&lt;your kms key id&gt;",
+    ///         },
+    ///         HistoricalObjectReplication = "disabled",
+    ///         SourceSelectionCriteria = new AliCloud.Oss.Inputs.BucketReplicationSourceSelectionCriteriaArgs
+    ///         {
+    ///             SseKmsEncryptedObjects = new AliCloud.Oss.Inputs.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs
+    ///             {
+    ///                 Status = "Enabled",
+    ///             },
+    ///         },
+    ///         SyncRole = "&lt;your ram role&gt;",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -111,7 +113,7 @@ namespace Pulumi.AliCloud.Oss
     /// ### Timeouts The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration-0-11/resources.html#timeouts) for certain actions* `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
     /// </summary>
     [AliCloudResourceType("alicloud:oss/bucketReplication:BucketReplication")]
-    public partial class BucketReplication : Pulumi.CustomResource
+    public partial class BucketReplication : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
@@ -223,7 +225,7 @@ namespace Pulumi.AliCloud.Oss
         }
     }
 
-    public sealed class BucketReplicationArgs : Pulumi.ResourceArgs
+    public sealed class BucketReplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
@@ -282,9 +284,10 @@ namespace Pulumi.AliCloud.Oss
         public BucketReplicationArgs()
         {
         }
+        public static new BucketReplicationArgs Empty => new BucketReplicationArgs();
     }
 
-    public sealed class BucketReplicationState : Pulumi.ResourceArgs
+    public sealed class BucketReplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
@@ -355,5 +358,6 @@ namespace Pulumi.AliCloud.Oss
         public BucketReplicationState()
         {
         }
+        public static new BucketReplicationState Empty => new BucketReplicationState();
     }
 }

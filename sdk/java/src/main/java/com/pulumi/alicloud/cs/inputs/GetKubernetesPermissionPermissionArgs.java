@@ -18,7 +18,6 @@ public final class GetKubernetesPermissionPermissionArgs extends com.pulumi.reso
 
     /**
      * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-     * * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
      * 
      */
     @Import(name="isOwner")
@@ -26,16 +25,23 @@ public final class GetKubernetesPermissionPermissionArgs extends com.pulumi.reso
 
     /**
      * @return ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-     * * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
      * 
      */
     public Optional<Output<Boolean>> isOwner() {
         return Optional.ofNullable(this.isOwner);
     }
 
+    /**
+     * Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+     * 
+     */
     @Import(name="isRamRole")
     private @Nullable Output<Boolean> isRamRole;
 
+    /**
+     * @return Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+     * 
+     */
     public Optional<Output<Boolean>> isRamRole() {
         return Optional.ofNullable(this.isRamRole);
     }
@@ -131,7 +137,6 @@ public final class GetKubernetesPermissionPermissionArgs extends com.pulumi.reso
 
         /**
          * @param isOwner ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-         * * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
          * 
          * @return builder
          * 
@@ -143,7 +148,6 @@ public final class GetKubernetesPermissionPermissionArgs extends com.pulumi.reso
 
         /**
          * @param isOwner ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-         * * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
          * 
          * @return builder
          * 
@@ -152,11 +156,23 @@ public final class GetKubernetesPermissionPermissionArgs extends com.pulumi.reso
             return isOwner(Output.of(isOwner));
         }
 
+        /**
+         * @param isRamRole Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRamRole(@Nullable Output<Boolean> isRamRole) {
             $.isRamRole = isRamRole;
             return this;
         }
 
+        /**
+         * @param isRamRole Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRamRole(Boolean isRamRole) {
             return isRamRole(Output.of(isRamRole));
         }

@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/sharedResource:SharedResource")]
-    public partial class SharedResource : Pulumi.CustomResource
+    public partial class SharedResource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The resource ID need shared.
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> ResourceShareId { get; private set; } = null!;
 
         /// <summary>
-        /// The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        /// The resource type of should shared, valid value
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class SharedResourceArgs : Pulumi.ResourceArgs
+    public sealed class SharedResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource ID need shared.
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string> ResourceShareId { get; set; } = null!;
 
         /// <summary>
-        /// The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        /// The resource type of should shared, valid value
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
@@ -118,9 +118,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public SharedResourceArgs()
         {
         }
+        public static new SharedResourceArgs Empty => new SharedResourceArgs();
     }
 
-    public sealed class SharedResourceState : Pulumi.ResourceArgs
+    public sealed class SharedResourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource ID need shared.
@@ -135,7 +136,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? ResourceShareId { get; set; }
 
         /// <summary>
-        /// The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        /// The resource type of should shared, valid value
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
@@ -149,5 +150,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public SharedResourceState()
         {
         }
+        public static new SharedResourceState Empty => new SharedResourceState();
     }
 }

@@ -23,53 +23,49 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ecs.GetEcsSnapshotGroups.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsSnapshotGroups.InvokeAsync(new AliCloud.Ecs.GetEcsSnapshotGroupsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example-id",
-        ///             },
-        ///         }));
-        ///         this.EcsSnapshotGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Ecs.GetEcsSnapshotGroups.InvokeAsync(new AliCloud.Ecs.GetEcsSnapshotGroupsArgs
-        ///         {
-        ///             NameRegex = "^my-SnapshotGroup",
-        ///         }));
-        ///         this.EcsSnapshotGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Ecs.GetEcsSnapshotGroups.InvokeAsync(new AliCloud.Ecs.GetEcsSnapshotGroupsArgs
-        ///         {
-        ///             Status = "accomplished",
-        ///         }));
-        ///         this.EcsSnapshotGroupId3 = status.Apply(status =&gt; status.Groups?[0]?.Id);
-        ///         var instanceId = Output.Create(AliCloud.Ecs.GetEcsSnapshotGroups.InvokeAsync(new AliCloud.Ecs.GetEcsSnapshotGroupsArgs
-        ///         {
-        ///             InstanceId = "example-instance_id",
-        ///         }));
-        ///         this.EcsSnapshotGroupId4 = instanceId.Apply(instanceId =&gt; instanceId.Groups?[0]?.Id);
-        ///     }
+        ///             "example-id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ecsSnapshotGroupId1")]
-        ///     public Output&lt;string&gt; EcsSnapshotGroupId1 { get; set; }
-        ///     [Output("ecsSnapshotGroupId2")]
-        ///     public Output&lt;string&gt; EcsSnapshotGroupId2 { get; set; }
-        ///     [Output("ecsSnapshotGroupId3")]
-        ///     public Output&lt;string&gt; EcsSnapshotGroupId3 { get; set; }
-        ///     [Output("ecsSnapshotGroupId4")]
-        ///     public Output&lt;string&gt; EcsSnapshotGroupId4 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Ecs.GetEcsSnapshotGroups.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-SnapshotGroup",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Ecs.GetEcsSnapshotGroups.Invoke(new()
+        ///     {
+        ///         Status = "accomplished",
+        ///     });
+        /// 
+        ///     var instanceId = AliCloud.Ecs.GetEcsSnapshotGroups.Invoke(new()
+        ///     {
+        ///         InstanceId = "example-instance_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsSnapshotGroupId1"] = ids.Apply(getEcsSnapshotGroupsResult =&gt; getEcsSnapshotGroupsResult.Groups[0]?.Id),
+        ///         ["ecsSnapshotGroupId2"] = nameRegex.Apply(getEcsSnapshotGroupsResult =&gt; getEcsSnapshotGroupsResult.Groups[0]?.Id),
+        ///         ["ecsSnapshotGroupId3"] = status.Apply(getEcsSnapshotGroupsResult =&gt; getEcsSnapshotGroupsResult.Groups[0]?.Id),
+        ///         ["ecsSnapshotGroupId4"] = instanceId.Apply(getEcsSnapshotGroupsResult =&gt; getEcsSnapshotGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsSnapshotGroupsResult> InvokeAsync(GetEcsSnapshotGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsSnapshotGroupsResult>("alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups", args ?? new GetEcsSnapshotGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsSnapshotGroupsResult>("alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups", args ?? new GetEcsSnapshotGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
@@ -83,57 +79,53 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ecs.GetEcsSnapshotGroups.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsSnapshotGroups.InvokeAsync(new AliCloud.Ecs.GetEcsSnapshotGroupsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example-id",
-        ///             },
-        ///         }));
-        ///         this.EcsSnapshotGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Ecs.GetEcsSnapshotGroups.InvokeAsync(new AliCloud.Ecs.GetEcsSnapshotGroupsArgs
-        ///         {
-        ///             NameRegex = "^my-SnapshotGroup",
-        ///         }));
-        ///         this.EcsSnapshotGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Ecs.GetEcsSnapshotGroups.InvokeAsync(new AliCloud.Ecs.GetEcsSnapshotGroupsArgs
-        ///         {
-        ///             Status = "accomplished",
-        ///         }));
-        ///         this.EcsSnapshotGroupId3 = status.Apply(status =&gt; status.Groups?[0]?.Id);
-        ///         var instanceId = Output.Create(AliCloud.Ecs.GetEcsSnapshotGroups.InvokeAsync(new AliCloud.Ecs.GetEcsSnapshotGroupsArgs
-        ///         {
-        ///             InstanceId = "example-instance_id",
-        ///         }));
-        ///         this.EcsSnapshotGroupId4 = instanceId.Apply(instanceId =&gt; instanceId.Groups?[0]?.Id);
-        ///     }
+        ///             "example-id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ecsSnapshotGroupId1")]
-        ///     public Output&lt;string&gt; EcsSnapshotGroupId1 { get; set; }
-        ///     [Output("ecsSnapshotGroupId2")]
-        ///     public Output&lt;string&gt; EcsSnapshotGroupId2 { get; set; }
-        ///     [Output("ecsSnapshotGroupId3")]
-        ///     public Output&lt;string&gt; EcsSnapshotGroupId3 { get; set; }
-        ///     [Output("ecsSnapshotGroupId4")]
-        ///     public Output&lt;string&gt; EcsSnapshotGroupId4 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Ecs.GetEcsSnapshotGroups.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-SnapshotGroup",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Ecs.GetEcsSnapshotGroups.Invoke(new()
+        ///     {
+        ///         Status = "accomplished",
+        ///     });
+        /// 
+        ///     var instanceId = AliCloud.Ecs.GetEcsSnapshotGroups.Invoke(new()
+        ///     {
+        ///         InstanceId = "example-instance_id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsSnapshotGroupId1"] = ids.Apply(getEcsSnapshotGroupsResult =&gt; getEcsSnapshotGroupsResult.Groups[0]?.Id),
+        ///         ["ecsSnapshotGroupId2"] = nameRegex.Apply(getEcsSnapshotGroupsResult =&gt; getEcsSnapshotGroupsResult.Groups[0]?.Id),
+        ///         ["ecsSnapshotGroupId3"] = status.Apply(getEcsSnapshotGroupsResult =&gt; getEcsSnapshotGroupsResult.Groups[0]?.Id),
+        ///         ["ecsSnapshotGroupId4"] = instanceId.Apply(getEcsSnapshotGroupsResult =&gt; getEcsSnapshotGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsSnapshotGroupsResult> Invoke(GetEcsSnapshotGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsSnapshotGroupsResult>("alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups", args ?? new GetEcsSnapshotGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsSnapshotGroupsResult>("alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups", args ?? new GetEcsSnapshotGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsSnapshotGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsSnapshotGroupsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -189,9 +181,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsSnapshotGroupsArgs()
         {
         }
+        public static new GetEcsSnapshotGroupsArgs Empty => new GetEcsSnapshotGroupsArgs();
     }
 
-    public sealed class GetEcsSnapshotGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsSnapshotGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -247,6 +240,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsSnapshotGroupsInvokeArgs()
         {
         }
+        public static new GetEcsSnapshotGroupsInvokeArgs Empty => new GetEcsSnapshotGroupsInvokeArgs();
     }
 
 

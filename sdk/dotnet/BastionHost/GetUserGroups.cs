@@ -23,42 +23,40 @@ namespace Pulumi.AliCloud.BastionHost
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.BastionHost.GetUserGroups.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.BastionHost.GetUserGroups.InvokeAsync(new AliCloud.BastionHost.GetUserGroupsArgs
+        ///         InstanceId = "bastionhost-cn-xxxx",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "bastionhost-cn-xxxx",
-        ///             Ids = 
-        ///             {
-        ///                 "1",
-        ///                 "2",
-        ///             },
-        ///         }));
-        ///         this.BastionhostUserGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetUserGroups.InvokeAsync(new AliCloud.BastionHost.GetUserGroupsArgs
-        ///         {
-        ///             InstanceId = "bastionhost-cn-xxxx",
-        ///             NameRegex = "^my-UserGroup",
-        ///         }));
-        ///         this.BastionhostUserGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
-        ///     }
+        ///             "1",
+        ///             "2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("bastionhostUserGroupId1")]
-        ///     public Output&lt;string&gt; BastionhostUserGroupId1 { get; set; }
-        ///     [Output("bastionhostUserGroupId2")]
-        ///     public Output&lt;string&gt; BastionhostUserGroupId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.BastionHost.GetUserGroups.Invoke(new()
+        ///     {
+        ///         InstanceId = "bastionhost-cn-xxxx",
+        ///         NameRegex = "^my-UserGroup",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostUserGroupId1"] = ids.Apply(getUserGroupsResult =&gt; getUserGroupsResult.Groups[0]?.Id),
+        ///         ["bastionhostUserGroupId2"] = nameRegex.Apply(getUserGroupsResult =&gt; getUserGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserGroupsResult> InvokeAsync(GetUserGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserGroupsResult>("alicloud:bastionhost/getUserGroups:getUserGroups", args ?? new GetUserGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserGroupsResult>("alicloud:bastionhost/getUserGroups:getUserGroups", args ?? new GetUserGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
@@ -72,46 +70,44 @@ namespace Pulumi.AliCloud.BastionHost
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.BastionHost.GetUserGroups.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.BastionHost.GetUserGroups.InvokeAsync(new AliCloud.BastionHost.GetUserGroupsArgs
+        ///         InstanceId = "bastionhost-cn-xxxx",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "bastionhost-cn-xxxx",
-        ///             Ids = 
-        ///             {
-        ///                 "1",
-        ///                 "2",
-        ///             },
-        ///         }));
-        ///         this.BastionhostUserGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.BastionHost.GetUserGroups.InvokeAsync(new AliCloud.BastionHost.GetUserGroupsArgs
-        ///         {
-        ///             InstanceId = "bastionhost-cn-xxxx",
-        ///             NameRegex = "^my-UserGroup",
-        ///         }));
-        ///         this.BastionhostUserGroupId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Groups?[0]?.Id);
-        ///     }
+        ///             "1",
+        ///             "2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("bastionhostUserGroupId1")]
-        ///     public Output&lt;string&gt; BastionhostUserGroupId1 { get; set; }
-        ///     [Output("bastionhostUserGroupId2")]
-        ///     public Output&lt;string&gt; BastionhostUserGroupId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.BastionHost.GetUserGroups.Invoke(new()
+        ///     {
+        ///         InstanceId = "bastionhost-cn-xxxx",
+        ///         NameRegex = "^my-UserGroup",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["bastionhostUserGroupId1"] = ids.Apply(getUserGroupsResult =&gt; getUserGroupsResult.Groups[0]?.Id),
+        ///         ["bastionhostUserGroupId2"] = nameRegex.Apply(getUserGroupsResult =&gt; getUserGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetUserGroupsResult> Invoke(GetUserGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUserGroupsResult>("alicloud:bastionhost/getUserGroups:getUserGroups", args ?? new GetUserGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserGroupsResult>("alicloud:bastionhost/getUserGroups:getUserGroups", args ?? new GetUserGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetUserGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetUserGroupsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -149,9 +145,10 @@ namespace Pulumi.AliCloud.BastionHost
         public GetUserGroupsArgs()
         {
         }
+        public static new GetUserGroupsArgs Empty => new GetUserGroupsArgs();
     }
 
-    public sealed class GetUserGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUserGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -189,6 +186,7 @@ namespace Pulumi.AliCloud.BastionHost
         public GetUserGroupsInvokeArgs()
         {
         }
+        public static new GetUserGroupsInvokeArgs Empty => new GetUserGroupsInvokeArgs();
     }
 
 

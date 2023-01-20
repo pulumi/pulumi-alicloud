@@ -19,18 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.eventbridge.getService({
+ * const open = alicloud.eventbridge.getService({
  *     enable: "On",
- * }));
+ * });
  * ```
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eventbridge/getService:getService", {
         "enable": args.enable,
     }, opts);
@@ -60,9 +57,28 @@ export interface GetServiceResult {
      */
     readonly status: string;
 }
-
+/**
+ * Using this data source can open Event Bridge service automatically. If the service has been opened, it will return opened.
+ *
+ * For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
+ *
+ * > **NOTE:** Available in v1.126.0+
+ *
+ * > **NOTE:** This data source supports `cn-shanghai`, `cn-hangzhou` and `ap-southeast-1` regions.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.eventbridge.getService({
+ *     enable: "On",
+ * });
+ * ```
+ */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply(a => getService(a, opts))
+    return pulumi.output(args).apply((a: any) => getService(a, opts))
 }
 
 /**

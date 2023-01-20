@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketTransferAccelerationArgs : Pulumi.ResourceArgs
+    public sealed class BucketTransferAccelerationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the accelerate status of a bucket.
+        /// Specifies lifecycle rule status.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketTransferAccelerationArgs()
         {
         }
+        public static new BucketTransferAccelerationArgs Empty => new BucketTransferAccelerationArgs();
     }
 }

@@ -5,14 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./bastionHostInstance";
-export * from "./dbauditInstance";
-export * from "./getBastionHostInstances";
-export * from "./getDBAuditInstance";
+export { BastionHostInstanceArgs, BastionHostInstanceState } from "./bastionHostInstance";
+export type BastionHostInstance = import("./bastionHostInstance").BastionHostInstance;
+export const BastionHostInstance: typeof import("./bastionHostInstance").BastionHostInstance = null as any;
+utilities.lazyLoad(exports, ["BastionHostInstance"], () => require("./bastionHostInstance"));
 
-// Import resources to register:
-import { BastionHostInstance } from "./bastionHostInstance";
-import { DBAuditInstance } from "./dbauditInstance";
+export { DBAuditInstanceArgs, DBAuditInstanceState } from "./dbauditInstance";
+export type DBAuditInstance = import("./dbauditInstance").DBAuditInstance;
+export const DBAuditInstance: typeof import("./dbauditInstance").DBAuditInstance = null as any;
+utilities.lazyLoad(exports, ["DBAuditInstance"], () => require("./dbauditInstance"));
+
+export { GetBastionHostInstancesArgs, GetBastionHostInstancesResult, GetBastionHostInstancesOutputArgs } from "./getBastionHostInstances";
+export const getBastionHostInstances: typeof import("./getBastionHostInstances").getBastionHostInstances = null as any;
+export const getBastionHostInstancesOutput: typeof import("./getBastionHostInstances").getBastionHostInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getBastionHostInstances","getBastionHostInstancesOutput"], () => require("./getBastionHostInstances"));
+
+export { GetDBAuditInstanceArgs, GetDBAuditInstanceResult, GetDBAuditInstanceOutputArgs } from "./getDBAuditInstance";
+export const getDBAuditInstance: typeof import("./getDBAuditInstance").getDBAuditInstance = null as any;
+export const getDBAuditInstanceOutput: typeof import("./getDBAuditInstance").getDBAuditInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getDBAuditInstance","getDBAuditInstanceOutput"], () => require("./getDBAuditInstance"));
+
 
 const _module = {
     version: utilities.getVersion(),

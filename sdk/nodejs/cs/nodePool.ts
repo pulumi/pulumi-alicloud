@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -20,7 +21,7 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?[0]?.id,
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  *     kubernetesNodeRole: "Worker",
@@ -33,7 +34,7 @@ import * as utilities from "../utilities";
  *     vswitchName: name,
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "10.1.1.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
  * const defaultKeyPair = new alicloud.ecs.KeyPair("defaultKeyPair", {keyPairName: name});
  * let defaultManagedKubernetes: alicloud.cs.ManagedKubernetes | undefined;
@@ -284,10 +285,10 @@ import * as utilities from "../utilities";
  *     instanceChargeType: "PostPaid",
  *     desiredSize: 3,
  *     kubeletConfiguration: {
- *         registryPullQps: "0",
- *         registryBurst: "0",
- *         eventRecordQps: "0",
- *         eventBurst: "0",
+ *         registryPullQps: "10",
+ *         registryBurst: "5",
+ *         eventRecordQps: "10",
+ *         eventBurst: "5",
  *         evictionHard: {
  *             "memory.available": "1024Mi",
  *             "nodefs.available": `10%`,
@@ -300,15 +301,15 @@ import * as utilities from "../utilities";
  *         systemReserved: {
  *             cpu: "1",
  *             memory: "1Gi",
- *             ephemeral_storage: "10Gi",
+ *             "ephemeral-storage": "10Gi",
  *         },
  *         kubeReserved: {
  *             cpu: "500m",
  *             memory: "1Gi",
  *         },
  *     },
- *     rolloutPolicy: {
- *         maxUnavailable: 1,
+ *     rollingPolicy: {
+ *         maxParallelism: 1,
  *     },
  * });
  * ```
@@ -318,7 +319,7 @@ import * as utilities from "../utilities";
  * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
  *
  * ```sh
- *  $ pulumi import alicloud:cs/nodePool:NodePool alicloud_cs_kubernetes_node_pool.custom_nodepool cluster_id:nodepool_id
+ *  $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
  * ```
  */
 export class NodePool extends pulumi.CustomResource {
@@ -358,7 +359,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
      */
     public readonly cisEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -478,6 +479,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly platform!: pulumi.Output<string>;
     /**
+     * PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+     */
+    public readonly polardbIds!: pulumi.Output<string[] | undefined>;
+    /**
      * RDS instance list, You can choose which RDS instances whitelist to add instances to.
      */
     public readonly rdsInstances!: pulumi.Output<string[] | undefined>;
@@ -486,7 +491,13 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     */
+    public readonly rollingPolicy!: pulumi.Output<outputs.cs.NodePoolRollingPolicy | undefined>;
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+     *
+     * @deprecated Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
      */
     public readonly rolloutPolicy!: pulumi.Output<outputs.cs.NodePoolRolloutPolicy | undefined>;
     /**
@@ -520,7 +531,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
-     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
      * > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
      */
     public readonly socEnabled!: pulumi.Output<boolean | undefined>;
@@ -529,9 +540,9 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly spotPriceLimits!: pulumi.Output<outputs.cs.NodePoolSpotPriceLimit[] | undefined>;
     /**
-     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
      */
-    public readonly spotStrategy!: pulumi.Output<string | undefined>;
+    public readonly spotStrategy!: pulumi.Output<string>;
     /**
      * The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency` and `cloudEssd`. Default to `cloudEfficiency`.
      */
@@ -629,8 +640,10 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
             resourceInputs["platform"] = state ? state.platform : undefined;
+            resourceInputs["polardbIds"] = state ? state.polardbIds : undefined;
             resourceInputs["rdsInstances"] = state ? state.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["rollingPolicy"] = state ? state.rollingPolicy : undefined;
             resourceInputs["rolloutPolicy"] = state ? state.rolloutPolicy : undefined;
             resourceInputs["runtimeName"] = state ? state.runtimeName : undefined;
             resourceInputs["runtimeVersion"] = state ? state.runtimeVersion : undefined;
@@ -693,12 +706,14 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
             resourceInputs["nodeNameMode"] = args ? args.nodeNameMode : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
             resourceInputs["platform"] = args ? args.platform : undefined;
+            resourceInputs["polardbIds"] = args ? args.polardbIds : undefined;
             resourceInputs["rdsInstances"] = args ? args.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["rollingPolicy"] = args ? args.rollingPolicy : undefined;
             resourceInputs["rolloutPolicy"] = args ? args.rolloutPolicy : undefined;
             resourceInputs["runtimeName"] = args ? args.runtimeName : undefined;
             resourceInputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
@@ -725,6 +740,8 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["vpcId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(NodePool.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -742,7 +759,7 @@ export interface NodePoolState {
      */
     autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
      */
     cisEnabled?: pulumi.Input<boolean>;
     /**
@@ -862,6 +879,10 @@ export interface NodePoolState {
      */
     platform?: pulumi.Input<string>;
     /**
+     * PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+     */
+    polardbIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * RDS instance list, You can choose which RDS instances whitelist to add instances to.
      */
     rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
@@ -870,7 +891,13 @@ export interface NodePoolState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     */
+    rollingPolicy?: pulumi.Input<inputs.cs.NodePoolRollingPolicy>;
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+     *
+     * @deprecated Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
      */
     rolloutPolicy?: pulumi.Input<inputs.cs.NodePoolRolloutPolicy>;
     /**
@@ -904,7 +931,7 @@ export interface NodePoolState {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
      * > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
      */
     socEnabled?: pulumi.Input<boolean>;
@@ -913,7 +940,7 @@ export interface NodePoolState {
      */
     spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
     /**
-     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
      */
     spotStrategy?: pulumi.Input<string>;
     /**
@@ -983,7 +1010,7 @@ export interface NodePoolArgs {
      */
     autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
      */
     cisEnabled?: pulumi.Input<boolean>;
     /**
@@ -1103,6 +1130,10 @@ export interface NodePoolArgs {
      */
     platform?: pulumi.Input<string>;
     /**
+     * PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+     */
+    polardbIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * RDS instance list, You can choose which RDS instances whitelist to add instances to.
      */
     rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1111,7 +1142,13 @@ export interface NodePoolArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
+     */
+    rollingPolicy?: pulumi.Input<inputs.cs.NodePoolRollingPolicy>;
+    /**
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+     *
+     * @deprecated Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
      */
     rolloutPolicy?: pulumi.Input<inputs.cs.NodePoolRolloutPolicy>;
     /**
@@ -1141,7 +1178,7 @@ export interface NodePoolArgs {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to `image_type/platform=AliyunLinux`, see [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
+     * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).  
      * > **NOTE:** It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
      */
     socEnabled?: pulumi.Input<boolean>;
@@ -1150,7 +1187,7 @@ export interface NodePoolArgs {
      */
     spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
     /**
-     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`.
+     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instanceChargeType` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
      */
     spotStrategy?: pulumi.Input<string>;
     /**

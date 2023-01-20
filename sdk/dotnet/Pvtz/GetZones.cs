@@ -19,29 +19,28 @@ namespace Pulumi.AliCloud.Pvtz
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var pvtzZonesDs = AliCloud.Pvtz.GetZones.Invoke(new()
         ///     {
-        ///         var pvtzZonesDs = Output.Create(AliCloud.Pvtz.GetZones.InvokeAsync(new AliCloud.Pvtz.GetZonesArgs
-        ///         {
-        ///             Keyword = alicloud_pvtz_zone.Basic.Zone_name,
-        ///         }));
-        ///         this.FirstZoneId = pvtzZonesDs.Apply(pvtzZonesDs =&gt; pvtzZonesDs.Zones?[0]?.Id);
-        ///     }
+        ///         Keyword = alicloud_pvtz_zone.Basic.Zone_name,
+        ///     });
         /// 
-        ///     [Output("firstZoneId")]
-        ///     public Output&lt;string&gt; FirstZoneId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstZoneId"] = pvtzZonesDs.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
@@ -51,36 +50,35 @@ namespace Pulumi.AliCloud.Pvtz
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var pvtzZonesDs = AliCloud.Pvtz.GetZones.Invoke(new()
         ///     {
-        ///         var pvtzZonesDs = Output.Create(AliCloud.Pvtz.GetZones.InvokeAsync(new AliCloud.Pvtz.GetZonesArgs
-        ///         {
-        ///             Keyword = alicloud_pvtz_zone.Basic.Zone_name,
-        ///         }));
-        ///         this.FirstZoneId = pvtzZonesDs.Apply(pvtzZonesDs =&gt; pvtzZonesDs.Zones?[0]?.Id);
-        ///     }
+        ///         Keyword = alicloud_pvtz_zone.Basic.Zone_name,
+        ///     });
         /// 
-        ///     [Output("firstZoneId")]
-        ///     public Output&lt;string&gt; FirstZoneId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstZoneId"] = pvtzZonesDs.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+        /// Default to `false`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -144,12 +142,13 @@ namespace Pulumi.AliCloud.Pvtz
         public GetZonesArgs()
         {
         }
+        public static new GetZonesArgs Empty => new GetZonesArgs();
     }
 
-    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+        /// Default to `false`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -213,6 +212,7 @@ namespace Pulumi.AliCloud.Pvtz
         public GetZonesInvokeArgs()
         {
         }
+        public static new GetZonesInvokeArgs Empty => new GetZonesInvokeArgs();
     }
 
 

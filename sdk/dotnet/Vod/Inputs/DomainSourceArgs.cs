@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vod.Inputs
 {
 
-    public sealed class DomainSourceArgs : Pulumi.ResourceArgs
+    public sealed class DomainSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of the origin server. You can specify an IP address or a domain name.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Vod.Inputs
         public DomainSourceArgs()
         {
         }
+        public static new DomainSourceArgs Empty => new DomainSourceArgs();
     }
 }

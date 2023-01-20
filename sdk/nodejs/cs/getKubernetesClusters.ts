@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,23 +19,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const k8sClusters = pulumi.output(alicloud.cs.getKubernetesClusters({
+ * const k8sClusters = alicloud.cs.getKubernetesClusters({
  *     kubeConfigFilePrefix: "~/.kube/k8s",
  *     nameRegex: "my-first-k8s",
  *     outputFile: "my-first-k8s-json",
- * }));
- *
- * export const output = k8sClusters.clusters;
+ * });
+ * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
  * ```
  */
 export function getKubernetesClusters(args?: GetKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClustersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getKubernetesClusters:getKubernetesClusters", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -54,7 +50,7 @@ export interface GetKubernetesClustersArgs {
      */
     ids?: string[];
     /**
-     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.187.0+, kubeConfig will not export kubeConfig if this field is not set.
      */
     kubeConfigFilePrefix?: string;
     /**
@@ -89,9 +85,29 @@ export interface GetKubernetesClustersResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.34.0+.
+ *
+ * > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const k8sClusters = alicloud.cs.getKubernetesClusters({
+ *     kubeConfigFilePrefix: "~/.kube/k8s",
+ *     nameRegex: "my-first-k8s",
+ *     outputFile: "my-first-k8s-json",
+ * });
+ * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
+ * ```
+ */
 export function getKubernetesClustersOutput(args?: GetKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesClustersResult> {
-    return pulumi.output(args).apply(a => getKubernetesClusters(a, opts))
+    return pulumi.output(args).apply((a: any) => getKubernetesClusters(a, opts))
 }
 
 /**
@@ -104,7 +120,7 @@ export interface GetKubernetesClustersOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. If you don't specify this field, it will be stored in the current directory and named with `clusterID-kubeconfig`.
+     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/k8s`, then it will be named with `~/.kube/k8s-clusterID-kubeconfig`. From version 1.187.0+, kubeConfig will not export kubeConfig if this field is not set.
      */
     kubeConfigFilePrefix?: pulumi.Input<string>;
     /**

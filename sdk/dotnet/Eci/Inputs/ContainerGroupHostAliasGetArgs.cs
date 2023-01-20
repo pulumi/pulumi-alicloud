@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class ContainerGroupHostAliasGetArgs : Pulumi.ResourceArgs
+    public sealed class ContainerGroupHostAliasGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("hostnames")]
         private InputList<string>? _hostnames;
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public ContainerGroupHostAliasGetArgs()
         {
         }
+        public static new ContainerGroupHostAliasGetArgs Empty => new ContainerGroupHostAliasGetArgs();
     }
 }

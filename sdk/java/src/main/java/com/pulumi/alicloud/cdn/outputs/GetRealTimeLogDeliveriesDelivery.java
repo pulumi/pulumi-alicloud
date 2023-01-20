@@ -35,7 +35,7 @@ public final class GetRealTimeLogDeliveriesDelivery {
      */
     private String slsRegion;
     /**
-     * @return -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * @return The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
      * 
      */
     private String status;
@@ -77,7 +77,7 @@ public final class GetRealTimeLogDeliveriesDelivery {
         return this.slsRegion;
     }
     /**
-     * @return -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * @return The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
      * 
      */
     public String status() {

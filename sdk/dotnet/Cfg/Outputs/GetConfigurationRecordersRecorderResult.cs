@@ -13,10 +13,12 @@ namespace Pulumi.AliCloud.Cfg.Outputs
     [OutputType]
     public sealed class GetConfigurationRecordersRecorderResult
     {
+        /// <summary>
+        /// The ID of the Alicloud account.
+        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// The ID of the Config Configuration Recorder. Value as the `account_id`.
-        /// * `account_id`- The ID of the Alicloud account.
         /// </summary>
         public readonly string Id;
         /// <summary>

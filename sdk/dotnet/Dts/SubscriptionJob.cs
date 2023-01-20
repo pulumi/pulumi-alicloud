@@ -26,90 +26,95 @@ namespace Pulumi.AliCloud.Dts
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "dtsSubscriptionJob";
+    ///     var creation = config.Get("creation") ?? "Rds";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "dtsSubscriptionJob";
-    ///         var creation = config.Get("creation") ?? "Rds";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
-    ///         {
-    ///             Engine = "MySQL",
-    ///             EngineVersion = "5.6",
-    ///             InstanceType = "rds.mysql.s1.small",
-    ///             InstanceStorage = 10,
-    ///             VswitchId = defaultSwitch.Id,
-    ///             InstanceName = name,
-    ///         });
-    ///         var db = new List&lt;AliCloud.Rds.Database&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             db.Add(new AliCloud.Rds.Database($"db-{range.Value}", new AliCloud.Rds.DatabaseArgs
-    ///             {
-    ///                 InstanceId = instance.Id,
-    ///                 Description = "from terraform",
-    ///             }));
-    ///         }
-    ///         var account = new AliCloud.Rds.Account("account", new AliCloud.Rds.AccountArgs
-    ///         {
-    ///             InstanceId = instance.Id,
-    ///             Password = "Test12345",
-    ///             Description = "from terraform",
-    ///         });
-    ///         var privilege = new AliCloud.Rds.AccountPrivilege("privilege", new AliCloud.Rds.AccountPrivilegeArgs
-    ///         {
-    ///             InstanceId = instance.Id,
-    ///             AccountName = account.Name,
-    ///             Privilege = "ReadWrite",
-    ///             DbNames = db.Select(__item =&gt; __item.Name).ToList(),
-    ///         });
-    ///         var default1Networks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var default1Switches = Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///         {
-    ///             VpcId = data.Alicloud_vpcs.Default.Ids[0],
-    ///         }));
-    ///         var defaultSubscriptionJob = new AliCloud.Dts.SubscriptionJob("defaultSubscriptionJob", new AliCloud.Dts.SubscriptionJobArgs
-    ///         {
-    ///             DtsJobName = name,
-    ///             PaymentType = "PostPaid",
-    ///             SourceEndpointEngineName = "MySQL",
-    ///             SourceEndpointRegion = "cn-hangzhou",
-    ///             SourceEndpointInstanceType = "RDS",
-    ///             SourceEndpointInstanceId = instance.Id,
-    ///             SourceEndpointDatabaseName = "tfaccountpri_0",
-    ///             SourceEndpointUserName = "tftestprivilege",
-    ///             SourceEndpointPassword = "Test12345",
-    ///             DbList = @"        {""dtstestdata"": {""name"": ""tfaccountpri_0"", ""all"": true}}
-    /// ",
-    ///             SubscriptionInstanceNetworkType = "vpc",
-    ///             SubscriptionInstanceVpcId = default1Networks.Apply(default1Networks =&gt; default1Networks.Ids?[0]),
-    ///             SubscriptionInstanceVswitchId = default1Switches.Apply(default1Switches =&gt; default1Switches.Ids?[0]),
-    ///             Status = "Normal",
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var instance = new AliCloud.Rds.Instance("instance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "5.6",
+    ///         InstanceType = "rds.mysql.s1.small",
+    ///         InstanceStorage = 10,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var db = new List&lt;AliCloud.Rds.Database&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         db.Add(new AliCloud.Rds.Database($"db-{range.Value}", new()
+    ///         {
+    ///             InstanceId = instance.Id,
+    ///             Description = "from terraform",
+    ///         }));
+    ///     }
+    ///     var account = new AliCloud.Rds.Account("account", new()
+    ///     {
+    ///         InstanceId = instance.Id,
+    ///         Password = "Test12345",
+    ///         Description = "from terraform",
+    ///     });
+    /// 
+    ///     var privilege = new AliCloud.Rds.AccountPrivilege("privilege", new()
+    ///     {
+    ///         InstanceId = instance.Id,
+    ///         AccountName = account.Name,
+    ///         Privilege = "ReadWrite",
+    ///         DbNames = db.Select(__item =&gt; __item.Name).ToList(),
+    ///     });
+    /// 
+    ///     var default1Networks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var default1Switches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = data.Alicloud_vpcs.Default.Ids[0],
+    ///     });
+    /// 
+    ///     var defaultSubscriptionJob = new AliCloud.Dts.SubscriptionJob("defaultSubscriptionJob", new()
+    ///     {
+    ///         DtsJobName = name,
+    ///         PaymentType = "PostPaid",
+    ///         SourceEndpointEngineName = "MySQL",
+    ///         SourceEndpointRegion = "cn-hangzhou",
+    ///         SourceEndpointInstanceType = "RDS",
+    ///         SourceEndpointInstanceId = instance.Id,
+    ///         SourceEndpointDatabaseName = "tfaccountpri_0",
+    ///         SourceEndpointUserName = "tftestprivilege",
+    ///         SourceEndpointPassword = "Test12345",
+    ///         DbList = @"        {""dtstestdata"": {""name"": ""tfaccountpri_0"", ""all"": true}}
+    /// ",
+    ///         SubscriptionInstanceNetworkType = "vpc",
+    ///         SubscriptionInstanceVpcId = default1Networks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         SubscriptionInstanceVswitchId = default1Switches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         Status = "Normal",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -121,7 +126,7 @@ namespace Pulumi.AliCloud.Dts
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dts/subscriptionJob:SubscriptionJob")]
-    public partial class SubscriptionJob : Pulumi.CustomResource
+    public partial class SubscriptionJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Subscription start time in Unix timestamp format.
@@ -401,7 +406,7 @@ namespace Pulumi.AliCloud.Dts
         }
     }
 
-    public sealed class SubscriptionJobArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Subscription start time in Unix timestamp format.
@@ -646,9 +651,10 @@ namespace Pulumi.AliCloud.Dts
         public SubscriptionJobArgs()
         {
         }
+        public static new SubscriptionJobArgs Empty => new SubscriptionJobArgs();
     }
 
-    public sealed class SubscriptionJobState : Pulumi.ResourceArgs
+    public sealed class SubscriptionJobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Subscription start time in Unix timestamp format.
@@ -893,5 +899,6 @@ namespace Pulumi.AliCloud.Dts
         public SubscriptionJobState()
         {
         }
+        public static new SubscriptionJobState Empty => new SubscriptionJobState();
     }
 }

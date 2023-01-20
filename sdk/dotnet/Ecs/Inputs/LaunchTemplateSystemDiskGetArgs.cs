@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class LaunchTemplateSystemDiskGetArgs : Pulumi.ResourceArgs
+    public sealed class LaunchTemplateSystemDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The category of the disk:
@@ -61,5 +61,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public LaunchTemplateSystemDiskGetArgs()
         {
         }
+        public static new LaunchTemplateSystemDiskGetArgs Empty => new LaunchTemplateSystemDiskGetArgs();
     }
 }

@@ -28,23 +28,23 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudconnect"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := providers.Newalicloud(ctx, "ccnAccount", nil)
+//			_, err := alicloud.NewProvider(ctx, "ccnAccount", nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = providers.Newalicloud(ctx, "cenAccount", &providers.alicloudArgs{
-//				Region:    "cn-hangzhou",
-//				AccessKey: "xxxxxx",
-//				SecretKey: "xxxxxx",
+//			_, err = alicloud.NewProvider(ctx, "cenAccount", &alicloud.ProviderArgs{
+//				Region:    pulumi.String("cn-hangzhou"),
+//				AccessKey: pulumi.String("xxxxxx"),
+//				SecretKey: pulumi.String("xxxxxx"),
 //			})
 //			if err != nil {
 //				return err

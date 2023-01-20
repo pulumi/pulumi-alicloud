@@ -431,10 +431,12 @@ class FileSystem(pulumi.CustomResource):
             if storage_type is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_type'")
             __props__.__dict__["storage_type"] = storage_type
-            __props__.__dict__["throughput_mode"] = throughput_mode
+            __props__.__dict__["throughput_mode"] = None if throughput_mode is None else pulumi.Output.secret(throughput_mode)
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["throughputMode"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(FileSystem, __self__).__init__(
             'alicloud:dfs/fileSystem:FileSystem',
             resource_name,

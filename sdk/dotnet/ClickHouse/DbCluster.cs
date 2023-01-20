@@ -21,55 +21,51 @@ namespace Pulumi.AliCloud.ClickHouse
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultRegions = AliCloud.ClickHouse.GetRegions.Invoke(new()
     ///     {
-    ///         var defaultRegions = Output.Create(AliCloud.ClickHouse.GetRegions.InvokeAsync(new AliCloud.ClickHouse.GetRegionsArgs
-    ///         {
-    ///             Current = true,
-    ///         }));
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultRegions).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultRegions = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultRegions.Regions?[0]?.ZoneIds?[0]?.ZoneId,
-    ///             }));
-    ///         });
-    ///         var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new AliCloud.ClickHouse.DbClusterArgs
-    ///         {
-    ///             DbClusterVersion = "20.3.10.75",
-    ///             Category = "Basic",
-    ///             DbClusterClass = "S8",
-    ///             DbClusterNetworkType = "vpc",
-    ///             DbNodeGroupCount = 1,
-    ///             PaymentType = "PayAsYouGo",
-    ///             DbNodeStorage = "500",
-    ///             StorageType = "cloud_essd",
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             DbClusterAccessWhiteLists = 
-    ///             {
-    ///                 new AliCloud.ClickHouse.Inputs.DbClusterDbClusterAccessWhiteListArgs
-    ///                 {
-    ///                     DbClusterIpArrayAttribute = "test",
-    ///                     DbClusterIpArrayName = "test",
-    ///                     SecurityIpList = "192.168.0.1",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Current = true,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId),
+    ///     });
+    /// 
+    ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
+    ///     {
+    ///         DbClusterVersion = "20.3.10.75",
+    ///         Category = "Basic",
+    ///         DbClusterClass = "S8",
+    ///         DbClusterNetworkType = "vpc",
+    ///         DbNodeGroupCount = 1,
+    ///         PaymentType = "PayAsYouGo",
+    ///         DbNodeStorage = "500",
+    ///         StorageType = "cloud_essd",
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         DbClusterAccessWhiteLists = new[]
+    ///         {
+    ///             new AliCloud.ClickHouse.Inputs.DbClusterDbClusterAccessWhiteListArgs
+    ///             {
+    ///                 DbClusterIpArrayAttribute = "test",
+    ///                 DbClusterIpArrayName = "test",
+    ///                 SecurityIpList = "192.168.0.1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -81,13 +77,19 @@ namespace Pulumi.AliCloud.ClickHouse
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:clickhouse/dbCluster:DbCluster")]
-    public partial class DbCluster : Pulumi.CustomResource
+    public partial class DbCluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.196.0+) - The connection string of the cluster.
+        /// </summary>
+        [Output("connectionString")]
+        public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
         /// The db cluster access white list.
@@ -116,7 +118,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> DbClusterNetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         /// </summary>
         [Output("dbClusterVersion")]
         public Output<string> DbClusterVersion { get; private set; } = null!;
@@ -164,6 +166,12 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string?> Period { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.196.0+) The connection port of the cluster.
+        /// </summary>
+        [Output("port")]
+        public Output<string> Port { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         /// </summary>
         [Output("status")]
@@ -182,10 +190,22 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string?> UsedTime { get; private set; } = null!;
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
         /// The vswitch id of DBCluster.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The zone ID of the instance.
+        /// </summary>
+        [Output("zoneId")]
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -231,7 +251,7 @@ namespace Pulumi.AliCloud.ClickHouse
         }
     }
 
-    public sealed class DbClusterArgs : Pulumi.ResourceArgs
+    public sealed class DbClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
@@ -272,7 +292,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string> DbClusterNetworkType { get; set; } = null!;
 
         /// <summary>
-        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         /// </summary>
         [Input("dbClusterVersion", required: true)]
         public Input<string> DbClusterVersion { get; set; } = null!;
@@ -338,23 +358,42 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? UsedTime { get; set; }
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The vswitch id of DBCluster.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
+        /// <summary>
+        /// The zone ID of the instance.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public DbClusterArgs()
         {
         }
+        public static new DbClusterArgs Empty => new DbClusterArgs();
     }
 
-    public sealed class DbClusterState : Pulumi.ResourceArgs
+    public sealed class DbClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
+
+        /// <summary>
+        /// (Available in 1.196.0+) - The connection string of the cluster.
+        /// </summary>
+        [Input("connectionString")]
+        public Input<string>? ConnectionString { get; set; }
 
         [Input("dbClusterAccessWhiteLists")]
         private InputList<Inputs.DbClusterDbClusterAccessWhiteListGetArgs>? _dbClusterAccessWhiteLists;
@@ -389,7 +428,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? DbClusterNetworkType { get; set; }
 
         /// <summary>
-        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`. **NOTE:** `19.15.2.2` is no longer supported.
+        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         /// </summary>
         [Input("dbClusterVersion")]
         public Input<string>? DbClusterVersion { get; set; }
@@ -437,6 +476,12 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? Period { get; set; }
 
         /// <summary>
+        /// (Available in 1.196.0+) The connection port of the cluster.
+        /// </summary>
+        [Input("port")]
+        public Input<string>? Port { get; set; }
+
+        /// <summary>
         /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         /// </summary>
         [Input("status")]
@@ -455,13 +500,26 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? UsedTime { get; set; }
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// The vswitch id of DBCluster.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
+        /// <summary>
+        /// The zone ID of the instance.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public DbClusterState()
         {
         }
+        public static new DbClusterState Empty => new DbClusterState();
     }
 }

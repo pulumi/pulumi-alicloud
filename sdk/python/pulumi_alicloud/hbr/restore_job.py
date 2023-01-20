@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['RestoreJobArgs', 'RestoreJob']
 
@@ -19,9 +21,13 @@ class RestoreJobArgs:
                  snapshot_id: pulumi.Input[str],
                  source_type: pulumi.Input[str],
                  vault_id: pulumi.Input[str],
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  exclude: Optional[pulumi.Input[str]] = None,
                  include: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
+                 ots_detail: Optional[pulumi.Input['RestoreJobOtsDetailArgs']] = None,
                  restore_job_id: Optional[pulumi.Input[str]] = None,
                  target_bucket: Optional[pulumi.Input[str]] = None,
                  target_client_id: Optional[pulumi.Input[str]] = None,
@@ -42,9 +48,13 @@ class RestoreJobArgs:
         :param pulumi.Input[str] snapshot_id: The ID of Snapshot.
         :param pulumi.Input[str] source_type: The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
+        :param pulumi.Input['RestoreJobOtsDetailArgs'] ots_detail: The details about the Tablestore instance. See the following `Block ots_detail`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         :param pulumi.Input[str] target_bucket: The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
         :param pulumi.Input[str] target_client_id: The target client ID.
@@ -64,12 +74,20 @@ class RestoreJobArgs:
         pulumi.set(__self__, "snapshot_id", snapshot_id)
         pulumi.set(__self__, "source_type", source_type)
         pulumi.set(__self__, "vault_id", vault_id)
+        if cross_account_role_name is not None:
+            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+        if cross_account_type is not None:
+            pulumi.set(__self__, "cross_account_type", cross_account_type)
+        if cross_account_user_id is not None:
+            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
         if exclude is not None:
             pulumi.set(__self__, "exclude", exclude)
         if include is not None:
             pulumi.set(__self__, "include", include)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if ots_detail is not None:
+            pulumi.set(__self__, "ots_detail", ots_detail)
         if restore_job_id is not None:
             pulumi.set(__self__, "restore_job_id", restore_job_id)
         if target_bucket is not None:
@@ -158,6 +176,42 @@ class RestoreJobArgs:
         pulumi.set(self, "vault_id", value)
 
     @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @cross_account_role_name.setter
+    def cross_account_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_role_name", value)
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @cross_account_type.setter
+    def cross_account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_type", value)
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The original account ID of the cross account backup managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_user_id")
+
+    @cross_account_user_id.setter
+    def cross_account_user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cross_account_user_id", value)
+
+    @property
     @pulumi.getter
     def exclude(self) -> Optional[pulumi.Input[str]]:
         """
@@ -192,6 +246,18 @@ class RestoreJobArgs:
     @options.setter
     def options(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter(name="otsDetail")
+    def ots_detail(self) -> Optional[pulumi.Input['RestoreJobOtsDetailArgs']]:
+        """
+        The details about the Tablestore instance. See the following `Block ots_detail`.
+        """
+        return pulumi.get(self, "ots_detail")
+
+    @ots_detail.setter
+    def ots_detail(self, value: Optional[pulumi.Input['RestoreJobOtsDetailArgs']]):
+        pulumi.set(self, "ots_detail", value)
 
     @property
     @pulumi.getter(name="restoreJobId")
@@ -353,9 +419,13 @@ class RestoreJobArgs:
 @pulumi.input_type
 class _RestoreJobState:
     def __init__(__self__, *,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  exclude: Optional[pulumi.Input[str]] = None,
                  include: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
+                 ots_detail: Optional[pulumi.Input['RestoreJobOtsDetailArgs']] = None,
                  restore_job_id: Optional[pulumi.Input[str]] = None,
                  restore_type: Optional[pulumi.Input[str]] = None,
                  snapshot_hash: Optional[pulumi.Input[str]] = None,
@@ -377,9 +447,13 @@ class _RestoreJobState:
                  vault_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RestoreJob resources.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
+        :param pulumi.Input['RestoreJobOtsDetailArgs'] ots_detail: The details about the Tablestore instance. See the following `Block ots_detail`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
@@ -400,12 +474,20 @@ class _RestoreJobState:
         :param pulumi.Input[str] udm_detail: The full machine backup details.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
+        if cross_account_role_name is not None:
+            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+        if cross_account_type is not None:
+            pulumi.set(__self__, "cross_account_type", cross_account_type)
+        if cross_account_user_id is not None:
+            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
         if exclude is not None:
             pulumi.set(__self__, "exclude", exclude)
         if include is not None:
             pulumi.set(__self__, "include", include)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if ots_detail is not None:
+            pulumi.set(__self__, "ots_detail", ots_detail)
         if restore_job_id is not None:
             pulumi.set(__self__, "restore_job_id", restore_job_id)
         if restore_type is not None:
@@ -446,6 +528,42 @@ class _RestoreJobState:
             pulumi.set(__self__, "vault_id", vault_id)
 
     @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @cross_account_role_name.setter
+    def cross_account_role_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_role_name", value)
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @cross_account_type.setter
+    def cross_account_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cross_account_type", value)
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The original account ID of the cross account backup managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_user_id")
+
+    @cross_account_user_id.setter
+    def cross_account_user_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cross_account_user_id", value)
+
+    @property
     @pulumi.getter
     def exclude(self) -> Optional[pulumi.Input[str]]:
         """
@@ -480,6 +598,18 @@ class _RestoreJobState:
     @options.setter
     def options(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter(name="otsDetail")
+    def ots_detail(self) -> Optional[pulumi.Input['RestoreJobOtsDetailArgs']]:
+        """
+        The details about the Tablestore instance. See the following `Block ots_detail`.
+        """
+        return pulumi.get(self, "ots_detail")
+
+    @ots_detail.setter
+    def ots_detail(self, value: Optional[pulumi.Input['RestoreJobOtsDetailArgs']]):
+        pulumi.set(self, "ots_detail", value)
 
     @property
     @pulumi.getter(name="restoreJobId")
@@ -715,9 +845,13 @@ class RestoreJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  exclude: Optional[pulumi.Input[str]] = None,
                  include: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
+                 ots_detail: Optional[pulumi.Input[pulumi.InputType['RestoreJobOtsDetailArgs']]] = None,
                  restore_job_id: Optional[pulumi.Input[str]] = None,
                  restore_type: Optional[pulumi.Input[str]] = None,
                  snapshot_hash: Optional[pulumi.Input[str]] = None,
@@ -798,17 +932,21 @@ class RestoreJob(pulumi.CustomResource):
 
         ## Import
 
-        Hybrid Backup Recovery (HBR) Restore Job can be imported using the id, e.g.
+        Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `<restore_job_id>:<restore_type>`, e.g.
 
         ```sh
-         $ pulumi import alicloud:hbr/restoreJob:RestoreJob example <restore_job_id>:<restore_type>
+         $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
+        :param pulumi.Input[pulumi.InputType['RestoreJobOtsDetailArgs']] ots_detail: The details about the Tablestore instance. See the following `Block ots_detail`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
@@ -895,10 +1033,10 @@ class RestoreJob(pulumi.CustomResource):
 
         ## Import
 
-        Hybrid Backup Recovery (HBR) Restore Job can be imported using the id, e.g.
+        Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `<restore_job_id>:<restore_type>`, e.g.
 
         ```sh
-         $ pulumi import alicloud:hbr/restoreJob:RestoreJob example <restore_job_id>:<restore_type>
+         $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
         ```
 
         :param str resource_name: The name of the resource.
@@ -916,9 +1054,13 @@ class RestoreJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cross_account_role_name: Optional[pulumi.Input[str]] = None,
+                 cross_account_type: Optional[pulumi.Input[str]] = None,
+                 cross_account_user_id: Optional[pulumi.Input[int]] = None,
                  exclude: Optional[pulumi.Input[str]] = None,
                  include: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
+                 ots_detail: Optional[pulumi.Input[pulumi.InputType['RestoreJobOtsDetailArgs']]] = None,
                  restore_job_id: Optional[pulumi.Input[str]] = None,
                  restore_type: Optional[pulumi.Input[str]] = None,
                  snapshot_hash: Optional[pulumi.Input[str]] = None,
@@ -946,9 +1088,13 @@ class RestoreJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RestoreJobArgs.__new__(RestoreJobArgs)
 
+            __props__.__dict__["cross_account_role_name"] = cross_account_role_name
+            __props__.__dict__["cross_account_type"] = cross_account_type
+            __props__.__dict__["cross_account_user_id"] = cross_account_user_id
             __props__.__dict__["exclude"] = exclude
             __props__.__dict__["include"] = include
             __props__.__dict__["options"] = options
+            __props__.__dict__["ots_detail"] = ots_detail
             __props__.__dict__["restore_job_id"] = restore_job_id
             if restore_type is None and not opts.urn:
                 raise TypeError("Missing required property 'restore_type'")
@@ -988,9 +1134,13 @@ class RestoreJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cross_account_role_name: Optional[pulumi.Input[str]] = None,
+            cross_account_type: Optional[pulumi.Input[str]] = None,
+            cross_account_user_id: Optional[pulumi.Input[int]] = None,
             exclude: Optional[pulumi.Input[str]] = None,
             include: Optional[pulumi.Input[str]] = None,
             options: Optional[pulumi.Input[str]] = None,
+            ots_detail: Optional[pulumi.Input[pulumi.InputType['RestoreJobOtsDetailArgs']]] = None,
             restore_job_id: Optional[pulumi.Input[str]] = None,
             restore_type: Optional[pulumi.Input[str]] = None,
             snapshot_hash: Optional[pulumi.Input[str]] = None,
@@ -1017,9 +1167,13 @@ class RestoreJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+        :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[str] exclude: The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] include: The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         :param pulumi.Input[str] options: Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
+        :param pulumi.Input[pulumi.InputType['RestoreJobOtsDetailArgs']] ots_detail: The details about the Tablestore instance. See the following `Block ots_detail`.
         :param pulumi.Input[str] restore_job_id: Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         :param pulumi.Input[str] restore_type: The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         :param pulumi.Input[str] snapshot_hash: The hashcode of Snapshot.
@@ -1044,9 +1198,13 @@ class RestoreJob(pulumi.CustomResource):
 
         __props__ = _RestoreJobState.__new__(_RestoreJobState)
 
+        __props__.__dict__["cross_account_role_name"] = cross_account_role_name
+        __props__.__dict__["cross_account_type"] = cross_account_type
+        __props__.__dict__["cross_account_user_id"] = cross_account_user_id
         __props__.__dict__["exclude"] = exclude
         __props__.__dict__["include"] = include
         __props__.__dict__["options"] = options
+        __props__.__dict__["ots_detail"] = ots_detail
         __props__.__dict__["restore_job_id"] = restore_job_id
         __props__.__dict__["restore_type"] = restore_type
         __props__.__dict__["snapshot_hash"] = snapshot_hash
@@ -1067,6 +1225,30 @@ class RestoreJob(pulumi.CustomResource):
         __props__.__dict__["udm_detail"] = udm_detail
         __props__.__dict__["vault_id"] = vault_id
         return RestoreJob(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="crossAccountRoleName")
+    def cross_account_role_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The role name created in the original account RAM backup by the cross account managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_role_name")
+
+    @property
+    @pulumi.getter(name="crossAccountType")
+    def cross_account_type(self) -> pulumi.Output[str]:
+        """
+        The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        """
+        return pulumi.get(self, "cross_account_type")
+
+    @property
+    @pulumi.getter(name="crossAccountUserId")
+    def cross_account_user_id(self) -> pulumi.Output[Optional[int]]:
+        """
+        The original account ID of the cross account backup managed by the current account.
+        """
+        return pulumi.get(self, "cross_account_user_id")
 
     @property
     @pulumi.getter
@@ -1091,6 +1273,14 @@ class RestoreJob(pulumi.CustomResource):
         Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
         """
         return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter(name="otsDetail")
+    def ots_detail(self) -> pulumi.Output['outputs.RestoreJobOtsDetail']:
+        """
+        The details about the Tablestore instance. See the following `Block ots_detail`.
+        """
+        return pulumi.get(self, "ots_detail")
 
     @property
     @pulumi.getter(name="restoreJobId")

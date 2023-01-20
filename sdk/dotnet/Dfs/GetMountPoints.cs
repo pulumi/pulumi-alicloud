@@ -23,34 +23,33 @@ namespace Pulumi.AliCloud.Dfs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dfs.GetMountPoints.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dfs.GetMountPoints.InvokeAsync(new AliCloud.Dfs.GetMountPointsArgs
+        ///         FileSystemId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             FileSystemId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.DfsMountPointId1 = ids.Apply(ids =&gt; ids.Points?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("dfsMountPointId1")]
-        ///     public Output&lt;string&gt; DfsMountPointId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dfsMountPointId1"] = ids.Apply(getMountPointsResult =&gt; getMountPointsResult.Points[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMountPointsResult> InvokeAsync(GetMountPointsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMountPointsResult>("alicloud:dfs/getMountPoints:getMountPoints", args ?? new GetMountPointsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMountPointsResult>("alicloud:dfs/getMountPoints:getMountPoints", args ?? new GetMountPointsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
@@ -64,38 +63,37 @@ namespace Pulumi.AliCloud.Dfs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dfs.GetMountPoints.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dfs.GetMountPoints.InvokeAsync(new AliCloud.Dfs.GetMountPointsArgs
+        ///         FileSystemId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             FileSystemId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "example_value-1",
-        ///                 "example_value-2",
-        ///             },
-        ///         }));
-        ///         this.DfsMountPointId1 = ids.Apply(ids =&gt; ids.Points?[0]?.Id);
-        ///     }
+        ///             "example_value-1",
+        ///             "example_value-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("dfsMountPointId1")]
-        ///     public Output&lt;string&gt; DfsMountPointId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dfsMountPointId1"] = ids.Apply(getMountPointsResult =&gt; getMountPointsResult.Points[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMountPointsResult> Invoke(GetMountPointsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMountPointsResult>("alicloud:dfs/getMountPoints:getMountPoints", args ?? new GetMountPointsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMountPointsResult>("alicloud:dfs/getMountPoints:getMountPoints", args ?? new GetMountPointsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetMountPointsArgs : Pulumi.InvokeArgs
+    public sealed class GetMountPointsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the File System.
@@ -127,9 +125,10 @@ namespace Pulumi.AliCloud.Dfs
         public GetMountPointsArgs()
         {
         }
+        public static new GetMountPointsArgs Empty => new GetMountPointsArgs();
     }
 
-    public sealed class GetMountPointsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMountPointsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the File System.
@@ -161,6 +160,7 @@ namespace Pulumi.AliCloud.Dfs
         public GetMountPointsInvokeArgs()
         {
         }
+        public static new GetMountPointsInvokeArgs Empty => new GetMountPointsInvokeArgs();
     }
 
 

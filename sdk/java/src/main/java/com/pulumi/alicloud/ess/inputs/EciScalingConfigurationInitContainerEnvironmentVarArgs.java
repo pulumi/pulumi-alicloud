@@ -18,6 +18,7 @@ public final class EciScalingConfigurationInitContainerEnvironmentVarArgs extend
     /**
      * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
      * digits, and underscores (_). It cannot start with a digit.
+     * digits, and underscores (_). It cannot start with a digit.
      * 
      */
     @Import(name="key")
@@ -25,6 +26,7 @@ public final class EciScalingConfigurationInitContainerEnvironmentVarArgs extend
 
     /**
      * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+     * digits, and underscores (_). It cannot start with a digit.
      * digits, and underscores (_). It cannot start with a digit.
      * 
      */
@@ -75,6 +77,7 @@ public final class EciScalingConfigurationInitContainerEnvironmentVarArgs extend
         /**
          * @param key The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
          * digits, and underscores (_). It cannot start with a digit.
+         * digits, and underscores (_). It cannot start with a digit.
          * 
          * @return builder
          * 
@@ -86,6 +89,7 @@ public final class EciScalingConfigurationInitContainerEnvironmentVarArgs extend
 
         /**
          * @param key The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+         * digits, and underscores (_). It cannot start with a digit.
          * digits, and underscores (_). It cannot start with a digit.
          * 
          * @return builder

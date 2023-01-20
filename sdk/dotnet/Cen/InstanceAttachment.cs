@@ -19,33 +19,33 @@ namespace Pulumi.AliCloud.Cen
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testAccCenInstanceAttachmentBasic";
+    ///     var cen = new AliCloud.Cen.Instance("cen", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testAccCenInstanceAttachmentBasic";
-    ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///             Description = "terraform01",
-    ///         });
-    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "192.168.0.0/16",
-    ///         });
-    ///         var foo = new AliCloud.Cen.InstanceAttachment("foo", new AliCloud.Cen.InstanceAttachmentArgs
-    ///         {
-    ///             InstanceId = cen.Id,
-    ///             ChildInstanceId = vpc.Id,
-    ///             ChildInstanceType = "VPC",
-    ///             ChildInstanceRegionId = "cn-beijing",
-    ///         });
-    ///     }
+    ///         Description = "terraform01",
+    ///     });
     /// 
-    /// }
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var foo = new AliCloud.Cen.InstanceAttachment("foo", new()
+    ///     {
+    ///         InstanceId = cen.Id,
+    ///         ChildInstanceId = vpc.Id,
+    ///         ChildInstanceType = "VPC",
+    ///         ChildInstanceRegionId = "cn-beijing",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/instanceAttachment:InstanceAttachment")]
-    public partial class InstanceAttachment : Pulumi.CustomResource
+    public partial class InstanceAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account ID to which the CEN instance belongs.
@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class InstanceAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class InstanceAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account ID to which the CEN instance belongs.
@@ -186,9 +186,10 @@ namespace Pulumi.AliCloud.Cen
         public InstanceAttachmentArgs()
         {
         }
+        public static new InstanceAttachmentArgs Empty => new InstanceAttachmentArgs();
     }
 
-    public sealed class InstanceAttachmentState : Pulumi.ResourceArgs
+    public sealed class InstanceAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account ID to which the CEN instance belongs.
@@ -235,5 +236,6 @@ namespace Pulumi.AliCloud.Cen
         public InstanceAttachmentState()
         {
         }
+        public static new InstanceAttachmentState Empty => new InstanceAttachmentState();
     }
 }

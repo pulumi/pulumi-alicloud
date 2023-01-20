@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,18 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const examples = pulumi.output(alicloud.amqp.getBindings({
+ * const examples = alicloud.amqp.getBindings({
  *     instanceId: "amqp-cn-xxxxx",
  *     virtualHostName: "my-vh",
- * }));
+ * });
  * ```
  */
 export function getBindings(args: GetBindingsArgs, opts?: pulumi.InvokeOptions): Promise<GetBindingsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:amqp/getBindings:getBindings", {
         "instanceId": args.instanceId,
         "outputFile": args.outputFile,
@@ -66,9 +64,27 @@ export interface GetBindingsResult {
     readonly outputFile?: string;
     readonly virtualHostName: string;
 }
-
+/**
+ * This data source provides the Amqp Bindings of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.135.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const examples = alicloud.amqp.getBindings({
+ *     instanceId: "amqp-cn-xxxxx",
+ *     virtualHostName: "my-vh",
+ * });
+ * ```
+ */
 export function getBindingsOutput(args: GetBindingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBindingsResult> {
-    return pulumi.output(args).apply(a => getBindings(a, opts))
+    return pulumi.output(args).apply((a: any) => getBindings(a, opts))
 }
 
 /**

@@ -21,24 +21,22 @@ namespace Pulumi.AliCloud.BastionHost
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.BastionHost.HostAccount("example", new()
     ///     {
-    ///         var example = new AliCloud.BastionHost.HostAccount("example", new AliCloud.BastionHost.HostAccountArgs
-    ///         {
-    ///             HostAccountName = "example_value",
-    ///             HostId = "15",
-    ///             InstanceId = "bastionhost-cn-tl32bh0no30",
-    ///             Password = "YourPassword12345",
-    ///             ProtocolName = "SSH",
-    ///         });
-    ///     }
+    ///         HostAccountName = "example_value",
+    ///         HostId = "15",
+    ///         InstanceId = "bastionhost-cn-tl32bh0no30",
+    ///         Password = "YourPassword12345",
+    ///         ProtocolName = "SSH",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/hostAccount:HostAccount")]
-    public partial class HostAccount : Pulumi.CustomResource
+    public partial class HostAccount : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Hosting account ID.
@@ -123,6 +121,12 @@ namespace Pulumi.AliCloud.BastionHost
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "passPhrase",
+                    "password",
+                    "privateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -144,7 +148,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
     }
 
-    public sealed class HostAccountArgs : Pulumi.ResourceArgs
+    public sealed class HostAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the host account. The name can be up to 128 characters in length.
@@ -164,23 +168,53 @@ namespace Pulumi.AliCloud.BastionHost
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        [Input("passPhrase")]
+        private Input<string>? _passPhrase;
+
         /// <summary>
         /// The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
         /// </summary>
-        [Input("passPhrase")]
-        public Input<string>? PassPhrase { get; set; }
+        public Input<string>? PassPhrase
+        {
+            get => _passPhrase;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passPhrase = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("password")]
+        private Input<string>? _password;
 
         /// <summary>
         /// The password of the host account.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
 
         /// <summary>
         /// The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The protocol used by the host account. Valid values: SSH,RDP
@@ -191,9 +225,10 @@ namespace Pulumi.AliCloud.BastionHost
         public HostAccountArgs()
         {
         }
+        public static new HostAccountArgs Empty => new HostAccountArgs();
     }
 
-    public sealed class HostAccountState : Pulumi.ResourceArgs
+    public sealed class HostAccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hosting account ID.
@@ -219,23 +254,53 @@ namespace Pulumi.AliCloud.BastionHost
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
+        [Input("passPhrase")]
+        private Input<string>? _passPhrase;
+
         /// <summary>
         /// The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
         /// </summary>
-        [Input("passPhrase")]
-        public Input<string>? PassPhrase { get; set; }
+        public Input<string>? PassPhrase
+        {
+            get => _passPhrase;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passPhrase = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("password")]
+        private Input<string>? _password;
 
         /// <summary>
         /// The password of the host account.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
 
         /// <summary>
         /// The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The protocol used by the host account. Valid values: SSH,RDP
@@ -246,5 +311,6 @@ namespace Pulumi.AliCloud.BastionHost
         public HostAccountState()
         {
         }
+        public static new HostAccountState Empty => new HostAccountState();
     }
 }

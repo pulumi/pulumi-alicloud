@@ -5,23 +5,61 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./customImage";
-export * from "./firewallRule";
-export * from "./getImages";
-export * from "./getInstances";
-export * from "./getServerCustomImages";
-export * from "./getServerDisks";
-export * from "./getServerFirewallRules";
-export * from "./getServerPlans";
-export * from "./getServerSnapshots";
-export * from "./instance";
-export * from "./snapshot";
+export { CustomImageArgs, CustomImageState } from "./customImage";
+export type CustomImage = import("./customImage").CustomImage;
+export const CustomImage: typeof import("./customImage").CustomImage = null as any;
+utilities.lazyLoad(exports, ["CustomImage"], () => require("./customImage"));
 
-// Import resources to register:
-import { CustomImage } from "./customImage";
-import { FirewallRule } from "./firewallRule";
-import { Instance } from "./instance";
-import { Snapshot } from "./snapshot";
+export { FirewallRuleArgs, FirewallRuleState } from "./firewallRule";
+export type FirewallRule = import("./firewallRule").FirewallRule;
+export const FirewallRule: typeof import("./firewallRule").FirewallRule = null as any;
+utilities.lazyLoad(exports, ["FirewallRule"], () => require("./firewallRule"));
+
+export { GetImagesArgs, GetImagesResult, GetImagesOutputArgs } from "./getImages";
+export const getImages: typeof import("./getImages").getImages = null as any;
+export const getImagesOutput: typeof import("./getImages").getImagesOutput = null as any;
+utilities.lazyLoad(exports, ["getImages","getImagesOutput"], () => require("./getImages"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetServerCustomImagesArgs, GetServerCustomImagesResult, GetServerCustomImagesOutputArgs } from "./getServerCustomImages";
+export const getServerCustomImages: typeof import("./getServerCustomImages").getServerCustomImages = null as any;
+export const getServerCustomImagesOutput: typeof import("./getServerCustomImages").getServerCustomImagesOutput = null as any;
+utilities.lazyLoad(exports, ["getServerCustomImages","getServerCustomImagesOutput"], () => require("./getServerCustomImages"));
+
+export { GetServerDisksArgs, GetServerDisksResult, GetServerDisksOutputArgs } from "./getServerDisks";
+export const getServerDisks: typeof import("./getServerDisks").getServerDisks = null as any;
+export const getServerDisksOutput: typeof import("./getServerDisks").getServerDisksOutput = null as any;
+utilities.lazyLoad(exports, ["getServerDisks","getServerDisksOutput"], () => require("./getServerDisks"));
+
+export { GetServerFirewallRulesArgs, GetServerFirewallRulesResult, GetServerFirewallRulesOutputArgs } from "./getServerFirewallRules";
+export const getServerFirewallRules: typeof import("./getServerFirewallRules").getServerFirewallRules = null as any;
+export const getServerFirewallRulesOutput: typeof import("./getServerFirewallRules").getServerFirewallRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getServerFirewallRules","getServerFirewallRulesOutput"], () => require("./getServerFirewallRules"));
+
+export { GetServerPlansArgs, GetServerPlansResult, GetServerPlansOutputArgs } from "./getServerPlans";
+export const getServerPlans: typeof import("./getServerPlans").getServerPlans = null as any;
+export const getServerPlansOutput: typeof import("./getServerPlans").getServerPlansOutput = null as any;
+utilities.lazyLoad(exports, ["getServerPlans","getServerPlansOutput"], () => require("./getServerPlans"));
+
+export { GetServerSnapshotsArgs, GetServerSnapshotsResult, GetServerSnapshotsOutputArgs } from "./getServerSnapshots";
+export const getServerSnapshots: typeof import("./getServerSnapshots").getServerSnapshots = null as any;
+export const getServerSnapshotsOutput: typeof import("./getServerSnapshots").getServerSnapshotsOutput = null as any;
+utilities.lazyLoad(exports, ["getServerSnapshots","getServerSnapshotsOutput"], () => require("./getServerSnapshots"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { SnapshotArgs, SnapshotState } from "./snapshot";
+export type Snapshot = import("./snapshot").Snapshot;
+export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
+utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
+
 
 const _module = {
     version: utilities.getVersion(),

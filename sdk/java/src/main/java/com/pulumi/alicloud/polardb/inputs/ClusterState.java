@@ -84,14 +84,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only &#34;127.0.0.1&#34; is configured, it will also be an empty string.
+     * (Available in 1.81.0+) PolarDB cluster connection string.
      * 
      */
     @Import(name="connectionString")
     private @Nullable Output<String> connectionString;
 
     /**
-     * @return (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only &#34;127.0.0.1&#34; is configured, it will also be an empty string.
+     * @return (Available in 1.81.0+) PolarDB cluster connection string.
      * 
      */
     public Optional<Output<String>> connectionString() {
@@ -99,16 +99,16 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
      * 
      */
     @Import(name="creationCategory")
     private @Nullable Output<String> creationCategory;
 
     /**
-     * @return The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     * @return The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
      * 
      */
     public Optional<Output<String>> creationCategory() {
@@ -364,6 +364,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available in 1.196.0+) PolarDB cluster connection port.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) PolarDB cluster connection port.
+     * 
+     */
+    public Optional<Output<String>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
+    /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      * 
      */
@@ -411,14 +426,16 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+     * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
      * 
      */
     @Import(name="securityIps")
     private @Nullable Output<List<String>> securityIps;
 
     /**
-     * @return List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * @return This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+     * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
      * 
      */
     public Optional<Output<List<String>>> securityIps() {
@@ -492,6 +509,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The id of the VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
      * The virtual switch ID to launch DB instances in one VPC.
      * &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
      * 
@@ -548,6 +580,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.parameters = $.parameters;
         this.payType = $.payType;
         this.period = $.period;
+        this.port = $.port;
         this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
         this.securityGroupIds = $.securityGroupIds;
@@ -556,6 +589,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.subCategory = $.subCategory;
         this.tags = $.tags;
         this.tdeStatus = $.tdeStatus;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
     }
@@ -665,7 +699,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only &#34;127.0.0.1&#34; is configured, it will also be an empty string.
+         * @param connectionString (Available in 1.81.0+) PolarDB cluster connection string.
          * 
          * @return builder
          * 
@@ -676,7 +710,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only &#34;127.0.0.1&#34; is configured, it will also be an empty string.
+         * @param connectionString (Available in 1.81.0+) PolarDB cluster connection string.
          * 
          * @return builder
          * 
@@ -686,8 +720,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creationCategory The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-         * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+         * @param creationCategory The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+         * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
          * 
          * @return builder
          * 
@@ -698,8 +732,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creationCategory The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-         * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+         * @param creationCategory The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+         * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
          * 
          * @return builder
          * 
@@ -1069,6 +1103,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param port (Available in 1.196.0+) PolarDB cluster connection port.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<String> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port (Available in 1.196.0+) PolarDB cluster connection port.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(String port) {
+            return port(Output.of(port));
+        }
+
+        /**
          * @param renewalStatus Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
          * 
          * @return builder
@@ -1145,7 +1200,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityIps List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+         * @param securityIps This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+         * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
          * 
          * @return builder
          * 
@@ -1156,7 +1212,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityIps List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+         * @param securityIps This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+         * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
          * 
          * @return builder
          * 
@@ -1166,7 +1223,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityIps List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+         * @param securityIps This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+         * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
          * 
          * @return builder
          * 
@@ -1263,6 +1321,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tdeStatus(String tdeStatus) {
             return tdeStatus(Output.of(tdeStatus));
+        }
+
+        /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         /**

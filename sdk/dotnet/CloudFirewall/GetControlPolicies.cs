@@ -23,26 +23,24 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.CloudFirewall.GetControlPolicies.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.CloudFirewall.GetControlPolicies.InvokeAsync(new AliCloud.CloudFirewall.GetControlPoliciesArgs
-        ///         {
-        ///             Direction = "in",
-        ///         }));
-        ///     }
+        ///         Direction = "in",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetControlPoliciesResult> InvokeAsync(GetControlPoliciesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetControlPoliciesResult>("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetControlPoliciesResult>("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
@@ -56,30 +54,28 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.CloudFirewall.GetControlPolicies.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.CloudFirewall.GetControlPolicies.InvokeAsync(new AliCloud.CloudFirewall.GetControlPoliciesArgs
-        ///         {
-        ///             Direction = "in",
-        ///         }));
-        ///     }
+        ///         Direction = "in",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetControlPoliciesResult> Invoke(GetControlPoliciesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetControlPoliciesResult>("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetControlPoliciesResult>("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetControlPoliciesArgs : Pulumi.InvokeArgs
+    public sealed class GetControlPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -147,9 +143,10 @@ namespace Pulumi.AliCloud.CloudFirewall
         public GetControlPoliciesArgs()
         {
         }
+        public static new GetControlPoliciesArgs Empty => new GetControlPoliciesArgs();
     }
 
-    public sealed class GetControlPoliciesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetControlPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -217,6 +214,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public GetControlPoliciesInvokeArgs()
         {
         }
+        public static new GetControlPoliciesInvokeArgs Empty => new GetControlPoliciesInvokeArgs();
     }
 
 

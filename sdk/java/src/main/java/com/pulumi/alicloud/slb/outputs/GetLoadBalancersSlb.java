@@ -71,7 +71,7 @@ public final class GetLoadBalancersSlb {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -189,7 +189,7 @@ public final class GetLoadBalancersSlb {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.alb.inputs.GetLoadBalancersArgs;
+     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

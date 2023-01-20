@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Hbr.GetEcsBackupPlans.InvokeAsync(new AliCloud.Hbr.GetEcsBackupPlansArgs
-        ///         {
-        ///             NameRegex = "plan-name",
-        ///         }));
-        ///         this.HbrEcsBackupPlanId = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
-        ///     }
+        ///         NameRegex = "plan-name",
+        ///     });
         /// 
-        ///     [Output("hbrEcsBackupPlanId")]
-        ///     public Output&lt;string&gt; HbrEcsBackupPlanId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrEcsBackupPlanId"] = ids.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsBackupPlansResult> InvokeAsync(GetEcsBackupPlansArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsBackupPlansResult>("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args ?? new GetEcsBackupPlansArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsBackupPlansResult>("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args ?? new GetEcsBackupPlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr EcsBackupPlans of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Hbr.GetEcsBackupPlans.InvokeAsync(new AliCloud.Hbr.GetEcsBackupPlansArgs
-        ///         {
-        ///             NameRegex = "plan-name",
-        ///         }));
-        ///         this.HbrEcsBackupPlanId = ids.Apply(ids =&gt; ids.Plans?[0]?.Id);
-        ///     }
+        ///         NameRegex = "plan-name",
+        ///     });
         /// 
-        ///     [Output("hbrEcsBackupPlanId")]
-        ///     public Output&lt;string&gt; HbrEcsBackupPlanId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrEcsBackupPlanId"] = ids.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsBackupPlansResult> Invoke(GetEcsBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsBackupPlansResult>("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args ?? new GetEcsBackupPlansInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsBackupPlansResult>("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args ?? new GetEcsBackupPlansInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsBackupPlansArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsBackupPlansArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -123,9 +121,10 @@ namespace Pulumi.AliCloud.Hbr
         public GetEcsBackupPlansArgs()
         {
         }
+        public static new GetEcsBackupPlansArgs Empty => new GetEcsBackupPlansArgs();
     }
 
-    public sealed class GetEcsBackupPlansInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsBackupPlansInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -163,6 +162,7 @@ namespace Pulumi.AliCloud.Hbr
         public GetEcsBackupPlansInvokeArgs()
         {
         }
+        public static new GetEcsBackupPlansInvokeArgs Empty => new GetEcsBackupPlansInvokeArgs();
     }
 
 

@@ -29,14 +29,14 @@ import * as utilities from "../utilities";
  * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {});
  * const vpc = new alicloud.cen.InstanceAttachment("vpc", {
  *     instanceId: exampleInstance.id,
- *     childInstanceId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?[0]?.id),
+ *     childInstanceId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?.[0]?.id),
  *     childInstanceType: "VPC",
- *     childInstanceRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?[0]?.regionId),
+ *     childInstanceRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?.[0]?.regionId),
  * });
  * const _this = new alicloud.cen.RouteService("this", {
- *     accessRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?[0]?.regionId),
- *     hostRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?[0]?.regionId),
- *     hostVpcId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?[0]?.id),
+ *     accessRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?.[0]?.regionId),
+ *     hostRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?.[0]?.regionId),
+ *     hostVpcId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?.[0]?.id),
  *     cenId: vpc.instanceId,
  *     host: "100.118.28.52/32",
  * });

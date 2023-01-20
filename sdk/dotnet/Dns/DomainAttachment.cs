@@ -13,25 +13,23 @@ namespace Pulumi.AliCloud.Dns
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dns = new AliCloud.Dns.DomainAttachment("dns", new()
     ///     {
-    ///         var dns = new AliCloud.Dns.DomainAttachment("dns", new AliCloud.Dns.DomainAttachmentArgs
+    ///         DomainNames = new[]
     ///         {
-    ///             DomainNames = 
-    ///             {
-    ///                 "test111.abc",
-    ///                 "test222.abc",
-    ///             },
-    ///             InstanceId = "dns-cn-mp91lyq9xxxx",
-    ///         });
-    ///     }
+    ///             "test111.abc",
+    ///             "test222.abc",
+    ///         },
+    ///         InstanceId = "dns-cn-mp91lyq9xxxx",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/domainAttachment:DomainAttachment")]
-    public partial class DomainAttachment : Pulumi.CustomResource
+    public partial class DomainAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The domain names bound to the DNS instance.
@@ -101,7 +99,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class DomainAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class DomainAttachmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("domainNames", required: true)]
         private InputList<string>? _domainNames;
@@ -124,9 +122,10 @@ namespace Pulumi.AliCloud.Dns
         public DomainAttachmentArgs()
         {
         }
+        public static new DomainAttachmentArgs Empty => new DomainAttachmentArgs();
     }
 
-    public sealed class DomainAttachmentState : Pulumi.ResourceArgs
+    public sealed class DomainAttachmentState : global::Pulumi.ResourceArgs
     {
         [Input("domainNames")]
         private InputList<string>? _domainNames;
@@ -149,5 +148,6 @@ namespace Pulumi.AliCloud.Dns
         public DomainAttachmentState()
         {
         }
+        public static new DomainAttachmentState Empty => new DomainAttachmentState();
     }
 }

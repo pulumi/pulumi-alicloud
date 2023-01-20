@@ -5,13 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./anycastEipAddress";
-export * from "./anycastEipAddressAttachment";
-export * from "./getAnycastEipAddresses";
+export { AnycastEipAddressArgs, AnycastEipAddressState } from "./anycastEipAddress";
+export type AnycastEipAddress = import("./anycastEipAddress").AnycastEipAddress;
+export const AnycastEipAddress: typeof import("./anycastEipAddress").AnycastEipAddress = null as any;
+utilities.lazyLoad(exports, ["AnycastEipAddress"], () => require("./anycastEipAddress"));
 
-// Import resources to register:
-import { AnycastEipAddress } from "./anycastEipAddress";
-import { AnycastEipAddressAttachment } from "./anycastEipAddressAttachment";
+export { AnycastEipAddressAttachmentArgs, AnycastEipAddressAttachmentState } from "./anycastEipAddressAttachment";
+export type AnycastEipAddressAttachment = import("./anycastEipAddressAttachment").AnycastEipAddressAttachment;
+export const AnycastEipAddressAttachment: typeof import("./anycastEipAddressAttachment").AnycastEipAddressAttachment = null as any;
+utilities.lazyLoad(exports, ["AnycastEipAddressAttachment"], () => require("./anycastEipAddressAttachment"));
+
+export { GetAnycastEipAddressesArgs, GetAnycastEipAddressesResult, GetAnycastEipAddressesOutputArgs } from "./getAnycastEipAddresses";
+export const getAnycastEipAddresses: typeof import("./getAnycastEipAddresses").getAnycastEipAddresses = null as any;
+export const getAnycastEipAddressesOutput: typeof import("./getAnycastEipAddresses").getAnycastEipAddressesOutput = null as any;
+utilities.lazyLoad(exports, ["getAnycastEipAddresses","getAnycastEipAddressesOutput"], () => require("./getAnycastEipAddresses"));
+
 
 const _module = {
     version: utilities.getVersion(),

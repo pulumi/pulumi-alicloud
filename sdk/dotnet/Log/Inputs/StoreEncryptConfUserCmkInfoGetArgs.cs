@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log.Inputs
 {
 
-    public sealed class StoreEncryptConfUserCmkInfoGetArgs : Pulumi.ResourceArgs
+    public sealed class StoreEncryptConfUserCmkInfoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// role arn.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Log.Inputs
         public StoreEncryptConfUserCmkInfoGetArgs()
         {
         }
+        public static new StoreEncryptConfUserCmkInfoGetArgs Empty => new StoreEncryptConfUserCmkInfoGetArgs();
     }
 }

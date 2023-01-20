@@ -57,6 +57,13 @@ func NewDedicatedHostAccount(ctx *pulumi.Context,
 	if args.DedicatedHostId == nil {
 		return nil, errors.New("invalid value for required argument 'DedicatedHostId'")
 	}
+	if args.AccountPassword != nil {
+		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accountPassword",
+	})
+	opts = append(opts, secrets)
 	var resource DedicatedHostAccount
 	err := ctx.RegisterResource("alicloud:cddc/dedicatedHostAccount:DedicatedHostAccount", name, args, &resource, opts...)
 	if err != nil {

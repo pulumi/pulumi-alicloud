@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,26 +17,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const kmsSecretsDs = pulumi.output(alicloud.kms.getSecrets({
+ * const kmsSecretsDs = alicloud.kms.getSecrets({
  *     fetchTags: true,
  *     nameRegex: "name_regex",
  *     tags: {
  *         "k-aa": "v-aa",
  *         "k-bb": "v-bb",
  *     },
- * }));
- *
- * export const firstSecretId = kmsSecretsDs.secrets[0].id;
+ * });
+ * export const firstSecretId = kmsSecretsDs.then(kmsSecretsDs => kmsSecretsDs.secrets?.[0]?.id);
  * ```
  */
 export function getSecrets(args?: GetSecretsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getSecrets:getSecrets", {
         "enableDetails": args.enableDetails,
         "fetchTags": args.fetchTags,
@@ -108,9 +104,30 @@ export interface GetSecretsResult {
      */
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in v1.86.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const kmsSecretsDs = alicloud.kms.getSecrets({
+ *     fetchTags: true,
+ *     nameRegex: "name_regex",
+ *     tags: {
+ *         "k-aa": "v-aa",
+ *         "k-bb": "v-bb",
+ *     },
+ * });
+ * export const firstSecretId = kmsSecretsDs.then(kmsSecretsDs => kmsSecretsDs.secrets?.[0]?.id);
+ * ```
+ */
 export function getSecretsOutput(args?: GetSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretsResult> {
-    return pulumi.output(args).apply(a => getSecrets(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecrets(a, opts))
 }
 
 /**

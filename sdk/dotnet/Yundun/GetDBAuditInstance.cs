@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.Yundun
     public static class GetDBAuditInstance
     {
         public static Task<GetDBAuditInstanceResult> InvokeAsync(GetDBAuditInstanceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? new GetDBAuditInstanceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? new GetDBAuditInstanceArgs(), options.WithDefaults());
 
         public static Output<GetDBAuditInstanceResult> Invoke(GetDBAuditInstanceInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? new GetDBAuditInstanceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? new GetDBAuditInstanceInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDBAuditInstanceArgs : Pulumi.InvokeArgs
+    public sealed class GetDBAuditInstanceArgs : global::Pulumi.InvokeArgs
     {
         [Input("descriptionRegex")]
         public string? DescriptionRegex { get; set; }
@@ -46,9 +46,10 @@ namespace Pulumi.AliCloud.Yundun
         public GetDBAuditInstanceArgs()
         {
         }
+        public static new GetDBAuditInstanceArgs Empty => new GetDBAuditInstanceArgs();
     }
 
-    public sealed class GetDBAuditInstanceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDBAuditInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("descriptionRegex")]
         public Input<string>? DescriptionRegex { get; set; }
@@ -75,6 +76,7 @@ namespace Pulumi.AliCloud.Yundun
         public GetDBAuditInstanceInvokeArgs()
         {
         }
+        public static new GetDBAuditInstanceInvokeArgs Empty => new GetDBAuditInstanceInvokeArgs();
     }
 
 

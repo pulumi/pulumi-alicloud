@@ -10,22 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ros.Inputs
 {
 
-    public sealed class StackInstanceParameterOverrideArgs : Pulumi.ResourceArgs
+    public sealed class StackInstanceParameterOverrideArgs : global::Pulumi.ResourceArgs
     {
+        [Input("parameterKey")]
+        private Input<string>? _parameterKey;
+
         /// <summary>
         /// The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
         /// </summary>
-        [Input("parameterKey")]
-        public Input<string>? ParameterKey { get; set; }
+        public Input<string>? ParameterKey
+        {
+            get => _parameterKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _parameterKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("parameterValue")]
+        private Input<string>? _parameterValue;
 
         /// <summary>
         /// The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
         /// </summary>
-        [Input("parameterValue")]
-        public Input<string>? ParameterValue { get; set; }
+        public Input<string>? ParameterValue
+        {
+            get => _parameterValue;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _parameterValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public StackInstanceParameterOverrideArgs()
         {
         }
+        public static new StackInstanceParameterOverrideArgs Empty => new StackInstanceParameterOverrideArgs();
     }
 }

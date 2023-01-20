@@ -23,132 +23,135 @@ namespace Pulumi.AliCloud.Cen
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         // Create a cen Route map resource and use it.
-    ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///         });
-    ///         var vpc00Region = new AliCloud.Provider("vpc00Region", new AliCloud.ProviderArgs
-    ///         {
-    ///             Region = "cn-hangzhou",
-    ///         });
-    ///         var vpc01Region = new AliCloud.Provider("vpc01Region", new AliCloud.ProviderArgs
-    ///         {
-    ///             Region = "cn-shanghai",
-    ///         });
-    ///         var vpc00 = new AliCloud.Vpc.Network("vpc00", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Vpc00_region,
-    ///         });
-    ///         var vpc01 = new AliCloud.Vpc.Network("vpc01", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Vpc01_region,
-    ///         });
-    ///         var default00 = new AliCloud.Cen.InstanceAttachment("default00", new AliCloud.Cen.InstanceAttachmentArgs
-    ///         {
-    ///             InstanceId = defaultInstance.Id,
-    ///             ChildInstanceId = vpc00.Id,
-    ///             ChildInstanceType = "VPC",
-    ///             ChildInstanceRegionId = "cn-hangzhou",
-    ///         });
-    ///         var default01 = new AliCloud.Cen.InstanceAttachment("default01", new AliCloud.Cen.InstanceAttachmentArgs
-    ///         {
-    ///             InstanceId = defaultInstance.Id,
-    ///             ChildInstanceId = vpc01.Id,
-    ///             ChildInstanceType = "VPC",
-    ///             ChildInstanceRegionId = "cn-shanghai",
-    ///         });
-    ///         var defaultRouteMap = new AliCloud.Cen.RouteMap("defaultRouteMap", new AliCloud.Cen.RouteMapArgs
-    ///         {
-    ///             CenRegionId = "cn-hangzhou",
-    ///             CenId = alicloud_cen_instance.Cen.Id,
-    ///             Description = "test-desc",
-    ///             Priority = 1,
-    ///             TransmitDirection = "RegionIn",
-    ///             MapResult = "Permit",
-    ///             NextPriority = 1,
-    ///             SourceRegionIds = 
-    ///             {
-    ///                 "cn-hangzhou",
-    ///             },
-    ///             SourceInstanceIds = 
-    ///             {
-    ///                 vpc00.Id,
-    ///             },
-    ///             SourceInstanceIdsReverseMatch = false,
-    ///             DestinationInstanceIds = 
-    ///             {
-    ///                 vpc01.Id,
-    ///             },
-    ///             DestinationInstanceIdsReverseMatch = false,
-    ///             SourceRouteTableIds = 
-    ///             {
-    ///                 vpc00.RouteTableId,
-    ///             },
-    ///             DestinationRouteTableIds = 
-    ///             {
-    ///                 vpc01.RouteTableId,
-    ///             },
-    ///             SourceChildInstanceTypes = 
-    ///             {
-    ///                 "VPC",
-    ///             },
-    ///             DestinationChildInstanceTypes = 
-    ///             {
-    ///                 "VPC",
-    ///             },
-    ///             DestinationCidrBlocks = 
-    ///             {
-    ///                 vpc01.CidrBlock,
-    ///             },
-    ///             CidrMatchMode = "Include",
-    ///             RouteTypes = 
-    ///             {
-    ///                 "System",
-    ///             },
-    ///             MatchAsns = 
-    ///             {
-    ///                 "65501",
-    ///             },
-    ///             AsPathMatchMode = "Include",
-    ///             MatchCommunitySets = 
-    ///             {
-    ///                 "65501:1",
-    ///             },
-    ///             CommunityMatchMode = "Include",
-    ///             CommunityOperateMode = "Additive",
-    ///             OperateCommunitySets = 
-    ///             {
-    ///                 "65501:1",
-    ///             },
-    ///             Preference = 20,
-    ///             PrependAsPaths = 
-    ///             {
-    ///                 "65501",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 default00,
-    ///                 default01,
-    ///             },
-    ///         });
-    ///     }
+    ///     // Create a cen Route map resource and use it.
+    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance");
     /// 
-    /// }
+    ///     var vpc00Region = new AliCloud.Provider("vpc00Region", new()
+    ///     {
+    ///         Region = "cn-hangzhou",
+    ///     });
+    /// 
+    ///     var vpc01Region = new AliCloud.Provider("vpc01Region", new()
+    ///     {
+    ///         Region = "cn-shanghai",
+    ///     });
+    /// 
+    ///     var vpc00 = new AliCloud.Vpc.Network("vpc00", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Vpc00_region,
+    ///     });
+    /// 
+    ///     var vpc01 = new AliCloud.Vpc.Network("vpc01", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Vpc01_region,
+    ///     });
+    /// 
+    ///     var default00 = new AliCloud.Cen.InstanceAttachment("default00", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         ChildInstanceId = vpc00.Id,
+    ///         ChildInstanceType = "VPC",
+    ///         ChildInstanceRegionId = "cn-hangzhou",
+    ///     });
+    /// 
+    ///     var default01 = new AliCloud.Cen.InstanceAttachment("default01", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         ChildInstanceId = vpc01.Id,
+    ///         ChildInstanceType = "VPC",
+    ///         ChildInstanceRegionId = "cn-shanghai",
+    ///     });
+    /// 
+    ///     var defaultRouteMap = new AliCloud.Cen.RouteMap("defaultRouteMap", new()
+    ///     {
+    ///         CenRegionId = "cn-hangzhou",
+    ///         CenId = alicloud_cen_instance.Cen.Id,
+    ///         Description = "test-desc",
+    ///         Priority = 1,
+    ///         TransmitDirection = "RegionIn",
+    ///         MapResult = "Permit",
+    ///         NextPriority = 1,
+    ///         SourceRegionIds = new[]
+    ///         {
+    ///             "cn-hangzhou",
+    ///         },
+    ///         SourceInstanceIds = new[]
+    ///         {
+    ///             vpc00.Id,
+    ///         },
+    ///         SourceInstanceIdsReverseMatch = false,
+    ///         DestinationInstanceIds = new[]
+    ///         {
+    ///             vpc01.Id,
+    ///         },
+    ///         DestinationInstanceIdsReverseMatch = false,
+    ///         SourceRouteTableIds = new[]
+    ///         {
+    ///             vpc00.RouteTableId,
+    ///         },
+    ///         DestinationRouteTableIds = new[]
+    ///         {
+    ///             vpc01.RouteTableId,
+    ///         },
+    ///         SourceChildInstanceTypes = new[]
+    ///         {
+    ///             "VPC",
+    ///         },
+    ///         DestinationChildInstanceTypes = new[]
+    ///         {
+    ///             "VPC",
+    ///         },
+    ///         DestinationCidrBlocks = new[]
+    ///         {
+    ///             vpc01.CidrBlock,
+    ///         },
+    ///         CidrMatchMode = "Include",
+    ///         RouteTypes = new[]
+    ///         {
+    ///             "System",
+    ///         },
+    ///         MatchAsns = new[]
+    ///         {
+    ///             "65501",
+    ///         },
+    ///         AsPathMatchMode = "Include",
+    ///         MatchCommunitySets = new[]
+    ///         {
+    ///             "65501:1",
+    ///         },
+    ///         CommunityMatchMode = "Include",
+    ///         CommunityOperateMode = "Additive",
+    ///         OperateCommunitySets = new[]
+    ///         {
+    ///             "65501:1",
+    ///         },
+    ///         Preference = 20,
+    ///         PrependAsPaths = new[]
+    ///         {
+    ///             "65501",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             default00,
+    ///             default01,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -160,7 +163,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/routeMap:RouteMap")]
-    public partial class RouteMap : Pulumi.CustomResource
+    public partial class RouteMap : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
@@ -386,7 +389,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class RouteMapArgs : Pulumi.ResourceArgs
+    public sealed class RouteMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
@@ -637,9 +640,10 @@ namespace Pulumi.AliCloud.Cen
         public RouteMapArgs()
         {
         }
+        public static new RouteMapArgs Empty => new RouteMapArgs();
     }
 
-    public sealed class RouteMapState : Pulumi.ResourceArgs
+    public sealed class RouteMapState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
@@ -902,5 +906,6 @@ namespace Pulumi.AliCloud.Cen
         public RouteMapState()
         {
         }
+        public static new RouteMapState Empty => new RouteMapState();
     }
 }

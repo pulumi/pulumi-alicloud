@@ -41,6 +41,11 @@ public final class GetDdosBgpInstancesInstance {
      */
     private String name;
     /**
+     * @return Normal defend bandwidth of the instance. The unit is Gbps.
+     * 
+     */
+    private Integer normalBandwidth;
+    /**
      * @return A region of instance.
      * 
      */
@@ -95,6 +100,13 @@ public final class GetDdosBgpInstancesInstance {
         return this.name;
     }
     /**
+     * @return Normal defend bandwidth of the instance. The unit is Gbps.
+     * 
+     */
+    public Integer normalBandwidth() {
+        return this.normalBandwidth;
+    }
+    /**
      * @return A region of instance.
      * 
      */
@@ -124,6 +136,7 @@ public final class GetDdosBgpInstancesInstance {
         private Integer ipCount;
         private String ipType;
         private String name;
+        private Integer normalBandwidth;
         private String region;
         private String type;
         public Builder() {}
@@ -135,6 +148,7 @@ public final class GetDdosBgpInstancesInstance {
     	      this.ipCount = defaults.ipCount;
     	      this.ipType = defaults.ipType;
     	      this.name = defaults.name;
+    	      this.normalBandwidth = defaults.normalBandwidth;
     	      this.region = defaults.region;
     	      this.type = defaults.type;
         }
@@ -170,6 +184,11 @@ public final class GetDdosBgpInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder normalBandwidth(Integer normalBandwidth) {
+            this.normalBandwidth = Objects.requireNonNull(normalBandwidth);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
@@ -187,6 +206,7 @@ public final class GetDdosBgpInstancesInstance {
             o.ipCount = ipCount;
             o.ipType = ipType;
             o.name = name;
+            o.normalBandwidth = normalBandwidth;
             o.region = region;
             o.type = type;
             return o;

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class OpenApiImageCacheImageRegistryCredentialArgs : Pulumi.ResourceArgs
+    public sealed class OpenApiImageCacheImageRegistryCredentialArgs : global::Pulumi.ResourceArgs
     {
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public OpenApiImageCacheImageRegistryCredentialArgs()
         {
         }
+        public static new OpenApiImageCacheImageRegistryCredentialArgs Empty => new OpenApiImageCacheImageRegistryCredentialArgs();
     }
 }

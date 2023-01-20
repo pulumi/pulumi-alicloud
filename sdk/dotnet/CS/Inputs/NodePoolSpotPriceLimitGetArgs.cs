@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class NodePoolSpotPriceLimitGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolSpotPriceLimitGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Spot instance type.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public NodePoolSpotPriceLimitGetArgs()
         {
         }
+        public static new NodePoolSpotPriceLimitGetArgs Empty => new NodePoolSpotPriceLimitGetArgs();
     }
 }

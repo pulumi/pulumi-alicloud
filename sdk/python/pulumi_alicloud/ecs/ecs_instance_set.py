@@ -72,8 +72,6 @@ class EcsInstanceSetArgs:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
         :param pulumi.Input[bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
-               - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-               - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See the following `Block data_disks`.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
@@ -100,13 +98,8 @@ class EcsInstanceSetArgs:
         :param pulumi.Input[str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the instance belongs.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
-               - `Active`: Enable security enhancement strategy, it only works on system images.
-               - `Deactive`: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
-               - `NoSpot`: A regular Pay-As-You-Go instance.
-               - `SpotWithPriceLimit`: A price threshold for a spot instance.
-               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -295,8 +288,6 @@ class EcsInstanceSetArgs:
     def boot_check_os_with_assistant(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicate how to check instance ready to use.
-        - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-        - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         """
         return pulumi.get(self, "boot_check_os_with_assistant")
 
@@ -587,8 +578,6 @@ class EcsInstanceSetArgs:
     def security_enhancement_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The security enhancement strategy.
-        - `Active`: Enable security enhancement strategy, it only works on system images.
-        - `Deactive`: Disable security enhancement strategy, it works on all images.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
@@ -613,9 +602,6 @@ class EcsInstanceSetArgs:
     def spot_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
-        - `NoSpot`: A regular Pay-As-You-Go instance.
-        - `SpotWithPriceLimit`: A price threshold for a spot instance.
-        - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -801,8 +787,6 @@ class _EcsInstanceSetState:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
         :param pulumi.Input[bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
-               - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-               - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See the following `Block data_disks`.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
@@ -832,14 +816,9 @@ class _EcsInstanceSetState:
         :param pulumi.Input[str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the instance belongs.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
-               - `Active`: Enable security enhancement strategy, it only works on system images.
-               - `Deactive`: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group ids to associate with.
         :param pulumi.Input[float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
-               - `NoSpot`: A regular Pay-As-You-Go instance.
-               - `SpotWithPriceLimit`: A price threshold for a spot instance.
-               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -997,8 +976,6 @@ class _EcsInstanceSetState:
     def boot_check_os_with_assistant(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicate how to check instance ready to use.
-        - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-        - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         """
         return pulumi.get(self, "boot_check_os_with_assistant")
 
@@ -1325,8 +1302,6 @@ class _EcsInstanceSetState:
     def security_enhancement_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The security enhancement strategy.
-        - `Active`: Enable security enhancement strategy, it only works on system images.
-        - `Deactive`: Disable security enhancement strategy, it works on all images.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
@@ -1363,9 +1338,6 @@ class _EcsInstanceSetState:
     def spot_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
-        - `NoSpot`: A regular Pay-As-You-Go instance.
-        - `SpotWithPriceLimit`: A price threshold for a spot instance.
-        - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -1602,8 +1574,6 @@ class EcsInstanceSet(pulumi.CustomResource):
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
         :param pulumi.Input[bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
-               - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-               - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetDataDiskArgs']]]] data_disks: The list of data disks created with instance. See the following `Block data_disks`.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
@@ -1632,14 +1602,9 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the instance belongs.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
-               - `Active`: Enable security enhancement strategy, it only works on system images.
-               - `Deactive`: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group ids to associate with.
         :param pulumi.Input[float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
-               - `NoSpot`: A regular Pay-As-You-Go instance.
-               - `SpotWithPriceLimit`: A price threshold for a spot instance.
-               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -1802,7 +1767,7 @@ class EcsInstanceSet(pulumi.CustomResource):
             __props__.__dict__["launch_template_name"] = launch_template_name
             __props__.__dict__["launch_template_version"] = launch_template_version
             __props__.__dict__["network_interfaces"] = network_interfaces
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["password_inherit"] = password_inherit
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
@@ -1825,6 +1790,8 @@ class EcsInstanceSet(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["instance_ids"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(EcsInstanceSet, __self__).__init__(
             'alicloud:ecs/ecsInstanceSet:EcsInstanceSet',
             resource_name,
@@ -1894,8 +1861,6 @@ class EcsInstanceSet(pulumi.CustomResource):
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
         :param pulumi.Input[bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
-               - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-               - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsInstanceSetDataDiskArgs']]]] data_disks: The list of data disks created with instance. See the following `Block data_disks`.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether to enable release protection for the instance.
@@ -1925,14 +1890,9 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the instance belongs.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
-               - `Active`: Enable security enhancement strategy, it only works on system images.
-               - `Deactive`: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group ids to associate with.
         :param pulumi.Input[float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
-               - `NoSpot`: A regular Pay-As-You-Go instance.
-               - `SpotWithPriceLimit`: A price threshold for a spot instance.
-               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -2034,8 +1994,6 @@ class EcsInstanceSet(pulumi.CustomResource):
     def boot_check_os_with_assistant(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicate how to check instance ready to use.
-        - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-        - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `image_id` has built-in Ecs assistant. Most of the public images have assistant installed already.
         """
         return pulumi.get(self, "boot_check_os_with_assistant")
 
@@ -2254,8 +2212,6 @@ class EcsInstanceSet(pulumi.CustomResource):
     def security_enhancement_strategy(self) -> pulumi.Output[Optional[str]]:
         """
         The security enhancement strategy.
-        - `Active`: Enable security enhancement strategy, it only works on system images.
-        - `Deactive`: Disable security enhancement strategy, it works on all images.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
@@ -2280,9 +2236,6 @@ class EcsInstanceSet(pulumi.CustomResource):
     def spot_strategy(self) -> pulumi.Output[str]:
         """
         The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
-        - `NoSpot`: A regular Pay-As-You-Go instance.
-        - `SpotWithPriceLimit`: A price threshold for a spot instance.
-        - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         """
         return pulumi.get(self, "spot_strategy")
 

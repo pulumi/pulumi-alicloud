@@ -19,23 +19,21 @@ namespace Pulumi.AliCloud
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.MscSubContract("default", new()
     ///     {
-    ///         var @default = new AliCloud.MscSubContract("default", new AliCloud.MscSubContractArgs
-    ///         {
-    ///             ContactName = example_value,
-    ///             Position = "CEO",
-    ///             Email = "123@163.com",
-    ///             Mobile = "153xxxxx906",
-    ///         });
-    ///     }
+    ///         ContactName = example_value,
+    ///         Position = "CEO",
+    ///         Email = "123@163.com",
+    ///         Mobile = "153xxxxx906",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:index/mscSubContract:MscSubContract")]
-    public partial class MscSubContract : Pulumi.CustomResource
+    public partial class MscSubContract : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
@@ -117,7 +115,7 @@ namespace Pulumi.AliCloud
         }
     }
 
-    public sealed class MscSubContractArgs : Pulumi.ResourceArgs
+    public sealed class MscSubContractArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
@@ -146,9 +144,10 @@ namespace Pulumi.AliCloud
         public MscSubContractArgs()
         {
         }
+        public static new MscSubContractArgs Empty => new MscSubContractArgs();
     }
 
-    public sealed class MscSubContractState : Pulumi.ResourceArgs
+    public sealed class MscSubContractState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
@@ -177,5 +176,6 @@ namespace Pulumi.AliCloud
         public MscSubContractState()
         {
         }
+        public static new MscSubContractState Empty => new MscSubContractState();
     }
 }

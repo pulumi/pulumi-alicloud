@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/sharedTarget:SharedTarget")]
-    public partial class SharedTarget : Pulumi.CustomResource
+    public partial class SharedTarget : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The resource share ID of resource manager.
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class SharedTargetArgs : Pulumi.ResourceArgs
+    public sealed class SharedTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource share ID of resource manager.
@@ -106,9 +106,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public SharedTargetArgs()
         {
         }
+        public static new SharedTargetArgs Empty => new SharedTargetArgs();
     }
 
-    public sealed class SharedTargetState : Pulumi.ResourceArgs
+    public sealed class SharedTargetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource share ID of resource manager.
@@ -131,5 +132,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public SharedTargetState()
         {
         }
+        public static new SharedTargetState Empty => new SharedTargetState();
     }
 }

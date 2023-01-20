@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const default = alicloud.cloudstoragegateway.getStocks({
  *     gatewayClass: "Advanced",
  * });
- * export const zoneId = _default.then(_default => _default.stocks?[0]?.zoneId);
+ * export const zoneId = _default.then(_default => _default.stocks?.[0]?.zoneId);
  * ```
  */
 export function getStocks(args?: GetStocksArgs, opts?: pulumi.InvokeOptions): Promise<GetStocksResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudstoragegateway/getStocks:getStocks", {
         "gatewayClass": args.gatewayClass,
         "outputFile": args.outputFile,
@@ -60,9 +58,27 @@ export interface GetStocksResult {
     readonly outputFile?: string;
     readonly stocks: outputs.cloudstoragegateway.GetStocksStock[];
 }
-
+/**
+ * This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.144.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.cloudstoragegateway.getStocks({
+ *     gatewayClass: "Advanced",
+ * });
+ * export const zoneId = _default.then(_default => _default.stocks?.[0]?.zoneId);
+ * ```
+ */
 export function getStocksOutput(args?: GetStocksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStocksResult> {
-    return pulumi.output(args).apply(a => getStocks(a, opts))
+    return pulumi.output(args).apply((a: any) => getStocks(a, opts))
 }
 
 /**

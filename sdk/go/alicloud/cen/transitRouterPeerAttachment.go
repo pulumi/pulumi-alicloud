@@ -24,8 +24,8 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/providers"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -38,14 +38,14 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := providers.Newalicloud(ctx, "us", &providers.alicloudArgs{
-//				Region: "us-east-1",
+//			_, err := alicloud.NewProvider(ctx, "us", &alicloud.ProviderArgs{
+//				Region: pulumi.String("us-east-1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = providers.Newalicloud(ctx, "cn", &providers.alicloudArgs{
-//				Region: "cn-hangzhou",
+//			_, err = alicloud.NewProvider(ctx, "cn", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
 //			})
 //			if err != nil {
 //				return err

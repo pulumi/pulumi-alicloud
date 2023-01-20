@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,16 +20,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.dts.getSynchronizationJobs({});
- * export const dtsSynchronizationJobId1 = ids.then(ids => ids.jobs?[0]?.id);
+ * export const dtsSynchronizationJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
  * ```
  */
 export function getSynchronizationJobs(args?: GetSynchronizationJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetSynchronizationJobsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -73,9 +71,25 @@ export interface GetSynchronizationJobsResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.138.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dts.getSynchronizationJobs({});
+ * export const dtsSynchronizationJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
+ * ```
+ */
 export function getSynchronizationJobsOutput(args?: GetSynchronizationJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSynchronizationJobsResult> {
-    return pulumi.output(args).apply(a => getSynchronizationJobs(a, opts))
+    return pulumi.output(args).apply((a: any) => getSynchronizationJobs(a, opts))
 }
 
 /**

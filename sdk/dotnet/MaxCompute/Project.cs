@@ -10,67 +10,96 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MaxCompute
 {
     /// <summary>
-    /// The project is the basic unit of operation in maxcompute. It is similar to the concept of Database or Schema in traditional databases, and sets the boundary for maxcompute multi-user isolation and access control. [Refer to details](https://www.alibabacloud.com/help/doc-detail/27818.html).
+    /// Provides a Max Compute Project resource.
     /// 
-    /// -&gt;**NOTE:** Available in 1.77.0+.
+    /// For information about Max Compute Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/473237.html).
+    /// 
+    /// &gt; **NOTE:** Available in v1.77.0+.
     /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.MaxCompute.Project("default", new()
     ///     {
-    ///         var example = new AliCloud.MaxCompute.Project("example", new AliCloud.MaxCompute.ProjectArgs
-    ///         {
-    ///             OrderType = "PayAsYouGo",
-    ///             ProjectName = "tf_maxcompute_project",
-    ///             SpecificationType = "OdpsStandard",
-    ///         });
-    ///     }
+    ///         Comment = "test_for_terraform",
+    ///         DefaultQuota = "默认后付费Quota",
+    ///         ProductType = "PAYASYOUGO",
+    ///         ProjectName = "test_create_spec_one",
+    ///     });
     /// 
-    /// }
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// MaxCompute project can be imported using the *name* or ID, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import alicloud:maxcompute/project:Project example tf_maxcompute_project
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:maxcompute/project:Project")]
-    public partial class Project : Pulumi.CustomResource
+    public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// It has been deprecated from provider version 1.110.0 and `project_name` instead.
+        /// Comments of project
         /// </summary>
-        [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        [Output("comment")]
+        public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// The type of payment, only `PayAsYouGo` supported currently.
+        /// Default Computing Resource Group
         /// </summary>
-        [Output("orderType")]
-        public Output<string> OrderType { get; private set; } = null!;
+        [Output("defaultQuota")]
+        public Output<string?> DefaultQuota { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the maxcompute project.
+        /// IP whitelistSee the following `Block IpWhiteList`.
+        /// </summary>
+        [Output("ipWhiteList")]
+        public Output<Outputs.ProjectIpWhiteList?> IpWhiteList { get; private set; } = null!;
+
+        /// <summary>
+        /// Project owner
+        /// </summary>
+        [Output("owner")]
+        public Output<string> Owner { get; private set; } = null!;
+
+        /// <summary>
+        /// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+        /// </summary>
+        [Output("productType")]
+        public Output<string?> ProductType { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the project
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of resource Specification, only `OdpsStandard` supported currently.
+        /// Project base attributesSee the following `Block Properties`.
         /// </summary>
-        [Output("specificationType")]
-        public Output<string> SpecificationType { get; private set; } = null!;
+        [Output("properties")]
+        public Output<Outputs.ProjectProperties> Properties { get; private set; } = null!;
+
+        /// <summary>
+        /// Security-related attributesSee the following `Block SecurityProperties`.
+        /// </summary>
+        [Output("securityProperties")]
+        public Output<Outputs.ProjectSecurityProperties> SecurityProperties { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the resource
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Life cycle type.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -116,65 +145,121 @@ namespace Pulumi.AliCloud.MaxCompute
         }
     }
 
-    public sealed class ProjectArgs : Pulumi.ResourceArgs
+    public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// It has been deprecated from provider version 1.110.0 and `project_name` instead.
+        /// Comments of project
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The type of payment, only `PayAsYouGo` supported currently.
+        /// Default Computing Resource Group
         /// </summary>
-        [Input("orderType", required: true)]
-        public Input<string> OrderType { get; set; } = null!;
+        [Input("defaultQuota")]
+        public Input<string>? DefaultQuota { get; set; }
 
         /// <summary>
-        /// The name of the maxcompute project.
+        /// IP whitelistSee the following `Block IpWhiteList`.
         /// </summary>
-        [Input("projectName")]
-        public Input<string>? ProjectName { get; set; }
+        [Input("ipWhiteList")]
+        public Input<Inputs.ProjectIpWhiteListArgs>? IpWhiteList { get; set; }
 
         /// <summary>
-        /// The type of resource Specification, only `OdpsStandard` supported currently.
+        /// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
         /// </summary>
-        [Input("specificationType", required: true)]
-        public Input<string> SpecificationType { get; set; } = null!;
+        [Input("productType")]
+        public Input<string>? ProductType { get; set; }
+
+        /// <summary>
+        /// The name of the project
+        /// </summary>
+        [Input("projectName", required: true)]
+        public Input<string> ProjectName { get; set; } = null!;
+
+        /// <summary>
+        /// Project base attributesSee the following `Block Properties`.
+        /// </summary>
+        [Input("properties")]
+        public Input<Inputs.ProjectPropertiesArgs>? Properties { get; set; }
+
+        /// <summary>
+        /// Security-related attributesSee the following `Block SecurityProperties`.
+        /// </summary>
+        [Input("securityProperties")]
+        public Input<Inputs.ProjectSecurityPropertiesArgs>? SecurityProperties { get; set; }
 
         public ProjectArgs()
         {
         }
+        public static new ProjectArgs Empty => new ProjectArgs();
     }
 
-    public sealed class ProjectState : Pulumi.ResourceArgs
+    public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// It has been deprecated from provider version 1.110.0 and `project_name` instead.
+        /// Comments of project
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The type of payment, only `PayAsYouGo` supported currently.
+        /// Default Computing Resource Group
         /// </summary>
-        [Input("orderType")]
-        public Input<string>? OrderType { get; set; }
+        [Input("defaultQuota")]
+        public Input<string>? DefaultQuota { get; set; }
 
         /// <summary>
-        /// The name of the maxcompute project.
+        /// IP whitelistSee the following `Block IpWhiteList`.
+        /// </summary>
+        [Input("ipWhiteList")]
+        public Input<Inputs.ProjectIpWhiteListGetArgs>? IpWhiteList { get; set; }
+
+        /// <summary>
+        /// Project owner
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+        /// </summary>
+        [Input("productType")]
+        public Input<string>? ProductType { get; set; }
+
+        /// <summary>
+        /// The name of the project
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// The type of resource Specification, only `OdpsStandard` supported currently.
+        /// Project base attributesSee the following `Block Properties`.
         /// </summary>
-        [Input("specificationType")]
-        public Input<string>? SpecificationType { get; set; }
+        [Input("properties")]
+        public Input<Inputs.ProjectPropertiesGetArgs>? Properties { get; set; }
+
+        /// <summary>
+        /// Security-related attributesSee the following `Block SecurityProperties`.
+        /// </summary>
+        [Input("securityProperties")]
+        public Input<Inputs.ProjectSecurityPropertiesGetArgs>? SecurityProperties { get; set; }
+
+        /// <summary>
+        /// The status of the resource
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Life cycle type.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public ProjectState()
         {
         }
+        public static new ProjectState Empty => new ProjectState();
     }
 }

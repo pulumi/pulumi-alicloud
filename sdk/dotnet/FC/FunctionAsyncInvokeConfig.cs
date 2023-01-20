@@ -21,94 +21,86 @@ namespace Pulumi.AliCloud.FC
     /// &gt; **NOTE** Ensure the FC Function RAM Role has necessary permissions for the destination, such as `mns:SendMessage`, `mns:PublishMessage` or `fc:InvokeFunction`, otherwise the API will return a generic error.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new()
     ///     {
-    ///         var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new AliCloud.FC.FunctionAsyncInvokeConfigArgs
+    ///         ServiceName = alicloud_fc_service.Example.Name,
+    ///         FunctionName = alicloud_fc_function.Example.Name,
+    ///         DestinationConfig = new AliCloud.FC.Inputs.FunctionAsyncInvokeConfigDestinationConfigArgs
     ///         {
-    ///             ServiceName = alicloud_fc_service.Example.Name,
-    ///             FunctionName = alicloud_fc_function.Example.Name,
-    ///             DestinationConfig = new AliCloud.FC.Inputs.FunctionAsyncInvokeConfigDestinationConfigArgs
+    ///             OnFailure = new AliCloud.FC.Inputs.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs
     ///             {
-    ///                 OnFailure = new AliCloud.FC.Inputs.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs
-    ///                 {
-    ///                     Destination = the_example_mns_queue_arn,
-    ///                 },
-    ///                 OnSuccess = new AliCloud.FC.Inputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs
-    ///                 {
-    ///                     Destination = the_example_mns_topic_arn,
-    ///                 },
+    ///                 Destination = the_example_mns_queue_arn,
     ///             },
-    ///         });
-    ///     }
+    ///             OnSuccess = new AliCloud.FC.Inputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs
+    ///             {
+    ///                 Destination = the_example_mns_topic_arn,
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Error Handling Configuration
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new()
     ///     {
-    ///         var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new AliCloud.FC.FunctionAsyncInvokeConfigArgs
-    ///         {
-    ///             ServiceName = alicloud_fc_service.Example.Name,
-    ///             FunctionName = alicloud_fc_function.Example.Name,
-    ///             MaximumEventAgeInSeconds = 60,
-    ///             MaximumRetryAttempts = 0,
-    ///         });
-    ///     }
+    ///         ServiceName = alicloud_fc_service.Example.Name,
+    ///         FunctionName = alicloud_fc_function.Example.Name,
+    ///         MaximumEventAgeInSeconds = 60,
+    ///         MaximumRetryAttempts = 0,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Async Job Configuration
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new()
     ///     {
-    ///         var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new AliCloud.FC.FunctionAsyncInvokeConfigArgs
-    ///         {
-    ///             ServiceName = alicloud_fc_service.Example.Name,
-    ///             FunctionName = alicloud_fc_function.Example.Name,
-    ///             StatefulInvocation = true,
-    ///         });
-    ///     }
+    ///         ServiceName = alicloud_fc_service.Example.Name,
+    ///         FunctionName = alicloud_fc_function.Example.Name,
+    ///         StatefulInvocation = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Configuration for Function Latest Unpublished Version
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new()
     ///     {
-    ///         var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new AliCloud.FC.FunctionAsyncInvokeConfigArgs
-    ///         {
-    ///             ServiceName = alicloud_fc_service.Example.Name,
-    ///             FunctionName = alicloud_fc_function.Example.Name,
-    ///             Qualifier = "LATEST",
-    ///         });
-    ///         // ... other configuration ...
-    ///     }
+    ///         ServiceName = alicloud_fc_service.Example.Name,
+    ///         FunctionName = alicloud_fc_function.Example.Name,
+    ///         Qualifier = "LATEST",
+    ///     });
     /// 
-    /// }
+    ///     // ... other configuration ...
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -120,7 +112,7 @@ namespace Pulumi.AliCloud.FC
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig")]
-    public partial class FunctionAsyncInvokeConfig : Pulumi.CustomResource
+    public partial class FunctionAsyncInvokeConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date this resource was created.
@@ -220,7 +212,7 @@ namespace Pulumi.AliCloud.FC
         }
     }
 
-    public sealed class FunctionAsyncInvokeConfigArgs : Pulumi.ResourceArgs
+    public sealed class FunctionAsyncInvokeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration block with destination configuration. See below for details.
@@ -267,9 +259,10 @@ namespace Pulumi.AliCloud.FC
         public FunctionAsyncInvokeConfigArgs()
         {
         }
+        public static new FunctionAsyncInvokeConfigArgs Empty => new FunctionAsyncInvokeConfigArgs();
     }
 
-    public sealed class FunctionAsyncInvokeConfigState : Pulumi.ResourceArgs
+    public sealed class FunctionAsyncInvokeConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date this resource was created.
@@ -328,5 +321,6 @@ namespace Pulumi.AliCloud.FC
         public FunctionAsyncInvokeConfigState()
         {
         }
+        public static new FunctionAsyncInvokeConfigState Empty => new FunctionAsyncInvokeConfigState();
     }
 }

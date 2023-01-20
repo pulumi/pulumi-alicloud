@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -53,7 +54,7 @@ export class AddressPool extends pulumi.CustomResource {
      */
     public readonly addressPoolName!: pulumi.Output<string>;
     /**
-     * The address that you want to add to the address pool.
+     * The address lists of the Address Pool. See the following `Block address`.
      */
     public readonly addresses!: pulumi.Output<outputs.dns.AddressPoolAddress[]>;
     /**
@@ -124,7 +125,7 @@ export interface AddressPoolState {
      */
     addressPoolName?: pulumi.Input<string>;
     /**
-     * The address that you want to add to the address pool.
+     * The address lists of the Address Pool. See the following `Block address`.
      */
     addresses?: pulumi.Input<pulumi.Input<inputs.dns.AddressPoolAddress>[]>;
     /**
@@ -150,7 +151,7 @@ export interface AddressPoolArgs {
      */
     addressPoolName: pulumi.Input<string>;
     /**
-     * The address that you want to add to the address pool.
+     * The address lists of the Address Pool. See the following `Block address`.
      */
     addresses: pulumi.Input<pulumi.Input<inputs.dns.AddressPoolAddress>[]>;
     /**

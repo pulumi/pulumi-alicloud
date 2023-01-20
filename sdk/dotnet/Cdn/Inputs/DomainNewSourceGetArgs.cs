@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn.Inputs
 {
 
-    public sealed class DomainNewSourceGetArgs : Pulumi.ResourceArgs
+    public sealed class DomainNewSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         public DomainNewSourceGetArgs()
         {
         }
+        public static new DomainNewSourceGetArgs Empty => new DomainNewSourceGetArgs();
     }
 }

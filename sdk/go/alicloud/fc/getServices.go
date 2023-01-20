@@ -49,7 +49,7 @@ func GetServices(ctx *pulumi.Context, args *GetServicesArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getServices.
 type GetServicesArgs struct {
-	// - A list of FC services ids.
+	// A list of FC services ids.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by FC service name.
 	NameRegex  *string `pulumi:"nameRegex"`
@@ -85,7 +85,7 @@ func GetServicesOutput(ctx *pulumi.Context, args GetServicesOutputArgs, opts ...
 
 // A collection of arguments for invoking getServices.
 type GetServicesOutputArgs struct {
-	// - A list of FC services ids.
+	// A list of FC services ids.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by FC service name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`

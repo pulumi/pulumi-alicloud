@@ -15,21 +15,19 @@ namespace Pulumi.AliCloud.Mns
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var topic = new AliCloud.Mns.Topic("topic", new()
     ///     {
-    ///         var topic = new AliCloud.Mns.Topic("topic", new AliCloud.Mns.TopicArgs
-    ///         {
-    ///             LoggingEnabled = false,
-    ///             MaximumMessageSize = 65536,
-    ///         });
-    ///     }
+    ///         LoggingEnabled = false,
+    ///         MaximumMessageSize = 65536,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.AliCloud.Mns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mns/topic:Topic")]
-    public partial class Topic : Pulumi.CustomResource
+    public partial class Topic : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Is logging enabled? true or false. Default value to false.
@@ -105,7 +103,7 @@ namespace Pulumi.AliCloud.Mns
         }
     }
 
-    public sealed class TopicArgs : Pulumi.ResourceArgs
+    public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Is logging enabled? true or false. Default value to false.
@@ -128,9 +126,10 @@ namespace Pulumi.AliCloud.Mns
         public TopicArgs()
         {
         }
+        public static new TopicArgs Empty => new TopicArgs();
     }
 
-    public sealed class TopicState : Pulumi.ResourceArgs
+    public sealed class TopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Is logging enabled? true or false. Default value to false.
@@ -153,5 +152,6 @@ namespace Pulumi.AliCloud.Mns
         public TopicState()
         {
         }
+        public static new TopicState Empty => new TopicState();
     }
 }

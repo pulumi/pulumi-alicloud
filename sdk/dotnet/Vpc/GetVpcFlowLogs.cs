@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Vpc.GetVpcFlowLogs.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Vpc.GetVpcFlowLogs.InvokeAsync(new AliCloud.Vpc.GetVpcFlowLogsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstVpcFlowLogId = example.Apply(example =&gt; example.Logs?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstVpcFlowLogId")]
-        ///     public Output&lt;string&gt; FirstVpcFlowLogId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstVpcFlowLogId"] = example.Apply(getVpcFlowLogsResult =&gt; getVpcFlowLogsResult.Logs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVpcFlowLogsResult> InvokeAsync(GetVpcFlowLogsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Flow Logs of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Vpc.GetVpcFlowLogs.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Vpc.GetVpcFlowLogs.InvokeAsync(new AliCloud.Vpc.GetVpcFlowLogsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstVpcFlowLogId = example.Apply(example =&gt; example.Logs?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstVpcFlowLogId")]
-        ///     public Output&lt;string&gt; FirstVpcFlowLogId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstVpcFlowLogId"] = example.Apply(getVpcFlowLogsResult =&gt; getVpcFlowLogsResult.Logs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVpcFlowLogsResult> Invoke(GetVpcFlowLogsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetVpcFlowLogsArgs : Pulumi.InvokeArgs
+    public sealed class GetVpcFlowLogsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Description of flow log.
@@ -167,9 +165,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetVpcFlowLogsArgs()
         {
         }
+        public static new GetVpcFlowLogsArgs Empty => new GetVpcFlowLogsArgs();
     }
 
-    public sealed class GetVpcFlowLogsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVpcFlowLogsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Description of flow log.
@@ -243,6 +242,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetVpcFlowLogsInvokeArgs()
         {
         }
+        public static new GetVpcFlowLogsInvokeArgs Empty => new GetVpcFlowLogsInvokeArgs();
     }
 
 

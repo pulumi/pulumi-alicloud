@@ -17,57 +17,61 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "forward-entry-example-name";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "forward-entry-example-name";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new AliCloud.Vpc.NatGatewayArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             Specification = "Small",
-    ///         });
-    ///         var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new AliCloud.Ecs.EipAddressArgs
-    ///         {
-    ///             AddressName = name,
-    ///         });
-    ///         var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("defaultEipAssociation", new AliCloud.Ecs.EipAssociationArgs
-    ///         {
-    ///             AllocationId = defaultEipAddress.Id,
-    ///             InstanceId = defaultNatGateway.Id,
-    ///         });
-    ///         var defaultForwardEntry = new AliCloud.Vpc.ForwardEntry("defaultForwardEntry", new AliCloud.Vpc.ForwardEntryArgs
-    ///         {
-    ///             ForwardTableId = defaultNatGateway.ForwardTableIds,
-    ///             ExternalIp = defaultEipAddress.IpAddress,
-    ///             ExternalPort = "80",
-    ///             IpProtocol = "tcp",
-    ///             InternalIp = "172.16.0.3",
-    ///             InternalPort = "8080",
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         Specification = "Small",
+    ///     });
+    /// 
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+    ///     {
+    ///         AddressName = name,
+    ///     });
+    /// 
+    ///     var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("defaultEipAssociation", new()
+    ///     {
+    ///         AllocationId = defaultEipAddress.Id,
+    ///         InstanceId = defaultNatGateway.Id,
+    ///     });
+    /// 
+    ///     var defaultForwardEntry = new AliCloud.Vpc.ForwardEntry("defaultForwardEntry", new()
+    ///     {
+    ///         ForwardTableId = defaultNatGateway.ForwardTableIds,
+    ///         ExternalIp = defaultEipAddress.IpAddress,
+    ///         ExternalPort = "80",
+    ///         IpProtocol = "tcp",
+    ///         InternalIp = "172.16.0.3",
+    ///         InternalPort = "8080",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -79,7 +83,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/forwardEntry:ForwardEntry")]
-    public partial class ForwardEntry : Pulumi.CustomResource
+    public partial class ForwardEntry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
@@ -191,7 +195,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class ForwardEntryArgs : Pulumi.ResourceArgs
+    public sealed class ForwardEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
@@ -250,9 +254,10 @@ namespace Pulumi.AliCloud.Vpc
         public ForwardEntryArgs()
         {
         }
+        public static new ForwardEntryArgs Empty => new ForwardEntryArgs();
     }
 
-    public sealed class ForwardEntryState : Pulumi.ResourceArgs
+    public sealed class ForwardEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
@@ -323,5 +328,6 @@ namespace Pulumi.AliCloud.Vpc
         public ForwardEntryState()
         {
         }
+        public static new ForwardEntryState Empty => new ForwardEntryState();
     }
 }

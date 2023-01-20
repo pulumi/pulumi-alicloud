@@ -32,11 +32,11 @@ import * as utilities from "../utilities";
  *     status: "Running",
  * });
  * const defaultIpv6Addresses = defaultInstances.then(defaultInstances => alicloud.vpc.getIpv6Addresses({
- *     associatedInstanceId: defaultInstances.instances?[0]?.id,
+ *     associatedInstanceId: defaultInstances.instances?.[0]?.id,
  *     status: "Available",
  * }));
  * const exampleIpv6EgressRule = new alicloud.vpc.Ipv6EgressRule("exampleIpv6EgressRule", {
- *     instanceId: defaultIpv6Addresses.then(defaultIpv6Addresses => defaultIpv6Addresses.ids?[0]),
+ *     instanceId: defaultIpv6Addresses.then(defaultIpv6Addresses => defaultIpv6Addresses.ids?.[0]),
  *     ipv6EgressRuleName: "example_value",
  *     description: "example_value",
  *     ipv6GatewayId: exampleIpv6Gateway.id,

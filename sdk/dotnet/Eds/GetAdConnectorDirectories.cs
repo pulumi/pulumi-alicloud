@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Eds.GetAdConnectorDirectories.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Eds.GetAdConnectorDirectories.InvokeAsync(new AliCloud.Eds.GetAdConnectorDirectoriesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.EcdAdConnectorDirectoryId1 = ids.Apply(ids =&gt; ids.Directories?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ecdAdConnectorDirectoryId1")]
-        ///     public Output&lt;string&gt; EcdAdConnectorDirectoryId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdAdConnectorDirectoryId1"] = ids.Apply(getAdConnectorDirectoriesResult =&gt; getAdConnectorDirectoriesResult.Directories[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAdConnectorDirectoriesResult> InvokeAsync(GetAdConnectorDirectoriesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAdConnectorDirectoriesResult>("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", args ?? new GetAdConnectorDirectoriesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdConnectorDirectoriesResult>("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", args ?? new GetAdConnectorDirectoriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Eds.GetAdConnectorDirectories.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Eds.GetAdConnectorDirectories.InvokeAsync(new AliCloud.Eds.GetAdConnectorDirectoriesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.EcdAdConnectorDirectoryId1 = ids.Apply(ids =&gt; ids.Directories?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ecdAdConnectorDirectoryId1")]
-        ///     public Output&lt;string&gt; EcdAdConnectorDirectoryId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdAdConnectorDirectoryId1"] = ids.Apply(getAdConnectorDirectoriesResult =&gt; getAdConnectorDirectoriesResult.Directories[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAdConnectorDirectoriesResult> Invoke(GetAdConnectorDirectoriesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAdConnectorDirectoriesResult>("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", args ?? new GetAdConnectorDirectoriesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAdConnectorDirectoriesResult>("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", args ?? new GetAdConnectorDirectoriesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAdConnectorDirectoriesArgs : Pulumi.InvokeArgs
+    public sealed class GetAdConnectorDirectoriesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -123,9 +121,10 @@ namespace Pulumi.AliCloud.Eds
         public GetAdConnectorDirectoriesArgs()
         {
         }
+        public static new GetAdConnectorDirectoriesArgs Empty => new GetAdConnectorDirectoriesArgs();
     }
 
-    public sealed class GetAdConnectorDirectoriesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAdConnectorDirectoriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -157,6 +156,7 @@ namespace Pulumi.AliCloud.Eds
         public GetAdConnectorDirectoriesInvokeArgs()
         {
         }
+        public static new GetAdConnectorDirectoriesInvokeArgs Empty => new GetAdConnectorDirectoriesInvokeArgs();
     }
 
 

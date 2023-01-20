@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,23 +13,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const certs = pulumi.output(alicloud.cas.getCertificates({
+ * const certs = alicloud.cas.getCertificates({
  *     nameRegex: "^cas",
- *     outputFile: `./cas_certificates.json`,
- * }));
- *
- * export const cert = certs.certificates[0].id;
+ *     outputFile: `${path.module}/cas_certificates.json`,
+ * });
+ * export const cert = certs.then(certs => certs.certificates?.[0]?.id);
  * ```
  */
 /** @deprecated This resource has been deprecated in favour of getServiceCertificates */
 export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
     pulumi.log.warn("getCertificates is deprecated: This resource has been deprecated in favour of getServiceCertificates")
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cas/getCertificates:getCertificates", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -80,9 +77,23 @@ export interface GetCertificatesResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const certs = alicloud.cas.getCertificates({
+ *     nameRegex: "^cas",
+ *     outputFile: `${path.module}/cas_certificates.json`,
+ * });
+ * export const cert = certs.then(certs => certs.certificates?.[0]?.id);
+ * ```
+ */
+/** @deprecated This resource has been deprecated in favour of getServiceCertificates */
 export function getCertificatesOutput(args?: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {
-    return pulumi.output(args).apply(a => getCertificates(a, opts))
+    return pulumi.output(args).apply((a: any) => getCertificates(a, opts))
 }
 
 /**

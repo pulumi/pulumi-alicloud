@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GetCustomerGatewaysGatewayResult
     {
         /// <summary>
+        /// The autonomous system number of the local data center gateway device of the VPN customer gateway.
+        /// </summary>
+        public readonly int Asn;
+        /// <summary>
         /// The creation time of the VPN customer gateway.
         /// </summary>
         public readonly string CreateTime;
@@ -36,6 +40,8 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
         [OutputConstructor]
         private GetCustomerGatewaysGatewayResult(
+            int asn,
+
             string createTime,
 
             string description,
@@ -46,6 +52,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             string name)
         {
+            Asn = asn;
             CreateTime = createTime;
             Description = description;
             Id = id;

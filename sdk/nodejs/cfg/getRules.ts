@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["cr-ed4bad756057********"],
  *     nameRegex: "tftest",
  * });
- * export const firstConfigRuleId = example.then(example => example.rules?[0]?.id);
+ * export const firstConfigRuleId = example.then(example => example.rules?.[0]?.id);
  * ```
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getRules:getRules", {
         "configRuleState": args.configRuleState,
         "enableDetails": args.enableDetails,
@@ -86,6 +84,8 @@ export interface GetRulesArgs {
  */
 export interface GetRulesResult {
     /**
+     * The state of the Config Rule.
+     *
      * @deprecated Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.
      */
     readonly configRuleState?: string;
@@ -104,7 +104,13 @@ export interface GetRulesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The risk level of the Config Rule.
+     */
     readonly riskLevel?: number;
+    /**
+     * The name of the Config Rule.
+     */
     readonly ruleName?: string;
     /**
      * A list of Config Rules. Each element contains the following attributes:
@@ -115,9 +121,28 @@ export interface GetRulesResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Config Rules of the current Alibaba Cloud user.
+ *
+ * > **NOTE:**  Available in 1.99.0+.
+ *
+ * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cfg.getRules({
+ *     ids: ["cr-ed4bad756057********"],
+ *     nameRegex: "tftest",
+ * });
+ * export const firstConfigRuleId = example.then(example => example.rules?.[0]?.id);
+ * ```
+ */
 export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
-    return pulumi.output(args).apply(a => getRules(a, opts))
+    return pulumi.output(args).apply((a: any) => getRules(a, opts))
 }
 
 /**

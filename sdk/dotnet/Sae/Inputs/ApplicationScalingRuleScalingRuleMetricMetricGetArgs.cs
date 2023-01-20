@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Sae.Inputs
 {
 
-    public sealed class ApplicationScalingRuleScalingRuleMetricMetricGetArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationScalingRuleScalingRuleMetricMetricGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// According to different `metric_type`, set the target value of the corresponding monitoring index.
@@ -32,5 +32,6 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public ApplicationScalingRuleScalingRuleMetricMetricGetArgs()
         {
         }
+        public static new ApplicationScalingRuleScalingRuleMetricMetricGetArgs Empty => new ApplicationScalingRuleScalingRuleMetricMetricGetArgs();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,20 +17,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.dns.getAlidnsDomainGroups({
+ * const example = alicloud.dns.getAlidnsDomainGroups({
  *     ids: ["c5ef2bc43064445787adf182af2****"],
- * }));
- *
- * export const firstDomainGroupId = example.groups[0].id;
+ * });
+ * export const firstDomainGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
  */
 export function getAlidnsDomainGroups(args?: GetAlidnsDomainGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsDomainGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -75,9 +72,25 @@ export interface GetAlidnsDomainGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list of Alidns Domain Groups in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:**  Available in 1.85.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.dns.getAlidnsDomainGroups({
+ *     ids: ["c5ef2bc43064445787adf182af2****"],
+ * });
+ * export const firstDomainGroupId = example.then(example => example.groups?.[0]?.id);
+ * ```
+ */
 export function getAlidnsDomainGroupsOutput(args?: GetAlidnsDomainGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsDomainGroupsResult> {
-    return pulumi.output(args).apply(a => getAlidnsDomainGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getAlidnsDomainGroups(a, opts))
 }
 
 /**

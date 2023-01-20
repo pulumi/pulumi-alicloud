@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:dms/enterpriseInstance:EnterpriseInstance":
 		r = &EnterpriseInstance{}
+	case "alicloud:dms/enterpriseLogicDatabase:EnterpriseLogicDatabase":
+		r = &EnterpriseLogicDatabase{}
+	case "alicloud:dms/enterpriseProxy:EnterpriseProxy":
+		r = &EnterpriseProxy{}
+	case "alicloud:dms/enterpriseProxyAccess:EnterpriseProxyAccess":
+		r = &EnterpriseProxyAccess{}
 	case "alicloud:dms/enterpriseUser:EnterpriseUser":
 		r = &EnterpriseUser{}
 	default:
@@ -41,6 +47,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dms/enterpriseInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dms/enterpriseLogicDatabase",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dms/enterpriseProxy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dms/enterpriseProxyAccess",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

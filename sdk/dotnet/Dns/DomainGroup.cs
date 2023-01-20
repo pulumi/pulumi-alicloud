@@ -17,21 +17,19 @@ namespace Pulumi.AliCloud.Dns
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Add a new Alinds Domain Group.
+    ///     var example = new AliCloud.Dns.DomainGroup("example", new()
     ///     {
-    ///         // Add a new Alinds Domain Group.
-    ///         var example = new AliCloud.Dns.DomainGroup("example", new AliCloud.Dns.DomainGroupArgs
-    ///         {
-    ///             DomainGroupName = "tf-testDG",
-    ///         });
-    ///     }
+    ///         DomainGroupName = "tf-testDG",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.AliCloud.Dns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/domainGroup:DomainGroup")]
-    public partial class DomainGroup : Pulumi.CustomResource
+    public partial class DomainGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
@@ -107,7 +105,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
-    public sealed class DomainGroupArgs : Pulumi.ResourceArgs
+    public sealed class DomainGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
@@ -130,9 +128,10 @@ namespace Pulumi.AliCloud.Dns
         public DomainGroupArgs()
         {
         }
+        public static new DomainGroupArgs Empty => new DomainGroupArgs();
     }
 
-    public sealed class DomainGroupState : Pulumi.ResourceArgs
+    public sealed class DomainGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
@@ -155,5 +154,6 @@ namespace Pulumi.AliCloud.Dns
         public DomainGroupState()
         {
         }
+        public static new DomainGroupState Empty => new DomainGroupState();
     }
 }

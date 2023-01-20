@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const thisPrivateZones = pulumi.output(alicloud.cen.getPrivateZones({
+ * const this = alicloud.cen.getPrivateZones({
  *     cenId: "cen-o40h17ll9w********",
  *     ids: ["cn-hangzhou"],
  *     status: "Active",
- * }));
- *
- * export const firstCenPrivateZonesId = thisPrivateZones.zones[0].id;
+ * });
+ * export const firstCenPrivateZonesId = _this.then(_this => _this.zones?.[0]?.id);
  * ```
  */
 export function getPrivateZones(args: GetPrivateZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateZonesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getPrivateZones:getPrivateZones", {
         "cenId": args.cenId,
         "hostRegionId": args.hostRegionId,
@@ -96,9 +93,27 @@ export interface GetPrivateZonesResult {
      */
     readonly zones: outputs.cen.GetPrivateZonesZone[];
 }
-
+/**
+ * This data source provides CEN Private Zones available to the user.
+ *
+ * > **NOTE:** Available in v1.88.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const this = alicloud.cen.getPrivateZones({
+ *     cenId: "cen-o40h17ll9w********",
+ *     ids: ["cn-hangzhou"],
+ *     status: "Active",
+ * });
+ * export const firstCenPrivateZonesId = _this.then(_this => _this.zones?.[0]?.id);
+ * ```
+ */
 export function getPrivateZonesOutput(args: GetPrivateZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateZonesResult> {
-    return pulumi.output(args).apply(a => getPrivateZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getPrivateZones(a, opts))
 }
 
 /**

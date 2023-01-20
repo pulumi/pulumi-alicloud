@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.alb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -18,25 +19,38 @@ public final class ServerGroupServer {
      */
     private @Nullable String description;
     /**
-     * @return The port that is used by the server. Valid values: `1` to `65535`.
+     * @return The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
      * 
      */
     private @Nullable Integer port;
     /**
-     * @return The ID of the ECS instance, ENI instance or ECI instance.
+     * @return Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
      * 
      */
-    private @Nullable String serverId;
+    private @Nullable Boolean remoteIpEnabled;
     /**
-     * @return The IP address of the ENI instance when it is in the inclusive ENI mode.
+     * @return The ID of the backend server.
+     * - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
+     * - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
+     * - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+     * 
+     */
+    private String serverId;
+    /**
+     * @return The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
      * 
      */
     private @Nullable String serverIp;
     /**
-     * @return The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+     * @return The type of the server. The type of the server. Valid values:
+     * - Ecs: an ECS instance.
+     * - Eni: an ENI.
+     * - Eci: an elastic container instance.
+     * - Ip(Available in v1.194.0+): an IP address.
+     * - fc(Available in v1.194.0+): a function.
      * 
      */
-    private @Nullable String serverType;
+    private String serverType;
     /**
      * @return The status of the resource.
      * 
@@ -44,7 +58,7 @@ public final class ServerGroupServer {
     private @Nullable String status;
     /**
      * @return The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-     * requests are forwarded to the server.
+     * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
      * 
      */
     private @Nullable Integer weight;
@@ -58,32 +72,47 @@ public final class ServerGroupServer {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The port that is used by the server. Valid values: `1` to `65535`.
+     * @return The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
      * 
      */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return The ID of the ECS instance, ENI instance or ECI instance.
+     * @return Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
      * 
      */
-    public Optional<String> serverId() {
-        return Optional.ofNullable(this.serverId);
+    public Optional<Boolean> remoteIpEnabled() {
+        return Optional.ofNullable(this.remoteIpEnabled);
     }
     /**
-     * @return The IP address of the ENI instance when it is in the inclusive ENI mode.
+     * @return The ID of the backend server.
+     * - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
+     * - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
+     * - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
+     * 
+     */
+    public String serverId() {
+        return this.serverId;
+    }
+    /**
+     * @return The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
      * 
      */
     public Optional<String> serverIp() {
         return Optional.ofNullable(this.serverIp);
     }
     /**
-     * @return The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
+     * @return The type of the server. The type of the server. Valid values:
+     * - Ecs: an ECS instance.
+     * - Eni: an ENI.
+     * - Eci: an elastic container instance.
+     * - Ip(Available in v1.194.0+): an IP address.
+     * - fc(Available in v1.194.0+): a function.
      * 
      */
-    public Optional<String> serverType() {
-        return Optional.ofNullable(this.serverType);
+    public String serverType() {
+        return this.serverType;
     }
     /**
      * @return The status of the resource.
@@ -94,7 +123,7 @@ public final class ServerGroupServer {
     }
     /**
      * @return The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
-     * requests are forwarded to the server.
+     * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
      * 
      */
     public Optional<Integer> weight() {
@@ -112,9 +141,10 @@ public final class ServerGroupServer {
     public static final class Builder {
         private @Nullable String description;
         private @Nullable Integer port;
-        private @Nullable String serverId;
+        private @Nullable Boolean remoteIpEnabled;
+        private String serverId;
         private @Nullable String serverIp;
-        private @Nullable String serverType;
+        private String serverType;
         private @Nullable String status;
         private @Nullable Integer weight;
         public Builder() {}
@@ -122,6 +152,7 @@ public final class ServerGroupServer {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.port = defaults.port;
+    	      this.remoteIpEnabled = defaults.remoteIpEnabled;
     	      this.serverId = defaults.serverId;
     	      this.serverIp = defaults.serverIp;
     	      this.serverType = defaults.serverType;
@@ -140,8 +171,13 @@ public final class ServerGroupServer {
             return this;
         }
         @CustomType.Setter
-        public Builder serverId(@Nullable String serverId) {
-            this.serverId = serverId;
+        public Builder remoteIpEnabled(@Nullable Boolean remoteIpEnabled) {
+            this.remoteIpEnabled = remoteIpEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serverId(String serverId) {
+            this.serverId = Objects.requireNonNull(serverId);
             return this;
         }
         @CustomType.Setter
@@ -150,8 +186,8 @@ public final class ServerGroupServer {
             return this;
         }
         @CustomType.Setter
-        public Builder serverType(@Nullable String serverType) {
-            this.serverType = serverType;
+        public Builder serverType(String serverType) {
+            this.serverType = Objects.requireNonNull(serverType);
             return this;
         }
         @CustomType.Setter
@@ -168,6 +204,7 @@ public final class ServerGroupServer {
             final var o = new ServerGroupServer();
             o.description = description;
             o.port = port;
+            o.remoteIpEnabled = remoteIpEnabled;
             o.serverId = serverId;
             o.serverIp = serverIp;
             o.serverType = serverType;

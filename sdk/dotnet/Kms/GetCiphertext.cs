@@ -17,32 +17,31 @@ namespace Pulumi.AliCloud.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var key = new AliCloud.Kms.Key("key", new()
         ///     {
-        ///         var key = new AliCloud.Kms.Key("key", new AliCloud.Kms.KeyArgs
-        ///         {
-        ///             Description = "example key",
-        ///             IsEnabled = true,
-        ///         });
-        ///         var encrypted = AliCloud.Kms.GetCiphertext.Invoke(new AliCloud.Kms.GetCiphertextInvokeArgs
-        ///         {
-        ///             KeyId = key.Id,
-        ///             Plaintext = "example",
-        ///         });
-        ///     }
+        ///         Description = "example key",
+        ///         IsEnabled = true,
+        ///     });
         /// 
-        /// }
+        ///     var encrypted = AliCloud.Kms.GetCiphertext.Invoke(new()
+        ///     {
+        ///         KeyId = key.Id,
+        ///         Plaintext = "example",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCiphertextResult> InvokeAsync(GetCiphertextArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? new GetCiphertextArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? new GetCiphertextArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -50,42 +49,40 @@ namespace Pulumi.AliCloud.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var key = new AliCloud.Kms.Key("key", new()
         ///     {
-        ///         var key = new AliCloud.Kms.Key("key", new AliCloud.Kms.KeyArgs
-        ///         {
-        ///             Description = "example key",
-        ///             IsEnabled = true,
-        ///         });
-        ///         var encrypted = AliCloud.Kms.GetCiphertext.Invoke(new AliCloud.Kms.GetCiphertextInvokeArgs
-        ///         {
-        ///             KeyId = key.Id,
-        ///             Plaintext = "example",
-        ///         });
-        ///     }
+        ///         Description = "example key",
+        ///         IsEnabled = true,
+        ///     });
         /// 
-        /// }
+        ///     var encrypted = AliCloud.Kms.GetCiphertext.Invoke(new()
+        ///     {
+        ///         KeyId = key.Id,
+        ///         Plaintext = "example",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCiphertextResult> Invoke(GetCiphertextInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? new GetCiphertextInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? new GetCiphertextInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCiphertextArgs : Pulumi.InvokeArgs
+    public sealed class GetCiphertextArgs : global::Pulumi.InvokeArgs
     {
         [Input("encryptionContext")]
         private Dictionary<string, string>? _encryptionContext;
 
         /// <summary>
-        /// -
         /// (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         public Dictionary<string, string> EncryptionContext
@@ -100,24 +97,30 @@ namespace Pulumi.AliCloud.Kms
         [Input("keyId", required: true)]
         public string KeyId { get; set; } = null!;
 
+        [Input("plaintext", required: true)]
+        private string? _plaintext;
+
         /// <summary>
         /// The plaintext to be encrypted which must be encoded in Base64.
         /// </summary>
-        [Input("plaintext", required: true)]
-        public string Plaintext { get; set; } = null!;
+        public string? Plaintext
+        {
+            get => _plaintext;
+            set => _plaintext = value;
+        }
 
         public GetCiphertextArgs()
         {
         }
+        public static new GetCiphertextArgs Empty => new GetCiphertextArgs();
     }
 
-    public sealed class GetCiphertextInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCiphertextInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("encryptionContext")]
         private InputMap<string>? _encryptionContext;
 
         /// <summary>
-        /// -
         /// (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         public InputMap<string> EncryptionContext
@@ -132,15 +135,26 @@ namespace Pulumi.AliCloud.Kms
         [Input("keyId", required: true)]
         public Input<string> KeyId { get; set; } = null!;
 
+        [Input("plaintext", required: true)]
+        private Input<string>? _plaintext;
+
         /// <summary>
         /// The plaintext to be encrypted which must be encoded in Base64.
         /// </summary>
-        [Input("plaintext", required: true)]
-        public Input<string> Plaintext { get; set; } = null!;
+        public Input<string>? Plaintext
+        {
+            get => _plaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _plaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public GetCiphertextInvokeArgs()
         {
         }
+        public static new GetCiphertextInvokeArgs Empty => new GetCiphertextInvokeArgs();
     }
 
 

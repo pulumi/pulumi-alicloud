@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.Ess
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ds = AliCloud.Ess.GetLifecycleHooks.Invoke(new()
         ///     {
-        ///         var ds = Output.Create(AliCloud.Ess.GetLifecycleHooks.InvokeAsync(new AliCloud.Ess.GetLifecycleHooksArgs
-        ///         {
-        ///             NameRegex = "lifecyclehook_name",
-        ///             ScalingGroupId = "scaling_group_id",
-        ///         }));
-        ///         this.FirstLifecycleHook = ds.Apply(ds =&gt; ds.Hooks?[0]?.Id);
-        ///     }
+        ///         NameRegex = "lifecyclehook_name",
+        ///         ScalingGroupId = "scaling_group_id",
+        ///     });
         /// 
-        ///     [Output("firstLifecycleHook")]
-        ///     public Output&lt;string&gt; FirstLifecycleHook { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstLifecycleHook"] = ds.Apply(getLifecycleHooksResult =&gt; getLifecycleHooksResult.Hooks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLifecycleHooksResult> InvokeAsync(GetLifecycleHooksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides available lifecycle hook resources. 
@@ -56,34 +55,33 @@ namespace Pulumi.AliCloud.Ess
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ds = AliCloud.Ess.GetLifecycleHooks.Invoke(new()
         ///     {
-        ///         var ds = Output.Create(AliCloud.Ess.GetLifecycleHooks.InvokeAsync(new AliCloud.Ess.GetLifecycleHooksArgs
-        ///         {
-        ///             NameRegex = "lifecyclehook_name",
-        ///             ScalingGroupId = "scaling_group_id",
-        ///         }));
-        ///         this.FirstLifecycleHook = ds.Apply(ds =&gt; ds.Hooks?[0]?.Id);
-        ///     }
+        ///         NameRegex = "lifecyclehook_name",
+        ///         ScalingGroupId = "scaling_group_id",
+        ///     });
         /// 
-        ///     [Output("firstLifecycleHook")]
-        ///     public Output&lt;string&gt; FirstLifecycleHook { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstLifecycleHook"] = ds.Apply(getLifecycleHooksResult =&gt; getLifecycleHooksResult.Hooks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLifecycleHooksResult> Invoke(GetLifecycleHooksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetLifecycleHooksArgs : Pulumi.InvokeArgs
+    public sealed class GetLifecycleHooksArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -115,9 +113,10 @@ namespace Pulumi.AliCloud.Ess
         public GetLifecycleHooksArgs()
         {
         }
+        public static new GetLifecycleHooksArgs Empty => new GetLifecycleHooksArgs();
     }
 
-    public sealed class GetLifecycleHooksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLifecycleHooksInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -149,6 +148,7 @@ namespace Pulumi.AliCloud.Ess
         public GetLifecycleHooksInvokeArgs()
         {
         }
+        public static new GetLifecycleHooksInvokeArgs Empty => new GetLifecycleHooksInvokeArgs();
     }
 
 

@@ -3,8 +3,11 @@
 
 package com.pulumi.alicloud.gpdb.inputs;
 
+import com.pulumi.alicloud.gpdb.inputs.InstanceIpWhitelistArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -18,22 +21,117 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceState Empty = new InstanceState();
 
+    /**
+     * Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+     * 
+     * @deprecated
+     * Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead. */
     @Import(name="availabilityZone")
     private @Nullable Output<String> availabilityZone;
 
+    /**
+     * @return Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+     * 
+     * @deprecated
+     * Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead. */
     public Optional<Output<String>> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
 
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * (Available in 1.196.0+) The connection string of the instance.
+     * 
+     */
+    @Import(name="connectionString")
+    private @Nullable Output<String> connectionString;
+
+    /**
+     * @return (Available in 1.196.0+) The connection string of the instance.
+     * 
+     */
+    public Optional<Output<String>> connectionString() {
+        return Optional.ofNullable(this.connectionString);
+    }
+
+    /**
+     * Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="createSampleData")
+    private @Nullable Output<Boolean> createSampleData;
+
+    /**
+     * @return Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> createSampleData() {
+        return Optional.ofNullable(this.createSampleData);
+    }
+
+    /**
+     * The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     * 
+     */
+    @Import(name="dbInstanceCategory")
+    private @Nullable Output<String> dbInstanceCategory;
+
+    /**
+     * @return The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     * 
+     */
+    public Optional<Output<String>> dbInstanceCategory() {
+        return Optional.ofNullable(this.dbInstanceCategory);
+    }
+
+    /**
+     * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     * 
+     */
+    @Import(name="dbInstanceClass")
+    private @Nullable Output<String> dbInstanceClass;
+
+    /**
+     * @return The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+     * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     * 
+     */
+    public Optional<Output<String>> dbInstanceClass() {
+        return Optional.ofNullable(this.dbInstanceClass);
+    }
+
+    /**
+     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     * 
+     */
+    @Import(name="dbInstanceMode")
+    private @Nullable Output<String> dbInstanceMode;
+
+    /**
+     * @return The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     * 
+     */
+    public Optional<Output<String>> dbInstanceMode() {
+        return Optional.ofNullable(this.dbInstanceMode);
+    }
+
+    /**
+     * The description of the instance.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The name of DB instance. It a string of 2 to 256 characters.
+     * @return The description of the instance.
      * 
      */
     public Optional<Output<String>> description() {
@@ -41,14 +139,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Database engine: gpdb. System Default value: gpdb.
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
      * 
      */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
     /**
-     * @return Database engine: gpdb. System Default value: gpdb.
+     * @return The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
      * 
      */
     public Optional<Output<String>> engine() {
@@ -56,14 +154,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * The version of the database engine used by the instance.
      * 
      */
     @Import(name="engineVersion")
     private @Nullable Output<String> engineVersion;
 
     /**
-     * @return Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+     * @return The version of the database engine used by the instance.
      * 
      */
     public Optional<Output<String>> engineVersion() {
@@ -71,63 +169,318 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+     * 
+     * @deprecated
+     * Field &#39;instance_charge_type&#39; has been deprecated from version 1.187.0. Use &#39;payment_type&#39; instead.
      * 
      */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead. */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+     * @return Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+     * 
+     * @deprecated
+     * Field &#39;instance_charge_type&#39; has been deprecated from version 1.187.0. Use &#39;payment_type&#39; instead.
      * 
      */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead. */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
 
     /**
-     * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
-     * 
-     */
-    @Import(name="instanceClass")
-    private @Nullable Output<String> instanceClass;
-
-    /**
-     * @return Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
-     * 
-     */
-    public Optional<Output<String>> instanceClass() {
-        return Optional.ofNullable(this.instanceClass);
-    }
-
-    /**
-     * The number of groups. Valid values: [2,4,8,16,32]
+     * The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
      * 
      */
     @Import(name="instanceGroupCount")
-    private @Nullable Output<String> instanceGroupCount;
+    private @Nullable Output<Integer> instanceGroupCount;
 
     /**
-     * @return The number of groups. Valid values: [2,4,8,16,32]
+     * @return The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
      * 
      */
-    public Optional<Output<String>> instanceGroupCount() {
+    public Optional<Output<Integer>> instanceGroupCount() {
         return Optional.ofNullable(this.instanceGroupCount);
     }
 
     /**
-     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * The network type of the instance.
      * 
      */
+    @Import(name="instanceNetworkType")
+    private @Nullable Output<String> instanceNetworkType;
+
+    /**
+     * @return The network type of the instance.
+     * 
+     */
+    public Optional<Output<String>> instanceNetworkType() {
+        return Optional.ofNullable(this.instanceNetworkType);
+    }
+
+    /**
+     * The specification of segment nodes.
+     * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+     * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     * 
+     */
+    @Import(name="instanceSpec")
+    private @Nullable Output<String> instanceSpec;
+
+    /**
+     * @return The specification of segment nodes.
+     * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+     * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+     * * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+     * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     * 
+     */
+    public Optional<Output<String>> instanceSpec() {
+        return Optional.ofNullable(this.instanceSpec);
+    }
+
+    /**
+     * The ip whitelist.
+     * 
+     */
+    @Import(name="ipWhitelists")
+    private @Nullable Output<List<InstanceIpWhitelistArgs>> ipWhitelists;
+
+    /**
+     * @return The ip whitelist.
+     * 
+     */
+    public Optional<Output<List<InstanceIpWhitelistArgs>>> ipWhitelists() {
+        return Optional.ofNullable(this.ipWhitelists);
+    }
+
+    /**
+     * The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+     * 
+     */
+    @Import(name="maintainEndTime")
+    private @Nullable Output<String> maintainEndTime;
+
+    /**
+     * @return The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+     * 
+     */
+    public Optional<Output<String>> maintainEndTime() {
+        return Optional.ofNullable(this.maintainEndTime);
+    }
+
+    /**
+     * The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+     * 
+     */
+    @Import(name="maintainStartTime")
+    private @Nullable Output<String> maintainStartTime;
+
+    /**
+     * @return The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+     * 
+     */
+    public Optional<Output<String>> maintainStartTime() {
+        return Optional.ofNullable(this.maintainStartTime);
+    }
+
+    /**
+     * The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * 
+     */
+    @Import(name="masterNodeNum")
+    private @Nullable Output<Integer> masterNodeNum;
+
+    /**
+     * @return The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+     * 
+     */
+    public Optional<Output<Integer>> masterNodeNum() {
+        return Optional.ofNullable(this.masterNodeNum);
+    }
+
+    /**
+     * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+     * 
+     */
+    @Import(name="paymentType")
+    private @Nullable Output<String> paymentType;
+
+    /**
+     * @return The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+     * 
+     */
+    public Optional<Output<String>> paymentType() {
+        return Optional.ofNullable(this.paymentType);
+    }
+
+    /**
+     * The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+     * 
+     */
+    @Import(name="period")
+    private @Nullable Output<String> period;
+
+    /**
+     * @return The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+     * 
+     */
+    public Optional<Output<String>> period() {
+        return Optional.ofNullable(this.period);
+    }
+
+    /**
+     * (Available in 1.196.0+) The connection port of the instance.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) The connection port of the instance.
+     * 
+     */
+    public Optional<Output<String>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
+    /**
+     * The private ip address.
+     * 
+     */
+    @Import(name="privateIpAddress")
+    private @Nullable Output<String> privateIpAddress;
+
+    /**
+     * @return The private ip address.
+     * 
+     */
+    public Optional<Output<String>> privateIpAddress() {
+        return Optional.ofNullable(this.privateIpAddress);
+    }
+
+    /**
+     * The ID of the enterprise resource group to which the instance belongs.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the enterprise resource group to which the instance belongs.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+     * 
+     * @deprecated
+     * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
     @Import(name="securityIpLists")
     private @Nullable Output<List<String>> securityIpLists;
 
     /**
-     * @return List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * @return Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+     * 
+     * @deprecated
+     * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
      * 
      */
+    @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
     public Optional<Output<List<String>>> securityIpLists() {
         return Optional.ofNullable(this.securityIpLists);
+    }
+
+    /**
+     * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+     * 
+     */
+    @Import(name="segNodeNum")
+    private @Nullable Output<Integer> segNodeNum;
+
+    /**
+     * @return Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+     * 
+     */
+    public Optional<Output<Integer>> segNodeNum() {
+        return Optional.ofNullable(this.segNodeNum);
+    }
+
+    /**
+     * The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+     * 
+     */
+    @Import(name="segStorageType")
+    private @Nullable Output<String> segStorageType;
+
+    /**
+     * @return The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+     * 
+     */
+    public Optional<Output<String>> segStorageType() {
+        return Optional.ofNullable(this.segStorageType);
+    }
+
+    /**
+     * Enable or disable SSL. Valid values: `0` and `1`.
+     * 
+     */
+    @Import(name="sslEnabled")
+    private @Nullable Output<Integer> sslEnabled;
+
+    /**
+     * @return Enable or disable SSL. Valid values: `0` and `1`.
+     * 
+     */
+    public Optional<Output<Integer>> sslEnabled() {
+        return Optional.ofNullable(this.sslEnabled);
+    }
+
+    /**
+     * The status of the instance.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the instance.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     * 
+     */
+    @Import(name="storageSize")
+    private @Nullable Output<Integer> storageSize;
+
+    /**
+     * @return The storage capacity. Unit: GB. Value: `50` to `4000`.
+     * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+     * 
+     */
+    public Optional<Output<Integer>> storageSize() {
+        return Optional.ofNullable(this.storageSize);
     }
 
     /**
@@ -146,33 +499,101 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+     * 
+     */
+    @Import(name="usedTime")
+    private @Nullable Output<String> usedTime;
+
+    /**
+     * @return The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+     * 
+     */
+    public Optional<Output<String>> usedTime() {
+        return Optional.ofNullable(this.usedTime);
+    }
+
+    /**
+     * The vpc ID of the resource.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The vpc ID of the resource.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
+     * The vswitch id.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The virtual switch ID to launch DB instances in one VPC.
+     * @return The vswitch id.
      * 
      */
     public Optional<Output<String>> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
     }
 
+    /**
+     * The zone ID of the instance.
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
+
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
+
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
         this.availabilityZone = $.availabilityZone;
+        this.connectionString = $.connectionString;
+        this.createSampleData = $.createSampleData;
+        this.dbInstanceCategory = $.dbInstanceCategory;
+        this.dbInstanceClass = $.dbInstanceClass;
+        this.dbInstanceMode = $.dbInstanceMode;
         this.description = $.description;
         this.engine = $.engine;
         this.engineVersion = $.engineVersion;
         this.instanceChargeType = $.instanceChargeType;
-        this.instanceClass = $.instanceClass;
         this.instanceGroupCount = $.instanceGroupCount;
+        this.instanceNetworkType = $.instanceNetworkType;
+        this.instanceSpec = $.instanceSpec;
+        this.ipWhitelists = $.ipWhitelists;
+        this.maintainEndTime = $.maintainEndTime;
+        this.maintainStartTime = $.maintainStartTime;
+        this.masterNodeNum = $.masterNodeNum;
+        this.paymentType = $.paymentType;
+        this.period = $.period;
+        this.port = $.port;
+        this.privateIpAddress = $.privateIpAddress;
+        this.resourceGroupId = $.resourceGroupId;
         this.securityIpLists = $.securityIpLists;
+        this.segNodeNum = $.segNodeNum;
+        this.segStorageType = $.segStorageType;
+        this.sslEnabled = $.sslEnabled;
+        this.status = $.status;
+        this.storageSize = $.storageSize;
         this.tags = $.tags;
+        this.usedTime = $.usedTime;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -193,17 +614,146 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             $ = new InstanceState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead. */
         public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
             $.availabilityZone = availabilityZone;
             return this;
         }
 
+        /**
+         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;availability_zone&#39; has been deprecated from version 1.187.0. Use &#39;zone_id&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead. */
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
         }
 
         /**
-         * @param description The name of DB instance. It a string of 2 to 256 characters.
+         * @param connectionString (Available in 1.196.0+) The connection string of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionString(@Nullable Output<String> connectionString) {
+            $.connectionString = connectionString;
+            return this;
+        }
+
+        /**
+         * @param connectionString (Available in 1.196.0+) The connection string of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionString(String connectionString) {
+            return connectionString(Output.of(connectionString));
+        }
+
+        /**
+         * @param createSampleData Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createSampleData(@Nullable Output<Boolean> createSampleData) {
+            $.createSampleData = createSampleData;
+            return this;
+        }
+
+        /**
+         * @param createSampleData Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createSampleData(Boolean createSampleData) {
+            return createSampleData(Output.of(createSampleData));
+        }
+
+        /**
+         * @param dbInstanceCategory The db instance category. Valid values: `HighAvailability`, `Basic`.
+         * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceCategory(@Nullable Output<String> dbInstanceCategory) {
+            $.dbInstanceCategory = dbInstanceCategory;
+            return this;
+        }
+
+        /**
+         * @param dbInstanceCategory The db instance category. Valid values: `HighAvailability`, `Basic`.
+         * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceCategory(String dbInstanceCategory) {
+            return dbInstanceCategory(Output.of(dbInstanceCategory));
+        }
+
+        /**
+         * @param dbInstanceClass The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+         * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceClass(@Nullable Output<String> dbInstanceClass) {
+            $.dbInstanceClass = dbInstanceClass;
+            return this;
+        }
+
+        /**
+         * @param dbInstanceClass The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+         * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceClass(String dbInstanceClass) {
+            return dbInstanceClass(Output.of(dbInstanceClass));
+        }
+
+        /**
+         * @param dbInstanceMode The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceMode(@Nullable Output<String> dbInstanceMode) {
+            $.dbInstanceMode = dbInstanceMode;
+            return this;
+        }
+
+        /**
+         * @param dbInstanceMode The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceMode(String dbInstanceMode) {
+            return dbInstanceMode(Output.of(dbInstanceMode));
+        }
+
+        /**
+         * @param description The description of the instance.
          * 
          * @return builder
          * 
@@ -214,7 +764,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The name of DB instance. It a string of 2 to 256 characters.
+         * @param description The description of the instance.
          * 
          * @return builder
          * 
@@ -224,7 +774,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engine Database engine: gpdb. System Default value: gpdb.
+         * @param engine The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
          * 
          * @return builder
          * 
@@ -235,7 +785,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engine Database engine: gpdb. System Default value: gpdb.
+         * @param engine The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
          * 
          * @return builder
          * 
@@ -245,7 +795,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineVersion Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+         * @param engineVersion The version of the database engine used by the instance.
          * 
          * @return builder
          * 
@@ -256,7 +806,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineVersion Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+         * @param engineVersion The version of the database engine used by the instance.
          * 
          * @return builder
          * 
@@ -266,97 +816,456 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+         * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;instance_charge_type&#39; has been deprecated from version 1.187.0. Use &#39;payment_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead. */
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
         }
 
         /**
-         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+         * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;instance_charge_type&#39; has been deprecated from version 1.187.0. Use &#39;payment_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead. */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
 
         /**
-         * @param instanceClass Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+         * @param instanceGroupCount The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
          * 
          * @return builder
          * 
          */
-        public Builder instanceClass(@Nullable Output<String> instanceClass) {
-            $.instanceClass = instanceClass;
-            return this;
-        }
-
-        /**
-         * @param instanceClass Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder instanceClass(String instanceClass) {
-            return instanceClass(Output.of(instanceClass));
-        }
-
-        /**
-         * @param instanceGroupCount The number of groups. Valid values: [2,4,8,16,32]
-         * 
-         * @return builder
-         * 
-         */
-        public Builder instanceGroupCount(@Nullable Output<String> instanceGroupCount) {
+        public Builder instanceGroupCount(@Nullable Output<Integer> instanceGroupCount) {
             $.instanceGroupCount = instanceGroupCount;
             return this;
         }
 
         /**
-         * @param instanceGroupCount The number of groups. Valid values: [2,4,8,16,32]
+         * @param instanceGroupCount The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
          * 
          * @return builder
          * 
          */
-        public Builder instanceGroupCount(String instanceGroupCount) {
+        public Builder instanceGroupCount(Integer instanceGroupCount) {
             return instanceGroupCount(Output.of(instanceGroupCount));
         }
 
         /**
-         * @param securityIpLists List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+         * @param instanceNetworkType The network type of the instance.
          * 
          * @return builder
          * 
          */
+        public Builder instanceNetworkType(@Nullable Output<String> instanceNetworkType) {
+            $.instanceNetworkType = instanceNetworkType;
+            return this;
+        }
+
+        /**
+         * @param instanceNetworkType The network type of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceNetworkType(String instanceNetworkType) {
+            return instanceNetworkType(Output.of(instanceNetworkType));
+        }
+
+        /**
+         * @param instanceSpec The specification of segment nodes.
+         * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+         * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+         * * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+         * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceSpec(@Nullable Output<String> instanceSpec) {
+            $.instanceSpec = instanceSpec;
+            return this;
+        }
+
+        /**
+         * @param instanceSpec The specification of segment nodes.
+         * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+         * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+         * * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+         * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceSpec(String instanceSpec) {
+            return instanceSpec(Output.of(instanceSpec));
+        }
+
+        /**
+         * @param ipWhitelists The ip whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipWhitelists(@Nullable Output<List<InstanceIpWhitelistArgs>> ipWhitelists) {
+            $.ipWhitelists = ipWhitelists;
+            return this;
+        }
+
+        /**
+         * @param ipWhitelists The ip whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipWhitelists(List<InstanceIpWhitelistArgs> ipWhitelists) {
+            return ipWhitelists(Output.of(ipWhitelists));
+        }
+
+        /**
+         * @param ipWhitelists The ip whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipWhitelists(InstanceIpWhitelistArgs... ipWhitelists) {
+            return ipWhitelists(List.of(ipWhitelists));
+        }
+
+        /**
+         * @param maintainEndTime The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintainEndTime(@Nullable Output<String> maintainEndTime) {
+            $.maintainEndTime = maintainEndTime;
+            return this;
+        }
+
+        /**
+         * @param maintainEndTime The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintainEndTime(String maintainEndTime) {
+            return maintainEndTime(Output.of(maintainEndTime));
+        }
+
+        /**
+         * @param maintainStartTime The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintainStartTime(@Nullable Output<String> maintainStartTime) {
+            $.maintainStartTime = maintainStartTime;
+            return this;
+        }
+
+        /**
+         * @param maintainStartTime The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintainStartTime(String maintainStartTime) {
+            return maintainStartTime(Output.of(maintainStartTime));
+        }
+
+        /**
+         * @param masterNodeNum The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder masterNodeNum(@Nullable Output<Integer> masterNodeNum) {
+            $.masterNodeNum = masterNodeNum;
+            return this;
+        }
+
+        /**
+         * @param masterNodeNum The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder masterNodeNum(Integer masterNodeNum) {
+            return masterNodeNum(Output.of(masterNodeNum));
+        }
+
+        /**
+         * @param paymentType The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(@Nullable Output<String> paymentType) {
+            $.paymentType = paymentType;
+            return this;
+        }
+
+        /**
+         * @param paymentType The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(String paymentType) {
+            return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param period The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder period(@Nullable Output<String> period) {
+            $.period = period;
+            return this;
+        }
+
+        /**
+         * @param period The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder period(String period) {
+            return period(Output.of(period));
+        }
+
+        /**
+         * @param port (Available in 1.196.0+) The connection port of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<String> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port (Available in 1.196.0+) The connection port of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(String port) {
+            return port(Output.of(port));
+        }
+
+        /**
+         * @param privateIpAddress The private ip address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateIpAddress(@Nullable Output<String> privateIpAddress) {
+            $.privateIpAddress = privateIpAddress;
+            return this;
+        }
+
+        /**
+         * @param privateIpAddress The private ip address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateIpAddress(String privateIpAddress) {
+            return privateIpAddress(Output.of(privateIpAddress));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the enterprise resource group to which the instance belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the enterprise resource group to which the instance belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param securityIpLists Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
         public Builder securityIpLists(@Nullable Output<List<String>> securityIpLists) {
             $.securityIpLists = securityIpLists;
             return this;
         }
 
         /**
-         * @param securityIpLists List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+         * @param securityIpLists Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
         public Builder securityIpLists(List<String> securityIpLists) {
             return securityIpLists(Output.of(securityIpLists));
         }
 
         /**
-         * @param securityIpLists List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+         * @param securityIpLists Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;security_ip_list&#39; has been deprecated from version 1.187.0. Use &#39;ip_whitelist&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
+        public Builder securityIpLists(String... securityIpLists) {
+            return securityIpLists(List.of(securityIpLists));
+        }
+
+        /**
+         * @param segNodeNum Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+         * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
          * 
          * @return builder
          * 
          */
-        public Builder securityIpLists(String... securityIpLists) {
-            return securityIpLists(List.of(securityIpLists));
+        public Builder segNodeNum(@Nullable Output<Integer> segNodeNum) {
+            $.segNodeNum = segNodeNum;
+            return this;
+        }
+
+        /**
+         * @param segNodeNum Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+         * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder segNodeNum(Integer segNodeNum) {
+            return segNodeNum(Output.of(segNodeNum));
+        }
+
+        /**
+         * @param segStorageType The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+         * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder segStorageType(@Nullable Output<String> segStorageType) {
+            $.segStorageType = segStorageType;
+            return this;
+        }
+
+        /**
+         * @param segStorageType The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+         * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder segStorageType(String segStorageType) {
+            return segStorageType(Output.of(segStorageType));
+        }
+
+        /**
+         * @param sslEnabled Enable or disable SSL. Valid values: `0` and `1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslEnabled(@Nullable Output<Integer> sslEnabled) {
+            $.sslEnabled = sslEnabled;
+            return this;
+        }
+
+        /**
+         * @param sslEnabled Enable or disable SSL. Valid values: `0` and `1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslEnabled(Integer sslEnabled) {
+            return sslEnabled(Output.of(sslEnabled));
+        }
+
+        /**
+         * @param status The status of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param storageSize The storage capacity. Unit: GB. Value: `50` to `4000`.
+         * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageSize(@Nullable Output<Integer> storageSize) {
+            $.storageSize = storageSize;
+            return this;
+        }
+
+        /**
+         * @param storageSize The storage capacity. Unit: GB. Value: `50` to `4000`.
+         * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageSize(Integer storageSize) {
+            return storageSize(Output.of(storageSize));
         }
 
         /**
@@ -381,7 +1290,49 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The virtual switch ID to launch DB instances in one VPC.
+         * @param usedTime The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usedTime(@Nullable Output<String> usedTime) {
+            $.usedTime = usedTime;
+            return this;
+        }
+
+        /**
+         * @param usedTime The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usedTime(String usedTime) {
+            return usedTime(Output.of(usedTime));
+        }
+
+        /**
+         * @param vpcId The vpc ID of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The vpc ID of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
+        }
+
+        /**
+         * @param vswitchId The vswitch id.
          * 
          * @return builder
          * 
@@ -392,13 +1343,34 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The virtual switch ID to launch DB instances in one VPC.
+         * @param vswitchId The vswitch id.
          * 
          * @return builder
          * 
          */
         public Builder vswitchId(String vswitchId) {
             return vswitchId(Output.of(vswitchId));
+        }
+
+        /**
+         * @param zoneId The zone ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId The zone ID of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public InstanceState build() {

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,20 +17,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.resourcemanager.getResourceGroups({
+ * const example = alicloud.resourcemanager.getResourceGroups({
  *     nameRegex: "tftest",
- * }));
- *
- * export const firstResourceGroupId = example.groups[0].id;
+ * });
+ * export const firstResourceGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
  */
 export function getResourceGroups(args?: GetResourceGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getResourceGroups:getResourceGroups", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -44,7 +41,7 @@ export function getResourceGroups(args?: GetResourceGroupsArgs, opts?: pulumi.In
  */
 export interface GetResourceGroupsArgs {
     /**
-     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     * Default to `false`. Set it to true can output more details.
      */
     enableDetails?: boolean;
     /**
@@ -90,9 +87,25 @@ export interface GetResourceGroupsResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides resource groups of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.84.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.resourcemanager.getResourceGroups({
+ *     nameRegex: "tftest",
+ * });
+ * export const firstResourceGroupId = example.then(example => example.groups?.[0]?.id);
+ * ```
+ */
 export function getResourceGroupsOutput(args?: GetResourceGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceGroupsResult> {
-    return pulumi.output(args).apply(a => getResourceGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getResourceGroups(a, opts))
 }
 
 /**
@@ -100,7 +113,7 @@ export function getResourceGroupsOutput(args?: GetResourceGroupsOutputArgs, opts
  */
 export interface GetResourceGroupsOutputArgs {
     /**
-     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     * Default to `false`. Set it to true can output more details.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**

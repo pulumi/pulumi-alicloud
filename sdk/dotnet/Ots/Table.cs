@@ -18,56 +18,73 @@ namespace Pulumi.AliCloud.Ots
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraformtest";
+    ///     var foo = new AliCloud.Ots.Instance("foo", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "terraformtest";
-    ///         var foo = new AliCloud.Ots.Instance("foo", new AliCloud.Ots.InstanceArgs
+    ///         Description = name,
+    ///         AccessedBy = "Any",
+    ///         Tags = 
     ///         {
-    ///             Description = name,
-    ///             AccessedBy = "Any",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "acceptance test" },
-    ///             },
-    ///         });
-    ///         var basic = new AliCloud.Ots.Table("basic", new AliCloud.Ots.TableArgs
-    ///         {
-    ///             InstanceName = foo.Name,
-    ///             TableName = name,
-    ///             PrimaryKeys = 
-    ///             {
-    ///                 new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
-    ///                 {
-    ///                     Name = "pk1",
-    ///                     Type = "Integer",
-    ///                 },
-    ///                 new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
-    ///                 {
-    ///                     Name = "pk2",
-    ///                     Type = "String",
-    ///                 },
-    ///                 new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
-    ///                 {
-    ///                     Name = "pk3",
-    ///                     Type = "Binary",
-    ///                 },
-    ///             },
-    ///             TimeToLive = -1,
-    ///             MaxVersion = 1,
-    ///             DeviationCellVersionInSec = "1",
-    ///             EnableSse = true,
-    ///             SseKeyType = "SSE_KMS_SERVICE",
-    ///         });
-    ///     }
+    ///             { "Created", "TF" },
+    ///             { "For", "acceptance test" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var basic = new AliCloud.Ots.Table("basic", new()
+    ///     {
+    ///         InstanceName = foo.Name,
+    ///         TableName = name,
+    ///         PrimaryKeys = new[]
+    ///         {
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk1",
+    ///                 Type = "Integer",
+    ///             },
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk2",
+    ///                 Type = "String",
+    ///             },
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk3",
+    ///                 Type = "Binary",
+    ///             },
+    ///         },
+    ///         DefinedColumns = new[]
+    ///         {
+    ///             new AliCloud.Ots.Inputs.TableDefinedColumnArgs
+    ///             {
+    ///                 Name = "col1",
+    ///                 Type = "Integer",
+    ///             },
+    ///             new AliCloud.Ots.Inputs.TableDefinedColumnArgs
+    ///             {
+    ///                 Name = "col2",
+    ///                 Type = "String",
+    ///             },
+    ///             new AliCloud.Ots.Inputs.TableDefinedColumnArgs
+    ///             {
+    ///                 Name = "col3",
+    ///                 Type = "Binary",
+    ///             },
+    ///         },
+    ///         TimeToLive = -1,
+    ///         MaxVersion = 1,
+    ///         DeviationCellVersionInSec = "1",
+    ///         EnableSse = true,
+    ///         SseKeyType = "SSE_KMS_SERVICE",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -75,12 +92,18 @@ namespace Pulumi.AliCloud.Ots
     /// OTS table can be imported using id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:ots/table:Table table "my-ots:ots_table"
+    ///  $ pulumi import alicloud:ots/table:Table table my-ots:ots_table
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ots/table:Table")]
-    public partial class Table : Pulumi.CustomResource
+    public partial class Table : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        /// </summary>
+        [Output("definedColumns")]
+        public Output<ImmutableArray<Outputs.TableDefinedColumn>> DefinedColumns { get; private set; } = null!;
+
         /// <summary>
         /// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         /// </summary>
@@ -173,8 +196,20 @@ namespace Pulumi.AliCloud.Ots
         }
     }
 
-    public sealed class TableArgs : Pulumi.ResourceArgs
+    public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
+        [Input("definedColumns")]
+        private InputList<Inputs.TableDefinedColumnArgs>? _definedColumns;
+
+        /// <summary>
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        /// </summary>
+        public InputList<Inputs.TableDefinedColumnArgs> DefinedColumns
+        {
+            get => _definedColumns ?? (_definedColumns = new InputList<Inputs.TableDefinedColumnArgs>());
+            set => _definedColumns = value;
+        }
+
         /// <summary>
         /// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         /// </summary>
@@ -232,10 +267,23 @@ namespace Pulumi.AliCloud.Ots
         public TableArgs()
         {
         }
+        public static new TableArgs Empty => new TableArgs();
     }
 
-    public sealed class TableState : Pulumi.ResourceArgs
+    public sealed class TableState : global::Pulumi.ResourceArgs
     {
+        [Input("definedColumns")]
+        private InputList<Inputs.TableDefinedColumnGetArgs>? _definedColumns;
+
+        /// <summary>
+        /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32.
+        /// </summary>
+        public InputList<Inputs.TableDefinedColumnGetArgs> DefinedColumns
+        {
+            get => _definedColumns ?? (_definedColumns = new InputList<Inputs.TableDefinedColumnGetArgs>());
+            set => _definedColumns = value;
+        }
+
         /// <summary>
         /// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         /// </summary>
@@ -293,5 +341,6 @@ namespace Pulumi.AliCloud.Ots
         public TableState()
         {
         }
+        public static new TableState Empty => new TableState();
     }
 }

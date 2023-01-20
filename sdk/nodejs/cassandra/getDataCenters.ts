@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -17,18 +18,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const cassandra = pulumi.output(alicloud.cassandra.getDataCenters({
+ * const cassandra = alicloud.cassandra.getDataCenters({
  *     clusterId: "cds-xxxxx",
  *     nameRegex: "tf_testAccCassandra_dc",
- * }));
+ * });
  * ```
  */
 export function getDataCenters(args: GetDataCentersArgs, opts?: pulumi.InvokeOptions): Promise<GetDataCentersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cassandra/getDataCenters:getDataCenters", {
         "clusterId": args.clusterId,
         "ids": args.ids,
@@ -83,9 +81,26 @@ export interface GetDataCentersResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
+ * Filters support regular expression for the cluster name or ids.
+ *
+ * > **NOTE:**  Available in 1.88.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const cassandra = alicloud.cassandra.getDataCenters({
+ *     clusterId: "cds-xxxxx",
+ *     nameRegex: "tf_testAccCassandra_dc",
+ * });
+ * ```
+ */
 export function getDataCentersOutput(args: GetDataCentersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataCentersResult> {
-    return pulumi.output(args).apply(a => getDataCenters(a, opts))
+    return pulumi.output(args).apply((a: any) => getDataCenters(a, opts))
 }
 
 /**

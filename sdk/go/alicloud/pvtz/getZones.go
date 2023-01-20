@@ -49,7 +49,7 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
-	// -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of zone IDs.
 	Ids []string `pulumi:"ids"`
@@ -108,7 +108,7 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getZones.
 type GetZonesOutputArgs struct {
-	// -(Optional, Available 1.107.0+) Default to `false`. Set it to true can output more details.
+	// Default to `false`. Set it to true can output more details.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of zone IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

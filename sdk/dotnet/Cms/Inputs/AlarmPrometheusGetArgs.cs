@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class AlarmPrometheusGetArgs : Pulumi.ResourceArgs
+    public sealed class AlarmPrometheusGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public Input<string>? PromQl { get; set; }
 
         /// <summary>
-        /// The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+        /// Critical level alarm retry times. Default to 3.
         /// </summary>
         [Input("times")]
         public Input<int>? Times { get; set; }
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public AlarmPrometheusGetArgs()
         {
         }
+        public static new AlarmPrometheusGetArgs Empty => new AlarmPrometheusGetArgs();
     }
 }

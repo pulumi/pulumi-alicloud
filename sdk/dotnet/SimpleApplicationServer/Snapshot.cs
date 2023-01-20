@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:simpleapplicationserver/snapshot:Snapshot")]
-    public partial class Snapshot : Pulumi.CustomResource
+    public partial class Snapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the disk.
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         }
     }
 
-    public sealed class SnapshotArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the disk.
@@ -106,9 +106,10 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public SnapshotArgs()
         {
         }
+        public static new SnapshotArgs Empty => new SnapshotArgs();
     }
 
-    public sealed class SnapshotState : Pulumi.ResourceArgs
+    public sealed class SnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the disk.
@@ -131,5 +132,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public SnapshotState()
         {
         }
+        public static new SnapshotState Empty => new SnapshotState();
     }
 }

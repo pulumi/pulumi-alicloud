@@ -60,14 +60,14 @@ public class SharedResource extends com.pulumi.resources.CustomResource {
         return this.resourceShareId;
     }
     /**
-     * The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+     * The resource type of should shared, valid value
      * 
      */
     @Export(name="resourceType", type=String.class, parameters={})
     private Output<String> resourceType;
 
     /**
-     * @return The resource type of should shared, valid value `VSwitch`. The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+     * @return The resource type of should shared, valid value
      * 
      */
     public Output<String> resourceType() {

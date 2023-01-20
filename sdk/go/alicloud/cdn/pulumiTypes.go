@@ -1646,7 +1646,7 @@ type GetRealTimeLogDeliveriesDelivery struct {
 	Project string `pulumi:"project"`
 	// The region where the Log Service project is deployed.
 	SlsRegion string `pulumi:"slsRegion"`
-	// -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
 	Status string `pulumi:"status"`
 }
 
@@ -1672,7 +1672,7 @@ type GetRealTimeLogDeliveriesDeliveryArgs struct {
 	Project pulumi.StringInput `pulumi:"project"`
 	// The region where the Log Service project is deployed.
 	SlsRegion pulumi.StringInput `pulumi:"slsRegion"`
-	// -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -1752,7 +1752,7 @@ func (o GetRealTimeLogDeliveriesDeliveryOutput) SlsRegion() pulumi.StringOutput 
 	return o.ApplyT(func(v GetRealTimeLogDeliveriesDelivery) string { return v.SlsRegion }).(pulumi.StringOutput)
 }
 
-// -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
 func (o GetRealTimeLogDeliveriesDeliveryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRealTimeLogDeliveriesDelivery) string { return v.Status }).(pulumi.StringOutput)
 }

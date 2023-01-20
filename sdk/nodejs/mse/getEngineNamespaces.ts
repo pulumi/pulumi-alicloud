@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,15 +23,12 @@ import * as utilities from "../utilities";
  *     clusterId: "example_value",
  *     ids: ["example_value"],
  * });
- * export const mseEngineNamespaceId1 = ids.then(ids => ids.namespaces?[0]?.id);
+ * export const mseEngineNamespaceId1 = ids.then(ids => ids.namespaces?.[0]?.id);
  * ```
  */
 export function getEngineNamespaces(args: GetEngineNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineNamespacesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:mse/getEngineNamespaces:getEngineNamespaces", {
         "acceptLanguage": args.acceptLanguage,
         "clusterId": args.clusterId,
@@ -72,9 +70,28 @@ export interface GetEngineNamespacesResult {
     readonly namespaces: outputs.mse.GetEngineNamespacesNamespace[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.166.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.mse.getEngineNamespaces({
+ *     clusterId: "example_value",
+ *     ids: ["example_value"],
+ * });
+ * export const mseEngineNamespaceId1 = ids.then(ids => ids.namespaces?.[0]?.id);
+ * ```
+ */
 export function getEngineNamespacesOutput(args: GetEngineNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEngineNamespacesResult> {
-    return pulumi.output(args).apply(a => getEngineNamespaces(a, opts))
+    return pulumi.output(args).apply((a: any) => getEngineNamespaces(a, opts))
 }
 
 /**

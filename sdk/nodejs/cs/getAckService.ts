@@ -17,18 +17,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.cs.getAckService({
+ * const open = alicloud.cs.getAckService({
  *     enable: "On",
  *     type: "propayasgo",
- * }));
+ * });
  * ```
  */
 export function getAckService(args: GetAckServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAckServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getAckService:getAckService", {
         "enable": args.enable,
         "type": args.type,
@@ -64,9 +61,27 @@ export interface GetAckServiceResult {
     readonly status: string;
     readonly type: string;
 }
-
+/**
+ * Using this data source can open Container Service (CS) service automatically. If the service has been opened, it will return opened.
+ *
+ * For information about Container Service (CS) and how to use it, see [What is Container Service (CS)](https://www.alibabacloud.com/help/en/product/85222.htm).
+ *
+ * > **NOTE:** Available in v1.113.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.cs.getAckService({
+ *     enable: "On",
+ *     type: "propayasgo",
+ * });
+ * ```
+ */
 export function getAckServiceOutput(args: GetAckServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAckServiceResult> {
-    return pulumi.output(args).apply(a => getAckService(a, opts))
+    return pulumi.output(args).apply((a: any) => getAckService(a, opts))
 }
 
 /**

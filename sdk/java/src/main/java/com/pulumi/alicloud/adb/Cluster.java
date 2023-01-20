@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -300,6 +300,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
+    }
+    /**
+     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     * 
+     */
+    @Export(name="port", type=String.class, parameters={})
+    private Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) The connection port of the ADB cluster.
+     * 
+     */
+    public Output<String> port() {
+        return this.port;
     }
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.

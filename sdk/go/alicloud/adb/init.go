@@ -31,6 +31,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "alicloud:adb/dBCluster:DBCluster":
 		r = &DBCluster{}
+	case "alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion":
+		r = &DBClusterLakeVersion{}
+	case "alicloud:adb/resourceGroup:ResourceGroup":
+		r = &ResourceGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -67,6 +71,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"adb/dBCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"adb/dBClusterLakeVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"adb/resourceGroup",
 		&module{version},
 	)
 }

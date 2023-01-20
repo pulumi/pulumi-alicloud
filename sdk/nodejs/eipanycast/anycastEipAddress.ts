@@ -19,9 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.eipanycast.AnycastEipAddress("example", {
- *     serviceLocation: "international",
- * });
+ * const example = new alicloud.eipanycast.AnycastEipAddress("example", {serviceLocation: "international"});
  * ```
  *
  * ## Import

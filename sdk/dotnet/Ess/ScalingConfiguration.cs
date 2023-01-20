@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Ess
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ess/scalingConfiguration:ScalingConfiguration")]
-    public partial class ScalingConfiguration : Pulumi.CustomResource
+    public partial class ScalingConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether active current scaling configuration in the specified scaling group. Default to `false`.
@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
-    public sealed class ScalingConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class ScalingConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether active current scaling configuration in the specified scaling group. Default to `false`.
@@ -615,9 +615,10 @@ namespace Pulumi.AliCloud.Ess
         public ScalingConfigurationArgs()
         {
         }
+        public static new ScalingConfigurationArgs Empty => new ScalingConfigurationArgs();
     }
 
-    public sealed class ScalingConfigurationState : Pulumi.ResourceArgs
+    public sealed class ScalingConfigurationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether active current scaling configuration in the specified scaling group. Default to `false`.
@@ -919,5 +920,6 @@ namespace Pulumi.AliCloud.Ess
         public ScalingConfigurationState()
         {
         }
+        public static new ScalingConfigurationState Empty => new ScalingConfigurationState();
     }
 }

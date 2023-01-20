@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,21 +15,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const groupsDs = pulumi.output(alicloud.dns.getGroups({
+ * const groupsDs = alicloud.dns.getGroups({
  *     nameRegex: "^y[A-Za-z]+",
  *     outputFile: "groups.txt",
- * }));
- *
- * export const firstGroupName = groupsDs.groups[0].groupName;
+ * });
+ * export const firstGroupName = groupsDs.then(groupsDs => groupsDs.groups?.[0]?.groupName);
  * ```
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getGroups:getGroups", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -74,9 +71,24 @@ export interface GetGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const groupsDs = alicloud.dns.getGroups({
+ *     nameRegex: "^y[A-Za-z]+",
+ *     outputFile: "groups.txt",
+ * });
+ * export const firstGroupName = groupsDs.then(groupsDs => groupsDs.groups?.[0]?.groupName);
+ * ```
+ */
 export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
-    return pulumi.output(args).apply(a => getGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getGroups(a, opts))
 }
 
 /**

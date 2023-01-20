@@ -103,12 +103,6 @@ public final class GetImagesImage {
     private String state;
     /**
      * @return The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-     * * `Creating`: The image is being created.
-     * * `Waiting`: The image is waiting to be processed.
-     * * `Available`: The image is available.
-     * * `UnAvailable`: The image is unavailable.
-     * * `CreateFailed`: The image failed to be created.
-     * * `Deprecated`: The image is discontinued.
      * 
      */
     private String status;
@@ -119,8 +113,6 @@ public final class GetImagesImage {
     private @Nullable Map<String,Object> tags;
     /**
      * @return Specifies whether to check the validity of the request without actually making the request. Valid values:
-     * * `instance`: The image is already in use and running on an ECS instance.
-     * * `none`: The image is not in use.
      * 
      */
     private String usage;
@@ -255,12 +247,6 @@ public final class GetImagesImage {
     }
     /**
      * @return The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-     * * `Creating`: The image is being created.
-     * * `Waiting`: The image is waiting to be processed.
-     * * `Available`: The image is available.
-     * * `UnAvailable`: The image is unavailable.
-     * * `CreateFailed`: The image failed to be created.
-     * * `Deprecated`: The image is discontinued.
      * 
      */
     public String status() {
@@ -275,8 +261,6 @@ public final class GetImagesImage {
     }
     /**
      * @return Specifies whether to check the validity of the request without actually making the request. Valid values:
-     * * `instance`: The image is already in use and running on an ECS instance.
-     * * `none`: The image is not in use.
      * 
      */
     public String usage() {

@@ -27,44 +27,43 @@ namespace Pulumi.AliCloud.Cassandra
     /// ### Create a cassandra dataCenter
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultCluster = new AliCloud.Cassandra.Cluster("defaultCluster", new()
     ///     {
-    ///         var defaultCluster = new AliCloud.Cassandra.Cluster("defaultCluster", new AliCloud.Cassandra.ClusterArgs
-    ///         {
-    ///             ClusterName = "cassandra-cluster-name-tf",
-    ///             DataCenterName = "dc-1",
-    ///             AutoRenew = false,
-    ///             InstanceType = "cassandra.c.large",
-    ///             MajorVersion = "3.11",
-    ///             NodeCount = 2,
-    ///             PayType = "PayAsYouGo",
-    ///             VswitchId = "vsw-xxxx1",
-    ///             DiskSize = 160,
-    ///             DiskType = "cloud_ssd",
-    ///             MaintainStartTime = "18:00Z",
-    ///             MaintainEndTime = "20:00Z",
-    ///             IpWhite = "127.0.0.1",
-    ///         });
-    ///         var defaultDataCenter = new AliCloud.Cassandra.DataCenter("defaultDataCenter", new AliCloud.Cassandra.DataCenterArgs
-    ///         {
-    ///             ClusterId = defaultCluster.Id,
-    ///             DataCenterName = "dc-2",
-    ///             AutoRenew = false,
-    ///             InstanceType = "cassandra.c.large",
-    ///             NodeCount = 2,
-    ///             PayType = "PayAsYouGo",
-    ///             VswitchId = "vsw-xxxx2",
-    ///             DiskSize = 160,
-    ///             DiskType = "cloud_ssd",
-    ///         });
-    ///     }
+    ///         ClusterName = "cassandra-cluster-name-tf",
+    ///         DataCenterName = "dc-1",
+    ///         AutoRenew = false,
+    ///         InstanceType = "cassandra.c.large",
+    ///         MajorVersion = "3.11",
+    ///         NodeCount = 2,
+    ///         PayType = "PayAsYouGo",
+    ///         VswitchId = "vsw-xxxx1",
+    ///         DiskSize = 160,
+    ///         DiskType = "cloud_ssd",
+    ///         MaintainStartTime = "18:00Z",
+    ///         MaintainEndTime = "20:00Z",
+    ///         IpWhite = "127.0.0.1",
+    ///     });
     /// 
-    /// }
+    ///     var defaultDataCenter = new AliCloud.Cassandra.DataCenter("defaultDataCenter", new()
+    ///     {
+    ///         ClusterId = defaultCluster.Id,
+    ///         DataCenterName = "dc-2",
+    ///         AutoRenew = false,
+    ///         InstanceType = "cassandra.c.large",
+    ///         NodeCount = 2,
+    ///         PayType = "PayAsYouGo",
+    ///         VswitchId = "vsw-xxxx2",
+    ///         DiskSize = 160,
+    ///         DiskType = "cloud_ssd",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
@@ -78,7 +77,7 @@ namespace Pulumi.AliCloud.Cassandra
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cassandra/dataCenter:DataCenter")]
-    public partial class DataCenter : Pulumi.CustomResource
+    public partial class DataCenter : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
@@ -210,7 +209,7 @@ namespace Pulumi.AliCloud.Cassandra
         }
     }
 
-    public sealed class DataCenterArgs : Pulumi.ResourceArgs
+    public sealed class DataCenterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
@@ -292,9 +291,10 @@ namespace Pulumi.AliCloud.Cassandra
         public DataCenterArgs()
         {
         }
+        public static new DataCenterArgs Empty => new DataCenterArgs();
     }
 
-    public sealed class DataCenterState : Pulumi.ResourceArgs
+    public sealed class DataCenterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
@@ -390,5 +390,6 @@ namespace Pulumi.AliCloud.Cassandra
         public DataCenterState()
         {
         }
+        public static new DataCenterState Empty => new DataCenterState();
     }
 }

@@ -109,7 +109,7 @@ public final class GetDBClustersCluster {
      */
     private String engine;
     /**
-     * @return The engine version of the database..
+     * @return The engine version of the database.
      * 
      */
     private String engineVersion;
@@ -356,7 +356,7 @@ public final class GetDBClustersCluster {
         return this.engine;
     }
     /**
-     * @return The engine version of the database..
+     * @return The engine version of the database.
      * 
      */
     public String engineVersion() {

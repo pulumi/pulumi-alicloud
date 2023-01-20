@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathGetArgs : Pulumi.ResourceArgs
+    public sealed class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The content of the configuration file. Maximum size: 32 KB.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathGetArgs()
         {
         }
+        public static new EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathGetArgs Empty => new EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathGetArgs();
     }
 }

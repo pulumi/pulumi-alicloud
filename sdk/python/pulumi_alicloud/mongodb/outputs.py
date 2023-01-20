@@ -258,7 +258,7 @@ class ShardingInstanceConfigServerList(dict):
         :param str connect_string: The connection address of the Config Server node.
         :param int max_connections: The max connections of the Config Server node.
         :param int max_iops: The maximum IOPS of the Config Server node.
-        :param str node_class: -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param str node_class: Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param str node_description: The description of the Config Server node.
         :param str node_id: The ID of the Config Server node.
         :param int node_storage: - Custom storage space; value range: [10, 1,000]
@@ -310,7 +310,7 @@ class ShardingInstanceConfigServerList(dict):
     @pulumi.getter(name="nodeClass")
     def node_class(self) -> Optional[str]:
         """
-        -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         """
         return pulumi.get(self, "node_class")
 
@@ -377,7 +377,7 @@ class ShardingInstanceMongoList(dict):
                  node_id: Optional[str] = None,
                  port: Optional[int] = None):
         """
-        :param str node_class: -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param str node_class: Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param str connect_string: The connection address of the Config Server node.
         :param str node_id: The ID of the Config Server node.
         :param int port: The connection port of the Config Server node.
@@ -394,7 +394,7 @@ class ShardingInstanceMongoList(dict):
     @pulumi.getter(name="nodeClass")
     def node_class(self) -> str:
         """
-        -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         """
         return pulumi.get(self, "node_class")
 
@@ -454,7 +454,7 @@ class ShardingInstanceShardList(dict):
                  node_id: Optional[str] = None,
                  readonly_replicas: Optional[int] = None):
         """
-        :param str node_class: -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param str node_class: Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param int node_storage: - Custom storage space; value range: [10, 1,000]
                - 10-GB increments. Unit: GB.
         :param str node_id: The ID of the Config Server node.
@@ -471,7 +471,7 @@ class ShardingInstanceShardList(dict):
     @pulumi.getter(name="nodeClass")
     def node_class(self) -> str:
         """
-        -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         """
         return pulumi.get(self, "node_class")
 

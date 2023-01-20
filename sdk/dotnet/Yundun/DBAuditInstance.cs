@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Yundun
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:yundun/dBAuditInstance:DBAuditInstance")]
-    public partial class DBAuditInstance : Pulumi.CustomResource
+    public partial class DBAuditInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Description of the instance. This name can have a string of 1 to 63 characters.
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Yundun
         }
     }
 
-    public sealed class DBAuditInstanceArgs : Pulumi.ResourceArgs
+    public sealed class DBAuditInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the instance. This name can have a string of 1 to 63 characters.
@@ -142,9 +142,10 @@ namespace Pulumi.AliCloud.Yundun
         public DBAuditInstanceArgs()
         {
         }
+        public static new DBAuditInstanceArgs Empty => new DBAuditInstanceArgs();
     }
 
-    public sealed class DBAuditInstanceState : Pulumi.ResourceArgs
+    public sealed class DBAuditInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the instance. This name can have a string of 1 to 63 characters.
@@ -188,5 +189,6 @@ namespace Pulumi.AliCloud.Yundun
         public DBAuditInstanceState()
         {
         }
+        public static new DBAuditInstanceState Empty => new DBAuditInstanceState();
     }
 }

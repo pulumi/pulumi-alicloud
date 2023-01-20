@@ -22,34 +22,34 @@ namespace Pulumi.AliCloud.PolarDB
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var polardbClustersDs = AliCloud.PolarDB.GetClusters.Invoke(new()
         ///     {
-        ///         var polardbClustersDs = Output.Create(AliCloud.PolarDB.GetClusters.InvokeAsync(new AliCloud.PolarDB.GetClustersArgs
-        ///         {
-        ///             DescriptionRegex = "pc-\\w+",
-        ///             Status = "Running",
-        ///         }));
-        ///         var @default = polardbClustersDs.Apply(polardbClustersDs =&gt; Output.Create(AliCloud.PolarDB.GetAccounts.InvokeAsync(new AliCloud.PolarDB.GetAccountsArgs
-        ///         {
-        ///             DbClusterId = polardbClustersDs.Clusters?[0]?.Id,
-        ///         })));
-        ///         this.Account = @default.Apply(@default =&gt; @default.Accounts?[0]?.AccountName);
-        ///     }
+        ///         DescriptionRegex = "pc-\\w+",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("account")]
-        ///     public Output&lt;string&gt; Account { get; set; }
-        /// }
+        ///     var @default = AliCloud.PolarDB.GetAccounts.Invoke(new()
+        ///     {
+        ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["account"] = @default.Apply(getAccountsResult =&gt; getAccountsResult).Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountName)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:polardb/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:polardb/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `alicloud.polardb.getAccounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
@@ -62,38 +62,38 @@ namespace Pulumi.AliCloud.PolarDB
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var polardbClustersDs = AliCloud.PolarDB.GetClusters.Invoke(new()
         ///     {
-        ///         var polardbClustersDs = Output.Create(AliCloud.PolarDB.GetClusters.InvokeAsync(new AliCloud.PolarDB.GetClustersArgs
-        ///         {
-        ///             DescriptionRegex = "pc-\\w+",
-        ///             Status = "Running",
-        ///         }));
-        ///         var @default = polardbClustersDs.Apply(polardbClustersDs =&gt; Output.Create(AliCloud.PolarDB.GetAccounts.InvokeAsync(new AliCloud.PolarDB.GetAccountsArgs
-        ///         {
-        ///             DbClusterId = polardbClustersDs.Clusters?[0]?.Id,
-        ///         })));
-        ///         this.Account = @default.Apply(@default =&gt; @default.Accounts?[0]?.AccountName);
-        ///     }
+        ///         DescriptionRegex = "pc-\\w+",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("account")]
-        ///     public Output&lt;string&gt; Account { get; set; }
-        /// }
+        ///     var @default = AliCloud.PolarDB.GetAccounts.Invoke(new()
+        ///     {
+        ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["account"] = @default.Apply(getAccountsResult =&gt; getAccountsResult).Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountName)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:polardb/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:polardb/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAccountsArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The polarDB cluster ID.
@@ -110,9 +110,10 @@ namespace Pulumi.AliCloud.PolarDB
         public GetAccountsArgs()
         {
         }
+        public static new GetAccountsArgs Empty => new GetAccountsArgs();
     }
 
-    public sealed class GetAccountsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The polarDB cluster ID.
@@ -129,6 +130,7 @@ namespace Pulumi.AliCloud.PolarDB
         public GetAccountsInvokeArgs()
         {
         }
+        public static new GetAccountsInvokeArgs Empty => new GetAccountsInvokeArgs();
     }
 
 

@@ -35,9 +35,9 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
                  scale_down_rules: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs']] = None,
                  scale_up_rules: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs']] = None):
         """
-        :param pulumi.Input[int] max_replicas: Maximum number of instances applied.
+        :param pulumi.Input[int] max_replicas: Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]] metrics: Indicator rule configuration. See the following `Block metrics`.
-        :param pulumi.Input[int] min_replicas: Minimum number of instances applied.
+        :param pulumi.Input[int] min_replicas: Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         :param pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs'] scale_down_rules: Apply shrink rules. See the following `Block scale_down_rules`.
         :param pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs'] scale_up_rules: Apply expansion rules. See the following `Block scale_up_rules`.
         """
@@ -56,7 +56,7 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
     @pulumi.getter(name="maxReplicas")
     def max_replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of instances applied.
+        Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         """
         return pulumi.get(self, "max_replicas")
 
@@ -80,7 +80,7 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
     @pulumi.getter(name="minReplicas")
     def min_replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum number of instances applied.
+        Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         """
         return pulumi.get(self, "min_replicas")
 
@@ -352,8 +352,8 @@ class ApplicationScalingRuleScalingRuleTimerScheduleArgs:
                  target_replicas: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] at_time: Trigger point in time. When supporting format: minutes, for example: `08:00`.
-        :param pulumi.Input[int] max_replicas: Maximum number of instances applied.
-        :param pulumi.Input[int] min_replicas: Minimum number of instances applied.
+        :param pulumi.Input[int] max_replicas: Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+        :param pulumi.Input[int] min_replicas: Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         :param pulumi.Input[int] target_replicas: This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
         """
         if at_time is not None:
@@ -381,7 +381,7 @@ class ApplicationScalingRuleScalingRuleTimerScheduleArgs:
     @pulumi.getter(name="maxReplicas")
     def max_replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of instances applied.
+        Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         """
         return pulumi.get(self, "max_replicas")
 
@@ -393,7 +393,7 @@ class ApplicationScalingRuleScalingRuleTimerScheduleArgs:
     @pulumi.getter(name="minReplicas")
     def min_replicas(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum number of instances applied.
+        Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
         """
         return pulumi.get(self, "min_replicas")
 

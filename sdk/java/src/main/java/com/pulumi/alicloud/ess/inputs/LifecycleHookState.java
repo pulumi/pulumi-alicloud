@@ -17,14 +17,14 @@ public final class LifecycleHookState extends com.pulumi.resources.ResourceArgs 
     public static final LifecycleHookState Empty = new LifecycleHookState();
 
     /**
-     * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+     * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
      * 
      */
     @Import(name="defaultResult")
     private @Nullable Output<String> defaultResult;
 
     /**
-     * @return Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+     * @return Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
      * 
      */
     public Optional<Output<String>> defaultResult() {
@@ -152,7 +152,7 @@ public final class LifecycleHookState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultResult Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+         * @param defaultResult Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class LifecycleHookState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultResult Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
+         * @param defaultResult Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
          * 
          * @return builder
          * 

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,20 +17,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultPolicyVersions = pulumi.output(alicloud.resourcemanager.getPolicyVersions({
+ * const default = alicloud.resourcemanager.getPolicyVersions({
  *     policyName: "tftest",
  *     policyType: "Custom",
- * }));
- *
- * export const firstPolicyVersionId = defaultPolicyVersions.versions[0].id;
+ * });
+ * export const firstPolicyVersionId = _default.then(_default => _default.versions?.[0]?.id);
  * ```
  */
 export function getPolicyVersions(args: GetPolicyVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyVersionsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -44,7 +41,7 @@ export function getPolicyVersions(args: GetPolicyVersionsArgs, opts?: pulumi.Inv
  */
 export interface GetPolicyVersionsArgs {
     /**
-     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     * Default to `false`. Set it to true can output more details.
      */
     enableDetails?: boolean;
     /**
@@ -83,9 +80,26 @@ export interface GetPolicyVersionsResult {
      */
     readonly versions: outputs.resourcemanager.GetPolicyVersionsVersion[];
 }
-
+/**
+ * This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
+ *
+ * > **NOTE:**  Available in 1.85.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.resourcemanager.getPolicyVersions({
+ *     policyName: "tftest",
+ *     policyType: "Custom",
+ * });
+ * export const firstPolicyVersionId = _default.then(_default => _default.versions?.[0]?.id);
+ * ```
+ */
 export function getPolicyVersionsOutput(args: GetPolicyVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyVersionsResult> {
-    return pulumi.output(args).apply(a => getPolicyVersions(a, opts))
+    return pulumi.output(args).apply((a: any) => getPolicyVersions(a, opts))
 }
 
 /**
@@ -93,7 +107,7 @@ export function getPolicyVersionsOutput(args: GetPolicyVersionsOutputArgs, opts?
  */
 export interface GetPolicyVersionsOutputArgs {
     /**
-     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     * Default to `false`. Set it to true can output more details.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**

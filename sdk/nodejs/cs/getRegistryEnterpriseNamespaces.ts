@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,22 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const myNamespaces = pulumi.output(alicloud.cs.getRegistryEnterpriseNamespaces({
+ * const myNamespaces = alicloud.cs.getRegistryEnterpriseNamespaces({
  *     instanceId: "cri-xxx",
  *     nameRegex: "my-namespace",
  *     outputFile: "my-namespace-json",
- * }));
- *
- * export const output = myNamespaces.namespaces;
+ * });
+ * export const output = myNamespaces.then(myNamespaces => myNamespaces.namespaces);
  * ```
  */
 export function getRegistryEnterpriseNamespaces(args: GetRegistryEnterpriseNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseNamespacesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", {
         "ids": args.ids,
         "instanceId": args.instanceId,
@@ -86,9 +82,27 @@ export interface GetRegistryEnterpriseNamespacesResult {
     readonly namespaces: outputs.cs.GetRegistryEnterpriseNamespacesNamespace[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list Container Registry Enterprise Edition namespaces on Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.86.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const myNamespaces = alicloud.cs.getRegistryEnterpriseNamespaces({
+ *     instanceId: "cri-xxx",
+ *     nameRegex: "my-namespace",
+ *     outputFile: "my-namespace-json",
+ * });
+ * export const output = myNamespaces.then(myNamespaces => myNamespaces.namespaces);
+ * ```
+ */
 export function getRegistryEnterpriseNamespacesOutput(args: GetRegistryEnterpriseNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseNamespacesResult> {
-    return pulumi.output(args).apply(a => getRegistryEnterpriseNamespaces(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegistryEnterpriseNamespaces(a, opts))
 }
 
 /**

@@ -74,18 +74,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ga/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {
     /**
-     * The entries of the Acl. See the following `Block acl_entries`.
+     * The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
+     * 
+     * @deprecated
+     * Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_ga_acl_entry_attachment&#39;.
      * 
      */
+    @Deprecated /* Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'. */
     @Export(name="aclEntries", type=List.class, parameters={AclAclEntry.class})
-    private Output</* @Nullable */ List<AclAclEntry>> aclEntries;
+    private Output<List<AclAclEntry>> aclEntries;
 
     /**
-     * @return The entries of the Acl. See the following `Block acl_entries`.
+     * @return The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
      * 
      */
-    public Output<Optional<List<AclAclEntry>>> aclEntries() {
-        return Codegen.optional(this.aclEntries);
+    public Output<List<AclAclEntry>> aclEntries() {
+        return this.aclEntries;
     }
     /**
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.

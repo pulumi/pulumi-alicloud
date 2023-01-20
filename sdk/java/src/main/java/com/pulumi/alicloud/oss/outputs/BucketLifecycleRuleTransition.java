@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketLifecycleRuleTransition {
     /**
-     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
      * 
      */
     private @Nullable String createdBeforeDate;
     /**
-     * @return Specifies the number of days noncurrent object versions transition.
+     * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     private @Nullable Integer days;
     /**
-     * @return Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34; and &#34;Archive&#34;. Defaults to &#34;Standard&#34;.
      * 
      */
     private @Nullable String storageClass;
 
     private BucketLifecycleRuleTransition() {}
     /**
-     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
      * 
      */
     public Optional<String> createdBeforeDate() {
         return Optional.ofNullable(this.createdBeforeDate);
     }
     /**
-     * @return Specifies the number of days noncurrent object versions transition.
+     * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      */
     public Optional<Integer> days() {
         return Optional.ofNullable(this.days);
     }
     /**
-     * @return Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
+     * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34; and &#34;Archive&#34;. Defaults to &#34;Standard&#34;.
      * 
      */
     public Optional<String> storageClass() {

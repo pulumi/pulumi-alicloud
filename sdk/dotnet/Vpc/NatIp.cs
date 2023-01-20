@@ -21,57 +21,60 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var exampleZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = "example_value",
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = alicloud_vpc.Default.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = exampleZones.Apply(exampleZones =&gt; exampleZones.Zones?[0]?.Id),
-    ///             VswitchName = "example_value",
-    ///         });
-    ///         var exampleNatGateway = new AliCloud.Vpc.NatGateway("exampleNatGateway", new AliCloud.Vpc.NatGatewayArgs
-    ///         {
-    ///             VpcId = exampleNetwork.Id,
-    ///             InternetChargeType = "PayByLcu",
-    ///             NatGatewayName = "example_value",
-    ///             Description = "example_value",
-    ///             NatType = "Enhanced",
-    ///             VswitchId = exampleSwitch.Id,
-    ///             NetworkType = "intranet",
-    ///         });
-    ///         var exampleNatIpCidr = new AliCloud.Vpc.NatIpCidr("exampleNatIpCidr", new AliCloud.Vpc.NatIpCidrArgs
-    ///         {
-    ///             NatIpCidrBlock = "192.168.0.0/16",
-    ///             NatGatewayId = exampleNatGateway.Id,
-    ///             NatIpCidrDescription = "example_value",
-    ///             NatIpCidrName = "example_value",
-    ///         });
-    ///         var exampleNatIp = new AliCloud.Vpc.NatIp("exampleNatIp", new AliCloud.Vpc.NatIpArgs
-    ///         {
-    ///             NatIpAddress = "192.168.0.37",
-    ///             NatGatewayId = exampleNatGateway.Id,
-    ///             NatIpDescription = "example_value",
-    ///             NatIpName = "example_value",
-    ///             NatIpCidr = exampleNatIpCidr.NatIpCidrBlock,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = "example_value",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VpcId = alicloud_vpc.Default.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = "example_value",
+    ///     });
+    /// 
+    ///     var exampleNatGateway = new AliCloud.Vpc.NatGateway("exampleNatGateway", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         InternetChargeType = "PayByLcu",
+    ///         NatGatewayName = "example_value",
+    ///         Description = "example_value",
+    ///         NatType = "Enhanced",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         NetworkType = "intranet",
+    ///     });
+    /// 
+    ///     var exampleNatIpCidr = new AliCloud.Vpc.NatIpCidr("exampleNatIpCidr", new()
+    ///     {
+    ///         NatIpCidrBlock = "192.168.0.0/16",
+    ///         NatGatewayId = exampleNatGateway.Id,
+    ///         NatIpCidrDescription = "example_value",
+    ///         NatIpCidrName = "example_value",
+    ///     });
+    /// 
+    ///     var exampleNatIp = new AliCloud.Vpc.NatIp("exampleNatIp", new()
+    ///     {
+    ///         NatIpAddress = "192.168.0.37",
+    ///         NatGatewayId = exampleNatGateway.Id,
+    ///         NatIpDescription = "example_value",
+    ///         NatIpName = "example_value",
+    ///         NatIpCidr = exampleNatIpCidr.NatIpCidrBlock,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -83,7 +86,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/natIp:NatIp")]
-    public partial class NatIp : Pulumi.CustomResource
+    public partial class NatIp : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies whether to check the validity of the request without actually making the request.
@@ -183,7 +186,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class NatIpArgs : Pulumi.ResourceArgs
+    public sealed class NatIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to check the validity of the request without actually making the request.
@@ -230,9 +233,10 @@ namespace Pulumi.AliCloud.Vpc
         public NatIpArgs()
         {
         }
+        public static new NatIpArgs Empty => new NatIpArgs();
     }
 
-    public sealed class NatIpState : Pulumi.ResourceArgs
+    public sealed class NatIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to check the validity of the request without actually making the request.
@@ -291,5 +295,6 @@ namespace Pulumi.AliCloud.Vpc
         public NatIpState()
         {
         }
+        public static new NatIpState Empty => new NatIpState();
     }
 }

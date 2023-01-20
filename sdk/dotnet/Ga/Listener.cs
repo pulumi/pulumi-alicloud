@@ -21,54 +21,55 @@ namespace Pulumi.AliCloud.Ga
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new()
     ///     {
-    ///         var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new AliCloud.Ga.AcceleratorArgs
-    ///         {
-    ///             Duration = 1,
-    ///             AutoUseCoupon = true,
-    ///             Spec = "1",
-    ///         });
-    ///         var deBandwidthPackage = new AliCloud.Ga.BandwidthPackage("deBandwidthPackage", new AliCloud.Ga.BandwidthPackageArgs
-    ///         {
-    ///             Bandwidth = 100,
-    ///             Type = "Basic",
-    ///             BandwidthType = "Basic",
-    ///             PaymentType = "PayAsYouGo",
-    ///             BillingType = "PayBy95",
-    ///             Ratio = 30,
-    ///         });
-    ///         var deBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("deBandwidthPackageAttachment", new AliCloud.Ga.BandwidthPackageAttachmentArgs
-    ///         {
-    ///             AcceleratorId = exampleAccelerator.Id,
-    ///             BandwidthPackageId = deBandwidthPackage.Id,
-    ///         });
-    ///         var exampleListener = new AliCloud.Ga.Listener("exampleListener", new AliCloud.Ga.ListenerArgs
-    ///         {
-    ///             AcceleratorId = exampleAccelerator.Id,
-    ///             PortRanges = 
-    ///             {
-    ///                 new AliCloud.Ga.Inputs.ListenerPortRangeArgs
-    ///                 {
-    ///                     FromPort = 60,
-    ///                     ToPort = 70,
-    ///                 },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 deBandwidthPackageAttachment,
-    ///             },
-    ///         });
-    ///     }
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "1",
+    ///     });
     /// 
-    /// }
+    ///     var deBandwidthPackage = new AliCloud.Ga.BandwidthPackage("deBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 100,
+    ///         Type = "Basic",
+    ///         BandwidthType = "Basic",
+    ///         PaymentType = "PayAsYouGo",
+    ///         BillingType = "PayBy95",
+    ///         Ratio = 30,
+    ///     });
+    /// 
+    ///     var deBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("deBandwidthPackageAttachment", new()
+    ///     {
+    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         BandwidthPackageId = deBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var exampleListener = new AliCloud.Ga.Listener("exampleListener", new()
+    ///     {
+    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         PortRanges = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
+    ///             {
+    ///                 FromPort = 60,
+    ///                 ToPort = 70,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             deBandwidthPackageAttachment,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -80,7 +81,7 @@ namespace Pulumi.AliCloud.Ga
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/listener:Listener")]
-    public partial class Listener : Pulumi.CustomResource
+    public partial class Listener : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The accelerator id.
@@ -109,6 +110,12 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The routing type of the listener. Default Value: `Standard`. Valid values:
+        /// </summary>
+        [Output("listenerType")]
+        public Output<string> ListenerType { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         /// </summary>
         [Output("name")]
@@ -133,6 +140,12 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Output("proxyProtocol")]
         public Output<bool?> ProxyProtocol { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+        /// </summary>
+        [Output("securityPolicyId")]
+        public Output<string> SecurityPolicyId { get; private set; } = null!;
 
         /// <summary>
         /// The status of the listener.
@@ -184,7 +197,7 @@ namespace Pulumi.AliCloud.Ga
         }
     }
 
-    public sealed class ListenerArgs : Pulumi.ResourceArgs
+    public sealed class ListenerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The accelerator id.
@@ -219,6 +232,12 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The routing type of the listener. Default Value: `Standard`. Valid values:
+        /// </summary>
+        [Input("listenerType")]
+        public Input<string>? ListenerType { get; set; }
+
+        /// <summary>
         /// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         /// </summary>
         [Input("name")]
@@ -250,12 +269,19 @@ namespace Pulumi.AliCloud.Ga
         [Input("proxyProtocol")]
         public Input<bool>? ProxyProtocol { get; set; }
 
+        /// <summary>
+        /// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+        /// </summary>
+        [Input("securityPolicyId")]
+        public Input<string>? SecurityPolicyId { get; set; }
+
         public ListenerArgs()
         {
         }
+        public static new ListenerArgs Empty => new ListenerArgs();
     }
 
-    public sealed class ListenerState : Pulumi.ResourceArgs
+    public sealed class ListenerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The accelerator id.
@@ -290,6 +316,12 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The routing type of the listener. Default Value: `Standard`. Valid values:
+        /// </summary>
+        [Input("listenerType")]
+        public Input<string>? ListenerType { get; set; }
+
+        /// <summary>
         /// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         /// </summary>
         [Input("name")]
@@ -322,6 +354,12 @@ namespace Pulumi.AliCloud.Ga
         public Input<bool>? ProxyProtocol { get; set; }
 
         /// <summary>
+        /// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+        /// </summary>
+        [Input("securityPolicyId")]
+        public Input<string>? SecurityPolicyId { get; set; }
+
+        /// <summary>
         /// The status of the listener.
         /// </summary>
         [Input("status")]
@@ -330,5 +368,6 @@ namespace Pulumi.AliCloud.Ga
         public ListenerState()
         {
         }
+        public static new ListenerState Empty => new ListenerState();
     }
 }

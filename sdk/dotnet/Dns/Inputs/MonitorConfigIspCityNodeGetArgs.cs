@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dns.Inputs
 {
 
-    public sealed class MonitorConfigIspCityNodeGetArgs : Pulumi.ResourceArgs
+    public sealed class MonitorConfigIspCityNodeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The code of the city node to monitor.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Dns.Inputs
         public MonitorConfigIspCityNodeGetArgs()
         {
         }
+        public static new MonitorConfigIspCityNodeGetArgs Empty => new MonitorConfigIspCityNodeGetArgs();
     }
 }

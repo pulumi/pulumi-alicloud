@@ -13,17 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OtsBackupPlanRule {
     /**
-     * @return The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return Backup type. Valid values: `COMPLETE`.
      * 
      */
     private @Nullable String backupType;
     /**
-     * @return Whether to disable the backup task. Valid values: true, false.
+     * @return Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      * 
      */
     private @Nullable Boolean disabled;
     /**
-     * @return Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return Backup retention days, the minimum is 1.
      * 
      */
     private @Nullable String retention;
@@ -33,28 +33,28 @@ public final class OtsBackupPlanRule {
      */
     private @Nullable String ruleName;
     /**
-     * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * 
      */
     private @Nullable String schedule;
 
     private OtsBackupPlanRule() {}
     /**
-     * @return The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return Backup type. Valid values: `COMPLETE`.
      * 
      */
     public Optional<String> backupType() {
         return Optional.ofNullable(this.backupType);
     }
     /**
-     * @return Whether to disable the backup task. Valid values: true, false.
+     * @return Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      * 
      */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return Backup retention days, the minimum is 1.
      * 
      */
     public Optional<String> retention() {
@@ -68,7 +68,7 @@ public final class OtsBackupPlanRule {
         return Optional.ofNullable(this.ruleName);
     }
     /**
-     * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
+     * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * 
      */
     public Optional<String> schedule() {

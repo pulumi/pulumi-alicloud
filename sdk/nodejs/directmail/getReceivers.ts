@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["ca73b1e4fb0df7c935a5097a****"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstDirectMailReceiversId = example.then(example => example.receiverses?[0]?.id);
+ * export const firstDirectMailReceiversId = example.then(example => example.receiverses?.[0]?.id);
  * ```
  */
 export function getReceivers(args?: GetReceiversArgs, opts?: pulumi.InvokeOptions): Promise<GetReceiversResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:directmail/getReceivers:getReceivers", {
         "ids": args.ids,
         "keyWord": args.keyWord,
@@ -80,9 +78,28 @@ export interface GetReceiversResult {
     readonly receiverses: outputs.directmail.GetReceiversReceiverse[];
     readonly status?: number;
 }
-
+/**
+ * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.125.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.directmail.getReceivers({
+ *     ids: ["ca73b1e4fb0df7c935a5097a****"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstDirectMailReceiversId = example.then(example => example.receiverses?.[0]?.id);
+ * ```
+ */
 export function getReceiversOutput(args?: GetReceiversOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReceiversResult> {
-    return pulumi.output(args).apply(a => getReceivers(a, opts))
+    return pulumi.output(args).apply((a: any) => getReceivers(a, opts))
 }
 
 /**

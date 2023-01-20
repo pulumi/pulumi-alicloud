@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ServerGroupHealthCheckConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ServerGroupHealthCheckConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("healthCheckCodes")]
         private InputList<string>? _healthCheckCodes;
@@ -109,5 +109,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public ServerGroupHealthCheckConfigGetArgs()
         {
         }
+        public static new ServerGroupHealthCheckConfigGetArgs Empty => new ServerGroupHealthCheckConfigGetArgs();
     }
 }

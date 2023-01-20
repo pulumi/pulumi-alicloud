@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,20 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const bucketObjectsDs = pulumi.output(alicloud.oss.getBucketObjects({
+ * const bucketObjectsDs = alicloud.oss.getBucketObjects({
  *     bucketName: "sample_bucket",
  *     keyRegex: "sample/sample_object.txt",
- * }));
- *
- * export const firstObjectKey = bucketObjectsDs.objects[0].key;
+ * });
+ * export const firstObjectKey = bucketObjectsDs.then(bucketObjectsDs => bucketObjectsDs.objects?.[0]?.key);
  * ```
  */
 export function getBucketObjects(args: GetBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oss/getBucketObjects:getBucketObjects", {
         "bucketName": args.bucketName,
         "keyPrefix": args.keyPrefix,
@@ -72,9 +69,24 @@ export interface GetBucketObjectsResult {
     readonly objects: outputs.oss.GetBucketObjectsObject[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the objects of an OSS bucket.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const bucketObjectsDs = alicloud.oss.getBucketObjects({
+ *     bucketName: "sample_bucket",
+ *     keyRegex: "sample/sample_object.txt",
+ * });
+ * export const firstObjectKey = bucketObjectsDs.then(bucketObjectsDs => bucketObjectsDs.objects?.[0]?.key);
+ * ```
+ */
 export function getBucketObjectsOutput(args: GetBucketObjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectsResult> {
-    return pulumi.output(args).apply(a => getBucketObjects(a, opts))
+    return pulumi.output(args).apply((a: any) => getBucketObjects(a, opts))
 }
 
 /**

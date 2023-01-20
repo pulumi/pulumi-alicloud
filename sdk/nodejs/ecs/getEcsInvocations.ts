@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const ids = alicloud.ecs.getEcsInvocations({
  *     ids: ["example-id"],
  * });
- * export const ecsInvocationId1 = ids.then(ids => ids.invocations?[0]?.id);
+ * export const ecsInvocationId1 = ids.then(ids => ids.invocations?.[0]?.id);
  * ```
  */
 export function getEcsInvocations(args?: GetEcsInvocationsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsInvocationsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsInvocations:getEcsInvocations", {
         "commandId": args.commandId,
         "contentEncoding": args.contentEncoding,
@@ -84,9 +82,27 @@ export interface GetEcsInvocationsResult {
     readonly pageNumber?: number;
     readonly pageSize?: number;
 }
-
+/**
+ * This data source provides the Ecs Invocations of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.168.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ecs.getEcsInvocations({
+ *     ids: ["example-id"],
+ * });
+ * export const ecsInvocationId1 = ids.then(ids => ids.invocations?.[0]?.id);
+ * ```
+ */
 export function getEcsInvocationsOutput(args?: GetEcsInvocationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsInvocationsResult> {
-    return pulumi.output(args).apply(a => getEcsInvocations(a, opts))
+    return pulumi.output(args).apply((a: any) => getEcsInvocations(a, opts))
 }
 
 /**

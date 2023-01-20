@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -27,32 +28,29 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const cloudSsoUserId1 = ids.then(ids => ids.users?[0]?.id);
+ * export const cloudSsoUserId1 = ids.then(ids => ids.users?.[0]?.id);
  * const nameRegex = alicloud.cloudsso.getUsers({
  *     directoryId: "example_value",
  *     nameRegex: "^my-User",
  * });
- * export const cloudSsoUserId2 = nameRegex.then(nameRegex => nameRegex.users?[0]?.id);
+ * export const cloudSsoUserId2 = nameRegex.then(nameRegex => nameRegex.users?.[0]?.id);
  * const provisionType = alicloud.cloudsso.getUsers({
  *     directoryId: "example_value",
  *     ids: ["example_value-1"],
  *     provisionType: "Manual",
  * });
- * export const cloudSsoUserId3 = provisionType.then(provisionType => provisionType.users?[0]?.id);
+ * export const cloudSsoUserId3 = provisionType.then(provisionType => provisionType.users?.[0]?.id);
  * const status = alicloud.cloudsso.getUsers({
  *     directoryId: "example_value",
  *     ids: ["example_value-1"],
  *     status: "Enabled",
  * });
- * export const cloudSsoUserId4 = status.then(status => status.users?[0]?.id);
+ * export const cloudSsoUserId4 = status.then(status => status.users?.[0]?.id);
  * ```
  */
 export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudsso/getUsers:getUsers", {
         "directoryId": args.directoryId,
         "enableDetails": args.enableDetails,
@@ -113,9 +111,50 @@ export interface GetUsersResult {
     readonly status?: string;
     readonly users: outputs.cloudsso.GetUsersUser[];
 }
-
+/**
+ * This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.140.0+.
+ *
+ * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cloudsso.getUsers({
+ *     directoryId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const cloudSsoUserId1 = ids.then(ids => ids.users?.[0]?.id);
+ * const nameRegex = alicloud.cloudsso.getUsers({
+ *     directoryId: "example_value",
+ *     nameRegex: "^my-User",
+ * });
+ * export const cloudSsoUserId2 = nameRegex.then(nameRegex => nameRegex.users?.[0]?.id);
+ * const provisionType = alicloud.cloudsso.getUsers({
+ *     directoryId: "example_value",
+ *     ids: ["example_value-1"],
+ *     provisionType: "Manual",
+ * });
+ * export const cloudSsoUserId3 = provisionType.then(provisionType => provisionType.users?.[0]?.id);
+ * const status = alicloud.cloudsso.getUsers({
+ *     directoryId: "example_value",
+ *     ids: ["example_value-1"],
+ *     status: "Enabled",
+ * });
+ * export const cloudSsoUserId4 = status.then(status => status.users?.[0]?.id);
+ * ```
+ */
 export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
-    return pulumi.output(args).apply(a => getUsers(a, opts))
+    return pulumi.output(args).apply((a: any) => getUsers(a, opts))
 }
 
 /**

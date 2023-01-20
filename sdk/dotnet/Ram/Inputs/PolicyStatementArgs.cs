@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram.Inputs
 {
 
-    public sealed class PolicyStatementArgs : Pulumi.ResourceArgs
+    public sealed class PolicyStatementArgs : global::Pulumi.ResourceArgs
     {
         [Input("actions", required: true)]
         private InputList<string>? _actions;
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.Ram.Inputs
         public PolicyStatementArgs()
         {
         }
+        public static new PolicyStatementArgs Empty => new PolicyStatementArgs();
     }
 }

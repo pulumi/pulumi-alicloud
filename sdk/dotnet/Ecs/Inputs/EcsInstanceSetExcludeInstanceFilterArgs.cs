@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class EcsInstanceSetExcludeInstanceFilterArgs : Pulumi.ResourceArgs
+    public sealed class EcsInstanceSetExcludeInstanceFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public EcsInstanceSetExcludeInstanceFilterArgs()
         {
         }
+        public static new EcsInstanceSetExcludeInstanceFilterArgs Empty => new EcsInstanceSetExcludeInstanceFilterArgs();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,24 +22,21 @@ import * as utilities from "../utilities";
  * const ids = alicloud.vpc.getBgpNetworks({
  *     ids: ["example_value"],
  * });
- * export const vpcBgpNetworkId1 = ids.then(ids => ids.networks?[0]?.id);
+ * export const vpcBgpNetworkId1 = ids.then(ids => ids.networks?.[0]?.id);
  * const routerId = alicloud.vpc.getBgpNetworks({
  *     routerId: "example_value",
  * });
- * export const vpcBgpNetworkId2 = routerId.then(routerId => routerId.networks?[0]?.id);
+ * export const vpcBgpNetworkId2 = routerId.then(routerId => routerId.networks?.[0]?.id);
  * const status = alicloud.vpc.getBgpNetworks({
  *     status: "Available",
  * });
- * export const vpcBgpNetworkId3 = status.then(status => status.networks?[0]?.id);
+ * export const vpcBgpNetworkId3 = status.then(status => status.networks?.[0]?.id);
  * ```
  */
 export function getBgpNetworks(args?: GetBgpNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetBgpNetworksResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getBgpNetworks:getBgpNetworks", {
         "ids": args.ids,
         "outputFile": args.outputFile,
@@ -80,9 +78,35 @@ export interface GetBgpNetworksResult {
     readonly routerId?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.153.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getBgpNetworks({
+ *     ids: ["example_value"],
+ * });
+ * export const vpcBgpNetworkId1 = ids.then(ids => ids.networks?.[0]?.id);
+ * const routerId = alicloud.vpc.getBgpNetworks({
+ *     routerId: "example_value",
+ * });
+ * export const vpcBgpNetworkId2 = routerId.then(routerId => routerId.networks?.[0]?.id);
+ * const status = alicloud.vpc.getBgpNetworks({
+ *     status: "Available",
+ * });
+ * export const vpcBgpNetworkId3 = status.then(status => status.networks?.[0]?.id);
+ * ```
+ */
 export function getBgpNetworksOutput(args?: GetBgpNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBgpNetworksResult> {
-    return pulumi.output(args).apply(a => getBgpNetworks(a, opts))
+    return pulumi.output(args).apply((a: any) => getBgpNetworks(a, opts))
 }
 
 /**

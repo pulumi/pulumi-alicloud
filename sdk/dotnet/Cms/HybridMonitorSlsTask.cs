@@ -21,97 +21,98 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @this = Output.Create(AliCloud.GetAccount.InvokeAsync());
-    ///         var defaultSlsGroup = new AliCloud.Cms.SlsGroup("defaultSlsGroup", new AliCloud.Cms.SlsGroupArgs
-    ///         {
-    ///             SlsGroupConfigs = 
-    ///             {
-    ///                 new AliCloud.Cms.Inputs.SlsGroupSlsGroupConfigArgs
-    ///                 {
-    ///                     SlsUserId = @this.Apply(@this =&gt; @this.Id),
-    ///                     SlsLogstore = "Logstore-ECS",
-    ///                     SlsProject = "aliyun-project",
-    ///                     SlsRegion = "cn-hangzhou",
-    ///                 },
-    ///             },
-    ///             SlsGroupDescription = "example_value",
-    ///             SlsGroupName = "example_value",
-    ///         });
-    ///         var defaultNamespace = new AliCloud.Cms.Namespace("defaultNamespace", new AliCloud.Cms.NamespaceArgs
-    ///         {
-    ///             Description = @var.Name,
-    ///             NamespaceName = "example-value",
-    ///             Specification = "cms.s1.large",
-    ///         });
-    ///         var defaultHybridMonitorSlsTask = new AliCloud.Cms.HybridMonitorSlsTask("defaultHybridMonitorSlsTask", new AliCloud.Cms.HybridMonitorSlsTaskArgs
-    ///         {
-    ///             SlsProcessConfig = new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigArgs
-    ///             {
-    ///                 Filter = new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterArgs
-    ///                 {
-    ///                     Relation = "and",
-    ///                     Filters = 
-    ///                     {
-    ///                         new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs
-    ///                         {
-    ///                             Operator = "=",
-    ///                             Value = "200",
-    ///                             SlsKeyName = "code",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 Statistics = 
-    ///                 {
-    ///                     new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigStatisticArgs
-    ///                     {
-    ///                         Function = "count",
-    ///                         Alias = "level_count",
-    ///                         SlsKeyName = "name",
-    ///                         ParameterOne = "200",
-    ///                         ParameterTwo = "299",
-    ///                     },
-    ///                 },
-    ///                 GroupBies = 
-    ///                 {
-    ///                     new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigGroupByArgs
-    ///                     {
-    ///                         Alias = "code",
-    ///                         SlsKeyName = "ApiResult",
-    ///                     },
-    ///                 },
-    ///                 Expresses = 
-    ///                 {
-    ///                     new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigExpressArgs
-    ///                     {
-    ///                         Express = "success_count",
-    ///                         Alias = "SuccRate",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             TaskName = "example_value",
-    ///             Namespace = defaultNamespace.Id,
-    ///             Description = "example_value",
-    ///             CollectInterval = 60,
-    ///             CollectTargetType = defaultSlsGroup.Id,
-    ///             AttachLabels = 
-    ///             {
-    ///                 new AliCloud.Cms.Inputs.HybridMonitorSlsTaskAttachLabelArgs
-    ///                 {
-    ///                     Name = "app_service",
-    ///                     Value = "testValue",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var @this = AliCloud.GetAccount.Invoke();
     /// 
-    /// }
+    ///     var defaultSlsGroup = new AliCloud.Cms.SlsGroup("defaultSlsGroup", new()
+    ///     {
+    ///         SlsGroupConfigs = new[]
+    ///         {
+    ///             new AliCloud.Cms.Inputs.SlsGroupSlsGroupConfigArgs
+    ///             {
+    ///                 SlsUserId = @this.Apply(getAccountResult =&gt; getAccountResult).Apply(@this =&gt; @this.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///                 SlsLogstore = "Logstore-ECS",
+    ///                 SlsProject = "aliyun-project",
+    ///                 SlsRegion = "cn-hangzhou",
+    ///             },
+    ///         },
+    ///         SlsGroupDescription = "example_value",
+    ///         SlsGroupName = "example_value",
+    ///     });
+    /// 
+    ///     var defaultNamespace = new AliCloud.Cms.Namespace("defaultNamespace", new()
+    ///     {
+    ///         Description = @var.Name,
+    ///         NamespaceName = "example-value",
+    ///         Specification = "cms.s1.large",
+    ///     });
+    /// 
+    ///     var defaultHybridMonitorSlsTask = new AliCloud.Cms.HybridMonitorSlsTask("defaultHybridMonitorSlsTask", new()
+    ///     {
+    ///         SlsProcessConfig = new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigArgs
+    ///         {
+    ///             Filter = new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterArgs
+    ///             {
+    ///                 Relation = "and",
+    ///                 Filters = new[]
+    ///                 {
+    ///                     new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs
+    ///                     {
+    ///                         Operator = "=",
+    ///                         Value = "200",
+    ///                         SlsKeyName = "code",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Statistics = new[]
+    ///             {
+    ///                 new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigStatisticArgs
+    ///                 {
+    ///                     Function = "count",
+    ///                     Alias = "level_count",
+    ///                     SlsKeyName = "name",
+    ///                     ParameterOne = "200",
+    ///                     ParameterTwo = "299",
+    ///                 },
+    ///             },
+    ///             GroupBies = new[]
+    ///             {
+    ///                 new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigGroupByArgs
+    ///                 {
+    ///                     Alias = "code",
+    ///                     SlsKeyName = "ApiResult",
+    ///                 },
+    ///             },
+    ///             Expresses = new[]
+    ///             {
+    ///                 new AliCloud.Cms.Inputs.HybridMonitorSlsTaskSlsProcessConfigExpressArgs
+    ///                 {
+    ///                     Express = "success_count",
+    ///                     Alias = "SuccRate",
+    ///                 },
+    ///             },
+    ///         },
+    ///         TaskName = "example_value",
+    ///         Namespace = defaultNamespace.Id,
+    ///         Description = "example_value",
+    ///         CollectInterval = 60,
+    ///         CollectTargetType = defaultSlsGroup.Id,
+    ///         AttachLabels = new[]
+    ///         {
+    ///             new AliCloud.Cms.Inputs.HybridMonitorSlsTaskAttachLabelArgs
+    ///             {
+    ///                 Name = "app_service",
+    ///                 Value = "testValue",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -123,7 +124,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask")]
-    public partial class HybridMonitorSlsTask : Pulumi.CustomResource
+    public partial class HybridMonitorSlsTask : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The label of the monitoring task. See the following `Block attach_labels`.
@@ -211,7 +212,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class HybridMonitorSlsTaskArgs : Pulumi.ResourceArgs
+    public sealed class HybridMonitorSlsTaskArgs : global::Pulumi.ResourceArgs
     {
         [Input("attachLabels")]
         private InputList<Inputs.HybridMonitorSlsTaskAttachLabelArgs>? _attachLabels;
@@ -264,9 +265,10 @@ namespace Pulumi.AliCloud.Cms
         public HybridMonitorSlsTaskArgs()
         {
         }
+        public static new HybridMonitorSlsTaskArgs Empty => new HybridMonitorSlsTaskArgs();
     }
 
-    public sealed class HybridMonitorSlsTaskState : Pulumi.ResourceArgs
+    public sealed class HybridMonitorSlsTaskState : global::Pulumi.ResourceArgs
     {
         [Input("attachLabels")]
         private InputList<Inputs.HybridMonitorSlsTaskAttachLabelGetArgs>? _attachLabels;
@@ -319,5 +321,6 @@ namespace Pulumi.AliCloud.Cms
         public HybridMonitorSlsTaskState()
         {
         }
+        public static new HybridMonitorSlsTaskState Empty => new HybridMonitorSlsTaskState();
     }
 }

@@ -21,6 +21,7 @@ __all__ = [
     'ServiceLogConfig',
     'ServiceNasConfig',
     'ServiceNasConfigMountPoint',
+    'ServiceTracingConfig',
     'ServiceVpcConfig',
     'GetCustomDomainsDomainResult',
     'GetCustomDomainsDomainCertConfigResult',
@@ -340,15 +341,42 @@ class FunctionCustomContainerConfig(dict):
 
 @pulumi.output_type
 class ServiceLogConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableInstanceMetrics":
+            suggest = "enable_instance_metrics"
+        elif key == "enableRequestMetrics":
+            suggest = "enable_request_metrics"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceLogConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceLogConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceLogConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  logstore: str,
-                 project: str):
+                 project: str,
+                 enable_instance_metrics: Optional[bool] = None,
+                 enable_request_metrics: Optional[bool] = None):
         """
         :param str logstore: The log store name of Alicloud Simple Log Service.
         :param str project: The project name of the Alicloud Simple Log Service.
+        :param bool enable_instance_metrics: Enable instance level metrics.
+        :param bool enable_request_metrics: Enable request level metrics.
         """
         pulumi.set(__self__, "logstore", logstore)
         pulumi.set(__self__, "project", project)
+        if enable_instance_metrics is not None:
+            pulumi.set(__self__, "enable_instance_metrics", enable_instance_metrics)
+        if enable_request_metrics is not None:
+            pulumi.set(__self__, "enable_request_metrics", enable_request_metrics)
 
     @property
     @pulumi.getter
@@ -365,6 +393,22 @@ class ServiceLogConfig(dict):
         The project name of the Alicloud Simple Log Service.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="enableInstanceMetrics")
+    def enable_instance_metrics(self) -> Optional[bool]:
+        """
+        Enable instance level metrics.
+        """
+        return pulumi.get(self, "enable_instance_metrics")
+
+    @property
+    @pulumi.getter(name="enableRequestMetrics")
+    def enable_request_metrics(self) -> Optional[bool]:
+        """
+        Enable request level metrics.
+        """
+        return pulumi.get(self, "enable_request_metrics")
 
 
 @pulumi.output_type
@@ -474,6 +518,35 @@ class ServiceNasConfigMountPoint(dict):
         The address of the remote NAS directory.
         """
         return pulumi.get(self, "server_addr")
+
+
+@pulumi.output_type
+class ServiceTracingConfig(dict):
+    def __init__(__self__, *,
+                 params: Mapping[str, Any],
+                 type: str):
+        """
+        :param Mapping[str, Any] params: Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+        :param str type: Tracing protocol type. Currently, only Jaeger is supported.
+        """
+        pulumi.set(__self__, "params", params)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def params(self) -> Mapping[str, Any]:
+        """
+        Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
+        """
+        return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Tracing protocol type. Currently, only Jaeger is supported.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

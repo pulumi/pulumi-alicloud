@@ -94,7 +94,7 @@ type Api struct {
 	AuthType pulumi.StringOutput `pulumi:"authType"`
 	// constant_parameters defines the constant parameters of the api.
 	ConstantParameters ApiConstantParameterArrayOutput `pulumi:"constantParameters"`
-	// The description of Constant parameter.
+	// The description of the api. Defaults to null.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
 	FcServiceConfig ApiFcServiceConfigPtrOutput `pulumi:"fcServiceConfig"`
@@ -108,7 +108,7 @@ type Api struct {
 	HttpVpcServiceConfig ApiHttpVpcServiceConfigPtrOutput `pulumi:"httpVpcServiceConfig"`
 	// http_service_config defines the config when serviceType selected 'MOCK'.
 	MockServiceConfig ApiMockServiceConfigPtrOutput `pulumi:"mockServiceConfig"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Request_config defines how users can send requests to your API.
 	RequestConfig ApiRequestConfigOutput `pulumi:"requestConfig"`
@@ -172,7 +172,7 @@ type apiState struct {
 	AuthType *string `pulumi:"authType"`
 	// constant_parameters defines the constant parameters of the api.
 	ConstantParameters []ApiConstantParameter `pulumi:"constantParameters"`
-	// The description of Constant parameter.
+	// The description of the api. Defaults to null.
 	Description *string `pulumi:"description"`
 	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
 	FcServiceConfig *ApiFcServiceConfig `pulumi:"fcServiceConfig"`
@@ -186,7 +186,7 @@ type apiState struct {
 	HttpVpcServiceConfig *ApiHttpVpcServiceConfig `pulumi:"httpVpcServiceConfig"`
 	// http_service_config defines the config when serviceType selected 'MOCK'.
 	MockServiceConfig *ApiMockServiceConfig `pulumi:"mockServiceConfig"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name *string `pulumi:"name"`
 	// Request_config defines how users can send requests to your API.
 	RequestConfig *ApiRequestConfig `pulumi:"requestConfig"`
@@ -207,7 +207,7 @@ type ApiState struct {
 	AuthType pulumi.StringPtrInput
 	// constant_parameters defines the constant parameters of the api.
 	ConstantParameters ApiConstantParameterArrayInput
-	// The description of Constant parameter.
+	// The description of the api. Defaults to null.
 	Description pulumi.StringPtrInput
 	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
 	FcServiceConfig ApiFcServiceConfigPtrInput
@@ -221,7 +221,7 @@ type ApiState struct {
 	HttpVpcServiceConfig ApiHttpVpcServiceConfigPtrInput
 	// http_service_config defines the config when serviceType selected 'MOCK'.
 	MockServiceConfig ApiMockServiceConfigPtrInput
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name pulumi.StringPtrInput
 	// Request_config defines how users can send requests to your API.
 	RequestConfig ApiRequestConfigPtrInput
@@ -244,7 +244,7 @@ type apiArgs struct {
 	AuthType string `pulumi:"authType"`
 	// constant_parameters defines the constant parameters of the api.
 	ConstantParameters []ApiConstantParameter `pulumi:"constantParameters"`
-	// The description of Constant parameter.
+	// The description of the api. Defaults to null.
 	Description string `pulumi:"description"`
 	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
 	FcServiceConfig *ApiFcServiceConfig `pulumi:"fcServiceConfig"`
@@ -258,7 +258,7 @@ type apiArgs struct {
 	HttpVpcServiceConfig *ApiHttpVpcServiceConfig `pulumi:"httpVpcServiceConfig"`
 	// http_service_config defines the config when serviceType selected 'MOCK'.
 	MockServiceConfig *ApiMockServiceConfig `pulumi:"mockServiceConfig"`
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name *string `pulumi:"name"`
 	// Request_config defines how users can send requests to your API.
 	RequestConfig ApiRequestConfig `pulumi:"requestConfig"`
@@ -278,7 +278,7 @@ type ApiArgs struct {
 	AuthType pulumi.StringInput
 	// constant_parameters defines the constant parameters of the api.
 	ConstantParameters ApiConstantParameterArrayInput
-	// The description of Constant parameter.
+	// The description of the api. Defaults to null.
 	Description pulumi.StringInput
 	// fc_service_config defines the config when serviceType selected 'FunctionCompute'.
 	FcServiceConfig ApiFcServiceConfigPtrInput
@@ -292,7 +292,7 @@ type ApiArgs struct {
 	HttpVpcServiceConfig ApiHttpVpcServiceConfigPtrInput
 	// http_service_config defines the config when serviceType selected 'MOCK'.
 	MockServiceConfig ApiMockServiceConfigPtrInput
-	// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+	// The name of the api gateway api. Defaults to null.
 	Name pulumi.StringPtrInput
 	// Request_config defines how users can send requests to your API.
 	RequestConfig ApiRequestConfigInput
@@ -408,7 +408,7 @@ func (o ApiOutput) ConstantParameters() ApiConstantParameterArrayOutput {
 	return o.ApplyT(func(v *Api) ApiConstantParameterArrayOutput { return v.ConstantParameters }).(ApiConstantParameterArrayOutput)
 }
 
-// The description of Constant parameter.
+// The description of the api. Defaults to null.
 func (o ApiOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -443,7 +443,7 @@ func (o ApiOutput) MockServiceConfig() ApiMockServiceConfigPtrOutput {
 	return o.ApplyT(func(v *Api) ApiMockServiceConfigPtrOutput { return v.MockServiceConfig }).(ApiMockServiceConfigPtrOutput)
 }
 
-// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+// The name of the api gateway api. Defaults to null.
 func (o ApiOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

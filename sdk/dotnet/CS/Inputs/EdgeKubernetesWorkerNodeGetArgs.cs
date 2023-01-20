@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class EdgeKubernetesWorkerNodeGetArgs : Pulumi.ResourceArgs
+    public sealed class EdgeKubernetesWorkerNodeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the node.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public EdgeKubernetesWorkerNodeGetArgs()
         {
         }
+        public static new EdgeKubernetesWorkerNodeGetArgs Empty => new EdgeKubernetesWorkerNodeGetArgs();
     }
 }

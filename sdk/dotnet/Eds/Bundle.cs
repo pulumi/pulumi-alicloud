@@ -21,42 +21,42 @@ namespace Pulumi.AliCloud.Eds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultImages = AliCloud.Eds.GetImages.Invoke(new()
     ///     {
-    ///         var defaultImages = Output.Create(AliCloud.Eds.GetImages.InvokeAsync(new AliCloud.Eds.GetImagesArgs
-    ///         {
-    ///             ImageType = "SYSTEM",
-    ///             OsType = "Windows",
-    ///             DesktopInstanceType = "eds.hf.4c8g",
-    ///         }));
-    ///         var defaultDesktopTypes = Output.Create(AliCloud.Eds.GetDesktopTypes.InvokeAsync(new AliCloud.Eds.GetDesktopTypesArgs
-    ///         {
-    ///             InstanceTypeFamily = "eds.hf",
-    ///             CpuCount = 4,
-    ///             MemorySize = 8192,
-    ///         }));
-    ///         var defaultBundle = new AliCloud.Eds.Bundle("defaultBundle", new AliCloud.Eds.BundleArgs
-    ///         {
-    ///             Description = @var.Name,
-    ///             DesktopType = defaultDesktopTypes.Apply(defaultDesktopTypes =&gt; defaultDesktopTypes.Ids?[0]),
-    ///             BundleName = @var.Name,
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Ids?[0]),
-    ///             UserDiskSizeGibs = 
-    ///             {
-    ///                 70,
-    ///             },
-    ///             RootDiskSizeGib = 80,
-    ///             RootDiskPerformanceLevel = "PL1",
-    ///             UserDiskPerformanceLevel = "PL1",
-    ///         });
-    ///     }
+    ///         ImageType = "SYSTEM",
+    ///         OsType = "Windows",
+    ///         DesktopInstanceType = "eds.hf.4c8g",
+    ///     });
     /// 
-    /// }
+    ///     var defaultDesktopTypes = AliCloud.Eds.GetDesktopTypes.Invoke(new()
+    ///     {
+    ///         InstanceTypeFamily = "eds.hf",
+    ///         CpuCount = 4,
+    ///         MemorySize = 8192,
+    ///     });
+    /// 
+    ///     var defaultBundle = new AliCloud.Eds.Bundle("defaultBundle", new()
+    ///     {
+    ///         Description = @var.Name,
+    ///         DesktopType = defaultDesktopTypes.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Ids[0]),
+    ///         BundleName = @var.Name,
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
+    ///         UserDiskSizeGibs = new[]
+    ///         {
+    ///             70,
+    ///         },
+    ///         RootDiskSizeGib = 80,
+    ///         RootDiskPerformanceLevel = "PL1",
+    ///         UserDiskPerformanceLevel = "PL1",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Eds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/bundle:Bundle")]
-    public partial class Bundle : Pulumi.CustomResource
+    public partial class Bundle : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the bundle.
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Eds
         }
     }
 
-    public sealed class BundleArgs : Pulumi.ResourceArgs
+    public sealed class BundleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bundle.
@@ -237,9 +237,10 @@ namespace Pulumi.AliCloud.Eds
         public BundleArgs()
         {
         }
+        public static new BundleArgs Empty => new BundleArgs();
     }
 
-    public sealed class BundleState : Pulumi.ResourceArgs
+    public sealed class BundleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bundle.
@@ -306,5 +307,6 @@ namespace Pulumi.AliCloud.Eds
         public BundleState()
         {
         }
+        public static new BundleState Empty => new BundleState();
     }
 }

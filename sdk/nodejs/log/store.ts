@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -55,7 +56,7 @@ export class Store extends pulumi.CustomResource {
      */
     public readonly enableWebTracking!: pulumi.Output<boolean | undefined>;
     /**
-     * Encrypted storage of data, providing data static protection capability, only supported at creation time.
+     * Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
      */
     public readonly encryptConf!: pulumi.Output<outputs.log.StoreEncryptConf | undefined>;
     /**
@@ -150,7 +151,7 @@ export interface StoreState {
      */
     enableWebTracking?: pulumi.Input<boolean>;
     /**
-     * Encrypted storage of data, providing data static protection capability, only supported at creation time.
+     * Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
      */
     encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
     /**
@@ -200,7 +201,7 @@ export interface StoreArgs {
      */
     enableWebTracking?: pulumi.Input<boolean>;
     /**
-     * Encrypted storage of data, providing data static protection capability, only supported at creation time.
+     * Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
      */
     encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
     /**

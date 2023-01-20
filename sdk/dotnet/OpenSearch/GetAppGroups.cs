@@ -23,46 +23,46 @@ namespace Pulumi.AliCloud.OpenSearch
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf_testacc";
+        ///     var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("defaultAppGroup", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "tf_testacc";
-        ///         var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("defaultAppGroup", new AliCloud.OpenSearch.AppGroupArgs
+        ///         AppGroupName = name,
+        ///         PaymentType = "PayAsYouGo",
+        ///         Type = "standard",
+        ///         Quota = new AliCloud.OpenSearch.Inputs.AppGroupQuotaArgs
         ///         {
-        ///             AppGroupName = name,
-        ///             PaymentType = "PayAsYouGo",
-        ///             Type = "standard",
-        ///             Quota = new AliCloud.OpenSearch.Inputs.AppGroupQuotaArgs
-        ///             {
-        ///                 DocSize = 1,
-        ///                 ComputeResource = 20,
-        ///                 Spec = "opensearch.share.common",
-        ///             },
-        ///         });
-        ///         var defaultAppGroups = AliCloud.OpenSearch.GetAppGroups.Invoke(new AliCloud.OpenSearch.GetAppGroupsInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultAppGroup.Id,
-        ///             },
-        ///         });
-        ///         this.AppGroups = defaultAppGroups.Apply(defaultAppGroups =&gt; defaultAppGroups.Groups);
-        ///     }
+        ///             DocSize = 1,
+        ///             ComputeResource = 20,
+        ///             Spec = "opensearch.share.common",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("appGroups")]
-        ///     public Output&lt;string&gt; AppGroups { get; set; }
-        /// }
+        ///     var defaultAppGroups = AliCloud.OpenSearch.GetAppGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAppGroup.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["appGroups"] = defaultAppGroups.Apply(getAppGroupsResult =&gt; getAppGroupsResult.Groups),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppGroupsResult> InvokeAsync(GetAppGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppGroupsResult>("alicloud:opensearch/getAppGroups:getAppGroups", args ?? new GetAppGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppGroupsResult>("alicloud:opensearch/getAppGroups:getAppGroups", args ?? new GetAppGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Open Search App Groups of the current Alibaba Cloud user.
@@ -76,50 +76,50 @@ namespace Pulumi.AliCloud.OpenSearch
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf_testacc";
+        ///     var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("defaultAppGroup", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "tf_testacc";
-        ///         var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("defaultAppGroup", new AliCloud.OpenSearch.AppGroupArgs
+        ///         AppGroupName = name,
+        ///         PaymentType = "PayAsYouGo",
+        ///         Type = "standard",
+        ///         Quota = new AliCloud.OpenSearch.Inputs.AppGroupQuotaArgs
         ///         {
-        ///             AppGroupName = name,
-        ///             PaymentType = "PayAsYouGo",
-        ///             Type = "standard",
-        ///             Quota = new AliCloud.OpenSearch.Inputs.AppGroupQuotaArgs
-        ///             {
-        ///                 DocSize = 1,
-        ///                 ComputeResource = 20,
-        ///                 Spec = "opensearch.share.common",
-        ///             },
-        ///         });
-        ///         var defaultAppGroups = AliCloud.OpenSearch.GetAppGroups.Invoke(new AliCloud.OpenSearch.GetAppGroupsInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultAppGroup.Id,
-        ///             },
-        ///         });
-        ///         this.AppGroups = defaultAppGroups.Apply(defaultAppGroups =&gt; defaultAppGroups.Groups);
-        ///     }
+        ///             DocSize = 1,
+        ///             ComputeResource = 20,
+        ///             Spec = "opensearch.share.common",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("appGroups")]
-        ///     public Output&lt;string&gt; AppGroups { get; set; }
-        /// }
+        ///     var defaultAppGroups = AliCloud.OpenSearch.GetAppGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultAppGroup.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["appGroups"] = defaultAppGroups.Apply(getAppGroupsResult =&gt; getAppGroupsResult.Groups),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAppGroupsResult> Invoke(GetAppGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAppGroupsResult>("alicloud:opensearch/getAppGroups:getAppGroups", args ?? new GetAppGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppGroupsResult>("alicloud:opensearch/getAppGroups:getAppGroups", args ?? new GetAppGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAppGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetAppGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -172,9 +172,10 @@ namespace Pulumi.AliCloud.OpenSearch
         public GetAppGroupsArgs()
         {
         }
+        public static new GetAppGroupsArgs Empty => new GetAppGroupsArgs();
     }
 
-    public sealed class GetAppGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAppGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -227,6 +228,7 @@ namespace Pulumi.AliCloud.OpenSearch
         public GetAppGroupsInvokeArgs()
         {
         }
+        public static new GetAppGroupsInvokeArgs Empty => new GetAppGroupsInvokeArgs();
     }
 
 

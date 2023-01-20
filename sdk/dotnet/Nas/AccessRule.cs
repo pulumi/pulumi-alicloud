@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.Nas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fooAccessGroup = new AliCloud.Nas.AccessGroup("fooAccessGroup", new()
     ///     {
-    ///         var fooAccessGroup = new AliCloud.Nas.AccessGroup("fooAccessGroup", new AliCloud.Nas.AccessGroupArgs
-    ///         {
-    ///             AccessGroupName = "tf-NasConfigName",
-    ///             AccessGroupType = "Vpc",
-    ///             Description = "tf-testAccNasConfig",
-    ///         });
-    ///         var fooAccessRule = new AliCloud.Nas.AccessRule("fooAccessRule", new AliCloud.Nas.AccessRuleArgs
-    ///         {
-    ///             AccessGroupName = fooAccessGroup.AccessGroupName,
-    ///             SourceCidrIp = "168.1.1.0/16",
-    ///             RwAccessType = "RDWR",
-    ///             UserAccessType = "no_squash",
-    ///             Priority = 2,
-    ///         });
-    ///     }
+    ///         AccessGroupName = "tf-NasConfigName",
+    ///         AccessGroupType = "Vpc",
+    ///         Description = "tf-testAccNasConfig",
+    ///     });
     /// 
-    /// }
+    ///     var fooAccessRule = new AliCloud.Nas.AccessRule("fooAccessRule", new()
+    ///     {
+    ///         AccessGroupName = fooAccessGroup.AccessGroupName,
+    ///         SourceCidrIp = "168.1.1.0/16",
+    ///         RwAccessType = "RDWR",
+    ///         UserAccessType = "no_squash",
+    ///         Priority = 2,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +55,7 @@ namespace Pulumi.AliCloud.Nas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/accessRule:AccessRule")]
-    public partial class AccessRule : Pulumi.CustomResource
+    public partial class AccessRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Permission group name.
@@ -138,7 +137,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
-    public sealed class AccessRuleArgs : Pulumi.ResourceArgs
+    public sealed class AccessRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Permission group name.
@@ -173,9 +172,10 @@ namespace Pulumi.AliCloud.Nas
         public AccessRuleArgs()
         {
         }
+        public static new AccessRuleArgs Empty => new AccessRuleArgs();
     }
 
-    public sealed class AccessRuleState : Pulumi.ResourceArgs
+    public sealed class AccessRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Permission group name.
@@ -216,5 +216,6 @@ namespace Pulumi.AliCloud.Nas
         public AccessRuleState()
         {
         }
+        public static new AccessRuleState Empty => new AccessRuleState();
     }
 }

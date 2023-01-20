@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string AcrAssumeRoleArn;
         /// <summary>
+        /// The ID of the ACR EE instance.
+        /// </summary>
+        public readonly string AcrInstanceId;
+        /// <summary>
         /// Application description information. No more than 1024 characters.
         /// </summary>
         public readonly string AppDescription;
@@ -218,6 +222,8 @@ namespace Pulumi.AliCloud.Sae.Outputs
         private GetApplicationsApplicationResult(
             string acrAssumeRoleArn,
 
+            string acrInstanceId,
+
             string appDescription,
 
             string appName,
@@ -323,6 +329,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
             string webContainer)
         {
             AcrAssumeRoleArn = acrAssumeRoleArn;
+            AcrInstanceId = acrInstanceId;
             AppDescription = appDescription;
             AppName = appName;
             ApplicationId = applicationId;

@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Sag
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Sag.GetSmartagFlowLogs.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Sag.GetSmartagFlowLogs.InvokeAsync(new AliCloud.Sag.GetSmartagFlowLogsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.SmartagFlowLogId1 = ids.Apply(ids =&gt; ids.Logs?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Sag.GetSmartagFlowLogs.InvokeAsync(new AliCloud.Sag.GetSmartagFlowLogsArgs
-        ///         {
-        ///             NameRegex = "^my-FlowLog",
-        ///         }));
-        ///         this.SmartagFlowLogId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Logs?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("smartagFlowLogId1")]
-        ///     public Output&lt;string&gt; SmartagFlowLogId1 { get; set; }
-        ///     [Output("smartagFlowLogId2")]
-        ///     public Output&lt;string&gt; SmartagFlowLogId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Sag.GetSmartagFlowLogs.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-FlowLog",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["smartagFlowLogId1"] = ids.Apply(getSmartagFlowLogsResult =&gt; getSmartagFlowLogsResult.Logs[0]?.Id),
+        ///         ["smartagFlowLogId2"] = nameRegex.Apply(getSmartagFlowLogsResult =&gt; getSmartagFlowLogsResult.Logs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSmartagFlowLogsResult> InvokeAsync(GetSmartagFlowLogsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSmartagFlowLogsResult>("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", args ?? new GetSmartagFlowLogsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSmartagFlowLogsResult>("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", args ?? new GetSmartagFlowLogsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Sag
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Sag.GetSmartagFlowLogs.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Sag.GetSmartagFlowLogs.InvokeAsync(new AliCloud.Sag.GetSmartagFlowLogsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.SmartagFlowLogId1 = ids.Apply(ids =&gt; ids.Logs?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Sag.GetSmartagFlowLogs.InvokeAsync(new AliCloud.Sag.GetSmartagFlowLogsArgs
-        ///         {
-        ///             NameRegex = "^my-FlowLog",
-        ///         }));
-        ///         this.SmartagFlowLogId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Logs?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("smartagFlowLogId1")]
-        ///     public Output&lt;string&gt; SmartagFlowLogId1 { get; set; }
-        ///     [Output("smartagFlowLogId2")]
-        ///     public Output&lt;string&gt; SmartagFlowLogId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Sag.GetSmartagFlowLogs.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-FlowLog",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["smartagFlowLogId1"] = ids.Apply(getSmartagFlowLogsResult =&gt; getSmartagFlowLogsResult.Logs[0]?.Id),
+        ///         ["smartagFlowLogId2"] = nameRegex.Apply(getSmartagFlowLogsResult =&gt; getSmartagFlowLogsResult.Logs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSmartagFlowLogsResult> Invoke(GetSmartagFlowLogsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSmartagFlowLogsResult>("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", args ?? new GetSmartagFlowLogsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSmartagFlowLogsResult>("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", args ?? new GetSmartagFlowLogsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSmartagFlowLogsArgs : Pulumi.InvokeArgs
+    public sealed class GetSmartagFlowLogsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The description of the flow log.
@@ -149,9 +145,10 @@ namespace Pulumi.AliCloud.Sag
         public GetSmartagFlowLogsArgs()
         {
         }
+        public static new GetSmartagFlowLogsArgs Empty => new GetSmartagFlowLogsArgs();
     }
 
-    public sealed class GetSmartagFlowLogsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSmartagFlowLogsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The description of the flow log.
@@ -195,6 +192,7 @@ namespace Pulumi.AliCloud.Sag
         public GetSmartagFlowLogsInvokeArgs()
         {
         }
+        public static new GetSmartagFlowLogsInvokeArgs Empty => new GetSmartagFlowLogsInvokeArgs();
     }
 
 

@@ -187,9 +187,17 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Boolean> ossBucketSet() {
         return this.ossBucketSet;
     }
+    /**
+     * The OSS storage capacity.
+     * 
+     */
     @Export(name="ossSize", type=String.class, parameters={})
     private Output<String> ossSize;
 
+    /**
+     * @return The OSS storage capacity.
+     * 
+     */
     public Output<String> ossSize() {
         return this.ossSize;
     }
@@ -235,9 +243,17 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Boolean> rdsSet() {
         return this.rdsSet;
     }
+    /**
+     * The remaining days of the protection period of the assets in the current login account.
+     * 
+     */
     @Export(name="remainDays", type=String.class, parameters={})
     private Output<String> remainDays;
 
+    /**
+     * @return The remaining days of the protection period of the assets in the current login account.
+     * 
+     */
     public Output<String> remainDays() {
         return this.remainDays;
     }

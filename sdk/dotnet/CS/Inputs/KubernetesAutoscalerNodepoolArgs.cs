@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class KubernetesAutoscalerNodepoolArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesAutoscalerNodepoolArgs : global::Pulumi.ResourceArgs
     {
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public KubernetesAutoscalerNodepoolArgs()
         {
         }
+        public static new KubernetesAutoscalerNodepoolArgs Empty => new KubernetesAutoscalerNodepoolArgs();
     }
 }

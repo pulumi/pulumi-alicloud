@@ -23,56 +23,57 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "example_value";
+        ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "example_value";
-        ///         var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new AliCloud.Cms.AlarmContactGroupArgs
-        ///         {
-        ///             AlarmContactGroupName = name,
-        ///             Describe = "example_value",
-        ///             EnableSubscribed = true,
-        ///         });
-        ///         var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("defaultDynamicTagGroup", new AliCloud.Cms.DynamicTagGroupArgs
-        ///         {
-        ///             ContactGroupLists = 
-        ///             {
-        ///                 defaultAlarmContactGroup.Id,
-        ///             },
-        ///             TagKey = "your_tag_key",
-        ///             MatchExpresses = 
-        ///             {
-        ///                 new AliCloud.Cms.Inputs.DynamicTagGroupMatchExpressArgs
-        ///                 {
-        ///                     TagValue = "your_tag_value",
-        ///                     TagValueMatchFunction = "all",
-        ///                 },
-        ///             },
-        ///         });
-        ///         var ids = AliCloud.Cms.GetDynamicTagGroups.Invoke(new AliCloud.Cms.GetDynamicTagGroupsInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultDynamicTagGroup.Id,
-        ///             },
-        ///         });
-        ///         this.CmsDynamicTagGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///     }
+        ///         AlarmContactGroupName = name,
+        ///         Describe = "example_value",
+        ///         EnableSubscribed = true,
+        ///     });
         /// 
-        ///     [Output("cmsDynamicTagGroupId1")]
-        ///     public Output&lt;string&gt; CmsDynamicTagGroupId1 { get; set; }
-        /// }
+        ///     var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("defaultDynamicTagGroup", new()
+        ///     {
+        ///         ContactGroupLists = new[]
+        ///         {
+        ///             defaultAlarmContactGroup.Id,
+        ///         },
+        ///         TagKey = "your_tag_key",
+        ///         MatchExpresses = new[]
+        ///         {
+        ///             new AliCloud.Cms.Inputs.DynamicTagGroupMatchExpressArgs
+        ///             {
+        ///                 TagValue = "your_tag_value",
+        ///                 TagValueMatchFunction = "all",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Cms.GetDynamicTagGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDynamicTagGroup.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cmsDynamicTagGroupId1"] = ids.Apply(getDynamicTagGroupsResult =&gt; getDynamicTagGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDynamicTagGroupsResult> InvokeAsync(GetDynamicTagGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDynamicTagGroupsResult>("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args ?? new GetDynamicTagGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDynamicTagGroupsResult>("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args ?? new GetDynamicTagGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.
@@ -86,60 +87,61 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "example_value";
+        ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "example_value";
-        ///         var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new AliCloud.Cms.AlarmContactGroupArgs
-        ///         {
-        ///             AlarmContactGroupName = name,
-        ///             Describe = "example_value",
-        ///             EnableSubscribed = true,
-        ///         });
-        ///         var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("defaultDynamicTagGroup", new AliCloud.Cms.DynamicTagGroupArgs
-        ///         {
-        ///             ContactGroupLists = 
-        ///             {
-        ///                 defaultAlarmContactGroup.Id,
-        ///             },
-        ///             TagKey = "your_tag_key",
-        ///             MatchExpresses = 
-        ///             {
-        ///                 new AliCloud.Cms.Inputs.DynamicTagGroupMatchExpressArgs
-        ///                 {
-        ///                     TagValue = "your_tag_value",
-        ///                     TagValueMatchFunction = "all",
-        ///                 },
-        ///             },
-        ///         });
-        ///         var ids = AliCloud.Cms.GetDynamicTagGroups.Invoke(new AliCloud.Cms.GetDynamicTagGroupsInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultDynamicTagGroup.Id,
-        ///             },
-        ///         });
-        ///         this.CmsDynamicTagGroupId1 = ids.Apply(ids =&gt; ids.Groups?[0]?.Id);
-        ///     }
+        ///         AlarmContactGroupName = name,
+        ///         Describe = "example_value",
+        ///         EnableSubscribed = true,
+        ///     });
         /// 
-        ///     [Output("cmsDynamicTagGroupId1")]
-        ///     public Output&lt;string&gt; CmsDynamicTagGroupId1 { get; set; }
-        /// }
+        ///     var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("defaultDynamicTagGroup", new()
+        ///     {
+        ///         ContactGroupLists = new[]
+        ///         {
+        ///             defaultAlarmContactGroup.Id,
+        ///         },
+        ///         TagKey = "your_tag_key",
+        ///         MatchExpresses = new[]
+        ///         {
+        ///             new AliCloud.Cms.Inputs.DynamicTagGroupMatchExpressArgs
+        ///             {
+        ///                 TagValue = "your_tag_value",
+        ///                 TagValueMatchFunction = "all",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Cms.GetDynamicTagGroups.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDynamicTagGroup.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cmsDynamicTagGroupId1"] = ids.Apply(getDynamicTagGroupsResult =&gt; getDynamicTagGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDynamicTagGroupsResult> Invoke(GetDynamicTagGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDynamicTagGroupsResult>("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args ?? new GetDynamicTagGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDynamicTagGroupsResult>("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args ?? new GetDynamicTagGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDynamicTagGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetDynamicTagGroupsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -171,9 +173,10 @@ namespace Pulumi.AliCloud.Cms
         public GetDynamicTagGroupsArgs()
         {
         }
+        public static new GetDynamicTagGroupsArgs Empty => new GetDynamicTagGroupsArgs();
     }
 
-    public sealed class GetDynamicTagGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDynamicTagGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -205,6 +208,7 @@ namespace Pulumi.AliCloud.Cms
         public GetDynamicTagGroupsInvokeArgs()
         {
         }
+        public static new GetDynamicTagGroupsInvokeArgs Empty => new GetDynamicTagGroupsInvokeArgs();
     }
 
 

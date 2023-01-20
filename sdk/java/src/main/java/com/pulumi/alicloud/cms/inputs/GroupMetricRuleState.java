@@ -4,10 +4,12 @@
 package com.pulumi.alicloud.cms.inputs;
 
 import com.pulumi.alicloud.cms.inputs.GroupMetricRuleEscalationsArgs;
+import com.pulumi.alicloud.cms.inputs.GroupMetricRuleTargetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -93,14 +95,14 @@ public final class GroupMetricRuleState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Alarm level. See the block for escalations.
+     * Alarm level. See the following `Block escalations`.
      * 
      */
     @Import(name="escalations")
     private @Nullable Output<GroupMetricRuleEscalationsArgs> escalations;
 
     /**
-     * @return Alarm level. See the block for escalations.
+     * @return Alarm level. See the following `Block escalations`.
      * 
      */
     public Optional<Output<GroupMetricRuleEscalationsArgs>> escalations() {
@@ -258,6 +260,21 @@ public final class GroupMetricRuleState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The information about the resource for which alerts are triggered. See the following `Block targets`.
+     * 
+     */
+    @Import(name="targets")
+    private @Nullable Output<List<GroupMetricRuleTargetArgs>> targets;
+
+    /**
+     * @return The information about the resource for which alerts are triggered. See the following `Block targets`.
+     * 
+     */
+    public Optional<Output<List<GroupMetricRuleTargetArgs>>> targets() {
+        return Optional.ofNullable(this.targets);
+    }
+
+    /**
      * The callback URL.
      * 
      */
@@ -291,6 +308,7 @@ public final class GroupMetricRuleState extends com.pulumi.resources.ResourceArg
         this.ruleId = $.ruleId;
         this.silenceTime = $.silenceTime;
         this.status = $.status;
+        this.targets = $.targets;
         this.webhook = $.webhook;
     }
 
@@ -418,7 +436,7 @@ public final class GroupMetricRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param escalations Alarm level. See the block for escalations.
+         * @param escalations Alarm level. See the following `Block escalations`.
          * 
          * @return builder
          * 
@@ -429,7 +447,7 @@ public final class GroupMetricRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param escalations Alarm level. See the block for escalations.
+         * @param escalations Alarm level. See the following `Block escalations`.
          * 
          * @return builder
          * 
@@ -646,6 +664,37 @@ public final class GroupMetricRuleState extends com.pulumi.resources.ResourceArg
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param targets The information about the resource for which alerts are triggered. See the following `Block targets`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(@Nullable Output<List<GroupMetricRuleTargetArgs>> targets) {
+            $.targets = targets;
+            return this;
+        }
+
+        /**
+         * @param targets The information about the resource for which alerts are triggered. See the following `Block targets`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(List<GroupMetricRuleTargetArgs> targets) {
+            return targets(Output.of(targets));
+        }
+
+        /**
+         * @param targets The information about the resource for which alerts are triggered. See the following `Block targets`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(GroupMetricRuleTargetArgs... targets) {
+            return targets(List.of(targets));
         }
 
         /**

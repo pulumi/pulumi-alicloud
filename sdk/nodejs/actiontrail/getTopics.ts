@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,21 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const topicsDs = pulumi.output(alicloud.actiontrail.getTopics({
+ * const topicsDs = alicloud.actiontrail.getTopics({
  *     instanceId: "xxx",
  *     nameRegex: "alikafkaTopicName",
  *     outputFile: "topics.txt",
- * }));
- *
- * export const firstTopicName = topicsDs.topics[0].topic;
+ * });
+ * export const firstTopicName = topicsDs.then(topicsDs => topicsDs.topics?.[0]?.topic);
  * ```
  */
 export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:actiontrail/getTopics:getTopics", {
         "ids": args.ids,
         "instanceId": args.instanceId,
@@ -98,9 +95,27 @@ export interface GetTopicsResult {
     readonly topics: outputs.actiontrail.GetTopicsTopic[];
     readonly totalCount: number;
 }
-
+/**
+ * This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in 1.56.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const topicsDs = alicloud.actiontrail.getTopics({
+ *     instanceId: "xxx",
+ *     nameRegex: "alikafkaTopicName",
+ *     outputFile: "topics.txt",
+ * });
+ * export const firstTopicName = topicsDs.then(topicsDs => topicsDs.topics?.[0]?.topic);
+ * ```
+ */
 export function getTopicsOutput(args: GetTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicsResult> {
-    return pulumi.output(args).apply(a => getTopics(a, opts))
+    return pulumi.output(args).apply((a: any) => getTopics(a, opts))
 }
 
 /**

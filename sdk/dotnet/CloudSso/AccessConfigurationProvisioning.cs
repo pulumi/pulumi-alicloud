@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning")]
-    public partial class AccessConfigurationProvisioning : Pulumi.CustomResource
+    public partial class AccessConfigurationProvisioning : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Access configuration ID.
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.CloudSso
         }
     }
 
-    public sealed class AccessConfigurationProvisioningArgs : Pulumi.ResourceArgs
+    public sealed class AccessConfigurationProvisioningArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Access configuration ID.
@@ -136,9 +136,10 @@ namespace Pulumi.AliCloud.CloudSso
         public AccessConfigurationProvisioningArgs()
         {
         }
+        public static new AccessConfigurationProvisioningArgs Empty => new AccessConfigurationProvisioningArgs();
     }
 
-    public sealed class AccessConfigurationProvisioningState : Pulumi.ResourceArgs
+    public sealed class AccessConfigurationProvisioningState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Access configuration ID.
@@ -173,5 +174,6 @@ namespace Pulumi.AliCloud.CloudSso
         public AccessConfigurationProvisioningState()
         {
         }
+        public static new AccessConfigurationProvisioningState Empty => new AccessConfigurationProvisioningState();
     }
 }

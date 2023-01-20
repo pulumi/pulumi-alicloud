@@ -33,7 +33,7 @@ import (
 //				return err
 //			}
 //			_, err = mongodb.NewInstance(ctx, "mongodb", &mongodb.InstanceArgs{
-//				ZoneId: pulumi.String(zonesIds.Zones[0].Id),
+//				ZoneId: *pulumi.String(zonesIds.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err

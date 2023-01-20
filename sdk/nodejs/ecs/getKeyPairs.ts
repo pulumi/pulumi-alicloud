@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -13,21 +14,16 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Declare the data source
- * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {
- *     keyName: "keyPairDatasource",
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("defaultKeyPair", {keyName: "keyPairDatasource"});
+ * const defaultKeyPairs = alicloud.ecs.getKeyPairsOutput({
+ *     nameRegex: defaultKeyPair.keyName,
  * });
- * const defaultKeyPairs = defaultKeyPair.keyName.apply(keyName => alicloud.ecs.getKeyPairs({
- *     nameRegex: keyName,
- * }));
  * ```
  */
 export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getKeyPairs:getKeyPairs", {
         "fingerPrint": args.fingerPrint,
         "ids": args.ids,
@@ -100,9 +96,22 @@ export interface GetKeyPairsResult {
      */
     readonly tags?: {[key: string]: any};
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Declare the data source
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("defaultKeyPair", {keyName: "keyPairDatasource"});
+ * const defaultKeyPairs = alicloud.ecs.getKeyPairsOutput({
+ *     nameRegex: defaultKeyPair.keyName,
+ * });
+ * ```
+ */
 export function getKeyPairsOutput(args?: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
-    return pulumi.output(args).apply(a => getKeyPairs(a, opts))
+    return pulumi.output(args).apply((a: any) => getKeyPairs(a, opts))
 }
 
 /**

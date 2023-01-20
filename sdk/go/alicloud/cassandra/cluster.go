@@ -141,6 +141,13 @@ func NewCluster(ctx *pulumi.Context,
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Cluster
 	err := ctx.RegisterResource("alicloud:cassandra/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {

@@ -19,32 +19,30 @@ namespace Pulumi.AliCloud.Vpn
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = AliCloud.Vpn.GetCustomerGateways.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(AliCloud.Vpn.GetCustomerGateways.InvokeAsync(new AliCloud.Vpn.GetCustomerGatewaysArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "fake-id1",
-        ///                 "fake-id2",
-        ///             },
-        ///             NameRegex = "testAcc*",
-        ///             OutputFile = "/tmp/cgws",
-        ///         }));
-        ///     }
+        ///             "fake-id1",
+        ///             "fake-id2",
+        ///         },
+        ///         NameRegex = "testAcc*",
+        ///         OutputFile = "/tmp/cgws",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCustomerGatewaysResult> InvokeAsync(GetCustomerGatewaysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomerGatewaysResult>("alicloud:vpn/getCustomerGateways:getCustomerGateways", args ?? new GetCustomerGatewaysArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomerGatewaysResult>("alicloud:vpn/getCustomerGateways:getCustomerGateways", args ?? new GetCustomerGatewaysArgs(), options.WithDefaults());
 
         /// <summary>
         /// The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
@@ -54,36 +52,34 @@ namespace Pulumi.AliCloud.Vpn
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var foo = AliCloud.Vpn.GetCustomerGateways.Invoke(new()
         ///     {
-        ///         var foo = Output.Create(AliCloud.Vpn.GetCustomerGateways.InvokeAsync(new AliCloud.Vpn.GetCustomerGatewaysArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "fake-id1",
-        ///                 "fake-id2",
-        ///             },
-        ///             NameRegex = "testAcc*",
-        ///             OutputFile = "/tmp/cgws",
-        ///         }));
-        ///     }
+        ///             "fake-id1",
+        ///             "fake-id2",
+        ///         },
+        ///         NameRegex = "testAcc*",
+        ///         OutputFile = "/tmp/cgws",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCustomerGatewaysResult> Invoke(GetCustomerGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCustomerGatewaysResult>("alicloud:vpn/getCustomerGateways:getCustomerGateways", args ?? new GetCustomerGatewaysInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomerGatewaysResult>("alicloud:vpn/getCustomerGateways:getCustomerGateways", args ?? new GetCustomerGatewaysInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCustomerGatewaysArgs : Pulumi.InvokeArgs
+    public sealed class GetCustomerGatewaysArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -112,9 +108,10 @@ namespace Pulumi.AliCloud.Vpn
         public GetCustomerGatewaysArgs()
         {
         }
+        public static new GetCustomerGatewaysArgs Empty => new GetCustomerGatewaysArgs();
     }
 
-    public sealed class GetCustomerGatewaysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCustomerGatewaysInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -143,6 +140,7 @@ namespace Pulumi.AliCloud.Vpn
         public GetCustomerGatewaysInvokeArgs()
         {
         }
+        public static new GetCustomerGatewaysInvokeArgs Empty => new GetCustomerGatewaysInvokeArgs();
     }
 
 
@@ -157,8 +155,14 @@ namespace Pulumi.AliCloud.Vpn
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// IDs of VPN customer gateway.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// names of VPN customer gateway.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

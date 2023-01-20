@@ -15,27 +15,25 @@ namespace Pulumi.AliCloud.ApiGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foo = new AliCloud.ApiGateway.AppAttachment("foo", new()
     ///     {
-    ///         var foo = new AliCloud.ApiGateway.AppAttachment("foo", new AliCloud.ApiGateway.AppAttachmentArgs
-    ///         {
-    ///             ApiId = "d29d25b9cfdf4742b1a3f6537299a749",
-    ///             AppId = "20898181",
-    ///             GroupId = "aaef8cdbb404420f9398a74ed1db7fff",
-    ///             StageName = "PRE",
-    ///         });
-    ///     }
+    ///         ApiId = "d29d25b9cfdf4742b1a3f6537299a749",
+    ///         AppId = "20898181",
+    ///         GroupId = "aaef8cdbb404420f9398a74ed1db7fff",
+    ///         StageName = "PRE",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:apigateway/appAttachment:AppAttachment")]
-    public partial class AppAttachment : Pulumi.CustomResource
+    public partial class AppAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The api_id that app apply to access.
@@ -105,7 +103,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
     }
 
-    public sealed class AppAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class AppAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The api_id that app apply to access.
@@ -134,9 +132,10 @@ namespace Pulumi.AliCloud.ApiGateway
         public AppAttachmentArgs()
         {
         }
+        public static new AppAttachmentArgs Empty => new AppAttachmentArgs();
     }
 
-    public sealed class AppAttachmentState : Pulumi.ResourceArgs
+    public sealed class AppAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The api_id that app apply to access.
@@ -165,5 +164,6 @@ namespace Pulumi.AliCloud.ApiGateway
         public AppAttachmentState()
         {
         }
+        public static new AppAttachmentState Empty => new AppAttachmentState();
     }
 }

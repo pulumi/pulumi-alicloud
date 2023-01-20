@@ -5,26 +5,71 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./alias";
-export * from "./ciphertext";
-export * from "./getAliases";
-export * from "./getCiphertext";
-export * from "./getKeyVersions";
-export * from "./getKeys";
-export * from "./getPlaintext";
-export * from "./getSecretVersions";
-export * from "./getSecrets";
-export * from "./getService";
-export * from "./key";
-export * from "./keyVersion";
-export * from "./secret";
+export { AliasArgs, AliasState } from "./alias";
+export type Alias = import("./alias").Alias;
+export const Alias: typeof import("./alias").Alias = null as any;
+utilities.lazyLoad(exports, ["Alias"], () => require("./alias"));
 
-// Import resources to register:
-import { Alias } from "./alias";
-import { Ciphertext } from "./ciphertext";
-import { Key } from "./key";
-import { KeyVersion } from "./keyVersion";
-import { Secret } from "./secret";
+export { CiphertextArgs, CiphertextState } from "./ciphertext";
+export type Ciphertext = import("./ciphertext").Ciphertext;
+export const Ciphertext: typeof import("./ciphertext").Ciphertext = null as any;
+utilities.lazyLoad(exports, ["Ciphertext"], () => require("./ciphertext"));
+
+export { GetAliasesArgs, GetAliasesResult, GetAliasesOutputArgs } from "./getAliases";
+export const getAliases: typeof import("./getAliases").getAliases = null as any;
+export const getAliasesOutput: typeof import("./getAliases").getAliasesOutput = null as any;
+utilities.lazyLoad(exports, ["getAliases","getAliasesOutput"], () => require("./getAliases"));
+
+export { GetCiphertextArgs, GetCiphertextResult, GetCiphertextOutputArgs } from "./getCiphertext";
+export const getCiphertext: typeof import("./getCiphertext").getCiphertext = null as any;
+export const getCiphertextOutput: typeof import("./getCiphertext").getCiphertextOutput = null as any;
+utilities.lazyLoad(exports, ["getCiphertext","getCiphertextOutput"], () => require("./getCiphertext"));
+
+export { GetKeyVersionsArgs, GetKeyVersionsResult, GetKeyVersionsOutputArgs } from "./getKeyVersions";
+export const getKeyVersions: typeof import("./getKeyVersions").getKeyVersions = null as any;
+export const getKeyVersionsOutput: typeof import("./getKeyVersions").getKeyVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getKeyVersions","getKeyVersionsOutput"], () => require("./getKeyVersions"));
+
+export { GetKeysArgs, GetKeysResult, GetKeysOutputArgs } from "./getKeys";
+export const getKeys: typeof import("./getKeys").getKeys = null as any;
+export const getKeysOutput: typeof import("./getKeys").getKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getKeys","getKeysOutput"], () => require("./getKeys"));
+
+export { GetPlaintextArgs, GetPlaintextResult, GetPlaintextOutputArgs } from "./getPlaintext";
+export const getPlaintext: typeof import("./getPlaintext").getPlaintext = null as any;
+export const getPlaintextOutput: typeof import("./getPlaintext").getPlaintextOutput = null as any;
+utilities.lazyLoad(exports, ["getPlaintext","getPlaintextOutput"], () => require("./getPlaintext"));
+
+export { GetSecretVersionsArgs, GetSecretVersionsResult, GetSecretVersionsOutputArgs } from "./getSecretVersions";
+export const getSecretVersions: typeof import("./getSecretVersions").getSecretVersions = null as any;
+export const getSecretVersionsOutput: typeof import("./getSecretVersions").getSecretVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getSecretVersions","getSecretVersionsOutput"], () => require("./getSecretVersions"));
+
+export { GetSecretsArgs, GetSecretsResult, GetSecretsOutputArgs } from "./getSecrets";
+export const getSecrets: typeof import("./getSecrets").getSecrets = null as any;
+export const getSecretsOutput: typeof import("./getSecrets").getSecretsOutput = null as any;
+utilities.lazyLoad(exports, ["getSecrets","getSecretsOutput"], () => require("./getSecrets"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { KeyArgs, KeyState } from "./key";
+export type Key = import("./key").Key;
+export const Key: typeof import("./key").Key = null as any;
+utilities.lazyLoad(exports, ["Key"], () => require("./key"));
+
+export { KeyVersionArgs, KeyVersionState } from "./keyVersion";
+export type KeyVersion = import("./keyVersion").KeyVersion;
+export const KeyVersion: typeof import("./keyVersion").KeyVersion = null as any;
+utilities.lazyLoad(exports, ["KeyVersion"], () => require("./keyVersion"));
+
+export { SecretArgs, SecretState } from "./secret";
+export type Secret = import("./secret").Secret;
+export const Secret: typeof import("./secret").Secret = null as any;
+utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
+
 
 const _module = {
     version: utilities.getVersion(),

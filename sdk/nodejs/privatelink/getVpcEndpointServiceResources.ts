@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,15 +22,12 @@ import * as utilities from "../utilities";
  * const example = alicloud.privatelink.getVpcEndpointServiceResources({
  *     serviceId: "epsrv-gw8ii1xxxx",
  * });
- * export const firstPrivatelinkVpcEndpointServiceResourceId = example.then(example => example.resources?[0]?.id);
+ * export const firstPrivatelinkVpcEndpointServiceResourceId = example.then(example => example.resources?.[0]?.id);
  * ```
  */
 export function getVpcEndpointServiceResources(args: GetVpcEndpointServiceResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServiceResourcesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources", {
         "outputFile": args.outputFile,
         "serviceId": args.serviceId,
@@ -60,9 +58,27 @@ export interface GetVpcEndpointServiceResourcesResult {
     readonly resources: outputs.privatelink.GetVpcEndpointServiceResourcesResource[];
     readonly serviceId: string;
 }
-
+/**
+ * This data source provides the Privatelink Vpc Endpoint Service Resources of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.110.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.privatelink.getVpcEndpointServiceResources({
+ *     serviceId: "epsrv-gw8ii1xxxx",
+ * });
+ * export const firstPrivatelinkVpcEndpointServiceResourceId = example.then(example => example.resources?.[0]?.id);
+ * ```
+ */
 export function getVpcEndpointServiceResourcesOutput(args: GetVpcEndpointServiceResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointServiceResourcesResult> {
-    return pulumi.output(args).apply(a => getVpcEndpointServiceResources(a, opts))
+    return pulumi.output(args).apply((a: any) => getVpcEndpointServiceResources(a, opts))
 }
 
 /**

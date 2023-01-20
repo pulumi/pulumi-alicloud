@@ -255,6 +255,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<String> port;
+
+    /**
+     * @return (Available in 1.196.0+) The connection port of the ADB cluster.
+     * 
+     */
+    public Optional<Output<String>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
+    /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      * 
      */
@@ -374,6 +389,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.payType = $.payType;
         this.paymentType = $.paymentType;
         this.period = $.period;
+        this.port = $.port;
         this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
         this.securityIps = $.securityIps;
@@ -721,6 +737,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder period(Integer period) {
             return period(Output.of(period));
+        }
+
+        /**
+         * @param port (Available in 1.196.0+) The connection port of the ADB cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<String> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port (Available in 1.196.0+) The connection port of the ADB cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(String port) {
+            return port(Output.of(port));
         }
 
         /**

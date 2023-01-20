@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ess.inputs;
 
+import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationAcrRegistryInfoArgs;
 import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationContainerArgs;
 import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationHostAliasArgs;
 import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationImageRegistryCredentialArgs;
@@ -25,6 +26,25 @@ import javax.annotation.Nullable;
 public final class EciScalingConfigurationState extends com.pulumi.resources.ResourceArgs {
 
     public static final EciScalingConfigurationState Empty = new EciScalingConfigurationState();
+
+    /**
+     * Information about the Container Registry Enterprise Edition instance. The details see
+     * Block `acr_registry_info`.See Block acr_registry_info below for
+     * details.
+     * 
+     */
+    @Import(name="acrRegistryInfos")
+    private @Nullable Output<List<EciScalingConfigurationAcrRegistryInfoArgs>> acrRegistryInfos;
+
+    /**
+     * @return Information about the Container Registry Enterprise Edition instance. The details see
+     * Block `acr_registry_info`.See Block acr_registry_info below for
+     * details.
+     * 
+     */
+    public Optional<Output<List<EciScalingConfigurationAcrRegistryInfoArgs>>> acrRegistryInfos() {
+        return Optional.ofNullable(this.acrRegistryInfos);
+    }
 
     /**
      * Whether active current eci scaling configuration in the specified scaling group. Note that only
@@ -89,14 +109,14 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      * 
      */
     @Import(name="cpu")
     private @Nullable Output<Double> cpu;
 
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     public Optional<Output<Double>> cpu() {
@@ -279,14 +299,14 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
-     * The amount of memory resources allocated to the container.
+     * The amount of memory resources allocated to the container group.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<Double> memory;
 
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     public Optional<Output<Double>> memory() {
@@ -464,6 +484,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     private EciScalingConfigurationState() {}
 
     private EciScalingConfigurationState(EciScalingConfigurationState $) {
+        this.acrRegistryInfos = $.acrRegistryInfos;
         this.active = $.active;
         this.autoCreateEip = $.autoCreateEip;
         this.containerGroupName = $.containerGroupName;
@@ -509,6 +530,43 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
 
         public Builder(EciScalingConfigurationState defaults) {
             $ = new EciScalingConfigurationState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. The details see
+         * Block `acr_registry_info`.See Block acr_registry_info below for
+         * details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrRegistryInfos(@Nullable Output<List<EciScalingConfigurationAcrRegistryInfoArgs>> acrRegistryInfos) {
+            $.acrRegistryInfos = acrRegistryInfos;
+            return this;
+        }
+
+        /**
+         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. The details see
+         * Block `acr_registry_info`.See Block acr_registry_info below for
+         * details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrRegistryInfos(List<EciScalingConfigurationAcrRegistryInfoArgs> acrRegistryInfos) {
+            return acrRegistryInfos(Output.of(acrRegistryInfos));
+        }
+
+        /**
+         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. The details see
+         * Block `acr_registry_info`.See Block acr_registry_info below for
+         * details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acrRegistryInfos(EciScalingConfigurationAcrRegistryInfoArgs... acrRegistryInfos) {
+            return acrRegistryInfos(List.of(acrRegistryInfos));
         }
 
         /**
@@ -608,7 +666,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container.
+         * @param cpu The amount of CPU resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -619,7 +677,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container.
+         * @param cpu The amount of CPU resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -903,7 +961,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container.
+         * @param memory The amount of memory resources allocated to the container group.
          * 
          * @return builder
          * 
@@ -914,7 +972,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container.
+         * @param memory The amount of memory resources allocated to the container group.
          * 
          * @return builder
          * 

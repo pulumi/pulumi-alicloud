@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'EciScalingConfigurationAcrRegistryInfoArgs',
     'EciScalingConfigurationContainerArgs',
     'EciScalingConfigurationContainerEnvironmentVarArgs',
     'EciScalingConfigurationContainerPortArgs',
@@ -31,6 +32,85 @@ __all__ = [
 ]
 
 @pulumi.input_type
+class EciScalingConfigurationAcrRegistryInfoArgs:
+    def __init__(__self__, *,
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
+               when `acr_registry_info` is configured.
+        :param pulumi.Input[str] instance_id: The ID of Container Registry Enterprise Edition instance. It is required
+               when `acr_registry_info` is configured.
+        :param pulumi.Input[str] instance_name: The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
+               configured.
+        :param pulumi.Input[str] region_id: The region ID of Container Registry Enterprise Edition instance. It is required
+               when `acr_registry_info` is configured.
+        """
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
+        when `acr_registry_info` is configured.
+        """
+        return pulumi.get(self, "domains")
+
+    @domains.setter
+    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "domains", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of Container Registry Enterprise Edition instance. It is required
+        when `acr_registry_info` is configured.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
+        configured.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region ID of Container Registry Enterprise Edition instance. It is required
+        when `acr_registry_info` is configured.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+
+@pulumi.input_type
 class EciScalingConfigurationContainerArgs:
     def __init__(__self__, *,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -40,24 +120,67 @@ class EciScalingConfigurationContainerArgs:
                  gpu: Optional[pulumi.Input[int]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  image_pull_policy: Optional[pulumi.Input[str]] = None,
+                 liveness_probe_exec_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 liveness_probe_failure_threshold: Optional[pulumi.Input[int]] = None,
+                 liveness_probe_http_get_path: Optional[pulumi.Input[str]] = None,
+                 liveness_probe_http_get_port: Optional[pulumi.Input[int]] = None,
+                 liveness_probe_http_get_scheme: Optional[pulumi.Input[str]] = None,
+                 liveness_probe_initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+                 liveness_probe_period_seconds: Optional[pulumi.Input[int]] = None,
+                 liveness_probe_success_threshold: Optional[pulumi.Input[int]] = None,
+                 liveness_probe_tcp_socket_port: Optional[pulumi.Input[int]] = None,
+                 liveness_probe_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]]] = None,
+                 readiness_probe_exec_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 readiness_probe_failure_threshold: Optional[pulumi.Input[int]] = None,
+                 readiness_probe_http_get_path: Optional[pulumi.Input[str]] = None,
+                 readiness_probe_http_get_port: Optional[pulumi.Input[int]] = None,
+                 readiness_probe_http_get_scheme: Optional[pulumi.Input[str]] = None,
+                 readiness_probe_initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+                 readiness_probe_period_seconds: Optional[pulumi.Input[int]] = None,
+                 readiness_probe_success_threshold: Optional[pulumi.Input[int]] = None,
+                 readiness_probe_tcp_socket_port: Optional[pulumi.Input[int]] = None,
+                 readiness_probe_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]] = None,
                  working_dir: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: The arguments passed to the commands.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: The commands run by the init container.
-        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
+        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgs']]] environment_vars: The structure of environmentVars.
+               See Block_environment_var_in_init_container below for details.
                See Block_environment_var_in_container below for details.
         :param pulumi.Input[int] gpu: The number GPUs.
         :param pulumi.Input[str] image: The image of the container.
         :param pulumi.Input[str] image_pull_policy: The restart policy of the image.
-        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
-        :param pulumi.Input[str] name: The name of the mounted volume.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]] ports: The structure of port. See Block_port_in_container below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] liveness_probe_exec_commands: Commands that you want to run in containers when you use the CLI to perform liveness probes.
+        :param pulumi.Input[int] liveness_probe_failure_threshold: The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
+        :param pulumi.Input[str] liveness_probe_http_get_path: The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+        :param pulumi.Input[int] liveness_probe_http_get_port: The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+        :param pulumi.Input[str] liveness_probe_http_get_scheme: The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
+        :param pulumi.Input[int] liveness_probe_initial_delay_seconds: The number of seconds after container has started before liveness probes are initiated.
+        :param pulumi.Input[int] liveness_probe_period_seconds: The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        :param pulumi.Input[int] liveness_probe_success_threshold: The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+        :param pulumi.Input[int] liveness_probe_tcp_socket_port: The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
+        :param pulumi.Input[int] liveness_probe_timeout_seconds: The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
+        :param pulumi.Input[str] name: The name of the volume.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]] ports: The structure of port. See Block_port_in_init_container below
+               for details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] readiness_probe_exec_commands: Commands that you want to run in containers when you use the CLI to perform readiness probes.
+        :param pulumi.Input[int] readiness_probe_failure_threshold: The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
+        :param pulumi.Input[str] readiness_probe_http_get_path: The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+        :param pulumi.Input[int] readiness_probe_http_get_port: The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+        :param pulumi.Input[str] readiness_probe_http_get_scheme: The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
+        :param pulumi.Input[int] readiness_probe_initial_delay_seconds: The number of seconds after container N has started before readiness probes are initiated.
+        :param pulumi.Input[int] readiness_probe_period_seconds: The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        :param pulumi.Input[int] readiness_probe_success_threshold: The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+        :param pulumi.Input[int] readiness_probe_tcp_socket_port: The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
+        :param pulumi.Input[int] readiness_probe_timeout_seconds: The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]] volume_mounts: The structure of volumeMounts.
+               See Block_volume_mount_in_init_container below for details.
                See Block_volume_mount_in_container below for details.
         :param pulumi.Input[str] working_dir: The working directory of the container.
         """
@@ -75,12 +198,52 @@ class EciScalingConfigurationContainerArgs:
             pulumi.set(__self__, "image", image)
         if image_pull_policy is not None:
             pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if liveness_probe_exec_commands is not None:
+            pulumi.set(__self__, "liveness_probe_exec_commands", liveness_probe_exec_commands)
+        if liveness_probe_failure_threshold is not None:
+            pulumi.set(__self__, "liveness_probe_failure_threshold", liveness_probe_failure_threshold)
+        if liveness_probe_http_get_path is not None:
+            pulumi.set(__self__, "liveness_probe_http_get_path", liveness_probe_http_get_path)
+        if liveness_probe_http_get_port is not None:
+            pulumi.set(__self__, "liveness_probe_http_get_port", liveness_probe_http_get_port)
+        if liveness_probe_http_get_scheme is not None:
+            pulumi.set(__self__, "liveness_probe_http_get_scheme", liveness_probe_http_get_scheme)
+        if liveness_probe_initial_delay_seconds is not None:
+            pulumi.set(__self__, "liveness_probe_initial_delay_seconds", liveness_probe_initial_delay_seconds)
+        if liveness_probe_period_seconds is not None:
+            pulumi.set(__self__, "liveness_probe_period_seconds", liveness_probe_period_seconds)
+        if liveness_probe_success_threshold is not None:
+            pulumi.set(__self__, "liveness_probe_success_threshold", liveness_probe_success_threshold)
+        if liveness_probe_tcp_socket_port is not None:
+            pulumi.set(__self__, "liveness_probe_tcp_socket_port", liveness_probe_tcp_socket_port)
+        if liveness_probe_timeout_seconds is not None:
+            pulumi.set(__self__, "liveness_probe_timeout_seconds", liveness_probe_timeout_seconds)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
+        if readiness_probe_exec_commands is not None:
+            pulumi.set(__self__, "readiness_probe_exec_commands", readiness_probe_exec_commands)
+        if readiness_probe_failure_threshold is not None:
+            pulumi.set(__self__, "readiness_probe_failure_threshold", readiness_probe_failure_threshold)
+        if readiness_probe_http_get_path is not None:
+            pulumi.set(__self__, "readiness_probe_http_get_path", readiness_probe_http_get_path)
+        if readiness_probe_http_get_port is not None:
+            pulumi.set(__self__, "readiness_probe_http_get_port", readiness_probe_http_get_port)
+        if readiness_probe_http_get_scheme is not None:
+            pulumi.set(__self__, "readiness_probe_http_get_scheme", readiness_probe_http_get_scheme)
+        if readiness_probe_initial_delay_seconds is not None:
+            pulumi.set(__self__, "readiness_probe_initial_delay_seconds", readiness_probe_initial_delay_seconds)
+        if readiness_probe_period_seconds is not None:
+            pulumi.set(__self__, "readiness_probe_period_seconds", readiness_probe_period_seconds)
+        if readiness_probe_success_threshold is not None:
+            pulumi.set(__self__, "readiness_probe_success_threshold", readiness_probe_success_threshold)
+        if readiness_probe_tcp_socket_port is not None:
+            pulumi.set(__self__, "readiness_probe_tcp_socket_port", readiness_probe_tcp_socket_port)
+        if readiness_probe_timeout_seconds is not None:
+            pulumi.set(__self__, "readiness_probe_timeout_seconds", readiness_probe_timeout_seconds)
         if volume_mounts is not None:
             pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
@@ -114,7 +277,7 @@ class EciScalingConfigurationContainerArgs:
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input[float]]:
         """
-        The amount of CPU resources allocated to the container.
+        The amount of CPU resources allocated to the container group.
         """
         return pulumi.get(self, "cpu")
 
@@ -127,6 +290,7 @@ class EciScalingConfigurationContainerArgs:
     def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgs']]]]:
         """
         The structure of environmentVars.
+        See Block_environment_var_in_init_container below for details.
         See Block_environment_var_in_container below for details.
         """
         return pulumi.get(self, "environment_vars")
@@ -172,10 +336,130 @@ class EciScalingConfigurationContainerArgs:
         pulumi.set(self, "image_pull_policy", value)
 
     @property
+    @pulumi.getter(name="livenessProbeExecCommands")
+    def liveness_probe_exec_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Commands that you want to run in containers when you use the CLI to perform liveness probes.
+        """
+        return pulumi.get(self, "liveness_probe_exec_commands")
+
+    @liveness_probe_exec_commands.setter
+    def liveness_probe_exec_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "liveness_probe_exec_commands", value)
+
+    @property
+    @pulumi.getter(name="livenessProbeFailureThreshold")
+    def liveness_probe_failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
+        """
+        return pulumi.get(self, "liveness_probe_failure_threshold")
+
+    @liveness_probe_failure_threshold.setter
+    def liveness_probe_failure_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "liveness_probe_failure_threshold", value)
+
+    @property
+    @pulumi.getter(name="livenessProbeHttpGetPath")
+    def liveness_probe_http_get_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+        """
+        return pulumi.get(self, "liveness_probe_http_get_path")
+
+    @liveness_probe_http_get_path.setter
+    def liveness_probe_http_get_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "liveness_probe_http_get_path", value)
+
+    @property
+    @pulumi.getter(name="livenessProbeHttpGetPort")
+    def liveness_probe_http_get_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+        """
+        return pulumi.get(self, "liveness_probe_http_get_port")
+
+    @liveness_probe_http_get_port.setter
+    def liveness_probe_http_get_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "liveness_probe_http_get_port", value)
+
+    @property
+    @pulumi.getter(name="livenessProbeHttpGetScheme")
+    def liveness_probe_http_get_scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
+        """
+        return pulumi.get(self, "liveness_probe_http_get_scheme")
+
+    @liveness_probe_http_get_scheme.setter
+    def liveness_probe_http_get_scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "liveness_probe_http_get_scheme", value)
+
+    @property
+    @pulumi.getter(name="livenessProbeInitialDelaySeconds")
+    def liveness_probe_initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of seconds after container has started before liveness probes are initiated.
+        """
+        return pulumi.get(self, "liveness_probe_initial_delay_seconds")
+
+    @liveness_probe_initial_delay_seconds.setter
+    def liveness_probe_initial_delay_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "liveness_probe_initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="livenessProbePeriodSeconds")
+    def liveness_probe_period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        """
+        return pulumi.get(self, "liveness_probe_period_seconds")
+
+    @liveness_probe_period_seconds.setter
+    def liveness_probe_period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "liveness_probe_period_seconds", value)
+
+    @property
+    @pulumi.getter(name="livenessProbeSuccessThreshold")
+    def liveness_probe_success_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+        """
+        return pulumi.get(self, "liveness_probe_success_threshold")
+
+    @liveness_probe_success_threshold.setter
+    def liveness_probe_success_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "liveness_probe_success_threshold", value)
+
+    @property
+    @pulumi.getter(name="livenessProbeTcpSocketPort")
+    def liveness_probe_tcp_socket_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
+        """
+        return pulumi.get(self, "liveness_probe_tcp_socket_port")
+
+    @liveness_probe_tcp_socket_port.setter
+    def liveness_probe_tcp_socket_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "liveness_probe_tcp_socket_port", value)
+
+    @property
+    @pulumi.getter(name="livenessProbeTimeoutSeconds")
+    def liveness_probe_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+        """
+        return pulumi.get(self, "liveness_probe_timeout_seconds")
+
+    @liveness_probe_timeout_seconds.setter
+    def liveness_probe_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "liveness_probe_timeout_seconds", value)
+
+    @property
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input[float]]:
         """
-        The amount of memory resources allocated to the container.
+        The amount of memory resources allocated to the container group.
         """
         return pulumi.get(self, "memory")
 
@@ -187,7 +471,7 @@ class EciScalingConfigurationContainerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the mounted volume.
+        The name of the volume.
         """
         return pulumi.get(self, "name")
 
@@ -199,7 +483,8 @@ class EciScalingConfigurationContainerArgs:
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]]]:
         """
-        The structure of port. See Block_port_in_container below for details.
+        The structure of port. See Block_port_in_init_container below
+        for details.
         """
         return pulumi.get(self, "ports")
 
@@ -208,10 +493,131 @@ class EciScalingConfigurationContainerArgs:
         pulumi.set(self, "ports", value)
 
     @property
+    @pulumi.getter(name="readinessProbeExecCommands")
+    def readiness_probe_exec_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Commands that you want to run in containers when you use the CLI to perform readiness probes.
+        """
+        return pulumi.get(self, "readiness_probe_exec_commands")
+
+    @readiness_probe_exec_commands.setter
+    def readiness_probe_exec_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "readiness_probe_exec_commands", value)
+
+    @property
+    @pulumi.getter(name="readinessProbeFailureThreshold")
+    def readiness_probe_failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
+        """
+        return pulumi.get(self, "readiness_probe_failure_threshold")
+
+    @readiness_probe_failure_threshold.setter
+    def readiness_probe_failure_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "readiness_probe_failure_threshold", value)
+
+    @property
+    @pulumi.getter(name="readinessProbeHttpGetPath")
+    def readiness_probe_http_get_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+        """
+        return pulumi.get(self, "readiness_probe_http_get_path")
+
+    @readiness_probe_http_get_path.setter
+    def readiness_probe_http_get_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "readiness_probe_http_get_path", value)
+
+    @property
+    @pulumi.getter(name="readinessProbeHttpGetPort")
+    def readiness_probe_http_get_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+        """
+        return pulumi.get(self, "readiness_probe_http_get_port")
+
+    @readiness_probe_http_get_port.setter
+    def readiness_probe_http_get_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "readiness_probe_http_get_port", value)
+
+    @property
+    @pulumi.getter(name="readinessProbeHttpGetScheme")
+    def readiness_probe_http_get_scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
+        """
+        return pulumi.get(self, "readiness_probe_http_get_scheme")
+
+    @readiness_probe_http_get_scheme.setter
+    def readiness_probe_http_get_scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "readiness_probe_http_get_scheme", value)
+
+    @property
+    @pulumi.getter(name="readinessProbeInitialDelaySeconds")
+    def readiness_probe_initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of seconds after container N has started before readiness probes are initiated.
+        """
+        return pulumi.get(self, "readiness_probe_initial_delay_seconds")
+
+    @readiness_probe_initial_delay_seconds.setter
+    def readiness_probe_initial_delay_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "readiness_probe_initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="readinessProbePeriodSeconds")
+    def readiness_probe_period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        """
+        return pulumi.get(self, "readiness_probe_period_seconds")
+
+    @readiness_probe_period_seconds.setter
+    def readiness_probe_period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "readiness_probe_period_seconds", value)
+
+    @property
+    @pulumi.getter(name="readinessProbeSuccessThreshold")
+    def readiness_probe_success_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+        """
+        return pulumi.get(self, "readiness_probe_success_threshold")
+
+    @readiness_probe_success_threshold.setter
+    def readiness_probe_success_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "readiness_probe_success_threshold", value)
+
+    @property
+    @pulumi.getter(name="readinessProbeTcpSocketPort")
+    def readiness_probe_tcp_socket_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
+        """
+        return pulumi.get(self, "readiness_probe_tcp_socket_port")
+
+    @readiness_probe_tcp_socket_port.setter
+    def readiness_probe_tcp_socket_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "readiness_probe_tcp_socket_port", value)
+
+    @property
+    @pulumi.getter(name="readinessProbeTimeoutSeconds")
+    def readiness_probe_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+        """
+        return pulumi.get(self, "readiness_probe_timeout_seconds")
+
+    @readiness_probe_timeout_seconds.setter
+    def readiness_probe_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "readiness_probe_timeout_seconds", value)
+
+    @property
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]]:
         """
         The structure of volumeMounts.
+        See Block_volume_mount_in_init_container below for details.
         See Block_volume_mount_in_container below for details.
         """
         return pulumi.get(self, "volume_mounts")
@@ -241,6 +647,7 @@ class EciScalingConfigurationContainerEnvironmentVarArgs:
         """
         :param pulumi.Input[str] key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
                digits, and underscores (_). It cannot start with a digit.
+               digits, and underscores (_). It cannot start with a digit.
         :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
         """
         if key is not None:
@@ -253,6 +660,7 @@ class EciScalingConfigurationContainerEnvironmentVarArgs:
     def key(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+        digits, and underscores (_). It cannot start with a digit.
         digits, and underscores (_). It cannot start with a digit.
         """
         return pulumi.get(self, "key")
@@ -322,7 +730,8 @@ class EciScalingConfigurationContainerVolumeMountArgs:
         """
         :param pulumi.Input[str] mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the
                data in the volume.
-        :param pulumi.Input[str] name: The name of the mounted volume.
+               data in the volume.
+        :param pulumi.Input[str] name: The name of the volume.
         :param pulumi.Input[bool] read_only: Default to `false`.
         """
         if mount_path is not None:
@@ -338,6 +747,7 @@ class EciScalingConfigurationContainerVolumeMountArgs:
         """
         The directory of the mounted volume. Data under this directory will be overwritten by the
         data in the volume.
+        data in the volume.
         """
         return pulumi.get(self, "mount_path")
 
@@ -349,7 +759,7 @@ class EciScalingConfigurationContainerVolumeMountArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the mounted volume.
+        The name of the volume.
         """
         return pulumi.get(self, "name")
 
@@ -482,16 +892,19 @@ class EciScalingConfigurationInitContainerArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: The arguments passed to the commands.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: The commands run by the init container.
-        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container.
+        :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]] environment_vars: The structure of environmentVars.
+               See Block_environment_var_in_init_container below for details.
                See Block_environment_var_in_container below for details.
         :param pulumi.Input[int] gpu: The number GPUs.
         :param pulumi.Input[str] image: The image of the container.
         :param pulumi.Input[str] image_pull_policy: The restart policy of the image.
-        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container.
-        :param pulumi.Input[str] name: The name of the mounted volume.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]] ports: The structure of port. See Block_port_in_container below for details.
+        :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
+        :param pulumi.Input[str] name: The name of the volume.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]] ports: The structure of port. See Block_port_in_init_container below
+               for details.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]] volume_mounts: The structure of volumeMounts.
+               See Block_volume_mount_in_init_container below for details.
                See Block_volume_mount_in_container below for details.
         :param pulumi.Input[str] working_dir: The working directory of the container.
         """
@@ -548,7 +961,7 @@ class EciScalingConfigurationInitContainerArgs:
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input[float]]:
         """
-        The amount of CPU resources allocated to the container.
+        The amount of CPU resources allocated to the container group.
         """
         return pulumi.get(self, "cpu")
 
@@ -561,6 +974,7 @@ class EciScalingConfigurationInitContainerArgs:
     def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]]]:
         """
         The structure of environmentVars.
+        See Block_environment_var_in_init_container below for details.
         See Block_environment_var_in_container below for details.
         """
         return pulumi.get(self, "environment_vars")
@@ -609,7 +1023,7 @@ class EciScalingConfigurationInitContainerArgs:
     @pulumi.getter
     def memory(self) -> Optional[pulumi.Input[float]]:
         """
-        The amount of memory resources allocated to the container.
+        The amount of memory resources allocated to the container group.
         """
         return pulumi.get(self, "memory")
 
@@ -621,7 +1035,7 @@ class EciScalingConfigurationInitContainerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the mounted volume.
+        The name of the volume.
         """
         return pulumi.get(self, "name")
 
@@ -633,7 +1047,8 @@ class EciScalingConfigurationInitContainerArgs:
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]]]:
         """
-        The structure of port. See Block_port_in_container below for details.
+        The structure of port. See Block_port_in_init_container below
+        for details.
         """
         return pulumi.get(self, "ports")
 
@@ -646,6 +1061,7 @@ class EciScalingConfigurationInitContainerArgs:
     def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]]]:
         """
         The structure of volumeMounts.
+        See Block_volume_mount_in_init_container below for details.
         See Block_volume_mount_in_container below for details.
         """
         return pulumi.get(self, "volume_mounts")
@@ -675,6 +1091,7 @@ class EciScalingConfigurationInitContainerEnvironmentVarArgs:
         """
         :param pulumi.Input[str] key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
                digits, and underscores (_). It cannot start with a digit.
+               digits, and underscores (_). It cannot start with a digit.
         :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
         """
         if key is not None:
@@ -687,6 +1104,7 @@ class EciScalingConfigurationInitContainerEnvironmentVarArgs:
     def key(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
+        digits, and underscores (_). It cannot start with a digit.
         digits, and underscores (_). It cannot start with a digit.
         """
         return pulumi.get(self, "key")
@@ -756,7 +1174,8 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
         """
         :param pulumi.Input[str] mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the
                data in the volume.
-        :param pulumi.Input[str] name: The name of the mounted volume.
+               data in the volume.
+        :param pulumi.Input[str] name: The name of the volume.
         :param pulumi.Input[bool] read_only: Default to `false`.
         """
         if mount_path is not None:
@@ -772,6 +1191,7 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
         """
         The directory of the mounted volume. Data under this directory will be overwritten by the
         data in the volume.
+        data in the volume.
         """
         return pulumi.get(self, "mount_path")
 
@@ -783,7 +1203,7 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the mounted volume.
+        The name of the volume.
         """
         return pulumi.get(self, "name")
 
@@ -829,7 +1249,7 @@ class EciScalingConfigurationVolumeArgs:
                of FlexVolume.
         :param pulumi.Input[str] flex_volume_options: The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
                string.
-        :param pulumi.Input[str] name: The name of the mounted volume.
+        :param pulumi.Input[str] name: The name of the volume.
         :param pulumi.Input[str] nfs_volume_path: The path to the NFS volume.
         :param pulumi.Input[bool] nfs_volume_read_only: The nfs volume read only. Default to `false`.
         :param pulumi.Input[str] nfs_volume_server: The address of the NFS server.
@@ -948,7 +1368,7 @@ class EciScalingConfigurationVolumeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the mounted volume.
+        The name of the volume.
         """
         return pulumi.get(self, "name")
 

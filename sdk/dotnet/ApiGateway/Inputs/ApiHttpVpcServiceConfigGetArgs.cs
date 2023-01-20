@@ -10,25 +10,25 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ApiGateway.Inputs
 {
 
-    public sealed class ApiHttpVpcServiceConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ApiHttpVpcServiceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("aoneName")]
         public Input<string>? AoneName { get; set; }
 
         /// <summary>
-        /// The http method of backend service.
+        /// The method of the api, including 'GET','POST','PUT' etc.
         /// </summary>
         [Input("method", required: true)]
         public Input<string> Method { get; set; } = null!;
 
         /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        /// The name of the api gateway api. Defaults to null.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The path of backend service.
+        /// The request path of the api.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
@@ -42,5 +42,6 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public ApiHttpVpcServiceConfigGetArgs()
         {
         }
+        public static new ApiHttpVpcServiceConfigGetArgs Empty => new ApiHttpVpcServiceConfigGetArgs();
     }
 }

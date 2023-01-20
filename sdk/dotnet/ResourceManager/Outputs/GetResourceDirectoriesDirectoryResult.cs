@@ -15,11 +15,15 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
     {
         /// <summary>
         /// The ID of resource directory.
-        /// * `master_account_id`- The ID of the master account.
-        /// * `master_account_name`- The name of the master account.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the master account.
+        /// </summary>
         public readonly string MasterAccountId;
+        /// <summary>
+        /// The name of the master account.
+        /// </summary>
         public readonly string MasterAccountName;
         /// <summary>
         /// The ID of the resource directory.

@@ -26,12 +26,17 @@ class ReadOnlyInstanceArgs:
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
+                 db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+                 db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
+                 modify_mode: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_ip_type: Optional[pulumi.Input[str]] = None,
+                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
@@ -41,6 +46,7 @@ class ReadOnlyInstanceArgs:
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
                  upgrade_time: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ReadOnlyInstance resource.
@@ -64,11 +70,17 @@ class ReadOnlyInstanceArgs:
         :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
+        :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
+        :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+               - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+               - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+               - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - cert
@@ -77,6 +89,8 @@ class ReadOnlyInstanceArgs:
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
                > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
+        :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         :param pulumi.Input[int] ssl_enabled: Specifies whether to enable or disable SSL encryption. Valid values:
@@ -101,6 +115,11 @@ class ReadOnlyInstanceArgs:
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
+        :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
+               - Classic: classic network in enhanced whitelist mode
+               - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+               - MIX: standard whitelist mode
+               > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
         pulumi.set(__self__, "engine_version", engine_version)
@@ -119,18 +138,28 @@ class ReadOnlyInstanceArgs:
             pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
         if client_crl_enabled is not None:
             pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
+        if db_instance_ip_array_attribute is not None:
+            pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
+        if db_instance_ip_array_name is not None:
+            pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
+        if modify_mode is not None:
+            pulumi.set(__self__, "modify_mode", modify_mode)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if replication_acl is not None:
             pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_ip_type is not None:
+            pulumi.set(__self__, "security_ip_type", security_ip_type)
+        if security_ips is not None:
+            pulumi.set(__self__, "security_ips", security_ips)
         if server_cert is not None:
             pulumi.set(__self__, "server_cert", server_cert)
         if server_key is not None:
@@ -149,6 +178,8 @@ class ReadOnlyInstanceArgs:
             pulumi.set(__self__, "upgrade_time", upgrade_time)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if whitelist_network_type is not None:
+            pulumi.set(__self__, "whitelist_network_type", whitelist_network_type)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -283,6 +314,30 @@ class ReadOnlyInstanceArgs:
         pulumi.set(self, "client_crl_enabled", value)
 
     @property
+    @pulumi.getter(name="dbInstanceIpArrayAttribute")
+    def db_instance_ip_array_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute of the IP address whitelist. By default, this parameter is empty.
+        """
+        return pulumi.get(self, "db_instance_ip_array_attribute")
+
+    @db_instance_ip_array_attribute.setter
+    def db_instance_ip_array_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_ip_array_attribute", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceIpArrayName")
+    def db_instance_ip_array_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the IP address whitelist. Default value: Default.
+        """
+        return pulumi.get(self, "db_instance_ip_array_name")
+
+    @db_instance_ip_array_name.setter
+    def db_instance_ip_array_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_ip_array_name", value)
+
+    @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -319,6 +374,21 @@ class ReadOnlyInstanceArgs:
     @instance_name.setter
     def instance_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="modifyMode")
+    def modify_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+        - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+        - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+        - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+        """
+        return pulumi.get(self, "modify_mode")
+
+    @modify_mode.setter
+    def modify_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modify_mode", value)
 
     @property
     @pulumi.getter
@@ -360,6 +430,30 @@ class ReadOnlyInstanceArgs:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityIpType")
+    def security_ip_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of IP address in the IP address whitelist.
+        """
+        return pulumi.get(self, "security_ip_type")
+
+    @security_ip_type.setter
+    def security_ip_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ip_type", value)
+
+    @property
+    @pulumi.getter(name="securityIps")
+    def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        """
+        return pulumi.get(self, "security_ips")
+
+    @security_ips.setter
+    def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_ips", value)
 
     @property
     @pulumi.getter(name="serverCert")
@@ -485,6 +579,22 @@ class ReadOnlyInstanceArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="whitelistNetworkType")
+    def whitelist_network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network type of the IP address whitelist. Default value: MIX. Valid values:
+        - Classic: classic network in enhanced whitelist mode
+        - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+        - MIX: standard whitelist mode
+        > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+        """
+        return pulumi.get(self, "whitelist_network_type")
+
+    @whitelist_network_type.setter
+    def whitelist_network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "whitelist_network_type", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -507,6 +617,8 @@ class _ReadOnlyInstanceState:
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
+                 db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+                 db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -515,10 +627,13 @@ class _ReadOnlyInstanceState:
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  master_db_instance_id: Optional[pulumi.Input[str]] = None,
+                 modify_mode: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_ip_type: Optional[pulumi.Input[str]] = None,
+                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
@@ -528,6 +643,7 @@ class _ReadOnlyInstanceState:
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
                  upgrade_time: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ReadOnlyInstance resources.
@@ -548,6 +664,8 @@ class _ReadOnlyInstanceState:
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
+        :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
+        :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
@@ -558,6 +676,10 @@ class _ReadOnlyInstanceState:
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] master_db_instance_id: ID of the master instance.
+        :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+               - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+               - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+               - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] port: RDS database connection port.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
@@ -567,6 +689,8 @@ class _ReadOnlyInstanceState:
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
                > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
+        :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         :param pulumi.Input[int] ssl_enabled: Specifies whether to enable or disable SSL encryption. Valid values:
@@ -591,6 +715,11 @@ class _ReadOnlyInstanceState:
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
+        :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
+               - Classic: classic network in enhanced whitelist mode
+               - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+               - MIX: standard whitelist mode
+               > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
         if acl is not None:
@@ -607,6 +736,10 @@ class _ReadOnlyInstanceState:
             pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
+        if db_instance_ip_array_attribute is not None:
+            pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
+        if db_instance_ip_array_name is not None:
+            pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if engine is not None:
@@ -623,6 +756,8 @@ class _ReadOnlyInstanceState:
             pulumi.set(__self__, "instance_type", instance_type)
         if master_db_instance_id is not None:
             pulumi.set(__self__, "master_db_instance_id", master_db_instance_id)
+        if modify_mode is not None:
+            pulumi.set(__self__, "modify_mode", modify_mode)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if port is not None:
@@ -631,6 +766,10 @@ class _ReadOnlyInstanceState:
             pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_ip_type is not None:
+            pulumi.set(__self__, "security_ip_type", security_ip_type)
+        if security_ips is not None:
+            pulumi.set(__self__, "security_ips", security_ips)
         if server_cert is not None:
             pulumi.set(__self__, "server_cert", server_cert)
         if server_key is not None:
@@ -649,6 +788,8 @@ class _ReadOnlyInstanceState:
             pulumi.set(__self__, "upgrade_time", upgrade_time)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if whitelist_network_type is not None:
+            pulumi.set(__self__, "whitelist_network_type", whitelist_network_type)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -745,6 +886,30 @@ class _ReadOnlyInstanceState:
     @connection_string.setter
     def connection_string(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_string", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceIpArrayAttribute")
+    def db_instance_ip_array_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        The attribute of the IP address whitelist. By default, this parameter is empty.
+        """
+        return pulumi.get(self, "db_instance_ip_array_attribute")
+
+    @db_instance_ip_array_attribute.setter
+    def db_instance_ip_array_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_ip_array_attribute", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceIpArrayName")
+    def db_instance_ip_array_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the IP address whitelist. Default value: Default.
+        """
+        return pulumi.get(self, "db_instance_ip_array_name")
+
+    @db_instance_ip_array_name.setter
+    def db_instance_ip_array_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_ip_array_name", value)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -845,6 +1010,21 @@ class _ReadOnlyInstanceState:
         pulumi.set(self, "master_db_instance_id", value)
 
     @property
+    @pulumi.getter(name="modifyMode")
+    def modify_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+        - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+        - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+        - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+        """
+        return pulumi.get(self, "modify_mode")
+
+    @modify_mode.setter
+    def modify_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modify_mode", value)
+
+    @property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]:
         """
@@ -896,6 +1076,30 @@ class _ReadOnlyInstanceState:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="securityIpType")
+    def security_ip_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of IP address in the IP address whitelist.
+        """
+        return pulumi.get(self, "security_ip_type")
+
+    @security_ip_type.setter
+    def security_ip_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ip_type", value)
+
+    @property
+    @pulumi.getter(name="securityIps")
+    def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        """
+        return pulumi.get(self, "security_ips")
+
+    @security_ips.setter
+    def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_ips", value)
 
     @property
     @pulumi.getter(name="serverCert")
@@ -1021,6 +1225,22 @@ class _ReadOnlyInstanceState:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="whitelistNetworkType")
+    def whitelist_network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network type of the IP address whitelist. Default value: MIX. Valid values:
+        - Classic: classic network in enhanced whitelist mode
+        - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+        - MIX: standard whitelist mode
+        > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+        """
+        return pulumi.get(self, "whitelist_network_type")
+
+    @whitelist_network_type.setter
+    def whitelist_network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "whitelist_network_type", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1044,6 +1264,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
+                 db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+                 db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
@@ -1051,9 +1273,12 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  master_db_instance_id: Optional[pulumi.Input[str]] = None,
+                 modify_mode: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_ip_type: Optional[pulumi.Input[str]] = None,
+                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
@@ -1063,6 +1288,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
                  upgrade_time: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -1136,6 +1362,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
+        :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
+        :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
@@ -1145,6 +1373,10 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] master_db_instance_id: ID of the master instance.
+        :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+               - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+               - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+               - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - cert
@@ -1153,6 +1385,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
                > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
+        :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         :param pulumi.Input[int] ssl_enabled: Specifies whether to enable or disable SSL encryption. Valid values:
@@ -1177,6 +1411,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
+        :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
+               - Classic: classic network in enhanced whitelist mode
+               - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+               - MIX: standard whitelist mode
+               > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
         ...
@@ -1259,6 +1498,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
                  client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
+                 db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+                 db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
@@ -1266,9 +1507,12 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  master_db_instance_id: Optional[pulumi.Input[str]] = None,
+                 modify_mode: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_ip_type: Optional[pulumi.Input[str]] = None,
+                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
@@ -1278,6 +1522,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
                  upgrade_time: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1294,6 +1539,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
             __props__.__dict__["client_ca_enabled"] = client_ca_enabled
             __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
             __props__.__dict__["client_crl_enabled"] = client_crl_enabled
+            __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
+            __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
             __props__.__dict__["deletion_protection"] = deletion_protection
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
@@ -1309,9 +1556,12 @@ class ReadOnlyInstance(pulumi.CustomResource):
             if master_db_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'master_db_instance_id'")
             __props__.__dict__["master_db_instance_id"] = master_db_instance_id
+            __props__.__dict__["modify_mode"] = modify_mode
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["replication_acl"] = replication_acl
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["security_ip_type"] = security_ip_type
+            __props__.__dict__["security_ips"] = security_ips
             __props__.__dict__["server_cert"] = server_cert
             __props__.__dict__["server_key"] = server_key
             __props__.__dict__["ssl_enabled"] = ssl_enabled
@@ -1321,6 +1571,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
             __props__.__dict__["upgrade_time"] = upgrade_time
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["whitelist_network_type"] = whitelist_network_type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["connection_string"] = None
             __props__.__dict__["engine"] = None
@@ -1342,6 +1593,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
             client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
             client_crl_enabled: Optional[pulumi.Input[int]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
+            db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+            db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
@@ -1350,10 +1603,13 @@ class ReadOnlyInstance(pulumi.CustomResource):
             instance_storage: Optional[pulumi.Input[int]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             master_db_instance_id: Optional[pulumi.Input[str]] = None,
+            modify_mode: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]]] = None,
             port: Optional[pulumi.Input[str]] = None,
             replication_acl: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            security_ip_type: Optional[pulumi.Input[str]] = None,
+            security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             server_cert: Optional[pulumi.Input[str]] = None,
             server_key: Optional[pulumi.Input[str]] = None,
             ssl_enabled: Optional[pulumi.Input[int]] = None,
@@ -1363,6 +1619,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
             upgrade_time: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
+            whitelist_network_type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ReadOnlyInstance':
         """
         Get an existing ReadOnlyInstance resource's state with the given name, id, and optional extra
@@ -1388,6 +1645,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
+        :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
+        :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
@@ -1398,6 +1657,10 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] master_db_instance_id: ID of the master instance.
+        :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+               - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+               - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+               - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] port: RDS database connection port.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
@@ -1407,6 +1670,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
                > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
+        :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         :param pulumi.Input[int] ssl_enabled: Specifies whether to enable or disable SSL encryption. Valid values:
@@ -1431,6 +1696,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
+        :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
+               - Classic: classic network in enhanced whitelist mode
+               - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+               - MIX: standard whitelist mode
+               > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1444,6 +1714,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__.__dict__["client_cert_revocation_list"] = client_cert_revocation_list
         __props__.__dict__["client_crl_enabled"] = client_crl_enabled
         __props__.__dict__["connection_string"] = connection_string
+        __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
+        __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
@@ -1452,10 +1724,13 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__.__dict__["instance_storage"] = instance_storage
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["master_db_instance_id"] = master_db_instance_id
+        __props__.__dict__["modify_mode"] = modify_mode
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["port"] = port
         __props__.__dict__["replication_acl"] = replication_acl
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["security_ip_type"] = security_ip_type
+        __props__.__dict__["security_ips"] = security_ips
         __props__.__dict__["server_cert"] = server_cert
         __props__.__dict__["server_key"] = server_key
         __props__.__dict__["ssl_enabled"] = ssl_enabled
@@ -1465,6 +1740,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
         __props__.__dict__["upgrade_time"] = upgrade_time
         __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["whitelist_network_type"] = whitelist_network_type
         __props__.__dict__["zone_id"] = zone_id
         return ReadOnlyInstance(resource_name, opts=opts, __props__=__props__)
 
@@ -1535,6 +1811,22 @@ class ReadOnlyInstance(pulumi.CustomResource):
         return pulumi.get(self, "connection_string")
 
     @property
+    @pulumi.getter(name="dbInstanceIpArrayAttribute")
+    def db_instance_ip_array_attribute(self) -> pulumi.Output[Optional[str]]:
+        """
+        The attribute of the IP address whitelist. By default, this parameter is empty.
+        """
+        return pulumi.get(self, "db_instance_ip_array_attribute")
+
+    @property
+    @pulumi.getter(name="dbInstanceIpArrayName")
+    def db_instance_ip_array_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the IP address whitelist. Default value: Default.
+        """
+        return pulumi.get(self, "db_instance_ip_array_name")
+
+    @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1601,6 +1893,17 @@ class ReadOnlyInstance(pulumi.CustomResource):
         return pulumi.get(self, "master_db_instance_id")
 
     @property
+    @pulumi.getter(name="modifyMode")
+    def modify_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+        - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+        - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+        - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+        """
+        return pulumi.get(self, "modify_mode")
+
+    @property
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Sequence['outputs.ReadOnlyInstanceParameter']]:
         """
@@ -1636,6 +1939,22 @@ class ReadOnlyInstance(pulumi.CustomResource):
         The ID of resource group which the DB read-only instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityIpType")
+    def security_ip_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of IP address in the IP address whitelist.
+        """
+        return pulumi.get(self, "security_ip_type")
+
+    @property
+    @pulumi.getter(name="securityIps")
+    def security_ips(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        """
+        return pulumi.get(self, "security_ips")
 
     @property
     @pulumi.getter(name="serverCert")
@@ -1723,6 +2042,18 @@ class ReadOnlyInstance(pulumi.CustomResource):
         The virtual switch ID to launch DB instances in one VPC.
         """
         return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="whitelistNetworkType")
+    def whitelist_network_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The network type of the IP address whitelist. Default value: MIX. Valid values:
+        - Classic: classic network in enhanced whitelist mode
+        - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+        - MIX: standard whitelist mode
+        > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+        """
+        return pulumi.get(self, "whitelist_network_type")
 
     @property
     @pulumi.getter(name="zoneId")

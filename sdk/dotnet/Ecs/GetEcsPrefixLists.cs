@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetEcsPrefixLists.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetEcsPrefixLists.InvokeAsync(new AliCloud.Ecs.GetEcsPrefixListsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "E2RY53-xxxx",
-        ///             },
-        ///             NameRegex = "tf-testAcc",
-        ///         }));
-        ///         this.OutputId = example.Apply(example =&gt; example.Lists?[0]?.Id);
-        ///     }
+        ///             "E2RY53-xxxx",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
         /// 
-        ///     [Output("outputId")]
-        ///     public Output&lt;string&gt; OutputId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["outputId"] = example.Apply(getEcsPrefixListsResult =&gt; getEcsPrefixListsResult.Lists[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsPrefixListsResult> InvokeAsync(GetEcsPrefixListsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsPrefixListsResult>("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", args ?? new GetEcsPrefixListsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsPrefixListsResult>("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", args ?? new GetEcsPrefixListsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Ecs.GetEcsPrefixLists.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Ecs.GetEcsPrefixLists.InvokeAsync(new AliCloud.Ecs.GetEcsPrefixListsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "E2RY53-xxxx",
-        ///             },
-        ///             NameRegex = "tf-testAcc",
-        ///         }));
-        ///         this.OutputId = example.Apply(example =&gt; example.Lists?[0]?.Id);
-        ///     }
+        ///             "E2RY53-xxxx",
+        ///         },
+        ///         NameRegex = "tf-testAcc",
+        ///     });
         /// 
-        ///     [Output("outputId")]
-        ///     public Output&lt;string&gt; OutputId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["outputId"] = example.Apply(getEcsPrefixListsResult =&gt; getEcsPrefixListsResult.Lists[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsPrefixListsResult> Invoke(GetEcsPrefixListsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsPrefixListsResult>("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", args ?? new GetEcsPrefixListsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsPrefixListsResult>("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", args ?? new GetEcsPrefixListsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsPrefixListsArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsPrefixListsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
@@ -128,9 +126,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsPrefixListsArgs()
         {
         }
+        public static new GetEcsPrefixListsArgs Empty => new GetEcsPrefixListsArgs();
     }
 
-    public sealed class GetEcsPrefixListsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsPrefixListsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
@@ -165,6 +164,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsPrefixListsInvokeArgs()
         {
         }
+        public static new GetEcsPrefixListsInvokeArgs Empty => new GetEcsPrefixListsInvokeArgs();
     }
 
 

@@ -52,9 +52,23 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pgpKey);
     }
 
+    /**
+     * (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+     * If you use this, please protect your backend state file judiciously.
+     * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+     * at the cost of preventing the use of the secret key in automation.
+     * 
+     */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
+    /**
+     * @return (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+     * If you use this, please protect your backend state file judiciously.
+     * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+     * at the cost of preventing the use of the secret key in automation.
+     * 
+     */
     public Optional<Output<String>> secret() {
         return Optional.ofNullable(this.secret);
     }
@@ -185,11 +199,29 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
             return pgpKey(Output.of(pgpKey));
         }
 
+        /**
+         * @param secret (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+         * If you use this, please protect your backend state file judiciously.
+         * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+         * at the cost of preventing the use of the secret key in automation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param secret (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file.
+         * If you use this, please protect your backend state file judiciously.
+         * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+         * at the cost of preventing the use of the secret key in automation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
         }

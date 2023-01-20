@@ -15,9 +15,11 @@ namespace Pulumi.AliCloud.Mns.Outputs
     {
         /// <summary>
         /// Describe the terminal address of the message received in this subscription.
-        /// * `filter_tag`- A string to filter resulting messages of the topic by their message tag.
         /// </summary>
         public readonly string Endpoint;
+        /// <summary>
+        /// A string to filter resulting messages of the topic by their message tag.
+        /// </summary>
         public readonly string FilterTag;
         /// <summary>
         /// The ID of the topic subscription. The value is set to `name`.
@@ -25,7 +27,6 @@ namespace Pulumi.AliCloud.Mns.Outputs
         public readonly string Id;
         /// <summary>
         /// The name of the subscription.
-        /// * `topic_name`- The topic which The subscription belongs to was named with the name.
         /// </summary>
         public readonly string Name;
         /// <summary>

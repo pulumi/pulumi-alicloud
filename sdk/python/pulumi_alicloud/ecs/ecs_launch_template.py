@@ -66,12 +66,13 @@ class EcsLaunchTemplateArgs:
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
-        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         :param pulumi.Input[str] image_id: The Image ID.
         :param pulumi.Input[str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
+        :param pulumi.Input[str] instance_name: The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
@@ -81,7 +82,7 @@ class EcsLaunchTemplateArgs:
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
-        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         :param pulumi.Input['EcsLaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
@@ -92,20 +93,26 @@ class EcsLaunchTemplateArgs:
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
-        :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
+        :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N to which to assign the instance.
         :param pulumi.Input[str] spot_duration: The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
-        :param pulumi.Input[float] spot_price_limit: -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+        :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input['EcsLaunchTemplateSystemDiskArgs'] system_disk: The System Disk.
+        :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[int] system_disk_size: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
         :param pulumi.Input[Mapping[str, Any]] template_tags: A mapping of tags to assign to the launch template.
         :param pulumi.Input[str] user_data: The User Data.
+        :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC.
+        :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         if auto_release_time is not None:
@@ -257,7 +264,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -328,6 +335,9 @@ class EcsLaunchTemplateArgs:
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
@@ -424,7 +434,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the data disk.
+        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -534,7 +544,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group ID must be one in the same VPC.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -570,7 +580,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> Optional[pulumi.Input[float]]:
         """
-        -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+        Sets the maximum hourly instance price. Supports up to three decimal places.
         """
         return pulumi.get(self, "spot_price_limit")
 
@@ -605,6 +615,9 @@ class EcsLaunchTemplateArgs:
     @property
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        """
         return pulumi.get(self, "system_disk_category")
 
     @system_disk_category.setter
@@ -614,6 +627,9 @@ class EcsLaunchTemplateArgs:
     @property
     @pulumi.getter(name="systemDiskDescription")
     def system_disk_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        """
         return pulumi.get(self, "system_disk_description")
 
     @system_disk_description.setter
@@ -623,6 +639,9 @@ class EcsLaunchTemplateArgs:
     @property
     @pulumi.getter(name="systemDiskName")
     def system_disk_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        """
         return pulumi.get(self, "system_disk_name")
 
     @system_disk_name.setter
@@ -632,6 +651,9 @@ class EcsLaunchTemplateArgs:
     @property
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        """
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
@@ -691,6 +713,9 @@ class EcsLaunchTemplateArgs:
     @property
     @pulumi.getter
     def userdata(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        """
         return pulumi.get(self, "userdata")
 
     @userdata.setter
@@ -712,6 +737,9 @@ class EcsLaunchTemplateArgs:
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC.
+        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -722,7 +750,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        When creating a VPC-Connected instance, you must specify its VSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -796,12 +824,13 @@ class _EcsLaunchTemplateState:
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
-        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         :param pulumi.Input[str] image_id: The Image ID.
         :param pulumi.Input[str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
+        :param pulumi.Input[str] instance_name: The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
@@ -811,7 +840,7 @@ class _EcsLaunchTemplateState:
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
-        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         :param pulumi.Input['EcsLaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
@@ -822,20 +851,26 @@ class _EcsLaunchTemplateState:
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
-        :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
+        :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N to which to assign the instance.
         :param pulumi.Input[str] spot_duration: The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
-        :param pulumi.Input[float] spot_price_limit: -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+        :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input['EcsLaunchTemplateSystemDiskArgs'] system_disk: The System Disk.
+        :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[int] system_disk_size: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
         :param pulumi.Input[Mapping[str, Any]] template_tags: A mapping of tags to assign to the launch template.
         :param pulumi.Input[str] user_data: The User Data.
+        :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC.
+        :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         if auto_release_time is not None:
@@ -987,7 +1022,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -1058,6 +1093,9 @@ class _EcsLaunchTemplateState:
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
@@ -1154,7 +1192,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the data disk.
+        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -1264,7 +1302,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group ID must be one in the same VPC.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -1300,7 +1338,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> Optional[pulumi.Input[float]]:
         """
-        -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+        Sets the maximum hourly instance price. Supports up to three decimal places.
         """
         return pulumi.get(self, "spot_price_limit")
 
@@ -1335,6 +1373,9 @@ class _EcsLaunchTemplateState:
     @property
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        """
         return pulumi.get(self, "system_disk_category")
 
     @system_disk_category.setter
@@ -1344,6 +1385,9 @@ class _EcsLaunchTemplateState:
     @property
     @pulumi.getter(name="systemDiskDescription")
     def system_disk_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        """
         return pulumi.get(self, "system_disk_description")
 
     @system_disk_description.setter
@@ -1353,6 +1397,9 @@ class _EcsLaunchTemplateState:
     @property
     @pulumi.getter(name="systemDiskName")
     def system_disk_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        """
         return pulumi.get(self, "system_disk_name")
 
     @system_disk_name.setter
@@ -1362,6 +1409,9 @@ class _EcsLaunchTemplateState:
     @property
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        """
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
@@ -1421,6 +1471,9 @@ class _EcsLaunchTemplateState:
     @property
     @pulumi.getter
     def userdata(self) -> Optional[pulumi.Input[str]]:
+        """
+        It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        """
         return pulumi.get(self, "userdata")
 
     @userdata.setter
@@ -1442,6 +1495,9 @@ class _EcsLaunchTemplateState:
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC.
+        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -1452,7 +1508,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        When creating a VPC-Connected instance, you must specify its VSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -1571,6 +1627,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             internet_max_bandwidth_out=0,
             io_optimized="optimized",
             key_pair_name="key_pair_name",
+            launch_template_name="tf_test_name",
             network_interfaces=alicloud.ecs.EcsLaunchTemplateNetworkInterfacesArgs(
                 description="hello1",
                 name="eth0",
@@ -1615,12 +1672,13 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
-        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         :param pulumi.Input[str] image_id: The Image ID.
         :param pulumi.Input[str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
+        :param pulumi.Input[str] instance_name: The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
@@ -1630,7 +1688,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
-        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
@@ -1641,20 +1699,26 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
-        :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
+        :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N to which to assign the instance.
         :param pulumi.Input[str] spot_duration: The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
-        :param pulumi.Input[float] spot_price_limit: -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+        :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']] system_disk: The System Disk.
+        :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[int] system_disk_size: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
         :param pulumi.Input[Mapping[str, Any]] template_tags: A mapping of tags to assign to the launch template.
         :param pulumi.Input[str] user_data: The User Data.
+        :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC.
+        :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         ...
@@ -1710,6 +1774,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             internet_max_bandwidth_out=0,
             io_optimized="optimized",
             key_pair_name="key_pair_name",
+            launch_template_name="tf_test_name",
             network_interfaces=alicloud.ecs.EcsLaunchTemplateNetworkInterfacesArgs(
                 description="hello1",
                 name="eth0",
@@ -1946,12 +2011,13 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
-        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         :param pulumi.Input[str] image_id: The Image ID.
         :param pulumi.Input[str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
+        :param pulumi.Input[str] instance_name: The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
@@ -1961,7 +2027,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
-        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
@@ -1972,20 +2038,26 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
-        :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
+        :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N to which to assign the instance.
         :param pulumi.Input[str] spot_duration: The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
-        :param pulumi.Input[float] spot_price_limit: -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+        :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']] system_disk: The System Disk.
+        :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[int] system_disk_size: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
         :param pulumi.Input[Mapping[str, Any]] template_tags: A mapping of tags to assign to the launch template.
         :param pulumi.Input[str] user_data: The User Data.
+        :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC.
+        :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -2067,7 +2139,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -2114,6 +2186,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        """
         return pulumi.get(self, "instance_name")
 
     @property
@@ -2178,7 +2253,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the data disk.
+        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -2252,7 +2327,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The security group ID must be one in the same VPC.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -2276,7 +2351,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> pulumi.Output[Optional[float]]:
         """
-        -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+        Sets the maximum hourly instance price. Supports up to three decimal places.
         """
         return pulumi.get(self, "spot_price_limit")
 
@@ -2299,21 +2374,33 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> pulumi.Output[str]:
+        """
+        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        """
         return pulumi.get(self, "system_disk_category")
 
     @property
     @pulumi.getter(name="systemDiskDescription")
     def system_disk_description(self) -> pulumi.Output[str]:
+        """
+        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        """
         return pulumi.get(self, "system_disk_description")
 
     @property
     @pulumi.getter(name="systemDiskName")
     def system_disk_name(self) -> pulumi.Output[str]:
+        """
+        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        """
         return pulumi.get(self, "system_disk_name")
 
     @property
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> pulumi.Output[int]:
+        """
+        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        """
         return pulumi.get(self, "system_disk_size")
 
     @property
@@ -2353,6 +2440,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter
     def userdata(self) -> pulumi.Output[str]:
+        """
+        It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        """
         return pulumi.get(self, "userdata")
 
     @property
@@ -2366,13 +2456,16 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the VPC.
+        """
         return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        When creating a VPC-Connected instance, you must specify its VSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 

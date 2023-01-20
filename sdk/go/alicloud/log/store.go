@@ -29,7 +29,7 @@ type Store struct {
 	AutoSplit pulumi.BoolPtrOutput `pulumi:"autoSplit"`
 	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking pulumi.BoolPtrOutput `pulumi:"enableWebTracking"`
-	// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+	// Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
 	EncryptConf StoreEncryptConfPtrOutput `pulumi:"encryptConf"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrOutput `pulumi:"maxSplitShardCount"`
@@ -85,7 +85,7 @@ type storeState struct {
 	AutoSplit *bool `pulumi:"autoSplit"`
 	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking *bool `pulumi:"enableWebTracking"`
-	// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+	// Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
 	EncryptConf *StoreEncryptConf `pulumi:"encryptConf"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount *int `pulumi:"maxSplitShardCount"`
@@ -110,7 +110,7 @@ type StoreState struct {
 	AutoSplit pulumi.BoolPtrInput
 	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking pulumi.BoolPtrInput
-	// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+	// Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
 	EncryptConf StoreEncryptConfPtrInput
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrInput
@@ -139,7 +139,7 @@ type storeArgs struct {
 	AutoSplit *bool `pulumi:"autoSplit"`
 	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking *bool `pulumi:"enableWebTracking"`
-	// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+	// Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
 	EncryptConf *StoreEncryptConf `pulumi:"encryptConf"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount *int `pulumi:"maxSplitShardCount"`
@@ -163,7 +163,7 @@ type StoreArgs struct {
 	AutoSplit pulumi.BoolPtrInput
 	// Determines whether to enable Web Tracking. Default `false`.
 	EnableWebTracking pulumi.BoolPtrInput
-	// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+	// Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
 	EncryptConf StoreEncryptConfPtrInput
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrInput
@@ -281,7 +281,7 @@ func (o StoreOutput) EnableWebTracking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Store) pulumi.BoolPtrOutput { return v.EnableWebTracking }).(pulumi.BoolPtrOutput)
 }
 
-// Encrypted storage of data, providing data static protection capability, only supported at creation time.
+// Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
 func (o StoreOutput) EncryptConf() StoreEncryptConfPtrOutput {
 	return o.ApplyT(func(v *Store) StoreEncryptConfPtrOutput { return v.EncryptConf }).(StoreEncryptConfPtrOutput)
 }

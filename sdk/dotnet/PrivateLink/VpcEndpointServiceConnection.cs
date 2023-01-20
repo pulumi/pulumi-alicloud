@@ -21,22 +21,20 @@ namespace Pulumi.AliCloud.PrivateLink
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.PrivateLink.VpcEndpointServiceConnection("example", new()
     ///     {
-    ///         var example = new AliCloud.PrivateLink.VpcEndpointServiceConnection("example", new AliCloud.PrivateLink.VpcEndpointServiceConnectionArgs
-    ///         {
-    ///             Bandwidth = 1024,
-    ///             EndpointId = "example_value",
-    ///             ServiceId = "example_value",
-    ///         });
-    ///     }
+    ///         Bandwidth = 1024,
+    ///         EndpointId = "example_value",
+    ///         ServiceId = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.PrivateLink
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection")]
-    public partial class VpcEndpointServiceConnection : Pulumi.CustomResource
+    public partial class VpcEndpointServiceConnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Bandwidth.
@@ -124,7 +122,7 @@ namespace Pulumi.AliCloud.PrivateLink
         }
     }
 
-    public sealed class VpcEndpointServiceConnectionArgs : Pulumi.ResourceArgs
+    public sealed class VpcEndpointServiceConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Bandwidth.
@@ -153,9 +151,10 @@ namespace Pulumi.AliCloud.PrivateLink
         public VpcEndpointServiceConnectionArgs()
         {
         }
+        public static new VpcEndpointServiceConnectionArgs Empty => new VpcEndpointServiceConnectionArgs();
     }
 
-    public sealed class VpcEndpointServiceConnectionState : Pulumi.ResourceArgs
+    public sealed class VpcEndpointServiceConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Bandwidth.
@@ -190,5 +189,6 @@ namespace Pulumi.AliCloud.PrivateLink
         public VpcEndpointServiceConnectionState()
         {
         }
+        public static new VpcEndpointServiceConnectionState Empty => new VpcEndpointServiceConnectionState();
     }
 }

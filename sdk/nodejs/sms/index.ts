@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./shortUrl";
+export { ShortUrlArgs, ShortUrlState } from "./shortUrl";
+export type ShortUrl = import("./shortUrl").ShortUrl;
+export const ShortUrl: typeof import("./shortUrl").ShortUrl = null as any;
+utilities.lazyLoad(exports, ["ShortUrl"], () => require("./shortUrl"));
 
-// Import resources to register:
-import { ShortUrl } from "./shortUrl";
 
 const _module = {
     version: utilities.getVersion(),

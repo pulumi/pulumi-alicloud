@@ -12,14 +12,14 @@ namespace Pulumi.AliCloud.Quotas
     public static class GetApplicationInfos
     {
         public static Task<GetApplicationInfosResult> InvokeAsync(GetApplicationInfosArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosArgs(), options.WithDefaults());
 
         public static Output<GetApplicationInfosResult> Invoke(GetApplicationInfosInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetApplicationInfosArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationInfosArgs : global::Pulumi.InvokeArgs
     {
         [Input("dimensions")]
         private List<Inputs.GetApplicationInfosDimensionArgs>? _dimensions;
@@ -61,9 +61,10 @@ namespace Pulumi.AliCloud.Quotas
         public GetApplicationInfosArgs()
         {
         }
+        public static new GetApplicationInfosArgs Empty => new GetApplicationInfosArgs();
     }
 
-    public sealed class GetApplicationInfosInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationInfosInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("dimensions")]
         private InputList<Inputs.GetApplicationInfosDimensionInputArgs>? _dimensions;
@@ -105,6 +106,7 @@ namespace Pulumi.AliCloud.Quotas
         public GetApplicationInfosInvokeArgs()
         {
         }
+        public static new GetApplicationInfosInvokeArgs Empty => new GetApplicationInfosInvokeArgs();
     }
 
 

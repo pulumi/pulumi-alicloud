@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Scdn.Inputs
 {
 
-    public sealed class DomainSourceGetArgs : Pulumi.ResourceArgs
+    public sealed class DomainSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Back-to-Source Address.
@@ -48,5 +48,6 @@ namespace Pulumi.AliCloud.Scdn.Inputs
         public DomainSourceGetArgs()
         {
         }
+        public static new DomainSourceGetArgs Empty => new DomainSourceGetArgs();
     }
 }

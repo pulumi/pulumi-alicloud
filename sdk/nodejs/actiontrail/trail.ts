@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Create a new actiontrail trail.
- * const defaultTrail = new alicloud.actiontrail.Trail("default", {
+ * const _default = new alicloud.actiontrail.Trail("default", {
  *     eventRw: "All",
  *     ossBucketName: "bucket_name",
  *     ossWriteRoleArn: "acs:ram::1182725xxxxxxxxxxx",

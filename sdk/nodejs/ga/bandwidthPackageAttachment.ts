@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Global Accelerator (GA) Bandwidth Package Attachment resource.
  *
- * For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/doc-detail/153241.htm).
+ * For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/bandwidthpackageaddaccelerator).
  *
  * > **NOTE:** Available in v1.113.0+.
  *
@@ -40,10 +40,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Ga Bandwidth Package Attachment can be imported using the id, e.g.
+ * Ga Bandwidth Package Attachment can be imported using the id. Format to `<accelerator_id>:<bandwidth_package_id>`, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example <accelerator_id>:<bandwidth_package_id>
+ *  $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example your_accelerator_id:your_bandwidth_package_id
  * ```
  */
 export class BandwidthPackageAttachment extends pulumi.CustomResource {
@@ -83,7 +83,7 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly accelerators!: pulumi.Output<string[]>;
     /**
-     * The ID of the bandwidth plan to disassociate.
+     * The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
      */
     public readonly bandwidthPackageId!: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export interface BandwidthPackageAttachmentState {
      */
     accelerators?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the bandwidth plan to disassociate.
+     * The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
      */
     bandwidthPackageId?: pulumi.Input<string>;
     /**
@@ -157,7 +157,7 @@ export interface BandwidthPackageAttachmentArgs {
      */
     acceleratorId: pulumi.Input<string>;
     /**
-     * The ID of the bandwidth plan to disassociate.
+     * The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
      */
     bandwidthPackageId: pulumi.Input<string>;
 }

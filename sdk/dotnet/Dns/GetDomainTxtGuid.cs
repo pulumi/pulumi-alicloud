@@ -21,33 +21,30 @@ namespace Pulumi.AliCloud.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = AliCloud.Dns.GetDomainTxtGuid.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(AliCloud.Dns.GetDomainTxtGuid.InvokeAsync(new AliCloud.Dns.GetDomainTxtGuidArgs
-        ///         {
-        ///             DomainName = "test111.abc",
-        ///             Type = "ADD_SUB_DOMAIN",
-        ///         }));
-        ///         this.Rr = @this.Apply(@this =&gt; @this.Rr);
-        ///         this.Value = @this.Apply(@this =&gt; @this.Value);
-        ///     }
+        ///         DomainName = "test111.abc",
+        ///         Type = "ADD_SUB_DOMAIN",
+        ///     });
         /// 
-        ///     [Output("rr")]
-        ///     public Output&lt;string&gt; Rr { get; set; }
-        ///     [Output("value")]
-        ///     public Output&lt;string&gt; Value { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rr"] = @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult).Apply(@this =&gt; @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult.Rr)),
+        ///         ["value"] = @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult).Apply(@this =&gt; @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult.Value)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainTxtGuidResult> InvokeAsync(GetDomainTxtGuidArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainTxtGuidResult>("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args ?? new GetDomainTxtGuidArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainTxtGuidResult>("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args ?? new GetDomainTxtGuidArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides the generation of txt records to realize the retrieval and verification of domain names.
@@ -59,37 +56,34 @@ namespace Pulumi.AliCloud.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @this = AliCloud.Dns.GetDomainTxtGuid.Invoke(new()
         ///     {
-        ///         var @this = Output.Create(AliCloud.Dns.GetDomainTxtGuid.InvokeAsync(new AliCloud.Dns.GetDomainTxtGuidArgs
-        ///         {
-        ///             DomainName = "test111.abc",
-        ///             Type = "ADD_SUB_DOMAIN",
-        ///         }));
-        ///         this.Rr = @this.Apply(@this =&gt; @this.Rr);
-        ///         this.Value = @this.Apply(@this =&gt; @this.Value);
-        ///     }
+        ///         DomainName = "test111.abc",
+        ///         Type = "ADD_SUB_DOMAIN",
+        ///     });
         /// 
-        ///     [Output("rr")]
-        ///     public Output&lt;string&gt; Rr { get; set; }
-        ///     [Output("value")]
-        ///     public Output&lt;string&gt; Value { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rr"] = @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult).Apply(@this =&gt; @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult.Rr)),
+        ///         ["value"] = @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult).Apply(@this =&gt; @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult.Value)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainTxtGuidResult> Invoke(GetDomainTxtGuidInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainTxtGuidResult>("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args ?? new GetDomainTxtGuidInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainTxtGuidResult>("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", args ?? new GetDomainTxtGuidInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDomainTxtGuidArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainTxtGuidArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Verified domain name.
@@ -115,9 +109,10 @@ namespace Pulumi.AliCloud.Dns
         public GetDomainTxtGuidArgs()
         {
         }
+        public static new GetDomainTxtGuidArgs Empty => new GetDomainTxtGuidArgs();
     }
 
-    public sealed class GetDomainTxtGuidInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainTxtGuidInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Verified domain name.
@@ -143,6 +138,7 @@ namespace Pulumi.AliCloud.Dns
         public GetDomainTxtGuidInvokeArgs()
         {
         }
+        public static new GetDomainTxtGuidInvokeArgs Empty => new GetDomainTxtGuidInvokeArgs();
     }
 
 

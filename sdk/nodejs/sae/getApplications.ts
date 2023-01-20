@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -30,7 +31,7 @@ import * as utilities from "../utilities";
  * const vsw = new alicloud.vpc.Switch("vsw", {
  *     vpcId: vpc.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
@@ -53,16 +54,13 @@ import * as utilities from "../utilities";
  * const defaultApplications = alicloud.sae.getApplicationsOutput({
  *     ids: [defaultApplication.id],
  * });
- * export const saeApplicationId = defaultApplications.apply(defaultApplications => defaultApplications.applications?[0]?.id);
+ * export const saeApplicationId = defaultApplications.apply(defaultApplications => defaultApplications.applications?.[0]?.id);
  * ```
  */
 export function getApplications(args?: GetApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:sae/getApplications:getApplications", {
         "appName": args.appName,
         "enableDetails": args.enableDetails,
@@ -140,9 +138,59 @@ export interface GetApplicationsResult {
     readonly reverse?: boolean;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Sae Applications of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.161.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testacc";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: "tf_testacc",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const vsw = new alicloud.vpc.Switch("vsw", {
+ *     vpcId: vpc.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
+ *     namespaceDescription: name,
+ *     namespaceId: "cn-hangzhou:tfacctest",
+ *     namespaceName: name,
+ * });
+ * const defaultApplication = new alicloud.sae.Application("defaultApplication", {
+ *     appDescription: "tf-testaccDescription",
+ *     appName: "tf-testaccAppName131",
+ *     namespaceId: defaultNamespace.id,
+ *     imageUrl: "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
+ *     packageType: "Image",
+ *     vswitchId: vsw.id,
+ *     timezone: "Asia/Beijing",
+ *     replicas: 5,
+ *     cpu: 500,
+ *     memory: 2048,
+ * });
+ * const defaultApplications = alicloud.sae.getApplicationsOutput({
+ *     ids: [defaultApplication.id],
+ * });
+ * export const saeApplicationId = defaultApplications.apply(defaultApplications => defaultApplications.applications?.[0]?.id);
+ * ```
+ */
 export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationsResult> {
-    return pulumi.output(args).apply(a => getApplications(a, opts))
+    return pulumi.output(args).apply((a: any) => getApplications(a, opts))
 }
 
 /**

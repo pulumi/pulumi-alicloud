@@ -19,28 +19,27 @@ namespace Pulumi.AliCloud.Cen
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testAccCenTransitRouter";
+    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-testAccCenTransitRouter";
-    ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///             CenInstanceName = name,
-    ///             Description = "terraform01",
-    ///         });
-    ///         var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new AliCloud.Cen.TransitRouterArgs
-    ///         {
-    ///             TransitRouterName = name,
-    ///             CenId = defaultInstance.Id,
-    ///         });
-    ///     }
+    ///         CenInstanceName = name,
+    ///         Description = "terraform01",
+    ///     });
     /// 
-    /// }
+    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
+    ///     {
+    ///         TransitRouterName = name,
+    ///         CenId = defaultInstance.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +51,7 @@ namespace Pulumi.AliCloud.Cen
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouter:TransitRouter")]
-    public partial class TransitRouter : Pulumi.CustomResource
+    public partial class TransitRouter : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the CEN.
@@ -71,6 +70,18 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+        /// </summary>
+        [Output("supportMulticast")]
+        public Output<bool?> SupportMulticast { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The description of the transit router.
@@ -140,7 +151,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
-    public sealed class TransitRouterArgs : Pulumi.ResourceArgs
+    public sealed class TransitRouterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CEN.
@@ -153,6 +164,24 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+        /// </summary>
+        [Input("supportMulticast")]
+        public Input<bool>? SupportMulticast { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The description of the transit router.
@@ -169,9 +198,10 @@ namespace Pulumi.AliCloud.Cen
         public TransitRouterArgs()
         {
         }
+        public static new TransitRouterArgs Empty => new TransitRouterArgs();
     }
 
-    public sealed class TransitRouterState : Pulumi.ResourceArgs
+    public sealed class TransitRouterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the CEN.
@@ -190,6 +220,24 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+        /// </summary>
+        [Input("supportMulticast")]
+        public Input<bool>? SupportMulticast { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The description of the transit router.
@@ -218,5 +266,6 @@ namespace Pulumi.AliCloud.Cen
         public TransitRouterState()
         {
         }
+        public static new TransitRouterState Empty => new TransitRouterState();
     }
 }

@@ -143,7 +143,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The single data node storage space.
-     * - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
      * 
      */
     @Export(name="dataNodeDiskSize", type=Integer.class, parameters={})
@@ -151,7 +150,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The single data node storage space.
-     * - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
      * 
      */
     public Output<Integer> dataNodeDiskSize() {
@@ -600,6 +598,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

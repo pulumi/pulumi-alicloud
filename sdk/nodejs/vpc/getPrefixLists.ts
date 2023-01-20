@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,20 +20,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.vpc.getPrefixLists({});
- * export const vpcPrefixListId1 = ids.then(ids => ids.lists?[0]?.id);
+ * export const vpcPrefixListId1 = ids.then(ids => ids.lists?.[0]?.id);
  * const nameRegex = alicloud.vpc.getPrefixLists({
  *     nameRegex: "^my-PrefixList",
  * });
- * export const vpcPrefixListId2 = nameRegex.then(nameRegex => nameRegex.lists?[0]?.id);
+ * export const vpcPrefixListId2 = nameRegex.then(nameRegex => nameRegex.lists?.[0]?.id);
  * ```
  */
 export function getPrefixLists(args?: GetPrefixListsArgs, opts?: pulumi.InvokeOptions): Promise<GetPrefixListsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getPrefixLists:getPrefixLists", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -81,9 +79,29 @@ export interface GetPrefixListsResult {
     readonly outputFile?: string;
     readonly prefixListName?: string;
 }
-
+/**
+ * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.182.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getPrefixLists({});
+ * export const vpcPrefixListId1 = ids.then(ids => ids.lists?.[0]?.id);
+ * const nameRegex = alicloud.vpc.getPrefixLists({
+ *     nameRegex: "^my-PrefixList",
+ * });
+ * export const vpcPrefixListId2 = nameRegex.then(nameRegex => nameRegex.lists?.[0]?.id);
+ * ```
+ */
 export function getPrefixListsOutput(args?: GetPrefixListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrefixListsResult> {
-    return pulumi.output(args).apply(a => getPrefixLists(a, opts))
+    return pulumi.output(args).apply((a: any) => getPrefixLists(a, opts))
 }
 
 /**

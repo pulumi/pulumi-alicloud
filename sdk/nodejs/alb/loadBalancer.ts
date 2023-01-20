@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -49,17 +50,19 @@ export class LoadBalancer extends pulumi.CustomResource {
     }
 
     /**
-     * The Access Logging Configuration Structure.
+     * The Access Logging Configuration Structure. See the following `Block accessLogConfig`.
      */
     public readonly accessLogConfig!: pulumi.Output<outputs.alb.LoadBalancerAccessLogConfig | undefined>;
     /**
      * The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-     * *`Fixed`: The ALB instance uses a fixed IP address.
-     * *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
      */
     public readonly addressAllocatedMode!: pulumi.Output<string | undefined>;
     /**
-     * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+     * The IP version. Valid values: `Ipv4`, `DualStack`.
+     */
+    public readonly addressIpVersion!: pulumi.Output<string>;
+    /**
+     * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `addressType` can be modified.
      */
     public readonly addressType!: pulumi.Output<string>;
     /**
@@ -75,11 +78,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The configuration of the billing method.
+     * The configuration of the billing method. See the following `Block loadBalancerBillingConfig`.
      */
     public readonly loadBalancerBillingConfig!: pulumi.Output<outputs.alb.LoadBalancerLoadBalancerBillingConfig>;
     /**
-     * The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+     * The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
      */
     public readonly loadBalancerEdition!: pulumi.Output<string>;
     /**
@@ -87,7 +90,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly loadBalancerName!: pulumi.Output<string>;
     /**
-     * Modify the Protection Configuration.
+     * Modify the Protection Configuration. See the following `Block modificationProtectionConfig`.
      */
     public readonly modificationProtectionConfig!: pulumi.Output<outputs.alb.LoadBalancerModificationProtectionConfig>;
     /**
@@ -107,7 +110,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * The zones and vSwitches. You must specify at least two zones.
+     * The zones and vSwitches. You must specify at least two zones. See the following `Block zoneMappings`.
      */
     public readonly zoneMappings!: pulumi.Output<outputs.alb.LoadBalancerZoneMapping[]>;
 
@@ -126,6 +129,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             const state = argsOrState as LoadBalancerState | undefined;
             resourceInputs["accessLogConfig"] = state ? state.accessLogConfig : undefined;
             resourceInputs["addressAllocatedMode"] = state ? state.addressAllocatedMode : undefined;
+            resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
             resourceInputs["addressType"] = state ? state.addressType : undefined;
             resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
             resourceInputs["dnsName"] = state ? state.dnsName : undefined;
@@ -161,6 +165,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             }
             resourceInputs["accessLogConfig"] = args ? args.accessLogConfig : undefined;
             resourceInputs["addressAllocatedMode"] = args ? args.addressAllocatedMode : undefined;
+            resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
             resourceInputs["addressType"] = args ? args.addressType : undefined;
             resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
@@ -185,17 +190,19 @@ export class LoadBalancer extends pulumi.CustomResource {
  */
 export interface LoadBalancerState {
     /**
-     * The Access Logging Configuration Structure.
+     * The Access Logging Configuration Structure. See the following `Block accessLogConfig`.
      */
     accessLogConfig?: pulumi.Input<inputs.alb.LoadBalancerAccessLogConfig>;
     /**
      * The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-     * *`Fixed`: The ALB instance uses a fixed IP address.
-     * *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
      */
     addressAllocatedMode?: pulumi.Input<string>;
     /**
-     * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+     * The IP version. Valid values: `Ipv4`, `DualStack`.
+     */
+    addressIpVersion?: pulumi.Input<string>;
+    /**
+     * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `addressType` can be modified.
      */
     addressType?: pulumi.Input<string>;
     /**
@@ -211,11 +218,11 @@ export interface LoadBalancerState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The configuration of the billing method.
+     * The configuration of the billing method. See the following `Block loadBalancerBillingConfig`.
      */
     loadBalancerBillingConfig?: pulumi.Input<inputs.alb.LoadBalancerLoadBalancerBillingConfig>;
     /**
-     * The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+     * The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
      */
     loadBalancerEdition?: pulumi.Input<string>;
     /**
@@ -223,7 +230,7 @@ export interface LoadBalancerState {
      */
     loadBalancerName?: pulumi.Input<string>;
     /**
-     * Modify the Protection Configuration.
+     * Modify the Protection Configuration. See the following `Block modificationProtectionConfig`.
      */
     modificationProtectionConfig?: pulumi.Input<inputs.alb.LoadBalancerModificationProtectionConfig>;
     /**
@@ -243,7 +250,7 @@ export interface LoadBalancerState {
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The zones and vSwitches. You must specify at least two zones.
+     * The zones and vSwitches. You must specify at least two zones. See the following `Block zoneMappings`.
      */
     zoneMappings?: pulumi.Input<pulumi.Input<inputs.alb.LoadBalancerZoneMapping>[]>;
 }
@@ -253,17 +260,19 @@ export interface LoadBalancerState {
  */
 export interface LoadBalancerArgs {
     /**
-     * The Access Logging Configuration Structure.
+     * The Access Logging Configuration Structure. See the following `Block accessLogConfig`.
      */
     accessLogConfig?: pulumi.Input<inputs.alb.LoadBalancerAccessLogConfig>;
     /**
      * The method in which IP addresses are assigned. Valid values: `Fixed` and `Dynamic`. Default value: `Dynamic`.
-     * *`Fixed`: The ALB instance uses a fixed IP address.
-     * *`Dynamic`: An IP address is dynamically assigned to each zone of the ALB instance.
      */
     addressAllocatedMode?: pulumi.Input<string>;
     /**
-     * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
+     * The IP version. Valid values: `Ipv4`, `DualStack`.
+     */
+    addressIpVersion?: pulumi.Input<string>;
+    /**
+     * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`. **NOTE:** From version 1.193.1, `addressType` can be modified.
      */
     addressType: pulumi.Input<string>;
     /**
@@ -275,11 +284,11 @@ export interface LoadBalancerArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The configuration of the billing method.
+     * The configuration of the billing method. See the following `Block loadBalancerBillingConfig`.
      */
     loadBalancerBillingConfig: pulumi.Input<inputs.alb.LoadBalancerLoadBalancerBillingConfig>;
     /**
-     * The edition of the ALB instance. Different editions have different limits and billing methods.  Valid values: `Basic` and `Standard`.
+     * The edition of the ALB instance. Different editions have different limits and billing methods. Valid values: `Basic`, `Standard` and `StandardWithWaf`(Available in v1.193.1+).
      */
     loadBalancerEdition: pulumi.Input<string>;
     /**
@@ -287,7 +296,7 @@ export interface LoadBalancerArgs {
      */
     loadBalancerName: pulumi.Input<string>;
     /**
-     * Modify the Protection Configuration.
+     * Modify the Protection Configuration. See the following `Block modificationProtectionConfig`.
      */
     modificationProtectionConfig?: pulumi.Input<inputs.alb.LoadBalancerModificationProtectionConfig>;
     /**
@@ -303,7 +312,7 @@ export interface LoadBalancerArgs {
      */
     vpcId: pulumi.Input<string>;
     /**
-     * The zones and vSwitches. You must specify at least two zones.
+     * The zones and vSwitches. You must specify at least two zones. See the following `Block zoneMappings`.
      */
     zoneMappings: pulumi.Input<pulumi.Input<inputs.alb.LoadBalancerZoneMapping>[]>;
 }

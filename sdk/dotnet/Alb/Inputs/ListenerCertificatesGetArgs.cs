@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ListenerCertificatesGetArgs : Pulumi.ResourceArgs
+    public sealed class ListenerCertificatesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Certificate.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public ListenerCertificatesGetArgs()
         {
         }
+        public static new ListenerCertificatesGetArgs Empty => new ListenerCertificatesGetArgs();
     }
 }

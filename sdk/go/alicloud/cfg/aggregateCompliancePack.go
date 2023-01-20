@@ -76,12 +76,12 @@ import (
 //				},
 //				RiskLevel:               pulumi.Int(1),
 //				Description:             pulumi.String(name),
-//				ExcludeResourceIdsScope: pulumi.String(defaultInstances.Ids[0]),
+//				ExcludeResourceIdsScope: *pulumi.String(defaultInstances.Ids[0]),
 //				InputParameters: pulumi.AnyMap{
 //					"cpuCount": pulumi.Any("4"),
 //				},
 //				RegionIdsScope:        pulumi.String("cn-hangzhou"),
-//				ResourceGroupIdsScope: pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupIdsScope: *pulumi.String(defaultResourceGroups.Ids[0]),
 //				TagKeyScope:           pulumi.String("tFTest"),
 //				TagValueScope:         pulumi.String("forTF 123"),
 //			})

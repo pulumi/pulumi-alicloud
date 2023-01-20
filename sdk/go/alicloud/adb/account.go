@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef(creation),
 //			}, nil)
 //			if err != nil {
@@ -56,7 +56,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:     defaultNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -95,7 +95,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:adb/account:Account example "am-12345:tf_account"
+//	$ pulumi import alicloud:adb/account:Account example am-12345:tf_account
 //
 // ```
 type Account struct {
@@ -128,6 +128,13 @@ func NewAccount(ctx *pulumi.Context,
 	if args.DbClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'DbClusterId'")
 	}
+	if args.AccountPassword != nil {
+		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accountPassword",
+	})
+	opts = append(opts, secrets)
 	var resource Account
 	err := ctx.RegisterResource("alicloud:adb/account:Account", name, args, &resource, opts...)
 	if err != nil {

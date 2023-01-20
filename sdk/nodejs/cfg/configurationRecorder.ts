@@ -18,12 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.cfg.ConfigurationRecorder("example", {
- *     resourceTypes: [
- *         "ACS::ECS::Instance",
- *         "ACS::ECS::Disk",
- *     ],
- * });
+ * const example = new alicloud.cfg.ConfigurationRecorder("example", {resourceTypes: [
+ *     "ACS::ECS::Instance",
+ *     "ACS::ECS::Disk",
+ * ]});
  * ```
  *
  * ## Import

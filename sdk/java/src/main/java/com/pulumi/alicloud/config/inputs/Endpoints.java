@@ -21,16 +21,19 @@ public final class Endpoints {
     private @Nullable String apigateway;
     private @Nullable String arms;
     private @Nullable String bastionhost;
+    private @Nullable String bpstudio;
     private @Nullable String brainIndustrial;
     private @Nullable String bssopenapi;
     private @Nullable String cas;
     private @Nullable String cassandra;
     private @Nullable String cbn;
+    private @Nullable String cbs;
     private @Nullable String cddc;
     private @Nullable String cdn;
     private @Nullable String cds;
     private @Nullable String clickhouse;
     private @Nullable String cloudauth;
+    private @Nullable String cloudfirewall;
     private @Nullable String cloudfw;
     private @Nullable String cloudphone;
     private @Nullable String cloudsso;
@@ -38,6 +41,7 @@ public final class Endpoints {
     private @Nullable String config;
     private @Nullable String cr;
     private @Nullable String cs;
+    private @Nullable String das;
     private @Nullable String datahub;
     private @Nullable String dataworkspublic;
     private @Nullable String dbfs;
@@ -50,11 +54,13 @@ public final class Endpoints {
     private @Nullable String dg;
     private @Nullable String dm;
     private @Nullable String dmsEnterprise;
+    private @Nullable String dmsenterprise;
     private @Nullable String dns;
     private @Nullable String drds;
     private @Nullable String dts;
     private @Nullable String dysms;
     private @Nullable String eais;
+    private @Nullable String ebs;
     private @Nullable String eci;
     private @Nullable String ecs;
     private @Nullable String edas;
@@ -93,6 +99,7 @@ public final class Endpoints {
     private @Nullable String mscopensubscription;
     private @Nullable String mse;
     private @Nullable String nas;
+    private @Nullable String nlb;
     private @Nullable String ons;
     private @Nullable String onsproxy;
     private @Nullable String oos;
@@ -119,11 +126,13 @@ public final class Endpoints {
     private @Nullable String sgw;
     private @Nullable String slb;
     private @Nullable String smartag;
+    private @Nullable String srvcatalog;
     private @Nullable String sts;
     private @Nullable String swas;
     private @Nullable String tag;
     private @Nullable String vod;
     private @Nullable String vpc;
+    private @Nullable String vpcpeer;
     private @Nullable String vs;
     private @Nullable String waf;
     private @Nullable String wafOpenapi;
@@ -159,6 +168,9 @@ public final class Endpoints {
     public Optional<String> bastionhost() {
         return Optional.ofNullable(this.bastionhost);
     }
+    public Optional<String> bpstudio() {
+        return Optional.ofNullable(this.bpstudio);
+    }
     public Optional<String> brainIndustrial() {
         return Optional.ofNullable(this.brainIndustrial);
     }
@@ -174,6 +186,9 @@ public final class Endpoints {
     public Optional<String> cbn() {
         return Optional.ofNullable(this.cbn);
     }
+    public Optional<String> cbs() {
+        return Optional.ofNullable(this.cbs);
+    }
     public Optional<String> cddc() {
         return Optional.ofNullable(this.cddc);
     }
@@ -188,6 +203,9 @@ public final class Endpoints {
     }
     public Optional<String> cloudauth() {
         return Optional.ofNullable(this.cloudauth);
+    }
+    public Optional<String> cloudfirewall() {
+        return Optional.ofNullable(this.cloudfirewall);
     }
     public Optional<String> cloudfw() {
         return Optional.ofNullable(this.cloudfw);
@@ -209,6 +227,9 @@ public final class Endpoints {
     }
     public Optional<String> cs() {
         return Optional.ofNullable(this.cs);
+    }
+    public Optional<String> das() {
+        return Optional.ofNullable(this.das);
     }
     public Optional<String> datahub() {
         return Optional.ofNullable(this.datahub);
@@ -246,6 +267,9 @@ public final class Endpoints {
     public Optional<String> dmsEnterprise() {
         return Optional.ofNullable(this.dmsEnterprise);
     }
+    public Optional<String> dmsenterprise() {
+        return Optional.ofNullable(this.dmsenterprise);
+    }
     public Optional<String> dns() {
         return Optional.ofNullable(this.dns);
     }
@@ -260,6 +284,9 @@ public final class Endpoints {
     }
     public Optional<String> eais() {
         return Optional.ofNullable(this.eais);
+    }
+    public Optional<String> ebs() {
+        return Optional.ofNullable(this.ebs);
     }
     public Optional<String> eci() {
         return Optional.ofNullable(this.eci);
@@ -375,6 +402,9 @@ public final class Endpoints {
     public Optional<String> nas() {
         return Optional.ofNullable(this.nas);
     }
+    public Optional<String> nlb() {
+        return Optional.ofNullable(this.nlb);
+    }
     public Optional<String> ons() {
         return Optional.ofNullable(this.ons);
     }
@@ -453,6 +483,9 @@ public final class Endpoints {
     public Optional<String> smartag() {
         return Optional.ofNullable(this.smartag);
     }
+    public Optional<String> srvcatalog() {
+        return Optional.ofNullable(this.srvcatalog);
+    }
     public Optional<String> sts() {
         return Optional.ofNullable(this.sts);
     }
@@ -467,6 +500,9 @@ public final class Endpoints {
     }
     public Optional<String> vpc() {
         return Optional.ofNullable(this.vpc);
+    }
+    public Optional<String> vpcpeer() {
+        return Optional.ofNullable(this.vpcpeer);
     }
     public Optional<String> vs() {
         return Optional.ofNullable(this.vs);
@@ -497,16 +533,19 @@ public final class Endpoints {
         private @Nullable String apigateway;
         private @Nullable String arms;
         private @Nullable String bastionhost;
+        private @Nullable String bpstudio;
         private @Nullable String brainIndustrial;
         private @Nullable String bssopenapi;
         private @Nullable String cas;
         private @Nullable String cassandra;
         private @Nullable String cbn;
+        private @Nullable String cbs;
         private @Nullable String cddc;
         private @Nullable String cdn;
         private @Nullable String cds;
         private @Nullable String clickhouse;
         private @Nullable String cloudauth;
+        private @Nullable String cloudfirewall;
         private @Nullable String cloudfw;
         private @Nullable String cloudphone;
         private @Nullable String cloudsso;
@@ -514,6 +553,7 @@ public final class Endpoints {
         private @Nullable String config;
         private @Nullable String cr;
         private @Nullable String cs;
+        private @Nullable String das;
         private @Nullable String datahub;
         private @Nullable String dataworkspublic;
         private @Nullable String dbfs;
@@ -526,11 +566,13 @@ public final class Endpoints {
         private @Nullable String dg;
         private @Nullable String dm;
         private @Nullable String dmsEnterprise;
+        private @Nullable String dmsenterprise;
         private @Nullable String dns;
         private @Nullable String drds;
         private @Nullable String dts;
         private @Nullable String dysms;
         private @Nullable String eais;
+        private @Nullable String ebs;
         private @Nullable String eci;
         private @Nullable String ecs;
         private @Nullable String edas;
@@ -569,6 +611,7 @@ public final class Endpoints {
         private @Nullable String mscopensubscription;
         private @Nullable String mse;
         private @Nullable String nas;
+        private @Nullable String nlb;
         private @Nullable String ons;
         private @Nullable String onsproxy;
         private @Nullable String oos;
@@ -595,11 +638,13 @@ public final class Endpoints {
         private @Nullable String sgw;
         private @Nullable String slb;
         private @Nullable String smartag;
+        private @Nullable String srvcatalog;
         private @Nullable String sts;
         private @Nullable String swas;
         private @Nullable String tag;
         private @Nullable String vod;
         private @Nullable String vpc;
+        private @Nullable String vpcpeer;
         private @Nullable String vs;
         private @Nullable String waf;
         private @Nullable String wafOpenapi;
@@ -616,16 +661,19 @@ public final class Endpoints {
     	      this.apigateway = defaults.apigateway;
     	      this.arms = defaults.arms;
     	      this.bastionhost = defaults.bastionhost;
+    	      this.bpstudio = defaults.bpstudio;
     	      this.brainIndustrial = defaults.brainIndustrial;
     	      this.bssopenapi = defaults.bssopenapi;
     	      this.cas = defaults.cas;
     	      this.cassandra = defaults.cassandra;
     	      this.cbn = defaults.cbn;
+    	      this.cbs = defaults.cbs;
     	      this.cddc = defaults.cddc;
     	      this.cdn = defaults.cdn;
     	      this.cds = defaults.cds;
     	      this.clickhouse = defaults.clickhouse;
     	      this.cloudauth = defaults.cloudauth;
+    	      this.cloudfirewall = defaults.cloudfirewall;
     	      this.cloudfw = defaults.cloudfw;
     	      this.cloudphone = defaults.cloudphone;
     	      this.cloudsso = defaults.cloudsso;
@@ -633,6 +681,7 @@ public final class Endpoints {
     	      this.config = defaults.config;
     	      this.cr = defaults.cr;
     	      this.cs = defaults.cs;
+    	      this.das = defaults.das;
     	      this.datahub = defaults.datahub;
     	      this.dataworkspublic = defaults.dataworkspublic;
     	      this.dbfs = defaults.dbfs;
@@ -645,11 +694,13 @@ public final class Endpoints {
     	      this.dg = defaults.dg;
     	      this.dm = defaults.dm;
     	      this.dmsEnterprise = defaults.dmsEnterprise;
+    	      this.dmsenterprise = defaults.dmsenterprise;
     	      this.dns = defaults.dns;
     	      this.drds = defaults.drds;
     	      this.dts = defaults.dts;
     	      this.dysms = defaults.dysms;
     	      this.eais = defaults.eais;
+    	      this.ebs = defaults.ebs;
     	      this.eci = defaults.eci;
     	      this.ecs = defaults.ecs;
     	      this.edas = defaults.edas;
@@ -688,6 +739,7 @@ public final class Endpoints {
     	      this.mscopensubscription = defaults.mscopensubscription;
     	      this.mse = defaults.mse;
     	      this.nas = defaults.nas;
+    	      this.nlb = defaults.nlb;
     	      this.ons = defaults.ons;
     	      this.onsproxy = defaults.onsproxy;
     	      this.oos = defaults.oos;
@@ -714,11 +766,13 @@ public final class Endpoints {
     	      this.sgw = defaults.sgw;
     	      this.slb = defaults.slb;
     	      this.smartag = defaults.smartag;
+    	      this.srvcatalog = defaults.srvcatalog;
     	      this.sts = defaults.sts;
     	      this.swas = defaults.swas;
     	      this.tag = defaults.tag;
     	      this.vod = defaults.vod;
     	      this.vpc = defaults.vpc;
+    	      this.vpcpeer = defaults.vpcpeer;
     	      this.vs = defaults.vs;
     	      this.waf = defaults.waf;
     	      this.wafOpenapi = defaults.wafOpenapi;
@@ -775,6 +829,11 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder bpstudio(@Nullable String bpstudio) {
+            this.bpstudio = bpstudio;
+            return this;
+        }
+        @CustomType.Setter
         public Builder brainIndustrial(@Nullable String brainIndustrial) {
             this.brainIndustrial = brainIndustrial;
             return this;
@@ -800,6 +859,11 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder cbs(@Nullable String cbs) {
+            this.cbs = cbs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder cddc(@Nullable String cddc) {
             this.cddc = cddc;
             return this;
@@ -822,6 +886,11 @@ public final class Endpoints {
         @CustomType.Setter
         public Builder cloudauth(@Nullable String cloudauth) {
             this.cloudauth = cloudauth;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloudfirewall(@Nullable String cloudfirewall) {
+            this.cloudfirewall = cloudfirewall;
             return this;
         }
         @CustomType.Setter
@@ -857,6 +926,11 @@ public final class Endpoints {
         @CustomType.Setter
         public Builder cs(@Nullable String cs) {
             this.cs = cs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder das(@Nullable String das) {
+            this.das = das;
             return this;
         }
         @CustomType.Setter
@@ -920,6 +994,11 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder dmsenterprise(@Nullable String dmsenterprise) {
+            this.dmsenterprise = dmsenterprise;
+            return this;
+        }
+        @CustomType.Setter
         public Builder dns(@Nullable String dns) {
             this.dns = dns;
             return this;
@@ -942,6 +1021,11 @@ public final class Endpoints {
         @CustomType.Setter
         public Builder eais(@Nullable String eais) {
             this.eais = eais;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ebs(@Nullable String ebs) {
+            this.ebs = ebs;
             return this;
         }
         @CustomType.Setter
@@ -1135,6 +1219,11 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder nlb(@Nullable String nlb) {
+            this.nlb = nlb;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ons(@Nullable String ons) {
             this.ons = ons;
             return this;
@@ -1265,6 +1354,11 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder srvcatalog(@Nullable String srvcatalog) {
+            this.srvcatalog = srvcatalog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sts(@Nullable String sts) {
             this.sts = sts;
             return this;
@@ -1287,6 +1381,11 @@ public final class Endpoints {
         @CustomType.Setter
         public Builder vpc(@Nullable String vpc) {
             this.vpc = vpc;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vpcpeer(@Nullable String vpcpeer) {
+            this.vpcpeer = vpcpeer;
             return this;
         }
         @CustomType.Setter
@@ -1316,16 +1415,19 @@ public final class Endpoints {
             o.apigateway = apigateway;
             o.arms = arms;
             o.bastionhost = bastionhost;
+            o.bpstudio = bpstudio;
             o.brainIndustrial = brainIndustrial;
             o.bssopenapi = bssopenapi;
             o.cas = cas;
             o.cassandra = cassandra;
             o.cbn = cbn;
+            o.cbs = cbs;
             o.cddc = cddc;
             o.cdn = cdn;
             o.cds = cds;
             o.clickhouse = clickhouse;
             o.cloudauth = cloudauth;
+            o.cloudfirewall = cloudfirewall;
             o.cloudfw = cloudfw;
             o.cloudphone = cloudphone;
             o.cloudsso = cloudsso;
@@ -1333,6 +1435,7 @@ public final class Endpoints {
             o.config = config;
             o.cr = cr;
             o.cs = cs;
+            o.das = das;
             o.datahub = datahub;
             o.dataworkspublic = dataworkspublic;
             o.dbfs = dbfs;
@@ -1345,11 +1448,13 @@ public final class Endpoints {
             o.dg = dg;
             o.dm = dm;
             o.dmsEnterprise = dmsEnterprise;
+            o.dmsenterprise = dmsenterprise;
             o.dns = dns;
             o.drds = drds;
             o.dts = dts;
             o.dysms = dysms;
             o.eais = eais;
+            o.ebs = ebs;
             o.eci = eci;
             o.ecs = ecs;
             o.edas = edas;
@@ -1388,6 +1493,7 @@ public final class Endpoints {
             o.mscopensubscription = mscopensubscription;
             o.mse = mse;
             o.nas = nas;
+            o.nlb = nlb;
             o.ons = ons;
             o.onsproxy = onsproxy;
             o.oos = oos;
@@ -1414,11 +1520,13 @@ public final class Endpoints {
             o.sgw = sgw;
             o.slb = slb;
             o.smartag = smartag;
+            o.srvcatalog = srvcatalog;
             o.sts = sts;
             o.swas = swas;
             o.tag = tag;
             o.vod = vod;
             o.vpc = vpc;
+            o.vpcpeer = vpcpeer;
             o.vs = vs;
             o.waf = waf;
             o.wafOpenapi = wafOpenapi;

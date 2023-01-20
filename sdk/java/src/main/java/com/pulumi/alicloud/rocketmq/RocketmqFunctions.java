@@ -40,7 +40,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Group;
      * import com.pulumi.alicloud.rocketmq.GroupArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -100,7 +100,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Group;
      * import com.pulumi.alicloud.rocketmq.GroupArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -160,7 +160,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Group;
      * import com.pulumi.alicloud.rocketmq.GroupArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -220,7 +220,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Group;
      * import com.pulumi.alicloud.rocketmq.GroupArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetGroupsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -278,7 +278,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Instance;
      * import com.pulumi.alicloud.rocketmq.InstanceArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -328,7 +328,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Instance;
      * import com.pulumi.alicloud.rocketmq.InstanceArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -378,7 +378,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Instance;
      * import com.pulumi.alicloud.rocketmq.InstanceArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -428,7 +428,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Instance;
      * import com.pulumi.alicloud.rocketmq.InstanceArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -478,7 +478,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Instance;
      * import com.pulumi.alicloud.rocketmq.InstanceArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -528,7 +528,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Instance;
      * import com.pulumi.alicloud.rocketmq.InstanceArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -578,7 +578,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -619,7 +619,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -660,7 +660,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -701,7 +701,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -742,7 +742,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -783,7 +783,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -826,7 +826,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Topic;
      * import com.pulumi.alicloud.rocketmq.TopicArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetTopicsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -887,7 +887,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Topic;
      * import com.pulumi.alicloud.rocketmq.TopicArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetTopicsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -948,7 +948,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Topic;
      * import com.pulumi.alicloud.rocketmq.TopicArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetTopicsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1009,7 +1009,7 @@ public final class RocketmqFunctions {
      * import com.pulumi.alicloud.rocketmq.Topic;
      * import com.pulumi.alicloud.rocketmq.TopicArgs;
      * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetTopicsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

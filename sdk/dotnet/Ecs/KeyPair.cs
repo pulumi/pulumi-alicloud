@@ -15,31 +15,31 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var basic = new AliCloud.Ecs.KeyPair("basic", new()
     ///     {
-    ///         var basic = new AliCloud.Ecs.KeyPair("basic", new AliCloud.Ecs.KeyPairArgs
-    ///         {
-    ///             KeyName = "terraform-test-key-pair",
-    ///         });
-    ///         // Using name prefix to build key pair
-    ///         var prefix = new AliCloud.Ecs.KeyPair("prefix", new AliCloud.Ecs.KeyPairArgs
-    ///         {
-    ///             KeyNamePrefix = "terraform-test-key-pair-prefix",
-    ///         });
-    ///         // Import an existing public key to build a alicloud key pair
-    ///         var publickey = new AliCloud.Ecs.KeyPair("publickey", new AliCloud.Ecs.KeyPairArgs
-    ///         {
-    ///             KeyName = "my_public_key",
-    ///             PublicKey = "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
-    ///         });
-    ///     }
+    ///         KeyName = "terraform-test-key-pair",
+    ///     });
     /// 
-    /// }
+    ///     // Using name prefix to build key pair
+    ///     var prefix = new AliCloud.Ecs.KeyPair("prefix", new()
+    ///     {
+    ///         KeyNamePrefix = "terraform-test-key-pair-prefix",
+    ///     });
+    /// 
+    ///     // Import an existing public key to build a alicloud key pair
+    ///     var publickey = new AliCloud.Ecs.KeyPair("publickey", new()
+    ///     {
+    ///         KeyName = "my_public_key",
+    ///         PublicKey = "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/keyPair:KeyPair")]
-    public partial class KeyPair : Pulumi.CustomResource
+    public partial class KeyPair : global::Pulumi.CustomResource
     {
         [Output("fingerPrint")]
         public Output<string> FingerPrint { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class KeyPairArgs : Pulumi.ResourceArgs
+    public sealed class KeyPairArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
@@ -176,9 +176,10 @@ namespace Pulumi.AliCloud.Ecs
         public KeyPairArgs()
         {
         }
+        public static new KeyPairArgs Empty => new KeyPairArgs();
     }
 
-    public sealed class KeyPairState : Pulumi.ResourceArgs
+    public sealed class KeyPairState : global::Pulumi.ResourceArgs
     {
         [Input("fingerPrint")]
         public Input<string>? FingerPrint { get; set; }
@@ -224,5 +225,6 @@ namespace Pulumi.AliCloud.Ecs
         public KeyPairState()
         {
         }
+        public static new KeyPairState Empty => new KeyPairState();
     }
 }

@@ -93,6 +93,13 @@ func NewInstance(ctx *pulumi.Context,
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
+	if args.VncPassword != nil {
+		args.VncPassword = pulumi.ToSecret(args.VncPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"vncPassword",
+	})
+	opts = append(opts, secrets)
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:ecp/instance:Instance", name, args, &resource, opts...)
 	if err != nil {

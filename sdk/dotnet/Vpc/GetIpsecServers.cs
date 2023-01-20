@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetIpsecServers.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetIpsecServers.InvokeAsync(new AliCloud.Vpc.GetIpsecServersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpnIpsecServerId1 = ids.Apply(ids =&gt; ids.Servers?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetIpsecServers.InvokeAsync(new AliCloud.Vpc.GetIpsecServersArgs
-        ///         {
-        ///             NameRegex = "^my-IpsecServer",
-        ///         }));
-        ///         this.VpnIpsecServerId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Servers?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpnIpsecServerId1")]
-        ///     public Output&lt;string&gt; VpnIpsecServerId1 { get; set; }
-        ///     [Output("vpnIpsecServerId2")]
-        ///     public Output&lt;string&gt; VpnIpsecServerId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetIpsecServers.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-IpsecServer",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpnIpsecServerId1"] = ids.Apply(getIpsecServersResult =&gt; getIpsecServersResult.Servers[0]?.Id),
+        ///         ["vpnIpsecServerId2"] = nameRegex.Apply(getIpsecServersResult =&gt; getIpsecServersResult.Servers[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpsecServersResult> InvokeAsync(GetIpsecServersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpsecServersResult>("alicloud:vpc/getIpsecServers:getIpsecServers", args ?? new GetIpsecServersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpsecServersResult>("alicloud:vpc/getIpsecServers:getIpsecServers", args ?? new GetIpsecServersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetIpsecServers.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetIpsecServers.InvokeAsync(new AliCloud.Vpc.GetIpsecServersArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpnIpsecServerId1 = ids.Apply(ids =&gt; ids.Servers?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetIpsecServers.InvokeAsync(new AliCloud.Vpc.GetIpsecServersArgs
-        ///         {
-        ///             NameRegex = "^my-IpsecServer",
-        ///         }));
-        ///         this.VpnIpsecServerId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Servers?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpnIpsecServerId1")]
-        ///     public Output&lt;string&gt; VpnIpsecServerId1 { get; set; }
-        ///     [Output("vpnIpsecServerId2")]
-        ///     public Output&lt;string&gt; VpnIpsecServerId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetIpsecServers.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-IpsecServer",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpnIpsecServerId1"] = ids.Apply(getIpsecServersResult =&gt; getIpsecServersResult.Servers[0]?.Id),
+        ///         ["vpnIpsecServerId2"] = nameRegex.Apply(getIpsecServersResult =&gt; getIpsecServersResult.Servers[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpsecServersResult> Invoke(GetIpsecServersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpsecServersResult>("alicloud:vpc/getIpsecServers:getIpsecServers", args ?? new GetIpsecServersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpsecServersResult>("alicloud:vpc/getIpsecServers:getIpsecServers", args ?? new GetIpsecServersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetIpsecServersArgs : Pulumi.InvokeArgs
+    public sealed class GetIpsecServersArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -143,9 +139,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetIpsecServersArgs()
         {
         }
+        public static new GetIpsecServersArgs Empty => new GetIpsecServersArgs();
     }
 
-    public sealed class GetIpsecServersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIpsecServersInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -183,6 +180,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetIpsecServersInvokeArgs()
         {
         }
+        public static new GetIpsecServersInvokeArgs Empty => new GetIpsecServersInvokeArgs();
     }
 
 

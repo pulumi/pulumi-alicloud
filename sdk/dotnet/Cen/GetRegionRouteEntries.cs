@@ -19,30 +19,29 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var entry = AliCloud.Cen.GetRegionRouteEntries.Invoke(new()
         ///     {
-        ///         var entry = Output.Create(AliCloud.Cen.GetRegionRouteEntries.InvokeAsync(new AliCloud.Cen.GetRegionRouteEntriesArgs
-        ///         {
-        ///             InstanceId = "cen-id1",
-        ///             RegionId = "cn-beijing",
-        ///         }));
-        ///         this.FirstRegionRouteEntriesRouteEntryCidrBlock = entry.Apply(entry =&gt; entry.Entries?[0]?.CidrBlock);
-        ///     }
+        ///         InstanceId = "cen-id1",
+        ///         RegionId = "cn-beijing",
+        ///     });
         /// 
-        ///     [Output("firstRegionRouteEntriesRouteEntryCidrBlock")]
-        ///     public Output&lt;string&gt; FirstRegionRouteEntriesRouteEntryCidrBlock { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRegionRouteEntriesRouteEntryCidrBlock"] = entry.Apply(getRegionRouteEntriesResult =&gt; getRegionRouteEntriesResult.Entries[0]?.CidrBlock),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionRouteEntriesResult> InvokeAsync(GetRegionRouteEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionRouteEntriesResult>("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args ?? new GetRegionRouteEntriesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionRouteEntriesResult>("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args ?? new GetRegionRouteEntriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN Regional Route Entries available to the user.
@@ -52,34 +51,33 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var entry = AliCloud.Cen.GetRegionRouteEntries.Invoke(new()
         ///     {
-        ///         var entry = Output.Create(AliCloud.Cen.GetRegionRouteEntries.InvokeAsync(new AliCloud.Cen.GetRegionRouteEntriesArgs
-        ///         {
-        ///             InstanceId = "cen-id1",
-        ///             RegionId = "cn-beijing",
-        ///         }));
-        ///         this.FirstRegionRouteEntriesRouteEntryCidrBlock = entry.Apply(entry =&gt; entry.Entries?[0]?.CidrBlock);
-        ///     }
+        ///         InstanceId = "cen-id1",
+        ///         RegionId = "cn-beijing",
+        ///     });
         /// 
-        ///     [Output("firstRegionRouteEntriesRouteEntryCidrBlock")]
-        ///     public Output&lt;string&gt; FirstRegionRouteEntriesRouteEntryCidrBlock { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRegionRouteEntriesRouteEntryCidrBlock"] = entry.Apply(getRegionRouteEntriesResult =&gt; getRegionRouteEntriesResult.Entries[0]?.CidrBlock),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegionRouteEntriesResult> Invoke(GetRegionRouteEntriesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionRouteEntriesResult>("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args ?? new GetRegionRouteEntriesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionRouteEntriesResult>("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args ?? new GetRegionRouteEntriesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRegionRouteEntriesArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionRouteEntriesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the CEN instance.
@@ -99,9 +97,10 @@ namespace Pulumi.AliCloud.Cen
         public GetRegionRouteEntriesArgs()
         {
         }
+        public static new GetRegionRouteEntriesArgs Empty => new GetRegionRouteEntriesArgs();
     }
 
-    public sealed class GetRegionRouteEntriesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionRouteEntriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the CEN instance.
@@ -121,6 +120,7 @@ namespace Pulumi.AliCloud.Cen
         public GetRegionRouteEntriesInvokeArgs()
         {
         }
+        public static new GetRegionRouteEntriesInvokeArgs Empty => new GetRegionRouteEntriesInvokeArgs();
     }
 
 

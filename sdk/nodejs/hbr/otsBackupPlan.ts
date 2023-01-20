@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -95,11 +96,23 @@ export class OtsBackupPlan extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * Backup type. Valid values: `COMPLETE`.
      */
     public readonly backupType!: pulumi.Output<string>;
     /**
-     * Whether to disable the backup task. Valid values: true, false.
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    public readonly crossAccountRoleName!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    public readonly crossAccountType!: pulumi.Output<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    public readonly crossAccountUserId!: pulumi.Output<number | undefined>;
+    /**
+     * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
@@ -115,7 +128,7 @@ export class OtsBackupPlan extends pulumi.CustomResource {
      */
     public readonly otsDetails!: pulumi.Output<outputs.hbr.OtsBackupPlanOtsDetail[] | undefined>;
     /**
-     * Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * Backup retention days, the minimum is 1.
      */
     public readonly retention!: pulumi.Output<string>;
     /**
@@ -123,7 +136,7 @@ export class OtsBackupPlan extends pulumi.CustomResource {
      */
     public readonly rules!: pulumi.Output<outputs.hbr.OtsBackupPlanRule[] | undefined>;
     /**
-     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      *
      * @deprecated Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
      */
@@ -147,6 +160,9 @@ export class OtsBackupPlan extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OtsBackupPlanState | undefined;
             resourceInputs["backupType"] = state ? state.backupType : undefined;
+            resourceInputs["crossAccountRoleName"] = state ? state.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = state ? state.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = state ? state.crossAccountUserId : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["otsBackupPlanName"] = state ? state.otsBackupPlanName : undefined;
@@ -167,6 +183,9 @@ export class OtsBackupPlan extends pulumi.CustomResource {
                 throw new Error("Missing required property 'retention'");
             }
             resourceInputs["backupType"] = args ? args.backupType : undefined;
+            resourceInputs["crossAccountRoleName"] = args ? args.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = args ? args.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = args ? args.crossAccountUserId : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["otsBackupPlanName"] = args ? args.otsBackupPlanName : undefined;
@@ -186,11 +205,23 @@ export class OtsBackupPlan extends pulumi.CustomResource {
  */
 export interface OtsBackupPlanState {
     /**
-     * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * Backup type. Valid values: `COMPLETE`.
      */
     backupType?: pulumi.Input<string>;
     /**
-     * Whether to disable the backup task. Valid values: true, false.
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
+    /**
+     * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      */
     disabled?: pulumi.Input<boolean>;
     /**
@@ -206,7 +237,7 @@ export interface OtsBackupPlanState {
      */
     otsDetails?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanOtsDetail>[]>;
     /**
-     * Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * Backup retention days, the minimum is 1.
      */
     retention?: pulumi.Input<string>;
     /**
@@ -214,7 +245,7 @@ export interface OtsBackupPlanState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanRule>[]>;
     /**
-     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      *
      * @deprecated Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
      */
@@ -230,11 +261,23 @@ export interface OtsBackupPlanState {
  */
 export interface OtsBackupPlanArgs {
     /**
-     * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * Backup type. Valid values: `COMPLETE`.
      */
     backupType: pulumi.Input<string>;
     /**
-     * Whether to disable the backup task. Valid values: true, false.
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
+    /**
+     * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      */
     disabled?: pulumi.Input<boolean>;
     /**
@@ -250,7 +293,7 @@ export interface OtsBackupPlanArgs {
      */
     otsDetails?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanOtsDetail>[]>;
     /**
-     * Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * Backup retention days, the minimum is 1.
      */
     retention: pulumi.Input<string>;
     /**
@@ -258,7 +301,7 @@ export interface OtsBackupPlanArgs {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanRule>[]>;
     /**
-     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      *
      * @deprecated Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
      */

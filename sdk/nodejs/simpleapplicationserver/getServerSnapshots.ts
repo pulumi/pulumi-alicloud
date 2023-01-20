@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,30 +22,27 @@ import * as utilities from "../utilities";
  * const ids = alicloud.simpleapplicationserver.getServerSnapshots({
  *     ids: ["example_id"],
  * });
- * export const simpleApplicationServerSnapshotId1 = ids.then(ids => ids.snapshots?[0]?.id);
+ * export const simpleApplicationServerSnapshotId1 = ids.then(ids => ids.snapshots?.[0]?.id);
  * const nameRegex = alicloud.simpleapplicationserver.getServerSnapshots({
  *     nameRegex: "^my-Snapshot",
  * });
- * export const simpleApplicationServerSnapshotId2 = nameRegex.then(nameRegex => nameRegex.snapshots?[0]?.id);
+ * export const simpleApplicationServerSnapshotId2 = nameRegex.then(nameRegex => nameRegex.snapshots?.[0]?.id);
  * const diskIdConf = alicloud.simpleapplicationserver.getServerSnapshots({
  *     ids: ["example_id"],
  *     diskId: "example_value",
  * });
- * export const simpleApplicationServerSnapshotId3 = diskIdConf.then(diskIdConf => diskIdConf.snapshots?[0]?.id);
+ * export const simpleApplicationServerSnapshotId3 = diskIdConf.then(diskIdConf => diskIdConf.snapshots?.[0]?.id);
  * const instanceIdConf = alicloud.simpleapplicationserver.getServerSnapshots({
  *     ids: ["example_id"],
  *     instanceId: "example_value",
  * });
- * export const simpleApplicationServerSnapshotId4 = instanceIdConf.then(instanceIdConf => instanceIdConf.snapshots?[0]?.id);
+ * export const simpleApplicationServerSnapshotId4 = instanceIdConf.then(instanceIdConf => instanceIdConf.snapshots?.[0]?.id);
  * ```
  */
 export function getServerSnapshots(args?: GetServerSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerSnapshotsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", {
         "diskId": args.diskId,
         "ids": args.ids,
@@ -99,9 +97,41 @@ export interface GetServerSnapshotsResult {
     readonly snapshots: outputs.simpleapplicationserver.GetServerSnapshotsSnapshot[];
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.143.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.simpleapplicationserver.getServerSnapshots({
+ *     ids: ["example_id"],
+ * });
+ * export const simpleApplicationServerSnapshotId1 = ids.then(ids => ids.snapshots?.[0]?.id);
+ * const nameRegex = alicloud.simpleapplicationserver.getServerSnapshots({
+ *     nameRegex: "^my-Snapshot",
+ * });
+ * export const simpleApplicationServerSnapshotId2 = nameRegex.then(nameRegex => nameRegex.snapshots?.[0]?.id);
+ * const diskIdConf = alicloud.simpleapplicationserver.getServerSnapshots({
+ *     ids: ["example_id"],
+ *     diskId: "example_value",
+ * });
+ * export const simpleApplicationServerSnapshotId3 = diskIdConf.then(diskIdConf => diskIdConf.snapshots?.[0]?.id);
+ * const instanceIdConf = alicloud.simpleapplicationserver.getServerSnapshots({
+ *     ids: ["example_id"],
+ *     instanceId: "example_value",
+ * });
+ * export const simpleApplicationServerSnapshotId4 = instanceIdConf.then(instanceIdConf => instanceIdConf.snapshots?.[0]?.id);
+ * ```
+ */
 export function getServerSnapshotsOutput(args?: GetServerSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerSnapshotsResult> {
-    return pulumi.output(args).apply(a => getServerSnapshots(a, opts))
+    return pulumi.output(args).apply((a: any) => getServerSnapshots(a, opts))
 }
 
 /**

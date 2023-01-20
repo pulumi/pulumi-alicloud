@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tftestacc";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultApplication = new alicloud.oos.Application("defaultApplication", {
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     applicationName: name,
  *     description: name,
  *     tags: {

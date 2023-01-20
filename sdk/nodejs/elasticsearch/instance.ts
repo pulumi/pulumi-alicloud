@@ -94,7 +94,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly dataNodeDiskEncrypted!: pulumi.Output<boolean | undefined>;
     /**
      * The single data node storage space.
-     * - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
      */
     public readonly dataNodeDiskSize!: pulumi.Output<number>;
     /**
@@ -301,7 +300,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             resourceInputs["masterNodeSpec"] = args ? args.masterNodeSpec : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["privateWhitelists"] = args ? args.privateWhitelists : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
@@ -319,6 +318,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -345,7 +346,6 @@ export interface InstanceState {
     dataNodeDiskEncrypted?: pulumi.Input<boolean>;
     /**
      * The single data node storage space.
-     * - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
      */
     dataNodeDiskSize?: pulumi.Input<number>;
     /**
@@ -490,7 +490,6 @@ export interface InstanceArgs {
     dataNodeDiskEncrypted?: pulumi.Input<boolean>;
     /**
      * The single data node storage space.
-     * - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
      */
     dataNodeDiskSize: pulumi.Input<number>;
     /**

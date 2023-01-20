@@ -22,32 +22,31 @@ namespace Pulumi.AliCloud
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var zonesDs = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         var zonesDs = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-        ///         {
-        ///             AvailableDiskCategory = "cloud_ssd",
-        ///             AvailableInstanceType = "ecs.n4.large",
-        ///         }));
-        ///         // Create an ECS instance with the first matched zone
-        ///         var instance = new AliCloud.Ecs.Instance("instance", new AliCloud.Ecs.InstanceArgs
-        ///         {
-        ///             AvailabilityZone = zonesDs.Apply(zonesDs =&gt; zonesDs.Zones?[0]?.Id),
-        ///         });
-        ///     }
+        ///         AvailableDiskCategory = "cloud_ssd",
+        ///         AvailableInstanceType = "ecs.n4.large",
+        ///     });
         /// 
-        /// }
+        ///     // Create an ECS instance with the first matched zone
+        ///     var instance = new AliCloud.Ecs.Instance("instance", new()
+        ///     {
+        ///         AvailabilityZone = zonesDs.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -60,36 +59,35 @@ namespace Pulumi.AliCloud
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var zonesDs = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         var zonesDs = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-        ///         {
-        ///             AvailableDiskCategory = "cloud_ssd",
-        ///             AvailableInstanceType = "ecs.n4.large",
-        ///         }));
-        ///         // Create an ECS instance with the first matched zone
-        ///         var instance = new AliCloud.Ecs.Instance("instance", new AliCloud.Ecs.InstanceArgs
-        ///         {
-        ///             AvailabilityZone = zonesDs.Apply(zonesDs =&gt; zonesDs.Zones?[0]?.Id),
-        ///         });
-        ///     }
+        ///         AvailableDiskCategory = "cloud_ssd",
+        ///         AvailableInstanceType = "ecs.n4.large",
+        ///     });
         /// 
-        /// }
+        ///     // Create an ECS instance with the first matched zone
+        ///     var instance = new AliCloud.Ecs.Instance("instance", new()
+        ///     {
+        ///         AvailabilityZone = zonesDs.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:index/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:index/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
@@ -158,9 +156,10 @@ namespace Pulumi.AliCloud
         public GetZonesArgs()
         {
         }
+        public static new GetZonesArgs Empty => new GetZonesArgs();
     }
 
-    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
@@ -229,6 +228,7 @@ namespace Pulumi.AliCloud
         public GetZonesInvokeArgs()
         {
         }
+        public static new GetZonesInvokeArgs Empty => new GetZonesInvokeArgs();
     }
 
 

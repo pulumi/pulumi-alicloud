@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CloudFirewall.Inputs
 {
 
-    public sealed class AddressBookEcsTagArgs : Pulumi.ResourceArgs
+    public sealed class AddressBookEcsTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key of ECS tag that to be matched.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
         public AddressBookEcsTagArgs()
         {
         }
+        public static new AddressBookEcsTagArgs Empty => new AddressBookEcsTagArgs();
     }
 }

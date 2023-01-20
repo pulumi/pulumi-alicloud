@@ -21,34 +21,33 @@ namespace Pulumi.AliCloud
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultMscSubContract = new AliCloud.MscSubContract("defaultMscSubContract", new()
         ///     {
-        ///         var defaultMscSubContract = new AliCloud.MscSubContract("defaultMscSubContract", new AliCloud.MscSubContractArgs
-        ///         {
-        ///             ContactName = "example_value",
-        ///             Position = "CEO",
-        ///             Email = "123@163.com",
-        ///             Mobile = "153xxxxx906",
-        ///         });
-        ///         var defaultMscSubContactVerificationMessage = defaultMscSubContract.Id.Apply(id =&gt; AliCloud.GetMscSubContactVerificationMessage.Invoke(new AliCloud.GetMscSubContactVerificationMessageInvokeArgs
-        ///         {
-        ///             ContactId = id,
-        ///             Type = 1,
-        ///         }));
-        ///     }
+        ///         ContactName = "example_value",
+        ///         Position = "CEO",
+        ///         Email = "123@163.com",
+        ///         Mobile = "153xxxxx906",
+        ///     });
         /// 
-        /// }
+        ///     var defaultMscSubContactVerificationMessage = AliCloud.GetMscSubContactVerificationMessage.Invoke(new()
+        ///     {
+        ///         ContactId = defaultMscSubContract.Id,
+        ///         Type = 1,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMscSubContactVerificationMessageResult> InvokeAsync(GetMscSubContactVerificationMessageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMscSubContactVerificationMessageResult>("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args ?? new GetMscSubContactVerificationMessageArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMscSubContactVerificationMessageResult>("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args ?? new GetMscSubContactVerificationMessageArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **NOTE:** Available in v1.156.0+.
@@ -60,38 +59,37 @@ namespace Pulumi.AliCloud
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultMscSubContract = new AliCloud.MscSubContract("defaultMscSubContract", new()
         ///     {
-        ///         var defaultMscSubContract = new AliCloud.MscSubContract("defaultMscSubContract", new AliCloud.MscSubContractArgs
-        ///         {
-        ///             ContactName = "example_value",
-        ///             Position = "CEO",
-        ///             Email = "123@163.com",
-        ///             Mobile = "153xxxxx906",
-        ///         });
-        ///         var defaultMscSubContactVerificationMessage = defaultMscSubContract.Id.Apply(id =&gt; AliCloud.GetMscSubContactVerificationMessage.Invoke(new AliCloud.GetMscSubContactVerificationMessageInvokeArgs
-        ///         {
-        ///             ContactId = id,
-        ///             Type = 1,
-        ///         }));
-        ///     }
+        ///         ContactName = "example_value",
+        ///         Position = "CEO",
+        ///         Email = "123@163.com",
+        ///         Mobile = "153xxxxx906",
+        ///     });
         /// 
-        /// }
+        ///     var defaultMscSubContactVerificationMessage = AliCloud.GetMscSubContactVerificationMessage.Invoke(new()
+        ///     {
+        ///         ContactId = defaultMscSubContract.Id,
+        ///         Type = 1,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMscSubContactVerificationMessageResult> Invoke(GetMscSubContactVerificationMessageInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMscSubContactVerificationMessageResult>("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args ?? new GetMscSubContactVerificationMessageInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMscSubContactVerificationMessageResult>("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args ?? new GetMscSubContactVerificationMessageInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetMscSubContactVerificationMessageArgs : Pulumi.InvokeArgs
+    public sealed class GetMscSubContactVerificationMessageArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Contact.
@@ -101,8 +99,6 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// How a user receives verification messages. Valid values : `1`, `2`.
-        /// * `1`: Send a verification message through the user's mobile.
-        /// * `2`: Send a verification message through the user's mail.
         /// </summary>
         [Input("type", required: true)]
         public int Type { get; set; }
@@ -110,9 +106,10 @@ namespace Pulumi.AliCloud
         public GetMscSubContactVerificationMessageArgs()
         {
         }
+        public static new GetMscSubContactVerificationMessageArgs Empty => new GetMscSubContactVerificationMessageArgs();
     }
 
-    public sealed class GetMscSubContactVerificationMessageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMscSubContactVerificationMessageInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Contact.
@@ -122,8 +119,6 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// How a user receives verification messages. Valid values : `1`, `2`.
-        /// * `1`: Send a verification message through the user's mobile.
-        /// * `2`: Send a verification message through the user's mail.
         /// </summary>
         [Input("type", required: true)]
         public Input<int> Type { get; set; } = null!;
@@ -131,6 +126,7 @@ namespace Pulumi.AliCloud
         public GetMscSubContactVerificationMessageInvokeArgs()
         {
         }
+        public static new GetMscSubContactVerificationMessageInvokeArgs Empty => new GetMscSubContactVerificationMessageInvokeArgs();
     }
 
 

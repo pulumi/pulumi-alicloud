@@ -41,7 +41,7 @@ import (
 //			_, err = ecs.NewEcsDedicatedHostCluster(ctx, "exampleEcsDedicatedHostCluster", &ecs.EcsDedicatedHostClusterArgs{
 //				DedicatedHostClusterName: pulumi.String("example_value"),
 //				Description:              pulumi.String("example_value"),
-//				ZoneId:                   pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:                   *pulumi.String(exampleZones.Zones[0].Id),
 //				Tags: pulumi.AnyMap{
 //					"Create": pulumi.Any("TF"),
 //					"For":    pulumi.Any("DDH_Cluster_Test"),

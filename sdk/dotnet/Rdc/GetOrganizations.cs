@@ -23,46 +23,45 @@ namespace Pulumi.AliCloud.Rdc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-testAccOrganizations-Organizations";
+        ///     var @default = new AliCloud.Rdc.Organization("default", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "tf-testAccOrganizations-Organizations";
-        ///         var @default = new AliCloud.Rdc.Organization("default", new AliCloud.Rdc.OrganizationArgs
-        ///         {
-        ///             OrganizationName = name,
-        ///             Source = name,
-        ///         });
-        ///         var ids = AliCloud.Rdc.GetOrganizations.Invoke(new AliCloud.Rdc.GetOrganizationsInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 @default.Id,
-        ///             },
-        ///         });
-        ///         this.RdcOrganizationId1 = ids.Apply(ids =&gt; ids.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Rdc.GetOrganizations.InvokeAsync(new AliCloud.Rdc.GetOrganizationsArgs
-        ///         {
-        ///             NameRegex = "^my-Organization",
-        ///         }));
-        ///         this.RdcOrganizationId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Id);
-        ///     }
+        ///         OrganizationName = name,
+        ///         Source = name,
+        ///     });
         /// 
-        ///     [Output("rdcOrganizationId1")]
-        ///     public Output&lt;string&gt; RdcOrganizationId1 { get; set; }
-        ///     [Output("rdcOrganizationId2")]
-        ///     public Output&lt;string&gt; RdcOrganizationId2 { get; set; }
-        /// }
+        ///     var ids = AliCloud.Rdc.GetOrganizations.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Rdc.GetOrganizations.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Organization",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rdcOrganizationId1"] = ids.Apply(getOrganizationsResult =&gt; getOrganizationsResult.Id),
+        ///         ["rdcOrganizationId2"] = nameRegex.Apply(getOrganizationsResult =&gt; getOrganizationsResult.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetOrganizationsResult> InvokeAsync(GetOrganizationsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationsResult>("alicloud:rdc/getOrganizations:getOrganizations", args ?? new GetOrganizationsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationsResult>("alicloud:rdc/getOrganizations:getOrganizations", args ?? new GetOrganizationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Rdc Organizations of the current Alibaba Cloud user.
@@ -76,50 +75,49 @@ namespace Pulumi.AliCloud.Rdc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-testAccOrganizations-Organizations";
+        ///     var @default = new AliCloud.Rdc.Organization("default", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "tf-testAccOrganizations-Organizations";
-        ///         var @default = new AliCloud.Rdc.Organization("default", new AliCloud.Rdc.OrganizationArgs
-        ///         {
-        ///             OrganizationName = name,
-        ///             Source = name,
-        ///         });
-        ///         var ids = AliCloud.Rdc.GetOrganizations.Invoke(new AliCloud.Rdc.GetOrganizationsInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 @default.Id,
-        ///             },
-        ///         });
-        ///         this.RdcOrganizationId1 = ids.Apply(ids =&gt; ids.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Rdc.GetOrganizations.InvokeAsync(new AliCloud.Rdc.GetOrganizationsArgs
-        ///         {
-        ///             NameRegex = "^my-Organization",
-        ///         }));
-        ///         this.RdcOrganizationId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Id);
-        ///     }
+        ///         OrganizationName = name,
+        ///         Source = name,
+        ///     });
         /// 
-        ///     [Output("rdcOrganizationId1")]
-        ///     public Output&lt;string&gt; RdcOrganizationId1 { get; set; }
-        ///     [Output("rdcOrganizationId2")]
-        ///     public Output&lt;string&gt; RdcOrganizationId2 { get; set; }
-        /// }
+        ///     var ids = AliCloud.Rdc.GetOrganizations.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Rdc.GetOrganizations.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Organization",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rdcOrganizationId1"] = ids.Apply(getOrganizationsResult =&gt; getOrganizationsResult.Id),
+        ///         ["rdcOrganizationId2"] = nameRegex.Apply(getOrganizationsResult =&gt; getOrganizationsResult.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetOrganizationsResult> Invoke(GetOrganizationsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationsResult>("alicloud:rdc/getOrganizations:getOrganizations", args ?? new GetOrganizationsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationsResult>("alicloud:rdc/getOrganizations:getOrganizations", args ?? new GetOrganizationsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetOrganizationsArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -151,9 +149,10 @@ namespace Pulumi.AliCloud.Rdc
         public GetOrganizationsArgs()
         {
         }
+        public static new GetOrganizationsArgs Empty => new GetOrganizationsArgs();
     }
 
-    public sealed class GetOrganizationsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -185,6 +184,7 @@ namespace Pulumi.AliCloud.Rdc
         public GetOrganizationsInvokeArgs()
         {
         }
+        public static new GetOrganizationsInvokeArgs Empty => new GetOrganizationsInvokeArgs();
     }
 
 

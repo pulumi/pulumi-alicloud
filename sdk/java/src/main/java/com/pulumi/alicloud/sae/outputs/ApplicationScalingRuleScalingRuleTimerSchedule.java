@@ -18,12 +18,12 @@ public final class ApplicationScalingRuleScalingRuleTimerSchedule {
      */
     private @Nullable String atTime;
     /**
-     * @return Maximum number of instances applied.
+     * @return Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
      * 
      */
     private @Nullable Integer maxReplicas;
     /**
-     * @return Minimum number of instances applied.
+     * @return Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
      * 
      */
     private @Nullable Integer minReplicas;
@@ -42,14 +42,14 @@ public final class ApplicationScalingRuleScalingRuleTimerSchedule {
         return Optional.ofNullable(this.atTime);
     }
     /**
-     * @return Maximum number of instances applied.
+     * @return Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
      * 
      */
     public Optional<Integer> maxReplicas() {
         return Optional.ofNullable(this.maxReplicas);
     }
     /**
-     * @return Minimum number of instances applied.
+     * @return Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
      * 
      */
     public Optional<Integer> minReplicas() {

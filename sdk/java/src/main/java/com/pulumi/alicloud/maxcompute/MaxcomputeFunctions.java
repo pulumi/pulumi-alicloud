@@ -4,8 +4,11 @@
 package com.pulumi.alicloud.maxcompute;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.maxcompute.inputs.GetProjectsArgs;
+import com.pulumi.alicloud.maxcompute.inputs.GetProjectsPlainArgs;
 import com.pulumi.alicloud.maxcompute.inputs.GetServiceArgs;
 import com.pulumi.alicloud.maxcompute.inputs.GetServicePlainArgs;
+import com.pulumi.alicloud.maxcompute.outputs.GetProjectsResult;
 import com.pulumi.alicloud.maxcompute.outputs.GetServiceResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -14,6 +17,60 @@ import com.pulumi.deployment.InvokeOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class MaxcomputeFunctions {
+    /**
+     * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     */
+    public static Output<GetProjectsResult> getProjects() {
+        return getProjects(GetProjectsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     */
+    public static CompletableFuture<GetProjectsResult> getProjectsPlain() {
+        return getProjectsPlain(GetProjectsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     */
+    public static Output<GetProjectsResult> getProjects(GetProjectsArgs args) {
+        return getProjects(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     */
+    public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args) {
+        return getProjectsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     */
+    public static Output<GetProjectsResult> getProjects(GetProjectsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:maxcompute/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
+     */
+    public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:maxcompute/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * &gt; **NOTE:** When you open MaxCompute service, you&#39;d better open [DataWorks service](https://www.alibabacloud.com/help/en/product/72772.htm) as well.
      * 
@@ -31,7 +88,7 @@ public final class MaxcomputeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.maxcompute.MaxcomputeFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.maxcompute.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -74,7 +131,7 @@ public final class MaxcomputeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.maxcompute.MaxcomputeFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.maxcompute.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -117,7 +174,7 @@ public final class MaxcomputeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.maxcompute.MaxcomputeFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.maxcompute.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -160,7 +217,7 @@ public final class MaxcomputeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.maxcompute.MaxcomputeFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.maxcompute.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -203,7 +260,7 @@ public final class MaxcomputeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.maxcompute.MaxcomputeFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.maxcompute.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -246,7 +303,7 @@ public final class MaxcomputeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.maxcompute.MaxcomputeFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.maxcompute.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

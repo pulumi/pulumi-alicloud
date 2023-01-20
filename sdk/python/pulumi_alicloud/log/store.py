@@ -32,7 +32,7 @@ class StoreArgs:
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
-        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
@@ -111,7 +111,7 @@ class StoreArgs:
     @pulumi.getter(name="encryptConf")
     def encrypt_conf(self) -> Optional[pulumi.Input['StoreEncryptConfArgs']]:
         """
-        Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         """
         return pulumi.get(self, "encrypt_conf")
 
@@ -199,7 +199,7 @@ class _StoreState:
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
-        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
@@ -271,7 +271,7 @@ class _StoreState:
     @pulumi.getter(name="encryptConf")
     def encrypt_conf(self) -> Optional[pulumi.Input['StoreEncryptConfArgs']]:
         """
-        Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         """
         return pulumi.get(self, "encrypt_conf")
 
@@ -394,7 +394,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
-        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
@@ -495,7 +495,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
-        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
@@ -549,7 +549,7 @@ class Store(pulumi.CustomResource):
     @pulumi.getter(name="encryptConf")
     def encrypt_conf(self) -> pulumi.Output[Optional['outputs.StoreEncryptConf']]:
         """
-        Encrypted storage of data, providing data static protection capability, only supported at creation time.
+        Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         """
         return pulumi.get(self, "encrypt_conf")
 

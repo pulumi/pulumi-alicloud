@@ -55,9 +55,9 @@ import (
 //			sampleDs := slb.GetListenersOutput(ctx, slb.GetListenersOutputArgs{
 //				LoadBalancerId: _default.ID(),
 //			}, nil)
-//			ctx.Export("firstSlbListenerProtocol", sampleDs.ApplyT(func(sampleDs slb.GetListenersResult) (string, error) {
-//				return sampleDs.SlbListeners[0].Protocol, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("firstSlbListenerProtocol", sampleDs.ApplyT(func(sampleDs slb.GetListenersResult) (*string, error) {
+//				return &sampleDs.SlbListeners[0].Protocol, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

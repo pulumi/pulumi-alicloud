@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetGatewaysGateway {
     /**
+     * @return Whether to automatically propagate BGP routes to the VPC. Valid values: `true`, `false`.
+     * 
+     */
+    private String autoPropagate;
+    /**
      * @return Limit search to specific business status - valid value is &#34;Normal&#34;, &#34;FinancialLocked&#34;.
      * 
      */
@@ -61,6 +66,11 @@ public final class GetGatewaysGateway {
      */
     private String name;
     /**
+     * @return The network type of the VPN gateway.
+     * 
+     */
+    private String networkType;
+    /**
      * @return The Specification of the VPN
      * 
      */
@@ -82,6 +92,13 @@ public final class GetGatewaysGateway {
     private String vpcId;
 
     private GetGatewaysGateway() {}
+    /**
+     * @return Whether to automatically propagate BGP routes to the VPC. Valid values: `true`, `false`.
+     * 
+     */
+    public String autoPropagate() {
+        return this.autoPropagate;
+    }
     /**
      * @return Limit search to specific business status - valid value is &#34;Normal&#34;, &#34;FinancialLocked&#34;.
      * 
@@ -153,6 +170,13 @@ public final class GetGatewaysGateway {
         return this.name;
     }
     /**
+     * @return The network type of the VPN gateway.
+     * 
+     */
+    public String networkType() {
+        return this.networkType;
+    }
+    /**
      * @return The Specification of the VPN
      * 
      */
@@ -190,6 +214,7 @@ public final class GetGatewaysGateway {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String autoPropagate;
         private String businessStatus;
         private String createTime;
         private String description;
@@ -200,6 +225,7 @@ public final class GetGatewaysGateway {
         private String instanceChargeType;
         private String internetIp;
         private String name;
+        private String networkType;
         private String specification;
         private Integer sslConnections;
         private String status;
@@ -207,6 +233,7 @@ public final class GetGatewaysGateway {
         public Builder() {}
         public Builder(GetGatewaysGateway defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoPropagate = defaults.autoPropagate;
     	      this.businessStatus = defaults.businessStatus;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
@@ -217,12 +244,18 @@ public final class GetGatewaysGateway {
     	      this.instanceChargeType = defaults.instanceChargeType;
     	      this.internetIp = defaults.internetIp;
     	      this.name = defaults.name;
+    	      this.networkType = defaults.networkType;
     	      this.specification = defaults.specification;
     	      this.sslConnections = defaults.sslConnections;
     	      this.status = defaults.status;
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
+        public Builder autoPropagate(String autoPropagate) {
+            this.autoPropagate = Objects.requireNonNull(autoPropagate);
+            return this;
+        }
         @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
             this.businessStatus = Objects.requireNonNull(businessStatus);
@@ -274,6 +307,11 @@ public final class GetGatewaysGateway {
             return this;
         }
         @CustomType.Setter
+        public Builder networkType(String networkType) {
+            this.networkType = Objects.requireNonNull(networkType);
+            return this;
+        }
+        @CustomType.Setter
         public Builder specification(String specification) {
             this.specification = Objects.requireNonNull(specification);
             return this;
@@ -295,6 +333,7 @@ public final class GetGatewaysGateway {
         }
         public GetGatewaysGateway build() {
             final var o = new GetGatewaysGateway();
+            o.autoPropagate = autoPropagate;
             o.businessStatus = businessStatus;
             o.createTime = createTime;
             o.description = description;
@@ -305,6 +344,7 @@ public final class GetGatewaysGateway {
             o.instanceChargeType = instanceChargeType;
             o.internetIp = internetIp;
             o.name = name;
+            o.networkType = networkType;
             o.specification = specification;
             o.sslConnections = sslConnections;
             o.status = status;

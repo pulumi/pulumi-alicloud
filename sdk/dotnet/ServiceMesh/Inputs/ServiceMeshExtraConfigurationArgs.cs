@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ServiceMesh.Inputs
 {
 
-    public sealed class ServiceMeshExtraConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMeshExtraConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public ServiceMeshExtraConfigurationArgs()
         {
         }
+        public static new ServiceMeshExtraConfigurationArgs Empty => new ServiceMeshExtraConfigurationArgs();
     }
 }

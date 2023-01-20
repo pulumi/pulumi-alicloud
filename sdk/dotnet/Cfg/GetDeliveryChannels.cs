@@ -17,33 +17,32 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cfg.GetDeliveryChannels.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetDeliveryChannels.InvokeAsync(new AliCloud.Cfg.GetDeliveryChannelsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "cdc-49a2ad756057********",
-        ///             },
-        ///             NameRegex = "tftest",
-        ///         }));
-        ///         this.FirstConfigDeliveryChannelId = example.Apply(example =&gt; example.Channels?[0]?.Id);
-        ///     }
+        ///             "cdc-49a2ad756057********",
+        ///         },
+        ///         NameRegex = "tftest",
+        ///     });
         /// 
-        ///     [Output("firstConfigDeliveryChannelId")]
-        ///     public Output&lt;string&gt; FirstConfigDeliveryChannelId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigDeliveryChannelId"] = example.Apply(getDeliveryChannelsResult =&gt; getDeliveryChannelsResult.Channels[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDeliveryChannelsResult> InvokeAsync(GetDeliveryChannelsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeliveryChannelsResult>("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args ?? new GetDeliveryChannelsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeliveryChannelsResult>("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args ?? new GetDeliveryChannelsArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -51,37 +50,36 @@ namespace Pulumi.AliCloud.Cfg
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cfg.GetDeliveryChannels.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cfg.GetDeliveryChannels.InvokeAsync(new AliCloud.Cfg.GetDeliveryChannelsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "cdc-49a2ad756057********",
-        ///             },
-        ///             NameRegex = "tftest",
-        ///         }));
-        ///         this.FirstConfigDeliveryChannelId = example.Apply(example =&gt; example.Channels?[0]?.Id);
-        ///     }
+        ///             "cdc-49a2ad756057********",
+        ///         },
+        ///         NameRegex = "tftest",
+        ///     });
         /// 
-        ///     [Output("firstConfigDeliveryChannelId")]
-        ///     public Output&lt;string&gt; FirstConfigDeliveryChannelId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstConfigDeliveryChannelId"] = example.Apply(getDeliveryChannelsResult =&gt; getDeliveryChannelsResult.Channels[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDeliveryChannelsResult> Invoke(GetDeliveryChannelsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeliveryChannelsResult>("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args ?? new GetDeliveryChannelsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeliveryChannelsResult>("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args ?? new GetDeliveryChannelsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDeliveryChannelsArgs : Pulumi.InvokeArgs
+    public sealed class GetDeliveryChannelsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -113,9 +111,10 @@ namespace Pulumi.AliCloud.Cfg
         public GetDeliveryChannelsArgs()
         {
         }
+        public static new GetDeliveryChannelsArgs Empty => new GetDeliveryChannelsArgs();
     }
 
-    public sealed class GetDeliveryChannelsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDeliveryChannelsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -147,6 +146,7 @@ namespace Pulumi.AliCloud.Cfg
         public GetDeliveryChannelsInvokeArgs()
         {
         }
+        public static new GetDeliveryChannelsInvokeArgs Empty => new GetDeliveryChannelsInvokeArgs();
     }
 
 

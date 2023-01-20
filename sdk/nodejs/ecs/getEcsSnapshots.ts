@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["s-bp1fvuxxxxxxxx"],
  *     nameRegex: "tf-test",
  * });
- * export const firstEcsSnapshotId = example.then(example => example.snapshots?[0]?.id);
+ * export const firstEcsSnapshotId = example.then(example => example.snapshots?.[0]?.id);
  * ```
  */
 export function getEcsSnapshots(args?: GetEcsSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsSnapshotsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", {
         "category": args.category,
         "dryRun": args.dryRun,
@@ -143,9 +141,28 @@ export interface GetEcsSnapshotsResult {
     readonly type?: string;
     readonly usage?: string;
 }
-
+/**
+ * This data source provides the Ecs Snapshots of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.120.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getEcsSnapshots({
+ *     ids: ["s-bp1fvuxxxxxxxx"],
+ *     nameRegex: "tf-test",
+ * });
+ * export const firstEcsSnapshotId = example.then(example => example.snapshots?.[0]?.id);
+ * ```
+ */
 export function getEcsSnapshotsOutput(args?: GetEcsSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsSnapshotsResult> {
-    return pulumi.output(args).apply(a => getEcsSnapshots(a, opts))
+    return pulumi.output(args).apply((a: any) => getEcsSnapshots(a, opts))
 }
 
 /**

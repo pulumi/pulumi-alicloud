@@ -14,14 +14,14 @@ public final class BucketTransferAccelerationArgs extends com.pulumi.resources.R
     public static final BucketTransferAccelerationArgs Empty = new BucketTransferAccelerationArgs();
 
     /**
-     * Specifies the accelerate status of a bucket.
+     * Specifies lifecycle rule status.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Specifies the accelerate status of a bucket.
+     * @return Specifies lifecycle rule status.
      * 
      */
     public Output<Boolean> enabled() {
@@ -53,7 +53,7 @@ public final class BucketTransferAccelerationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Specifies the accelerate status of a bucket.
+         * @param enabled Specifies lifecycle rule status.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class BucketTransferAccelerationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Specifies the accelerate status of a bucket.
+         * @param enabled Specifies lifecycle rule status.
          * 
          * @return builder
          * 

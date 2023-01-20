@@ -23,61 +23,57 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.SimpleApplicationServer.GetServerSnapshots.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerSnapshotsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.SimpleApplicationServerSnapshotId1 = ids.Apply(ids =&gt; ids.Snapshots?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.SimpleApplicationServer.GetServerSnapshots.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerSnapshotsArgs
-        ///         {
-        ///             NameRegex = "^my-Snapshot",
-        ///         }));
-        ///         this.SimpleApplicationServerSnapshotId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Snapshots?[0]?.Id);
-        ///         var diskIdConf = Output.Create(AliCloud.SimpleApplicationServer.GetServerSnapshots.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerSnapshotsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             DiskId = "example_value",
-        ///         }));
-        ///         this.SimpleApplicationServerSnapshotId3 = diskIdConf.Apply(diskIdConf =&gt; diskIdConf.Snapshots?[0]?.Id);
-        ///         var instanceIdConf = Output.Create(AliCloud.SimpleApplicationServer.GetServerSnapshots.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerSnapshotsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             InstanceId = "example_value",
-        ///         }));
-        ///         this.SimpleApplicationServerSnapshotId4 = instanceIdConf.Apply(instanceIdConf =&gt; instanceIdConf.Snapshots?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("simpleApplicationServerSnapshotId1")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerSnapshotId1 { get; set; }
-        ///     [Output("simpleApplicationServerSnapshotId2")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerSnapshotId2 { get; set; }
-        ///     [Output("simpleApplicationServerSnapshotId3")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerSnapshotId3 { get; set; }
-        ///     [Output("simpleApplicationServerSnapshotId4")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerSnapshotId4 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Snapshot",
+        ///     });
+        /// 
+        ///     var diskIdConf = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         DiskId = "example_value",
+        ///     });
+        /// 
+        ///     var instanceIdConf = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         InstanceId = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerSnapshotId1"] = ids.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["simpleApplicationServerSnapshotId2"] = nameRegex.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["simpleApplicationServerSnapshotId3"] = diskIdConf.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["simpleApplicationServerSnapshotId4"] = instanceIdConf.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerSnapshotsResult> InvokeAsync(GetServerSnapshotsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerSnapshotsResult>("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args ?? new GetServerSnapshotsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerSnapshotsResult>("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args ?? new GetServerSnapshotsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
@@ -91,65 +87,61 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.SimpleApplicationServer.GetServerSnapshots.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerSnapshotsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.SimpleApplicationServerSnapshotId1 = ids.Apply(ids =&gt; ids.Snapshots?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.SimpleApplicationServer.GetServerSnapshots.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerSnapshotsArgs
-        ///         {
-        ///             NameRegex = "^my-Snapshot",
-        ///         }));
-        ///         this.SimpleApplicationServerSnapshotId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Snapshots?[0]?.Id);
-        ///         var diskIdConf = Output.Create(AliCloud.SimpleApplicationServer.GetServerSnapshots.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerSnapshotsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             DiskId = "example_value",
-        ///         }));
-        ///         this.SimpleApplicationServerSnapshotId3 = diskIdConf.Apply(diskIdConf =&gt; diskIdConf.Snapshots?[0]?.Id);
-        ///         var instanceIdConf = Output.Create(AliCloud.SimpleApplicationServer.GetServerSnapshots.InvokeAsync(new AliCloud.SimpleApplicationServer.GetServerSnapshotsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             InstanceId = "example_value",
-        ///         }));
-        ///         this.SimpleApplicationServerSnapshotId4 = instanceIdConf.Apply(instanceIdConf =&gt; instanceIdConf.Snapshots?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("simpleApplicationServerSnapshotId1")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerSnapshotId1 { get; set; }
-        ///     [Output("simpleApplicationServerSnapshotId2")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerSnapshotId2 { get; set; }
-        ///     [Output("simpleApplicationServerSnapshotId3")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerSnapshotId3 { get; set; }
-        ///     [Output("simpleApplicationServerSnapshotId4")]
-        ///     public Output&lt;string&gt; SimpleApplicationServerSnapshotId4 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Snapshot",
+        ///     });
+        /// 
+        ///     var diskIdConf = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         DiskId = "example_value",
+        ///     });
+        /// 
+        ///     var instanceIdConf = AliCloud.SimpleApplicationServer.GetServerSnapshots.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         InstanceId = "example_value",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["simpleApplicationServerSnapshotId1"] = ids.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["simpleApplicationServerSnapshotId2"] = nameRegex.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["simpleApplicationServerSnapshotId3"] = diskIdConf.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
+        ///         ["simpleApplicationServerSnapshotId4"] = instanceIdConf.Apply(getServerSnapshotsResult =&gt; getServerSnapshotsResult.Snapshots[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerSnapshotsResult> Invoke(GetServerSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerSnapshotsResult>("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args ?? new GetServerSnapshotsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerSnapshotsResult>("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args ?? new GetServerSnapshotsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServerSnapshotsArgs : Pulumi.InvokeArgs
+    public sealed class GetServerSnapshotsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the source disk. This parameter has a value even after the source disk is released.
@@ -193,9 +185,10 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public GetServerSnapshotsArgs()
         {
         }
+        public static new GetServerSnapshotsArgs Empty => new GetServerSnapshotsArgs();
     }
 
-    public sealed class GetServerSnapshotsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServerSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the source disk. This parameter has a value even after the source disk is released.
@@ -239,6 +232,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public GetServerSnapshotsInvokeArgs()
         {
         }
+        public static new GetServerSnapshotsInvokeArgs Empty => new GetServerSnapshotsInvokeArgs();
     }
 
 

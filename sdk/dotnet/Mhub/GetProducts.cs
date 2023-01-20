@@ -23,39 +23,38 @@ namespace Pulumi.AliCloud.Mhub
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "example_value";
+        ///     var @default = new AliCloud.Mhub.Product("default", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "example_value";
-        ///         var @default = new AliCloud.Mhub.Product("default", new AliCloud.Mhub.ProductArgs
-        ///         {
-        ///             ProductName = name,
-        ///         });
-        ///         var ids = Output.Create(AliCloud.Mhub.GetProducts.InvokeAsync());
-        ///         this.MhubProductId1 = ids.Apply(ids =&gt; ids.Products?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Mhub.GetProducts.InvokeAsync(new AliCloud.Mhub.GetProductsArgs
-        ///         {
-        ///             NameRegex = "^my-Product",
-        ///         }));
-        ///         this.MhubProductId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Products?[0]?.Id);
-        ///     }
+        ///         ProductName = name,
+        ///     });
         /// 
-        ///     [Output("mhubProductId1")]
-        ///     public Output&lt;string&gt; MhubProductId1 { get; set; }
-        ///     [Output("mhubProductId2")]
-        ///     public Output&lt;string&gt; MhubProductId2 { get; set; }
-        /// }
+        ///     var ids = AliCloud.Mhub.GetProducts.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Mhub.GetProducts.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Product",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mhubProductId1"] = ids.Apply(getProductsResult =&gt; getProductsResult.Products[0]?.Id),
+        ///         ["mhubProductId2"] = nameRegex.Apply(getProductsResult =&gt; getProductsResult.Products[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProductsResult> InvokeAsync(GetProductsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProductsResult>("alicloud:mhub/getProducts:getProducts", args ?? new GetProductsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProductsResult>("alicloud:mhub/getProducts:getProducts", args ?? new GetProductsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mhub Products of the current Alibaba Cloud user.
@@ -69,43 +68,42 @@ namespace Pulumi.AliCloud.Mhub
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "example_value";
+        ///     var @default = new AliCloud.Mhub.Product("default", new()
         ///     {
-        ///         var config = new Config();
-        ///         var name = config.Get("name") ?? "example_value";
-        ///         var @default = new AliCloud.Mhub.Product("default", new AliCloud.Mhub.ProductArgs
-        ///         {
-        ///             ProductName = name,
-        ///         });
-        ///         var ids = Output.Create(AliCloud.Mhub.GetProducts.InvokeAsync());
-        ///         this.MhubProductId1 = ids.Apply(ids =&gt; ids.Products?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Mhub.GetProducts.InvokeAsync(new AliCloud.Mhub.GetProductsArgs
-        ///         {
-        ///             NameRegex = "^my-Product",
-        ///         }));
-        ///         this.MhubProductId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Products?[0]?.Id);
-        ///     }
+        ///         ProductName = name,
+        ///     });
         /// 
-        ///     [Output("mhubProductId1")]
-        ///     public Output&lt;string&gt; MhubProductId1 { get; set; }
-        ///     [Output("mhubProductId2")]
-        ///     public Output&lt;string&gt; MhubProductId2 { get; set; }
-        /// }
+        ///     var ids = AliCloud.Mhub.GetProducts.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Mhub.GetProducts.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Product",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mhubProductId1"] = ids.Apply(getProductsResult =&gt; getProductsResult.Products[0]?.Id),
+        ///         ["mhubProductId2"] = nameRegex.Apply(getProductsResult =&gt; getProductsResult.Products[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProductsResult> Invoke(GetProductsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProductsResult>("alicloud:mhub/getProducts:getProducts", args ?? new GetProductsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProductsResult>("alicloud:mhub/getProducts:getProducts", args ?? new GetProductsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetProductsArgs : Pulumi.InvokeArgs
+    public sealed class GetProductsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -131,9 +129,10 @@ namespace Pulumi.AliCloud.Mhub
         public GetProductsArgs()
         {
         }
+        public static new GetProductsArgs Empty => new GetProductsArgs();
     }
 
-    public sealed class GetProductsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProductsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -159,6 +158,7 @@ namespace Pulumi.AliCloud.Mhub
         public GetProductsInvokeArgs()
         {
         }
+        public static new GetProductsInvokeArgs Empty => new GetProductsInvokeArgs();
     }
 
 

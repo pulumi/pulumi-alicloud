@@ -21,23 +21,21 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.DatabaseFilesystem.Instance("example", new()
     ///     {
-    ///         var example = new AliCloud.DatabaseFilesystem.Instance("example", new AliCloud.DatabaseFilesystem.InstanceArgs
-    ///         {
-    ///             Category = "standard",
-    ///             InstanceName = "example_value",
-    ///             Size = 1,
-    ///             ZoneId = "example_value",
-    ///         });
-    ///     }
+    ///         Category = "standard",
+    ///         InstanceName = "example_value",
+    ///         Size = 1,
+    ///         ZoneId = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:databasefilesystem/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The type of the Database file system. Valid values: `standard`.
@@ -117,6 +115,9 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         [Output("snapshotId")]
         public Output<string?> SnapshotId { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -176,7 +177,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the Database file system. Valid values: `standard`.
@@ -272,9 +273,10 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the Database file system. Valid values: `standard`.
@@ -349,6 +351,9 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 
+        /// <summary>
+        /// The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -373,5 +378,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

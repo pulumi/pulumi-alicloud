@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Cfg
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/deliveryChannel:DeliveryChannel")]
-    public partial class DeliveryChannel : Pulumi.CustomResource
+    public partial class DeliveryChannel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> DeliveryChannelName { get; private set; } = null!;
 
         /// <summary>
-        /// - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
+        /// The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
         /// - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
         /// - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
         /// - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> DeliveryChannelTargetArn { get; private set; } = null!;
 
         /// <summary>
-        /// - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+        /// The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         /// </summary>
         [Output("deliveryChannelType")]
         public Output<string> DeliveryChannelType { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Cfg
         }
     }
 
-    public sealed class DeliveryChannelArgs : Pulumi.ResourceArgs
+    public sealed class DeliveryChannelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? DeliveryChannelName { get; set; }
 
         /// <summary>
-        /// - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
+        /// The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
         /// - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
         /// - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
         /// - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string> DeliveryChannelTargetArn { get; set; } = null!;
 
         /// <summary>
-        /// - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+        /// The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         /// </summary>
         [Input("deliveryChannelType", required: true)]
         public Input<string> DeliveryChannelType { get; set; } = null!;
@@ -160,9 +160,10 @@ namespace Pulumi.AliCloud.Cfg
         public DeliveryChannelArgs()
         {
         }
+        public static new DeliveryChannelArgs Empty => new DeliveryChannelArgs();
     }
 
-    public sealed class DeliveryChannelState : Pulumi.ResourceArgs
+    public sealed class DeliveryChannelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
@@ -183,7 +184,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? DeliveryChannelName { get; set; }
 
         /// <summary>
-        /// - The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
+        /// The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
         /// - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
         /// - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
         /// - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
@@ -192,7 +193,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? DeliveryChannelTargetArn { get; set; }
 
         /// <summary>
-        /// - The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+        /// The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         /// </summary>
         [Input("deliveryChannelType")]
         public Input<string>? DeliveryChannelType { get; set; }
@@ -212,5 +213,6 @@ namespace Pulumi.AliCloud.Cfg
         public DeliveryChannelState()
         {
         }
+        public static new DeliveryChannelState Empty => new DeliveryChannelState();
     }
 }

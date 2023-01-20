@@ -13,18 +13,17 @@ namespace Pulumi.AliCloud.Ram
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new RAM Role.
+    ///     var role = new AliCloud.Ram.Role("role", new()
     ///     {
-    ///         // Create a new RAM Role.
-    ///         var role = new AliCloud.Ram.Role("role", new AliCloud.Ram.RoleArgs
-    ///         {
-    ///             Description = "this is a role test.",
-    ///             Document = @"  {
+    ///         Description = "this is a role test.",
+    ///         Document = @"  {
     ///     ""Statement"": [
     ///       {
     ///         ""Action"": ""sts:AssumeRole"",
@@ -41,11 +40,10 @@ namespace Pulumi.AliCloud.Ram
     ///   }
     ///   
     /// ",
-    ///             Force = true,
-    ///         });
-    ///     }
+    ///         Force = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/role:Role")]
-    public partial class Role : Pulumi.CustomResource
+    public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The role arn.
@@ -163,7 +161,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class RoleArgs : Pulumi.ResourceArgs
+    public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
@@ -230,9 +228,10 @@ namespace Pulumi.AliCloud.Ram
         public RoleArgs()
         {
         }
+        public static new RoleArgs Empty => new RoleArgs();
     }
 
-    public sealed class RoleState : Pulumi.ResourceArgs
+    public sealed class RoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The role arn.
@@ -311,5 +310,6 @@ namespace Pulumi.AliCloud.Ram
         public RoleState()
         {
         }
+        public static new RoleState Empty => new RoleState();
     }
 }

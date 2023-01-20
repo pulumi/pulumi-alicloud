@@ -654,7 +654,7 @@ class GetRealTimeLogDeliveriesDeliveryResult(dict):
         :param str logstore: The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
         :param str project: The name of the Log Service project that is used for real-time log delivery.
         :param str sls_region: The region where the Log Service project is deployed.
-        :param str status: -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+        :param str status: The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "id", id)
@@ -707,7 +707,7 @@ class GetRealTimeLogDeliveriesDeliveryResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+        The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
         """
         return pulumi.get(self, "status")
 

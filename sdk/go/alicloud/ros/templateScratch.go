@@ -48,7 +48,7 @@ import (
 //					},
 //				},
 //				SourceResourceGroup: &ros.TemplateScratchSourceResourceGroupArgs{
-//					ResourceGroupId: pulumi.String(_default.Ids[0]),
+//					ResourceGroupId: *pulumi.String(_default.Ids[0]),
 //					ResourceTypeFilters: pulumi.StringArray{
 //						pulumi.String("ALIYUN::ECS::VPC"),
 //					},

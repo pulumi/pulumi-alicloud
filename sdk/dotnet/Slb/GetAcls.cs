@@ -19,20 +19,19 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetAcls.InvokeAsync());
-        ///         this.FirstSlbAclId = sampleDs.Apply(sampleDs =&gt; sampleDs.Acls?[0]?.Id);
-        ///     }
+        ///     var sampleDs = AliCloud.Slb.GetAcls.Invoke();
         /// 
-        ///     [Output("firstSlbAclId")]
-        ///     public Output&lt;string&gt; FirstSlbAclId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbAclId"] = sampleDs.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -53,7 +52,7 @@ namespace Pulumi.AliCloud.Slb
         /// * `acl_type`      - the type of acl (such as white/black).
         /// </summary>
         public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the acls in the region.
@@ -63,20 +62,19 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetAcls.InvokeAsync());
-        ///         this.FirstSlbAclId = sampleDs.Apply(sampleDs =&gt; sampleDs.Acls?[0]?.Id);
-        ///     }
+        ///     var sampleDs = AliCloud.Slb.GetAcls.Invoke();
         /// 
-        ///     [Output("firstSlbAclId")]
-        ///     public Output&lt;string&gt; FirstSlbAclId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbAclId"] = sampleDs.Apply(getAclsResult =&gt; getAclsResult.Acls[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -97,11 +95,11 @@ namespace Pulumi.AliCloud.Slb
         /// * `acl_type`      - the type of acl (such as white/black).
         /// </summary>
         public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAclsArgs : Pulumi.InvokeArgs
+    public sealed class GetAclsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -145,9 +143,10 @@ namespace Pulumi.AliCloud.Slb
         public GetAclsArgs()
         {
         }
+        public static new GetAclsArgs Empty => new GetAclsArgs();
     }
 
-    public sealed class GetAclsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAclsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -191,6 +190,7 @@ namespace Pulumi.AliCloud.Slb
         public GetAclsInvokeArgs()
         {
         }
+        public static new GetAclsInvokeArgs Empty => new GetAclsInvokeArgs();
     }
 
 

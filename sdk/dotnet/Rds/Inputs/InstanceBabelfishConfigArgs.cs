@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds.Inputs
 {
 
-    public sealed class InstanceBabelfishConfigArgs : Pulumi.ResourceArgs
+    public sealed class InstanceBabelfishConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Rds.Inputs
         public InstanceBabelfishConfigArgs()
         {
         }
+        public static new InstanceBabelfishConfigArgs Empty => new InstanceBabelfishConfigArgs();
     }
 }

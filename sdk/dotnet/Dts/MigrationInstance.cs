@@ -21,26 +21,24 @@ namespace Pulumi.AliCloud.Dts
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Dts.MigrationInstance("default", new()
     ///     {
-    ///         var @default = new AliCloud.Dts.MigrationInstance("default", new AliCloud.Dts.MigrationInstanceArgs
-    ///         {
-    ///             DestinationEndpointEngineName = "MySQL",
-    ///             DestinationEndpointRegion = "cn-hangzhou",
-    ///             InstanceClass = "small",
-    ///             PaymentType = "PayAsYouGo",
-    ///             SourceEndpointEngineName = "MySQL",
-    ///             SourceEndpointRegion = "cn-hangzhou",
-    ///             SyncArchitecture = "oneway",
-    ///         });
-    ///     }
+    ///         DestinationEndpointEngineName = "MySQL",
+    ///         DestinationEndpointRegion = "cn-hangzhou",
+    ///         InstanceClass = "small",
+    ///         PaymentType = "PayAsYouGo",
+    ///         SourceEndpointEngineName = "MySQL",
+    ///         SourceEndpointRegion = "cn-hangzhou",
+    ///         SyncArchitecture = "oneway",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +50,7 @@ namespace Pulumi.AliCloud.Dts
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dts/migrationInstance:MigrationInstance")]
-    public partial class MigrationInstance : Pulumi.CustomResource
+    public partial class MigrationInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
@@ -170,7 +168,7 @@ namespace Pulumi.AliCloud.Dts
         }
     }
 
-    public sealed class MigrationInstanceArgs : Pulumi.ResourceArgs
+    public sealed class MigrationInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
@@ -241,9 +239,10 @@ namespace Pulumi.AliCloud.Dts
         public MigrationInstanceArgs()
         {
         }
+        public static new MigrationInstanceArgs Empty => new MigrationInstanceArgs();
     }
 
-    public sealed class MigrationInstanceState : Pulumi.ResourceArgs
+    public sealed class MigrationInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
@@ -326,5 +325,6 @@ namespace Pulumi.AliCloud.Dts
         public MigrationInstanceState()
         {
         }
+        public static new MigrationInstanceState Empty => new MigrationInstanceState();
     }
 }

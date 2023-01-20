@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb.Inputs
 {
 
-    public sealed class MasterSlaveServerGroupServerArgs : Pulumi.ResourceArgs
+    public sealed class MasterSlaveServerGroupServerArgs : global::Pulumi.ResourceArgs
     {
         [Input("isBackup")]
         public Input<int>? IsBackup { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Slb.Inputs
         public MasterSlaveServerGroupServerArgs()
         {
         }
+        public static new MasterSlaveServerGroupServerArgs Empty => new MasterSlaveServerGroupServerArgs();
     }
 }

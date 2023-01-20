@@ -109,8 +109,7 @@ def get_plaintext(ciphertext_blob: Optional[str] = None,
 
 
     :param str ciphertext_blob: The ciphertext to be decrypted.
-    :param Mapping[str, str] encryption_context: -
-           (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+    :param Mapping[str, str] encryption_context: (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
     """
     __args__ = dict()
     __args__['ciphertextBlob'] = ciphertext_blob
@@ -150,7 +149,6 @@ def get_plaintext_output(ciphertext_blob: Optional[pulumi.Input[str]] = None,
 
 
     :param str ciphertext_blob: The ciphertext to be decrypted.
-    :param Mapping[str, str] encryption_context: -
-           (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+    :param Mapping[str, str] encryption_context: (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
     """
     ...

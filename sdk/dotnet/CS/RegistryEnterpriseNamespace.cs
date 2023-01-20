@@ -23,22 +23,20 @@ namespace Pulumi.AliCloud.CS
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var my_namespace = new AliCloud.CS.RegistryEnterpriseNamespace("my-namespace", new()
     ///     {
-    ///         var my_namespace = new AliCloud.CS.RegistryEnterpriseNamespace("my-namespace", new AliCloud.CS.RegistryEnterpriseNamespaceArgs
-    ///         {
-    ///             AutoCreate = false,
-    ///             DefaultVisibility = "PUBLIC",
-    ///             InstanceId = "cri-xxx",
-    ///         });
-    ///     }
+    ///         AutoCreate = false,
+    ///         DefaultVisibility = "PUBLIC",
+    ///         InstanceId = "cri-xxx",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.AliCloud.CS
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace")]
-    public partial class RegistryEnterpriseNamespace : Pulumi.CustomResource
+    public partial class RegistryEnterpriseNamespace : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
@@ -120,7 +118,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class RegistryEnterpriseNamespaceArgs : Pulumi.ResourceArgs
+    public sealed class RegistryEnterpriseNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
@@ -149,9 +147,10 @@ namespace Pulumi.AliCloud.CS
         public RegistryEnterpriseNamespaceArgs()
         {
         }
+        public static new RegistryEnterpriseNamespaceArgs Empty => new RegistryEnterpriseNamespaceArgs();
     }
 
-    public sealed class RegistryEnterpriseNamespaceState : Pulumi.ResourceArgs
+    public sealed class RegistryEnterpriseNamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
@@ -180,5 +179,6 @@ namespace Pulumi.AliCloud.CS
         public RegistryEnterpriseNamespaceState()
         {
         }
+        public static new RegistryEnterpriseNamespaceState Empty => new RegistryEnterpriseNamespaceState();
     }
 }

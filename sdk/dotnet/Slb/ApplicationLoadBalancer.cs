@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Slb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/applicationLoadBalancer:ApplicationLoadBalancer")]
-    public partial class ApplicationLoadBalancer : Pulumi.CustomResource
+    public partial class ApplicationLoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> AddressType { get; private set; } = null!;
 
         /// <summary>
-        /// Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        /// Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         /// </summary>
         [Output("bandwidth")]
         public Output<int?> Bandwidth { get; private set; } = null!;
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string?> DeleteProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
+        /// Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
@@ -70,8 +70,8 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-        /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         /// </summary>
         [Output("loadBalancerSpec")]
         public Output<string> LoadBalancerSpec { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of resource group which the SLB belongs.
+        /// The id of resource group which the SLB belongs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
-    public sealed class ApplicationLoadBalancerArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationLoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? AddressType { get; set; }
 
         /// <summary>
-        /// Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        /// Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? DeleteProtection { get; set; }
 
         /// <summary>
-        /// Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
+        /// Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -240,8 +240,8 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-        /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
@@ -280,7 +280,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the SLB belongs.
+        /// The id of resource group which the SLB belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -316,7 +316,7 @@ namespace Pulumi.AliCloud.Slb
         }
 
         /// <summary>
-        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -324,9 +324,10 @@ namespace Pulumi.AliCloud.Slb
         public ApplicationLoadBalancerArgs()
         {
         }
+        public static new ApplicationLoadBalancerArgs Empty => new ApplicationLoadBalancerArgs();
     }
 
-    public sealed class ApplicationLoadBalancerState : Pulumi.ResourceArgs
+    public sealed class ApplicationLoadBalancerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the corresponding switch.
@@ -349,7 +350,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? AddressType { get; set; }
 
         /// <summary>
-        /// Valid value is between 1 and 1000, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignore.
+        /// Valid value is between 1 and 5120, If argument `internet_charge_type` is `PayByTraffic`, then this value will be ignored.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -361,7 +362,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? DeleteProtection { get; set; }
 
         /// <summary>
-        /// Field `instance_charge_type` has been deprecated from provider version 1.124.0 New field `payment_type` instead.
+        /// Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -377,8 +378,8 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-        /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
@@ -417,7 +418,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the SLB belongs.
+        /// The id of resource group which the SLB belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -453,7 +454,7 @@ namespace Pulumi.AliCloud.Slb
         }
 
         /// <summary>
-        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignore.
+        /// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -461,5 +462,6 @@ namespace Pulumi.AliCloud.Slb
         public ApplicationLoadBalancerState()
         {
         }
+        public static new ApplicationLoadBalancerState Empty => new ApplicationLoadBalancerState();
     }
 }

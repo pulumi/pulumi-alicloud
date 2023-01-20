@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const ids = alicloud.eds.getCustomProperties({
  *     ids: ["example_id"],
  * });
- * export const ecdCustomPropertyId1 = ids.then(ids => ids.properties?[0]?.id);
+ * export const ecdCustomPropertyId1 = ids.then(ids => ids.properties?.[0]?.id);
  * ```
  */
 export function getCustomProperties(args?: GetCustomPropertiesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomPropertiesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getCustomProperties:getCustomProperties", {
         "ids": args.ids,
         "outputFile": args.outputFile,
@@ -60,9 +58,27 @@ export interface GetCustomPropertiesResult {
     readonly outputFile?: string;
     readonly properties: outputs.eds.GetCustomPropertiesProperty[];
 }
-
+/**
+ * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.176.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.eds.getCustomProperties({
+ *     ids: ["example_id"],
+ * });
+ * export const ecdCustomPropertyId1 = ids.then(ids => ids.properties?.[0]?.id);
+ * ```
+ */
 export function getCustomPropertiesOutput(args?: GetCustomPropertiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomPropertiesResult> {
-    return pulumi.output(args).apply(a => getCustomProperties(a, opts))
+    return pulumi.output(args).apply((a: any) => getCustomProperties(a, opts))
 }
 
 /**

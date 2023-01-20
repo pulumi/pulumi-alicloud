@@ -16,14 +16,14 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
     public static final ApiConstantParameterArgs Empty = new ApiConstantParameterArgs();
 
     /**
-     * The description of Constant parameter.
+     * The description of the api. Defaults to null.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of Constant parameter.
+     * @return The description of the api. Defaults to null.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +31,14 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
+     * Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
      */
     @Import(name="in", required=true)
     private Output<String> in;
 
     /**
-     * @return System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
+     * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
      */
     public Output<String> in() {
@@ -46,14 +46,14 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * The name of the api gateway api. Defaults to null.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * @return The name of the api gateway api. Defaults to null.
      * 
      */
     public Output<String> name() {
@@ -103,7 +103,7 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description The description of Constant parameter.
+         * @param description The description of the api. Defaults to null.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description The description of Constant parameter.
+         * @param description The description of the api. Defaults to null.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param in System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
+         * @param in Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param in System parameter location; values: &#39;HEAD&#39; and &#39;QUERY&#39;.
+         * @param in Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+         * @param name The name of the api gateway api. Defaults to null.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ApiConstantParameterArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+         * @param name The name of the api gateway api. Defaults to null.
          * 
          * @return builder
          * 

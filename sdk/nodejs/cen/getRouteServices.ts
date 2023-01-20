@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,15 +22,12 @@ import * as utilities from "../utilities";
  * const example = alicloud.cen.getRouteServices({
  *     cenId: "cen-7qthudw0ll6jmc****",
  * });
- * export const firstCenRouteServiceId = example.then(example => example.services?[0]?.id);
+ * export const firstCenRouteServiceId = example.then(example => example.services?.[0]?.id);
  * ```
  */
 export function getRouteServices(args: GetRouteServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteServicesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getRouteServices:getRouteServices", {
         "accessRegionId": args.accessRegionId,
         "cenId": args.cenId,
@@ -50,11 +48,11 @@ export interface GetRouteServicesArgs {
      */
     accessRegionId?: string;
     /**
-     * -(Required, ForceNew) The ID of the CEN instance.
+     * The ID of the CEN instance.
      */
     cenId: string;
     /**
-     * -(Optional, ForceNew) The domain name or IP address of the cloud service.
+     * The domain name or IP address of the cloud service.
      */
     host?: string;
     /**
@@ -114,9 +112,27 @@ export interface GetRouteServicesResult {
      */
     readonly status?: string;
 }
-
+/**
+ * This data source provides CEN Route Service available to the user.
+ *
+ * > **NOTE:** Available in v1.102.0+
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cen.getRouteServices({
+ *     cenId: "cen-7qthudw0ll6jmc****",
+ * });
+ * export const firstCenRouteServiceId = example.then(example => example.services?.[0]?.id);
+ * ```
+ */
 export function getRouteServicesOutput(args: GetRouteServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteServicesResult> {
-    return pulumi.output(args).apply(a => getRouteServices(a, opts))
+    return pulumi.output(args).apply((a: any) => getRouteServices(a, opts))
 }
 
 /**
@@ -128,11 +144,11 @@ export interface GetRouteServicesOutputArgs {
      */
     accessRegionId?: pulumi.Input<string>;
     /**
-     * -(Required, ForceNew) The ID of the CEN instance.
+     * The ID of the CEN instance.
      */
     cenId: pulumi.Input<string>;
     /**
-     * -(Optional, ForceNew) The domain name or IP address of the cloud service.
+     * The domain name or IP address of the cloud service.
      */
     host?: pulumi.Input<string>;
     /**

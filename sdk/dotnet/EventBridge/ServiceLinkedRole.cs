@@ -19,20 +19,18 @@ namespace Pulumi.AliCloud.EventBridge
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var serviceLinkedRole = new AliCloud.EventBridge.ServiceLinkedRole("serviceLinkedRole", new()
     ///     {
-    ///         var serviceLinkedRole = new AliCloud.EventBridge.ServiceLinkedRole("serviceLinkedRole", new AliCloud.EventBridge.ServiceLinkedRoleArgs
-    ///         {
-    ///             ProductName = "AliyunServiceRoleForEventBridgeSendToMNS",
-    ///         });
-    ///     }
+    ///         ProductName = "AliyunServiceRoleForEventBridgeSendToMNS",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.AliCloud.EventBridge
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eventbridge/serviceLinkedRole:ServiceLinkedRole")]
-    public partial class ServiceLinkedRole : Pulumi.CustomResource
+    public partial class ServiceLinkedRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The product name for SLR. EventBridge can automatically create the following service-linked roles:
@@ -98,7 +96,7 @@ namespace Pulumi.AliCloud.EventBridge
         }
     }
 
-    public sealed class ServiceLinkedRoleArgs : Pulumi.ResourceArgs
+    public sealed class ServiceLinkedRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The product name for SLR. EventBridge can automatically create the following service-linked roles:
@@ -111,9 +109,10 @@ namespace Pulumi.AliCloud.EventBridge
         public ServiceLinkedRoleArgs()
         {
         }
+        public static new ServiceLinkedRoleArgs Empty => new ServiceLinkedRoleArgs();
     }
 
-    public sealed class ServiceLinkedRoleState : Pulumi.ResourceArgs
+    public sealed class ServiceLinkedRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The product name for SLR. EventBridge can automatically create the following service-linked roles:
@@ -126,5 +125,6 @@ namespace Pulumi.AliCloud.EventBridge
         public ServiceLinkedRoleState()
         {
         }
+        public static new ServiceLinkedRoleState Empty => new ServiceLinkedRoleState();
     }
 }

@@ -2,11 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the Elastic Desktop Service(EDS) Users of the current Alibaba Cloud user.
+ * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.142.0+.
  *
@@ -25,16 +26,13 @@ import * as utilities from "../utilities";
  *     password: "your_password",
  * });
  * const ids = alicloud.eds.getUsers({});
- * export const ecdUserId1 = ids.then(ids => ids.users?[0]?.id);
+ * export const ecdUserId1 = ids.then(ids => ids.users?.[0]?.id);
  * ```
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eds/getUsers:getUsers", {
         "ids": args.ids,
         "outputFile": args.outputFile,
@@ -70,9 +68,31 @@ export interface GetUsersResult {
     readonly status?: string;
     readonly users: outputs.eds.GetUsersUser[];
 }
-
+/**
+ * This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.142.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.eds.User("default", {
+ *     endUserId: "example_value",
+ *     email: "your_email",
+ *     phone: "your_phone",
+ *     password: "your_password",
+ * });
+ * const ids = alicloud.eds.getUsers({});
+ * export const ecdUserId1 = ids.then(ids => ids.users?.[0]?.id);
+ * ```
+ */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
-    return pulumi.output(args).apply(a => getUsers(a, opts))
+    return pulumi.output(args).apply((a: any) => getUsers(a, opts))
 }
 
 /**

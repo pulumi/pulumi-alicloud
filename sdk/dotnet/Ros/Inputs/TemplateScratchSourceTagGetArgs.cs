@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ros.Inputs
 {
 
-    public sealed class TemplateScratchSourceTagGetArgs : Pulumi.ResourceArgs
+    public sealed class TemplateScratchSourceTagGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("resourceTags", required: true)]
         private InputMap<object>? _resourceTags;
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Ros.Inputs
         public TemplateScratchSourceTagGetArgs()
         {
         }
+        public static new TemplateScratchSourceTagGetArgs Empty => new TemplateScratchSourceTagGetArgs();
     }
 }

@@ -27,11 +27,13 @@ public final class GetPoliciesPolicy {
     private String description;
     /**
      * @return The ID of the policy.
-     * * `policy_name`- The name of the policy.
-     * * `policy_type`- The type of the policy.
      * 
      */
     private String id;
+    /**
+     * @return The name of the policy.
+     * 
+     */
     private String policyName;
     /**
      * @return The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
@@ -68,13 +70,15 @@ public final class GetPoliciesPolicy {
     }
     /**
      * @return The ID of the policy.
-     * * `policy_name`- The name of the policy.
-     * * `policy_type`- The type of the policy.
      * 
      */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the policy.
+     * 
+     */
     public String policyName() {
         return this.policyName;
     }

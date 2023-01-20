@@ -138,9 +138,6 @@ public final class SmartagFlowLogState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The location where the flow log is stored. Valid values:
-     * - `sls`: The flow log is stored in Log Service.
-     * - `netflow`: The flow log is stored on a NetFlow collector.
-     * - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
      * 
      */
     @Import(name="outputType")
@@ -148,9 +145,6 @@ public final class SmartagFlowLogState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The location where the flow log is stored. Valid values:
-     * - `sls`: The flow log is stored in Log Service.
-     * - `netflow`: The flow log is stored on a NetFlow collector.
-     * - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
      * 
      */
     public Optional<Output<String>> outputType() {
@@ -407,9 +401,6 @@ public final class SmartagFlowLogState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param outputType The location where the flow log is stored. Valid values:
-         * - `sls`: The flow log is stored in Log Service.
-         * - `netflow`: The flow log is stored on a NetFlow collector.
-         * - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
          * 
          * @return builder
          * 
@@ -421,9 +412,6 @@ public final class SmartagFlowLogState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param outputType The location where the flow log is stored. Valid values:
-         * - `sls`: The flow log is stored in Log Service.
-         * - `netflow`: The flow log is stored on a NetFlow collector.
-         * - `all`: The flow log is stored both in Log Service and on a NetFlow collector.
          * 
          * @return builder
          * 

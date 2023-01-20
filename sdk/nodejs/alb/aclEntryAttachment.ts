@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultAcl = new alicloud.alb.Acl("defaultAcl", {
  *     aclName: name,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  * });
  * const defaultAclEntryAttachment = new alicloud.alb.AclEntryAttachment("defaultAclEntryAttachment", {
  *     aclId: defaultAcl.id,

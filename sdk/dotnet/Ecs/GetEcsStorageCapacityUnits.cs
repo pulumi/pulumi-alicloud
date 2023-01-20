@@ -23,33 +23,31 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsStorageCapacityUnits.InvokeAsync());
-        ///         this.EcsStorageCapacityUnitId1 = ids.Apply(ids =&gt; ids.Units?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Ecs.GetEcsStorageCapacityUnits.InvokeAsync(new AliCloud.Ecs.GetEcsStorageCapacityUnitsArgs
-        ///         {
-        ///             NameRegex = "^my-StorageCapacityUnit",
-        ///         }));
-        ///         this.EcsStorageCapacityUnitId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Units?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Ecs.GetEcsStorageCapacityUnits.Invoke();
         /// 
-        ///     [Output("ecsStorageCapacityUnitId1")]
-        ///     public Output&lt;string&gt; EcsStorageCapacityUnitId1 { get; set; }
-        ///     [Output("ecsStorageCapacityUnitId2")]
-        ///     public Output&lt;string&gt; EcsStorageCapacityUnitId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Ecs.GetEcsStorageCapacityUnits.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-StorageCapacityUnit",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsStorageCapacityUnitId1"] = ids.Apply(getEcsStorageCapacityUnitsResult =&gt; getEcsStorageCapacityUnitsResult.Units[0]?.Id),
+        ///         ["ecsStorageCapacityUnitId2"] = nameRegex.Apply(getEcsStorageCapacityUnitsResult =&gt; getEcsStorageCapacityUnitsResult.Units[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsStorageCapacityUnitsResult> InvokeAsync(GetEcsStorageCapacityUnitsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsStorageCapacityUnitsResult>("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", args ?? new GetEcsStorageCapacityUnitsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsStorageCapacityUnitsResult>("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", args ?? new GetEcsStorageCapacityUnitsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
@@ -63,37 +61,35 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsStorageCapacityUnits.InvokeAsync());
-        ///         this.EcsStorageCapacityUnitId1 = ids.Apply(ids =&gt; ids.Units?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Ecs.GetEcsStorageCapacityUnits.InvokeAsync(new AliCloud.Ecs.GetEcsStorageCapacityUnitsArgs
-        ///         {
-        ///             NameRegex = "^my-StorageCapacityUnit",
-        ///         }));
-        ///         this.EcsStorageCapacityUnitId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Units?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Ecs.GetEcsStorageCapacityUnits.Invoke();
         /// 
-        ///     [Output("ecsStorageCapacityUnitId1")]
-        ///     public Output&lt;string&gt; EcsStorageCapacityUnitId1 { get; set; }
-        ///     [Output("ecsStorageCapacityUnitId2")]
-        ///     public Output&lt;string&gt; EcsStorageCapacityUnitId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Ecs.GetEcsStorageCapacityUnits.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-StorageCapacityUnit",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsStorageCapacityUnitId1"] = ids.Apply(getEcsStorageCapacityUnitsResult =&gt; getEcsStorageCapacityUnitsResult.Units[0]?.Id),
+        ///         ["ecsStorageCapacityUnitId2"] = nameRegex.Apply(getEcsStorageCapacityUnitsResult =&gt; getEcsStorageCapacityUnitsResult.Units[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsStorageCapacityUnitsResult> Invoke(GetEcsStorageCapacityUnitsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsStorageCapacityUnitsResult>("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", args ?? new GetEcsStorageCapacityUnitsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsStorageCapacityUnitsResult>("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", args ?? new GetEcsStorageCapacityUnitsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsStorageCapacityUnitsArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsStorageCapacityUnitsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -125,9 +121,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsStorageCapacityUnitsArgs()
         {
         }
+        public static new GetEcsStorageCapacityUnitsArgs Empty => new GetEcsStorageCapacityUnitsArgs();
     }
 
-    public sealed class GetEcsStorageCapacityUnitsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsStorageCapacityUnitsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -159,6 +156,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsStorageCapacityUnitsInvokeArgs()
         {
         }
+        public static new GetEcsStorageCapacityUnitsInvokeArgs Empty => new GetEcsStorageCapacityUnitsInvokeArgs();
     }
 
 

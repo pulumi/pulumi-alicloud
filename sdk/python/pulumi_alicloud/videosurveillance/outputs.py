@@ -46,7 +46,7 @@ class GetSystemGroupsGroupResult(dict):
         :param str id: The ID of the Group.
         :param str in_protocol: The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
         :param str out_protocol: The use of space play Protocol multi-valued separate them with commas (,). Valid values: `flv`,`hls`, `rtmp`(Real Time Messaging Protocol).
-        :param str play_domain: -The domain name of plan streaming used by the group.
+        :param str play_domain: The domain name of plan streaming used by the group.
         :param str push_domain: The domain name of push streaming used by the group.
         :param Sequence['GetSystemGroupsGroupStatArgs'] stats: The Device statistics of Group.
         """
@@ -166,7 +166,7 @@ class GetSystemGroupsGroupResult(dict):
     @pulumi.getter(name="playDomain")
     def play_domain(self) -> str:
         """
-        -The domain name of plan streaming used by the group.
+        The domain name of plan streaming used by the group.
         """
         return pulumi.get(self, "play_domain")
 

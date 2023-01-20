@@ -19,9 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultServiceLinkedRole = new alicloud.resourcemanager.ServiceLinkedRole("default", {
- *     serviceName: "ops.elasticsearch.aliyuncs.com",
- * });
+ * const _default = new alicloud.resourcemanager.ServiceLinkedRole("default", {serviceName: "ops.elasticsearch.aliyuncs.com"});
  * ```
  *
  * ## Import

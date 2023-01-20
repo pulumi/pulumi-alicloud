@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ResourceManager.GetFolders.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetFolders.InvokeAsync(new AliCloud.ResourceManager.GetFoldersArgs
-        ///         {
-        ///             NameRegex = "tftest",
-        ///         }));
-        ///         this.FirstFolderId = example.Apply(example =&gt; example.Folders?[0]?.Id);
-        ///     }
+        ///         NameRegex = "tftest",
+        ///     });
         /// 
-        ///     [Output("firstFolderId")]
-        ///     public Output&lt;string&gt; FirstFolderId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFolderId"] = example.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFoldersResult> InvokeAsync(GetFoldersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("alicloud:resourcemanager/getFolders:getFolders", args ?? new GetFoldersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("alicloud:resourcemanager/getFolders:getFolders", args ?? new GetFoldersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the resource manager folders of the current Alibaba Cloud user.
@@ -59,36 +58,35 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ResourceManager.GetFolders.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetFolders.InvokeAsync(new AliCloud.ResourceManager.GetFoldersArgs
-        ///         {
-        ///             NameRegex = "tftest",
-        ///         }));
-        ///         this.FirstFolderId = example.Apply(example =&gt; example.Folders?[0]?.Id);
-        ///     }
+        ///         NameRegex = "tftest",
+        ///     });
         /// 
-        ///     [Output("firstFolderId")]
-        ///     public Output&lt;string&gt; FirstFolderId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstFolderId"] = example.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("alicloud:resourcemanager/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("alicloud:resourcemanager/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetFoldersArgs : Pulumi.InvokeArgs
+    public sealed class GetFoldersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// Default to `false`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -129,12 +127,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetFoldersArgs()
         {
         }
+        public static new GetFoldersArgs Empty => new GetFoldersArgs();
     }
 
-    public sealed class GetFoldersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFoldersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// Default to `false`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -175,6 +174,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetFoldersInvokeArgs()
         {
         }
+        public static new GetFoldersInvokeArgs Empty => new GetFoldersInvokeArgs();
     }
 
 
@@ -200,6 +200,9 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// (Available in v1.114.0+)The ID of the parent folder.
+        /// </summary>
         public readonly string? ParentFolderId;
         public readonly string? QueryKeyword;
 

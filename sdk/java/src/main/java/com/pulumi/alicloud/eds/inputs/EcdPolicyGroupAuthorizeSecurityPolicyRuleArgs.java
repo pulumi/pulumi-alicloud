@@ -16,14 +16,14 @@ public final class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs extends com.pul
     public static final EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs Empty = new EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs();
 
     /**
-     * The cidrip of authorize access rule.
+     * The cidrip of security rules.
      * 
      */
     @Import(name="cidrIp")
     private @Nullable Output<String> cidrIp;
 
     /**
-     * @return The cidrip of authorize access rule.
+     * @return The cidrip of security rules.
      * 
      */
     public Optional<Output<String>> cidrIp() {
@@ -31,14 +31,14 @@ public final class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs extends com.pul
     }
 
     /**
-     * The description of authorize access rule.
+     * The description of security rules.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of authorize access rule.
+     * @return The description of security rules.
      * 
      */
     public Optional<Output<String>> description() {
@@ -151,7 +151,7 @@ public final class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs extends com.pul
         }
 
         /**
-         * @param cidrIp The cidrip of authorize access rule.
+         * @param cidrIp The cidrip of security rules.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs extends com.pul
         }
 
         /**
-         * @param cidrIp The cidrip of authorize access rule.
+         * @param cidrIp The cidrip of security rules.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs extends com.pul
         }
 
         /**
-         * @param description The description of authorize access rule.
+         * @param description The description of security rules.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs extends com.pul
         }
 
         /**
-         * @param description The description of authorize access rule.
+         * @param description The description of security rules.
          * 
          * @return builder
          * 

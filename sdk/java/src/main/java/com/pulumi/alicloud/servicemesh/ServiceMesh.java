@@ -43,14 +43,14 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="clusterIds", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> clusterIds;
+    private Output<List<String>> clusterIds;
 
     /**
      * @return The array of the cluster ids.
      * 
      */
-    public Output<Optional<List<String>>> clusterIds() {
-        return Codegen.optional(this.clusterIds);
+    public Output<List<String>> clusterIds() {
+        return this.clusterIds;
     }
     /**
      * The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`.
@@ -155,14 +155,14 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="serviceMeshName", type=String.class, parameters={})
-    private Output</* @Nullable */ String> serviceMeshName;
+    private Output<String> serviceMeshName;
 
     /**
      * @return The name of the resource.
      * 
      */
-    public Output<Optional<String>> serviceMeshName() {
-        return Codegen.optional(this.serviceMeshName);
+    public Output<String> serviceMeshName() {
+        return this.serviceMeshName;
     }
     /**
      * The status of the resource. Valid values: `running` or `initial`.

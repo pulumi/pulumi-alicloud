@@ -15,14 +15,14 @@ public final class GetInstanceTypeFamiliesPlainArgs extends com.pulumi.resources
     public static final GetInstanceTypeFamiliesPlainArgs Empty = new GetInstanceTypeFamiliesPlainArgs();
 
     /**
-     * The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+     * The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
      * 
      */
     @Import(name="generation")
     private @Nullable String generation;
 
     /**
-     * @return The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+     * @return The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
      * 
      */
     public Optional<String> generation() {
@@ -110,7 +110,7 @@ public final class GetInstanceTypeFamiliesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param generation The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
+         * @param generation The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
          * 
          * @return builder
          * 

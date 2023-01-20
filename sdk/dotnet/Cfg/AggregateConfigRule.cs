@@ -21,47 +21,46 @@ namespace Pulumi.AliCloud.Cfg
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleAggregator = new AliCloud.Cfg.Aggregator("exampleAggregator", new()
     ///     {
-    ///         var exampleAggregator = new AliCloud.Cfg.Aggregator("exampleAggregator", new AliCloud.Cfg.AggregatorArgs
+    ///         AggregatorAccounts = new[]
     ///         {
-    ///             AggregatorAccounts = 
+    ///             new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
     ///             {
-    ///                 new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
-    ///                 {
-    ///                     AccountId = "140278452670****",
-    ///                     AccountName = "test-2",
-    ///                     AccountType = "ResourceDirectory",
-    ///                 },
+    ///                 AccountId = "140278452670****",
+    ///                 AccountName = "test-2",
+    ///                 AccountType = "ResourceDirectory",
     ///             },
-    ///             AggregatorName = "tf-testaccaggregator",
-    ///             Description = "tf-testaccaggregator",
-    ///         });
-    ///         var exampleAggregateConfigRule = new AliCloud.Cfg.AggregateConfigRule("exampleAggregateConfigRule", new AliCloud.Cfg.AggregateConfigRuleArgs
-    ///         {
-    ///             AggregateConfigRuleName = "tf-testaccconfig1234",
-    ///             AggregatorId = exampleAggregator.Id,
-    ///             ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
-    ///             SourceOwner = "ALIYUN",
-    ///             SourceIdentifier = "ecs-cpu-min-count-limit",
-    ///             RiskLevel = 1,
-    ///             ResourceTypesScopes = 
-    ///             {
-    ///                 "ACS::ECS::Instance",
-    ///             },
-    ///             InputParameters = 
-    ///             {
-    ///                 { "cpuCount", "4" },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         AggregatorName = "tf-testaccaggregator",
+    ///         Description = "tf-testaccaggregator",
+    ///     });
     /// 
-    /// }
+    ///     var exampleAggregateConfigRule = new AliCloud.Cfg.AggregateConfigRule("exampleAggregateConfigRule", new()
+    ///     {
+    ///         AggregateConfigRuleName = "tf-testaccconfig1234",
+    ///         AggregatorId = exampleAggregator.Id,
+    ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
+    ///         SourceOwner = "ALIYUN",
+    ///         SourceIdentifier = "ecs-cpu-min-count-limit",
+    ///         RiskLevel = 1,
+    ///         ResourceTypesScopes = new[]
+    ///         {
+    ///             "ACS::ECS::Instance",
+    ///         },
+    ///         InputParameters = 
+    ///         {
+    ///             { "cpuCount", "4" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,11 +68,11 @@ namespace Pulumi.AliCloud.Cfg
     /// Cloud Config Aggregate Config Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example &lt;aggregator_id&gt;:&lt;config_rule_id&gt;
+    ///  $ pulumi import alicloud:cfg/aggregateConfigRule:AggregateConfigRule example "&lt;aggregator_id&gt;:&lt;config_rule_id&gt;"
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/aggregateConfigRule:AggregateConfigRule")]
-    public partial class AggregateConfigRule : Pulumi.CustomResource
+    public partial class AggregateConfigRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the rule.
@@ -221,7 +220,7 @@ namespace Pulumi.AliCloud.Cfg
         }
     }
 
-    public sealed class AggregateConfigRuleArgs : Pulumi.ResourceArgs
+    public sealed class AggregateConfigRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the rule.
@@ -334,9 +333,10 @@ namespace Pulumi.AliCloud.Cfg
         public AggregateConfigRuleArgs()
         {
         }
+        public static new AggregateConfigRuleArgs Empty => new AggregateConfigRuleArgs();
     }
 
-    public sealed class AggregateConfigRuleState : Pulumi.ResourceArgs
+    public sealed class AggregateConfigRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the rule.
@@ -455,5 +455,6 @@ namespace Pulumi.AliCloud.Cfg
         public AggregateConfigRuleState()
         {
         }
+        public static new AggregateConfigRuleState Empty => new AggregateConfigRuleState();
     }
 }

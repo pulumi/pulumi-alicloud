@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -17,25 +18,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultMainVersions = pulumi.output(alicloud.emr.getMainVersions({
+ * const default = alicloud.emr.getMainVersions({
  *     clusterTypes: [
  *         "HADOOP",
  *         "ZOOKEEPER",
  *     ],
  *     emrVersion: "EMR-3.22.0",
- * }));
- *
- * export const firstMainVersion = defaultMainVersions.mainVersions[0].emrVersion;
- * export const thisClusterTypes = defaultMainVersions.mainVersions[0].clusterTypes;
+ * });
+ * export const firstMainVersion = _default.then(_default => _default.mainVersions?.[0]?.emrVersion);
+ * export const thisClusterTypes = _default.then(_default => _default.mainVersions?.[0]?.clusterTypes);
  * ```
  */
 export function getMainVersions(args?: GetMainVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetMainVersionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:emr/getMainVersions:getMainVersions", {
         "clusterTypes": args.clusterTypes,
         "emrVersion": args.emrVersion,
@@ -82,9 +79,31 @@ export interface GetMainVersionsResult {
     readonly mainVersions: outputs.emr.GetMainVersionsMainVersion[];
     readonly outputFile?: string;
 }
-
+/**
+ * The `alicloud.emr.getMainVersions` data source provides a collection of emr
+ * main versions available in Alibaba Cloud account when create a emr cluster.
+ *
+ * > **NOTE:** Available in 1.59.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.emr.getMainVersions({
+ *     clusterTypes: [
+ *         "HADOOP",
+ *         "ZOOKEEPER",
+ *     ],
+ *     emrVersion: "EMR-3.22.0",
+ * });
+ * export const firstMainVersion = _default.then(_default => _default.mainVersions?.[0]?.emrVersion);
+ * export const thisClusterTypes = _default.then(_default => _default.mainVersions?.[0]?.clusterTypes);
+ * ```
+ */
 export function getMainVersionsOutput(args?: GetMainVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMainVersionsResult> {
-    return pulumi.output(args).apply(a => getMainVersions(a, opts))
+    return pulumi.output(args).apply((a: any) => getMainVersions(a, opts))
 }
 
 /**

@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/snatEntry:SnatEntry")]
-    public partial class SnatEntry : Pulumi.CustomResource
+    public partial class SnatEntry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The id of the snat entry on the server.
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class SnatEntryArgs : Pulumi.ResourceArgs
+    public sealed class SnatEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of snat entry.
@@ -144,9 +144,10 @@ namespace Pulumi.AliCloud.Vpc
         public SnatEntryArgs()
         {
         }
+        public static new SnatEntryArgs Empty => new SnatEntryArgs();
     }
 
-    public sealed class SnatEntryState : Pulumi.ResourceArgs
+    public sealed class SnatEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the snat entry on the server.
@@ -193,5 +194,6 @@ namespace Pulumi.AliCloud.Vpc
         public SnatEntryState()
         {
         }
+        public static new SnatEntryState Empty => new SnatEntryState();
     }
 }

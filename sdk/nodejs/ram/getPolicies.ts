@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,23 +15,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const policiesDs = pulumi.output(alicloud.ram.getPolicies({
+ * const policiesDs = alicloud.ram.getPolicies({
  *     groupName: "group1",
  *     outputFile: "policies.txt",
  *     type: "System",
  *     userName: "user1",
- * }));
- *
- * export const firstPolicyName = policiesDs.policies[0].name;
+ * });
+ * export const firstPolicyName = policiesDs.then(policiesDs => policiesDs.policies?.[0]?.name);
  * ```
  */
 export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ram/getPolicies:getPolicies", {
         "enableDetails": args.enableDetails,
         "groupName": args.groupName,
@@ -103,9 +100,26 @@ export interface GetPoliciesResult {
     readonly type?: string;
     readonly userName?: string;
 }
-
+/**
+ * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const policiesDs = alicloud.ram.getPolicies({
+ *     groupName: "group1",
+ *     outputFile: "policies.txt",
+ *     type: "System",
+ *     userName: "user1",
+ * });
+ * export const firstPolicyName = policiesDs.then(policiesDs => policiesDs.policies?.[0]?.name);
+ * ```
+ */
 export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
-    return pulumi.output(args).apply(a => getPolicies(a, opts))
+    return pulumi.output(args).apply((a: any) => getPolicies(a, opts))
 }
 
 /**

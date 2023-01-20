@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:pvtz/rule:Rule")]
-    public partial class Rule : Pulumi.CustomResource
+    public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Endpoint.
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Pvtz
         }
     }
 
-    public sealed class RuleArgs : Pulumi.ResourceArgs
+    public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Endpoint.
@@ -142,9 +142,10 @@ namespace Pulumi.AliCloud.Pvtz
         public RuleArgs()
         {
         }
+        public static new RuleArgs Empty => new RuleArgs();
     }
 
-    public sealed class RuleState : Pulumi.ResourceArgs
+    public sealed class RuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Endpoint.
@@ -185,5 +186,6 @@ namespace Pulumi.AliCloud.Pvtz
         public RuleState()
         {
         }
+        public static new RuleState Empty => new RuleState();
     }
 }

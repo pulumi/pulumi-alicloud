@@ -18,7 +18,9 @@ from .get_databases import *
 from .get_endpoints import *
 from .get_global_database_networks import *
 from .get_node_classes import *
+from .get_parameter_groups import *
 from .get_zones import *
 from .global_database_network import *
+from .parameter_group import *
 from ._inputs import *
 from . import outputs

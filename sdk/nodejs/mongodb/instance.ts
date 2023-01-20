@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -230,7 +231,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.engineVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
             resourceInputs["backupTime"] = args ? args.backupTime : undefined;
@@ -263,6 +264,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["sslStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }

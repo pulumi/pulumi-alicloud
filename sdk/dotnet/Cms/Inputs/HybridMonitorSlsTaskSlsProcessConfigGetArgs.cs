@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms.Inputs
 {
 
-    public sealed class HybridMonitorSlsTaskSlsProcessConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class HybridMonitorSlsTaskSlsProcessConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("expresses")]
         private InputList<Inputs.HybridMonitorSlsTaskSlsProcessConfigExpressGetArgs>? _expresses;
 
         /// <summary>
-        /// The extended field that specifies the result of basic operations that are performed on aggregation results.
+        /// The extended fields that specify the results of basic operations that are performed on aggregation results. See the following `Block express`.
         /// </summary>
         public InputList<Inputs.HybridMonitorSlsTaskSlsProcessConfigExpressGetArgs> Expresses
         {
@@ -57,5 +57,6 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public HybridMonitorSlsTaskSlsProcessConfigGetArgs()
         {
         }
+        public static new HybridMonitorSlsTaskSlsProcessConfigGetArgs Empty => new HybridMonitorSlsTaskSlsProcessConfigGetArgs();
     }
 }

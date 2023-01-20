@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketReplicationSourceSelectionCriteriaArgs : Pulumi.ResourceArgs
+    public sealed class BucketReplicationSourceSelectionCriteriaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketReplicationSourceSelectionCriteriaArgs()
         {
         }
+        public static new BucketReplicationSourceSelectionCriteriaArgs Empty => new BucketReplicationSourceSelectionCriteriaArgs();
     }
 }

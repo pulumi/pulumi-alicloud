@@ -21,44 +21,43 @@ namespace Pulumi.AliCloud.Eds
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
     ///     {
-    ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
-    ///         {
-    ///             CenInstanceName = @var.Name,
-    ///             ProtectionLevel = "REDUCED",
-    ///         });
-    ///         var defaultAdConnectorOfficeSite = new AliCloud.Eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite", new AliCloud.Eds.AdConnectorOfficeSiteArgs
-    ///         {
-    ///             AdConnectorOfficeSiteName = @var.Name,
-    ///             Bandwidth = 100,
-    ///             CenId = defaultInstance.Id,
-    ///             CidrBlock = "10.0.0.0/12",
-    ///             DesktopAccessType = "INTERNET",
-    ///             DnsAddresses = 
-    ///             {
-    ///                 "127.0.0.2",
-    ///             },
-    ///             DomainName = "example1234.com",
-    ///             DomainPassword = "YourPassword1234",
-    ///             DomainUserName = "Administrator",
-    ///             EnableAdminAccess = true,
-    ///             EnableInternetAccess = true,
-    ///             MfaEnabled = false,
-    ///             SubDomainDnsAddresses = 
-    ///             {
-    ///                 "127.0.0.3",
-    ///             },
-    ///             SubDomainName = "child.example1234.com",
-    ///         });
-    ///     }
+    ///         CenInstanceName = @var.Name,
+    ///         ProtectionLevel = "REDUCED",
+    ///     });
     /// 
-    /// }
+    ///     var defaultAdConnectorOfficeSite = new AliCloud.Eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite", new()
+    ///     {
+    ///         AdConnectorOfficeSiteName = @var.Name,
+    ///         Bandwidth = 100,
+    ///         CenId = defaultInstance.Id,
+    ///         CidrBlock = "10.0.0.0/12",
+    ///         DesktopAccessType = "INTERNET",
+    ///         DnsAddresses = new[]
+    ///         {
+    ///             "127.0.0.2",
+    ///         },
+    ///         DomainName = "example1234.com",
+    ///         DomainPassword = "YourPassword1234",
+    ///         DomainUserName = "Administrator",
+    ///         EnableAdminAccess = true,
+    ///         EnableInternetAccess = true,
+    ///         MfaEnabled = false,
+    ///         SubDomainDnsAddresses = new[]
+    ///         {
+    ///             "127.0.0.3",
+    ///         },
+    ///         SubDomainName = "child.example1234.com",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -70,7 +69,7 @@ namespace Pulumi.AliCloud.Eds
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eds/adConnectorOfficeSite:AdConnectorOfficeSite")]
-    public partial class AdConnectorOfficeSite : Pulumi.CustomResource
+    public partial class AdConnectorOfficeSite : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
@@ -110,9 +109,6 @@ namespace Pulumi.AliCloud.Eds
 
         /// <summary>
         /// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-        /// - `INTERNET`: connects clients to cloud desktops only over the Internet.
-        /// - `VPC`: connects clients to cloud desktops only over a VPC.
-        /// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         /// </summary>
         [Output("desktopAccessType")]
         public Output<string> DesktopAccessType { get; private set; } = null!;
@@ -218,6 +214,10 @@ namespace Pulumi.AliCloud.Eds
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "domainPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Eds
         }
     }
 
-    public sealed class AdConnectorOfficeSiteArgs : Pulumi.ResourceArgs
+    public sealed class AdConnectorOfficeSiteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
@@ -279,9 +279,6 @@ namespace Pulumi.AliCloud.Eds
 
         /// <summary>
         /// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-        /// - `INTERNET`: connects clients to cloud desktops only over the Internet.
-        /// - `VPC`: connects clients to cloud desktops only over a VPC.
-        /// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         /// </summary>
         [Input("desktopAccessType")]
         public Input<string>? DesktopAccessType { get; set; }
@@ -304,11 +301,21 @@ namespace Pulumi.AliCloud.Eds
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
 
+        [Input("domainPassword")]
+        private Input<string>? _domainPassword;
+
         /// <summary>
         /// The password of the domain administrator. The password can be up to 64 characters in length.
         /// </summary>
-        [Input("domainPassword")]
-        public Input<string>? DomainPassword { get; set; }
+        public Input<string>? DomainPassword
+        {
+            get => _domainPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _domainPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The username of the domain administrator. The username can be up to 64 characters in length.
@@ -373,9 +380,10 @@ namespace Pulumi.AliCloud.Eds
         public AdConnectorOfficeSiteArgs()
         {
         }
+        public static new AdConnectorOfficeSiteArgs Empty => new AdConnectorOfficeSiteArgs();
     }
 
-    public sealed class AdConnectorOfficeSiteState : Pulumi.ResourceArgs
+    public sealed class AdConnectorOfficeSiteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
@@ -415,9 +423,6 @@ namespace Pulumi.AliCloud.Eds
 
         /// <summary>
         /// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
-        /// - `INTERNET`: connects clients to cloud desktops only over the Internet.
-        /// - `VPC`: connects clients to cloud desktops only over a VPC.
-        /// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         /// </summary>
         [Input("desktopAccessType")]
         public Input<string>? DesktopAccessType { get; set; }
@@ -440,11 +445,21 @@ namespace Pulumi.AliCloud.Eds
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
 
+        [Input("domainPassword")]
+        private Input<string>? _domainPassword;
+
         /// <summary>
         /// The password of the domain administrator. The password can be up to 64 characters in length.
         /// </summary>
-        [Input("domainPassword")]
-        public Input<string>? DomainPassword { get; set; }
+        public Input<string>? DomainPassword
+        {
+            get => _domainPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _domainPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The username of the domain administrator. The username can be up to 64 characters in length.
@@ -515,5 +530,6 @@ namespace Pulumi.AliCloud.Eds
         public AdConnectorOfficeSiteState()
         {
         }
+        public static new AdConnectorOfficeSiteState Empty => new AdConnectorOfficeSiteState();
     }
 }

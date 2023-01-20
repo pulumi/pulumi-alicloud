@@ -38,7 +38,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -54,7 +54,7 @@ import (
 //			vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
 //				VpcId:       vpc.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -88,9 +88,9 @@ import (
 //					defaultApplication.ID(),
 //				},
 //			}, nil)
-//			ctx.Export("saeApplicationId", defaultApplications.ApplyT(func(defaultApplications sae.GetApplicationsResult) (string, error) {
-//				return defaultApplications.Applications[0].Id, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("saeApplicationId", defaultApplications.ApplyT(func(defaultApplications sae.GetApplicationsResult) (*string, error) {
+//				return &defaultApplications.Applications[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

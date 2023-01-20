@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketLoggingGetArgs : Pulumi.ResourceArgs
+    public sealed class BucketLoggingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket that will receive the log objects.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketLoggingGetArgs()
         {
         }
+        public static new BucketLoggingGetArgs Empty => new BucketLoggingGetArgs();
     }
 }

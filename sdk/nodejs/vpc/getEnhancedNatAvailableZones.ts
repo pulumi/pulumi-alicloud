@@ -2,16 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getEnhancedNatAvailableZones(args?: GetEnhancedNatAvailableZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnhancedNatAvailableZonesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", {
         "outputFile": args.outputFile,
     }, opts);
@@ -36,9 +34,8 @@ export interface GetEnhancedNatAvailableZonesResult {
     readonly outputFile?: string;
     readonly zones: outputs.vpc.GetEnhancedNatAvailableZonesZone[];
 }
-
 export function getEnhancedNatAvailableZonesOutput(args?: GetEnhancedNatAvailableZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnhancedNatAvailableZonesResult> {
-    return pulumi.output(args).apply(a => getEnhancedNatAvailableZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnhancedNatAvailableZones(a, opts))
 }
 
 /**

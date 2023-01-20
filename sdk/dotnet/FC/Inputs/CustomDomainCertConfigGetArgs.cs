@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC.Inputs
 {
 
-    public sealed class CustomDomainCertConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class CustomDomainCertConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the certificate, used to distinguish different certificates.
@@ -24,14 +24,25 @@ namespace Pulumi.AliCloud.FC.Inputs
         [Input("certificate", required: true)]
         public Input<string> Certificate { get; set; } = null!;
 
+        [Input("privateKey", required: true)]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// Private key of the HTTPS certificates, follow the 'pem' format.
         /// </summary>
-        [Input("privateKey", required: true)]
-        public Input<string> PrivateKey { get; set; } = null!;
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public CustomDomainCertConfigGetArgs()
         {
         }
+        public static new CustomDomainCertConfigGetArgs Empty => new CustomDomainCertConfigGetArgs();
     }
 }

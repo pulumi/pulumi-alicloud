@@ -84,16 +84,24 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The ID of the VPN gateway.
+     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+     * 
+     * @deprecated
+     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
      * 
      */
+    @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
     @Import(name="vpnGatewayId")
     private @Nullable Output<String> vpnGatewayId;
 
     /**
-     * @return The ID of the VPN gateway.
+     * @return The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+     * 
+     * @deprecated
+     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
      * 
      */
+    @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
     public Optional<Output<String>> vpnGatewayId() {
         return Optional.ofNullable(this.vpnGatewayId);
     }
@@ -229,22 +237,30 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param vpnGatewayId The ID of the VPN gateway.
+         * @param vpnGatewayId The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+         * 
          */
+        @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
         public Builder vpnGatewayId(@Nullable Output<String> vpnGatewayId) {
             $.vpnGatewayId = vpnGatewayId;
             return this;
         }
 
         /**
-         * @param vpnGatewayId The ID of the VPN gateway.
+         * @param vpnGatewayId The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+         * 
          */
+        @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
         public Builder vpnGatewayId(String vpnGatewayId) {
             return vpnGatewayId(Output.of(vpnGatewayId));
         }

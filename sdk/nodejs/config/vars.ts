@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 declare var exports: any;
@@ -116,6 +117,17 @@ export declare const logEndpoint: string | undefined;
 Object.defineProperty(exports, "logEndpoint", {
     get() {
         return __config.get("logEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
+ * The maximum retry timeout of the request.
+ */
+export declare const maxRetryTimeout: number | undefined;
+Object.defineProperty(exports, "maxRetryTimeout", {
+    get() {
+        return __config.getObject<number>("maxRetryTimeout");
     },
     enumerable: true,
 });

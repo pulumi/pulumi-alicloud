@@ -16,14 +16,14 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
     public static final LoadBalancerModificationProtectionConfigArgs Empty = new LoadBalancerModificationProtectionConfigArgs();
 
     /**
-     * The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+     * The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
      * 
      */
     @Import(name="reason")
     private @Nullable Output<String> reason;
 
     /**
-     * @return The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+     * @return The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
      * 
      */
     public Optional<Output<String>> reason() {
@@ -71,7 +71,7 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param reason The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+         * @param reason The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class LoadBalancerModificationProtectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param reason The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+         * @param reason The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
          * 
          * @return builder
          * 

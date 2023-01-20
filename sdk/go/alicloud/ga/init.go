@@ -25,16 +25,32 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Accelerator{}
 	case "alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment":
 		r = &AcceleratorSpareIpAttachment{}
+	case "alicloud:ga/accessLog:AccessLog":
+		r = &AccessLog{}
 	case "alicloud:ga/acl:Acl":
 		r = &Acl{}
 	case "alicloud:ga/aclAttachment:AclAttachment":
 		r = &AclAttachment{}
+	case "alicloud:ga/aclEntryAttachment:AclEntryAttachment":
+		r = &AclEntryAttachment{}
 	case "alicloud:ga/additionalCertificate:AdditionalCertificate":
 		r = &AdditionalCertificate{}
 	case "alicloud:ga/bandwidthPackage:BandwidthPackage":
 		r = &BandwidthPackage{}
 	case "alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment":
 		r = &BandwidthPackageAttachment{}
+	case "alicloud:ga/basicAccelerateIp:BasicAccelerateIp":
+		r = &BasicAccelerateIp{}
+	case "alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation":
+		r = &BasicAccelerateIpEndpointRelation{}
+	case "alicloud:ga/basicAccelerator:BasicAccelerator":
+		r = &BasicAccelerator{}
+	case "alicloud:ga/basicEndpoint:BasicEndpoint":
+		r = &BasicEndpoint{}
+	case "alicloud:ga/basicEndpointGroup:BasicEndpointGroup":
+		r = &BasicEndpointGroup{}
+	case "alicloud:ga/basicIpSet:BasicIpSet":
+		r = &BasicIpSet{}
 	case "alicloud:ga/endpointGroup:EndpointGroup":
 		r = &EndpointGroup{}
 	case "alicloud:ga/forwardingRule:ForwardingRule":
@@ -68,12 +84,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"ga/accessLog",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"ga/acl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ga/aclAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/aclEntryAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -89,6 +115,36 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ga/bandwidthPackageAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/basicAccelerateIp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/basicAccelerateIpEndpointRelation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/basicAccelerator",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/basicEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/basicEndpointGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/basicIpSet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

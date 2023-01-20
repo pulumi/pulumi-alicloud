@@ -19,23 +19,20 @@ namespace Pulumi.AliCloud.Kms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @this = new AliCloud.Kms.Key("this", new AliCloud.Kms.KeyArgs
-    ///         {
-    ///         });
-    ///         var keyversion = new AliCloud.Kms.KeyVersion("keyversion", new AliCloud.Kms.KeyVersionArgs
-    ///         {
-    ///             KeyId = @this.Id,
-    ///         });
-    ///     }
+    ///     var @this = new AliCloud.Kms.Key("this");
     /// 
-    /// }
+    ///     var keyversion = new AliCloud.Kms.KeyVersion("keyversion", new()
+    ///     {
+    ///         KeyId = @this.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +44,7 @@ namespace Pulumi.AliCloud.Kms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kms/keyVersion:KeyVersion")]
-    public partial class KeyVersion : Pulumi.CustomResource
+    public partial class KeyVersion : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The id of the master key (CMK).
@@ -105,7 +102,7 @@ namespace Pulumi.AliCloud.Kms
         }
     }
 
-    public sealed class KeyVersionArgs : Pulumi.ResourceArgs
+    public sealed class KeyVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the master key (CMK).
@@ -116,9 +113,10 @@ namespace Pulumi.AliCloud.Kms
         public KeyVersionArgs()
         {
         }
+        public static new KeyVersionArgs Empty => new KeyVersionArgs();
     }
 
-    public sealed class KeyVersionState : Pulumi.ResourceArgs
+    public sealed class KeyVersionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the master key (CMK).
@@ -135,5 +133,6 @@ namespace Pulumi.AliCloud.Kms
         public KeyVersionState()
         {
         }
+        public static new KeyVersionState Empty => new KeyVersionState();
     }
 }

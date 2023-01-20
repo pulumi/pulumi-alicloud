@@ -21,50 +21,49 @@ namespace Pulumi.AliCloud.EventBridge
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleEventBus = new AliCloud.EventBridge.EventBus("exampleEventBus", new()
     ///     {
-    ///         var exampleEventBus = new AliCloud.EventBridge.EventBus("exampleEventBus", new AliCloud.EventBridge.EventBusArgs
+    ///         EventBusName = "example_value",
+    ///     });
+    /// 
+    ///     var exampleRule = new AliCloud.EventBridge.Rule("exampleRule", new()
+    ///     {
+    ///         EventBusName = exampleEventBus.Id,
+    ///         RuleName = @var.Name,
+    ///         Description = "test",
+    ///         FilterPattern = "{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}",
+    ///         Targets = new[]
     ///         {
-    ///             EventBusName = "example_value",
-    ///         });
-    ///         var exampleRule = new AliCloud.EventBridge.Rule("exampleRule", new AliCloud.EventBridge.RuleArgs
-    ///         {
-    ///             EventBusName = exampleEventBus.Id,
-    ///             RuleName = @var.Name,
-    ///             Description = "test",
-    ///             FilterPattern = "{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}",
-    ///             Targets = 
+    ///             new AliCloud.EventBridge.Inputs.RuleTargetArgs
     ///             {
-    ///                 new AliCloud.EventBridge.Inputs.RuleTargetArgs
+    ///                 TargetId = "tf-test",
+    ///                 Endpoint = "acs:mns:cn-hangzhou:118938335****:queues/tf-test",
+    ///                 Type = "acs.mns.queue",
+    ///                 ParamLists = new[]
     ///                 {
-    ///                     TargetId = "tf-test",
-    ///                     Endpoint = "acs:mns:cn-hangzhou:118938335****:queues/tf-test",
-    ///                     Type = "acs.mns.queue",
-    ///                     ParamLists = 
+    ///                     new AliCloud.EventBridge.Inputs.RuleTargetParamListArgs
     ///                     {
-    ///                         new AliCloud.EventBridge.Inputs.RuleTargetParamListArgs
-    ///                         {
-    ///                             ResourceKey = "queue",
-    ///                             Form = "CONSTANT",
-    ///                             Value = "tf-testaccEbRule",
-    ///                         },
-    ///                         new AliCloud.EventBridge.Inputs.RuleTargetParamListArgs
-    ///                         {
-    ///                             ResourceKey = "Body",
-    ///                             Form = "ORIGINAL",
-    ///                         },
+    ///                         ResourceKey = "queue",
+    ///                         Form = "CONSTANT",
+    ///                         Value = "tf-testaccEbRule",
+    ///                     },
+    ///                     new AliCloud.EventBridge.Inputs.RuleTargetParamListArgs
+    ///                     {
+    ///                         ResourceKey = "Body",
+    ///                         Form = "ORIGINAL",
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -76,7 +75,7 @@ namespace Pulumi.AliCloud.EventBridge
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eventbridge/rule:Rule")]
-    public partial class Rule : Pulumi.CustomResource
+    public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of rule.
@@ -158,7 +157,7 @@ namespace Pulumi.AliCloud.EventBridge
         }
     }
 
-    public sealed class RuleArgs : Pulumi.ResourceArgs
+    public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of rule.
@@ -205,9 +204,10 @@ namespace Pulumi.AliCloud.EventBridge
         public RuleArgs()
         {
         }
+        public static new RuleArgs Empty => new RuleArgs();
     }
 
-    public sealed class RuleState : Pulumi.ResourceArgs
+    public sealed class RuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of rule.
@@ -254,5 +254,6 @@ namespace Pulumi.AliCloud.EventBridge
         public RuleState()
         {
         }
+        public static new RuleState Empty => new RuleState();
     }
 }

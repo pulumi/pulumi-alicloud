@@ -21,25 +21,24 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         var @default = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NoDeleting",
-    ///         }));
-    ///         var example = new AliCloud.Vpc.Ipv4Gateway("example", new AliCloud.Vpc.Ipv4GatewayArgs
-    ///         {
-    ///             Ipv4GatewayName = "example_value",
-    ///             VpcId = @default.Apply(@default =&gt; @default.Ids?[0]),
-    ///         });
-    ///     }
+    ///         NameRegex = "default-NoDeleting",
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.Vpc.Ipv4Gateway("example", new()
+    ///     {
+    ///         Ipv4GatewayName = "example_value",
+    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult).Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,13 +50,19 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/ipv4Gateway:Ipv4Gateway")]
-    public partial class Ipv4Gateway : Pulumi.CustomResource
+    public partial class Ipv4Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The dry run.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+        /// </summary>
+        [Output("enabled")]
+        public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
@@ -127,13 +132,19 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class Ipv4GatewayArgs : Pulumi.ResourceArgs
+    public sealed class Ipv4GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
@@ -156,15 +167,22 @@ namespace Pulumi.AliCloud.Vpc
         public Ipv4GatewayArgs()
         {
         }
+        public static new Ipv4GatewayArgs Empty => new Ipv4GatewayArgs();
     }
 
-    public sealed class Ipv4GatewayState : Pulumi.ResourceArgs
+    public sealed class Ipv4GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dry run.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
@@ -193,5 +211,6 @@ namespace Pulumi.AliCloud.Vpc
         public Ipv4GatewayState()
         {
         }
+        public static new Ipv4GatewayState Empty => new Ipv4GatewayState();
     }
 }

@@ -21,50 +21,49 @@ namespace Pulumi.AliCloud.Dts
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultSynchronizationInstance = new AliCloud.Dts.SynchronizationInstance("defaultSynchronizationInstance", new()
     ///     {
-    ///         var defaultSynchronizationInstance = new AliCloud.Dts.SynchronizationInstance("defaultSynchronizationInstance", new AliCloud.Dts.SynchronizationInstanceArgs
-    ///         {
-    ///             PaymentType = "PayAsYouGo",
-    ///             SourceEndpointEngineName = "PolarDB",
-    ///             SourceEndpointRegion = "cn-hangzhou",
-    ///             DestinationEndpointEngineName = "ADB30",
-    ///             DestinationEndpointRegion = "cn-hangzhou",
-    ///             InstanceClass = "small",
-    ///             SyncArchitecture = "oneway",
-    ///         });
-    ///         var defaultSynchronizationJob = new AliCloud.Dts.SynchronizationJob("defaultSynchronizationJob", new AliCloud.Dts.SynchronizationJobArgs
-    ///         {
-    ///             DtsInstanceId = defaultSynchronizationInstance.Id,
-    ///             DtsJobName = "tf-testAccCase1",
-    ///             SourceEndpointInstanceType = "PolarDB",
-    ///             SourceEndpointInstanceId = "pc-xxxxxxxx",
-    ///             SourceEndpointEngineName = "PolarDB",
-    ///             SourceEndpointRegion = "cn-hangzhou",
-    ///             SourceEndpointDatabaseName = "tf-testacc",
-    ///             SourceEndpointUserName = "root",
-    ///             SourceEndpointPassword = "password",
-    ///             DestinationEndpointInstanceType = "ads",
-    ///             DestinationEndpointInstanceId = "am-xxxxxxxx",
-    ///             DestinationEndpointEngineName = "ADB30",
-    ///             DestinationEndpointRegion = "cn-hangzhou",
-    ///             DestinationEndpointDatabaseName = "tf-testacc",
-    ///             DestinationEndpointUserName = "root",
-    ///             DestinationEndpointPassword = "password",
-    ///             DbList = "{\"tf-testacc\":{\"name\":\"tf-test\",\"all\":true,\"state\":\"normal\"}}",
-    ///             StructureInitialization = true,
-    ///             DataInitialization = true,
-    ///             DataSynchronization = true,
-    ///             Status = "Synchronizing",
-    ///         });
-    ///     }
+    ///         PaymentType = "PayAsYouGo",
+    ///         SourceEndpointEngineName = "PolarDB",
+    ///         SourceEndpointRegion = "cn-hangzhou",
+    ///         DestinationEndpointEngineName = "ADB30",
+    ///         DestinationEndpointRegion = "cn-hangzhou",
+    ///         InstanceClass = "small",
+    ///         SyncArchitecture = "oneway",
+    ///     });
     /// 
-    /// }
+    ///     var defaultSynchronizationJob = new AliCloud.Dts.SynchronizationJob("defaultSynchronizationJob", new()
+    ///     {
+    ///         DtsInstanceId = defaultSynchronizationInstance.Id,
+    ///         DtsJobName = "tf-testAccCase1",
+    ///         SourceEndpointInstanceType = "PolarDB",
+    ///         SourceEndpointInstanceId = "pc-xxxxxxxx",
+    ///         SourceEndpointEngineName = "PolarDB",
+    ///         SourceEndpointRegion = "cn-hangzhou",
+    ///         SourceEndpointDatabaseName = "tf-testacc",
+    ///         SourceEndpointUserName = "root",
+    ///         SourceEndpointPassword = "password",
+    ///         DestinationEndpointInstanceType = "ads",
+    ///         DestinationEndpointInstanceId = "am-xxxxxxxx",
+    ///         DestinationEndpointEngineName = "ADB30",
+    ///         DestinationEndpointRegion = "cn-hangzhou",
+    ///         DestinationEndpointDatabaseName = "tf-testacc",
+    ///         DestinationEndpointUserName = "root",
+    ///         DestinationEndpointPassword = "password",
+    ///         DbList = "{\"tf-testacc\":{\"name\":\"tf-test\",\"all\":true,\"state\":\"normal\"}}",
+    ///         StructureInitialization = true,
+    ///         DataInitialization = true,
+    ///         DataSynchronization = true,
+    ///         Status = "Synchronizing",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Notice
     /// 
@@ -84,7 +83,7 @@ namespace Pulumi.AliCloud.Dts
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dts/synchronizationJob:SynchronizationJob")]
-    public partial class SynchronizationJob : Pulumi.CustomResource
+    public partial class SynchronizationJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
@@ -364,7 +363,7 @@ namespace Pulumi.AliCloud.Dts
         }
     }
 
-    public sealed class SynchronizationJobArgs : Pulumi.ResourceArgs
+    public sealed class SynchronizationJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
@@ -603,9 +602,10 @@ namespace Pulumi.AliCloud.Dts
         public SynchronizationJobArgs()
         {
         }
+        public static new SynchronizationJobArgs Empty => new SynchronizationJobArgs();
     }
 
-    public sealed class SynchronizationJobState : Pulumi.ResourceArgs
+    public sealed class SynchronizationJobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
@@ -844,5 +844,6 @@ namespace Pulumi.AliCloud.Dts
         public SynchronizationJobState()
         {
         }
+        public static new SynchronizationJobState Empty => new SynchronizationJobState();
     }
 }

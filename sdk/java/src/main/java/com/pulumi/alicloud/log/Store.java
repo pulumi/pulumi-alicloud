@@ -74,14 +74,14 @@ public class Store extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableWebTracking);
     }
     /**
-     * Encrypted storage of data, providing data static protection capability, only supported at creation time.
+     * Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
      * 
      */
     @Export(name="encryptConf", type=StoreEncryptConf.class, parameters={})
     private Output</* @Nullable */ StoreEncryptConf> encryptConf;
 
     /**
-     * @return Encrypted storage of data, providing data static protection capability, only supported at creation time.
+     * @return Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
      * 
      */
     public Output<Optional<StoreEncryptConf>> encryptConf() {

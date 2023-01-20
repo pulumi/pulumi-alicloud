@@ -38,14 +38,14 @@ public final class GetRealTimeLogDeliveriesArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * @return The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -109,7 +109,7 @@ public final class GetRealTimeLogDeliveriesArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param status -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+         * @param status The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class GetRealTimeLogDeliveriesArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param status -The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+         * @param status The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
          * 
          * @return builder
          * 

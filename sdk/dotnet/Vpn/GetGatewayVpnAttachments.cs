@@ -23,33 +23,33 @@ namespace Pulumi.AliCloud.Vpn
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Vpn.GetGatewayVpnAttachments.InvokeAsync());
-        ///         this.VpnGatewayVpnAttachmentId1 = ids.Apply(ids =&gt; ids.Attachments?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpn.GetGatewayVpnAttachments.InvokeAsync(new AliCloud.Vpn.GetGatewayVpnAttachmentsArgs
-        ///         {
-        ///             NameRegex = "^my-VpnAttachment",
-        ///         }));
-        ///         this.VpnGatewayVpnAttachmentId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Attachments?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke();
         /// 
-        ///     [Output("vpnGatewayVpnAttachmentId1")]
-        ///     public Output&lt;string&gt; VpnGatewayVpnAttachmentId1 { get; set; }
-        ///     [Output("vpnGatewayVpnAttachmentId2")]
-        ///     public Output&lt;string&gt; VpnGatewayVpnAttachmentId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-VpnAttachment",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpnGatewayVpnAttachmentId1"] = ids.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
+        ///         ["vpnGatewayVpnAttachmentId2"] = nameRegex.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
+        ///         ["localId"] = data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Ike_config[0].Local_id,
+        ///         ["internetIp"] = data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Internet_ip,
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewayVpnAttachmentsResult> InvokeAsync(GetGatewayVpnAttachmentsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
@@ -63,37 +63,37 @@ namespace Pulumi.AliCloud.Vpn
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Vpn.GetGatewayVpnAttachments.InvokeAsync());
-        ///         this.VpnGatewayVpnAttachmentId1 = ids.Apply(ids =&gt; ids.Attachments?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpn.GetGatewayVpnAttachments.InvokeAsync(new AliCloud.Vpn.GetGatewayVpnAttachmentsArgs
-        ///         {
-        ///             NameRegex = "^my-VpnAttachment",
-        ///         }));
-        ///         this.VpnGatewayVpnAttachmentId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Attachments?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke();
         /// 
-        ///     [Output("vpnGatewayVpnAttachmentId1")]
-        ///     public Output&lt;string&gt; VpnGatewayVpnAttachmentId1 { get; set; }
-        ///     [Output("vpnGatewayVpnAttachmentId2")]
-        ///     public Output&lt;string&gt; VpnGatewayVpnAttachmentId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-VpnAttachment",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpnGatewayVpnAttachmentId1"] = ids.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
+        ///         ["vpnGatewayVpnAttachmentId2"] = nameRegex.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
+        ///         ["localId"] = data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Ike_config[0].Local_id,
+        ///         ["internetIp"] = data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Internet_ip,
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewayVpnAttachmentsResult> Invoke(GetGatewayVpnAttachmentsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGatewayVpnAttachmentsArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewayVpnAttachmentsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -129,7 +129,7 @@ namespace Pulumi.AliCloud.Vpn
         public string? Status { get; set; }
 
         /// <summary>
-        /// The ID of the VPN gateway.
+        /// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
         /// </summary>
         [Input("vpnGatewayId")]
         public string? VpnGatewayId { get; set; }
@@ -137,9 +137,10 @@ namespace Pulumi.AliCloud.Vpn
         public GetGatewayVpnAttachmentsArgs()
         {
         }
+        public static new GetGatewayVpnAttachmentsArgs Empty => new GetGatewayVpnAttachmentsArgs();
     }
 
-    public sealed class GetGatewayVpnAttachmentsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewayVpnAttachmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -175,7 +176,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The ID of the VPN gateway.
+        /// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
         /// </summary>
         [Input("vpnGatewayId")]
         public Input<string>? VpnGatewayId { get; set; }
@@ -183,6 +184,7 @@ namespace Pulumi.AliCloud.Vpn
         public GetGatewayVpnAttachmentsInvokeArgs()
         {
         }
+        public static new GetGatewayVpnAttachmentsInvokeArgs Empty => new GetGatewayVpnAttachmentsInvokeArgs();
     }
 
 

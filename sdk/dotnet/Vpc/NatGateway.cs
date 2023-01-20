@@ -15,11 +15,11 @@ namespace Pulumi.AliCloud.Vpc
     /// Nat gateway can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/natGateway:NatGateway example ngw-abc123456
+    ///  $ pulumi import alicloud:vpc/natGateway:NatGateway example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/natGateway:NatGateway")]
-    public partial class NatGateway : Pulumi.CustomResource
+    public partial class NatGateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether enable the deletion protection or not. Default value: `false`.
@@ -35,9 +35,21 @@ namespace Pulumi.AliCloud.Vpc
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to only precheck this request. Default value: `false`.
+        /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
+        /// <summary>
+        /// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        /// </summary>
+        [Output("eipBindMode")]
+        public Output<string> EipBindMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to forcefully delete the NAT gateway.
+        /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
@@ -172,7 +184,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class NatGatewayArgs : Pulumi.ResourceArgs
+    public sealed class NatGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether enable the deletion protection or not. Default value: `false`.
@@ -188,9 +200,21 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Specifies whether to only precheck this request. Default value: `false`.
+        /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        /// <summary>
+        /// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        /// </summary>
+        [Input("eipBindMode")]
+        public Input<string>? EipBindMode { get; set; }
+
+        /// <summary>
+        /// Specifies whether to forcefully delete the NAT gateway.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
@@ -272,9 +296,10 @@ namespace Pulumi.AliCloud.Vpc
         public NatGatewayArgs()
         {
         }
+        public static new NatGatewayArgs Empty => new NatGatewayArgs();
     }
 
-    public sealed class NatGatewayState : Pulumi.ResourceArgs
+    public sealed class NatGatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether enable the deletion protection or not. Default value: `false`.
@@ -290,9 +315,21 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Specifies whether to only precheck this request. Default value: `false`.
+        /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        /// <summary>
+        /// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        /// </summary>
+        [Input("eipBindMode")]
+        public Input<string>? EipBindMode { get; set; }
+
+        /// <summary>
+        /// Specifies whether to forcefully delete the NAT gateway.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
@@ -392,5 +429,6 @@ namespace Pulumi.AliCloud.Vpc
         public NatGatewayState()
         {
         }
+        public static new NatGatewayState Empty => new NatGatewayState();
     }
 }

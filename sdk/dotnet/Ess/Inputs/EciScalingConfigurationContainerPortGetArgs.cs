@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess.Inputs
 {
 
-    public sealed class EciScalingConfigurationContainerPortGetArgs : Pulumi.ResourceArgs
+    public sealed class EciScalingConfigurationContainerPortGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The port number. Valid values: 1 to 65535.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public EciScalingConfigurationContainerPortGetArgs()
         {
         }
+        public static new EciScalingConfigurationContainerPortGetArgs Empty => new EciScalingConfigurationContainerPortGetArgs();
     }
 }

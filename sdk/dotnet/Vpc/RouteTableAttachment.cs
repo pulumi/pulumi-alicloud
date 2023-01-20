@@ -15,43 +15,45 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "route-table-attachment-example-name";
+    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "route-table-attachment-example-name";
-    ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var @default = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = fooNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/21",
-    ///             ZoneId = @default.Apply(@default =&gt; @default.Zones?[0]?.Id),
-    ///         });
-    ///         var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new AliCloud.Vpc.RouteTableArgs
-    ///         {
-    ///             VpcId = fooNetwork.Id,
-    ///             RouteTableName = name,
-    ///             Description = "route_table_attachment",
-    ///         });
-    ///         var fooRouteTableAttachment = new AliCloud.Vpc.RouteTableAttachment("fooRouteTableAttachment", new AliCloud.Vpc.RouteTableAttachmentArgs
-    ///         {
-    ///             VswitchId = fooSwitch.Id,
-    ///             RouteTableId = fooRouteTable.Id,
-    ///         });
-    ///     }
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
     /// 
-    /// }
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     {
+    ///         VpcId = fooNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new()
+    ///     {
+    ///         VpcId = fooNetwork.Id,
+    ///         RouteTableName = name,
+    ///         Description = "route_table_attachment",
+    ///     });
+    /// 
+    ///     var fooRouteTableAttachment = new AliCloud.Vpc.RouteTableAttachment("fooRouteTableAttachment", new()
+    ///     {
+    ///         VswitchId = fooSwitch.Id,
+    ///         RouteTableId = fooRouteTable.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -63,7 +65,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/routeTableAttachment:RouteTableAttachment")]
-    public partial class RouteTableAttachment : Pulumi.CustomResource
+    public partial class RouteTableAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The route_table_id of the route table attachment, the field can't be changed.
@@ -121,7 +123,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class RouteTableAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class RouteTableAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The route_table_id of the route table attachment, the field can't be changed.
@@ -138,9 +140,10 @@ namespace Pulumi.AliCloud.Vpc
         public RouteTableAttachmentArgs()
         {
         }
+        public static new RouteTableAttachmentArgs Empty => new RouteTableAttachmentArgs();
     }
 
-    public sealed class RouteTableAttachmentState : Pulumi.ResourceArgs
+    public sealed class RouteTableAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The route_table_id of the route table attachment, the field can't be changed.
@@ -157,5 +160,6 @@ namespace Pulumi.AliCloud.Vpc
         public RouteTableAttachmentState()
         {
         }
+        public static new RouteTableAttachmentState Empty => new RouteTableAttachmentState();
     }
 }

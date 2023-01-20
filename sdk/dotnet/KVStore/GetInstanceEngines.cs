@@ -21,37 +21,37 @@ namespace Pulumi.AliCloud.KVStore
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var resourcesZones = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         var resourcesZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-        ///         {
-        ///             AvailableResourceCreation = "KVStore",
-        ///         }));
-        ///         var resourcesInstanceEngines = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.KVStore.GetInstanceEngines.InvokeAsync(new AliCloud.KVStore.GetInstanceEnginesArgs
-        ///         {
-        ///             Engine = "Redis",
-        ///             EngineVersion = "5.0",
-        ///             InstanceChargeType = "PrePaid",
-        ///             OutputFile = "./engines.txt",
-        ///             ZoneId = resourcesZones.Zones?[0]?.Id,
-        ///         })));
-        ///         this.FirstKvstoreInstanceClass = resourcesInstanceEngines.Apply(resourcesInstanceEngines =&gt; resourcesInstanceEngines.InstanceEngines?[0]?.Engine);
-        ///     }
+        ///         AvailableResourceCreation = "KVStore",
+        ///     });
         /// 
-        ///     [Output("firstKvstoreInstanceClass")]
-        ///     public Output&lt;string&gt; FirstKvstoreInstanceClass { get; set; }
-        /// }
+        ///     var resourcesInstanceEngines = AliCloud.KVStore.GetInstanceEngines.Invoke(new()
+        ///     {
+        ///         Engine = "Redis",
+        ///         EngineVersion = "5.0",
+        ///         InstanceChargeType = "PrePaid",
+        ///         OutputFile = "./engines.txt",
+        ///         ZoneId = resourcesZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstKvstoreInstanceClass"] = resourcesInstanceEngines.Apply(getInstanceEnginesResult =&gt; getInstanceEnginesResult.InstanceEngines[0]?.Engine),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceEnginesResult> InvokeAsync(GetInstanceEnginesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
@@ -63,41 +63,41 @@ namespace Pulumi.AliCloud.KVStore
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var resourcesZones = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         var resourcesZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-        ///         {
-        ///             AvailableResourceCreation = "KVStore",
-        ///         }));
-        ///         var resourcesInstanceEngines = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.KVStore.GetInstanceEngines.InvokeAsync(new AliCloud.KVStore.GetInstanceEnginesArgs
-        ///         {
-        ///             Engine = "Redis",
-        ///             EngineVersion = "5.0",
-        ///             InstanceChargeType = "PrePaid",
-        ///             OutputFile = "./engines.txt",
-        ///             ZoneId = resourcesZones.Zones?[0]?.Id,
-        ///         })));
-        ///         this.FirstKvstoreInstanceClass = resourcesInstanceEngines.Apply(resourcesInstanceEngines =&gt; resourcesInstanceEngines.InstanceEngines?[0]?.Engine);
-        ///     }
+        ///         AvailableResourceCreation = "KVStore",
+        ///     });
         /// 
-        ///     [Output("firstKvstoreInstanceClass")]
-        ///     public Output&lt;string&gt; FirstKvstoreInstanceClass { get; set; }
-        /// }
+        ///     var resourcesInstanceEngines = AliCloud.KVStore.GetInstanceEngines.Invoke(new()
+        ///     {
+        ///         Engine = "Redis",
+        ///         EngineVersion = "5.0",
+        ///         InstanceChargeType = "PrePaid",
+        ///         OutputFile = "./engines.txt",
+        ///         ZoneId = resourcesZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstKvstoreInstanceClass"] = resourcesInstanceEngines.Apply(getInstanceEnginesResult =&gt; getInstanceEnginesResult.InstanceEngines[0]?.Engine),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceEnginesResult> Invoke(GetInstanceEnginesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceEnginesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceEnginesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
@@ -129,9 +129,10 @@ namespace Pulumi.AliCloud.KVStore
         public GetInstanceEnginesArgs()
         {
         }
+        public static new GetInstanceEnginesArgs Empty => new GetInstanceEnginesArgs();
     }
 
-    public sealed class GetInstanceEnginesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceEnginesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
@@ -163,6 +164,7 @@ namespace Pulumi.AliCloud.KVStore
         public GetInstanceEnginesInvokeArgs()
         {
         }
+        public static new GetInstanceEnginesInvokeArgs Empty => new GetInstanceEnginesInvokeArgs();
     }
 
 

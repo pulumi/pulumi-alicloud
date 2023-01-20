@@ -13,6 +13,7 @@ from . import outputs
 __all__ = [
     'ClusterDbClusterIpArray',
     'ClusterParameter',
+    'ParameterGroupParameter',
     'GetAccountsAccountResult',
     'GetAccountsAccountDatabasePrivilegeResult',
     'GetClustersClusterResult',
@@ -26,6 +27,7 @@ __all__ = [
     'GetNodeClassesClassResult',
     'GetNodeClassesClassSupportedEngineResult',
     'GetNodeClassesClassSupportedEngineAvailableResourceResult',
+    'GetParameterGroupsGroupResult',
     'GetZonesZoneResult',
 ]
 
@@ -61,7 +63,8 @@ class ClusterDbClusterIpArray(dict):
                **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
         :param str modify_mode: The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
                **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
-        :param Sequence[str] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param Sequence[str] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+               Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         """
         if db_cluster_ip_array_name is not None:
             pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
@@ -92,7 +95,8 @@ class ClusterDbClusterIpArray(dict):
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> Optional[Sequence[str]]:
         """
-        List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
+        Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
         """
         return pulumi.get(self, "security_ips")
 
@@ -114,6 +118,54 @@ class ClusterParameter(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ParameterGroupParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "paramName":
+            suggest = "param_name"
+        elif key == "paramValue":
+            suggest = "param_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ParameterGroupParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ParameterGroupParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ParameterGroupParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 param_name: str,
+                 param_value: str):
+        """
+        :param str param_name: The name of a parameter in the parameter template.
+        :param str param_value: The value of a parameter in the parameter template.
+        """
+        pulumi.set(__self__, "param_name", param_name)
+        pulumi.set(__self__, "param_value", param_value)
+
+    @property
+    @pulumi.getter(name="paramName")
+    def param_name(self) -> str:
+        """
+        The name of a parameter in the parameter template.
+        """
+        return pulumi.get(self, "param_name")
+
+    @property
+    @pulumi.getter(name="paramValue")
+    def param_value(self) -> str:
+        """
+        The value of a parameter in the parameter template.
+        """
+        return pulumi.get(self, "param_value")
 
 
 @pulumi.output_type
@@ -222,6 +274,7 @@ class GetAccountsAccountDatabasePrivilegeResult(dict):
 class GetClustersClusterResult(dict):
     def __init__(__self__, *,
                  charge_type: str,
+                 connection_string: str,
                  create_time: str,
                  db_node_class: str,
                  db_node_number: int,
@@ -236,6 +289,7 @@ class GetClustersClusterResult(dict):
                  id: str,
                  lock_mode: str,
                  network_type: str,
+                 port: str,
                  region_id: str,
                  status: str,
                  storage_used: int,
@@ -243,6 +297,7 @@ class GetClustersClusterResult(dict):
                  zone_id: str):
         """
         :param str charge_type: Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
+        :param str connection_string: PolarDB cluster connection string.
         :param str create_time: The create_time of the db_nodes.
         :param str db_node_class: The db_node_class of the db_nodes.
         :param int db_node_number: The DBNodeNumber of the PolarDB cluster.
@@ -257,6 +312,7 @@ class GetClustersClusterResult(dict):
         :param str id: The ID of the PolarDB cluster.
         :param str lock_mode: The LockMode of the PolarDB cluster.
         :param str network_type: The DBClusterNetworkType of the PolarDB cluster.
+        :param str port: PolarDB cluster connection port.
         :param str region_id: The region_id of the db_nodes.
         :param str status: status of the cluster.
         :param int storage_used: The StorageUsed of the PolarDB cluster.
@@ -264,6 +320,7 @@ class GetClustersClusterResult(dict):
         :param str zone_id: The zone_id of the db_nodes.
         """
         pulumi.set(__self__, "charge_type", charge_type)
+        pulumi.set(__self__, "connection_string", connection_string)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "db_node_class", db_node_class)
         pulumi.set(__self__, "db_node_number", db_node_number)
@@ -278,6 +335,7 @@ class GetClustersClusterResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "lock_mode", lock_mode)
         pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "storage_used", storage_used)
@@ -291,6 +349,14 @@ class GetClustersClusterResult(dict):
         Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
         """
         return pulumi.get(self, "charge_type")
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> str:
+        """
+        PolarDB cluster connection string.
+        """
+        return pulumi.get(self, "connection_string")
 
     @property
     @pulumi.getter(name="createTime")
@@ -403,6 +469,14 @@ class GetClustersClusterResult(dict):
         The DBClusterNetworkType of the PolarDB cluster.
         """
         return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter
+    def port(self) -> str:
+        """
+        PolarDB cluster connection port.
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="regionId")
@@ -1030,6 +1104,123 @@ class GetNodeClassesClassSupportedEngineAvailableResourceResult(dict):
         The PolarDB node class type by the user.
         """
         return pulumi.get(self, "db_node_class")
+
+
+@pulumi.output_type
+class GetParameterGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 db_type: str,
+                 db_version: str,
+                 force_restart: str,
+                 id: str,
+                 parameter_counts: int,
+                 parameter_group_desc: str,
+                 parameter_group_id: str,
+                 parameter_group_name: str,
+                 parameter_group_type: str):
+        """
+        :param str create_time: The time when the parameter template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param str db_type: The type of the database engine.
+        :param str db_version: The version number of the database engine.
+        :param str force_restart: Indicates whether to restart the cluster when this parameter template is applied.
+        :param str id: The ID of the Parameter Group.
+        :param int parameter_counts: The number of parameters in the parameter template.
+        :param str parameter_group_desc: The description of the parameter template.
+        :param str parameter_group_id: The ID of the Parameter Group.
+        :param str parameter_group_name: The name of the parameter template.
+        :param str parameter_group_type: The type of the parameter template.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "db_type", db_type)
+        pulumi.set(__self__, "db_version", db_version)
+        pulumi.set(__self__, "force_restart", force_restart)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "parameter_counts", parameter_counts)
+        pulumi.set(__self__, "parameter_group_desc", parameter_group_desc)
+        pulumi.set(__self__, "parameter_group_id", parameter_group_id)
+        pulumi.set(__self__, "parameter_group_name", parameter_group_name)
+        pulumi.set(__self__, "parameter_group_type", parameter_group_type)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the parameter template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dbType")
+    def db_type(self) -> str:
+        """
+        The type of the database engine.
+        """
+        return pulumi.get(self, "db_type")
+
+    @property
+    @pulumi.getter(name="dbVersion")
+    def db_version(self) -> str:
+        """
+        The version number of the database engine.
+        """
+        return pulumi.get(self, "db_version")
+
+    @property
+    @pulumi.getter(name="forceRestart")
+    def force_restart(self) -> str:
+        """
+        Indicates whether to restart the cluster when this parameter template is applied.
+        """
+        return pulumi.get(self, "force_restart")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Parameter Group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="parameterCounts")
+    def parameter_counts(self) -> int:
+        """
+        The number of parameters in the parameter template.
+        """
+        return pulumi.get(self, "parameter_counts")
+
+    @property
+    @pulumi.getter(name="parameterGroupDesc")
+    def parameter_group_desc(self) -> str:
+        """
+        The description of the parameter template.
+        """
+        return pulumi.get(self, "parameter_group_desc")
+
+    @property
+    @pulumi.getter(name="parameterGroupId")
+    def parameter_group_id(self) -> str:
+        """
+        The ID of the Parameter Group.
+        """
+        return pulumi.get(self, "parameter_group_id")
+
+    @property
+    @pulumi.getter(name="parameterGroupName")
+    def parameter_group_name(self) -> str:
+        """
+        The name of the parameter template.
+        """
+        return pulumi.get(self, "parameter_group_name")
+
+    @property
+    @pulumi.getter(name="parameterGroupType")
+    def parameter_group_type(self) -> str:
+        """
+        The type of the parameter template.
+        """
+        return pulumi.get(self, "parameter_group_type")
 
 
 @pulumi.output_type

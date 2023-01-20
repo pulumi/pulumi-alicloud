@@ -84,6 +84,21 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The routing type of the listener. Default Value: `Standard`. Valid values:
+     * 
+     */
+    @Import(name="listenerType")
+    private @Nullable Output<String> listenerType;
+
+    /**
+     * @return The routing type of the listener. Default Value: `Standard`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> listenerType() {
+        return Optional.ofNullable(this.listenerType);
+    }
+
+    /**
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      * 
      */
@@ -148,6 +163,21 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     * 
+     */
+    @Import(name="securityPolicyId")
+    private @Nullable Output<String> securityPolicyId;
+
+    /**
+     * @return The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     * 
+     */
+    public Optional<Output<String>> securityPolicyId() {
+        return Optional.ofNullable(this.securityPolicyId);
+    }
+
+    /**
      * The status of the listener.
      * 
      */
@@ -169,10 +199,12 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         this.certificates = $.certificates;
         this.clientAffinity = $.clientAffinity;
         this.description = $.description;
+        this.listenerType = $.listenerType;
         this.name = $.name;
         this.portRanges = $.portRanges;
         this.protocol = $.protocol;
         this.proxyProtocol = $.proxyProtocol;
+        this.securityPolicyId = $.securityPolicyId;
         this.status = $.status;
     }
 
@@ -293,6 +325,27 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param listenerType The routing type of the listener. Default Value: `Standard`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder listenerType(@Nullable Output<String> listenerType) {
+            $.listenerType = listenerType;
+            return this;
+        }
+
+        /**
+         * @param listenerType The routing type of the listener. Default Value: `Standard`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder listenerType(String listenerType) {
+            return listenerType(Output.of(listenerType));
+        }
+
+        /**
          * @param name The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
          * 
          * @return builder
@@ -388,6 +441,27 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder proxyProtocol(Boolean proxyProtocol) {
             return proxyProtocol(Output.of(proxyProtocol));
+        }
+
+        /**
+         * @param securityPolicyId The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPolicyId(@Nullable Output<String> securityPolicyId) {
+            $.securityPolicyId = securityPolicyId;
+            return this;
+        }
+
+        /**
+         * @param securityPolicyId The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPolicyId(String securityPolicyId) {
+            return securityPolicyId(Output.of(securityPolicyId));
         }
 
         /**

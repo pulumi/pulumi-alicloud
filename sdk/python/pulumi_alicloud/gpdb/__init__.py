@@ -7,9 +7,12 @@ import typing
 # Export this package's modules as members:
 from .account import *
 from .connection import *
+from .db_instance_plan import *
 from .elastic_instance import *
 from .get_accounts import *
+from .get_db_instance_plans import *
 from .get_instances import *
 from .get_zones import *
 from .instance import *
+from ._inputs import *
 from . import outputs

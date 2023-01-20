@@ -5,6 +5,7 @@ package com.pulumi.alicloud.hbr.outputs;
 
 import com.pulumi.alicloud.hbr.outputs.GetBackupJobsJobOtsDetail;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -61,6 +62,21 @@ public final class GetBackupJobsJob {
      * 
      */
     private String createTime;
+    /**
+     * @return The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * 
+     */
+    private String crossAccountRoleName;
+    /**
+     * @return The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * 
+     */
+    private String crossAccountType;
+    /**
+     * @return The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * 
+     */
+    private Integer crossAccountUserId;
     /**
      * @return Error message.
      * 
@@ -225,6 +241,27 @@ public final class GetBackupJobsJob {
         return this.createTime;
     }
     /**
+     * @return The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * 
+     */
+    public String crossAccountRoleName() {
+        return this.crossAccountRoleName;
+    }
+    /**
+     * @return The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * 
+     */
+    public String crossAccountType() {
+        return this.crossAccountType;
+    }
+    /**
+     * @return The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * 
+     */
+    public Integer crossAccountUserId() {
+        return this.crossAccountUserId;
+    }
+    /**
      * @return Error message.
      * 
      */
@@ -373,6 +410,9 @@ public final class GetBackupJobsJob {
         private String bytesTotal;
         private String completeTime;
         private String createTime;
+        private String crossAccountRoleName;
+        private String crossAccountType;
+        private Integer crossAccountUserId;
         private String errorMessage;
         private String exclude;
         private String fileSystemId;
@@ -405,6 +445,9 @@ public final class GetBackupJobsJob {
     	      this.bytesTotal = defaults.bytesTotal;
     	      this.completeTime = defaults.completeTime;
     	      this.createTime = defaults.createTime;
+    	      this.crossAccountRoleName = defaults.crossAccountRoleName;
+    	      this.crossAccountType = defaults.crossAccountType;
+    	      this.crossAccountUserId = defaults.crossAccountUserId;
     	      this.errorMessage = defaults.errorMessage;
     	      this.exclude = defaults.exclude;
     	      this.fileSystemId = defaults.fileSystemId;
@@ -474,6 +517,21 @@ public final class GetBackupJobsJob {
         @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder crossAccountRoleName(String crossAccountRoleName) {
+            this.crossAccountRoleName = Objects.requireNonNull(crossAccountRoleName);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder crossAccountType(String crossAccountType) {
+            this.crossAccountType = Objects.requireNonNull(crossAccountType);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder crossAccountUserId(Integer crossAccountUserId) {
+            this.crossAccountUserId = Objects.requireNonNull(crossAccountUserId);
             return this;
         }
         @CustomType.Setter
@@ -589,6 +647,9 @@ public final class GetBackupJobsJob {
             o.bytesTotal = bytesTotal;
             o.completeTime = completeTime;
             o.createTime = createTime;
+            o.crossAccountRoleName = crossAccountRoleName;
+            o.crossAccountType = crossAccountType;
+            o.crossAccountUserId = crossAccountUserId;
             o.errorMessage = errorMessage;
             o.exclude = exclude;
             o.fileSystemId = fileSystemId;

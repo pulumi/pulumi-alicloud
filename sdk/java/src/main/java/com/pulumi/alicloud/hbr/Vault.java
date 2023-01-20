@@ -80,8 +80,6 @@ public class Vault extends com.pulumi.resources.CustomResource {
     }
     /**
      * Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
-     * - `KMS`: Use Alibaba Cloud Kms to encryption.
      * 
      */
     @Export(name="encryptType", type=String.class, parameters={})
@@ -89,8 +87,6 @@ public class Vault extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Valid values: `HBR_PRIVATE`,`KMS`. Defaults to `HBR_PRIVATE`.
-     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
-     * - `KMS`: Use Alibaba Cloud Kms to encryption.
      * 
      */
     public Output<String> encryptType() {
@@ -112,8 +108,6 @@ public class Vault extends com.pulumi.resources.CustomResource {
     }
     /**
      * The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     * - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-     * - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
      * 
      */
     @Export(name="redundancyType", type=String.class, parameters={})
@@ -121,8 +115,6 @@ public class Vault extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The redundancy type of the vault. Valid values: `LRS`, and `ZRS`. Defaults to `LRS`.
-     * - `LRS`: means locally redundant storage, data will be stored on different storage devices in the same zone.
-     * - `ZRS`: means zone-redundant storage, the data will be replicated across three storage clusters in a single region. Each storage cluster is physically separated but within the same region.
      * 
      */
     public Output<String> redundancyType() {

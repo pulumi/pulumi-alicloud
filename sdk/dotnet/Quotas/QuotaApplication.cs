@@ -21,32 +21,30 @@ namespace Pulumi.AliCloud.Quotas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Quotas.QuotaApplication("example", new()
     ///     {
-    ///         var example = new AliCloud.Quotas.QuotaApplication("example", new AliCloud.Quotas.QuotaApplicationArgs
+    ///         DesireValue = 100,
+    ///         Dimensions = new[]
     ///         {
-    ///             DesireValue = 100,
-    ///             Dimensions = 
+    ///             new AliCloud.Quotas.Inputs.QuotaApplicationDimensionArgs
     ///             {
-    ///                 new AliCloud.Quotas.Inputs.QuotaApplicationDimensionArgs
-    ///                 {
-    ///                     Key = "regionId",
-    ///                     Value = "cn-hangzhou",
-    ///                 },
+    ///                 Key = "regionId",
+    ///                 Value = "cn-hangzhou",
     ///             },
-    ///             NoticeType = 0,
-    ///             ProductCode = "ess",
-    ///             QuotaActionCode = "q_db_instance",
-    ///             Reason = "For Terraform Test",
-    ///         });
-    ///     }
+    ///         },
+    ///         NoticeType = 0,
+    ///         ProductCode = "ess",
+    ///         QuotaActionCode = "q_db_instance",
+    ///         Reason = "For Terraform Test",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +56,7 @@ namespace Pulumi.AliCloud.Quotas
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:quotas/quotaApplication:QuotaApplication")]
-    public partial class QuotaApplication : Pulumi.CustomResource
+    public partial class QuotaApplication : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The approve value of the quota application.
@@ -200,7 +198,7 @@ namespace Pulumi.AliCloud.Quotas
         }
     }
 
-    public sealed class QuotaApplicationArgs : Pulumi.ResourceArgs
+    public sealed class QuotaApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
@@ -259,9 +257,10 @@ namespace Pulumi.AliCloud.Quotas
         public QuotaApplicationArgs()
         {
         }
+        public static new QuotaApplicationArgs Empty => new QuotaApplicationArgs();
     }
 
-    public sealed class QuotaApplicationState : Pulumi.ResourceArgs
+    public sealed class QuotaApplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The approve value of the quota application.
@@ -368,5 +367,6 @@ namespace Pulumi.AliCloud.Quotas
         public QuotaApplicationState()
         {
         }
+        public static new QuotaApplicationState Empty => new QuotaApplicationState();
     }
 }

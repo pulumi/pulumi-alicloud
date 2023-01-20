@@ -2,37 +2,19 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides the Market product items of Alibaba Cloud.
  *
  * > **NOTE:** Available in 1.64.0+
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultProducts = pulumi.output(alicloud.marketplace.getProducts({
- *     categoryId: "53690006",
- *     productType: "SERVICE",
- *     sort: "created_on-desc",
- * }));
- *
- * export const firstProductCode = defaultProducts.productItems.0.code;
- * export const productCodes = defaultProducts.ids!;
- * ```
  */
 export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetProductsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:marketplace/getProducts:getProducts", {
         "categoryId": args.categoryId,
         "ids": args.ids,
@@ -125,9 +107,13 @@ export interface GetProductsResult {
     readonly supplierId?: string;
     readonly supplierNameKeyword?: string;
 }
-
+/**
+ * This data source provides the Market product items of Alibaba Cloud.
+ *
+ * > **NOTE:** Available in 1.64.0+
+ */
 export function getProductsOutput(args?: GetProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductsResult> {
-    return pulumi.output(args).apply(a => getProducts(a, opts))
+    return pulumi.output(args).apply((a: any) => getProducts(a, opts))
 }
 
 /**

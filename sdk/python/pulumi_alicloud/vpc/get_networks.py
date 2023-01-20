@@ -276,7 +276,7 @@ def get_networks(cidr_block: Optional[str] = None,
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
     :param str dhcp_options_set_id: The ID of dhcp options set.
     :param bool dry_run: Indicates whether to check this request only. Valid values: `true` and `false`.
-    :param bool enable_details: -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `route_table_id`.
+    :param bool enable_details: Default to `true`. Set it to true can output the `route_table_id`.
     :param Sequence[str] ids: A list of VPC IDs.
     :param bool is_default: Indicate whether the VPC is the default one in the specified region.
     :param str name_regex: A regex string to filter VPCs by name.
@@ -367,7 +367,7 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
     :param str dhcp_options_set_id: The ID of dhcp options set.
     :param bool dry_run: Indicates whether to check this request only. Valid values: `true` and `false`.
-    :param bool enable_details: -(Optional, Available in v1.119.0+) Default to `true`. Set it to true can output the `route_table_id`.
+    :param bool enable_details: Default to `true`. Set it to true can output the `route_table_id`.
     :param Sequence[str] ids: A list of VPC IDs.
     :param bool is_default: Indicate whether the VPC is the default one in the specified region.
     :param str name_regex: A regex string to filter VPCs by name.

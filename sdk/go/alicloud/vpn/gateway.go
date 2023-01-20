@@ -24,10 +24,10 @@ type Gateway struct {
 	pulumi.CustomResourceState
 
 	// Whether to pay automatically. Default value: `true`. Valid values:
-	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-	// `true`: Enable automatic payment, automatic payment order.
-	AutoPay   pulumi.BoolPtrOutput `pulumi:"autoPay"`
-	Bandwidth pulumi.IntOutput     `pulumi:"bandwidth"`
+	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
+	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	AutoPropagate pulumi.BoolPtrOutput `pulumi:"autoPropagate"`
+	Bandwidth     pulumi.IntOutput     `pulumi:"bandwidth"`
 	// The business status of the VPN gateway.
 	BusinessStatus pulumi.StringOutput `pulumi:"businessStatus"`
 	// The description of the VPN instance.
@@ -43,6 +43,10 @@ type Gateway struct {
 	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
 	// The name of the VPN. Defaults to null.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The network type of the VPN gateway. Value:
+	// - public (default): Public VPN gateway.
+	// - private: Private VPN gateway.
+	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
@@ -94,10 +98,10 @@ func GetGateway(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
 	// Whether to pay automatically. Default value: `true`. Valid values:
-	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-	// `true`: Enable automatic payment, automatic payment order.
-	AutoPay   *bool `pulumi:"autoPay"`
-	Bandwidth *int  `pulumi:"bandwidth"`
+	AutoPay *bool `pulumi:"autoPay"`
+	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	AutoPropagate *bool `pulumi:"autoPropagate"`
+	Bandwidth     *int  `pulumi:"bandwidth"`
 	// The business status of the VPN gateway.
 	BusinessStatus *string `pulumi:"businessStatus"`
 	// The description of the VPN instance.
@@ -113,6 +117,10 @@ type gatewayState struct {
 	InternetIp *string `pulumi:"internetIp"`
 	// The name of the VPN. Defaults to null.
 	Name *string `pulumi:"name"`
+	// The network type of the VPN gateway. Value:
+	// - public (default): Public VPN gateway.
+	// - private: Private VPN gateway.
+	NetworkType *string `pulumi:"networkType"`
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period *int `pulumi:"period"`
 	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
@@ -130,10 +138,10 @@ type gatewayState struct {
 
 type GatewayState struct {
 	// Whether to pay automatically. Default value: `true`. Valid values:
-	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-	// `true`: Enable automatic payment, automatic payment order.
-	AutoPay   pulumi.BoolPtrInput
-	Bandwidth pulumi.IntPtrInput
+	AutoPay pulumi.BoolPtrInput
+	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	AutoPropagate pulumi.BoolPtrInput
+	Bandwidth     pulumi.IntPtrInput
 	// The business status of the VPN gateway.
 	BusinessStatus pulumi.StringPtrInput
 	// The description of the VPN instance.
@@ -149,6 +157,10 @@ type GatewayState struct {
 	InternetIp pulumi.StringPtrInput
 	// The name of the VPN. Defaults to null.
 	Name pulumi.StringPtrInput
+	// The network type of the VPN gateway. Value:
+	// - public (default): Public VPN gateway.
+	// - private: Private VPN gateway.
+	NetworkType pulumi.StringPtrInput
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period pulumi.IntPtrInput
 	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
@@ -170,10 +182,10 @@ func (GatewayState) ElementType() reflect.Type {
 
 type gatewayArgs struct {
 	// Whether to pay automatically. Default value: `true`. Valid values:
-	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-	// `true`: Enable automatic payment, automatic payment order.
-	AutoPay   *bool `pulumi:"autoPay"`
-	Bandwidth int   `pulumi:"bandwidth"`
+	AutoPay *bool `pulumi:"autoPay"`
+	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	AutoPropagate *bool `pulumi:"autoPropagate"`
+	Bandwidth     int   `pulumi:"bandwidth"`
 	// The description of the VPN instance.
 	Description *string `pulumi:"description"`
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -185,6 +197,10 @@ type gatewayArgs struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The name of the VPN. Defaults to null.
 	Name *string `pulumi:"name"`
+	// The network type of the VPN gateway. Value:
+	// - public (default): Public VPN gateway.
+	// - private: Private VPN gateway.
+	NetworkType *string `pulumi:"networkType"`
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period *int `pulumi:"period"`
 	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
@@ -201,10 +217,10 @@ type gatewayArgs struct {
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
 	// Whether to pay automatically. Default value: `true`. Valid values:
-	// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-	// `true`: Enable automatic payment, automatic payment order.
-	AutoPay   pulumi.BoolPtrInput
-	Bandwidth pulumi.IntInput
+	AutoPay pulumi.BoolPtrInput
+	// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+	AutoPropagate pulumi.BoolPtrInput
+	Bandwidth     pulumi.IntInput
 	// The description of the VPN instance.
 	Description pulumi.StringPtrInput
 	// Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
@@ -216,6 +232,10 @@ type GatewayArgs struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// The name of the VPN. Defaults to null.
 	Name pulumi.StringPtrInput
+	// The network type of the VPN gateway. Value:
+	// - public (default): Public VPN gateway.
+	// - private: Private VPN gateway.
+	NetworkType pulumi.StringPtrInput
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period pulumi.IntPtrInput
 	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
@@ -317,10 +337,13 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 }
 
 // Whether to pay automatically. Default value: `true`. Valid values:
-// `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-// `true`: Enable automatic payment, automatic payment order.
 func (o GatewayOutput) AutoPay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
+func (o GatewayOutput) AutoPropagate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.AutoPropagate }).(pulumi.BoolPtrOutput)
 }
 
 func (o GatewayOutput) Bandwidth() pulumi.IntOutput {
@@ -361,6 +384,13 @@ func (o GatewayOutput) InternetIp() pulumi.StringOutput {
 // The name of the VPN. Defaults to null.
 func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network type of the VPN gateway. Value:
+// - public (default): Public VPN gateway.
+// - private: Private VPN gateway.
+func (o GatewayOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
 }
 
 // The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.

@@ -19,27 +19,25 @@ namespace Pulumi.AliCloud.Edas
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Edas.ApplicationDeployment("default", new()
     ///     {
-    ///         var @default = new AliCloud.Edas.ApplicationDeployment("default", new AliCloud.Edas.ApplicationDeploymentArgs
-    ///         {
-    ///             AppId = @var.App_id,
-    ///             GroupId = @var.Group_id,
-    ///             PackageVersion = @var.Package_version,
-    ///             WarUrl = @var.War_url,
-    ///         });
-    ///     }
+    ///         AppId = @var.App_id,
+    ///         GroupId = @var.Group_id,
+    ///         PackageVersion = @var.Package_version,
+    ///         WarUrl = @var.War_url,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:edas/applicationDeployment:ApplicationDeployment")]
-    public partial class ApplicationDeployment : Pulumi.CustomResource
+    public partial class ApplicationDeployment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the application that you want to deploy.
@@ -115,7 +113,7 @@ namespace Pulumi.AliCloud.Edas
         }
     }
 
-    public sealed class ApplicationDeploymentArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationDeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the application that you want to deploy.
@@ -144,9 +142,10 @@ namespace Pulumi.AliCloud.Edas
         public ApplicationDeploymentArgs()
         {
         }
+        public static new ApplicationDeploymentArgs Empty => new ApplicationDeploymentArgs();
     }
 
-    public sealed class ApplicationDeploymentState : Pulumi.ResourceArgs
+    public sealed class ApplicationDeploymentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the application that you want to deploy.
@@ -181,5 +180,6 @@ namespace Pulumi.AliCloud.Edas
         public ApplicationDeploymentState()
         {
         }
+        public static new ApplicationDeploymentState Empty => new ApplicationDeploymentState();
     }
 }

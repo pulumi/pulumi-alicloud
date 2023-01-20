@@ -15,134 +15,133 @@ namespace Pulumi.AliCloud.Pvtz
     /// Using `vpc_ids` to attach being in same region several vpc instances to a private zone
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var zone = new AliCloud.Pvtz.Zone("zone", new AliCloud.Pvtz.ZoneArgs
-    ///         {
-    ///         });
-    ///         var first = new AliCloud.Vpc.Network("first", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var second = new AliCloud.Vpc.Network("second", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var zone_attachment = new AliCloud.Pvtz.ZoneAttachment("zone-attachment", new AliCloud.Pvtz.ZoneAttachmentArgs
-    ///         {
-    ///             ZoneId = zone.Id,
-    ///             VpcIds = 
-    ///             {
-    ///                 first.Id,
-    ///                 second.Id,
-    ///             },
-    ///         });
-    ///     }
+    ///     var zone = new AliCloud.Pvtz.Zone("zone");
     /// 
-    /// }
+    ///     var first = new AliCloud.Vpc.Network("first", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var second = new AliCloud.Vpc.Network("second", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var zone_attachment = new AliCloud.Pvtz.ZoneAttachment("zone-attachment", new()
+    ///     {
+    ///         ZoneId = zone.Id,
+    ///         VpcIds = new[]
+    ///         {
+    ///             first.Id,
+    ///             second.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// Using `vpcs` to attach being in same region several vpc instances to a private zone
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var zone = new AliCloud.Pvtz.Zone("zone", new AliCloud.Pvtz.ZoneArgs
-    ///         {
-    ///         });
-    ///         var first = new AliCloud.Vpc.Network("first", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var second = new AliCloud.Vpc.Network("second", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var zone_attachment = new AliCloud.Pvtz.ZoneAttachment("zone-attachment", new AliCloud.Pvtz.ZoneAttachmentArgs
-    ///         {
-    ///             ZoneId = zone.Id,
-    ///             Vpcs = 
-    ///             {
-    ///                 new AliCloud.Pvtz.Inputs.ZoneAttachmentVpcArgs
-    ///                 {
-    ///                     VpcId = first.Id,
-    ///                 },
-    ///                 new AliCloud.Pvtz.Inputs.ZoneAttachmentVpcArgs
-    ///                 {
-    ///                     VpcId = second.Id,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var zone = new AliCloud.Pvtz.Zone("zone");
     /// 
-    /// }
+    ///     var first = new AliCloud.Vpc.Network("first", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var second = new AliCloud.Vpc.Network("second", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var zone_attachment = new AliCloud.Pvtz.ZoneAttachment("zone-attachment", new()
+    ///     {
+    ///         ZoneId = zone.Id,
+    ///         Vpcs = new[]
+    ///         {
+    ///             new AliCloud.Pvtz.Inputs.ZoneAttachmentVpcArgs
+    ///             {
+    ///                 VpcId = first.Id,
+    ///             },
+    ///             new AliCloud.Pvtz.Inputs.ZoneAttachmentVpcArgs
+    ///             {
+    ///                 VpcId = second.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// Using `vpcs` to attach being in different regions several vpc instances to a private zone
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var zone = new AliCloud.Pvtz.Zone("zone", new AliCloud.Pvtz.ZoneArgs
-    ///         {
-    ///         });
-    ///         var first = new AliCloud.Vpc.Network("first", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var second = new AliCloud.Vpc.Network("second", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var eu = new AliCloud.Provider("eu", new AliCloud.ProviderArgs
-    ///         {
-    ///             Region = "eu-central-1",
-    ///         });
-    ///         var third = new AliCloud.Vpc.Network("third", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = alicloud.Eu,
-    ///         });
-    ///         var zone_attachment = new AliCloud.Pvtz.ZoneAttachment("zone-attachment", new AliCloud.Pvtz.ZoneAttachmentArgs
-    ///         {
-    ///             ZoneId = zone.Id,
-    ///             Vpcs = 
-    ///             {
-    ///                 new AliCloud.Pvtz.Inputs.ZoneAttachmentVpcArgs
-    ///                 {
-    ///                     VpcId = first.Id,
-    ///                 },
-    ///                 new AliCloud.Pvtz.Inputs.ZoneAttachmentVpcArgs
-    ///                 {
-    ///                     VpcId = second.Id,
-    ///                 },
-    ///                 new AliCloud.Pvtz.Inputs.ZoneAttachmentVpcArgs
-    ///                 {
-    ///                     RegionId = "eu-central-1",
-    ///                     VpcId = third.Id,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var zone = new AliCloud.Pvtz.Zone("zone");
     /// 
-    /// }
+    ///     var first = new AliCloud.Vpc.Network("first", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var second = new AliCloud.Vpc.Network("second", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var eu = new AliCloud.Provider("eu", new()
+    ///     {
+    ///         Region = "eu-central-1",
+    ///     });
+    /// 
+    ///     var third = new AliCloud.Vpc.Network("third", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Eu,
+    ///     });
+    /// 
+    ///     var zone_attachment = new AliCloud.Pvtz.ZoneAttachment("zone-attachment", new()
+    ///     {
+    ///         ZoneId = zone.Id,
+    ///         Vpcs = new[]
+    ///         {
+    ///             new AliCloud.Pvtz.Inputs.ZoneAttachmentVpcArgs
+    ///             {
+    ///                 VpcId = first.Id,
+    ///             },
+    ///             new AliCloud.Pvtz.Inputs.ZoneAttachmentVpcArgs
+    ///             {
+    ///                 VpcId = second.Id,
+    ///             },
+    ///             new AliCloud.Pvtz.Inputs.ZoneAttachmentVpcArgs
+    ///             {
+    ///                 RegionId = "eu-central-1",
+    ///                 VpcId = third.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -154,7 +153,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:pvtz/zoneAttachment:ZoneAttachment")]
-    public partial class ZoneAttachment : Pulumi.CustomResource
+    public partial class ZoneAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The language of code.
@@ -230,7 +229,7 @@ namespace Pulumi.AliCloud.Pvtz
         }
     }
 
-    public sealed class ZoneAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class ZoneAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The language of code.
@@ -277,9 +276,10 @@ namespace Pulumi.AliCloud.Pvtz
         public ZoneAttachmentArgs()
         {
         }
+        public static new ZoneAttachmentArgs Empty => new ZoneAttachmentArgs();
     }
 
-    public sealed class ZoneAttachmentState : Pulumi.ResourceArgs
+    public sealed class ZoneAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The language of code.
@@ -326,5 +326,6 @@ namespace Pulumi.AliCloud.Pvtz
         public ZoneAttachmentState()
         {
         }
+        public static new ZoneAttachmentState Empty => new ZoneAttachmentState();
     }
 }

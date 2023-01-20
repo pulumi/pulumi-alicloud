@@ -31,14 +31,14 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * - A list of ram user IDs.
+     * A list of ram user IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return - A list of ram user IDs.
+     * @return A list of ram user IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -138,7 +138,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids - A list of ram user IDs.
+         * @param ids A list of ram user IDs.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids - A list of ram user IDs.
+         * @param ids A list of ram user IDs.
          * 
          * @return builder
          * 

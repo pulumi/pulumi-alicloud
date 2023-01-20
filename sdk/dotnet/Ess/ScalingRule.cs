@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Ess
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ess/scalingRule:ScalingRule")]
-    public partial class ScalingRule : Pulumi.CustomResource
+    public partial class ScalingRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Adjustment mode of a scaling rule. Optional values:
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
-    public sealed class ScalingRuleArgs : Pulumi.ResourceArgs
+    public sealed class ScalingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Adjustment mode of a scaling rule. Optional values:
@@ -223,9 +223,10 @@ namespace Pulumi.AliCloud.Ess
         public ScalingRuleArgs()
         {
         }
+        public static new ScalingRuleArgs Empty => new ScalingRuleArgs();
     }
 
-    public sealed class ScalingRuleState : Pulumi.ResourceArgs
+    public sealed class ScalingRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Adjustment mode of a scaling rule. Optional values:
@@ -311,5 +312,6 @@ namespace Pulumi.AliCloud.Ess
         public ScalingRuleState()
         {
         }
+        public static new ScalingRuleState Empty => new ScalingRuleState();
     }
 }

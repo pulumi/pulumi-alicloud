@@ -41,7 +41,7 @@ public final class GetProjectsProject {
      */
     private String modifyTime;
     /**
-     * @return -The name of project.
+     * @return The name of project.
      * 
      */
     private String project;
@@ -100,7 +100,7 @@ public final class GetProjectsProject {
         return this.modifyTime;
     }
     /**
-     * @return -The name of project.
+     * @return The name of project.
      * 
      */
     public String project() {

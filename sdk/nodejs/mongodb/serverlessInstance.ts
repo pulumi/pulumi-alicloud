@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,8 +26,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.zones?[0]?.id,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
  * }));
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const example = new alicloud.mongodb.ServerlessInstance("example", {
@@ -36,13 +37,13 @@ import * as utilities from "../utilities";
  *     storageEngine: "WiredTiger",
  *     capacityUnit: 100,
  *     engine: "MongoDB",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     engineVersion: "4.2",
  *     period: 1,
  *     periodPriceType: "Month",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     tags: {
  *         Created: "MongodbServerlessInstance",
  *         For: "TF",
@@ -225,7 +226,7 @@ export class ServerlessInstance extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["capacityUnit"] = args ? args.capacityUnit : undefined;
             resourceInputs["dbInstanceDescription"] = args ? args.dbInstanceDescription : undefined;
@@ -246,6 +247,8 @@ export class ServerlessInstance extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ServerlessInstance.__pulumiType, name, resourceInputs, opts);
     }
 }

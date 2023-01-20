@@ -25,29 +25,27 @@ namespace Pulumi.AliCloud.CR
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.CR.GetEndpointAclService.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.CR.GetEndpointAclService.InvokeAsync(new AliCloud.CR.GetEndpointAclServiceArgs
-        ///         {
-        ///             Enable = true,
-        ///             EndpointType = "internet",
-        ///             InstanceId = "example_id",
-        ///             ModuleName = "Registry",
-        ///         }));
-        ///     }
+        ///         Enable = true,
+        ///         EndpointType = "internet",
+        ///         InstanceId = "example_id",
+        ///         ModuleName = "Registry",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndpointAclServiceResult> InvokeAsync(GetEndpointAclServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointAclServiceResult>("alicloud:cr/getEndpointAclService:getEndpointAclService", args ?? new GetEndpointAclServiceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointAclServiceResult>("alicloud:cr/getEndpointAclService:getEndpointAclService", args ?? new GetEndpointAclServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the CR Endpoint Acl Service of the current Alibaba Cloud user.
@@ -63,33 +61,31 @@ namespace Pulumi.AliCloud.CR
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.CR.GetEndpointAclService.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.CR.GetEndpointAclService.InvokeAsync(new AliCloud.CR.GetEndpointAclServiceArgs
-        ///         {
-        ///             Enable = true,
-        ///             EndpointType = "internet",
-        ///             InstanceId = "example_id",
-        ///             ModuleName = "Registry",
-        ///         }));
-        ///     }
+        ///         Enable = true,
+        ///         EndpointType = "internet",
+        ///         InstanceId = "example_id",
+        ///         ModuleName = "Registry",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEndpointAclServiceResult> Invoke(GetEndpointAclServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEndpointAclServiceResult>("alicloud:cr/getEndpointAclService:getEndpointAclService", args ?? new GetEndpointAclServiceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEndpointAclServiceResult>("alicloud:cr/getEndpointAclService:getEndpointAclService", args ?? new GetEndpointAclServiceInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEndpointAclServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointAclServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Whether to enable Acl Service.  Valid values: `true` and `false`.
@@ -118,9 +114,10 @@ namespace Pulumi.AliCloud.CR
         public GetEndpointAclServiceArgs()
         {
         }
+        public static new GetEndpointAclServiceArgs Empty => new GetEndpointAclServiceArgs();
     }
 
-    public sealed class GetEndpointAclServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointAclServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Whether to enable Acl Service.  Valid values: `true` and `false`.
@@ -149,6 +146,7 @@ namespace Pulumi.AliCloud.CR
         public GetEndpointAclServiceInvokeArgs()
         {
         }
+        public static new GetEndpointAclServiceInvokeArgs Empty => new GetEndpointAclServiceInvokeArgs();
     }
 
 

@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Dfs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dfs.GetFileSystems.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dfs.GetFileSystems.InvokeAsync(new AliCloud.Dfs.GetFileSystemsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.DfsFileSystemId1 = ids.Apply(ids =&gt; ids.Systems?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Dfs.GetFileSystems.InvokeAsync(new AliCloud.Dfs.GetFileSystemsArgs
-        ///         {
-        ///             NameRegex = "^my-FileSystem",
-        ///         }));
-        ///         this.DfsFileSystemId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Systems?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("dfsFileSystemId1")]
-        ///     public Output&lt;string&gt; DfsFileSystemId1 { get; set; }
-        ///     [Output("dfsFileSystemId2")]
-        ///     public Output&lt;string&gt; DfsFileSystemId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Dfs.GetFileSystems.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-FileSystem",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dfsFileSystemId1"] = ids.Apply(getFileSystemsResult =&gt; getFileSystemsResult.Systems[0]?.Id),
+        ///         ["dfsFileSystemId2"] = nameRegex.Apply(getFileSystemsResult =&gt; getFileSystemsResult.Systems[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFileSystemsResult> InvokeAsync(GetFileSystemsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemsResult>("alicloud:dfs/getFileSystems:getFileSystems", args ?? new GetFileSystemsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemsResult>("alicloud:dfs/getFileSystems:getFileSystems", args ?? new GetFileSystemsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Dfs File Systems of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Dfs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Dfs.GetFileSystems.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Dfs.GetFileSystems.InvokeAsync(new AliCloud.Dfs.GetFileSystemsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.DfsFileSystemId1 = ids.Apply(ids =&gt; ids.Systems?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Dfs.GetFileSystems.InvokeAsync(new AliCloud.Dfs.GetFileSystemsArgs
-        ///         {
-        ///             NameRegex = "^my-FileSystem",
-        ///         }));
-        ///         this.DfsFileSystemId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Systems?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("dfsFileSystemId1")]
-        ///     public Output&lt;string&gt; DfsFileSystemId1 { get; set; }
-        ///     [Output("dfsFileSystemId2")]
-        ///     public Output&lt;string&gt; DfsFileSystemId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Dfs.GetFileSystems.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-FileSystem",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dfsFileSystemId1"] = ids.Apply(getFileSystemsResult =&gt; getFileSystemsResult.Systems[0]?.Id),
+        ///         ["dfsFileSystemId2"] = nameRegex.Apply(getFileSystemsResult =&gt; getFileSystemsResult.Systems[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFileSystemsResult> Invoke(GetFileSystemsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFileSystemsResult>("alicloud:dfs/getFileSystems:getFileSystems", args ?? new GetFileSystemsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFileSystemsResult>("alicloud:dfs/getFileSystems:getFileSystems", args ?? new GetFileSystemsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetFileSystemsArgs : Pulumi.InvokeArgs
+    public sealed class GetFileSystemsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -131,9 +127,10 @@ namespace Pulumi.AliCloud.Dfs
         public GetFileSystemsArgs()
         {
         }
+        public static new GetFileSystemsArgs Empty => new GetFileSystemsArgs();
     }
 
-    public sealed class GetFileSystemsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFileSystemsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -159,6 +156,7 @@ namespace Pulumi.AliCloud.Dfs
         public GetFileSystemsInvokeArgs()
         {
         }
+        public static new GetFileSystemsInvokeArgs Empty => new GetFileSystemsInvokeArgs();
     }
 
 

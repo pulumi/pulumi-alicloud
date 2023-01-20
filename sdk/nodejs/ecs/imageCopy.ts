@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultImageCopy = new alicloud.ecs.ImageCopy("default", {
+ * const _default = new alicloud.ecs.ImageCopy("default", {
  *     description: "test-image",
  *     imageName: "test-image",
  *     sourceImageId: "m-bp1gxyhdswlsn18tu***",

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CR.Inputs
 {
 
-    public sealed class RepoDomainListArgs : Pulumi.ResourceArgs
+    public sealed class RepoDomainListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Domain of internal endpoint, only in some regions.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.CR.Inputs
         public RepoDomainListArgs()
         {
         }
+        public static new RepoDomainListArgs Empty => new RepoDomainListArgs();
     }
 }

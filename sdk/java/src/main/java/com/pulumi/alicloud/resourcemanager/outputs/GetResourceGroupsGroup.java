@@ -31,6 +31,10 @@ public final class GetResourceGroupsGroup {
      * 
      */
     private String name;
+    /**
+     * @return (Available in v1.114.0+) The status of the resource group in all regions.
+     * 
+     */
     private List<GetResourceGroupsGroupRegionStatus> regionStatuses;
     /**
      * @return (Available in v1.114.0+) The unique identifier of the resource group.
@@ -72,6 +76,10 @@ public final class GetResourceGroupsGroup {
     public String name() {
         return this.name;
     }
+    /**
+     * @return (Available in v1.114.0+) The status of the resource group in all regions.
+     * 
+     */
     public List<GetResourceGroupsGroupRegionStatus> regionStatuses() {
         return this.regionStatuses;
     }

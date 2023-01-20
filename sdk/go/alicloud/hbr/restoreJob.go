@@ -77,13 +77,13 @@ import (
 //				return err
 //			}
 //			_, err = hbr.NewRestoreJob(ctx, "nasJob", &hbr.RestoreJobArgs{
-//				SnapshotHash:       pulumi.String(nasSnapshots.Snapshots[0].SnapshotHash),
-//				VaultId:            pulumi.String(defaultNasBackupPlans.Plans[0].VaultId),
+//				SnapshotHash:       *pulumi.String(nasSnapshots.Snapshots[0].SnapshotHash),
+//				VaultId:            *pulumi.String(defaultNasBackupPlans.Plans[0].VaultId),
 //				SourceType:         pulumi.String("NAS"),
 //				RestoreType:        pulumi.String("NAS"),
-//				SnapshotId:         pulumi.String(nasSnapshots.Snapshots[0].SnapshotId),
-//				TargetFileSystemId: pulumi.String(defaultNasBackupPlans.Plans[0].FileSystemId),
-//				TargetCreateTime:   pulumi.String(defaultNasBackupPlans.Plans[0].CreateTime),
+//				SnapshotId:         *pulumi.String(nasSnapshots.Snapshots[0].SnapshotId),
+//				TargetFileSystemId: *pulumi.String(defaultNasBackupPlans.Plans[0].FileSystemId),
+//				TargetCreateTime:   *pulumi.String(defaultNasBackupPlans.Plans[0].CreateTime),
 //				TargetPath:         pulumi.String("/"),
 //				Options:            pulumi.String("    {\"includes\":[], \"excludes\":[]}\n"),
 //			})
@@ -91,12 +91,12 @@ import (
 //				return err
 //			}
 //			_, err = hbr.NewRestoreJob(ctx, "ossJob", &hbr.RestoreJobArgs{
-//				SnapshotHash: pulumi.String(ossSnapshots.Snapshots[0].SnapshotHash),
-//				VaultId:      pulumi.String(defaultOssBackupPlans.Plans[0].VaultId),
+//				SnapshotHash: *pulumi.String(ossSnapshots.Snapshots[0].SnapshotHash),
+//				VaultId:      *pulumi.String(defaultOssBackupPlans.Plans[0].VaultId),
 //				SourceType:   pulumi.String("OSS"),
 //				RestoreType:  pulumi.String("OSS"),
-//				SnapshotId:   pulumi.String(ossSnapshots.Snapshots[0].SnapshotId),
-//				TargetBucket: pulumi.String(defaultOssBackupPlans.Plans[0].Bucket),
+//				SnapshotId:   *pulumi.String(ossSnapshots.Snapshots[0].SnapshotId),
+//				TargetBucket: *pulumi.String(defaultOssBackupPlans.Plans[0].Bucket),
 //				TargetPrefix: pulumi.String(""),
 //				Options:      pulumi.String("    {\"includes\":[], \"excludes\":[]}\n"),
 //			})
@@ -104,12 +104,12 @@ import (
 //				return err
 //			}
 //			_, err = hbr.NewRestoreJob(ctx, "ecsJob", &hbr.RestoreJobArgs{
-//				SnapshotHash:     pulumi.String(ecsSnapshots.Snapshots[0].SnapshotHash),
-//				VaultId:          pulumi.String(defaultEcsBackupPlans.Plans[0].VaultId),
+//				SnapshotHash:     *pulumi.String(ecsSnapshots.Snapshots[0].SnapshotHash),
+//				VaultId:          *pulumi.String(defaultEcsBackupPlans.Plans[0].VaultId),
 //				SourceType:       pulumi.String("ECS_FILE"),
 //				RestoreType:      pulumi.String("ECS_FILE"),
-//				SnapshotId:       pulumi.String(ecsSnapshots.Snapshots[0].SnapshotId),
-//				TargetInstanceId: pulumi.String(defaultEcsBackupPlans.Plans[0].InstanceId),
+//				SnapshotId:       *pulumi.String(ecsSnapshots.Snapshots[0].SnapshotId),
+//				TargetInstanceId: *pulumi.String(defaultEcsBackupPlans.Plans[0].InstanceId),
 //				TargetPath:       pulumi.String("/"),
 //			})
 //			if err != nil {
@@ -125,22 +125,30 @@ import (
 //
 // ## Import
 //
-// Hybrid Backup Recovery (HBR) Restore Job can be imported using the id, e.g.
+// Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `<restore_job_id>:<restore_type>`, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:hbr/restoreJob:RestoreJob example <restore_job_id>:<restore_type>
+//	$ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
 //
 // ```
 type RestoreJob struct {
 	pulumi.CustomResourceState
 
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName pulumi.StringPtrOutput `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType pulumi.StringOutput `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId pulumi.IntPtrOutput `pulumi:"crossAccountUserId"`
 	// The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude pulumi.StringPtrOutput `pulumi:"exclude"`
 	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include pulumi.StringPtrOutput `pulumi:"include"`
 	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options pulumi.StringPtrOutput `pulumi:"options"`
+	// The details about the Tablestore instance. See the following `Block otsDetail`.
+	OtsDetail RestoreJobOtsDetailOutput `pulumi:"otsDetail"`
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringOutput `pulumi:"restoreJobId"`
 	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
@@ -225,12 +233,20 @@ func GetRestoreJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RestoreJob resources.
 type restoreJobState struct {
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType *string `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId *int `pulumi:"crossAccountUserId"`
 	// The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude *string `pulumi:"exclude"`
 	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include *string `pulumi:"include"`
 	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options *string `pulumi:"options"`
+	// The details about the Tablestore instance. See the following `Block otsDetail`.
+	OtsDetail *RestoreJobOtsDetail `pulumi:"otsDetail"`
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId *string `pulumi:"restoreJobId"`
 	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
@@ -272,12 +288,20 @@ type restoreJobState struct {
 }
 
 type RestoreJobState struct {
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName pulumi.StringPtrInput
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType pulumi.StringPtrInput
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId pulumi.IntPtrInput
 	// The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude pulumi.StringPtrInput
 	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include pulumi.StringPtrInput
 	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options pulumi.StringPtrInput
+	// The details about the Tablestore instance. See the following `Block otsDetail`.
+	OtsDetail RestoreJobOtsDetailPtrInput
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringPtrInput
 	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
@@ -323,12 +347,20 @@ func (RestoreJobState) ElementType() reflect.Type {
 }
 
 type restoreJobArgs struct {
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType *string `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId *int `pulumi:"crossAccountUserId"`
 	// The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude *string `pulumi:"exclude"`
 	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include *string `pulumi:"include"`
 	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options *string `pulumi:"options"`
+	// The details about the Tablestore instance. See the following `Block otsDetail`.
+	OtsDetail *RestoreJobOtsDetail `pulumi:"otsDetail"`
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId *string `pulumi:"restoreJobId"`
 	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
@@ -369,12 +401,20 @@ type restoreJobArgs struct {
 
 // The set of arguments for constructing a RestoreJob resource.
 type RestoreJobArgs struct {
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName pulumi.StringPtrInput
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType pulumi.StringPtrInput
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId pulumi.IntPtrInput
 	// The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Exclude pulumi.StringPtrInput
 	// The include path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while sourceType equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 	Include pulumi.StringPtrInput
 	// Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 	Options pulumi.StringPtrInput
+	// The details about the Tablestore instance. See the following `Block otsDetail`.
+	OtsDetail RestoreJobOtsDetailPtrInput
 	// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
 	RestoreJobId pulumi.StringPtrInput
 	// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
@@ -500,6 +540,21 @@ func (o RestoreJobOutput) ToRestoreJobOutputWithContext(ctx context.Context) Res
 	return o
 }
 
+// The role name created in the original account RAM backup by the cross account managed by the current account.
+func (o RestoreJobOutput) CrossAccountRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.CrossAccountRoleName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+func (o RestoreJobOutput) CrossAccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.StringOutput { return v.CrossAccountType }).(pulumi.StringOutput)
+}
+
+// The original account ID of the cross account backup managed by the current account.
+func (o RestoreJobOutput) CrossAccountUserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RestoreJob) pulumi.IntPtrOutput { return v.CrossAccountUserId }).(pulumi.IntPtrOutput)
+}
+
 // The exclude path. **NOTE:** Invalid while sourceType equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
 func (o RestoreJobOutput) Exclude() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.Exclude }).(pulumi.StringPtrOutput)
@@ -513,6 +568,11 @@ func (o RestoreJobOutput) Include() pulumi.StringPtrOutput {
 // Recovery options. **NOTE:** Required while sourceType equals `OSS` or `NAS`, invalid while sourceType equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
 func (o RestoreJobOutput) Options() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestoreJob) pulumi.StringPtrOutput { return v.Options }).(pulumi.StringPtrOutput)
+}
+
+// The details about the Tablestore instance. See the following `Block otsDetail`.
+func (o RestoreJobOutput) OtsDetail() RestoreJobOtsDetailOutput {
+	return o.ApplyT(func(v *RestoreJob) RestoreJobOtsDetailOutput { return v.OtsDetail }).(RestoreJobOtsDetailOutput)
 }
 
 // Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.

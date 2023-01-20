@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstance = new alicloud.sddp.Instance("default", {
+ * const _default = new alicloud.sddp.Instance("default", {
  *     dataphin: "yes",
  *     paymentType: "Subscription",
  *     period: 1,
@@ -101,7 +101,10 @@ export class Instance extends pulumi.CustomResource {
      * Whether the authorized oss assets.
      */
     public /*out*/ readonly ossBucketSet!: pulumi.Output<boolean>;
-    public /*out*/ readonly ossSize!: pulumi.Output<string>;
+    /**
+     * The OSS storage capacity.
+     */
+    public readonly ossSize!: pulumi.Output<string>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
      */
@@ -114,6 +117,9 @@ export class Instance extends pulumi.CustomResource {
      * Whether the authorized rds assets.
      */
     public /*out*/ readonly rdsSet!: pulumi.Output<boolean>;
+    /**
+     * The remaining days of the protection period of the assets in the current login account.
+     */
     public /*out*/ readonly remainDays!: pulumi.Output<string>;
     /**
      * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
@@ -209,6 +215,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dataphinCount"] = args ? args.dataphinCount : undefined;
             resourceInputs["logistics"] = args ? args.logistics : undefined;
             resourceInputs["modifyType"] = args ? args.modifyType : undefined;
+            resourceInputs["ossSize"] = args ? args.ossSize : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
@@ -222,7 +229,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceNum"] = undefined /*out*/;
             resourceInputs["odpsSet"] = undefined /*out*/;
             resourceInputs["ossBucketSet"] = undefined /*out*/;
-            resourceInputs["ossSize"] = undefined /*out*/;
             resourceInputs["rdsSet"] = undefined /*out*/;
             resourceInputs["remainDays"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -268,6 +274,9 @@ export interface InstanceState {
      * Whether the authorized oss assets.
      */
     ossBucketSet?: pulumi.Input<boolean>;
+    /**
+     * The OSS storage capacity.
+     */
     ossSize?: pulumi.Input<string>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
@@ -281,6 +290,9 @@ export interface InstanceState {
      * Whether the authorized rds assets.
      */
     rdsSet?: pulumi.Input<boolean>;
+    /**
+     * The remaining days of the protection period of the assets in the current login account.
+     */
     remainDays?: pulumi.Input<string>;
     /**
      * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
@@ -336,6 +348,10 @@ export interface InstanceArgs {
      * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
      */
     modifyType?: pulumi.Input<string>;
+    /**
+     * The OSS storage capacity.
+     */
+    ossSize?: pulumi.Input<string>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
      */

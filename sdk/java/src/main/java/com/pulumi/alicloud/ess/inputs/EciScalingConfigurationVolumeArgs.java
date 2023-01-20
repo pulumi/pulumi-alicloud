@@ -123,14 +123,14 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
     }
 
     /**
-     * The name of the mounted volume.
+     * The name of the volume.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the mounted volume.
+     * @return The name of the volume.
      * 
      */
     public Optional<Output<String>> name() {
@@ -385,7 +385,7 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the mounted volume.
+         * @param name The name of the volume.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the mounted volume.
+         * @param name The name of the volume.
          * 
          * @return builder
          * 

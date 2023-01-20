@@ -141,14 +141,16 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
+     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image.
+     * Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
      * 
      */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
     /**
-     * @return Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
+     * @return Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image.
+     * Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
      * 
      */
     public Optional<Output<String>> platform() {
@@ -410,7 +412,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param platform Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
+         * @param platform Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image.
+         * Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
          * 
          * @return builder
          * 
@@ -421,7 +424,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param platform Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`.
+         * @param platform Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image.
+         * Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
          * 
          * @return builder
          * 

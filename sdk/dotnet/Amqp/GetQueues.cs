@@ -23,44 +23,42 @@ namespace Pulumi.AliCloud.Amqp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Amqp.GetQueues.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Amqp.GetQueues.InvokeAsync(new AliCloud.Amqp.GetQueuesArgs
+        ///         InstanceId = "amqp-abc12345",
+        ///         VirtualHostName = "my-VirtualHost",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "amqp-abc12345",
-        ///             VirtualHostName = "my-VirtualHost",
-        ///             Ids = 
-        ///             {
-        ///                 "my-Queue-1",
-        ///                 "my-Queue-2",
-        ///             },
-        ///         }));
-        ///         this.AmqpQueueId1 = ids.Apply(ids =&gt; ids.Queues?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Amqp.GetQueues.InvokeAsync(new AliCloud.Amqp.GetQueuesArgs
-        ///         {
-        ///             InstanceId = "amqp-abc12345",
-        ///             VirtualHostName = "my-VirtualHost",
-        ///             NameRegex = "^my-Queue",
-        ///         }));
-        ///         this.AmqpQueueId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Queues?[0]?.Id);
-        ///     }
+        ///             "my-Queue-1",
+        ///             "my-Queue-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("amqpQueueId1")]
-        ///     public Output&lt;string&gt; AmqpQueueId1 { get; set; }
-        ///     [Output("amqpQueueId2")]
-        ///     public Output&lt;string&gt; AmqpQueueId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Amqp.GetQueues.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-abc12345",
+        ///         VirtualHostName = "my-VirtualHost",
+        ///         NameRegex = "^my-Queue",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["amqpQueueId1"] = ids.Apply(getQueuesResult =&gt; getQueuesResult.Queues[0]?.Id),
+        ///         ["amqpQueueId2"] = nameRegex.Apply(getQueuesResult =&gt; getQueuesResult.Queues[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQueuesResult> InvokeAsync(GetQueuesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQueuesResult>("alicloud:amqp/getQueues:getQueues", args ?? new GetQueuesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetQueuesResult>("alicloud:amqp/getQueues:getQueues", args ?? new GetQueuesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Amqp Queues of the current Alibaba Cloud user.
@@ -74,48 +72,46 @@ namespace Pulumi.AliCloud.Amqp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Amqp.GetQueues.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Amqp.GetQueues.InvokeAsync(new AliCloud.Amqp.GetQueuesArgs
+        ///         InstanceId = "amqp-abc12345",
+        ///         VirtualHostName = "my-VirtualHost",
+        ///         Ids = new[]
         ///         {
-        ///             InstanceId = "amqp-abc12345",
-        ///             VirtualHostName = "my-VirtualHost",
-        ///             Ids = 
-        ///             {
-        ///                 "my-Queue-1",
-        ///                 "my-Queue-2",
-        ///             },
-        ///         }));
-        ///         this.AmqpQueueId1 = ids.Apply(ids =&gt; ids.Queues?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Amqp.GetQueues.InvokeAsync(new AliCloud.Amqp.GetQueuesArgs
-        ///         {
-        ///             InstanceId = "amqp-abc12345",
-        ///             VirtualHostName = "my-VirtualHost",
-        ///             NameRegex = "^my-Queue",
-        ///         }));
-        ///         this.AmqpQueueId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Queues?[0]?.Id);
-        ///     }
+        ///             "my-Queue-1",
+        ///             "my-Queue-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("amqpQueueId1")]
-        ///     public Output&lt;string&gt; AmqpQueueId1 { get; set; }
-        ///     [Output("amqpQueueId2")]
-        ///     public Output&lt;string&gt; AmqpQueueId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Amqp.GetQueues.Invoke(new()
+        ///     {
+        ///         InstanceId = "amqp-abc12345",
+        ///         VirtualHostName = "my-VirtualHost",
+        ///         NameRegex = "^my-Queue",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["amqpQueueId1"] = ids.Apply(getQueuesResult =&gt; getQueuesResult.Queues[0]?.Id),
+        ///         ["amqpQueueId2"] = nameRegex.Apply(getQueuesResult =&gt; getQueuesResult.Queues[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQueuesResult> Invoke(GetQueuesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQueuesResult>("alicloud:amqp/getQueues:getQueues", args ?? new GetQueuesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetQueuesResult>("alicloud:amqp/getQueues:getQueues", args ?? new GetQueuesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetQueuesArgs : Pulumi.InvokeArgs
+    public sealed class GetQueuesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -153,9 +149,10 @@ namespace Pulumi.AliCloud.Amqp
         public GetQueuesArgs()
         {
         }
+        public static new GetQueuesArgs Empty => new GetQueuesArgs();
     }
 
-    public sealed class GetQueuesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetQueuesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -193,6 +190,7 @@ namespace Pulumi.AliCloud.Amqp
         public GetQueuesInvokeArgs()
         {
         }
+        public static new GetQueuesInvokeArgs Empty => new GetQueuesInvokeArgs();
     }
 
 

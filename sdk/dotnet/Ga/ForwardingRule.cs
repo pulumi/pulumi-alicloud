@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Ga
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ga/forwardingRule:ForwardingRule")]
-    public partial class ForwardingRule : Pulumi.CustomResource
+    public partial class ForwardingRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Global Accelerator instance.
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Ga
         }
     }
 
-    public sealed class ForwardingRuleArgs : Pulumi.ResourceArgs
+    public sealed class ForwardingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Global Accelerator instance.
@@ -172,9 +172,10 @@ namespace Pulumi.AliCloud.Ga
         public ForwardingRuleArgs()
         {
         }
+        public static new ForwardingRuleArgs Empty => new ForwardingRuleArgs();
     }
 
-    public sealed class ForwardingRuleState : Pulumi.ResourceArgs
+    public sealed class ForwardingRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Global Accelerator instance.
@@ -239,5 +240,6 @@ namespace Pulumi.AliCloud.Ga
         public ForwardingRuleState()
         {
         }
+        public static new ForwardingRuleState Empty => new ForwardingRuleState();
     }
 }

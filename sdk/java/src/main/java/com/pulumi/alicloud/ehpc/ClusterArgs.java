@@ -203,9 +203,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-     * - `NoSpot`: The compute nodes are pay-as-you-go instances.
-     * - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-     * - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
      * 
      */
     @Import(name="computeSpotStrategy")
@@ -213,9 +210,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-     * - `NoSpot`: The compute nodes are pay-as-you-go instances.
-     * - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-     * - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
      * 
      */
     public Optional<Output<String>> computeSpotStrategy() {
@@ -224,9 +218,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-     * - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-     * - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-     * - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
      * 
      */
     @Import(name="deployMode")
@@ -234,9 +225,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-     * - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-     * - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-     * - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
      * 
      */
     public Optional<Output<String>> deployMode() {
@@ -379,14 +367,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The queue of the nodes to which the additional file system is attached.
+     * The queue to which the compute nodes are added.
      * 
      */
     @Import(name="jobQueue")
     private @Nullable Output<String> jobQueue;
 
     /**
-     * @return The queue of the nodes to which the additional file system is attached.
+     * @return The queue to which the compute nodes are added.
      * 
      */
     public Optional<Output<String>> jobQueue() {
@@ -620,14 +608,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The remote directory to which the additional file system is mounted.
+     * The remote directory to which the file system is mounted.
      * 
      */
     @Import(name="remoteDirectory")
     private @Nullable Output<String> remoteDirectory;
 
     /**
-     * @return The remote directory to which the additional file system is mounted.
+     * @return The remote directory to which the file system is mounted.
      * 
      */
     public Optional<Output<String>> remoteDirectory() {
@@ -726,10 +714,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-     * * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-     * * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
      * 
      */
     @Import(name="systemDiskLevel")
@@ -737,10 +721,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-     * * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-     * * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
      * 
      */
     public Optional<Output<String>> systemDiskLevel() {
@@ -778,14 +758,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the additional file system.
+     * The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      * 
      */
     @Import(name="volumeId")
     private @Nullable Output<String> volumeId;
 
     /**
-     * @return The ID of the additional file system.
+     * @return The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      * 
      */
     public Optional<Output<String>> volumeId() {
@@ -808,14 +788,18 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The mount target of the additional file system.
+     * The mount target of the file system. Take note of the following information:
+     * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+     * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      * 
      */
     @Import(name="volumeMountpoint")
     private @Nullable Output<String> volumeMountpoint;
 
     /**
-     * @return The mount target of the additional file system.
+     * @return The mount target of the file system. Take note of the following information:
+     * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+     * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      * 
      */
     public Optional<Output<String>> volumeMountpoint() {
@@ -823,14 +807,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+     * The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      * 
      */
     @Import(name="volumeProtocol")
     private @Nullable Output<String> volumeProtocol;
 
     /**
-     * @return The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+     * @return The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      * 
      */
     public Optional<Output<String>> volumeProtocol() {
@@ -838,14 +822,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the additional shared storage. Only NAS file systems are supported.
+     * The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      * 
      */
     @Import(name="volumeType")
     private @Nullable Output<String> volumeType;
 
     /**
-     * @return The type of the additional shared storage. Only NAS file systems are supported.
+     * @return The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      * 
      */
     public Optional<Output<String>> volumeType() {
@@ -1282,9 +1266,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param computeSpotStrategy The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-         * - `NoSpot`: The compute nodes are pay-as-you-go instances.
-         * - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-         * - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
          * 
          * @return builder
          * 
@@ -1296,9 +1277,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param computeSpotStrategy The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-         * - `NoSpot`: The compute nodes are pay-as-you-go instances.
-         * - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-         * - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
          * 
          * @return builder
          * 
@@ -1309,9 +1287,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deployMode The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-         * - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-         * - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-         * - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
          * 
          * @return builder
          * 
@@ -1323,9 +1298,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deployMode The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-         * - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-         * - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-         * - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
          * 
          * @return builder
          * 
@@ -1524,7 +1496,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobQueue The queue of the nodes to which the additional file system is attached.
+         * @param jobQueue The queue to which the compute nodes are added.
          * 
          * @return builder
          * 
@@ -1535,7 +1507,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobQueue The queue of the nodes to which the additional file system is attached.
+         * @param jobQueue The queue to which the compute nodes are added.
          * 
          * @return builder
          * 
@@ -1875,7 +1847,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param remoteDirectory The remote directory to which the additional file system is mounted.
+         * @param remoteDirectory The remote directory to which the file system is mounted.
          * 
          * @return builder
          * 
@@ -1886,7 +1858,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param remoteDirectory The remote directory to which the additional file system is mounted.
+         * @param remoteDirectory The remote directory to which the file system is mounted.
          * 
          * @return builder
          * 
@@ -2023,10 +1995,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param systemDiskLevel The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-         * * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-         * * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-         * * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-         * * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
          * 
          * @return builder
          * 
@@ -2038,10 +2006,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param systemDiskLevel The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-         * * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-         * * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-         * * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-         * * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
          * 
          * @return builder
          * 
@@ -2093,7 +2057,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeId The ID of the additional file system.
+         * @param volumeId The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
          * 
          * @return builder
          * 
@@ -2104,7 +2068,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeId The ID of the additional file system.
+         * @param volumeId The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
          * 
          * @return builder
          * 
@@ -2135,7 +2099,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeMountpoint The mount target of the additional file system.
+         * @param volumeMountpoint The mount target of the file system. Take note of the following information:
+         * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+         * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
          * 
          * @return builder
          * 
@@ -2146,7 +2112,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeMountpoint The mount target of the additional file system.
+         * @param volumeMountpoint The mount target of the file system. Take note of the following information:
+         * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+         * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
          * 
          * @return builder
          * 
@@ -2156,7 +2124,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeProtocol The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+         * @param volumeProtocol The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
          * 
          * @return builder
          * 
@@ -2167,7 +2135,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeProtocol The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+         * @param volumeProtocol The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
          * 
          * @return builder
          * 
@@ -2177,7 +2145,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeType The type of the additional shared storage. Only NAS file systems are supported.
+         * @param volumeType The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
          * 
          * @return builder
          * 
@@ -2188,7 +2156,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeType The type of the additional shared storage. Only NAS file systems are supported.
+         * @param volumeType The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
          * 
          * @return builder
          * 

@@ -93,6 +93,21 @@ public final class PrefixListState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.prefixListName);
     }
 
+    /**
+     * (Available in v1.196.0+) The status of the Prefix List.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return (Available in v1.196.0+) The status of the Prefix List.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
     private PrefixListState() {}
 
     private PrefixListState(PrefixListState $) {
@@ -101,6 +116,7 @@ public final class PrefixListState extends com.pulumi.resources.ResourceArgs {
         this.maxEntries = $.maxEntries;
         this.prefixListDescription = $.prefixListDescription;
         this.prefixListName = $.prefixListName;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -234,6 +250,27 @@ public final class PrefixListState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder prefixListName(String prefixListName) {
             return prefixListName(Output.of(prefixListName));
+        }
+
+        /**
+         * @param status (Available in v1.196.0+) The status of the Prefix List.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status (Available in v1.196.0+) The status of the Prefix List.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         public PrefixListState build() {

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,15 +26,12 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const configAggregateDeliveryId1 = ids.then(ids => ids.deliveries?[0]?.id);
+ * export const configAggregateDeliveryId1 = ids.then(ids => ids.deliveries?.[0]?.id);
  * ```
  */
 export function getAggregateDeliveries(args: GetAggregateDeliveriesArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregateDeliveriesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", {
         "aggregatorId": args.aggregatorId,
         "ids": args.ids,
@@ -79,9 +77,31 @@ export interface GetAggregateDeliveriesResult {
     readonly outputFile?: string;
     readonly status?: number;
 }
-
+/**
+ * This data source provides the Config Aggregate Deliveries of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.172.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cfg.getAggregateDeliveries({
+ *     aggregatorId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const configAggregateDeliveryId1 = ids.then(ids => ids.deliveries?.[0]?.id);
+ * ```
+ */
 export function getAggregateDeliveriesOutput(args: GetAggregateDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateDeliveriesResult> {
-    return pulumi.output(args).apply(a => getAggregateDeliveries(a, opts))
+    return pulumi.output(args).apply((a: any) => getAggregateDeliveries(a, opts))
 }
 
 /**

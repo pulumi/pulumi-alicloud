@@ -504,7 +504,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -537,17 +537,17 @@ public final class ActiontrailFunctions {
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
-     *             .deployType(&#34;4&#34;)
-     *             .diskSize(&#34;500&#34;)
+     *             .partitionNum(&#34;50&#34;)
      *             .diskType(&#34;1&#34;)
+     *             .diskSize(&#34;500&#34;)
+     *             .deployType(&#34;4&#34;)
      *             .ioMax(&#34;20&#34;)
-     *             .topicQuota(&#34;50&#34;)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -578,7 +578,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -611,17 +611,17 @@ public final class ActiontrailFunctions {
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
-     *             .deployType(&#34;4&#34;)
-     *             .diskSize(&#34;500&#34;)
+     *             .partitionNum(&#34;50&#34;)
      *             .diskType(&#34;1&#34;)
+     *             .diskSize(&#34;500&#34;)
+     *             .deployType(&#34;4&#34;)
      *             .ioMax(&#34;20&#34;)
-     *             .topicQuota(&#34;50&#34;)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -652,7 +652,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -685,17 +685,17 @@ public final class ActiontrailFunctions {
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
-     *             .deployType(&#34;4&#34;)
-     *             .diskSize(&#34;500&#34;)
+     *             .partitionNum(&#34;50&#34;)
      *             .diskType(&#34;1&#34;)
+     *             .diskSize(&#34;500&#34;)
+     *             .deployType(&#34;4&#34;)
      *             .ioMax(&#34;20&#34;)
-     *             .topicQuota(&#34;50&#34;)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -726,7 +726,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -759,17 +759,17 @@ public final class ActiontrailFunctions {
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
-     *             .deployType(&#34;4&#34;)
-     *             .diskSize(&#34;500&#34;)
+     *             .partitionNum(&#34;50&#34;)
      *             .diskType(&#34;1&#34;)
+     *             .diskSize(&#34;500&#34;)
+     *             .deployType(&#34;4&#34;)
      *             .ioMax(&#34;20&#34;)
-     *             .topicQuota(&#34;50&#34;)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -800,7 +800,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -833,17 +833,17 @@ public final class ActiontrailFunctions {
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
-     *             .deployType(&#34;4&#34;)
-     *             .diskSize(&#34;500&#34;)
+     *             .partitionNum(&#34;50&#34;)
      *             .diskType(&#34;1&#34;)
+     *             .diskSize(&#34;500&#34;)
+     *             .deployType(&#34;4&#34;)
      *             .ioMax(&#34;20&#34;)
-     *             .topicQuota(&#34;50&#34;)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -874,7 +874,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.vpc.Network;
      * import com.pulumi.alicloud.vpc.NetworkArgs;
      * import com.pulumi.alicloud.vpc.Switch;
@@ -907,17 +907,17 @@ public final class ActiontrailFunctions {
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
-     *             .deployType(&#34;4&#34;)
-     *             .diskSize(&#34;500&#34;)
+     *             .partitionNum(&#34;50&#34;)
      *             .diskType(&#34;1&#34;)
+     *             .diskSize(&#34;500&#34;)
+     *             .deployType(&#34;4&#34;)
      *             .ioMax(&#34;20&#34;)
-     *             .topicQuota(&#34;50&#34;)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
@@ -1688,7 +1688,6 @@ public final class ActiontrailFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:actiontrail/getTrails:getTrails", TypeShape.of(GetTrailsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
@@ -1699,7 +1698,6 @@ public final class ActiontrailFunctions {
         return getTrailsDeprecated(GetTrailsDeprecatedArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
@@ -1710,7 +1708,6 @@ public final class ActiontrailFunctions {
         return getTrailsDeprecatedPlain(GetTrailsDeprecatedPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
@@ -1721,7 +1718,6 @@ public final class ActiontrailFunctions {
         return getTrailsDeprecated(args, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
@@ -1732,7 +1728,6 @@ public final class ActiontrailFunctions {
         return getTrailsDeprecatedPlain(args, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
@@ -1743,7 +1738,6 @@ public final class ActiontrailFunctions {
         return Deployment.getInstance().invoke("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", TypeShape.of(GetTrailsDeprecatedResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`

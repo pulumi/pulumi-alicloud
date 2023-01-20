@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -71,7 +72,7 @@ export class PrefixList extends pulumi.CustomResource {
     /**
      * The CIDR address block list of the prefix list. See the following `Block entrys`.
      */
-    public readonly entrys!: pulumi.Output<outputs.vpc.PrefixListEntry[]>;
+    public readonly entrys!: pulumi.Output<outputs.vpc.PrefixListEntry[] | undefined>;
     /**
      * The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
      */
@@ -88,6 +89,10 @@ export class PrefixList extends pulumi.CustomResource {
      * The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
     public readonly prefixListName!: pulumi.Output<string | undefined>;
+    /**
+     * (Available in v1.196.0+) The status of the Prefix List.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a PrefixList resource with the given unique name, arguments, and options.
@@ -96,7 +101,7 @@ export class PrefixList extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: PrefixListArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: PrefixListArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PrefixListArgs | PrefixListState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -107,16 +112,15 @@ export class PrefixList extends pulumi.CustomResource {
             resourceInputs["maxEntries"] = state ? state.maxEntries : undefined;
             resourceInputs["prefixListDescription"] = state ? state.prefixListDescription : undefined;
             resourceInputs["prefixListName"] = state ? state.prefixListName : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as PrefixListArgs | undefined;
-            if ((!args || args.entrys === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entrys'");
-            }
             resourceInputs["entrys"] = args ? args.entrys : undefined;
             resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
             resourceInputs["maxEntries"] = args ? args.maxEntries : undefined;
             resourceInputs["prefixListDescription"] = args ? args.prefixListDescription : undefined;
             resourceInputs["prefixListName"] = args ? args.prefixListName : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PrefixList.__pulumiType, name, resourceInputs, opts);
@@ -147,6 +151,10 @@ export interface PrefixListState {
      * The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
     prefixListName?: pulumi.Input<string>;
+    /**
+     * (Available in v1.196.0+) The status of the Prefix List.
+     */
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -156,7 +164,7 @@ export interface PrefixListArgs {
     /**
      * The CIDR address block list of the prefix list. See the following `Block entrys`.
      */
-    entrys: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListEntry>[]>;
+    entrys?: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListEntry>[]>;
     /**
      * The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
      */

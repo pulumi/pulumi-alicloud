@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -24,28 +25,25 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const vpcBgpPeerId1 = ids.then(ids => ids.peers?[0]?.id);
+ * export const vpcBgpPeerId1 = ids.then(ids => ids.peers?.[0]?.id);
  * const bgpGroupId = alicloud.vpc.getBgpPeers({
  *     bgpGroupId: "example_value",
  * });
- * export const vpcBgpPeerId2 = bgpGroupId.then(bgpGroupId => bgpGroupId.peers?[0]?.id);
+ * export const vpcBgpPeerId2 = bgpGroupId.then(bgpGroupId => bgpGroupId.peers?.[0]?.id);
  * const routerId = alicloud.vpc.getBgpPeers({
  *     routerId: "example_value",
  * });
- * export const vpcBgpPeerId3 = routerId.then(routerId => routerId.peers?[0]?.id);
+ * export const vpcBgpPeerId3 = routerId.then(routerId => routerId.peers?.[0]?.id);
  * const status = alicloud.vpc.getBgpPeers({
  *     status: "Available",
  * });
- * export const vpcBgpPeerId4 = status.then(status => status.peers?[0]?.id);
+ * export const vpcBgpPeerId4 = status.then(status => status.peers?.[0]?.id);
  * ```
  */
 export function getBgpPeers(args?: GetBgpPeersArgs, opts?: pulumi.InvokeOptions): Promise<GetBgpPeersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getBgpPeers:getBgpPeers", {
         "bgpGroupId": args.bgpGroupId,
         "ids": args.ids,
@@ -93,9 +91,42 @@ export interface GetBgpPeersResult {
     readonly routerId?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.153.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.vpc.getBgpPeers({
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const vpcBgpPeerId1 = ids.then(ids => ids.peers?.[0]?.id);
+ * const bgpGroupId = alicloud.vpc.getBgpPeers({
+ *     bgpGroupId: "example_value",
+ * });
+ * export const vpcBgpPeerId2 = bgpGroupId.then(bgpGroupId => bgpGroupId.peers?.[0]?.id);
+ * const routerId = alicloud.vpc.getBgpPeers({
+ *     routerId: "example_value",
+ * });
+ * export const vpcBgpPeerId3 = routerId.then(routerId => routerId.peers?.[0]?.id);
+ * const status = alicloud.vpc.getBgpPeers({
+ *     status: "Available",
+ * });
+ * export const vpcBgpPeerId4 = status.then(status => status.peers?.[0]?.id);
+ * ```
+ */
 export function getBgpPeersOutput(args?: GetBgpPeersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBgpPeersResult> {
-    return pulumi.output(args).apply(a => getBgpPeers(a, opts))
+    return pulumi.output(args).apply((a: any) => getBgpPeers(a, opts))
 }
 
 /**

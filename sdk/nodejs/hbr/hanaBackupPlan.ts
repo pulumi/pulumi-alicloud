@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     host: "1.1.1.1",
  *     instanceNumber: 1,
  *     password: "YouPassword123",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     sid: "HXE",
  *     useSsl: false,
  *     userName: "admin",
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     clusterId: defaultHanaInstance.hanaInstanceId,
  *     databaseName: "SYSTEMDB",
  *     planName: _var.name,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?[0]?.id),
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     schedule: "I|1602673264|P1D",
  *     vaultId: defaultHanaInstance.vaultId,
  * });
@@ -90,9 +90,6 @@ export class HanaBackupPlan extends pulumi.CustomResource {
     public readonly backupPrefix!: pulumi.Output<string | undefined>;
     /**
      * The backup type. Valid values:
-     * - `COMPLETE`: full backup.
-     * - `INCREMENTAL`: incremental backup.
-     * - `DIFFERENTIAL`: differential backup.
      */
     public readonly backupType!: pulumi.Output<string>;
     /**
@@ -197,9 +194,6 @@ export interface HanaBackupPlanState {
     backupPrefix?: pulumi.Input<string>;
     /**
      * The backup type. Valid values:
-     * - `COMPLETE`: full backup.
-     * - `INCREMENTAL`: incremental backup.
-     * - `DIFFERENTIAL`: differential backup.
      */
     backupType?: pulumi.Input<string>;
     /**
@@ -246,9 +240,6 @@ export interface HanaBackupPlanArgs {
     backupPrefix?: pulumi.Input<string>;
     /**
      * The backup type. Valid values:
-     * - `COMPLETE`: full backup.
-     * - `INCREMENTAL`: incremental backup.
-     * - `DIFFERENTIAL`: differential backup.
      */
     backupType: pulumi.Input<string>;
     /**

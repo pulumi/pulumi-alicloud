@@ -63,6 +63,8 @@ type Secret struct {
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// The description of the secret.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The instance ID of the exclusive KMS instance.
+	DkmsInstanceId pulumi.StringPtrOutput `pulumi:"dkmsInstanceId"`
 	// Whether to enable automatic key rotation.
 	EnableAutomaticRotation pulumi.BoolPtrOutput `pulumi:"enableAutomaticRotation"`
 	// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
@@ -105,6 +107,13 @@ func NewSecret(ctx *pulumi.Context,
 	if args.VersionId == nil {
 		return nil, errors.New("invalid value for required argument 'VersionId'")
 	}
+	if args.SecretData != nil {
+		args.SecretData = pulumi.ToSecret(args.SecretData).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secretData",
+	})
+	opts = append(opts, secrets)
 	var resource Secret
 	err := ctx.RegisterResource("alicloud:kms/secret:Secret", name, args, &resource, opts...)
 	if err != nil {
@@ -131,6 +140,8 @@ type secretState struct {
 	Arn *string `pulumi:"arn"`
 	// The description of the secret.
 	Description *string `pulumi:"description"`
+	// The instance ID of the exclusive KMS instance.
+	DkmsInstanceId *string `pulumi:"dkmsInstanceId"`
 	// Whether to enable automatic key rotation.
 	EnableAutomaticRotation *bool `pulumi:"enableAutomaticRotation"`
 	// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
@@ -162,6 +173,8 @@ type SecretState struct {
 	Arn pulumi.StringPtrInput
 	// The description of the secret.
 	Description pulumi.StringPtrInput
+	// The instance ID of the exclusive KMS instance.
+	DkmsInstanceId pulumi.StringPtrInput
 	// Whether to enable automatic key rotation.
 	EnableAutomaticRotation pulumi.BoolPtrInput
 	// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
@@ -195,6 +208,8 @@ func (SecretState) ElementType() reflect.Type {
 type secretArgs struct {
 	// The description of the secret.
 	Description *string `pulumi:"description"`
+	// The instance ID of the exclusive KMS instance.
+	DkmsInstanceId *string `pulumi:"dkmsInstanceId"`
 	// Whether to enable automatic key rotation.
 	EnableAutomaticRotation *bool `pulumi:"enableAutomaticRotation"`
 	// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
@@ -223,6 +238,8 @@ type secretArgs struct {
 type SecretArgs struct {
 	// The description of the secret.
 	Description pulumi.StringPtrInput
+	// The instance ID of the exclusive KMS instance.
+	DkmsInstanceId pulumi.StringPtrInput
 	// Whether to enable automatic key rotation.
 	EnableAutomaticRotation pulumi.BoolPtrInput
 	// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
@@ -342,6 +359,11 @@ func (o SecretOutput) Arn() pulumi.StringOutput {
 // The description of the secret.
 func (o SecretOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The instance ID of the exclusive KMS instance.
+func (o SecretOutput) DkmsInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.DkmsInstanceId }).(pulumi.StringPtrOutput)
 }
 
 // Whether to enable automatic key rotation.

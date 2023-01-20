@@ -13,47 +13,50 @@ namespace Pulumi.AliCloud.Vpc
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "networkInterfaceName";
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "networkInterfaceName";
-    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "192.168.0.0/24",
-    ///         });
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             CidrBlock = "192.168.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VpcId = vpc.Id,
-    ///         });
-    ///         var @group = new AliCloud.Ecs.SecurityGroup("group", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             VpcId = vpc.Id,
-    ///         });
-    ///         var defaultNetworkInterface = new AliCloud.Vpc.NetworkInterface("defaultNetworkInterface", new AliCloud.Vpc.NetworkInterfaceArgs
-    ///         {
-    ///             VswitchId = vswitch.Id,
-    ///             SecurityGroups = 
-    ///             {
-    ///                 @group.Id,
-    ///             },
-    ///             PrivateIp = "192.168.0.2",
-    ///             PrivateIpsCount = 3,
-    ///         });
-    ///     }
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/24",
+    ///     });
     /// 
-    /// }
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+    ///     {
+    ///         CidrBlock = "192.168.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcId = vpc.Id,
+    ///     });
+    /// 
+    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///     });
+    /// 
+    ///     var defaultNetworkInterface = new AliCloud.Vpc.NetworkInterface("defaultNetworkInterface", new()
+    ///     {
+    ///         NetworkInterfaceName = name,
+    ///         VswitchId = vswitch.Id,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             @group.Id,
+    ///         },
+    ///         PrivateIp = "192.168.0.2",
+    ///         PrivateIpsCount = 3,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -65,13 +68,19 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/networkInterface:NetworkInterface")]
-    public partial class NetworkInterface : Pulumi.CustomResource
+    public partial class NetworkInterface : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        [Output("ipv6AddressCount")]
+        public Output<int> Ipv6AddressCount { get; private set; } = null!;
+
+        [Output("ipv6Addresses")]
+        public Output<ImmutableArray<string>> Ipv6Addresses { get; private set; } = null!;
 
         /// <summary>
         /// (Available in 1.54.0+) The MAC address of an ENI.
@@ -192,13 +201,24 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class NetworkInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class NetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("ipv6AddressCount")]
+        public Input<int>? Ipv6AddressCount { get; set; }
+
+        [Input("ipv6Addresses")]
+        private InputList<string>? _ipv6Addresses;
+        public InputList<string> Ipv6Addresses
+        {
+            get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<string>());
+            set => _ipv6Addresses = value;
+        }
 
         /// <summary>
         /// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -299,15 +319,27 @@ namespace Pulumi.AliCloud.Vpc
         public NetworkInterfaceArgs()
         {
         }
+        public static new NetworkInterfaceArgs Empty => new NetworkInterfaceArgs();
     }
 
-    public sealed class NetworkInterfaceState : Pulumi.ResourceArgs
+    public sealed class NetworkInterfaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("ipv6AddressCount")]
+        public Input<int>? Ipv6AddressCount { get; set; }
+
+        [Input("ipv6Addresses")]
+        private InputList<string>? _ipv6Addresses;
+        public InputList<string> Ipv6Addresses
+        {
+            get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<string>());
+            set => _ipv6Addresses = value;
+        }
 
         /// <summary>
         /// (Available in 1.54.0+) The MAC address of an ENI.
@@ -417,5 +449,6 @@ namespace Pulumi.AliCloud.Vpc
         public NetworkInterfaceState()
         {
         }
+        public static new NetworkInterfaceState Empty => new NetworkInterfaceState();
     }
 }

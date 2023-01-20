@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const example = alicloud.eci.getContainerGroups({
  *     ids: ["example_value"],
  * });
- * export const firstEciContainerGroupId = example.then(example => example.groups?[0]?.id);
+ * export const firstEciContainerGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
  */
 export function getContainerGroups(args?: GetContainerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:eci/getContainerGroups:getContainerGroups", {
         "containerGroupName": args.containerGroupName,
         "enableDetails": args.enableDetails,
@@ -118,9 +116,27 @@ export interface GetContainerGroupsResult {
     readonly withEvent?: boolean;
     readonly zoneId?: string;
 }
-
+/**
+ * This data source provides the Eci Container Groups of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.111.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.eci.getContainerGroups({
+ *     ids: ["example_value"],
+ * });
+ * export const firstEciContainerGroupId = example.then(example => example.groups?.[0]?.id);
+ * ```
+ */
 export function getContainerGroupsOutput(args?: GetContainerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerGroupsResult> {
-    return pulumi.output(args).apply(a => getContainerGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getContainerGroups(a, opts))
 }
 
 /**

@@ -23,94 +23,97 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
         ///     {
-        ///         var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new AliCloud.Eds.SimpleOfficeSiteArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/12",
-        ///             DesktopAccessType = "Internet",
-        ///             OfficeSiteName = "your_office_site_name",
-        ///         });
-        ///         var defaultBundles = Output.Create(AliCloud.Eds.GetBundles.InvokeAsync(new AliCloud.Eds.GetBundlesArgs
-        ///         {
-        ///             BundleType = "SYSTEM",
-        ///         }));
-        ///         var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new AliCloud.Eds.EcdPolicyGroupArgs
-        ///         {
-        ///             PolicyGroupName = "your_policy_group_name",
-        ///             Clipboard = "readwrite",
-        ///             LocalDrive = "read",
-        ///             AuthorizeAccessPolicyRules = 
-        ///             {
-        ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
-        ///                 {
-        ///                     Description = "example_value",
-        ///                     CidrIp = "1.2.3.4/24",
-        ///                 },
-        ///             },
-        ///             AuthorizeSecurityPolicyRules = 
-        ///             {
-        ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
-        ///                 {
-        ///                     Type = "inflow",
-        ///                     Policy = "accept",
-        ///                     Description = "example_value",
-        ///                     PortRange = "80/80",
-        ///                     IpProtocol = "TCP",
-        ///                     Priority = "1",
-        ///                     CidrIp = "0.0.0.0/0",
-        ///                 },
-        ///             },
-        ///         });
-        ///         var defaultUser = new AliCloud.Eds.User("defaultUser", new AliCloud.Eds.UserArgs
-        ///         {
-        ///             EndUserId = "your_end_user_id",
-        ///             Email = "your_email",
-        ///             Phone = "your_phone",
-        ///             Password = "your_password",
-        ///         });
-        ///         var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new AliCloud.Eds.DesktopArgs
-        ///         {
-        ///             OfficeSiteId = defaultSimpleOfficeSite.Id,
-        ///             PolicyGroupId = defaultEcdPolicyGroup.Id,
-        ///             BundleId = defaultBundles.Apply(defaultBundles =&gt; defaultBundles.Bundles?[0]?.Id),
-        ///             DesktopName = "your_desktop_name",
-        ///             EndUserIds = 
-        ///             {
-        ///                 defaultUser.Id,
-        ///             },
-        ///         });
-        ///         var ids = AliCloud.Eds.GetDesktops.Invoke(new AliCloud.Eds.GetDesktopsInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultDesktop.Id,
-        ///             },
-        ///         });
-        ///         this.EcdDesktopId1 = ids.Apply(ids =&gt; ids.Desktops?[0]?.Id);
-        ///         var nameRegex = defaultDesktop.DesktopName.Apply(desktopName =&gt; AliCloud.Eds.GetDesktops.Invoke(new AliCloud.Eds.GetDesktopsInvokeArgs
-        ///         {
-        ///             NameRegex = desktopName,
-        ///         }));
-        ///         this.EcdDesktopId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Desktops?[0]?.Id);
-        ///     }
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         DesktopAccessType = "Internet",
+        ///         OfficeSiteName = "your_office_site_name",
+        ///     });
         /// 
-        ///     [Output("ecdDesktopId1")]
-        ///     public Output&lt;string&gt; EcdDesktopId1 { get; set; }
-        ///     [Output("ecdDesktopId2")]
-        ///     public Output&lt;string&gt; EcdDesktopId2 { get; set; }
-        /// }
+        ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
+        ///     {
+        ///         BundleType = "SYSTEM",
+        ///     });
+        /// 
+        ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new()
+        ///     {
+        ///         PolicyGroupName = "your_policy_group_name",
+        ///         Clipboard = "readwrite",
+        ///         LocalDrive = "read",
+        ///         AuthorizeAccessPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
+        ///             {
+        ///                 Description = "example_value",
+        ///                 CidrIp = "1.2.3.4/24",
+        ///             },
+        ///         },
+        ///         AuthorizeSecurityPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
+        ///             {
+        ///                 Type = "inflow",
+        ///                 Policy = "accept",
+        ///                 Description = "example_value",
+        ///                 PortRange = "80/80",
+        ///                 IpProtocol = "TCP",
+        ///                 Priority = "1",
+        ///                 CidrIp = "0.0.0.0/0",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultUser = new AliCloud.Eds.User("defaultUser", new()
+        ///     {
+        ///         EndUserId = "your_end_user_id",
+        ///         Email = "your_email",
+        ///         Phone = "your_phone",
+        ///         Password = "your_password",
+        ///     });
+        /// 
+        ///     var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new()
+        ///     {
+        ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+        ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
+        ///         BundleId = defaultBundles.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id),
+        ///         DesktopName = "your_desktop_name",
+        ///         EndUserIds = new[]
+        ///         {
+        ///             defaultUser.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Eds.GetDesktops.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDesktop.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Eds.GetDesktops.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultDesktop.DesktopName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdDesktopId1"] = ids.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
+        ///         ["ecdDesktopId2"] = nameRegex.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDesktopsResult> InvokeAsync(GetDesktopsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDesktopsResult>("alicloud:eds/getDesktops:getDesktops", args ?? new GetDesktopsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDesktopsResult>("alicloud:eds/getDesktops:getDesktops", args ?? new GetDesktopsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecd Desktops of the current Alibaba Cloud user.
@@ -124,98 +127,101 @@ namespace Pulumi.AliCloud.Eds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
         ///     {
-        ///         var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new AliCloud.Eds.SimpleOfficeSiteArgs
-        ///         {
-        ///             CidrBlock = "172.16.0.0/12",
-        ///             DesktopAccessType = "Internet",
-        ///             OfficeSiteName = "your_office_site_name",
-        ///         });
-        ///         var defaultBundles = Output.Create(AliCloud.Eds.GetBundles.InvokeAsync(new AliCloud.Eds.GetBundlesArgs
-        ///         {
-        ///             BundleType = "SYSTEM",
-        ///         }));
-        ///         var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new AliCloud.Eds.EcdPolicyGroupArgs
-        ///         {
-        ///             PolicyGroupName = "your_policy_group_name",
-        ///             Clipboard = "readwrite",
-        ///             LocalDrive = "read",
-        ///             AuthorizeAccessPolicyRules = 
-        ///             {
-        ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
-        ///                 {
-        ///                     Description = "example_value",
-        ///                     CidrIp = "1.2.3.4/24",
-        ///                 },
-        ///             },
-        ///             AuthorizeSecurityPolicyRules = 
-        ///             {
-        ///                 new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
-        ///                 {
-        ///                     Type = "inflow",
-        ///                     Policy = "accept",
-        ///                     Description = "example_value",
-        ///                     PortRange = "80/80",
-        ///                     IpProtocol = "TCP",
-        ///                     Priority = "1",
-        ///                     CidrIp = "0.0.0.0/0",
-        ///                 },
-        ///             },
-        ///         });
-        ///         var defaultUser = new AliCloud.Eds.User("defaultUser", new AliCloud.Eds.UserArgs
-        ///         {
-        ///             EndUserId = "your_end_user_id",
-        ///             Email = "your_email",
-        ///             Phone = "your_phone",
-        ///             Password = "your_password",
-        ///         });
-        ///         var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new AliCloud.Eds.DesktopArgs
-        ///         {
-        ///             OfficeSiteId = defaultSimpleOfficeSite.Id,
-        ///             PolicyGroupId = defaultEcdPolicyGroup.Id,
-        ///             BundleId = defaultBundles.Apply(defaultBundles =&gt; defaultBundles.Bundles?[0]?.Id),
-        ///             DesktopName = "your_desktop_name",
-        ///             EndUserIds = 
-        ///             {
-        ///                 defaultUser.Id,
-        ///             },
-        ///         });
-        ///         var ids = AliCloud.Eds.GetDesktops.Invoke(new AliCloud.Eds.GetDesktopsInvokeArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 defaultDesktop.Id,
-        ///             },
-        ///         });
-        ///         this.EcdDesktopId1 = ids.Apply(ids =&gt; ids.Desktops?[0]?.Id);
-        ///         var nameRegex = defaultDesktop.DesktopName.Apply(desktopName =&gt; AliCloud.Eds.GetDesktops.Invoke(new AliCloud.Eds.GetDesktopsInvokeArgs
-        ///         {
-        ///             NameRegex = desktopName,
-        ///         }));
-        ///         this.EcdDesktopId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Desktops?[0]?.Id);
-        ///     }
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         DesktopAccessType = "Internet",
+        ///         OfficeSiteName = "your_office_site_name",
+        ///     });
         /// 
-        ///     [Output("ecdDesktopId1")]
-        ///     public Output&lt;string&gt; EcdDesktopId1 { get; set; }
-        ///     [Output("ecdDesktopId2")]
-        ///     public Output&lt;string&gt; EcdDesktopId2 { get; set; }
-        /// }
+        ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
+        ///     {
+        ///         BundleType = "SYSTEM",
+        ///     });
+        /// 
+        ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new()
+        ///     {
+        ///         PolicyGroupName = "your_policy_group_name",
+        ///         Clipboard = "readwrite",
+        ///         LocalDrive = "read",
+        ///         AuthorizeAccessPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
+        ///             {
+        ///                 Description = "example_value",
+        ///                 CidrIp = "1.2.3.4/24",
+        ///             },
+        ///         },
+        ///         AuthorizeSecurityPolicyRules = new[]
+        ///         {
+        ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
+        ///             {
+        ///                 Type = "inflow",
+        ///                 Policy = "accept",
+        ///                 Description = "example_value",
+        ///                 PortRange = "80/80",
+        ///                 IpProtocol = "TCP",
+        ///                 Priority = "1",
+        ///                 CidrIp = "0.0.0.0/0",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultUser = new AliCloud.Eds.User("defaultUser", new()
+        ///     {
+        ///         EndUserId = "your_end_user_id",
+        ///         Email = "your_email",
+        ///         Phone = "your_phone",
+        ///         Password = "your_password",
+        ///     });
+        /// 
+        ///     var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new()
+        ///     {
+        ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+        ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
+        ///         BundleId = defaultBundles.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id),
+        ///         DesktopName = "your_desktop_name",
+        ///         EndUserIds = new[]
+        ///         {
+        ///             defaultUser.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Eds.GetDesktops.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultDesktop.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var nameRegex = AliCloud.Eds.GetDesktops.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultDesktop.DesktopName,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecdDesktopId1"] = ids.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
+        ///         ["ecdDesktopId2"] = nameRegex.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDesktopsResult> Invoke(GetDesktopsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDesktopsResult>("alicloud:eds/getDesktops:getDesktops", args ?? new GetDesktopsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDesktopsResult>("alicloud:eds/getDesktops:getDesktops", args ?? new GetDesktopsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDesktopsArgs : Pulumi.InvokeArgs
+    public sealed class GetDesktopsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The desktop name of the Desktop.
@@ -277,9 +283,10 @@ namespace Pulumi.AliCloud.Eds
         public GetDesktopsArgs()
         {
         }
+        public static new GetDesktopsArgs Empty => new GetDesktopsArgs();
     }
 
-    public sealed class GetDesktopsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDesktopsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The desktop name of the Desktop.
@@ -341,6 +348,7 @@ namespace Pulumi.AliCloud.Eds
         public GetDesktopsInvokeArgs()
         {
         }
+        public static new GetDesktopsInvokeArgs Empty => new GetDesktopsInvokeArgs();
     }
 
 

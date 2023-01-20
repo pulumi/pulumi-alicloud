@@ -88,7 +88,7 @@ class LaunchTemplateArgs:
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
-        :param pulumi.Input[float] spot_price_limit: -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
                - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -546,7 +546,7 @@ class LaunchTemplateArgs:
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> Optional[pulumi.Input[float]]:
         """
-        -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        Sets the maximum hourly instance price. Supports up to three decimal places.
         """
         return pulumi.get(self, "spot_price_limit")
 
@@ -802,7 +802,7 @@ class _LaunchTemplateState:
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
-        :param pulumi.Input[float] spot_price_limit: -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
                - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -1260,7 +1260,7 @@ class _LaunchTemplateState:
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> Optional[pulumi.Input[float]]:
         """
-        -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        Sets the maximum hourly instance price. Supports up to three decimal places.
         """
         return pulumi.get(self, "spot_price_limit")
 
@@ -1586,7 +1586,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
-        :param pulumi.Input[float] spot_price_limit: -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
                - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -1899,7 +1899,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
-        :param pulumi.Input[float] spot_price_limit: -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
                - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -2183,7 +2183,7 @@ class LaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> pulumi.Output[Optional[float]]:
         """
-        -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        Sets the maximum hourly instance price. Supports up to three decimal places.
         """
         return pulumi.get(self, "spot_price_limit")
 

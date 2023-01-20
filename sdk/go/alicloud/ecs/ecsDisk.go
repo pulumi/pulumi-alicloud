@@ -70,7 +70,7 @@ type EcsDisk struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`. Default is `cloudEfficiency`.
 	Category                       pulumi.StringPtrOutput `pulumi:"category"`
 	DedicatedBlockStorageClusterId pulumi.StringPtrOutput `pulumi:"dedicatedBlockStorageClusterId"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
@@ -82,8 +82,6 @@ type EcsDisk struct {
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
 	DiskName pulumi.StringOutput `pulumi:"diskName"`
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot pulumi.BoolOutput      `pulumi:"enableAutoSnapshot"`
@@ -103,9 +101,6 @@ type EcsDisk struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel pulumi.StringOutput `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
@@ -122,8 +117,6 @@ type EcsDisk struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -163,7 +156,7 @@ type ecsDiskState struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`. Default is `cloudEfficiency`.
 	Category                       *string `pulumi:"category"`
 	DedicatedBlockStorageClusterId *string `pulumi:"dedicatedBlockStorageClusterId"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
@@ -175,8 +168,6 @@ type ecsDiskState struct {
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
 	DiskName *string `pulumi:"diskName"`
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun *bool `pulumi:"dryRun"`
 	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
@@ -196,9 +187,6 @@ type ecsDiskState struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType *string `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -215,8 +203,6 @@ type ecsDiskState struct {
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
 	Type *string `pulumi:"type"`
 	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	ZoneId *string `pulumi:"zoneId"`
@@ -228,7 +214,7 @@ type EcsDiskState struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`. Default is `cloudEfficiency`.
 	Category                       pulumi.StringPtrInput
 	DedicatedBlockStorageClusterId pulumi.StringPtrInput
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
@@ -240,8 +226,6 @@ type EcsDiskState struct {
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
 	DiskName pulumi.StringPtrInput
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun pulumi.BoolPtrInput
 	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot pulumi.BoolPtrInput
@@ -261,9 +245,6 @@ type EcsDiskState struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringPtrInput
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel pulumi.StringPtrInput
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -280,8 +261,6 @@ type EcsDiskState struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
 	Type pulumi.StringPtrInput
 	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	ZoneId pulumi.StringPtrInput
@@ -297,7 +276,7 @@ type ecsDiskArgs struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`. Default is `cloudEfficiency`.
 	Category                       *string `pulumi:"category"`
 	DedicatedBlockStorageClusterId *string `pulumi:"dedicatedBlockStorageClusterId"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
@@ -309,8 +288,6 @@ type ecsDiskArgs struct {
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
 	DiskName *string `pulumi:"diskName"`
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun *bool `pulumi:"dryRun"`
 	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
@@ -330,9 +307,6 @@ type ecsDiskArgs struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType *string `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -347,8 +321,6 @@ type ecsDiskArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
 	Type *string `pulumi:"type"`
 	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	ZoneId *string `pulumi:"zoneId"`
@@ -361,7 +333,7 @@ type EcsDiskArgs struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`. Default is `cloudEfficiency`.
 	Category                       pulumi.StringPtrInput
 	DedicatedBlockStorageClusterId pulumi.StringPtrInput
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
@@ -373,8 +345,6 @@ type EcsDiskArgs struct {
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
 	DiskName pulumi.StringPtrInput
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-	// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-	// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 	DryRun pulumi.BoolPtrInput
 	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot pulumi.BoolPtrInput
@@ -394,9 +364,6 @@ type EcsDiskArgs struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringPtrInput
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel pulumi.StringPtrInput
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -411,8 +378,6 @@ type EcsDiskArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-	// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-	// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
 	Type pulumi.StringPtrInput
 	// ID of the free zone to which the disk belongs. One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	ZoneId pulumi.StringPtrInput
@@ -516,7 +481,7 @@ func (o EcsDiskOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`. Default is `cloudEfficiency`.
 func (o EcsDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -546,8 +511,6 @@ func (o EcsDiskOutput) DiskName() pulumi.StringOutput {
 }
 
 // Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-// * `true`: The validity of the request is checked but the request is not made. Check items include the required parameters, request format, service limits, and available ECS resources. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-// * `false`: The validity of the request is checked. If the check succeeds, a 2xx HTTP status code is returned and the request is made.
 func (o EcsDiskOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
@@ -591,9 +554,6 @@ func (o EcsDiskOutput) PaymentType() pulumi.StringOutput {
 }
 
 // Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 func (o EcsDiskOutput) PerformanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.PerformanceLevel }).(pulumi.StringOutput)
 }
@@ -634,8 +594,6 @@ func (o EcsDiskOutput) Tags() pulumi.MapOutput {
 }
 
 // The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-// * `offline`: After you resize a disk offline, you must restart the instance by using the console or by calling the RebootInstance operation for the resizing operation to take effect. For more information, see Restart the instance and RebootInstance.
-// * `online`: After you resize a disk online, the resizing operation takes effect immediately and you do not need to restart the instance. You can resize ultra disks, standard SSDs, and ESSDs online.
 func (o EcsDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

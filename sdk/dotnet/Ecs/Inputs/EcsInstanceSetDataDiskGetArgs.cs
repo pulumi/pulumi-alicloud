@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs.Inputs
 {
 
-    public sealed class EcsInstanceSetDataDiskGetArgs : Pulumi.ResourceArgs
+    public sealed class EcsInstanceSetDataDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the automatic snapshot policy applied to the system disk.
@@ -70,5 +70,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public EcsInstanceSetDataDiskGetArgs()
         {
         }
+        public static new EcsInstanceSetDataDiskGetArgs Empty => new EcsInstanceSetDataDiskGetArgs();
     }
 }

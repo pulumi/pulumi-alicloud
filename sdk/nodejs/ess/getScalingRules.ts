@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,25 +15,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const scalingrulesDs = pulumi.output(alicloud.ess.getScalingRules({
+ * const scalingrulesDs = alicloud.ess.getScalingRules({
  *     ids: [
  *         "scaling_rule_id1",
  *         "scaling_rule_id2",
  *     ],
  *     nameRegex: "scaling_rule_name",
  *     scalingGroupId: "scaling_group_id",
- * }));
- *
- * export const firstScalingRule = scalingrulesDs.rules[0].id;
+ * });
+ * export const firstScalingRule = scalingrulesDs.then(scalingrulesDs => scalingrulesDs.rules?.[0]?.id);
  * ```
  */
 export function getScalingRules(args?: GetScalingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingRulesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ess/getScalingRules:getScalingRules", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -96,9 +93,28 @@ export interface GetScalingRulesResult {
      */
     readonly type?: string;
 }
-
+/**
+ * This data source provides available scaling rule resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const scalingrulesDs = alicloud.ess.getScalingRules({
+ *     ids: [
+ *         "scaling_rule_id1",
+ *         "scaling_rule_id2",
+ *     ],
+ *     nameRegex: "scaling_rule_name",
+ *     scalingGroupId: "scaling_group_id",
+ * });
+ * export const firstScalingRule = scalingrulesDs.then(scalingrulesDs => scalingrulesDs.rules?.[0]?.id);
+ * ```
+ */
 export function getScalingRulesOutput(args?: GetScalingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingRulesResult> {
-    return pulumi.output(args).apply(a => getScalingRules(a, opts))
+    return pulumi.output(args).apply((a: any) => getScalingRules(a, opts))
 }
 
 /**

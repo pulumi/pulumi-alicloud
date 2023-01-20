@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EdgeKubernetesLogConfig {
+    /**
+     * @return Log Service project name, cluster logs will output to this project.
+     * 
+     */
     private @Nullable String project;
+    /**
+     * @return Type of collecting logs, only `SLS` are supported currently.
+     * 
+     */
     private String type;
 
     private EdgeKubernetesLogConfig() {}
+    /**
+     * @return Log Service project name, cluster logs will output to this project.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    /**
+     * @return Type of collecting logs, only `SLS` are supported currently.
+     * 
+     */
     public String type() {
         return this.type;
     }

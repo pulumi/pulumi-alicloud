@@ -19,7 +19,7 @@ public final class ClusterHostGroup {
      */
     private @Nullable Boolean autoRenew;
     /**
-     * @return Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+     * @return Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      * 
      */
     private @Nullable String chargeType;
@@ -99,7 +99,7 @@ public final class ClusterHostGroup {
         return Optional.ofNullable(this.autoRenew);
     }
     /**
-     * @return Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
+     * @return Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      * 
      */
     public Optional<String> chargeType() {

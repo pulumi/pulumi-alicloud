@@ -19,30 +19,29 @@ namespace Pulumi.AliCloud.Pvtz
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var recordsDs = AliCloud.Pvtz.GetZoneRecords.Invoke(new()
         ///     {
-        ///         var recordsDs = Output.Create(AliCloud.Pvtz.GetZoneRecords.InvokeAsync(new AliCloud.Pvtz.GetZoneRecordsArgs
-        ///         {
-        ///             Keyword = alicloud_pvtz_zone_record.Foo.Value,
-        ///             ZoneId = alicloud_pvtz_zone.Basic.Id,
-        ///         }));
-        ///         this.FirstRecordId = recordsDs.Apply(recordsDs =&gt; recordsDs.Records?[0]?.Id);
-        ///     }
+        ///         Keyword = alicloud_pvtz_zone_record.Foo.Value,
+        ///         ZoneId = alicloud_pvtz_zone.Basic.Id,
+        ///     });
         /// 
-        ///     [Output("firstRecordId")]
-        ///     public Output&lt;string&gt; FirstRecordId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRecordId"] = recordsDs.Apply(getZoneRecordsResult =&gt; getZoneRecordsResult.Records[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZoneRecordsResult> InvokeAsync(GetZoneRecordsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
@@ -52,34 +51,33 @@ namespace Pulumi.AliCloud.Pvtz
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var recordsDs = AliCloud.Pvtz.GetZoneRecords.Invoke(new()
         ///     {
-        ///         var recordsDs = Output.Create(AliCloud.Pvtz.GetZoneRecords.InvokeAsync(new AliCloud.Pvtz.GetZoneRecordsArgs
-        ///         {
-        ///             Keyword = alicloud_pvtz_zone_record.Foo.Value,
-        ///             ZoneId = alicloud_pvtz_zone.Basic.Id,
-        ///         }));
-        ///         this.FirstRecordId = recordsDs.Apply(recordsDs =&gt; recordsDs.Records?[0]?.Id);
-        ///     }
+        ///         Keyword = alicloud_pvtz_zone_record.Foo.Value,
+        ///         ZoneId = alicloud_pvtz_zone.Basic.Id,
+        ///     });
         /// 
-        ///     [Output("firstRecordId")]
-        ///     public Output&lt;string&gt; FirstRecordId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstRecordId"] = recordsDs.Apply(getZoneRecordsResult =&gt; getZoneRecordsResult.Records[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZoneRecordsResult> Invoke(GetZoneRecordsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetZoneRecordsArgs : Pulumi.InvokeArgs
+    public sealed class GetZoneRecordsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -145,9 +143,10 @@ namespace Pulumi.AliCloud.Pvtz
         public GetZoneRecordsArgs()
         {
         }
+        public static new GetZoneRecordsArgs Empty => new GetZoneRecordsArgs();
     }
 
-    public sealed class GetZoneRecordsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZoneRecordsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -213,6 +212,7 @@ namespace Pulumi.AliCloud.Pvtz
         public GetZoneRecordsInvokeArgs()
         {
         }
+        public static new GetZoneRecordsInvokeArgs Empty => new GetZoneRecordsInvokeArgs();
     }
 
 

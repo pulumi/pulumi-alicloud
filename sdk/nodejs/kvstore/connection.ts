@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultConnection = new alicloud.kvstore.Connection("default", {
+ * const _default = new alicloud.kvstore.Connection("default", {
  *     connectionStringPrefix: "allocatetestupdate",
  *     instanceId: "r-abc123456",
  *     port: "6370",

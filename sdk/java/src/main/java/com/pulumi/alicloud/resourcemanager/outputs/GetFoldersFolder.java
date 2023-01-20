@@ -9,13 +9,18 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFoldersFolder {
+    /**
+     * @return The ID of the folder.
+     * 
+     */
     private String folderId;
+    /**
+     * @return The name of the folder.
+     * 
+     */
     private String folderName;
     /**
      * @return The ID of the folder.
-     * * `folder_id`- The ID of the folder.
-     * * `folder_name`- The name of the folder.
-     * * `parent_folder_id`- (Available in v1.114.0+)The ID of the parent folder.
      * 
      */
     private String id;
@@ -26,17 +31,22 @@ public final class GetFoldersFolder {
     private String parentFolderId;
 
     private GetFoldersFolder() {}
+    /**
+     * @return The ID of the folder.
+     * 
+     */
     public String folderId() {
         return this.folderId;
     }
+    /**
+     * @return The name of the folder.
+     * 
+     */
     public String folderName() {
         return this.folderName;
     }
     /**
      * @return The ID of the folder.
-     * * `folder_id`- The ID of the folder.
-     * * `folder_name`- The name of the folder.
-     * * `parent_folder_id`- (Available in v1.114.0+)The ID of the parent folder.
      * 
      */
     public String id() {

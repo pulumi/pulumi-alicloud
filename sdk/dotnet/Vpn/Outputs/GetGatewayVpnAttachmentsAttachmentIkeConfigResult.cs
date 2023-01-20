@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string IkeVersion;
         /// <summary>
-        /// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+        /// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
         /// </summary>
         public readonly string LocalId;
         /// <summary>

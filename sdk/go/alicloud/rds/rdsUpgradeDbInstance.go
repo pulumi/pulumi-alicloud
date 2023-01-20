@@ -44,7 +44,7 @@ import (
 //			if param := cfg.Get("creation"); param != "" {
 //				creation = param
 //			}
-//			exampleZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef(creation),
 //			}, nil)
 //			if err != nil {
@@ -59,7 +59,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
 //				VpcId:     exampleNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:    *pulumi.String(exampleZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err

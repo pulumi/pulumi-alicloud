@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Oos
         /// &gt; **NOTE:** Available in v1.147.0+.
         /// </summary>
         public static Task<GetSecretParametersResult> InvokeAsync(GetSecretParametersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretParametersResult>("alicloud:oos/getSecretParameters:getSecretParameters", args ?? new GetSecretParametersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretParametersResult>("alicloud:oos/getSecretParameters:getSecretParameters", args ?? new GetSecretParametersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
@@ -25,11 +25,11 @@ namespace Pulumi.AliCloud.Oos
         /// &gt; **NOTE:** Available in v1.147.0+.
         /// </summary>
         public static Output<GetSecretParametersResult> Invoke(GetSecretParametersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretParametersResult>("alicloud:oos/getSecretParameters:getSecretParameters", args ?? new GetSecretParametersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretParametersResult>("alicloud:oos/getSecretParameters:getSecretParameters", args ?? new GetSecretParametersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSecretParametersArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretParametersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -91,9 +91,10 @@ namespace Pulumi.AliCloud.Oos
         public GetSecretParametersArgs()
         {
         }
+        public static new GetSecretParametersArgs Empty => new GetSecretParametersArgs();
     }
 
-    public sealed class GetSecretParametersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretParametersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -155,6 +156,7 @@ namespace Pulumi.AliCloud.Oos
         public GetSecretParametersInvokeArgs()
         {
         }
+        public static new GetSecretParametersInvokeArgs Empty => new GetSecretParametersInvokeArgs();
     }
 
 

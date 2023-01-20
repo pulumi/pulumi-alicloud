@@ -26,30 +26,28 @@ namespace Pulumi.AliCloud.Hbase
     /// ### Create a hbase instance
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Hbase.Instance("default", new()
     ///     {
-    ///         var @default = new AliCloud.Hbase.Instance("default", new AliCloud.Hbase.InstanceArgs
-    ///         {
-    ///             ColdStorageSize = 0,
-    ///             CoreDiskSize = 400,
-    ///             CoreDiskType = "cloud_efficiency",
-    ///             CoreInstanceQuantity = 2,
-    ///             CoreInstanceType = "hbase.sn1.large",
-    ///             Engine = "hbaseue",
-    ///             EngineVersion = "2.0",
-    ///             MasterInstanceType = "hbase.sn1.large",
-    ///             PayType = "PostPaid",
-    ///             VswitchId = "vsw-123456",
-    ///             ZoneId = "cn-shenzhen-b",
-    ///         });
-    ///     }
+    ///         ColdStorageSize = 0,
+    ///         CoreDiskSize = 400,
+    ///         CoreDiskType = "cloud_efficiency",
+    ///         CoreInstanceQuantity = 2,
+    ///         CoreInstanceType = "hbase.sn1.large",
+    ///         Engine = "hbaseue",
+    ///         EngineVersion = "2.0",
+    ///         MasterInstanceType = "hbase.sn1.large",
+    ///         PayType = "PostPaid",
+    ///         VswitchId = "vsw-123456",
+    ///         ZoneId = "cn-shenzhen-b",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// this is a example for class netType instance. you can find more detail with the examples/hbase dir.
@@ -63,7 +61,7 @@ namespace Pulumi.AliCloud.Hbase
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbase/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account of the cluster web ui. Size [0-128].
@@ -213,6 +211,12 @@ namespace Pulumi.AliCloud.Hbase
         public Output<ImmutableArray<Outputs.InstanceUiProxyConnAddr>> UiProxyConnAddrs { get; private set; } = null!;
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string?> VpcId { get; private set; } = null!;
+
+        /// <summary>
         /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         /// </summary>
         [Output("vswitchId")]
@@ -253,6 +257,10 @@ namespace Pulumi.AliCloud.Hbase
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -274,7 +282,7 @@ namespace Pulumi.AliCloud.Hbase
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account of the cluster web ui. Size [0-128].
@@ -381,11 +389,21 @@ namespace Pulumi.AliCloud.Hbase
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the cluster web ui account. Size [0-128].
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
@@ -418,6 +436,12 @@ namespace Pulumi.AliCloud.Hbase
         }
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         /// </summary>
         [Input("vswitchId")]
@@ -432,9 +456,10 @@ namespace Pulumi.AliCloud.Hbase
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account of the cluster web ui. Size [0-128].
@@ -547,11 +572,21 @@ namespace Pulumi.AliCloud.Hbase
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password of the cluster web ui account. Size [0-128].
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
@@ -608,6 +643,12 @@ namespace Pulumi.AliCloud.Hbase
         }
 
         /// <summary>
+        /// The id of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
         /// If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         /// </summary>
         [Input("vswitchId")]
@@ -634,5 +675,6 @@ namespace Pulumi.AliCloud.Hbase
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

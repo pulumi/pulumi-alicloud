@@ -295,13 +295,9 @@ def get_images(action_type: Optional[str] = None,
     ```
 
 
-    :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
-           * `CreateEcs`: instance creation.
-           * `ChangeOS`: replacement of the system disk or operating system.
+    :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
     :param str architecture: The image architecture. Valid values: `i386` and `x86_64`.
-    :param bool dry_run: Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:                                           
-           * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-           * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
+    :param bool dry_run: Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
     :param str image_family: The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
     :param str image_id: The ID of the image.
     :param str image_name: The name of the image.
@@ -315,17 +311,9 @@ def get_images(action_type: Optional[str] = None,
     :param str owners: Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
     :param str resource_group_id: The ID of the resource group to which the custom image belongs.
     :param str snapshot_id: The ID of the snapshot used to create the custom image.
-    :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-           * `Creating`: The image is being created.
-           * `Waiting`: The image is waiting to be processed.
-           * `Available`: The image is available.
-           * `UnAvailable`: The image is unavailable.
-           * `CreateFailed`: The image failed to be created.
-           * `Deprecated`: The image is discontinued.
+    :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
-    :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
-           * `instance`: The image is already in use and running on an ECS instance.
-           * `none`: The image is not in use.
+    :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
     """
     __args__ = dict()
     __args__['actionType'] = action_type
@@ -415,13 +403,9 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
-    :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
-           * `CreateEcs`: instance creation.
-           * `ChangeOS`: replacement of the system disk or operating system.
+    :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
     :param str architecture: The image architecture. Valid values: `i386` and `x86_64`.
-    :param bool dry_run: Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:                                           
-           * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-           * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
+    :param bool dry_run: Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
     :param str image_family: The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
     :param str image_id: The ID of the image.
     :param str image_name: The name of the image.
@@ -435,16 +419,8 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
     :param str owners: Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
     :param str resource_group_id: The ID of the resource group to which the custom image belongs.
     :param str snapshot_id: The ID of the snapshot used to create the custom image.
-    :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
-           * `Creating`: The image is being created.
-           * `Waiting`: The image is waiting to be processed.
-           * `Available`: The image is available.
-           * `UnAvailable`: The image is unavailable.
-           * `CreateFailed`: The image failed to be created.
-           * `Deprecated`: The image is discontinued.
+    :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
-    :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:                                           
-           * `instance`: The image is already in use and running on an ECS instance.
-           * `none`: The image is not in use.
+    :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
     """
     ...

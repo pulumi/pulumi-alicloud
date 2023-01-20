@@ -21,34 +21,33 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Cms.MonitorGroup("example", new()
     ///     {
-    ///         var example = new AliCloud.Cms.MonitorGroup("example", new AliCloud.Cms.MonitorGroupArgs
-    ///         {
-    ///             MonitorGroupName = "tf-testaccmonitorgroup",
-    ///         });
-    ///         var default2 = new AliCloud.Cms.MonitorGroup("default2", new AliCloud.Cms.MonitorGroupArgs
-    ///         {
-    ///             ContactGroups = 
-    ///             {
-    ///                 "your_contact_groups",
-    ///             },
-    ///             ResourceGroupId = "your_resource_group_id",
-    ///             ResourceGroupName = "resource_group_name",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "Acceptance-test" },
-    ///             },
-    ///         });
-    ///     }
+    ///         MonitorGroupName = "tf-testaccmonitorgroup",
+    ///     });
     /// 
-    /// }
+    ///     var default2 = new AliCloud.Cms.MonitorGroup("default2", new()
+    ///     {
+    ///         ContactGroups = new[]
+    ///         {
+    ///             "your_contact_groups",
+    ///         },
+    ///         ResourceGroupId = "your_resource_group_id",
+    ///         ResourceGroupName = "resource_group_name",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "Acceptance-test" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +59,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/monitorGroup:MonitorGroup")]
-    public partial class MonitorGroup : Pulumi.CustomResource
+    public partial class MonitorGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The alert group to which alert notifications will be sent.
@@ -136,7 +135,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class MonitorGroupArgs : Pulumi.ResourceArgs
+    public sealed class MonitorGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("contactGroups")]
         private InputList<string>? _contactGroups;
@@ -183,9 +182,10 @@ namespace Pulumi.AliCloud.Cms
         public MonitorGroupArgs()
         {
         }
+        public static new MonitorGroupArgs Empty => new MonitorGroupArgs();
     }
 
-    public sealed class MonitorGroupState : Pulumi.ResourceArgs
+    public sealed class MonitorGroupState : global::Pulumi.ResourceArgs
     {
         [Input("contactGroups")]
         private InputList<string>? _contactGroups;
@@ -232,5 +232,6 @@ namespace Pulumi.AliCloud.Cms
         public MonitorGroupState()
         {
         }
+        public static new MonitorGroupState Empty => new MonitorGroupState();
     }
 }

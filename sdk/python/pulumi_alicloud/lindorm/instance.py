@@ -17,8 +17,12 @@ class InstanceArgs:
                  disk_category: pulumi.Input[str],
                  payment_type: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
+                 arbiter_vswitch_id: Optional[pulumi.Input[str]] = None,
+                 arbiter_zone_id: Optional[pulumi.Input[str]] = None,
+                 arch_version: Optional[pulumi.Input[str]] = None,
                  cold_storage: Optional[pulumi.Input[int]] = None,
                  core_num: Optional[pulumi.Input[int]] = None,
+                 core_single_storage: Optional[pulumi.Input[int]] = None,
                  core_spec: Optional[pulumi.Input[str]] = None,
                  deletion_proection: Optional[pulumi.Input[bool]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
@@ -28,14 +32,23 @@ class InstanceArgs:
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[str]] = None,
                  ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 log_disk_category: Optional[pulumi.Input[str]] = None,
+                 log_num: Optional[pulumi.Input[int]] = None,
+                 log_single_storage: Optional[pulumi.Input[int]] = None,
+                 log_spec: Optional[pulumi.Input[str]] = None,
                  lts_node_count: Optional[pulumi.Input[int]] = None,
                  lts_node_specification: Optional[pulumi.Input[str]] = None,
+                 multi_zone_combination: Optional[pulumi.Input[str]] = None,
                  phoenix_node_count: Optional[pulumi.Input[int]] = None,
                  phoenix_node_specification: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 primary_vswitch_id: Optional[pulumi.Input[str]] = None,
+                 primary_zone_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  search_engine_node_count: Optional[pulumi.Input[int]] = None,
                  search_engine_specification: Optional[pulumi.Input[str]] = None,
+                 standby_vswitch_id: Optional[pulumi.Input[str]] = None,
+                 standby_zone_id: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -43,15 +56,23 @@ class InstanceArgs:
                  time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB.
-        :param pulumi.Input[int] core_num: The core num.
-        :param pulumi.Input[str] core_spec: The core spec.
+        :param pulumi.Input[int] core_num: The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
+        :param pulumi.Input[int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        :param pulumi.Input[str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+               - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+               - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+               `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         :param pulumi.Input[bool] deletion_proection: The deletion protection of instance.
         :param pulumi.Input[str] duration: The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
         :param pulumi.Input[int] file_engine_node_count: The count of file engine.
@@ -60,30 +81,54 @@ class InstanceArgs:
         :param pulumi.Input[str] instance_name: The name of the instance.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_white_lists: The ip white list of instance.
+        :param pulumi.Input[str] log_disk_category: The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        :param pulumi.Input[int] log_num: The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+        :param pulumi.Input[int] log_single_storage: The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        :param pulumi.Input[str] log_spec: The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
         :param pulumi.Input[int] lts_node_count: The count of lindorm tunnel service.
         :param pulumi.Input[str] lts_node_specification: The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] multi_zone_combination: The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
         :param pulumi.Input[int] phoenix_node_count: The count of phoenix.
         :param pulumi.Input[str] phoenix_node_specification: The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] pricing_cycle: The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+        :param pulumi.Input[str] primary_vswitch_id: Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] primary_zone_id: Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] search_engine_node_count: The count of search engine.
         :param pulumi.Input[str] search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] standby_vswitch_id: The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] standby_zone_id: The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
-        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: 
+               `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
-        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. 
+               Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
-        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+               and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         pulumi.set(__self__, "disk_category", disk_category)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if arbiter_vswitch_id is not None:
+            pulumi.set(__self__, "arbiter_vswitch_id", arbiter_vswitch_id)
+        if arbiter_zone_id is not None:
+            pulumi.set(__self__, "arbiter_zone_id", arbiter_zone_id)
+        if arch_version is not None:
+            pulumi.set(__self__, "arch_version", arch_version)
         if cold_storage is not None:
             pulumi.set(__self__, "cold_storage", cold_storage)
         if core_num is not None:
+            warnings.warn("""Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""core_num is deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.""")
+        if core_num is not None:
             pulumi.set(__self__, "core_num", core_num)
+        if core_single_storage is not None:
+            pulumi.set(__self__, "core_single_storage", core_single_storage)
         if core_spec is not None:
             pulumi.set(__self__, "core_spec", core_spec)
         if deletion_proection is not None:
@@ -102,22 +147,40 @@ class InstanceArgs:
             pulumi.set(__self__, "instance_storage", instance_storage)
         if ip_white_lists is not None:
             pulumi.set(__self__, "ip_white_lists", ip_white_lists)
+        if log_disk_category is not None:
+            pulumi.set(__self__, "log_disk_category", log_disk_category)
+        if log_num is not None:
+            pulumi.set(__self__, "log_num", log_num)
+        if log_single_storage is not None:
+            pulumi.set(__self__, "log_single_storage", log_single_storage)
+        if log_spec is not None:
+            pulumi.set(__self__, "log_spec", log_spec)
         if lts_node_count is not None:
             pulumi.set(__self__, "lts_node_count", lts_node_count)
         if lts_node_specification is not None:
             pulumi.set(__self__, "lts_node_specification", lts_node_specification)
+        if multi_zone_combination is not None:
+            pulumi.set(__self__, "multi_zone_combination", multi_zone_combination)
         if phoenix_node_count is not None:
             pulumi.set(__self__, "phoenix_node_count", phoenix_node_count)
         if phoenix_node_specification is not None:
             pulumi.set(__self__, "phoenix_node_specification", phoenix_node_specification)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if primary_vswitch_id is not None:
+            pulumi.set(__self__, "primary_vswitch_id", primary_vswitch_id)
+        if primary_zone_id is not None:
+            pulumi.set(__self__, "primary_zone_id", primary_zone_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if search_engine_node_count is not None:
             pulumi.set(__self__, "search_engine_node_count", search_engine_node_count)
         if search_engine_specification is not None:
             pulumi.set(__self__, "search_engine_specification", search_engine_specification)
+        if standby_vswitch_id is not None:
+            pulumi.set(__self__, "standby_vswitch_id", standby_vswitch_id)
+        if standby_zone_id is not None:
+            pulumi.set(__self__, "standby_zone_id", standby_zone_id)
         if table_engine_node_count is not None:
             pulumi.set(__self__, "table_engine_node_count", table_engine_node_count)
         if table_engine_specification is not None:
@@ -138,6 +201,8 @@ class InstanceArgs:
             pulumi.log.warn("""upgrade_type is deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""")
         if upgrade_type is not None:
             pulumi.set(__self__, "upgrade_type", upgrade_type)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -145,7 +210,7 @@ class InstanceArgs:
     @pulumi.getter(name="diskCategory")
     def disk_category(self) -> pulumi.Input[str]:
         """
-        The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         """
         return pulumi.get(self, "disk_category")
 
@@ -178,6 +243,42 @@ class InstanceArgs:
         pulumi.set(self, "vswitch_id", value)
 
     @property
+    @pulumi.getter(name="arbiterVswitchId")
+    def arbiter_vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "arbiter_vswitch_id")
+
+    @arbiter_vswitch_id.setter
+    def arbiter_vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arbiter_vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="arbiterZoneId")
+    def arbiter_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "arbiter_zone_id")
+
+    @arbiter_zone_id.setter
+    def arbiter_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arbiter_zone_id", value)
+
+    @property
+    @pulumi.getter(name="archVersion")
+    def arch_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+        """
+        return pulumi.get(self, "arch_version")
+
+    @arch_version.setter
+    def arch_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arch_version", value)
+
+    @property
     @pulumi.getter(name="coldStorage")
     def cold_storage(self) -> Optional[pulumi.Input[int]]:
         """
@@ -193,7 +294,7 @@ class InstanceArgs:
     @pulumi.getter(name="coreNum")
     def core_num(self) -> Optional[pulumi.Input[int]]:
         """
-        The core num.
+        The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
         """
         return pulumi.get(self, "core_num")
 
@@ -202,10 +303,25 @@ class InstanceArgs:
         pulumi.set(self, "core_num", value)
 
     @property
+    @pulumi.getter(name="coreSingleStorage")
+    def core_single_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        """
+        return pulumi.get(self, "core_single_storage")
+
+    @core_single_storage.setter
+    def core_single_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "core_single_storage", value)
+
+    @property
     @pulumi.getter(name="coreSpec")
     def core_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The core spec.
+        The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+        - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+        - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+        `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         """
         return pulumi.get(self, "core_spec")
 
@@ -310,6 +426,54 @@ class InstanceArgs:
         pulumi.set(self, "ip_white_lists", value)
 
     @property
+    @pulumi.getter(name="logDiskCategory")
+    def log_disk_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        """
+        return pulumi.get(self, "log_disk_category")
+
+    @log_disk_category.setter
+    def log_disk_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_disk_category", value)
+
+    @property
+    @pulumi.getter(name="logNum")
+    def log_num(self) -> Optional[pulumi.Input[int]]:
+        """
+        The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+        """
+        return pulumi.get(self, "log_num")
+
+    @log_num.setter
+    def log_num(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_num", value)
+
+    @property
+    @pulumi.getter(name="logSingleStorage")
+    def log_single_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        """
+        return pulumi.get(self, "log_single_storage")
+
+    @log_single_storage.setter
+    def log_single_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_single_storage", value)
+
+    @property
+    @pulumi.getter(name="logSpec")
+    def log_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+        """
+        return pulumi.get(self, "log_spec")
+
+    @log_spec.setter
+    def log_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_spec", value)
+
+    @property
     @pulumi.getter(name="ltsNodeCount")
     def lts_node_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -332,6 +496,18 @@ class InstanceArgs:
     @lts_node_specification.setter
     def lts_node_specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "lts_node_specification", value)
+
+    @property
+    @pulumi.getter(name="multiZoneCombination")
+    def multi_zone_combination(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+        """
+        return pulumi.get(self, "multi_zone_combination")
+
+    @multi_zone_combination.setter
+    def multi_zone_combination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "multi_zone_combination", value)
 
     @property
     @pulumi.getter(name="phoenixNodeCount")
@@ -370,6 +546,30 @@ class InstanceArgs:
         pulumi.set(self, "pricing_cycle", value)
 
     @property
+    @pulumi.getter(name="primaryVswitchId")
+    def primary_vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "primary_vswitch_id")
+
+    @primary_vswitch_id.setter
+    def primary_vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="primaryZoneId")
+    def primary_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "primary_zone_id")
+
+    @primary_zone_id.setter
+    def primary_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_zone_id", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -406,6 +606,30 @@ class InstanceArgs:
         pulumi.set(self, "search_engine_specification", value)
 
     @property
+    @pulumi.getter(name="standbyVswitchId")
+    def standby_vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "standby_vswitch_id")
+
+    @standby_vswitch_id.setter
+    def standby_vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "standby_vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="standbyZoneId")
+    def standby_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "standby_zone_id")
+
+    @standby_zone_id.setter
+    def standby_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "standby_zone_id", value)
+
+    @property
     @pulumi.getter(name="tableEngineNodeCount")
     def table_engine_node_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -421,7 +645,8 @@ class InstanceArgs:
     @pulumi.getter(name="tableEngineSpecification")
     def table_engine_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        The specification of  table engine. Valid values: 
+        `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         """
         return pulumi.get(self, "table_engine_specification")
 
@@ -457,7 +682,8 @@ class InstanceArgs:
     @pulumi.getter(name="timeSeriesEngineSpecification")
     def time_series_engine_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        The specification of time series engine. 
+        Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         """
         return pulumi.get(self, "time_series_engine_specification")
 
@@ -481,13 +707,26 @@ class InstanceArgs:
     @pulumi.getter(name="upgradeType")
     def upgrade_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+        and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         """
         return pulumi.get(self, "upgrade_type")
 
     @upgrade_type.setter
     def upgrade_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "upgrade_type", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC ID of the instance.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -505,8 +744,12 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 arbiter_vswitch_id: Optional[pulumi.Input[str]] = None,
+                 arbiter_zone_id: Optional[pulumi.Input[str]] = None,
+                 arch_version: Optional[pulumi.Input[str]] = None,
                  cold_storage: Optional[pulumi.Input[int]] = None,
                  core_num: Optional[pulumi.Input[int]] = None,
+                 core_single_storage: Optional[pulumi.Input[int]] = None,
                  core_spec: Optional[pulumi.Input[str]] = None,
                  deletion_proection: Optional[pulumi.Input[bool]] = None,
                  disk_category: Optional[pulumi.Input[str]] = None,
@@ -522,15 +765,25 @@ class _InstanceState:
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[str]] = None,
                  ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 log_disk_category: Optional[pulumi.Input[str]] = None,
+                 log_num: Optional[pulumi.Input[int]] = None,
+                 log_single_storage: Optional[pulumi.Input[int]] = None,
+                 log_spec: Optional[pulumi.Input[str]] = None,
                  lts_node_count: Optional[pulumi.Input[int]] = None,
                  lts_node_specification: Optional[pulumi.Input[str]] = None,
+                 multi_zone_combination: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  phoenix_node_count: Optional[pulumi.Input[int]] = None,
                  phoenix_node_specification: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 primary_vswitch_id: Optional[pulumi.Input[str]] = None,
+                 primary_zone_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  search_engine_node_count: Optional[pulumi.Input[int]] = None,
                  search_engine_specification: Optional[pulumi.Input[str]] = None,
+                 service_type: Optional[pulumi.Input[str]] = None,
+                 standby_vswitch_id: Optional[pulumi.Input[str]] = None,
+                 standby_zone_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
@@ -539,15 +792,23 @@ class _InstanceState:
                  time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB.
-        :param pulumi.Input[int] core_num: The core num.
-        :param pulumi.Input[str] core_spec: The core spec.
+        :param pulumi.Input[int] core_num: The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
+        :param pulumi.Input[int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        :param pulumi.Input[str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+               - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+               - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+               `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         :param pulumi.Input[bool] deletion_proection: The deletion protection of instance.
-        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         :param pulumi.Input[str] duration: The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
         :param pulumi.Input[bool] enabled_file_engine: (Available in v1.163.0+) Whether to enable file engine.
         :param pulumi.Input[bool] enabled_lts_engine: (Available in v1.163.0+) Whether to enable lts engine.
@@ -560,30 +821,55 @@ class _InstanceState:
         :param pulumi.Input[str] instance_name: The name of the instance.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_white_lists: The ip white list of instance.
+        :param pulumi.Input[str] log_disk_category: The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        :param pulumi.Input[int] log_num: The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+        :param pulumi.Input[int] log_single_storage: The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        :param pulumi.Input[str] log_spec: The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
         :param pulumi.Input[int] lts_node_count: The count of lindorm tunnel service.
         :param pulumi.Input[str] lts_node_specification: The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] multi_zone_combination: The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`.
         :param pulumi.Input[int] phoenix_node_count: The count of phoenix.
         :param pulumi.Input[str] phoenix_node_specification: The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] pricing_cycle: The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+        :param pulumi.Input[str] primary_vswitch_id: Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] primary_zone_id: Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] search_engine_node_count: The count of search engine.
         :param pulumi.Input[str] search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] service_type: (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+        :param pulumi.Input[str] standby_vswitch_id: The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] standby_zone_id: The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] status: The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
-        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: 
+               `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
-        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. 
+               Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
-        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+               and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
+        if arbiter_vswitch_id is not None:
+            pulumi.set(__self__, "arbiter_vswitch_id", arbiter_vswitch_id)
+        if arbiter_zone_id is not None:
+            pulumi.set(__self__, "arbiter_zone_id", arbiter_zone_id)
+        if arch_version is not None:
+            pulumi.set(__self__, "arch_version", arch_version)
         if cold_storage is not None:
             pulumi.set(__self__, "cold_storage", cold_storage)
         if core_num is not None:
+            warnings.warn("""Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""core_num is deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.""")
+        if core_num is not None:
             pulumi.set(__self__, "core_num", core_num)
+        if core_single_storage is not None:
+            pulumi.set(__self__, "core_single_storage", core_single_storage)
         if core_spec is not None:
             pulumi.set(__self__, "core_spec", core_spec)
         if deletion_proection is not None:
@@ -614,10 +900,20 @@ class _InstanceState:
             pulumi.set(__self__, "instance_storage", instance_storage)
         if ip_white_lists is not None:
             pulumi.set(__self__, "ip_white_lists", ip_white_lists)
+        if log_disk_category is not None:
+            pulumi.set(__self__, "log_disk_category", log_disk_category)
+        if log_num is not None:
+            pulumi.set(__self__, "log_num", log_num)
+        if log_single_storage is not None:
+            pulumi.set(__self__, "log_single_storage", log_single_storage)
+        if log_spec is not None:
+            pulumi.set(__self__, "log_spec", log_spec)
         if lts_node_count is not None:
             pulumi.set(__self__, "lts_node_count", lts_node_count)
         if lts_node_specification is not None:
             pulumi.set(__self__, "lts_node_specification", lts_node_specification)
+        if multi_zone_combination is not None:
+            pulumi.set(__self__, "multi_zone_combination", multi_zone_combination)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if phoenix_node_count is not None:
@@ -626,12 +922,22 @@ class _InstanceState:
             pulumi.set(__self__, "phoenix_node_specification", phoenix_node_specification)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if primary_vswitch_id is not None:
+            pulumi.set(__self__, "primary_vswitch_id", primary_vswitch_id)
+        if primary_zone_id is not None:
+            pulumi.set(__self__, "primary_zone_id", primary_zone_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if search_engine_node_count is not None:
             pulumi.set(__self__, "search_engine_node_count", search_engine_node_count)
         if search_engine_specification is not None:
             pulumi.set(__self__, "search_engine_specification", search_engine_specification)
+        if service_type is not None:
+            pulumi.set(__self__, "service_type", service_type)
+        if standby_vswitch_id is not None:
+            pulumi.set(__self__, "standby_vswitch_id", standby_vswitch_id)
+        if standby_zone_id is not None:
+            pulumi.set(__self__, "standby_zone_id", standby_zone_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if table_engine_node_count is not None:
@@ -654,10 +960,48 @@ class _InstanceState:
             pulumi.log.warn("""upgrade_type is deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""")
         if upgrade_type is not None:
             pulumi.set(__self__, "upgrade_type", upgrade_type)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="arbiterVswitchId")
+    def arbiter_vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "arbiter_vswitch_id")
+
+    @arbiter_vswitch_id.setter
+    def arbiter_vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arbiter_vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="arbiterZoneId")
+    def arbiter_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "arbiter_zone_id")
+
+    @arbiter_zone_id.setter
+    def arbiter_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arbiter_zone_id", value)
+
+    @property
+    @pulumi.getter(name="archVersion")
+    def arch_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+        """
+        return pulumi.get(self, "arch_version")
+
+    @arch_version.setter
+    def arch_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arch_version", value)
 
     @property
     @pulumi.getter(name="coldStorage")
@@ -675,7 +1019,7 @@ class _InstanceState:
     @pulumi.getter(name="coreNum")
     def core_num(self) -> Optional[pulumi.Input[int]]:
         """
-        The core num.
+        The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
         """
         return pulumi.get(self, "core_num")
 
@@ -684,10 +1028,25 @@ class _InstanceState:
         pulumi.set(self, "core_num", value)
 
     @property
+    @pulumi.getter(name="coreSingleStorage")
+    def core_single_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        """
+        return pulumi.get(self, "core_single_storage")
+
+    @core_single_storage.setter
+    def core_single_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "core_single_storage", value)
+
+    @property
     @pulumi.getter(name="coreSpec")
     def core_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The core spec.
+        The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+        - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+        - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+        `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         """
         return pulumi.get(self, "core_spec")
 
@@ -711,7 +1070,7 @@ class _InstanceState:
     @pulumi.getter(name="diskCategory")
     def disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         """
         return pulumi.get(self, "disk_category")
 
@@ -864,6 +1223,54 @@ class _InstanceState:
         pulumi.set(self, "ip_white_lists", value)
 
     @property
+    @pulumi.getter(name="logDiskCategory")
+    def log_disk_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        """
+        return pulumi.get(self, "log_disk_category")
+
+    @log_disk_category.setter
+    def log_disk_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_disk_category", value)
+
+    @property
+    @pulumi.getter(name="logNum")
+    def log_num(self) -> Optional[pulumi.Input[int]]:
+        """
+        The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+        """
+        return pulumi.get(self, "log_num")
+
+    @log_num.setter
+    def log_num(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_num", value)
+
+    @property
+    @pulumi.getter(name="logSingleStorage")
+    def log_single_storage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        """
+        return pulumi.get(self, "log_single_storage")
+
+    @log_single_storage.setter
+    def log_single_storage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_single_storage", value)
+
+    @property
+    @pulumi.getter(name="logSpec")
+    def log_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+        """
+        return pulumi.get(self, "log_spec")
+
+    @log_spec.setter
+    def log_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_spec", value)
+
+    @property
     @pulumi.getter(name="ltsNodeCount")
     def lts_node_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -886,6 +1293,18 @@ class _InstanceState:
     @lts_node_specification.setter
     def lts_node_specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "lts_node_specification", value)
+
+    @property
+    @pulumi.getter(name="multiZoneCombination")
+    def multi_zone_combination(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+        """
+        return pulumi.get(self, "multi_zone_combination")
+
+    @multi_zone_combination.setter
+    def multi_zone_combination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "multi_zone_combination", value)
 
     @property
     @pulumi.getter(name="paymentType")
@@ -936,6 +1355,30 @@ class _InstanceState:
         pulumi.set(self, "pricing_cycle", value)
 
     @property
+    @pulumi.getter(name="primaryVswitchId")
+    def primary_vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "primary_vswitch_id")
+
+    @primary_vswitch_id.setter
+    def primary_vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="primaryZoneId")
+    def primary_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "primary_zone_id")
+
+    @primary_zone_id.setter
+    def primary_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_zone_id", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -972,6 +1415,42 @@ class _InstanceState:
         pulumi.set(self, "search_engine_specification", value)
 
     @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+        """
+        return pulumi.get(self, "service_type")
+
+    @service_type.setter
+    def service_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_type", value)
+
+    @property
+    @pulumi.getter(name="standbyVswitchId")
+    def standby_vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "standby_vswitch_id")
+
+    @standby_vswitch_id.setter
+    def standby_vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "standby_vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="standbyZoneId")
+    def standby_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "standby_zone_id")
+
+    @standby_zone_id.setter
+    def standby_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "standby_zone_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -999,7 +1478,8 @@ class _InstanceState:
     @pulumi.getter(name="tableEngineSpecification")
     def table_engine_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        The specification of  table engine. Valid values: 
+        `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         """
         return pulumi.get(self, "table_engine_specification")
 
@@ -1035,7 +1515,8 @@ class _InstanceState:
     @pulumi.getter(name="timeSeriesEngineSpecification")
     def time_series_engine_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        The specification of time series engine. 
+        Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         """
         return pulumi.get(self, "time_series_engine_specification")
 
@@ -1059,13 +1540,26 @@ class _InstanceState:
     @pulumi.getter(name="upgradeType")
     def upgrade_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+        and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         """
         return pulumi.get(self, "upgrade_type")
 
     @upgrade_type.setter
     def upgrade_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "upgrade_type", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC ID of the instance.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -1097,8 +1591,12 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 arbiter_vswitch_id: Optional[pulumi.Input[str]] = None,
+                 arbiter_zone_id: Optional[pulumi.Input[str]] = None,
+                 arch_version: Optional[pulumi.Input[str]] = None,
                  cold_storage: Optional[pulumi.Input[int]] = None,
                  core_num: Optional[pulumi.Input[int]] = None,
+                 core_single_storage: Optional[pulumi.Input[int]] = None,
                  core_spec: Optional[pulumi.Input[str]] = None,
                  deletion_proection: Optional[pulumi.Input[bool]] = None,
                  disk_category: Optional[pulumi.Input[str]] = None,
@@ -1109,15 +1607,24 @@ class Instance(pulumi.CustomResource):
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[str]] = None,
                  ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 log_disk_category: Optional[pulumi.Input[str]] = None,
+                 log_num: Optional[pulumi.Input[int]] = None,
+                 log_single_storage: Optional[pulumi.Input[int]] = None,
+                 log_spec: Optional[pulumi.Input[str]] = None,
                  lts_node_count: Optional[pulumi.Input[int]] = None,
                  lts_node_specification: Optional[pulumi.Input[str]] = None,
+                 multi_zone_combination: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  phoenix_node_count: Optional[pulumi.Input[int]] = None,
                  phoenix_node_specification: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 primary_vswitch_id: Optional[pulumi.Input[str]] = None,
+                 primary_zone_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  search_engine_node_count: Optional[pulumi.Input[int]] = None,
                  search_engine_specification: Optional[pulumi.Input[str]] = None,
+                 standby_vswitch_id: Optional[pulumi.Input[str]] = None,
+                 standby_zone_id: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1125,6 +1632,7 @@ class Instance(pulumi.CustomResource):
                  time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1147,11 +1655,18 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB.
-        :param pulumi.Input[int] core_num: The core num.
-        :param pulumi.Input[str] core_spec: The core spec.
+        :param pulumi.Input[int] core_num: The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
+        :param pulumi.Input[int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        :param pulumi.Input[str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+               - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+               - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+               `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         :param pulumi.Input[bool] deletion_proection: The deletion protection of instance.
-        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         :param pulumi.Input[str] duration: The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
         :param pulumi.Input[int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
@@ -1159,22 +1674,35 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name: The name of the instance.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_white_lists: The ip white list of instance.
+        :param pulumi.Input[str] log_disk_category: The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        :param pulumi.Input[int] log_num: The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+        :param pulumi.Input[int] log_single_storage: The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        :param pulumi.Input[str] log_spec: The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
         :param pulumi.Input[int] lts_node_count: The count of lindorm tunnel service.
         :param pulumi.Input[str] lts_node_specification: The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] multi_zone_combination: The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`.
         :param pulumi.Input[int] phoenix_node_count: The count of phoenix.
         :param pulumi.Input[str] phoenix_node_specification: The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] pricing_cycle: The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+        :param pulumi.Input[str] primary_vswitch_id: Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] primary_zone_id: Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] search_engine_node_count: The count of search engine.
         :param pulumi.Input[str] search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] standby_vswitch_id: The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] standby_zone_id: The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
-        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: 
+               `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
-        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. 
+               Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
-        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+               and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
@@ -1216,8 +1744,12 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 arbiter_vswitch_id: Optional[pulumi.Input[str]] = None,
+                 arbiter_zone_id: Optional[pulumi.Input[str]] = None,
+                 arch_version: Optional[pulumi.Input[str]] = None,
                  cold_storage: Optional[pulumi.Input[int]] = None,
                  core_num: Optional[pulumi.Input[int]] = None,
+                 core_single_storage: Optional[pulumi.Input[int]] = None,
                  core_spec: Optional[pulumi.Input[str]] = None,
                  deletion_proection: Optional[pulumi.Input[bool]] = None,
                  disk_category: Optional[pulumi.Input[str]] = None,
@@ -1228,15 +1760,24 @@ class Instance(pulumi.CustomResource):
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[str]] = None,
                  ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 log_disk_category: Optional[pulumi.Input[str]] = None,
+                 log_num: Optional[pulumi.Input[int]] = None,
+                 log_single_storage: Optional[pulumi.Input[int]] = None,
+                 log_spec: Optional[pulumi.Input[str]] = None,
                  lts_node_count: Optional[pulumi.Input[int]] = None,
                  lts_node_specification: Optional[pulumi.Input[str]] = None,
+                 multi_zone_combination: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  phoenix_node_count: Optional[pulumi.Input[int]] = None,
                  phoenix_node_specification: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 primary_vswitch_id: Optional[pulumi.Input[str]] = None,
+                 primary_zone_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  search_engine_node_count: Optional[pulumi.Input[int]] = None,
                  search_engine_specification: Optional[pulumi.Input[str]] = None,
+                 standby_vswitch_id: Optional[pulumi.Input[str]] = None,
+                 standby_zone_id: Optional[pulumi.Input[str]] = None,
                  table_engine_node_count: Optional[pulumi.Input[int]] = None,
                  table_engine_specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1244,6 +1785,7 @@ class Instance(pulumi.CustomResource):
                  time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
                  upgrade_type: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1255,8 +1797,15 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["arbiter_vswitch_id"] = arbiter_vswitch_id
+            __props__.__dict__["arbiter_zone_id"] = arbiter_zone_id
+            __props__.__dict__["arch_version"] = arch_version
             __props__.__dict__["cold_storage"] = cold_storage
+            if core_num is not None and not opts.urn:
+                warnings.warn("""Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.""", DeprecationWarning)
+                pulumi.log.warn("""core_num is deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.""")
             __props__.__dict__["core_num"] = core_num
+            __props__.__dict__["core_single_storage"] = core_single_storage
             __props__.__dict__["core_spec"] = core_spec
             __props__.__dict__["deletion_proection"] = deletion_proection
             if disk_category is None and not opts.urn:
@@ -1269,17 +1818,26 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["instance_name"] = instance_name
             __props__.__dict__["instance_storage"] = instance_storage
             __props__.__dict__["ip_white_lists"] = ip_white_lists
+            __props__.__dict__["log_disk_category"] = log_disk_category
+            __props__.__dict__["log_num"] = log_num
+            __props__.__dict__["log_single_storage"] = log_single_storage
+            __props__.__dict__["log_spec"] = log_spec
             __props__.__dict__["lts_node_count"] = lts_node_count
             __props__.__dict__["lts_node_specification"] = lts_node_specification
+            __props__.__dict__["multi_zone_combination"] = multi_zone_combination
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["phoenix_node_count"] = phoenix_node_count
             __props__.__dict__["phoenix_node_specification"] = phoenix_node_specification
             __props__.__dict__["pricing_cycle"] = pricing_cycle
+            __props__.__dict__["primary_vswitch_id"] = primary_vswitch_id
+            __props__.__dict__["primary_zone_id"] = primary_zone_id
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["search_engine_node_count"] = search_engine_node_count
             __props__.__dict__["search_engine_specification"] = search_engine_specification
+            __props__.__dict__["standby_vswitch_id"] = standby_vswitch_id
+            __props__.__dict__["standby_zone_id"] = standby_zone_id
             __props__.__dict__["table_engine_node_count"] = table_engine_node_count
             __props__.__dict__["table_engine_specification"] = table_engine_specification
             __props__.__dict__["tags"] = tags
@@ -1293,6 +1851,7 @@ class Instance(pulumi.CustomResource):
                 warnings.warn("""Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""", DeprecationWarning)
                 pulumi.log.warn("""upgrade_type is deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""")
             __props__.__dict__["upgrade_type"] = upgrade_type
+            __props__.__dict__["vpc_id"] = vpc_id
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
@@ -1302,6 +1861,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enabled_search_engine"] = None
             __props__.__dict__["enabled_table_engine"] = None
             __props__.__dict__["enabled_time_serires_engine"] = None
+            __props__.__dict__["service_type"] = None
             __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
             'alicloud:lindorm/instance:Instance',
@@ -1313,8 +1873,12 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            arbiter_vswitch_id: Optional[pulumi.Input[str]] = None,
+            arbiter_zone_id: Optional[pulumi.Input[str]] = None,
+            arch_version: Optional[pulumi.Input[str]] = None,
             cold_storage: Optional[pulumi.Input[int]] = None,
             core_num: Optional[pulumi.Input[int]] = None,
+            core_single_storage: Optional[pulumi.Input[int]] = None,
             core_spec: Optional[pulumi.Input[str]] = None,
             deletion_proection: Optional[pulumi.Input[bool]] = None,
             disk_category: Optional[pulumi.Input[str]] = None,
@@ -1330,15 +1894,25 @@ class Instance(pulumi.CustomResource):
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_storage: Optional[pulumi.Input[str]] = None,
             ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            log_disk_category: Optional[pulumi.Input[str]] = None,
+            log_num: Optional[pulumi.Input[int]] = None,
+            log_single_storage: Optional[pulumi.Input[int]] = None,
+            log_spec: Optional[pulumi.Input[str]] = None,
             lts_node_count: Optional[pulumi.Input[int]] = None,
             lts_node_specification: Optional[pulumi.Input[str]] = None,
+            multi_zone_combination: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             phoenix_node_count: Optional[pulumi.Input[int]] = None,
             phoenix_node_specification: Optional[pulumi.Input[str]] = None,
             pricing_cycle: Optional[pulumi.Input[str]] = None,
+            primary_vswitch_id: Optional[pulumi.Input[str]] = None,
+            primary_zone_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             search_engine_node_count: Optional[pulumi.Input[int]] = None,
             search_engine_specification: Optional[pulumi.Input[str]] = None,
+            service_type: Optional[pulumi.Input[str]] = None,
+            standby_vswitch_id: Optional[pulumi.Input[str]] = None,
+            standby_zone_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             table_engine_node_count: Optional[pulumi.Input[int]] = None,
             table_engine_specification: Optional[pulumi.Input[str]] = None,
@@ -1347,6 +1921,7 @@ class Instance(pulumi.CustomResource):
             time_series_engine_specification: Optional[pulumi.Input[str]] = None,
             time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
             upgrade_type: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -1356,11 +1931,18 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB.
-        :param pulumi.Input[int] core_num: The core num.
-        :param pulumi.Input[str] core_spec: The core spec.
+        :param pulumi.Input[int] core_num: The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
+        :param pulumi.Input[int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        :param pulumi.Input[str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+               - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+               - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+               `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         :param pulumi.Input[bool] deletion_proection: The deletion protection of instance.
-        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         :param pulumi.Input[str] duration: The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
         :param pulumi.Input[bool] enabled_file_engine: (Available in v1.163.0+) Whether to enable file engine.
         :param pulumi.Input[bool] enabled_lts_engine: (Available in v1.163.0+) Whether to enable lts engine.
@@ -1373,23 +1955,37 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_name: The name of the instance.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_white_lists: The ip white list of instance.
+        :param pulumi.Input[str] log_disk_category: The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        :param pulumi.Input[int] log_num: The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+        :param pulumi.Input[int] log_single_storage: The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        :param pulumi.Input[str] log_spec: The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
         :param pulumi.Input[int] lts_node_count: The count of lindorm tunnel service.
         :param pulumi.Input[str] lts_node_specification: The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] multi_zone_combination: The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`.
         :param pulumi.Input[int] phoenix_node_count: The count of phoenix.
         :param pulumi.Input[str] phoenix_node_specification: The specification of phoenix. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         :param pulumi.Input[str] pricing_cycle: The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
+        :param pulumi.Input[str] primary_vswitch_id: Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] primary_zone_id: Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] search_engine_node_count: The count of search engine.
         :param pulumi.Input[str] search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] service_type: (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+        :param pulumi.Input[str] standby_vswitch_id: The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+        :param pulumi.Input[str] standby_zone_id: The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] status: The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
-        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: 
+               `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
-        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. 
+               Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
-        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+               and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
@@ -1397,8 +1993,12 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["arbiter_vswitch_id"] = arbiter_vswitch_id
+        __props__.__dict__["arbiter_zone_id"] = arbiter_zone_id
+        __props__.__dict__["arch_version"] = arch_version
         __props__.__dict__["cold_storage"] = cold_storage
         __props__.__dict__["core_num"] = core_num
+        __props__.__dict__["core_single_storage"] = core_single_storage
         __props__.__dict__["core_spec"] = core_spec
         __props__.__dict__["deletion_proection"] = deletion_proection
         __props__.__dict__["disk_category"] = disk_category
@@ -1414,15 +2014,25 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_storage"] = instance_storage
         __props__.__dict__["ip_white_lists"] = ip_white_lists
+        __props__.__dict__["log_disk_category"] = log_disk_category
+        __props__.__dict__["log_num"] = log_num
+        __props__.__dict__["log_single_storage"] = log_single_storage
+        __props__.__dict__["log_spec"] = log_spec
         __props__.__dict__["lts_node_count"] = lts_node_count
         __props__.__dict__["lts_node_specification"] = lts_node_specification
+        __props__.__dict__["multi_zone_combination"] = multi_zone_combination
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["phoenix_node_count"] = phoenix_node_count
         __props__.__dict__["phoenix_node_specification"] = phoenix_node_specification
         __props__.__dict__["pricing_cycle"] = pricing_cycle
+        __props__.__dict__["primary_vswitch_id"] = primary_vswitch_id
+        __props__.__dict__["primary_zone_id"] = primary_zone_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["search_engine_node_count"] = search_engine_node_count
         __props__.__dict__["search_engine_specification"] = search_engine_specification
+        __props__.__dict__["service_type"] = service_type
+        __props__.__dict__["standby_vswitch_id"] = standby_vswitch_id
+        __props__.__dict__["standby_zone_id"] = standby_zone_id
         __props__.__dict__["status"] = status
         __props__.__dict__["table_engine_node_count"] = table_engine_node_count
         __props__.__dict__["table_engine_specification"] = table_engine_specification
@@ -1431,9 +2041,34 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["time_series_engine_specification"] = time_series_engine_specification
         __props__.__dict__["time_serires_engine_specification"] = time_serires_engine_specification
         __props__.__dict__["upgrade_type"] = upgrade_type
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="arbiterVswitchId")
+    def arbiter_vswitch_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "arbiter_vswitch_id")
+
+    @property
+    @pulumi.getter(name="arbiterZoneId")
+    def arbiter_zone_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "arbiter_zone_id")
+
+    @property
+    @pulumi.getter(name="archVersion")
+    def arch_version(self) -> pulumi.Output[Optional[str]]:
+        """
+        The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+        """
+        return pulumi.get(self, "arch_version")
 
     @property
     @pulumi.getter(name="coldStorage")
@@ -1447,15 +2082,26 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="coreNum")
     def core_num(self) -> pulumi.Output[Optional[int]]:
         """
-        The core num.
+        The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
         """
         return pulumi.get(self, "core_num")
 
     @property
-    @pulumi.getter(name="coreSpec")
-    def core_spec(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter(name="coreSingleStorage")
+    def core_single_storage(self) -> pulumi.Output[Optional[int]]:
         """
-        The core spec.
+        The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        """
+        return pulumi.get(self, "core_single_storage")
+
+    @property
+    @pulumi.getter(name="coreSpec")
+    def core_spec(self) -> pulumi.Output[str]:
+        """
+        The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+        - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+        - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+        `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         """
         return pulumi.get(self, "core_spec")
 
@@ -1471,7 +2117,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="diskCategory")
     def disk_category(self) -> pulumi.Output[str]:
         """
-        The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+        The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
         """
         return pulumi.get(self, "disk_category")
 
@@ -1557,7 +2203,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceStorage")
-    def instance_storage(self) -> pulumi.Output[Optional[str]]:
+    def instance_storage(self) -> pulumi.Output[str]:
         """
         The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
         """
@@ -1570,6 +2216,38 @@ class Instance(pulumi.CustomResource):
         The ip white list of instance.
         """
         return pulumi.get(self, "ip_white_lists")
+
+    @property
+    @pulumi.getter(name="logDiskCategory")
+    def log_disk_category(self) -> pulumi.Output[Optional[str]]:
+        """
+        The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        """
+        return pulumi.get(self, "log_disk_category")
+
+    @property
+    @pulumi.getter(name="logNum")
+    def log_num(self) -> pulumi.Output[Optional[int]]:
+        """
+        The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+        """
+        return pulumi.get(self, "log_num")
+
+    @property
+    @pulumi.getter(name="logSingleStorage")
+    def log_single_storage(self) -> pulumi.Output[Optional[int]]:
+        """
+        The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+        """
+        return pulumi.get(self, "log_single_storage")
+
+    @property
+    @pulumi.getter(name="logSpec")
+    def log_spec(self) -> pulumi.Output[Optional[str]]:
+        """
+        The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+        """
+        return pulumi.get(self, "log_spec")
 
     @property
     @pulumi.getter(name="ltsNodeCount")
@@ -1586,6 +2264,14 @@ class Instance(pulumi.CustomResource):
         The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
         """
         return pulumi.get(self, "lts_node_specification")
+
+    @property
+    @pulumi.getter(name="multiZoneCombination")
+    def multi_zone_combination(self) -> pulumi.Output[Optional[str]]:
+        """
+        The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+        """
+        return pulumi.get(self, "multi_zone_combination")
 
     @property
     @pulumi.getter(name="paymentType")
@@ -1620,6 +2306,22 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "pricing_cycle")
 
     @property
+    @pulumi.getter(name="primaryVswitchId")
+    def primary_vswitch_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "primary_vswitch_id")
+
+    @property
+    @pulumi.getter(name="primaryZoneId")
+    def primary_zone_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "primary_zone_id")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
@@ -1644,6 +2346,30 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "search_engine_specification")
 
     @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> pulumi.Output[str]:
+        """
+        (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+        """
+        return pulumi.get(self, "service_type")
+
+    @property
+    @pulumi.getter(name="standbyVswitchId")
+    def standby_vswitch_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "standby_vswitch_id")
+
+    @property
+    @pulumi.getter(name="standbyZoneId")
+    def standby_zone_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+        """
+        return pulumi.get(self, "standby_zone_id")
+
+    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
@@ -1663,7 +2389,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="tableEngineSpecification")
     def table_engine_specification(self) -> pulumi.Output[str]:
         """
-        The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        The specification of  table engine. Valid values: 
+        `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         """
         return pulumi.get(self, "table_engine_specification")
 
@@ -1687,7 +2414,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="timeSeriesEngineSpecification")
     def time_series_engine_specification(self) -> pulumi.Output[str]:
         """
-        The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+        The specification of time series engine. 
+        Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         """
         return pulumi.get(self, "time_series_engine_specification")
 
@@ -1703,9 +2431,18 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="upgradeType")
     def upgrade_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+        The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
+        and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         """
         return pulumi.get(self, "upgrade_type")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[str]:
+        """
+        The VPC ID of the instance.
+        """
+        return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")

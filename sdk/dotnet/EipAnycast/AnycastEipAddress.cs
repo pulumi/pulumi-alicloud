@@ -21,20 +21,18 @@ namespace Pulumi.AliCloud.EipAnycast
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.EipAnycast.AnycastEipAddress("example", new()
     ///     {
-    ///         var example = new AliCloud.EipAnycast.AnycastEipAddress("example", new AliCloud.EipAnycast.AnycastEipAddressArgs
-    ///         {
-    ///             ServiceLocation = "international",
-    ///         });
-    ///     }
+    ///         ServiceLocation = "international",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.EipAnycast
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eipanycast/anycastEipAddress:AnycastEipAddress")]
-    public partial class AnycastEipAddress : Pulumi.CustomResource
+    public partial class AnycastEipAddress : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Anycast EIP instance name.
@@ -134,7 +132,7 @@ namespace Pulumi.AliCloud.EipAnycast
         }
     }
 
-    public sealed class AnycastEipAddressArgs : Pulumi.ResourceArgs
+    public sealed class AnycastEipAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Anycast EIP instance name.
@@ -175,9 +173,10 @@ namespace Pulumi.AliCloud.EipAnycast
         public AnycastEipAddressArgs()
         {
         }
+        public static new AnycastEipAddressArgs Empty => new AnycastEipAddressArgs();
     }
 
-    public sealed class AnycastEipAddressState : Pulumi.ResourceArgs
+    public sealed class AnycastEipAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Anycast EIP instance name.
@@ -224,5 +223,6 @@ namespace Pulumi.AliCloud.EipAnycast
         public AnycastEipAddressState()
         {
         }
+        public static new AnycastEipAddressState Empty => new AnycastEipAddressState();
     }
 }

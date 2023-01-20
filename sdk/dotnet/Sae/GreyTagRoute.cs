@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Sae
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sae/greyTagRoute:GreyTagRoute")]
-    public partial class GreyTagRoute : Pulumi.CustomResource
+    public partial class GreyTagRoute : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID  of the SAE Application.
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Sae
         }
     }
 
-    public sealed class GreyTagRouteArgs : Pulumi.ResourceArgs
+    public sealed class GreyTagRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID  of the SAE Application.
@@ -148,9 +148,10 @@ namespace Pulumi.AliCloud.Sae
         public GreyTagRouteArgs()
         {
         }
+        public static new GreyTagRouteArgs Empty => new GreyTagRouteArgs();
     }
 
-    public sealed class GreyTagRouteState : Pulumi.ResourceArgs
+    public sealed class GreyTagRouteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID  of the SAE Application.
@@ -197,5 +198,6 @@ namespace Pulumi.AliCloud.Sae
         public GreyTagRouteState()
         {
         }
+        public static new GreyTagRouteState Empty => new GreyTagRouteState();
     }
 }

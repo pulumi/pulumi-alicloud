@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ros.Inputs
 {
 
-    public sealed class ChangeSetParameterArgs : Pulumi.ResourceArgs
+    public sealed class ChangeSetParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The parameter key.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Ros.Inputs
         public ChangeSetParameterArgs()
         {
         }
+        public static new ChangeSetParameterArgs Empty => new ChangeSetParameterArgs();
     }
 }

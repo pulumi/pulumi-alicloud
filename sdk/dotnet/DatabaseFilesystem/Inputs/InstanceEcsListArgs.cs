@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.DatabaseFilesystem.Inputs
 {
 
-    public sealed class InstanceEcsListArgs : Pulumi.ResourceArgs
+    public sealed class InstanceEcsListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the ECS instance.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem.Inputs
         public InstanceEcsListArgs()
         {
         }
+        public static new InstanceEcsListArgs Empty => new InstanceEcsListArgs();
     }
 }

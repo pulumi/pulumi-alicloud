@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ehpc.Inputs
 {
 
-    public sealed class ClusterAdditionalVolumeArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAdditionalVolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The queue of the nodes to which the additional file system is attached.
+        /// The queue to which the compute nodes are added.
         /// </summary>
         [Input("jobQueue")]
         public Input<string>? JobQueue { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ehpc.Inputs
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The remote directory to which the additional file system is mounted.
+        /// The remote directory to which the file system is mounted.
         /// </summary>
         [Input("remoteDirectory")]
         public Input<string>? RemoteDirectory { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ehpc.Inputs
         }
 
         /// <summary>
-        /// The ID of the additional file system.
+        /// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         /// </summary>
         [Input("volumeId")]
         public Input<string>? VolumeId { get; set; }
@@ -61,19 +61,21 @@ namespace Pulumi.AliCloud.Ehpc.Inputs
         public Input<string>? VolumeMountOption { get; set; }
 
         /// <summary>
-        /// The mount target of the additional file system.
+        /// The mount target of the file system. Take note of the following information:
+        /// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+        /// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
         /// </summary>
         [Input("volumeMountpoint")]
         public Input<string>? VolumeMountpoint { get; set; }
 
         /// <summary>
-        /// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+        /// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
         /// </summary>
         [Input("volumeProtocol")]
         public Input<string>? VolumeProtocol { get; set; }
 
         /// <summary>
-        /// The type of the additional shared storage. Only NAS file systems are supported.
+        /// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }
@@ -81,5 +83,6 @@ namespace Pulumi.AliCloud.Ehpc.Inputs
         public ClusterAdditionalVolumeArgs()
         {
         }
+        public static new ClusterAdditionalVolumeArgs Empty => new ClusterAdditionalVolumeArgs();
     }
 }

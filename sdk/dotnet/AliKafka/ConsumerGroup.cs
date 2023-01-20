@@ -22,46 +22,48 @@ namespace Pulumi.AliCloud.AliKafka
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var consumerId = config.Get("consumerId") ?? "CID-alikafkaGroupDatasourceName";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var consumerId = config.Get("consumerId") ?? "CID-alikafkaGroupDatasourceName";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "172.16.0.0/12",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///         });
-    ///         var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new AliCloud.AliKafka.InstanceArgs
-    ///         {
-    ///             TopicQuota = 50,
-    ///             DiskType = 1,
-    ///             DiskSize = 500,
-    ///             DeployType = 5,
-    ///             IoMax = 20,
-    ///             VswitchId = defaultSwitch.Id,
-    ///         });
-    ///         var defaultConsumerGroup = new AliCloud.AliKafka.ConsumerGroup("defaultConsumerGroup", new AliCloud.AliKafka.ConsumerGroupArgs
-    ///         {
-    ///             ConsumerId = consumerId,
-    ///             InstanceId = defaultInstance.Id,
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
+    ///     {
+    ///         PartitionNum = 50,
+    ///         DiskType = 1,
+    ///         DiskSize = 500,
+    ///         DeployType = 5,
+    ///         IoMax = 20,
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var defaultConsumerGroup = new AliCloud.AliKafka.ConsumerGroup("defaultConsumerGroup", new()
+    ///     {
+    ///         ConsumerId = consumerId,
+    ///         InstanceId = defaultInstance.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -73,7 +75,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/consumerGroup:ConsumerGroup")]
-    public partial class ConsumerGroup : Pulumi.CustomResource
+    public partial class ConsumerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID of the consumer group. The length cannot exceed 64 characters.
@@ -143,7 +145,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
     }
 
-    public sealed class ConsumerGroupArgs : Pulumi.ResourceArgs
+    public sealed class ConsumerGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the consumer group. The length cannot exceed 64 characters.
@@ -178,9 +180,10 @@ namespace Pulumi.AliCloud.AliKafka
         public ConsumerGroupArgs()
         {
         }
+        public static new ConsumerGroupArgs Empty => new ConsumerGroupArgs();
     }
 
-    public sealed class ConsumerGroupState : Pulumi.ResourceArgs
+    public sealed class ConsumerGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the consumer group. The length cannot exceed 64 characters.
@@ -215,5 +218,6 @@ namespace Pulumi.AliCloud.AliKafka
         public ConsumerGroupState()
         {
         }
+        public static new ConsumerGroupState Empty => new ConsumerGroupState();
     }
 }

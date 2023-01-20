@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.CR
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myNamespaces = AliCloud.CR.GetNamespaces.Invoke(new()
         ///     {
-        ///         var myNamespaces = Output.Create(AliCloud.CR.GetNamespaces.InvokeAsync(new AliCloud.CR.GetNamespacesArgs
-        ///         {
-        ///             NameRegex = "my-namespace",
-        ///             OutputFile = "my-namespace-json",
-        ///         }));
-        ///         this.Output = myNamespaces.Apply(myNamespaces =&gt; myNamespaces.Namespaces);
-        ///     }
+        ///         NameRegex = "my-namespace",
+        ///         OutputFile = "my-namespace-json",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myNamespaces.Apply(getNamespacesResult =&gt; getNamespacesResult.Namespaces),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNamespacesResult> InvokeAsync(GetNamespacesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list Container Registry namespaces on Alibaba Cloud.
@@ -56,34 +55,33 @@ namespace Pulumi.AliCloud.CR
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var myNamespaces = AliCloud.CR.GetNamespaces.Invoke(new()
         ///     {
-        ///         var myNamespaces = Output.Create(AliCloud.CR.GetNamespaces.InvokeAsync(new AliCloud.CR.GetNamespacesArgs
-        ///         {
-        ///             NameRegex = "my-namespace",
-        ///             OutputFile = "my-namespace-json",
-        ///         }));
-        ///         this.Output = myNamespaces.Apply(myNamespaces =&gt; myNamespaces.Namespaces);
-        ///     }
+        ///         NameRegex = "my-namespace",
+        ///         OutputFile = "my-namespace-json",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = myNamespaces.Apply(getNamespacesResult =&gt; getNamespacesResult.Namespaces),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNamespacesResult> Invoke(GetNamespacesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNamespacesArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespacesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A regex string to filter results by namespace name.
@@ -97,9 +95,10 @@ namespace Pulumi.AliCloud.CR
         public GetNamespacesArgs()
         {
         }
+        public static new GetNamespacesArgs Empty => new GetNamespacesArgs();
     }
 
-    public sealed class GetNamespacesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespacesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A regex string to filter results by namespace name.
@@ -113,6 +112,7 @@ namespace Pulumi.AliCloud.CR
         public GetNamespacesInvokeArgs()
         {
         }
+        public static new GetNamespacesInvokeArgs Empty => new GetNamespacesInvokeArgs();
     }
 
 

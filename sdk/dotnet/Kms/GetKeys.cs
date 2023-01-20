@@ -19,30 +19,29 @@ namespace Pulumi.AliCloud.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var kmsKeysDs = AliCloud.Kms.GetKeys.Invoke(new()
         ///     {
-        ///         var kmsKeysDs = Output.Create(AliCloud.Kms.GetKeys.InvokeAsync(new AliCloud.Kms.GetKeysArgs
-        ///         {
-        ///             DescriptionRegex = "Hello KMS",
-        ///             OutputFile = "kms_keys.json",
-        ///         }));
-        ///         this.FirstKeyId = kmsKeysDs.Apply(kmsKeysDs =&gt; kmsKeysDs.Keys?[0]?.Id);
-        ///     }
+        ///         DescriptionRegex = "Hello KMS",
+        ///         OutputFile = "kms_keys.json",
+        ///     });
         /// 
-        ///     [Output("firstKeyId")]
-        ///     public Output&lt;string&gt; FirstKeyId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstKeyId"] = kmsKeysDs.Apply(getKeysResult =&gt; getKeysResult.Keys[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
@@ -52,34 +51,33 @@ namespace Pulumi.AliCloud.Kms
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var kmsKeysDs = AliCloud.Kms.GetKeys.Invoke(new()
         ///     {
-        ///         var kmsKeysDs = Output.Create(AliCloud.Kms.GetKeys.InvokeAsync(new AliCloud.Kms.GetKeysArgs
-        ///         {
-        ///             DescriptionRegex = "Hello KMS",
-        ///             OutputFile = "kms_keys.json",
-        ///         }));
-        ///         this.FirstKeyId = kmsKeysDs.Apply(kmsKeysDs =&gt; kmsKeysDs.Keys?[0]?.Id);
-        ///     }
+        ///         DescriptionRegex = "Hello KMS",
+        ///         OutputFile = "kms_keys.json",
+        ///     });
         /// 
-        ///     [Output("firstKeyId")]
-        ///     public Output&lt;string&gt; FirstKeyId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstKeyId"] = kmsKeysDs.Apply(getKeysResult =&gt; getKeysResult.Keys[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKeysResult> Invoke(GetKeysInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetKeysArgs : Pulumi.InvokeArgs
+    public sealed class GetKeysArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A regex string to filter the results by the KMS key description.
@@ -117,9 +115,10 @@ namespace Pulumi.AliCloud.Kms
         public GetKeysArgs()
         {
         }
+        public static new GetKeysArgs Empty => new GetKeysArgs();
     }
 
-    public sealed class GetKeysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKeysInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A regex string to filter the results by the KMS key description.
@@ -157,6 +156,7 @@ namespace Pulumi.AliCloud.Kms
         public GetKeysInvokeArgs()
         {
         }
+        public static new GetKeysInvokeArgs Empty => new GetKeysInvokeArgs();
     }
 
 

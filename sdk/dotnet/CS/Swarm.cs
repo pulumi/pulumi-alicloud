@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     [AliCloudResourceType("alicloud:cs/swarm:Swarm")]
-    public partial class Swarm : Pulumi.CustomResource
+    public partial class Swarm : global::Pulumi.CustomResource
     {
         [Output("agentVersion")]
         public Output<string> AgentVersion { get; private set; } = null!;
@@ -92,6 +92,10 @@ namespace Pulumi.AliCloud.CS
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -113,7 +117,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class SwarmArgs : Pulumi.ResourceArgs
+    public sealed class SwarmArgs : global::Pulumi.ResourceArgs
     {
         [Input("cidrBlock", required: true)]
         public Input<string> CidrBlock { get; set; } = null!;
@@ -146,7 +150,16 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeNumber { get; set; }
 
         [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        private Input<string>? _password;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("releaseEip")]
         public Input<bool>? ReleaseEip { get; set; }
@@ -160,9 +173,10 @@ namespace Pulumi.AliCloud.CS
         public SwarmArgs()
         {
         }
+        public static new SwarmArgs Empty => new SwarmArgs();
     }
 
-    public sealed class SwarmState : Pulumi.ResourceArgs
+    public sealed class SwarmState : global::Pulumi.ResourceArgs
     {
         [Input("agentVersion")]
         public Input<string>? AgentVersion { get; set; }
@@ -206,7 +220,16 @@ namespace Pulumi.AliCloud.CS
         }
 
         [Input("password")]
-        public Input<string>? Password { get; set; }
+        private Input<string>? _password;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("releaseEip")]
         public Input<bool>? ReleaseEip { get; set; }
@@ -229,5 +252,6 @@ namespace Pulumi.AliCloud.CS
         public SwarmState()
         {
         }
+        public static new SwarmState Empty => new SwarmState();
     }
 }

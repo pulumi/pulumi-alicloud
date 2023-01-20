@@ -19,54 +19,50 @@ namespace Pulumi.AliCloud.Datahub
     /// - BLob Topic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Datahub.Topic("example", new()
     ///     {
-    ///         var example = new AliCloud.Datahub.Topic("example", new AliCloud.Datahub.TopicArgs
-    ///         {
-    ///             Comment = "created by terraform",
-    ///             LifeCycle = 7,
-    ///             ProjectName = "tf_datahub_project",
-    ///             RecordType = "BLOB",
-    ///             ShardCount = 3,
-    ///         });
-    ///     }
+    ///         Comment = "created by terraform",
+    ///         LifeCycle = 7,
+    ///         ProjectName = "tf_datahub_project",
+    ///         RecordType = "BLOB",
+    ///         ShardCount = 3,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// - Tuple Topic
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Datahub.Topic("example", new()
     ///     {
-    ///         var example = new AliCloud.Datahub.Topic("example", new AliCloud.Datahub.TopicArgs
+    ///         Comment = "created by terraform",
+    ///         LifeCycle = 7,
+    ///         ProjectName = "tf_datahub_project",
+    ///         RecordSchema = 
     ///         {
-    ///             Comment = "created by terraform",
-    ///             LifeCycle = 7,
-    ///             ProjectName = "tf_datahub_project",
-    ///             RecordSchema = 
-    ///             {
-    ///                 { "bigint_field", "BIGINT" },
-    ///                 { "boolean_field", "BOOLEAN" },
-    ///                 { "double_field", "DOUBLE" },
-    ///                 { "string_field", "STRING" },
-    ///                 { "timestamp_field", "TIMESTAMP" },
-    ///             },
-    ///             RecordType = "TUPLE",
-    ///             ShardCount = 3,
-    ///         });
-    ///     }
+    ///             { "bigint_field", "BIGINT" },
+    ///             { "boolean_field", "BOOLEAN" },
+    ///             { "double_field", "DOUBLE" },
+    ///             { "string_field", "STRING" },
+    ///             { "timestamp_field", "TIMESTAMP" },
+    ///         },
+    ///         RecordType = "TUPLE",
+    ///         ShardCount = 3,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -78,7 +74,7 @@ namespace Pulumi.AliCloud.Datahub
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:datahub/topic:Topic")]
-    public partial class Topic : Pulumi.CustomResource
+    public partial class Topic : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Comment of the datahub topic. It cannot be longer than 255 characters.
@@ -183,7 +179,7 @@ namespace Pulumi.AliCloud.Datahub
         }
     }
 
-    public sealed class TopicArgs : Pulumi.ResourceArgs
+    public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Comment of the datahub topic. It cannot be longer than 255 characters.
@@ -241,9 +237,10 @@ namespace Pulumi.AliCloud.Datahub
         public TopicArgs()
         {
         }
+        public static new TopicArgs Empty => new TopicArgs();
     }
 
-    public sealed class TopicState : Pulumi.ResourceArgs
+    public sealed class TopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Comment of the datahub topic. It cannot be longer than 255 characters.
@@ -313,5 +310,6 @@ namespace Pulumi.AliCloud.Datahub
         public TopicState()
         {
         }
+        public static new TopicState Empty => new TopicState();
     }
 }

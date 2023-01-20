@@ -21,36 +21,35 @@ namespace Pulumi.AliCloud.FNF
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleFlow = new AliCloud.FNF.Flow("exampleFlow", new()
     ///     {
-    ///         var exampleFlow = new AliCloud.FNF.Flow("exampleFlow", new AliCloud.FNF.FlowArgs
-    ///         {
-    ///             Definition = @"  version: v1beta1
+    ///         Definition = @"  version: v1beta1
     ///   type: flow
     ///   steps:
     ///     - type: pass
     ///       name: helloworld
     /// ",
-    ///             Description = "tf-testaccFnFFlow983041",
-    ///             Type = "FDL",
-    ///         });
-    ///         var exampleSchedule = new AliCloud.FNF.Schedule("exampleSchedule", new AliCloud.FNF.ScheduleArgs
-    ///         {
-    ///             CronExpression = "30 9 * * * *",
-    ///             Description = "tf-testaccFnFSchedule983041",
-    ///             Enable = true,
-    ///             FlowName = exampleFlow.Name,
-    ///             Payload = "{\"tf-test\": \"test success\"}",
-    ///             ScheduleName = "tf-testaccFnFSchedule983041",
-    ///         });
-    ///     }
+    ///         Description = "tf-testaccFnFFlow983041",
+    ///         Type = "FDL",
+    ///     });
     /// 
-    /// }
+    ///     var exampleSchedule = new AliCloud.FNF.Schedule("exampleSchedule", new()
+    ///     {
+    ///         CronExpression = "30 9 * * * *",
+    ///         Description = "tf-testaccFnFSchedule983041",
+    ///         Enable = true,
+    ///         FlowName = exampleFlow.Name,
+    ///         Payload = "{\"tf-test\": \"test success\"}",
+    ///         ScheduleName = "tf-testaccFnFSchedule983041",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -62,7 +61,7 @@ namespace Pulumi.AliCloud.FNF
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:fnf/schedule:Schedule")]
-    public partial class Schedule : Pulumi.CustomResource
+    public partial class Schedule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The CRON expression of the time-based schedule to be created.
@@ -156,7 +155,7 @@ namespace Pulumi.AliCloud.FNF
         }
     }
 
-    public sealed class ScheduleArgs : Pulumi.ResourceArgs
+    public sealed class ScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CRON expression of the time-based schedule to be created.
@@ -197,9 +196,10 @@ namespace Pulumi.AliCloud.FNF
         public ScheduleArgs()
         {
         }
+        public static new ScheduleArgs Empty => new ScheduleArgs();
     }
 
-    public sealed class ScheduleState : Pulumi.ResourceArgs
+    public sealed class ScheduleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CRON expression of the time-based schedule to be created.
@@ -252,5 +252,6 @@ namespace Pulumi.AliCloud.FNF
         public ScheduleState()
         {
         }
+        public static new ScheduleState Empty => new ScheduleState();
     }
 }

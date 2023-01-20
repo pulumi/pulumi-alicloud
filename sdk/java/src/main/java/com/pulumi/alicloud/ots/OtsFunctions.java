@@ -8,6 +8,10 @@ import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsArgs;
 import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsPlainArgs;
 import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
 import com.pulumi.alicloud.ots.inputs.GetInstancesPlainArgs;
+import com.pulumi.alicloud.ots.inputs.GetSearchIndexesArgs;
+import com.pulumi.alicloud.ots.inputs.GetSearchIndexesPlainArgs;
+import com.pulumi.alicloud.ots.inputs.GetSecondaryIndexesArgs;
+import com.pulumi.alicloud.ots.inputs.GetSecondaryIndexesPlainArgs;
 import com.pulumi.alicloud.ots.inputs.GetServiceArgs;
 import com.pulumi.alicloud.ots.inputs.GetServicePlainArgs;
 import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
@@ -16,6 +20,8 @@ import com.pulumi.alicloud.ots.inputs.GetTunnelsArgs;
 import com.pulumi.alicloud.ots.inputs.GetTunnelsPlainArgs;
 import com.pulumi.alicloud.ots.outputs.GetInstanceAttachmentsResult;
 import com.pulumi.alicloud.ots.outputs.GetInstancesResult;
+import com.pulumi.alicloud.ots.outputs.GetSearchIndexesResult;
+import com.pulumi.alicloud.ots.outputs.GetSecondaryIndexesResult;
 import com.pulumi.alicloud.ots.outputs.GetServiceResult;
 import com.pulumi.alicloud.ots.outputs.GetTablesResult;
 import com.pulumi.alicloud.ots.outputs.GetTunnelsResult;
@@ -37,7 +43,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -77,7 +83,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -117,7 +123,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -157,7 +163,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.cen.inputs.GetInstanceAttachmentsArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -197,7 +203,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -236,7 +242,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -275,7 +281,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -314,7 +320,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -353,7 +359,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -392,7 +398,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -420,6 +426,62 @@ public final class OtsFunctions {
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ots/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetSearchIndexesResult> getSearchIndexes(GetSearchIndexesArgs args) {
+        return getSearchIndexes(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetSearchIndexesResult> getSearchIndexesPlain(GetSearchIndexesPlainArgs args) {
+        return getSearchIndexesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetSearchIndexesResult> getSearchIndexes(GetSearchIndexesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ots/getSearchIndexes:getSearchIndexes", TypeShape.of(GetSearchIndexesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetSearchIndexesResult> getSearchIndexesPlain(GetSearchIndexesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ots/getSearchIndexes:getSearchIndexes", TypeShape.of(GetSearchIndexesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ots secondary index of the current Alibaba Cloud user.
+     * 
+     * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     */
+    public static Output<GetSecondaryIndexesResult> getSecondaryIndexes(GetSecondaryIndexesArgs args) {
+        return getSecondaryIndexes(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ots secondary index of the current Alibaba Cloud user.
+     * 
+     * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     */
+    public static CompletableFuture<GetSecondaryIndexesResult> getSecondaryIndexesPlain(GetSecondaryIndexesPlainArgs args) {
+        return getSecondaryIndexesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ots secondary index of the current Alibaba Cloud user.
+     * 
+     * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     */
+    public static Output<GetSecondaryIndexesResult> getSecondaryIndexes(GetSecondaryIndexesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", TypeShape.of(GetSecondaryIndexesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ots secondary index of the current Alibaba Cloud user.
+     * 
+     * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     */
+    public static CompletableFuture<GetSecondaryIndexesResult> getSecondaryIndexesPlain(GetSecondaryIndexesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", TypeShape.of(GetSecondaryIndexesResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Using this data source can enable Table Staore service automatically. If the service has been enabled, it will return `Opened`.
      * 
@@ -435,7 +497,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -476,7 +538,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -517,7 +579,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -558,7 +620,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -599,7 +661,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -640,7 +702,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetServiceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -679,7 +741,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.oss.inputs.GetTablesArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -721,7 +783,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.oss.inputs.GetTablesArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -763,7 +825,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.oss.inputs.GetTablesArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -805,7 +867,7 @@ public final class OtsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
-     * import com.pulumi.alicloud.oss.inputs.GetTablesArgs;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

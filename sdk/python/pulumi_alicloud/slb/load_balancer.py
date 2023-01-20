@@ -69,9 +69,6 @@ class LoadBalancerArgs:
         if delete_protection is not None:
             pulumi.set(__self__, "delete_protection", delete_protection)
         if instance_charge_type is not None:
-            warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.""", DeprecationWarning)
-            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.""")
-        if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
@@ -403,9 +400,6 @@ class _LoadBalancerState:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if delete_protection is not None:
             pulumi.set(__self__, "delete_protection", delete_protection)
-        if instance_charge_type is not None:
-            warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.""", DeprecationWarning)
-            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.""")
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
@@ -879,9 +873,6 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["address_type"] = address_type
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["delete_protection"] = delete_protection
-            if instance_charge_type is not None and not opts.urn:
-                warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.""", DeprecationWarning)
-                pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.""")
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
             __props__.__dict__["load_balancer_name"] = load_balancer_name

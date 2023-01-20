@@ -15,6 +15,9 @@ import (
 //
 // For information about server group server attachment and how to use it, see [Configure a server group server attachment](https://www.alibabacloud.com/help/en/doc-detail/35218.html).
 //
+// > **NOTE:** Applying this resource may conflict with applying `slb.Listener`,
+// and the `slb.Listener` block should use `dependsOn = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
+//
 // ## Import
 //
 // Load balancer backend server group server attachment can be imported using the id, e.g.

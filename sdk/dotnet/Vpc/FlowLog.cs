@@ -23,40 +23,39 @@ namespace Pulumi.AliCloud.Vpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terratest_vpc_flow_log";
+    ///     var logStoreName = config.Get("logStoreName") ?? "vpc-flow-log-for-vpc";
+    ///     var projectName = config.Get("projectName") ?? "vpc-flow-log-for-vpc";
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "terratest_vpc_flow_log";
-    ///         var logStoreName = config.Get("logStoreName") ?? "vpc-flow-log-for-vpc";
-    ///         var projectName = config.Get("projectName") ?? "vpc-flow-log-for-vpc";
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             CidrBlock = "192.168.0.0/24",
-    ///         });
-    ///         var defaultFlowLog = new AliCloud.Vpc.FlowLog("defaultFlowLog", new AliCloud.Vpc.FlowLogArgs
-    ///         {
-    ///             ResourceId = defaultNetwork.Id,
-    ///             ResourceType = "VPC",
-    ///             TrafficType = "All",
-    ///             LogStoreName = logStoreName,
-    ///             ProjectName = projectName,
-    ///             FlowLogName = name,
-    ///             Status = "Active",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 "alicloud_vpc.default",
-    ///             },
-    ///         });
-    ///     }
+    ///         CidrBlock = "192.168.0.0/24",
+    ///     });
     /// 
-    /// }
+    ///     var defaultFlowLog = new AliCloud.Vpc.FlowLog("defaultFlowLog", new()
+    ///     {
+    ///         ResourceId = defaultNetwork.Id,
+    ///         ResourceType = "VPC",
+    ///         TrafficType = "All",
+    ///         LogStoreName = logStoreName,
+    ///         ProjectName = projectName,
+    ///         FlowLogName = name,
+    ///         Status = "Active",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             "alicloud_vpc.default",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -68,7 +67,7 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/flowLog:FlowLog")]
-    public partial class FlowLog : Pulumi.CustomResource
+    public partial class FlowLog : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Description of the VPC Flow Log.
@@ -162,7 +161,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class FlowLogArgs : Pulumi.ResourceArgs
+    public sealed class FlowLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Description of the VPC Flow Log.
@@ -215,9 +214,10 @@ namespace Pulumi.AliCloud.Vpc
         public FlowLogArgs()
         {
         }
+        public static new FlowLogArgs Empty => new FlowLogArgs();
     }
 
-    public sealed class FlowLogState : Pulumi.ResourceArgs
+    public sealed class FlowLogState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Description of the VPC Flow Log.
@@ -270,5 +270,6 @@ namespace Pulumi.AliCloud.Vpc
         public FlowLogState()
         {
         }
+        public static new FlowLogState Empty => new FlowLogState();
     }
 }

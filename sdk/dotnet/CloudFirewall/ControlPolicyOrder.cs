@@ -21,34 +21,33 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example1 = new AliCloud.CloudFirewall.ControlPolicy("example1", new()
     ///     {
-    ///         var example1 = new AliCloud.CloudFirewall.ControlPolicy("example1", new AliCloud.CloudFirewall.ControlPolicyArgs
-    ///         {
-    ///             ApplicationName = "ANY",
-    ///             AclAction = "accept",
-    ///             Description = "example",
-    ///             DestinationType = "net",
-    ///             Destination = "100.1.1.0/24",
-    ///             Direction = "out",
-    ///             Proto = "ANY",
-    ///             Source = "1.2.3.0/24",
-    ///             SourceType = "net",
-    ///         });
-    ///         var example2 = new AliCloud.CloudFirewall.ControlPolicyOrder("example2", new AliCloud.CloudFirewall.ControlPolicyOrderArgs
-    ///         {
-    ///             AclUuid = example1.AclUuid,
-    ///             Direction = example1.Direction,
-    ///             Order = 1,
-    ///         });
-    ///     }
+    ///         ApplicationName = "ANY",
+    ///         AclAction = "accept",
+    ///         Description = "example",
+    ///         DestinationType = "net",
+    ///         Destination = "100.1.1.0/24",
+    ///         Direction = "out",
+    ///         Proto = "ANY",
+    ///         Source = "1.2.3.0/24",
+    ///         SourceType = "net",
+    ///     });
     /// 
-    /// }
+    ///     var example2 = new AliCloud.CloudFirewall.ControlPolicyOrder("example2", new()
+    ///     {
+    ///         AclUuid = example1.AclUuid,
+    ///         Direction = example1.Direction,
+    ///         Order = 1,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +59,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder")]
-    public partial class ControlPolicyOrder : Pulumi.CustomResource
+    public partial class ControlPolicyOrder : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The unique ID of the access control policy.
@@ -124,7 +123,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
     }
 
-    public sealed class ControlPolicyOrderArgs : Pulumi.ResourceArgs
+    public sealed class ControlPolicyOrderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique ID of the access control policy.
@@ -147,9 +146,10 @@ namespace Pulumi.AliCloud.CloudFirewall
         public ControlPolicyOrderArgs()
         {
         }
+        public static new ControlPolicyOrderArgs Empty => new ControlPolicyOrderArgs();
     }
 
-    public sealed class ControlPolicyOrderState : Pulumi.ResourceArgs
+    public sealed class ControlPolicyOrderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique ID of the access control policy.
@@ -172,5 +172,6 @@ namespace Pulumi.AliCloud.CloudFirewall
         public ControlPolicyOrderState()
         {
         }
+        public static new ControlPolicyOrderState Empty => new ControlPolicyOrderState();
     }
 }

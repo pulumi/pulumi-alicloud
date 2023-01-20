@@ -100,6 +100,20 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * The instance ID of the exclusive KMS instance.
+     * 
+     */
+    @Export(name="dkmsInstanceId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> dkmsInstanceId;
+
+    /**
+     * @return The instance ID of the exclusive KMS instance.
+     * 
+     */
+    public Output<Optional<String>> dkmsInstanceId() {
+        return Codegen.optional(this.dkmsInstanceId);
+    }
+    /**
      * Whether to enable automatic key rotation.
      * 
      */
@@ -300,6 +314,9 @@ public class Secret extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "secretData"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

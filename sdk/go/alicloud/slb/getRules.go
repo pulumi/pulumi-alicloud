@@ -34,7 +34,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
@@ -50,7 +50,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -90,9 +90,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstSlbRuleId", sampleDs.ApplyT(func(sampleDs slb.GetRulesResult) (string, error) {
-//				return sampleDs.SlbRules[0].Id, nil
-//			}).(pulumi.StringOutput))
+//			sampleDs := defaultApplicationLoadBalancer.ID().ApplyT(func(id string) (slb.GetRulesResult, error) {
+//				return slb.GetRulesOutput(ctx, slb.GetRulesOutputArgs{
+//					LoadBalancerId: id,
+//					FrontendPort:   22,
+//				}, nil), nil
+//			}).(slb.GetRulesResultOutput)
+//			ctx.Export("firstSlbRuleId", sampleDs.ApplyT(func(sampleDs slb.GetRulesResult) (*string, error) {
+//				return &sampleDs.SlbRules[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

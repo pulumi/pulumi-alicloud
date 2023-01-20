@@ -23,22 +23,20 @@ namespace Pulumi.AliCloud.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ecs.ImageExport("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ecs.ImageExport("default", new AliCloud.Ecs.ImageExportArgs
-    ///         {
-    ///             ImageId = "m-bp1gxy***",
-    ///             OssBucket = "ecsimageexportconfig",
-    ///             OssPrefix = "ecsExport",
-    ///         });
-    ///     }
+    ///         ImageId = "m-bp1gxy***",
+    ///         OssBucket = "ecsimageexportconfig",
+    ///         OssPrefix = "ecsExport",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes Reference0
     /// 
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Ecs
     /// * `id` - ID of the image.
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/imageExport:ImageExport")]
-    public partial class ImageExport : Pulumi.CustomResource
+    public partial class ImageExport : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The source image ID.
@@ -111,7 +109,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class ImageExportArgs : Pulumi.ResourceArgs
+    public sealed class ImageExportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The source image ID.
@@ -134,9 +132,10 @@ namespace Pulumi.AliCloud.Ecs
         public ImageExportArgs()
         {
         }
+        public static new ImageExportArgs Empty => new ImageExportArgs();
     }
 
-    public sealed class ImageExportState : Pulumi.ResourceArgs
+    public sealed class ImageExportState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The source image ID.
@@ -159,5 +158,6 @@ namespace Pulumi.AliCloud.Ecs
         public ImageExportState()
         {
         }
+        public static new ImageExportState Empty => new ImageExportState();
     }
 }

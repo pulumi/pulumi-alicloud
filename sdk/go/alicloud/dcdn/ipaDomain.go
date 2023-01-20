@@ -42,7 +42,7 @@ import (
 //			}
 //			_, err = dcdn.NewIpaDomain(ctx, "example", &dcdn.IpaDomainArgs{
 //				DomainName:      pulumi.String("example.com"),
-//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+//				ResourceGroupId: *pulumi.String(_default.Groups[0].Id),
 //				Sources: dcdn.IpaDomainSourceArray{
 //					&dcdn.IpaDomainSourceArgs{
 //						Content:  pulumi.String("1.1.1.1"),

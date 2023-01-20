@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,25 +15,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const scalingconfigurationsDs = pulumi.output(alicloud.ess.getScalingConfigurations({
+ * const scalingconfigurationsDs = alicloud.ess.getScalingConfigurations({
  *     ids: [
  *         "scaling_configuration_id1",
  *         "scaling_configuration_id2",
  *     ],
  *     nameRegex: "scaling_configuration_name",
  *     scalingGroupId: "scaling_group_id",
- * }));
- *
- * export const firstScalingRule = scalingconfigurationsDs.configurations[0].id;
+ * });
+ * export const firstScalingRule = scalingconfigurationsDs.then(scalingconfigurationsDs => scalingconfigurationsDs.configurations?.[0]?.id);
  * ```
  */
 export function getScalingConfigurations(args?: GetScalingConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingConfigurationsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ess/getScalingConfigurations:getScalingConfigurations", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -87,9 +84,28 @@ export interface GetScalingConfigurationsResult {
      */
     readonly scalingGroupId?: string;
 }
-
+/**
+ * This data source provides available scaling configuration resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const scalingconfigurationsDs = alicloud.ess.getScalingConfigurations({
+ *     ids: [
+ *         "scaling_configuration_id1",
+ *         "scaling_configuration_id2",
+ *     ],
+ *     nameRegex: "scaling_configuration_name",
+ *     scalingGroupId: "scaling_group_id",
+ * });
+ * export const firstScalingRule = scalingconfigurationsDs.then(scalingconfigurationsDs => scalingconfigurationsDs.configurations?.[0]?.id);
+ * ```
+ */
 export function getScalingConfigurationsOutput(args?: GetScalingConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingConfigurationsResult> {
-    return pulumi.output(args).apply(a => getScalingConfigurations(a, opts))
+    return pulumi.output(args).apply((a: any) => getScalingConfigurations(a, opts))
 }
 
 /**

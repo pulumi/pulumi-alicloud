@@ -21,31 +21,30 @@ namespace Pulumi.AliCloud.Arms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleAlertContact = new AliCloud.Arms.AlertContact("exampleAlertContact", new()
     ///     {
-    ///         var exampleAlertContact = new AliCloud.Arms.AlertContact("exampleAlertContact", new AliCloud.Arms.AlertContactArgs
-    ///         {
-    ///             AlertContactName = "example_value",
-    ///             DingRobotWebhookUrl = "https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
-    ///             Email = "someone@example.com",
-    ///             PhoneNum = "1381111****",
-    ///         });
-    ///         var exampleAlertContactGroup = new AliCloud.Arms.AlertContactGroup("exampleAlertContactGroup", new AliCloud.Arms.AlertContactGroupArgs
-    ///         {
-    ///             AlertContactGroupName = "example_value",
-    ///             ContactIds = 
-    ///             {
-    ///                 exampleAlertContact.Id,
-    ///             },
-    ///         });
-    ///     }
+    ///         AlertContactName = "example_value",
+    ///         DingRobotWebhookUrl = "https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
+    ///         Email = "someone@example.com",
+    ///         PhoneNum = "1381111****",
+    ///     });
     /// 
-    /// }
+    ///     var exampleAlertContactGroup = new AliCloud.Arms.AlertContactGroup("exampleAlertContactGroup", new()
+    ///     {
+    ///         AlertContactGroupName = "example_value",
+    ///         ContactIds = new[]
+    ///         {
+    ///             exampleAlertContact.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +56,7 @@ namespace Pulumi.AliCloud.Arms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:arms/alertContactGroup:AlertContactGroup")]
-    public partial class AlertContactGroup : Pulumi.CustomResource
+    public partial class AlertContactGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the resource.
@@ -115,7 +114,7 @@ namespace Pulumi.AliCloud.Arms
         }
     }
 
-    public sealed class AlertContactGroupArgs : Pulumi.ResourceArgs
+    public sealed class AlertContactGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the resource.
@@ -138,9 +137,10 @@ namespace Pulumi.AliCloud.Arms
         public AlertContactGroupArgs()
         {
         }
+        public static new AlertContactGroupArgs Empty => new AlertContactGroupArgs();
     }
 
-    public sealed class AlertContactGroupState : Pulumi.ResourceArgs
+    public sealed class AlertContactGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the resource.
@@ -163,5 +163,6 @@ namespace Pulumi.AliCloud.Arms
         public AlertContactGroupState()
         {
         }
+        public static new AlertContactGroupState Empty => new AlertContactGroupState();
     }
 }

@@ -21,27 +21,25 @@ namespace Pulumi.AliCloud.GraphDatabase
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.GraphDatabase.DbInstance("example", new()
     ///     {
-    ///         var example = new AliCloud.GraphDatabase.DbInstance("example", new AliCloud.GraphDatabase.DbInstanceArgs
-    ///         {
-    ///             DbInstanceCategory = "HA",
-    ///             DbInstanceDescription = "example_value",
-    ///             DbInstanceNetworkType = "vpc",
-    ///             DbInstanceStorageType = "cloud_ssd",
-    ///             DbNodeClass = "gdb.r.2xlarge",
-    ///             DbNodeStorage = "example_value",
-    ///             DbVersion = "1.0",
-    ///             PaymentType = "PayAsYouGo",
-    ///         });
-    ///     }
+    ///         DbInstanceCategory = "HA",
+    ///         DbInstanceDescription = "example_value",
+    ///         DbInstanceNetworkType = "vpc",
+    ///         DbInstanceStorageType = "cloud_ssd",
+    ///         DbNodeClass = "gdb.r.2xlarge",
+    ///         DbNodeStorage = "example_value",
+    ///         DbVersion = "1.0",
+    ///         PaymentType = "PayAsYouGo",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,8 +51,14 @@ namespace Pulumi.AliCloud.GraphDatabase
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:graphdatabase/dbInstance:DbInstance")]
-    public partial class DbInstance : Pulumi.CustomResource
+    public partial class DbInstance : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (Available in 1.196.0+)  The connection string of the instance.
+        /// </summary>
+        [Output("connectionString")]
+        public Output<string> ConnectionString { get; private set; } = null!;
+
         /// <summary>
         /// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         /// </summary>
@@ -108,6 +112,12 @@ namespace Pulumi.AliCloud.GraphDatabase
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.196.0+) The connection port of the instance.
+        /// </summary>
+        [Output("port")]
+        public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
         /// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
@@ -177,7 +187,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         }
     }
 
-    public sealed class DbInstanceArgs : Pulumi.ResourceArgs
+    public sealed class DbInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
@@ -260,10 +270,17 @@ namespace Pulumi.AliCloud.GraphDatabase
         public DbInstanceArgs()
         {
         }
+        public static new DbInstanceArgs Empty => new DbInstanceArgs();
     }
 
-    public sealed class DbInstanceState : Pulumi.ResourceArgs
+    public sealed class DbInstanceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Available in 1.196.0+)  The connection string of the instance.
+        /// </summary>
+        [Input("connectionString")]
+        public Input<string>? ConnectionString { get; set; }
+
         /// <summary>
         /// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         /// </summary>
@@ -325,6 +342,12 @@ namespace Pulumi.AliCloud.GraphDatabase
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
+        /// (Available in 1.196.0+) The connection port of the instance.
+        /// </summary>
+        [Input("port")]
+        public Input<string>? Port { get; set; }
+
+        /// <summary>
         /// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
         /// </summary>
         [Input("status")]
@@ -351,5 +374,6 @@ namespace Pulumi.AliCloud.GraphDatabase
         public DbInstanceState()
         {
         }
+        public static new DbInstanceState Empty => new DbInstanceState();
     }
 }

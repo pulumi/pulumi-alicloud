@@ -20,12 +20,6 @@ public final class InstanceDataDisk {
     private @Nullable String autoSnapshotPolicyId;
     /**
      * @return The category of the disk:
-     * - `cloud`: The general cloud disk.
-     * - `cloud_efficiency`: The efficiency cloud disk.
-     * - `cloud_ssd`: The SSD cloud disk.
-     * - `cloud_essd`: The ESSD cloud disk.
-     * - `ephemeral_ssd`: The local SSD disk.
-     *   Default to `cloud_efficiency`.
      * 
      */
     private @Nullable String category;
@@ -40,7 +34,12 @@ public final class InstanceDataDisk {
      */
     private @Nullable String description;
     /**
-     * @return -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+     * @return The mount point of the data disk.
+     * 
+     */
+    private @Nullable String device;
+    /**
+     * @return Encrypted the data in this disk. Default value: `false`.
      * 
      */
     private @Nullable Boolean encrypted;
@@ -56,11 +55,6 @@ public final class InstanceDataDisk {
     private @Nullable String name;
     /**
      * @return The performance level of the ESSD used as data disk:
-     * - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-     * - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-     * - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-     * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-     *   Default to `PL1`.
      * 
      */
     private @Nullable String performanceLevel;
@@ -90,12 +84,6 @@ public final class InstanceDataDisk {
     }
     /**
      * @return The category of the disk:
-     * - `cloud`: The general cloud disk.
-     * - `cloud_efficiency`: The efficiency cloud disk.
-     * - `cloud_ssd`: The SSD cloud disk.
-     * - `cloud_essd`: The ESSD cloud disk.
-     * - `ephemeral_ssd`: The local SSD disk.
-     *   Default to `cloud_efficiency`.
      * 
      */
     public Optional<String> category() {
@@ -116,7 +104,14 @@ public final class InstanceDataDisk {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+     * @return The mount point of the data disk.
+     * 
+     */
+    public Optional<String> device() {
+        return Optional.ofNullable(this.device);
+    }
+    /**
+     * @return Encrypted the data in this disk. Default value: `false`.
      * 
      */
     public Optional<Boolean> encrypted() {
@@ -138,11 +133,6 @@ public final class InstanceDataDisk {
     }
     /**
      * @return The performance level of the ESSD used as data disk:
-     * - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-     * - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-     * - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-     * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-     *   Default to `PL1`.
      * 
      */
     public Optional<String> performanceLevel() {
@@ -181,6 +171,7 @@ public final class InstanceDataDisk {
         private @Nullable String category;
         private @Nullable Boolean deleteWithInstance;
         private @Nullable String description;
+        private @Nullable String device;
         private @Nullable Boolean encrypted;
         private @Nullable String kmsKeyId;
         private @Nullable String name;
@@ -194,6 +185,7 @@ public final class InstanceDataDisk {
     	      this.category = defaults.category;
     	      this.deleteWithInstance = defaults.deleteWithInstance;
     	      this.description = defaults.description;
+    	      this.device = defaults.device;
     	      this.encrypted = defaults.encrypted;
     	      this.kmsKeyId = defaults.kmsKeyId;
     	      this.name = defaults.name;
@@ -220,6 +212,11 @@ public final class InstanceDataDisk {
         @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder device(@Nullable String device) {
+            this.device = device;
             return this;
         }
         @CustomType.Setter
@@ -258,6 +255,7 @@ public final class InstanceDataDisk {
             o.category = category;
             o.deleteWithInstance = deleteWithInstance;
             o.description = description;
+            o.device = device;
             o.encrypted = encrypted;
             o.kmsKeyId = kmsKeyId;
             o.name = name;

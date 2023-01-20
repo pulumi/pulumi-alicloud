@@ -15,29 +15,28 @@ namespace Pulumi.AliCloud.Mns
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var topic = new AliCloud.Mns.Topic("topic", new()
     ///     {
-    ///         var topic = new AliCloud.Mns.Topic("topic", new AliCloud.Mns.TopicArgs
-    ///         {
-    ///             LoggingEnabled = false,
-    ///             MaximumMessageSize = 65536,
-    ///         });
-    ///         var subscription = new AliCloud.Mns.TopicSubscription("subscription", new AliCloud.Mns.TopicSubscriptionArgs
-    ///         {
-    ///             Endpoint = "http://www.xxx.com/xxx",
-    ///             FilterTag = "test",
-    ///             NotifyContentFormat = "XML",
-    ///             NotifyStrategy = "BACKOFF_RETRY",
-    ///             TopicName = "tf-example-mnstopic",
-    ///         });
-    ///     }
+    ///         LoggingEnabled = false,
+    ///         MaximumMessageSize = 65536,
+    ///     });
     /// 
-    /// }
+    ///     var subscription = new AliCloud.Mns.TopicSubscription("subscription", new()
+    ///     {
+    ///         Endpoint = "http://www.xxx.com/xxx",
+    ///         FilterTag = "test",
+    ///         NotifyContentFormat = "XML",
+    ///         NotifyStrategy = "BACKOFF_RETRY",
+    ///         TopicName = "tf-example-mnstopic",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +48,7 @@ namespace Pulumi.AliCloud.Mns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mns/topicSubscription:TopicSubscription")]
-    public partial class TopicSubscription : Pulumi.CustomResource
+    public partial class TopicSubscription : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The endpoint has three format. Available values format:
@@ -134,7 +133,7 @@ namespace Pulumi.AliCloud.Mns
         }
     }
 
-    public sealed class TopicSubscriptionArgs : Pulumi.ResourceArgs
+    public sealed class TopicSubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The endpoint has three format. Available values format:
@@ -178,9 +177,10 @@ namespace Pulumi.AliCloud.Mns
         public TopicSubscriptionArgs()
         {
         }
+        public static new TopicSubscriptionArgs Empty => new TopicSubscriptionArgs();
     }
 
-    public sealed class TopicSubscriptionState : Pulumi.ResourceArgs
+    public sealed class TopicSubscriptionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The endpoint has three format. Available values format:
@@ -224,5 +224,6 @@ namespace Pulumi.AliCloud.Mns
         public TopicSubscriptionState()
         {
         }
+        public static new TopicSubscriptionState Empty => new TopicSubscriptionState();
     }
 }

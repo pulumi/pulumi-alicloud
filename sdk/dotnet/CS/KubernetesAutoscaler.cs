@@ -15,87 +15,92 @@ namespace Pulumi.AliCloud.CS
     /// cluster-autoscaler in Kubernetes Cluster.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "autoscaler";
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync());
-    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             Owners = "system",
-    ///             NameRegex = "^centos_7",
-    ///             MostRecent = true,
-    ///         }));
-    ///         var defaultManagedKubernetesClusters = Output.Create(AliCloud.CS.GetManagedKubernetesClusters.InvokeAsync());
-    ///         var defaultInstanceTypes = Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
-    ///         {
-    ///             CpuCoreCount = 2,
-    ///             MemorySize = 4,
-    ///         }));
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Vpcs?[0]?.Id),
-    ///         });
-    ///         var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new AliCloud.Ess.ScalingGroupArgs
-    ///         {
-    ///             ScalingGroupName = name,
-    ///             MinSize = @var.Min_size,
-    ///             MaxSize = @var.Max_size,
-    ///             VswitchIds = 
-    ///             {
-    ///                 defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Vpcs?[0]?.VswitchIds?[0]),
-    ///             },
-    ///             RemovalPolicies = 
-    ///             {
-    ///                 "OldestInstance",
-    ///                 "NewestInstance",
-    ///             },
-    ///         });
-    ///         var defaultScalingConfiguration = new AliCloud.Ess.ScalingConfiguration("defaultScalingConfiguration", new AliCloud.Ess.ScalingConfigurationArgs
-    ///         {
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
-    ///             SecurityGroupId = defaultSecurityGroup.Id,
-    ///             ScalingGroupId = defaultScalingGroup.Id,
-    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes?[0]?.Id),
-    ///             InternetChargeType = "PayByTraffic",
-    ///             ForceDelete = true,
-    ///             Enable = true,
-    ///             Active = true,
-    ///         });
-    ///         var defaultKubernetesAutoscaler = new AliCloud.CS.KubernetesAutoscaler("defaultKubernetesAutoscaler", new AliCloud.CS.KubernetesAutoscalerArgs
-    ///         {
-    ///             ClusterId = defaultManagedKubernetesClusters.Apply(defaultManagedKubernetesClusters =&gt; defaultManagedKubernetesClusters.Clusters?[0]?.Id),
-    ///             Nodepools = 
-    ///             {
-    ///                 new AliCloud.CS.Inputs.KubernetesAutoscalerNodepoolArgs
-    ///                 {
-    ///                     Id = defaultScalingGroup.Id,
-    ///                     Labels = "a=b",
-    ///                 },
-    ///             },
-    ///             Utilization = @var.Utilization,
-    ///             CoolDownDuration = @var.Cool_down_duration,
-    ///             DeferScaleInDuration = @var.Defer_scale_in_duration,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 alicloud_ess_scaling_group.Defalut,
-    ///                 defaultScalingConfiguration,
-    ///             },
-    ///         });
-    ///     }
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "autoscaler";
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke();
     /// 
-    /// }
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         Owners = "system",
+    ///         NameRegex = "^centos_7",
+    ///         MostRecent = true,
+    ///     });
+    /// 
+    ///     var defaultManagedKubernetesClusters = AliCloud.CS.GetManagedKubernetesClusters.Invoke();
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         CpuCoreCount = 2,
+    ///         MemorySize = 4,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new()
+    ///     {
+    ///         ScalingGroupName = name,
+    ///         MinSize = @var.Min_size,
+    ///         MaxSize = @var.Max_size,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.VswitchIds[0]),
+    ///         },
+    ///         RemovalPolicies = new[]
+    ///         {
+    ///             "OldestInstance",
+    ///             "NewestInstance",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultScalingConfiguration = new AliCloud.Ess.ScalingConfiguration("defaultScalingConfiguration", new()
+    ///     {
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         ScalingGroupId = defaultScalingGroup.Id,
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         InternetChargeType = "PayByTraffic",
+    ///         ForceDelete = true,
+    ///         Enable = true,
+    ///         Active = true,
+    ///     });
+    /// 
+    ///     var defaultKubernetesAutoscaler = new AliCloud.CS.KubernetesAutoscaler("defaultKubernetesAutoscaler", new()
+    ///     {
+    ///         ClusterId = defaultManagedKubernetesClusters.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Clusters[0]?.Id),
+    ///         Nodepools = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.KubernetesAutoscalerNodepoolArgs
+    ///             {
+    ///                 Id = defaultScalingGroup.Id,
+    ///                 Labels = "a=b",
+    ///             },
+    ///         },
+    ///         Utilization = @var.Utilization,
+    ///         CoolDownDuration = @var.Cool_down_duration,
+    ///         DeferScaleInDuration = @var.Defer_scale_in_duration,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             alicloud_ess_scaling_group.Defalut,
+    ///             defaultScalingConfiguration,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler")]
-    public partial class KubernetesAutoscaler : Pulumi.CustomResource
+    public partial class KubernetesAutoscaler : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The id of kubernetes cluster.
@@ -179,7 +184,7 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class KubernetesAutoscalerArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesAutoscalerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of kubernetes cluster.
@@ -228,9 +233,10 @@ namespace Pulumi.AliCloud.CS
         public KubernetesAutoscalerArgs()
         {
         }
+        public static new KubernetesAutoscalerArgs Empty => new KubernetesAutoscalerArgs();
     }
 
-    public sealed class KubernetesAutoscalerState : Pulumi.ResourceArgs
+    public sealed class KubernetesAutoscalerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of kubernetes cluster.
@@ -279,5 +285,6 @@ namespace Pulumi.AliCloud.CS
         public KubernetesAutoscalerState()
         {
         }
+        public static new KubernetesAutoscalerState Empty => new KubernetesAutoscalerState();
     }
 }

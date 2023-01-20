@@ -194,9 +194,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.snapshotId);
     }
 
+    /**
+     * The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -521,11 +529,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return snapshotId(Output.of(snapshotId));
         }
 
+        /**
+         * @param status The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

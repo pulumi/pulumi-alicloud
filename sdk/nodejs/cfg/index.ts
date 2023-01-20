@@ -5,35 +5,96 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./aggregateCompliancePack";
-export * from "./aggregateConfigRule";
-export * from "./aggregateDelivery";
-export * from "./aggregator";
-export * from "./compliancePack";
-export * from "./configurationRecorder";
-export * from "./delivery";
-export * from "./deliveryChannel";
-export * from "./getAggregateCompliancePacks";
-export * from "./getAggregateConfigRules";
-export * from "./getAggregateDeliveries";
-export * from "./getAggregators";
-export * from "./getCompliancePacks";
-export * from "./getConfigurationRecorders";
-export * from "./getDeliveries";
-export * from "./getDeliveryChannels";
-export * from "./getRules";
-export * from "./rule";
+export { AggregateCompliancePackArgs, AggregateCompliancePackState } from "./aggregateCompliancePack";
+export type AggregateCompliancePack = import("./aggregateCompliancePack").AggregateCompliancePack;
+export const AggregateCompliancePack: typeof import("./aggregateCompliancePack").AggregateCompliancePack = null as any;
+utilities.lazyLoad(exports, ["AggregateCompliancePack"], () => require("./aggregateCompliancePack"));
 
-// Import resources to register:
-import { AggregateCompliancePack } from "./aggregateCompliancePack";
-import { AggregateConfigRule } from "./aggregateConfigRule";
-import { AggregateDelivery } from "./aggregateDelivery";
-import { Aggregator } from "./aggregator";
-import { CompliancePack } from "./compliancePack";
-import { ConfigurationRecorder } from "./configurationRecorder";
-import { Delivery } from "./delivery";
-import { DeliveryChannel } from "./deliveryChannel";
-import { Rule } from "./rule";
+export { AggregateConfigRuleArgs, AggregateConfigRuleState } from "./aggregateConfigRule";
+export type AggregateConfigRule = import("./aggregateConfigRule").AggregateConfigRule;
+export const AggregateConfigRule: typeof import("./aggregateConfigRule").AggregateConfigRule = null as any;
+utilities.lazyLoad(exports, ["AggregateConfigRule"], () => require("./aggregateConfigRule"));
+
+export { AggregateDeliveryArgs, AggregateDeliveryState } from "./aggregateDelivery";
+export type AggregateDelivery = import("./aggregateDelivery").AggregateDelivery;
+export const AggregateDelivery: typeof import("./aggregateDelivery").AggregateDelivery = null as any;
+utilities.lazyLoad(exports, ["AggregateDelivery"], () => require("./aggregateDelivery"));
+
+export { AggregatorArgs, AggregatorState } from "./aggregator";
+export type Aggregator = import("./aggregator").Aggregator;
+export const Aggregator: typeof import("./aggregator").Aggregator = null as any;
+utilities.lazyLoad(exports, ["Aggregator"], () => require("./aggregator"));
+
+export { CompliancePackArgs, CompliancePackState } from "./compliancePack";
+export type CompliancePack = import("./compliancePack").CompliancePack;
+export const CompliancePack: typeof import("./compliancePack").CompliancePack = null as any;
+utilities.lazyLoad(exports, ["CompliancePack"], () => require("./compliancePack"));
+
+export { ConfigurationRecorderArgs, ConfigurationRecorderState } from "./configurationRecorder";
+export type ConfigurationRecorder = import("./configurationRecorder").ConfigurationRecorder;
+export const ConfigurationRecorder: typeof import("./configurationRecorder").ConfigurationRecorder = null as any;
+utilities.lazyLoad(exports, ["ConfigurationRecorder"], () => require("./configurationRecorder"));
+
+export { DeliveryArgs, DeliveryState } from "./delivery";
+export type Delivery = import("./delivery").Delivery;
+export const Delivery: typeof import("./delivery").Delivery = null as any;
+utilities.lazyLoad(exports, ["Delivery"], () => require("./delivery"));
+
+export { DeliveryChannelArgs, DeliveryChannelState } from "./deliveryChannel";
+export type DeliveryChannel = import("./deliveryChannel").DeliveryChannel;
+export const DeliveryChannel: typeof import("./deliveryChannel").DeliveryChannel = null as any;
+utilities.lazyLoad(exports, ["DeliveryChannel"], () => require("./deliveryChannel"));
+
+export { GetAggregateCompliancePacksArgs, GetAggregateCompliancePacksResult, GetAggregateCompliancePacksOutputArgs } from "./getAggregateCompliancePacks";
+export const getAggregateCompliancePacks: typeof import("./getAggregateCompliancePacks").getAggregateCompliancePacks = null as any;
+export const getAggregateCompliancePacksOutput: typeof import("./getAggregateCompliancePacks").getAggregateCompliancePacksOutput = null as any;
+utilities.lazyLoad(exports, ["getAggregateCompliancePacks","getAggregateCompliancePacksOutput"], () => require("./getAggregateCompliancePacks"));
+
+export { GetAggregateConfigRulesArgs, GetAggregateConfigRulesResult, GetAggregateConfigRulesOutputArgs } from "./getAggregateConfigRules";
+export const getAggregateConfigRules: typeof import("./getAggregateConfigRules").getAggregateConfigRules = null as any;
+export const getAggregateConfigRulesOutput: typeof import("./getAggregateConfigRules").getAggregateConfigRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getAggregateConfigRules","getAggregateConfigRulesOutput"], () => require("./getAggregateConfigRules"));
+
+export { GetAggregateDeliveriesArgs, GetAggregateDeliveriesResult, GetAggregateDeliveriesOutputArgs } from "./getAggregateDeliveries";
+export const getAggregateDeliveries: typeof import("./getAggregateDeliveries").getAggregateDeliveries = null as any;
+export const getAggregateDeliveriesOutput: typeof import("./getAggregateDeliveries").getAggregateDeliveriesOutput = null as any;
+utilities.lazyLoad(exports, ["getAggregateDeliveries","getAggregateDeliveriesOutput"], () => require("./getAggregateDeliveries"));
+
+export { GetAggregatorsArgs, GetAggregatorsResult, GetAggregatorsOutputArgs } from "./getAggregators";
+export const getAggregators: typeof import("./getAggregators").getAggregators = null as any;
+export const getAggregatorsOutput: typeof import("./getAggregators").getAggregatorsOutput = null as any;
+utilities.lazyLoad(exports, ["getAggregators","getAggregatorsOutput"], () => require("./getAggregators"));
+
+export { GetCompliancePacksArgs, GetCompliancePacksResult, GetCompliancePacksOutputArgs } from "./getCompliancePacks";
+export const getCompliancePacks: typeof import("./getCompliancePacks").getCompliancePacks = null as any;
+export const getCompliancePacksOutput: typeof import("./getCompliancePacks").getCompliancePacksOutput = null as any;
+utilities.lazyLoad(exports, ["getCompliancePacks","getCompliancePacksOutput"], () => require("./getCompliancePacks"));
+
+export { GetConfigurationRecordersArgs, GetConfigurationRecordersResult, GetConfigurationRecordersOutputArgs } from "./getConfigurationRecorders";
+export const getConfigurationRecorders: typeof import("./getConfigurationRecorders").getConfigurationRecorders = null as any;
+export const getConfigurationRecordersOutput: typeof import("./getConfigurationRecorders").getConfigurationRecordersOutput = null as any;
+utilities.lazyLoad(exports, ["getConfigurationRecorders","getConfigurationRecordersOutput"], () => require("./getConfigurationRecorders"));
+
+export { GetDeliveriesArgs, GetDeliveriesResult, GetDeliveriesOutputArgs } from "./getDeliveries";
+export const getDeliveries: typeof import("./getDeliveries").getDeliveries = null as any;
+export const getDeliveriesOutput: typeof import("./getDeliveries").getDeliveriesOutput = null as any;
+utilities.lazyLoad(exports, ["getDeliveries","getDeliveriesOutput"], () => require("./getDeliveries"));
+
+export { GetDeliveryChannelsArgs, GetDeliveryChannelsResult, GetDeliveryChannelsOutputArgs } from "./getDeliveryChannels";
+export const getDeliveryChannels: typeof import("./getDeliveryChannels").getDeliveryChannels = null as any;
+export const getDeliveryChannelsOutput: typeof import("./getDeliveryChannels").getDeliveryChannelsOutput = null as any;
+utilities.lazyLoad(exports, ["getDeliveryChannels","getDeliveryChannelsOutput"], () => require("./getDeliveryChannels"));
+
+export { GetRulesArgs, GetRulesResult, GetRulesOutputArgs } from "./getRules";
+export const getRules: typeof import("./getRules").getRules = null as any;
+export const getRulesOutput: typeof import("./getRules").getRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getRules","getRulesOutput"], () => require("./getRules"));
+
+export { RuleArgs, RuleState } from "./rule";
+export type Rule = import("./rule").Rule;
+export const Rule: typeof import("./rule").Rule = null as any;
+utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
+
 
 const _module = {
     version: utilities.getVersion(),

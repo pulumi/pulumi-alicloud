@@ -21,62 +21,60 @@ namespace Pulumi.AliCloud.Cddc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-    ///         {
-    ///             NameRegex = "default-NODELETING",
-    ///         }));
-    ///         var defaultZones = Output.Create(AliCloud.Cddc.GetZones.InvokeAsync());
-    ///         var defaultHostEcsLevelInfos = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Cddc.GetHostEcsLevelInfos.InvokeAsync(new AliCloud.Cddc.GetHostEcsLevelInfosArgs
-    ///         {
-    ///             DbType = "mysql",
-    ///             ZoneId = defaultZones.Ids?[0],
-    ///             StorageType = "cloud_essd",
-    ///         })));
-    ///         var defaultSwitches = Output.Tuple(defaultNetworks, defaultZones).Apply(values =&gt;
-    ///         {
-    ///             var defaultNetworks = values.Item1;
-    ///             var defaultZones = values.Item2;
-    ///             return Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-    ///             {
-    ///                 VpcId = defaultNetworks.Ids?[0],
-    ///                 ZoneId = defaultZones.Ids?[0],
-    ///             }));
-    ///         });
-    ///         var defaultDedicatedHostGroup = new AliCloud.Cddc.DedicatedHostGroup("defaultDedicatedHostGroup", new AliCloud.Cddc.DedicatedHostGroupArgs
-    ///         {
-    ///             Engine = "MySQL",
-    ///             VpcId = defaultNetworks.Apply(defaultNetworks =&gt; defaultNetworks.Ids?[0]),
-    ///             CpuAllocationRatio = 101,
-    ///             MemAllocationRatio = 50,
-    ///             DiskAllocationRatio = 200,
-    ///             AllocationPolicy = "Evenly",
-    ///             HostReplacePolicy = "Manual",
-    ///             DedicatedHostGroupDesc = "example_value",
-    ///         });
-    ///         var defaultDedicatedHost = new AliCloud.Cddc.DedicatedHost("defaultDedicatedHost", new AliCloud.Cddc.DedicatedHostArgs
-    ///         {
-    ///             HostName = "example_value",
-    ///             DedicatedHostGroupId = defaultDedicatedHostGroup.Id,
-    ///             HostClass = defaultHostEcsLevelInfos.Apply(defaultHostEcsLevelInfos =&gt; defaultHostEcsLevelInfos.Infos?[0]?.ResClassCode),
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Ids?[0]),
-    ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-    ///             PaymentType = "Subscription",
-    ///             Tags = 
-    ///             {
-    ///                 { "Created", "TF" },
-    ///                 { "For", "CDDC_DEDICATED" },
-    ///             },
-    ///         });
-    ///     }
+    ///         NameRegex = "default-NODELETING",
+    ///     });
     /// 
-    /// }
+    ///     var defaultZones = AliCloud.Cddc.GetZones.Invoke();
+    /// 
+    ///     var defaultHostEcsLevelInfos = AliCloud.Cddc.GetHostEcsLevelInfos.Invoke(new()
+    ///     {
+    ///         DbType = "mysql",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         StorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultDedicatedHostGroup = new AliCloud.Cddc.DedicatedHostGroup("defaultDedicatedHostGroup", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         CpuAllocationRatio = 101,
+    ///         MemAllocationRatio = 50,
+    ///         DiskAllocationRatio = 200,
+    ///         AllocationPolicy = "Evenly",
+    ///         HostReplacePolicy = "Manual",
+    ///         DedicatedHostGroupDesc = "example_value",
+    ///     });
+    /// 
+    ///     var defaultDedicatedHost = new AliCloud.Cddc.DedicatedHost("defaultDedicatedHost", new()
+    ///     {
+    ///         HostName = "example_value",
+    ///         DedicatedHostGroupId = defaultDedicatedHostGroup.Id,
+    ///         HostClass = defaultHostEcsLevelInfos.Apply(getHostEcsLevelInfosResult =&gt; getHostEcsLevelInfosResult.Infos[0]?.ResClassCode),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         PaymentType = "Subscription",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "CDDC_DEDICATED" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -88,7 +86,7 @@ namespace Pulumi.AliCloud.Cddc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cddc/dedicatedHost:DedicatedHost")]
-    public partial class DedicatedHost : Pulumi.CustomResource
+    public partial class DedicatedHost : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
@@ -206,6 +204,10 @@ namespace Pulumi.AliCloud.Cddc
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "osPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -227,7 +229,7 @@ namespace Pulumi.AliCloud.Cddc
         }
     }
 
-    public sealed class DedicatedHostArgs : Pulumi.ResourceArgs
+    public sealed class DedicatedHostArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
@@ -265,11 +267,21 @@ namespace Pulumi.AliCloud.Cddc
         [Input("imageCategory")]
         public Input<string>? ImageCategory { get; set; }
 
+        [Input("osPassword")]
+        private Input<string>? _osPassword;
+
         /// <summary>
         /// Host password. **NOTE:** The creation of a host password is supported only when the database type is `Tair-PMem`.
         /// </summary>
-        [Input("osPassword")]
-        public Input<string>? OsPassword { get; set; }
+        public Input<string>? OsPassword
+        {
+            get => _osPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _osPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The payment type of the resource. Valid values: `Subscription`.
@@ -319,9 +331,10 @@ namespace Pulumi.AliCloud.Cddc
         public DedicatedHostArgs()
         {
         }
+        public static new DedicatedHostArgs Empty => new DedicatedHostArgs();
     }
 
-    public sealed class DedicatedHostState : Pulumi.ResourceArgs
+    public sealed class DedicatedHostState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
@@ -365,11 +378,21 @@ namespace Pulumi.AliCloud.Cddc
         [Input("imageCategory")]
         public Input<string>? ImageCategory { get; set; }
 
+        [Input("osPassword")]
+        private Input<string>? _osPassword;
+
         /// <summary>
         /// Host password. **NOTE:** The creation of a host password is supported only when the database type is `Tair-PMem`.
         /// </summary>
-        [Input("osPassword")]
-        public Input<string>? OsPassword { get; set; }
+        public Input<string>? OsPassword
+        {
+            get => _osPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _osPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The payment type of the resource. Valid values: `Subscription`.
@@ -425,5 +448,6 @@ namespace Pulumi.AliCloud.Cddc
         public DedicatedHostState()
         {
         }
+        public static new DedicatedHostState Empty => new DedicatedHostState();
     }
 }

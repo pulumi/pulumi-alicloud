@@ -23,27 +23,25 @@ namespace Pulumi.AliCloud.Cdn
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var open = AliCloud.Cdn.GetService.Invoke(new()
         ///     {
-        ///         var open = Output.Create(AliCloud.Cdn.GetService.InvokeAsync(new AliCloud.Cdn.GetServiceArgs
-        ///         {
-        ///             Enable = "On",
-        ///             InternetChargeType = "PayByTraffic",
-        ///         }));
-        ///     }
+        ///         Enable = "On",
+        ///         InternetChargeType = "PayByTraffic",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("alicloud:cdn/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("alicloud:cdn/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Using this data source can enable CDN service automatically. If the service has been enabled, it will return `Opened`.
@@ -57,31 +55,29 @@ namespace Pulumi.AliCloud.Cdn
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var open = AliCloud.Cdn.GetService.Invoke(new()
         ///     {
-        ///         var open = Output.Create(AliCloud.Cdn.GetService.InvokeAsync(new AliCloud.Cdn.GetServiceArgs
-        ///         {
-        ///             Enable = "On",
-        ///             InternetChargeType = "PayByTraffic",
-        ///         }));
-        ///     }
+        ///         Enable = "On",
+        ///         InternetChargeType = "PayByTraffic",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:cdn/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:cdn/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
@@ -100,9 +96,10 @@ namespace Pulumi.AliCloud.Cdn
         public GetServiceArgs()
         {
         }
+        public static new GetServiceArgs Empty => new GetServiceArgs();
     }
 
-    public sealed class GetServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
@@ -121,6 +118,7 @@ namespace Pulumi.AliCloud.Cdn
         public GetServiceInvokeArgs()
         {
         }
+        public static new GetServiceInvokeArgs Empty => new GetServiceInvokeArgs();
     }
 
 

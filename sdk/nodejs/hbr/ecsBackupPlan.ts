@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * });
  * const example = new alicloud.hbr.EcsBackupPlan("example", {
  *     ecsBackupPlanName: "example_value",
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.instances?[0]?.id),
+ *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.instances?.[0]?.id),
  *     vaultId: defaultVault.id,
  *     retention: "1",
  *     schedule: "I|1602673264|PT2H",
@@ -101,6 +101,18 @@ export class EcsBackupPlan extends pulumi.CustomResource {
      */
     public readonly backupType!: pulumi.Output<string>;
     /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    public readonly crossAccountRoleName!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    public readonly crossAccountType!: pulumi.Output<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    public readonly crossAccountUserId!: pulumi.Output<number | undefined>;
+    /**
      * The detail of the backup plan.
      */
     public readonly detail!: pulumi.Output<string | undefined>;
@@ -169,6 +181,9 @@ export class EcsBackupPlan extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EcsBackupPlanState | undefined;
             resourceInputs["backupType"] = state ? state.backupType : undefined;
+            resourceInputs["crossAccountRoleName"] = state ? state.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = state ? state.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = state ? state.crossAccountUserId : undefined;
             resourceInputs["detail"] = state ? state.detail : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["ecsBackupPlanName"] = state ? state.ecsBackupPlanName : undefined;
@@ -203,6 +218,9 @@ export class EcsBackupPlan extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vaultId'");
             }
             resourceInputs["backupType"] = args ? args.backupType : undefined;
+            resourceInputs["crossAccountRoleName"] = args ? args.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = args ? args.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = args ? args.crossAccountUserId : undefined;
             resourceInputs["detail"] = args ? args.detail : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["ecsBackupPlanName"] = args ? args.ecsBackupPlanName : undefined;
@@ -230,6 +248,18 @@ export interface EcsBackupPlanState {
      * Backup type. Valid values: `COMPLETE`.
      */
     backupType?: pulumi.Input<string>;
+    /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
     /**
      * The detail of the backup plan.
      */
@@ -294,6 +324,18 @@ export interface EcsBackupPlanArgs {
      * Backup type. Valid values: `COMPLETE`.
      */
     backupType: pulumi.Input<string>;
+    /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
     /**
      * The detail of the backup plan.
      */

@@ -21,30 +21,29 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var k8sClusters = AliCloud.CS.GetEdgeKubernetesClusters.Invoke(new()
         ///     {
-        ///         var k8sClusters = Output.Create(AliCloud.CS.GetEdgeKubernetesClusters.InvokeAsync(new AliCloud.CS.GetEdgeKubernetesClustersArgs
-        ///         {
-        ///             NameRegex = "my-first-k8s",
-        ///             OutputFile = "my-first-k8s-json",
-        ///         }));
-        ///         this.Output = k8sClusters.Apply(k8sClusters =&gt; k8sClusters.Clusters);
-        ///     }
+        ///         NameRegex = "my-first-k8s",
+        ///         OutputFile = "my-first-k8s-json",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = k8sClusters.Apply(getEdgeKubernetesClustersResult =&gt; getEdgeKubernetesClustersResult.Clusters),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEdgeKubernetesClustersResult> InvokeAsync(GetEdgeKubernetesClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEdgeKubernetesClustersResult>("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", args ?? new GetEdgeKubernetesClustersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEdgeKubernetesClustersResult>("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", args ?? new GetEdgeKubernetesClustersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
@@ -56,34 +55,33 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var k8sClusters = AliCloud.CS.GetEdgeKubernetesClusters.Invoke(new()
         ///     {
-        ///         var k8sClusters = Output.Create(AliCloud.CS.GetEdgeKubernetesClusters.InvokeAsync(new AliCloud.CS.GetEdgeKubernetesClustersArgs
-        ///         {
-        ///             NameRegex = "my-first-k8s",
-        ///             OutputFile = "my-first-k8s-json",
-        ///         }));
-        ///         this.Output = k8sClusters.Apply(k8sClusters =&gt; k8sClusters.Clusters);
-        ///     }
+        ///         NameRegex = "my-first-k8s",
+        ///         OutputFile = "my-first-k8s-json",
+        ///     });
         /// 
-        ///     [Output("output")]
-        ///     public Output&lt;string&gt; Output { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["output"] = k8sClusters.Apply(getEdgeKubernetesClustersResult =&gt; getEdgeKubernetesClustersResult.Clusters),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEdgeKubernetesClustersResult> Invoke(GetEdgeKubernetesClustersInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEdgeKubernetesClustersResult>("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", args ?? new GetEdgeKubernetesClustersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEdgeKubernetesClustersResult>("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", args ?? new GetEdgeKubernetesClustersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEdgeKubernetesClustersArgs : Pulumi.InvokeArgs
+    public sealed class GetEdgeKubernetesClustersArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -112,9 +110,10 @@ namespace Pulumi.AliCloud.CS
         public GetEdgeKubernetesClustersArgs()
         {
         }
+        public static new GetEdgeKubernetesClustersArgs Empty => new GetEdgeKubernetesClustersArgs();
     }
 
-    public sealed class GetEdgeKubernetesClustersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEdgeKubernetesClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -143,6 +142,7 @@ namespace Pulumi.AliCloud.CS
         public GetEdgeKubernetesClustersInvokeArgs()
         {
         }
+        public static new GetEdgeKubernetesClustersInvokeArgs Empty => new GetEdgeKubernetesClustersInvokeArgs();
     }
 
 

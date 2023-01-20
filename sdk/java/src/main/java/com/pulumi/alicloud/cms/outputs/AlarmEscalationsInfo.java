@@ -18,17 +18,17 @@ public final class AlarmEscalationsInfo {
      */
     private @Nullable String comparisonOperator;
     /**
-     * @return Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: [&#34;Availability&#34;,&#34;Average&#34;, &#34;Minimum&#34;, &#34;Maximum&#34;, &#34;Value&#34;, &#34;ErrorCodeMaximum&#34;, &#34;Sum&#34;, &#34;Count&#34;]. Default to &#34;Average&#34;.
+     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
      * 
      */
     private @Nullable String statistics;
     /**
-     * @return Critical level alarm threshold value, which must be a numeric value currently.
+     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
      * 
      */
     private @Nullable String threshold;
     /**
-     * @return The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+     * @return Critical level alarm retry times. Default to 3.
      * 
      */
     private @Nullable Integer times;
@@ -42,21 +42,21 @@ public final class AlarmEscalationsInfo {
         return Optional.ofNullable(this.comparisonOperator);
     }
     /**
-     * @return Critical level alarm statistics method. It must be consistent with that defined for metrics. Valid values: [&#34;Availability&#34;,&#34;Average&#34;, &#34;Minimum&#34;, &#34;Maximum&#34;, &#34;Value&#34;, &#34;ErrorCodeMaximum&#34;, &#34;Sum&#34;, &#34;Count&#34;]. Default to &#34;Average&#34;.
+     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
      * 
      */
     public Optional<String> statistics() {
         return Optional.ofNullable(this.statistics);
     }
     /**
-     * @return Critical level alarm threshold value, which must be a numeric value currently.
+     * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
      * 
      */
     public Optional<String> threshold() {
         return Optional.ofNullable(this.threshold);
     }
     /**
-     * @return The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
+     * @return Critical level alarm retry times. Default to 3.
      * 
      */
     public Optional<Integer> times() {

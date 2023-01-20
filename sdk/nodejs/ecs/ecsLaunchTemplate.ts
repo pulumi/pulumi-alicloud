@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -20,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEcsLaunchTemplate = new alicloud.ecs.EcsLaunchTemplate("default", {
+ * const _default = new alicloud.ecs.EcsLaunchTemplate("default", {
  *     dataDisks: [
  *         {
  *             category: "cloud",
@@ -52,6 +53,7 @@ import * as utilities from "../utilities";
  *     internetMaxBandwidthOut: 0,
  *     ioOptimized: "optimized",
  *     keyPairName: "key_pair_name",
+ *     launchTemplateName: "tf_test_name",
  *     networkInterfaces: {
  *         description: "hello1",
  *         name: "eth0",
@@ -133,7 +135,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly deploymentSetId!: pulumi.Output<string | undefined>;
     /**
-     * The description of the data disk.
+     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -156,6 +158,9 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      * Billing methods. Valid values: `PostPaid`, `PrePaid`.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     */
     public readonly instanceName!: pulumi.Output<string | undefined>;
     /**
      * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
@@ -188,7 +193,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly launchTemplateName!: pulumi.Output<string>;
     /**
-     * The name of the data disk.
+     * It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
@@ -228,7 +233,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly securityEnhancementStrategy!: pulumi.Output<string | undefined>;
     /**
-     * The security group ID must be one in the same VPC.
+     * The security group ID.
      */
     public readonly securityGroupId!: pulumi.Output<string | undefined>;
     /**
@@ -240,7 +245,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly spotDuration!: pulumi.Output<string | undefined>;
     /**
-     * -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+     * Sets the maximum hourly instance price. Supports up to three decimal places.
      */
     public readonly spotPriceLimit!: pulumi.Output<number | undefined>;
     /**
@@ -252,18 +257,26 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly systemDisk!: pulumi.Output<outputs.ecs.EcsLaunchTemplateSystemDisk>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+     *
      * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     public readonly systemDiskCategory!: pulumi.Output<string>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+     *
      * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     public readonly systemDiskDescription!: pulumi.Output<string>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+     *
      * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     public readonly systemDiskName!: pulumi.Output<string>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+     *
      * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     public readonly systemDiskSize!: pulumi.Output<number>;
@@ -286,6 +299,8 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly userData!: pulumi.Output<string>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `userData` instead.
+     *
      * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
     public readonly userdata!: pulumi.Output<string>;
@@ -293,9 +308,12 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      * The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     public readonly versionDescription!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the VPC.
+     */
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
@@ -431,7 +449,7 @@ export interface EcsLaunchTemplateState {
      */
     deploymentSetId?: pulumi.Input<string>;
     /**
-     * The description of the data disk.
+     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
      */
     description?: pulumi.Input<string>;
     /**
@@ -454,6 +472,9 @@ export interface EcsLaunchTemplateState {
      * Billing methods. Valid values: `PostPaid`, `PrePaid`.
      */
     instanceChargeType?: pulumi.Input<string>;
+    /**
+     * The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     */
     instanceName?: pulumi.Input<string>;
     /**
      * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
@@ -486,7 +507,7 @@ export interface EcsLaunchTemplateState {
      */
     launchTemplateName?: pulumi.Input<string>;
     /**
-     * The name of the data disk.
+     * It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
@@ -526,7 +547,7 @@ export interface EcsLaunchTemplateState {
      */
     securityEnhancementStrategy?: pulumi.Input<string>;
     /**
-     * The security group ID must be one in the same VPC.
+     * The security group ID.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
@@ -538,7 +559,7 @@ export interface EcsLaunchTemplateState {
      */
     spotDuration?: pulumi.Input<string>;
     /**
-     * -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+     * Sets the maximum hourly instance price. Supports up to three decimal places.
      */
     spotPriceLimit?: pulumi.Input<number>;
     /**
@@ -550,18 +571,26 @@ export interface EcsLaunchTemplateState {
      */
     systemDisk?: pulumi.Input<inputs.ecs.EcsLaunchTemplateSystemDisk>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+     *
      * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     systemDiskCategory?: pulumi.Input<string>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+     *
      * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     systemDiskDescription?: pulumi.Input<string>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+     *
      * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     systemDiskName?: pulumi.Input<string>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+     *
      * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     systemDiskSize?: pulumi.Input<number>;
@@ -584,6 +613,8 @@ export interface EcsLaunchTemplateState {
      */
     userData?: pulumi.Input<string>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `userData` instead.
+     *
      * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
     userdata?: pulumi.Input<string>;
@@ -591,9 +622,12 @@ export interface EcsLaunchTemplateState {
      * The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     versionDescription?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC.
+     */
     vpcId?: pulumi.Input<string>;
     /**
-     * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      */
     vswitchId?: pulumi.Input<string>;
     /**
@@ -619,7 +653,7 @@ export interface EcsLaunchTemplateArgs {
      */
     deploymentSetId?: pulumi.Input<string>;
     /**
-     * The description of the data disk.
+     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
      */
     description?: pulumi.Input<string>;
     /**
@@ -642,6 +676,9 @@ export interface EcsLaunchTemplateArgs {
      * Billing methods. Valid values: `PostPaid`, `PrePaid`.
      */
     instanceChargeType?: pulumi.Input<string>;
+    /**
+     * The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     */
     instanceName?: pulumi.Input<string>;
     /**
      * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
@@ -674,7 +711,7 @@ export interface EcsLaunchTemplateArgs {
      */
     launchTemplateName?: pulumi.Input<string>;
     /**
-     * The name of the data disk.
+     * It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
@@ -714,7 +751,7 @@ export interface EcsLaunchTemplateArgs {
      */
     securityEnhancementStrategy?: pulumi.Input<string>;
     /**
-     * The security group ID must be one in the same VPC.
+     * The security group ID.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
@@ -726,7 +763,7 @@ export interface EcsLaunchTemplateArgs {
      */
     spotDuration?: pulumi.Input<string>;
     /**
-     * -(Optional) Sets the maximum hourly instance price. Supports up to three decimal places.
+     * Sets the maximum hourly instance price. Supports up to three decimal places.
      */
     spotPriceLimit?: pulumi.Input<number>;
     /**
@@ -738,18 +775,26 @@ export interface EcsLaunchTemplateArgs {
      */
     systemDisk?: pulumi.Input<inputs.ecs.EcsLaunchTemplateSystemDisk>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+     *
      * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     systemDiskCategory?: pulumi.Input<string>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+     *
      * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     systemDiskDescription?: pulumi.Input<string>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+     *
      * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     systemDiskName?: pulumi.Input<string>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+     *
      * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
     systemDiskSize?: pulumi.Input<number>;
@@ -772,6 +817,8 @@ export interface EcsLaunchTemplateArgs {
      */
     userData?: pulumi.Input<string>;
     /**
+     * It has been deprecated from version 1.120.0, and use field `userData` instead.
+     *
      * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
     userdata?: pulumi.Input<string>;
@@ -779,9 +826,12 @@ export interface EcsLaunchTemplateArgs {
      * The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     versionDescription?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC.
+     */
     vpcId?: pulumi.Input<string>;
     /**
-     * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      */
     vswitchId?: pulumi.Input<string>;
     /**

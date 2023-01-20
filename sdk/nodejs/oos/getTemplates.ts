@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.oos.getTemplates({
+ * const example = alicloud.oos.getTemplates({
  *     hasTrigger: false,
  *     nameRegex: "test",
  *     shareType: "Private",
@@ -24,18 +25,14 @@ import * as utilities from "../utilities";
  *         Created: "TF",
  *         For: "template Test",
  *     },
- * }));
- *
- * export const firstTemplateName = example.templates[0].templateName;
+ * });
+ * export const firstTemplateName = example.then(example => example.templates?.[0]?.templateName);
  * ```
  */
 export function getTemplates(args?: GetTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplatesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:oos/getTemplates:getTemplates", {
         "category": args.category,
         "createdBy": args.createdBy,
@@ -147,9 +144,31 @@ export interface GetTemplatesResult {
      */
     readonly templates: outputs.oos.GetTemplatesTemplate[];
 }
-
+/**
+ * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in v1.92.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.oos.getTemplates({
+ *     hasTrigger: false,
+ *     nameRegex: "test",
+ *     shareType: "Private",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "template Test",
+ *     },
+ * });
+ * export const firstTemplateName = example.then(example => example.templates?.[0]?.templateName);
+ * ```
+ */
 export function getTemplatesOutput(args?: GetTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplatesResult> {
-    return pulumi.output(args).apply(a => getTemplates(a, opts))
+    return pulumi.output(args).apply((a: any) => getTemplates(a, opts))
 }
 
 /**

@@ -223,7 +223,7 @@ public final class RosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -263,7 +263,7 @@ public final class RosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -303,7 +303,7 @@ public final class RosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -343,7 +343,7 @@ public final class RosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -383,7 +383,7 @@ public final class RosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -423,7 +423,7 @@ public final class RosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
-     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1559,7 +1559,7 @@ public final class RosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
-     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1602,7 +1602,7 @@ public final class RosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
-     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1645,7 +1645,7 @@ public final class RosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
-     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1688,7 +1688,7 @@ public final class RosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
-     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1731,7 +1731,7 @@ public final class RosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
-     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1774,7 +1774,7 @@ public final class RosFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
-     * import com.pulumi.alicloud.oos.inputs.GetTemplatesArgs;
+     * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
     public sealed class InstanceAdAuthServer
     {
         /// <summary>
-        /// The username of the account that is used for the LDAP server.
+        /// The username of the account that is used for the AD server.
         /// </summary>
         public readonly string Account;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
         /// </summary>
         public readonly string Domain;
         /// <summary>
-        /// The field that is used to indicate the email address of a user on the LDAP server.
+        /// The field that is used to indicate the email address of a user on the AD server.
         /// </summary>
         public readonly string? EmailMapping;
         /// <summary>
@@ -38,27 +38,27 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
         /// </summary>
         public readonly bool IsSsl;
         /// <summary>
-        /// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+        /// The field that is used to indicate the mobile phone number of a user on the AD server.
         /// </summary>
         public readonly string? MobileMapping;
         /// <summary>
-        /// The field that is used to indicate the name of a user on the LDAP server.
+        /// The field that is used to indicate the name of a user on the AD server.
         /// </summary>
         public readonly string? NameMapping;
         /// <summary>
-        /// The password of the account that is used for the LDAP server.
+        /// The password of the account that is used for the AD server.
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// The port that is used to access the LDAP server.
+        /// The port that is used to access the AD server.
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// The address of the LDAP server.
+        /// The address of the AD server.
         /// </summary>
         public readonly string Server;
         /// <summary>
-        /// The address of the secondary LDAP server.
+        /// The address of the secondary AD server.
         /// </summary>
         public readonly string? StandbyServer;
 

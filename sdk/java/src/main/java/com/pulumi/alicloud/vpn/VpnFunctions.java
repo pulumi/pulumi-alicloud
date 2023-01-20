@@ -8,12 +8,15 @@ import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
 import com.pulumi.alicloud.vpn.inputs.GetConnectionsPlainArgs;
 import com.pulumi.alicloud.vpn.inputs.GetCustomerGatewaysArgs;
 import com.pulumi.alicloud.vpn.inputs.GetCustomerGatewaysPlainArgs;
+import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesArgs;
+import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesPlainArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsPlainArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewaysPlainArgs;
 import com.pulumi.alicloud.vpn.outputs.GetConnectionsResult;
 import com.pulumi.alicloud.vpn.outputs.GetCustomerGatewaysResult;
+import com.pulumi.alicloud.vpn.outputs.GetGatewayVcoRoutesResult;
 import com.pulumi.alicloud.vpn.outputs.GetGatewayVpnAttachmentsResult;
 import com.pulumi.alicloud.vpn.outputs.GetGatewaysResult;
 import com.pulumi.core.Output;
@@ -34,7 +37,7 @@ public final class VpnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.kvstore.inputs.GetConnectionsArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -74,7 +77,7 @@ public final class VpnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.kvstore.inputs.GetConnectionsArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -114,7 +117,7 @@ public final class VpnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.kvstore.inputs.GetConnectionsArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -154,7 +157,7 @@ public final class VpnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.kvstore.inputs.GetConnectionsArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -194,7 +197,7 @@ public final class VpnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.kvstore.inputs.GetConnectionsArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -234,7 +237,7 @@ public final class VpnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.kvstore.inputs.GetConnectionsArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -510,6 +513,566 @@ public final class VpnFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:vpn/getCustomerGateways:getCustomerGateways", TypeShape.of(GetCustomerGatewaysResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+     * import com.pulumi.alicloud.vpn.CustomerGateway;
+     * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIkeConfigArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentBgpConfigArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentHealthCheckConfigArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpnAttachmentZoneArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVcoRoute;
+     * import com.pulumi.alicloud.vpn.GatewayVcoRouteArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .cenInstanceName(var_.name())
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+     *             .cenId(defaultInstance.id())
+     *             .transitRouterDescription(&#34;desd&#34;)
+     *             .transitRouterName(var_.name())
+     *             .build());
+     * 
+     *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+     * 
+     *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+     *             .ipAddress(&#34;42.104.22.210&#34;)
+     *             .asn(&#34;45014&#34;)
+     *             .description(&#34;testAccVpnConnectionDesc&#34;)
+     *             .build());
+     * 
+     *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment(&#34;defaultGatewayVpnAttachment&#34;, GatewayVpnAttachmentArgs.builder()        
+     *             .customerGatewayId(defaultCustomerGateway.id())
+     *             .networkType(&#34;public&#34;)
+     *             .localSubnet(&#34;0.0.0.0/0&#34;)
+     *             .remoteSubnet(&#34;0.0.0.0/0&#34;)
+     *             .effectImmediately(false)
+     *             .ikeConfig(GatewayVpnAttachmentIkeConfigArgs.builder()
+     *                 .ikeAuthAlg(&#34;md5&#34;)
+     *                 .ikeEncAlg(&#34;des&#34;)
+     *                 .ikeVersion(&#34;ikev2&#34;)
+     *                 .ikeMode(&#34;main&#34;)
+     *                 .ikeLifetime(86400)
+     *                 .psk(&#34;tf-testvpn2&#34;)
+     *                 .ikePfs(&#34;group1&#34;)
+     *                 .remoteId(&#34;testbob2&#34;)
+     *                 .localId(&#34;testalice2&#34;)
+     *                 .build())
+     *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
+     *                 .ipsecPfs(&#34;group5&#34;)
+     *                 .ipsecEncAlg(&#34;des&#34;)
+     *                 .ipsecAuthAlg(&#34;md5&#34;)
+     *                 .ipsecLifetime(86400)
+     *                 .build())
+     *             .bgpConfig(GatewayVpnAttachmentBgpConfigArgs.builder()
+     *                 .enable(true)
+     *                 .localAsn(45014)
+     *                 .tunnelCidr(&#34;169.254.11.0/30&#34;)
+     *                 .localBgpIp(&#34;169.254.11.1&#34;)
+     *                 .build())
+     *             .healthCheckConfig(GatewayVpnAttachmentHealthCheckConfigArgs.builder()
+     *                 .enable(true)
+     *                 .sip(&#34;192.168.1.1&#34;)
+     *                 .dip(&#34;10.0.0.1&#34;)
+     *                 .interval(10)
+     *                 .retry(10)
+     *                 .policy(&#34;revoke_route&#34;)
+     *                 .build())
+     *             .enableDpd(true)
+     *             .enableNatTraversal(true)
+     *             .vpnAttachmentName(var_.name())
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
+     *             .autoPublishRouteEnabled(false)
+     *             .transitRouterAttachmentDescription(var_.name())
+     *             .transitRouterAttachmentName(var_.name())
+     *             .cenId(defaultTransitRouter.cenId())
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .vpnId(defaultGatewayVpnAttachment.id())
+     *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
+     *                 .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultGatewayVcoRoute = new GatewayVcoRoute(&#34;defaultGatewayVcoRoute&#34;, GatewayVcoRouteArgs.builder()        
+     *             .routeDest(&#34;192.168.12.0/24&#34;)
+     *             .nextHop(defaultTransitRouterVpnAttachment.vpnId())
+     *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
+     *             .weight(100)
+     *             .build());
+     * 
+     *         final var defaultGatewayVcoRoutes = VpnFunctions.getGatewayVcoRoutes(GetGatewayVcoRoutesArgs.builder()
+     *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, data.alicloud_vpn_gateway_vco_routes().ids().routes()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGatewayVcoRoutesResult> getGatewayVcoRoutes(GetGatewayVcoRoutesArgs args) {
+        return getGatewayVcoRoutes(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+     * import com.pulumi.alicloud.vpn.CustomerGateway;
+     * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIkeConfigArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentBgpConfigArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentHealthCheckConfigArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpnAttachmentZoneArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVcoRoute;
+     * import com.pulumi.alicloud.vpn.GatewayVcoRouteArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .cenInstanceName(var_.name())
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+     *             .cenId(defaultInstance.id())
+     *             .transitRouterDescription(&#34;desd&#34;)
+     *             .transitRouterName(var_.name())
+     *             .build());
+     * 
+     *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+     * 
+     *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+     *             .ipAddress(&#34;42.104.22.210&#34;)
+     *             .asn(&#34;45014&#34;)
+     *             .description(&#34;testAccVpnConnectionDesc&#34;)
+     *             .build());
+     * 
+     *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment(&#34;defaultGatewayVpnAttachment&#34;, GatewayVpnAttachmentArgs.builder()        
+     *             .customerGatewayId(defaultCustomerGateway.id())
+     *             .networkType(&#34;public&#34;)
+     *             .localSubnet(&#34;0.0.0.0/0&#34;)
+     *             .remoteSubnet(&#34;0.0.0.0/0&#34;)
+     *             .effectImmediately(false)
+     *             .ikeConfig(GatewayVpnAttachmentIkeConfigArgs.builder()
+     *                 .ikeAuthAlg(&#34;md5&#34;)
+     *                 .ikeEncAlg(&#34;des&#34;)
+     *                 .ikeVersion(&#34;ikev2&#34;)
+     *                 .ikeMode(&#34;main&#34;)
+     *                 .ikeLifetime(86400)
+     *                 .psk(&#34;tf-testvpn2&#34;)
+     *                 .ikePfs(&#34;group1&#34;)
+     *                 .remoteId(&#34;testbob2&#34;)
+     *                 .localId(&#34;testalice2&#34;)
+     *                 .build())
+     *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
+     *                 .ipsecPfs(&#34;group5&#34;)
+     *                 .ipsecEncAlg(&#34;des&#34;)
+     *                 .ipsecAuthAlg(&#34;md5&#34;)
+     *                 .ipsecLifetime(86400)
+     *                 .build())
+     *             .bgpConfig(GatewayVpnAttachmentBgpConfigArgs.builder()
+     *                 .enable(true)
+     *                 .localAsn(45014)
+     *                 .tunnelCidr(&#34;169.254.11.0/30&#34;)
+     *                 .localBgpIp(&#34;169.254.11.1&#34;)
+     *                 .build())
+     *             .healthCheckConfig(GatewayVpnAttachmentHealthCheckConfigArgs.builder()
+     *                 .enable(true)
+     *                 .sip(&#34;192.168.1.1&#34;)
+     *                 .dip(&#34;10.0.0.1&#34;)
+     *                 .interval(10)
+     *                 .retry(10)
+     *                 .policy(&#34;revoke_route&#34;)
+     *                 .build())
+     *             .enableDpd(true)
+     *             .enableNatTraversal(true)
+     *             .vpnAttachmentName(var_.name())
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
+     *             .autoPublishRouteEnabled(false)
+     *             .transitRouterAttachmentDescription(var_.name())
+     *             .transitRouterAttachmentName(var_.name())
+     *             .cenId(defaultTransitRouter.cenId())
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .vpnId(defaultGatewayVpnAttachment.id())
+     *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
+     *                 .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultGatewayVcoRoute = new GatewayVcoRoute(&#34;defaultGatewayVcoRoute&#34;, GatewayVcoRouteArgs.builder()        
+     *             .routeDest(&#34;192.168.12.0/24&#34;)
+     *             .nextHop(defaultTransitRouterVpnAttachment.vpnId())
+     *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
+     *             .weight(100)
+     *             .build());
+     * 
+     *         final var defaultGatewayVcoRoutes = VpnFunctions.getGatewayVcoRoutes(GetGatewayVcoRoutesArgs.builder()
+     *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, data.alicloud_vpn_gateway_vco_routes().ids().routes()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGatewayVcoRoutesResult> getGatewayVcoRoutesPlain(GetGatewayVcoRoutesPlainArgs args) {
+        return getGatewayVcoRoutesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+     * import com.pulumi.alicloud.vpn.CustomerGateway;
+     * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIkeConfigArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentBgpConfigArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentHealthCheckConfigArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpnAttachmentZoneArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVcoRoute;
+     * import com.pulumi.alicloud.vpn.GatewayVcoRouteArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .cenInstanceName(var_.name())
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+     *             .cenId(defaultInstance.id())
+     *             .transitRouterDescription(&#34;desd&#34;)
+     *             .transitRouterName(var_.name())
+     *             .build());
+     * 
+     *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+     * 
+     *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+     *             .ipAddress(&#34;42.104.22.210&#34;)
+     *             .asn(&#34;45014&#34;)
+     *             .description(&#34;testAccVpnConnectionDesc&#34;)
+     *             .build());
+     * 
+     *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment(&#34;defaultGatewayVpnAttachment&#34;, GatewayVpnAttachmentArgs.builder()        
+     *             .customerGatewayId(defaultCustomerGateway.id())
+     *             .networkType(&#34;public&#34;)
+     *             .localSubnet(&#34;0.0.0.0/0&#34;)
+     *             .remoteSubnet(&#34;0.0.0.0/0&#34;)
+     *             .effectImmediately(false)
+     *             .ikeConfig(GatewayVpnAttachmentIkeConfigArgs.builder()
+     *                 .ikeAuthAlg(&#34;md5&#34;)
+     *                 .ikeEncAlg(&#34;des&#34;)
+     *                 .ikeVersion(&#34;ikev2&#34;)
+     *                 .ikeMode(&#34;main&#34;)
+     *                 .ikeLifetime(86400)
+     *                 .psk(&#34;tf-testvpn2&#34;)
+     *                 .ikePfs(&#34;group1&#34;)
+     *                 .remoteId(&#34;testbob2&#34;)
+     *                 .localId(&#34;testalice2&#34;)
+     *                 .build())
+     *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
+     *                 .ipsecPfs(&#34;group5&#34;)
+     *                 .ipsecEncAlg(&#34;des&#34;)
+     *                 .ipsecAuthAlg(&#34;md5&#34;)
+     *                 .ipsecLifetime(86400)
+     *                 .build())
+     *             .bgpConfig(GatewayVpnAttachmentBgpConfigArgs.builder()
+     *                 .enable(true)
+     *                 .localAsn(45014)
+     *                 .tunnelCidr(&#34;169.254.11.0/30&#34;)
+     *                 .localBgpIp(&#34;169.254.11.1&#34;)
+     *                 .build())
+     *             .healthCheckConfig(GatewayVpnAttachmentHealthCheckConfigArgs.builder()
+     *                 .enable(true)
+     *                 .sip(&#34;192.168.1.1&#34;)
+     *                 .dip(&#34;10.0.0.1&#34;)
+     *                 .interval(10)
+     *                 .retry(10)
+     *                 .policy(&#34;revoke_route&#34;)
+     *                 .build())
+     *             .enableDpd(true)
+     *             .enableNatTraversal(true)
+     *             .vpnAttachmentName(var_.name())
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
+     *             .autoPublishRouteEnabled(false)
+     *             .transitRouterAttachmentDescription(var_.name())
+     *             .transitRouterAttachmentName(var_.name())
+     *             .cenId(defaultTransitRouter.cenId())
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .vpnId(defaultGatewayVpnAttachment.id())
+     *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
+     *                 .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultGatewayVcoRoute = new GatewayVcoRoute(&#34;defaultGatewayVcoRoute&#34;, GatewayVcoRouteArgs.builder()        
+     *             .routeDest(&#34;192.168.12.0/24&#34;)
+     *             .nextHop(defaultTransitRouterVpnAttachment.vpnId())
+     *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
+     *             .weight(100)
+     *             .build());
+     * 
+     *         final var defaultGatewayVcoRoutes = VpnFunctions.getGatewayVcoRoutes(GetGatewayVcoRoutesArgs.builder()
+     *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, data.alicloud_vpn_gateway_vco_routes().ids().routes()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGatewayVcoRoutesResult> getGatewayVcoRoutes(GetGatewayVcoRoutesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpn/getGatewayVcoRoutes:getGatewayVcoRoutes", TypeShape.of(GetGatewayVcoRoutesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.183.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+     * import com.pulumi.alicloud.vpn.CustomerGateway;
+     * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIkeConfigArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentBgpConfigArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentHealthCheckConfigArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpnAttachmentZoneArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVcoRoute;
+     * import com.pulumi.alicloud.vpn.GatewayVcoRouteArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .cenInstanceName(var_.name())
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+     *             .cenId(defaultInstance.id())
+     *             .transitRouterDescription(&#34;desd&#34;)
+     *             .transitRouterName(var_.name())
+     *             .build());
+     * 
+     *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+     * 
+     *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+     *             .ipAddress(&#34;42.104.22.210&#34;)
+     *             .asn(&#34;45014&#34;)
+     *             .description(&#34;testAccVpnConnectionDesc&#34;)
+     *             .build());
+     * 
+     *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment(&#34;defaultGatewayVpnAttachment&#34;, GatewayVpnAttachmentArgs.builder()        
+     *             .customerGatewayId(defaultCustomerGateway.id())
+     *             .networkType(&#34;public&#34;)
+     *             .localSubnet(&#34;0.0.0.0/0&#34;)
+     *             .remoteSubnet(&#34;0.0.0.0/0&#34;)
+     *             .effectImmediately(false)
+     *             .ikeConfig(GatewayVpnAttachmentIkeConfigArgs.builder()
+     *                 .ikeAuthAlg(&#34;md5&#34;)
+     *                 .ikeEncAlg(&#34;des&#34;)
+     *                 .ikeVersion(&#34;ikev2&#34;)
+     *                 .ikeMode(&#34;main&#34;)
+     *                 .ikeLifetime(86400)
+     *                 .psk(&#34;tf-testvpn2&#34;)
+     *                 .ikePfs(&#34;group1&#34;)
+     *                 .remoteId(&#34;testbob2&#34;)
+     *                 .localId(&#34;testalice2&#34;)
+     *                 .build())
+     *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
+     *                 .ipsecPfs(&#34;group5&#34;)
+     *                 .ipsecEncAlg(&#34;des&#34;)
+     *                 .ipsecAuthAlg(&#34;md5&#34;)
+     *                 .ipsecLifetime(86400)
+     *                 .build())
+     *             .bgpConfig(GatewayVpnAttachmentBgpConfigArgs.builder()
+     *                 .enable(true)
+     *                 .localAsn(45014)
+     *                 .tunnelCidr(&#34;169.254.11.0/30&#34;)
+     *                 .localBgpIp(&#34;169.254.11.1&#34;)
+     *                 .build())
+     *             .healthCheckConfig(GatewayVpnAttachmentHealthCheckConfigArgs.builder()
+     *                 .enable(true)
+     *                 .sip(&#34;192.168.1.1&#34;)
+     *                 .dip(&#34;10.0.0.1&#34;)
+     *                 .interval(10)
+     *                 .retry(10)
+     *                 .policy(&#34;revoke_route&#34;)
+     *                 .build())
+     *             .enableDpd(true)
+     *             .enableNatTraversal(true)
+     *             .vpnAttachmentName(var_.name())
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
+     *             .autoPublishRouteEnabled(false)
+     *             .transitRouterAttachmentDescription(var_.name())
+     *             .transitRouterAttachmentName(var_.name())
+     *             .cenId(defaultTransitRouter.cenId())
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .vpnId(defaultGatewayVpnAttachment.id())
+     *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
+     *                 .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultGatewayVcoRoute = new GatewayVcoRoute(&#34;defaultGatewayVcoRoute&#34;, GatewayVcoRouteArgs.builder()        
+     *             .routeDest(&#34;192.168.12.0/24&#34;)
+     *             .nextHop(defaultTransitRouterVpnAttachment.vpnId())
+     *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
+     *             .weight(100)
+     *             .build());
+     * 
+     *         final var defaultGatewayVcoRoutes = VpnFunctions.getGatewayVcoRoutes(GetGatewayVcoRoutesArgs.builder()
+     *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
+     *             .build());
+     * 
+     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, data.alicloud_vpn_gateway_vco_routes().ids().routes()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGatewayVcoRoutesResult> getGatewayVcoRoutesPlain(GetGatewayVcoRoutesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpn/getGatewayVcoRoutes:getGatewayVcoRoutes", TypeShape.of(GetGatewayVcoRoutesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.181.0+.
@@ -546,6 +1109,8 @@ public final class VpnFunctions {
      *             .build());
      * 
      *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export(&#34;localId&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].ike_config()[0].local_id());
+     *         ctx.export(&#34;internetIp&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].internet_ip());
      *     }
      * }
      * ```
@@ -591,6 +1156,8 @@ public final class VpnFunctions {
      *             .build());
      * 
      *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export(&#34;localId&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].ike_config()[0].local_id());
+     *         ctx.export(&#34;internetIp&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].internet_ip());
      *     }
      * }
      * ```
@@ -636,6 +1203,8 @@ public final class VpnFunctions {
      *             .build());
      * 
      *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export(&#34;localId&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].ike_config()[0].local_id());
+     *         ctx.export(&#34;internetIp&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].internet_ip());
      *     }
      * }
      * ```
@@ -681,6 +1250,8 @@ public final class VpnFunctions {
      *             .build());
      * 
      *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export(&#34;localId&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].ike_config()[0].local_id());
+     *         ctx.export(&#34;internetIp&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].internet_ip());
      *     }
      * }
      * ```
@@ -726,6 +1297,8 @@ public final class VpnFunctions {
      *             .build());
      * 
      *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export(&#34;localId&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].ike_config()[0].local_id());
+     *         ctx.export(&#34;internetIp&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].internet_ip());
      *     }
      * }
      * ```
@@ -771,6 +1344,8 @@ public final class VpnFunctions {
      *             .build());
      * 
      *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export(&#34;localId&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].ike_config()[0].local_id());
+     *         ctx.export(&#34;internetIp&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].internet_ip());
      *     }
      * }
      * ```
@@ -790,7 +1365,7 @@ public final class VpnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -806,13 +1381,13 @@ public final class VpnFunctions {
      *     public static void stack(Context ctx) {
      *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
      *             .businessStatus(&#34;Normal&#34;)
-     *             .enableIpsec(true)
      *             .ids(            
      *                 &#34;fake-vpn-id1&#34;,
      *                 &#34;fake-vpn-id2&#34;)
+     *             .includeReservationData(true)
      *             .nameRegex(&#34;testAcc*&#34;)
      *             .outputFile(&#34;/tmp/vpns&#34;)
-     *             .status(&#34;active&#34;)
+     *             .status(&#34;Active&#34;)
      *             .vpcId(&#34;fake-vpc-id&#34;)
      *             .build());
      * 
@@ -835,7 +1410,7 @@ public final class VpnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -851,13 +1426,13 @@ public final class VpnFunctions {
      *     public static void stack(Context ctx) {
      *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
      *             .businessStatus(&#34;Normal&#34;)
-     *             .enableIpsec(true)
      *             .ids(            
      *                 &#34;fake-vpn-id1&#34;,
      *                 &#34;fake-vpn-id2&#34;)
+     *             .includeReservationData(true)
      *             .nameRegex(&#34;testAcc*&#34;)
      *             .outputFile(&#34;/tmp/vpns&#34;)
-     *             .status(&#34;active&#34;)
+     *             .status(&#34;Active&#34;)
      *             .vpcId(&#34;fake-vpc-id&#34;)
      *             .build());
      * 
@@ -880,7 +1455,7 @@ public final class VpnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -896,13 +1471,13 @@ public final class VpnFunctions {
      *     public static void stack(Context ctx) {
      *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
      *             .businessStatus(&#34;Normal&#34;)
-     *             .enableIpsec(true)
      *             .ids(            
      *                 &#34;fake-vpn-id1&#34;,
      *                 &#34;fake-vpn-id2&#34;)
+     *             .includeReservationData(true)
      *             .nameRegex(&#34;testAcc*&#34;)
      *             .outputFile(&#34;/tmp/vpns&#34;)
-     *             .status(&#34;active&#34;)
+     *             .status(&#34;Active&#34;)
      *             .vpcId(&#34;fake-vpc-id&#34;)
      *             .build());
      * 
@@ -925,7 +1500,7 @@ public final class VpnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -941,13 +1516,13 @@ public final class VpnFunctions {
      *     public static void stack(Context ctx) {
      *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
      *             .businessStatus(&#34;Normal&#34;)
-     *             .enableIpsec(true)
      *             .ids(            
      *                 &#34;fake-vpn-id1&#34;,
      *                 &#34;fake-vpn-id2&#34;)
+     *             .includeReservationData(true)
      *             .nameRegex(&#34;testAcc*&#34;)
      *             .outputFile(&#34;/tmp/vpns&#34;)
-     *             .status(&#34;active&#34;)
+     *             .status(&#34;Active&#34;)
      *             .vpcId(&#34;fake-vpc-id&#34;)
      *             .build());
      * 
@@ -970,7 +1545,7 @@ public final class VpnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -986,13 +1561,13 @@ public final class VpnFunctions {
      *     public static void stack(Context ctx) {
      *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
      *             .businessStatus(&#34;Normal&#34;)
-     *             .enableIpsec(true)
      *             .ids(            
      *                 &#34;fake-vpn-id1&#34;,
      *                 &#34;fake-vpn-id2&#34;)
+     *             .includeReservationData(true)
      *             .nameRegex(&#34;testAcc*&#34;)
      *             .outputFile(&#34;/tmp/vpns&#34;)
-     *             .status(&#34;active&#34;)
+     *             .status(&#34;Active&#34;)
      *             .vpcId(&#34;fake-vpc-id&#34;)
      *             .build());
      * 
@@ -1015,7 +1590,7 @@ public final class VpnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1031,13 +1606,13 @@ public final class VpnFunctions {
      *     public static void stack(Context ctx) {
      *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
      *             .businessStatus(&#34;Normal&#34;)
-     *             .enableIpsec(true)
      *             .ids(            
      *                 &#34;fake-vpn-id1&#34;,
      *                 &#34;fake-vpn-id2&#34;)
+     *             .includeReservationData(true)
      *             .nameRegex(&#34;testAcc*&#34;)
      *             .outputFile(&#34;/tmp/vpns&#34;)
-     *             .status(&#34;active&#34;)
+     *             .status(&#34;Active&#34;)
      *             .vpcId(&#34;fake-vpc-id&#34;)
      *             .build());
      * 

@@ -23,41 +23,41 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Ecs.GetInstances.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "ecs_instance_name",
-        ///             Status = "Running",
-        ///         }));
-        ///         var ids = Output.Create(AliCloud.Hbr.GetEcsBackupClients.InvokeAsync(new AliCloud.Hbr.GetEcsBackupClientsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 alicloud_hbr_ecs_backup_client.Default.Id,
-        ///             },
-        ///             InstanceIds = 
-        ///             {
-        ///                 alicloud_hbr_ecs_backup_client.Default.Instance_id,
-        ///             },
-        ///         }));
-        ///         this.HbrEcsBackupClientId1 = ids.Apply(ids =&gt; ids.Clients?[0]?.Id);
-        ///     }
+        ///         NameRegex = "ecs_instance_name",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("hbrEcsBackupClientId1")]
-        ///     public Output&lt;string&gt; HbrEcsBackupClientId1 { get; set; }
-        /// }
+        ///     var ids = AliCloud.Hbr.GetEcsBackupClients.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_hbr_ecs_backup_client.Default.Id,
+        ///         },
+        ///         InstanceIds = new[]
+        ///         {
+        ///             alicloud_hbr_ecs_backup_client.Default.Instance_id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrEcsBackupClientId1"] = ids.Apply(getEcsBackupClientsResult =&gt; getEcsBackupClientsResult.Clients[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsBackupClientsResult> InvokeAsync(GetEcsBackupClientsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsBackupClientsResult>("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", args ?? new GetEcsBackupClientsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsBackupClientsResult>("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", args ?? new GetEcsBackupClientsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
@@ -71,45 +71,45 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.Ecs.GetInstances.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
-        ///         {
-        ///             NameRegex = "ecs_instance_name",
-        ///             Status = "Running",
-        ///         }));
-        ///         var ids = Output.Create(AliCloud.Hbr.GetEcsBackupClients.InvokeAsync(new AliCloud.Hbr.GetEcsBackupClientsArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 alicloud_hbr_ecs_backup_client.Default.Id,
-        ///             },
-        ///             InstanceIds = 
-        ///             {
-        ///                 alicloud_hbr_ecs_backup_client.Default.Instance_id,
-        ///             },
-        ///         }));
-        ///         this.HbrEcsBackupClientId1 = ids.Apply(ids =&gt; ids.Clients?[0]?.Id);
-        ///     }
+        ///         NameRegex = "ecs_instance_name",
+        ///         Status = "Running",
+        ///     });
         /// 
-        ///     [Output("hbrEcsBackupClientId1")]
-        ///     public Output&lt;string&gt; HbrEcsBackupClientId1 { get; set; }
-        /// }
+        ///     var ids = AliCloud.Hbr.GetEcsBackupClients.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             alicloud_hbr_ecs_backup_client.Default.Id,
+        ///         },
+        ///         InstanceIds = new[]
+        ///         {
+        ///             alicloud_hbr_ecs_backup_client.Default.Instance_id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrEcsBackupClientId1"] = ids.Apply(getEcsBackupClientsResult =&gt; getEcsBackupClientsResult.Clients[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsBackupClientsResult> Invoke(GetEcsBackupClientsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsBackupClientsResult>("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", args ?? new GetEcsBackupClientsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsBackupClientsResult>("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", args ?? new GetEcsBackupClientsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsBackupClientsArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsBackupClientsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -147,9 +147,10 @@ namespace Pulumi.AliCloud.Hbr
         public GetEcsBackupClientsArgs()
         {
         }
+        public static new GetEcsBackupClientsArgs Empty => new GetEcsBackupClientsArgs();
     }
 
-    public sealed class GetEcsBackupClientsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsBackupClientsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -187,6 +188,7 @@ namespace Pulumi.AliCloud.Hbr
         public GetEcsBackupClientsInvokeArgs()
         {
         }
+        public static new GetEcsBackupClientsInvokeArgs Empty => new GetEcsBackupClientsInvokeArgs();
     }
 
 

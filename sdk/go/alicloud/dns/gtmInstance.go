@@ -56,7 +56,7 @@ import (
 //				PublicCnameMode:      pulumi.String("SYSTEM_ASSIGN"),
 //				Ttl:                  pulumi.Int(60),
 //				CnameType:            pulumi.String("PUBLIC"),
-//				ResourceGroupId:      pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId:      *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				AlertGroups: pulumi.StringArray{
 //					defaultAlarmContactGroup.AlarmContactGroupName,
 //				},

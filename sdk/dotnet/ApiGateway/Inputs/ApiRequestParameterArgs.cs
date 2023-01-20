@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ApiGateway.Inputs
 {
 
-    public sealed class ApiRequestParameterArgs : Pulumi.ResourceArgs
+    public sealed class ApiRequestParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default value of the parameter.
@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string>? DefaultValue { get; set; }
 
         /// <summary>
-        /// The description of Constant parameter.
+        /// The description of the api. Defaults to null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// System parameter location; values: 'HEAD' and 'QUERY'.
+        /// Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
         /// </summary>
         [Input("in", required: true)]
         public Input<string> In { get; set; } = null!;
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string> InService { get; set; } = null!;
 
         /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        /// The name of the api gateway api. Defaults to null.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -63,5 +63,6 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public ApiRequestParameterArgs()
         {
         }
+        public static new ApiRequestParameterArgs Empty => new ApiRequestParameterArgs();
     }
 }

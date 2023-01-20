@@ -21,31 +21,29 @@ namespace Pulumi.AliCloud.Scdn
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Scdn.Domain("example", new()
     ///     {
-    ///         var example = new AliCloud.Scdn.Domain("example", new AliCloud.Scdn.DomainArgs
+    ///         DomainName = "my-Domain",
+    ///         Sources = new[]
     ///         {
-    ///             DomainName = "my-Domain",
-    ///             Sources = 
+    ///             new AliCloud.Scdn.Inputs.DomainSourceArgs
     ///             {
-    ///                 new AliCloud.Scdn.Inputs.DomainSourceArgs
-    ///                 {
-    ///                     Content = "xxx.aliyuncs.com",
-    ///                     Enabled = "online",
-    ///                     Port = 80,
-    ///                     Priority = "20",
-    ///                     Type = "oss",
-    ///                 },
+    ///                 Content = "xxx.aliyuncs.com",
+    ///                 Enabled = "online",
+    ///                 Port = 80,
+    ///                 Priority = "20",
+    ///                 Type = "oss",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +55,7 @@ namespace Pulumi.AliCloud.Scdn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:scdn/domain:Domain")]
-    public partial class Domain : Pulumi.CustomResource
+    public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Attribute perm has been deprecated and suggest removing it from your template.
@@ -151,7 +149,7 @@ namespace Pulumi.AliCloud.Scdn
         }
     }
 
-    public sealed class DomainArgs : Pulumi.ResourceArgs
+    public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Attribute perm has been deprecated and suggest removing it from your template.
@@ -216,9 +214,10 @@ namespace Pulumi.AliCloud.Scdn
         public DomainArgs()
         {
         }
+        public static new DomainArgs Empty => new DomainArgs();
     }
 
-    public sealed class DomainState : Pulumi.ResourceArgs
+    public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Attribute perm has been deprecated and suggest removing it from your template.
@@ -283,5 +282,6 @@ namespace Pulumi.AliCloud.Scdn
         public DomainState()
         {
         }
+        public static new DomainState Empty => new DomainState();
     }
 }

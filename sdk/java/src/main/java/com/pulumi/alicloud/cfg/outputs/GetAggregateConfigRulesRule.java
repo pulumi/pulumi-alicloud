@@ -34,6 +34,10 @@ public final class GetAggregateConfigRulesRule {
      * 
      */
     private String compliancePackId;
+    /**
+     * @return The Compliance information.
+     * 
+     */
     private List<GetAggregateConfigRulesRuleCompliance> compliances;
     /**
      * @return The config rule arn.
@@ -62,8 +66,6 @@ public final class GetAggregateConfigRulesRule {
     private String eventSource;
     /**
      * @return The id of the resources to be evaluated against the rule.
-     * * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
-     * * `source_owner`- The source owner of the Config Rule.
      * 
      */
     private String excludeResourceIdsScope;
@@ -103,7 +105,15 @@ public final class GetAggregateConfigRulesRule {
      * 
      */
     private Integer riskLevel;
+    /**
+     * @return The identifier of the managed rule or the arn of the custom function.
+     * 
+     */
     private String sourceIdentifier;
+    /**
+     * @return The source owner of the Config Rule.
+     * 
+     */
     private String sourceOwner;
     /**
      * @return The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
@@ -150,6 +160,10 @@ public final class GetAggregateConfigRulesRule {
     public String compliancePackId() {
         return this.compliancePackId;
     }
+    /**
+     * @return The Compliance information.
+     * 
+     */
     public List<GetAggregateConfigRulesRuleCompliance> compliances() {
         return this.compliances;
     }
@@ -190,8 +204,6 @@ public final class GetAggregateConfigRulesRule {
     }
     /**
      * @return The id of the resources to be evaluated against the rule.
-     * * `source_identifier`- The identifier of the managed rule or the arn of the custom function.
-     * * `source_owner`- The source owner of the Config Rule.
      * 
      */
     public String excludeResourceIdsScope() {
@@ -249,9 +261,17 @@ public final class GetAggregateConfigRulesRule {
     public Integer riskLevel() {
         return this.riskLevel;
     }
+    /**
+     * @return The identifier of the managed rule or the arn of the custom function.
+     * 
+     */
     public String sourceIdentifier() {
         return this.sourceIdentifier;
     }
+    /**
+     * @return The source owner of the Config Rule.
+     * 
+     */
     public String sourceOwner() {
         return this.sourceOwner;
     }

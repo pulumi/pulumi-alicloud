@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketTransferAcceleration
     {
         /// <summary>
-        /// Specifies the accelerate status of a bucket.
+        /// Specifies lifecycle rule status.
         /// </summary>
         public readonly bool Enabled;
 

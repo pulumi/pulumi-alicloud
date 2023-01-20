@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -98,7 +99,7 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly constantParameters!: pulumi.Output<outputs.apigateway.ApiConstantParameter[] | undefined>;
     /**
-     * The description of Constant parameter.
+     * The description of the api. Defaults to null.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -126,7 +127,7 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly mockServiceConfig!: pulumi.Output<outputs.apigateway.ApiMockServiceConfig | undefined>;
     /**
-     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * The name of the api gateway api. Defaults to null.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -235,7 +236,7 @@ export interface ApiState {
      */
     constantParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConstantParameter>[]>;
     /**
-     * The description of Constant parameter.
+     * The description of the api. Defaults to null.
      */
     description?: pulumi.Input<string>;
     /**
@@ -263,7 +264,7 @@ export interface ApiState {
      */
     mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig>;
     /**
-     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * The name of the api gateway api. Defaults to null.
      */
     name?: pulumi.Input<string>;
     /**
@@ -301,7 +302,7 @@ export interface ApiArgs {
      */
     constantParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConstantParameter>[]>;
     /**
-     * The description of Constant parameter.
+     * The description of the api. Defaults to null.
      */
     description: pulumi.Input<string>;
     /**
@@ -329,7 +330,7 @@ export interface ApiArgs {
      */
     mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig>;
     /**
-     * System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+     * The name of the api gateway api. Defaults to null.
      */
     name?: pulumi.Input<string>;
     /**

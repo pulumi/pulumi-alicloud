@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Quotas.Inputs
 {
 
-    public sealed class GetQuotaAlarmsQuotaDimensionArgs : Pulumi.InvokeArgs
+    public sealed class GetQuotaAlarmsQuotaDimensionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The key of quota_dimensions.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Quotas.Inputs
         public GetQuotaAlarmsQuotaDimensionArgs()
         {
         }
+        public static new GetQuotaAlarmsQuotaDimensionArgs Empty => new GetQuotaAlarmsQuotaDimensionArgs();
     }
 }

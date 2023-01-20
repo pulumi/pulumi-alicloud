@@ -21,22 +21,20 @@ namespace Pulumi.AliCloud.PrivateLink
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.PrivateLink.VpcEndpointService("example", new()
     ///     {
-    ///         var example = new AliCloud.PrivateLink.VpcEndpointService("example", new AliCloud.PrivateLink.VpcEndpointServiceArgs
-    ///         {
-    ///             AutoAcceptConnection = false,
-    ///             ConnectBandwidth = 103,
-    ///             ServiceDescription = "tftest",
-    ///         });
-    ///     }
+    ///         AutoAcceptConnection = false,
+    ///         ConnectBandwidth = 103,
+    ///         ServiceDescription = "tftest",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.PrivateLink
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:privatelink/vpcEndpointService:VpcEndpointService")]
-    public partial class VpcEndpointService : Pulumi.CustomResource
+    public partial class VpcEndpointService : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to automatically accept terminal node connections.
@@ -142,7 +140,7 @@ namespace Pulumi.AliCloud.PrivateLink
         }
     }
 
-    public sealed class VpcEndpointServiceArgs : Pulumi.ResourceArgs
+    public sealed class VpcEndpointServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to automatically accept terminal node connections.
@@ -177,9 +175,10 @@ namespace Pulumi.AliCloud.PrivateLink
         public VpcEndpointServiceArgs()
         {
         }
+        public static new VpcEndpointServiceArgs Empty => new VpcEndpointServiceArgs();
     }
 
-    public sealed class VpcEndpointServiceState : Pulumi.ResourceArgs
+    public sealed class VpcEndpointServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to automatically accept terminal node connections.
@@ -232,5 +231,6 @@ namespace Pulumi.AliCloud.PrivateLink
         public VpcEndpointServiceState()
         {
         }
+        public static new VpcEndpointServiceState Empty => new VpcEndpointServiceState();
     }
 }

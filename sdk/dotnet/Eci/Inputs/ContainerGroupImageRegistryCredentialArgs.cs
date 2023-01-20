@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eci.Inputs
 {
 
-    public sealed class ContainerGroupImageRegistryCredentialArgs : Pulumi.ResourceArgs
+    public sealed class ContainerGroupImageRegistryCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The password used to log on to the image repository. It is required when `image_registry_credential` is configured.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public ContainerGroupImageRegistryCredentialArgs()
         {
         }
+        public static new ContainerGroupImageRegistryCredentialArgs Empty => new ContainerGroupImageRegistryCredentialArgs();
     }
 }

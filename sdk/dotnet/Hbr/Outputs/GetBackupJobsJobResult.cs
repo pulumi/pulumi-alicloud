@@ -54,6 +54,18 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        /// </summary>
+        public readonly string CrossAccountRoleName;
+        /// <summary>
+        /// The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        /// </summary>
+        public readonly string CrossAccountType;
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        /// </summary>
+        public readonly int CrossAccountUserId;
+        /// <summary>
         /// Error message.
         /// </summary>
         public readonly string ErrorMessage;
@@ -149,6 +161,12 @@ namespace Pulumi.AliCloud.Hbr.Outputs
 
             string createTime,
 
+            string crossAccountRoleName,
+
+            string crossAccountType,
+
+            int crossAccountUserId,
+
             string errorMessage,
 
             string exclude,
@@ -197,6 +215,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
             BytesTotal = bytesTotal;
             CompleteTime = completeTime;
             CreateTime = createTime;
+            CrossAccountRoleName = crossAccountRoleName;
+            CrossAccountType = crossAccountType;
+            CrossAccountUserId = crossAccountUserId;
             ErrorMessage = errorMessage;
             Exclude = exclude;
             FileSystemId = fileSystemId;

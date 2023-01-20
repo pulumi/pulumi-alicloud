@@ -23,112 +23,101 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultEcsBackupPlans = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
         ///     {
-        ///         var defaultEcsBackupPlans = Output.Create(AliCloud.Hbr.GetEcsBackupPlans.InvokeAsync(new AliCloud.Hbr.GetEcsBackupPlansArgs
-        ///         {
-        ///             NameRegex = "plan-name",
-        ///         }));
-        ///         var defaultBackupJobs = Output.Tuple(defaultEcsBackupPlans, defaultEcsBackupPlans).Apply(values =&gt;
-        ///         {
-        ///             var defaultEcsBackupPlans = values.Item1;
-        ///             var defaultEcsBackupPlans1 = values.Item2;
-        ///             return Output.Create(AliCloud.Hbr.GetBackupJobs.InvokeAsync(new AliCloud.Hbr.GetBackupJobsArgs
-        ///             {
-        ///                 SourceType = "ECS_FILE",
-        ///                 Filters = 
-        ///                 {
-        ///                     new AliCloud.Hbr.Inputs.GetBackupJobsFilterArgs
-        ///                     {
-        ///                         Key = "VaultId",
-        ///                         Operator = "IN",
-        ///                         Values = 
-        ///                         {
-        ///                             defaultEcsBackupPlans.Plans?[0]?.VaultId,
-        ///                         },
-        ///                     },
-        ///                     new AliCloud.Hbr.Inputs.GetBackupJobsFilterArgs
-        ///                     {
-        ///                         Key = "InstanceId",
-        ///                         Operator = "IN",
-        ///                         Values = 
-        ///                         {
-        ///                             defaultEcsBackupPlans1.Plans?[0]?.InstanceId,
-        ///                         },
-        ///                     },
-        ///                     new AliCloud.Hbr.Inputs.GetBackupJobsFilterArgs
-        ///                     {
-        ///                         Key = "CompleteTime",
-        ///                         Operator = "BETWEEN",
-        ///                         Values = 
-        ///                         {
-        ///                             "2021-08-23T14:17:15CST",
-        ///                             "2021-08-24T14:17:15CST",
-        ///                         },
-        ///                     },
-        ///                 },
-        ///             }));
-        ///         });
-        ///         var example = Output.Tuple(defaultEcsBackupPlans, defaultEcsBackupPlans).Apply(values =&gt;
-        ///         {
-        ///             var defaultEcsBackupPlans = values.Item1;
-        ///             var defaultEcsBackupPlans1 = values.Item2;
-        ///             return Output.Create(AliCloud.Hbr.GetBackupJobs.InvokeAsync(new AliCloud.Hbr.GetBackupJobsArgs
-        ///             {
-        ///                 SourceType = "ECS_FILE",
-        ///                 Status = "COMPLETE",
-        ///                 Filters = 
-        ///                 {
-        ///                     new AliCloud.Hbr.Inputs.GetBackupJobsFilterArgs
-        ///                     {
-        ///                         Key = "VaultId",
-        ///                         Operator = "IN",
-        ///                         Values = 
-        ///                         {
-        ///                             defaultEcsBackupPlans.Plans?[0]?.VaultId,
-        ///                         },
-        ///                     },
-        ///                     new AliCloud.Hbr.Inputs.GetBackupJobsFilterArgs
-        ///                     {
-        ///                         Key = "InstanceId",
-        ///                         Operator = "IN",
-        ///                         Values = 
-        ///                         {
-        ///                             defaultEcsBackupPlans1.Plans?[0]?.InstanceId,
-        ///                         },
-        ///                     },
-        ///                     new AliCloud.Hbr.Inputs.GetBackupJobsFilterArgs
-        ///                     {
-        ///                         Key = "CompleteTime",
-        ///                         Operator = "LESS_THAN",
-        ///                         Values = 
-        ///                         {
-        ///                             "2021-10-20T20:20:20CST",
-        ///                         },
-        ///                     },
-        ///                 },
-        ///             }));
-        ///         });
-        ///         this.AlicloudHbrBackupJobsDefault1 = defaultBackupJobs.Apply(defaultBackupJobs =&gt; defaultBackupJobs.Jobs?[0]?.Id);
-        ///         this.AlicloudHbrBackupJobsExample1 = example.Apply(example =&gt; example.Jobs?[0]?.Id);
-        ///     }
+        ///         NameRegex = "plan-name",
+        ///     });
         /// 
-        ///     [Output("alicloudHbrBackupJobsDefault1")]
-        ///     public Output&lt;string&gt; AlicloudHbrBackupJobsDefault1 { get; set; }
-        ///     [Output("alicloudHbrBackupJobsExample1")]
-        ///     public Output&lt;string&gt; AlicloudHbrBackupJobsExample1 { get; set; }
-        /// }
+        ///     var defaultBackupJobs = AliCloud.Hbr.GetBackupJobs.Invoke(new()
+        ///     {
+        ///         SourceType = "ECS_FILE",
+        ///         Filters = new[]
+        ///         {
+        ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
+        ///             {
+        ///                 Key = "VaultId",
+        ///                 Operator = "IN",
+        ///                 Values = new[]
+        ///                 {
+        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///                 },
+        ///             },
+        ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
+        ///             {
+        ///                 Key = "InstanceId",
+        ///                 Operator = "IN",
+        ///                 Values = new[]
+        ///                 {
+        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///                 },
+        ///             },
+        ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
+        ///             {
+        ///                 Key = "CompleteTime",
+        ///                 Operator = "BETWEEN",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "2021-08-23T14:17:15CST",
+        ///                     "2021-08-24T14:17:15CST",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var example = AliCloud.Hbr.GetBackupJobs.Invoke(new()
+        ///     {
+        ///         SourceType = "ECS_FILE",
+        ///         Status = "COMPLETE",
+        ///         Filters = new[]
+        ///         {
+        ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
+        ///             {
+        ///                 Key = "VaultId",
+        ///                 Operator = "IN",
+        ///                 Values = new[]
+        ///                 {
+        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///                 },
+        ///             },
+        ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
+        ///             {
+        ///                 Key = "InstanceId",
+        ///                 Operator = "IN",
+        ///                 Values = new[]
+        ///                 {
+        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///                 },
+        ///             },
+        ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
+        ///             {
+        ///                 Key = "CompleteTime",
+        ///                 Operator = "LESS_THAN",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "2021-10-20T20:20:20CST",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudHbrBackupJobsDefault1"] = defaultBackupJobs.Apply(getBackupJobsResult =&gt; getBackupJobsResult.Jobs[0]?.Id),
+        ///         ["alicloudHbrBackupJobsExample1"] = example.Apply(getBackupJobsResult =&gt; getBackupJobsResult.Jobs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackupJobsResult> InvokeAsync(GetBackupJobsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupJobsResult>("alicloud:hbr/getBackupJobs:getBackupJobs", args ?? new GetBackupJobsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupJobsResult>("alicloud:hbr/getBackupJobs:getBackupJobs", args ?? new GetBackupJobsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
@@ -142,116 +131,105 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultEcsBackupPlans = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
         ///     {
-        ///         var defaultEcsBackupPlans = Output.Create(AliCloud.Hbr.GetEcsBackupPlans.InvokeAsync(new AliCloud.Hbr.GetEcsBackupPlansArgs
-        ///         {
-        ///             NameRegex = "plan-name",
-        ///         }));
-        ///         var defaultBackupJobs = Output.Tuple(defaultEcsBackupPlans, defaultEcsBackupPlans).Apply(values =&gt;
-        ///         {
-        ///             var defaultEcsBackupPlans = values.Item1;
-        ///             var defaultEcsBackupPlans1 = values.Item2;
-        ///             return Output.Create(AliCloud.Hbr.GetBackupJobs.InvokeAsync(new AliCloud.Hbr.GetBackupJobsArgs
-        ///             {
-        ///                 SourceType = "ECS_FILE",
-        ///                 Filters = 
-        ///                 {
-        ///                     new AliCloud.Hbr.Inputs.GetBackupJobsFilterArgs
-        ///                     {
-        ///                         Key = "VaultId",
-        ///                         Operator = "IN",
-        ///                         Values = 
-        ///                         {
-        ///                             defaultEcsBackupPlans.Plans?[0]?.VaultId,
-        ///                         },
-        ///                     },
-        ///                     new AliCloud.Hbr.Inputs.GetBackupJobsFilterArgs
-        ///                     {
-        ///                         Key = "InstanceId",
-        ///                         Operator = "IN",
-        ///                         Values = 
-        ///                         {
-        ///                             defaultEcsBackupPlans1.Plans?[0]?.InstanceId,
-        ///                         },
-        ///                     },
-        ///                     new AliCloud.Hbr.Inputs.GetBackupJobsFilterArgs
-        ///                     {
-        ///                         Key = "CompleteTime",
-        ///                         Operator = "BETWEEN",
-        ///                         Values = 
-        ///                         {
-        ///                             "2021-08-23T14:17:15CST",
-        ///                             "2021-08-24T14:17:15CST",
-        ///                         },
-        ///                     },
-        ///                 },
-        ///             }));
-        ///         });
-        ///         var example = Output.Tuple(defaultEcsBackupPlans, defaultEcsBackupPlans).Apply(values =&gt;
-        ///         {
-        ///             var defaultEcsBackupPlans = values.Item1;
-        ///             var defaultEcsBackupPlans1 = values.Item2;
-        ///             return Output.Create(AliCloud.Hbr.GetBackupJobs.InvokeAsync(new AliCloud.Hbr.GetBackupJobsArgs
-        ///             {
-        ///                 SourceType = "ECS_FILE",
-        ///                 Status = "COMPLETE",
-        ///                 Filters = 
-        ///                 {
-        ///                     new AliCloud.Hbr.Inputs.GetBackupJobsFilterArgs
-        ///                     {
-        ///                         Key = "VaultId",
-        ///                         Operator = "IN",
-        ///                         Values = 
-        ///                         {
-        ///                             defaultEcsBackupPlans.Plans?[0]?.VaultId,
-        ///                         },
-        ///                     },
-        ///                     new AliCloud.Hbr.Inputs.GetBackupJobsFilterArgs
-        ///                     {
-        ///                         Key = "InstanceId",
-        ///                         Operator = "IN",
-        ///                         Values = 
-        ///                         {
-        ///                             defaultEcsBackupPlans1.Plans?[0]?.InstanceId,
-        ///                         },
-        ///                     },
-        ///                     new AliCloud.Hbr.Inputs.GetBackupJobsFilterArgs
-        ///                     {
-        ///                         Key = "CompleteTime",
-        ///                         Operator = "LESS_THAN",
-        ///                         Values = 
-        ///                         {
-        ///                             "2021-10-20T20:20:20CST",
-        ///                         },
-        ///                     },
-        ///                 },
-        ///             }));
-        ///         });
-        ///         this.AlicloudHbrBackupJobsDefault1 = defaultBackupJobs.Apply(defaultBackupJobs =&gt; defaultBackupJobs.Jobs?[0]?.Id);
-        ///         this.AlicloudHbrBackupJobsExample1 = example.Apply(example =&gt; example.Jobs?[0]?.Id);
-        ///     }
+        ///         NameRegex = "plan-name",
+        ///     });
         /// 
-        ///     [Output("alicloudHbrBackupJobsDefault1")]
-        ///     public Output&lt;string&gt; AlicloudHbrBackupJobsDefault1 { get; set; }
-        ///     [Output("alicloudHbrBackupJobsExample1")]
-        ///     public Output&lt;string&gt; AlicloudHbrBackupJobsExample1 { get; set; }
-        /// }
+        ///     var defaultBackupJobs = AliCloud.Hbr.GetBackupJobs.Invoke(new()
+        ///     {
+        ///         SourceType = "ECS_FILE",
+        ///         Filters = new[]
+        ///         {
+        ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
+        ///             {
+        ///                 Key = "VaultId",
+        ///                 Operator = "IN",
+        ///                 Values = new[]
+        ///                 {
+        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///                 },
+        ///             },
+        ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
+        ///             {
+        ///                 Key = "InstanceId",
+        ///                 Operator = "IN",
+        ///                 Values = new[]
+        ///                 {
+        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///                 },
+        ///             },
+        ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
+        ///             {
+        ///                 Key = "CompleteTime",
+        ///                 Operator = "BETWEEN",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "2021-08-23T14:17:15CST",
+        ///                     "2021-08-24T14:17:15CST",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var example = AliCloud.Hbr.GetBackupJobs.Invoke(new()
+        ///     {
+        ///         SourceType = "ECS_FILE",
+        ///         Status = "COMPLETE",
+        ///         Filters = new[]
+        ///         {
+        ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
+        ///             {
+        ///                 Key = "VaultId",
+        ///                 Operator = "IN",
+        ///                 Values = new[]
+        ///                 {
+        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///                 },
+        ///             },
+        ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
+        ///             {
+        ///                 Key = "InstanceId",
+        ///                 Operator = "IN",
+        ///                 Values = new[]
+        ///                 {
+        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///                 },
+        ///             },
+        ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
+        ///             {
+        ///                 Key = "CompleteTime",
+        ///                 Operator = "LESS_THAN",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "2021-10-20T20:20:20CST",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudHbrBackupJobsDefault1"] = defaultBackupJobs.Apply(getBackupJobsResult =&gt; getBackupJobsResult.Jobs[0]?.Id),
+        ///         ["alicloudHbrBackupJobsExample1"] = example.Apply(getBackupJobsResult =&gt; getBackupJobsResult.Jobs[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackupJobsResult> Invoke(GetBackupJobsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupJobsResult>("alicloud:hbr/getBackupJobs:getBackupJobs", args ?? new GetBackupJobsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupJobsResult>("alicloud:hbr/getBackupJobs:getBackupJobs", args ?? new GetBackupJobsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetBackupJobsArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupJobsArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private List<Inputs.GetBackupJobsFilterArgs>? _filters;
@@ -297,9 +275,10 @@ namespace Pulumi.AliCloud.Hbr
         public GetBackupJobsArgs()
         {
         }
+        public static new GetBackupJobsArgs Empty => new GetBackupJobsArgs();
     }
 
-    public sealed class GetBackupJobsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupJobsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("filters")]
         private InputList<Inputs.GetBackupJobsFilterInputArgs>? _filters;
@@ -345,6 +324,7 @@ namespace Pulumi.AliCloud.Hbr
         public GetBackupJobsInvokeArgs()
         {
         }
+        public static new GetBackupJobsInvokeArgs Empty => new GetBackupJobsInvokeArgs();
     }
 
 

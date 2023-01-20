@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ApiGateway.Inputs
 {
 
-    public sealed class ApiRequestConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ApiRequestConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The body format of the api, which support the values of 'STREAM' and 'FORM'.
@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string>? BodyFormat { get; set; }
 
         /// <summary>
-        /// The http method of backend service.
+        /// The method of the api, including 'GET','POST','PUT' etc.
         /// </summary>
         [Input("method", required: true)]
         public Input<string> Method { get; set; } = null!;
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string> Mode { get; set; } = null!;
 
         /// <summary>
-        /// The path of backend service.
+        /// The request path of the api.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
@@ -45,5 +45,6 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public ApiRequestConfigGetArgs()
         {
         }
+        public static new ApiRequestConfigGetArgs Empty => new ApiRequestConfigGetArgs();
     }
 }

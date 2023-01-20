@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -11,11 +12,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.147.0+.
  */
 export function getHostEcsLevelInfos(args: GetHostEcsLevelInfosArgs, opts?: pulumi.InvokeOptions): Promise<GetHostEcsLevelInfosResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", {
         "dbType": args.dbType,
         "imageCategory": args.imageCategory,
@@ -39,11 +37,7 @@ export interface GetHostEcsLevelInfosArgs {
     imageCategory?: string;
     outputFile?: string;
     /**
-     * The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`. 
-     * * `localSsd`: specifies that the host uses local SSDs.
-     * * `cloudEssd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-     * * `cloudEssd2`: specifies that the host uses ESSDs of PL2.
-     * * `cloudEssd3`: specifies that the host uses ESSDs of PL3.
+     * The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`.
      */
     storageType: string;
     /**
@@ -67,9 +61,13 @@ export interface GetHostEcsLevelInfosResult {
     readonly storageType: string;
     readonly zoneId: string;
 }
-
+/**
+ * This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.147.0+.
+ */
 export function getHostEcsLevelInfosOutput(args: GetHostEcsLevelInfosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostEcsLevelInfosResult> {
-    return pulumi.output(args).apply(a => getHostEcsLevelInfos(a, opts))
+    return pulumi.output(args).apply((a: any) => getHostEcsLevelInfos(a, opts))
 }
 
 /**
@@ -86,11 +84,7 @@ export interface GetHostEcsLevelInfosOutputArgs {
     imageCategory?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
-     * The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`. 
-     * * `localSsd`: specifies that the host uses local SSDs.
-     * * `cloudEssd`: specifies that the host uses enhanced SSDs (ESSDs) of performance level (PL) 1.
-     * * `cloudEssd2`: specifies that the host uses ESSDs of PL2.
-     * * `cloudEssd3`: specifies that the host uses ESSDs of PL3.
+     * The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`.
      */
     storageType: pulumi.Input<string>;
     /**

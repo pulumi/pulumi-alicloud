@@ -23,26 +23,24 @@ namespace Pulumi.AliCloud.Cdn
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ipTest = AliCloud.Cdn.GetIpInfo.Invoke(new()
         ///     {
-        ///         var ipTest = Output.Create(AliCloud.Cdn.GetIpInfo.InvokeAsync(new AliCloud.Cdn.GetIpInfoArgs
-        ///         {
-        ///             Ip = "114.114.114.114",
-        ///         }));
-        ///     }
+        ///         Ip = "114.114.114.114",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpInfoResult> InvokeAsync(GetIpInfoArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpInfoResult>("alicloud:cdn/getIpInfo:getIpInfo", args ?? new GetIpInfoArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpInfoResult>("alicloud:cdn/getIpInfo:getIpInfo", args ?? new GetIpInfoArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the function of verifying whether an IP is a CDN node.
@@ -56,30 +54,28 @@ namespace Pulumi.AliCloud.Cdn
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ipTest = AliCloud.Cdn.GetIpInfo.Invoke(new()
         ///     {
-        ///         var ipTest = Output.Create(AliCloud.Cdn.GetIpInfo.InvokeAsync(new AliCloud.Cdn.GetIpInfoArgs
-        ///         {
-        ///             Ip = "114.114.114.114",
-        ///         }));
-        ///     }
+        ///         Ip = "114.114.114.114",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpInfoResult> Invoke(GetIpInfoInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpInfoResult>("alicloud:cdn/getIpInfo:getIpInfo", args ?? new GetIpInfoInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpInfoResult>("alicloud:cdn/getIpInfo:getIpInfo", args ?? new GetIpInfoInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetIpInfoArgs : Pulumi.InvokeArgs
+    public sealed class GetIpInfoArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specify IP address.
@@ -90,9 +86,10 @@ namespace Pulumi.AliCloud.Cdn
         public GetIpInfoArgs()
         {
         }
+        public static new GetIpInfoArgs Empty => new GetIpInfoArgs();
     }
 
-    public sealed class GetIpInfoInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIpInfoInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specify IP address.
@@ -103,6 +100,7 @@ namespace Pulumi.AliCloud.Cdn
         public GetIpInfoInvokeArgs()
         {
         }
+        public static new GetIpInfoInvokeArgs Empty => new GetIpInfoInvokeArgs();
     }
 
 

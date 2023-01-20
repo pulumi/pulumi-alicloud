@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Rdc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Rdc.Organization("example", new()
     ///     {
-    ///         var example = new AliCloud.Rdc.Organization("example", new AliCloud.Rdc.OrganizationArgs
-    ///         {
-    ///             OrganizationName = "example_value",
-    ///             Source = "example_value",
-    ///         });
-    ///     }
+    ///         OrganizationName = "example_value",
+    ///         Source = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Rdc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rdc/organization:Organization")]
-    public partial class Organization : Pulumi.CustomResource
+    public partial class Organization : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The desired member count.
@@ -117,7 +115,7 @@ namespace Pulumi.AliCloud.Rdc
         }
     }
 
-    public sealed class OrganizationArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The desired member count.
@@ -146,9 +144,10 @@ namespace Pulumi.AliCloud.Rdc
         public OrganizationArgs()
         {
         }
+        public static new OrganizationArgs Empty => new OrganizationArgs();
     }
 
-    public sealed class OrganizationState : Pulumi.ResourceArgs
+    public sealed class OrganizationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The desired member count.
@@ -177,5 +176,6 @@ namespace Pulumi.AliCloud.Rdc
         public OrganizationState()
         {
         }
+        public static new OrganizationState Empty => new OrganizationState();
     }
 }

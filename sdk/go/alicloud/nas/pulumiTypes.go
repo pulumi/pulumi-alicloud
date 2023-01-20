@@ -677,9 +677,6 @@ type GetFileSystemsSystem struct {
 	Description string `pulumi:"description"`
 	// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
 	// * Valid values:
-	// * `0`: The file system is not encrypted.
-	// * `1`: The file system is encrypted with a managed secret key.
-	// * `2`: User management key.
 	EncryptType int `pulumi:"encryptType"`
 	// The type of the file system.
 	// Valid values:
@@ -726,9 +723,6 @@ type GetFileSystemsSystemArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// (Optional, Available in v1.121.2+) Whether the file system is encrypted.
 	// * Valid values:
-	// * `0`: The file system is not encrypted.
-	// * `1`: The file system is encrypted with a managed secret key.
-	// * `2`: User management key.
 	EncryptType pulumi.IntInput `pulumi:"encryptType"`
 	// The type of the file system.
 	// Valid values:
@@ -823,9 +817,6 @@ func (o GetFileSystemsSystemOutput) Description() pulumi.StringOutput {
 
 // (Optional, Available in v1.121.2+) Whether the file system is encrypted.
 // * Valid values:
-// * `0`: The file system is not encrypted.
-// * `1`: The file system is encrypted with a managed secret key.
-// * `2`: User management key.
 func (o GetFileSystemsSystemOutput) EncryptType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.EncryptType }).(pulumi.IntOutput)
 }

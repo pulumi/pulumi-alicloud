@@ -97,8 +97,12 @@ type EipAddress struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
+	// The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+	PublicIpAddressPoolId pulumi.StringPtrOutput `pulumi:"publicIpAddressPoolId"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+	SecurityProtectionTypes pulumi.StringArrayOutput `pulumi:"securityProtectionTypes"`
 	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -167,8 +171,12 @@ type eipAddressState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period *int `pulumi:"period"`
+	// The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -209,8 +217,12 @@ type EipAddressState struct {
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrInput
+	// The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+	SecurityProtectionTypes pulumi.StringArrayInput
 	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -253,8 +265,12 @@ type eipAddressArgs struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period *int `pulumi:"period"`
+	// The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -292,8 +308,12 @@ type EipAddressArgs struct {
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrInput
+	// The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+	SecurityProtectionTypes pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
@@ -460,9 +480,19 @@ func (o EipAddressOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EipAddress) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
+// The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+func (o EipAddressOutput) PublicIpAddressPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringPtrOutput { return v.PublicIpAddressPoolId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the resource group.
 func (o EipAddressOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+func (o EipAddressOutput) SecurityProtectionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringArrayOutput { return v.SecurityProtectionTypes }).(pulumi.StringArrayOutput)
 }
 
 // The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.

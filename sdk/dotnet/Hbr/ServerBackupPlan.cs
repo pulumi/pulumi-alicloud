@@ -21,37 +21,36 @@ namespace Pulumi.AliCloud.Hbr
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = AliCloud.Ecs.GetInstances.Invoke(new()
     ///     {
-    ///         var @default = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
-    ///         {
-    ///             NameRegex = "no-deleteing-hbr-ecs-server-backup-plan",
-    ///             Status = "Running",
-    ///         }));
-    ///         var example = new AliCloud.Hbr.ServerBackupPlan("example", new AliCloud.Hbr.ServerBackupPlanArgs
-    ///         {
-    ///             EcsServerBackupPlanName = "server_backup_plan",
-    ///             InstanceId = @default.Apply(@default =&gt; @default.Instances?[0]?.Id),
-    ///             Schedule = "I|1602673264|PT2H",
-    ///             Retention = 1,
-    ///             Details = 
-    ///             {
-    ///                 new AliCloud.Hbr.Inputs.ServerBackupPlanDetailArgs
-    ///                 {
-    ///                     AppConsistent = true,
-    ///                     SnapshotGroup = true,
-    ///                 },
-    ///             },
-    ///             Disabled = false,
-    ///         });
-    ///     }
+    ///         NameRegex = "no-deleteing-hbr-ecs-server-backup-plan",
+    ///         Status = "Running",
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.Hbr.ServerBackupPlan("example", new()
+    ///     {
+    ///         EcsServerBackupPlanName = "server_backup_plan",
+    ///         InstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+    ///         Schedule = "I|1602673264|PT2H",
+    ///         Retention = 1,
+    ///         Details = new[]
+    ///         {
+    ///             new AliCloud.Hbr.Inputs.ServerBackupPlanDetailArgs
+    ///             {
+    ///                 AppConsistent = true,
+    ///                 SnapshotGroup = true,
+    ///             },
+    ///         },
+    ///         Disabled = false,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -63,7 +62,7 @@ namespace Pulumi.AliCloud.Hbr
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/serverBackupPlan:ServerBackupPlan")]
-    public partial class ServerBackupPlan : Pulumi.CustomResource
+    public partial class ServerBackupPlan : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ECS server backup plan details.
@@ -145,7 +144,7 @@ namespace Pulumi.AliCloud.Hbr
         }
     }
 
-    public sealed class ServerBackupPlanArgs : Pulumi.ResourceArgs
+    public sealed class ServerBackupPlanArgs : global::Pulumi.ResourceArgs
     {
         [Input("details", required: true)]
         private InputList<Inputs.ServerBackupPlanDetailArgs>? _details;
@@ -192,9 +191,10 @@ namespace Pulumi.AliCloud.Hbr
         public ServerBackupPlanArgs()
         {
         }
+        public static new ServerBackupPlanArgs Empty => new ServerBackupPlanArgs();
     }
 
-    public sealed class ServerBackupPlanState : Pulumi.ResourceArgs
+    public sealed class ServerBackupPlanState : global::Pulumi.ResourceArgs
     {
         [Input("details")]
         private InputList<Inputs.ServerBackupPlanDetailGetArgs>? _details;
@@ -241,5 +241,6 @@ namespace Pulumi.AliCloud.Hbr
         public ServerBackupPlanState()
         {
         }
+        public static new ServerBackupPlanState Empty => new ServerBackupPlanState();
     }
 }

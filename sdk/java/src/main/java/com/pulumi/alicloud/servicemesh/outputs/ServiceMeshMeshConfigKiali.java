@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfigKiali {
     /**
-     * @return Whether to enable Service grid audit.
+     * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
     private @Nullable Boolean enabled;
 
     private ServiceMeshMeshConfigKiali() {}
     /**
-     * @return Whether to enable Service grid audit.
+     * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
     public Optional<Boolean> enabled() {

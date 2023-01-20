@@ -19,43 +19,39 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
+    ///     var example = new AliCloud.Cms.AlarmContact("example", new()
     ///     {
-    ///         // If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
-    ///         var example = new AliCloud.Cms.AlarmContact("example", new AliCloud.Cms.AlarmContactArgs
-    ///         {
-    ///             AlarmContactName = "zhangsan",
-    ///             ChannelsMail = "terraform.test.com",
-    ///             Describe = "For Test",
-    ///         });
-    ///     }
+    ///         AlarmContactName = "zhangsan",
+    ///         ChannelsMail = "terraform.test.com",
+    ///         Describe = "For Test",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
+    ///     var example = new AliCloud.Cms.AlarmContact("example", new()
     ///     {
-    ///         // If you use this template, you can ignore the diff of the alarm contact information by `lifestyle`. We recommend the above usage and activate the link in time.
-    ///         var example = new AliCloud.Cms.AlarmContact("example", new AliCloud.Cms.AlarmContactArgs
-    ///         {
-    ///             AlarmContactName = "zhangsan",
-    ///             Describe = "For Test",
-    ///             ChannelsMail = "terraform.test.com",
-    ///         });
-    ///     }
+    ///         AlarmContactName = "zhangsan",
+    ///         Describe = "For Test",
+    ///         ChannelsMail = "terraform.test.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -67,7 +63,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/alarmContact:AlarmContact")]
-    public partial class AlarmContact : Pulumi.CustomResource
+    public partial class AlarmContact : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the alarm contact. The length should between 2 and 40 characters.
@@ -155,7 +151,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class AlarmContactArgs : Pulumi.ResourceArgs
+    public sealed class AlarmContactArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the alarm contact. The length should between 2 and 40 characters.
@@ -202,9 +198,10 @@ namespace Pulumi.AliCloud.Cms
         public AlarmContactArgs()
         {
         }
+        public static new AlarmContactArgs Empty => new AlarmContactArgs();
     }
 
-    public sealed class AlarmContactState : Pulumi.ResourceArgs
+    public sealed class AlarmContactState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the alarm contact. The length should between 2 and 40 characters.
@@ -251,5 +248,6 @@ namespace Pulumi.AliCloud.Cms
         public AlarmContactState()
         {
         }
+        public static new AlarmContactState Empty => new AlarmContactState();
     }
 }

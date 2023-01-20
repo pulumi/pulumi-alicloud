@@ -64,14 +64,14 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Encrypted storage of data, providing data static protection capability, only supported at creation time.
+     * Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
      * 
      */
     @Import(name="encryptConf")
     private @Nullable Output<StoreEncryptConfArgs> encryptConf;
 
     /**
-     * @return Encrypted storage of data, providing data static protection capability, only supported at creation time.
+     * @return Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
      * 
      */
     public Optional<Output<StoreEncryptConfArgs>> encryptConf() {
@@ -265,7 +265,7 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptConf Encrypted storage of data, providing data static protection capability, only supported at creation time.
+         * @param encryptConf Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class StoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptConf Encrypted storage of data, providing data static protection capability, only supported at creation time.
+         * @param encryptConf Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
          * 
          * @return builder
          * 

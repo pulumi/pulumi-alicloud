@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/dedicatedHost:DedicatedHost")]
-    public partial class DedicatedHost : Pulumi.CustomResource
+    public partial class DedicatedHost : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class DedicatedHostArgs : Pulumi.ResourceArgs
+    public sealed class DedicatedHostArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.
@@ -328,9 +328,10 @@ namespace Pulumi.AliCloud.Ecs
         public DedicatedHostArgs()
         {
         }
+        public static new DedicatedHostArgs Empty => new DedicatedHostArgs();
     }
 
-    public sealed class DedicatedHostState : Pulumi.ResourceArgs
+    public sealed class DedicatedHostState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.
@@ -473,5 +474,6 @@ namespace Pulumi.AliCloud.Ecs
         public DedicatedHostState()
         {
         }
+        public static new DedicatedHostState Empty => new DedicatedHostState();
     }
 }

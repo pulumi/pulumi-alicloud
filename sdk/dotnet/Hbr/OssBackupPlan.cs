@@ -21,36 +21,36 @@ namespace Pulumi.AliCloud.Hbr
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-test112358";
+    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "tf-test112358";
-    ///         var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new AliCloud.Hbr.VaultArgs
-    ///         {
-    ///             VaultName = name,
-    ///         });
-    ///         var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new AliCloud.Oss.BucketArgs
-    ///         {
-    ///             BucketName = name,
-    ///         });
-    ///         var defaultOssBackupPlan = new AliCloud.Hbr.OssBackupPlan("defaultOssBackupPlan", new AliCloud.Hbr.OssBackupPlanArgs
-    ///         {
-    ///             OssBackupPlanName = name,
-    ///             Prefix = "/",
-    ///             Bucket = defaultBucket.BucketName,
-    ///             VaultId = defaultVault.Id,
-    ///             Schedule = "I|1602673264|PT2H",
-    ///             BackupType = "COMPLETE",
-    ///             Retention = "2",
-    ///         });
-    ///     }
+    ///         VaultName = name,
+    ///     });
     /// 
-    /// }
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     {
+    ///         BucketName = name,
+    ///     });
+    /// 
+    ///     var defaultOssBackupPlan = new AliCloud.Hbr.OssBackupPlan("defaultOssBackupPlan", new()
+    ///     {
+    ///         OssBackupPlanName = name,
+    ///         Prefix = "/",
+    ///         Bucket = defaultBucket.BucketName,
+    ///         VaultId = defaultVault.Id,
+    ///         Schedule = "I|1602673264|PT2H",
+    ///         BackupType = "COMPLETE",
+    ///         Retention = "2",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Hbr
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:hbr/ossBackupPlan:OssBackupPlan")]
-    public partial class OssBackupPlan : Pulumi.CustomResource
+    public partial class OssBackupPlan : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Backup type. Valid values: `COMPLETE`.
@@ -75,6 +75,24 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
+
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Output("crossAccountRoleName")]
+        public Output<string?> CrossAccountRoleName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Output("crossAccountType")]
+        public Output<string> CrossAccountType { get; private set; } = null!;
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Output("crossAccountUserId")]
+        public Output<int?> CrossAccountUserId { get; private set; } = null!;
 
         /// <summary>
         /// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -156,7 +174,7 @@ namespace Pulumi.AliCloud.Hbr
         }
     }
 
-    public sealed class OssBackupPlanArgs : Pulumi.ResourceArgs
+    public sealed class OssBackupPlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Backup type. Valid values: `COMPLETE`.
@@ -169,6 +187,24 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
+
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
 
         /// <summary>
         /// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -209,9 +245,10 @@ namespace Pulumi.AliCloud.Hbr
         public OssBackupPlanArgs()
         {
         }
+        public static new OssBackupPlanArgs Empty => new OssBackupPlanArgs();
     }
 
-    public sealed class OssBackupPlanState : Pulumi.ResourceArgs
+    public sealed class OssBackupPlanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Backup type. Valid values: `COMPLETE`.
@@ -224,6 +261,24 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
+
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
 
         /// <summary>
         /// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -264,5 +319,6 @@ namespace Pulumi.AliCloud.Hbr
         public OssBackupPlanState()
         {
         }
+        public static new OssBackupPlanState Empty => new OssBackupPlanState();
     }
 }

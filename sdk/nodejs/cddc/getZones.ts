@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -19,16 +20,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.cddc.getZones({});
- * export const cddcZonesId1 = example.then(example => example.zones?[0]?.id);
+ * export const cddcZonesId1 = example.then(example => example.zones?.[0]?.id);
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cddc/getZones:getZones", {
         "outputFile": args.outputFile,
     }, opts);
@@ -53,9 +51,25 @@ export interface GetZonesResult {
     readonly outputFile?: string;
     readonly zones: outputs.cddc.GetZonesZone[];
 }
-
+/**
+ * This data source provides the Cddc Zones of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.147.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.cddc.getZones({});
+ * export const cddcZonesId1 = example.then(example => example.zones?.[0]?.id);
+ * ```
+ */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(args).apply(a => getZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getZones(a, opts))
 }
 
 /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class NodePoolKubeletConfigurationGetArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolKubeletConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
@@ -123,5 +123,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public NodePoolKubeletConfigurationGetArgs()
         {
         }
+        public static new NodePoolKubeletConfigurationGetArgs Empty => new NodePoolKubeletConfigurationGetArgs();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,15 +23,12 @@ import * as utilities from "../utilities";
  *     serviceId: "example_value",
  *     status: "Connected",
  * });
- * export const firstPrivatelinkVpcEndpointConnectionId = example.then(example => example.connections?[0]?.id);
+ * export const firstPrivatelinkVpcEndpointConnectionId = example.then(example => example.connections?.[0]?.id);
  * ```
  */
 export function getVpcEndpointConnections(args: GetVpcEndpointConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointConnectionsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections", {
         "endpointId": args.endpointId,
         "endpointOwnerId": args.endpointOwnerId,
@@ -79,9 +77,28 @@ export interface GetVpcEndpointConnectionsResult {
     readonly serviceId: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Privatelink Vpc Endpoint Connections of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.110.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.privatelink.getVpcEndpointConnections({
+ *     serviceId: "example_value",
+ *     status: "Connected",
+ * });
+ * export const firstPrivatelinkVpcEndpointConnectionId = example.then(example => example.connections?.[0]?.id);
+ * ```
+ */
 export function getVpcEndpointConnectionsOutput(args: GetVpcEndpointConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointConnectionsResult> {
-    return pulumi.output(args).apply(a => getVpcEndpointConnections(a, opts))
+    return pulumi.output(args).apply((a: any) => getVpcEndpointConnections(a, opts))
 }
 
 /**

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Log
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/machineGroup:MachineGroup")]
-    public partial class MachineGroup : Pulumi.CustomResource
+    public partial class MachineGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The specific machine identification, which can be an IP address or user-defined identity.
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Log
         }
     }
 
-    public sealed class MachineGroupArgs : Pulumi.ResourceArgs
+    public sealed class MachineGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("identifyLists", required: true)]
         private InputList<string>? _identifyLists;
@@ -136,9 +136,10 @@ namespace Pulumi.AliCloud.Log
         public MachineGroupArgs()
         {
         }
+        public static new MachineGroupArgs Empty => new MachineGroupArgs();
     }
 
-    public sealed class MachineGroupState : Pulumi.ResourceArgs
+    public sealed class MachineGroupState : global::Pulumi.ResourceArgs
     {
         [Input("identifyLists")]
         private InputList<string>? _identifyLists;
@@ -179,5 +180,6 @@ namespace Pulumi.AliCloud.Log
         public MachineGroupState()
         {
         }
+        public static new MachineGroupState Empty => new MachineGroupState();
     }
 }

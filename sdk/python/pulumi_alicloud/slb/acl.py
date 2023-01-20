@@ -237,25 +237,7 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraformslbaclconfig"
-        ip_version = config.get("ipVersion")
-        if ip_version is None:
-            ip_version = "ipv4"
-        default = alicloud.slb.Acl("default",
-            ip_version=ip_version,
-            entry_lists=[
-                alicloud.slb.AclEntryListArgs(
-                    entry="10.10.10.0/24",
-                    comment="first",
-                ),
-                alicloud.slb.AclEntryListArgs(
-                    entry="168.10.10.0/24",
-                    comment="second",
-                ),
-            ])
+        acl = alicloud.slb.Acl("acl", ip_version="ipv4")
         ```
         ## Entry Block
 
@@ -317,25 +299,7 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraformslbaclconfig"
-        ip_version = config.get("ipVersion")
-        if ip_version is None:
-            ip_version = "ipv4"
-        default = alicloud.slb.Acl("default",
-            ip_version=ip_version,
-            entry_lists=[
-                alicloud.slb.AclEntryListArgs(
-                    entry="10.10.10.0/24",
-                    comment="first",
-                ),
-                alicloud.slb.AclEntryListArgs(
-                    entry="168.10.10.0/24",
-                    comment="second",
-                ),
-            ])
+        acl = alicloud.slb.Acl("acl", ip_version="ipv4")
         ```
         ## Entry Block
 

@@ -21,29 +21,27 @@ namespace Pulumi.AliCloud.Slb
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Slb.TlsCipherPolicy("example", new()
     ///     {
-    ///         var example = new AliCloud.Slb.TlsCipherPolicy("example", new AliCloud.Slb.TlsCipherPolicyArgs
+    ///         Ciphers = new[]
     ///         {
-    ///             Ciphers = 
-    ///             {
-    ///                 "AES256-SHA256",
-    ///                 "AES128-GCM-SHA256",
-    ///             },
-    ///             TlsCipherPolicyName = "Test-example_value",
-    ///             TlsVersions = 
-    ///             {
-    ///                 "TLSv1.2",
-    ///             },
-    ///         });
-    ///     }
+    ///             "AES256-SHA256",
+    ///             "AES128-GCM-SHA256",
+    ///         },
+    ///         TlsCipherPolicyName = "Test-example_value",
+    ///         TlsVersions = new[]
+    ///         {
+    ///             "TLSv1.2",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.AliCloud.Slb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/tlsCipherPolicy:TlsCipherPolicy")]
-    public partial class TlsCipherPolicy : Pulumi.CustomResource
+    public partial class TlsCipherPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The encryption algorithms supported. It depends on the value of `tls_versions`.
@@ -125,7 +123,7 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
-    public sealed class TlsCipherPolicyArgs : Pulumi.ResourceArgs
+    public sealed class TlsCipherPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("ciphers", required: true)]
         private InputList<string>? _ciphers;
@@ -160,9 +158,10 @@ namespace Pulumi.AliCloud.Slb
         public TlsCipherPolicyArgs()
         {
         }
+        public static new TlsCipherPolicyArgs Empty => new TlsCipherPolicyArgs();
     }
 
-    public sealed class TlsCipherPolicyState : Pulumi.ResourceArgs
+    public sealed class TlsCipherPolicyState : global::Pulumi.ResourceArgs
     {
         [Input("ciphers")]
         private InputList<string>? _ciphers;
@@ -203,5 +202,6 @@ namespace Pulumi.AliCloud.Slb
         public TlsCipherPolicyState()
         {
         }
+        public static new TlsCipherPolicyState Empty => new TlsCipherPolicyState();
     }
 }

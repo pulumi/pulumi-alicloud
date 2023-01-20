@@ -19,22 +19,20 @@ namespace Pulumi.AliCloud.BastionHost
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.BastionHost.UserAttachment("example", new()
     ///     {
-    ///         var example = new AliCloud.BastionHost.UserAttachment("example", new AliCloud.BastionHost.UserAttachmentArgs
-    ///         {
-    ///             InstanceId = "bastionhost-cn-tl3xxxxxxx",
-    ///             UserGroupId = "10",
-    ///             UserId = "100",
-    ///         });
-    ///     }
+    ///         InstanceId = "bastionhost-cn-tl3xxxxxxx",
+    ///         UserGroupId = "10",
+    ///         UserId = "100",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:bastionhost/userAttachment:UserAttachment")]
-    public partial class UserAttachment : Pulumi.CustomResource
+    public partial class UserAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies the user group to add the user's bastion host ID of.
@@ -110,7 +108,7 @@ namespace Pulumi.AliCloud.BastionHost
         }
     }
 
-    public sealed class UserAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class UserAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the user group to add the user's bastion host ID of.
@@ -133,9 +131,10 @@ namespace Pulumi.AliCloud.BastionHost
         public UserAttachmentArgs()
         {
         }
+        public static new UserAttachmentArgs Empty => new UserAttachmentArgs();
     }
 
-    public sealed class UserAttachmentState : Pulumi.ResourceArgs
+    public sealed class UserAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the user group to add the user's bastion host ID of.
@@ -158,5 +157,6 @@ namespace Pulumi.AliCloud.BastionHost
         public UserAttachmentState()
         {
         }
+        public static new UserAttachmentState Empty => new UserAttachmentState();
     }
 }

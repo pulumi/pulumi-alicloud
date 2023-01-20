@@ -48,22 +48,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The engine specification of MSE Cluster. Valid values:
-     * `MSE_SC_1_2_200_c`：1C2G
-     * `MSE_SC_2_4_200_c`：2C4G
-     * `MSE_SC_4_8_200_c`：4C8G
-     * `MSE_SC_8_16_200_c`：8C16G
+     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
      * 
      */
     @Import(name="clusterSpecification", required=true)
     private Output<String> clusterSpecification;
 
     /**
-     * @return The engine specification of MSE Cluster. Valid values:
-     * `MSE_SC_1_2_200_c`：1C2G
-     * `MSE_SC_2_4_200_c`：2C4G
-     * `MSE_SC_4_8_200_c`：4C8G
-     * `MSE_SC_8_16_200_c`：8C16G
+     * @return The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
      * 
      */
     public Output<String> clusterSpecification() {
@@ -86,18 +78,33 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The version of MSE Cluster.
+     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
      * 
      */
     @Import(name="clusterVersion", required=true)
     private Output<String> clusterVersion;
 
     /**
-     * @return The version of MSE Cluster.
+     * @return The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
      * 
      */
     public Output<String> clusterVersion() {
         return this.clusterVersion;
+    }
+
+    /**
+     * The connection type. Valid values: `slb`.
+     * 
+     */
+    @Import(name="connectionType")
+    private @Nullable Output<String> connectionType;
+
+    /**
+     * @return The connection type. Valid values: `slb`.
+     * 
+     */
+    public Optional<Output<String>> connectionType() {
+        return Optional.ofNullable(this.connectionType);
     }
 
     /**
@@ -116,14 +123,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The count of instance.
+     * The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
      * 
      */
     @Import(name="instanceCount", required=true)
     private Output<Integer> instanceCount;
 
     /**
-     * @return The count of instance.
+     * @return The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
      * 
      */
     public Output<Integer> instanceCount() {
@@ -131,14 +138,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+     * The version of MSE. Valid values: `mse_dev` or `mse_pro`.
      * 
      */
     @Import(name="mseVersion")
     private @Nullable Output<String> mseVersion;
 
     /**
-     * @return The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+     * @return The version of MSE. Valid values: `mse_dev` or `mse_pro`.
      * 
      */
     public Optional<Output<String>> mseVersion() {
@@ -206,6 +213,36 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The extended request parameters in the JSON format.
+     * 
+     */
+    @Import(name="requestPars")
+    private @Nullable Output<String> requestPars;
+
+    /**
+     * @return The extended request parameters in the JSON format.
+     * 
+     */
+    public Optional<Output<String>> requestPars() {
+        return Optional.ofNullable(this.requestPars);
+    }
+
+    /**
+     * The id of the VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The id of the VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
      * The id of VSwitch.
      * 
      */
@@ -228,6 +265,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.clusterSpecification = $.clusterSpecification;
         this.clusterType = $.clusterType;
         this.clusterVersion = $.clusterVersion;
+        this.connectionType = $.connectionType;
         this.diskType = $.diskType;
         this.instanceCount = $.instanceCount;
         this.mseVersion = $.mseVersion;
@@ -235,6 +273,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.privateSlbSpecification = $.privateSlbSpecification;
         this.pubNetworkFlow = $.pubNetworkFlow;
         this.pubSlbSpecification = $.pubSlbSpecification;
+        this.requestPars = $.requestPars;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
     }
 
@@ -309,11 +349,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterSpecification The engine specification of MSE Cluster. Valid values:
-         * `MSE_SC_1_2_200_c`：1C2G
-         * `MSE_SC_2_4_200_c`：2C4G
-         * `MSE_SC_4_8_200_c`：4C8G
-         * `MSE_SC_8_16_200_c`：8C16G
+         * @param clusterSpecification The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
          * 
          * @return builder
          * 
@@ -324,11 +360,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterSpecification The engine specification of MSE Cluster. Valid values:
-         * `MSE_SC_1_2_200_c`：1C2G
-         * `MSE_SC_2_4_200_c`：2C4G
-         * `MSE_SC_4_8_200_c`：4C8G
-         * `MSE_SC_8_16_200_c`：8C16G
+         * @param clusterSpecification The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
          * 
          * @return builder
          * 
@@ -359,7 +391,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterVersion The version of MSE Cluster.
+         * @param clusterVersion The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
          * 
          * @return builder
          * 
@@ -370,13 +402,34 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterVersion The version of MSE Cluster.
+         * @param clusterVersion The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
          * 
          * @return builder
          * 
          */
         public Builder clusterVersion(String clusterVersion) {
             return clusterVersion(Output.of(clusterVersion));
+        }
+
+        /**
+         * @param connectionType The connection type. Valid values: `slb`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionType(@Nullable Output<String> connectionType) {
+            $.connectionType = connectionType;
+            return this;
+        }
+
+        /**
+         * @param connectionType The connection type. Valid values: `slb`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionType(String connectionType) {
+            return connectionType(Output.of(connectionType));
         }
 
         /**
@@ -401,7 +454,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceCount The count of instance.
+         * @param instanceCount The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
          * 
          * @return builder
          * 
@@ -412,7 +465,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceCount The count of instance.
+         * @param instanceCount The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
          * 
          * @return builder
          * 
@@ -422,7 +475,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mseVersion The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+         * @param mseVersion The version of MSE. Valid values: `mse_dev` or `mse_pro`.
          * 
          * @return builder
          * 
@@ -433,7 +486,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mseVersion The version of MSE. Valid values: `mse_basic` or `mse_pro`.
+         * @param mseVersion The version of MSE. Valid values: `mse_dev` or `mse_pro`.
          * 
          * @return builder
          * 
@@ -524,6 +577,48 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pubSlbSpecification(String pubSlbSpecification) {
             return pubSlbSpecification(Output.of(pubSlbSpecification));
+        }
+
+        /**
+         * @param requestPars The extended request parameters in the JSON format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestPars(@Nullable Output<String> requestPars) {
+            $.requestPars = requestPars;
+            return this;
+        }
+
+        /**
+         * @param requestPars The extended request parameters in the JSON format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestPars(String requestPars) {
+            return requestPars(Output.of(requestPars));
+        }
+
+        /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The id of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         /**

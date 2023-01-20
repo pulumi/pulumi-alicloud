@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Alb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/rule:Rule")]
-    public partial class Rule : Pulumi.CustomResource
+    public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies whether to precheck this request.
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Alb
         }
     }
 
-    public sealed class RuleArgs : Pulumi.ResourceArgs
+    public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to precheck this request.
@@ -168,9 +168,10 @@ namespace Pulumi.AliCloud.Alb
         public RuleArgs()
         {
         }
+        public static new RuleArgs Empty => new RuleArgs();
     }
 
-    public sealed class RuleState : Pulumi.ResourceArgs
+    public sealed class RuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to precheck this request.
@@ -229,5 +230,6 @@ namespace Pulumi.AliCloud.Alb
         public RuleState()
         {
         }
+        public static new RuleState Empty => new RuleState();
     }
 }

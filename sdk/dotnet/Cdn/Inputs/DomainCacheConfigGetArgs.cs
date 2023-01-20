@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn.Inputs
 {
 
-    public sealed class DomainCacheConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class DomainCacheConfigGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cacheContent", required: true)]
         public Input<string> CacheContent { get; set; } = null!;
@@ -30,5 +30,6 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         public DomainCacheConfigGetArgs()
         {
         }
+        public static new DomainCacheConfigGetArgs Empty => new DomainCacheConfigGetArgs();
     }
 }

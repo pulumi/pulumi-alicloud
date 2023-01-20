@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ess;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ess.EciScalingConfigurationArgs;
 import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationState;
+import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationAcrRegistryInfo;
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationContainer;
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationHostAlias;
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationImageRegistryCredential;
@@ -121,6 +122,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ess/eciScalingConfiguration:EciScalingConfiguration")
 public class EciScalingConfiguration extends com.pulumi.resources.CustomResource {
     /**
+     * Information about the Container Registry Enterprise Edition instance. The details see
+     * Block `acr_registry_info`.See Block acr_registry_info below for
+     * details.
+     * 
+     */
+    @Export(name="acrRegistryInfos", type=List.class, parameters={EciScalingConfigurationAcrRegistryInfo.class})
+    private Output</* @Nullable */ List<EciScalingConfigurationAcrRegistryInfo>> acrRegistryInfos;
+
+    /**
+     * @return Information about the Container Registry Enterprise Edition instance. The details see
+     * Block `acr_registry_info`.See Block acr_registry_info below for
+     * details.
+     * 
+     */
+    public Output<Optional<List<EciScalingConfigurationAcrRegistryInfo>>> acrRegistryInfos() {
+        return Codegen.optional(this.acrRegistryInfos);
+    }
+    /**
      * Whether active current eci scaling configuration in the specified scaling group. Note that only
      * one configuration can be active. Default to `false`.
      * 
@@ -179,14 +198,14 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.containers);
     }
     /**
-     * The amount of CPU resources allocated to the container.
+     * The amount of CPU resources allocated to the container group.
      * 
      */
     @Export(name="cpu", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> cpu;
 
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     public Output<Optional<Double>> cpu() {
@@ -357,14 +376,14 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.initContainers);
     }
     /**
-     * The amount of memory resources allocated to the container.
+     * The amount of memory resources allocated to the container group.
      * 
      */
     @Export(name="memory", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> memory;
 
     /**
-     * @return The amount of memory resources allocated to the container.
+     * @return The amount of memory resources allocated to the container group.
      * 
      */
     public Output<Optional<Double>> memory() {

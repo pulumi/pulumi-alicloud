@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ServiceMesh.Inputs
 {
 
-    public sealed class ServiceMeshLoadBalancerArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMeshLoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiServerLoadbalancerId")]
         public Input<string>? ApiServerLoadbalancerId { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public ServiceMeshLoadBalancerArgs()
         {
         }
+        public static new ServiceMeshLoadBalancerArgs Empty => new ServiceMeshLoadBalancerArgs();
     }
 }

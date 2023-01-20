@@ -20,65 +20,64 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// Output the secret to a file.
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new RAM access key for user.
+    ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
-    ///         // Create a new RAM access key for user.
-    ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
-    ///         {
-    ///             DisplayName = "user_display_name",
-    ///             Mobile = "86-18688888888",
-    ///             Email = "hello.uuu@aaa.com",
-    ///             Comments = "yoyoyo",
-    ///             Force = true,
-    ///         });
-    ///         var ak = new AliCloud.Ram.AccessKey("ak", new AliCloud.Ram.AccessKeyArgs
-    ///         {
-    ///             UserName = user.Name,
-    ///             SecretFile = "/xxx/xxx/xxx.txt",
-    ///         });
-    ///     }
+    ///         DisplayName = "user_display_name",
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
+    ///         Force = true,
+    ///     });
     /// 
-    /// }
+    ///     var ak = new AliCloud.Ram.AccessKey("ak", new()
+    ///     {
+    ///         UserName = user.Name,
+    ///         SecretFile = "/xxx/xxx/xxx.txt",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// Using `pgp_key` to encrypt the secret.
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new RAM access key for user.
+    ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
-    ///         // Create a new RAM access key for user.
-    ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
-    ///         {
-    ///             DisplayName = "user_display_name",
-    ///             Mobile = "86-18688888888",
-    ///             Email = "hello.uuu@aaa.com",
-    ///             Comments = "yoyoyo",
-    ///             Force = true,
-    ///         });
-    ///         var encrypt = new AliCloud.Ram.AccessKey("encrypt", new AliCloud.Ram.AccessKeyArgs
-    ///         {
-    ///             UserName = user.Name,
-    ///             PgpKey = "keybase:some_person_that_exists",
-    ///         });
-    ///         this.Secret = encrypt.EncryptedSecret;
-    ///     }
+    ///         DisplayName = "user_display_name",
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
+    ///         Force = true,
+    ///     });
     /// 
-    ///     [Output("secret")]
-    ///     public Output&lt;string&gt; Secret { get; set; }
-    /// }
+    ///     var encrypt = new AliCloud.Ram.AccessKey("encrypt", new()
+    ///     {
+    ///         UserName = user.Name,
+    ///         PgpKey = "keybase:some_person_that_exists",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["secret"] = encrypt.EncryptedSecret,
+    ///     };
+    /// });
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/accessKey:AccessKey")]
-    public partial class AccessKey : Pulumi.CustomResource
+    public partial class AccessKey : global::Pulumi.CustomResource
     {
         [Output("encryptedSecret")]
         public Output<string> EncryptedSecret { get; private set; } = null!;
@@ -95,6 +94,12 @@ namespace Pulumi.AliCloud.Ram
         [Output("pgpKey")]
         public Output<string?> PgpKey { get; private set; } = null!;
 
+        /// <summary>
+        /// (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        /// If you use this, please protect your backend state file judiciously.
+        /// Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+        /// at the cost of preventing the use of the secret key in automation.
+        /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
 
@@ -139,6 +144,10 @@ namespace Pulumi.AliCloud.Ram
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -160,7 +169,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class AccessKeyArgs : Pulumi.ResourceArgs
+    public sealed class AccessKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
@@ -189,9 +198,10 @@ namespace Pulumi.AliCloud.Ram
         public AccessKeyArgs()
         {
         }
+        public static new AccessKeyArgs Empty => new AccessKeyArgs();
     }
 
-    public sealed class AccessKeyState : Pulumi.ResourceArgs
+    public sealed class AccessKeyState : global::Pulumi.ResourceArgs
     {
         [Input("encryptedSecret")]
         public Input<string>? EncryptedSecret { get; set; }
@@ -209,7 +219,23 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? PgpKey { get; set; }
 
         [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        private Input<string>? _secret;
+
+        /// <summary>
+        /// (Available in 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        /// If you use this, please protect your backend state file judiciously.
+        /// Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
+        /// at the cost of preventing the use of the secret key in automation.
+        /// </summary>
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
@@ -232,5 +258,6 @@ namespace Pulumi.AliCloud.Ram
         public AccessKeyState()
         {
         }
+        public static new AccessKeyState Empty => new AccessKeyState();
     }
 }

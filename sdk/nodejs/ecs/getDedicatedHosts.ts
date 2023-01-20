@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,23 +17,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const dedicatedHostsDs = pulumi.output(alicloud.ecs.getDedicatedHosts({
+ * const dedicatedHostsDs = alicloud.ecs.getDedicatedHosts({
  *     dedicatedHostType: "ddh.g5",
  *     nameRegex: "tf-testAcc",
  *     status: "Available",
- * }));
- *
- * export const firstDedicatedHostsId = dedicatedHostsDs.hosts[0].id;
+ * });
+ * export const firstDedicatedHostsId = dedicatedHostsDs.then(dedicatedHostsDs => dedicatedHostsDs.hosts?.[0]?.id);
  * ```
  */
 export function getDedicatedHosts(args?: GetDedicatedHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedHostsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", {
         "dedicatedHostId": args.dedicatedHostId,
         "dedicatedHostName": args.dedicatedHostName,
@@ -147,9 +143,27 @@ export interface GetDedicatedHostsResult {
     readonly tags?: {[key: string]: any};
     readonly zoneId?: string;
 }
-
+/**
+ * This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in v1.91.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const dedicatedHostsDs = alicloud.ecs.getDedicatedHosts({
+ *     dedicatedHostType: "ddh.g5",
+ *     nameRegex: "tf-testAcc",
+ *     status: "Available",
+ * });
+ * export const firstDedicatedHostsId = dedicatedHostsDs.then(dedicatedHostsDs => dedicatedHostsDs.hosts?.[0]?.id);
+ * ```
+ */
 export function getDedicatedHostsOutput(args?: GetDedicatedHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostsResult> {
-    return pulumi.output(args).apply(a => getDedicatedHosts(a, opts))
+    return pulumi.output(args).apply((a: any) => getDedicatedHosts(a, opts))
 }
 
 /**

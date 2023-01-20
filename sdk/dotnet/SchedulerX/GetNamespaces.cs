@@ -23,33 +23,31 @@ namespace Pulumi.AliCloud.SchedulerX
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.SchedulerX.GetNamespaces.InvokeAsync());
-        ///         this.SchedulerxNamespaceId1 = ids.Apply(ids =&gt; ids.Namespaces?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.SchedulerX.GetNamespaces.InvokeAsync(new AliCloud.SchedulerX.GetNamespacesArgs
-        ///         {
-        ///             NameRegex = "^my-Namespace",
-        ///         }));
-        ///         this.SchedulerxNamespaceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Namespaces?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.SchedulerX.GetNamespaces.Invoke();
         /// 
-        ///     [Output("schedulerxNamespaceId1")]
-        ///     public Output&lt;string&gt; SchedulerxNamespaceId1 { get; set; }
-        ///     [Output("schedulerxNamespaceId2")]
-        ///     public Output&lt;string&gt; SchedulerxNamespaceId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.SchedulerX.GetNamespaces.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Namespace",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["schedulerxNamespaceId1"] = ids.Apply(getNamespacesResult =&gt; getNamespacesResult.Namespaces[0]?.Id),
+        ///         ["schedulerxNamespaceId2"] = nameRegex.Apply(getNamespacesResult =&gt; getNamespacesResult.Namespaces[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNamespacesResult> InvokeAsync(GetNamespacesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:schedulerx/getNamespaces:getNamespaces", args ?? new GetNamespacesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:schedulerx/getNamespaces:getNamespaces", args ?? new GetNamespacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Schedulerx Namespaces of the current Alibaba Cloud user.
@@ -63,37 +61,35 @@ namespace Pulumi.AliCloud.SchedulerX
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.SchedulerX.GetNamespaces.InvokeAsync());
-        ///         this.SchedulerxNamespaceId1 = ids.Apply(ids =&gt; ids.Namespaces?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.SchedulerX.GetNamespaces.InvokeAsync(new AliCloud.SchedulerX.GetNamespacesArgs
-        ///         {
-        ///             NameRegex = "^my-Namespace",
-        ///         }));
-        ///         this.SchedulerxNamespaceId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Namespaces?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.SchedulerX.GetNamespaces.Invoke();
         /// 
-        ///     [Output("schedulerxNamespaceId1")]
-        ///     public Output&lt;string&gt; SchedulerxNamespaceId1 { get; set; }
-        ///     [Output("schedulerxNamespaceId2")]
-        ///     public Output&lt;string&gt; SchedulerxNamespaceId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.SchedulerX.GetNamespaces.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Namespace",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["schedulerxNamespaceId1"] = ids.Apply(getNamespacesResult =&gt; getNamespacesResult.Namespaces[0]?.Id),
+        ///         ["schedulerxNamespaceId2"] = nameRegex.Apply(getNamespacesResult =&gt; getNamespacesResult.Namespaces[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNamespacesResult> Invoke(GetNamespacesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:schedulerx/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:schedulerx/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNamespacesArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespacesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -119,9 +115,10 @@ namespace Pulumi.AliCloud.SchedulerX
         public GetNamespacesArgs()
         {
         }
+        public static new GetNamespacesArgs Empty => new GetNamespacesArgs();
     }
 
-    public sealed class GetNamespacesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespacesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -147,6 +144,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public GetNamespacesInvokeArgs()
         {
         }
+        public static new GetNamespacesInvokeArgs Empty => new GetNamespacesInvokeArgs();
     }
 
 

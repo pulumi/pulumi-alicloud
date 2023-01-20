@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpn.Inputs
 {
 
-    public sealed class GatewayVpnAttachmentBgpConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class GatewayVpnAttachmentBgpConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable BGP.
+        /// Specifies whether to enable health checks.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         public GatewayVpnAttachmentBgpConfigGetArgs()
         {
         }
+        public static new GatewayVpnAttachmentBgpConfigGetArgs Empty => new GatewayVpnAttachmentBgpConfigGetArgs();
     }
 }

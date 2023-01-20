@@ -21,52 +21,49 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// using Random = Pulumi.Random;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var thisRandomUuid = new Random.RandomUuid("thisRandomUuid", new Random.RandomUuidArgs
-    ///         {
-    ///         });
-    ///         var thisGroupMetricRule = new AliCloud.Cms.GroupMetricRule("thisGroupMetricRule", new AliCloud.Cms.GroupMetricRuleArgs
-    ///         {
-    ///             GroupId = "539****",
-    ///             RuleId = thisRandomUuid.Id,
-    ///             Category = "ecs",
-    ///             Namespace = "acs_ecs_dashboard",
-    ///             MetricName = "cpu_total",
-    ///             Period = 60,
-    ///             GroupMetricRuleName = "tf-testacc-rule-name",
-    ///             EmailSubject = "tf-testacc-rule-name-warning",
-    ///             Interval = "3600",
-    ///             SilenceTime = 85800,
-    ///             NoEffectiveInterval = "00:00-05:30",
-    ///             Webhook = "http://www.aliyun.com",
-    ///             Escalations = new AliCloud.Cms.Inputs.GroupMetricRuleEscalationsArgs
-    ///             {
-    ///                 Warn = new AliCloud.Cms.Inputs.GroupMetricRuleEscalationsWarnArgs
-    ///                 {
-    ///                     ComparisonOperator = "GreaterThanOrEqualToThreshold",
-    ///                     Statistics = "Average",
-    ///                     Threshold = "90",
-    ///                     Times = 3,
-    ///                 },
-    ///                 Info = new AliCloud.Cms.Inputs.GroupMetricRuleEscalationsInfoArgs
-    ///                 {
-    ///                     ComparisonOperator = "LessThanLastWeek",
-    ///                     Statistics = "Average",
-    ///                     Threshold = "90",
-    ///                     Times = 5,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var thisRandomUuid = new Random.RandomUuid("thisRandomUuid");
     /// 
-    /// }
+    ///     var thisGroupMetricRule = new AliCloud.Cms.GroupMetricRule("thisGroupMetricRule", new()
+    ///     {
+    ///         GroupId = "539****",
+    ///         RuleId = thisRandomUuid.Id,
+    ///         Category = "ecs",
+    ///         Namespace = "acs_ecs_dashboard",
+    ///         MetricName = "cpu_total",
+    ///         Period = 60,
+    ///         GroupMetricRuleName = "tf-testacc-rule-name",
+    ///         EmailSubject = "tf-testacc-rule-name-warning",
+    ///         Interval = "3600",
+    ///         SilenceTime = 85800,
+    ///         NoEffectiveInterval = "00:00-05:30",
+    ///         Webhook = "http://www.aliyun.com",
+    ///         Escalations = new AliCloud.Cms.Inputs.GroupMetricRuleEscalationsArgs
+    ///         {
+    ///             Warn = new AliCloud.Cms.Inputs.GroupMetricRuleEscalationsWarnArgs
+    ///             {
+    ///                 ComparisonOperator = "GreaterThanOrEqualToThreshold",
+    ///                 Statistics = "Average",
+    ///                 Threshold = "90",
+    ///                 Times = 3,
+    ///             },
+    ///             Info = new AliCloud.Cms.Inputs.GroupMetricRuleEscalationsInfoArgs
+    ///             {
+    ///                 ComparisonOperator = "LessThanLastWeek",
+    ///                 Statistics = "Average",
+    ///                 Threshold = "90",
+    ///                 Times = 5,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -78,7 +75,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/groupMetricRule:GroupMetricRule")]
-    public partial class GroupMetricRule : Pulumi.CustomResource
+    public partial class GroupMetricRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The abbreviation of the service name.
@@ -111,7 +108,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> EmailSubject { get; private set; } = null!;
 
         /// <summary>
-        /// Alarm level. See the block for escalations.
+        /// Alarm level. See the following `Block escalations`.
         /// </summary>
         [Output("escalations")]
         public Output<Outputs.GroupMetricRuleEscalations> Escalations { get; private set; } = null!;
@@ -156,7 +153,7 @@ namespace Pulumi.AliCloud.Cms
         /// The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
         /// </summary>
         [Output("period")]
-        public Output<int?> Period { get; private set; } = null!;
+        public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the alert rule.
@@ -175,6 +172,12 @@ namespace Pulumi.AliCloud.Cms
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The information about the resource for which alerts are triggered. See the following `Block targets`.
+        /// </summary>
+        [Output("targets")]
+        public Output<ImmutableArray<Outputs.GroupMetricRuleTarget>> Targets { get; private set; } = null!;
 
         /// <summary>
         /// The callback URL.
@@ -226,7 +229,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class GroupMetricRuleArgs : Pulumi.ResourceArgs
+    public sealed class GroupMetricRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The abbreviation of the service name.
@@ -259,7 +262,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? EmailSubject { get; set; }
 
         /// <summary>
-        /// Alarm level. See the block for escalations.
+        /// Alarm level. See the following `Block escalations`.
         /// </summary>
         [Input("escalations", required: true)]
         public Input<Inputs.GroupMetricRuleEscalationsArgs> Escalations { get; set; } = null!;
@@ -318,6 +321,18 @@ namespace Pulumi.AliCloud.Cms
         [Input("silenceTime")]
         public Input<int>? SilenceTime { get; set; }
 
+        [Input("targets")]
+        private InputList<Inputs.GroupMetricRuleTargetArgs>? _targets;
+
+        /// <summary>
+        /// The information about the resource for which alerts are triggered. See the following `Block targets`.
+        /// </summary>
+        public InputList<Inputs.GroupMetricRuleTargetArgs> Targets
+        {
+            get => _targets ?? (_targets = new InputList<Inputs.GroupMetricRuleTargetArgs>());
+            set => _targets = value;
+        }
+
         /// <summary>
         /// The callback URL.
         /// </summary>
@@ -327,9 +342,10 @@ namespace Pulumi.AliCloud.Cms
         public GroupMetricRuleArgs()
         {
         }
+        public static new GroupMetricRuleArgs Empty => new GroupMetricRuleArgs();
     }
 
-    public sealed class GroupMetricRuleState : Pulumi.ResourceArgs
+    public sealed class GroupMetricRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The abbreviation of the service name.
@@ -362,7 +378,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? EmailSubject { get; set; }
 
         /// <summary>
-        /// Alarm level. See the block for escalations.
+        /// Alarm level. See the following `Block escalations`.
         /// </summary>
         [Input("escalations")]
         public Input<Inputs.GroupMetricRuleEscalationsGetArgs>? Escalations { get; set; }
@@ -427,6 +443,18 @@ namespace Pulumi.AliCloud.Cms
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("targets")]
+        private InputList<Inputs.GroupMetricRuleTargetGetArgs>? _targets;
+
+        /// <summary>
+        /// The information about the resource for which alerts are triggered. See the following `Block targets`.
+        /// </summary>
+        public InputList<Inputs.GroupMetricRuleTargetGetArgs> Targets
+        {
+            get => _targets ?? (_targets = new InputList<Inputs.GroupMetricRuleTargetGetArgs>());
+            set => _targets = value;
+        }
+
         /// <summary>
         /// The callback URL.
         /// </summary>
@@ -436,5 +464,6 @@ namespace Pulumi.AliCloud.Cms
         public GroupMetricRuleState()
         {
         }
+        public static new GroupMetricRuleState Empty => new GroupMetricRuleState();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Alb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alb/listener:Listener")]
-    public partial class Listener : Pulumi.CustomResource
+    public partial class Listener : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Alb
         }
     }
 
-    public sealed class ListenerArgs : Pulumi.ResourceArgs
+    public sealed class ListenerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
@@ -298,9 +298,10 @@ namespace Pulumi.AliCloud.Alb
         public ListenerArgs()
         {
         }
+        public static new ListenerArgs Empty => new ListenerArgs();
     }
 
-    public sealed class ListenerState : Pulumi.ResourceArgs
+    public sealed class ListenerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
@@ -419,5 +420,6 @@ namespace Pulumi.AliCloud.Alb
         public ListenerState()
         {
         }
+        public static new ListenerState Empty => new ListenerState();
     }
 }

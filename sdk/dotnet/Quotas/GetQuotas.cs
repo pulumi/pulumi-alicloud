@@ -23,30 +23,29 @@ namespace Pulumi.AliCloud.Quotas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Quotas.GetQuotas.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Quotas.GetQuotas.InvokeAsync(new AliCloud.Quotas.GetQuotasArgs
-        ///         {
-        ///             ProductCode = "ecs",
-        ///             NameRegex = "专有宿主机总数量上限",
-        ///         }));
-        ///         this.FirstQuotasQuotaId = example.Apply(example =&gt; example.Quotas?[0]?.Id);
-        ///     }
+        ///         ProductCode = "ecs",
+        ///         NameRegex = "专有宿主机总数量上限",
+        ///     });
         /// 
-        ///     [Output("firstQuotasQuotaId")]
-        ///     public Output&lt;string&gt; FirstQuotasQuotaId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstQuotasQuotaId"] = example.Apply(getQuotasResult =&gt; getQuotasResult.Quotas[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQuotasResult> InvokeAsync(GetQuotasArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Quotas Quotas of the current Alibaba Cloud user.
@@ -60,34 +59,33 @@ namespace Pulumi.AliCloud.Quotas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Quotas.GetQuotas.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Quotas.GetQuotas.InvokeAsync(new AliCloud.Quotas.GetQuotasArgs
-        ///         {
-        ///             ProductCode = "ecs",
-        ///             NameRegex = "专有宿主机总数量上限",
-        ///         }));
-        ///         this.FirstQuotasQuotaId = example.Apply(example =&gt; example.Quotas?[0]?.Id);
-        ///     }
+        ///         ProductCode = "ecs",
+        ///         NameRegex = "专有宿主机总数量上限",
+        ///     });
         /// 
-        ///     [Output("firstQuotasQuotaId")]
-        ///     public Output&lt;string&gt; FirstQuotasQuotaId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstQuotasQuotaId"] = example.Apply(getQuotasResult =&gt; getQuotasResult.Quotas[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQuotasResult> Invoke(GetQuotasInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetQuotasResult>("alicloud:quotas/getQuotas:getQuotas", args ?? new GetQuotasInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetQuotasArgs : Pulumi.InvokeArgs
+    public sealed class GetQuotasArgs : global::Pulumi.InvokeArgs
     {
         [Input("dimensions")]
         private List<Inputs.GetQuotasDimensionArgs>? _dimensions;
@@ -155,9 +153,10 @@ namespace Pulumi.AliCloud.Quotas
         public GetQuotasArgs()
         {
         }
+        public static new GetQuotasArgs Empty => new GetQuotasArgs();
     }
 
-    public sealed class GetQuotasInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetQuotasInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("dimensions")]
         private InputList<Inputs.GetQuotasDimensionInputArgs>? _dimensions;
@@ -225,6 +224,7 @@ namespace Pulumi.AliCloud.Quotas
         public GetQuotasInvokeArgs()
         {
         }
+        public static new GetQuotasInvokeArgs Empty => new GetQuotasInvokeArgs();
     }
 
 

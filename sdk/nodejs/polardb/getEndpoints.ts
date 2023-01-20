@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,17 +23,14 @@ import * as utilities from "../utilities";
  *     status: "Running",
  * });
  * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getEndpoints({
- *     dbClusterId: polardbClustersDs.clusters?[0]?.id,
+ *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
  * }));
- * export const endpoint = _default.then(_default => _default.endpoints?[0]?.dbEndpointId);
+ * export const endpoint = _default.then(_default => _default.endpoints?.[0]?.dbEndpointId);
  * ```
  */
 export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:polardb/getEndpoints:getEndpoints", {
         "dbClusterId": args.dbClusterId,
         "dbEndpointId": args.dbEndpointId,
@@ -71,9 +69,30 @@ export interface GetEndpointsResult {
      */
     readonly id: string;
 }
-
+/**
+ * The `alicloud.polardb.getEndpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
+ * Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
+ *
+ * > **NOTE:** Available in v1.68.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const polardbClustersDs = alicloud.polardb.getClusters({
+ *     descriptionRegex: "pc-\\w+",
+ *     status: "Running",
+ * });
+ * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getEndpoints({
+ *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
+ * }));
+ * export const endpoint = _default.then(_default => _default.endpoints?.[0]?.dbEndpointId);
+ * ```
+ */
 export function getEndpointsOutput(args: GetEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointsResult> {
-    return pulumi.output(args).apply(a => getEndpoints(a, opts))
+    return pulumi.output(args).apply((a: any) => getEndpoints(a, opts))
 }
 
 /**

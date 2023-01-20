@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ecs.GetEcsNetworkInterfacePermissions.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsNetworkInterfacePermissions.InvokeAsync(new AliCloud.Ecs.GetEcsNetworkInterfacePermissionsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NetworkInterfaceId = "example_value",
-        ///         }));
-        ///         this.EcsNetworkInterfacePermissionId1 = ids.Apply(ids =&gt; ids.Permissions?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NetworkInterfaceId = "example_value",
+        ///     });
         /// 
-        ///     [Output("ecsNetworkInterfacePermissionId1")]
-        ///     public Output&lt;string&gt; EcsNetworkInterfacePermissionId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsNetworkInterfacePermissionId1"] = ids.Apply(getEcsNetworkInterfacePermissionsResult =&gt; getEcsNetworkInterfacePermissionsResult.Permissions[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsNetworkInterfacePermissionsResult> InvokeAsync(GetEcsNetworkInterfacePermissionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsNetworkInterfacePermissionsResult>("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", args ?? new GetEcsNetworkInterfacePermissionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsNetworkInterfacePermissionsResult>("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", args ?? new GetEcsNetworkInterfacePermissionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ecs.GetEcsNetworkInterfacePermissions.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsNetworkInterfacePermissions.InvokeAsync(new AliCloud.Ecs.GetEcsNetworkInterfacePermissionsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_value",
-        ///             },
-        ///             NetworkInterfaceId = "example_value",
-        ///         }));
-        ///         this.EcsNetworkInterfacePermissionId1 = ids.Apply(ids =&gt; ids.Permissions?[0]?.Id);
-        ///     }
+        ///             "example_value",
+        ///         },
+        ///         NetworkInterfaceId = "example_value",
+        ///     });
         /// 
-        ///     [Output("ecsNetworkInterfacePermissionId1")]
-        ///     public Output&lt;string&gt; EcsNetworkInterfacePermissionId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsNetworkInterfacePermissionId1"] = ids.Apply(getEcsNetworkInterfacePermissionsResult =&gt; getEcsNetworkInterfacePermissionsResult.Permissions[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsNetworkInterfacePermissionsResult> Invoke(GetEcsNetworkInterfacePermissionsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsNetworkInterfacePermissionsResult>("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", args ?? new GetEcsNetworkInterfacePermissionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsNetworkInterfacePermissionsResult>("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", args ?? new GetEcsNetworkInterfacePermissionsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsNetworkInterfacePermissionsArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsNetworkInterfacePermissionsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -131,9 +129,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsNetworkInterfacePermissionsArgs()
         {
         }
+        public static new GetEcsNetworkInterfacePermissionsArgs Empty => new GetEcsNetworkInterfacePermissionsArgs();
     }
 
-    public sealed class GetEcsNetworkInterfacePermissionsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsNetworkInterfacePermissionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -171,6 +170,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsNetworkInterfacePermissionsInvokeArgs()
         {
         }
+        public static new GetEcsNetworkInterfacePermissionsInvokeArgs Empty => new GetEcsNetworkInterfacePermissionsInvokeArgs();
     }
 
 

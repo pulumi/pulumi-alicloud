@@ -167,14 +167,14 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
+     * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
      * 
      */
     @Export(name="paymentType", type=String.class, parameters={})
     private Output<String> paymentType;
 
     /**
-     * @return The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
+     * @return The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can&#39;t be deleted before expired time.
      * 
      */
     public Output<String> paymentType() {

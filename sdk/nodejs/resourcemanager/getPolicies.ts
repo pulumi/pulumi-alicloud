@@ -2,36 +2,19 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
  *
  * > **NOTE:**  Available in 1.86.0+.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = pulumi.output(alicloud.resourcemanager.getPolicies({
- *     descriptionRegex: "tftest_policy",
- *     nameRegex: "tftest",
- *     policyType: "Custom",
- * }));
- *
- * export const firstPolicyId = example.policies[0].id;
- * ```
  */
 export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getPolicies:getPolicies", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -81,11 +64,18 @@ export interface GetPoliciesResult {
      * A list of policies. Each element contains the following attributes:
      */
     readonly policies: outputs.resourcemanager.GetPoliciesPolicy[];
+    /**
+     * The type of the policy.
+     */
     readonly policyType?: string;
 }
-
+/**
+ * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
+ *
+ * > **NOTE:**  Available in 1.86.0+.
+ */
 export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
-    return pulumi.output(args).apply(a => getPolicies(a, opts))
+    return pulumi.output(args).apply((a: any) => getPolicies(a, opts))
 }
 
 /**

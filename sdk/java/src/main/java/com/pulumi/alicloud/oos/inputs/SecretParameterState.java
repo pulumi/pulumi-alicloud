@@ -19,10 +19,6 @@ public final class SecretParameterState extends com.pulumi.resources.ResourceArg
 
     /**
      * The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-     * * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-     * * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-     * * `MinLength`: The minimum length of the encryption parameter.
-     * * `MaxLength`: The maximum length of the encryption parameter.
      * 
      */
     @Import(name="constraints")
@@ -30,10 +26,6 @@ public final class SecretParameterState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-     * * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-     * * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-     * * `MinLength`: The minimum length of the encryption parameter.
-     * * `MaxLength`: The maximum length of the encryption parameter.
      * 
      */
     public Optional<Output<String>> constraints() {
@@ -178,10 +170,6 @@ public final class SecretParameterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param constraints The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-         * * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-         * * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-         * * `MinLength`: The minimum length of the encryption parameter.
-         * * `MaxLength`: The maximum length of the encryption parameter.
          * 
          * @return builder
          * 
@@ -193,10 +181,6 @@ public final class SecretParameterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param constraints The constraints of the encryption parameter. By default, this parameter is null. Valid values:
-         * * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
-         * * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
-         * * `MinLength`: The minimum length of the encryption parameter.
-         * * `MaxLength`: The maximum length of the encryption parameter.
          * 
          * @return builder
          * 

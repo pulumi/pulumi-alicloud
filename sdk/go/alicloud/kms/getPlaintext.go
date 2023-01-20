@@ -41,9 +41,9 @@ import (
 //			plaintext := kms.GetPlaintextOutput(ctx, kms.GetPlaintextOutputArgs{
 //				CiphertextBlob: encrypted.CiphertextBlob,
 //			}, nil)
-//			ctx.Export("decrypted", plaintext.ApplyT(func(plaintext kms.GetPlaintextResult) (string, error) {
-//				return plaintext.Plaintext, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("decrypted", plaintext.ApplyT(func(plaintext kms.GetPlaintextResult) (*string, error) {
+//				return &plaintext.Plaintext, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -62,7 +62,6 @@ func GetPlaintext(ctx *pulumi.Context, args *GetPlaintextArgs, opts ...pulumi.In
 type GetPlaintextArgs struct {
 	// The ciphertext to be decrypted.
 	CiphertextBlob string `pulumi:"ciphertextBlob"`
-	// -
 	// (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
 }
@@ -96,7 +95,6 @@ func GetPlaintextOutput(ctx *pulumi.Context, args GetPlaintextOutputArgs, opts .
 type GetPlaintextOutputArgs struct {
 	// The ciphertext to be decrypted.
 	CiphertextBlob pulumi.StringInput `pulumi:"ciphertextBlob"`
-	// -
 	// (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	EncryptionContext pulumi.StringMapInput `pulumi:"encryptionContext"`
 }

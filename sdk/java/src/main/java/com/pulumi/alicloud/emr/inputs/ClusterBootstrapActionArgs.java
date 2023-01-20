@@ -76,14 +76,14 @@ public final class ClusterBootstrapActionArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * bootstrap action name.
+     * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return bootstrap action name.
+     * @return The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -219,7 +219,7 @@ public final class ClusterBootstrapActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name bootstrap action name.
+         * @param name The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class ClusterBootstrapActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name bootstrap action name.
+         * @param name The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
          * 
          * @return builder
          * 

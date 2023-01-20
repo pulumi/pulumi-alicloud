@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,22 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const myRepos = pulumi.output(alicloud.cr.getRepos({
+ * const myRepos = alicloud.cr.getRepos({
  *     nameRegex: "my-repos",
  *     outputFile: "my-repo-json",
- * }));
- *
- * export const output = myRepos.repos;
+ * });
+ * export const output = myRepos.then(myRepos => myRepos.repos);
  * ```
  */
 export function getRepos(args?: GetReposArgs, opts?: pulumi.InvokeOptions): Promise<GetReposResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cr/getRepos:getRepos", {
         "enableDetails": args.enableDetails,
         "nameRegex": args.nameRegex,
@@ -87,9 +83,26 @@ export interface GetReposResult {
      */
     readonly repos: outputs.cr.GetReposRepo[];
 }
-
+/**
+ * This data source provides a list Container Registry repositories on Alibaba Cloud.
+ *
+ * > **NOTE:** Available in v1.35.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const myRepos = alicloud.cr.getRepos({
+ *     nameRegex: "my-repos",
+ *     outputFile: "my-repo-json",
+ * });
+ * export const output = myRepos.then(myRepos => myRepos.repos);
+ * ```
+ */
 export function getReposOutput(args?: GetReposOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReposResult> {
-    return pulumi.output(args).apply(a => getRepos(a, opts))
+    return pulumi.output(args).apply((a: any) => getRepos(a, opts))
 }
 
 /**

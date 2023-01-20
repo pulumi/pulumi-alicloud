@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,22 +15,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const instancesDs = pulumi.output(alicloud.ecs.getInstances({
+ * const instancesDs = alicloud.ecs.getInstances({
  *     nameRegex: "web_server",
  *     status: "Running",
- * }));
- *
- * export const firstInstanceId = instancesDs.instances[0].id;
- * export const instanceIds = instancesDs.ids!;
+ * });
+ * export const firstInstanceId = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.id);
+ * export const instanceIds = instancesDs.then(instancesDs => instancesDs.ids);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getInstances:getInstances", {
         "availabilityZone": args.availabilityZone,
         "ids": args.ids,
@@ -88,12 +85,12 @@ export interface GetInstancesArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const taggedInstances = pulumi.output(alicloud.ecs.getInstances({
+     * const taggedInstances = alicloud.ecs.getInstances({
      *     tags: {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }));
+     * });
      * ```
      */
     tags?: {[key: string]: any};
@@ -165,9 +162,25 @@ export interface GetInstancesResult {
      */
     readonly vswitchId?: string;
 }
-
+/**
+ * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const instancesDs = alicloud.ecs.getInstances({
+ *     nameRegex: "web_server",
+ *     status: "Running",
+ * });
+ * export const firstInstanceId = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.id);
+ * export const instanceIds = instancesDs.then(instancesDs => instancesDs.ids);
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**
@@ -211,12 +224,12 @@ export interface GetInstancesOutputArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
      *
-     * const taggedInstances = pulumi.output(alicloud.ecs.getInstances({
+     * const taggedInstances = alicloud.ecs.getInstances({
      *     tags: {
      *         tagKey1: "tagValue1",
      *         tagKey2: "tagValue2",
      *     },
-     * }));
+     * });
      * ```
      */
     tags?: pulumi.Input<{[key: string]: any}>;

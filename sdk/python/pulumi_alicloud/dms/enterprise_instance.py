@@ -1100,7 +1100,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             __props__.__dict__["data_link_name"] = data_link_name
             if database_password is None and not opts.urn:
                 raise TypeError("Missing required property 'database_password'")
-            __props__.__dict__["database_password"] = database_password
+            __props__.__dict__["database_password"] = None if database_password is None else pulumi.Output.secret(database_password)
             if database_user is None and not opts.urn:
                 raise TypeError("Missing required property 'database_user'")
             __props__.__dict__["database_user"] = database_user
@@ -1153,6 +1153,8 @@ class EnterpriseInstance(pulumi.CustomResource):
             __props__.__dict__["dba_nick_name"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["databasePassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(EnterpriseInstance, __self__).__init__(
             'alicloud:dms/enterpriseInstance:EnterpriseInstance',
             resource_name,

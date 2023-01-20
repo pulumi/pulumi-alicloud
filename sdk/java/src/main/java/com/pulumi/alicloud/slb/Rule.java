@@ -30,6 +30,150 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Only rule&#39;s virtual server group can be modified.
  * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
+ * import com.pulumi.alicloud.slb.Listener;
+ * import com.pulumi.alicloud.slb.ListenerArgs;
+ * import com.pulumi.alicloud.slb.ServerGroup;
+ * import com.pulumi.alicloud.slb.ServerGroupArgs;
+ * import com.pulumi.alicloud.slb.ServerGroupServerAttachment;
+ * import com.pulumi.alicloud.slb.ServerGroupServerAttachmentArgs;
+ * import com.pulumi.alicloud.slb.Rule;
+ * import com.pulumi.alicloud.slb.RuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var slbRuleName = config.get(&#34;slbRuleName&#34;).orElse(&#34;forSlbRule&#34;);
+ *         final var ruleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var ruleInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(ruleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         final var ruleImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var ruleNetwork = new Network(&#34;ruleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(slbRuleName)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var ruleSwitch = new Switch(&#34;ruleSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(ruleNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .zoneId(ruleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(slbRuleName)
+ *             .build());
+ * 
+ *         var ruleSecurityGroup = new SecurityGroup(&#34;ruleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(ruleNetwork.id())
+ *             .build());
+ * 
+ *         var ruleInstance = new Instance(&#34;ruleInstance&#34;, InstanceArgs.builder()        
+ *             .imageId(ruleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(ruleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroups(ruleSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
+ *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .internetMaxBandwidthOut(&#34;10&#34;)
+ *             .availabilityZone(ruleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .vswitchId(ruleSwitch.id())
+ *             .instanceName(slbRuleName)
+ *             .build());
+ * 
+ *         var ruleApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;ruleApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName(slbRuleName)
+ *             .vswitchId(ruleSwitch.id())
+ *             .instanceChargeType(&#34;PayByCLCU&#34;)
+ *             .build());
+ * 
+ *         var ruleListener = new Listener(&#34;ruleListener&#34;, ListenerArgs.builder()        
+ *             .loadBalancerId(ruleApplicationLoadBalancer.id())
+ *             .backendPort(22)
+ *             .frontendPort(22)
+ *             .protocol(&#34;http&#34;)
+ *             .bandwidth(5)
+ *             .healthCheckConnectPort(&#34;20&#34;)
+ *             .build());
+ * 
+ *         var ruleServerGroup = new ServerGroup(&#34;ruleServerGroup&#34;, ServerGroupArgs.builder()        
+ *             .loadBalancerId(ruleApplicationLoadBalancer.id())
+ *             .build());
+ * 
+ *         var ruleServerGroupServerAttachment = new ServerGroupServerAttachment(&#34;ruleServerGroupServerAttachment&#34;, ServerGroupServerAttachmentArgs.builder()        
+ *             .serverGroupId(ruleServerGroup.id())
+ *             .serverId(ruleInstance.id())
+ *             .port(80)
+ *             .weight(100)
+ *             .build());
+ * 
+ *         var ruleRule = new Rule(&#34;ruleRule&#34;, RuleArgs.builder()        
+ *             .loadBalancerId(ruleApplicationLoadBalancer.id())
+ *             .frontendPort(ruleListener.frontendPort())
+ *             .domain(&#34;*.aliyun.com&#34;)
+ *             .url(&#34;/image&#34;)
+ *             .serverGroupId(ruleServerGroup.id())
+ *             .cookie(&#34;23ffsa&#34;)
+ *             .cookieTimeout(100)
+ *             .healthCheckHttpCode(&#34;http_2xx&#34;)
+ *             .healthCheckInterval(10)
+ *             .healthCheckUri(&#34;/test&#34;)
+ *             .healthCheckConnectPort(80)
+ *             .healthCheckTimeout(30)
+ *             .healthyThreshold(3)
+ *             .unhealthyThreshold(5)
+ *             .stickySession(&#34;on&#34;)
+ *             .stickySessionType(&#34;server&#34;)
+ *             .listenerSync(&#34;off&#34;)
+ *             .scheduler(&#34;rr&#34;)
+ *             .healthCheckDomain(&#34;test&#34;)
+ *             .healthCheck(&#34;on&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Load balancer forwarding rule can be imported using the id, e.g.

@@ -52,7 +52,7 @@ func GetBandwidthPackages(ctx *pulumi.Context, args *GetBandwidthPackagesArgs, o
 type GetBandwidthPackagesArgs struct {
 	// Limit search to a list of specific CEN Bandwidth Package IDs.
 	Ids []string `pulumi:"ids"`
-	// -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+	// Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
 	IncludeReservationData *bool `pulumi:"includeReservationData"`
 	// ID of a CEN instance.
 	InstanceId *string `pulumi:"instanceId"`
@@ -68,12 +68,12 @@ type GetBandwidthPackagesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of specific CEN Bandwidth Package IDs.
-	// * `names` (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
 	Ids                    []string `pulumi:"ids"`
 	IncludeReservationData *bool    `pulumi:"includeReservationData"`
 	// The ID of the CEN instance that are associated with the bandwidth package.
-	InstanceId *string  `pulumi:"instanceId"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	InstanceId *string `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of CEN bandwidth package. Each element contains the following attributes:
@@ -99,7 +99,7 @@ func GetBandwidthPackagesOutput(ctx *pulumi.Context, args GetBandwidthPackagesOu
 type GetBandwidthPackagesOutputArgs struct {
 	// Limit search to a list of specific CEN Bandwidth Package IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// -Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
+	// Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
 	IncludeReservationData pulumi.BoolPtrInput `pulumi:"includeReservationData"`
 	// ID of a CEN instance.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
@@ -135,7 +135,6 @@ func (o GetBandwidthPackagesResultOutput) Id() pulumi.StringOutput {
 }
 
 // A list of specific CEN Bandwidth Package IDs.
-// * `names` (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
 func (o GetBandwidthPackagesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -153,6 +152,7 @@ func (o GetBandwidthPackagesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
 func (o GetBandwidthPackagesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBandwidthPackagesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

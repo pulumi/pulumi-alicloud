@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -25,15 +26,12 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const nasFilesetId1 = ids.then(ids => ids.filesets?[0]?.id);
+ * export const nasFilesetId1 = ids.then(ids => ids.filesets?.[0]?.id);
  * ```
  */
 export function getFilesets(args: GetFilesetsArgs, opts?: pulumi.InvokeOptions): Promise<GetFilesetsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getFilesets:getFilesets", {
         "fileSystemId": args.fileSystemId,
         "ids": args.ids,
@@ -75,9 +73,31 @@ export interface GetFilesetsResult {
     readonly outputFile?: string;
     readonly status?: string;
 }
-
+/**
+ * This data source provides the Nas Filesets of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.153.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.nas.getFilesets({
+ *     fileSystemId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const nasFilesetId1 = ids.then(ids => ids.filesets?.[0]?.id);
+ * ```
+ */
 export function getFilesetsOutput(args: GetFilesetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFilesetsResult> {
-    return pulumi.output(args).apply(a => getFilesets(a, opts))
+    return pulumi.output(args).apply((a: any) => getFilesets(a, opts))
 }
 
 /**

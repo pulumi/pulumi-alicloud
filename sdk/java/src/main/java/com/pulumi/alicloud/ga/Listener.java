@@ -163,6 +163,20 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * The routing type of the listener. Default Value: `Standard`. Valid values:
+     * 
+     */
+    @Export(name="listenerType", type=String.class, parameters={})
+    private Output<String> listenerType;
+
+    /**
+     * @return The routing type of the listener. Default Value: `Standard`. Valid values:
+     * 
+     */
+    public Output<String> listenerType() {
+        return this.listenerType;
+    }
+    /**
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      * 
      */
@@ -221,6 +235,20 @@ public class Listener extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> proxyProtocol() {
         return Codegen.optional(this.proxyProtocol);
+    }
+    /**
+     * The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     * 
+     */
+    @Export(name="securityPolicyId", type=String.class, parameters={})
+    private Output<String> securityPolicyId;
+
+    /**
+     * @return The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     * 
+     */
+    public Output<String> securityPolicyId() {
+        return this.securityPolicyId;
     }
     /**
      * The status of the listener.

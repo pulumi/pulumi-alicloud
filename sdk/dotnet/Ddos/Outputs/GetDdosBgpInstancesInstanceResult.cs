@@ -38,6 +38,10 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Normal defend bandwidth of the instance. The unit is Gbps.
+        /// </summary>
+        public readonly int NormalBandwidth;
+        /// <summary>
         /// A region of instance.
         /// </summary>
         public readonly string Region;
@@ -60,6 +64,8 @@ namespace Pulumi.AliCloud.Ddos.Outputs
 
             string name,
 
+            int normalBandwidth,
+
             string region,
 
             string type)
@@ -70,6 +76,7 @@ namespace Pulumi.AliCloud.Ddos.Outputs
             IpCount = ipCount;
             IpType = ipType;
             Name = name;
+            NormalBandwidth = normalBandwidth;
             Region = region;
             Type = type;
         }

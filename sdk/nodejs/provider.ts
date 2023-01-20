@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -119,6 +120,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
             resourceInputs["fc"] = args ? args.fc : undefined;
             resourceInputs["logEndpoint"] = args ? args.logEndpoint : undefined;
+            resourceInputs["maxRetryTimeout"] = pulumi.output(args ? args.maxRetryTimeout : undefined).apply(JSON.stringify);
             resourceInputs["mnsEndpoint"] = args ? args.mnsEndpoint : undefined;
             resourceInputs["otsInstanceName"] = args ? args.otsInstanceName : undefined;
             resourceInputs["profile"] = (args ? args.profile : undefined) ?? utilities.getEnv("ALICLOUD_PROFILE");
@@ -182,6 +184,10 @@ export interface ProviderArgs {
      * @deprecated Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
      */
     logEndpoint?: pulumi.Input<string>;
+    /**
+     * The maximum retry timeout of the request.
+     */
+    maxRetryTimeout?: pulumi.Input<number>;
     /**
      * @deprecated Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
      */

@@ -10,6 +10,907 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DbInstancePlanPlanConfig struct {
+	// Pause instance plan config. See the following `Block pause`.
+	Pause *DbInstancePlanPlanConfigPause `pulumi:"pause"`
+	// Resume instance plan config. See the following `Block resume`.
+	Resume *DbInstancePlanPlanConfigResume `pulumi:"resume"`
+	// Scale In instance plan config. See the following `Block scaleIn`.
+	ScaleIn *DbInstancePlanPlanConfigScaleIn `pulumi:"scaleIn"`
+	// Scale out instance plan config. See the following `Block scaleOut`.
+	ScaleOut *DbInstancePlanPlanConfigScaleOut `pulumi:"scaleOut"`
+}
+
+// DbInstancePlanPlanConfigInput is an input type that accepts DbInstancePlanPlanConfigArgs and DbInstancePlanPlanConfigOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigInput` via:
+//
+//	DbInstancePlanPlanConfigArgs{...}
+type DbInstancePlanPlanConfigInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigOutput() DbInstancePlanPlanConfigOutput
+	ToDbInstancePlanPlanConfigOutputWithContext(context.Context) DbInstancePlanPlanConfigOutput
+}
+
+type DbInstancePlanPlanConfigArgs struct {
+	// Pause instance plan config. See the following `Block pause`.
+	Pause DbInstancePlanPlanConfigPausePtrInput `pulumi:"pause"`
+	// Resume instance plan config. See the following `Block resume`.
+	Resume DbInstancePlanPlanConfigResumePtrInput `pulumi:"resume"`
+	// Scale In instance plan config. See the following `Block scaleIn`.
+	ScaleIn DbInstancePlanPlanConfigScaleInPtrInput `pulumi:"scaleIn"`
+	// Scale out instance plan config. See the following `Block scaleOut`.
+	ScaleOut DbInstancePlanPlanConfigScaleOutPtrInput `pulumi:"scaleOut"`
+}
+
+func (DbInstancePlanPlanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfig)(nil)).Elem()
+}
+
+func (i DbInstancePlanPlanConfigArgs) ToDbInstancePlanPlanConfigOutput() DbInstancePlanPlanConfigOutput {
+	return i.ToDbInstancePlanPlanConfigOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigArgs) ToDbInstancePlanPlanConfigOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigOutput)
+}
+
+// DbInstancePlanPlanConfigArrayInput is an input type that accepts DbInstancePlanPlanConfigArray and DbInstancePlanPlanConfigArrayOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigArrayInput` via:
+//
+//	DbInstancePlanPlanConfigArray{ DbInstancePlanPlanConfigArgs{...} }
+type DbInstancePlanPlanConfigArrayInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigArrayOutput() DbInstancePlanPlanConfigArrayOutput
+	ToDbInstancePlanPlanConfigArrayOutputWithContext(context.Context) DbInstancePlanPlanConfigArrayOutput
+}
+
+type DbInstancePlanPlanConfigArray []DbInstancePlanPlanConfigInput
+
+func (DbInstancePlanPlanConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DbInstancePlanPlanConfig)(nil)).Elem()
+}
+
+func (i DbInstancePlanPlanConfigArray) ToDbInstancePlanPlanConfigArrayOutput() DbInstancePlanPlanConfigArrayOutput {
+	return i.ToDbInstancePlanPlanConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigArray) ToDbInstancePlanPlanConfigArrayOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigArrayOutput)
+}
+
+type DbInstancePlanPlanConfigOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfig)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigOutput) ToDbInstancePlanPlanConfigOutput() DbInstancePlanPlanConfigOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigOutput) ToDbInstancePlanPlanConfigOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigOutput {
+	return o
+}
+
+// Pause instance plan config. See the following `Block pause`.
+func (o DbInstancePlanPlanConfigOutput) Pause() DbInstancePlanPlanConfigPausePtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigPause { return v.Pause }).(DbInstancePlanPlanConfigPausePtrOutput)
+}
+
+// Resume instance plan config. See the following `Block resume`.
+func (o DbInstancePlanPlanConfigOutput) Resume() DbInstancePlanPlanConfigResumePtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigResume { return v.Resume }).(DbInstancePlanPlanConfigResumePtrOutput)
+}
+
+// Scale In instance plan config. See the following `Block scaleIn`.
+func (o DbInstancePlanPlanConfigOutput) ScaleIn() DbInstancePlanPlanConfigScaleInPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigScaleIn { return v.ScaleIn }).(DbInstancePlanPlanConfigScaleInPtrOutput)
+}
+
+// Scale out instance plan config. See the following `Block scaleOut`.
+func (o DbInstancePlanPlanConfigOutput) ScaleOut() DbInstancePlanPlanConfigScaleOutPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigScaleOut { return v.ScaleOut }).(DbInstancePlanPlanConfigScaleOutPtrOutput)
+}
+
+type DbInstancePlanPlanConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DbInstancePlanPlanConfig)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigArrayOutput) ToDbInstancePlanPlanConfigArrayOutput() DbInstancePlanPlanConfigArrayOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigArrayOutput) ToDbInstancePlanPlanConfigArrayOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigArrayOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigArrayOutput) Index(i pulumi.IntInput) DbInstancePlanPlanConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DbInstancePlanPlanConfig {
+		return vs[0].([]DbInstancePlanPlanConfig)[vs[1].(int)]
+	}).(DbInstancePlanPlanConfigOutput)
+}
+
+type DbInstancePlanPlanConfigPause struct {
+	// The executed time of the Plan.
+	ExecuteTime *string `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime *string `pulumi:"planCronTime"`
+}
+
+// DbInstancePlanPlanConfigPauseInput is an input type that accepts DbInstancePlanPlanConfigPauseArgs and DbInstancePlanPlanConfigPauseOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigPauseInput` via:
+//
+//	DbInstancePlanPlanConfigPauseArgs{...}
+type DbInstancePlanPlanConfigPauseInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigPauseOutput() DbInstancePlanPlanConfigPauseOutput
+	ToDbInstancePlanPlanConfigPauseOutputWithContext(context.Context) DbInstancePlanPlanConfigPauseOutput
+}
+
+type DbInstancePlanPlanConfigPauseArgs struct {
+	// The executed time of the Plan.
+	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
+}
+
+func (DbInstancePlanPlanConfigPauseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfigPause)(nil)).Elem()
+}
+
+func (i DbInstancePlanPlanConfigPauseArgs) ToDbInstancePlanPlanConfigPauseOutput() DbInstancePlanPlanConfigPauseOutput {
+	return i.ToDbInstancePlanPlanConfigPauseOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigPauseArgs) ToDbInstancePlanPlanConfigPauseOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigPauseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigPauseOutput)
+}
+
+func (i DbInstancePlanPlanConfigPauseArgs) ToDbInstancePlanPlanConfigPausePtrOutput() DbInstancePlanPlanConfigPausePtrOutput {
+	return i.ToDbInstancePlanPlanConfigPausePtrOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigPauseArgs) ToDbInstancePlanPlanConfigPausePtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigPausePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigPauseOutput).ToDbInstancePlanPlanConfigPausePtrOutputWithContext(ctx)
+}
+
+// DbInstancePlanPlanConfigPausePtrInput is an input type that accepts DbInstancePlanPlanConfigPauseArgs, DbInstancePlanPlanConfigPausePtr and DbInstancePlanPlanConfigPausePtrOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigPausePtrInput` via:
+//
+//	        DbInstancePlanPlanConfigPauseArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbInstancePlanPlanConfigPausePtrInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigPausePtrOutput() DbInstancePlanPlanConfigPausePtrOutput
+	ToDbInstancePlanPlanConfigPausePtrOutputWithContext(context.Context) DbInstancePlanPlanConfigPausePtrOutput
+}
+
+type dbInstancePlanPlanConfigPausePtrType DbInstancePlanPlanConfigPauseArgs
+
+func DbInstancePlanPlanConfigPausePtr(v *DbInstancePlanPlanConfigPauseArgs) DbInstancePlanPlanConfigPausePtrInput {
+	return (*dbInstancePlanPlanConfigPausePtrType)(v)
+}
+
+func (*dbInstancePlanPlanConfigPausePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbInstancePlanPlanConfigPause)(nil)).Elem()
+}
+
+func (i *dbInstancePlanPlanConfigPausePtrType) ToDbInstancePlanPlanConfigPausePtrOutput() DbInstancePlanPlanConfigPausePtrOutput {
+	return i.ToDbInstancePlanPlanConfigPausePtrOutputWithContext(context.Background())
+}
+
+func (i *dbInstancePlanPlanConfigPausePtrType) ToDbInstancePlanPlanConfigPausePtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigPausePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigPausePtrOutput)
+}
+
+type DbInstancePlanPlanConfigPauseOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigPauseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfigPause)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigPauseOutput) ToDbInstancePlanPlanConfigPauseOutput() DbInstancePlanPlanConfigPauseOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigPauseOutput) ToDbInstancePlanPlanConfigPauseOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigPauseOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigPauseOutput) ToDbInstancePlanPlanConfigPausePtrOutput() DbInstancePlanPlanConfigPausePtrOutput {
+	return o.ToDbInstancePlanPlanConfigPausePtrOutputWithContext(context.Background())
+}
+
+func (o DbInstancePlanPlanConfigPauseOutput) ToDbInstancePlanPlanConfigPausePtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigPausePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbInstancePlanPlanConfigPause) *DbInstancePlanPlanConfigPause {
+		return &v
+	}).(DbInstancePlanPlanConfigPausePtrOutput)
+}
+
+// The executed time of the Plan.
+func (o DbInstancePlanPlanConfigPauseOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigPause) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
+}
+
+// The Cron Time of the plan.
+func (o DbInstancePlanPlanConfigPauseOutput) PlanCronTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigPause) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
+}
+
+type DbInstancePlanPlanConfigPausePtrOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigPausePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbInstancePlanPlanConfigPause)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigPausePtrOutput) ToDbInstancePlanPlanConfigPausePtrOutput() DbInstancePlanPlanConfigPausePtrOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigPausePtrOutput) ToDbInstancePlanPlanConfigPausePtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigPausePtrOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigPausePtrOutput) Elem() DbInstancePlanPlanConfigPauseOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigPause) DbInstancePlanPlanConfigPause {
+		if v != nil {
+			return *v
+		}
+		var ret DbInstancePlanPlanConfigPause
+		return ret
+	}).(DbInstancePlanPlanConfigPauseOutput)
+}
+
+// The executed time of the Plan.
+func (o DbInstancePlanPlanConfigPausePtrOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigPause) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecuteTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cron Time of the plan.
+func (o DbInstancePlanPlanConfigPausePtrOutput) PlanCronTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigPause) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlanCronTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbInstancePlanPlanConfigResume struct {
+	// The executed time of the Plan.
+	ExecuteTime *string `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime *string `pulumi:"planCronTime"`
+}
+
+// DbInstancePlanPlanConfigResumeInput is an input type that accepts DbInstancePlanPlanConfigResumeArgs and DbInstancePlanPlanConfigResumeOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigResumeInput` via:
+//
+//	DbInstancePlanPlanConfigResumeArgs{...}
+type DbInstancePlanPlanConfigResumeInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigResumeOutput() DbInstancePlanPlanConfigResumeOutput
+	ToDbInstancePlanPlanConfigResumeOutputWithContext(context.Context) DbInstancePlanPlanConfigResumeOutput
+}
+
+type DbInstancePlanPlanConfigResumeArgs struct {
+	// The executed time of the Plan.
+	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
+}
+
+func (DbInstancePlanPlanConfigResumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfigResume)(nil)).Elem()
+}
+
+func (i DbInstancePlanPlanConfigResumeArgs) ToDbInstancePlanPlanConfigResumeOutput() DbInstancePlanPlanConfigResumeOutput {
+	return i.ToDbInstancePlanPlanConfigResumeOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigResumeArgs) ToDbInstancePlanPlanConfigResumeOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigResumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigResumeOutput)
+}
+
+func (i DbInstancePlanPlanConfigResumeArgs) ToDbInstancePlanPlanConfigResumePtrOutput() DbInstancePlanPlanConfigResumePtrOutput {
+	return i.ToDbInstancePlanPlanConfigResumePtrOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigResumeArgs) ToDbInstancePlanPlanConfigResumePtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigResumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigResumeOutput).ToDbInstancePlanPlanConfigResumePtrOutputWithContext(ctx)
+}
+
+// DbInstancePlanPlanConfigResumePtrInput is an input type that accepts DbInstancePlanPlanConfigResumeArgs, DbInstancePlanPlanConfigResumePtr and DbInstancePlanPlanConfigResumePtrOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigResumePtrInput` via:
+//
+//	        DbInstancePlanPlanConfigResumeArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbInstancePlanPlanConfigResumePtrInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigResumePtrOutput() DbInstancePlanPlanConfigResumePtrOutput
+	ToDbInstancePlanPlanConfigResumePtrOutputWithContext(context.Context) DbInstancePlanPlanConfigResumePtrOutput
+}
+
+type dbInstancePlanPlanConfigResumePtrType DbInstancePlanPlanConfigResumeArgs
+
+func DbInstancePlanPlanConfigResumePtr(v *DbInstancePlanPlanConfigResumeArgs) DbInstancePlanPlanConfigResumePtrInput {
+	return (*dbInstancePlanPlanConfigResumePtrType)(v)
+}
+
+func (*dbInstancePlanPlanConfigResumePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbInstancePlanPlanConfigResume)(nil)).Elem()
+}
+
+func (i *dbInstancePlanPlanConfigResumePtrType) ToDbInstancePlanPlanConfigResumePtrOutput() DbInstancePlanPlanConfigResumePtrOutput {
+	return i.ToDbInstancePlanPlanConfigResumePtrOutputWithContext(context.Background())
+}
+
+func (i *dbInstancePlanPlanConfigResumePtrType) ToDbInstancePlanPlanConfigResumePtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigResumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigResumePtrOutput)
+}
+
+type DbInstancePlanPlanConfigResumeOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigResumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfigResume)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigResumeOutput) ToDbInstancePlanPlanConfigResumeOutput() DbInstancePlanPlanConfigResumeOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigResumeOutput) ToDbInstancePlanPlanConfigResumeOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigResumeOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigResumeOutput) ToDbInstancePlanPlanConfigResumePtrOutput() DbInstancePlanPlanConfigResumePtrOutput {
+	return o.ToDbInstancePlanPlanConfigResumePtrOutputWithContext(context.Background())
+}
+
+func (o DbInstancePlanPlanConfigResumeOutput) ToDbInstancePlanPlanConfigResumePtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigResumePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbInstancePlanPlanConfigResume) *DbInstancePlanPlanConfigResume {
+		return &v
+	}).(DbInstancePlanPlanConfigResumePtrOutput)
+}
+
+// The executed time of the Plan.
+func (o DbInstancePlanPlanConfigResumeOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigResume) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
+}
+
+// The Cron Time of the plan.
+func (o DbInstancePlanPlanConfigResumeOutput) PlanCronTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigResume) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
+}
+
+type DbInstancePlanPlanConfigResumePtrOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigResumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbInstancePlanPlanConfigResume)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigResumePtrOutput) ToDbInstancePlanPlanConfigResumePtrOutput() DbInstancePlanPlanConfigResumePtrOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigResumePtrOutput) ToDbInstancePlanPlanConfigResumePtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigResumePtrOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigResumePtrOutput) Elem() DbInstancePlanPlanConfigResumeOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigResume) DbInstancePlanPlanConfigResume {
+		if v != nil {
+			return *v
+		}
+		var ret DbInstancePlanPlanConfigResume
+		return ret
+	}).(DbInstancePlanPlanConfigResumeOutput)
+}
+
+// The executed time of the Plan.
+func (o DbInstancePlanPlanConfigResumePtrOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigResume) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecuteTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cron Time of the plan.
+func (o DbInstancePlanPlanConfigResumePtrOutput) PlanCronTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigResume) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlanCronTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbInstancePlanPlanConfigScaleIn struct {
+	// The executed time of the Plan.
+	ExecuteTime *string `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime *string `pulumi:"planCronTime"`
+	// The segment Node Num of the Plan.
+	SegmentNodeNum *string `pulumi:"segmentNodeNum"`
+}
+
+// DbInstancePlanPlanConfigScaleInInput is an input type that accepts DbInstancePlanPlanConfigScaleInArgs and DbInstancePlanPlanConfigScaleInOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigScaleInInput` via:
+//
+//	DbInstancePlanPlanConfigScaleInArgs{...}
+type DbInstancePlanPlanConfigScaleInInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigScaleInOutput() DbInstancePlanPlanConfigScaleInOutput
+	ToDbInstancePlanPlanConfigScaleInOutputWithContext(context.Context) DbInstancePlanPlanConfigScaleInOutput
+}
+
+type DbInstancePlanPlanConfigScaleInArgs struct {
+	// The executed time of the Plan.
+	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
+	// The segment Node Num of the Plan.
+	SegmentNodeNum pulumi.StringPtrInput `pulumi:"segmentNodeNum"`
+}
+
+func (DbInstancePlanPlanConfigScaleInArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfigScaleIn)(nil)).Elem()
+}
+
+func (i DbInstancePlanPlanConfigScaleInArgs) ToDbInstancePlanPlanConfigScaleInOutput() DbInstancePlanPlanConfigScaleInOutput {
+	return i.ToDbInstancePlanPlanConfigScaleInOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigScaleInArgs) ToDbInstancePlanPlanConfigScaleInOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleInOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleInOutput)
+}
+
+func (i DbInstancePlanPlanConfigScaleInArgs) ToDbInstancePlanPlanConfigScaleInPtrOutput() DbInstancePlanPlanConfigScaleInPtrOutput {
+	return i.ToDbInstancePlanPlanConfigScaleInPtrOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigScaleInArgs) ToDbInstancePlanPlanConfigScaleInPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleInPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleInOutput).ToDbInstancePlanPlanConfigScaleInPtrOutputWithContext(ctx)
+}
+
+// DbInstancePlanPlanConfigScaleInPtrInput is an input type that accepts DbInstancePlanPlanConfigScaleInArgs, DbInstancePlanPlanConfigScaleInPtr and DbInstancePlanPlanConfigScaleInPtrOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigScaleInPtrInput` via:
+//
+//	        DbInstancePlanPlanConfigScaleInArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbInstancePlanPlanConfigScaleInPtrInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigScaleInPtrOutput() DbInstancePlanPlanConfigScaleInPtrOutput
+	ToDbInstancePlanPlanConfigScaleInPtrOutputWithContext(context.Context) DbInstancePlanPlanConfigScaleInPtrOutput
+}
+
+type dbInstancePlanPlanConfigScaleInPtrType DbInstancePlanPlanConfigScaleInArgs
+
+func DbInstancePlanPlanConfigScaleInPtr(v *DbInstancePlanPlanConfigScaleInArgs) DbInstancePlanPlanConfigScaleInPtrInput {
+	return (*dbInstancePlanPlanConfigScaleInPtrType)(v)
+}
+
+func (*dbInstancePlanPlanConfigScaleInPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbInstancePlanPlanConfigScaleIn)(nil)).Elem()
+}
+
+func (i *dbInstancePlanPlanConfigScaleInPtrType) ToDbInstancePlanPlanConfigScaleInPtrOutput() DbInstancePlanPlanConfigScaleInPtrOutput {
+	return i.ToDbInstancePlanPlanConfigScaleInPtrOutputWithContext(context.Background())
+}
+
+func (i *dbInstancePlanPlanConfigScaleInPtrType) ToDbInstancePlanPlanConfigScaleInPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleInPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleInPtrOutput)
+}
+
+type DbInstancePlanPlanConfigScaleInOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigScaleInOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfigScaleIn)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigScaleInOutput) ToDbInstancePlanPlanConfigScaleInOutput() DbInstancePlanPlanConfigScaleInOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleInOutput) ToDbInstancePlanPlanConfigScaleInOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleInOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleInOutput) ToDbInstancePlanPlanConfigScaleInPtrOutput() DbInstancePlanPlanConfigScaleInPtrOutput {
+	return o.ToDbInstancePlanPlanConfigScaleInPtrOutputWithContext(context.Background())
+}
+
+func (o DbInstancePlanPlanConfigScaleInOutput) ToDbInstancePlanPlanConfigScaleInPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleInPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbInstancePlanPlanConfigScaleIn) *DbInstancePlanPlanConfigScaleIn {
+		return &v
+	}).(DbInstancePlanPlanConfigScaleInPtrOutput)
+}
+
+// The executed time of the Plan.
+func (o DbInstancePlanPlanConfigScaleInOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleIn) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
+}
+
+// The Cron Time of the plan.
+func (o DbInstancePlanPlanConfigScaleInOutput) PlanCronTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleIn) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
+}
+
+// The segment Node Num of the Plan.
+func (o DbInstancePlanPlanConfigScaleInOutput) SegmentNodeNum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleIn) *string { return v.SegmentNodeNum }).(pulumi.StringPtrOutput)
+}
+
+type DbInstancePlanPlanConfigScaleInPtrOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigScaleInPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbInstancePlanPlanConfigScaleIn)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigScaleInPtrOutput) ToDbInstancePlanPlanConfigScaleInPtrOutput() DbInstancePlanPlanConfigScaleInPtrOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleInPtrOutput) ToDbInstancePlanPlanConfigScaleInPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleInPtrOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleInPtrOutput) Elem() DbInstancePlanPlanConfigScaleInOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleIn) DbInstancePlanPlanConfigScaleIn {
+		if v != nil {
+			return *v
+		}
+		var ret DbInstancePlanPlanConfigScaleIn
+		return ret
+	}).(DbInstancePlanPlanConfigScaleInOutput)
+}
+
+// The executed time of the Plan.
+func (o DbInstancePlanPlanConfigScaleInPtrOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleIn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecuteTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cron Time of the plan.
+func (o DbInstancePlanPlanConfigScaleInPtrOutput) PlanCronTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleIn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlanCronTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The segment Node Num of the Plan.
+func (o DbInstancePlanPlanConfigScaleInPtrOutput) SegmentNodeNum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleIn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentNodeNum
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbInstancePlanPlanConfigScaleOut struct {
+	// The executed time of the Plan.
+	ExecuteTime *string `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime *string `pulumi:"planCronTime"`
+	// The segment Node Num of the Plan.
+	SegmentNodeNum *string `pulumi:"segmentNodeNum"`
+}
+
+// DbInstancePlanPlanConfigScaleOutInput is an input type that accepts DbInstancePlanPlanConfigScaleOutArgs and DbInstancePlanPlanConfigScaleOutOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigScaleOutInput` via:
+//
+//	DbInstancePlanPlanConfigScaleOutArgs{...}
+type DbInstancePlanPlanConfigScaleOutInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigScaleOutOutput() DbInstancePlanPlanConfigScaleOutOutput
+	ToDbInstancePlanPlanConfigScaleOutOutputWithContext(context.Context) DbInstancePlanPlanConfigScaleOutOutput
+}
+
+type DbInstancePlanPlanConfigScaleOutArgs struct {
+	// The executed time of the Plan.
+	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
+	// The segment Node Num of the Plan.
+	SegmentNodeNum pulumi.StringPtrInput `pulumi:"segmentNodeNum"`
+}
+
+func (DbInstancePlanPlanConfigScaleOutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfigScaleOut)(nil)).Elem()
+}
+
+func (i DbInstancePlanPlanConfigScaleOutArgs) ToDbInstancePlanPlanConfigScaleOutOutput() DbInstancePlanPlanConfigScaleOutOutput {
+	return i.ToDbInstancePlanPlanConfigScaleOutOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigScaleOutArgs) ToDbInstancePlanPlanConfigScaleOutOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleOutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleOutOutput)
+}
+
+func (i DbInstancePlanPlanConfigScaleOutArgs) ToDbInstancePlanPlanConfigScaleOutPtrOutput() DbInstancePlanPlanConfigScaleOutPtrOutput {
+	return i.ToDbInstancePlanPlanConfigScaleOutPtrOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigScaleOutArgs) ToDbInstancePlanPlanConfigScaleOutPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleOutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleOutOutput).ToDbInstancePlanPlanConfigScaleOutPtrOutputWithContext(ctx)
+}
+
+// DbInstancePlanPlanConfigScaleOutPtrInput is an input type that accepts DbInstancePlanPlanConfigScaleOutArgs, DbInstancePlanPlanConfigScaleOutPtr and DbInstancePlanPlanConfigScaleOutPtrOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigScaleOutPtrInput` via:
+//
+//	        DbInstancePlanPlanConfigScaleOutArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbInstancePlanPlanConfigScaleOutPtrInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigScaleOutPtrOutput() DbInstancePlanPlanConfigScaleOutPtrOutput
+	ToDbInstancePlanPlanConfigScaleOutPtrOutputWithContext(context.Context) DbInstancePlanPlanConfigScaleOutPtrOutput
+}
+
+type dbInstancePlanPlanConfigScaleOutPtrType DbInstancePlanPlanConfigScaleOutArgs
+
+func DbInstancePlanPlanConfigScaleOutPtr(v *DbInstancePlanPlanConfigScaleOutArgs) DbInstancePlanPlanConfigScaleOutPtrInput {
+	return (*dbInstancePlanPlanConfigScaleOutPtrType)(v)
+}
+
+func (*dbInstancePlanPlanConfigScaleOutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbInstancePlanPlanConfigScaleOut)(nil)).Elem()
+}
+
+func (i *dbInstancePlanPlanConfigScaleOutPtrType) ToDbInstancePlanPlanConfigScaleOutPtrOutput() DbInstancePlanPlanConfigScaleOutPtrOutput {
+	return i.ToDbInstancePlanPlanConfigScaleOutPtrOutputWithContext(context.Background())
+}
+
+func (i *dbInstancePlanPlanConfigScaleOutPtrType) ToDbInstancePlanPlanConfigScaleOutPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleOutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleOutPtrOutput)
+}
+
+type DbInstancePlanPlanConfigScaleOutOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigScaleOutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfigScaleOut)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigScaleOutOutput) ToDbInstancePlanPlanConfigScaleOutOutput() DbInstancePlanPlanConfigScaleOutOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleOutOutput) ToDbInstancePlanPlanConfigScaleOutOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleOutOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleOutOutput) ToDbInstancePlanPlanConfigScaleOutPtrOutput() DbInstancePlanPlanConfigScaleOutPtrOutput {
+	return o.ToDbInstancePlanPlanConfigScaleOutPtrOutputWithContext(context.Background())
+}
+
+func (o DbInstancePlanPlanConfigScaleOutOutput) ToDbInstancePlanPlanConfigScaleOutPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleOutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbInstancePlanPlanConfigScaleOut) *DbInstancePlanPlanConfigScaleOut {
+		return &v
+	}).(DbInstancePlanPlanConfigScaleOutPtrOutput)
+}
+
+// The executed time of the Plan.
+func (o DbInstancePlanPlanConfigScaleOutOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleOut) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
+}
+
+// The Cron Time of the plan.
+func (o DbInstancePlanPlanConfigScaleOutOutput) PlanCronTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleOut) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
+}
+
+// The segment Node Num of the Plan.
+func (o DbInstancePlanPlanConfigScaleOutOutput) SegmentNodeNum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleOut) *string { return v.SegmentNodeNum }).(pulumi.StringPtrOutput)
+}
+
+type DbInstancePlanPlanConfigScaleOutPtrOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigScaleOutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbInstancePlanPlanConfigScaleOut)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigScaleOutPtrOutput) ToDbInstancePlanPlanConfigScaleOutPtrOutput() DbInstancePlanPlanConfigScaleOutPtrOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleOutPtrOutput) ToDbInstancePlanPlanConfigScaleOutPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleOutPtrOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleOutPtrOutput) Elem() DbInstancePlanPlanConfigScaleOutOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleOut) DbInstancePlanPlanConfigScaleOut {
+		if v != nil {
+			return *v
+		}
+		var ret DbInstancePlanPlanConfigScaleOut
+		return ret
+	}).(DbInstancePlanPlanConfigScaleOutOutput)
+}
+
+// The executed time of the Plan.
+func (o DbInstancePlanPlanConfigScaleOutPtrOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleOut) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecuteTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cron Time of the plan.
+func (o DbInstancePlanPlanConfigScaleOutPtrOutput) PlanCronTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleOut) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlanCronTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The segment Node Num of the Plan.
+func (o DbInstancePlanPlanConfigScaleOutPtrOutput) SegmentNodeNum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleOut) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentNodeNum
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceIpWhitelist struct {
+	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+	IpGroupAttribute *string `pulumi:"ipGroupAttribute"`
+	// IP whitelist group name
+	IpGroupName *string `pulumi:"ipGroupName"`
+	// Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
+	SecurityIpList string `pulumi:"securityIpList"`
+}
+
+// InstanceIpWhitelistInput is an input type that accepts InstanceIpWhitelistArgs and InstanceIpWhitelistOutput values.
+// You can construct a concrete instance of `InstanceIpWhitelistInput` via:
+//
+//	InstanceIpWhitelistArgs{...}
+type InstanceIpWhitelistInput interface {
+	pulumi.Input
+
+	ToInstanceIpWhitelistOutput() InstanceIpWhitelistOutput
+	ToInstanceIpWhitelistOutputWithContext(context.Context) InstanceIpWhitelistOutput
+}
+
+type InstanceIpWhitelistArgs struct {
+	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+	IpGroupAttribute pulumi.StringPtrInput `pulumi:"ipGroupAttribute"`
+	// IP whitelist group name
+	IpGroupName pulumi.StringPtrInput `pulumi:"ipGroupName"`
+	// Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
+	SecurityIpList pulumi.StringInput `pulumi:"securityIpList"`
+}
+
+func (InstanceIpWhitelistArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIpWhitelist)(nil)).Elem()
+}
+
+func (i InstanceIpWhitelistArgs) ToInstanceIpWhitelistOutput() InstanceIpWhitelistOutput {
+	return i.ToInstanceIpWhitelistOutputWithContext(context.Background())
+}
+
+func (i InstanceIpWhitelistArgs) ToInstanceIpWhitelistOutputWithContext(ctx context.Context) InstanceIpWhitelistOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIpWhitelistOutput)
+}
+
+// InstanceIpWhitelistArrayInput is an input type that accepts InstanceIpWhitelistArray and InstanceIpWhitelistArrayOutput values.
+// You can construct a concrete instance of `InstanceIpWhitelistArrayInput` via:
+//
+//	InstanceIpWhitelistArray{ InstanceIpWhitelistArgs{...} }
+type InstanceIpWhitelistArrayInput interface {
+	pulumi.Input
+
+	ToInstanceIpWhitelistArrayOutput() InstanceIpWhitelistArrayOutput
+	ToInstanceIpWhitelistArrayOutputWithContext(context.Context) InstanceIpWhitelistArrayOutput
+}
+
+type InstanceIpWhitelistArray []InstanceIpWhitelistInput
+
+func (InstanceIpWhitelistArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceIpWhitelist)(nil)).Elem()
+}
+
+func (i InstanceIpWhitelistArray) ToInstanceIpWhitelistArrayOutput() InstanceIpWhitelistArrayOutput {
+	return i.ToInstanceIpWhitelistArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceIpWhitelistArray) ToInstanceIpWhitelistArrayOutputWithContext(ctx context.Context) InstanceIpWhitelistArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIpWhitelistArrayOutput)
+}
+
+type InstanceIpWhitelistOutput struct{ *pulumi.OutputState }
+
+func (InstanceIpWhitelistOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIpWhitelist)(nil)).Elem()
+}
+
+func (o InstanceIpWhitelistOutput) ToInstanceIpWhitelistOutput() InstanceIpWhitelistOutput {
+	return o
+}
+
+func (o InstanceIpWhitelistOutput) ToInstanceIpWhitelistOutputWithContext(ctx context.Context) InstanceIpWhitelistOutput {
+	return o
+}
+
+// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+func (o InstanceIpWhitelistOutput) IpGroupAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceIpWhitelist) *string { return v.IpGroupAttribute }).(pulumi.StringPtrOutput)
+}
+
+// IP whitelist group name
+func (o InstanceIpWhitelistOutput) IpGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceIpWhitelist) *string { return v.IpGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
+func (o InstanceIpWhitelistOutput) SecurityIpList() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceIpWhitelist) string { return v.SecurityIpList }).(pulumi.StringOutput)
+}
+
+type InstanceIpWhitelistArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceIpWhitelistArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceIpWhitelist)(nil)).Elem()
+}
+
+func (o InstanceIpWhitelistArrayOutput) ToInstanceIpWhitelistArrayOutput() InstanceIpWhitelistArrayOutput {
+	return o
+}
+
+func (o InstanceIpWhitelistArrayOutput) ToInstanceIpWhitelistArrayOutputWithContext(ctx context.Context) InstanceIpWhitelistArrayOutput {
+	return o
+}
+
+func (o InstanceIpWhitelistArrayOutput) Index(i pulumi.IntInput) InstanceIpWhitelistOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIpWhitelist {
+		return vs[0].([]InstanceIpWhitelist)[vs[1].(int)]
+	}).(InstanceIpWhitelistOutput)
+}
+
 type GetAccountsAccount struct {
 	// The description of the account.
 	AccountDescription string `pulumi:"accountDescription"`
@@ -143,30 +1044,844 @@ func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccou
 	}).(GetAccountsAccountOutput)
 }
 
+type GetDbInstancePlansPlan struct {
+	// The name of the Plan.
+	DbInstancePlanName string `pulumi:"dbInstancePlanName"`
+	// The ID of the resource. The value formats as `<db_instance_id>:<plan_id>`.
+	Id string `pulumi:"id"`
+	// Plan configuration information.
+	PlanConfigs []GetDbInstancePlansPlanPlanConfig `pulumi:"planConfigs"`
+	PlanDesc    string                             `pulumi:"planDesc"`
+	// The end time of the Plan.
+	PlanEndDate string `pulumi:"planEndDate"`
+	// The ID of DB Instance Plan.
+	PlanId string `pulumi:"planId"`
+	// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+	PlanScheduleType string `pulumi:"planScheduleType"`
+	// The start time of the Plan.
+	PlanStartDate string `pulumi:"planStartDate"`
+	// The type of the Plan. Valid values: `PauseResume`, `Resize`.
+	PlanType string `pulumi:"planType"`
+	// The Status of the Plan.
+	Status string `pulumi:"status"`
+}
+
+// GetDbInstancePlansPlanInput is an input type that accepts GetDbInstancePlansPlanArgs and GetDbInstancePlansPlanOutput values.
+// You can construct a concrete instance of `GetDbInstancePlansPlanInput` via:
+//
+//	GetDbInstancePlansPlanArgs{...}
+type GetDbInstancePlansPlanInput interface {
+	pulumi.Input
+
+	ToGetDbInstancePlansPlanOutput() GetDbInstancePlansPlanOutput
+	ToGetDbInstancePlansPlanOutputWithContext(context.Context) GetDbInstancePlansPlanOutput
+}
+
+type GetDbInstancePlansPlanArgs struct {
+	// The name of the Plan.
+	DbInstancePlanName pulumi.StringInput `pulumi:"dbInstancePlanName"`
+	// The ID of the resource. The value formats as `<db_instance_id>:<plan_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Plan configuration information.
+	PlanConfigs GetDbInstancePlansPlanPlanConfigArrayInput `pulumi:"planConfigs"`
+	PlanDesc    pulumi.StringInput                         `pulumi:"planDesc"`
+	// The end time of the Plan.
+	PlanEndDate pulumi.StringInput `pulumi:"planEndDate"`
+	// The ID of DB Instance Plan.
+	PlanId pulumi.StringInput `pulumi:"planId"`
+	// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+	PlanScheduleType pulumi.StringInput `pulumi:"planScheduleType"`
+	// The start time of the Plan.
+	PlanStartDate pulumi.StringInput `pulumi:"planStartDate"`
+	// The type of the Plan. Valid values: `PauseResume`, `Resize`.
+	PlanType pulumi.StringInput `pulumi:"planType"`
+	// The Status of the Plan.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetDbInstancePlansPlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancePlansPlan)(nil)).Elem()
+}
+
+func (i GetDbInstancePlansPlanArgs) ToGetDbInstancePlansPlanOutput() GetDbInstancePlansPlanOutput {
+	return i.ToGetDbInstancePlansPlanOutputWithContext(context.Background())
+}
+
+func (i GetDbInstancePlansPlanArgs) ToGetDbInstancePlansPlanOutputWithContext(ctx context.Context) GetDbInstancePlansPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanOutput)
+}
+
+// GetDbInstancePlansPlanArrayInput is an input type that accepts GetDbInstancePlansPlanArray and GetDbInstancePlansPlanArrayOutput values.
+// You can construct a concrete instance of `GetDbInstancePlansPlanArrayInput` via:
+//
+//	GetDbInstancePlansPlanArray{ GetDbInstancePlansPlanArgs{...} }
+type GetDbInstancePlansPlanArrayInput interface {
+	pulumi.Input
+
+	ToGetDbInstancePlansPlanArrayOutput() GetDbInstancePlansPlanArrayOutput
+	ToGetDbInstancePlansPlanArrayOutputWithContext(context.Context) GetDbInstancePlansPlanArrayOutput
+}
+
+type GetDbInstancePlansPlanArray []GetDbInstancePlansPlanInput
+
+func (GetDbInstancePlansPlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbInstancePlansPlan)(nil)).Elem()
+}
+
+func (i GetDbInstancePlansPlanArray) ToGetDbInstancePlansPlanArrayOutput() GetDbInstancePlansPlanArrayOutput {
+	return i.ToGetDbInstancePlansPlanArrayOutputWithContext(context.Background())
+}
+
+func (i GetDbInstancePlansPlanArray) ToGetDbInstancePlansPlanArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanArrayOutput)
+}
+
+type GetDbInstancePlansPlanOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancePlansPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancePlansPlan)(nil)).Elem()
+}
+
+func (o GetDbInstancePlansPlanOutput) ToGetDbInstancePlansPlanOutput() GetDbInstancePlansPlanOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanOutput) ToGetDbInstancePlansPlanOutputWithContext(ctx context.Context) GetDbInstancePlansPlanOutput {
+	return o
+}
+
+// The name of the Plan.
+func (o GetDbInstancePlansPlanOutput) DbInstancePlanName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlan) string { return v.DbInstancePlanName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource. The value formats as `<db_instance_id>:<plan_id>`.
+func (o GetDbInstancePlansPlanOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlan) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Plan configuration information.
+func (o GetDbInstancePlansPlanOutput) PlanConfigs() GetDbInstancePlansPlanPlanConfigArrayOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlan) []GetDbInstancePlansPlanPlanConfig { return v.PlanConfigs }).(GetDbInstancePlansPlanPlanConfigArrayOutput)
+}
+
+func (o GetDbInstancePlansPlanOutput) PlanDesc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlan) string { return v.PlanDesc }).(pulumi.StringOutput)
+}
+
+// The end time of the Plan.
+func (o GetDbInstancePlansPlanOutput) PlanEndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlan) string { return v.PlanEndDate }).(pulumi.StringOutput)
+}
+
+// The ID of DB Instance Plan.
+func (o GetDbInstancePlansPlanOutput) PlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlan) string { return v.PlanId }).(pulumi.StringOutput)
+}
+
+// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+func (o GetDbInstancePlansPlanOutput) PlanScheduleType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlan) string { return v.PlanScheduleType }).(pulumi.StringOutput)
+}
+
+// The start time of the Plan.
+func (o GetDbInstancePlansPlanOutput) PlanStartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlan) string { return v.PlanStartDate }).(pulumi.StringOutput)
+}
+
+// The type of the Plan. Valid values: `PauseResume`, `Resize`.
+func (o GetDbInstancePlansPlanOutput) PlanType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlan) string { return v.PlanType }).(pulumi.StringOutput)
+}
+
+// The Status of the Plan.
+func (o GetDbInstancePlansPlanOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlan) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetDbInstancePlansPlanArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancePlansPlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbInstancePlansPlan)(nil)).Elem()
+}
+
+func (o GetDbInstancePlansPlanArrayOutput) ToGetDbInstancePlansPlanArrayOutput() GetDbInstancePlansPlanArrayOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanArrayOutput) ToGetDbInstancePlansPlanArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanArrayOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanArrayOutput) Index(i pulumi.IntInput) GetDbInstancePlansPlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbInstancePlansPlan {
+		return vs[0].([]GetDbInstancePlansPlan)[vs[1].(int)]
+	}).(GetDbInstancePlansPlanOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfig struct {
+	// Pause instance plan config.
+	Pauses []GetDbInstancePlansPlanPlanConfigPause `pulumi:"pauses"`
+	// Resume instance plan config.
+	Resumes []GetDbInstancePlansPlanPlanConfigResume `pulumi:"resumes"`
+	// Scale In instance plan config.
+	ScaleIns []GetDbInstancePlansPlanPlanConfigScaleIn `pulumi:"scaleIns"`
+	// Scale out instance plan config.
+	ScaleOuts []GetDbInstancePlansPlanPlanConfigScaleOut `pulumi:"scaleOuts"`
+}
+
+// GetDbInstancePlansPlanPlanConfigInput is an input type that accepts GetDbInstancePlansPlanPlanConfigArgs and GetDbInstancePlansPlanPlanConfigOutput values.
+// You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigInput` via:
+//
+//	GetDbInstancePlansPlanPlanConfigArgs{...}
+type GetDbInstancePlansPlanPlanConfigInput interface {
+	pulumi.Input
+
+	ToGetDbInstancePlansPlanPlanConfigOutput() GetDbInstancePlansPlanPlanConfigOutput
+	ToGetDbInstancePlansPlanPlanConfigOutputWithContext(context.Context) GetDbInstancePlansPlanPlanConfigOutput
+}
+
+type GetDbInstancePlansPlanPlanConfigArgs struct {
+	// Pause instance plan config.
+	Pauses GetDbInstancePlansPlanPlanConfigPauseArrayInput `pulumi:"pauses"`
+	// Resume instance plan config.
+	Resumes GetDbInstancePlansPlanPlanConfigResumeArrayInput `pulumi:"resumes"`
+	// Scale In instance plan config.
+	ScaleIns GetDbInstancePlansPlanPlanConfigScaleInArrayInput `pulumi:"scaleIns"`
+	// Scale out instance plan config.
+	ScaleOuts GetDbInstancePlansPlanPlanConfigScaleOutArrayInput `pulumi:"scaleOuts"`
+}
+
+func (GetDbInstancePlansPlanPlanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancePlansPlanPlanConfig)(nil)).Elem()
+}
+
+func (i GetDbInstancePlansPlanPlanConfigArgs) ToGetDbInstancePlansPlanPlanConfigOutput() GetDbInstancePlansPlanPlanConfigOutput {
+	return i.ToGetDbInstancePlansPlanPlanConfigOutputWithContext(context.Background())
+}
+
+func (i GetDbInstancePlansPlanPlanConfigArgs) ToGetDbInstancePlansPlanPlanConfigOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigOutput)
+}
+
+// GetDbInstancePlansPlanPlanConfigArrayInput is an input type that accepts GetDbInstancePlansPlanPlanConfigArray and GetDbInstancePlansPlanPlanConfigArrayOutput values.
+// You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigArrayInput` via:
+//
+//	GetDbInstancePlansPlanPlanConfigArray{ GetDbInstancePlansPlanPlanConfigArgs{...} }
+type GetDbInstancePlansPlanPlanConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDbInstancePlansPlanPlanConfigArrayOutput() GetDbInstancePlansPlanPlanConfigArrayOutput
+	ToGetDbInstancePlansPlanPlanConfigArrayOutputWithContext(context.Context) GetDbInstancePlansPlanPlanConfigArrayOutput
+}
+
+type GetDbInstancePlansPlanPlanConfigArray []GetDbInstancePlansPlanPlanConfigInput
+
+func (GetDbInstancePlansPlanPlanConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbInstancePlansPlanPlanConfig)(nil)).Elem()
+}
+
+func (i GetDbInstancePlansPlanPlanConfigArray) ToGetDbInstancePlansPlanPlanConfigArrayOutput() GetDbInstancePlansPlanPlanConfigArrayOutput {
+	return i.ToGetDbInstancePlansPlanPlanConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDbInstancePlansPlanPlanConfigArray) ToGetDbInstancePlansPlanPlanConfigArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigArrayOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancePlansPlanPlanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancePlansPlanPlanConfig)(nil)).Elem()
+}
+
+func (o GetDbInstancePlansPlanPlanConfigOutput) ToGetDbInstancePlansPlanPlanConfigOutput() GetDbInstancePlansPlanPlanConfigOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigOutput) ToGetDbInstancePlansPlanPlanConfigOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigOutput {
+	return o
+}
+
+// Pause instance plan config.
+func (o GetDbInstancePlansPlanPlanConfigOutput) Pauses() GetDbInstancePlansPlanPlanConfigPauseArrayOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfig) []GetDbInstancePlansPlanPlanConfigPause { return v.Pauses }).(GetDbInstancePlansPlanPlanConfigPauseArrayOutput)
+}
+
+// Resume instance plan config.
+func (o GetDbInstancePlansPlanPlanConfigOutput) Resumes() GetDbInstancePlansPlanPlanConfigResumeArrayOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfig) []GetDbInstancePlansPlanPlanConfigResume { return v.Resumes }).(GetDbInstancePlansPlanPlanConfigResumeArrayOutput)
+}
+
+// Scale In instance plan config.
+func (o GetDbInstancePlansPlanPlanConfigOutput) ScaleIns() GetDbInstancePlansPlanPlanConfigScaleInArrayOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfig) []GetDbInstancePlansPlanPlanConfigScaleIn { return v.ScaleIns }).(GetDbInstancePlansPlanPlanConfigScaleInArrayOutput)
+}
+
+// Scale out instance plan config.
+func (o GetDbInstancePlansPlanPlanConfigOutput) ScaleOuts() GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfig) []GetDbInstancePlansPlanPlanConfigScaleOut {
+		return v.ScaleOuts
+	}).(GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancePlansPlanPlanConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbInstancePlansPlanPlanConfig)(nil)).Elem()
+}
+
+func (o GetDbInstancePlansPlanPlanConfigArrayOutput) ToGetDbInstancePlansPlanPlanConfigArrayOutput() GetDbInstancePlansPlanPlanConfigArrayOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigArrayOutput) ToGetDbInstancePlansPlanPlanConfigArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigArrayOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigArrayOutput) Index(i pulumi.IntInput) GetDbInstancePlansPlanPlanConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbInstancePlansPlanPlanConfig {
+		return vs[0].([]GetDbInstancePlansPlanPlanConfig)[vs[1].(int)]
+	}).(GetDbInstancePlansPlanPlanConfigOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigPause struct {
+	// The executed time of the Plan.
+	ExecuteTime string `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime string `pulumi:"planCronTime"`
+	// The Status of the plan Task.
+	PlanTaskStatus string `pulumi:"planTaskStatus"`
+}
+
+// GetDbInstancePlansPlanPlanConfigPauseInput is an input type that accepts GetDbInstancePlansPlanPlanConfigPauseArgs and GetDbInstancePlansPlanPlanConfigPauseOutput values.
+// You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigPauseInput` via:
+//
+//	GetDbInstancePlansPlanPlanConfigPauseArgs{...}
+type GetDbInstancePlansPlanPlanConfigPauseInput interface {
+	pulumi.Input
+
+	ToGetDbInstancePlansPlanPlanConfigPauseOutput() GetDbInstancePlansPlanPlanConfigPauseOutput
+	ToGetDbInstancePlansPlanPlanConfigPauseOutputWithContext(context.Context) GetDbInstancePlansPlanPlanConfigPauseOutput
+}
+
+type GetDbInstancePlansPlanPlanConfigPauseArgs struct {
+	// The executed time of the Plan.
+	ExecuteTime pulumi.StringInput `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime pulumi.StringInput `pulumi:"planCronTime"`
+	// The Status of the plan Task.
+	PlanTaskStatus pulumi.StringInput `pulumi:"planTaskStatus"`
+}
+
+func (GetDbInstancePlansPlanPlanConfigPauseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigPause)(nil)).Elem()
+}
+
+func (i GetDbInstancePlansPlanPlanConfigPauseArgs) ToGetDbInstancePlansPlanPlanConfigPauseOutput() GetDbInstancePlansPlanPlanConfigPauseOutput {
+	return i.ToGetDbInstancePlansPlanPlanConfigPauseOutputWithContext(context.Background())
+}
+
+func (i GetDbInstancePlansPlanPlanConfigPauseArgs) ToGetDbInstancePlansPlanPlanConfigPauseOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigPauseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigPauseOutput)
+}
+
+// GetDbInstancePlansPlanPlanConfigPauseArrayInput is an input type that accepts GetDbInstancePlansPlanPlanConfigPauseArray and GetDbInstancePlansPlanPlanConfigPauseArrayOutput values.
+// You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigPauseArrayInput` via:
+//
+//	GetDbInstancePlansPlanPlanConfigPauseArray{ GetDbInstancePlansPlanPlanConfigPauseArgs{...} }
+type GetDbInstancePlansPlanPlanConfigPauseArrayInput interface {
+	pulumi.Input
+
+	ToGetDbInstancePlansPlanPlanConfigPauseArrayOutput() GetDbInstancePlansPlanPlanConfigPauseArrayOutput
+	ToGetDbInstancePlansPlanPlanConfigPauseArrayOutputWithContext(context.Context) GetDbInstancePlansPlanPlanConfigPauseArrayOutput
+}
+
+type GetDbInstancePlansPlanPlanConfigPauseArray []GetDbInstancePlansPlanPlanConfigPauseInput
+
+func (GetDbInstancePlansPlanPlanConfigPauseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbInstancePlansPlanPlanConfigPause)(nil)).Elem()
+}
+
+func (i GetDbInstancePlansPlanPlanConfigPauseArray) ToGetDbInstancePlansPlanPlanConfigPauseArrayOutput() GetDbInstancePlansPlanPlanConfigPauseArrayOutput {
+	return i.ToGetDbInstancePlansPlanPlanConfigPauseArrayOutputWithContext(context.Background())
+}
+
+func (i GetDbInstancePlansPlanPlanConfigPauseArray) ToGetDbInstancePlansPlanPlanConfigPauseArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigPauseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigPauseArrayOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigPauseOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancePlansPlanPlanConfigPauseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigPause)(nil)).Elem()
+}
+
+func (o GetDbInstancePlansPlanPlanConfigPauseOutput) ToGetDbInstancePlansPlanPlanConfigPauseOutput() GetDbInstancePlansPlanPlanConfigPauseOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigPauseOutput) ToGetDbInstancePlansPlanPlanConfigPauseOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigPauseOutput {
+	return o
+}
+
+// The executed time of the Plan.
+func (o GetDbInstancePlansPlanPlanConfigPauseOutput) ExecuteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigPause) string { return v.ExecuteTime }).(pulumi.StringOutput)
+}
+
+// The Cron Time of the plan.
+func (o GetDbInstancePlansPlanPlanConfigPauseOutput) PlanCronTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigPause) string { return v.PlanCronTime }).(pulumi.StringOutput)
+}
+
+// The Status of the plan Task.
+func (o GetDbInstancePlansPlanPlanConfigPauseOutput) PlanTaskStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigPause) string { return v.PlanTaskStatus }).(pulumi.StringOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigPauseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancePlansPlanPlanConfigPauseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbInstancePlansPlanPlanConfigPause)(nil)).Elem()
+}
+
+func (o GetDbInstancePlansPlanPlanConfigPauseArrayOutput) ToGetDbInstancePlansPlanPlanConfigPauseArrayOutput() GetDbInstancePlansPlanPlanConfigPauseArrayOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigPauseArrayOutput) ToGetDbInstancePlansPlanPlanConfigPauseArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigPauseArrayOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigPauseArrayOutput) Index(i pulumi.IntInput) GetDbInstancePlansPlanPlanConfigPauseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbInstancePlansPlanPlanConfigPause {
+		return vs[0].([]GetDbInstancePlansPlanPlanConfigPause)[vs[1].(int)]
+	}).(GetDbInstancePlansPlanPlanConfigPauseOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigResume struct {
+	// The executed time of the Plan.
+	ExecuteTime string `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime string `pulumi:"planCronTime"`
+	// The Status of the plan Task.
+	PlanTaskStatus string `pulumi:"planTaskStatus"`
+}
+
+// GetDbInstancePlansPlanPlanConfigResumeInput is an input type that accepts GetDbInstancePlansPlanPlanConfigResumeArgs and GetDbInstancePlansPlanPlanConfigResumeOutput values.
+// You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigResumeInput` via:
+//
+//	GetDbInstancePlansPlanPlanConfigResumeArgs{...}
+type GetDbInstancePlansPlanPlanConfigResumeInput interface {
+	pulumi.Input
+
+	ToGetDbInstancePlansPlanPlanConfigResumeOutput() GetDbInstancePlansPlanPlanConfigResumeOutput
+	ToGetDbInstancePlansPlanPlanConfigResumeOutputWithContext(context.Context) GetDbInstancePlansPlanPlanConfigResumeOutput
+}
+
+type GetDbInstancePlansPlanPlanConfigResumeArgs struct {
+	// The executed time of the Plan.
+	ExecuteTime pulumi.StringInput `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime pulumi.StringInput `pulumi:"planCronTime"`
+	// The Status of the plan Task.
+	PlanTaskStatus pulumi.StringInput `pulumi:"planTaskStatus"`
+}
+
+func (GetDbInstancePlansPlanPlanConfigResumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigResume)(nil)).Elem()
+}
+
+func (i GetDbInstancePlansPlanPlanConfigResumeArgs) ToGetDbInstancePlansPlanPlanConfigResumeOutput() GetDbInstancePlansPlanPlanConfigResumeOutput {
+	return i.ToGetDbInstancePlansPlanPlanConfigResumeOutputWithContext(context.Background())
+}
+
+func (i GetDbInstancePlansPlanPlanConfigResumeArgs) ToGetDbInstancePlansPlanPlanConfigResumeOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigResumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigResumeOutput)
+}
+
+// GetDbInstancePlansPlanPlanConfigResumeArrayInput is an input type that accepts GetDbInstancePlansPlanPlanConfigResumeArray and GetDbInstancePlansPlanPlanConfigResumeArrayOutput values.
+// You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigResumeArrayInput` via:
+//
+//	GetDbInstancePlansPlanPlanConfigResumeArray{ GetDbInstancePlansPlanPlanConfigResumeArgs{...} }
+type GetDbInstancePlansPlanPlanConfigResumeArrayInput interface {
+	pulumi.Input
+
+	ToGetDbInstancePlansPlanPlanConfigResumeArrayOutput() GetDbInstancePlansPlanPlanConfigResumeArrayOutput
+	ToGetDbInstancePlansPlanPlanConfigResumeArrayOutputWithContext(context.Context) GetDbInstancePlansPlanPlanConfigResumeArrayOutput
+}
+
+type GetDbInstancePlansPlanPlanConfigResumeArray []GetDbInstancePlansPlanPlanConfigResumeInput
+
+func (GetDbInstancePlansPlanPlanConfigResumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbInstancePlansPlanPlanConfigResume)(nil)).Elem()
+}
+
+func (i GetDbInstancePlansPlanPlanConfigResumeArray) ToGetDbInstancePlansPlanPlanConfigResumeArrayOutput() GetDbInstancePlansPlanPlanConfigResumeArrayOutput {
+	return i.ToGetDbInstancePlansPlanPlanConfigResumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetDbInstancePlansPlanPlanConfigResumeArray) ToGetDbInstancePlansPlanPlanConfigResumeArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigResumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigResumeArrayOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigResumeOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancePlansPlanPlanConfigResumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigResume)(nil)).Elem()
+}
+
+func (o GetDbInstancePlansPlanPlanConfigResumeOutput) ToGetDbInstancePlansPlanPlanConfigResumeOutput() GetDbInstancePlansPlanPlanConfigResumeOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigResumeOutput) ToGetDbInstancePlansPlanPlanConfigResumeOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigResumeOutput {
+	return o
+}
+
+// The executed time of the Plan.
+func (o GetDbInstancePlansPlanPlanConfigResumeOutput) ExecuteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigResume) string { return v.ExecuteTime }).(pulumi.StringOutput)
+}
+
+// The Cron Time of the plan.
+func (o GetDbInstancePlansPlanPlanConfigResumeOutput) PlanCronTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigResume) string { return v.PlanCronTime }).(pulumi.StringOutput)
+}
+
+// The Status of the plan Task.
+func (o GetDbInstancePlansPlanPlanConfigResumeOutput) PlanTaskStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigResume) string { return v.PlanTaskStatus }).(pulumi.StringOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigResumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancePlansPlanPlanConfigResumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbInstancePlansPlanPlanConfigResume)(nil)).Elem()
+}
+
+func (o GetDbInstancePlansPlanPlanConfigResumeArrayOutput) ToGetDbInstancePlansPlanPlanConfigResumeArrayOutput() GetDbInstancePlansPlanPlanConfigResumeArrayOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigResumeArrayOutput) ToGetDbInstancePlansPlanPlanConfigResumeArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigResumeArrayOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigResumeArrayOutput) Index(i pulumi.IntInput) GetDbInstancePlansPlanPlanConfigResumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbInstancePlansPlanPlanConfigResume {
+		return vs[0].([]GetDbInstancePlansPlanPlanConfigResume)[vs[1].(int)]
+	}).(GetDbInstancePlansPlanPlanConfigResumeOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigScaleIn struct {
+	// The executed time of the Plan.
+	ExecuteTime string `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime string `pulumi:"planCronTime"`
+	// The Status of the plan Task.
+	PlanTaskStatus string `pulumi:"planTaskStatus"`
+	// The segment Node Num of the Plan.
+	SegmentNodeNum string `pulumi:"segmentNodeNum"`
+}
+
+// GetDbInstancePlansPlanPlanConfigScaleInInput is an input type that accepts GetDbInstancePlansPlanPlanConfigScaleInArgs and GetDbInstancePlansPlanPlanConfigScaleInOutput values.
+// You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigScaleInInput` via:
+//
+//	GetDbInstancePlansPlanPlanConfigScaleInArgs{...}
+type GetDbInstancePlansPlanPlanConfigScaleInInput interface {
+	pulumi.Input
+
+	ToGetDbInstancePlansPlanPlanConfigScaleInOutput() GetDbInstancePlansPlanPlanConfigScaleInOutput
+	ToGetDbInstancePlansPlanPlanConfigScaleInOutputWithContext(context.Context) GetDbInstancePlansPlanPlanConfigScaleInOutput
+}
+
+type GetDbInstancePlansPlanPlanConfigScaleInArgs struct {
+	// The executed time of the Plan.
+	ExecuteTime pulumi.StringInput `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime pulumi.StringInput `pulumi:"planCronTime"`
+	// The Status of the plan Task.
+	PlanTaskStatus pulumi.StringInput `pulumi:"planTaskStatus"`
+	// The segment Node Num of the Plan.
+	SegmentNodeNum pulumi.StringInput `pulumi:"segmentNodeNum"`
+}
+
+func (GetDbInstancePlansPlanPlanConfigScaleInArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigScaleIn)(nil)).Elem()
+}
+
+func (i GetDbInstancePlansPlanPlanConfigScaleInArgs) ToGetDbInstancePlansPlanPlanConfigScaleInOutput() GetDbInstancePlansPlanPlanConfigScaleInOutput {
+	return i.ToGetDbInstancePlansPlanPlanConfigScaleInOutputWithContext(context.Background())
+}
+
+func (i GetDbInstancePlansPlanPlanConfigScaleInArgs) ToGetDbInstancePlansPlanPlanConfigScaleInOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigScaleInOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigScaleInOutput)
+}
+
+// GetDbInstancePlansPlanPlanConfigScaleInArrayInput is an input type that accepts GetDbInstancePlansPlanPlanConfigScaleInArray and GetDbInstancePlansPlanPlanConfigScaleInArrayOutput values.
+// You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigScaleInArrayInput` via:
+//
+//	GetDbInstancePlansPlanPlanConfigScaleInArray{ GetDbInstancePlansPlanPlanConfigScaleInArgs{...} }
+type GetDbInstancePlansPlanPlanConfigScaleInArrayInput interface {
+	pulumi.Input
+
+	ToGetDbInstancePlansPlanPlanConfigScaleInArrayOutput() GetDbInstancePlansPlanPlanConfigScaleInArrayOutput
+	ToGetDbInstancePlansPlanPlanConfigScaleInArrayOutputWithContext(context.Context) GetDbInstancePlansPlanPlanConfigScaleInArrayOutput
+}
+
+type GetDbInstancePlansPlanPlanConfigScaleInArray []GetDbInstancePlansPlanPlanConfigScaleInInput
+
+func (GetDbInstancePlansPlanPlanConfigScaleInArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbInstancePlansPlanPlanConfigScaleIn)(nil)).Elem()
+}
+
+func (i GetDbInstancePlansPlanPlanConfigScaleInArray) ToGetDbInstancePlansPlanPlanConfigScaleInArrayOutput() GetDbInstancePlansPlanPlanConfigScaleInArrayOutput {
+	return i.ToGetDbInstancePlansPlanPlanConfigScaleInArrayOutputWithContext(context.Background())
+}
+
+func (i GetDbInstancePlansPlanPlanConfigScaleInArray) ToGetDbInstancePlansPlanPlanConfigScaleInArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigScaleInArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigScaleInArrayOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigScaleInOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancePlansPlanPlanConfigScaleInOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigScaleIn)(nil)).Elem()
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleInOutput) ToGetDbInstancePlansPlanPlanConfigScaleInOutput() GetDbInstancePlansPlanPlanConfigScaleInOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleInOutput) ToGetDbInstancePlansPlanPlanConfigScaleInOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigScaleInOutput {
+	return o
+}
+
+// The executed time of the Plan.
+func (o GetDbInstancePlansPlanPlanConfigScaleInOutput) ExecuteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigScaleIn) string { return v.ExecuteTime }).(pulumi.StringOutput)
+}
+
+// The Cron Time of the plan.
+func (o GetDbInstancePlansPlanPlanConfigScaleInOutput) PlanCronTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigScaleIn) string { return v.PlanCronTime }).(pulumi.StringOutput)
+}
+
+// The Status of the plan Task.
+func (o GetDbInstancePlansPlanPlanConfigScaleInOutput) PlanTaskStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigScaleIn) string { return v.PlanTaskStatus }).(pulumi.StringOutput)
+}
+
+// The segment Node Num of the Plan.
+func (o GetDbInstancePlansPlanPlanConfigScaleInOutput) SegmentNodeNum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigScaleIn) string { return v.SegmentNodeNum }).(pulumi.StringOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigScaleInArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancePlansPlanPlanConfigScaleInArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbInstancePlansPlanPlanConfigScaleIn)(nil)).Elem()
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleInArrayOutput) ToGetDbInstancePlansPlanPlanConfigScaleInArrayOutput() GetDbInstancePlansPlanPlanConfigScaleInArrayOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleInArrayOutput) ToGetDbInstancePlansPlanPlanConfigScaleInArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigScaleInArrayOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleInArrayOutput) Index(i pulumi.IntInput) GetDbInstancePlansPlanPlanConfigScaleInOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbInstancePlansPlanPlanConfigScaleIn {
+		return vs[0].([]GetDbInstancePlansPlanPlanConfigScaleIn)[vs[1].(int)]
+	}).(GetDbInstancePlansPlanPlanConfigScaleInOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigScaleOut struct {
+	// The executed time of the Plan.
+	ExecuteTime string `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime string `pulumi:"planCronTime"`
+	// The Status of the plan Task.
+	PlanTaskStatus string `pulumi:"planTaskStatus"`
+	// The segment Node Num of the Plan.
+	SegmentNodeNum string `pulumi:"segmentNodeNum"`
+}
+
+// GetDbInstancePlansPlanPlanConfigScaleOutInput is an input type that accepts GetDbInstancePlansPlanPlanConfigScaleOutArgs and GetDbInstancePlansPlanPlanConfigScaleOutOutput values.
+// You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigScaleOutInput` via:
+//
+//	GetDbInstancePlansPlanPlanConfigScaleOutArgs{...}
+type GetDbInstancePlansPlanPlanConfigScaleOutInput interface {
+	pulumi.Input
+
+	ToGetDbInstancePlansPlanPlanConfigScaleOutOutput() GetDbInstancePlansPlanPlanConfigScaleOutOutput
+	ToGetDbInstancePlansPlanPlanConfigScaleOutOutputWithContext(context.Context) GetDbInstancePlansPlanPlanConfigScaleOutOutput
+}
+
+type GetDbInstancePlansPlanPlanConfigScaleOutArgs struct {
+	// The executed time of the Plan.
+	ExecuteTime pulumi.StringInput `pulumi:"executeTime"`
+	// The Cron Time of the plan.
+	PlanCronTime pulumi.StringInput `pulumi:"planCronTime"`
+	// The Status of the plan Task.
+	PlanTaskStatus pulumi.StringInput `pulumi:"planTaskStatus"`
+	// The segment Node Num of the Plan.
+	SegmentNodeNum pulumi.StringInput `pulumi:"segmentNodeNum"`
+}
+
+func (GetDbInstancePlansPlanPlanConfigScaleOutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigScaleOut)(nil)).Elem()
+}
+
+func (i GetDbInstancePlansPlanPlanConfigScaleOutArgs) ToGetDbInstancePlansPlanPlanConfigScaleOutOutput() GetDbInstancePlansPlanPlanConfigScaleOutOutput {
+	return i.ToGetDbInstancePlansPlanPlanConfigScaleOutOutputWithContext(context.Background())
+}
+
+func (i GetDbInstancePlansPlanPlanConfigScaleOutArgs) ToGetDbInstancePlansPlanPlanConfigScaleOutOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigScaleOutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigScaleOutOutput)
+}
+
+// GetDbInstancePlansPlanPlanConfigScaleOutArrayInput is an input type that accepts GetDbInstancePlansPlanPlanConfigScaleOutArray and GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput values.
+// You can construct a concrete instance of `GetDbInstancePlansPlanPlanConfigScaleOutArrayInput` via:
+//
+//	GetDbInstancePlansPlanPlanConfigScaleOutArray{ GetDbInstancePlansPlanPlanConfigScaleOutArgs{...} }
+type GetDbInstancePlansPlanPlanConfigScaleOutArrayInput interface {
+	pulumi.Input
+
+	ToGetDbInstancePlansPlanPlanConfigScaleOutArrayOutput() GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput
+	ToGetDbInstancePlansPlanPlanConfigScaleOutArrayOutputWithContext(context.Context) GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput
+}
+
+type GetDbInstancePlansPlanPlanConfigScaleOutArray []GetDbInstancePlansPlanPlanConfigScaleOutInput
+
+func (GetDbInstancePlansPlanPlanConfigScaleOutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbInstancePlansPlanPlanConfigScaleOut)(nil)).Elem()
+}
+
+func (i GetDbInstancePlansPlanPlanConfigScaleOutArray) ToGetDbInstancePlansPlanPlanConfigScaleOutArrayOutput() GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput {
+	return i.ToGetDbInstancePlansPlanPlanConfigScaleOutArrayOutputWithContext(context.Background())
+}
+
+func (i GetDbInstancePlansPlanPlanConfigScaleOutArray) ToGetDbInstancePlansPlanPlanConfigScaleOutArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigScaleOutOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancePlansPlanPlanConfigScaleOutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigScaleOut)(nil)).Elem()
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleOutOutput) ToGetDbInstancePlansPlanPlanConfigScaleOutOutput() GetDbInstancePlansPlanPlanConfigScaleOutOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleOutOutput) ToGetDbInstancePlansPlanPlanConfigScaleOutOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigScaleOutOutput {
+	return o
+}
+
+// The executed time of the Plan.
+func (o GetDbInstancePlansPlanPlanConfigScaleOutOutput) ExecuteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigScaleOut) string { return v.ExecuteTime }).(pulumi.StringOutput)
+}
+
+// The Cron Time of the plan.
+func (o GetDbInstancePlansPlanPlanConfigScaleOutOutput) PlanCronTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigScaleOut) string { return v.PlanCronTime }).(pulumi.StringOutput)
+}
+
+// The Status of the plan Task.
+func (o GetDbInstancePlansPlanPlanConfigScaleOutOutput) PlanTaskStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigScaleOut) string { return v.PlanTaskStatus }).(pulumi.StringOutput)
+}
+
+// The segment Node Num of the Plan.
+func (o GetDbInstancePlansPlanPlanConfigScaleOutOutput) SegmentNodeNum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbInstancePlansPlanPlanConfigScaleOut) string { return v.SegmentNodeNum }).(pulumi.StringOutput)
+}
+
+type GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbInstancePlansPlanPlanConfigScaleOut)(nil)).Elem()
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput) ToGetDbInstancePlansPlanPlanConfigScaleOutArrayOutput() GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput) ToGetDbInstancePlansPlanPlanConfigScaleOutArrayOutputWithContext(ctx context.Context) GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput {
+	return o
+}
+
+func (o GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput) Index(i pulumi.IntInput) GetDbInstancePlansPlanPlanConfigScaleOutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbInstancePlansPlanPlanConfigScaleOut {
+		return vs[0].([]GetDbInstancePlansPlanPlanConfigScaleOut)[vs[1].(int)]
+	}).(GetDbInstancePlansPlanPlanConfigScaleOutOutput)
+}
+
 type GetInstancesInstance struct {
 	// Instance availability zone.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
-	ChargeType string `pulumi:"chargeType"`
-	// The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
+	ChargeType       string `pulumi:"chargeType"`
+	// The connection string of the instance.
+	ConnectionString string `pulumi:"connectionString"`
+	// The number of CPU cores of the computing node. Unit: Core.
+	CpuCores string `pulumi:"cpuCores"`
+	// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+	CreateTime   string `pulumi:"createTime"`
 	CreationTime string `pulumi:"creationTime"`
-	// The description of an instance.
+	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	DbInstanceCategory string `pulumi:"dbInstanceCategory"`
+	// The db instance class.
+	DbInstanceClass string `pulumi:"dbInstanceClass"`
+	// The db instance id.
+	DbInstanceId string `pulumi:"dbInstanceId"`
+	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+	DbInstanceMode string `pulumi:"dbInstanceMode"`
+	// The description of the instance.
 	Description string `pulumi:"description"`
-	// Database engine type. Supported option is `gpdb`.
+	// The database engine used by the instance.
 	Engine string `pulumi:"engine"`
-	// Database engine version.
+	// The version of the database engine used by the instance.
 	EngineVersion string `pulumi:"engineVersion"`
-	// The instance id.
+	// The ID of the db Instance.
 	Id string `pulumi:"id"`
-	// The group type.
-	InstanceClass string `pulumi:"instanceClass"`
-	// The number of groups.
-	InstanceGroupCount  string `pulumi:"instanceGroupCount"`
+	// The network type of the instance.
 	InstanceNetworkType string `pulumi:"instanceNetworkType"`
+	// The ip whitelist.
+	IpWhitelists []GetInstancesInstanceIpWhitelist `pulumi:"ipWhitelists"`
+	// The end time of the maintenance window for the instance.
+	MaintainEndTime string `pulumi:"maintainEndTime"`
+	// The start time of the maintenance window for the instance.
+	MaintainStartTime string `pulumi:"maintainStartTime"`
+	// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+	MasterNodeNum string `pulumi:"masterNodeNum"`
+	// The memory size of the compute node.
+	MemorySize string `pulumi:"memorySize"`
+	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+	PaymentType string `pulumi:"paymentType"`
 	// Region ID the instance belongs to.
 	RegionId string `pulumi:"regionId"`
-	// Status of the instance.
+	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+	SegNodeNum string `pulumi:"segNodeNum"`
+	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
 	Status string `pulumi:"status"`
+	// The storage capacity. Unit: GB. Value: `50` to `4000`.
+	StorageSize int `pulumi:"storageSize"`
+	// The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
+	StorageType string `pulumi:"storageType"`
+	// The tags of the instance.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The ID of the VPC。.
+	VpcId string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId string `pulumi:"vswitchId"`
+	// The zone ID of the instance.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -183,27 +1898,62 @@ type GetInstancesInstanceInput interface {
 type GetInstancesInstanceArgs struct {
 	// Instance availability zone.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
-	ChargeType pulumi.StringInput `pulumi:"chargeType"`
-	// The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
+	ChargeType       pulumi.StringInput `pulumi:"chargeType"`
+	// The connection string of the instance.
+	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
+	// The number of CPU cores of the computing node. Unit: Core.
+	CpuCores pulumi.StringInput `pulumi:"cpuCores"`
+	// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+	CreateTime   pulumi.StringInput `pulumi:"createTime"`
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
-	// The description of an instance.
+	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	DbInstanceCategory pulumi.StringInput `pulumi:"dbInstanceCategory"`
+	// The db instance class.
+	DbInstanceClass pulumi.StringInput `pulumi:"dbInstanceClass"`
+	// The db instance id.
+	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
+	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+	DbInstanceMode pulumi.StringInput `pulumi:"dbInstanceMode"`
+	// The description of the instance.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Database engine type. Supported option is `gpdb`.
+	// The database engine used by the instance.
 	Engine pulumi.StringInput `pulumi:"engine"`
-	// Database engine version.
+	// The version of the database engine used by the instance.
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
-	// The instance id.
+	// The ID of the db Instance.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The group type.
-	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
-	// The number of groups.
-	InstanceGroupCount  pulumi.StringInput `pulumi:"instanceGroupCount"`
+	// The network type of the instance.
 	InstanceNetworkType pulumi.StringInput `pulumi:"instanceNetworkType"`
+	// The ip whitelist.
+	IpWhitelists GetInstancesInstanceIpWhitelistArrayInput `pulumi:"ipWhitelists"`
+	// The end time of the maintenance window for the instance.
+	MaintainEndTime pulumi.StringInput `pulumi:"maintainEndTime"`
+	// The start time of the maintenance window for the instance.
+	MaintainStartTime pulumi.StringInput `pulumi:"maintainStartTime"`
+	// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+	MasterNodeNum pulumi.StringInput `pulumi:"masterNodeNum"`
+	// The memory size of the compute node.
+	MemorySize pulumi.StringInput `pulumi:"memorySize"`
+	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// Region ID the instance belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// Status of the instance.
+	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+	SegNodeNum pulumi.StringInput `pulumi:"segNodeNum"`
+	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
 	Status pulumi.StringInput `pulumi:"status"`
+	// The storage capacity. Unit: GB. Value: `50` to `4000`.
+	StorageSize pulumi.IntInput `pulumi:"storageSize"`
+	// The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
+	StorageType pulumi.StringInput `pulumi:"storageType"`
+	// The tags of the instance.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The ID of the VPC。.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The zone ID of the instance.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -262,48 +2012,102 @@ func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
 func (o GetInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
-// The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
+// The connection string of the instance.
+func (o GetInstancesInstanceOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// The number of CPU cores of the computing node. Unit: Core.
+func (o GetInstancesInstanceOutput) CpuCores() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CpuCores }).(pulumi.StringOutput)
+}
+
+// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 func (o GetInstancesInstanceOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// The description of an instance.
+// The db instance category. Valid values: `HighAvailability`, `Basic`.
+func (o GetInstancesInstanceOutput) DbInstanceCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceCategory }).(pulumi.StringOutput)
+}
+
+// The db instance class.
+func (o GetInstancesInstanceOutput) DbInstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceClass }).(pulumi.StringOutput)
+}
+
+// The db instance id.
+func (o GetInstancesInstanceOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+func (o GetInstancesInstanceOutput) DbInstanceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceMode }).(pulumi.StringOutput)
+}
+
+// The description of the instance.
 func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Database engine type. Supported option is `gpdb`.
+// The database engine used by the instance.
 func (o GetInstancesInstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-// Database engine version.
+// The version of the database engine used by the instance.
 func (o GetInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
-// The instance id.
+// The ID of the db Instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The group type.
-func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
-}
-
-// The number of groups.
-func (o GetInstancesInstanceOutput) InstanceGroupCount() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceGroupCount }).(pulumi.StringOutput)
-}
-
+// The network type of the instance.
 func (o GetInstancesInstanceOutput) InstanceNetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceNetworkType }).(pulumi.StringOutput)
+}
+
+// The ip whitelist.
+func (o GetInstancesInstanceOutput) IpWhitelists() GetInstancesInstanceIpWhitelistArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceIpWhitelist { return v.IpWhitelists }).(GetInstancesInstanceIpWhitelistArrayOutput)
+}
+
+// The end time of the maintenance window for the instance.
+func (o GetInstancesInstanceOutput) MaintainEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaintainEndTime }).(pulumi.StringOutput)
+}
+
+// The start time of the maintenance window for the instance.
+func (o GetInstancesInstanceOutput) MaintainStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaintainStartTime }).(pulumi.StringOutput)
+}
+
+// The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+func (o GetInstancesInstanceOutput) MasterNodeNum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MasterNodeNum }).(pulumi.StringOutput)
+}
+
+// The memory size of the compute node.
+func (o GetInstancesInstanceOutput) MemorySize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MemorySize }).(pulumi.StringOutput)
+}
+
+// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
 // Region ID the instance belongs to.
@@ -311,9 +2115,44 @@ func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// Status of the instance.
+// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+func (o GetInstancesInstanceOutput) SegNodeNum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SegNodeNum }).(pulumi.StringOutput)
+}
+
+// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage capacity. Unit: GB. Value: `50` to `4000`.
+func (o GetInstancesInstanceOutput) StorageSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.StorageSize }).(pulumi.IntOutput)
+}
+
+// The type of disks. Valid values: `cloudEssd`, `cloudEfficiency`.
+func (o GetInstancesInstanceOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// The tags of the instance.
+func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the VPC。.
+func (o GetInstancesInstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The vswitch id.
+func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// The zone ID of the instance.
+func (o GetInstancesInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -334,6 +2173,121 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
+}
+
+type GetInstancesInstanceIpWhitelist struct {
+	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+	IpGroupAttribute string `pulumi:"ipGroupAttribute"`
+	// IP whitelist group name
+	IpGroupName string `pulumi:"ipGroupName"`
+	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+	SecurityIpList string `pulumi:"securityIpList"`
+}
+
+// GetInstancesInstanceIpWhitelistInput is an input type that accepts GetInstancesInstanceIpWhitelistArgs and GetInstancesInstanceIpWhitelistOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceIpWhitelistInput` via:
+//
+//	GetInstancesInstanceIpWhitelistArgs{...}
+type GetInstancesInstanceIpWhitelistInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceIpWhitelistOutput() GetInstancesInstanceIpWhitelistOutput
+	ToGetInstancesInstanceIpWhitelistOutputWithContext(context.Context) GetInstancesInstanceIpWhitelistOutput
+}
+
+type GetInstancesInstanceIpWhitelistArgs struct {
+	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+	IpGroupAttribute pulumi.StringInput `pulumi:"ipGroupAttribute"`
+	// IP whitelist group name
+	IpGroupName pulumi.StringInput `pulumi:"ipGroupName"`
+	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+	SecurityIpList pulumi.StringInput `pulumi:"securityIpList"`
+}
+
+func (GetInstancesInstanceIpWhitelistArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceIpWhitelist)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceIpWhitelistArgs) ToGetInstancesInstanceIpWhitelistOutput() GetInstancesInstanceIpWhitelistOutput {
+	return i.ToGetInstancesInstanceIpWhitelistOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceIpWhitelistArgs) ToGetInstancesInstanceIpWhitelistOutputWithContext(ctx context.Context) GetInstancesInstanceIpWhitelistOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceIpWhitelistOutput)
+}
+
+// GetInstancesInstanceIpWhitelistArrayInput is an input type that accepts GetInstancesInstanceIpWhitelistArray and GetInstancesInstanceIpWhitelistArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceIpWhitelistArrayInput` via:
+//
+//	GetInstancesInstanceIpWhitelistArray{ GetInstancesInstanceIpWhitelistArgs{...} }
+type GetInstancesInstanceIpWhitelistArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceIpWhitelistArrayOutput() GetInstancesInstanceIpWhitelistArrayOutput
+	ToGetInstancesInstanceIpWhitelistArrayOutputWithContext(context.Context) GetInstancesInstanceIpWhitelistArrayOutput
+}
+
+type GetInstancesInstanceIpWhitelistArray []GetInstancesInstanceIpWhitelistInput
+
+func (GetInstancesInstanceIpWhitelistArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceIpWhitelist)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceIpWhitelistArray) ToGetInstancesInstanceIpWhitelistArrayOutput() GetInstancesInstanceIpWhitelistArrayOutput {
+	return i.ToGetInstancesInstanceIpWhitelistArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceIpWhitelistArray) ToGetInstancesInstanceIpWhitelistArrayOutputWithContext(ctx context.Context) GetInstancesInstanceIpWhitelistArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceIpWhitelistArrayOutput)
+}
+
+type GetInstancesInstanceIpWhitelistOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceIpWhitelistOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstanceIpWhitelist)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceIpWhitelistOutput) ToGetInstancesInstanceIpWhitelistOutput() GetInstancesInstanceIpWhitelistOutput {
+	return o
+}
+
+func (o GetInstancesInstanceIpWhitelistOutput) ToGetInstancesInstanceIpWhitelistOutputWithContext(ctx context.Context) GetInstancesInstanceIpWhitelistOutput {
+	return o
+}
+
+// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+func (o GetInstancesInstanceIpWhitelistOutput) IpGroupAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceIpWhitelist) string { return v.IpGroupAttribute }).(pulumi.StringOutput)
+}
+
+// IP whitelist group name
+func (o GetInstancesInstanceIpWhitelistOutput) IpGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceIpWhitelist) string { return v.IpGroupName }).(pulumi.StringOutput)
+}
+
+// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
+func (o GetInstancesInstanceIpWhitelistOutput) SecurityIpList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstanceIpWhitelist) string { return v.SecurityIpList }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceIpWhitelistArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceIpWhitelistArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstanceIpWhitelist)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceIpWhitelistArrayOutput) ToGetInstancesInstanceIpWhitelistArrayOutput() GetInstancesInstanceIpWhitelistArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceIpWhitelistArrayOutput) ToGetInstancesInstanceIpWhitelistArrayOutputWithContext(ctx context.Context) GetInstancesInstanceIpWhitelistArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceIpWhitelistArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceIpWhitelistOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceIpWhitelist {
+		return vs[0].([]GetInstancesInstanceIpWhitelist)[vs[1].(int)]
+	}).(GetInstancesInstanceIpWhitelistOutput)
 }
 
 type GetZonesZone struct {
@@ -443,16 +2397,68 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigInput)(nil)).Elem(), DbInstancePlanPlanConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigArrayInput)(nil)).Elem(), DbInstancePlanPlanConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigPauseInput)(nil)).Elem(), DbInstancePlanPlanConfigPauseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigPausePtrInput)(nil)).Elem(), DbInstancePlanPlanConfigPauseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigResumeInput)(nil)).Elem(), DbInstancePlanPlanConfigResumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigResumePtrInput)(nil)).Elem(), DbInstancePlanPlanConfigResumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigScaleInInput)(nil)).Elem(), DbInstancePlanPlanConfigScaleInArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigScaleInPtrInput)(nil)).Elem(), DbInstancePlanPlanConfigScaleInArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigScaleOutInput)(nil)).Elem(), DbInstancePlanPlanConfigScaleOutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigScaleOutPtrInput)(nil)).Elem(), DbInstancePlanPlanConfigScaleOutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpWhitelistInput)(nil)).Elem(), InstanceIpWhitelistArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpWhitelistArrayInput)(nil)).Elem(), InstanceIpWhitelistArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanInput)(nil)).Elem(), GetDbInstancePlansPlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanArrayInput)(nil)).Elem(), GetDbInstancePlansPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigInput)(nil)).Elem(), GetDbInstancePlansPlanPlanConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigArrayInput)(nil)).Elem(), GetDbInstancePlansPlanPlanConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigPauseInput)(nil)).Elem(), GetDbInstancePlansPlanPlanConfigPauseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigPauseArrayInput)(nil)).Elem(), GetDbInstancePlansPlanPlanConfigPauseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigResumeInput)(nil)).Elem(), GetDbInstancePlansPlanPlanConfigResumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigResumeArrayInput)(nil)).Elem(), GetDbInstancePlansPlanPlanConfigResumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigScaleInInput)(nil)).Elem(), GetDbInstancePlansPlanPlanConfigScaleInArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigScaleInArrayInput)(nil)).Elem(), GetDbInstancePlansPlanPlanConfigScaleInArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigScaleOutInput)(nil)).Elem(), GetDbInstancePlansPlanPlanConfigScaleOutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigScaleOutArrayInput)(nil)).Elem(), GetDbInstancePlansPlanPlanConfigScaleOutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceIpWhitelistInput)(nil)).Elem(), GetInstancesInstanceIpWhitelistArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceIpWhitelistArrayInput)(nil)).Elem(), GetInstancesInstanceIpWhitelistArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigArrayOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigPauseOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigPausePtrOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigResumeOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigResumePtrOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigScaleInOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigScaleInPtrOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigScaleOutOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigScaleOutPtrOutput{})
+	pulumi.RegisterOutputType(InstanceIpWhitelistOutput{})
+	pulumi.RegisterOutputType(InstanceIpWhitelistArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetDbInstancePlansPlanOutput{})
+	pulumi.RegisterOutputType(GetDbInstancePlansPlanArrayOutput{})
+	pulumi.RegisterOutputType(GetDbInstancePlansPlanPlanConfigOutput{})
+	pulumi.RegisterOutputType(GetDbInstancePlansPlanPlanConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDbInstancePlansPlanPlanConfigPauseOutput{})
+	pulumi.RegisterOutputType(GetDbInstancePlansPlanPlanConfigPauseArrayOutput{})
+	pulumi.RegisterOutputType(GetDbInstancePlansPlanPlanConfigResumeOutput{})
+	pulumi.RegisterOutputType(GetDbInstancePlansPlanPlanConfigResumeArrayOutput{})
+	pulumi.RegisterOutputType(GetDbInstancePlansPlanPlanConfigScaleInOutput{})
+	pulumi.RegisterOutputType(GetDbInstancePlansPlanPlanConfigScaleInArrayOutput{})
+	pulumi.RegisterOutputType(GetDbInstancePlansPlanPlanConfigScaleOutOutput{})
+	pulumi.RegisterOutputType(GetDbInstancePlansPlanPlanConfigScaleOutArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceIpWhitelistOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceIpWhitelistArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

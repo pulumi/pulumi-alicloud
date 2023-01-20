@@ -32,9 +32,6 @@ class GetConfigsConfigResult(dict):
         :param str description: Abnormal Alarm General Description of the Configuration Item.
         :param str id: The ID of the Config.
         :param str value: The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
-               * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
-               * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
-               * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "config_id", config_id)
@@ -88,9 +85,6 @@ class GetConfigsConfigResult(dict):
     def value(self) -> str:
         """
         The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
-        * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
-        * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
-        * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         """
         return pulumi.get(self, "value")
 
@@ -113,7 +107,7 @@ class GetDataLimitsLimitResult(dict):
         :param int audit_status: Whether to enable the log auditing feature.
         :param int check_status: The status of the connectivity test between the data asset and SDDP.
         :param str data_limit_id: The first ID of the resource.
-        :param str engine_type: -The type of the database.
+        :param str engine_type: The type of the database.
         :param str id: The ID of the Data Limit.
         :param str local_name: The name of the service to which the data asset belongs.
         :param int log_store_day: The retention period of raw logs after you enable the log auditing feature.
@@ -162,7 +156,7 @@ class GetDataLimitsLimitResult(dict):
     @pulumi.getter(name="engineType")
     def engine_type(self) -> str:
         """
-        -The type of the database.
+        The type of the database.
         """
         return pulumi.get(self, "engine_type")
 

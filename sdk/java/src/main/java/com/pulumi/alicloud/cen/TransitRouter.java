@@ -11,7 +11,9 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -114,6 +116,34 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+     * 
+     */
+    @Export(name="supportMulticast", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> supportMulticast;
+
+    /**
+     * @return Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-listtransitrouteravailableresource) to query the regions that support multicast.
+     * 
+     */
+    public Output<Optional<Boolean>> supportMulticast() {
+        return Codegen.optional(this.supportMulticast);
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The description of the transit router.

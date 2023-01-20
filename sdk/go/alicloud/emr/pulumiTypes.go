@@ -19,7 +19,7 @@ type ClusterBootstrapAction struct {
 	ExecutionMoment *string `pulumi:"executionMoment"`
 	// bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
 	ExecutionTarget *string `pulumi:"executionTarget"`
-	// bootstrap action name.
+	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name *string `pulumi:"name"`
 	// bootstrap action path, e.g. "oss://bucket/path".
 	Path *string `pulumi:"path"`
@@ -45,7 +45,7 @@ type ClusterBootstrapActionArgs struct {
 	ExecutionMoment pulumi.StringPtrInput `pulumi:"executionMoment"`
 	// bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
 	ExecutionTarget pulumi.StringPtrInput `pulumi:"executionTarget"`
-	// bootstrap action name.
+	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// bootstrap action path, e.g. "oss://bucket/path".
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -122,7 +122,7 @@ func (o ClusterBootstrapActionOutput) ExecutionTarget() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.ExecutionTarget }).(pulumi.StringPtrOutput)
 }
 
-// bootstrap action name.
+// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 func (o ClusterBootstrapActionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -159,7 +159,7 @@ type ClusterConfig struct {
 	ConfigValue string `pulumi:"configValue"`
 	// Custom configuration service file name, e.g. ’hdfs-site’.
 	FileName string `pulumi:"fileName"`
-	// Cluster service configuration modification name, e.g. ’HDFS’.
+	// Custom configuration service name, e.g. ’HDFS’.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -181,7 +181,7 @@ type ClusterConfigArgs struct {
 	ConfigValue pulumi.StringInput `pulumi:"configValue"`
 	// Custom configuration service file name, e.g. ’hdfs-site’.
 	FileName pulumi.StringInput `pulumi:"fileName"`
-	// Cluster service configuration modification name, e.g. ’HDFS’.
+	// Custom configuration service name, e.g. ’HDFS’.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -251,7 +251,7 @@ func (o ClusterConfigOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterConfig) string { return v.FileName }).(pulumi.StringOutput)
 }
 
-// Cluster service configuration modification name, e.g. ’HDFS’.
+// Custom configuration service name, e.g. ’HDFS’.
 func (o ClusterConfigOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterConfig) string { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -279,7 +279,7 @@ func (o ClusterConfigArrayOutput) Index(i pulumi.IntInput) ClusterConfigOutput {
 type ClusterHostGroup struct {
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
+	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 	ChargeType *string `pulumi:"chargeType"`
 	// Graceful decommission timeout, unit: seconds.
 	DecommissionTimeout *int `pulumi:"decommissionTimeout"`
@@ -324,7 +324,7 @@ type ClusterHostGroupInput interface {
 type ClusterHostGroupArgs struct {
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew pulumi.BoolPtrInput `pulumi:"autoRenew"`
-	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
+	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 	ChargeType pulumi.StringPtrInput `pulumi:"chargeType"`
 	// Graceful decommission timeout, unit: seconds.
 	DecommissionTimeout pulumi.IntPtrInput `pulumi:"decommissionTimeout"`
@@ -411,7 +411,7 @@ func (o ClusterHostGroupOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *bool { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
-// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
+// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 func (o ClusterHostGroupOutput) ChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.ChargeType }).(pulumi.StringPtrOutput)
 }
@@ -697,7 +697,7 @@ type ClusterModifyClusterServiceConfig struct {
 	HostInstanceId *string `pulumi:"hostInstanceId"`
 	// Cluster service configuration modification refresh host config, ’true’ or ’false’.
 	RefreshHostConfig *bool `pulumi:"refreshHostConfig"`
-	// Cluster service configuration modification name, e.g. ’HDFS’.
+	// Custom configuration service name, e.g. ’HDFS’.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -729,7 +729,7 @@ type ClusterModifyClusterServiceConfigArgs struct {
 	HostInstanceId pulumi.StringPtrInput `pulumi:"hostInstanceId"`
 	// Cluster service configuration modification refresh host config, ’true’ or ’false’.
 	RefreshHostConfig pulumi.BoolPtrInput `pulumi:"refreshHostConfig"`
-	// Cluster service configuration modification name, e.g. ’HDFS’.
+	// Custom configuration service name, e.g. ’HDFS’.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -850,7 +850,7 @@ func (o ClusterModifyClusterServiceConfigOutput) RefreshHostConfig() pulumi.Bool
 	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *bool { return v.RefreshHostConfig }).(pulumi.BoolPtrOutput)
 }
 
-// Cluster service configuration modification name, e.g. ’HDFS’.
+// Custom configuration service name, e.g. ’HDFS’.
 func (o ClusterModifyClusterServiceConfigOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) string { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -959,7 +959,7 @@ func (o ClusterModifyClusterServiceConfigPtrOutput) RefreshHostConfig() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cluster service configuration modification name, e.g. ’HDFS’.
+// Custom configuration service name, e.g. ’HDFS’.
 func (o ClusterModifyClusterServiceConfigPtrOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
 		if v == nil {

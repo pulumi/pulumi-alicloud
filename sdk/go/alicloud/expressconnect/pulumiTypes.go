@@ -296,6 +296,130 @@ func (o GetAccessPointsPointAccessPointFeatureModelArrayOutput) Index(i pulumi.I
 	}).(GetAccessPointsPointAccessPointFeatureModelOutput)
 }
 
+type GetGrantRuleToCensCen struct {
+	// The ID of the authorized CEN instance.
+	CenId string `pulumi:"cenId"`
+	// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
+	CenOwnerId int `pulumi:"cenOwnerId"`
+	// The time when the instance was created.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Grant Rule To Cen. It formats as `<cen_id>:<cen_owner_id>:<instance_id>`.
+	Id string `pulumi:"id"`
+}
+
+// GetGrantRuleToCensCenInput is an input type that accepts GetGrantRuleToCensCenArgs and GetGrantRuleToCensCenOutput values.
+// You can construct a concrete instance of `GetGrantRuleToCensCenInput` via:
+//
+//	GetGrantRuleToCensCenArgs{...}
+type GetGrantRuleToCensCenInput interface {
+	pulumi.Input
+
+	ToGetGrantRuleToCensCenOutput() GetGrantRuleToCensCenOutput
+	ToGetGrantRuleToCensCenOutputWithContext(context.Context) GetGrantRuleToCensCenOutput
+}
+
+type GetGrantRuleToCensCenArgs struct {
+	// The ID of the authorized CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
+	CenOwnerId pulumi.IntInput `pulumi:"cenOwnerId"`
+	// The time when the instance was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Grant Rule To Cen. It formats as `<cen_id>:<cen_owner_id>:<instance_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetGrantRuleToCensCenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGrantRuleToCensCen)(nil)).Elem()
+}
+
+func (i GetGrantRuleToCensCenArgs) ToGetGrantRuleToCensCenOutput() GetGrantRuleToCensCenOutput {
+	return i.ToGetGrantRuleToCensCenOutputWithContext(context.Background())
+}
+
+func (i GetGrantRuleToCensCenArgs) ToGetGrantRuleToCensCenOutputWithContext(ctx context.Context) GetGrantRuleToCensCenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGrantRuleToCensCenOutput)
+}
+
+// GetGrantRuleToCensCenArrayInput is an input type that accepts GetGrantRuleToCensCenArray and GetGrantRuleToCensCenArrayOutput values.
+// You can construct a concrete instance of `GetGrantRuleToCensCenArrayInput` via:
+//
+//	GetGrantRuleToCensCenArray{ GetGrantRuleToCensCenArgs{...} }
+type GetGrantRuleToCensCenArrayInput interface {
+	pulumi.Input
+
+	ToGetGrantRuleToCensCenArrayOutput() GetGrantRuleToCensCenArrayOutput
+	ToGetGrantRuleToCensCenArrayOutputWithContext(context.Context) GetGrantRuleToCensCenArrayOutput
+}
+
+type GetGrantRuleToCensCenArray []GetGrantRuleToCensCenInput
+
+func (GetGrantRuleToCensCenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGrantRuleToCensCen)(nil)).Elem()
+}
+
+func (i GetGrantRuleToCensCenArray) ToGetGrantRuleToCensCenArrayOutput() GetGrantRuleToCensCenArrayOutput {
+	return i.ToGetGrantRuleToCensCenArrayOutputWithContext(context.Background())
+}
+
+func (i GetGrantRuleToCensCenArray) ToGetGrantRuleToCensCenArrayOutputWithContext(ctx context.Context) GetGrantRuleToCensCenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGrantRuleToCensCenArrayOutput)
+}
+
+type GetGrantRuleToCensCenOutput struct{ *pulumi.OutputState }
+
+func (GetGrantRuleToCensCenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGrantRuleToCensCen)(nil)).Elem()
+}
+
+func (o GetGrantRuleToCensCenOutput) ToGetGrantRuleToCensCenOutput() GetGrantRuleToCensCenOutput {
+	return o
+}
+
+func (o GetGrantRuleToCensCenOutput) ToGetGrantRuleToCensCenOutputWithContext(ctx context.Context) GetGrantRuleToCensCenOutput {
+	return o
+}
+
+// The ID of the authorized CEN instance.
+func (o GetGrantRuleToCensCenOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGrantRuleToCensCen) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
+func (o GetGrantRuleToCensCenOutput) CenOwnerId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGrantRuleToCensCen) int { return v.CenOwnerId }).(pulumi.IntOutput)
+}
+
+// The time when the instance was created.
+func (o GetGrantRuleToCensCenOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGrantRuleToCensCen) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Grant Rule To Cen. It formats as `<cen_id>:<cen_owner_id>:<instance_id>`.
+func (o GetGrantRuleToCensCenOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGrantRuleToCensCen) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetGrantRuleToCensCenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGrantRuleToCensCenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGrantRuleToCensCen)(nil)).Elem()
+}
+
+func (o GetGrantRuleToCensCenArrayOutput) ToGetGrantRuleToCensCenArrayOutput() GetGrantRuleToCensCenArrayOutput {
+	return o
+}
+
+func (o GetGrantRuleToCensCenArrayOutput) ToGetGrantRuleToCensCenArrayOutputWithContext(ctx context.Context) GetGrantRuleToCensCenArrayOutput {
+	return o
+}
+
+func (o GetGrantRuleToCensCenArrayOutput) Index(i pulumi.IntInput) GetGrantRuleToCensCenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGrantRuleToCensCen {
+		return vs[0].([]GetGrantRuleToCensCen)[vs[1].(int)]
+	}).(GetGrantRuleToCensCenOutput)
+}
+
 type GetPhysicalConnectionsConnection struct {
 	// The Physical Leased Line Access Point ID.
 	AccessPointId string `pulumi:"accessPointId"`
@@ -616,6 +740,211 @@ func (o GetPhysicalConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPhysicalConnectionsConnection {
 		return vs[0].([]GetPhysicalConnectionsConnection)[vs[1].(int)]
 	}).(GetPhysicalConnectionsConnectionOutput)
+}
+
+type GetVbrPconnAssociationsAssociation struct {
+	// The circuit code provided by the operator for the physical connection.
+	CircuitCode string `pulumi:"circuitCode"`
+	// Whether IPv6 is enabled.
+	EnableIpv6 bool `pulumi:"enableIpv6"`
+	// The ID of the Vbr Pconn Association.
+	Id string `pulumi:"id"`
+	// The Alibaba cloud IP address of the VBR instance.
+	LocalGatewayIp string `pulumi:"localGatewayIp"`
+	// The IPv6 address on the Alibaba Cloud side of the VBR instance.
+	LocalIpv6GatewayIp string `pulumi:"localIpv6GatewayIp"`
+	// The client IP address of the VBR instance.
+	PeerGatewayIp string `pulumi:"peerGatewayIp"`
+	// The IPv6 address of the client side of the VBR instance.
+	PeerIpv6GatewayIp string `pulumi:"peerIpv6GatewayIp"`
+	// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+	PeeringIpv6SubnetMask string `pulumi:"peeringIpv6SubnetMask"`
+	// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+	PeeringSubnetMask string `pulumi:"peeringSubnetMask"`
+	// The ID of the leased line instance.
+	PhysicalConnectionId string `pulumi:"physicalConnectionId"`
+	// The status of the resource
+	Status string `pulumi:"status"`
+	// The ID of the VBR instance.
+	VbrId string `pulumi:"vbrId"`
+	// VLAN ID of the VBR.
+	VlanId int `pulumi:"vlanId"`
+}
+
+// GetVbrPconnAssociationsAssociationInput is an input type that accepts GetVbrPconnAssociationsAssociationArgs and GetVbrPconnAssociationsAssociationOutput values.
+// You can construct a concrete instance of `GetVbrPconnAssociationsAssociationInput` via:
+//
+//	GetVbrPconnAssociationsAssociationArgs{...}
+type GetVbrPconnAssociationsAssociationInput interface {
+	pulumi.Input
+
+	ToGetVbrPconnAssociationsAssociationOutput() GetVbrPconnAssociationsAssociationOutput
+	ToGetVbrPconnAssociationsAssociationOutputWithContext(context.Context) GetVbrPconnAssociationsAssociationOutput
+}
+
+type GetVbrPconnAssociationsAssociationArgs struct {
+	// The circuit code provided by the operator for the physical connection.
+	CircuitCode pulumi.StringInput `pulumi:"circuitCode"`
+	// Whether IPv6 is enabled.
+	EnableIpv6 pulumi.BoolInput `pulumi:"enableIpv6"`
+	// The ID of the Vbr Pconn Association.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Alibaba cloud IP address of the VBR instance.
+	LocalGatewayIp pulumi.StringInput `pulumi:"localGatewayIp"`
+	// The IPv6 address on the Alibaba Cloud side of the VBR instance.
+	LocalIpv6GatewayIp pulumi.StringInput `pulumi:"localIpv6GatewayIp"`
+	// The client IP address of the VBR instance.
+	PeerGatewayIp pulumi.StringInput `pulumi:"peerGatewayIp"`
+	// The IPv6 address of the client side of the VBR instance.
+	PeerIpv6GatewayIp pulumi.StringInput `pulumi:"peerIpv6GatewayIp"`
+	// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+	PeeringIpv6SubnetMask pulumi.StringInput `pulumi:"peeringIpv6SubnetMask"`
+	// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+	PeeringSubnetMask pulumi.StringInput `pulumi:"peeringSubnetMask"`
+	// The ID of the leased line instance.
+	PhysicalConnectionId pulumi.StringInput `pulumi:"physicalConnectionId"`
+	// The status of the resource
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the VBR instance.
+	VbrId pulumi.StringInput `pulumi:"vbrId"`
+	// VLAN ID of the VBR.
+	VlanId pulumi.IntInput `pulumi:"vlanId"`
+}
+
+func (GetVbrPconnAssociationsAssociationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVbrPconnAssociationsAssociation)(nil)).Elem()
+}
+
+func (i GetVbrPconnAssociationsAssociationArgs) ToGetVbrPconnAssociationsAssociationOutput() GetVbrPconnAssociationsAssociationOutput {
+	return i.ToGetVbrPconnAssociationsAssociationOutputWithContext(context.Background())
+}
+
+func (i GetVbrPconnAssociationsAssociationArgs) ToGetVbrPconnAssociationsAssociationOutputWithContext(ctx context.Context) GetVbrPconnAssociationsAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVbrPconnAssociationsAssociationOutput)
+}
+
+// GetVbrPconnAssociationsAssociationArrayInput is an input type that accepts GetVbrPconnAssociationsAssociationArray and GetVbrPconnAssociationsAssociationArrayOutput values.
+// You can construct a concrete instance of `GetVbrPconnAssociationsAssociationArrayInput` via:
+//
+//	GetVbrPconnAssociationsAssociationArray{ GetVbrPconnAssociationsAssociationArgs{...} }
+type GetVbrPconnAssociationsAssociationArrayInput interface {
+	pulumi.Input
+
+	ToGetVbrPconnAssociationsAssociationArrayOutput() GetVbrPconnAssociationsAssociationArrayOutput
+	ToGetVbrPconnAssociationsAssociationArrayOutputWithContext(context.Context) GetVbrPconnAssociationsAssociationArrayOutput
+}
+
+type GetVbrPconnAssociationsAssociationArray []GetVbrPconnAssociationsAssociationInput
+
+func (GetVbrPconnAssociationsAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVbrPconnAssociationsAssociation)(nil)).Elem()
+}
+
+func (i GetVbrPconnAssociationsAssociationArray) ToGetVbrPconnAssociationsAssociationArrayOutput() GetVbrPconnAssociationsAssociationArrayOutput {
+	return i.ToGetVbrPconnAssociationsAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i GetVbrPconnAssociationsAssociationArray) ToGetVbrPconnAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetVbrPconnAssociationsAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVbrPconnAssociationsAssociationArrayOutput)
+}
+
+type GetVbrPconnAssociationsAssociationOutput struct{ *pulumi.OutputState }
+
+func (GetVbrPconnAssociationsAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVbrPconnAssociationsAssociation)(nil)).Elem()
+}
+
+func (o GetVbrPconnAssociationsAssociationOutput) ToGetVbrPconnAssociationsAssociationOutput() GetVbrPconnAssociationsAssociationOutput {
+	return o
+}
+
+func (o GetVbrPconnAssociationsAssociationOutput) ToGetVbrPconnAssociationsAssociationOutputWithContext(ctx context.Context) GetVbrPconnAssociationsAssociationOutput {
+	return o
+}
+
+// The circuit code provided by the operator for the physical connection.
+func (o GetVbrPconnAssociationsAssociationOutput) CircuitCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) string { return v.CircuitCode }).(pulumi.StringOutput)
+}
+
+// Whether IPv6 is enabled.
+func (o GetVbrPconnAssociationsAssociationOutput) EnableIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) bool { return v.EnableIpv6 }).(pulumi.BoolOutput)
+}
+
+// The ID of the Vbr Pconn Association.
+func (o GetVbrPconnAssociationsAssociationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Alibaba cloud IP address of the VBR instance.
+func (o GetVbrPconnAssociationsAssociationOutput) LocalGatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) string { return v.LocalGatewayIp }).(pulumi.StringOutput)
+}
+
+// The IPv6 address on the Alibaba Cloud side of the VBR instance.
+func (o GetVbrPconnAssociationsAssociationOutput) LocalIpv6GatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) string { return v.LocalIpv6GatewayIp }).(pulumi.StringOutput)
+}
+
+// The client IP address of the VBR instance.
+func (o GetVbrPconnAssociationsAssociationOutput) PeerGatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) string { return v.PeerGatewayIp }).(pulumi.StringOutput)
+}
+
+// The IPv6 address of the client side of the VBR instance.
+func (o GetVbrPconnAssociationsAssociationOutput) PeerIpv6GatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) string { return v.PeerIpv6GatewayIp }).(pulumi.StringOutput)
+}
+
+// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+func (o GetVbrPconnAssociationsAssociationOutput) PeeringIpv6SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) string { return v.PeeringIpv6SubnetMask }).(pulumi.StringOutput)
+}
+
+// The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+func (o GetVbrPconnAssociationsAssociationOutput) PeeringSubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) string { return v.PeeringSubnetMask }).(pulumi.StringOutput)
+}
+
+// The ID of the leased line instance.
+func (o GetVbrPconnAssociationsAssociationOutput) PhysicalConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) string { return v.PhysicalConnectionId }).(pulumi.StringOutput)
+}
+
+// The status of the resource
+func (o GetVbrPconnAssociationsAssociationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VBR instance.
+func (o GetVbrPconnAssociationsAssociationOutput) VbrId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) string { return v.VbrId }).(pulumi.StringOutput)
+}
+
+// VLAN ID of the VBR.
+func (o GetVbrPconnAssociationsAssociationOutput) VlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVbrPconnAssociationsAssociation) int { return v.VlanId }).(pulumi.IntOutput)
+}
+
+type GetVbrPconnAssociationsAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVbrPconnAssociationsAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVbrPconnAssociationsAssociation)(nil)).Elem()
+}
+
+func (o GetVbrPconnAssociationsAssociationArrayOutput) ToGetVbrPconnAssociationsAssociationArrayOutput() GetVbrPconnAssociationsAssociationArrayOutput {
+	return o
+}
+
+func (o GetVbrPconnAssociationsAssociationArrayOutput) ToGetVbrPconnAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetVbrPconnAssociationsAssociationArrayOutput {
+	return o
+}
+
+func (o GetVbrPconnAssociationsAssociationArrayOutput) Index(i pulumi.IntInput) GetVbrPconnAssociationsAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVbrPconnAssociationsAssociation {
+		return vs[0].([]GetVbrPconnAssociationsAssociation)[vs[1].(int)]
+	}).(GetVbrPconnAssociationsAssociationOutput)
 }
 
 type GetVirtualBorderRoutersFilter struct {
@@ -1103,25 +1432,395 @@ func (o GetVirtualBorderRoutersRouterArrayOutput) Index(i pulumi.IntInput) GetVi
 	}).(GetVirtualBorderRoutersRouterOutput)
 }
 
+type GetVirtualPhysicalConnectionsConnection struct {
+	// The ID of the access point of the physical connection.
+	AccessPointId string `pulumi:"accessPointId"`
+	// The physical location where the physical connection access device is located.
+	AdLocation string `pulumi:"adLocation"`
+	// The bandwidth of the physical connection. Unit: Mbps.
+	Bandwidth string `pulumi:"bandwidth"`
+	// The commercial status of the physical line. Value:
+	// - **Normal**: activated.
+	// - **Financialized**: Arrears locked.
+	// - **SecurityLocked**: locked for security reasons.
+	BusinessStatus string `pulumi:"businessStatus"`
+	// The circuit code provided by the operator for the physical connection.
+	CircuitCode string `pulumi:"circuitCode"`
+	// The creation time of the resource
+	CreateTime string `pulumi:"createTime"`
+	// The description of the physical connection.
+	Description string `pulumi:"description"`
+	// The opening time of the physical connection.
+	EnabledTime string `pulumi:"enabledTime"`
+	// The expiration time of the shared line.Time is expressed according to ISO8601 standard and UTC time is used. The format is: YYYY-MM-DDThh:mm:ssZ.
+	EndTime string `pulumi:"endTime"`
+	// The estimated bandwidth value of the shared line. The expected bandwidth value will not take effect until the payment is completed.Unit: **M** indicates Mbps,**G** indicates Gbps.
+	ExpectSpec string `pulumi:"expectSpec"`
+	// The ID of the Virtual Physical Connection.
+	Id string `pulumi:"id"`
+	// Operators that provide access to physical lines. Value:-**CT**: China Telecom.-**CU**: China Unicom.-**CM**: China Mobile.-**CO**: China Other.-**Equinix**:Equinix.-**Other**: Other abroad.
+	LineOperator string `pulumi:"lineOperator"`
+	// The state of LOA. Value:-**Applying**:LOA application.-**Accept**:LOA application passed.-**Available**:LOA is Available.-**Rejected**:LOA application Rejected.-**Completing**: The dedicated line is under construction.-**Complete**: The construction of the dedicated line is completed.-**Deleted**:LOA has been Deleted.
+	LoaStatus string `pulumi:"loaStatus"`
+	// The payment method of shared dedicated line. Value:-**PayByPhysicalConnectionOwner**: indicates that the owner of the physical line associated with the shared line pays.-**PayByVirtualPhysicalConnectionOwner**: indicates that the owner of the shared line pays.
+	OrderMode string `pulumi:"orderMode"`
+	// The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
+	ParentPhysicalConnectionAliUid string `pulumi:"parentPhysicalConnectionAliUid"`
+	// The ID of the instance of the physical connection.
+	ParentPhysicalConnectionId string `pulumi:"parentPhysicalConnectionId"`
+	// The geographic location of the local data center.
+	PeerLocation string `pulumi:"peerLocation"`
+	// The port number of the physical connection device.
+	PortNumber string `pulumi:"portNumber"`
+	// Physical connection port type. Value:-**100Base-T**: 100 megabytes port.-**1000Base-T**: Gigabit port.-**1000Base-LX**: Gigabit single mode optical port (10km).-**10GBase-T**: 10 Gigabit port.-**10GBase-LR**: 10 Gigabit single mode optical port (10km).-**40GBase-LR**: 40 megabytes single-mode optical port.-**100GBase-LR**: 100,000 megabytes single-mode optical port.
+	PortType string `pulumi:"portType"`
+	// The ID of the redundant physical connection.
+	RedundantPhysicalConnectionId string `pulumi:"redundantPhysicalConnectionId"`
+	// The resource group id
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The bandwidth value of the shared line.Unit: **M** indicates Mbps,**G** indicates Gbps.
+	Spec string `pulumi:"spec"`
+	// The status of the resource
+	Status string `pulumi:"status"`
+	// The ID of the hosted connection
+	VirtualPhysicalConnectionId string `pulumi:"virtualPhysicalConnectionId"`
+	// The name of the physical connection.
+	VirtualPhysicalConnectionName string `pulumi:"virtualPhysicalConnectionName"`
+	// The business status of the shared line. Value:
+	// - **Confirmed**: The shared line has been Confirmed to receive.
+	// - **UnConfirmed**: The shared line has not been confirmed to be received.
+	// - **Deleted**: The shared line has been Deleted.
+	VirtualPhysicalConnectionStatus string `pulumi:"virtualPhysicalConnectionStatus"`
+	// The VLAN ID of the shared leased line.
+	VlanId int `pulumi:"vlanId"`
+	// The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+	VpconnAliUid string `pulumi:"vpconnAliUid"`
+}
+
+// GetVirtualPhysicalConnectionsConnectionInput is an input type that accepts GetVirtualPhysicalConnectionsConnectionArgs and GetVirtualPhysicalConnectionsConnectionOutput values.
+// You can construct a concrete instance of `GetVirtualPhysicalConnectionsConnectionInput` via:
+//
+//	GetVirtualPhysicalConnectionsConnectionArgs{...}
+type GetVirtualPhysicalConnectionsConnectionInput interface {
+	pulumi.Input
+
+	ToGetVirtualPhysicalConnectionsConnectionOutput() GetVirtualPhysicalConnectionsConnectionOutput
+	ToGetVirtualPhysicalConnectionsConnectionOutputWithContext(context.Context) GetVirtualPhysicalConnectionsConnectionOutput
+}
+
+type GetVirtualPhysicalConnectionsConnectionArgs struct {
+	// The ID of the access point of the physical connection.
+	AccessPointId pulumi.StringInput `pulumi:"accessPointId"`
+	// The physical location where the physical connection access device is located.
+	AdLocation pulumi.StringInput `pulumi:"adLocation"`
+	// The bandwidth of the physical connection. Unit: Mbps.
+	Bandwidth pulumi.StringInput `pulumi:"bandwidth"`
+	// The commercial status of the physical line. Value:
+	// - **Normal**: activated.
+	// - **Financialized**: Arrears locked.
+	// - **SecurityLocked**: locked for security reasons.
+	BusinessStatus pulumi.StringInput `pulumi:"businessStatus"`
+	// The circuit code provided by the operator for the physical connection.
+	CircuitCode pulumi.StringInput `pulumi:"circuitCode"`
+	// The creation time of the resource
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the physical connection.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The opening time of the physical connection.
+	EnabledTime pulumi.StringInput `pulumi:"enabledTime"`
+	// The expiration time of the shared line.Time is expressed according to ISO8601 standard and UTC time is used. The format is: YYYY-MM-DDThh:mm:ssZ.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The estimated bandwidth value of the shared line. The expected bandwidth value will not take effect until the payment is completed.Unit: **M** indicates Mbps,**G** indicates Gbps.
+	ExpectSpec pulumi.StringInput `pulumi:"expectSpec"`
+	// The ID of the Virtual Physical Connection.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Operators that provide access to physical lines. Value:-**CT**: China Telecom.-**CU**: China Unicom.-**CM**: China Mobile.-**CO**: China Other.-**Equinix**:Equinix.-**Other**: Other abroad.
+	LineOperator pulumi.StringInput `pulumi:"lineOperator"`
+	// The state of LOA. Value:-**Applying**:LOA application.-**Accept**:LOA application passed.-**Available**:LOA is Available.-**Rejected**:LOA application Rejected.-**Completing**: The dedicated line is under construction.-**Complete**: The construction of the dedicated line is completed.-**Deleted**:LOA has been Deleted.
+	LoaStatus pulumi.StringInput `pulumi:"loaStatus"`
+	// The payment method of shared dedicated line. Value:-**PayByPhysicalConnectionOwner**: indicates that the owner of the physical line associated with the shared line pays.-**PayByVirtualPhysicalConnectionOwner**: indicates that the owner of the shared line pays.
+	OrderMode pulumi.StringInput `pulumi:"orderMode"`
+	// The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
+	ParentPhysicalConnectionAliUid pulumi.StringInput `pulumi:"parentPhysicalConnectionAliUid"`
+	// The ID of the instance of the physical connection.
+	ParentPhysicalConnectionId pulumi.StringInput `pulumi:"parentPhysicalConnectionId"`
+	// The geographic location of the local data center.
+	PeerLocation pulumi.StringInput `pulumi:"peerLocation"`
+	// The port number of the physical connection device.
+	PortNumber pulumi.StringInput `pulumi:"portNumber"`
+	// Physical connection port type. Value:-**100Base-T**: 100 megabytes port.-**1000Base-T**: Gigabit port.-**1000Base-LX**: Gigabit single mode optical port (10km).-**10GBase-T**: 10 Gigabit port.-**10GBase-LR**: 10 Gigabit single mode optical port (10km).-**40GBase-LR**: 40 megabytes single-mode optical port.-**100GBase-LR**: 100,000 megabytes single-mode optical port.
+	PortType pulumi.StringInput `pulumi:"portType"`
+	// The ID of the redundant physical connection.
+	RedundantPhysicalConnectionId pulumi.StringInput `pulumi:"redundantPhysicalConnectionId"`
+	// The resource group id
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The bandwidth value of the shared line.Unit: **M** indicates Mbps,**G** indicates Gbps.
+	Spec pulumi.StringInput `pulumi:"spec"`
+	// The status of the resource
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the hosted connection
+	VirtualPhysicalConnectionId pulumi.StringInput `pulumi:"virtualPhysicalConnectionId"`
+	// The name of the physical connection.
+	VirtualPhysicalConnectionName pulumi.StringInput `pulumi:"virtualPhysicalConnectionName"`
+	// The business status of the shared line. Value:
+	// - **Confirmed**: The shared line has been Confirmed to receive.
+	// - **UnConfirmed**: The shared line has not been confirmed to be received.
+	// - **Deleted**: The shared line has been Deleted.
+	VirtualPhysicalConnectionStatus pulumi.StringInput `pulumi:"virtualPhysicalConnectionStatus"`
+	// The VLAN ID of the shared leased line.
+	VlanId pulumi.IntInput `pulumi:"vlanId"`
+	// The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+	VpconnAliUid pulumi.StringInput `pulumi:"vpconnAliUid"`
+}
+
+func (GetVirtualPhysicalConnectionsConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualPhysicalConnectionsConnection)(nil)).Elem()
+}
+
+func (i GetVirtualPhysicalConnectionsConnectionArgs) ToGetVirtualPhysicalConnectionsConnectionOutput() GetVirtualPhysicalConnectionsConnectionOutput {
+	return i.ToGetVirtualPhysicalConnectionsConnectionOutputWithContext(context.Background())
+}
+
+func (i GetVirtualPhysicalConnectionsConnectionArgs) ToGetVirtualPhysicalConnectionsConnectionOutputWithContext(ctx context.Context) GetVirtualPhysicalConnectionsConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualPhysicalConnectionsConnectionOutput)
+}
+
+// GetVirtualPhysicalConnectionsConnectionArrayInput is an input type that accepts GetVirtualPhysicalConnectionsConnectionArray and GetVirtualPhysicalConnectionsConnectionArrayOutput values.
+// You can construct a concrete instance of `GetVirtualPhysicalConnectionsConnectionArrayInput` via:
+//
+//	GetVirtualPhysicalConnectionsConnectionArray{ GetVirtualPhysicalConnectionsConnectionArgs{...} }
+type GetVirtualPhysicalConnectionsConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetVirtualPhysicalConnectionsConnectionArrayOutput() GetVirtualPhysicalConnectionsConnectionArrayOutput
+	ToGetVirtualPhysicalConnectionsConnectionArrayOutputWithContext(context.Context) GetVirtualPhysicalConnectionsConnectionArrayOutput
+}
+
+type GetVirtualPhysicalConnectionsConnectionArray []GetVirtualPhysicalConnectionsConnectionInput
+
+func (GetVirtualPhysicalConnectionsConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualPhysicalConnectionsConnection)(nil)).Elem()
+}
+
+func (i GetVirtualPhysicalConnectionsConnectionArray) ToGetVirtualPhysicalConnectionsConnectionArrayOutput() GetVirtualPhysicalConnectionsConnectionArrayOutput {
+	return i.ToGetVirtualPhysicalConnectionsConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetVirtualPhysicalConnectionsConnectionArray) ToGetVirtualPhysicalConnectionsConnectionArrayOutputWithContext(ctx context.Context) GetVirtualPhysicalConnectionsConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVirtualPhysicalConnectionsConnectionArrayOutput)
+}
+
+type GetVirtualPhysicalConnectionsConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualPhysicalConnectionsConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVirtualPhysicalConnectionsConnection)(nil)).Elem()
+}
+
+func (o GetVirtualPhysicalConnectionsConnectionOutput) ToGetVirtualPhysicalConnectionsConnectionOutput() GetVirtualPhysicalConnectionsConnectionOutput {
+	return o
+}
+
+func (o GetVirtualPhysicalConnectionsConnectionOutput) ToGetVirtualPhysicalConnectionsConnectionOutputWithContext(ctx context.Context) GetVirtualPhysicalConnectionsConnectionOutput {
+	return o
+}
+
+// The ID of the access point of the physical connection.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) AccessPointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.AccessPointId }).(pulumi.StringOutput)
+}
+
+// The physical location where the physical connection access device is located.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) AdLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.AdLocation }).(pulumi.StringOutput)
+}
+
+// The bandwidth of the physical connection. Unit: Mbps.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) Bandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
+// The commercial status of the physical line. Value:
+// - **Normal**: activated.
+// - **Financialized**: Arrears locked.
+// - **SecurityLocked**: locked for security reasons.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) BusinessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.BusinessStatus }).(pulumi.StringOutput)
+}
+
+// The circuit code provided by the operator for the physical connection.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) CircuitCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.CircuitCode }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource
+func (o GetVirtualPhysicalConnectionsConnectionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the physical connection.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The opening time of the physical connection.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) EnabledTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.EnabledTime }).(pulumi.StringOutput)
+}
+
+// The expiration time of the shared line.Time is expressed according to ISO8601 standard and UTC time is used. The format is: YYYY-MM-DDThh:mm:ssZ.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The estimated bandwidth value of the shared line. The expected bandwidth value will not take effect until the payment is completed.Unit: **M** indicates Mbps,**G** indicates Gbps.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) ExpectSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.ExpectSpec }).(pulumi.StringOutput)
+}
+
+// The ID of the Virtual Physical Connection.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Operators that provide access to physical lines. Value:-**CT**: China Telecom.-**CU**: China Unicom.-**CM**: China Mobile.-**CO**: China Other.-**Equinix**:Equinix.-**Other**: Other abroad.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) LineOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.LineOperator }).(pulumi.StringOutput)
+}
+
+// The state of LOA. Value:-**Applying**:LOA application.-**Accept**:LOA application passed.-**Available**:LOA is Available.-**Rejected**:LOA application Rejected.-**Completing**: The dedicated line is under construction.-**Complete**: The construction of the dedicated line is completed.-**Deleted**:LOA has been Deleted.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) LoaStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.LoaStatus }).(pulumi.StringOutput)
+}
+
+// The payment method of shared dedicated line. Value:-**PayByPhysicalConnectionOwner**: indicates that the owner of the physical line associated with the shared line pays.-**PayByVirtualPhysicalConnectionOwner**: indicates that the owner of the shared line pays.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) OrderMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.OrderMode }).(pulumi.StringOutput)
+}
+
+// The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) ParentPhysicalConnectionAliUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.ParentPhysicalConnectionAliUid }).(pulumi.StringOutput)
+}
+
+// The ID of the instance of the physical connection.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) ParentPhysicalConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.ParentPhysicalConnectionId }).(pulumi.StringOutput)
+}
+
+// The geographic location of the local data center.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) PeerLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.PeerLocation }).(pulumi.StringOutput)
+}
+
+// The port number of the physical connection device.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) PortNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.PortNumber }).(pulumi.StringOutput)
+}
+
+// Physical connection port type. Value:-**100Base-T**: 100 megabytes port.-**1000Base-T**: Gigabit port.-**1000Base-LX**: Gigabit single mode optical port (10km).-**10GBase-T**: 10 Gigabit port.-**10GBase-LR**: 10 Gigabit single mode optical port (10km).-**40GBase-LR**: 40 megabytes single-mode optical port.-**100GBase-LR**: 100,000 megabytes single-mode optical port.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) PortType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.PortType }).(pulumi.StringOutput)
+}
+
+// The ID of the redundant physical connection.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) RedundantPhysicalConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.RedundantPhysicalConnectionId }).(pulumi.StringOutput)
+}
+
+// The resource group id
+func (o GetVirtualPhysicalConnectionsConnectionOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The bandwidth value of the shared line.Unit: **M** indicates Mbps,**G** indicates Gbps.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.Spec }).(pulumi.StringOutput)
+}
+
+// The status of the resource
+func (o GetVirtualPhysicalConnectionsConnectionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the hosted connection
+func (o GetVirtualPhysicalConnectionsConnectionOutput) VirtualPhysicalConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.VirtualPhysicalConnectionId }).(pulumi.StringOutput)
+}
+
+// The name of the physical connection.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) VirtualPhysicalConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.VirtualPhysicalConnectionName }).(pulumi.StringOutput)
+}
+
+// The business status of the shared line. Value:
+// - **Confirmed**: The shared line has been Confirmed to receive.
+// - **UnConfirmed**: The shared line has not been confirmed to be received.
+// - **Deleted**: The shared line has been Deleted.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) VirtualPhysicalConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.VirtualPhysicalConnectionStatus }).(pulumi.StringOutput)
+}
+
+// The VLAN ID of the shared leased line.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) VlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) int { return v.VlanId }).(pulumi.IntOutput)
+}
+
+// The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+func (o GetVirtualPhysicalConnectionsConnectionOutput) VpconnAliUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.VpconnAliUid }).(pulumi.StringOutput)
+}
+
+type GetVirtualPhysicalConnectionsConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVirtualPhysicalConnectionsConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVirtualPhysicalConnectionsConnection)(nil)).Elem()
+}
+
+func (o GetVirtualPhysicalConnectionsConnectionArrayOutput) ToGetVirtualPhysicalConnectionsConnectionArrayOutput() GetVirtualPhysicalConnectionsConnectionArrayOutput {
+	return o
+}
+
+func (o GetVirtualPhysicalConnectionsConnectionArrayOutput) ToGetVirtualPhysicalConnectionsConnectionArrayOutputWithContext(ctx context.Context) GetVirtualPhysicalConnectionsConnectionArrayOutput {
+	return o
+}
+
+func (o GetVirtualPhysicalConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) GetVirtualPhysicalConnectionsConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVirtualPhysicalConnectionsConnection {
+		return vs[0].([]GetVirtualPhysicalConnectionsConnection)[vs[1].(int)]
+	}).(GetVirtualPhysicalConnectionsConnectionOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessPointsPointInput)(nil)).Elem(), GetAccessPointsPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessPointsPointArrayInput)(nil)).Elem(), GetAccessPointsPointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessPointsPointAccessPointFeatureModelInput)(nil)).Elem(), GetAccessPointsPointAccessPointFeatureModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessPointsPointAccessPointFeatureModelArrayInput)(nil)).Elem(), GetAccessPointsPointAccessPointFeatureModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGrantRuleToCensCenInput)(nil)).Elem(), GetGrantRuleToCensCenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGrantRuleToCensCenArrayInput)(nil)).Elem(), GetGrantRuleToCensCenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPhysicalConnectionsConnectionInput)(nil)).Elem(), GetPhysicalConnectionsConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPhysicalConnectionsConnectionArrayInput)(nil)).Elem(), GetPhysicalConnectionsConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVbrPconnAssociationsAssociationInput)(nil)).Elem(), GetVbrPconnAssociationsAssociationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVbrPconnAssociationsAssociationArrayInput)(nil)).Elem(), GetVbrPconnAssociationsAssociationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualBorderRoutersFilterInput)(nil)).Elem(), GetVirtualBorderRoutersFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualBorderRoutersFilterArrayInput)(nil)).Elem(), GetVirtualBorderRoutersFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualBorderRoutersRouterInput)(nil)).Elem(), GetVirtualBorderRoutersRouterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualBorderRoutersRouterArrayInput)(nil)).Elem(), GetVirtualBorderRoutersRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualPhysicalConnectionsConnectionInput)(nil)).Elem(), GetVirtualPhysicalConnectionsConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualPhysicalConnectionsConnectionArrayInput)(nil)).Elem(), GetVirtualPhysicalConnectionsConnectionArray{})
 	pulumi.RegisterOutputType(GetAccessPointsPointOutput{})
 	pulumi.RegisterOutputType(GetAccessPointsPointArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessPointsPointAccessPointFeatureModelOutput{})
 	pulumi.RegisterOutputType(GetAccessPointsPointAccessPointFeatureModelArrayOutput{})
+	pulumi.RegisterOutputType(GetGrantRuleToCensCenOutput{})
+	pulumi.RegisterOutputType(GetGrantRuleToCensCenArrayOutput{})
 	pulumi.RegisterOutputType(GetPhysicalConnectionsConnectionOutput{})
 	pulumi.RegisterOutputType(GetPhysicalConnectionsConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetVbrPconnAssociationsAssociationOutput{})
+	pulumi.RegisterOutputType(GetVbrPconnAssociationsAssociationArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualBorderRoutersFilterOutput{})
 	pulumi.RegisterOutputType(GetVirtualBorderRoutersFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualBorderRoutersRouterOutput{})
 	pulumi.RegisterOutputType(GetVirtualBorderRoutersRouterArrayOutput{})
+	pulumi.RegisterOutputType(GetVirtualPhysicalConnectionsConnectionOutput{})
+	pulumi.RegisterOutputType(GetVirtualPhysicalConnectionsConnectionArrayOutput{})
 }

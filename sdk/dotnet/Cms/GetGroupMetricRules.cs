@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cms.GetGroupMetricRules.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cms.GetGroupMetricRules.InvokeAsync(new AliCloud.Cms.GetGroupMetricRulesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "4a9a8978-a9cc-55ca-aa7c-530ccd91ae57",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstCmsGroupMetricRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
-        ///     }
+        ///             "4a9a8978-a9cc-55ca-aa7c-530ccd91ae57",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstCmsGroupMetricRuleId")]
-        ///     public Output&lt;string&gt; FirstCmsGroupMetricRuleId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCmsGroupMetricRuleId"] = example.Apply(getGroupMetricRulesResult =&gt; getGroupMetricRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupMetricRulesResult> InvokeAsync(GetGroupMetricRulesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupMetricRulesResult>("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args ?? new GetGroupMetricRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupMetricRulesResult>("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args ?? new GetGroupMetricRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Cms
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Cms.GetGroupMetricRules.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Cms.GetGroupMetricRules.InvokeAsync(new AliCloud.Cms.GetGroupMetricRulesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "4a9a8978-a9cc-55ca-aa7c-530ccd91ae57",
-        ///             },
-        ///             NameRegex = "the_resource_name",
-        ///         }));
-        ///         this.FirstCmsGroupMetricRuleId = example.Apply(example =&gt; example.Rules?[0]?.Id);
-        ///     }
+        ///             "4a9a8978-a9cc-55ca-aa7c-530ccd91ae57",
+        ///         },
+        ///         NameRegex = "the_resource_name",
+        ///     });
         /// 
-        ///     [Output("firstCmsGroupMetricRuleId")]
-        ///     public Output&lt;string&gt; FirstCmsGroupMetricRuleId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCmsGroupMetricRuleId"] = example.Apply(getGroupMetricRulesResult =&gt; getGroupMetricRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupMetricRulesResult> Invoke(GetGroupMetricRulesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupMetricRulesResult>("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args ?? new GetGroupMetricRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupMetricRulesResult>("alicloud:cms/getGroupMetricRules:getGroupMetricRules", args ?? new GetGroupMetricRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGroupMetricRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupMetricRulesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The dimensions that specify the resources to be associated with the alert rule.
@@ -161,9 +159,10 @@ namespace Pulumi.AliCloud.Cms
         public GetGroupMetricRulesArgs()
         {
         }
+        public static new GetGroupMetricRulesArgs Empty => new GetGroupMetricRulesArgs();
     }
 
-    public sealed class GetGroupMetricRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupMetricRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The dimensions that specify the resources to be associated with the alert rule.
@@ -231,6 +230,7 @@ namespace Pulumi.AliCloud.Cms
         public GetGroupMetricRulesInvokeArgs()
         {
         }
+        public static new GetGroupMetricRulesInvokeArgs Empty => new GetGroupMetricRulesInvokeArgs();
     }
 
 

@@ -73,7 +73,7 @@ public final class GetSystemGroupsGroup {
      */
     private String outProtocol;
     /**
-     * @return -The domain name of plan streaming used by the group.
+     * @return The domain name of plan streaming used by the group.
      * 
      */
     private String playDomain;
@@ -174,7 +174,7 @@ public final class GetSystemGroupsGroup {
         return this.outProtocol;
     }
     /**
-     * @return -The domain name of plan streaming used by the group.
+     * @return The domain name of plan streaming used by the group.
      * 
      */
     public String playDomain() {

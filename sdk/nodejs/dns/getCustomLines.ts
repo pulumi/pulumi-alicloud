@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,15 +23,12 @@ import * as utilities from "../utilities";
  *     enableDetails: true,
  *     domainName: "your_domain_name",
  * });
- * export const alidnsCustomLineId1 = ids.then(ids => ids.lines?[0]?.id);
+ * export const alidnsCustomLineId1 = ids.then(ids => ids.lines?.[0]?.id);
  * ```
  */
 export function getCustomLines(args: GetCustomLinesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomLinesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getCustomLines:getCustomLines", {
         "domainName": args.domainName,
         "enableDetails": args.enableDetails,
@@ -85,9 +83,28 @@ export interface GetCustomLinesResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Alidns Custom Lines of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.151.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.dns.getCustomLines({
+ *     enableDetails: true,
+ *     domainName: "your_domain_name",
+ * });
+ * export const alidnsCustomLineId1 = ids.then(ids => ids.lines?.[0]?.id);
+ * ```
+ */
 export function getCustomLinesOutput(args: GetCustomLinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomLinesResult> {
-    return pulumi.output(args).apply(a => getCustomLines(a, opts))
+    return pulumi.output(args).apply((a: any) => getCustomLines(a, opts))
 }
 
 /**

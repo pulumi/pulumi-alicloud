@@ -47,7 +47,7 @@ type BandwidthPackage struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	Period      pulumi.IntPtrOutput `pulumi:"period"`
 	// The association status of the bandwidth package.
@@ -110,7 +110,7 @@ type bandwidthPackageState struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
 	Name *string `pulumi:"name"`
-	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
 	// The association status of the bandwidth package.
@@ -142,7 +142,7 @@ type BandwidthPackageState struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
 	Name pulumi.StringPtrInput
-	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
 	// The association status of the bandwidth package.
@@ -176,7 +176,7 @@ type bandwidthPackageArgs struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
 	Name *string `pulumi:"name"`
-	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
 }
@@ -205,7 +205,7 @@ type BandwidthPackageArgs struct {
 	//
 	// Deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
 	Name pulumi.StringPtrInput
-	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
 }
@@ -348,7 +348,7 @@ func (o BandwidthPackageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PostPaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 func (o BandwidthPackageOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }

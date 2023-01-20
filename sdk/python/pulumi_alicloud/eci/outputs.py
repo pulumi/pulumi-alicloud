@@ -11,9 +11,18 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ContainerGroupAcrRegistryInfo',
     'ContainerGroupContainer',
     'ContainerGroupContainerEnvironmentVar',
+    'ContainerGroupContainerLivenessProbe',
+    'ContainerGroupContainerLivenessProbeExec',
+    'ContainerGroupContainerLivenessProbeHttpGet',
+    'ContainerGroupContainerLivenessProbeTcpSocket',
     'ContainerGroupContainerPort',
+    'ContainerGroupContainerReadinessProbe',
+    'ContainerGroupContainerReadinessProbeExec',
+    'ContainerGroupContainerReadinessProbeHttpGet',
+    'ContainerGroupContainerReadinessProbeTcpSocket',
     'ContainerGroupContainerVolumeMount',
     'ContainerGroupDnsConfig',
     'ContainerGroupDnsConfigOption',
@@ -55,6 +64,82 @@ __all__ = [
 ]
 
 @pulumi.output_type
+class ContainerGroupAcrRegistryInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+        elif key == "instanceName":
+            suggest = "instance_name"
+        elif key == "regionId":
+            suggest = "region_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerGroupAcrRegistryInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerGroupAcrRegistryInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerGroupAcrRegistryInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domains: Optional[Sequence[str]] = None,
+                 instance_id: Optional[str] = None,
+                 instance_name: Optional[str] = None,
+                 region_id: Optional[str] = None):
+        """
+        :param Sequence[str] domains: The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
+        :param str instance_id: The ACR enterprise edition example ID.
+        :param str instance_name: The name of the ACR enterprise edition instance.
+        :param str region_id: The ACR enterprise edition instance belongs to the region.
+        """
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Optional[Sequence[str]]:
+        """
+        The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
+        """
+        return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[str]:
+        """
+        The ACR enterprise edition example ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[str]:
+        """
+        The name of the ACR enterprise edition instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[str]:
+        """
+        The ACR enterprise edition instance belongs to the region.
+        """
+        return pulumi.get(self, "region_id")
+
+
+@pulumi.output_type
 class ContainerGroupContainer(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -63,6 +148,10 @@ class ContainerGroupContainer(dict):
             suggest = "environment_vars"
         elif key == "imagePullPolicy":
             suggest = "image_pull_policy"
+        elif key == "livenessProbes":
+            suggest = "liveness_probes"
+        elif key == "readinessProbes":
+            suggest = "readiness_probes"
         elif key == "restartCount":
             suggest = "restart_count"
         elif key == "volumeMounts":
@@ -90,23 +179,27 @@ class ContainerGroupContainer(dict):
                  environment_vars: Optional[Sequence['outputs.ContainerGroupContainerEnvironmentVar']] = None,
                  gpu: Optional[int] = None,
                  image_pull_policy: Optional[str] = None,
+                 liveness_probes: Optional[Sequence['outputs.ContainerGroupContainerLivenessProbe']] = None,
                  memory: Optional[float] = None,
                  ports: Optional[Sequence['outputs.ContainerGroupContainerPort']] = None,
+                 readiness_probes: Optional[Sequence['outputs.ContainerGroupContainerReadinessProbe']] = None,
                  ready: Optional[bool] = None,
                  restart_count: Optional[int] = None,
                  volume_mounts: Optional[Sequence['outputs.ContainerGroupContainerVolumeMount']] = None,
                  working_dir: Optional[str] = None):
         """
         :param str image: The image of the container.
-        :param str name: The name of the security context that the container group runs.
+        :param str name: The name of the volume.
         :param Sequence[str] args: The arguments passed to the commands.
         :param Sequence[str] commands: The commands run by the init container.
-        :param float cpu: The amount of CPU resources allocated to the container.
+        :param float cpu: The amount of CPU resources allocated to the container group.
         :param Sequence['ContainerGroupContainerEnvironmentVarArgs'] environment_vars: The structure of environmentVars.
         :param int gpu: The number GPUs.
         :param str image_pull_policy: The restart policy of the image.
-        :param float memory: The amount of memory resources allocated to the container.
+        :param Sequence['ContainerGroupContainerLivenessProbeArgs'] liveness_probes: The health check of the container.
+        :param float memory: The amount of memory resources allocated to the container group.
         :param Sequence['ContainerGroupContainerPortArgs'] ports: The structure of port.
+        :param Sequence['ContainerGroupContainerReadinessProbeArgs'] readiness_probes: The health check of the container.
         :param Sequence['ContainerGroupContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts.
         :param str working_dir: The working directory of the container.
         """
@@ -124,10 +217,14 @@ class ContainerGroupContainer(dict):
             pulumi.set(__self__, "gpu", gpu)
         if image_pull_policy is not None:
             pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+        if liveness_probes is not None:
+            pulumi.set(__self__, "liveness_probes", liveness_probes)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
+        if readiness_probes is not None:
+            pulumi.set(__self__, "readiness_probes", readiness_probes)
         if ready is not None:
             pulumi.set(__self__, "ready", ready)
         if restart_count is not None:
@@ -149,7 +246,7 @@ class ContainerGroupContainer(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the security context that the container group runs.
+        The name of the volume.
         """
         return pulumi.get(self, "name")
 
@@ -173,7 +270,7 @@ class ContainerGroupContainer(dict):
     @pulumi.getter
     def cpu(self) -> Optional[float]:
         """
-        The amount of CPU resources allocated to the container.
+        The amount of CPU resources allocated to the container group.
         """
         return pulumi.get(self, "cpu")
 
@@ -202,10 +299,18 @@ class ContainerGroupContainer(dict):
         return pulumi.get(self, "image_pull_policy")
 
     @property
+    @pulumi.getter(name="livenessProbes")
+    def liveness_probes(self) -> Optional[Sequence['outputs.ContainerGroupContainerLivenessProbe']]:
+        """
+        The health check of the container.
+        """
+        return pulumi.get(self, "liveness_probes")
+
+    @property
     @pulumi.getter
     def memory(self) -> Optional[float]:
         """
-        The amount of memory resources allocated to the container.
+        The amount of memory resources allocated to the container group.
         """
         return pulumi.get(self, "memory")
 
@@ -216,6 +321,14 @@ class ContainerGroupContainer(dict):
         The structure of port.
         """
         return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter(name="readinessProbes")
+    def readiness_probes(self) -> Optional[Sequence['outputs.ContainerGroupContainerReadinessProbe']]:
+        """
+        The health check of the container.
+        """
+        return pulumi.get(self, "readiness_probes")
 
     @property
     @pulumi.getter
@@ -251,7 +364,7 @@ class ContainerGroupContainerEnvironmentVar(dict):
                  value: Optional[str] = None):
         """
         :param str key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-        :param str value: The variable value of the security context that the container group runs.
+        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -270,9 +383,222 @@ class ContainerGroupContainerEnvironmentVar(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The variable value of the security context that the container group runs.
+        The value of the variable. The value can be 0 to 256 characters in length.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ContainerGroupContainerLivenessProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpGets":
+            suggest = "http_gets"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
+        elif key == "tcpSockets":
+            suggest = "tcp_sockets"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerGroupContainerLivenessProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerGroupContainerLivenessProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerGroupContainerLivenessProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 execs: Optional[Sequence['outputs.ContainerGroupContainerLivenessProbeExec']] = None,
+                 failure_threshold: Optional[int] = None,
+                 http_gets: Optional[Sequence['outputs.ContainerGroupContainerLivenessProbeHttpGet']] = None,
+                 initial_delay_seconds: Optional[int] = None,
+                 period_seconds: Optional[int] = None,
+                 success_threshold: Optional[int] = None,
+                 tcp_sockets: Optional[Sequence['outputs.ContainerGroupContainerLivenessProbeTcpSocket']] = None,
+                 timeout_seconds: Optional[int] = None):
+        """
+        :param Sequence['ContainerGroupContainerLivenessProbeExecArgs'] execs: Health check using command line method.
+        :param int failure_threshold: Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+        :param Sequence['ContainerGroupContainerLivenessProbeHttpGetArgs'] http_gets: Health check using HTTP request method.
+        :param int initial_delay_seconds: Check the time to start execution, calculated from the completion of container startup.
+        :param int period_seconds: Buffer time for the program to handle operations before closing.
+        :param int success_threshold: The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+        :param Sequence['ContainerGroupContainerLivenessProbeTcpSocketArgs'] tcp_sockets: Health check using TCP socket method.
+        :param int timeout_seconds: Check the timeout, the default is 1 second, the minimum is 1 second.
+        """
+        if execs is not None:
+            pulumi.set(__self__, "execs", execs)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if http_gets is not None:
+            pulumi.set(__self__, "http_gets", http_gets)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if tcp_sockets is not None:
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter
+    def execs(self) -> Optional[Sequence['outputs.ContainerGroupContainerLivenessProbeExec']]:
+        """
+        Health check using command line method.
+        """
+        return pulumi.get(self, "execs")
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[int]:
+        """
+        Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @property
+    @pulumi.getter(name="httpGets")
+    def http_gets(self) -> Optional[Sequence['outputs.ContainerGroupContainerLivenessProbeHttpGet']]:
+        """
+        Health check using HTTP request method.
+        """
+        return pulumi.get(self, "http_gets")
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[int]:
+        """
+        Check the time to start execution, calculated from the completion of container startup.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[int]:
+        """
+        Buffer time for the program to handle operations before closing.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[int]:
+        """
+        The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Optional[Sequence['outputs.ContainerGroupContainerLivenessProbeTcpSocket']]:
+        """
+        Health check using TCP socket method.
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[int]:
+        """
+        Check the timeout, the default is 1 second, the minimum is 1 second.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class ContainerGroupContainerLivenessProbeExec(dict):
+    def __init__(__self__, *,
+                 commands: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] commands: The commands run by the init container.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        The commands run by the init container.
+        """
+        return pulumi.get(self, "commands")
+
+
+@pulumi.output_type
+class ContainerGroupContainerLivenessProbeHttpGet(dict):
+    def __init__(__self__, *,
+                 path: Optional[str] = None,
+                 port: Optional[int] = None,
+                 scheme: Optional[str] = None):
+        """
+        :param str path: The relative file path.
+        :param int port: The port number. Valid values: 1 to 65535.
+        :param str scheme: The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The relative file path.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port number. Valid values: 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[str]:
+        """
+        The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+        """
+        return pulumi.get(self, "scheme")
+
+
+@pulumi.output_type
+class ContainerGroupContainerLivenessProbeTcpSocket(dict):
+    def __init__(__self__, *,
+                 port: Optional[int] = None):
+        """
+        :param int port: The port number. Valid values: 1 to 65535.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port number. Valid values: 1 to 65535.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -307,6 +633,219 @@ class ContainerGroupContainerPort(dict):
 
 
 @pulumi.output_type
+class ContainerGroupContainerReadinessProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpGets":
+            suggest = "http_gets"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
+        elif key == "tcpSockets":
+            suggest = "tcp_sockets"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerGroupContainerReadinessProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerGroupContainerReadinessProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerGroupContainerReadinessProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 execs: Optional[Sequence['outputs.ContainerGroupContainerReadinessProbeExec']] = None,
+                 failure_threshold: Optional[int] = None,
+                 http_gets: Optional[Sequence['outputs.ContainerGroupContainerReadinessProbeHttpGet']] = None,
+                 initial_delay_seconds: Optional[int] = None,
+                 period_seconds: Optional[int] = None,
+                 success_threshold: Optional[int] = None,
+                 tcp_sockets: Optional[Sequence['outputs.ContainerGroupContainerReadinessProbeTcpSocket']] = None,
+                 timeout_seconds: Optional[int] = None):
+        """
+        :param Sequence['ContainerGroupContainerReadinessProbeExecArgs'] execs: Health check using command line method.
+        :param int failure_threshold: Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+        :param Sequence['ContainerGroupContainerReadinessProbeHttpGetArgs'] http_gets: Health check using HTTP request method.
+        :param int initial_delay_seconds: Check the time to start execution, calculated from the completion of container startup.
+        :param int period_seconds: Buffer time for the program to handle operations before closing.
+        :param int success_threshold: The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+        :param Sequence['ContainerGroupContainerReadinessProbeTcpSocketArgs'] tcp_sockets: Health check using TCP socket method.
+        :param int timeout_seconds: Check the timeout, the default is 1 second, the minimum is 1 second.
+        """
+        if execs is not None:
+            pulumi.set(__self__, "execs", execs)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if http_gets is not None:
+            pulumi.set(__self__, "http_gets", http_gets)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if tcp_sockets is not None:
+            pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter
+    def execs(self) -> Optional[Sequence['outputs.ContainerGroupContainerReadinessProbeExec']]:
+        """
+        Health check using command line method.
+        """
+        return pulumi.get(self, "execs")
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[int]:
+        """
+        Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @property
+    @pulumi.getter(name="httpGets")
+    def http_gets(self) -> Optional[Sequence['outputs.ContainerGroupContainerReadinessProbeHttpGet']]:
+        """
+        Health check using HTTP request method.
+        """
+        return pulumi.get(self, "http_gets")
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[int]:
+        """
+        Check the time to start execution, calculated from the completion of container startup.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[int]:
+        """
+        Buffer time for the program to handle operations before closing.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[int]:
+        """
+        The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Optional[Sequence['outputs.ContainerGroupContainerReadinessProbeTcpSocket']]:
+        """
+        Health check using TCP socket method.
+        """
+        return pulumi.get(self, "tcp_sockets")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[int]:
+        """
+        Check the timeout, the default is 1 second, the minimum is 1 second.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class ContainerGroupContainerReadinessProbeExec(dict):
+    def __init__(__self__, *,
+                 commands: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] commands: The commands run by the init container.
+        """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        The commands run by the init container.
+        """
+        return pulumi.get(self, "commands")
+
+
+@pulumi.output_type
+class ContainerGroupContainerReadinessProbeHttpGet(dict):
+    def __init__(__self__, *,
+                 path: Optional[str] = None,
+                 port: Optional[int] = None,
+                 scheme: Optional[str] = None):
+        """
+        :param str path: The relative file path.
+        :param int port: The port number. Valid values: 1 to 65535.
+        :param str scheme: The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The relative file path.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port number. Valid values: 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[str]:
+        """
+        The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+        """
+        return pulumi.get(self, "scheme")
+
+
+@pulumi.output_type
+class ContainerGroupContainerReadinessProbeTcpSocket(dict):
+    def __init__(__self__, *,
+                 port: Optional[int] = None):
+        """
+        :param int port: The port number. Valid values: 1 to 65535.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port number. Valid values: 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
 class ContainerGroupContainerVolumeMount(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -333,7 +872,7 @@ class ContainerGroupContainerVolumeMount(dict):
                  read_only: Optional[bool] = None):
         """
         :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-        :param str name: The name of the security context that the container group runs.
+        :param str name: The name of the volume.
         :param bool read_only: Default to `false`.
         """
         if mount_path is not None:
@@ -355,7 +894,7 @@ class ContainerGroupContainerVolumeMount(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the security context that the container group runs.
+        The name of the volume.
         """
         return pulumi.get(self, "name")
 
@@ -434,8 +973,8 @@ class ContainerGroupDnsConfigOption(dict):
                  name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str name: The name of the security context that the container group runs.
-        :param str value: The variable value of the security context that the container group runs.
+        :param str name: The name of the volume.
+        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -446,7 +985,7 @@ class ContainerGroupDnsConfigOption(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the security context that the container group runs.
+        The name of the volume.
         """
         return pulumi.get(self, "name")
 
@@ -454,7 +993,7 @@ class ContainerGroupDnsConfigOption(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The variable value of the security context that the container group runs.
+        The value of the variable. The value can be 0 to 256 characters in length.
         """
         return pulumi.get(self, "value")
 
@@ -484,8 +1023,8 @@ class ContainerGroupEciSecurityContextSysctl(dict):
                  name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str name: The name of the security context that the container group runs.
-        :param str value: The variable value of the security context that the container group runs.
+        :param str name: The name of the volume.
+        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -496,7 +1035,7 @@ class ContainerGroupEciSecurityContextSysctl(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the security context that the container group runs.
+        The name of the volume.
         """
         return pulumi.get(self, "name")
 
@@ -504,7 +1043,7 @@ class ContainerGroupEciSecurityContextSysctl(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The variable value of the security context that the container group runs.
+        The value of the variable. The value can be 0 to 256 characters in length.
         """
         return pulumi.get(self, "value")
 
@@ -642,13 +1181,13 @@ class ContainerGroupInitContainer(dict):
         """
         :param Sequence[str] args: The arguments passed to the commands.
         :param Sequence[str] commands: The commands run by the init container.
-        :param float cpu: The amount of CPU resources allocated to the container.
+        :param float cpu: The amount of CPU resources allocated to the container group.
         :param Sequence['ContainerGroupInitContainerEnvironmentVarArgs'] environment_vars: The structure of environmentVars.
         :param int gpu: The number GPUs.
         :param str image: The image of the container.
         :param str image_pull_policy: The restart policy of the image.
-        :param float memory: The amount of memory resources allocated to the container.
-        :param str name: The name of the security context that the container group runs.
+        :param float memory: The amount of memory resources allocated to the container group.
+        :param str name: The name of the volume.
         :param Sequence['ContainerGroupInitContainerPortArgs'] ports: The structure of port.
         :param Sequence['ContainerGroupInitContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts.
         :param str working_dir: The working directory of the container.
@@ -702,7 +1241,7 @@ class ContainerGroupInitContainer(dict):
     @pulumi.getter
     def cpu(self) -> Optional[float]:
         """
-        The amount of CPU resources allocated to the container.
+        The amount of CPU resources allocated to the container group.
         """
         return pulumi.get(self, "cpu")
 
@@ -742,7 +1281,7 @@ class ContainerGroupInitContainer(dict):
     @pulumi.getter
     def memory(self) -> Optional[float]:
         """
-        The amount of memory resources allocated to the container.
+        The amount of memory resources allocated to the container group.
         """
         return pulumi.get(self, "memory")
 
@@ -750,7 +1289,7 @@ class ContainerGroupInitContainer(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the security context that the container group runs.
+        The name of the volume.
         """
         return pulumi.get(self, "name")
 
@@ -796,7 +1335,7 @@ class ContainerGroupInitContainerEnvironmentVar(dict):
                  value: Optional[str] = None):
         """
         :param str key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-        :param str value: The variable value of the security context that the container group runs.
+        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -815,7 +1354,7 @@ class ContainerGroupInitContainerEnvironmentVar(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The variable value of the security context that the container group runs.
+        The value of the variable. The value can be 0 to 256 characters in length.
         """
         return pulumi.get(self, "value")
 
@@ -878,7 +1417,7 @@ class ContainerGroupInitContainerVolumeMount(dict):
                  read_only: Optional[bool] = None):
         """
         :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-        :param str name: The name of the security context that the container group runs.
+        :param str name: The name of the volume.
         :param bool read_only: Default to `false`.
         """
         if mount_path is not None:
@@ -900,7 +1439,7 @@ class ContainerGroupInitContainerVolumeMount(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the security context that the container group runs.
+        The name of the volume.
         """
         return pulumi.get(self, "name")
 
@@ -967,7 +1506,7 @@ class ContainerGroupVolume(dict):
         :param str flex_volume_driver: The name of the FlexVolume driver.
         :param str flex_volume_fs_type: The type of the mounted file system. The default value is determined by the script of FlexVolume.
         :param str flex_volume_options: The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
-        :param str name: The name of the security context that the container group runs.
+        :param str name: The name of the volume.
         :param str nfs_volume_path: The path to the NFS volume.
         :param bool nfs_volume_read_only: The nfs volume read only. Default to `false`.
         :param str nfs_volume_server: The address of the NFS server.
@@ -1048,7 +1587,7 @@ class ContainerGroupVolume(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the security context that the container group runs.
+        The name of the volume.
         """
         return pulumi.get(self, "name")
 

@@ -19,8 +19,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
-     * * `CreateEcs`: instance creation.
-     * * `ChangeOS`: replacement of the system disk or operating system.
      * 
      */
     @Import(name="actionType")
@@ -28,8 +26,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
-     * * `CreateEcs`: instance creation.
-     * * `ChangeOS`: replacement of the system disk or operating system.
      * 
      */
     public Optional<String> actionType() {
@@ -53,8 +49,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
-     * * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-     * * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
      * 
      */
     @Import(name="dryRun")
@@ -62,8 +56,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
-     * * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-     * * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
      * 
      */
     public Optional<Boolean> dryRun() {
@@ -274,12 +266,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-     * * `Creating`: The image is being created.
-     * * `Waiting`: The image is waiting to be processed.
-     * * `Available`: The image is available.
-     * * `UnAvailable`: The image is unavailable.
-     * * `CreateFailed`: The image failed to be created.
-     * * `Deprecated`: The image is discontinued.
      * 
      */
     @Import(name="status")
@@ -287,12 +273,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-     * * `Creating`: The image is being created.
-     * * `Waiting`: The image is waiting to be processed.
-     * * `Available`: The image is available.
-     * * `UnAvailable`: The image is unavailable.
-     * * `CreateFailed`: The image failed to be created.
-     * * `Deprecated`: The image is discontinued.
      * 
      */
     public Optional<String> status() {
@@ -316,8 +296,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Specifies whether to check the validity of the request without actually making the request. Valid values:
-     * * `instance`: The image is already in use and running on an ECS instance.
-     * * `none`: The image is not in use.
      * 
      */
     @Import(name="usage")
@@ -325,8 +303,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Specifies whether to check the validity of the request without actually making the request. Valid values:
-     * * `instance`: The image is already in use and running on an ECS instance.
-     * * `none`: The image is not in use.
      * 
      */
     public Optional<String> usage() {
@@ -378,8 +354,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param actionType The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
-         * * `CreateEcs`: instance creation.
-         * * `ChangeOS`: replacement of the system disk or operating system.
          * 
          * @return builder
          * 
@@ -402,8 +376,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param dryRun Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
-         * * `true`: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
-         * * `false`: The validity of the request is checked, and a 2XX HTTP status code is returned and resources are queried if the check succeeds.
          * 
          * @return builder
          * 
@@ -563,12 +535,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param status The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
-         * * `Creating`: The image is being created.
-         * * `Waiting`: The image is waiting to be processed.
-         * * `Available`: The image is available.
-         * * `UnAvailable`: The image is unavailable.
-         * * `CreateFailed`: The image failed to be created.
-         * * `Deprecated`: The image is discontinued.
          * 
          * @return builder
          * 
@@ -591,8 +557,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param usage Specifies whether to check the validity of the request without actually making the request. Valid values:
-         * * `instance`: The image is already in use and running on an ECS instance.
-         * * `none`: The image is not in use.
          * 
          * @return builder
          * 

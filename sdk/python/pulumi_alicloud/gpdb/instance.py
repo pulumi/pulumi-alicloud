@@ -8,56 +8,169 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
+                 db_instance_mode: pulumi.Input[str],
                  engine: pulumi.Input[str],
                  engine_version: pulumi.Input[str],
-                 instance_class: pulumi.Input[str],
-                 instance_group_count: pulumi.Input[str],
+                 vswitch_id: pulumi.Input[str],
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 create_sample_data: Optional[pulumi.Input[bool]] = None,
+                 db_instance_category: Optional[pulumi.Input[str]] = None,
+                 db_instance_class: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 instance_group_count: Optional[pulumi.Input[int]] = None,
+                 instance_network_type: Optional[pulumi.Input[str]] = None,
+                 instance_spec: Optional[pulumi.Input[str]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]]] = None,
+                 maintain_end_time: Optional[pulumi.Input[str]] = None,
+                 maintain_start_time: Optional[pulumi.Input[str]] = None,
+                 master_node_num: Optional[pulumi.Input[int]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 seg_node_num: Optional[pulumi.Input[int]] = None,
+                 seg_storage_type: Optional[pulumi.Input[str]] = None,
+                 ssl_enabled: Optional[pulumi.Input[int]] = None,
+                 storage_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 vswitch_id: Optional[pulumi.Input[str]] = None):
+                 used_time: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] engine: Database engine: gpdb. System Default value: gpdb.
-        :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
-        :param pulumi.Input[str] instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
-        :param pulumi.Input[str] instance_group_count: The number of groups. Valid values: [2,4,8,16,32]
-        :param pulumi.Input[str] description: The name of DB instance. It a string of 2 to 256 characters.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        :param pulumi.Input[str] engine_version: The version of the database engine used by the instance.
+        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        :param pulumi.Input[bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `HighAvailability`, `Basic`.
+               > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+               > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        :param pulumi.Input[str] description: The description of the instance.
+        :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+        :param pulumi.Input[int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
+        :param pulumi.Input[str] instance_network_type: The network type of the instance.
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes.
+               * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+               * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+               * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+               > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist.
+        :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+        :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+        :param pulumi.Input[int] master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        :param pulumi.Input[str] private_ip_address: The private ip address.
+        :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+               > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+        :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+               > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
+        :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Value: `50` to `4000`.
+               > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
+        :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
+        pulumi.set(__self__, "db_instance_mode", db_instance_mode)
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_group_count", instance_group_count)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if availability_zone is not None:
+            warnings.warn("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if create_sample_data is not None:
+            pulumi.set(__self__, "create_sample_data", create_sample_data)
+        if db_instance_category is not None:
+            pulumi.set(__self__, "db_instance_category", db_instance_category)
+        if db_instance_class is not None:
+            pulumi.set(__self__, "db_instance_class", db_instance_class)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_charge_type is not None:
+            warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""")
+        if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_group_count is not None:
+            pulumi.set(__self__, "instance_group_count", instance_group_count)
+        if instance_network_type is not None:
+            pulumi.set(__self__, "instance_network_type", instance_network_type)
+        if instance_spec is not None:
+            pulumi.set(__self__, "instance_spec", instance_spec)
+        if ip_whitelists is not None:
+            pulumi.set(__self__, "ip_whitelists", ip_whitelists)
+        if maintain_end_time is not None:
+            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+        if maintain_start_time is not None:
+            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+        if master_node_num is not None:
+            pulumi.set(__self__, "master_node_num", master_node_num)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_ip_lists is not None:
+            warnings.warn("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""", DeprecationWarning)
+            pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
         if security_ip_lists is not None:
             pulumi.set(__self__, "security_ip_lists", security_ip_lists)
+        if seg_node_num is not None:
+            pulumi.set(__self__, "seg_node_num", seg_node_num)
+        if seg_storage_type is not None:
+            pulumi.set(__self__, "seg_storage_type", seg_storage_type)
+        if ssl_enabled is not None:
+            pulumi.set(__self__, "ssl_enabled", ssl_enabled)
+        if storage_size is not None:
+            pulumi.set(__self__, "storage_size", storage_size)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if used_time is not None:
+            pulumi.set(__self__, "used_time", used_time)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="dbInstanceMode")
+    def db_instance_mode(self) -> pulumi.Input[str]:
+        """
+        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        """
+        return pulumi.get(self, "db_instance_mode")
+
+    @db_instance_mode.setter
+    def db_instance_mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "db_instance_mode", value)
 
     @property
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        Database engine: gpdb. System Default value: gpdb.
+        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
         """
         return pulumi.get(self, "engine")
 
@@ -69,7 +182,7 @@ class InstanceArgs:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Input[str]:
         """
-        Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        The version of the database engine used by the instance.
         """
         return pulumi.get(self, "engine_version")
 
@@ -78,32 +191,23 @@ class InstanceArgs:
         pulumi.set(self, "engine_version", value)
 
     @property
-    @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[str]:
         """
-        Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        The vswitch id.
         """
-        return pulumi.get(self, "instance_class")
+        return pulumi.get(self, "vswitch_id")
 
-    @instance_class.setter
-    def instance_class(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_class", value)
-
-    @property
-    @pulumi.getter(name="instanceGroupCount")
-    def instance_group_count(self) -> pulumi.Input[str]:
-        """
-        The number of groups. Valid values: [2,4,8,16,32]
-        """
-        return pulumi.get(self, "instance_group_count")
-
-    @instance_group_count.setter
-    def instance_group_count(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_group_count", value)
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -111,10 +215,48 @@ class InstanceArgs:
         pulumi.set(self, "availability_zone", value)
 
     @property
+    @pulumi.getter(name="createSampleData")
+    def create_sample_data(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "create_sample_data")
+
+    @create_sample_data.setter
+    def create_sample_data(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_sample_data", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceCategory")
+    def db_instance_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The db instance category. Valid values: `HighAvailability`, `Basic`.
+        > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        """
+        return pulumi.get(self, "db_instance_category")
+
+    @db_instance_category.setter
+    def db_instance_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_category", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceClass")
+    def db_instance_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        """
+        return pulumi.get(self, "db_instance_class")
+
+    @db_instance_class.setter
+    def db_instance_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_class", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of DB instance. It a string of 2 to 256 characters.
+        The description of the instance.
         """
         return pulumi.get(self, "description")
 
@@ -126,7 +268,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -135,16 +277,203 @@ class InstanceArgs:
         pulumi.set(self, "instance_charge_type", value)
 
     @property
+    @pulumi.getter(name="instanceGroupCount")
+    def instance_group_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
+        """
+        return pulumi.get(self, "instance_group_count")
+
+    @instance_group_count.setter
+    def instance_group_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "instance_group_count", value)
+
+    @property
+    @pulumi.getter(name="instanceNetworkType")
+    def instance_network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network type of the instance.
+        """
+        return pulumi.get(self, "instance_network_type")
+
+    @instance_network_type.setter
+    def instance_network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_network_type", value)
+
+    @property
+    @pulumi.getter(name="instanceSpec")
+    def instance_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of segment nodes.
+        * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+        * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+        * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+        > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        """
+        return pulumi.get(self, "instance_spec")
+
+    @instance_spec.setter
+    def instance_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_spec", value)
+
+    @property
+    @pulumi.getter(name="ipWhitelists")
+    def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]]]:
+        """
+        The ip whitelist.
+        """
+        return pulumi.get(self, "ip_whitelists")
+
+    @ip_whitelists.setter
+    def ip_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]]]):
+        pulumi.set(self, "ip_whitelists", value)
+
+    @property
+    @pulumi.getter(name="maintainEndTime")
+    def maintain_end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+        """
+        return pulumi.get(self, "maintain_end_time")
+
+    @maintain_end_time.setter
+    def maintain_end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintain_end_time", value)
+
+    @property
+    @pulumi.getter(name="maintainStartTime")
+    def maintain_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+        """
+        return pulumi.get(self, "maintain_start_time")
+
+    @maintain_start_time.setter
+    def maintain_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintain_start_time", value)
+
+    @property
+    @pulumi.getter(name="masterNodeNum")
+    def master_node_num(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        """
+        return pulumi.get(self, "master_node_num")
+
+    @master_node_num.setter
+    def master_node_num(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "master_node_num", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private ip address.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip_address", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the enterprise resource group to which the instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="securityIpLists")
     def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         """
         return pulumi.get(self, "security_ip_lists")
 
     @security_ip_lists.setter
     def security_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_ip_lists", value)
+
+    @property
+    @pulumi.getter(name="segNodeNum")
+    def seg_node_num(self) -> Optional[pulumi.Input[int]]:
+        """
+        Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+        """
+        return pulumi.get(self, "seg_node_num")
+
+    @seg_node_num.setter
+    def seg_node_num(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "seg_node_num", value)
+
+    @property
+    @pulumi.getter(name="segStorageType")
+    def seg_storage_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+        > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        """
+        return pulumi.get(self, "seg_storage_type")
+
+    @seg_storage_type.setter
+    def seg_storage_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "seg_storage_type", value)
+
+    @property
+    @pulumi.getter(name="sslEnabled")
+    def ssl_enabled(self) -> Optional[pulumi.Input[int]]:
+        """
+        Enable or disable SSL. Valid values: `0` and `1`.
+        """
+        return pulumi.get(self, "ssl_enabled")
+
+    @ssl_enabled.setter
+    def ssl_enabled(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ssl_enabled", value)
+
+    @property
+    @pulumi.getter(name="storageSize")
+    def storage_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The storage capacity. Unit: GB. Value: `50` to `4000`.
+        > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        """
+        return pulumi.get(self, "storage_size")
+
+    @storage_size.setter
+    def storage_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_size", value)
 
     @property
     @pulumi.getter
@@ -159,45 +488,138 @@ class InstanceArgs:
         pulumi.set(self, "tags", value)
 
     @property
-    @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="usedTime")
+    def used_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The virtual switch ID to launch DB instances in one VPC.
+        The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
         """
-        return pulumi.get(self, "vswitch_id")
+        return pulumi.get(self, "used_time")
 
-    @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "vswitch_id", value)
+    @used_time.setter
+    def used_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "used_time", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vpc ID of the resource.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID of the instance.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 connection_string: Optional[pulumi.Input[str]] = None,
+                 create_sample_data: Optional[pulumi.Input[bool]] = None,
+                 db_instance_category: Optional[pulumi.Input[str]] = None,
+                 db_instance_class: Optional[pulumi.Input[str]] = None,
+                 db_instance_mode: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
-                 instance_class: Optional[pulumi.Input[str]] = None,
-                 instance_group_count: Optional[pulumi.Input[str]] = None,
+                 instance_group_count: Optional[pulumi.Input[int]] = None,
+                 instance_network_type: Optional[pulumi.Input[str]] = None,
+                 instance_spec: Optional[pulumi.Input[str]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]]] = None,
+                 maintain_end_time: Optional[pulumi.Input[str]] = None,
+                 maintain_start_time: Optional[pulumi.Input[str]] = None,
+                 master_node_num: Optional[pulumi.Input[int]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 seg_node_num: Optional[pulumi.Input[int]] = None,
+                 seg_storage_type: Optional[pulumi.Input[str]] = None,
+                 ssl_enabled: Optional[pulumi.Input[int]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 storage_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 vswitch_id: Optional[pulumi.Input[str]] = None):
+                 used_time: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[str] description: The name of DB instance. It a string of 2 to 256 characters.
-        :param pulumi.Input[str] engine: Database engine: gpdb. System Default value: gpdb.
-        :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
-        :param pulumi.Input[str] instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
-        :param pulumi.Input[str] instance_group_count: The number of groups. Valid values: [2,4,8,16,32]
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        :param pulumi.Input[str] connection_string: (Available in 1.196.0+) The connection string of the instance.
+        :param pulumi.Input[bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `HighAvailability`, `Basic`.
+               > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+               > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        :param pulumi.Input[str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param pulumi.Input[str] description: The description of the instance.
+        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        :param pulumi.Input[str] engine_version: The version of the database engine used by the instance.
+        :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+        :param pulumi.Input[int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
+        :param pulumi.Input[str] instance_network_type: The network type of the instance.
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes.
+               * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+               * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+               * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+               > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist.
+        :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+        :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+        :param pulumi.Input[int] master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the instance.
+        :param pulumi.Input[str] private_ip_address: The private ip address.
+        :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+               > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+        :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+               > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
+        :param pulumi.Input[str] status: The status of the instance.
+        :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Value: `50` to `4000`.
+               > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
+        :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
+        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         if availability_zone is not None:
+            warnings.warn("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
+        if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
+        if create_sample_data is not None:
+            pulumi.set(__self__, "create_sample_data", create_sample_data)
+        if db_instance_category is not None:
+            pulumi.set(__self__, "db_instance_category", db_instance_category)
+        if db_instance_class is not None:
+            pulumi.set(__self__, "db_instance_class", db_instance_class)
+        if db_instance_mode is not None:
+            pulumi.set(__self__, "db_instance_mode", db_instance_mode)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if engine is not None:
@@ -205,21 +627,66 @@ class _InstanceState:
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
         if instance_charge_type is not None:
+            warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""")
+        if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
-        if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
         if instance_group_count is not None:
             pulumi.set(__self__, "instance_group_count", instance_group_count)
+        if instance_network_type is not None:
+            pulumi.set(__self__, "instance_network_type", instance_network_type)
+        if instance_spec is not None:
+            pulumi.set(__self__, "instance_spec", instance_spec)
+        if ip_whitelists is not None:
+            pulumi.set(__self__, "ip_whitelists", ip_whitelists)
+        if maintain_end_time is not None:
+            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+        if maintain_start_time is not None:
+            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+        if master_node_num is not None:
+            pulumi.set(__self__, "master_node_num", master_node_num)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_ip_lists is not None:
+            warnings.warn("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""", DeprecationWarning)
+            pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
         if security_ip_lists is not None:
             pulumi.set(__self__, "security_ip_lists", security_ip_lists)
+        if seg_node_num is not None:
+            pulumi.set(__self__, "seg_node_num", seg_node_num)
+        if seg_storage_type is not None:
+            pulumi.set(__self__, "seg_storage_type", seg_storage_type)
+        if ssl_enabled is not None:
+            pulumi.set(__self__, "ssl_enabled", ssl_enabled)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if storage_size is not None:
+            pulumi.set(__self__, "storage_size", storage_size)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if used_time is not None:
+            pulumi.set(__self__, "used_time", used_time)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -227,10 +694,72 @@ class _InstanceState:
         pulumi.set(self, "availability_zone", value)
 
     @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.196.0+) The connection string of the instance.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @connection_string.setter
+    def connection_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string", value)
+
+    @property
+    @pulumi.getter(name="createSampleData")
+    def create_sample_data(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "create_sample_data")
+
+    @create_sample_data.setter
+    def create_sample_data(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_sample_data", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceCategory")
+    def db_instance_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The db instance category. Valid values: `HighAvailability`, `Basic`.
+        > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        """
+        return pulumi.get(self, "db_instance_category")
+
+    @db_instance_category.setter
+    def db_instance_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_category", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceClass")
+    def db_instance_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        """
+        return pulumi.get(self, "db_instance_class")
+
+    @db_instance_class.setter
+    def db_instance_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_class", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceMode")
+    def db_instance_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        """
+        return pulumi.get(self, "db_instance_mode")
+
+    @db_instance_mode.setter
+    def db_instance_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_mode", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of DB instance. It a string of 2 to 256 characters.
+        The description of the instance.
         """
         return pulumi.get(self, "description")
 
@@ -242,7 +771,7 @@ class _InstanceState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        Database engine: gpdb. System Default value: gpdb.
+        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
         """
         return pulumi.get(self, "engine")
 
@@ -254,7 +783,7 @@ class _InstanceState:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        The version of the database engine used by the instance.
         """
         return pulumi.get(self, "engine_version")
 
@@ -266,7 +795,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -275,40 +804,227 @@ class _InstanceState:
         pulumi.set(self, "instance_charge_type", value)
 
     @property
-    @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[pulumi.Input[str]]:
-        """
-        Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
-        """
-        return pulumi.get(self, "instance_class")
-
-    @instance_class.setter
-    def instance_class(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_class", value)
-
-    @property
     @pulumi.getter(name="instanceGroupCount")
-    def instance_group_count(self) -> Optional[pulumi.Input[str]]:
+    def instance_group_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of groups. Valid values: [2,4,8,16,32]
+        The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
         """
         return pulumi.get(self, "instance_group_count")
 
     @instance_group_count.setter
-    def instance_group_count(self, value: Optional[pulumi.Input[str]]):
+    def instance_group_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "instance_group_count", value)
+
+    @property
+    @pulumi.getter(name="instanceNetworkType")
+    def instance_network_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network type of the instance.
+        """
+        return pulumi.get(self, "instance_network_type")
+
+    @instance_network_type.setter
+    def instance_network_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_network_type", value)
+
+    @property
+    @pulumi.getter(name="instanceSpec")
+    def instance_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of segment nodes.
+        * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+        * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+        * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+        > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        """
+        return pulumi.get(self, "instance_spec")
+
+    @instance_spec.setter
+    def instance_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_spec", value)
+
+    @property
+    @pulumi.getter(name="ipWhitelists")
+    def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]]]:
+        """
+        The ip whitelist.
+        """
+        return pulumi.get(self, "ip_whitelists")
+
+    @ip_whitelists.setter
+    def ip_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]]]):
+        pulumi.set(self, "ip_whitelists", value)
+
+    @property
+    @pulumi.getter(name="maintainEndTime")
+    def maintain_end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+        """
+        return pulumi.get(self, "maintain_end_time")
+
+    @maintain_end_time.setter
+    def maintain_end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintain_end_time", value)
+
+    @property
+    @pulumi.getter(name="maintainStartTime")
+    def maintain_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+        """
+        return pulumi.get(self, "maintain_start_time")
+
+    @maintain_start_time.setter
+    def maintain_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintain_start_time", value)
+
+    @property
+    @pulumi.getter(name="masterNodeNum")
+    def master_node_num(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        """
+        return pulumi.get(self, "master_node_num")
+
+    @master_node_num.setter
+    def master_node_num(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "master_node_num", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.196.0+) The connection port of the instance.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private ip address.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip_address", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the enterprise resource group to which the instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter(name="securityIpLists")
     def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         """
         return pulumi.get(self, "security_ip_lists")
 
     @security_ip_lists.setter
     def security_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_ip_lists", value)
+
+    @property
+    @pulumi.getter(name="segNodeNum")
+    def seg_node_num(self) -> Optional[pulumi.Input[int]]:
+        """
+        Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+        """
+        return pulumi.get(self, "seg_node_num")
+
+    @seg_node_num.setter
+    def seg_node_num(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "seg_node_num", value)
+
+    @property
+    @pulumi.getter(name="segStorageType")
+    def seg_storage_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+        > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        """
+        return pulumi.get(self, "seg_storage_type")
+
+    @seg_storage_type.setter
+    def seg_storage_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "seg_storage_type", value)
+
+    @property
+    @pulumi.getter(name="sslEnabled")
+    def ssl_enabled(self) -> Optional[pulumi.Input[int]]:
+        """
+        Enable or disable SSL. Valid values: `0` and `1`.
+        """
+        return pulumi.get(self, "ssl_enabled")
+
+    @ssl_enabled.setter
+    def ssl_enabled(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ssl_enabled", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the instance.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="storageSize")
+    def storage_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The storage capacity. Unit: GB. Value: `50` to `4000`.
+        > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        """
+        return pulumi.get(self, "storage_size")
+
+    @storage_size.setter
+    def storage_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_size", value)
 
     @property
     @pulumi.getter
@@ -323,16 +1039,52 @@ class _InstanceState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="usedTime")
+    def used_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        """
+        return pulumi.get(self, "used_time")
+
+    @used_time.setter
+    def used_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "used_time", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vpc ID of the resource.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The virtual switch ID to launch DB instances in one VPC.
+        The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
     def vswitch_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID of the instance.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class Instance(pulumi.CustomResource):
@@ -341,15 +1093,35 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 create_sample_data: Optional[pulumi.Input[bool]] = None,
+                 db_instance_category: Optional[pulumi.Input[str]] = None,
+                 db_instance_class: Optional[pulumi.Input[str]] = None,
+                 db_instance_mode: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
-                 instance_class: Optional[pulumi.Input[str]] = None,
-                 instance_group_count: Optional[pulumi.Input[str]] = None,
+                 instance_group_count: Optional[pulumi.Input[int]] = None,
+                 instance_network_type: Optional[pulumi.Input[str]] = None,
+                 instance_spec: Optional[pulumi.Input[str]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]]] = None,
+                 maintain_end_time: Optional[pulumi.Input[str]] = None,
+                 maintain_start_time: Optional[pulumi.Input[str]] = None,
+                 master_node_num: Optional[pulumi.Input[int]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 seg_node_num: Optional[pulumi.Input[int]] = None,
+                 seg_storage_type: Optional[pulumi.Input[str]] = None,
+                 ssl_enabled: Optional[pulumi.Input[int]] = None,
+                 storage_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 used_time: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
@@ -357,60 +1129,55 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:**  Available in 1.47.0+
 
-        > **NOTE:**  The following regions don't support create Classic network Gpdb instance.
-        [`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`,`us-east-1`,`eu-central-1`,`cn-shanghai-finance-1`,`cn-shenzhen-finance-1`,`cn-hangzhou-finance`]
-
-        > **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
-
-        > **NOTE:**  This resource is used to manage a Reserved Storage Mode instance, and creating a new reserved storage mode instance is no longer supported since v1.127.0.
-        You can still use this resource to manage the instance which has been already created, but can not create a new one.
-
-        ## Example Usage
-        ### Create a Gpdb instance
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.get_zones(available_resource_creation="Gpdb")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            zone_id=default_zones.zones[0].id,
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            vswitch_name="vpc-123456")
-        example = alicloud.gpdb.Instance("example",
-            description="tf-gpdb-test",
-            engine="gpdb",
-            engine_version="4.3",
-            instance_class="gpdb.group.segsdx2",
-            instance_group_count="2",
-            vswitch_id=default_switch.id,
-            security_ip_lists=[
-                "10.168.1.12",
-                "100.69.7.112",
-            ])
-        ```
-
         ## Import
 
         AnalyticDB for PostgreSQL can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:gpdb/instance:Instance example gp-bp1291daeda44194
+         $ pulumi import alicloud:gpdb/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The name of DB instance. It a string of 2 to 256 characters.
-        :param pulumi.Input[str] engine: Database engine: gpdb. System Default value: gpdb.
-        :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
-        :param pulumi.Input[str] instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
-        :param pulumi.Input[str] instance_group_count: The number of groups. Valid values: [2,4,8,16,32]
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        :param pulumi.Input[bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `HighAvailability`, `Basic`.
+               > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+               > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        :param pulumi.Input[str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param pulumi.Input[str] description: The description of the instance.
+        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        :param pulumi.Input[str] engine_version: The version of the database engine used by the instance.
+        :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+        :param pulumi.Input[int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
+        :param pulumi.Input[str] instance_network_type: The network type of the instance.
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes.
+               * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+               * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+               * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+               > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]] ip_whitelists: The ip whitelist.
+        :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+        :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+        :param pulumi.Input[int] master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        :param pulumi.Input[str] private_ip_address: The private ip address.
+        :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+               > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+        :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+               > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
+        :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Value: `50` to `4000`.
+               > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
+        :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
+        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         ...
     @overload
@@ -424,47 +1191,12 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:**  Available in 1.47.0+
 
-        > **NOTE:**  The following regions don't support create Classic network Gpdb instance.
-        [`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`,`us-east-1`,`eu-central-1`,`cn-shanghai-finance-1`,`cn-shenzhen-finance-1`,`cn-hangzhou-finance`]
-
-        > **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
-
-        > **NOTE:**  This resource is used to manage a Reserved Storage Mode instance, and creating a new reserved storage mode instance is no longer supported since v1.127.0.
-        You can still use this resource to manage the instance which has been already created, but can not create a new one.
-
-        ## Example Usage
-        ### Create a Gpdb instance
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.get_zones(available_resource_creation="Gpdb")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            zone_id=default_zones.zones[0].id,
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            vswitch_name="vpc-123456")
-        example = alicloud.gpdb.Instance("example",
-            description="tf-gpdb-test",
-            engine="gpdb",
-            engine_version="4.3",
-            instance_class="gpdb.group.segsdx2",
-            instance_group_count="2",
-            vswitch_id=default_switch.id,
-            security_ip_lists=[
-                "10.168.1.12",
-                "100.69.7.112",
-            ])
-        ```
-
         ## Import
 
         AnalyticDB for PostgreSQL can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:gpdb/instance:Instance example gp-bp1291daeda44194
+         $ pulumi import alicloud:gpdb/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -483,15 +1215,35 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 create_sample_data: Optional[pulumi.Input[bool]] = None,
+                 db_instance_category: Optional[pulumi.Input[str]] = None,
+                 db_instance_class: Optional[pulumi.Input[str]] = None,
+                 db_instance_mode: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
-                 instance_class: Optional[pulumi.Input[str]] = None,
-                 instance_group_count: Optional[pulumi.Input[str]] = None,
+                 instance_group_count: Optional[pulumi.Input[int]] = None,
+                 instance_network_type: Optional[pulumi.Input[str]] = None,
+                 instance_spec: Optional[pulumi.Input[str]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]]] = None,
+                 maintain_end_time: Optional[pulumi.Input[str]] = None,
+                 maintain_start_time: Optional[pulumi.Input[str]] = None,
+                 master_node_num: Optional[pulumi.Input[int]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 seg_node_num: Optional[pulumi.Input[int]] = None,
+                 seg_storage_type: Optional[pulumi.Input[str]] = None,
+                 ssl_enabled: Optional[pulumi.Input[int]] = None,
+                 storage_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 used_time: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -501,7 +1253,16 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            if availability_zone is not None and not opts.urn:
+                warnings.warn("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""", DeprecationWarning)
+                pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
             __props__.__dict__["availability_zone"] = availability_zone
+            __props__.__dict__["create_sample_data"] = create_sample_data
+            __props__.__dict__["db_instance_category"] = db_instance_category
+            __props__.__dict__["db_instance_class"] = db_instance_class
+            if db_instance_mode is None and not opts.urn:
+                raise TypeError("Missing required property 'db_instance_mode'")
+            __props__.__dict__["db_instance_mode"] = db_instance_mode
             __props__.__dict__["description"] = description
             if engine is None and not opts.urn:
                 raise TypeError("Missing required property 'engine'")
@@ -509,16 +1270,39 @@ class Instance(pulumi.CustomResource):
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
+            if instance_charge_type is not None and not opts.urn:
+                warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""", DeprecationWarning)
+                pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""")
             __props__.__dict__["instance_charge_type"] = instance_charge_type
-            if instance_class is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_class'")
-            __props__.__dict__["instance_class"] = instance_class
-            if instance_group_count is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_group_count'")
             __props__.__dict__["instance_group_count"] = instance_group_count
+            __props__.__dict__["instance_network_type"] = instance_network_type
+            __props__.__dict__["instance_spec"] = instance_spec
+            __props__.__dict__["ip_whitelists"] = ip_whitelists
+            __props__.__dict__["maintain_end_time"] = maintain_end_time
+            __props__.__dict__["maintain_start_time"] = maintain_start_time
+            __props__.__dict__["master_node_num"] = master_node_num
+            __props__.__dict__["payment_type"] = payment_type
+            __props__.__dict__["period"] = period
+            __props__.__dict__["private_ip_address"] = private_ip_address
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            if security_ip_lists is not None and not opts.urn:
+                warnings.warn("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""", DeprecationWarning)
+                pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
             __props__.__dict__["security_ip_lists"] = security_ip_lists
+            __props__.__dict__["seg_node_num"] = seg_node_num
+            __props__.__dict__["seg_storage_type"] = seg_storage_type
+            __props__.__dict__["ssl_enabled"] = ssl_enabled
+            __props__.__dict__["storage_size"] = storage_size
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["used_time"] = used_time
+            __props__.__dict__["vpc_id"] = vpc_id
+            if vswitch_id is None and not opts.urn:
+                raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["connection_string"] = None
+            __props__.__dict__["port"] = None
+            __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
             'alicloud:gpdb/instance:Instance',
             resource_name,
@@ -530,15 +1314,38 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
+            connection_string: Optional[pulumi.Input[str]] = None,
+            create_sample_data: Optional[pulumi.Input[bool]] = None,
+            db_instance_category: Optional[pulumi.Input[str]] = None,
+            db_instance_class: Optional[pulumi.Input[str]] = None,
+            db_instance_mode: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
-            instance_class: Optional[pulumi.Input[str]] = None,
-            instance_group_count: Optional[pulumi.Input[str]] = None,
+            instance_group_count: Optional[pulumi.Input[int]] = None,
+            instance_network_type: Optional[pulumi.Input[str]] = None,
+            instance_spec: Optional[pulumi.Input[str]] = None,
+            ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]]] = None,
+            maintain_end_time: Optional[pulumi.Input[str]] = None,
+            maintain_start_time: Optional[pulumi.Input[str]] = None,
+            master_node_num: Optional[pulumi.Input[int]] = None,
+            payment_type: Optional[pulumi.Input[str]] = None,
+            period: Optional[pulumi.Input[str]] = None,
+            port: Optional[pulumi.Input[str]] = None,
+            private_ip_address: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            seg_node_num: Optional[pulumi.Input[int]] = None,
+            seg_storage_type: Optional[pulumi.Input[str]] = None,
+            ssl_enabled: Optional[pulumi.Input[int]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            storage_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            used_time: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
+            vswitch_id: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -546,42 +1353,143 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The name of DB instance. It a string of 2 to 256 characters.
-        :param pulumi.Input[str] engine: Database engine: gpdb. System Default value: gpdb.
-        :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
-        :param pulumi.Input[str] instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
-        :param pulumi.Input[str] instance_group_count: The number of groups. Valid values: [2,4,8,16,32]
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        :param pulumi.Input[str] connection_string: (Available in 1.196.0+) The connection string of the instance.
+        :param pulumi.Input[bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `HighAvailability`, `Basic`.
+               > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+               > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        :param pulumi.Input[str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param pulumi.Input[str] description: The description of the instance.
+        :param pulumi.Input[str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        :param pulumi.Input[str] engine_version: The version of the database engine used by the instance.
+        :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
+        :param pulumi.Input[int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
+        :param pulumi.Input[str] instance_network_type: The network type of the instance.
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes.
+               * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+               * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+               * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+               > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]] ip_whitelists: The ip whitelist.
+        :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+        :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+        :param pulumi.Input[int] master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the instance.
+        :param pulumi.Input[str] private_ip_address: The private ip address.
+        :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+               > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+        :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+               > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
+        :param pulumi.Input[str] status: The status of the instance.
+        :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Value: `50` to `4000`.
+               > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
+        :param pulumi.Input[str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
+        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["availability_zone"] = availability_zone
+        __props__.__dict__["connection_string"] = connection_string
+        __props__.__dict__["create_sample_data"] = create_sample_data
+        __props__.__dict__["db_instance_category"] = db_instance_category
+        __props__.__dict__["db_instance_class"] = db_instance_class
+        __props__.__dict__["db_instance_mode"] = db_instance_mode
         __props__.__dict__["description"] = description
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["instance_charge_type"] = instance_charge_type
-        __props__.__dict__["instance_class"] = instance_class
         __props__.__dict__["instance_group_count"] = instance_group_count
+        __props__.__dict__["instance_network_type"] = instance_network_type
+        __props__.__dict__["instance_spec"] = instance_spec
+        __props__.__dict__["ip_whitelists"] = ip_whitelists
+        __props__.__dict__["maintain_end_time"] = maintain_end_time
+        __props__.__dict__["maintain_start_time"] = maintain_start_time
+        __props__.__dict__["master_node_num"] = master_node_num
+        __props__.__dict__["payment_type"] = payment_type
+        __props__.__dict__["period"] = period
+        __props__.__dict__["port"] = port
+        __props__.__dict__["private_ip_address"] = private_ip_address
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_ip_lists"] = security_ip_lists
+        __props__.__dict__["seg_node_num"] = seg_node_num
+        __props__.__dict__["seg_storage_type"] = seg_storage_type
+        __props__.__dict__["ssl_enabled"] = ssl_enabled
+        __props__.__dict__["status"] = status
+        __props__.__dict__["storage_size"] = storage_size
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["used_time"] = used_time
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[str]:
+        """
+        Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        """
         return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.196.0+) The connection string of the instance.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @property
+    @pulumi.getter(name="createSampleData")
+    def create_sample_data(self) -> pulumi.Output[bool]:
+        """
+        Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "create_sample_data")
+
+    @property
+    @pulumi.getter(name="dbInstanceCategory")
+    def db_instance_category(self) -> pulumi.Output[str]:
+        """
+        The db instance category. Valid values: `HighAvailability`, `Basic`.
+        > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        """
+        return pulumi.get(self, "db_instance_category")
+
+    @property
+    @pulumi.getter(name="dbInstanceClass")
+    def db_instance_class(self) -> pulumi.Output[Optional[str]]:
+        """
+        The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
+        > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        """
+        return pulumi.get(self, "db_instance_class")
+
+    @property
+    @pulumi.getter(name="dbInstanceMode")
+    def db_instance_mode(self) -> pulumi.Output[str]:
+        """
+        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        """
+        return pulumi.get(self, "db_instance_mode")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of DB instance. It a string of 2 to 256 characters.
+        The description of the instance.
         """
         return pulumi.get(self, "description")
 
@@ -589,7 +1497,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        Database engine: gpdb. System Default value: gpdb.
+        The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
         """
         return pulumi.get(self, "engine")
 
@@ -597,7 +1505,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Output[str]:
         """
-        Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
+        The version of the database engine used by the instance.
         """
         return pulumi.get(self, "engine_version")
 
@@ -605,33 +1513,160 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[str]:
         """
-        Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
+        Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @property
-    @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> pulumi.Output[str]:
-        """
-        Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
-        """
-        return pulumi.get(self, "instance_class")
-
-    @property
     @pulumi.getter(name="instanceGroupCount")
-    def instance_group_count(self) -> pulumi.Output[str]:
+    def instance_group_count(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of groups. Valid values: [2,4,8,16,32]
+        The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
         """
         return pulumi.get(self, "instance_group_count")
 
     @property
-    @pulumi.getter(name="securityIpLists")
-    def security_ip_lists(self) -> pulumi.Output[Sequence[str]]:
+    @pulumi.getter(name="instanceNetworkType")
+    def instance_network_type(self) -> pulumi.Output[str]:
         """
-        List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        The network type of the instance.
+        """
+        return pulumi.get(self, "instance_network_type")
+
+    @property
+    @pulumi.getter(name="instanceSpec")
+    def instance_spec(self) -> pulumi.Output[Optional[str]]:
+        """
+        The specification of segment nodes.
+        * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+        * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+        * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+        > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        """
+        return pulumi.get(self, "instance_spec")
+
+    @property
+    @pulumi.getter(name="ipWhitelists")
+    def ip_whitelists(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceIpWhitelist']]]:
+        """
+        The ip whitelist.
+        """
+        return pulumi.get(self, "ip_whitelists")
+
+    @property
+    @pulumi.getter(name="maintainEndTime")
+    def maintain_end_time(self) -> pulumi.Output[str]:
+        """
+        The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
+        """
+        return pulumi.get(self, "maintain_end_time")
+
+    @property
+    @pulumi.getter(name="maintainStartTime")
+    def maintain_start_time(self) -> pulumi.Output[str]:
+        """
+        The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
+        """
+        return pulumi.get(self, "maintain_start_time")
+
+    @property
+    @pulumi.getter(name="masterNodeNum")
+    def master_node_num(self) -> pulumi.Output[Optional[int]]:
+        """
+        The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
+        """
+        return pulumi.get(self, "master_node_num")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[str]:
+        """
+        The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def period(self) -> pulumi.Output[Optional[str]]:
+        """
+        The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
+        """
+        return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.196.0+) The connection port of the instance.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> pulumi.Output[Optional[str]]:
+        """
+        The private ip address.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the enterprise resource group to which the instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityIpLists")
+    def security_ip_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         """
         return pulumi.get(self, "security_ip_lists")
+
+    @property
+    @pulumi.getter(name="segNodeNum")
+    def seg_node_num(self) -> pulumi.Output[int]:
+        """
+        Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
+        > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
+        """
+        return pulumi.get(self, "seg_node_num")
+
+    @property
+    @pulumi.getter(name="segStorageType")
+    def seg_storage_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
+        > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        """
+        return pulumi.get(self, "seg_storage_type")
+
+    @property
+    @pulumi.getter(name="sslEnabled")
+    def ssl_enabled(self) -> pulumi.Output[int]:
+        """
+        Enable or disable SSL. Valid values: `0` and `1`.
+        """
+        return pulumi.get(self, "ssl_enabled")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        The status of the instance.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageSize")
+    def storage_size(self) -> pulumi.Output[int]:
+        """
+        The storage capacity. Unit: GB. Value: `50` to `4000`.
+        > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
+        """
+        return pulumi.get(self, "storage_size")
 
     @property
     @pulumi.getter
@@ -642,10 +1677,34 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="usedTime")
+    def used_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The used time. When the parameter `period` is `Year`, the `used_time` value is 1 to 3. When the parameter `period` is `Month`, the `used_time` value is 1 to 9.
+        """
+        return pulumi.get(self, "used_time")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[str]:
+        """
+        The vpc ID of the resource.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[str]:
         """
-        The virtual switch ID to launch DB instances in one VPC.
+        The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[str]:
+        """
+        The zone ID of the instance.
+        """
+        return pulumi.get(self, "zone_id")
 

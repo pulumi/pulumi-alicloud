@@ -46,8 +46,11 @@ __all__ = [
     'GetNetworkAclsAclResourceResult',
     'GetNetworksVpcResult',
     'GetPbrRouteEntriesEntryResult',
+    'GetPeerConnectionsConnectionResult',
     'GetPrefixListsListResult',
     'GetPrefixListsListEntryResult',
+    'GetPublicIpAddressPoolCidrBlocksBlockResult',
+    'GetPublicIpAddressPoolsPoolResult',
     'GetRouteEntriesEntryResult',
     'GetRouteTablesTableResult',
     'GetRouterInterfacesInterfaceResult',
@@ -189,12 +192,12 @@ class NetworkAclEgressAclEntry(dict):
                  port: Optional[str] = None,
                  protocol: Optional[str] = None):
         """
-        :param str description: The description of egress entries.
+        :param str description: The description of the network acl instance.
         :param str destination_cidr_ip: The destination cidr ip of egress entries.
-        :param str network_acl_entry_name: The entry name of egress entries.
-        :param str policy: The policy of egress entries. Valid values `accept` and `drop`.
-        :param str port: The port of egress entries.
-        :param str protocol: The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        :param str network_acl_entry_name: The entry name of ingress entries.
+        :param str policy: The policy of ingress entries. Valid values `accept` and `drop`.
+        :param str port: The port of ingress entries.
+        :param str protocol: The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -213,7 +216,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of egress entries.
+        The description of the network acl instance.
         """
         return pulumi.get(self, "description")
 
@@ -229,7 +232,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter(name="networkAclEntryName")
     def network_acl_entry_name(self) -> Optional[str]:
         """
-        The entry name of egress entries.
+        The entry name of ingress entries.
         """
         return pulumi.get(self, "network_acl_entry_name")
 
@@ -237,7 +240,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        The policy of egress entries. Valid values `accept` and `drop`.
+        The policy of ingress entries. Valid values `accept` and `drop`.
         """
         return pulumi.get(self, "policy")
 
@@ -245,7 +248,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        The port of egress entries.
+        The port of ingress entries.
         """
         return pulumi.get(self, "port")
 
@@ -253,7 +256,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
         """
         return pulumi.get(self, "protocol")
 
@@ -288,13 +291,13 @@ class NetworkAclEntriesEgress(dict):
                  port: Optional[str] = None,
                  protocol: Optional[str] = None):
         """
-        :param str description: The description of the egress entry.
+        :param str description: The description of the ingress entry.
         :param str destination_cidr_ip: The destination ip of the egress entry.
-        :param str entry_type: The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
-        :param str name: The name of the egress entry.
-        :param str policy: The policy of the egress entry. It must be `accept` or `drop`.
-        :param str port: The port of the egress entry.
-        :param str protocol: The protocol of the egress entry.
+        :param str entry_type: The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+        :param str name: The name of the ingress entry.
+        :param str policy: The policy of the ingress entry. It must be `accept` or `drop`.
+        :param str port: The port of the ingress entry.
+        :param str protocol: The protocol of the ingress entry.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -315,7 +318,7 @@ class NetworkAclEntriesEgress(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the egress entry.
+        The description of the ingress entry.
         """
         return pulumi.get(self, "description")
 
@@ -331,7 +334,7 @@ class NetworkAclEntriesEgress(dict):
     @pulumi.getter(name="entryType")
     def entry_type(self) -> Optional[str]:
         """
-        The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+        The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
         """
         return pulumi.get(self, "entry_type")
 
@@ -339,7 +342,7 @@ class NetworkAclEntriesEgress(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the egress entry.
+        The name of the ingress entry.
         """
         return pulumi.get(self, "name")
 
@@ -347,7 +350,7 @@ class NetworkAclEntriesEgress(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        The policy of the egress entry. It must be `accept` or `drop`.
+        The policy of the ingress entry. It must be `accept` or `drop`.
         """
         return pulumi.get(self, "policy")
 
@@ -355,7 +358,7 @@ class NetworkAclEntriesEgress(dict):
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        The port of the egress entry.
+        The port of the ingress entry.
         """
         return pulumi.get(self, "port")
 
@@ -363,7 +366,7 @@ class NetworkAclEntriesEgress(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        The protocol of the egress entry.
+        The protocol of the ingress entry.
         """
         return pulumi.get(self, "protocol")
 
@@ -398,12 +401,12 @@ class NetworkAclEntriesIngress(dict):
                  protocol: Optional[str] = None,
                  source_cidr_ip: Optional[str] = None):
         """
-        :param str description: The description of the egress entry.
-        :param str entry_type: The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
-        :param str name: The name of the egress entry.
-        :param str policy: The policy of the egress entry. It must be `accept` or `drop`.
-        :param str port: The port of the egress entry.
-        :param str protocol: The protocol of the egress entry.
+        :param str description: The description of the ingress entry.
+        :param str entry_type: The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+        :param str name: The name of the ingress entry.
+        :param str policy: The policy of the ingress entry. It must be `accept` or `drop`.
+        :param str port: The port of the ingress entry.
+        :param str protocol: The protocol of the ingress entry.
         :param str source_cidr_ip: The source ip of the ingress entry.
         """
         if description is not None:
@@ -425,7 +428,7 @@ class NetworkAclEntriesIngress(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the egress entry.
+        The description of the ingress entry.
         """
         return pulumi.get(self, "description")
 
@@ -433,7 +436,7 @@ class NetworkAclEntriesIngress(dict):
     @pulumi.getter(name="entryType")
     def entry_type(self) -> Optional[str]:
         """
-        The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+        The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
         """
         return pulumi.get(self, "entry_type")
 
@@ -441,7 +444,7 @@ class NetworkAclEntriesIngress(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the egress entry.
+        The name of the ingress entry.
         """
         return pulumi.get(self, "name")
 
@@ -449,7 +452,7 @@ class NetworkAclEntriesIngress(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        The policy of the egress entry. It must be `accept` or `drop`.
+        The policy of the ingress entry. It must be `accept` or `drop`.
         """
         return pulumi.get(self, "policy")
 
@@ -457,7 +460,7 @@ class NetworkAclEntriesIngress(dict):
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        The port of the egress entry.
+        The port of the ingress entry.
         """
         return pulumi.get(self, "port")
 
@@ -465,7 +468,7 @@ class NetworkAclEntriesIngress(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        The protocol of the egress entry.
+        The protocol of the ingress entry.
         """
         return pulumi.get(self, "protocol")
 
@@ -507,11 +510,11 @@ class NetworkAclIngressAclEntry(dict):
                  protocol: Optional[str] = None,
                  source_cidr_ip: Optional[str] = None):
         """
-        :param str description: The description of egress entries.
-        :param str network_acl_entry_name: The entry name of egress entries.
-        :param str policy: The policy of egress entries. Valid values `accept` and `drop`.
-        :param str port: The port of egress entries.
-        :param str protocol: The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        :param str description: The description of the network acl instance.
+        :param str network_acl_entry_name: The entry name of ingress entries.
+        :param str policy: The policy of ingress entries. Valid values `accept` and `drop`.
+        :param str port: The port of ingress entries.
+        :param str protocol: The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
         :param str source_cidr_ip: The source cidr ip of ingress entries.
         """
         if description is not None:
@@ -531,7 +534,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of egress entries.
+        The description of the network acl instance.
         """
         return pulumi.get(self, "description")
 
@@ -539,7 +542,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter(name="networkAclEntryName")
     def network_acl_entry_name(self) -> Optional[str]:
         """
-        The entry name of egress entries.
+        The entry name of ingress entries.
         """
         return pulumi.get(self, "network_acl_entry_name")
 
@@ -547,7 +550,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        The policy of egress entries. Valid values `accept` and `drop`.
+        The policy of ingress entries. Valid values `accept` and `drop`.
         """
         return pulumi.get(self, "policy")
 
@@ -555,7 +558,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        The port of egress entries.
+        The port of ingress entries.
         """
         return pulumi.get(self, "port")
 
@@ -563,7 +566,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        The protocol of egress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
         """
         return pulumi.get(self, "protocol")
 
@@ -629,19 +632,20 @@ class NetworkAclResource(dict):
 @pulumi.output_type
 class PrefixListEntry(dict):
     def __init__(__self__, *,
-                 cidr: str,
+                 cidr: Optional[str] = None,
                  description: Optional[str] = None):
         """
         :param str cidr: The CIDR address block of the prefix list.
         :param str description: The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         """
-        pulumi.set(__self__, "cidr", cidr)
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
         if description is not None:
             pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
-    def cidr(self) -> str:
+    def cidr(self) -> Optional[str]:
         """
         The CIDR address block of the prefix list.
         """
@@ -3719,6 +3723,134 @@ class GetPbrRouteEntriesEntryResult(dict):
 
 
 @pulumi.output_type
+class GetPeerConnectionsConnectionResult(dict):
+    def __init__(__self__, *,
+                 accepting_ali_uid: int,
+                 accepting_region_id: str,
+                 accepting_vpc_id: str,
+                 bandwidth: int,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 peer_connection_id: str,
+                 peer_connection_name: str,
+                 status: str,
+                 vpc_id: str):
+        """
+        :param int accepting_ali_uid: The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
+        :param str accepting_region_id: The region ID of the recipient of the VPC peering connection to be created.
+        :param str accepting_vpc_id: The VPC ID of the receiving end of the VPC peer connection.
+        :param int bandwidth: The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
+        :param str create_time: The creation time of the resource.
+        :param str description: The description of the VPC peer connection to be created.
+        :param str id: The ID of the PeerConnection.
+        :param str peer_connection_id: The first ID of the resource.
+        :param str peer_connection_name: The name of the resource.
+        :param str status: The status of the resource.
+        :param str vpc_id: The ID of the requester VPC.
+        """
+        pulumi.set(__self__, "accepting_ali_uid", accepting_ali_uid)
+        pulumi.set(__self__, "accepting_region_id", accepting_region_id)
+        pulumi.set(__self__, "accepting_vpc_id", accepting_vpc_id)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "peer_connection_id", peer_connection_id)
+        pulumi.set(__self__, "peer_connection_name", peer_connection_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="acceptingAliUid")
+    def accepting_ali_uid(self) -> int:
+        """
+        The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
+        """
+        return pulumi.get(self, "accepting_ali_uid")
+
+    @property
+    @pulumi.getter(name="acceptingRegionId")
+    def accepting_region_id(self) -> str:
+        """
+        The region ID of the recipient of the VPC peering connection to be created.
+        """
+        return pulumi.get(self, "accepting_region_id")
+
+    @property
+    @pulumi.getter(name="acceptingVpcId")
+    def accepting_vpc_id(self) -> str:
+        """
+        The VPC ID of the receiving end of the VPC peer connection.
+        """
+        return pulumi.get(self, "accepting_vpc_id")
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the VPC peer connection to be created.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the PeerConnection.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="peerConnectionId")
+    def peer_connection_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "peer_connection_id")
+
+    @property
+    @pulumi.getter(name="peerConnectionName")
+    def peer_connection_name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "peer_connection_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the requester VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
 class GetPrefixListsListResult(dict):
     def __init__(__self__, *,
                  create_time: str,
@@ -3851,6 +3983,229 @@ class GetPrefixListsListEntryResult(dict):
         The description of the cidr entry.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetPublicIpAddressPoolCidrBlocksBlockResult(dict):
+    def __init__(__self__, *,
+                 cidr_block: str,
+                 create_time: str,
+                 id: str,
+                 public_ip_address_pool_id: str,
+                 status: str,
+                 total_ip_num: int,
+                 used_ip_num: int):
+        """
+        :param str cidr_block: The CIDR block.
+        :param str create_time: The time when the CIDR block was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
+        :param str id: The ID of the Public Ip Address Pool Cidr Block.
+        :param str public_ip_address_pool_id: The ID of the Vpc Public IP address pool.
+        :param str status: The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
+        :param int total_ip_num: The number of occupied IP addresses in the CIDR block.
+        :param int used_ip_num: The total number of available IP addresses in the CIDR block.
+        """
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "total_ip_num", total_ip_num)
+        pulumi.set(__self__, "used_ip_num", used_ip_num)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        """
+        The CIDR block.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the CIDR block was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Public Ip Address Pool Cidr Block.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="publicIpAddressPoolId")
+    def public_ip_address_pool_id(self) -> str:
+        """
+        The ID of the Vpc Public IP address pool.
+        """
+        return pulumi.get(self, "public_ip_address_pool_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="totalIpNum")
+    def total_ip_num(self) -> int:
+        """
+        The number of occupied IP addresses in the CIDR block.
+        """
+        return pulumi.get(self, "total_ip_num")
+
+    @property
+    @pulumi.getter(name="usedIpNum")
+    def used_ip_num(self) -> int:
+        """
+        The total number of available IP addresses in the CIDR block.
+        """
+        return pulumi.get(self, "used_ip_num")
+
+
+@pulumi.output_type
+class GetPublicIpAddressPoolsPoolResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 ip_address_remaining: bool,
+                 isp: str,
+                 public_ip_address_pool_id: str,
+                 public_ip_address_pool_name: str,
+                 region_id: str,
+                 status: str,
+                 total_ip_num: int,
+                 used_ip_num: int,
+                 user_type: str):
+        """
+        :param str create_time: The time when the Vpc Public Ip Address Pool was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
+        :param str description: The description of the Vpc Public Ip Address Pool.
+        :param str id: The ID of the Vpc Public Ip Address Pool.
+        :param bool ip_address_remaining: Indicates whether the Vpc Public Ip Address Pool has idle IP addresses.
+        :param str isp: The Internet service provider.
+        :param str public_ip_address_pool_id: The ID of the Vpc Public Ip Address Pool.
+        :param str public_ip_address_pool_name: The name of the Vpc Public Ip Address Pool.
+        :param str region_id: The region ID of the Vpc Public Ip Address Pool.
+        :param str status: The status of the Vpc Public Ip Address Pool.
+        :param int total_ip_num: The total number of IP addresses in the Vpc Public Ip Address Pool.
+        :param int used_ip_num: The number of occupied IP addresses in the Vpc Public Ip Address Pool.
+        :param str user_type: The user type.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_address_remaining", ip_address_remaining)
+        pulumi.set(__self__, "isp", isp)
+        pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
+        pulumi.set(__self__, "public_ip_address_pool_name", public_ip_address_pool_name)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "total_ip_num", total_ip_num)
+        pulumi.set(__self__, "used_ip_num", used_ip_num)
+        pulumi.set(__self__, "user_type", user_type)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the Vpc Public Ip Address Pool was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Vpc Public Ip Address Pool.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Vpc Public Ip Address Pool.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipAddressRemaining")
+    def ip_address_remaining(self) -> bool:
+        """
+        Indicates whether the Vpc Public Ip Address Pool has idle IP addresses.
+        """
+        return pulumi.get(self, "ip_address_remaining")
+
+    @property
+    @pulumi.getter
+    def isp(self) -> str:
+        """
+        The Internet service provider.
+        """
+        return pulumi.get(self, "isp")
+
+    @property
+    @pulumi.getter(name="publicIpAddressPoolId")
+    def public_ip_address_pool_id(self) -> str:
+        """
+        The ID of the Vpc Public Ip Address Pool.
+        """
+        return pulumi.get(self, "public_ip_address_pool_id")
+
+    @property
+    @pulumi.getter(name="publicIpAddressPoolName")
+    def public_ip_address_pool_name(self) -> str:
+        """
+        The name of the Vpc Public Ip Address Pool.
+        """
+        return pulumi.get(self, "public_ip_address_pool_name")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        The region ID of the Vpc Public Ip Address Pool.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the Vpc Public Ip Address Pool.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="totalIpNum")
+    def total_ip_num(self) -> int:
+        """
+        The total number of IP addresses in the Vpc Public Ip Address Pool.
+        """
+        return pulumi.get(self, "total_ip_num")
+
+    @property
+    @pulumi.getter(name="usedIpNum")
+    def used_ip_num(self) -> int:
+        """
+        The number of occupied IP addresses in the Vpc Public Ip Address Pool.
+        """
+        return pulumi.get(self, "used_ip_num")
+
+    @property
+    @pulumi.getter(name="userType")
+    def user_type(self) -> str:
+        """
+        The user type.
+        """
+        return pulumi.get(self, "user_type")
 
 
 @pulumi.output_type
@@ -4598,6 +4953,7 @@ class GetSwitchesVswitchResult(dict):
                  creation_time: str,
                  description: str,
                  id: str,
+                 ipv6_cidr_block: str,
                  is_default: bool,
                  name: str,
                  resource_group_id: str,
@@ -4614,6 +4970,7 @@ class GetSwitchesVswitchResult(dict):
         :param str creation_time: Time of creation.
         :param str description: Description of the VSwitch.
         :param str id: ID of the VSwitch.
+        :param str ipv6_cidr_block: The IPv6 CIDR block of the switch.
         :param bool is_default: Indicate whether the VSwitch is created by the system.
         :param str name: Name of the VSwitch.
         :param str resource_group_id: The Id of resource group which VSWitch belongs.
@@ -4630,6 +4987,7 @@ class GetSwitchesVswitchResult(dict):
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
         pulumi.set(__self__, "is_default", is_default)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_group_id", resource_group_id)
@@ -4680,6 +5038,14 @@ class GetSwitchesVswitchResult(dict):
         ID of the VSwitch.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipv6CidrBlock")
+    def ipv6_cidr_block(self) -> str:
+        """
+        The IPv6 CIDR block of the switch.
+        """
+        return pulumi.get(self, "ipv6_cidr_block")
 
     @property
     @pulumi.getter(name="isDefault")

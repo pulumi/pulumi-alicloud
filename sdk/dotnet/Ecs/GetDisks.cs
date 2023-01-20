@@ -17,29 +17,28 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var disksDs = AliCloud.Ecs.GetDisks.Invoke(new()
         ///     {
-        ///         var disksDs = Output.Create(AliCloud.Ecs.GetDisks.InvokeAsync(new AliCloud.Ecs.GetDisksArgs
-        ///         {
-        ///             NameRegex = "sample_disk",
-        ///         }));
-        ///         this.FirstDiskId = disksDs.Apply(disksDs =&gt; disksDs.Disks?[0]?.Id);
-        ///     }
+        ///         NameRegex = "sample_disk",
+        ///     });
         /// 
-        ///     [Output("firstDiskId")]
-        ///     public Output&lt;string&gt; FirstDiskId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDiskId"] = disksDs.Apply(getDisksResult =&gt; getDisksResult.Disks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDisksResult> InvokeAsync(GetDisksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? new GetDisksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? new GetDisksArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -47,33 +46,32 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var disksDs = AliCloud.Ecs.GetDisks.Invoke(new()
         ///     {
-        ///         var disksDs = Output.Create(AliCloud.Ecs.GetDisks.InvokeAsync(new AliCloud.Ecs.GetDisksArgs
-        ///         {
-        ///             NameRegex = "sample_disk",
-        ///         }));
-        ///         this.FirstDiskId = disksDs.Apply(disksDs =&gt; disksDs.Disks?[0]?.Id);
-        ///     }
+        ///         NameRegex = "sample_disk",
+        ///     });
         /// 
-        ///     [Output("firstDiskId")]
-        ///     public Output&lt;string&gt; FirstDiskId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDiskId"] = disksDs.Apply(getDisksResult =&gt; getDisksResult.Disks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDisksResult> Invoke(GetDisksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? new GetDisksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? new GetDisksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDisksArgs : Pulumi.InvokeArgs
+    public sealed class GetDisksArgs : global::Pulumi.InvokeArgs
     {
         [Input("additionalAttributes")]
         private List<string>? _additionalAttributes;
@@ -202,24 +200,22 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// A map of tags assigned to the disks. It must be in the format:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var disksDs = AliCloud.Ecs.GetDisks.Invoke(new()
         ///     {
-        ///         var disksDs = Output.Create(AliCloud.Ecs.GetDisks.InvokeAsync(new AliCloud.Ecs.GetDisksArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///                 { "tagKey2", "tagValue2" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "tagKey1", "tagValue1" },
+        ///             { "tagKey2", "tagValue2" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public Dictionary<string, object> Tags
@@ -240,9 +236,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetDisksArgs()
         {
         }
+        public static new GetDisksArgs Empty => new GetDisksArgs();
     }
 
-    public sealed class GetDisksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDisksInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("additionalAttributes")]
         private InputList<string>? _additionalAttributes;
@@ -371,24 +368,22 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// A map of tags assigned to the disks. It must be in the format:
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var disksDs = AliCloud.Ecs.GetDisks.Invoke(new()
         ///     {
-        ///         var disksDs = Output.Create(AliCloud.Ecs.GetDisks.InvokeAsync(new AliCloud.Ecs.GetDisksArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "tagKey1", "tagValue1" },
-        ///                 { "tagKey2", "tagValue2" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "tagKey1", "tagValue1" },
+        ///             { "tagKey2", "tagValue2" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public InputMap<object> Tags
@@ -409,6 +404,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetDisksInvokeArgs()
         {
         }
+        public static new GetDisksInvokeArgs Empty => new GetDisksInvokeArgs();
     }
 
 

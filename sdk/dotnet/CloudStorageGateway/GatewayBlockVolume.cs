@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume")]
-    public partial class GatewayBlockVolume : Pulumi.CustomResource
+    public partial class GatewayBlockVolume : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
@@ -124,16 +124,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// The status of volume. Valid values: 
-        /// - `0`: Normal condition.
-        /// - `1`: Failed to create volume.
-        /// - `2`: Failed to delete volume.
-        /// - `3`: Failed to enable target.
-        /// - `4`: Failed to disable target.
-        /// - `5`: Database error.
-        /// - `6`: Failed to enable cache.
-        /// - `7`: Failed to disable cache.
-        /// - `8`: System error.
+        /// The status of volume. Valid values:
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -182,7 +173,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         }
     }
 
-    public sealed class GatewayBlockVolumeArgs : Pulumi.ResourceArgs
+    public sealed class GatewayBlockVolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
@@ -277,9 +268,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GatewayBlockVolumeArgs()
         {
         }
+        public static new GatewayBlockVolumeArgs Empty => new GatewayBlockVolumeArgs();
     }
 
-    public sealed class GatewayBlockVolumeState : Pulumi.ResourceArgs
+    public sealed class GatewayBlockVolumeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
@@ -378,16 +370,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The status of volume. Valid values: 
-        /// - `0`: Normal condition.
-        /// - `1`: Failed to create volume.
-        /// - `2`: Failed to delete volume.
-        /// - `3`: Failed to enable target.
-        /// - `4`: Failed to disable target.
-        /// - `5`: Database error.
-        /// - `6`: Failed to enable cache.
-        /// - `7`: Failed to disable cache.
-        /// - `8`: System error.
+        /// The status of volume. Valid values:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -395,5 +378,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GatewayBlockVolumeState()
         {
         }
+        public static new GatewayBlockVolumeState Empty => new GatewayBlockVolumeState();
     }
 }

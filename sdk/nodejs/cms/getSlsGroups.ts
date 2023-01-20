@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,20 +22,17 @@ import * as utilities from "../utilities";
  * const ids = alicloud.cms.getSlsGroups({
  *     ids: ["example_id"],
  * });
- * export const cmsSlsGroupId1 = ids.then(ids => ids.groups?[0]?.id);
+ * export const cmsSlsGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
  * const nameRegex = alicloud.cms.getSlsGroups({
  *     nameRegex: "^my-SlsGroup",
  * });
- * export const cmsSlsGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?[0]?.id);
+ * export const cmsSlsGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
 export function getSlsGroups(args?: GetSlsGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSlsGroupsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getSlsGroups:getSlsGroups", {
         "ids": args.ids,
         "keyword": args.keyword,
@@ -83,9 +81,31 @@ export interface GetSlsGroupsResult {
     readonly pageNumber?: number;
     readonly pageSize?: number;
 }
-
+/**
+ * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.171.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.cms.getSlsGroups({
+ *     ids: ["example_id"],
+ * });
+ * export const cmsSlsGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
+ * const nameRegex = alicloud.cms.getSlsGroups({
+ *     nameRegex: "^my-SlsGroup",
+ * });
+ * export const cmsSlsGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
+ * ```
+ */
 export function getSlsGroupsOutput(args?: GetSlsGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSlsGroupsResult> {
-    return pulumi.output(args).apply(a => getSlsGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getSlsGroups(a, opts))
 }
 
 /**

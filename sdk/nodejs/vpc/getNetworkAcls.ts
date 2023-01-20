@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["example_value"],
  *     nameRegex: "the_resource_name",
  * });
- * export const firstNetworkAclId = example.then(example => example.acls?[0]?.id);
+ * export const firstNetworkAclId = example.then(example => example.acls?.[0]?.id);
  * ```
  */
 export function getNetworkAcls(args?: GetNetworkAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAclsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpc/getNetworkAcls:getNetworkAcls", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -98,9 +96,28 @@ export interface GetNetworkAclsResult {
     readonly status?: string;
     readonly vpcId?: string;
 }
-
+/**
+ * This data source provides the Network Acls of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.122.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.vpc.getNetworkAcls({
+ *     ids: ["example_value"],
+ *     nameRegex: "the_resource_name",
+ * });
+ * export const firstNetworkAclId = example.then(example => example.acls?.[0]?.id);
+ * ```
+ */
 export function getNetworkAclsOutput(args?: GetNetworkAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAclsResult> {
-    return pulumi.output(args).apply(a => getNetworkAcls(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetworkAcls(a, opts))
 }
 
 /**

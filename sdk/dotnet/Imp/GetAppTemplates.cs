@@ -23,33 +23,31 @@ namespace Pulumi.AliCloud.Imp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Imp.GetAppTemplates.InvokeAsync());
-        ///         this.ImpAppTemplateId1 = ids.Apply(ids =&gt; ids.Templates?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Imp.GetAppTemplates.InvokeAsync(new AliCloud.Imp.GetAppTemplatesArgs
-        ///         {
-        ///             NameRegex = "^my_AppTemplate",
-        ///         }));
-        ///         this.ImpAppTemplateId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Imp.GetAppTemplates.Invoke();
         /// 
-        ///     [Output("impAppTemplateId1")]
-        ///     public Output&lt;string&gt; ImpAppTemplateId1 { get; set; }
-        ///     [Output("impAppTemplateId2")]
-        ///     public Output&lt;string&gt; ImpAppTemplateId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Imp.GetAppTemplates.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my_AppTemplate",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["impAppTemplateId1"] = ids.Apply(getAppTemplatesResult =&gt; getAppTemplatesResult.Templates[0]?.Id),
+        ///         ["impAppTemplateId2"] = nameRegex.Apply(getAppTemplatesResult =&gt; getAppTemplatesResult.Templates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppTemplatesResult> InvokeAsync(GetAppTemplatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppTemplatesResult>("alicloud:imp/getAppTemplates:getAppTemplates", args ?? new GetAppTemplatesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppTemplatesResult>("alicloud:imp/getAppTemplates:getAppTemplates", args ?? new GetAppTemplatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Imp App Templates of the current Alibaba Cloud user.
@@ -63,37 +61,35 @@ namespace Pulumi.AliCloud.Imp
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var ids = Output.Create(AliCloud.Imp.GetAppTemplates.InvokeAsync());
-        ///         this.ImpAppTemplateId1 = ids.Apply(ids =&gt; ids.Templates?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Imp.GetAppTemplates.InvokeAsync(new AliCloud.Imp.GetAppTemplatesArgs
-        ///         {
-        ///             NameRegex = "^my_AppTemplate",
-        ///         }));
-        ///         this.ImpAppTemplateId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Templates?[0]?.Id);
-        ///     }
+        ///     var ids = AliCloud.Imp.GetAppTemplates.Invoke();
         /// 
-        ///     [Output("impAppTemplateId1")]
-        ///     public Output&lt;string&gt; ImpAppTemplateId1 { get; set; }
-        ///     [Output("impAppTemplateId2")]
-        ///     public Output&lt;string&gt; ImpAppTemplateId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Imp.GetAppTemplates.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my_AppTemplate",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["impAppTemplateId1"] = ids.Apply(getAppTemplatesResult =&gt; getAppTemplatesResult.Templates[0]?.Id),
+        ///         ["impAppTemplateId2"] = nameRegex.Apply(getAppTemplatesResult =&gt; getAppTemplatesResult.Templates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAppTemplatesResult> Invoke(GetAppTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAppTemplatesResult>("alicloud:imp/getAppTemplates:getAppTemplates", args ?? new GetAppTemplatesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppTemplatesResult>("alicloud:imp/getAppTemplates:getAppTemplates", args ?? new GetAppTemplatesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAppTemplatesArgs : Pulumi.InvokeArgs
+    public sealed class GetAppTemplatesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -125,9 +121,10 @@ namespace Pulumi.AliCloud.Imp
         public GetAppTemplatesArgs()
         {
         }
+        public static new GetAppTemplatesArgs Empty => new GetAppTemplatesArgs();
     }
 
-    public sealed class GetAppTemplatesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAppTemplatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -159,6 +156,7 @@ namespace Pulumi.AliCloud.Imp
         public GetAppTemplatesInvokeArgs()
         {
         }
+        public static new GetAppTemplatesInvokeArgs Empty => new GetAppTemplatesInvokeArgs();
     }
 
 

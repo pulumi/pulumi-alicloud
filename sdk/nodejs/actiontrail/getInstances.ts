@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,41 +19,34 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const instanceName = config.get("instanceName") || "alikafkaInstanceName";
- *
- * const defaultZones = pulumi.output(alicloud.getZones({
+ * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/12",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/24",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
- * const defaultInstance = new alicloud.alikafka.Instance("default", {
- *     deployType: 4,
- *     diskSize: 500,
+ * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
+ *     partitionNum: 50,
  *     diskType: 1,
+ *     diskSize: 500,
+ *     deployType: 4,
  *     ioMax: 20,
- *     topicQuota: 50,
  *     vswitchId: defaultSwitch.id,
  * });
- * const instancesDs = pulumi.output(alicloud.actiontrail.getInstances({
+ * const instancesDs = alicloud.actiontrail.getInstances({
  *     nameRegex: "alikafkaInstanceName",
  *     outputFile: "instances.txt",
- * }));
- *
- * export const firstInstanceName = instancesDs.instances[0].name;
+ * });
+ * export const firstInstanceName = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.name);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:actiontrail/getInstances:getInstances", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -101,9 +95,45 @@ export interface GetInstancesResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in 1.59.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const instanceName = config.get("instanceName") || "alikafkaInstanceName";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
+ *     partitionNum: 50,
+ *     diskType: 1,
+ *     diskSize: 500,
+ *     deployType: 4,
+ *     ioMax: 20,
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const instancesDs = alicloud.actiontrail.getInstances({
+ *     nameRegex: "alikafkaInstanceName",
+ *     outputFile: "instances.txt",
+ * });
+ * export const firstInstanceName = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.name);
+ * ```
+ */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
-    return pulumi.output(args).apply(a => getInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstances(a, opts))
 }
 
 /**

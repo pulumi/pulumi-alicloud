@@ -6,6 +6,8 @@ package com.pulumi.alicloud.cs;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
 import com.pulumi.alicloud.cs.inputs.GetAckServicePlainArgs;
+import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
+import com.pulumi.alicloud.cs.inputs.GetClusterCredentialPlainArgs;
 import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
 import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersPlainArgs;
 import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
@@ -31,6 +33,7 @@ import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseSyncRulesPlainArgs;
 import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
 import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersPlainArgs;
 import com.pulumi.alicloud.cs.outputs.GetAckServiceResult;
+import com.pulumi.alicloud.cs.outputs.GetClusterCredentialResult;
 import com.pulumi.alicloud.cs.outputs.GetEdgeKubernetesClustersResult;
 import com.pulumi.alicloud.cs.outputs.GetKubernetesAddonMetadataResult;
 import com.pulumi.alicloud.cs.outputs.GetKubernetesAddonsResult;
@@ -217,6 +220,50 @@ public final class CsFunctions {
      */
     public static CompletableFuture<GetAckServiceResult> getAckServicePlain(GetAckServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getAckService:getAckService", TypeShape.of(GetAckServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Container Service cluster credential on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+
+     * 
+     * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+     * 
+     */
+    public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args) {
+        return getClusterCredential(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Container Service cluster credential on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+
+     * 
+     * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+     * 
+     */
+    public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args) {
+        return getClusterCredentialPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Container Service cluster credential on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+
+     * 
+     * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+     * 
+     */
+    public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getClusterCredential:getClusterCredential", TypeShape.of(GetClusterCredentialResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Container Service cluster credential on Alibaba Cloud.
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+
+     * 
+     * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+     * 
+     */
+    public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cs/getClusterCredential:getClusterCredential", TypeShape.of(GetClusterCredentialResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
@@ -1073,7 +1120,7 @@ public final class CsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
      * import java.util.List;
@@ -1119,7 +1166,7 @@ public final class CsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
      * import java.util.List;
@@ -1165,7 +1212,7 @@ public final class CsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
      * import java.util.List;
@@ -1211,7 +1258,7 @@ public final class CsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
-     * import com.pulumi.alicloud.bastionhost.inputs.GetUsersArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
      * import java.util.List;

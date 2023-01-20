@@ -7,11 +7,28 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class CommonBandwithPackageAttachmentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CommonBandwithPackageAttachmentArgs Empty = new CommonBandwithPackageAttachmentArgs();
+
+    /**
+     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     * 
+     */
+    @Import(name="bandwidthPackageBandwidth")
+    private @Nullable Output<String> bandwidthPackageBandwidth;
+
+    /**
+     * @return The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     * 
+     */
+    public Optional<Output<String>> bandwidthPackageBandwidth() {
+        return Optional.ofNullable(this.bandwidthPackageBandwidth);
+    }
 
     /**
      * The bandwidth_package_id of the common bandwidth package attachment, the field can&#39;t be changed.
@@ -46,6 +63,7 @@ public final class CommonBandwithPackageAttachmentArgs extends com.pulumi.resour
     private CommonBandwithPackageAttachmentArgs() {}
 
     private CommonBandwithPackageAttachmentArgs(CommonBandwithPackageAttachmentArgs $) {
+        this.bandwidthPackageBandwidth = $.bandwidthPackageBandwidth;
         this.bandwidthPackageId = $.bandwidthPackageId;
         this.instanceId = $.instanceId;
     }
@@ -66,6 +84,27 @@ public final class CommonBandwithPackageAttachmentArgs extends com.pulumi.resour
 
         public Builder(CommonBandwithPackageAttachmentArgs defaults) {
             $ = new CommonBandwithPackageAttachmentArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bandwidthPackageBandwidth The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthPackageBandwidth(@Nullable Output<String> bandwidthPackageBandwidth) {
+            $.bandwidthPackageBandwidth = bandwidthPackageBandwidth;
+            return this;
+        }
+
+        /**
+         * @param bandwidthPackageBandwidth The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthPackageBandwidth(String bandwidthPackageBandwidth) {
+            return bandwidthPackageBandwidth(Output.of(bandwidthPackageBandwidth));
         }
 
         /**

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.hbr.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -56,6 +57,51 @@ public final class NasBackupPlanState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    @Import(name="crossAccountRoleName")
+    private @Nullable Output<String> crossAccountRoleName;
+
+    /**
+     * @return The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    public Optional<Output<String>> crossAccountRoleName() {
+        return Optional.ofNullable(this.crossAccountRoleName);
+    }
+
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    @Import(name="crossAccountType")
+    private @Nullable Output<String> crossAccountType;
+
+    /**
+     * @return The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    public Optional<Output<String>> crossAccountType() {
+        return Optional.ofNullable(this.crossAccountType);
+    }
+
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    @Import(name="crossAccountUserId")
+    private @Nullable Output<Integer> crossAccountUserId;
+
+    /**
+     * @return The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    public Optional<Output<Integer>> crossAccountUserId() {
+        return Optional.ofNullable(this.crossAccountUserId);
+    }
+
+    /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      * 
      */
@@ -100,9 +146,17 @@ public final class NasBackupPlanState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.nasBackupPlanName);
     }
 
+    /**
+     * This parameter specifies whether to use Windows VSS to define a backup path.
+     * 
+     */
     @Import(name="options")
     private @Nullable Output<String> options;
 
+    /**
+     * @return This parameter specifies whether to use Windows VSS to define a backup path.
+     * 
+     */
     public Optional<Output<String>> options() {
         return Optional.ofNullable(this.options);
     }
@@ -172,6 +226,9 @@ public final class NasBackupPlanState extends com.pulumi.resources.ResourceArgs 
     private NasBackupPlanState(NasBackupPlanState $) {
         this.backupType = $.backupType;
         this.createTime = $.createTime;
+        this.crossAccountRoleName = $.crossAccountRoleName;
+        this.crossAccountType = $.crossAccountType;
+        this.crossAccountUserId = $.crossAccountUserId;
         this.disabled = $.disabled;
         this.fileSystemId = $.fileSystemId;
         this.nasBackupPlanName = $.nasBackupPlanName;
@@ -251,6 +308,69 @@ public final class NasBackupPlanState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param crossAccountRoleName The role name created in the original account RAM backup by the cross account managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountRoleName(@Nullable Output<String> crossAccountRoleName) {
+            $.crossAccountRoleName = crossAccountRoleName;
+            return this;
+        }
+
+        /**
+         * @param crossAccountRoleName The role name created in the original account RAM backup by the cross account managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountRoleName(String crossAccountRoleName) {
+            return crossAccountRoleName(Output.of(crossAccountRoleName));
+        }
+
+        /**
+         * @param crossAccountType The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountType(@Nullable Output<String> crossAccountType) {
+            $.crossAccountType = crossAccountType;
+            return this;
+        }
+
+        /**
+         * @param crossAccountType The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountType(String crossAccountType) {
+            return crossAccountType(Output.of(crossAccountType));
+        }
+
+        /**
+         * @param crossAccountUserId The original account ID of the cross account backup managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountUserId(@Nullable Output<Integer> crossAccountUserId) {
+            $.crossAccountUserId = crossAccountUserId;
+            return this;
+        }
+
+        /**
+         * @param crossAccountUserId The original account ID of the cross account backup managed by the current account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAccountUserId(Integer crossAccountUserId) {
+            return crossAccountUserId(Output.of(crossAccountUserId));
+        }
+
+        /**
          * @param disabled Whether to disable the backup task. Valid values: `true`, `false`.
          * 
          * @return builder
@@ -313,11 +433,23 @@ public final class NasBackupPlanState extends com.pulumi.resources.ResourceArgs 
             return nasBackupPlanName(Output.of(nasBackupPlanName));
         }
 
+        /**
+         * @param options This parameter specifies whether to use Windows VSS to define a backup path.
+         * 
+         * @return builder
+         * 
+         */
         public Builder options(@Nullable Output<String> options) {
             $.options = options;
             return this;
         }
 
+        /**
+         * @param options This parameter specifies whether to use Windows VSS to define a backup path.
+         * 
+         * @return builder
+         * 
+         */
         public Builder options(String options) {
             return options(Output.of(options));
         }

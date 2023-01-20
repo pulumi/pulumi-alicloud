@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
  * const cluster = new alicloud.adb.Cluster("cluster", {
  *     dbClusterVersion: "3.0",
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * ADB account can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:adb/account:Account example "am-12345:tf_account"
+ *  $ pulumi import alicloud:adb/account:Account example am-12345:tf_account
  * ```
  */
 export class Account extends pulumi.CustomResource {
@@ -135,12 +135,14 @@ export class Account extends pulumi.CustomResource {
             }
             resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
             resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
+            resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }

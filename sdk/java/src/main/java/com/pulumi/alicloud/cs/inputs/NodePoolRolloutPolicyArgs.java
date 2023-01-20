@@ -16,14 +16,14 @@ public final class NodePoolRolloutPolicyArgs extends com.pulumi.resources.Resour
     public static final NodePoolRolloutPolicyArgs Empty = new NodePoolRolloutPolicyArgs();
 
     /**
-     * Max number of unavailable nodes. Default to `1`.
+     * Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
      * 
      */
     @Import(name="maxUnavailable")
     private @Nullable Output<Integer> maxUnavailable;
 
     /**
-     * @return Max number of unavailable nodes. Default to `1`.
+     * @return Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
      * 
      */
     public Optional<Output<Integer>> maxUnavailable() {
@@ -55,7 +55,7 @@ public final class NodePoolRolloutPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param maxUnavailable Max number of unavailable nodes. Default to `1`.
+         * @param maxUnavailable Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class NodePoolRolloutPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param maxUnavailable Max number of unavailable nodes. Default to `1`.
+         * @param maxUnavailable Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
          * 
          * @return builder
          * 

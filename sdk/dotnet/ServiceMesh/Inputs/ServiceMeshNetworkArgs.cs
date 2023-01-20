@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ServiceMesh.Inputs
 {
 
-    public sealed class ServiceMeshNetworkArgs : Pulumi.ResourceArgs
+    public sealed class ServiceMeshNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the VPC.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public ServiceMeshNetworkArgs()
         {
         }
+        public static new ServiceMeshNetworkArgs Empty => new ServiceMeshNetworkArgs();
     }
 }

@@ -21,97 +21,93 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
-        ///         {
-        ///             ClusterType = "ManagedKubernetes",
-        ///             KubernetesVersion = "1.22.3-aliyun.1",
-        ///             Profile = "Default",
-        ///         }));
-        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
-        ///     }
+        ///         ClusterType = "ManagedKubernetes",
+        ///         KubernetesVersion = "1.22.3-aliyun.1",
+        ///         Profile = "Default",
+        ///     });
         /// 
-        ///     [Output("metadata")]
-        ///     public Output&lt;string&gt; Metadata { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///     };
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
-        ///         {
-        ///             ClusterType = "Kubernetes",
-        ///             KubernetesVersion = "1.22.3-aliyun.1",
-        ///             Profile = "Default",
-        ///         }));
-        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
-        ///     }
+        ///         ClusterType = "Kubernetes",
+        ///         KubernetesVersion = "1.22.3-aliyun.1",
+        ///         Profile = "Default",
+        ///     });
         /// 
-        ///     [Output("metadata")]
-        ///     public Output&lt;string&gt; Metadata { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///     };
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
-        ///         {
-        ///             ClusterType = "ManagedKubernetes",
-        ///             KubernetesVersion = "1.22.3-aliyun.1",
-        ///             Profile = "Serverless",
-        ///         }));
-        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
-        ///     }
+        ///         ClusterType = "ManagedKubernetes",
+        ///         KubernetesVersion = "1.22.3-aliyun.1",
+        ///         Profile = "Serverless",
+        ///     });
         /// 
-        ///     [Output("metadata")]
-        ///     public Output&lt;string&gt; Metadata { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///     };
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
-        ///         {
-        ///             ClusterType = "ManagedKubernetes",
-        ///             KubernetesVersion = "1.20.11-aliyunedge.1",
-        ///             Profile = "Edge",
-        ///         }));
-        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
-        ///     }
+        ///         ClusterType = "ManagedKubernetes",
+        ///         KubernetesVersion = "1.20.11-aliyunedge.1",
+        ///         Profile = "Edge",
+        ///     });
         /// 
-        ///     [Output("metadata")]
-        ///     public Output&lt;string&gt; Metadata { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesVersionResult> InvokeAsync(GetKubernetesVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionResult>("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args ?? new GetKubernetesVersionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionResult>("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args ?? new GetKubernetesVersionArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the details of the Kubernetes version supported by ACK.
@@ -123,101 +119,97 @@ namespace Pulumi.AliCloud.CS
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
-        ///         {
-        ///             ClusterType = "ManagedKubernetes",
-        ///             KubernetesVersion = "1.22.3-aliyun.1",
-        ///             Profile = "Default",
-        ///         }));
-        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
-        ///     }
+        ///         ClusterType = "ManagedKubernetes",
+        ///         KubernetesVersion = "1.22.3-aliyun.1",
+        ///         Profile = "Default",
+        ///     });
         /// 
-        ///     [Output("metadata")]
-        ///     public Output&lt;string&gt; Metadata { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///     };
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
-        ///         {
-        ///             ClusterType = "Kubernetes",
-        ///             KubernetesVersion = "1.22.3-aliyun.1",
-        ///             Profile = "Default",
-        ///         }));
-        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
-        ///     }
+        ///         ClusterType = "Kubernetes",
+        ///         KubernetesVersion = "1.22.3-aliyun.1",
+        ///         Profile = "Default",
+        ///     });
         /// 
-        ///     [Output("metadata")]
-        ///     public Output&lt;string&gt; Metadata { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///     };
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
-        ///         {
-        ///             ClusterType = "ManagedKubernetes",
-        ///             KubernetesVersion = "1.22.3-aliyun.1",
-        ///             Profile = "Serverless",
-        ///         }));
-        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
-        ///     }
+        ///         ClusterType = "ManagedKubernetes",
+        ///         KubernetesVersion = "1.22.3-aliyun.1",
+        ///         Profile = "Serverless",
+        ///     });
         /// 
-        ///     [Output("metadata")]
-        ///     public Output&lt;string&gt; Metadata { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///     };
+        /// });
         /// ```
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(AliCloud.CS.GetKubernetesVersion.InvokeAsync(new AliCloud.CS.GetKubernetesVersionArgs
-        ///         {
-        ///             ClusterType = "ManagedKubernetes",
-        ///             KubernetesVersion = "1.20.11-aliyunedge.1",
-        ///             Profile = "Edge",
-        ///         }));
-        ///         this.Metadata = @default.Apply(@default =&gt; @default.Metadatas);
-        ///     }
+        ///         ClusterType = "ManagedKubernetes",
+        ///         KubernetesVersion = "1.20.11-aliyunedge.1",
+        ///         Profile = "Edge",
+        ///     });
         /// 
-        ///     [Output("metadata")]
-        ///     public Output&lt;string&gt; Metadata { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKubernetesVersionResult> Invoke(GetKubernetesVersionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKubernetesVersionResult>("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args ?? new GetKubernetesVersionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesVersionResult>("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args ?? new GetKubernetesVersionInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetKubernetesVersionArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of cluster. Its valid value are `Kubernetes` and `ManagedKubernetes`.
@@ -240,9 +232,10 @@ namespace Pulumi.AliCloud.CS
         public GetKubernetesVersionArgs()
         {
         }
+        public static new GetKubernetesVersionArgs Empty => new GetKubernetesVersionArgs();
     }
 
-    public sealed class GetKubernetesVersionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKubernetesVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of cluster. Its valid value are `Kubernetes` and `ManagedKubernetes`.
@@ -265,6 +258,7 @@ namespace Pulumi.AliCloud.CS
         public GetKubernetesVersionInvokeArgs()
         {
         }
+        public static new GetKubernetesVersionInvokeArgs Empty => new GetKubernetesVersionInvokeArgs();
     }
 
 

@@ -2,12 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * The project is the basic unit of operation in maxcompute. It is similar to the concept of Database or Schema in traditional databases, and sets the boundary for maxcompute multi-user isolation and access control. [Refer to details](https://www.alibabacloud.com/help/doc-detail/27818.html).
+ * Provides a Max Compute Project resource.
  *
- * ->**NOTE:** Available in 1.77.0+.
+ * For information about Max Compute Project and how to use it, see [What is Project](https://help.aliyun.com/document_detail/473237.html).
+ *
+ * > **NOTE:** Available in v1.77.0+.
  *
  * ## Example Usage
  *
@@ -17,19 +21,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.maxcompute.Project("example", {
- *     orderType: "PayAsYouGo",
- *     projectName: "tf_maxcompute_project",
- *     specificationType: "OdpsStandard",
+ * const _default = new alicloud.maxcompute.Project("default", {
+ *     comment: "test_for_terraform",
+ *     defaultQuota: "默认后付费Quota",
+ *     productType: "PAYASYOUGO",
+ *     projectName: "test_create_spec_one",
  * });
- * ```
- *
- * ## Import
- *
- * MaxCompute project can be imported using the *name* or ID, e.g.
- *
- * ```sh
- *  $ pulumi import alicloud:maxcompute/project:Project example tf_maxcompute_project
  * ```
  */
 export class Project extends pulumi.CustomResource {
@@ -61,21 +58,45 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * It has been deprecated from provider version 1.110.0 and `projectName` instead.
+     * Comments of project
      */
-    public readonly name!: pulumi.Output<string>;
+    public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * The type of payment, only `PayAsYouGo` supported currently.
+     * Default Computing Resource Group
      */
-    public readonly orderType!: pulumi.Output<string>;
+    public readonly defaultQuota!: pulumi.Output<string | undefined>;
     /**
-     * The name of the maxcompute project.
+     * IP whitelistSee the following `Block IpWhiteList`.
+     */
+    public readonly ipWhiteList!: pulumi.Output<outputs.maxcompute.ProjectIpWhiteList | undefined>;
+    /**
+     * Project owner
+     */
+    public /*out*/ readonly owner!: pulumi.Output<string>;
+    /**
+     * Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+     */
+    public readonly productType!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the project
      */
     public readonly projectName!: pulumi.Output<string>;
     /**
-     * The type of resource Specification, only `OdpsStandard` supported currently.
+     * Project base attributesSee the following `Block Properties`.
      */
-    public readonly specificationType!: pulumi.Output<string>;
+    public readonly properties!: pulumi.Output<outputs.maxcompute.ProjectProperties>;
+    /**
+     * Security-related attributesSee the following `Block SecurityProperties`.
+     */
+    public readonly securityProperties!: pulumi.Output<outputs.maxcompute.ProjectSecurityProperties>;
+    /**
+     * The status of the resource
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * Life cycle type.
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -90,22 +111,31 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orderType"] = state ? state.orderType : undefined;
+            resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["defaultQuota"] = state ? state.defaultQuota : undefined;
+            resourceInputs["ipWhiteList"] = state ? state.ipWhiteList : undefined;
+            resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["productType"] = state ? state.productType : undefined;
             resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["specificationType"] = state ? state.specificationType : undefined;
+            resourceInputs["properties"] = state ? state.properties : undefined;
+            resourceInputs["securityProperties"] = state ? state.securityProperties : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if ((!args || args.orderType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'orderType'");
+            if ((!args || args.projectName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectName'");
             }
-            if ((!args || args.specificationType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'specificationType'");
-            }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["orderType"] = args ? args.orderType : undefined;
+            resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["defaultQuota"] = args ? args.defaultQuota : undefined;
+            resourceInputs["ipWhiteList"] = args ? args.ipWhiteList : undefined;
+            resourceInputs["productType"] = args ? args.productType : undefined;
             resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["specificationType"] = args ? args.specificationType : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["securityProperties"] = args ? args.securityProperties : undefined;
+            resourceInputs["owner"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);
@@ -117,21 +147,45 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * It has been deprecated from provider version 1.110.0 and `projectName` instead.
+     * Comments of project
      */
-    name?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
-     * The type of payment, only `PayAsYouGo` supported currently.
+     * Default Computing Resource Group
      */
-    orderType?: pulumi.Input<string>;
+    defaultQuota?: pulumi.Input<string>;
     /**
-     * The name of the maxcompute project.
+     * IP whitelistSee the following `Block IpWhiteList`.
+     */
+    ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList>;
+    /**
+     * Project owner
+     */
+    owner?: pulumi.Input<string>;
+    /**
+     * Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
+     */
+    productType?: pulumi.Input<string>;
+    /**
+     * The name of the project
      */
     projectName?: pulumi.Input<string>;
     /**
-     * The type of resource Specification, only `OdpsStandard` supported currently.
+     * Project base attributesSee the following `Block Properties`.
      */
-    specificationType?: pulumi.Input<string>;
+    properties?: pulumi.Input<inputs.maxcompute.ProjectProperties>;
+    /**
+     * Security-related attributesSee the following `Block SecurityProperties`.
+     */
+    securityProperties?: pulumi.Input<inputs.maxcompute.ProjectSecurityProperties>;
+    /**
+     * The status of the resource
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Life cycle type.
+     */
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -139,19 +193,31 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * It has been deprecated from provider version 1.110.0 and `projectName` instead.
+     * Comments of project
      */
-    name?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
-     * The type of payment, only `PayAsYouGo` supported currently.
+     * Default Computing Resource Group
      */
-    orderType: pulumi.Input<string>;
+    defaultQuota?: pulumi.Input<string>;
     /**
-     * The name of the maxcompute project.
+     * IP whitelistSee the following `Block IpWhiteList`.
      */
-    projectName?: pulumi.Input<string>;
+    ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList>;
     /**
-     * The type of resource Specification, only `OdpsStandard` supported currently.
+     * Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
      */
-    specificationType: pulumi.Input<string>;
+    productType?: pulumi.Input<string>;
+    /**
+     * The name of the project
+     */
+    projectName: pulumi.Input<string>;
+    /**
+     * Project base attributesSee the following `Block Properties`.
+     */
+    properties?: pulumi.Input<inputs.maxcompute.ProjectProperties>;
+    /**
+     * Security-related attributesSee the following `Block SecurityProperties`.
+     */
+    securityProperties?: pulumi.Input<inputs.maxcompute.ProjectSecurityProperties>;
 }

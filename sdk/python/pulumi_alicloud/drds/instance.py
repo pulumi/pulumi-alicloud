@@ -19,7 +19,8 @@ class InstanceArgs:
                  specification: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
-                 instance_charge_type: Optional[pulumi.Input[str]] = None):
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
@@ -39,6 +40,7 @@ class InstanceArgs:
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in.
         :param pulumi.Input[str] zone_id: The Zone to launch the DRDS instance.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "instance_series", instance_series)
@@ -47,6 +49,8 @@ class InstanceArgs:
         pulumi.set(__self__, "zone_id", zone_id)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
 
     @property
     @pulumi.getter
@@ -131,24 +135,41 @@ class InstanceArgs:
     def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_charge_type", value)
 
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
+
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 connection_string: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_series: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[str] connection_string: (Available in 1.196.0+) The connection string of the DRDS instance.
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
                - `drds.sn2.4c16g` Starter Edition.
                - `drds.sn2.8c32g` Standard Edition.
                - `drds.sn2.16c64g` Enterprise Edition.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the DRDS instance.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
                - `drds.sn1.4c8g` for DRDS instance Starter version;
                - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -158,21 +179,40 @@ class _InstanceState:
                - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
                - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
                - value range : `drds.sn1.32c64g.128c256g`
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in.
         :param pulumi.Input[str] zone_id: The Zone to launch the DRDS instance.
         """
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_series is not None:
             pulumi.set(__self__, "instance_series", instance_series)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if specification is not None:
             pulumi.set(__self__, "specification", specification)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.196.0+) The connection string of the DRDS instance.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @connection_string.setter
+    def connection_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string", value)
 
     @property
     @pulumi.getter
@@ -215,6 +255,18 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.196.0+) The connection port of the DRDS instance.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
     def specification(self) -> Optional[pulumi.Input[str]]:
         """
         User-defined DRDS instance specification. Value range:
@@ -232,6 +284,18 @@ class _InstanceState:
     @specification.setter
     def specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "specification", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -267,6 +331,7 @@ class Instance(pulumi.CustomResource):
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_series: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -321,6 +386,7 @@ class Instance(pulumi.CustomResource):
                - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
                - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
                - value range : `drds.sn1.32c64g.128c256g`
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in.
         :param pulumi.Input[str] zone_id: The Zone to launch the DRDS instance.
         """
@@ -383,6 +449,7 @@ class Instance(pulumi.CustomResource):
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_series: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -404,12 +471,15 @@ class Instance(pulumi.CustomResource):
             if specification is None and not opts.urn:
                 raise TypeError("Missing required property 'specification'")
             __props__.__dict__["specification"] = specification
+            __props__.__dict__["vpc_id"] = vpc_id
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["connection_string"] = None
+            __props__.__dict__["port"] = None
         super(Instance, __self__).__init__(
             'alicloud:drds/instance:Instance',
             resource_name,
@@ -420,10 +490,13 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            connection_string: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             instance_series: Optional[pulumi.Input[str]] = None,
+            port: Optional[pulumi.Input[str]] = None,
             specification: Optional[pulumi.Input[str]] = None,
+            vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -433,12 +506,14 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] connection_string: (Available in 1.196.0+) The connection string of the DRDS instance.
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
                - `drds.sn2.4c16g` Starter Edition.
                - `drds.sn2.8c32g` Standard Edition.
                - `drds.sn2.16c64g` Enterprise Edition.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the DRDS instance.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
                - `drds.sn1.4c8g` for DRDS instance Starter version;
                - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -448,6 +523,7 @@ class Instance(pulumi.CustomResource):
                - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
                - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
                - value range : `drds.sn1.32c64g.128c256g`
+        :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in.
         :param pulumi.Input[str] zone_id: The Zone to launch the DRDS instance.
         """
@@ -455,13 +531,24 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["instance_series"] = instance_series
+        __props__.__dict__["port"] = port
         __props__.__dict__["specification"] = specification
+        __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.196.0+) The connection string of the DRDS instance.
+        """
+        return pulumi.get(self, "connection_string")
 
     @property
     @pulumi.getter
@@ -492,6 +579,14 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def port(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.196.0+) The connection port of the DRDS instance.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
     def specification(self) -> pulumi.Output[str]:
         """
         User-defined DRDS instance specification. Value range:
@@ -505,6 +600,14 @@ class Instance(pulumi.CustomResource):
         - value range : `drds.sn1.32c64g.128c256g`
         """
         return pulumi.get(self, "specification")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[str]:
+        """
+        The id of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -27,12 +28,12 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.zones?[0]?.id,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
  * }));
- * const vswitchId = defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]);
+ * const vswitchId = defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]);
  * const defaultGateway = new alicloud.vpn.Gateway("defaultGateway", {
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0]),
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
  *     bandwidth: 10,
  *     enableSsl: true,
  *     enableIpsec: true,

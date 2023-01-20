@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultCluster = new alicloud.cassandra.Cluster("default", {
+ * const _default = new alicloud.cassandra.Cluster("default", {
  *     autoRenew: false,
  *     clusterName: "cassandra-cluster-name-tf",
  *     dataCenterName: "dc-1",
@@ -221,7 +221,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
             resourceInputs["majorVersion"] = args ? args.majorVersion : undefined;
             resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["payType"] = args ? args.payType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
@@ -233,6 +233,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }

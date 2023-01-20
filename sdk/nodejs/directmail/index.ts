@@ -5,20 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./domain";
-export * from "./getDomains";
-export * from "./getMailAddresses";
-export * from "./getReceivers";
-export * from "./getTags";
-export * from "./mailAddress";
-export * from "./receivers";
-export * from "./tag";
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
 
-// Import resources to register:
-import { Domain } from "./domain";
-import { MailAddress } from "./mailAddress";
-import { Receivers } from "./receivers";
-import { Tag } from "./tag";
+export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
+export const getDomains: typeof import("./getDomains").getDomains = null as any;
+export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
+
+export { GetMailAddressesArgs, GetMailAddressesResult, GetMailAddressesOutputArgs } from "./getMailAddresses";
+export const getMailAddresses: typeof import("./getMailAddresses").getMailAddresses = null as any;
+export const getMailAddressesOutput: typeof import("./getMailAddresses").getMailAddressesOutput = null as any;
+utilities.lazyLoad(exports, ["getMailAddresses","getMailAddressesOutput"], () => require("./getMailAddresses"));
+
+export { GetReceiversArgs, GetReceiversResult, GetReceiversOutputArgs } from "./getReceivers";
+export const getReceivers: typeof import("./getReceivers").getReceivers = null as any;
+export const getReceiversOutput: typeof import("./getReceivers").getReceiversOutput = null as any;
+utilities.lazyLoad(exports, ["getReceivers","getReceiversOutput"], () => require("./getReceivers"));
+
+export { GetTagsArgs, GetTagsResult, GetTagsOutputArgs } from "./getTags";
+export const getTags: typeof import("./getTags").getTags = null as any;
+export const getTagsOutput: typeof import("./getTags").getTagsOutput = null as any;
+utilities.lazyLoad(exports, ["getTags","getTagsOutput"], () => require("./getTags"));
+
+export { MailAddressArgs, MailAddressState } from "./mailAddress";
+export type MailAddress = import("./mailAddress").MailAddress;
+export const MailAddress: typeof import("./mailAddress").MailAddress = null as any;
+utilities.lazyLoad(exports, ["MailAddress"], () => require("./mailAddress"));
+
+export { ReceiversArgs, ReceiversState } from "./receivers";
+export type Receivers = import("./receivers").Receivers;
+export const Receivers: typeof import("./receivers").Receivers = null as any;
+utilities.lazyLoad(exports, ["Receivers"], () => require("./receivers"));
+
+export { TagArgs, TagState } from "./tag";
+export type Tag = import("./tag").Tag;
+export const Tag: typeof import("./tag").Tag = null as any;
+utilities.lazyLoad(exports, ["Tag"], () => require("./tag"));
+
 
 const _module = {
     version: utilities.getVersion(),

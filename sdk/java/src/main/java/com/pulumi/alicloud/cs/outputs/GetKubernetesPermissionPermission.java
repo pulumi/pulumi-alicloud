@@ -14,10 +14,13 @@ import javax.annotation.Nullable;
 public final class GetKubernetesPermissionPermission {
     /**
      * @return ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-     * * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
      * 
      */
     private @Nullable Boolean isOwner;
+    /**
+     * @return Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+     * 
+     */
     private @Nullable Boolean isRamRole;
     /**
      * @return The permission settings to manage ACK clusters.
@@ -43,12 +46,15 @@ public final class GetKubernetesPermissionPermission {
     private GetKubernetesPermissionPermission() {}
     /**
      * @return ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-     * * `is_ram_role` -Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
      * 
      */
     public Optional<Boolean> isOwner() {
         return Optional.ofNullable(this.isOwner);
     }
+    /**
+     * @return Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+     * 
+     */
     public Optional<Boolean> isRamRole() {
         return Optional.ofNullable(this.isRamRole);
     }

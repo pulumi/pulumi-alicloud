@@ -15,30 +15,29 @@ namespace Pulumi.AliCloud.Ram
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a RAM login profile.
+    ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
-    ///         // Create a RAM login profile.
-    ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
-    ///         {
-    ///             DisplayName = "user_display_name",
-    ///             Mobile = "86-18688888888",
-    ///             Email = "hello.uuu@aaa.com",
-    ///             Comments = "yoyoyo",
-    ///             Force = true,
-    ///         });
-    ///         var profile = new AliCloud.Ram.LoginProfile("profile", new AliCloud.Ram.LoginProfileArgs
-    ///         {
-    ///             UserName = user.Name,
-    ///             Password = "Yourpassword1234",
-    ///         });
-    ///     }
+    ///         DisplayName = "user_display_name",
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
+    ///         Force = true,
+    ///     });
     /// 
-    /// }
+    ///     var profile = new AliCloud.Ram.LoginProfile("profile", new()
+    ///     {
+    ///         UserName = user.Name,
+    ///         Password = "Yourpassword1234",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +49,7 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/loginProfile:LoginProfile")]
-    public partial class LoginProfile : Pulumi.CustomResource
+    public partial class LoginProfile : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
@@ -99,6 +98,10 @@ namespace Pulumi.AliCloud.Ram
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -120,7 +123,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
-    public sealed class LoginProfileArgs : Pulumi.ResourceArgs
+    public sealed class LoginProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
@@ -128,11 +131,21 @@ namespace Pulumi.AliCloud.Ram
         [Input("mfaBindRequired")]
         public Input<bool>? MfaBindRequired { get; set; }
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password of the RAM user.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
@@ -149,9 +162,10 @@ namespace Pulumi.AliCloud.Ram
         public LoginProfileArgs()
         {
         }
+        public static new LoginProfileArgs Empty => new LoginProfileArgs();
     }
 
-    public sealed class LoginProfileState : Pulumi.ResourceArgs
+    public sealed class LoginProfileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
@@ -159,11 +173,21 @@ namespace Pulumi.AliCloud.Ram
         [Input("mfaBindRequired")]
         public Input<bool>? MfaBindRequired { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password of the RAM user.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
@@ -180,5 +204,6 @@ namespace Pulumi.AliCloud.Ram
         public LoginProfileState()
         {
         }
+        public static new LoginProfileState Empty => new LoginProfileState();
     }
 }

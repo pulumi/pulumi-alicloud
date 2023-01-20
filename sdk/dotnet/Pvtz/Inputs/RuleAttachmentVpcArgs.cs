@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Pvtz.Inputs
 {
 
-    public sealed class RuleAttachmentVpcArgs : Pulumi.ResourceArgs
+    public sealed class RuleAttachmentVpcArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The region of the vpc. If not set, the current region will instead of.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Pvtz.Inputs
         public RuleAttachmentVpcArgs()
         {
         }
+        public static new RuleAttachmentVpcArgs Empty => new RuleAttachmentVpcArgs();
     }
 }

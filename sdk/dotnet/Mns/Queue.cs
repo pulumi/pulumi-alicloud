@@ -15,24 +15,22 @@ namespace Pulumi.AliCloud.Mns
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var queue = new AliCloud.Mns.Queue("queue", new()
     ///     {
-    ///         var queue = new AliCloud.Mns.Queue("queue", new AliCloud.Mns.QueueArgs
-    ///         {
-    ///             DelaySeconds = 0,
-    ///             MaximumMessageSize = 65536,
-    ///             MessageRetentionPeriod = 345600,
-    ///             PollingWaitSeconds = 0,
-    ///             VisibilityTimeout = 30,
-    ///         });
-    ///     }
+    ///         DelaySeconds = 0,
+    ///         MaximumMessageSize = 65536,
+    ///         MessageRetentionPeriod = 345600,
+    ///         PollingWaitSeconds = 0,
+    ///         VisibilityTimeout = 30,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.AliCloud.Mns
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mns/queue:Queue")]
-    public partial class Queue : Pulumi.CustomResource
+    public partial class Queue : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
@@ -126,7 +124,7 @@ namespace Pulumi.AliCloud.Mns
         }
     }
 
-    public sealed class QueueArgs : Pulumi.ResourceArgs
+    public sealed class QueueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
@@ -167,9 +165,10 @@ namespace Pulumi.AliCloud.Mns
         public QueueArgs()
         {
         }
+        public static new QueueArgs Empty => new QueueArgs();
     }
 
-    public sealed class QueueState : Pulumi.ResourceArgs
+    public sealed class QueueState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
@@ -210,5 +209,6 @@ namespace Pulumi.AliCloud.Mns
         public QueueState()
         {
         }
+        public static new QueueState Empty => new QueueState();
     }
 }

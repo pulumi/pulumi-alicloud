@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -34,15 +35,12 @@ import * as utilities from "../utilities";
  *     nameRegex: topic,
  *     outputFile: "topics.txt",
  * });
- * export const firstTopicName = topicsDs.apply(topicsDs => topicsDs.topics?[0]?.topicName);
+ * export const firstTopicName = topicsDs.apply(topicsDs => topicsDs.topics?.[0]?.topicName);
  * ```
  */
 export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rocketmq/getTopics:getTopics", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -103,9 +101,40 @@ export interface GetTopicsResult {
      */
     readonly topics: outputs.rocketmq.GetTopicsTopic[];
 }
-
+/**
+ * This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available in 1.53.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "onsInstanceName";
+ * const topic = config.get("topic") || "onsTopicDatasourceName";
+ * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {
+ *     instanceName: name,
+ *     remark: "default_ons_instance_remark",
+ * });
+ * const defaultTopic = new alicloud.rocketmq.Topic("defaultTopic", {
+ *     topicName: topic,
+ *     instanceId: defaultInstance.id,
+ *     messageType: 0,
+ *     remark: "dafault_ons_topic_remark",
+ * });
+ * const topicsDs = alicloud.rocketmq.getTopicsOutput({
+ *     instanceId: defaultTopic.instanceId,
+ *     nameRegex: topic,
+ *     outputFile: "topics.txt",
+ * });
+ * export const firstTopicName = topicsDs.apply(topicsDs => topicsDs.topics?.[0]?.topicName);
+ * ```
+ */
 export function getTopicsOutput(args: GetTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicsResult> {
-    return pulumi.output(args).apply(a => getTopics(a, opts))
+    return pulumi.output(args).apply((a: any) => getTopics(a, opts))
 }
 
 /**

@@ -177,8 +177,8 @@ def get_route_services(access_region_id: Optional[str] = None,
 
 
     :param str access_region_id: The region of the network instances that access the cloud services.
-    :param str cen_id: -(Required, ForceNew) The ID of the CEN instance.
-    :param str host: -(Optional, ForceNew) The domain name or IP address of the cloud service.
+    :param str cen_id: The ID of the CEN instance.
+    :param str host: The domain name or IP address of the cloud service.
     :param str host_region_id: The region of the cloud service.
     :param str host_vpc_id: The VPC associated with the cloud service.
     :param str status: The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
@@ -235,8 +235,8 @@ def get_route_services_output(access_region_id: Optional[pulumi.Input[Optional[s
 
 
     :param str access_region_id: The region of the network instances that access the cloud services.
-    :param str cen_id: -(Required, ForceNew) The ID of the CEN instance.
-    :param str host: -(Optional, ForceNew) The domain name or IP address of the cloud service.
+    :param str cen_id: The ID of the CEN instance.
+    :param str host: The domain name or IP address of the cloud service.
     :param str host_region_id: The region of the cloud service.
     :param str host_vpc_id: The VPC associated with the cloud service.
     :param str status: The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.

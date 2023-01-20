@@ -25,6 +25,47 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.cms.SlsGroup;
+ * import com.pulumi.alicloud.cms.SlsGroupArgs;
+ * import com.pulumi.alicloud.cms.inputs.SlsGroupSlsGroupConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var this = AlicloudFunctions.getAccount();
+ * 
+ *         var default_ = new SlsGroup(&#34;default&#34;, SlsGroupArgs.builder()        
+ *             .slsGroupConfigs(SlsGroupSlsGroupConfigArgs.builder()
+ *                 .slsUserId(this_.id())
+ *                 .slsLogstore(&#34;Logstore-ECS&#34;)
+ *                 .slsProject(&#34;aliyun-project&#34;)
+ *                 .slsRegion(&#34;cn-hangzhou&#34;)
+ *                 .build())
+ *             .slsGroupDescription(var_.name())
+ *             .slsGroupName(var_.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Cloud Monitor Service Sls Group can be imported using the id, e.g.

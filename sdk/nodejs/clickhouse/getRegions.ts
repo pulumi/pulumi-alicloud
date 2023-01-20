@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,21 +19,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default1 = pulumi.output(alicloud.clickhouse.getRegions({
+ * const default1 = alicloud.clickhouse.getRegions({
  *     current: true,
- * }));
- * const default2 = pulumi.output(alicloud.clickhouse.getRegions({
+ * });
+ * const default2 = alicloud.clickhouse.getRegions({
  *     regionId: "cn-hangzhou",
- * }));
+ * });
  * ```
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:clickhouse/getRegions:getRegions", {
         "current": args.current,
         "outputFile": args.outputFile,
@@ -68,9 +66,29 @@ export interface GetRegionsResult {
     readonly regionId?: string;
     readonly regions: outputs.clickhouse.GetRegionsRegion[];
 }
-
+/**
+ * This data source provides the Click House Accounts of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.138.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default1 = alicloud.clickhouse.getRegions({
+ *     current: true,
+ * });
+ * const default2 = alicloud.clickhouse.getRegions({
+ *     regionId: "cn-hangzhou",
+ * });
+ * ```
+ */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
-    return pulumi.output(args).apply(a => getRegions(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegions(a, opts))
 }
 
 /**

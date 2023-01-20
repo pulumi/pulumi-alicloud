@@ -32,14 +32,14 @@ public final class GetTriggersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * - A list of FC triggers ids.
+     * A list of FC triggers ids.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return - A list of FC triggers ids.
+     * @return A list of FC triggers ids.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -133,7 +133,7 @@ public final class GetTriggersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids - A list of FC triggers ids.
+         * @param ids A list of FC triggers ids.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class GetTriggersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids - A list of FC triggers ids.
+         * @param ids A list of FC triggers ids.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class GetTriggersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids - A list of FC triggers ids.
+         * @param ids A list of FC triggers ids.
          * 
          * @return builder
          * 

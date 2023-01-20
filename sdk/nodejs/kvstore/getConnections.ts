@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -11,11 +12,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.101.0+.
  */
 export function getConnections(args: GetConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kvstore/getConnections:getConnections", {
         "ids": args.ids,
         "outputFile": args.outputFile,
@@ -51,9 +49,13 @@ export interface GetConnectionsResult {
     readonly ids: string;
     readonly outputFile?: string;
 }
-
+/**
+ * This data source can query the public IP of the specified KVStore DBInstance.
+ *
+ * > **NOTE:** Available in v1.101.0+.
+ */
 export function getConnectionsOutput(args: GetConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionsResult> {
-    return pulumi.output(args).apply(a => getConnections(a, opts))
+    return pulumi.output(args).apply((a: any) => getConnections(a, opts))
 }
 
 /**

@@ -163,8 +163,6 @@ class GetDomainsDomainResult(dict):
         :param str is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and "Off". Default to `Off`.
         :param str load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
         :param Sequence['GetDomainsDomainLogHeaderArgs'] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-               * `key`: The key of label.
-               * `value`: The value of label.
         :param int read_time: The read timeout of a WAF exclusive cluster. Unit: seconds.
         :param str resource_group_id: The ID of the resource group to which the queried domain belongs in Resource Management.
         :param Sequence[str] source_ips: List of the IP address or domain of the origin server to which the specified domain points.
@@ -300,8 +298,6 @@ class GetDomainsDomainResult(dict):
     def log_headers(self) -> Sequence['outputs.GetDomainsDomainLogHeaderResult']:
         """
         The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-        * `key`: The key of label.
-        * `value`: The value of label.
         """
         return pulumi.get(self, "log_headers")
 
@@ -351,17 +347,27 @@ class GetDomainsDomainLogHeaderResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
+        """
+        :param str key: The key of label.
+        :param str value: The value of label.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The key of label.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The value of label.
+        """
         return pulumi.get(self, "value")
 
 

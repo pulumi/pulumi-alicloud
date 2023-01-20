@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     [AliCloudResourceType("alicloud:ecs/securityGroupRule:SecurityGroupRule")]
-    public partial class SecurityGroupRule : Pulumi.CustomResource
+    public partial class SecurityGroupRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class SecurityGroupRuleArgs : Pulumi.ResourceArgs
+    public sealed class SecurityGroupRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
@@ -219,9 +219,10 @@ namespace Pulumi.AliCloud.Ecs
         public SecurityGroupRuleArgs()
         {
         }
+        public static new SecurityGroupRuleArgs Empty => new SecurityGroupRuleArgs();
     }
 
-    public sealed class SecurityGroupRuleState : Pulumi.ResourceArgs
+    public sealed class SecurityGroupRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
@@ -305,5 +306,6 @@ namespace Pulumi.AliCloud.Ecs
         public SecurityGroupRuleState()
         {
         }
+        public static new SecurityGroupRuleState Empty => new SecurityGroupRuleState();
     }
 }

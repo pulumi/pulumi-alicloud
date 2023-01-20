@@ -19,50 +19,48 @@ namespace Pulumi.AliCloud.Waf
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var domain = new AliCloud.Waf.Domain("domain", new()
     ///     {
-    ///         var domain = new AliCloud.Waf.Domain("domain", new AliCloud.Waf.DomainArgs
+    ///         ClusterType = "PhysicalCluster",
+    ///         DomainDeprecated = "www.aliyun.com",
+    ///         Http2Ports = new[]
     ///         {
-    ///             ClusterType = "PhysicalCluster",
-    ///             DomainDeprecated = "www.aliyun.com",
-    ///             Http2Ports = 
+    ///             "443",
+    ///         },
+    ///         HttpPorts = new[]
+    ///         {
+    ///             "80",
+    ///         },
+    ///         HttpToUserIp = "Off",
+    ///         HttpsPorts = new[]
+    ///         {
+    ///             "443",
+    ///         },
+    ///         HttpsRedirect = "Off",
+    ///         InstanceId = "waf-123455",
+    ///         IsAccessProduct = "On",
+    ///         LoadBalancing = "IpHash",
+    ///         LogHeaders = new[]
+    ///         {
+    ///             new AliCloud.Waf.Inputs.DomainLogHeaderArgs
     ///             {
-    ///                 "443",
+    ///                 Key = "foo",
+    ///                 Value = "http",
     ///             },
-    ///             HttpPorts = 
-    ///             {
-    ///                 "80",
-    ///             },
-    ///             HttpToUserIp = "Off",
-    ///             HttpsPorts = 
-    ///             {
-    ///                 "443",
-    ///             },
-    ///             HttpsRedirect = "Off",
-    ///             InstanceId = "waf-123455",
-    ///             IsAccessProduct = "On",
-    ///             LoadBalancing = "IpHash",
-    ///             LogHeaders = 
-    ///             {
-    ///                 new AliCloud.Waf.Inputs.DomainLogHeaderArgs
-    ///                 {
-    ///                     Key = "foo",
-    ///                     Value = "http",
-    ///                 },
-    ///             },
-    ///             SourceIps = 
-    ///             {
-    ///                 "1.1.1.1",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         SourceIps = new[]
+    ///         {
+    ///             "1.1.1.1",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -74,7 +72,7 @@ namespace Pulumi.AliCloud.Waf
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:waf/domain:Domain")]
-    public partial class Domain : Pulumi.CustomResource
+    public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
@@ -231,7 +229,7 @@ namespace Pulumi.AliCloud.Waf
         }
     }
 
-    public sealed class DomainArgs : Pulumi.ResourceArgs
+    public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
@@ -371,9 +369,10 @@ namespace Pulumi.AliCloud.Waf
         public DomainArgs()
         {
         }
+        public static new DomainArgs Empty => new DomainArgs();
     }
 
-    public sealed class DomainState : Pulumi.ResourceArgs
+    public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
@@ -519,5 +518,6 @@ namespace Pulumi.AliCloud.Waf
         public DomainState()
         {
         }
+        public static new DomainState Empty => new DomainState();
     }
 }

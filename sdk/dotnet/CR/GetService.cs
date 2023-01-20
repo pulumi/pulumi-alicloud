@@ -23,27 +23,25 @@ namespace Pulumi.AliCloud.CR
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var open = AliCloud.CR.GetService.Invoke(new()
         ///     {
-        ///         var open = Output.Create(AliCloud.CR.GetService.InvokeAsync(new AliCloud.CR.GetServiceArgs
-        ///         {
-        ///             Enable = "On",
-        ///             Password = "1111aaaa",
-        ///         }));
-        ///     }
+        ///         Enable = "On",
+        ///         Password = "1111aaaa",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("alicloud:cr/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("alicloud:cr/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Using this data source can open Container Registry (CR) service automatically. If the service has been opened, it will return opened.
@@ -57,31 +55,29 @@ namespace Pulumi.AliCloud.CR
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var open = AliCloud.CR.GetService.Invoke(new()
         ///     {
-        ///         var open = Output.Create(AliCloud.CR.GetService.InvokeAsync(new AliCloud.CR.GetServiceArgs
-        ///         {
-        ///             Enable = "On",
-        ///             Password = "1111aaaa",
-        ///         }));
-        ///     }
+        ///         Enable = "On",
+        ///         Password = "1111aaaa",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:cr/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("alicloud:cr/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
@@ -98,9 +94,10 @@ namespace Pulumi.AliCloud.CR
         public GetServiceArgs()
         {
         }
+        public static new GetServiceArgs Empty => new GetServiceArgs();
     }
 
-    public sealed class GetServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
@@ -117,6 +114,7 @@ namespace Pulumi.AliCloud.CR
         public GetServiceInvokeArgs()
         {
         }
+        public static new GetServiceInvokeArgs Empty => new GetServiceInvokeArgs();
     }
 
 

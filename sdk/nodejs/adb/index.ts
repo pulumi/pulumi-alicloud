@@ -5,21 +5,66 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./account";
-export * from "./backupPolicy";
-export * from "./cluster";
-export * from "./connection";
-export * from "./dbcluster";
-export * from "./getClusters";
-export * from "./getDBClusters";
-export * from "./getZones";
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
 
-// Import resources to register:
-import { Account } from "./account";
-import { BackupPolicy } from "./backupPolicy";
-import { Cluster } from "./cluster";
-import { Connection } from "./connection";
-import { DBCluster } from "./dbcluster";
+export { BackupPolicyArgs, BackupPolicyState } from "./backupPolicy";
+export type BackupPolicy = import("./backupPolicy").BackupPolicy;
+export const BackupPolicy: typeof import("./backupPolicy").BackupPolicy = null as any;
+utilities.lazyLoad(exports, ["BackupPolicy"], () => require("./backupPolicy"));
+
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
+
+export { ConnectionArgs, ConnectionState } from "./connection";
+export type Connection = import("./connection").Connection;
+export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+
+export { DBClusterArgs, DBClusterState } from "./dbcluster";
+export type DBCluster = import("./dbcluster").DBCluster;
+export const DBCluster: typeof import("./dbcluster").DBCluster = null as any;
+utilities.lazyLoad(exports, ["DBCluster"], () => require("./dbcluster"));
+
+export { DBClusterLakeVersionArgs, DBClusterLakeVersionState } from "./dbclusterLakeVersion";
+export type DBClusterLakeVersion = import("./dbclusterLakeVersion").DBClusterLakeVersion;
+export const DBClusterLakeVersion: typeof import("./dbclusterLakeVersion").DBClusterLakeVersion = null as any;
+utilities.lazyLoad(exports, ["DBClusterLakeVersion"], () => require("./dbclusterLakeVersion"));
+
+export { GetClustersArgs, GetClustersResult, GetClustersOutputArgs } from "./getClusters";
+export const getClusters: typeof import("./getClusters").getClusters = null as any;
+export const getClustersOutput: typeof import("./getClusters").getClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getClusters","getClustersOutput"], () => require("./getClusters"));
+
+export { GetDBClusterLakeVersionsArgs, GetDBClusterLakeVersionsResult, GetDBClusterLakeVersionsOutputArgs } from "./getDBClusterLakeVersions";
+export const getDBClusterLakeVersions: typeof import("./getDBClusterLakeVersions").getDBClusterLakeVersions = null as any;
+export const getDBClusterLakeVersionsOutput: typeof import("./getDBClusterLakeVersions").getDBClusterLakeVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getDBClusterLakeVersions","getDBClusterLakeVersionsOutput"], () => require("./getDBClusterLakeVersions"));
+
+export { GetDBClustersArgs, GetDBClustersResult, GetDBClustersOutputArgs } from "./getDBClusters";
+export const getDBClusters: typeof import("./getDBClusters").getDBClusters = null as any;
+export const getDBClustersOutput: typeof import("./getDBClusters").getDBClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getDBClusters","getDBClustersOutput"], () => require("./getDBClusters"));
+
+export { GetResourceGroupsArgs, GetResourceGroupsResult, GetResourceGroupsOutputArgs } from "./getResourceGroups";
+export const getResourceGroups: typeof import("./getResourceGroups").getResourceGroups = null as any;
+export const getResourceGroupsOutput: typeof import("./getResourceGroups").getResourceGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getResourceGroups","getResourceGroupsOutput"], () => require("./getResourceGroups"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
+export { ResourceGroupArgs, ResourceGroupState } from "./resourceGroup";
+export type ResourceGroup = import("./resourceGroup").ResourceGroup;
+export const ResourceGroup: typeof import("./resourceGroup").ResourceGroup = null as any;
+utilities.lazyLoad(exports, ["ResourceGroup"], () => require("./resourceGroup"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -35,6 +80,10 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "alicloud:adb/dBCluster:DBCluster":
                 return new DBCluster(name, <any>undefined, { urn })
+            case "alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion":
+                return new DBClusterLakeVersion(name, <any>undefined, { urn })
+            case "alicloud:adb/resourceGroup:ResourceGroup":
+                return new ResourceGroup(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -45,3 +94,5 @@ pulumi.runtime.registerResourceModule("alicloud", "adb/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "adb/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "adb/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "adb/dBCluster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "adb/dBClusterLakeVersion", _module)
+pulumi.runtime.registerResourceModule("alicloud", "adb/resourceGroup", _module)

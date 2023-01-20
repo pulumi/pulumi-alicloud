@@ -14,6 +14,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -210,6 +211,12 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
+    @Export(name="publicIpAddressPoolId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> publicIpAddressPoolId;
+
+    public Output<Optional<String>> publicIpAddressPoolId() {
+        return Codegen.optional(this.publicIpAddressPoolId);
+    }
     /**
      * The Id of resource group which the eip belongs.
      * 
@@ -223,6 +230,12 @@ public class Eip extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
+    }
+    @Export(name="securityProtectionTypes", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> securityProtectionTypes;
+
+    public Output<Optional<List<String>>> securityProtectionTypes() {
+        return Codegen.optional(this.securityProtectionTypes);
     }
     /**
      * The EIP current status.

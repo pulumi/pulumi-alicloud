@@ -28,7 +28,7 @@ public final class ShardingInstanceConfigServerList {
      */
     private @Nullable Integer maxIops;
     /**
-     * @return -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     private @Nullable String nodeClass;
@@ -77,7 +77,7 @@ public final class ShardingInstanceConfigServerList {
         return Optional.ofNullable(this.maxIops);
     }
     /**
-     * @return -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
     public Optional<String> nodeClass() {

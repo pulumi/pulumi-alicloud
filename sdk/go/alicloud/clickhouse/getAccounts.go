@@ -70,9 +70,9 @@ import (
 //				},
 //				DbClusterId: defaultDbCluster.ID(),
 //			}, nil)
-//			ctx.Export("accountId", defaultAccounts.ApplyT(func(defaultAccounts clickhouse.GetAccountsResult) (string, error) {
-//				return defaultAccounts.Ids[0], nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("accountId", defaultAccounts.ApplyT(func(defaultAccounts clickhouse.GetAccountsResult) (*string, error) {
+//				return &defaultAccounts.Ids[0], nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

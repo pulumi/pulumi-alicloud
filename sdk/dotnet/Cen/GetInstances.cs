@@ -19,33 +19,32 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var cenInstancesDs = AliCloud.Cen.GetInstances.Invoke(new()
         ///     {
-        ///         var cenInstancesDs = Output.Create(AliCloud.Cen.GetInstances.InvokeAsync(new AliCloud.Cen.GetInstancesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "cen-id1",
-        ///             },
-        ///             NameRegex = "^foo",
-        ///         }));
-        ///         this.FirstCenInstanceId = cenInstancesDs.Apply(cenInstancesDs =&gt; cenInstancesDs.Instances?[0]?.Id);
-        ///     }
+        ///             "cen-id1",
+        ///         },
+        ///         NameRegex = "^foo",
+        ///     });
         /// 
-        ///     [Output("firstCenInstanceId")]
-        ///     public Output&lt;string&gt; FirstCenInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCenInstanceId"] = cenInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:cen/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:cen/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides CEN instances available to the user.
@@ -55,37 +54,36 @@ namespace Pulumi.AliCloud.Cen
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var cenInstancesDs = AliCloud.Cen.GetInstances.Invoke(new()
         ///     {
-        ///         var cenInstancesDs = Output.Create(AliCloud.Cen.GetInstances.InvokeAsync(new AliCloud.Cen.GetInstancesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "cen-id1",
-        ///             },
-        ///             NameRegex = "^foo",
-        ///         }));
-        ///         this.FirstCenInstanceId = cenInstancesDs.Apply(cenInstancesDs =&gt; cenInstancesDs.Instances?[0]?.Id);
-        ///     }
+        ///             "cen-id1",
+        ///         },
+        ///         NameRegex = "^foo",
+        ///     });
         /// 
-        ///     [Output("firstCenInstanceId")]
-        ///     public Output&lt;string&gt; FirstCenInstanceId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstCenInstanceId"] = cenInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:cen/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:cen/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstancesArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -129,9 +127,10 @@ namespace Pulumi.AliCloud.Cen
         public GetInstancesArgs()
         {
         }
+        public static new GetInstancesArgs Empty => new GetInstancesArgs();
     }
 
-    public sealed class GetInstancesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -175,6 +174,7 @@ namespace Pulumi.AliCloud.Cen
         public GetInstancesInvokeArgs()
         {
         }
+        public static new GetInstancesInvokeArgs Empty => new GetInstancesInvokeArgs();
     }
 
 

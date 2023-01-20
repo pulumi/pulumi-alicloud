@@ -23,26 +23,24 @@ namespace Pulumi.AliCloud.Ddos
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var newInstance = new AliCloud.Ddos.DdosCooInstance("newInstance", new()
     ///     {
-    ///         var newInstance = new AliCloud.Ddos.DdosCooInstance("newInstance", new AliCloud.Ddos.DdosCooInstanceArgs
-    ///         {
-    ///             Bandwidth = "30",
-    ///             BaseBandwidth = "30",
-    ///             DomainCount = "50",
-    ///             Period = 1,
-    ///             PortCount = "50",
-    ///             ProductType = "ddoscoo",
-    ///             ServiceBandwidth = "100",
-    ///         });
-    ///     }
+    ///         Bandwidth = "30",
+    ///         BaseBandwidth = "30",
+    ///         DomainCount = "50",
+    ///         Period = 1,
+    ///         PortCount = "50",
+    ///         ProductType = "ddoscoo",
+    ///         ServiceBandwidth = "100",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.AliCloud.Ddos
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ddos/ddosCooInstance:DdosCooInstance")]
-    public partial class DdosCooInstance : Pulumi.CustomResource
+    public partial class DdosCooInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
@@ -132,7 +130,7 @@ namespace Pulumi.AliCloud.Ddos
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new Pulumi.Alias { Type = "alicloud:dns/ddosCooInstance:DdosCooInstance"},
+                    new global::Pulumi.Alias { Type = "alicloud:dns/ddosCooInstance:DdosCooInstance"},
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -155,7 +153,7 @@ namespace Pulumi.AliCloud.Ddos
         }
     }
 
-    public sealed class DdosCooInstanceArgs : Pulumi.ResourceArgs
+    public sealed class DdosCooInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
@@ -211,9 +209,10 @@ namespace Pulumi.AliCloud.Ddos
         public DdosCooInstanceArgs()
         {
         }
+        public static new DdosCooInstanceArgs Empty => new DdosCooInstanceArgs();
     }
 
-    public sealed class DdosCooInstanceState : Pulumi.ResourceArgs
+    public sealed class DdosCooInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
@@ -269,5 +268,6 @@ namespace Pulumi.AliCloud.Ddos
         public DdosCooInstanceState()
         {
         }
+        public static new DdosCooInstanceState Empty => new DdosCooInstanceState();
     }
 }

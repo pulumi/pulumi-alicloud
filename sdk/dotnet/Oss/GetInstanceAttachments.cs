@@ -20,31 +20,30 @@ namespace Pulumi.AliCloud.Oss
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var attachmentsDs = AliCloud.Ots.GetInstanceAttachments.Invoke(new()
         ///     {
-        ///         var attachmentsDs = Output.Create(AliCloud.Ots.GetInstanceAttachments.InvokeAsync(new AliCloud.Ots.GetInstanceAttachmentsArgs
-        ///         {
-        ///             InstanceName = "sample-instance",
-        ///             NameRegex = "testvpc",
-        ///             OutputFile = "attachments.txt",
-        ///         }));
-        ///         this.FirstOtsAttachmentId = attachmentsDs.Apply(attachmentsDs =&gt; attachmentsDs.Attachments?[0]?.Id);
-        ///     }
+        ///         InstanceName = "sample-instance",
+        ///         NameRegex = "testvpc",
+        ///         OutputFile = "attachments.txt",
+        ///     });
         /// 
-        ///     [Output("firstOtsAttachmentId")]
-        ///     public Output&lt;string&gt; FirstOtsAttachmentId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstOtsAttachmentId"] = attachmentsDs.Apply(getInstanceAttachmentsResult =&gt; getInstanceAttachmentsResult.Attachments[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceAttachmentsResult> InvokeAsync(GetInstanceAttachmentsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentsResult>("alicloud:oss/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentsResult>("alicloud:oss/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the ots instance attachments of the current Alibaba Cloud user.
@@ -54,35 +53,34 @@ namespace Pulumi.AliCloud.Oss
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var attachmentsDs = AliCloud.Ots.GetInstanceAttachments.Invoke(new()
         ///     {
-        ///         var attachmentsDs = Output.Create(AliCloud.Ots.GetInstanceAttachments.InvokeAsync(new AliCloud.Ots.GetInstanceAttachmentsArgs
-        ///         {
-        ///             InstanceName = "sample-instance",
-        ///             NameRegex = "testvpc",
-        ///             OutputFile = "attachments.txt",
-        ///         }));
-        ///         this.FirstOtsAttachmentId = attachmentsDs.Apply(attachmentsDs =&gt; attachmentsDs.Attachments?[0]?.Id);
-        ///     }
+        ///         InstanceName = "sample-instance",
+        ///         NameRegex = "testvpc",
+        ///         OutputFile = "attachments.txt",
+        ///     });
         /// 
-        ///     [Output("firstOtsAttachmentId")]
-        ///     public Output&lt;string&gt; FirstOtsAttachmentId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstOtsAttachmentId"] = attachmentsDs.Apply(getInstanceAttachmentsResult =&gt; getInstanceAttachmentsResult.Attachments[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceAttachmentsResult> Invoke(GetInstanceAttachmentsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceAttachmentsResult>("alicloud:oss/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceAttachmentsResult>("alicloud:oss/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceAttachmentsArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceAttachmentsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of OTS instance.
@@ -102,9 +100,10 @@ namespace Pulumi.AliCloud.Oss
         public GetInstanceAttachmentsArgs()
         {
         }
+        public static new GetInstanceAttachmentsArgs Empty => new GetInstanceAttachmentsArgs();
     }
 
-    public sealed class GetInstanceAttachmentsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceAttachmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of OTS instance.
@@ -124,6 +123,7 @@ namespace Pulumi.AliCloud.Oss
         public GetInstanceAttachmentsInvokeArgs()
         {
         }
+        public static new GetInstanceAttachmentsInvokeArgs Empty => new GetInstanceAttachmentsInvokeArgs();
     }
 
 

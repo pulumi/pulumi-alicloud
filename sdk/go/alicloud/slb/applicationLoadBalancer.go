@@ -30,20 +30,18 @@ type ApplicationLoadBalancer struct {
 	// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
 	// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
 	AddressType pulumi.StringOutput `pulumi:"addressType"`
-	// Valid value is between 1 and 1000, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignore.
+	// Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
 	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
 	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection pulumi.StringPtrOutput `pulumi:"deleteProtection"`
-	// Field `instanceChargeType` has been deprecated from provider version 1.124.0 New field `paymentType` instead.
-	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
+	// Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
 	LoadBalancerName   pulumi.StringOutput    `pulumi:"loadBalancerName"`
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
 	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
 	MasterZoneId pulumi.StringOutput `pulumi:"masterZoneId"`
@@ -58,7 +56,7 @@ type ApplicationLoadBalancer struct {
 	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	Period      pulumi.IntPtrOutput `pulumi:"period"`
-	// The Id of resource group which the SLB belongs.
+	// The id of resource group which the SLB belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	SlaveZoneId pulumi.StringOutput `pulumi:"slaveZoneId"`
@@ -70,7 +68,7 @@ type ApplicationLoadBalancer struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
+	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 }
 
@@ -111,20 +109,18 @@ type applicationLoadBalancerState struct {
 	// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
 	// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
 	AddressType *string `pulumi:"addressType"`
-	// Valid value is between 1 and 1000, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignore.
+	// Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection *string `pulumi:"deleteProtection"`
-	// Field `instanceChargeType` has been deprecated from provider version 1.124.0 New field `paymentType` instead.
-	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
+	// Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	LoadBalancerName   *string `pulumi:"loadBalancerName"`
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
 	MasterZoneId *string `pulumi:"masterZoneId"`
@@ -139,7 +135,7 @@ type applicationLoadBalancerState struct {
 	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
-	// The Id of resource group which the SLB belongs.
+	// The id of resource group which the SLB belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	SlaveZoneId *string `pulumi:"slaveZoneId"`
@@ -151,7 +147,7 @@ type applicationLoadBalancerState struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
+	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -164,20 +160,18 @@ type ApplicationLoadBalancerState struct {
 	// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
 	// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
 	AddressType pulumi.StringPtrInput
-	// Valid value is between 1 and 1000, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignore.
+	// Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
 	Bandwidth pulumi.IntPtrInput
 	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection pulumi.StringPtrInput
-	// Field `instanceChargeType` has been deprecated from provider version 1.124.0 New field `paymentType` instead.
-	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
+	// Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
 	InstanceChargeType pulumi.StringPtrInput
 	// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
 	InternetChargeType pulumi.StringPtrInput
 	LoadBalancerName   pulumi.StringPtrInput
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
 	LoadBalancerSpec pulumi.StringPtrInput
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
 	MasterZoneId pulumi.StringPtrInput
@@ -192,7 +186,7 @@ type ApplicationLoadBalancerState struct {
 	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
-	// The Id of resource group which the SLB belongs.
+	// The id of resource group which the SLB belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	SlaveZoneId pulumi.StringPtrInput
@@ -204,7 +198,7 @@ type ApplicationLoadBalancerState struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags pulumi.MapInput
-	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
+	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -221,20 +215,18 @@ type applicationLoadBalancerArgs struct {
 	// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
 	// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
 	AddressType *string `pulumi:"addressType"`
-	// Valid value is between 1 and 1000, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignore.
+	// Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection *string `pulumi:"deleteProtection"`
-	// Field `instanceChargeType` has been deprecated from provider version 1.124.0 New field `paymentType` instead.
-	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
+	// Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	LoadBalancerName   *string `pulumi:"loadBalancerName"`
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
 	MasterZoneId *string `pulumi:"masterZoneId"`
@@ -249,7 +241,7 @@ type applicationLoadBalancerArgs struct {
 	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	Period      *int    `pulumi:"period"`
-	// The Id of resource group which the SLB belongs.
+	// The id of resource group which the SLB belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	SlaveZoneId *string `pulumi:"slaveZoneId"`
@@ -261,7 +253,7 @@ type applicationLoadBalancerArgs struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
+	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -275,20 +267,18 @@ type ApplicationLoadBalancerArgs struct {
 	// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
 	// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
 	AddressType pulumi.StringPtrInput
-	// Valid value is between 1 and 1000, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignore.
+	// Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
 	Bandwidth pulumi.IntPtrInput
 	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection pulumi.StringPtrInput
-	// Field `instanceChargeType` has been deprecated from provider version 1.124.0 New field `paymentType` instead.
-	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
+	// Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
 	InstanceChargeType pulumi.StringPtrInput
 	// Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `addressType` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
 	InternetChargeType pulumi.StringPtrInput
 	LoadBalancerName   pulumi.StringPtrInput
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+	// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
 	LoadBalancerSpec pulumi.StringPtrInput
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
 	MasterZoneId pulumi.StringPtrInput
@@ -303,7 +293,7 @@ type ApplicationLoadBalancerArgs struct {
 	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	Period      pulumi.IntPtrInput
-	// The Id of resource group which the SLB belongs.
+	// The id of resource group which the SLB belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	SlaveZoneId pulumi.StringPtrInput
@@ -315,7 +305,7 @@ type ApplicationLoadBalancerArgs struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags pulumi.MapInput
-	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
+	// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -423,7 +413,7 @@ func (o ApplicationLoadBalancerOutput) AddressType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.StringOutput { return v.AddressType }).(pulumi.StringOutput)
 }
 
-// Valid value is between 1 and 1000, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignore.
+// Valid value is between 1 and 5120, If argument `internetChargeType` is `PayByTraffic`, then this value will be ignored.
 func (o ApplicationLoadBalancerOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.IntPtrOutput { return v.Bandwidth }).(pulumi.IntPtrOutput)
 }
@@ -433,9 +423,7 @@ func (o ApplicationLoadBalancerOutput) DeleteProtection() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.StringPtrOutput { return v.DeleteProtection }).(pulumi.StringPtrOutput)
 }
 
-// Field `instanceChargeType` has been deprecated from provider version 1.124.0 New field `paymentType` instead.
-//
-// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it.
+// Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
 func (o ApplicationLoadBalancerOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
@@ -450,8 +438,8 @@ func (o ApplicationLoadBalancerOutput) LoadBalancerName() pulumi.StringOutput {
 }
 
 // The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
-// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`.
+// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
 func (o ApplicationLoadBalancerOutput) LoadBalancerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
 }
@@ -487,7 +475,7 @@ func (o ApplicationLoadBalancerOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// The Id of resource group which the SLB belongs.
+// The id of resource group which the SLB belongs.
 func (o ApplicationLoadBalancerOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -514,7 +502,7 @@ func (o ApplicationLoadBalancerOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignore.
+// The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `addressType` is internet, it will be ignored.
 func (o ApplicationLoadBalancerOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

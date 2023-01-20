@@ -23,61 +23,57 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetIpv6Gateways.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetIpv6Gateways.InvokeAsync(new AliCloud.Vpc.GetIpv6GatewaysArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpcIpv6GatewayId1 = ids.Apply(ids =&gt; ids.Gateways?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetIpv6Gateways.InvokeAsync(new AliCloud.Vpc.GetIpv6GatewaysArgs
-        ///         {
-        ///             NameRegex = "^my-Ipv6Gateway",
-        ///         }));
-        ///         this.VpcIpv6GatewayId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
-        ///         var vpcId = Output.Create(AliCloud.Vpc.GetIpv6Gateways.InvokeAsync(new AliCloud.Vpc.GetIpv6GatewaysArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             VpcId = "example_value",
-        ///         }));
-        ///         this.VpcIpv6GatewayId3 = vpcId.Apply(vpcId =&gt; vpcId.Gateways?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetIpv6Gateways.InvokeAsync(new AliCloud.Vpc.GetIpv6GatewaysArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             Status = "Available",
-        ///         }));
-        ///         this.VpcIpv6GatewayId4 = status.Apply(status =&gt; status.Gateways?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcIpv6GatewayId1")]
-        ///     public Output&lt;string&gt; VpcIpv6GatewayId1 { get; set; }
-        ///     [Output("vpcIpv6GatewayId2")]
-        ///     public Output&lt;string&gt; VpcIpv6GatewayId2 { get; set; }
-        ///     [Output("vpcIpv6GatewayId3")]
-        ///     public Output&lt;string&gt; VpcIpv6GatewayId3 { get; set; }
-        ///     [Output("vpcIpv6GatewayId4")]
-        ///     public Output&lt;string&gt; VpcIpv6GatewayId4 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetIpv6Gateways.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Ipv6Gateway",
+        ///     });
+        /// 
+        ///     var vpcId = AliCloud.Vpc.GetIpv6Gateways.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         VpcId = "example_value",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetIpv6Gateways.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcIpv6GatewayId1"] = ids.Apply(getIpv6GatewaysResult =&gt; getIpv6GatewaysResult.Gateways[0]?.Id),
+        ///         ["vpcIpv6GatewayId2"] = nameRegex.Apply(getIpv6GatewaysResult =&gt; getIpv6GatewaysResult.Gateways[0]?.Id),
+        ///         ["vpcIpv6GatewayId3"] = vpcId.Apply(getIpv6GatewaysResult =&gt; getIpv6GatewaysResult.Gateways[0]?.Id),
+        ///         ["vpcIpv6GatewayId4"] = status.Apply(getIpv6GatewaysResult =&gt; getIpv6GatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpv6GatewaysResult> InvokeAsync(GetIpv6GatewaysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIpv6GatewaysResult>("alicloud:vpc/getIpv6Gateways:getIpv6Gateways", args ?? new GetIpv6GatewaysArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpv6GatewaysResult>("alicloud:vpc/getIpv6Gateways:getIpv6Gateways", args ?? new GetIpv6GatewaysArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Vpc Ipv6 Gateways of the current Alibaba Cloud user.
@@ -91,65 +87,61 @@ namespace Pulumi.AliCloud.Vpc
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Vpc.GetIpv6Gateways.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Vpc.GetIpv6Gateways.InvokeAsync(new AliCloud.Vpc.GetIpv6GatewaysArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.VpcIpv6GatewayId1 = ids.Apply(ids =&gt; ids.Gateways?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Vpc.GetIpv6Gateways.InvokeAsync(new AliCloud.Vpc.GetIpv6GatewaysArgs
-        ///         {
-        ///             NameRegex = "^my-Ipv6Gateway",
-        ///         }));
-        ///         this.VpcIpv6GatewayId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Gateways?[0]?.Id);
-        ///         var vpcId = Output.Create(AliCloud.Vpc.GetIpv6Gateways.InvokeAsync(new AliCloud.Vpc.GetIpv6GatewaysArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             VpcId = "example_value",
-        ///         }));
-        ///         this.VpcIpv6GatewayId3 = vpcId.Apply(vpcId =&gt; vpcId.Gateways?[0]?.Id);
-        ///         var status = Output.Create(AliCloud.Vpc.GetIpv6Gateways.InvokeAsync(new AliCloud.Vpc.GetIpv6GatewaysArgs
-        ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///             Status = "Available",
-        ///         }));
-        ///         this.VpcIpv6GatewayId4 = status.Apply(status =&gt; status.Gateways?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("vpcIpv6GatewayId1")]
-        ///     public Output&lt;string&gt; VpcIpv6GatewayId1 { get; set; }
-        ///     [Output("vpcIpv6GatewayId2")]
-        ///     public Output&lt;string&gt; VpcIpv6GatewayId2 { get; set; }
-        ///     [Output("vpcIpv6GatewayId3")]
-        ///     public Output&lt;string&gt; VpcIpv6GatewayId3 { get; set; }
-        ///     [Output("vpcIpv6GatewayId4")]
-        ///     public Output&lt;string&gt; VpcIpv6GatewayId4 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Vpc.GetIpv6Gateways.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Ipv6Gateway",
+        ///     });
+        /// 
+        ///     var vpcId = AliCloud.Vpc.GetIpv6Gateways.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         VpcId = "example_value",
+        ///     });
+        /// 
+        ///     var status = AliCloud.Vpc.GetIpv6Gateways.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example_id",
+        ///         },
+        ///         Status = "Available",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["vpcIpv6GatewayId1"] = ids.Apply(getIpv6GatewaysResult =&gt; getIpv6GatewaysResult.Gateways[0]?.Id),
+        ///         ["vpcIpv6GatewayId2"] = nameRegex.Apply(getIpv6GatewaysResult =&gt; getIpv6GatewaysResult.Gateways[0]?.Id),
+        ///         ["vpcIpv6GatewayId3"] = vpcId.Apply(getIpv6GatewaysResult =&gt; getIpv6GatewaysResult.Gateways[0]?.Id),
+        ///         ["vpcIpv6GatewayId4"] = status.Apply(getIpv6GatewaysResult =&gt; getIpv6GatewaysResult.Gateways[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIpv6GatewaysResult> Invoke(GetIpv6GatewaysInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIpv6GatewaysResult>("alicloud:vpc/getIpv6Gateways:getIpv6Gateways", args ?? new GetIpv6GatewaysInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpv6GatewaysResult>("alicloud:vpc/getIpv6Gateways:getIpv6Gateways", args ?? new GetIpv6GatewaysInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetIpv6GatewaysArgs : Pulumi.InvokeArgs
+    public sealed class GetIpv6GatewaysArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -193,9 +185,10 @@ namespace Pulumi.AliCloud.Vpc
         public GetIpv6GatewaysArgs()
         {
         }
+        public static new GetIpv6GatewaysArgs Empty => new GetIpv6GatewaysArgs();
     }
 
-    public sealed class GetIpv6GatewaysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIpv6GatewaysInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -239,6 +232,7 @@ namespace Pulumi.AliCloud.Vpc
         public GetIpv6GatewaysInvokeArgs()
         {
         }
+        public static new GetIpv6GatewaysInvokeArgs Empty => new GetIpv6GatewaysInvokeArgs();
     }
 
 

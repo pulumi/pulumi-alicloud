@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const instance = new alicloud.rds.Instance("instance", {
@@ -91,6 +91,18 @@ export class BackupPolicy extends pulumi.CustomResource {
      */
     public readonly archiveBackupRetentionPeriod!: pulumi.Output<number>;
     /**
+     * The frequency at which you want to perform a snapshot backup on the instance. Valid values:
+     * - -1: No backup frequencies are specified.
+     * - 30: A snapshot backup is performed once every 30 minutes.
+     * - 60: A snapshot backup is performed once every 60 minutes.
+     * - 120: A snapshot backup is performed once every 120 minutes.
+     * - 240: A snapshot backup is performed once every 240 minutes.
+     * - 360: A snapshot backup is performed once every 360 minutes.
+     * - 480: A snapshot backup is performed once every 480 minutes.
+     * - 720: A snapshot backup is performed once every 720 minutes.
+     */
+    public readonly backupInterval!: pulumi.Output<string>;
+    /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
      *
      * @deprecated Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
@@ -106,6 +118,11 @@ export class BackupPolicy extends pulumi.CustomResource {
      * @deprecated Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
      */
     public readonly backupTime!: pulumi.Output<string>;
+    /**
+     * Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+     * > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
+     */
+    public readonly category!: pulumi.Output<string>;
     /**
      * The compress type of instance policy. Valid values are `1`, `4`, `8`.
      */
@@ -151,7 +168,7 @@ export class BackupPolicy extends pulumi.CustomResource {
      */
     public readonly logRetentionPeriod!: pulumi.Output<number>;
     /**
-     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
     public readonly preferredBackupPeriods!: pulumi.Output<string[]>;
     /**
@@ -188,9 +205,11 @@ export class BackupPolicy extends pulumi.CustomResource {
             resourceInputs["archiveBackupKeepCount"] = state ? state.archiveBackupKeepCount : undefined;
             resourceInputs["archiveBackupKeepPolicy"] = state ? state.archiveBackupKeepPolicy : undefined;
             resourceInputs["archiveBackupRetentionPeriod"] = state ? state.archiveBackupRetentionPeriod : undefined;
+            resourceInputs["backupInterval"] = state ? state.backupInterval : undefined;
             resourceInputs["backupPeriods"] = state ? state.backupPeriods : undefined;
             resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
             resourceInputs["backupTime"] = state ? state.backupTime : undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
             resourceInputs["compressType"] = state ? state.compressType : undefined;
             resourceInputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
             resourceInputs["highSpaceUsageProtection"] = state ? state.highSpaceUsageProtection : undefined;
@@ -213,9 +232,11 @@ export class BackupPolicy extends pulumi.CustomResource {
             resourceInputs["archiveBackupKeepCount"] = args ? args.archiveBackupKeepCount : undefined;
             resourceInputs["archiveBackupKeepPolicy"] = args ? args.archiveBackupKeepPolicy : undefined;
             resourceInputs["archiveBackupRetentionPeriod"] = args ? args.archiveBackupRetentionPeriod : undefined;
+            resourceInputs["backupInterval"] = args ? args.backupInterval : undefined;
             resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
             resourceInputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
             resourceInputs["backupTime"] = args ? args.backupTime : undefined;
+            resourceInputs["category"] = args ? args.category : undefined;
             resourceInputs["compressType"] = args ? args.compressType : undefined;
             resourceInputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
             resourceInputs["highSpaceUsageProtection"] = args ? args.highSpaceUsageProtection : undefined;
@@ -253,6 +274,18 @@ export interface BackupPolicyState {
      */
     archiveBackupRetentionPeriod?: pulumi.Input<number>;
     /**
+     * The frequency at which you want to perform a snapshot backup on the instance. Valid values:
+     * - -1: No backup frequencies are specified.
+     * - 30: A snapshot backup is performed once every 30 minutes.
+     * - 60: A snapshot backup is performed once every 60 minutes.
+     * - 120: A snapshot backup is performed once every 120 minutes.
+     * - 240: A snapshot backup is performed once every 240 minutes.
+     * - 360: A snapshot backup is performed once every 360 minutes.
+     * - 480: A snapshot backup is performed once every 480 minutes.
+     * - 720: A snapshot backup is performed once every 720 minutes.
+     */
+    backupInterval?: pulumi.Input<string>;
+    /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
      *
      * @deprecated Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
@@ -268,6 +301,11 @@ export interface BackupPolicyState {
      * @deprecated Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
      */
     backupTime?: pulumi.Input<string>;
+    /**
+     * Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+     * > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
+     */
+    category?: pulumi.Input<string>;
     /**
      * The compress type of instance policy. Valid values are `1`, `4`, `8`.
      */
@@ -313,7 +351,7 @@ export interface BackupPolicyState {
      */
     logRetentionPeriod?: pulumi.Input<number>;
     /**
-     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
     preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -352,6 +390,18 @@ export interface BackupPolicyArgs {
      */
     archiveBackupRetentionPeriod?: pulumi.Input<number>;
     /**
+     * The frequency at which you want to perform a snapshot backup on the instance. Valid values:
+     * - -1: No backup frequencies are specified.
+     * - 30: A snapshot backup is performed once every 30 minutes.
+     * - 60: A snapshot backup is performed once every 60 minutes.
+     * - 120: A snapshot backup is performed once every 120 minutes.
+     * - 240: A snapshot backup is performed once every 240 minutes.
+     * - 360: A snapshot backup is performed once every 360 minutes.
+     * - 480: A snapshot backup is performed once every 480 minutes.
+     * - 720: A snapshot backup is performed once every 720 minutes.
+     */
+    backupInterval?: pulumi.Input<string>;
+    /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
      *
      * @deprecated Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
@@ -367,6 +417,11 @@ export interface BackupPolicyArgs {
      * @deprecated Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
      */
     backupTime?: pulumi.Input<string>;
+    /**
+     * Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
+     * > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
+     */
+    category?: pulumi.Input<string>;
     /**
      * The compress type of instance policy. Valid values are `1`, `4`, `8`.
      */
@@ -412,7 +467,7 @@ export interface BackupPolicyArgs {
      */
     logRetentionPeriod?: pulumi.Input<number>;
     /**
-     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
     preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**

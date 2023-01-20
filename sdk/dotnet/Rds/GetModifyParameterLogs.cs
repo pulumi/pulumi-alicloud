@@ -23,28 +23,26 @@ namespace Pulumi.AliCloud.Rds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Rds.GetModifyParameterLogs.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Rds.GetModifyParameterLogs.InvokeAsync(new AliCloud.Rds.GetModifyParameterLogsArgs
-        ///         {
-        ///             DbInstanceId = "example_value",
-        ///             EndTime = "2022-06-08T13:56Z",
-        ///             StartTime = "2022-06-04T13:56Z",
-        ///         }));
-        ///     }
+        ///         DbInstanceId = "example_value",
+        ///         EndTime = "2022-06-08T13:56Z",
+        ///         StartTime = "2022-06-04T13:56Z",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetModifyParameterLogsResult> InvokeAsync(GetModifyParameterLogsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetModifyParameterLogsResult>("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", args ?? new GetModifyParameterLogsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetModifyParameterLogsResult>("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", args ?? new GetModifyParameterLogsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
@@ -58,32 +56,30 @@ namespace Pulumi.AliCloud.Rds
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.Rds.GetModifyParameterLogs.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.Rds.GetModifyParameterLogs.InvokeAsync(new AliCloud.Rds.GetModifyParameterLogsArgs
-        ///         {
-        ///             DbInstanceId = "example_value",
-        ///             EndTime = "2022-06-08T13:56Z",
-        ///             StartTime = "2022-06-04T13:56Z",
-        ///         }));
-        ///     }
+        ///         DbInstanceId = "example_value",
+        ///         EndTime = "2022-06-08T13:56Z",
+        ///         StartTime = "2022-06-04T13:56Z",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetModifyParameterLogsResult> Invoke(GetModifyParameterLogsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetModifyParameterLogsResult>("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", args ?? new GetModifyParameterLogsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetModifyParameterLogsResult>("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", args ?? new GetModifyParameterLogsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetModifyParameterLogsArgs : Pulumi.InvokeArgs
+    public sealed class GetModifyParameterLogsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The db instance id.
@@ -109,9 +105,10 @@ namespace Pulumi.AliCloud.Rds
         public GetModifyParameterLogsArgs()
         {
         }
+        public static new GetModifyParameterLogsArgs Empty => new GetModifyParameterLogsArgs();
     }
 
-    public sealed class GetModifyParameterLogsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetModifyParameterLogsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The db instance id.
@@ -137,6 +134,7 @@ namespace Pulumi.AliCloud.Rds
         public GetModifyParameterLogsInvokeArgs()
         {
         }
+        public static new GetModifyParameterLogsInvokeArgs Empty => new GetModifyParameterLogsInvokeArgs();
     }
 
 

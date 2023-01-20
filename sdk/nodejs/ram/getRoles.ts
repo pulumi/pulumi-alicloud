@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,23 +15,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const rolesDs = pulumi.output(alicloud.ram.getRoles({
+ * const rolesDs = alicloud.ram.getRoles({
  *     nameRegex: ".*test.*",
  *     outputFile: "roles.txt",
  *     policyName: "AliyunACSDefaultAccess",
  *     policyType: "Custom",
- * }));
- *
- * export const firstRoleId = rolesDs.roles[0].id;
+ * });
+ * export const firstRoleId = rolesDs.then(rolesDs => rolesDs.roles?.[0]?.id);
  * ```
  */
 export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ram/getRoles:getRoles", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -45,7 +42,7 @@ export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetRolesArgs {
     /**
-     * - A list of ram role IDs.
+     * A list of ram role IDs.
      */
     ids?: string[];
     /**
@@ -88,9 +85,26 @@ export interface GetRolesResult {
      */
     readonly roles: outputs.ram.GetRolesRole[];
 }
-
+/**
+ * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const rolesDs = alicloud.ram.getRoles({
+ *     nameRegex: ".*test.*",
+ *     outputFile: "roles.txt",
+ *     policyName: "AliyunACSDefaultAccess",
+ *     policyType: "Custom",
+ * });
+ * export const firstRoleId = rolesDs.then(rolesDs => rolesDs.roles?.[0]?.id);
+ * ```
+ */
 export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
-    return pulumi.output(args).apply(a => getRoles(a, opts))
+    return pulumi.output(args).apply((a: any) => getRoles(a, opts))
 }
 
 /**
@@ -98,7 +112,7 @@ export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetRolesOutputArgs {
     /**
-     * - A list of ram role IDs.
+     * A list of ram role IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**

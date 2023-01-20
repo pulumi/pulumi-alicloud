@@ -23,42 +23,40 @@ namespace Pulumi.AliCloud.Nas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Nas.GetLifecyclePolicies.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Nas.GetLifecyclePolicies.InvokeAsync(new AliCloud.Nas.GetLifecyclePoliciesArgs
+        ///         FileSystemId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             FileSystemId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "my-LifecyclePolicy-1",
-        ///                 "my-LifecyclePolicy-2",
-        ///             },
-        ///         }));
-        ///         this.NasLifecyclePolicyId1 = ids.Apply(ids =&gt; ids.Policies?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Nas.GetLifecyclePolicies.InvokeAsync(new AliCloud.Nas.GetLifecyclePoliciesArgs
-        ///         {
-        ///             FileSystemId = "example_value",
-        ///             NameRegex = "^my-LifecyclePolicy",
-        ///         }));
-        ///         this.NasLifecyclePolicyId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Policies?[0]?.Id);
-        ///     }
+        ///             "my-LifecyclePolicy-1",
+        ///             "my-LifecyclePolicy-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("nasLifecyclePolicyId1")]
-        ///     public Output&lt;string&gt; NasLifecyclePolicyId1 { get; set; }
-        ///     [Output("nasLifecyclePolicyId2")]
-        ///     public Output&lt;string&gt; NasLifecyclePolicyId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Nas.GetLifecyclePolicies.Invoke(new()
+        ///     {
+        ///         FileSystemId = "example_value",
+        ///         NameRegex = "^my-LifecyclePolicy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nasLifecyclePolicyId1"] = ids.Apply(getLifecyclePoliciesResult =&gt; getLifecyclePoliciesResult.Policies[0]?.Id),
+        ///         ["nasLifecyclePolicyId2"] = nameRegex.Apply(getLifecyclePoliciesResult =&gt; getLifecyclePoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLifecyclePoliciesResult> InvokeAsync(GetLifecyclePoliciesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLifecyclePoliciesResult>("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args ?? new GetLifecyclePoliciesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLifecyclePoliciesResult>("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args ?? new GetLifecyclePoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Nas Lifecycle Policies of the current Alibaba Cloud user.
@@ -72,46 +70,44 @@ namespace Pulumi.AliCloud.Nas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Nas.GetLifecyclePolicies.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Nas.GetLifecyclePolicies.InvokeAsync(new AliCloud.Nas.GetLifecyclePoliciesArgs
+        ///         FileSystemId = "example_value",
+        ///         Ids = new[]
         ///         {
-        ///             FileSystemId = "example_value",
-        ///             Ids = 
-        ///             {
-        ///                 "my-LifecyclePolicy-1",
-        ///                 "my-LifecyclePolicy-2",
-        ///             },
-        ///         }));
-        ///         this.NasLifecyclePolicyId1 = ids.Apply(ids =&gt; ids.Policies?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Nas.GetLifecyclePolicies.InvokeAsync(new AliCloud.Nas.GetLifecyclePoliciesArgs
-        ///         {
-        ///             FileSystemId = "example_value",
-        ///             NameRegex = "^my-LifecyclePolicy",
-        ///         }));
-        ///         this.NasLifecyclePolicyId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Policies?[0]?.Id);
-        ///     }
+        ///             "my-LifecyclePolicy-1",
+        ///             "my-LifecyclePolicy-2",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("nasLifecyclePolicyId1")]
-        ///     public Output&lt;string&gt; NasLifecyclePolicyId1 { get; set; }
-        ///     [Output("nasLifecyclePolicyId2")]
-        ///     public Output&lt;string&gt; NasLifecyclePolicyId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Nas.GetLifecyclePolicies.Invoke(new()
+        ///     {
+        ///         FileSystemId = "example_value",
+        ///         NameRegex = "^my-LifecyclePolicy",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["nasLifecyclePolicyId1"] = ids.Apply(getLifecyclePoliciesResult =&gt; getLifecyclePoliciesResult.Policies[0]?.Id),
+        ///         ["nasLifecyclePolicyId2"] = nameRegex.Apply(getLifecyclePoliciesResult =&gt; getLifecyclePoliciesResult.Policies[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLifecyclePoliciesResult> Invoke(GetLifecyclePoliciesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLifecyclePoliciesResult>("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args ?? new GetLifecyclePoliciesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetLifecyclePoliciesResult>("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args ?? new GetLifecyclePoliciesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetLifecyclePoliciesArgs : Pulumi.InvokeArgs
+    public sealed class GetLifecyclePoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the file system.
@@ -143,9 +139,10 @@ namespace Pulumi.AliCloud.Nas
         public GetLifecyclePoliciesArgs()
         {
         }
+        public static new GetLifecyclePoliciesArgs Empty => new GetLifecyclePoliciesArgs();
     }
 
-    public sealed class GetLifecyclePoliciesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLifecyclePoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the file system.
@@ -177,6 +174,7 @@ namespace Pulumi.AliCloud.Nas
         public GetLifecyclePoliciesInvokeArgs()
         {
         }
+        public static new GetLifecyclePoliciesInvokeArgs Empty => new GetLifecyclePoliciesInvokeArgs();
     }
 
 

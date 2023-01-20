@@ -5,18 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./backupPlan";
-export * from "./cluster";
-export * from "./dataCenter";
-export * from "./getBackupPlans";
-export * from "./getClusters";
-export * from "./getDataCenters";
-export * from "./getZones";
+export { BackupPlanArgs, BackupPlanState } from "./backupPlan";
+export type BackupPlan = import("./backupPlan").BackupPlan;
+export const BackupPlan: typeof import("./backupPlan").BackupPlan = null as any;
+utilities.lazyLoad(exports, ["BackupPlan"], () => require("./backupPlan"));
 
-// Import resources to register:
-import { BackupPlan } from "./backupPlan";
-import { Cluster } from "./cluster";
-import { DataCenter } from "./dataCenter";
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
+
+export { DataCenterArgs, DataCenterState } from "./dataCenter";
+export type DataCenter = import("./dataCenter").DataCenter;
+export const DataCenter: typeof import("./dataCenter").DataCenter = null as any;
+utilities.lazyLoad(exports, ["DataCenter"], () => require("./dataCenter"));
+
+export { GetBackupPlansArgs, GetBackupPlansResult, GetBackupPlansOutputArgs } from "./getBackupPlans";
+export const getBackupPlans: typeof import("./getBackupPlans").getBackupPlans = null as any;
+export const getBackupPlansOutput: typeof import("./getBackupPlans").getBackupPlansOutput = null as any;
+utilities.lazyLoad(exports, ["getBackupPlans","getBackupPlansOutput"], () => require("./getBackupPlans"));
+
+export { GetClustersArgs, GetClustersResult, GetClustersOutputArgs } from "./getClusters";
+export const getClusters: typeof import("./getClusters").getClusters = null as any;
+export const getClustersOutput: typeof import("./getClusters").getClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getClusters","getClustersOutput"], () => require("./getClusters"));
+
+export { GetDataCentersArgs, GetDataCentersResult, GetDataCentersOutputArgs } from "./getDataCenters";
+export const getDataCenters: typeof import("./getDataCenters").getDataCenters = null as any;
+export const getDataCentersOutput: typeof import("./getDataCenters").getDataCentersOutput = null as any;
+utilities.lazyLoad(exports, ["getDataCenters","getDataCentersOutput"], () => require("./getDataCenters"));
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+
 
 const _module = {
     version: utilities.getVersion(),

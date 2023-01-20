@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,20 +17,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.dns.getAlidnsInstances({
+ * const example = alicloud.dns.getAlidnsInstances({
  *     ids: ["dns-cn-oew1npk****"],
- * }));
- *
- * export const firstInstanceId = example.instances[0].id;
+ * });
+ * export const firstInstanceId = example.then(example => example.instances?.[0]?.id);
  * ```
  */
 export function getAlidnsInstances(args?: GetAlidnsInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsInstancesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:dns/getAlidnsInstances:getAlidnsInstances", {
         "domainType": args.domainType,
         "ids": args.ids,
@@ -83,9 +80,25 @@ export interface GetAlidnsInstancesResult {
     readonly outputFile?: string;
     readonly userClientIp?: string;
 }
-
+/**
+ * This data source provides a list of Alidns instances in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:**  Available in 1.95.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.dns.getAlidnsInstances({
+ *     ids: ["dns-cn-oew1npk****"],
+ * });
+ * export const firstInstanceId = example.then(example => example.instances?.[0]?.id);
+ * ```
+ */
 export function getAlidnsInstancesOutput(args?: GetAlidnsInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsInstancesResult> {
-    return pulumi.output(args).apply(a => getAlidnsInstances(a, opts))
+    return pulumi.output(args).apply((a: any) => getAlidnsInstances(a, opts))
 }
 
 /**

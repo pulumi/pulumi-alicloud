@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs : Pulumi.ResourceArgs
+    public sealed class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the destination server group to which requests are forwarded.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs()
         {
         }
+        public static new ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs Empty => new ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs();
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -31,7 +32,7 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?[0]?.id,
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
@@ -44,22 +45,22 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.zones?[0]?.id,
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
  * }));
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?[0])});
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
  * const beijingK = new alicloud.ecs.EcsInstanceSet("beijingK", {
  *     amount: 100,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
  *     instanceName: name,
  *     instanceChargeType: "PostPaid",
  *     systemDiskPerformanceLevel: "PL0",
  *     systemDiskCategory: "cloud_essd",
  *     systemDiskSize: 200,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     securityGroupIds: [defaultSecurityGroup].map(__item => __item.id),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
  * ```
  */
@@ -111,8 +112,6 @@ export class EcsInstanceSet extends pulumi.CustomResource {
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
      * Indicate how to check instance ready to use.
-     * - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-     * - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
      */
     public readonly bootCheckOsWithAssistant!: pulumi.Output<boolean | undefined>;
     /**
@@ -223,8 +222,6 @@ export class EcsInstanceSet extends pulumi.CustomResource {
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
      * The security enhancement strategy.
-     * - `Active`: Enable security enhancement strategy, it only works on system images.
-     * - `Deactive`: Disable security enhancement strategy, it works on all images.
      */
     public readonly securityEnhancementStrategy!: pulumi.Output<string | undefined>;
     /**
@@ -237,9 +234,6 @@ export class EcsInstanceSet extends pulumi.CustomResource {
     public readonly spotPriceLimit!: pulumi.Output<number>;
     /**
      * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
-     * - `NoSpot`: A regular Pay-As-You-Go instance.
-     * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
      */
     public readonly spotStrategy!: pulumi.Output<string>;
     /**
@@ -376,7 +370,7 @@ export class EcsInstanceSet extends pulumi.CustomResource {
             resourceInputs["launchTemplateName"] = args ? args.launchTemplateName : undefined;
             resourceInputs["launchTemplateVersion"] = args ? args.launchTemplateVersion : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["passwordInherit"] = args ? args.passwordInherit : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
@@ -399,6 +393,8 @@ export class EcsInstanceSet extends pulumi.CustomResource {
             resourceInputs["instanceIds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(EcsInstanceSet.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -427,8 +423,6 @@ export interface EcsInstanceSetState {
     autoRenewPeriod?: pulumi.Input<number>;
     /**
      * Indicate how to check instance ready to use.
-     * - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-     * - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
      */
     bootCheckOsWithAssistant?: pulumi.Input<boolean>;
     /**
@@ -539,8 +533,6 @@ export interface EcsInstanceSetState {
     resourceGroupId?: pulumi.Input<string>;
     /**
      * The security enhancement strategy.
-     * - `Active`: Enable security enhancement strategy, it only works on system images.
-     * - `Deactive`: Disable security enhancement strategy, it works on all images.
      */
     securityEnhancementStrategy?: pulumi.Input<string>;
     /**
@@ -553,9 +545,6 @@ export interface EcsInstanceSetState {
     spotPriceLimit?: pulumi.Input<number>;
     /**
      * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
-     * - `NoSpot`: A regular Pay-As-You-Go instance.
-     * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
      */
     spotStrategy?: pulumi.Input<string>;
     /**
@@ -624,8 +613,6 @@ export interface EcsInstanceSetArgs {
     autoRenewPeriod?: pulumi.Input<number>;
     /**
      * Indicate how to check instance ready to use.
-     * - `false`: Default value. Means that the instances are ready when their DescribeInstances status is Running, at which time guestOS(Ecs os) may not be ready yet.
-     * - `true`: Checking instance ready with Ecs assistant, which means guestOs boots successfully. Premise is that the specified image `imageId` has built-in Ecs assistant. Most of the public images have assistant installed already.
      */
     bootCheckOsWithAssistant?: pulumi.Input<boolean>;
     /**
@@ -732,8 +719,6 @@ export interface EcsInstanceSetArgs {
     resourceGroupId?: pulumi.Input<string>;
     /**
      * The security enhancement strategy.
-     * - `Active`: Enable security enhancement strategy, it only works on system images.
-     * - `Deactive`: Disable security enhancement strategy, it works on all images.
      */
     securityEnhancementStrategy?: pulumi.Input<string>;
     /**
@@ -746,9 +731,6 @@ export interface EcsInstanceSetArgs {
     spotPriceLimit?: pulumi.Input<number>;
     /**
      * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
-     * - `NoSpot`: A regular Pay-As-You-Go instance.
-     * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
      */
     spotStrategy?: pulumi.Input<string>;
     /**

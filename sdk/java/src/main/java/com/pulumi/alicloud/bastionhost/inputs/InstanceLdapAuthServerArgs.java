@@ -18,14 +18,14 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
     public static final InstanceLdapAuthServerArgs Empty = new InstanceLdapAuthServerArgs();
 
     /**
-     * The username of the account that is used for the LDAP server.
+     * The username of the account that is used for the AD server.
      * 
      */
     @Import(name="account", required=true)
     private Output<String> account;
 
     /**
-     * @return The username of the account that is used for the LDAP server.
+     * @return The username of the account that is used for the AD server.
      * 
      */
     public Output<String> account() {
@@ -48,14 +48,14 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The field that is used to indicate the email address of a user on the LDAP server.
+     * The field that is used to indicate the email address of a user on the AD server.
      * 
      */
     @Import(name="emailMapping")
     private @Nullable Output<String> emailMapping;
 
     /**
-     * @return The field that is used to indicate the email address of a user on the LDAP server.
+     * @return The field that is used to indicate the email address of a user on the AD server.
      * 
      */
     public Optional<Output<String>> emailMapping() {
@@ -108,14 +108,14 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The field that is used to indicate the mobile phone number of a user on the LDAP server.
+     * The field that is used to indicate the mobile phone number of a user on the AD server.
      * 
      */
     @Import(name="mobileMapping")
     private @Nullable Output<String> mobileMapping;
 
     /**
-     * @return The field that is used to indicate the mobile phone number of a user on the LDAP server.
+     * @return The field that is used to indicate the mobile phone number of a user on the AD server.
      * 
      */
     public Optional<Output<String>> mobileMapping() {
@@ -123,14 +123,14 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The field that is used to indicate the name of a user on the LDAP server.
+     * The field that is used to indicate the name of a user on the AD server.
      * 
      */
     @Import(name="nameMapping")
     private @Nullable Output<String> nameMapping;
 
     /**
-     * @return The field that is used to indicate the name of a user on the LDAP server.
+     * @return The field that is used to indicate the name of a user on the AD server.
      * 
      */
     public Optional<Output<String>> nameMapping() {
@@ -138,14 +138,14 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The password of the account that is used for the LDAP server.
+     * The password of the account that is used for the AD server.
      * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
-     * @return The password of the account that is used for the LDAP server.
+     * @return The password of the account that is used for the AD server.
      * 
      */
     public Output<String> password() {
@@ -153,14 +153,14 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The port that is used to access the LDAP server.
+     * The port that is used to access the AD server.
      * 
      */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
     /**
-     * @return The port that is used to access the LDAP server.
+     * @return The port that is used to access the AD server.
      * 
      */
     public Output<Integer> port() {
@@ -168,14 +168,14 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The address of the LDAP server.
+     * The address of the AD server.
      * 
      */
     @Import(name="server", required=true)
     private Output<String> server;
 
     /**
-     * @return The address of the LDAP server.
+     * @return The address of the AD server.
      * 
      */
     public Output<String> server() {
@@ -183,14 +183,14 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The address of the secondary LDAP server.
+     * The address of the secondary AD server.
      * 
      */
     @Import(name="standbyServer")
     private @Nullable Output<String> standbyServer;
 
     /**
-     * @return The address of the secondary LDAP server.
+     * @return The address of the secondary AD server.
      * 
      */
     public Optional<Output<String>> standbyServer() {
@@ -233,7 +233,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param account The username of the account that is used for the LDAP server.
+         * @param account The username of the account that is used for the AD server.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param account The username of the account that is used for the LDAP server.
+         * @param account The username of the account that is used for the AD server.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param emailMapping The field that is used to indicate the email address of a user on the LDAP server.
+         * @param emailMapping The field that is used to indicate the email address of a user on the AD server.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param emailMapping The field that is used to indicate the email address of a user on the LDAP server.
+         * @param emailMapping The field that is used to indicate the email address of a user on the AD server.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mobileMapping The field that is used to indicate the mobile phone number of a user on the LDAP server.
+         * @param mobileMapping The field that is used to indicate the mobile phone number of a user on the AD server.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mobileMapping The field that is used to indicate the mobile phone number of a user on the LDAP server.
+         * @param mobileMapping The field that is used to indicate the mobile phone number of a user on the AD server.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param nameMapping The field that is used to indicate the name of a user on the LDAP server.
+         * @param nameMapping The field that is used to indicate the name of a user on the AD server.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param nameMapping The field that is used to indicate the name of a user on the LDAP server.
+         * @param nameMapping The field that is used to indicate the name of a user on the AD server.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param password The password of the account that is used for the LDAP server.
+         * @param password The password of the account that is used for the AD server.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param password The password of the account that is used for the LDAP server.
+         * @param password The password of the account that is used for the AD server.
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param port The port that is used to access the LDAP server.
+         * @param port The port that is used to access the AD server.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param port The port that is used to access the LDAP server.
+         * @param port The port that is used to access the AD server.
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param server The address of the LDAP server.
+         * @param server The address of the AD server.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param server The address of the LDAP server.
+         * @param server The address of the AD server.
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param standbyServer The address of the secondary LDAP server.
+         * @param standbyServer The address of the secondary AD server.
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class InstanceLdapAuthServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param standbyServer The address of the secondary LDAP server.
+         * @param standbyServer The address of the secondary AD server.
          * 
          * @return builder
          * 

@@ -70,9 +70,17 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The status of the resource group in all regions.
+     * 
+     */
     @Import(name="regionStatuses")
     private @Nullable Output<List<ResourceGroupRegionStatusArgs>> regionStatuses;
 
+    /**
+     * @return The status of the resource group in all regions.
+     * 
+     */
     public Optional<Output<List<ResourceGroupRegionStatusArgs>>> regionStatuses() {
         return Optional.ofNullable(this.regionStatuses);
     }
@@ -207,15 +215,33 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
             return name(Output.of(name));
         }
 
+        /**
+         * @param regionStatuses The status of the resource group in all regions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionStatuses(@Nullable Output<List<ResourceGroupRegionStatusArgs>> regionStatuses) {
             $.regionStatuses = regionStatuses;
             return this;
         }
 
+        /**
+         * @param regionStatuses The status of the resource group in all regions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionStatuses(List<ResourceGroupRegionStatusArgs> regionStatuses) {
             return regionStatuses(Output.of(regionStatuses));
         }
 
+        /**
+         * @param regionStatuses The status of the resource group in all regions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionStatuses(ResourceGroupRegionStatusArgs... regionStatuses) {
             return regionStatuses(List.of(regionStatuses));
         }

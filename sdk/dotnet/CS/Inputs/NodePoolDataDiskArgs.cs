@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class NodePoolDataDiskArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolDataDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoSnapshotPolicyId")]
         public Input<string>? AutoSnapshotPolicyId { get; set; }
@@ -60,5 +60,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public NodePoolDataDiskArgs()
         {
         }
+        public static new NodePoolDataDiskArgs Empty => new NodePoolDataDiskArgs();
     }
 }

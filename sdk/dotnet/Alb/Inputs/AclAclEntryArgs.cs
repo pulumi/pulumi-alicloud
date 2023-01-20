@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb.Inputs
 {
 
-    public sealed class AclAclEntryArgs : Pulumi.ResourceArgs
+    public sealed class AclAclEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
@@ -33,5 +33,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public AclAclEntryArgs()
         {
         }
+        public static new AclAclEntryArgs Empty => new AclAclEntryArgs();
     }
 }

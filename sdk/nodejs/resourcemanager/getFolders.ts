@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,20 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.resourcemanager.getFolders({
+ * const example = alicloud.resourcemanager.getFolders({
  *     nameRegex: "tftest",
- * }));
- *
- * export const firstFolderId = example.folders[0].id;
+ * });
+ * export const firstFolderId = example.then(example => example.folders?.[0]?.id);
  * ```
  */
 export function getFolders(args?: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getFolders:getFolders", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
@@ -47,7 +44,7 @@ export function getFolders(args?: GetFoldersArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetFoldersArgs {
     /**
-     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     * Default to `false`. Set it to true can output more details.
      */
     enableDetails?: boolean;
     /**
@@ -92,12 +89,33 @@ export interface GetFoldersResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * (Available in v1.114.0+)The ID of the parent folder.
+     */
     readonly parentFolderId?: string;
     readonly queryKeyword?: string;
 }
-
+/**
+ * This data source provides the resource manager folders of the current Alibaba Cloud user.
+ *
+ * > **NOTE:**  Available in 1.84.0+.
+ *
+ * > **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.resourcemanager.getFolders({
+ *     nameRegex: "tftest",
+ * });
+ * export const firstFolderId = example.then(example => example.folders?.[0]?.id);
+ * ```
+ */
 export function getFoldersOutput(args?: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
-    return pulumi.output(args).apply(a => getFolders(a, opts))
+    return pulumi.output(args).apply((a: any) => getFolders(a, opts))
 }
 
 /**
@@ -105,7 +123,7 @@ export function getFoldersOutput(args?: GetFoldersOutputArgs, opts?: pulumi.Invo
  */
 export interface GetFoldersOutputArgs {
     /**
-     * -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+     * Default to `false`. Set it to true can output more details.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**

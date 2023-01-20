@@ -260,15 +260,6 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
     }
     /**
      * The status of volume. Valid values:
-     * - `0`: Normal condition.
-     * - `1`: Failed to create volume.
-     * - `2`: Failed to delete volume.
-     * - `3`: Failed to enable target.
-     * - `4`: Failed to disable target.
-     * - `5`: Database error.
-     * - `6`: Failed to enable cache.
-     * - `7`: Failed to disable cache.
-     * - `8`: System error.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
@@ -276,15 +267,6 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The status of volume. Valid values:
-     * - `0`: Normal condition.
-     * - `1`: Failed to create volume.
-     * - `2`: Failed to delete volume.
-     * - `3`: Failed to enable target.
-     * - `4`: Failed to disable target.
-     * - `5`: Database error.
-     * - `6`: Failed to enable cache.
-     * - `7`: Failed to disable cache.
-     * - `8`: System error.
      * 
      */
     public Output<String> status() {

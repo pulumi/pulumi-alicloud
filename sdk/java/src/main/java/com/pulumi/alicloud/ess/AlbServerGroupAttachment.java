@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -175,14 +175,14 @@ public class AlbServerGroupAttachment extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.forceAttach);
     }
     /**
-     * - The port will be used for Alb Server Group backend server.
+     * The port will be used for Alb Server Group backend server.
      * 
      */
     @Export(name="port", type=Integer.class, parameters={})
     private Output<Integer> port;
 
     /**
-     * @return - The port will be used for Alb Server Group backend server.
+     * @return The port will be used for Alb Server Group backend server.
      * 
      */
     public Output<Integer> port() {

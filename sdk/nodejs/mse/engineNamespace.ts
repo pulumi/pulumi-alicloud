@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
+ *     vpcId: defaultNetworks.ids?.[0],
  * }));
  * const defaultCluster = new alicloud.mse.Cluster("defaultCluster", {
  *     clusterSpecification: "MSE_SC_1_2_200_c",
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     clusterVersion: "NACOS_ANS_1_2_1",
  *     instanceCount: 1,
  *     netType: "privatenet",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     pubNetworkFlow: "1",
  *     aclEntryLists: ["127.0.0.1/32"],
  *     clusterAliasName: "example_value",

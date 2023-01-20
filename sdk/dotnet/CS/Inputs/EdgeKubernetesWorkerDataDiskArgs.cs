@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class EdgeKubernetesWorkerDataDiskArgs : Pulumi.ResourceArgs
+    public sealed class EdgeKubernetesWorkerDataDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Worker node data disk auto snapshot policy.
@@ -60,5 +60,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public EdgeKubernetesWorkerDataDiskArgs()
         {
         }
+        public static new EdgeKubernetesWorkerDataDiskArgs Empty => new EdgeKubernetesWorkerDataDiskArgs();
     }
 }

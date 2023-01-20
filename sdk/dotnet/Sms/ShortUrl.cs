@@ -21,22 +21,20 @@ namespace Pulumi.AliCloud.Sms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Sms.ShortUrl("example", new()
     ///     {
-    ///         var example = new AliCloud.Sms.ShortUrl("example", new AliCloud.Sms.ShortUrlArgs
-    ///         {
-    ///             EffectiveDays = 30,
-    ///             ShortUrlName = "example_value",
-    ///             SourceUrl = "example_value",
-    ///         });
-    ///     }
+    ///         EffectiveDays = 30,
+    ///         ShortUrlName = "example_value",
+    ///         SourceUrl = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.AliCloud.Sms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sms/shortUrl:ShortUrl")]
-    public partial class ShortUrl : Pulumi.CustomResource
+    public partial class ShortUrl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
@@ -118,7 +116,7 @@ namespace Pulumi.AliCloud.Sms
         }
     }
 
-    public sealed class ShortUrlArgs : Pulumi.ResourceArgs
+    public sealed class ShortUrlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
@@ -141,9 +139,10 @@ namespace Pulumi.AliCloud.Sms
         public ShortUrlArgs()
         {
         }
+        public static new ShortUrlArgs Empty => new ShortUrlArgs();
     }
 
-    public sealed class ShortUrlState : Pulumi.ResourceArgs
+    public sealed class ShortUrlState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
@@ -172,5 +171,6 @@ namespace Pulumi.AliCloud.Sms
         public ShortUrlState()
         {
         }
+        public static new ShortUrlState Empty => new ShortUrlState();
     }
 }

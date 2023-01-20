@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,31 +15,29 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const vpnGateways = pulumi.output(alicloud.vpn.getGateways({
+ * const vpnGateways = alicloud.vpn.getGateways({
  *     businessStatus: "Normal",
- *     enableIpsec: true,
  *     ids: [
  *         "fake-vpn-id1",
  *         "fake-vpn-id2",
  *     ],
+ *     includeReservationData: true,
  *     nameRegex: "testAcc*",
  *     outputFile: "/tmp/vpns",
- *     status: "active",
+ *     status: "Active",
  *     vpcId: "fake-vpc-id",
- * }));
+ * });
  * ```
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:vpn/getGateways:getGateways", {
         "businessStatus": args.businessStatus,
         "enableIpsec": args.enableIpsec,
         "ids": args.ids,
+        "includeReservationData": args.includeReservationData,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "status": args.status,
@@ -56,12 +55,18 @@ export interface GetGatewaysArgs {
     businessStatus?: string;
     /**
      * Indicates whether the IPsec-VPN feature is enabled.
+     *
+     * @deprecated Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
      */
     enableIpsec?: boolean;
     /**
      * IDs of the VPN.
      */
     ids?: string[];
+    /**
+     * Include ineffective ordering data.
+     */
+    includeReservationData?: boolean;
     /**
      * A regex string of VPN name.
      */
@@ -90,6 +95,8 @@ export interface GetGatewaysResult {
     readonly businessStatus?: string;
     /**
      * Whether the ipsec function is enabled.
+     *
+     * @deprecated Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
      */
     readonly enableIpsec?: boolean;
     /**
@@ -104,6 +111,7 @@ export interface GetGatewaysResult {
      * IDs of the VPN.
      */
     readonly ids: string[];
+    readonly includeReservationData?: boolean;
     readonly nameRegex?: string;
     /**
      * names of the VPN.
@@ -119,9 +127,31 @@ export interface GetGatewaysResult {
      */
     readonly vpcId?: string;
 }
-
+/**
+ * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const vpnGateways = alicloud.vpn.getGateways({
+ *     businessStatus: "Normal",
+ *     ids: [
+ *         "fake-vpn-id1",
+ *         "fake-vpn-id2",
+ *     ],
+ *     includeReservationData: true,
+ *     nameRegex: "testAcc*",
+ *     outputFile: "/tmp/vpns",
+ *     status: "Active",
+ *     vpcId: "fake-vpc-id",
+ * });
+ * ```
+ */
 export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
-    return pulumi.output(args).apply(a => getGateways(a, opts))
+    return pulumi.output(args).apply((a: any) => getGateways(a, opts))
 }
 
 /**
@@ -134,12 +164,18 @@ export interface GetGatewaysOutputArgs {
     businessStatus?: pulumi.Input<string>;
     /**
      * Indicates whether the IPsec-VPN feature is enabled.
+     *
+     * @deprecated Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
      */
     enableIpsec?: pulumi.Input<boolean>;
     /**
      * IDs of the VPN.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Include ineffective ordering data.
+     */
+    includeReservationData?: pulumi.Input<boolean>;
     /**
      * A regex string of VPN name.
      */

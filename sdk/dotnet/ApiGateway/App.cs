@@ -15,20 +15,18 @@ namespace Pulumi.AliCloud.ApiGateway
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var apiTest = new AliCloud.ApiGateway.App("apiTest", new()
     ///     {
-    ///         var apiTest = new AliCloud.ApiGateway.App("apiTest", new AliCloud.ApiGateway.AppArgs
-    ///         {
-    ///             Description = "description of the app",
-    ///         });
-    ///     }
+    ///         Description = "description of the app",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +38,7 @@ namespace Pulumi.AliCloud.ApiGateway
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:apigateway/app:App")]
-    public partial class App : Pulumi.CustomResource
+    public partial class App : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the app. Defaults to null.
@@ -104,7 +102,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
     }
 
-    public sealed class AppArgs : Pulumi.ResourceArgs
+    public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the app. Defaults to null.
@@ -133,9 +131,10 @@ namespace Pulumi.AliCloud.ApiGateway
         public AppArgs()
         {
         }
+        public static new AppArgs Empty => new AppArgs();
     }
 
-    public sealed class AppState : Pulumi.ResourceArgs
+    public sealed class AppState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the app. Defaults to null.
@@ -164,5 +163,6 @@ namespace Pulumi.AliCloud.ApiGateway
         public AppState()
         {
         }
+        public static new AppState Empty => new AppState();
     }
 }

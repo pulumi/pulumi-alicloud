@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -32,7 +33,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
@@ -112,12 +113,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly collectorStatus!: pulumi.Output<string>;
     /**
-     * (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
+     * (Available in 1.81.0+) PolarDB cluster connection string.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
-     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`.
      */
     public readonly creationCategory!: pulumi.Output<string>;
     /**
@@ -155,7 +156,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The description of cluster.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
@@ -190,6 +191,10 @@ export class Cluster extends pulumi.CustomResource {
     public readonly payType!: pulumi.Output<string | undefined>;
     public readonly period!: pulumi.Output<number | undefined>;
     /**
+     * (Available in 1.196.0+) PolarDB cluster connection port.
+     */
+    public /*out*/ readonly port!: pulumi.Output<string>;
+    /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
     public readonly renewalStatus!: pulumi.Output<string | undefined>;
@@ -203,7 +208,8 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
-     * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
+     * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
      */
     public readonly securityIps!: pulumi.Output<string[]>;
     /**
@@ -226,10 +232,14 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly tdeStatus!: pulumi.Output<string | undefined>;
     /**
+     * The id of the VPC.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
+    /**
      * The virtual switch ID to launch DB instances in one VPC.
      * > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
      * The Zone to launch the DB cluster. it supports multiple zone.
      */
@@ -270,6 +280,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["payType"] = state ? state.payType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
@@ -278,6 +289,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["subCategory"] = state ? state.subCategory : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -320,9 +332,11 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["subCategory"] = args ? args.subCategory : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
@@ -351,12 +365,12 @@ export interface ClusterState {
      */
     collectorStatus?: pulumi.Input<string>;
     /**
-     * (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
+     * (Available in 1.81.0+) PolarDB cluster connection string.
      */
     connectionString?: pulumi.Input<string>;
     /**
-     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`.
      */
     creationCategory?: pulumi.Input<string>;
     /**
@@ -429,6 +443,10 @@ export interface ClusterState {
     payType?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     /**
+     * (Available in 1.196.0+) PolarDB cluster connection port.
+     */
+    port?: pulumi.Input<string>;
+    /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
     renewalStatus?: pulumi.Input<string>;
@@ -442,7 +460,8 @@ export interface ClusterState {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
+     * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -464,6 +483,10 @@ export interface ClusterState {
      * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      */
     tdeStatus?: pulumi.Input<string>;
+    /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      * > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
@@ -497,8 +520,8 @@ export interface ClusterArgs {
      */
     collectorStatus?: pulumi.Input<string>;
     /**
-     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0.
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`.
      */
     creationCategory?: pulumi.Input<string>;
     /**
@@ -584,7 +607,8 @@ export interface ClusterArgs {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
+     * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -606,6 +630,10 @@ export interface ClusterArgs {
      * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      */
     tdeStatus?: pulumi.Input<string>;
+    /**
+     * The id of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      * > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.

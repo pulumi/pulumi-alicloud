@@ -23,10 +23,10 @@ namespace Pulumi.AliCloud.Vpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/networkAcl:NetworkAcl")]
-    public partial class NetworkAcl : Pulumi.CustomResource
+    public partial class NetworkAcl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of egress entries.
+        /// The description of the network acl instance.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> NetworkAclName { get; private set; } = null!;
 
         /// <summary>
-        /// The associated resources.
+        /// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`."
         /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<Outputs.NetworkAclResource>> Resources { get; private set; } = null!;
@@ -117,10 +117,10 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
-    public sealed class NetworkAclArgs : Pulumi.ResourceArgs
+    public sealed class NetworkAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of egress entries.
+        /// The description of the network acl instance.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -165,8 +165,9 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclResourceArgs>? _resources;
 
         /// <summary>
-        /// The associated resources.
+        /// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`."
         /// </summary>
+        [Obsolete(@"Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.")]
         public InputList<Inputs.NetworkAclResourceArgs> Resources
         {
             get => _resources ?? (_resources = new InputList<Inputs.NetworkAclResourceArgs>());
@@ -182,12 +183,13 @@ namespace Pulumi.AliCloud.Vpc
         public NetworkAclArgs()
         {
         }
+        public static new NetworkAclArgs Empty => new NetworkAclArgs();
     }
 
-    public sealed class NetworkAclState : Pulumi.ResourceArgs
+    public sealed class NetworkAclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of egress entries.
+        /// The description of the network acl instance.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -232,8 +234,9 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclResourceGetArgs>? _resources;
 
         /// <summary>
-        /// The associated resources.
+        /// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`."
         /// </summary>
+        [Obsolete(@"Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.")]
         public InputList<Inputs.NetworkAclResourceGetArgs> Resources
         {
             get => _resources ?? (_resources = new InputList<Inputs.NetworkAclResourceGetArgs>());
@@ -255,5 +258,6 @@ namespace Pulumi.AliCloud.Vpc
         public NetworkAclState()
         {
         }
+        public static new NetworkAclState Empty => new NetworkAclState();
     }
 }

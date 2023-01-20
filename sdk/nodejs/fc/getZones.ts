@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,17 +17,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const zonesIds = pulumi.output(alicloud.fc.getZones());
+ * const zonesIds = alicloud.fc.getZones({});
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:fc/getZones:getZones", {
         "outputFile": args.outputFile,
     }, opts);
@@ -57,9 +54,22 @@ export interface GetZonesResult {
      */
     readonly zones: outputs.fc.GetZonesZone[];
 }
-
+/**
+ * This data source provides availability zones for FunctionCompute that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+ *
+ * > **NOTE:** Available in v1.74.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const zonesIds = alicloud.fc.getZones({});
+ * ```
+ */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    return pulumi.output(args).apply(a => getZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getZones(a, opts))
 }
 
 /**

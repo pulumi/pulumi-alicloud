@@ -111,6 +111,13 @@ func NewInstance(ctx *pulumi.Context,
 	if args.EngineVersion == nil {
 		return nil, errors.New("invalid value for required argument 'EngineVersion'")
 	}
+	if args.AccountPassword != nil {
+		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accountPassword",
+	})
+	opts = append(opts, secrets)
 	var resource Instance
 	err := ctx.RegisterResource("alicloud:mongodb/instance:Instance", name, args, &resource, opts...)
 	if err != nil {

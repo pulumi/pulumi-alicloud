@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Alb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Alb.GetRules.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Alb.GetRules.InvokeAsync(new AliCloud.Alb.GetRulesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.AlbRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Alb.GetRules.InvokeAsync(new AliCloud.Alb.GetRulesArgs
-        ///         {
-        ///             NameRegex = "^my-Rule",
-        ///         }));
-        ///         this.AlbRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("albRuleId1")]
-        ///     public Output&lt;string&gt; AlbRuleId1 { get; set; }
-        ///     [Output("albRuleId2")]
-        ///     public Output&lt;string&gt; AlbRuleId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Alb.GetRules.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Rule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albRuleId1"] = ids.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///         ["albRuleId2"] = nameRegex.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:alb/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:alb/getRules:getRules", args ?? new GetRulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Alb Rules of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Alb
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Alb.GetRules.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Alb.GetRules.InvokeAsync(new AliCloud.Alb.GetRulesArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.AlbRuleId1 = ids.Apply(ids =&gt; ids.Rules?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Alb.GetRules.InvokeAsync(new AliCloud.Alb.GetRulesArgs
-        ///         {
-        ///             NameRegex = "^my-Rule",
-        ///         }));
-        ///         this.AlbRuleId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Rules?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("albRuleId1")]
-        ///     public Output&lt;string&gt; AlbRuleId1 { get; set; }
-        ///     [Output("albRuleId2")]
-        ///     public Output&lt;string&gt; AlbRuleId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Alb.GetRules.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Rule",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["albRuleId1"] = ids.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///         ["albRuleId2"] = nameRegex.Apply(getRulesResult =&gt; getRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRulesResult> Invoke(GetRulesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:alb/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRulesResult>("alicloud:alb/getRules:getRules", args ?? new GetRulesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRulesArgs : Pulumi.InvokeArgs
+    public sealed class GetRulesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -173,9 +169,10 @@ namespace Pulumi.AliCloud.Alb
         public GetRulesArgs()
         {
         }
+        public static new GetRulesArgs Empty => new GetRulesArgs();
     }
 
-    public sealed class GetRulesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -243,6 +240,7 @@ namespace Pulumi.AliCloud.Alb
         public GetRulesInvokeArgs()
         {
         }
+        public static new GetRulesInvokeArgs Empty => new GetRulesInvokeArgs();
     }
 
 

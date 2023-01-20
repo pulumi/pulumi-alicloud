@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -26,15 +27,12 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const gaAdditionalCertificateId1 = ids.then(ids => ids.certificates?[0]?.id);
+ * export const gaAdditionalCertificateId1 = ids.then(ids => ids.certificates?.[0]?.id);
  * ```
  */
 export function getAdditionalCertificates(args: GetAdditionalCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetAdditionalCertificatesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", {
         "acceleratorId": args.acceleratorId,
         "ids": args.ids,
@@ -76,9 +74,32 @@ export interface GetAdditionalCertificatesResult {
     readonly listenerId: string;
     readonly outputFile?: string;
 }
-
+/**
+ * This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.150.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const ids = alicloud.ga.getAdditionalCertificates({
+ *     acceleratorId: "example_value",
+ *     listenerId: "example_value",
+ *     ids: [
+ *         "example_value-1",
+ *         "example_value-2",
+ *     ],
+ * });
+ * export const gaAdditionalCertificateId1 = ids.then(ids => ids.certificates?.[0]?.id);
+ * ```
+ */
 export function getAdditionalCertificatesOutput(args: GetAdditionalCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdditionalCertificatesResult> {
-    return pulumi.output(args).apply(a => getAdditionalCertificates(a, opts))
+    return pulumi.output(args).apply((a: any) => getAdditionalCertificates(a, opts))
 }
 
 /**

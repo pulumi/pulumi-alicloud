@@ -21,30 +21,28 @@ namespace Pulumi.AliCloud.Sae
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Sae.LoadBalancerInternet("example", new()
     ///     {
-    ///         var example = new AliCloud.Sae.LoadBalancerInternet("example", new AliCloud.Sae.LoadBalancerInternetArgs
+    ///         AppId = "your_application_id",
+    ///         Internets = new[]
     ///         {
-    ///             AppId = "your_application_id",
-    ///             Internets = 
+    ///             new AliCloud.Sae.Inputs.LoadBalancerInternetInternetArgs
     ///             {
-    ///                 new AliCloud.Sae.Inputs.LoadBalancerInternetInternetArgs
-    ///                 {
-    ///                     Port = 80,
-    ///                     Protocol = "TCP",
-    ///                     TargetPort = 8080,
-    ///                 },
+    ///                 Port = 80,
+    ///                 Protocol = "TCP",
+    ///                 TargetPort = 8080,
     ///             },
-    ///             InternetSlbId = "your_internet_slb_id",
-    ///         });
-    ///     }
+    ///         },
+    ///         InternetSlbId = "your_internet_slb_id",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.AliCloud.Sae
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:sae/loadBalancerInternet:LoadBalancerInternet")]
-    public partial class LoadBalancerInternet : Pulumi.CustomResource
+    public partial class LoadBalancerInternet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The target application ID that needs to be bound to the SLB.
@@ -126,7 +124,7 @@ namespace Pulumi.AliCloud.Sae
         }
     }
 
-    public sealed class LoadBalancerInternetArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerInternetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The target application ID that needs to be bound to the SLB.
@@ -155,9 +153,10 @@ namespace Pulumi.AliCloud.Sae
         public LoadBalancerInternetArgs()
         {
         }
+        public static new LoadBalancerInternetArgs Empty => new LoadBalancerInternetArgs();
     }
 
-    public sealed class LoadBalancerInternetState : Pulumi.ResourceArgs
+    public sealed class LoadBalancerInternetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The target application ID that needs to be bound to the SLB.
@@ -192,5 +191,6 @@ namespace Pulumi.AliCloud.Sae
         public LoadBalancerInternetState()
         {
         }
+        public static new LoadBalancerInternetState Empty => new LoadBalancerInternetState();
     }
 }

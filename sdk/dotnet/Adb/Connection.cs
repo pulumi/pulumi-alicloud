@@ -20,51 +20,53 @@ namespace Pulumi.AliCloud.Adb
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var creation = config.Get("creation") ?? "ADB";
+    ///     var name = config.Get("name") ?? "adbaccountmysql";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var creation = config.Get("creation") ?? "ADB";
-    ///         var name = config.Get("name") ?? "adbaccountmysql";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableResourceCreation = creation,
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var cluster = new AliCloud.Adb.Cluster("cluster", new AliCloud.Adb.ClusterArgs
-    ///         {
-    ///             DbClusterVersion = "3.0",
-    ///             DbClusterCategory = "Cluster",
-    ///             DbNodeClass = "C8",
-    ///             DbNodeCount = 2,
-    ///             DbNodeStorage = 200,
-    ///             PayType = "PostPaid",
-    ///             VswitchId = defaultSwitch.Id,
-    ///             Description = name,
-    ///         });
-    ///         var connection = new AliCloud.Adb.Connection("connection", new AliCloud.Adb.ConnectionArgs
-    ///         {
-    ///             DbClusterId = cluster.Id,
-    ///             ConnectionPrefix = "testabc",
-    ///         });
-    ///     }
+    ///         AvailableResourceCreation = creation,
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var cluster = new AliCloud.Adb.Cluster("cluster", new()
+    ///     {
+    ///         DbClusterVersion = "3.0",
+    ///         DbClusterCategory = "Cluster",
+    ///         DbNodeClass = "C8",
+    ///         DbNodeCount = 2,
+    ///         DbNodeStorage = 200,
+    ///         PayType = "PostPaid",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var connection = new AliCloud.Adb.Connection("connection", new()
+    ///     {
+    ///         DbClusterId = cluster.Id,
+    ///         ConnectionPrefix = "testabc",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -76,7 +78,7 @@ namespace Pulumi.AliCloud.Adb
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:adb/connection:Connection")]
-    public partial class Connection : Pulumi.CustomResource
+    public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `&lt;db_cluster_id&gt; + tf`.
@@ -152,7 +154,7 @@ namespace Pulumi.AliCloud.Adb
         }
     }
 
-    public sealed class ConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `&lt;db_cluster_id&gt; + tf`.
@@ -169,9 +171,10 @@ namespace Pulumi.AliCloud.Adb
         public ConnectionArgs()
         {
         }
+        public static new ConnectionArgs Empty => new ConnectionArgs();
     }
 
-    public sealed class ConnectionState : Pulumi.ResourceArgs
+    public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `&lt;db_cluster_id&gt; + tf`.
@@ -206,5 +209,6 @@ namespace Pulumi.AliCloud.Adb
         public ConnectionState()
         {
         }
+        public static new ConnectionState Empty => new ConnectionState();
     }
 }

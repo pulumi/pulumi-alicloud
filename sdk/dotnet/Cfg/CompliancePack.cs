@@ -21,58 +21,59 @@ namespace Pulumi.AliCloud.Cfg
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "example_name";
-    ///         var defaultInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync());
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
-    ///         {
-    ///             Status = "OK",
-    ///         }));
-    ///         var defaultRule = new AliCloud.Cfg.Rule("defaultRule", new AliCloud.Cfg.RuleArgs
-    ///         {
-    ///             RuleName = name,
-    ///             Description = name,
-    ///             SourceIdentifier = "ecs-instances-in-vpc",
-    ///             SourceOwner = "ALIYUN",
-    ///             ResourceTypesScopes = 
-    ///             {
-    ///                 "ACS::ECS::Instance",
-    ///             },
-    ///             RiskLevel = 1,
-    ///             ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
-    ///             TagKeyScope = "tfTest",
-    ///             TagValueScope = "tfTest 123",
-    ///             ResourceGroupIdsScope = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Ids?[0]),
-    ///             ExcludeResourceIdsScope = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances?[0]?.Id),
-    ///             RegionIdsScope = "cn-hangzhou",
-    ///             InputParameters = 
-    ///             {
-    ///                 { "vpcIds", defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Instances?[0]?.VpcId) },
-    ///             },
-    ///         });
-    ///         var defaultCompliancePack = new AliCloud.Cfg.CompliancePack("defaultCompliancePack", new AliCloud.Cfg.CompliancePackArgs
-    ///         {
-    ///             CompliancePackName = "tf-testaccConfig1234",
-    ///             Description = "tf-testaccConfig1234",
-    ///             RiskLevel = 1,
-    ///             ConfigRuleIds = 
-    ///             {
-    ///                 new AliCloud.Cfg.Inputs.CompliancePackConfigRuleIdArgs
-    ///                 {
-    ///                     ConfigRuleId = defaultRule.Id,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "example_name";
+    ///     var defaultInstances = AliCloud.Ecs.GetInstances.Invoke();
     /// 
-    /// }
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultRule = new AliCloud.Cfg.Rule("defaultRule", new()
+    ///     {
+    ///         RuleName = name,
+    ///         Description = name,
+    ///         SourceIdentifier = "ecs-instances-in-vpc",
+    ///         SourceOwner = "ALIYUN",
+    ///         ResourceTypesScopes = new[]
+    ///         {
+    ///             "ACS::ECS::Instance",
+    ///         },
+    ///         RiskLevel = 1,
+    ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
+    ///         TagKeyScope = "tfTest",
+    ///         TagValueScope = "tfTest 123",
+    ///         ResourceGroupIdsScope = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ExcludeResourceIdsScope = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+    ///         RegionIdsScope = "cn-hangzhou",
+    ///         InputParameters = 
+    ///         {
+    ///             { "vpcIds", defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.VpcId) },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultCompliancePack = new AliCloud.Cfg.CompliancePack("defaultCompliancePack", new()
+    ///     {
+    ///         CompliancePackName = "tf-testaccConfig1234",
+    ///         Description = "tf-testaccConfig1234",
+    ///         RiskLevel = 1,
+    ///         ConfigRuleIds = new[]
+    ///         {
+    ///             new AliCloud.Cfg.Inputs.CompliancePackConfigRuleIdArgs
+    ///             {
+    ///                 ConfigRuleId = defaultRule.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -84,7 +85,7 @@ namespace Pulumi.AliCloud.Cfg
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/compliancePack:CompliancePack")]
-    public partial class CompliancePack : Pulumi.CustomResource
+    public partial class CompliancePack : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
@@ -172,7 +173,7 @@ namespace Pulumi.AliCloud.Cfg
         }
     }
 
-    public sealed class CompliancePackArgs : Pulumi.ResourceArgs
+    public sealed class CompliancePackArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
@@ -226,9 +227,10 @@ namespace Pulumi.AliCloud.Cfg
         public CompliancePackArgs()
         {
         }
+        public static new CompliancePackArgs Empty => new CompliancePackArgs();
     }
 
-    public sealed class CompliancePackState : Pulumi.ResourceArgs
+    public sealed class CompliancePackState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Compliance Package Name. . **NOTE:** the `compliance_pack_name` supports modification since V1.146.0.
@@ -288,5 +290,6 @@ namespace Pulumi.AliCloud.Cfg
         public CompliancePackState()
         {
         }
+        public static new CompliancePackState Empty => new CompliancePackState();
     }
 }

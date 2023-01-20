@@ -67,6 +67,8 @@ import (
 type CommonBandwithPackageAttachment struct {
 	pulumi.CustomResourceState
 
+	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+	BandwidthPackageBandwidth pulumi.StringOutput `pulumi:"bandwidthPackageBandwidth"`
 	// The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
 	BandwidthPackageId pulumi.StringOutput `pulumi:"bandwidthPackageId"`
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
@@ -108,6 +110,8 @@ func GetCommonBandwithPackageAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CommonBandwithPackageAttachment resources.
 type commonBandwithPackageAttachmentState struct {
+	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+	BandwidthPackageBandwidth *string `pulumi:"bandwidthPackageBandwidth"`
 	// The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
 	BandwidthPackageId *string `pulumi:"bandwidthPackageId"`
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
@@ -115,6 +119,8 @@ type commonBandwithPackageAttachmentState struct {
 }
 
 type CommonBandwithPackageAttachmentState struct {
+	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+	BandwidthPackageBandwidth pulumi.StringPtrInput
 	// The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
 	BandwidthPackageId pulumi.StringPtrInput
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
@@ -126,6 +132,8 @@ func (CommonBandwithPackageAttachmentState) ElementType() reflect.Type {
 }
 
 type commonBandwithPackageAttachmentArgs struct {
+	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+	BandwidthPackageBandwidth *string `pulumi:"bandwidthPackageBandwidth"`
 	// The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
 	BandwidthPackageId string `pulumi:"bandwidthPackageId"`
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
@@ -134,6 +142,8 @@ type commonBandwithPackageAttachmentArgs struct {
 
 // The set of arguments for constructing a CommonBandwithPackageAttachment resource.
 type CommonBandwithPackageAttachmentArgs struct {
+	// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+	BandwidthPackageBandwidth pulumi.StringPtrInput
 	// The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
 	BandwidthPackageId pulumi.StringInput
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
@@ -225,6 +235,11 @@ func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachment
 
 func (o CommonBandwithPackageAttachmentOutput) ToCommonBandwithPackageAttachmentOutputWithContext(ctx context.Context) CommonBandwithPackageAttachmentOutput {
 	return o
+}
+
+// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+func (o CommonBandwithPackageAttachmentOutput) BandwidthPackageBandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackageAttachment) pulumi.StringOutput { return v.BandwidthPackageBandwidth }).(pulumi.StringOutput)
 }
 
 // The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.

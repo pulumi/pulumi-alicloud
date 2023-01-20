@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,16 +22,13 @@ import * as utilities from "../utilities";
  * const example = alicloud.resourcemanager.getSharedTargets({
  *     ids: ["15681091********"],
  * });
- * export const firstResourceManagerSharedTargetId = example.then(example => example.targets?[0]?.id);
+ * export const firstResourceManagerSharedTargetId = example.then(example => example.targets?.[0]?.id);
  * ```
  */
 export function getSharedTargets(args?: GetSharedTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedTargetsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:resourcemanager/getSharedTargets:getSharedTargets", {
         "ids": args.ids,
         "outputFile": args.outputFile,
@@ -72,9 +70,27 @@ export interface GetSharedTargetsResult {
     readonly status?: string;
     readonly targets: outputs.resourcemanager.GetSharedTargetsTarget[];
 }
-
+/**
+ * This data source provides the Resource Manager Shared Targets of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.111.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.resourcemanager.getSharedTargets({
+ *     ids: ["15681091********"],
+ * });
+ * export const firstResourceManagerSharedTargetId = example.then(example => example.targets?.[0]?.id);
+ * ```
+ */
 export function getSharedTargetsOutput(args?: GetSharedTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedTargetsResult> {
-    return pulumi.output(args).apply(a => getSharedTargets(a, opts))
+    return pulumi.output(args).apply((a: any) => getSharedTargets(a, opts))
 }
 
 /**

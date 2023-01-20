@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss.Inputs
 {
 
-    public sealed class BucketServerSideEncryptionRuleArgs : Pulumi.ResourceArgs
+    public sealed class BucketServerSideEncryptionRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
@@ -27,5 +27,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public BucketServerSideEncryptionRuleArgs()
         {
         }
+        public static new BucketServerSideEncryptionRuleArgs Empty => new BucketServerSideEncryptionRuleArgs();
     }
 }

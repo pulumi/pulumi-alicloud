@@ -44,12 +44,20 @@ type K8sApplication struct {
 	// Mirror address. When the packageType is set to 'Image', this parameter item is required.
 	ImageUrl pulumi.StringPtrOutput `pulumi:"imageUrl"`
 	// Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+	//
+	// Deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbId pulumi.StringPtrOutput `pulumi:"internetSlbId"`
 	// The public network SLB front-end port, range 1~65535.
+	//
+	// Deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbPort pulumi.IntPtrOutput `pulumi:"internetSlbPort"`
 	// The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+	//
+	// Deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbProtocol pulumi.StringPtrOutput `pulumi:"internetSlbProtocol"`
 	// The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+	//
+	// Deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetTargetPort pulumi.IntPtrOutput `pulumi:"internetTargetPort"`
 	// The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
 	Jdk pulumi.StringPtrOutput `pulumi:"jdk"`
@@ -143,12 +151,20 @@ type k8sApplicationState struct {
 	// Mirror address. When the packageType is set to 'Image', this parameter item is required.
 	ImageUrl *string `pulumi:"imageUrl"`
 	// Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+	//
+	// Deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbId *string `pulumi:"internetSlbId"`
 	// The public network SLB front-end port, range 1~65535.
+	//
+	// Deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbPort *int `pulumi:"internetSlbPort"`
 	// The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+	//
+	// Deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbProtocol *string `pulumi:"internetSlbProtocol"`
 	// The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+	//
+	// Deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetTargetPort *int `pulumi:"internetTargetPort"`
 	// The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
 	Jdk *string `pulumi:"jdk"`
@@ -208,12 +224,20 @@ type K8sApplicationState struct {
 	// Mirror address. When the packageType is set to 'Image', this parameter item is required.
 	ImageUrl pulumi.StringPtrInput
 	// Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+	//
+	// Deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbId pulumi.StringPtrInput
 	// The public network SLB front-end port, range 1~65535.
+	//
+	// Deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbPort pulumi.IntPtrInput
 	// The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+	//
+	// Deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbProtocol pulumi.StringPtrInput
 	// The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+	//
+	// Deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetTargetPort pulumi.IntPtrInput
 	// The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
 	Jdk pulumi.StringPtrInput
@@ -277,12 +301,20 @@ type k8sApplicationArgs struct {
 	// Mirror address. When the packageType is set to 'Image', this parameter item is required.
 	ImageUrl *string `pulumi:"imageUrl"`
 	// Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+	//
+	// Deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbId *string `pulumi:"internetSlbId"`
 	// The public network SLB front-end port, range 1~65535.
+	//
+	// Deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbPort *int `pulumi:"internetSlbPort"`
 	// The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+	//
+	// Deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbProtocol *string `pulumi:"internetSlbProtocol"`
 	// The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+	//
+	// Deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetTargetPort *int `pulumi:"internetTargetPort"`
 	// The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
 	Jdk *string `pulumi:"jdk"`
@@ -343,12 +375,20 @@ type K8sApplicationArgs struct {
 	// Mirror address. When the packageType is set to 'Image', this parameter item is required.
 	ImageUrl pulumi.StringPtrInput
 	// Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+	//
+	// Deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbId pulumi.StringPtrInput
 	// The public network SLB front-end port, range 1~65535.
+	//
+	// Deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbPort pulumi.IntPtrInput
 	// The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+	//
+	// Deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetSlbProtocol pulumi.StringPtrInput
 	// The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+	//
+	// Deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 	InternetTargetPort pulumi.IntPtrInput
 	// The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
 	Jdk pulumi.StringPtrInput
@@ -518,21 +558,29 @@ func (o K8sApplicationOutput) ImageUrl() pulumi.StringPtrOutput {
 }
 
 // Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+//
+// Deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 func (o K8sApplicationOutput) InternetSlbId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *K8sApplication) pulumi.StringPtrOutput { return v.InternetSlbId }).(pulumi.StringPtrOutput)
 }
 
 // The public network SLB front-end port, range 1~65535.
+//
+// Deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 func (o K8sApplicationOutput) InternetSlbPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *K8sApplication) pulumi.IntPtrOutput { return v.InternetSlbPort }).(pulumi.IntPtrOutput)
 }
 
 // The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+//
+// Deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 func (o K8sApplicationOutput) InternetSlbProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *K8sApplication) pulumi.StringPtrOutput { return v.InternetSlbProtocol }).(pulumi.StringPtrOutput)
 }
 
 // The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+//
+// Deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
 func (o K8sApplicationOutput) InternetTargetPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *K8sApplication) pulumi.IntPtrOutput { return v.InternetTargetPort }).(pulumi.IntPtrOutput)
 }

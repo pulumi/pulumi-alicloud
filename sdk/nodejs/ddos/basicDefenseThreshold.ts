@@ -76,8 +76,6 @@ export class BasicDefenseThreshold extends pulumi.CustomResource {
     public readonly bps!: pulumi.Output<number>;
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
-     * -`defense` - scrubbing threshold.
-     * -`blackhole` - DDoS mitigation threshold.
      */
     public readonly ddosType!: pulumi.Output<string>;
     /**
@@ -94,8 +92,6 @@ export class BasicDefenseThreshold extends pulumi.CustomResource {
     public readonly internetIp!: pulumi.Output<string>;
     /**
      * Whether it is the system default threshold. Value:
-     * - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-     * - `false`: indicates no, that is, you manually set the cleaning threshold.
      */
     public readonly isAuto!: pulumi.Output<boolean>;
     /**
@@ -169,8 +165,6 @@ export interface BasicDefenseThresholdState {
     bps?: pulumi.Input<number>;
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
-     * -`defense` - scrubbing threshold.
-     * -`blackhole` - DDoS mitigation threshold.
      */
     ddosType?: pulumi.Input<string>;
     /**
@@ -187,8 +181,6 @@ export interface BasicDefenseThresholdState {
     internetIp?: pulumi.Input<string>;
     /**
      * Whether it is the system default threshold. Value:
-     * - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-     * - `false`: indicates no, that is, you manually set the cleaning threshold.
      */
     isAuto?: pulumi.Input<boolean>;
     /**
@@ -215,8 +207,6 @@ export interface BasicDefenseThresholdArgs {
     bps?: pulumi.Input<number>;
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
-     * -`defense` - scrubbing threshold.
-     * -`blackhole` - DDoS mitigation threshold.
      */
     ddosType: pulumi.Input<string>;
     /**
@@ -233,8 +223,6 @@ export interface BasicDefenseThresholdArgs {
     internetIp?: pulumi.Input<string>;
     /**
      * Whether it is the system default threshold. Value:
-     * - `true`: indicates yes, that is, the DDoS protection service dynamically adjusts the cleaning threshold according to the traffic load of the cloud server.
-     * - `false`: indicates no, that is, you manually set the cleaning threshold.
      */
     isAuto?: pulumi.Input<boolean>;
     /**

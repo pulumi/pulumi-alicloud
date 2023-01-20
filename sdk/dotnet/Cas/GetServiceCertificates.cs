@@ -23,33 +23,32 @@ namespace Pulumi.AliCloud.Cas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var certs = AliCloud.Cas.GetCertificates.Invoke(new()
         ///     {
-        ///         var certs = Output.Create(AliCloud.Cas.GetCertificates.InvokeAsync(new AliCloud.Cas.GetCertificatesArgs
+        ///         NameRegex = "^cas",
+        ///         Ids = new[]
         ///         {
-        ///             NameRegex = "^cas",
-        ///             Ids = 
-        ///             {
-        ///                 "Certificate Id",
-        ///             },
-        ///         }));
-        ///         this.Cert = certs.Apply(certs =&gt; certs.Certificates?[0]?.Id);
-        ///     }
+        ///             "Certificate Id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cert")]
-        ///     public Output&lt;string&gt; Cert { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cert"] = certs.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceCertificatesResult> InvokeAsync(GetServiceCertificatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceCertificatesResult>("alicloud:cas/getServiceCertificates:getServiceCertificates", args ?? new GetServiceCertificatesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceCertificatesResult>("alicloud:cas/getServiceCertificates:getServiceCertificates", args ?? new GetServiceCertificatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ssl Certificates Service Certificates of the current Alibaba Cloud user.
@@ -63,37 +62,36 @@ namespace Pulumi.AliCloud.Cas
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var certs = AliCloud.Cas.GetCertificates.Invoke(new()
         ///     {
-        ///         var certs = Output.Create(AliCloud.Cas.GetCertificates.InvokeAsync(new AliCloud.Cas.GetCertificatesArgs
+        ///         NameRegex = "^cas",
+        ///         Ids = new[]
         ///         {
-        ///             NameRegex = "^cas",
-        ///             Ids = 
-        ///             {
-        ///                 "Certificate Id",
-        ///             },
-        ///         }));
-        ///         this.Cert = certs.Apply(certs =&gt; certs.Certificates?[0]?.Id);
-        ///     }
+        ///             "Certificate Id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("cert")]
-        ///     public Output&lt;string&gt; Cert { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cert"] = certs.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceCertificatesResult> Invoke(GetServiceCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceCertificatesResult>("alicloud:cas/getServiceCertificates:getServiceCertificates", args ?? new GetServiceCertificatesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceCertificatesResult>("alicloud:cas/getServiceCertificates:getServiceCertificates", args ?? new GetServiceCertificatesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServiceCertificatesArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceCertificatesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -131,9 +129,10 @@ namespace Pulumi.AliCloud.Cas
         public GetServiceCertificatesArgs()
         {
         }
+        public static new GetServiceCertificatesArgs Empty => new GetServiceCertificatesArgs();
     }
 
-    public sealed class GetServiceCertificatesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceCertificatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -171,6 +170,7 @@ namespace Pulumi.AliCloud.Cas
         public GetServiceCertificatesInvokeArgs()
         {
         }
+        public static new GetServiceCertificatesInvokeArgs Empty => new GetServiceCertificatesInvokeArgs();
     }
 
 

@@ -23,32 +23,31 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ecs.GetEcsInvocations.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsInvocations.InvokeAsync(new AliCloud.Ecs.GetEcsInvocationsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example-id",
-        ///             },
-        ///         }));
-        ///         this.EcsInvocationId1 = ids.Apply(ids =&gt; ids.Invocations?[0]?.Id);
-        ///     }
+        ///             "example-id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ecsInvocationId1")]
-        ///     public Output&lt;string&gt; EcsInvocationId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsInvocationId1"] = ids.Apply(getEcsInvocationsResult =&gt; getEcsInvocationsResult.Invocations[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEcsInvocationsResult> InvokeAsync(GetEcsInvocationsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEcsInvocationsResult>("alicloud:ecs/getEcsInvocations:getEcsInvocations", args ?? new GetEcsInvocationsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsInvocationsResult>("alicloud:ecs/getEcsInvocations:getEcsInvocations", args ?? new GetEcsInvocationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Ecs Invocations of the current Alibaba Cloud user.
@@ -62,36 +61,35 @@ namespace Pulumi.AliCloud.Ecs
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Ecs.GetEcsInvocations.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Ecs.GetEcsInvocations.InvokeAsync(new AliCloud.Ecs.GetEcsInvocationsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example-id",
-        ///             },
-        ///         }));
-        ///         this.EcsInvocationId1 = ids.Apply(ids =&gt; ids.Invocations?[0]?.Id);
-        ///     }
+        ///             "example-id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("ecsInvocationId1")]
-        ///     public Output&lt;string&gt; EcsInvocationId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ecsInvocationId1"] = ids.Apply(getEcsInvocationsResult =&gt; getEcsInvocationsResult.Invocations[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEcsInvocationsResult> Invoke(GetEcsInvocationsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEcsInvocationsResult>("alicloud:ecs/getEcsInvocations:getEcsInvocations", args ?? new GetEcsInvocationsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEcsInvocationsResult>("alicloud:ecs/getEcsInvocations:getEcsInvocations", args ?? new GetEcsInvocationsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEcsInvocationsArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsInvocationsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the command.
@@ -135,9 +133,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsInvocationsArgs()
         {
         }
+        public static new GetEcsInvocationsArgs Empty => new GetEcsInvocationsArgs();
     }
 
-    public sealed class GetEcsInvocationsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEcsInvocationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the command.
@@ -181,6 +180,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetEcsInvocationsInvokeArgs()
         {
         }
+        public static new GetEcsInvocationsInvokeArgs Empty => new GetEcsInvocationsInvokeArgs();
     }
 
 

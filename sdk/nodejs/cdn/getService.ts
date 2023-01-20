@@ -17,19 +17,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const open = pulumi.output(alicloud.cdn.getService({
+ * const open = alicloud.cdn.getService({
  *     enable: "On",
  *     internetChargeType: "PayByTraffic",
- * }));
+ * });
  * ```
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cdn/getService:getService", {
         "enable": args.enable,
         "internetChargeType": args.internetChargeType,
@@ -79,9 +76,27 @@ export interface GetServiceResult {
      */
     readonly status: string;
 }
-
+/**
+ * Using this data source can enable CDN service automatically. If the service has been enabled, it will return `Opened`.
+ *
+ * For information about CDN and how to use it, see [What is CDN](https://www.alibabacloud.com/help/product/27099.htm).
+ *
+ * > **NOTE:** Available in v1.98.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const open = alicloud.cdn.getService({
+ *     enable: "On",
+ *     internetChargeType: "PayByTraffic",
+ * });
+ * ```
+ */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply(a => getService(a, opts))
+    return pulumi.output(args).apply((a: any) => getService(a, opts))
 }
 
 /**

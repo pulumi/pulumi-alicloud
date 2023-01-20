@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS.Inputs
 {
 
-    public sealed class ManagedKubernetesTaintArgs : Pulumi.ResourceArgs
+    public sealed class ManagedKubernetesTaintArgs : global::Pulumi.ResourceArgs
     {
         [Input("effect")]
         public Input<string>? Effect { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         public ManagedKubernetesTaintArgs()
         {
         }
+        public static new ManagedKubernetesTaintArgs Empty => new ManagedKubernetesTaintArgs();
     }
 }

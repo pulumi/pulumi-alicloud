@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Arms.Inputs
 {
 
-    public sealed class DispatchRuleNotifyRuleArgs : Pulumi.ResourceArgs
+    public sealed class DispatchRuleNotifyRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("notifyChannels", required: true)]
         private InputList<string>? _notifyChannels;
@@ -39,5 +39,6 @@ namespace Pulumi.AliCloud.Arms.Inputs
         public DispatchRuleNotifyRuleArgs()
         {
         }
+        public static new DispatchRuleNotifyRuleArgs Empty => new DispatchRuleNotifyRuleArgs();
     }
 }

@@ -21,27 +21,25 @@ namespace Pulumi.AliCloud.Eci
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AliCloud.Eci.ImageCache("example", new()
     ///     {
-    ///         var example = new AliCloud.Eci.ImageCache("example", new AliCloud.Eci.ImageCacheArgs
+    ///         EipInstanceId = "eip-uf60c7cqb2pcrkgxhxxxx",
+    ///         ImageCacheName = "tf-test",
+    ///         Images = new[]
     ///         {
-    ///             EipInstanceId = "eip-uf60c7cqb2pcrkgxhxxxx",
-    ///             ImageCacheName = "tf-test",
-    ///             Images = 
-    ///             {
-    ///                 "registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest",
-    ///             },
-    ///             SecurityGroupId = "sg-2zeef68b66fxxxx",
-    ///             VswitchId = "vsw-2zef9k7ng82xxxx",
-    ///         });
-    ///     }
+    ///             "registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest",
+    ///         },
+    ///         SecurityGroupId = "sg-2zeef68b66fxxxx",
+    ///         VswitchId = "vsw-2zef9k7ng82xxxx",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -53,11 +51,10 @@ namespace Pulumi.AliCloud.Eci
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:eci/imageCache:ImageCache")]
-    public partial class ImageCache : Pulumi.CustomResource
+    public partial class ImageCache : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the container group job that is used to create the image cache.
-        /// * `status` -The status of the image cache.
         /// </summary>
         [Output("containerGroupId")]
         public Output<string> ContainerGroupId { get; private set; } = null!;
@@ -110,6 +107,9 @@ namespace Pulumi.AliCloud.Eci
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the image cache.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Eci
         }
     }
 
-    public sealed class ImageCacheArgs : Pulumi.ResourceArgs
+    public sealed class ImageCacheArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
@@ -246,13 +246,13 @@ namespace Pulumi.AliCloud.Eci
         public ImageCacheArgs()
         {
         }
+        public static new ImageCacheArgs Empty => new ImageCacheArgs();
     }
 
-    public sealed class ImageCacheState : Pulumi.ResourceArgs
+    public sealed class ImageCacheState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the container group job that is used to create the image cache.
-        /// * `status` -The status of the image cache.
         /// </summary>
         [Input("containerGroupId")]
         public Input<string>? ContainerGroupId { get; set; }
@@ -317,6 +317,9 @@ namespace Pulumi.AliCloud.Eci
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        /// <summary>
+        /// The status of the image cache.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -335,5 +338,6 @@ namespace Pulumi.AliCloud.Eci
         public ImageCacheState()
         {
         }
+        public static new ImageCacheState Empty => new ImageCacheState();
     }
 }

@@ -10,8 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC.Inputs
 {
 
-    public sealed class ServiceLogConfigGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceLogConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable instance level metrics.
+        /// </summary>
+        [Input("enableInstanceMetrics")]
+        public Input<bool>? EnableInstanceMetrics { get; set; }
+
+        /// <summary>
+        /// Enable request level metrics.
+        /// </summary>
+        [Input("enableRequestMetrics")]
+        public Input<bool>? EnableRequestMetrics { get; set; }
+
         /// <summary>
         /// The log store name of Alicloud Simple Log Service.
         /// </summary>
@@ -27,5 +39,6 @@ namespace Pulumi.AliCloud.FC.Inputs
         public ServiceLogConfigGetArgs()
         {
         }
+        public static new ServiceLogConfigGetArgs Empty => new ServiceLogConfigGetArgs();
     }
 }

@@ -61,7 +61,7 @@ import (
 //			}
 //			defaultDedicatedHostGroup, err := cddc.NewDedicatedHostGroup(ctx, "defaultDedicatedHostGroup", &cddc.DedicatedHostGroupArgs{
 //				Engine:                 pulumi.String("MySQL"),
-//				VpcId:                  pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId:                  *pulumi.String(defaultNetworks.Ids[0]),
 //				CpuAllocationRatio:     pulumi.Int(101),
 //				MemAllocationRatio:     pulumi.Int(50),
 //				DiskAllocationRatio:    pulumi.Int(200),
@@ -75,9 +75,9 @@ import (
 //			_, err = cddc.NewDedicatedHost(ctx, "defaultDedicatedHost", &cddc.DedicatedHostArgs{
 //				HostName:             pulumi.String("example_value"),
 //				DedicatedHostGroupId: defaultDedicatedHostGroup.ID(),
-//				HostClass:            pulumi.String(defaultHostEcsLevelInfos.Infos[0].ResClassCode),
-//				ZoneId:               pulumi.String(defaultZones.Ids[0]),
-//				VswitchId:            pulumi.String(defaultSwitches.Ids[0]),
+//				HostClass:            *pulumi.String(defaultHostEcsLevelInfos.Infos[0].ResClassCode),
+//				ZoneId:               *pulumi.String(defaultZones.Ids[0]),
+//				VswitchId:            *pulumi.String(defaultSwitches.Ids[0]),
 //				PaymentType:          pulumi.String("Subscription"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
@@ -162,6 +162,13 @@ func NewDedicatedHost(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	if args.OsPassword != nil {
+		args.OsPassword = pulumi.ToSecret(args.OsPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"osPassword",
+	})
+	opts = append(opts, secrets)
 	var resource DedicatedHost
 	err := ctx.RegisterResource("alicloud:cddc/dedicatedHost:DedicatedHost", name, args, &resource, opts...)
 	if err != nil {

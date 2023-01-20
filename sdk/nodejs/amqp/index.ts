@@ -5,23 +5,66 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./binding";
-export * from "./exchange";
-export * from "./getBindings";
-export * from "./getExchanges";
-export * from "./getInstances";
-export * from "./getQueues";
-export * from "./getVirtualHosts";
-export * from "./instance";
-export * from "./queue";
-export * from "./virtualHost";
+export { BindingArgs, BindingState } from "./binding";
+export type Binding = import("./binding").Binding;
+export const Binding: typeof import("./binding").Binding = null as any;
+utilities.lazyLoad(exports, ["Binding"], () => require("./binding"));
 
-// Import resources to register:
-import { Binding } from "./binding";
-import { Exchange } from "./exchange";
-import { Instance } from "./instance";
-import { Queue } from "./queue";
-import { VirtualHost } from "./virtualHost";
+export { ExchangeArgs, ExchangeState } from "./exchange";
+export type Exchange = import("./exchange").Exchange;
+export const Exchange: typeof import("./exchange").Exchange = null as any;
+utilities.lazyLoad(exports, ["Exchange"], () => require("./exchange"));
+
+export { GetBindingsArgs, GetBindingsResult, GetBindingsOutputArgs } from "./getBindings";
+export const getBindings: typeof import("./getBindings").getBindings = null as any;
+export const getBindingsOutput: typeof import("./getBindings").getBindingsOutput = null as any;
+utilities.lazyLoad(exports, ["getBindings","getBindingsOutput"], () => require("./getBindings"));
+
+export { GetExchangesArgs, GetExchangesResult, GetExchangesOutputArgs } from "./getExchanges";
+export const getExchanges: typeof import("./getExchanges").getExchanges = null as any;
+export const getExchangesOutput: typeof import("./getExchanges").getExchangesOutput = null as any;
+utilities.lazyLoad(exports, ["getExchanges","getExchangesOutput"], () => require("./getExchanges"));
+
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetQueuesArgs, GetQueuesResult, GetQueuesOutputArgs } from "./getQueues";
+export const getQueues: typeof import("./getQueues").getQueues = null as any;
+export const getQueuesOutput: typeof import("./getQueues").getQueuesOutput = null as any;
+utilities.lazyLoad(exports, ["getQueues","getQueuesOutput"], () => require("./getQueues"));
+
+export { GetStaticAccountsArgs, GetStaticAccountsResult, GetStaticAccountsOutputArgs } from "./getStaticAccounts";
+export const getStaticAccounts: typeof import("./getStaticAccounts").getStaticAccounts = null as any;
+export const getStaticAccountsOutput: typeof import("./getStaticAccounts").getStaticAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getStaticAccounts","getStaticAccountsOutput"], () => require("./getStaticAccounts"));
+
+export { GetVirtualHostsArgs, GetVirtualHostsResult, GetVirtualHostsOutputArgs } from "./getVirtualHosts";
+export const getVirtualHosts: typeof import("./getVirtualHosts").getVirtualHosts = null as any;
+export const getVirtualHostsOutput: typeof import("./getVirtualHosts").getVirtualHostsOutput = null as any;
+utilities.lazyLoad(exports, ["getVirtualHosts","getVirtualHostsOutput"], () => require("./getVirtualHosts"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { QueueArgs, QueueState } from "./queue";
+export type Queue = import("./queue").Queue;
+export const Queue: typeof import("./queue").Queue = null as any;
+utilities.lazyLoad(exports, ["Queue"], () => require("./queue"));
+
+export { StaticAccountArgs, StaticAccountState } from "./staticAccount";
+export type StaticAccount = import("./staticAccount").StaticAccount;
+export const StaticAccount: typeof import("./staticAccount").StaticAccount = null as any;
+utilities.lazyLoad(exports, ["StaticAccount"], () => require("./staticAccount"));
+
+export { VirtualHostArgs, VirtualHostState } from "./virtualHost";
+export type VirtualHost = import("./virtualHost").VirtualHost;
+export const VirtualHost: typeof import("./virtualHost").VirtualHost = null as any;
+utilities.lazyLoad(exports, ["VirtualHost"], () => require("./virtualHost"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -35,6 +78,8 @@ const _module = {
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:amqp/queue:Queue":
                 return new Queue(name, <any>undefined, { urn })
+            case "alicloud:amqp/staticAccount:StaticAccount":
+                return new StaticAccount(name, <any>undefined, { urn })
             case "alicloud:amqp/virtualHost:VirtualHost":
                 return new VirtualHost(name, <any>undefined, { urn })
             default:
@@ -46,4 +91,5 @@ pulumi.runtime.registerResourceModule("alicloud", "amqp/binding", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/exchange", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/queue", _module)
+pulumi.runtime.registerResourceModule("alicloud", "amqp/staticAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/virtualHost", _module)

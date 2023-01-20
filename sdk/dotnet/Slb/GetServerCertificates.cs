@@ -19,26 +19,25 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetServerCertificates.InvokeAsync());
-        ///         this.FirstSlbServerCertificateId = sampleDs.Apply(sampleDs =&gt; sampleDs.Certificates?[0]?.Id);
-        ///     }
+        ///     var sampleDs = AliCloud.Slb.GetServerCertificates.Invoke();
         /// 
-        ///     [Output("firstSlbServerCertificateId")]
-        ///     public Output&lt;string&gt; FirstSlbServerCertificateId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbServerCertificateId"] = sampleDs.Apply(getServerCertificatesResult =&gt; getServerCertificatesResult.Certificates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerCertificatesResult> InvokeAsync(GetServerCertificatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerCertificatesResult>("alicloud:slb/getServerCertificates:getServerCertificates", args ?? new GetServerCertificatesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerCertificatesResult>("alicloud:slb/getServerCertificates:getServerCertificates", args ?? new GetServerCertificatesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the server certificate list.
@@ -48,30 +47,29 @@ namespace Pulumi.AliCloud.Slb
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var sampleDs = Output.Create(AliCloud.Slb.GetServerCertificates.InvokeAsync());
-        ///         this.FirstSlbServerCertificateId = sampleDs.Apply(sampleDs =&gt; sampleDs.Certificates?[0]?.Id);
-        ///     }
+        ///     var sampleDs = AliCloud.Slb.GetServerCertificates.Invoke();
         /// 
-        ///     [Output("firstSlbServerCertificateId")]
-        ///     public Output&lt;string&gt; FirstSlbServerCertificateId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSlbServerCertificateId"] = sampleDs.Apply(getServerCertificatesResult =&gt; getServerCertificatesResult.Certificates[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServerCertificatesResult> Invoke(GetServerCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerCertificatesResult>("alicloud:slb/getServerCertificates:getServerCertificates", args ?? new GetServerCertificatesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerCertificatesResult>("alicloud:slb/getServerCertificates:getServerCertificates", args ?? new GetServerCertificatesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServerCertificatesArgs : Pulumi.InvokeArgs
+    public sealed class GetServerCertificatesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -115,9 +113,10 @@ namespace Pulumi.AliCloud.Slb
         public GetServerCertificatesArgs()
         {
         }
+        public static new GetServerCertificatesArgs Empty => new GetServerCertificatesArgs();
     }
 
-    public sealed class GetServerCertificatesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServerCertificatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -161,6 +160,7 @@ namespace Pulumi.AliCloud.Slb
         public GetServerCertificatesInvokeArgs()
         {
         }
+        public static new GetServerCertificatesInvokeArgs Empty => new GetServerCertificatesInvokeArgs();
     }
 
 

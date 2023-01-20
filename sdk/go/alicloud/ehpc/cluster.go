@@ -38,7 +38,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &GetZonesArgs{
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -78,7 +78,7 @@ import (
 //			defaultMountTarget, err := nas.NewMountTarget(ctx, "defaultMountTarget", &nas.MountTargetArgs{
 //				FileSystemId:    defaultFileSystem.ID(),
 //				AccessGroupName: pulumi.String("DEFAULT_VPC_GROUP_NAME"),
-//				VswitchId:       pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:       *pulumi.String(defaultSwitches.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -95,23 +95,23 @@ import (
 //				DeployMode:          pulumi.String("Simple"),
 //				Description:         pulumi.String("example_description"),
 //				HaEnable:            pulumi.Bool(false),
-//				ImageId:             pulumi.String(defaultImages.Images[0].Id),
+//				ImageId:             *pulumi.String(defaultImages.Images[0].Id),
 //				ImageOwnerAlias:     pulumi.String("system"),
 //				VolumeProtocol:      pulumi.String("nfs"),
 //				VolumeId:            defaultFileSystem.ID(),
 //				VolumeMountpoint:    defaultMountTarget.MountTargetDomain,
 //				ComputeCount:        pulumi.Int(1),
-//				ComputeInstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ComputeInstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				LoginCount:          pulumi.Int(1),
-//				LoginInstanceType:   pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				LoginInstanceType:   *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				ManagerCount:        pulumi.Int(1),
-//				ManagerInstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ManagerInstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				OsTag:               pulumi.String("CentOS_7.6_64"),
 //				SchedulerType:       pulumi.String("pbs"),
 //				Password:            pulumi.String("your-password123"),
-//				VswitchId:           pulumi.String(defaultSwitches.Ids[0]),
-//				VpcId:               pulumi.String(defaultNetworks.Ids[0]),
-//				ZoneId:              pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchId:           *pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:               *pulumi.String(defaultNetworks.Ids[0]),
+//				ZoneId:              *pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -159,14 +159,8 @@ type Cluster struct {
 	// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
 	ComputeSpotPriceLimit pulumi.StringPtrOutput `pulumi:"computeSpotPriceLimit"`
 	// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-	// - `NoSpot`: The compute nodes are pay-as-you-go instances.
-	// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-	// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 	ComputeSpotStrategy pulumi.StringPtrOutput `pulumi:"computeSpotStrategy"`
 	// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-	// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-	// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-	// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
 	DeployMode pulumi.StringOutput `pulumi:"deployMode"`
 	// The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -186,7 +180,7 @@ type Cluster struct {
 	InputFileUrl pulumi.StringPtrOutput `pulumi:"inputFileUrl"`
 	// Specifies whether to enable auto scaling. Default value: `false`.
 	IsComputeEss pulumi.BoolPtrOutput `pulumi:"isComputeEss"`
-	// The queue of the nodes to which the additional file system is attached.
+	// The queue to which the compute nodes are added.
 	JobQueue pulumi.StringPtrOutput `pulumi:"jobQueue"`
 	// The name of the AccessKey pair.
 	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
@@ -224,7 +218,7 @@ type Cluster struct {
 	RamRoleName pulumi.StringPtrOutput `pulumi:"ramRoleName"`
 	// The release instance. Valid values: `true`.
 	ReleaseInstance pulumi.BoolPtrOutput `pulumi:"releaseInstance"`
-	// The remote directory to which the additional file system is mounted.
+	// The remote directory to which the file system is mounted.
 	RemoteDirectory pulumi.StringOutput `pulumi:"remoteDirectory"`
 	// Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
 	RemoteVisEnable pulumi.BoolPtrOutput `pulumi:"remoteVisEnable"`
@@ -241,24 +235,22 @@ type Cluster struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-	// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-	// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	SystemDiskLevel pulumi.StringPtrOutput `pulumi:"systemDiskLevel"`
 	// The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
 	// The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
 	SystemDiskType pulumi.StringPtrOutput `pulumi:"systemDiskType"`
-	// The ID of the additional file system.
+	// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
 	VolumeId pulumi.StringOutput `pulumi:"volumeId"`
 	// The mount options of the file system.
 	VolumeMountOption pulumi.StringPtrOutput `pulumi:"volumeMountOption"`
-	// The mount target of the additional file system.
+	// The mount target of the file system. Take note of the following information:
+	// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+	// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
 	VolumeMountpoint pulumi.StringOutput `pulumi:"volumeMountpoint"`
-	// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+	// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
 	VolumeProtocol pulumi.StringOutput `pulumi:"volumeProtocol"`
-	// The type of the additional shared storage. Only NAS file systems are supported.
+	// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
 	VolumeType pulumi.StringOutput `pulumi:"volumeType"`
 	// The ID of the virtual private cloud (VPC) to which the cluster belongs.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -300,6 +292,13 @@ func NewCluster(ctx *pulumi.Context,
 	if args.OsTag == nil {
 		return nil, errors.New("invalid value for required argument 'OsTag'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Cluster
 	err := ctx.RegisterResource("alicloud:ehpc/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {
@@ -347,14 +346,8 @@ type clusterState struct {
 	// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
 	ComputeSpotPriceLimit *string `pulumi:"computeSpotPriceLimit"`
 	// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-	// - `NoSpot`: The compute nodes are pay-as-you-go instances.
-	// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-	// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 	ComputeSpotStrategy *string `pulumi:"computeSpotStrategy"`
 	// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-	// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-	// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-	// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
 	DeployMode *string `pulumi:"deployMode"`
 	// The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
@@ -374,7 +367,7 @@ type clusterState struct {
 	InputFileUrl *string `pulumi:"inputFileUrl"`
 	// Specifies whether to enable auto scaling. Default value: `false`.
 	IsComputeEss *bool `pulumi:"isComputeEss"`
-	// The queue of the nodes to which the additional file system is attached.
+	// The queue to which the compute nodes are added.
 	JobQueue *string `pulumi:"jobQueue"`
 	// The name of the AccessKey pair.
 	KeyPairName *string `pulumi:"keyPairName"`
@@ -412,7 +405,7 @@ type clusterState struct {
 	RamRoleName *string `pulumi:"ramRoleName"`
 	// The release instance. Valid values: `true`.
 	ReleaseInstance *bool `pulumi:"releaseInstance"`
-	// The remote directory to which the additional file system is mounted.
+	// The remote directory to which the file system is mounted.
 	RemoteDirectory *string `pulumi:"remoteDirectory"`
 	// Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
 	RemoteVisEnable *bool `pulumi:"remoteVisEnable"`
@@ -429,24 +422,22 @@ type clusterState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-	// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-	// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	SystemDiskLevel *string `pulumi:"systemDiskLevel"`
 	// The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
 	SystemDiskType *string `pulumi:"systemDiskType"`
-	// The ID of the additional file system.
+	// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
 	VolumeId *string `pulumi:"volumeId"`
 	// The mount options of the file system.
 	VolumeMountOption *string `pulumi:"volumeMountOption"`
-	// The mount target of the additional file system.
+	// The mount target of the file system. Take note of the following information:
+	// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+	// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
 	VolumeMountpoint *string `pulumi:"volumeMountpoint"`
-	// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+	// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
 	VolumeProtocol *string `pulumi:"volumeProtocol"`
-	// The type of the additional shared storage. Only NAS file systems are supported.
+	// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
 	VolumeType *string `pulumi:"volumeType"`
 	// The ID of the virtual private cloud (VPC) to which the cluster belongs.
 	VpcId *string `pulumi:"vpcId"`
@@ -486,14 +477,8 @@ type ClusterState struct {
 	// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
 	ComputeSpotPriceLimit pulumi.StringPtrInput
 	// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-	// - `NoSpot`: The compute nodes are pay-as-you-go instances.
-	// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-	// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 	ComputeSpotStrategy pulumi.StringPtrInput
 	// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-	// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-	// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-	// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
 	DeployMode pulumi.StringPtrInput
 	// The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
@@ -513,7 +498,7 @@ type ClusterState struct {
 	InputFileUrl pulumi.StringPtrInput
 	// Specifies whether to enable auto scaling. Default value: `false`.
 	IsComputeEss pulumi.BoolPtrInput
-	// The queue of the nodes to which the additional file system is attached.
+	// The queue to which the compute nodes are added.
 	JobQueue pulumi.StringPtrInput
 	// The name of the AccessKey pair.
 	KeyPairName pulumi.StringPtrInput
@@ -551,7 +536,7 @@ type ClusterState struct {
 	RamRoleName pulumi.StringPtrInput
 	// The release instance. Valid values: `true`.
 	ReleaseInstance pulumi.BoolPtrInput
-	// The remote directory to which the additional file system is mounted.
+	// The remote directory to which the file system is mounted.
 	RemoteDirectory pulumi.StringPtrInput
 	// Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
 	RemoteVisEnable pulumi.BoolPtrInput
@@ -568,24 +553,22 @@ type ClusterState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-	// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-	// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	SystemDiskLevel pulumi.StringPtrInput
 	// The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
 	SystemDiskSize pulumi.IntPtrInput
 	// The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
 	SystemDiskType pulumi.StringPtrInput
-	// The ID of the additional file system.
+	// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
 	VolumeId pulumi.StringPtrInput
 	// The mount options of the file system.
 	VolumeMountOption pulumi.StringPtrInput
-	// The mount target of the additional file system.
+	// The mount target of the file system. Take note of the following information:
+	// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+	// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
 	VolumeMountpoint pulumi.StringPtrInput
-	// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+	// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
 	VolumeProtocol pulumi.StringPtrInput
-	// The type of the additional shared storage. Only NAS file systems are supported.
+	// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
 	VolumeType pulumi.StringPtrInput
 	// The ID of the virtual private cloud (VPC) to which the cluster belongs.
 	VpcId pulumi.StringPtrInput
@@ -629,14 +612,8 @@ type clusterArgs struct {
 	// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
 	ComputeSpotPriceLimit *string `pulumi:"computeSpotPriceLimit"`
 	// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-	// - `NoSpot`: The compute nodes are pay-as-you-go instances.
-	// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-	// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 	ComputeSpotStrategy *string `pulumi:"computeSpotStrategy"`
 	// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-	// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-	// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-	// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
 	DeployMode *string `pulumi:"deployMode"`
 	// The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
@@ -656,7 +633,7 @@ type clusterArgs struct {
 	InputFileUrl *string `pulumi:"inputFileUrl"`
 	// Specifies whether to enable auto scaling. Default value: `false`.
 	IsComputeEss *bool `pulumi:"isComputeEss"`
-	// The queue of the nodes to which the additional file system is attached.
+	// The queue to which the compute nodes are added.
 	JobQueue *string `pulumi:"jobQueue"`
 	// The name of the AccessKey pair.
 	KeyPairName *string `pulumi:"keyPairName"`
@@ -694,7 +671,7 @@ type clusterArgs struct {
 	RamRoleName *string `pulumi:"ramRoleName"`
 	// The release instance. Valid values: `true`.
 	ReleaseInstance *bool `pulumi:"releaseInstance"`
-	// The remote directory to which the additional file system is mounted.
+	// The remote directory to which the file system is mounted.
 	RemoteDirectory *string `pulumi:"remoteDirectory"`
 	// Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
 	RemoteVisEnable *bool `pulumi:"remoteVisEnable"`
@@ -709,24 +686,22 @@ type clusterArgs struct {
 	// If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
 	SecurityGroupName *string `pulumi:"securityGroupName"`
 	// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-	// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-	// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	SystemDiskLevel *string `pulumi:"systemDiskLevel"`
 	// The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
 	SystemDiskType *string `pulumi:"systemDiskType"`
-	// The ID of the additional file system.
+	// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
 	VolumeId *string `pulumi:"volumeId"`
 	// The mount options of the file system.
 	VolumeMountOption *string `pulumi:"volumeMountOption"`
-	// The mount target of the additional file system.
+	// The mount target of the file system. Take note of the following information:
+	// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+	// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
 	VolumeMountpoint *string `pulumi:"volumeMountpoint"`
-	// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+	// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
 	VolumeProtocol *string `pulumi:"volumeProtocol"`
-	// The type of the additional shared storage. Only NAS file systems are supported.
+	// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
 	VolumeType *string `pulumi:"volumeType"`
 	// The ID of the virtual private cloud (VPC) to which the cluster belongs.
 	VpcId *string `pulumi:"vpcId"`
@@ -767,14 +742,8 @@ type ClusterArgs struct {
 	// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
 	ComputeSpotPriceLimit pulumi.StringPtrInput
 	// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-	// - `NoSpot`: The compute nodes are pay-as-you-go instances.
-	// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-	// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 	ComputeSpotStrategy pulumi.StringPtrInput
 	// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-	// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-	// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-	// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
 	DeployMode pulumi.StringPtrInput
 	// The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
@@ -794,7 +763,7 @@ type ClusterArgs struct {
 	InputFileUrl pulumi.StringPtrInput
 	// Specifies whether to enable auto scaling. Default value: `false`.
 	IsComputeEss pulumi.BoolPtrInput
-	// The queue of the nodes to which the additional file system is attached.
+	// The queue to which the compute nodes are added.
 	JobQueue pulumi.StringPtrInput
 	// The name of the AccessKey pair.
 	KeyPairName pulumi.StringPtrInput
@@ -832,7 +801,7 @@ type ClusterArgs struct {
 	RamRoleName pulumi.StringPtrInput
 	// The release instance. Valid values: `true`.
 	ReleaseInstance pulumi.BoolPtrInput
-	// The remote directory to which the additional file system is mounted.
+	// The remote directory to which the file system is mounted.
 	RemoteDirectory pulumi.StringPtrInput
 	// Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
 	RemoteVisEnable pulumi.BoolPtrInput
@@ -847,24 +816,22 @@ type ClusterArgs struct {
 	// If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
 	SecurityGroupName pulumi.StringPtrInput
 	// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-	// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-	// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	SystemDiskLevel pulumi.StringPtrInput
 	// The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
 	SystemDiskSize pulumi.IntPtrInput
 	// The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
 	SystemDiskType pulumi.StringPtrInput
-	// The ID of the additional file system.
+	// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
 	VolumeId pulumi.StringPtrInput
 	// The mount options of the file system.
 	VolumeMountOption pulumi.StringPtrInput
-	// The mount target of the additional file system.
+	// The mount target of the file system. Take note of the following information:
+	// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+	// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
 	VolumeMountpoint pulumi.StringPtrInput
-	// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+	// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
 	VolumeProtocol pulumi.StringPtrInput
-	// The type of the additional shared storage. Only NAS file systems are supported.
+	// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
 	VolumeType pulumi.StringPtrInput
 	// The ID of the virtual private cloud (VPC) to which the cluster belongs.
 	VpcId pulumi.StringPtrInput
@@ -1026,17 +993,11 @@ func (o ClusterOutput) ComputeSpotPriceLimit() pulumi.StringPtrOutput {
 }
 
 // The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
-// - `NoSpot`: The compute nodes are pay-as-you-go instances.
-// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
-// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 func (o ClusterOutput) ComputeSpotStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ComputeSpotStrategy }).(pulumi.StringPtrOutput)
 }
 
 // The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
-// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
-// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
-// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
 func (o ClusterOutput) DeployMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DeployMode }).(pulumi.StringOutput)
 }
@@ -1086,7 +1047,7 @@ func (o ClusterOutput) IsComputeEss() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.IsComputeEss }).(pulumi.BoolPtrOutput)
 }
 
-// The queue of the nodes to which the additional file system is attached.
+// The queue to which the compute nodes are added.
 func (o ClusterOutput) JobQueue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.JobQueue }).(pulumi.StringPtrOutput)
 }
@@ -1169,7 +1130,7 @@ func (o ClusterOutput) ReleaseInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.ReleaseInstance }).(pulumi.BoolPtrOutput)
 }
 
-// The remote directory to which the additional file system is mounted.
+// The remote directory to which the file system is mounted.
 func (o ClusterOutput) RemoteDirectory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.RemoteDirectory }).(pulumi.StringOutput)
 }
@@ -1210,10 +1171,6 @@ func (o ClusterOutput) Status() pulumi.StringOutput {
 }
 
 // The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
-// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
-// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
-// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
-// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 func (o ClusterOutput) SystemDiskLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SystemDiskLevel }).(pulumi.StringPtrOutput)
 }
@@ -1228,7 +1185,7 @@ func (o ClusterOutput) SystemDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SystemDiskType }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the additional file system.
+// The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
 func (o ClusterOutput) VolumeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VolumeId }).(pulumi.StringOutput)
 }
@@ -1238,17 +1195,19 @@ func (o ClusterOutput) VolumeMountOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.VolumeMountOption }).(pulumi.StringPtrOutput)
 }
 
-// The mount target of the additional file system.
+// The mount target of the file system. Take note of the following information:
+// - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+// - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
 func (o ClusterOutput) VolumeMountpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VolumeMountpoint }).(pulumi.StringOutput)
 }
 
-// The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+// The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
 func (o ClusterOutput) VolumeProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VolumeProtocol }).(pulumi.StringOutput)
 }
 
-// The type of the additional shared storage. Only NAS file systems are supported.
+// The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
 func (o ClusterOutput) VolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VolumeType }).(pulumi.StringOutput)
 }

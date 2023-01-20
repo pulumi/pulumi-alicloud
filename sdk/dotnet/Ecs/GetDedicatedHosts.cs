@@ -21,31 +21,30 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dedicatedHostsDs = AliCloud.Ecs.GetDedicatedHosts.Invoke(new()
         ///     {
-        ///         var dedicatedHostsDs = Output.Create(AliCloud.Ecs.GetDedicatedHosts.InvokeAsync(new AliCloud.Ecs.GetDedicatedHostsArgs
-        ///         {
-        ///             DedicatedHostType = "ddh.g5",
-        ///             NameRegex = "tf-testAcc",
-        ///             Status = "Available",
-        ///         }));
-        ///         this.FirstDedicatedHostsId = dedicatedHostsDs.Apply(dedicatedHostsDs =&gt; dedicatedHostsDs.Hosts?[0]?.Id);
-        ///     }
+        ///         DedicatedHostType = "ddh.g5",
+        ///         NameRegex = "tf-testAcc",
+        ///         Status = "Available",
+        ///     });
         /// 
-        ///     [Output("firstDedicatedHostsId")]
-        ///     public Output&lt;string&gt; FirstDedicatedHostsId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDedicatedHostsId"] = dedicatedHostsDs.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDedicatedHostsResult> InvokeAsync(GetDedicatedHostsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostsResult>("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostsResult>("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
@@ -57,35 +56,34 @@ namespace Pulumi.AliCloud.Ecs
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dedicatedHostsDs = AliCloud.Ecs.GetDedicatedHosts.Invoke(new()
         ///     {
-        ///         var dedicatedHostsDs = Output.Create(AliCloud.Ecs.GetDedicatedHosts.InvokeAsync(new AliCloud.Ecs.GetDedicatedHostsArgs
-        ///         {
-        ///             DedicatedHostType = "ddh.g5",
-        ///             NameRegex = "tf-testAcc",
-        ///             Status = "Available",
-        ///         }));
-        ///         this.FirstDedicatedHostsId = dedicatedHostsDs.Apply(dedicatedHostsDs =&gt; dedicatedHostsDs.Hosts?[0]?.Id);
-        ///     }
+        ///         DedicatedHostType = "ddh.g5",
+        ///         NameRegex = "tf-testAcc",
+        ///         Status = "Available",
+        ///     });
         /// 
-        ///     [Output("firstDedicatedHostsId")]
-        ///     public Output&lt;string&gt; FirstDedicatedHostsId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstDedicatedHostsId"] = dedicatedHostsDs.Apply(getDedicatedHostsResult =&gt; getDedicatedHostsResult.Hosts[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDedicatedHostsResult> Invoke(GetDedicatedHostsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDedicatedHostsResult>("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedHostsResult>("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDedicatedHostsArgs : Pulumi.InvokeArgs
+    public sealed class GetDedicatedHostsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of ECS Dedicated Host.
@@ -174,9 +172,10 @@ namespace Pulumi.AliCloud.Ecs
         public GetDedicatedHostsArgs()
         {
         }
+        public static new GetDedicatedHostsArgs Empty => new GetDedicatedHostsArgs();
     }
 
-    public sealed class GetDedicatedHostsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDedicatedHostsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of ECS Dedicated Host.
@@ -265,6 +264,7 @@ namespace Pulumi.AliCloud.Ecs
         public GetDedicatedHostsInvokeArgs()
         {
         }
+        public static new GetDedicatedHostsInvokeArgs Empty => new GetDedicatedHostsInvokeArgs();
     }
 
 

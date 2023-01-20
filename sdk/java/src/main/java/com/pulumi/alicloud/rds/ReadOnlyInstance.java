@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -228,6 +228,34 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return this.connectionString;
     }
     /**
+     * The attribute of the IP address whitelist. By default, this parameter is empty.
+     * 
+     */
+    @Export(name="dbInstanceIpArrayAttribute", type=String.class, parameters={})
+    private Output</* @Nullable */ String> dbInstanceIpArrayAttribute;
+
+    /**
+     * @return The attribute of the IP address whitelist. By default, this parameter is empty.
+     * 
+     */
+    public Output<Optional<String>> dbInstanceIpArrayAttribute() {
+        return Codegen.optional(this.dbInstanceIpArrayAttribute);
+    }
+    /**
+     * The name of the IP address whitelist. Default value: Default.
+     * 
+     */
+    @Export(name="dbInstanceIpArrayName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> dbInstanceIpArrayName;
+
+    /**
+     * @return The name of the IP address whitelist. Default value: Default.
+     * 
+     */
+    public Output<Optional<String>> dbInstanceIpArrayName() {
+        return Codegen.optional(this.dbInstanceIpArrayName);
+    }
+    /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
@@ -344,6 +372,26 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return this.masterDbInstanceId;
     }
     /**
+     * The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+     * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+     * - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+     * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+     * 
+     */
+    @Export(name="modifyMode", type=String.class, parameters={})
+    private Output</* @Nullable */ String> modifyMode;
+
+    /**
+     * @return The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
+     * - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
+     * - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
+     * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
+     * 
+     */
+    public Output<Optional<String>> modifyMode() {
+        return Codegen.optional(this.modifyMode);
+    }
+    /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
      * 
      */
@@ -408,6 +456,34 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
+    }
+    /**
+     * The type of IP address in the IP address whitelist.
+     * 
+     */
+    @Export(name="securityIpType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> securityIpType;
+
+    /**
+     * @return The type of IP address in the IP address whitelist.
+     * 
+     */
+    public Output<Optional<String>> securityIpType() {
+        return Codegen.optional(this.securityIpType);
+    }
+    /**
+     * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * 
+     */
+    @Export(name="securityIps", type=List.class, parameters={String.class})
+    private Output<List<String>> securityIps;
+
+    /**
+     * @return List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+     * 
+     */
+    public Output<List<String>> securityIps() {
+        return this.securityIps;
     }
     /**
      * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
@@ -564,6 +640,28 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> vswitchId() {
         return Codegen.optional(this.vswitchId);
+    }
+    /**
+     * The network type of the IP address whitelist. Default value: MIX. Valid values:
+     * - Classic: classic network in enhanced whitelist mode
+     * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+     * - MIX: standard whitelist mode
+     * &gt; **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+     * 
+     */
+    @Export(name="whitelistNetworkType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> whitelistNetworkType;
+
+    /**
+     * @return The network type of the IP address whitelist. Default value: MIX. Valid values:
+     * - Classic: classic network in enhanced whitelist mode
+     * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
+     * - MIX: standard whitelist mode
+     * &gt; **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+     * 
+     */
+    public Output<Optional<String>> whitelistNetworkType() {
+        return Codegen.optional(this.whitelistNetworkType);
     }
     /**
      * The Zone to launch the DB instance.

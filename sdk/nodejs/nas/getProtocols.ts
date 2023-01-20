@@ -15,21 +15,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultProtocols = pulumi.output(alicloud.nas.getProtocols({
+ * const default = alicloud.nas.getProtocols({
  *     outputFile: "protocols.txt",
  *     type: "Performance",
  *     zoneId: "cn-beijing-e",
- * }));
- *
- * export const nasProtocolsProtocol = defaultProtocols.protocols[0];
+ * });
+ * export const nasProtocolsProtocol = _default.then(_default => _default.protocols?.[0]);
  * ```
  */
 export function getProtocols(args: GetProtocolsArgs, opts?: pulumi.InvokeOptions): Promise<GetProtocolsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getProtocols:getProtocols", {
         "outputFile": args.outputFile,
         "type": args.type,
@@ -68,9 +64,27 @@ export interface GetProtocolsResult {
     readonly type: string;
     readonly zoneId?: string;
 }
-
+/**
+ * Provide  a data source to retrieve the type of protocol used to create NAS file system.
+ *
+ * > **NOTE:** Available in 1.42.0
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.nas.getProtocols({
+ *     outputFile: "protocols.txt",
+ *     type: "Performance",
+ *     zoneId: "cn-beijing-e",
+ * });
+ * export const nasProtocolsProtocol = _default.then(_default => _default.protocols?.[0]);
+ * ```
+ */
 export function getProtocolsOutput(args: GetProtocolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProtocolsResult> {
-    return pulumi.output(args).apply(a => getProtocols(a, opts))
+    return pulumi.output(args).apply((a: any) => getProtocols(a, opts))
 }
 
 /**

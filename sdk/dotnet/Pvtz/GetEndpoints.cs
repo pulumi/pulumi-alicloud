@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud.Pvtz
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Pvtz.GetEndpoints.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Pvtz.GetEndpoints.InvokeAsync(new AliCloud.Pvtz.GetEndpointsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.PvtzEndpointId1 = ids.Apply(ids =&gt; ids.Endpoints?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Pvtz.GetEndpoints.InvokeAsync(new AliCloud.Pvtz.GetEndpointsArgs
-        ///         {
-        ///             NameRegex = "^my-Endpoint",
-        ///         }));
-        ///         this.PvtzEndpointId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Endpoints?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("pvtzEndpointId1")]
-        ///     public Output&lt;string&gt; PvtzEndpointId1 { get; set; }
-        ///     [Output("pvtzEndpointId2")]
-        ///     public Output&lt;string&gt; PvtzEndpointId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Pvtz.GetEndpoints.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Endpoint",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["pvtzEndpointId1"] = ids.Apply(getEndpointsResult =&gt; getEndpointsResult.Endpoints[0]?.Id),
+        ///         ["pvtzEndpointId2"] = nameRegex.Apply(getEndpointsResult =&gt; getEndpointsResult.Endpoints[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndpointsResult> InvokeAsync(GetEndpointsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:pvtz/getEndpoints:getEndpoints", args ?? new GetEndpointsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:pvtz/getEndpoints:getEndpoints", args ?? new GetEndpointsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud.Pvtz
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Pvtz.GetEndpoints.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Pvtz.GetEndpoints.InvokeAsync(new AliCloud.Pvtz.GetEndpointsArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.PvtzEndpointId1 = ids.Apply(ids =&gt; ids.Endpoints?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.Pvtz.GetEndpoints.InvokeAsync(new AliCloud.Pvtz.GetEndpointsArgs
-        ///         {
-        ///             NameRegex = "^my-Endpoint",
-        ///         }));
-        ///         this.PvtzEndpointId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Endpoints?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("pvtzEndpointId1")]
-        ///     public Output&lt;string&gt; PvtzEndpointId1 { get; set; }
-        ///     [Output("pvtzEndpointId2")]
-        ///     public Output&lt;string&gt; PvtzEndpointId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.Pvtz.GetEndpoints.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Endpoint",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["pvtzEndpointId1"] = ids.Apply(getEndpointsResult =&gt; getEndpointsResult.Endpoints[0]?.Id),
+        ///         ["pvtzEndpointId2"] = nameRegex.Apply(getEndpointsResult =&gt; getEndpointsResult.Endpoints[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEndpointsResult> Invoke(GetEndpointsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEndpointsResult>("alicloud:pvtz/getEndpoints:getEndpoints", args ?? new GetEndpointsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEndpointsResult>("alicloud:pvtz/getEndpoints:getEndpoints", args ?? new GetEndpointsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetEndpointsArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -137,9 +133,10 @@ namespace Pulumi.AliCloud.Pvtz
         public GetEndpointsArgs()
         {
         }
+        public static new GetEndpointsArgs Empty => new GetEndpointsArgs();
     }
 
-    public sealed class GetEndpointsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -171,6 +168,7 @@ namespace Pulumi.AliCloud.Pvtz
         public GetEndpointsInvokeArgs()
         {
         }
+        public static new GetEndpointsInvokeArgs Empty => new GetEndpointsInvokeArgs();
     }
 
 

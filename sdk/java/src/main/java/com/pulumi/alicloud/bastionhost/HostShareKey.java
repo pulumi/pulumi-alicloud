@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -31,7 +32,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.bastionhost.BastionhostFunctions;
- * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.bastionhost.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.bastionhost.HostShareKey;
  * import com.pulumi.alicloud.bastionhost.HostShareKeyArgs;
  * import java.util.List;
@@ -188,6 +189,10 @@ public class HostShareKey extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "passPhrase",
+                "privateKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

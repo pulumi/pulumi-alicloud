@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Ehpc
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ehpc.JobTemplate("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ehpc.JobTemplate("default", new AliCloud.Ehpc.JobTemplateArgs
-    ///         {
-    ///             CommandLine = "./LammpsTest/lammps.pbs",
-    ///             JobTemplateName = "example_value",
-    ///         });
-    ///     }
+    ///         CommandLine = "./LammpsTest/lammps.pbs",
+    ///         JobTemplateName = "example_value",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Ehpc
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ehpc/jobTemplate:JobTemplate")]
-    public partial class JobTemplate : Pulumi.CustomResource
+    public partial class JobTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Queue Jobs, Is of the Form: 1-10:2.
@@ -195,7 +193,7 @@ namespace Pulumi.AliCloud.Ehpc
         }
     }
 
-    public sealed class JobTemplateArgs : Pulumi.ResourceArgs
+    public sealed class JobTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Queue Jobs, Is of the Form: 1-10:2.
@@ -302,9 +300,10 @@ namespace Pulumi.AliCloud.Ehpc
         public JobTemplateArgs()
         {
         }
+        public static new JobTemplateArgs Empty => new JobTemplateArgs();
     }
 
-    public sealed class JobTemplateState : Pulumi.ResourceArgs
+    public sealed class JobTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Queue Jobs, Is of the Form: 1-10:2.
@@ -411,5 +410,6 @@ namespace Pulumi.AliCloud.Ehpc
         public JobTemplateState()
         {
         }
+        public static new JobTemplateState Empty => new JobTemplateState();
     }
 }

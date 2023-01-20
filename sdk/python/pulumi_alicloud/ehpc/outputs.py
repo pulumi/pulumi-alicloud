@@ -66,16 +66,18 @@ class ClusterAdditionalVolume(dict):
                  volume_protocol: Optional[str] = None,
                  volume_type: Optional[str] = None):
         """
-        :param str job_queue: The queue of the nodes to which the additional file system is attached.
+        :param str job_queue: The queue to which the compute nodes are added.
         :param str local_directory: The local directory on which the additional file system is mounted.
         :param str location: The type of the cluster. Valid value: `PublicCloud`.
-        :param str remote_directory: The remote directory to which the additional file system is mounted.
+        :param str remote_directory: The remote directory to which the file system is mounted.
         :param Sequence['ClusterAdditionalVolumeRoleArgs'] roles: The roles. See the following `Block roles`.
-        :param str volume_id: The ID of the additional file system.
+        :param str volume_id: The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         :param str volume_mount_option: The mount options of the file system.
-        :param str volume_mountpoint: The mount target of the additional file system.
-        :param str volume_protocol: The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
-        :param str volume_type: The type of the additional shared storage. Only NAS file systems are supported.
+        :param str volume_mountpoint: The mount target of the file system. Take note of the following information:
+               - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+               - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
+        :param str volume_protocol: The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
+        :param str volume_type: The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         """
         if job_queue is not None:
             pulumi.set(__self__, "job_queue", job_queue)
@@ -102,7 +104,7 @@ class ClusterAdditionalVolume(dict):
     @pulumi.getter(name="jobQueue")
     def job_queue(self) -> Optional[str]:
         """
-        The queue of the nodes to which the additional file system is attached.
+        The queue to which the compute nodes are added.
         """
         return pulumi.get(self, "job_queue")
 
@@ -126,7 +128,7 @@ class ClusterAdditionalVolume(dict):
     @pulumi.getter(name="remoteDirectory")
     def remote_directory(self) -> Optional[str]:
         """
-        The remote directory to which the additional file system is mounted.
+        The remote directory to which the file system is mounted.
         """
         return pulumi.get(self, "remote_directory")
 
@@ -142,7 +144,7 @@ class ClusterAdditionalVolume(dict):
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[str]:
         """
-        The ID of the additional file system.
+        The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         """
         return pulumi.get(self, "volume_id")
 
@@ -158,7 +160,9 @@ class ClusterAdditionalVolume(dict):
     @pulumi.getter(name="volumeMountpoint")
     def volume_mountpoint(self) -> Optional[str]:
         """
-        The mount target of the additional file system.
+        The mount target of the file system. Take note of the following information:
+        - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
+        - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
         """
         return pulumi.get(self, "volume_mountpoint")
 
@@ -166,7 +170,7 @@ class ClusterAdditionalVolume(dict):
     @pulumi.getter(name="volumeProtocol")
     def volume_protocol(self) -> Optional[str]:
         """
-        The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+        The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
         """
         return pulumi.get(self, "volume_protocol")
 
@@ -174,7 +178,7 @@ class ClusterAdditionalVolume(dict):
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[str]:
         """
-        The type of the additional shared storage. Only NAS file systems are supported.
+        The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         """
         return pulumi.get(self, "volume_type")
 

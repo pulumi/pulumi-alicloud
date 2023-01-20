@@ -94,10 +94,12 @@ export class Eip extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string>;
     public readonly period!: pulumi.Output<number | undefined>;
+    public readonly publicIpAddressPoolId!: pulumi.Output<string | undefined>;
     /**
      * The Id of resource group which the eip belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    public readonly securityProtectionTypes!: pulumi.Output<string[] | undefined>;
     /**
      * The EIP current status.
      */
@@ -137,7 +139,9 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["netmode"] = state ? state.netmode : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["publicIpAddressPoolId"] = state ? state.publicIpAddressPoolId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityProtectionTypes"] = state ? state.securityProtectionTypes : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -155,7 +159,9 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["netmode"] = args ? args.netmode : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["publicIpAddressPoolId"] = args ? args.publicIpAddressPoolId : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityProtectionTypes"] = args ? args.securityProtectionTypes : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -219,10 +225,12 @@ export interface EipState {
      */
     paymentType?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
+    publicIpAddressPoolId?: pulumi.Input<string>;
     /**
      * The Id of resource group which the eip belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The EIP current status.
      */
@@ -283,10 +291,12 @@ export interface EipArgs {
      */
     paymentType?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
+    publicIpAddressPoolId?: pulumi.Input<string>;
     /**
      * The Id of resource group which the eip belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of tags to assign to the resource.
      */

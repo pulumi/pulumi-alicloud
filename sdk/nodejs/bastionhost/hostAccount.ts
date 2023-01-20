@@ -135,13 +135,15 @@ export class HostAccount extends pulumi.CustomResource {
             resourceInputs["hostAccountName"] = args ? args.hostAccountName : undefined;
             resourceInputs["hostId"] = args ? args.hostId : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["passPhrase"] = args ? args.passPhrase : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["passPhrase"] = args?.passPhrase ? pulumi.secret(args.passPhrase) : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["protocolName"] = args ? args.protocolName : undefined;
             resourceInputs["hostAccountId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["passPhrase", "password", "privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(HostAccount.__pulumiType, name, resourceInputs, opts);
     }
 }

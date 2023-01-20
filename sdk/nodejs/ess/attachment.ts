@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Attaches several ECS instances to a specified scaling group or remove them from it.
  *
- * > **NOTE:** ECS instances can be attached or remove only when the scaling group is active and it has no scaling activity in progress.
+ * > **NOTE:** ECS instances can be attached or remove only when the scaling group is active, and it has no scaling activity in progress.
  *
  * > **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
  *
@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?[0]?.id,
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  * }));
@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
@@ -65,18 +65,18 @@ import * as utilities from "../utilities";
  * });
  * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("defaultScalingConfiguration", {
  *     scalingGroupId: defaultScalingGroup.id,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
  *     securityGroupId: defaultSecurityGroup.id,
  *     forceDelete: true,
  *     active: true,
  *     enable: true,
  * });
- * const defaultInstance: alicloud.ecs.Instance[];
+ * const defaultInstance: alicloud.ecs.Instance[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     defaultInstance.push(new alicloud.ecs.Instance(`defaultInstance-${range.value}`, {
- *         imageId: defaultImages.then(defaultImages => defaultImages.images?[0]?.id),
- *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?[0]?.id),
+ *         imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
  *         securityGroups: [defaultSecurityGroup.id],
  *         internetChargeType: "PayByTraffic",
  *         internetMaxBandwidthOut: 10,

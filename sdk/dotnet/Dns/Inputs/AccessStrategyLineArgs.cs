@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dns.Inputs
 {
 
-    public sealed class AccessStrategyLineArgs : Pulumi.ResourceArgs
+    public sealed class AccessStrategyLineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The line code of the source region.
@@ -21,5 +21,6 @@ namespace Pulumi.AliCloud.Dns.Inputs
         public AccessStrategyLineArgs()
         {
         }
+        public static new AccessStrategyLineArgs Empty => new AccessStrategyLineArgs();
     }
 }

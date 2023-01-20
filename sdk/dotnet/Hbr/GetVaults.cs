@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Hbr.GetVaults.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Hbr.GetVaults.InvokeAsync(new AliCloud.Hbr.GetVaultsArgs
-        ///         {
-        ///             NameRegex = "^my-Vault",
-        ///         }));
-        ///         this.HbrVaultId1 = ids.Apply(ids =&gt; ids.Vaults?[0]?.Id);
-        ///     }
+        ///         NameRegex = "^my-Vault",
+        ///     });
         /// 
-        ///     [Output("hbrVaultId1")]
-        ///     public Output&lt;string&gt; HbrVaultId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrVaultId1"] = ids.Apply(getVaultsResult =&gt; getVaultsResult.Vaults[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVaultsResult> InvokeAsync(GetVaultsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVaultsResult>("alicloud:hbr/getVaults:getVaults", args ?? new GetVaultsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVaultsResult>("alicloud:hbr/getVaults:getVaults", args ?? new GetVaultsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Hbr Vaults of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.Hbr
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.Hbr.GetVaults.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.Hbr.GetVaults.InvokeAsync(new AliCloud.Hbr.GetVaultsArgs
-        ///         {
-        ///             NameRegex = "^my-Vault",
-        ///         }));
-        ///         this.HbrVaultId1 = ids.Apply(ids =&gt; ids.Vaults?[0]?.Id);
-        ///     }
+        ///         NameRegex = "^my-Vault",
+        ///     });
         /// 
-        ///     [Output("hbrVaultId1")]
-        ///     public Output&lt;string&gt; HbrVaultId1 { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["hbrVaultId1"] = ids.Apply(getVaultsResult =&gt; getVaultsResult.Vaults[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVaultsResult> Invoke(GetVaultsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVaultsResult>("alicloud:hbr/getVaults:getVaults", args ?? new GetVaultsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVaultsResult>("alicloud:hbr/getVaults:getVaults", args ?? new GetVaultsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetVaultsArgs : Pulumi.InvokeArgs
+    public sealed class GetVaultsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -123,9 +121,10 @@ namespace Pulumi.AliCloud.Hbr
         public GetVaultsArgs()
         {
         }
+        public static new GetVaultsArgs Empty => new GetVaultsArgs();
     }
 
-    public sealed class GetVaultsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVaultsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -163,6 +162,7 @@ namespace Pulumi.AliCloud.Hbr
         public GetVaultsInvokeArgs()
         {
         }
+        public static new GetVaultsInvokeArgs Empty => new GetVaultsInvokeArgs();
     }
 
 

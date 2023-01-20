@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -22,16 +23,13 @@ import * as utilities from "../utilities";
  *     ids: ["eni-abcd1234"],
  *     nameRegex: "tf-testAcc",
  * });
- * export const firstEcsNetworkInterfaceId = example.then(example => example.interfaces?[0]?.id);
+ * export const firstEcsNetworkInterfaceId = example.then(example => example.interfaces?.[0]?.id);
  * ```
  */
 export function getEcsNetworkInterfaces(args?: GetEcsNetworkInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsNetworkInterfacesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", {
         "ids": args.ids,
         "instanceId": args.instanceId,
@@ -156,9 +154,28 @@ export interface GetEcsNetworkInterfacesResult {
     readonly vpcId?: string;
     readonly vswitchId?: string;
 }
-
+/**
+ * This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.123.1+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.ecs.getEcsNetworkInterfaces({
+ *     ids: ["eni-abcd1234"],
+ *     nameRegex: "tf-testAcc",
+ * });
+ * export const firstEcsNetworkInterfaceId = example.then(example => example.interfaces?.[0]?.id);
+ * ```
+ */
 export function getEcsNetworkInterfacesOutput(args?: GetEcsNetworkInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsNetworkInterfacesResult> {
-    return pulumi.output(args).apply(a => getEcsNetworkInterfaces(a, opts))
+    return pulumi.output(args).apply((a: any) => getEcsNetworkInterfaces(a, opts))
 }
 
 /**

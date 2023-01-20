@@ -36,11 +36,11 @@ import (
 //			}
 //			_, err = ecs.NewLaunchTemplate(ctx, "template", &ecs.LaunchTemplateArgs{
 //				Description:                 pulumi.String("test1"),
-//				ImageId:                     pulumi.String(images.Images[0].Id),
+//				ImageId:                     *pulumi.String(images.Images[0].Id),
 //				HostName:                    pulumi.String("tf-test-host"),
 //				InstanceChargeType:          pulumi.String("PrePaid"),
 //				InstanceName:                pulumi.String("tf-instance-name"),
-//				InstanceType:                pulumi.String(instances.Instances[0].InstanceType),
+//				InstanceType:                *pulumi.String(instances.Instances[0].InstanceType),
 //				InternetChargeType:          pulumi.String("PayByBandwidth"),
 //				InternetMaxBandwidthIn:      pulumi.Int(5),
 //				InternetMaxBandwidthOut:     pulumi.Int(0),
@@ -160,7 +160,7 @@ type LaunchTemplate struct {
 	SecurityGroupId  pulumi.StringPtrOutput   `pulumi:"securityGroupId"`
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	SpotDuration     pulumi.StringPtrOutput   `pulumi:"spotDuration"`
-	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit pulumi.Float64PtrOutput `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
@@ -293,7 +293,7 @@ type launchTemplateState struct {
 	SecurityGroupId  *string  `pulumi:"securityGroupId"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	SpotDuration     *string  `pulumi:"spotDuration"`
-	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
@@ -398,7 +398,7 @@ type LaunchTemplateState struct {
 	SecurityGroupId  pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
 	SpotDuration     pulumi.StringPtrInput
-	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
@@ -507,7 +507,7 @@ type launchTemplateArgs struct {
 	SecurityGroupId  *string  `pulumi:"securityGroupId"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	SpotDuration     *string  `pulumi:"spotDuration"`
-	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
@@ -613,7 +613,7 @@ type LaunchTemplateArgs struct {
 	SecurityGroupId  pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
 	SpotDuration     pulumi.StringPtrInput
-	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
@@ -891,7 +891,7 @@ func (o LaunchTemplateOutput) SpotDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.SpotDuration }).(pulumi.StringPtrOutput)
 }
 
-// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+// Sets the maximum hourly instance price. Supports up to three decimal places.
 func (o LaunchTemplateOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.Float64PtrOutput { return v.SpotPriceLimit }).(pulumi.Float64PtrOutput)
 }

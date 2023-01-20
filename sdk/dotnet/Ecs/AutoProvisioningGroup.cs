@@ -17,68 +17,72 @@ namespace Pulumi.AliCloud.Ecs
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "auto_provisioning_group";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "auto_provisioning_group";
-    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
-    ///         {
-    ///             AvailableDiskCategory = "cloud_efficiency",
-    ///             AvailableResourceCreation = "VSwitch",
-    ///         }));
-    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
-    ///         {
-    ///             VpcName = name,
-    ///             CidrBlock = "172.16.0.0/16",
-    ///         });
-    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///             CidrBlock = "172.16.0.0/24",
-    ///             ZoneId = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones?[0]?.Id),
-    ///             VswitchName = name,
-    ///         });
-    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
-    ///         {
-    ///             VpcId = defaultNetwork.Id,
-    ///         });
-    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
-    ///         {
-    ///             NameRegex = "^ubuntu_18.*64",
-    ///             MostRecent = true,
-    ///             Owners = "system",
-    ///         }));
-    ///         var template = new AliCloud.Ecs.EcsLaunchTemplate("template", new AliCloud.Ecs.EcsLaunchTemplateArgs
-    ///         {
-    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images?[0]?.Id),
-    ///             InstanceType = "ecs.n1.tiny",
-    ///             SecurityGroupId = defaultSecurityGroup.Id,
-    ///         });
-    ///         var defaultAutoProvisioningGroup = new AliCloud.Ecs.AutoProvisioningGroup("defaultAutoProvisioningGroup", new AliCloud.Ecs.AutoProvisioningGroupArgs
-    ///         {
-    ///             LaunchTemplateId = template.Id,
-    ///             TotalTargetCapacity = "4",
-    ///             PayAsYouGoTargetCapacity = "1",
-    ///             SpotTargetCapacity = "2",
-    ///             LaunchTemplateConfigs = 
-    ///             {
-    ///                 new AliCloud.Ecs.Inputs.AutoProvisioningGroupLaunchTemplateConfigArgs
-    ///                 {
-    ///                     InstanceType = "ecs.n1.small",
-    ///                     VswitchId = defaultSwitch.Id,
-    ///                     WeightedCapacity = "2",
-    ///                     MaxPrice = "2",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
     /// 
-    /// }
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var template = new AliCloud.Ecs.EcsLaunchTemplate("template", new()
+    ///     {
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = "ecs.n1.tiny",
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///     });
+    /// 
+    ///     var defaultAutoProvisioningGroup = new AliCloud.Ecs.AutoProvisioningGroup("defaultAutoProvisioningGroup", new()
+    ///     {
+    ///         LaunchTemplateId = template.Id,
+    ///         TotalTargetCapacity = "4",
+    ///         PayAsYouGoTargetCapacity = "1",
+    ///         SpotTargetCapacity = "2",
+    ///         LaunchTemplateConfigs = new[]
+    ///         {
+    ///             new AliCloud.Ecs.Inputs.AutoProvisioningGroupLaunchTemplateConfigArgs
+    ///             {
+    ///                 InstanceType = "ecs.n1.small",
+    ///                 VswitchId = defaultSwitch.Id,
+    ///                 WeightedCapacity = "2",
+    ///                 MaxPrice = "2",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Block config
     /// 
@@ -98,7 +102,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup")]
-    public partial class AutoProvisioningGroup : Pulumi.CustomResource
+    public partial class AutoProvisioningGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
@@ -264,7 +268,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class AutoProvisioningGroupArgs : Pulumi.ResourceArgs
+    public sealed class AutoProvisioningGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
@@ -395,9 +399,10 @@ namespace Pulumi.AliCloud.Ecs
         public AutoProvisioningGroupArgs()
         {
         }
+        public static new AutoProvisioningGroupArgs Empty => new AutoProvisioningGroupArgs();
     }
 
-    public sealed class AutoProvisioningGroupState : Pulumi.ResourceArgs
+    public sealed class AutoProvisioningGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
@@ -528,5 +533,6 @@ namespace Pulumi.AliCloud.Ecs
         public AutoProvisioningGroupState()
         {
         }
+        public static new AutoProvisioningGroupState Empty => new AutoProvisioningGroupState();
     }
 }

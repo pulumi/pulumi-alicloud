@@ -40,6 +40,48 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:lindorm/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
+     * The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+     * 
+     */
+    @Export(name="arbiterVswitchId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> arbiterVswitchId;
+
+    /**
+     * @return The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
+     * 
+     */
+    public Output<Optional<String>> arbiterVswitchId() {
+        return Codegen.optional(this.arbiterVswitchId);
+    }
+    /**
+     * The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+     * 
+     */
+    @Export(name="arbiterZoneId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> arbiterZoneId;
+
+    /**
+     * @return The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
+     * 
+     */
+    public Output<Optional<String>> arbiterZoneId() {
+        return Codegen.optional(this.arbiterZoneId);
+    }
+    /**
+     * The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+     * 
+     */
+    @Export(name="archVersion", type=String.class, parameters={})
+    private Output</* @Nullable */ String> archVersion;
+
+    /**
+     * @return The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
+     * 
+     */
+    public Output<Optional<String>> archVersion() {
+        return Codegen.optional(this.archVersion);
+    }
+    /**
      * The cold storage capacity of the instance. Unit: GB.
      * 
      */
@@ -54,32 +96,56 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.coldStorage;
     }
     /**
-     * The core num.
+     * The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
+     * 
+     * @deprecated
+     * Field &#39;core_num&#39; has been deprecated from provider version 1.188.0 and it will be removed in the future version.
      * 
      */
+    @Deprecated /* Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version. */
     @Export(name="coreNum", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> coreNum;
 
     /**
-     * @return The core num.
+     * @return The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
      * 
      */
     public Output<Optional<Integer>> coreNum() {
         return Codegen.optional(this.coreNum);
     }
     /**
-     * The core spec.
+     * The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+     * 
+     */
+    @Export(name="coreSingleStorage", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> coreSingleStorage;
+
+    /**
+     * @return The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+     * 
+     */
+    public Output<Optional<Integer>> coreSingleStorage() {
+        return Codegen.optional(this.coreSingleStorage);
+    }
+    /**
+     * The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+     * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+     * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+     *   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      * 
      */
     @Export(name="coreSpec", type=String.class, parameters={})
-    private Output</* @Nullable */ String> coreSpec;
+    private Output<String> coreSpec;
 
     /**
-     * @return The core spec.
+     * @return The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
+     * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+     * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
+     *   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      * 
      */
-    public Output<Optional<String>> coreSpec() {
-        return Codegen.optional(this.coreSpec);
+    public Output<String> coreSpec() {
+        return this.coreSpec;
     }
     /**
      * The deletion protection of instance.
@@ -96,14 +162,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.deletionProection;
     }
     /**
-     * The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+     * The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
      * 
      */
     @Export(name="diskCategory", type=String.class, parameters={})
     private Output<String> diskCategory;
 
     /**
-     * @return The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
+     * @return The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
      * 
      */
     public Output<String> diskCategory() {
@@ -254,14 +320,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="instanceStorage", type=String.class, parameters={})
-    private Output</* @Nullable */ String> instanceStorage;
+    private Output<String> instanceStorage;
 
     /**
      * @return The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
      * 
      */
-    public Output<Optional<String>> instanceStorage() {
-        return Codegen.optional(this.instanceStorage);
+    public Output<String> instanceStorage() {
+        return this.instanceStorage;
     }
     /**
      * The ip white list of instance.
@@ -276,6 +342,62 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> ipWhiteLists() {
         return Codegen.optional(this.ipWhiteLists);
+    }
+    /**
+     * The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+     * 
+     */
+    @Export(name="logDiskCategory", type=String.class, parameters={})
+    private Output</* @Nullable */ String> logDiskCategory;
+
+    /**
+     * @return The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
+     * 
+     */
+    public Output<Optional<String>> logDiskCategory() {
+        return Codegen.optional(this.logDiskCategory);
+    }
+    /**
+     * The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+     * 
+     */
+    @Export(name="logNum", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> logNum;
+
+    /**
+     * @return The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
+     * 
+     */
+    public Output<Optional<Integer>> logNum() {
+        return Codegen.optional(this.logNum);
+    }
+    /**
+     * The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+     * 
+     */
+    @Export(name="logSingleStorage", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> logSingleStorage;
+
+    /**
+     * @return The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
+     * 
+     */
+    public Output<Optional<Integer>> logSingleStorage() {
+        return Codegen.optional(this.logSingleStorage);
+    }
+    /**
+     * The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+     * 
+     */
+    @Export(name="logSpec", type=String.class, parameters={})
+    private Output</* @Nullable */ String> logSpec;
+
+    /**
+     * @return The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
+     * 
+     */
+    public Output<Optional<String>> logSpec() {
+        return Codegen.optional(this.logSpec);
     }
     /**
      * The count of lindorm tunnel service.
@@ -304,6 +426,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ltsNodeSpecification() {
         return this.ltsNodeSpecification;
+    }
+    /**
+     * The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+     * 
+     */
+    @Export(name="multiZoneCombination", type=String.class, parameters={})
+    private Output</* @Nullable */ String> multiZoneCombination;
+
+    /**
+     * @return The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
+     * 
+     */
+    public Output<Optional<String>> multiZoneCombination() {
+        return Codegen.optional(this.multiZoneCombination);
     }
     /**
      * The billing method. Valid values: `PayAsYouGo` and `Subscription`.
@@ -362,6 +498,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pricingCycle);
     }
     /**
+     * Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+     * 
+     */
+    @Export(name="primaryVswitchId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> primaryVswitchId;
+
+    /**
+     * @return Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
+     * 
+     */
+    public Output<Optional<String>> primaryVswitchId() {
+        return Codegen.optional(this.primaryVswitchId);
+    }
+    /**
+     * Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+     * 
+     */
+    @Export(name="primaryZoneId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> primaryZoneId;
+
+    /**
+     * @return Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
+     * 
+     */
+    public Output<Optional<String>> primaryZoneId() {
+        return Codegen.optional(this.primaryZoneId);
+    }
+    /**
      * The ID of the resource group.
      * 
      */
@@ -404,6 +568,48 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.searchEngineSpecification;
     }
     /**
+     * (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+     * 
+     */
+    @Export(name="serviceType", type=String.class, parameters={})
+    private Output<String> serviceType;
+
+    /**
+     * @return (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+     * 
+     */
+    public Output<String> serviceType() {
+        return this.serviceType;
+    }
+    /**
+     * The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+     * 
+     */
+    @Export(name="standbyVswitchId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> standbyVswitchId;
+
+    /**
+     * @return The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
+     * 
+     */
+    public Output<Optional<String>> standbyVswitchId() {
+        return Codegen.optional(this.standbyVswitchId);
+    }
+    /**
+     * The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+     * 
+     */
+    @Export(name="standbyZoneId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> standbyZoneId;
+
+    /**
+     * @return The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
+     * 
+     */
+    public Output<Optional<String>> standbyZoneId() {
+        return Codegen.optional(this.standbyZoneId);
+    }
+    /**
      * The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
      * 
      */
@@ -432,14 +638,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.tableEngineNodeCount;
     }
     /**
-     * The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+     * The specification of  table engine. Valid values:
+     * `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
      * 
      */
     @Export(name="tableEngineSpecification", type=String.class, parameters={})
     private Output<String> tableEngineSpecification;
 
     /**
-     * @return The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.c.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+     * @return The specification of  table engine. Valid values:
+     * `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
      * 
      */
     public Output<String> tableEngineSpecification() {
@@ -474,14 +682,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.timeSeriesEngineNodeCount;
     }
     /**
-     * The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+     * The specification of time series engine.
+     * Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
      * 
      */
     @Export(name="timeSeriesEngineSpecification", type=String.class, parameters={})
     private Output<String> timeSeriesEngineSpecification;
 
     /**
-     * @return The specification of time series engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
+     * @return The specification of time series engine.
+     * Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
      * 
      */
     public Output<String> timeSeriesEngineSpecification() {
@@ -506,7 +716,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.timeSeriresEngineSpecification;
     }
     /**
-     * The upgrade type. **NOTE:** Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+     * The upgrade type. **NOTE:** Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0,
+     * and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
      * 
      * @deprecated
      * Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version.
@@ -517,11 +728,26 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> upgradeType;
 
     /**
-     * @return The upgrade type. **NOTE:** Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
+     * @return The upgrade type. **NOTE:** Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0,
+     * and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
      * 
      */
     public Output<Optional<String>> upgradeType() {
         return Codegen.optional(this.upgradeType);
+    }
+    /**
+     * The VPC ID of the instance.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output<String> vpcId;
+
+    /**
+     * @return The VPC ID of the instance.
+     * 
+     */
+    public Output<String> vpcId() {
+        return this.vpcId;
     }
     /**
      * The vswitch id.

@@ -23,29 +23,28 @@ namespace Pulumi.AliCloud.PrivateLink
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.PrivateLink.GetVpcEndpointZones.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.PrivateLink.GetVpcEndpointZones.InvokeAsync(new AliCloud.PrivateLink.GetVpcEndpointZonesArgs
-        ///         {
-        ///             EndpointId = "ep-gw8boxxxxx",
-        ///         }));
-        ///         this.FirstPrivatelinkVpcEndpointZoneId = example.Apply(example =&gt; example.Zones?[0]?.Id);
-        ///     }
+        ///         EndpointId = "ep-gw8boxxxxx",
+        ///     });
         /// 
-        ///     [Output("firstPrivatelinkVpcEndpointZoneId")]
-        ///     public Output&lt;string&gt; FirstPrivatelinkVpcEndpointZoneId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPrivatelinkVpcEndpointZoneId"] = example.Apply(getVpcEndpointZonesResult =&gt; getVpcEndpointZonesResult.Zones[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVpcEndpointZonesResult> InvokeAsync(GetVpcEndpointZonesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointZonesResult>("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", args ?? new GetVpcEndpointZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointZonesResult>("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", args ?? new GetVpcEndpointZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.
@@ -59,33 +58,32 @@ namespace Pulumi.AliCloud.PrivateLink
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.PrivateLink.GetVpcEndpointZones.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.PrivateLink.GetVpcEndpointZones.InvokeAsync(new AliCloud.PrivateLink.GetVpcEndpointZonesArgs
-        ///         {
-        ///             EndpointId = "ep-gw8boxxxxx",
-        ///         }));
-        ///         this.FirstPrivatelinkVpcEndpointZoneId = example.Apply(example =&gt; example.Zones?[0]?.Id);
-        ///     }
+        ///         EndpointId = "ep-gw8boxxxxx",
+        ///     });
         /// 
-        ///     [Output("firstPrivatelinkVpcEndpointZoneId")]
-        ///     public Output&lt;string&gt; FirstPrivatelinkVpcEndpointZoneId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstPrivatelinkVpcEndpointZoneId"] = example.Apply(getVpcEndpointZonesResult =&gt; getVpcEndpointZonesResult.Zones[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVpcEndpointZonesResult> Invoke(GetVpcEndpointZonesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpcEndpointZonesResult>("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", args ?? new GetVpcEndpointZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpcEndpointZonesResult>("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", args ?? new GetVpcEndpointZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetVpcEndpointZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetVpcEndpointZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Vpc Endpoint.
@@ -105,9 +103,10 @@ namespace Pulumi.AliCloud.PrivateLink
         public GetVpcEndpointZonesArgs()
         {
         }
+        public static new GetVpcEndpointZonesArgs Empty => new GetVpcEndpointZonesArgs();
     }
 
-    public sealed class GetVpcEndpointZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVpcEndpointZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The ID of the Vpc Endpoint.
@@ -127,6 +126,7 @@ namespace Pulumi.AliCloud.PrivateLink
         public GetVpcEndpointZonesInvokeArgs()
         {
         }
+        public static new GetVpcEndpointZonesInvokeArgs Empty => new GetVpcEndpointZonesInvokeArgs();
     }
 
 

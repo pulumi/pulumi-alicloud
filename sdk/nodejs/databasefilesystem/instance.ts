@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -110,6 +111,9 @@ export class Instance extends pulumi.CustomResource {
      * The snapshot id of the Database file system.
      */
     public readonly snapshotId!: pulumi.Output<string | undefined>;
+    /**
+     * The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+     */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
@@ -228,6 +232,9 @@ export interface InstanceState {
      * The snapshot id of the Database file system.
      */
     snapshotId?: pulumi.Input<string>;
+    /**
+     * The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+     */
     status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.

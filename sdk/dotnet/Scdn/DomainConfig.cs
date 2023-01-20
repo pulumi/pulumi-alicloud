@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Scdn
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:scdn/domainConfig:DomainConfig")]
-    public partial class DomainConfig : Pulumi.CustomResource
+    public partial class DomainConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The SCDN domain config id.
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Scdn
         }
     }
 
-    public sealed class DomainConfigArgs : Pulumi.ResourceArgs
+    public sealed class DomainConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -130,9 +130,10 @@ namespace Pulumi.AliCloud.Scdn
         public DomainConfigArgs()
         {
         }
+        public static new DomainConfigArgs Empty => new DomainConfigArgs();
     }
 
-    public sealed class DomainConfigState : Pulumi.ResourceArgs
+    public sealed class DomainConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The SCDN domain config id.
@@ -173,5 +174,6 @@ namespace Pulumi.AliCloud.Scdn
         public DomainConfigState()
         {
         }
+        public static new DomainConfigState Empty => new DomainConfigState();
     }
 }

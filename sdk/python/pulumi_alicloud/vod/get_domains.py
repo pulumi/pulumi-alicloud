@@ -159,16 +159,10 @@ def get_domains(domain_search_type: Optional[str] = None,
 
 
     :param str domain_search_type: The search method. Valid values:
-           * `fuzzy_match`: fuzzy match. This is the default value.
-           * `pre_match`: prefix match.
-           * `suf_match`: suffix match.
-           * `full_match`: exact match
     :param Sequence[str] ids: A list of Domain IDs. Its element value is same as Domain Name.
     :param str name_regex: A regex string to filter results by Domain name.
     :param str status: The status of the resource.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
-           * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-           * `Value`: It can be up to 128 characters in length. It can be a null string.
     """
     __args__ = dict()
     __args__['domainSearchType'] = domain_search_type
@@ -235,15 +229,9 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
 
 
     :param str domain_search_type: The search method. Valid values:
-           * `fuzzy_match`: fuzzy match. This is the default value.
-           * `pre_match`: prefix match.
-           * `suf_match`: suffix match.
-           * `full_match`: exact match
     :param Sequence[str] ids: A list of Domain IDs. Its element value is same as Domain Name.
     :param str name_regex: A regex string to filter results by Domain name.
     :param str status: The status of the resource.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
-           * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-           * `Value`: It can be up to 128 characters in length. It can be a null string.
     """
     ...

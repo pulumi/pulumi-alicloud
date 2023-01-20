@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,19 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = pulumi.output(alicloud.rds.getModifyParameterLogs({
+ * const example = alicloud.rds.getModifyParameterLogs({
  *     dbInstanceId: "example_value",
  *     endTime: "2022-06-08T13:56Z",
  *     startTime: "2022-06-04T13:56Z",
- * }));
+ * });
  * ```
  */
 export function getModifyParameterLogs(args: GetModifyParameterLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetModifyParameterLogsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", {
         "dbInstanceId": args.dbInstanceId,
         "endTime": args.endTime,
@@ -72,9 +70,28 @@ export interface GetModifyParameterLogsResult {
     readonly outputFile?: string;
     readonly startTime: string;
 }
-
+/**
+ * This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.174.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.rds.getModifyParameterLogs({
+ *     dbInstanceId: "example_value",
+ *     endTime: "2022-06-08T13:56Z",
+ *     startTime: "2022-06-04T13:56Z",
+ * });
+ * ```
+ */
 export function getModifyParameterLogsOutput(args: GetModifyParameterLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModifyParameterLogsResult> {
-    return pulumi.output(args).apply(a => getModifyParameterLogs(a, opts))
+    return pulumi.output(args).apply((a: any) => getModifyParameterLogs(a, opts))
 }
 
 /**

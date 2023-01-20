@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -36,11 +37,11 @@ import * as utilities from "../utilities";
  *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
  *     tagKeyScope: "tfTest",
  *     tagValueScope: "tfTest 123",
- *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?[0]),
- *     excludeResourceIdsScope: defaultInstances.then(defaultInstances => defaultInstances.instances?[0]?.id),
+ *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     excludeResourceIdsScope: defaultInstances.then(defaultInstances => defaultInstances.instances?.[0]?.id),
  *     regionIdsScope: "cn-hangzhou",
  *     inputParameters: {
- *         vpcIds: defaultInstances.then(defaultInstances => defaultInstances.instances?[0]?.vpcId),
+ *         vpcIds: defaultInstances.then(defaultInstances => defaultInstances.instances?.[0]?.vpcId),
  *     },
  * });
  * const defaultCompliancePack = new alicloud.cfg.CompliancePack("defaultCompliancePack", {

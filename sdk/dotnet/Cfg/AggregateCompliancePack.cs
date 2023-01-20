@@ -21,74 +21,76 @@ namespace Pulumi.AliCloud.Cfg
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "example_name";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var name = config.Get("name") ?? "example_name";
-    ///         var defaultResourceGroups = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
-    ///         {
-    ///             Status = "OK",
-    ///         }));
-    ///         var defaultInstances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync());
-    ///         var defaultAggregator = new AliCloud.Cfg.Aggregator("defaultAggregator", new AliCloud.Cfg.AggregatorArgs
-    ///         {
-    ///             AggregatorAccounts = 
-    ///             {
-    ///                 new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
-    ///                 {
-    ///                     AccountId = "140278452670****",
-    ///                     AccountName = "test-2",
-    ///                     AccountType = "ResourceDirectory",
-    ///                 },
-    ///             },
-    ///             AggregatorName = "tf-testaccaggregator",
-    ///             Description = "tf-testaccaggregator",
-    ///         });
-    ///         var defaultAggregateConfigRule = new AliCloud.Cfg.AggregateConfigRule("defaultAggregateConfigRule", new AliCloud.Cfg.AggregateConfigRuleArgs
-    ///         {
-    ///             AggregatorId = defaultAggregator.Id,
-    ///             AggregateConfigRuleName = name,
-    ///             SourceOwner = "ALIYUN",
-    ///             SourceIdentifier = "ecs-cpu-min-count-limit",
-    ///             ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
-    ///             ResourceTypesScopes = 
-    ///             {
-    ///                 "ACS::ECS::Instance",
-    ///             },
-    ///             RiskLevel = 1,
-    ///             Description = name,
-    ///             ExcludeResourceIdsScope = defaultInstances.Apply(defaultInstances =&gt; defaultInstances.Ids?[0]),
-    ///             InputParameters = 
-    ///             {
-    ///                 { "cpuCount", "4" },
-    ///             },
-    ///             RegionIdsScope = "cn-hangzhou",
-    ///             ResourceGroupIdsScope = defaultResourceGroups.Apply(defaultResourceGroups =&gt; defaultResourceGroups.Ids?[0]),
-    ///             TagKeyScope = "tFTest",
-    ///             TagValueScope = "forTF 123",
-    ///         });
-    ///         var defaultAggregateCompliancePack = new AliCloud.Cfg.AggregateCompliancePack("defaultAggregateCompliancePack", new AliCloud.Cfg.AggregateCompliancePackArgs
-    ///         {
-    ///             AggregateCompliancePackName = "tf-testaccConfig1234",
-    ///             AggregatorId = defaultAggregator.Id,
-    ///             Description = "tf-testaccConfig1234",
-    ///             RiskLevel = 1,
-    ///             ConfigRuleIds = 
-    ///             {
-    ///                 new AliCloud.Cfg.Inputs.AggregateCompliancePackConfigRuleIdArgs
-    ///                 {
-    ///                     ConfigRuleId = defaultAggregateConfigRule.ConfigRuleId,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Status = "OK",
+    ///     });
     /// 
-    /// }
+    ///     var defaultInstances = AliCloud.Ecs.GetInstances.Invoke();
+    /// 
+    ///     var defaultAggregator = new AliCloud.Cfg.Aggregator("defaultAggregator", new()
+    ///     {
+    ///         AggregatorAccounts = new[]
+    ///         {
+    ///             new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
+    ///             {
+    ///                 AccountId = "140278452670****",
+    ///                 AccountName = "test-2",
+    ///                 AccountType = "ResourceDirectory",
+    ///             },
+    ///         },
+    ///         AggregatorName = "tf-testaccaggregator",
+    ///         Description = "tf-testaccaggregator",
+    ///     });
+    /// 
+    ///     var defaultAggregateConfigRule = new AliCloud.Cfg.AggregateConfigRule("defaultAggregateConfigRule", new()
+    ///     {
+    ///         AggregatorId = defaultAggregator.Id,
+    ///         AggregateConfigRuleName = name,
+    ///         SourceOwner = "ALIYUN",
+    ///         SourceIdentifier = "ecs-cpu-min-count-limit",
+    ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
+    ///         ResourceTypesScopes = new[]
+    ///         {
+    ///             "ACS::ECS::Instance",
+    ///         },
+    ///         RiskLevel = 1,
+    ///         Description = name,
+    ///         ExcludeResourceIdsScope = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///         InputParameters = 
+    ///         {
+    ///             { "cpuCount", "4" },
+    ///         },
+    ///         RegionIdsScope = "cn-hangzhou",
+    ///         ResourceGroupIdsScope = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         TagKeyScope = "tFTest",
+    ///         TagValueScope = "forTF 123",
+    ///     });
+    /// 
+    ///     var defaultAggregateCompliancePack = new AliCloud.Cfg.AggregateCompliancePack("defaultAggregateCompliancePack", new()
+    ///     {
+    ///         AggregateCompliancePackName = "tf-testaccConfig1234",
+    ///         AggregatorId = defaultAggregator.Id,
+    ///         Description = "tf-testaccConfig1234",
+    ///         RiskLevel = 1,
+    ///         ConfigRuleIds = new[]
+    ///         {
+    ///             new AliCloud.Cfg.Inputs.AggregateCompliancePackConfigRuleIdArgs
+    ///             {
+    ///                 ConfigRuleId = defaultAggregateConfigRule.ConfigRuleId,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -100,7 +102,7 @@ namespace Pulumi.AliCloud.Cfg
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/aggregateCompliancePack:AggregateCompliancePack")]
-    public partial class AggregateCompliancePack : Pulumi.CustomResource
+    public partial class AggregateCompliancePack : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
@@ -194,7 +196,7 @@ namespace Pulumi.AliCloud.Cfg
         }
     }
 
-    public sealed class AggregateCompliancePackArgs : Pulumi.ResourceArgs
+    public sealed class AggregateCompliancePackArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
@@ -254,9 +256,10 @@ namespace Pulumi.AliCloud.Cfg
         public AggregateCompliancePackArgs()
         {
         }
+        public static new AggregateCompliancePackArgs Empty => new AggregateCompliancePackArgs();
     }
 
-    public sealed class AggregateCompliancePackState : Pulumi.ResourceArgs
+    public sealed class AggregateCompliancePackState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of compliance package name. **NOTE:** the `aggregate_compliance_pack_name` supports modification since V1.145.0.
@@ -322,5 +325,6 @@ namespace Pulumi.AliCloud.Cfg
         public AggregateCompliancePackState()
         {
         }
+        public static new AggregateCompliancePackState Empty => new AggregateCompliancePackState();
     }
 }

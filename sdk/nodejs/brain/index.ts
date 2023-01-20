@@ -5,18 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getIndustrialPidLoops";
-export * from "./getIndustrialPidOrganizations";
-export * from "./getIndustrialPidProjects";
-export * from "./getIndustrialSerice";
-export * from "./industrialPidLoop";
-export * from "./industrialPidOrganization";
-export * from "./industrialPidProject";
+export { GetIndustrialPidLoopsArgs, GetIndustrialPidLoopsResult, GetIndustrialPidLoopsOutputArgs } from "./getIndustrialPidLoops";
+export const getIndustrialPidLoops: typeof import("./getIndustrialPidLoops").getIndustrialPidLoops = null as any;
+export const getIndustrialPidLoopsOutput: typeof import("./getIndustrialPidLoops").getIndustrialPidLoopsOutput = null as any;
+utilities.lazyLoad(exports, ["getIndustrialPidLoops","getIndustrialPidLoopsOutput"], () => require("./getIndustrialPidLoops"));
 
-// Import resources to register:
-import { IndustrialPidLoop } from "./industrialPidLoop";
-import { IndustrialPidOrganization } from "./industrialPidOrganization";
-import { IndustrialPidProject } from "./industrialPidProject";
+export { GetIndustrialPidOrganizationsArgs, GetIndustrialPidOrganizationsResult, GetIndustrialPidOrganizationsOutputArgs } from "./getIndustrialPidOrganizations";
+export const getIndustrialPidOrganizations: typeof import("./getIndustrialPidOrganizations").getIndustrialPidOrganizations = null as any;
+export const getIndustrialPidOrganizationsOutput: typeof import("./getIndustrialPidOrganizations").getIndustrialPidOrganizationsOutput = null as any;
+utilities.lazyLoad(exports, ["getIndustrialPidOrganizations","getIndustrialPidOrganizationsOutput"], () => require("./getIndustrialPidOrganizations"));
+
+export { GetIndustrialPidProjectsArgs, GetIndustrialPidProjectsResult, GetIndustrialPidProjectsOutputArgs } from "./getIndustrialPidProjects";
+export const getIndustrialPidProjects: typeof import("./getIndustrialPidProjects").getIndustrialPidProjects = null as any;
+export const getIndustrialPidProjectsOutput: typeof import("./getIndustrialPidProjects").getIndustrialPidProjectsOutput = null as any;
+utilities.lazyLoad(exports, ["getIndustrialPidProjects","getIndustrialPidProjectsOutput"], () => require("./getIndustrialPidProjects"));
+
+export { GetIndustrialSericeArgs, GetIndustrialSericeResult, GetIndustrialSericeOutputArgs } from "./getIndustrialSerice";
+export const getIndustrialSerice: typeof import("./getIndustrialSerice").getIndustrialSerice = null as any;
+export const getIndustrialSericeOutput: typeof import("./getIndustrialSerice").getIndustrialSericeOutput = null as any;
+utilities.lazyLoad(exports, ["getIndustrialSerice","getIndustrialSericeOutput"], () => require("./getIndustrialSerice"));
+
+export { IndustrialPidLoopArgs, IndustrialPidLoopState } from "./industrialPidLoop";
+export type IndustrialPidLoop = import("./industrialPidLoop").IndustrialPidLoop;
+export const IndustrialPidLoop: typeof import("./industrialPidLoop").IndustrialPidLoop = null as any;
+utilities.lazyLoad(exports, ["IndustrialPidLoop"], () => require("./industrialPidLoop"));
+
+export { IndustrialPidOrganizationArgs, IndustrialPidOrganizationState } from "./industrialPidOrganization";
+export type IndustrialPidOrganization = import("./industrialPidOrganization").IndustrialPidOrganization;
+export const IndustrialPidOrganization: typeof import("./industrialPidOrganization").IndustrialPidOrganization = null as any;
+utilities.lazyLoad(exports, ["IndustrialPidOrganization"], () => require("./industrialPidOrganization"));
+
+export { IndustrialPidProjectArgs, IndustrialPidProjectState } from "./industrialPidProject";
+export type IndustrialPidProject = import("./industrialPidProject").IndustrialPidProject;
+export const IndustrialPidProject: typeof import("./industrialPidProject").IndustrialPidProject = null as any;
+utilities.lazyLoad(exports, ["IndustrialPidProject"], () => require("./industrialPidProject"));
+
 
 const _module = {
     version: utilities.getVersion(),

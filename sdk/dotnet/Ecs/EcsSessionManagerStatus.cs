@@ -21,21 +21,19 @@ namespace Pulumi.AliCloud.Ecs
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Ecs.EcsSessionManagerStatus("default", new()
     ///     {
-    ///         var @default = new AliCloud.Ecs.EcsSessionManagerStatus("default", new AliCloud.Ecs.EcsSessionManagerStatusArgs
-    ///         {
-    ///             SessionManagerStatusName = "sessionManagerStatus",
-    ///             Status = "Disabled",
-    ///         });
-    ///     }
+    ///         SessionManagerStatusName = "sessionManagerStatus",
+    ///         Status = "Disabled",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus")]
-    public partial class EcsSessionManagerStatus : Pulumi.CustomResource
+    public partial class EcsSessionManagerStatus : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the resource. Valid values: `sessionManagerStatus`.
@@ -105,7 +103,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
-    public sealed class EcsSessionManagerStatusArgs : Pulumi.ResourceArgs
+    public sealed class EcsSessionManagerStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the resource. Valid values: `sessionManagerStatus`.
@@ -122,9 +120,10 @@ namespace Pulumi.AliCloud.Ecs
         public EcsSessionManagerStatusArgs()
         {
         }
+        public static new EcsSessionManagerStatusArgs Empty => new EcsSessionManagerStatusArgs();
     }
 
-    public sealed class EcsSessionManagerStatusState : Pulumi.ResourceArgs
+    public sealed class EcsSessionManagerStatusState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the resource. Valid values: `sessionManagerStatus`.
@@ -141,5 +140,6 @@ namespace Pulumi.AliCloud.Ecs
         public EcsSessionManagerStatusState()
         {
         }
+        public static new EcsSessionManagerStatusState Empty => new EcsSessionManagerStatusState();
     }
 }

@@ -73,6 +73,38 @@ import (
 //								Value: pulumi.String("nginx"),
 //							},
 //						},
+//						LivenessProbes: eci.ContainerGroupContainerLivenessProbeArray{
+//							&eci.ContainerGroupContainerLivenessProbeArgs{
+//								PeriodSeconds:       pulumi.Int(5),
+//								InitialDelaySeconds: pulumi.Int(5),
+//								SuccessThreshold:    pulumi.Int(1),
+//								FailureThreshold:    pulumi.Int(3),
+//								TimeoutSeconds:      pulumi.Int(1),
+//								Execs: eci.ContainerGroupContainerLivenessProbeExecArray{
+//									&eci.ContainerGroupContainerLivenessProbeExecArgs{
+//										Commands: pulumi.StringArray{
+//											pulumi.String("cat /tmp/healthy"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//						ReadinessProbes: eci.ContainerGroupContainerReadinessProbeArray{
+//							&eci.ContainerGroupContainerReadinessProbeArgs{
+//								PeriodSeconds:       pulumi.Int(5),
+//								InitialDelaySeconds: pulumi.Int(5),
+//								SuccessThreshold:    pulumi.Int(1),
+//								FailureThreshold:    pulumi.Int(3),
+//								TimeoutSeconds:      pulumi.Int(1),
+//								Execs: eci.ContainerGroupContainerReadinessProbeExecArray{
+//									&eci.ContainerGroupContainerReadinessProbeExecArgs{
+//										Commands: pulumi.StringArray{
+//											pulumi.String("cat /tmp/healthy"),
+//										},
+//									},
+//								},
+//							},
+//						},
 //					},
 //					&eci.ContainerGroupContainerArgs{
 //						Image: pulumi.String("registry-vpc.cn-beijing.aliyuncs.com/eci_open/centos:7"),
@@ -129,6 +161,8 @@ import (
 type ContainerGroup struct {
 	pulumi.CustomResourceState
 
+	// The ACR enterprise edition example properties.
+	AcrRegistryInfos ContainerGroupAcrRegistryInfoArrayOutput `pulumi:"acrRegistryInfos"`
 	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
 	AutoCreateEip pulumi.BoolPtrOutput `pulumi:"autoCreateEip"`
 	// Specifies whether to automatically match the image cache. Default value: false.
@@ -137,7 +171,7 @@ type ContainerGroup struct {
 	ContainerGroupName pulumi.StringOutput `pulumi:"containerGroupName"`
 	// The list of containers.
 	Containers ContainerGroupContainerArrayOutput `pulumi:"containers"`
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64Output `pulumi:"cpu"`
 	// The structure of dnsConfig.
 	DnsConfig ContainerGroupDnsConfigPtrOutput `pulumi:"dnsConfig"`
@@ -161,7 +195,7 @@ type ContainerGroup struct {
 	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
 	// (Available in v1.170.0+) The Private IP of the container group.
 	IntranetIp pulumi.StringOutput `pulumi:"intranetIp"`
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64Output `pulumi:"memory"`
 	// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
 	PlainHttpRegistry pulumi.StringPtrOutput `pulumi:"plainHttpRegistry"`
@@ -228,6 +262,8 @@ func GetContainerGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ContainerGroup resources.
 type containerGroupState struct {
+	// The ACR enterprise edition example properties.
+	AcrRegistryInfos []ContainerGroupAcrRegistryInfo `pulumi:"acrRegistryInfos"`
 	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
 	AutoCreateEip *bool `pulumi:"autoCreateEip"`
 	// Specifies whether to automatically match the image cache. Default value: false.
@@ -236,7 +272,7 @@ type containerGroupState struct {
 	ContainerGroupName *string `pulumi:"containerGroupName"`
 	// The list of containers.
 	Containers []ContainerGroupContainer `pulumi:"containers"`
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
 	// The structure of dnsConfig.
 	DnsConfig *ContainerGroupDnsConfig `pulumi:"dnsConfig"`
@@ -260,7 +296,7 @@ type containerGroupState struct {
 	InternetIp *string `pulumi:"internetIp"`
 	// (Available in v1.170.0+) The Private IP of the container group.
 	IntranetIp *string `pulumi:"intranetIp"`
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
 	// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
 	PlainHttpRegistry *string `pulumi:"plainHttpRegistry"`
@@ -287,6 +323,8 @@ type containerGroupState struct {
 }
 
 type ContainerGroupState struct {
+	// The ACR enterprise edition example properties.
+	AcrRegistryInfos ContainerGroupAcrRegistryInfoArrayInput
 	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
 	AutoCreateEip pulumi.BoolPtrInput
 	// Specifies whether to automatically match the image cache. Default value: false.
@@ -295,7 +333,7 @@ type ContainerGroupState struct {
 	ContainerGroupName pulumi.StringPtrInput
 	// The list of containers.
 	Containers ContainerGroupContainerArrayInput
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput
 	// The structure of dnsConfig.
 	DnsConfig ContainerGroupDnsConfigPtrInput
@@ -319,7 +357,7 @@ type ContainerGroupState struct {
 	InternetIp pulumi.StringPtrInput
 	// (Available in v1.170.0+) The Private IP of the container group.
 	IntranetIp pulumi.StringPtrInput
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput
 	// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
 	PlainHttpRegistry pulumi.StringPtrInput
@@ -350,6 +388,8 @@ func (ContainerGroupState) ElementType() reflect.Type {
 }
 
 type containerGroupArgs struct {
+	// The ACR enterprise edition example properties.
+	AcrRegistryInfos []ContainerGroupAcrRegistryInfo `pulumi:"acrRegistryInfos"`
 	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
 	AutoCreateEip *bool `pulumi:"autoCreateEip"`
 	// Specifies whether to automatically match the image cache. Default value: false.
@@ -358,7 +398,7 @@ type containerGroupArgs struct {
 	ContainerGroupName string `pulumi:"containerGroupName"`
 	// The list of containers.
 	Containers []ContainerGroupContainer `pulumi:"containers"`
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
 	// The structure of dnsConfig.
 	DnsConfig *ContainerGroupDnsConfig `pulumi:"dnsConfig"`
@@ -378,7 +418,7 @@ type containerGroupArgs struct {
 	InsecureRegistry *string `pulumi:"insecureRegistry"`
 	// The type of the ECS instance.
 	InstanceType *string `pulumi:"instanceType"`
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
 	// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
 	PlainHttpRegistry *string `pulumi:"plainHttpRegistry"`
@@ -404,6 +444,8 @@ type containerGroupArgs struct {
 
 // The set of arguments for constructing a ContainerGroup resource.
 type ContainerGroupArgs struct {
+	// The ACR enterprise edition example properties.
+	AcrRegistryInfos ContainerGroupAcrRegistryInfoArrayInput
 	// Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
 	AutoCreateEip pulumi.BoolPtrInput
 	// Specifies whether to automatically match the image cache. Default value: false.
@@ -412,7 +454,7 @@ type ContainerGroupArgs struct {
 	ContainerGroupName pulumi.StringInput
 	// The list of containers.
 	Containers ContainerGroupContainerArrayInput
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput
 	// The structure of dnsConfig.
 	DnsConfig ContainerGroupDnsConfigPtrInput
@@ -432,7 +474,7 @@ type ContainerGroupArgs struct {
 	InsecureRegistry pulumi.StringPtrInput
 	// The type of the ECS instance.
 	InstanceType pulumi.StringPtrInput
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput
 	// The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
 	PlainHttpRegistry pulumi.StringPtrInput
@@ -543,6 +585,11 @@ func (o ContainerGroupOutput) ToContainerGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The ACR enterprise edition example properties.
+func (o ContainerGroupOutput) AcrRegistryInfos() ContainerGroupAcrRegistryInfoArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerGroupAcrRegistryInfoArrayOutput { return v.AcrRegistryInfos }).(ContainerGroupAcrRegistryInfoArrayOutput)
+}
+
 // Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
 func (o ContainerGroupOutput) AutoCreateEip() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.BoolPtrOutput { return v.AutoCreateEip }).(pulumi.BoolPtrOutput)
@@ -563,7 +610,7 @@ func (o ContainerGroupOutput) Containers() ContainerGroupContainerArrayOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupContainerArrayOutput { return v.Containers }).(ContainerGroupContainerArrayOutput)
 }
 
-// The amount of CPU resources allocated to the container.
+// The amount of CPU resources allocated to the container group.
 func (o ContainerGroupOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.Float64Output { return v.Cpu }).(pulumi.Float64Output)
 }
@@ -625,7 +672,7 @@ func (o ContainerGroupOutput) IntranetIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.IntranetIp }).(pulumi.StringOutput)
 }
 
-// The amount of memory resources allocated to the container.
+// The amount of memory resources allocated to the container group.
 func (o ContainerGroupOutput) Memory() pulumi.Float64Output {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.Float64Output { return v.Memory }).(pulumi.Float64Output)
 }

@@ -85,6 +85,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.bastionhost);
     }
 
+    @Import(name="bpstudio")
+    private @Nullable Output<String> bpstudio;
+
+    public Optional<Output<String>> bpstudio() {
+        return Optional.ofNullable(this.bpstudio);
+    }
+
     @Import(name="brainIndustrial")
     private @Nullable Output<String> brainIndustrial;
 
@@ -120,6 +127,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.cbn);
     }
 
+    @Import(name="cbs")
+    private @Nullable Output<String> cbs;
+
+    public Optional<Output<String>> cbs() {
+        return Optional.ofNullable(this.cbs);
+    }
+
     @Import(name="cddc")
     private @Nullable Output<String> cddc;
 
@@ -153,6 +167,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<String>> cloudauth() {
         return Optional.ofNullable(this.cloudauth);
+    }
+
+    @Import(name="cloudfirewall")
+    private @Nullable Output<String> cloudfirewall;
+
+    public Optional<Output<String>> cloudfirewall() {
+        return Optional.ofNullable(this.cloudfirewall);
     }
 
     @Import(name="cloudfw")
@@ -202,6 +223,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<String>> cs() {
         return Optional.ofNullable(this.cs);
+    }
+
+    @Import(name="das")
+    private @Nullable Output<String> das;
+
+    public Optional<Output<String>> das() {
+        return Optional.ofNullable(this.das);
     }
 
     @Import(name="datahub")
@@ -288,6 +316,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.dmsEnterprise);
     }
 
+    @Import(name="dmsenterprise")
+    private @Nullable Output<String> dmsenterprise;
+
+    public Optional<Output<String>> dmsenterprise() {
+        return Optional.ofNullable(this.dmsenterprise);
+    }
+
     @Import(name="dns")
     private @Nullable Output<String> dns;
 
@@ -321,6 +356,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<String>> eais() {
         return Optional.ofNullable(this.eais);
+    }
+
+    @Import(name="ebs")
+    private @Nullable Output<String> ebs;
+
+    public Optional<Output<String>> ebs() {
+        return Optional.ofNullable(this.ebs);
     }
 
     @Import(name="eci")
@@ -589,6 +631,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.nas);
     }
 
+    @Import(name="nlb")
+    private @Nullable Output<String> nlb;
+
+    public Optional<Output<String>> nlb() {
+        return Optional.ofNullable(this.nlb);
+    }
+
     @Import(name="ons")
     private @Nullable Output<String> ons;
 
@@ -771,6 +820,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.smartag);
     }
 
+    @Import(name="srvcatalog")
+    private @Nullable Output<String> srvcatalog;
+
+    public Optional<Output<String>> srvcatalog() {
+        return Optional.ofNullable(this.srvcatalog);
+    }
+
     @Import(name="sts")
     private @Nullable Output<String> sts;
 
@@ -804,6 +860,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<String>> vpc() {
         return Optional.ofNullable(this.vpc);
+    }
+
+    @Import(name="vpcpeer")
+    private @Nullable Output<String> vpcpeer;
+
+    public Optional<Output<String>> vpcpeer() {
+        return Optional.ofNullable(this.vpcpeer);
     }
 
     @Import(name="vs")
@@ -840,16 +903,19 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.apigateway = $.apigateway;
         this.arms = $.arms;
         this.bastionhost = $.bastionhost;
+        this.bpstudio = $.bpstudio;
         this.brainIndustrial = $.brainIndustrial;
         this.bssopenapi = $.bssopenapi;
         this.cas = $.cas;
         this.cassandra = $.cassandra;
         this.cbn = $.cbn;
+        this.cbs = $.cbs;
         this.cddc = $.cddc;
         this.cdn = $.cdn;
         this.cds = $.cds;
         this.clickhouse = $.clickhouse;
         this.cloudauth = $.cloudauth;
+        this.cloudfirewall = $.cloudfirewall;
         this.cloudfw = $.cloudfw;
         this.cloudphone = $.cloudphone;
         this.cloudsso = $.cloudsso;
@@ -857,6 +923,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.config = $.config;
         this.cr = $.cr;
         this.cs = $.cs;
+        this.das = $.das;
         this.datahub = $.datahub;
         this.dataworkspublic = $.dataworkspublic;
         this.dbfs = $.dbfs;
@@ -869,11 +936,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.dg = $.dg;
         this.dm = $.dm;
         this.dmsEnterprise = $.dmsEnterprise;
+        this.dmsenterprise = $.dmsenterprise;
         this.dns = $.dns;
         this.drds = $.drds;
         this.dts = $.dts;
         this.dysms = $.dysms;
         this.eais = $.eais;
+        this.ebs = $.ebs;
         this.eci = $.eci;
         this.ecs = $.ecs;
         this.edas = $.edas;
@@ -912,6 +981,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.mscopensubscription = $.mscopensubscription;
         this.mse = $.mse;
         this.nas = $.nas;
+        this.nlb = $.nlb;
         this.ons = $.ons;
         this.onsproxy = $.onsproxy;
         this.oos = $.oos;
@@ -938,11 +1008,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.sgw = $.sgw;
         this.slb = $.slb;
         this.smartag = $.smartag;
+        this.srvcatalog = $.srvcatalog;
         this.sts = $.sts;
         this.swas = $.swas;
         this.tag = $.tag;
         this.vod = $.vod;
         this.vpc = $.vpc;
+        this.vpcpeer = $.vpcpeer;
         this.vs = $.vs;
         this.waf = $.waf;
         this.wafOpenapi = $.wafOpenapi;
@@ -1056,6 +1128,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return bastionhost(Output.of(bastionhost));
         }
 
+        public Builder bpstudio(@Nullable Output<String> bpstudio) {
+            $.bpstudio = bpstudio;
+            return this;
+        }
+
+        public Builder bpstudio(String bpstudio) {
+            return bpstudio(Output.of(bpstudio));
+        }
+
         public Builder brainIndustrial(@Nullable Output<String> brainIndustrial) {
             $.brainIndustrial = brainIndustrial;
             return this;
@@ -1101,6 +1182,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return cbn(Output.of(cbn));
         }
 
+        public Builder cbs(@Nullable Output<String> cbs) {
+            $.cbs = cbs;
+            return this;
+        }
+
+        public Builder cbs(String cbs) {
+            return cbs(Output.of(cbs));
+        }
+
         public Builder cddc(@Nullable Output<String> cddc) {
             $.cddc = cddc;
             return this;
@@ -1144,6 +1234,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder cloudauth(String cloudauth) {
             return cloudauth(Output.of(cloudauth));
+        }
+
+        public Builder cloudfirewall(@Nullable Output<String> cloudfirewall) {
+            $.cloudfirewall = cloudfirewall;
+            return this;
+        }
+
+        public Builder cloudfirewall(String cloudfirewall) {
+            return cloudfirewall(Output.of(cloudfirewall));
         }
 
         public Builder cloudfw(@Nullable Output<String> cloudfw) {
@@ -1207,6 +1306,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder cs(String cs) {
             return cs(Output.of(cs));
+        }
+
+        public Builder das(@Nullable Output<String> das) {
+            $.das = das;
+            return this;
+        }
+
+        public Builder das(String das) {
+            return das(Output.of(das));
         }
 
         public Builder datahub(@Nullable Output<String> datahub) {
@@ -1317,6 +1425,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return dmsEnterprise(Output.of(dmsEnterprise));
         }
 
+        public Builder dmsenterprise(@Nullable Output<String> dmsenterprise) {
+            $.dmsenterprise = dmsenterprise;
+            return this;
+        }
+
+        public Builder dmsenterprise(String dmsenterprise) {
+            return dmsenterprise(Output.of(dmsenterprise));
+        }
+
         public Builder dns(@Nullable Output<String> dns) {
             $.dns = dns;
             return this;
@@ -1360,6 +1477,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder eais(String eais) {
             return eais(Output.of(eais));
+        }
+
+        public Builder ebs(@Nullable Output<String> ebs) {
+            $.ebs = ebs;
+            return this;
+        }
+
+        public Builder ebs(String ebs) {
+            return ebs(Output.of(ebs));
         }
 
         public Builder eci(@Nullable Output<String> eci) {
@@ -1704,6 +1830,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return nas(Output.of(nas));
         }
 
+        public Builder nlb(@Nullable Output<String> nlb) {
+            $.nlb = nlb;
+            return this;
+        }
+
+        public Builder nlb(String nlb) {
+            return nlb(Output.of(nlb));
+        }
+
         public Builder ons(@Nullable Output<String> ons) {
             $.ons = ons;
             return this;
@@ -1938,6 +2073,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
             return smartag(Output.of(smartag));
         }
 
+        public Builder srvcatalog(@Nullable Output<String> srvcatalog) {
+            $.srvcatalog = srvcatalog;
+            return this;
+        }
+
+        public Builder srvcatalog(String srvcatalog) {
+            return srvcatalog(Output.of(srvcatalog));
+        }
+
         public Builder sts(@Nullable Output<String> sts) {
             $.sts = sts;
             return this;
@@ -1981,6 +2125,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder vpc(String vpc) {
             return vpc(Output.of(vpc));
+        }
+
+        public Builder vpcpeer(@Nullable Output<String> vpcpeer) {
+            $.vpcpeer = vpcpeer;
+            return this;
+        }
+
+        public Builder vpcpeer(String vpcpeer) {
+            return vpcpeer(Output.of(vpcpeer));
         }
 
         public Builder vs(@Nullable Output<String> vs) {

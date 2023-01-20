@@ -23,64 +23,68 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
-        ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-        ///         {
-        ///             NameRegex = "default-NODELETING",
-        ///         }));
-        ///         var defaultSwitches = defaultNetworks.Apply(defaultNetworks =&gt; Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-        ///         {
-        ///             VpcId = defaultNetworks.Ids?[0],
-        ///         })));
-        ///         var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new AliCloud.CloudStorageGateway.StorageBundleArgs
-        ///         {
-        ///             StorageBundleName = "example_value",
-        ///         });
-        ///         var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new AliCloud.CloudStorageGateway.GatewayArgs
-        ///         {
-        ///             Description = "tf-acctestDesalone",
-        ///             GatewayClass = "Standard",
-        ///             Type = "File",
-        ///             PaymentType = "PayAsYouGo",
-        ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-        ///             ReleaseAfterExpiration = false,
-        ///             PublicNetworkBandwidth = 40,
-        ///             StorageBundleId = example.Id,
-        ///             Location = "Cloud",
-        ///             GatewayName = "example_value",
-        ///         });
-        ///         var defaultGatewaySmbUser = new AliCloud.CloudStorageGateway.GatewaySmbUser("defaultGatewaySmbUser", new AliCloud.CloudStorageGateway.GatewaySmbUserArgs
-        ///         {
-        ///             Username = "your_username",
-        ///             Password = "password",
-        ///             GatewayId = defaultGateway.Id,
-        ///         });
-        ///         var ids = AliCloud.CloudStorageGateway.GetGatewaySmbUsers.Invoke(new AliCloud.CloudStorageGateway.GetGatewaySmbUsersInvokeArgs
-        ///         {
-        ///             GatewayId = defaultGateway.Id,
-        ///             Ids = 
-        ///             {
-        ///                 defaultGatewaySmbUser.Id,
-        ///             },
-        ///         });
-        ///         this.CloudStorageGatewayGatewaySmbUserId1 = ids.Apply(ids =&gt; ids.Users?[0]?.Id);
-        ///     }
+        ///         NameRegex = "default-NODELETING",
+        ///     });
         /// 
-        ///     [Output("cloudStorageGatewayGatewaySmbUserId1")]
-        ///     public Output&lt;string&gt; CloudStorageGatewayGatewaySmbUserId1 { get; set; }
-        /// }
+        ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new()
+        ///     {
+        ///         StorageBundleName = "example_value",
+        ///     });
+        /// 
+        ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new()
+        ///     {
+        ///         Description = "tf-acctestDesalone",
+        ///         GatewayClass = "Standard",
+        ///         Type = "File",
+        ///         PaymentType = "PayAsYouGo",
+        ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         ReleaseAfterExpiration = false,
+        ///         PublicNetworkBandwidth = 40,
+        ///         StorageBundleId = example.Id,
+        ///         Location = "Cloud",
+        ///         GatewayName = "example_value",
+        ///     });
+        /// 
+        ///     var defaultGatewaySmbUser = new AliCloud.CloudStorageGateway.GatewaySmbUser("defaultGatewaySmbUser", new()
+        ///     {
+        ///         Username = "your_username",
+        ///         Password = "password",
+        ///         GatewayId = defaultGateway.Id,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.CloudStorageGateway.GetGatewaySmbUsers.Invoke(new()
+        ///     {
+        ///         GatewayId = defaultGateway.Id,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultGatewaySmbUser.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayGatewaySmbUserId1"] = ids.Apply(getGatewaySmbUsersResult =&gt; getGatewaySmbUsersResult.Users[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewaySmbUsersResult> InvokeAsync(GetGatewaySmbUsersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGatewaySmbUsersResult>("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", args ?? new GetGatewaySmbUsersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewaySmbUsersResult>("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", args ?? new GetGatewaySmbUsersArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
@@ -94,68 +98,72 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
-        ///         var defaultNetworks = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
-        ///         {
-        ///             NameRegex = "default-NODELETING",
-        ///         }));
-        ///         var defaultSwitches = defaultNetworks.Apply(defaultNetworks =&gt; Output.Create(AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
-        ///         {
-        ///             VpcId = defaultNetworks.Ids?[0],
-        ///         })));
-        ///         var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new AliCloud.CloudStorageGateway.StorageBundleArgs
-        ///         {
-        ///             StorageBundleName = "example_value",
-        ///         });
-        ///         var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new AliCloud.CloudStorageGateway.GatewayArgs
-        ///         {
-        ///             Description = "tf-acctestDesalone",
-        ///             GatewayClass = "Standard",
-        ///             Type = "File",
-        ///             PaymentType = "PayAsYouGo",
-        ///             VswitchId = defaultSwitches.Apply(defaultSwitches =&gt; defaultSwitches.Ids?[0]),
-        ///             ReleaseAfterExpiration = false,
-        ///             PublicNetworkBandwidth = 40,
-        ///             StorageBundleId = example.Id,
-        ///             Location = "Cloud",
-        ///             GatewayName = "example_value",
-        ///         });
-        ///         var defaultGatewaySmbUser = new AliCloud.CloudStorageGateway.GatewaySmbUser("defaultGatewaySmbUser", new AliCloud.CloudStorageGateway.GatewaySmbUserArgs
-        ///         {
-        ///             Username = "your_username",
-        ///             Password = "password",
-        ///             GatewayId = defaultGateway.Id,
-        ///         });
-        ///         var ids = AliCloud.CloudStorageGateway.GetGatewaySmbUsers.Invoke(new AliCloud.CloudStorageGateway.GetGatewaySmbUsersInvokeArgs
-        ///         {
-        ///             GatewayId = defaultGateway.Id,
-        ///             Ids = 
-        ///             {
-        ///                 defaultGatewaySmbUser.Id,
-        ///             },
-        ///         });
-        ///         this.CloudStorageGatewayGatewaySmbUserId1 = ids.Apply(ids =&gt; ids.Users?[0]?.Id);
-        ///     }
+        ///         NameRegex = "default-NODELETING",
+        ///     });
         /// 
-        ///     [Output("cloudStorageGatewayGatewaySmbUserId1")]
-        ///     public Output&lt;string&gt; CloudStorageGatewayGatewaySmbUserId1 { get; set; }
-        /// }
+        ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var example = new AliCloud.CloudStorageGateway.StorageBundle("example", new()
+        ///     {
+        ///         StorageBundleName = "example_value",
+        ///     });
+        /// 
+        ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("defaultGateway", new()
+        ///     {
+        ///         Description = "tf-acctestDesalone",
+        ///         GatewayClass = "Standard",
+        ///         Type = "File",
+        ///         PaymentType = "PayAsYouGo",
+        ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         ReleaseAfterExpiration = false,
+        ///         PublicNetworkBandwidth = 40,
+        ///         StorageBundleId = example.Id,
+        ///         Location = "Cloud",
+        ///         GatewayName = "example_value",
+        ///     });
+        /// 
+        ///     var defaultGatewaySmbUser = new AliCloud.CloudStorageGateway.GatewaySmbUser("defaultGatewaySmbUser", new()
+        ///     {
+        ///         Username = "your_username",
+        ///         Password = "password",
+        ///         GatewayId = defaultGateway.Id,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.CloudStorageGateway.GetGatewaySmbUsers.Invoke(new()
+        ///     {
+        ///         GatewayId = defaultGateway.Id,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultGatewaySmbUser.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudStorageGatewayGatewaySmbUserId1"] = ids.Apply(getGatewaySmbUsersResult =&gt; getGatewaySmbUsersResult.Users[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewaySmbUsersResult> Invoke(GetGatewaySmbUsersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGatewaySmbUsersResult>("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", args ?? new GetGatewaySmbUsersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewaySmbUsersResult>("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", args ?? new GetGatewaySmbUsersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGatewaySmbUsersArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewaySmbUsersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Gateway ID.
@@ -187,9 +195,10 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GetGatewaySmbUsersArgs()
         {
         }
+        public static new GetGatewaySmbUsersArgs Empty => new GetGatewaySmbUsersArgs();
     }
 
-    public sealed class GetGatewaySmbUsersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewaySmbUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Gateway ID.
@@ -221,6 +230,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public GetGatewaySmbUsersInvokeArgs()
         {
         }
+        public static new GetGatewaySmbUsersInvokeArgs Empty => new GetGatewaySmbUsersInvokeArgs();
     }
 
 

@@ -5,13 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./domain";
-export * from "./domainConfig";
-export * from "./getDomains";
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
 
-// Import resources to register:
-import { Domain } from "./domain";
-import { DomainConfig } from "./domainConfig";
+export { DomainConfigArgs, DomainConfigState } from "./domainConfig";
+export type DomainConfig = import("./domainConfig").DomainConfig;
+export const DomainConfig: typeof import("./domainConfig").DomainConfig = null as any;
+utilities.lazyLoad(exports, ["DomainConfig"], () => require("./domainConfig"));
+
+export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
+export const getDomains: typeof import("./getDomains").getDomains = null as any;
+export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
+
 
 const _module = {
     version: utilities.getVersion(),

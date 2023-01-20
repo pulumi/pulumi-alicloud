@@ -21,25 +21,24 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var defaultAccounts = AliCloud.ResourceManager.GetAccounts.Invoke(new()
     ///     {
-    ///         var defaultAccounts = Output.Create(AliCloud.ResourceManager.GetAccounts.InvokeAsync(new AliCloud.ResourceManager.GetAccountsArgs
-    ///         {
-    ///             Status = "CreateSuccess",
-    ///         }));
-    ///         var defaultDelegatedAdministrator = new AliCloud.ResourceManager.DelegatedAdministrator("defaultDelegatedAdministrator", new AliCloud.ResourceManager.DelegatedAdministratorArgs
-    ///         {
-    ///             AccountId = defaultAccounts.Apply(defaultAccounts =&gt; defaultAccounts.Accounts?[0]?.AccountId),
-    ///             ServicePrincipal = "cloudfw.aliyuncs.com",
-    ///         });
-    ///     }
+    ///         Status = "CreateSuccess",
+    ///     });
     /// 
-    /// }
+    ///     var defaultDelegatedAdministrator = new AliCloud.ResourceManager.DelegatedAdministrator("defaultDelegatedAdministrator", new()
+    ///     {
+    ///         AccountId = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountId),
+    ///         ServicePrincipal = "cloudfw.aliyuncs.com",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +50,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator")]
-    public partial class DelegatedAdministrator : Pulumi.CustomResource
+    public partial class DelegatedAdministrator : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the member account in the resource directory.
@@ -109,7 +108,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
     }
 
-    public sealed class DelegatedAdministratorArgs : Pulumi.ResourceArgs
+    public sealed class DelegatedAdministratorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the member account in the resource directory.
@@ -126,9 +125,10 @@ namespace Pulumi.AliCloud.ResourceManager
         public DelegatedAdministratorArgs()
         {
         }
+        public static new DelegatedAdministratorArgs Empty => new DelegatedAdministratorArgs();
     }
 
-    public sealed class DelegatedAdministratorState : Pulumi.ResourceArgs
+    public sealed class DelegatedAdministratorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the member account in the resource directory.
@@ -145,5 +145,6 @@ namespace Pulumi.AliCloud.ResourceManager
         public DelegatedAdministratorState()
         {
         }
+        public static new DelegatedAdministratorState Empty => new DelegatedAdministratorState();
     }
 }

@@ -36,7 +36,7 @@ import (
 //			_, err := ecs.NewEcsKeyPairAttachment(ctx, "example", &ecs.EcsKeyPairAttachmentArgs{
 //				KeyPairName: pulumi.String("key_pair_name"),
 //				InstanceIds: pulumi.StringArray{
-//					pulumi.Any(i_gw80pxxxxxxxxxx),
+//					i_gw80pxxxxxxxxxx,
 //				},
 //			})
 //			if err != nil {

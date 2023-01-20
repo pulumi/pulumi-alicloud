@@ -24,15 +24,15 @@ import * as utilities from "../utilities";
  *     nameRegex: "default-NODELETING",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?[0],
- *     zoneId: defaultZones.ids?[0],
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.ids?.[0],
  * }));
  * const defaultRamDirectory = new alicloud.eds.RamDirectory("defaultRamDirectory", {
  *     desktopAccessType: "INTERNET",
  *     enableAdminAccess: true,
  *     enableInternetAccess: true,
  *     ramDirectoryName: _var.name,
- *     vswitchIds: [defaultSwitches.then(defaultSwitches => defaultSwitches.ids?[0])],
+ *     vswitchIds: [defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0])],
  * });
  * ```
  *

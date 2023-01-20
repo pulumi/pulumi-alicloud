@@ -52,8 +52,8 @@ import (
 //				return err
 //			}
 //			defaultShardingInstance, err := mongodb.NewShardingInstance(ctx, "defaultShardingInstance", &mongodb.ShardingInstanceArgs{
-//				ZoneId:        pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchId:     pulumi.String(defaultSwitches.Ids[0]),
+//				ZoneId:        *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchId:     *pulumi.String(defaultSwitches.Ids[0]),
 //				EngineVersion: pulumi.String("3.4"),
 //				MongoLists: mongodb.ShardingInstanceMongoListArray{
 //					&mongodb.ShardingInstanceMongoListArgs{
@@ -79,9 +79,9 @@ import (
 //			}
 //			_, err = mongodb.NewShardingNetworkPrivateAddress(ctx, "example", &mongodb.ShardingNetworkPrivateAddressArgs{
 //				DbInstanceId: defaultShardingInstance.ID(),
-//				NodeId: defaultShardingInstance.ShardLists.ApplyT(func(shardLists []mongodb.ShardingInstanceShardList) (string, error) {
-//					return shardLists[0].NodeId, nil
-//				}).(pulumi.StringOutput),
+//				NodeId: defaultShardingInstance.ShardLists.ApplyT(func(shardLists []mongodb.ShardingInstanceShardList) (*string, error) {
+//					return &shardLists[0].NodeId, nil
+//				}).(pulumi.StringPtrOutput),
 //				ZoneId:          defaultShardingInstance.ZoneId,
 //				AccountName:     pulumi.String("example_value"),
 //				AccountPassword: pulumi.String("YourPassword+12345"),
@@ -142,6 +142,13 @@ func NewShardingNetworkPrivateAddress(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	if args.AccountPassword != nil {
+		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accountPassword",
+	})
+	opts = append(opts, secrets)
 	var resource ShardingNetworkPrivateAddress
 	err := ctx.RegisterResource("alicloud:mongodb/shardingNetworkPrivateAddress:ShardingNetworkPrivateAddress", name, args, &resource, opts...)
 	if err != nil {

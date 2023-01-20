@@ -21,29 +21,28 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
-        ///         {
-        ///             NameRegex = "tftest",
-        ///         }));
-        ///         this.FirstResourceGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
-        ///     }
+        ///         NameRegex = "tftest",
+        ///     });
         /// 
-        ///     [Output("firstResourceGroupId")]
-        ///     public Output&lt;string&gt; FirstResourceGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstResourceGroupId"] = example.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourceGroupsResult> InvokeAsync(GetResourceGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupsResult>("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupsResult>("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides resource groups of the current Alibaba Cloud user.
@@ -55,36 +54,35 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
-        ///         {
-        ///             NameRegex = "tftest",
-        ///         }));
-        ///         this.FirstResourceGroupId = example.Apply(example =&gt; example.Groups?[0]?.Id);
-        ///     }
+        ///         NameRegex = "tftest",
+        ///     });
         /// 
-        ///     [Output("firstResourceGroupId")]
-        ///     public Output&lt;string&gt; FirstResourceGroupId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstResourceGroupId"] = example.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResourceGroupsResult> Invoke(GetResourceGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResourceGroupsResult>("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetResourceGroupsResult>("alicloud:resourcemanager/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetResourceGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetResourceGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// Default to `false`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -119,12 +117,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetResourceGroupsArgs()
         {
         }
+        public static new GetResourceGroupsArgs Empty => new GetResourceGroupsArgs();
     }
 
-    public sealed class GetResourceGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetResourceGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// -(Optional, Available in v1.114.0+) Default to `false`. Set it to true can output more details.
+        /// Default to `false`. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -159,6 +158,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public GetResourceGroupsInvokeArgs()
         {
         }
+        public static new GetResourceGroupsInvokeArgs Empty => new GetResourceGroupsInvokeArgs();
     }
 
 

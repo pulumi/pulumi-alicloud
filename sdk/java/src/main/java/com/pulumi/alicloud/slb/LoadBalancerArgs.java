@@ -102,22 +102,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The billing method of the load balancer. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.124. Use &#39;payment_type&#39; replaces it.
-     * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it. */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
      * @return The billing method of the load balancer. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.124. Use &#39;payment_type&#39; replaces it.
-     * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it. */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
@@ -471,11 +463,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.124. Use &#39;payment_type&#39; replaces it.
-         * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it. */
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
@@ -486,11 +474,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.124. Use &#39;payment_type&#39; replaces it.
-         * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it. */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }

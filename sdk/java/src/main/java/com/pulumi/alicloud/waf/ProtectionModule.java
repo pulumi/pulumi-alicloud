@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.waf.WafFunctions;
- * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.waf.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.waf.Domain;
  * import com.pulumi.alicloud.waf.DomainArgs;
  * import com.pulumi.alicloud.waf.inputs.DomainLogHeaderArgs;
@@ -96,11 +96,6 @@ import javax.annotation.Nullable;
 public class ProtectionModule extends com.pulumi.resources.CustomResource {
     /**
      * The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-     * * `waf`: RegEx Protection Engine.
-     * * `dld`: Big Data Deep Learning Engine.
-     * * `ac_cc`: HTTP Flood Protection.
-     * * `antifraud`: Data Risk Control.
-     * * `normalized`: Positive Security Model.
      * 
      */
     @Export(name="defenseType", type=String.class, parameters={})
@@ -108,11 +103,6 @@ public class ProtectionModule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The Protection Module. Valid values: `ac_cc`, `antifraud`, `dld`, `normalized`, `waf`.
-     * * `waf`: RegEx Protection Engine.
-     * * `dld`: Big Data Deep Learning Engine.
-     * * `ac_cc`: HTTP Flood Protection.
-     * * `antifraud`: Data Risk Control.
-     * * `normalized`: Positive Security Model.
      * 
      */
     public Output<String> defenseType() {
@@ -172,8 +162,6 @@ public class ProtectionModule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The status of the resource. Valid values: `0`, `1`.
-     * * `0`: disables the protection module.
-     * * `1`: enables the protection module.
      * 
      */
     @Export(name="status", type=Integer.class, parameters={})
@@ -181,8 +169,6 @@ public class ProtectionModule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The status of the resource. Valid values: `0`, `1`.
-     * * `0`: disables the protection module.
-     * * `1`: enables the protection module.
      * 
      */
     public Output<Optional<Integer>> status() {

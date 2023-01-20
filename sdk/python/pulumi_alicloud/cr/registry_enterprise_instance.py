@@ -535,7 +535,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["renew_period"] = renew_period
@@ -543,6 +543,8 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             __props__.__dict__["created_time"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(RegistryEnterpriseInstance, __self__).__init__(
             'alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance',
             resource_name,

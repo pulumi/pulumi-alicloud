@@ -311,8 +311,8 @@ class PrometheusAlertRuleAnnotationArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the annotation.
-        :param pulumi.Input[str] value: The value of the annotation.
+        :param pulumi.Input[str] name: The name of the label.
+        :param pulumi.Input[str] value: The value of the label.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -323,7 +323,7 @@ class PrometheusAlertRuleAnnotationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the annotation.
+        The name of the label.
         """
         return pulumi.get(self, "name")
 
@@ -335,7 +335,7 @@ class PrometheusAlertRuleAnnotationArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the annotation.
+        The value of the label.
         """
         return pulumi.get(self, "value")
 
@@ -350,8 +350,8 @@ class PrometheusAlertRuleLabelArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the annotation.
-        :param pulumi.Input[str] value: The value of the annotation.
+        :param pulumi.Input[str] name: The name of the label.
+        :param pulumi.Input[str] value: The value of the label.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -362,7 +362,7 @@ class PrometheusAlertRuleLabelArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the annotation.
+        The name of the label.
         """
         return pulumi.get(self, "name")
 
@@ -374,7 +374,7 @@ class PrometheusAlertRuleLabelArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the annotation.
+        The value of the label.
         """
         return pulumi.get(self, "value")
 

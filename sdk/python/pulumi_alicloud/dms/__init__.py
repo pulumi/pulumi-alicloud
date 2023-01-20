@@ -6,8 +6,15 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .enterprise_instance import *
+from .enterprise_logic_database import *
+from .enterprise_proxy import *
+from .enterprise_proxy_access import *
 from .enterprise_user import *
+from .get_enterprise_databases import *
 from .get_enterprise_instances import *
+from .get_enterprise_logic_databases import *
+from .get_enterprise_proxies import *
+from .get_enterprise_proxy_accesses import *
 from .get_enterprise_users import *
 from .get_user_tenants import *
 from . import outputs

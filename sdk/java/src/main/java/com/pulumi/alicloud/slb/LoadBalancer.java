@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -178,11 +178,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
      * The billing method of the load balancer. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
-     * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.124. Use &#39;payment_type&#39; replaces it.
-     * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.124. Use 'payment_type' replaces it. */
     @Export(name="instanceChargeType", type=String.class, parameters={})
     private Output<String> instanceChargeType;
 

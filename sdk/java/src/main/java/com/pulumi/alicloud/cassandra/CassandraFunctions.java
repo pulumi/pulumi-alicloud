@@ -205,7 +205,7 @@ public final class CassandraFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -245,7 +245,7 @@ public final class CassandraFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -285,7 +285,7 @@ public final class CassandraFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -325,7 +325,7 @@ public final class CassandraFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -365,7 +365,7 @@ public final class CassandraFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -405,7 +405,7 @@ public final class CassandraFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
+     * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -608,7 +608,7 @@ public final class CassandraFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
      * import java.util.List;
@@ -651,7 +651,7 @@ public final class CassandraFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
      * import java.util.List;
@@ -694,7 +694,7 @@ public final class CassandraFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
      * import java.util.List;
@@ -737,7 +737,7 @@ public final class CassandraFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
      * import java.util.List;
@@ -780,7 +780,7 @@ public final class CassandraFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
      * import java.util.List;
@@ -823,7 +823,7 @@ public final class CassandraFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
-     * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
      * import java.util.List;

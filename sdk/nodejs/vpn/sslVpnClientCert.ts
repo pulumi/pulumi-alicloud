@@ -13,9 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const foo = new alicloud.vpn.SslVpnClientCert("foo", {
- *     sslVpnServerId: "ssl_vpn_server_fake_id",
- * });
+ * const foo = new alicloud.vpn.SslVpnClientCert("foo", {sslVpnServerId: "ssl_vpn_server_fake_id"});
  * ```
  *
  * ## Import
@@ -117,6 +115,8 @@ export class SslVpnClientCert extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["caCert", "clientCert", "clientConfig", "clientKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SslVpnClientCert.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.eds.EdsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
  * import com.pulumi.alicloud.eds.Bundle;
  * import com.pulumi.alicloud.eds.BundleArgs;

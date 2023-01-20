@@ -167,12 +167,7 @@ class _StackInstanceState:
         :param pulumi.Input[str] stack_group_name: The name of the stack group.
         :param pulumi.Input[str] stack_instance_account_id: The account to which the stack instance belongs.
         :param pulumi.Input[str] stack_instance_region_id: The region of the stack instance.
-        :param pulumi.Input[str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
-               * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-               * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-               * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-               * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-               * The create or update operation is not complete.
+        :param pulumi.Input[str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
         :param pulumi.Input[str] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
         """
         if operation_description is not None:
@@ -282,12 +277,7 @@ class _StackInstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
-        * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-        * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-        * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-        * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-        * The create or update operation is not complete.
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
         """
         return pulumi.get(self, "status")
 
@@ -471,7 +461,7 @@ class StackInstance(pulumi.CustomResource):
 
             __props__.__dict__["operation_description"] = operation_description
             __props__.__dict__["operation_preferences"] = operation_preferences
-            __props__.__dict__["parameter_overrides"] = parameter_overrides
+            __props__.__dict__["parameter_overrides"] = None if parameter_overrides is None else pulumi.Output.secret(parameter_overrides)
             __props__.__dict__["retain_stacks"] = retain_stacks
             if stack_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'stack_group_name'")
@@ -484,6 +474,8 @@ class StackInstance(pulumi.CustomResource):
             __props__.__dict__["stack_instance_region_id"] = stack_instance_region_id
             __props__.__dict__["timeout_in_minutes"] = timeout_in_minutes
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["parameterOverrides"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(StackInstance, __self__).__init__(
             'alicloud:ros/stackInstance:StackInstance',
             resource_name,
@@ -517,12 +509,7 @@ class StackInstance(pulumi.CustomResource):
         :param pulumi.Input[str] stack_group_name: The name of the stack group.
         :param pulumi.Input[str] stack_instance_account_id: The account to which the stack instance belongs.
         :param pulumi.Input[str] stack_instance_region_id: The region of the stack instance.
-        :param pulumi.Input[str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
-               * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-               * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-               * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-               * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-               * The create or update operation is not complete.
+        :param pulumi.Input[str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
         :param pulumi.Input[str] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -600,12 +587,7 @@ class StackInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
-        * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-        * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-        * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-        * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-        * The create or update operation is not complete.
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
         """
         return pulumi.get(self, "status")
 

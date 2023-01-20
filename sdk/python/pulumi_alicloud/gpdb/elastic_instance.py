@@ -323,6 +323,7 @@ class _ElasticInstanceState:
                  payment_duration: Optional[pulumi.Input[int]] = None,
                  payment_duration_unit: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
@@ -349,6 +350,7 @@ class _ElasticInstanceState:
         :param pulumi.Input[str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
                **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[str] payment_type: Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[int] seg_node_num: The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
         :param pulumi.Input[str] seg_storage_type: The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
@@ -382,6 +384,8 @@ class _ElasticInstanceState:
             pulumi.set(__self__, "payment_duration_unit", payment_duration_unit)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if security_ip_lists is not None:
             pulumi.set(__self__, "security_ip_lists", security_ip_lists)
         if seg_node_num is not None:
@@ -546,6 +550,18 @@ class _ElasticInstanceState:
     @payment_type.setter
     def payment_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.196.0+) The connection port of the instance.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter(name="securityIpLists")
@@ -856,6 +872,7 @@ class ElasticInstance(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["connection_string"] = None
+            __props__.__dict__["port"] = None
             __props__.__dict__["status"] = None
         super(ElasticInstance, __self__).__init__(
             'alicloud:gpdb/elasticInstance:ElasticInstance',
@@ -879,6 +896,7 @@ class ElasticInstance(pulumi.CustomResource):
             payment_duration: Optional[pulumi.Input[int]] = None,
             payment_duration_unit: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
+            port: Optional[pulumi.Input[str]] = None,
             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             seg_node_num: Optional[pulumi.Input[int]] = None,
             seg_storage_type: Optional[pulumi.Input[str]] = None,
@@ -910,6 +928,7 @@ class ElasticInstance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
                **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[str] payment_type: Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[int] seg_node_num: The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
         :param pulumi.Input[str] seg_storage_type: The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
@@ -935,6 +954,7 @@ class ElasticInstance(pulumi.CustomResource):
         __props__.__dict__["payment_duration"] = payment_duration
         __props__.__dict__["payment_duration_unit"] = payment_duration_unit
         __props__.__dict__["payment_type"] = payment_type
+        __props__.__dict__["port"] = port
         __props__.__dict__["security_ip_lists"] = security_ip_lists
         __props__.__dict__["seg_node_num"] = seg_node_num
         __props__.__dict__["seg_storage_type"] = seg_storage_type
@@ -1044,6 +1064,14 @@ class ElasticInstance(pulumi.CustomResource):
         Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.196.0+) The connection port of the instance.
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="securityIpLists")

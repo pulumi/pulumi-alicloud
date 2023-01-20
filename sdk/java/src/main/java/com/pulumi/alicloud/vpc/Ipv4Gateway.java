@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
  * import com.pulumi.alicloud.vpc.Ipv4Gateway;
  * import com.pulumi.alicloud.vpc.Ipv4GatewayArgs;
  * import java.util.List;
@@ -85,6 +85,20 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
+    }
+    /**
+     * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+     * 
+     */
+    @Export(name="enabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> enabled;
+
+    /**
+     * @return Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> enabled() {
+        return Codegen.optional(this.enabled);
     }
     /**
      * The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.

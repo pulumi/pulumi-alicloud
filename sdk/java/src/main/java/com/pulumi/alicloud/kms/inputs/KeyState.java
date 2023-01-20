@@ -19,9 +19,6 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The Alicloud Resource Name (ARN) of the key.
-     * * `creation_date` -The date and time when the CMK was created. The time is displayed in UTC.
-     * * `creator` -The creator of the CMK.
-     * * `delete_date` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
      * 
      */
     @Import(name="arn")
@@ -29,9 +26,6 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The Alicloud Resource Name (ARN) of the key.
-     * * `creation_date` -The date and time when the CMK was created. The time is displayed in UTC.
-     * * `creator` -The creator of the CMK.
-     * * `delete_date` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
      * 
      */
     public Optional<Output<String>> arn() {
@@ -59,23 +53,47 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.automaticRotation);
     }
 
+    /**
+     * The date and time when the CMK was created. The time is displayed in UTC.
+     * 
+     */
     @Import(name="creationDate")
     private @Nullable Output<String> creationDate;
 
+    /**
+     * @return The date and time when the CMK was created. The time is displayed in UTC.
+     * 
+     */
     public Optional<Output<String>> creationDate() {
         return Optional.ofNullable(this.creationDate);
     }
 
+    /**
+     * The creator of the CMK.
+     * 
+     */
     @Import(name="creator")
     private @Nullable Output<String> creator;
 
+    /**
+     * @return The creator of the CMK.
+     * 
+     */
     public Optional<Output<String>> creator() {
         return Optional.ofNullable(this.creator);
     }
 
+    /**
+     * The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+     * 
+     */
     @Import(name="deleteDate")
     private @Nullable Output<String> deleteDate;
 
+    /**
+     * @return The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+     * 
+     */
     public Optional<Output<String>> deleteDate() {
         return Optional.ofNullable(this.deleteDate);
     }
@@ -116,6 +134,21 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The instance ID of the exclusive KMS instance.
+     * 
+     */
+    @Import(name="dkmsInstanceId")
+    private @Nullable Output<String> dkmsInstanceId;
+
+    /**
+     * @return The instance ID of the exclusive KMS instance.
+     * 
+     */
+    public Optional<Output<String>> dkmsInstanceId() {
+        return Optional.ofNullable(this.dkmsInstanceId);
     }
 
     /**
@@ -275,7 +308,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * The number of days before the CMK is deleted.
      * During this period, the CMK is in the PendingDeletion state.
-     * After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+     * After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+     * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
      * 
      */
     @Import(name="pendingWindowInDays")
@@ -284,7 +318,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The number of days before the CMK is deleted.
      * During this period, the CMK is in the PendingDeletion state.
-     * After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+     * After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+     * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
      * 
      */
     public Optional<Output<Integer>> pendingWindowInDays() {
@@ -385,6 +420,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         this.deleteDate = $.deleteDate;
         this.deletionWindowInDays = $.deletionWindowInDays;
         this.description = $.description;
+        this.dkmsInstanceId = $.dkmsInstanceId;
         this.isEnabled = $.isEnabled;
         this.keySpec = $.keySpec;
         this.keyState = $.keyState;
@@ -420,9 +456,6 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param arn The Alicloud Resource Name (ARN) of the key.
-         * * `creation_date` -The date and time when the CMK was created. The time is displayed in UTC.
-         * * `creator` -The creator of the CMK.
-         * * `delete_date` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
          * 
          * @return builder
          * 
@@ -434,9 +467,6 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param arn The Alicloud Resource Name (ARN) of the key.
-         * * `creation_date` -The date and time when the CMK was created. The time is displayed in UTC.
-         * * `creator` -The creator of the CMK.
-         * * `delete_date` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
          * 
          * @return builder
          * 
@@ -472,29 +502,65 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
             return automaticRotation(Output.of(automaticRotation));
         }
 
+        /**
+         * @param creationDate The date and time when the CMK was created. The time is displayed in UTC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder creationDate(@Nullable Output<String> creationDate) {
             $.creationDate = creationDate;
             return this;
         }
 
+        /**
+         * @param creationDate The date and time when the CMK was created. The time is displayed in UTC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder creationDate(String creationDate) {
             return creationDate(Output.of(creationDate));
         }
 
+        /**
+         * @param creator The creator of the CMK.
+         * 
+         * @return builder
+         * 
+         */
         public Builder creator(@Nullable Output<String> creator) {
             $.creator = creator;
             return this;
         }
 
+        /**
+         * @param creator The creator of the CMK.
+         * 
+         * @return builder
+         * 
+         */
         public Builder creator(String creator) {
             return creator(Output.of(creator));
         }
 
+        /**
+         * @param deleteDate The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteDate(@Nullable Output<String> deleteDate) {
             $.deleteDate = deleteDate;
             return this;
         }
 
+        /**
+         * @param deleteDate The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteDate(String deleteDate) {
             return deleteDate(Output.of(deleteDate));
         }
@@ -547,6 +613,27 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dkmsInstanceId The instance ID of the exclusive KMS instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dkmsInstanceId(@Nullable Output<String> dkmsInstanceId) {
+            $.dkmsInstanceId = dkmsInstanceId;
+            return this;
+        }
+
+        /**
+         * @param dkmsInstanceId The instance ID of the exclusive KMS instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dkmsInstanceId(String dkmsInstanceId) {
+            return dkmsInstanceId(Output.of(dkmsInstanceId));
         }
 
         /**
@@ -754,7 +841,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param pendingWindowInDays The number of days before the CMK is deleted.
          * During this period, the CMK is in the PendingDeletion state.
-         * After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+         * After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+         * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
          * 
          * @return builder
          * 
@@ -767,7 +855,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param pendingWindowInDays The number of days before the CMK is deleted.
          * During this period, the CMK is in the PendingDeletion state.
-         * After this period ends, you cannot cancel the deletion. Valid values: 7 to 30. Unit: days.
+         * After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+         * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
          * 
          * @return builder
          * 

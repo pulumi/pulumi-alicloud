@@ -11,6 +11,9 @@ from .. import _utilities
 
 __all__ = [
     'PolicyStatementArgs',
+    'GetPolicyDocumentStatementArgs',
+    'GetPolicyDocumentStatementConditionArgs',
+    'GetPolicyDocumentStatementPrincipalArgs',
 ]
 
 @pulumi.input_type
@@ -63,5 +66,180 @@ class PolicyStatementArgs:
     @resources.setter
     def resources(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "resources", value)
+
+
+@pulumi.input_type
+class GetPolicyDocumentStatementArgs:
+    def __init__(__self__, *,
+                 actions: Sequence[str],
+                 conditions: Optional[Sequence['GetPolicyDocumentStatementConditionArgs']] = None,
+                 effect: Optional[str] = None,
+                 principals: Optional[Sequence['GetPolicyDocumentStatementPrincipalArgs']] = None,
+                 resources: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] actions: Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
+        :param Sequence['GetPolicyDocumentStatementConditionArgs'] conditions: Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+        :param str effect: This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
+        :param Sequence['GetPolicyDocumentStatementPrincipalArgs'] principals: Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+        :param Sequence[str] resources: List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
+        """
+        pulumi.set(__self__, "actions", actions)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if principals is not None:
+            pulumi.set(__self__, "principals", principals)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence[str]:
+        """
+        Action of the RAM policy document. If you want to create a RAM role policy document, it must be `["sts:AssumeRole"]`.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Sequence[str]):
+        pulumi.set(self, "actions", value)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['GetPolicyDocumentStatementConditionArgs']]:
+        """
+        Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[Sequence['GetPolicyDocumentStatementConditionArgs']]):
+        pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[str]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def principals(self) -> Optional[Sequence['GetPolicyDocumentStatementPrincipalArgs']]:
+        """
+        Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
+        """
+        return pulumi.get(self, "principals")
+
+    @principals.setter
+    def principals(self, value: Optional[Sequence['GetPolicyDocumentStatementPrincipalArgs']]):
+        pulumi.set(self, "principals", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence[str]]:
+        """
+        List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "resources", value)
+
+
+@pulumi.input_type
+class GetPolicyDocumentStatementConditionArgs:
+    def __init__(__self__, *,
+                 operator: str,
+                 values: Sequence[str],
+                 variable: str):
+        """
+        :param str operator: The operator of the condition.
+        :param Sequence[str] values: The values of the condition.
+        :param str variable: The variable of the condition.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+        pulumi.set(__self__, "variable", variable)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator of the condition.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: str):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values of the condition.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def variable(self) -> str:
+        """
+        The variable of the condition.
+        """
+        return pulumi.get(self, "variable")
+
+    @variable.setter
+    def variable(self, value: str):
+        pulumi.set(self, "variable", value)
+
+
+@pulumi.input_type
+class GetPolicyDocumentStatementPrincipalArgs:
+    def __init__(__self__, *,
+                 entity: str,
+                 identifiers: Sequence[str]):
+        """
+        :param str entity: The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+        :param Sequence[str] identifiers: The identifiers of the principal.
+        """
+        pulumi.set(__self__, "entity", entity)
+        pulumi.set(__self__, "identifiers", identifiers)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> str:
+        """
+        The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+        """
+        return pulumi.get(self, "entity")
+
+    @entity.setter
+    def entity(self, value: str):
+        pulumi.set(self, "entity", value)
+
+    @property
+    @pulumi.getter
+    def identifiers(self) -> Sequence[str]:
+        """
+        The identifiers of the principal.
+        """
+        return pulumi.get(self, "identifiers")
+
+    @identifiers.setter
+    def identifiers(self, value: Sequence[str]):
+        pulumi.set(self, "identifiers", value)
 
 

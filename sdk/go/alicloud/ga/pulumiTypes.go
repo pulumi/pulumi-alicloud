@@ -780,7 +780,7 @@ func (o ForwardingRuleRuleConditionArrayOutput) Index(i pulumi.IntInput) Forward
 }
 
 type ForwardingRuleRuleConditionHostConfig struct {
-	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+	// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
 	Values []string `pulumi:"values"`
 }
 
@@ -796,7 +796,7 @@ type ForwardingRuleRuleConditionHostConfigInput interface {
 }
 
 type ForwardingRuleRuleConditionHostConfigArgs struct {
-	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+	// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -851,7 +851,7 @@ func (o ForwardingRuleRuleConditionHostConfigOutput) ToForwardingRuleRuleConditi
 	return o
 }
 
-// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
 func (o ForwardingRuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -877,7 +877,7 @@ func (o ForwardingRuleRuleConditionHostConfigArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ForwardingRuleRuleConditionPathConfig struct {
-	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+	// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
 	Values []string `pulumi:"values"`
 }
 
@@ -893,7 +893,7 @@ type ForwardingRuleRuleConditionPathConfigInput interface {
 }
 
 type ForwardingRuleRuleConditionPathConfigArgs struct {
-	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+	// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -974,7 +974,7 @@ func (o ForwardingRuleRuleConditionPathConfigOutput) ToForwardingRuleRuleConditi
 	}).(ForwardingRuleRuleConditionPathConfigPtrOutput)
 }
 
-// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
 func (o ForwardingRuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1003,7 +1003,7 @@ func (o ForwardingRuleRuleConditionPathConfigPtrOutput) Elem() ForwardingRuleRul
 	}).(ForwardingRuleRuleConditionPathConfigOutput)
 }
 
-// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
 func (o ForwardingRuleRuleConditionPathConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ForwardingRuleRuleConditionPathConfig) []string {
 		if v == nil {
@@ -2354,6 +2354,970 @@ func (o GetBandwidthPackagesPackageArrayOutput) Index(i pulumi.IntInput) GetBand
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBandwidthPackagesPackage {
 		return vs[0].([]GetBandwidthPackagesPackage)[vs[1].(int)]
 	}).(GetBandwidthPackagesPackageOutput)
+}
+
+type GetBasicAccelerateIpEndpointRelationsRelation struct {
+	// The ID of the Basic Accelerate IP.
+	AccelerateIpId string `pulumi:"accelerateIpId"`
+	// The ID of the Global Accelerator Basic Accelerator instance.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// The name of the Basic Endpoint.
+	BasicEndpointName string `pulumi:"basicEndpointName"`
+	// The address of the Basic Endpoint.
+	EndpointAddress string `pulumi:"endpointAddress"`
+	// The ID of the Basic Endpoint.
+	EndpointId string `pulumi:"endpointId"`
+	// The sub address of the Basic Endpoint.
+	EndpointSubAddress string `pulumi:"endpointSubAddress"`
+	// The sub address type of the Basic Endpoint.
+	EndpointSubAddressType string `pulumi:"endpointSubAddressType"`
+	// The type of the Basic Endpoint.
+	EndpointType string `pulumi:"endpointType"`
+	// The zone id of the Basic Endpoint.
+	EndpointZoneId string `pulumi:"endpointZoneId"`
+	// The id of the Global Accelerator Basic Accelerate Ip Endpoint Relation. It formats as `<accelerator_id>:<accelerate_ip_id>:<endpoint_id>`.
+	Id string `pulumi:"id"`
+	// The address of the Basic Accelerate IP.
+	IpAddress string `pulumi:"ipAddress"`
+	// The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
+	Status string `pulumi:"status"`
+}
+
+// GetBasicAccelerateIpEndpointRelationsRelationInput is an input type that accepts GetBasicAccelerateIpEndpointRelationsRelationArgs and GetBasicAccelerateIpEndpointRelationsRelationOutput values.
+// You can construct a concrete instance of `GetBasicAccelerateIpEndpointRelationsRelationInput` via:
+//
+//	GetBasicAccelerateIpEndpointRelationsRelationArgs{...}
+type GetBasicAccelerateIpEndpointRelationsRelationInput interface {
+	pulumi.Input
+
+	ToGetBasicAccelerateIpEndpointRelationsRelationOutput() GetBasicAccelerateIpEndpointRelationsRelationOutput
+	ToGetBasicAccelerateIpEndpointRelationsRelationOutputWithContext(context.Context) GetBasicAccelerateIpEndpointRelationsRelationOutput
+}
+
+type GetBasicAccelerateIpEndpointRelationsRelationArgs struct {
+	// The ID of the Basic Accelerate IP.
+	AccelerateIpId pulumi.StringInput `pulumi:"accelerateIpId"`
+	// The ID of the Global Accelerator Basic Accelerator instance.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// The name of the Basic Endpoint.
+	BasicEndpointName pulumi.StringInput `pulumi:"basicEndpointName"`
+	// The address of the Basic Endpoint.
+	EndpointAddress pulumi.StringInput `pulumi:"endpointAddress"`
+	// The ID of the Basic Endpoint.
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// The sub address of the Basic Endpoint.
+	EndpointSubAddress pulumi.StringInput `pulumi:"endpointSubAddress"`
+	// The sub address type of the Basic Endpoint.
+	EndpointSubAddressType pulumi.StringInput `pulumi:"endpointSubAddressType"`
+	// The type of the Basic Endpoint.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The zone id of the Basic Endpoint.
+	EndpointZoneId pulumi.StringInput `pulumi:"endpointZoneId"`
+	// The id of the Global Accelerator Basic Accelerate Ip Endpoint Relation. It formats as `<accelerator_id>:<accelerate_ip_id>:<endpoint_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The address of the Basic Accelerate IP.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetBasicAccelerateIpEndpointRelationsRelationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBasicAccelerateIpEndpointRelationsRelation)(nil)).Elem()
+}
+
+func (i GetBasicAccelerateIpEndpointRelationsRelationArgs) ToGetBasicAccelerateIpEndpointRelationsRelationOutput() GetBasicAccelerateIpEndpointRelationsRelationOutput {
+	return i.ToGetBasicAccelerateIpEndpointRelationsRelationOutputWithContext(context.Background())
+}
+
+func (i GetBasicAccelerateIpEndpointRelationsRelationArgs) ToGetBasicAccelerateIpEndpointRelationsRelationOutputWithContext(ctx context.Context) GetBasicAccelerateIpEndpointRelationsRelationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBasicAccelerateIpEndpointRelationsRelationOutput)
+}
+
+// GetBasicAccelerateIpEndpointRelationsRelationArrayInput is an input type that accepts GetBasicAccelerateIpEndpointRelationsRelationArray and GetBasicAccelerateIpEndpointRelationsRelationArrayOutput values.
+// You can construct a concrete instance of `GetBasicAccelerateIpEndpointRelationsRelationArrayInput` via:
+//
+//	GetBasicAccelerateIpEndpointRelationsRelationArray{ GetBasicAccelerateIpEndpointRelationsRelationArgs{...} }
+type GetBasicAccelerateIpEndpointRelationsRelationArrayInput interface {
+	pulumi.Input
+
+	ToGetBasicAccelerateIpEndpointRelationsRelationArrayOutput() GetBasicAccelerateIpEndpointRelationsRelationArrayOutput
+	ToGetBasicAccelerateIpEndpointRelationsRelationArrayOutputWithContext(context.Context) GetBasicAccelerateIpEndpointRelationsRelationArrayOutput
+}
+
+type GetBasicAccelerateIpEndpointRelationsRelationArray []GetBasicAccelerateIpEndpointRelationsRelationInput
+
+func (GetBasicAccelerateIpEndpointRelationsRelationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBasicAccelerateIpEndpointRelationsRelation)(nil)).Elem()
+}
+
+func (i GetBasicAccelerateIpEndpointRelationsRelationArray) ToGetBasicAccelerateIpEndpointRelationsRelationArrayOutput() GetBasicAccelerateIpEndpointRelationsRelationArrayOutput {
+	return i.ToGetBasicAccelerateIpEndpointRelationsRelationArrayOutputWithContext(context.Background())
+}
+
+func (i GetBasicAccelerateIpEndpointRelationsRelationArray) ToGetBasicAccelerateIpEndpointRelationsRelationArrayOutputWithContext(ctx context.Context) GetBasicAccelerateIpEndpointRelationsRelationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBasicAccelerateIpEndpointRelationsRelationArrayOutput)
+}
+
+type GetBasicAccelerateIpEndpointRelationsRelationOutput struct{ *pulumi.OutputState }
+
+func (GetBasicAccelerateIpEndpointRelationsRelationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBasicAccelerateIpEndpointRelationsRelation)(nil)).Elem()
+}
+
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) ToGetBasicAccelerateIpEndpointRelationsRelationOutput() GetBasicAccelerateIpEndpointRelationsRelationOutput {
+	return o
+}
+
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) ToGetBasicAccelerateIpEndpointRelationsRelationOutputWithContext(ctx context.Context) GetBasicAccelerateIpEndpointRelationsRelationOutput {
+	return o
+}
+
+// The ID of the Basic Accelerate IP.
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) AccelerateIpId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpEndpointRelationsRelation) string { return v.AccelerateIpId }).(pulumi.StringOutput)
+}
+
+// The ID of the Global Accelerator Basic Accelerator instance.
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpEndpointRelationsRelation) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The name of the Basic Endpoint.
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) BasicEndpointName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpEndpointRelationsRelation) string { return v.BasicEndpointName }).(pulumi.StringOutput)
+}
+
+// The address of the Basic Endpoint.
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) EndpointAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpEndpointRelationsRelation) string { return v.EndpointAddress }).(pulumi.StringOutput)
+}
+
+// The ID of the Basic Endpoint.
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpEndpointRelationsRelation) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// The sub address of the Basic Endpoint.
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) EndpointSubAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpEndpointRelationsRelation) string { return v.EndpointSubAddress }).(pulumi.StringOutput)
+}
+
+// The sub address type of the Basic Endpoint.
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) EndpointSubAddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpEndpointRelationsRelation) string { return v.EndpointSubAddressType }).(pulumi.StringOutput)
+}
+
+// The type of the Basic Endpoint.
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpEndpointRelationsRelation) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The zone id of the Basic Endpoint.
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) EndpointZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpEndpointRelationsRelation) string { return v.EndpointZoneId }).(pulumi.StringOutput)
+}
+
+// The id of the Global Accelerator Basic Accelerate Ip Endpoint Relation. It formats as `<accelerator_id>:<accelerate_ip_id>:<endpoint_id>`.
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpEndpointRelationsRelation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The address of the Basic Accelerate IP.
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpEndpointRelationsRelation) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
+func (o GetBasicAccelerateIpEndpointRelationsRelationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpEndpointRelationsRelation) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetBasicAccelerateIpEndpointRelationsRelationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBasicAccelerateIpEndpointRelationsRelationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBasicAccelerateIpEndpointRelationsRelation)(nil)).Elem()
+}
+
+func (o GetBasicAccelerateIpEndpointRelationsRelationArrayOutput) ToGetBasicAccelerateIpEndpointRelationsRelationArrayOutput() GetBasicAccelerateIpEndpointRelationsRelationArrayOutput {
+	return o
+}
+
+func (o GetBasicAccelerateIpEndpointRelationsRelationArrayOutput) ToGetBasicAccelerateIpEndpointRelationsRelationArrayOutputWithContext(ctx context.Context) GetBasicAccelerateIpEndpointRelationsRelationArrayOutput {
+	return o
+}
+
+func (o GetBasicAccelerateIpEndpointRelationsRelationArrayOutput) Index(i pulumi.IntInput) GetBasicAccelerateIpEndpointRelationsRelationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBasicAccelerateIpEndpointRelationsRelation {
+		return vs[0].([]GetBasicAccelerateIpEndpointRelationsRelation)[vs[1].(int)]
+	}).(GetBasicAccelerateIpEndpointRelationsRelationOutput)
+}
+
+type GetBasicAccelerateIpsIp struct {
+	// The address of the Basic Accelerate IP.
+	AccelerateIpAddress string `pulumi:"accelerateIpAddress"`
+	// The id of the Basic Accelerate IP.
+	AccelerateIpId string `pulumi:"accelerateIpId"`
+	// The id of the Global Accelerator Basic Accelerator instance.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// The id of the Basic Accelerate IP.
+	Id string `pulumi:"id"`
+	// The ID of the Basic Ip Set.
+	IpSetId string `pulumi:"ipSetId"`
+	// The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
+	Status string `pulumi:"status"`
+}
+
+// GetBasicAccelerateIpsIpInput is an input type that accepts GetBasicAccelerateIpsIpArgs and GetBasicAccelerateIpsIpOutput values.
+// You can construct a concrete instance of `GetBasicAccelerateIpsIpInput` via:
+//
+//	GetBasicAccelerateIpsIpArgs{...}
+type GetBasicAccelerateIpsIpInput interface {
+	pulumi.Input
+
+	ToGetBasicAccelerateIpsIpOutput() GetBasicAccelerateIpsIpOutput
+	ToGetBasicAccelerateIpsIpOutputWithContext(context.Context) GetBasicAccelerateIpsIpOutput
+}
+
+type GetBasicAccelerateIpsIpArgs struct {
+	// The address of the Basic Accelerate IP.
+	AccelerateIpAddress pulumi.StringInput `pulumi:"accelerateIpAddress"`
+	// The id of the Basic Accelerate IP.
+	AccelerateIpId pulumi.StringInput `pulumi:"accelerateIpId"`
+	// The id of the Global Accelerator Basic Accelerator instance.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// The id of the Basic Accelerate IP.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the Basic Ip Set.
+	IpSetId pulumi.StringInput `pulumi:"ipSetId"`
+	// The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetBasicAccelerateIpsIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBasicAccelerateIpsIp)(nil)).Elem()
+}
+
+func (i GetBasicAccelerateIpsIpArgs) ToGetBasicAccelerateIpsIpOutput() GetBasicAccelerateIpsIpOutput {
+	return i.ToGetBasicAccelerateIpsIpOutputWithContext(context.Background())
+}
+
+func (i GetBasicAccelerateIpsIpArgs) ToGetBasicAccelerateIpsIpOutputWithContext(ctx context.Context) GetBasicAccelerateIpsIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBasicAccelerateIpsIpOutput)
+}
+
+// GetBasicAccelerateIpsIpArrayInput is an input type that accepts GetBasicAccelerateIpsIpArray and GetBasicAccelerateIpsIpArrayOutput values.
+// You can construct a concrete instance of `GetBasicAccelerateIpsIpArrayInput` via:
+//
+//	GetBasicAccelerateIpsIpArray{ GetBasicAccelerateIpsIpArgs{...} }
+type GetBasicAccelerateIpsIpArrayInput interface {
+	pulumi.Input
+
+	ToGetBasicAccelerateIpsIpArrayOutput() GetBasicAccelerateIpsIpArrayOutput
+	ToGetBasicAccelerateIpsIpArrayOutputWithContext(context.Context) GetBasicAccelerateIpsIpArrayOutput
+}
+
+type GetBasicAccelerateIpsIpArray []GetBasicAccelerateIpsIpInput
+
+func (GetBasicAccelerateIpsIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBasicAccelerateIpsIp)(nil)).Elem()
+}
+
+func (i GetBasicAccelerateIpsIpArray) ToGetBasicAccelerateIpsIpArrayOutput() GetBasicAccelerateIpsIpArrayOutput {
+	return i.ToGetBasicAccelerateIpsIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetBasicAccelerateIpsIpArray) ToGetBasicAccelerateIpsIpArrayOutputWithContext(ctx context.Context) GetBasicAccelerateIpsIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBasicAccelerateIpsIpArrayOutput)
+}
+
+type GetBasicAccelerateIpsIpOutput struct{ *pulumi.OutputState }
+
+func (GetBasicAccelerateIpsIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBasicAccelerateIpsIp)(nil)).Elem()
+}
+
+func (o GetBasicAccelerateIpsIpOutput) ToGetBasicAccelerateIpsIpOutput() GetBasicAccelerateIpsIpOutput {
+	return o
+}
+
+func (o GetBasicAccelerateIpsIpOutput) ToGetBasicAccelerateIpsIpOutputWithContext(ctx context.Context) GetBasicAccelerateIpsIpOutput {
+	return o
+}
+
+// The address of the Basic Accelerate IP.
+func (o GetBasicAccelerateIpsIpOutput) AccelerateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpsIp) string { return v.AccelerateIpAddress }).(pulumi.StringOutput)
+}
+
+// The id of the Basic Accelerate IP.
+func (o GetBasicAccelerateIpsIpOutput) AccelerateIpId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpsIp) string { return v.AccelerateIpId }).(pulumi.StringOutput)
+}
+
+// The id of the Global Accelerator Basic Accelerator instance.
+func (o GetBasicAccelerateIpsIpOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpsIp) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The id of the Basic Accelerate IP.
+func (o GetBasicAccelerateIpsIpOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpsIp) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the Basic Ip Set.
+func (o GetBasicAccelerateIpsIpOutput) IpSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpsIp) string { return v.IpSetId }).(pulumi.StringOutput)
+}
+
+// The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
+func (o GetBasicAccelerateIpsIpOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAccelerateIpsIp) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetBasicAccelerateIpsIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBasicAccelerateIpsIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBasicAccelerateIpsIp)(nil)).Elem()
+}
+
+func (o GetBasicAccelerateIpsIpArrayOutput) ToGetBasicAccelerateIpsIpArrayOutput() GetBasicAccelerateIpsIpArrayOutput {
+	return o
+}
+
+func (o GetBasicAccelerateIpsIpArrayOutput) ToGetBasicAccelerateIpsIpArrayOutputWithContext(ctx context.Context) GetBasicAccelerateIpsIpArrayOutput {
+	return o
+}
+
+func (o GetBasicAccelerateIpsIpArrayOutput) Index(i pulumi.IntInput) GetBasicAccelerateIpsIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBasicAccelerateIpsIp {
+		return vs[0].([]GetBasicAccelerateIpsIp)[vs[1].(int)]
+	}).(GetBasicAccelerateIpsIpOutput)
+}
+
+type GetBasicAcceleratorsAccelerator struct {
+	// The bandwidth billing method.
+	BandwidthBillingType string `pulumi:"bandwidthBillingType"`
+	// The id of the Global Accelerator Basic Accelerator instance.
+	BasicAcceleratorId string `pulumi:"basicAcceleratorId"`
+	// The name of the Global Accelerator Basic Accelerator instance.
+	BasicAcceleratorName string `pulumi:"basicAcceleratorName"`
+	// The details about the basic bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance.
+	BasicBandwidthPackages []GetBasicAcceleratorsAcceleratorBasicBandwidthPackage `pulumi:"basicBandwidthPackages"`
+	// The ID of the endpoint group that is associated with the Global Accelerator Basic Accelerator instance.
+	BasicEndpointGroupId string `pulumi:"basicEndpointGroupId"`
+	// The ID of the acceleration region.
+	BasicIpSetId string `pulumi:"basicIpSetId"`
+	// The timestamp that indicates when the Global Accelerator Basic Accelerator instance was created.
+	CreateTime int `pulumi:"createTime"`
+	// The details about the cross-region acceleration bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance. **NOTE:** This array is returned only for Global Accelerator Basic Accelerator instances that are created on the International site.
+	CrossDomainBandwidthPackages []GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage `pulumi:"crossDomainBandwidthPackages"`
+	// The description of the Global Accelerator Basic Accelerator instance.
+	Description string `pulumi:"description"`
+	// The timestamp that indicates when the Global Accelerator Basic Accelerator instance was expired.
+	ExpiredTime int `pulumi:"expiredTime"`
+	// The id of the Global Accelerator Basic Accelerator.
+	Id string `pulumi:"id"`
+	// The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+	InstanceChargeType string `pulumi:"instanceChargeType"`
+	// The ID of the region where the Global Accelerator Basic Accelerator instance is deployed.
+	RegionId string `pulumi:"regionId"`
+	// The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
+	Status string `pulumi:"status"`
+}
+
+// GetBasicAcceleratorsAcceleratorInput is an input type that accepts GetBasicAcceleratorsAcceleratorArgs and GetBasicAcceleratorsAcceleratorOutput values.
+// You can construct a concrete instance of `GetBasicAcceleratorsAcceleratorInput` via:
+//
+//	GetBasicAcceleratorsAcceleratorArgs{...}
+type GetBasicAcceleratorsAcceleratorInput interface {
+	pulumi.Input
+
+	ToGetBasicAcceleratorsAcceleratorOutput() GetBasicAcceleratorsAcceleratorOutput
+	ToGetBasicAcceleratorsAcceleratorOutputWithContext(context.Context) GetBasicAcceleratorsAcceleratorOutput
+}
+
+type GetBasicAcceleratorsAcceleratorArgs struct {
+	// The bandwidth billing method.
+	BandwidthBillingType pulumi.StringInput `pulumi:"bandwidthBillingType"`
+	// The id of the Global Accelerator Basic Accelerator instance.
+	BasicAcceleratorId pulumi.StringInput `pulumi:"basicAcceleratorId"`
+	// The name of the Global Accelerator Basic Accelerator instance.
+	BasicAcceleratorName pulumi.StringInput `pulumi:"basicAcceleratorName"`
+	// The details about the basic bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance.
+	BasicBandwidthPackages GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayInput `pulumi:"basicBandwidthPackages"`
+	// The ID of the endpoint group that is associated with the Global Accelerator Basic Accelerator instance.
+	BasicEndpointGroupId pulumi.StringInput `pulumi:"basicEndpointGroupId"`
+	// The ID of the acceleration region.
+	BasicIpSetId pulumi.StringInput `pulumi:"basicIpSetId"`
+	// The timestamp that indicates when the Global Accelerator Basic Accelerator instance was created.
+	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	// The details about the cross-region acceleration bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance. **NOTE:** This array is returned only for Global Accelerator Basic Accelerator instances that are created on the International site.
+	CrossDomainBandwidthPackages GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayInput `pulumi:"crossDomainBandwidthPackages"`
+	// The description of the Global Accelerator Basic Accelerator instance.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The timestamp that indicates when the Global Accelerator Basic Accelerator instance was expired.
+	ExpiredTime pulumi.IntInput `pulumi:"expiredTime"`
+	// The id of the Global Accelerator Basic Accelerator.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
+	// The ID of the region where the Global Accelerator Basic Accelerator instance is deployed.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetBasicAcceleratorsAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBasicAcceleratorsAccelerator)(nil)).Elem()
+}
+
+func (i GetBasicAcceleratorsAcceleratorArgs) ToGetBasicAcceleratorsAcceleratorOutput() GetBasicAcceleratorsAcceleratorOutput {
+	return i.ToGetBasicAcceleratorsAcceleratorOutputWithContext(context.Background())
+}
+
+func (i GetBasicAcceleratorsAcceleratorArgs) ToGetBasicAcceleratorsAcceleratorOutputWithContext(ctx context.Context) GetBasicAcceleratorsAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBasicAcceleratorsAcceleratorOutput)
+}
+
+// GetBasicAcceleratorsAcceleratorArrayInput is an input type that accepts GetBasicAcceleratorsAcceleratorArray and GetBasicAcceleratorsAcceleratorArrayOutput values.
+// You can construct a concrete instance of `GetBasicAcceleratorsAcceleratorArrayInput` via:
+//
+//	GetBasicAcceleratorsAcceleratorArray{ GetBasicAcceleratorsAcceleratorArgs{...} }
+type GetBasicAcceleratorsAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToGetBasicAcceleratorsAcceleratorArrayOutput() GetBasicAcceleratorsAcceleratorArrayOutput
+	ToGetBasicAcceleratorsAcceleratorArrayOutputWithContext(context.Context) GetBasicAcceleratorsAcceleratorArrayOutput
+}
+
+type GetBasicAcceleratorsAcceleratorArray []GetBasicAcceleratorsAcceleratorInput
+
+func (GetBasicAcceleratorsAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBasicAcceleratorsAccelerator)(nil)).Elem()
+}
+
+func (i GetBasicAcceleratorsAcceleratorArray) ToGetBasicAcceleratorsAcceleratorArrayOutput() GetBasicAcceleratorsAcceleratorArrayOutput {
+	return i.ToGetBasicAcceleratorsAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i GetBasicAcceleratorsAcceleratorArray) ToGetBasicAcceleratorsAcceleratorArrayOutputWithContext(ctx context.Context) GetBasicAcceleratorsAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBasicAcceleratorsAcceleratorArrayOutput)
+}
+
+type GetBasicAcceleratorsAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (GetBasicAcceleratorsAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBasicAcceleratorsAccelerator)(nil)).Elem()
+}
+
+func (o GetBasicAcceleratorsAcceleratorOutput) ToGetBasicAcceleratorsAcceleratorOutput() GetBasicAcceleratorsAcceleratorOutput {
+	return o
+}
+
+func (o GetBasicAcceleratorsAcceleratorOutput) ToGetBasicAcceleratorsAcceleratorOutputWithContext(ctx context.Context) GetBasicAcceleratorsAcceleratorOutput {
+	return o
+}
+
+// The bandwidth billing method.
+func (o GetBasicAcceleratorsAcceleratorOutput) BandwidthBillingType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.BandwidthBillingType }).(pulumi.StringOutput)
+}
+
+// The id of the Global Accelerator Basic Accelerator instance.
+func (o GetBasicAcceleratorsAcceleratorOutput) BasicAcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.BasicAcceleratorId }).(pulumi.StringOutput)
+}
+
+// The name of the Global Accelerator Basic Accelerator instance.
+func (o GetBasicAcceleratorsAcceleratorOutput) BasicAcceleratorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.BasicAcceleratorName }).(pulumi.StringOutput)
+}
+
+// The details about the basic bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance.
+func (o GetBasicAcceleratorsAcceleratorOutput) BasicBandwidthPackages() GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) []GetBasicAcceleratorsAcceleratorBasicBandwidthPackage {
+		return v.BasicBandwidthPackages
+	}).(GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput)
+}
+
+// The ID of the endpoint group that is associated with the Global Accelerator Basic Accelerator instance.
+func (o GetBasicAcceleratorsAcceleratorOutput) BasicEndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.BasicEndpointGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the acceleration region.
+func (o GetBasicAcceleratorsAcceleratorOutput) BasicIpSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.BasicIpSetId }).(pulumi.StringOutput)
+}
+
+// The timestamp that indicates when the Global Accelerator Basic Accelerator instance was created.
+func (o GetBasicAcceleratorsAcceleratorOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) int { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// The details about the cross-region acceleration bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance. **NOTE:** This array is returned only for Global Accelerator Basic Accelerator instances that are created on the International site.
+func (o GetBasicAcceleratorsAcceleratorOutput) CrossDomainBandwidthPackages() GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) []GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage {
+		return v.CrossDomainBandwidthPackages
+	}).(GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput)
+}
+
+// The description of the Global Accelerator Basic Accelerator instance.
+func (o GetBasicAcceleratorsAcceleratorOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The timestamp that indicates when the Global Accelerator Basic Accelerator instance was expired.
+func (o GetBasicAcceleratorsAcceleratorOutput) ExpiredTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) int { return v.ExpiredTime }).(pulumi.IntOutput)
+}
+
+// The id of the Global Accelerator Basic Accelerator.
+func (o GetBasicAcceleratorsAcceleratorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+func (o GetBasicAcceleratorsAcceleratorOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// The ID of the region where the Global Accelerator Basic Accelerator instance is deployed.
+func (o GetBasicAcceleratorsAcceleratorOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
+func (o GetBasicAcceleratorsAcceleratorOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetBasicAcceleratorsAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBasicAcceleratorsAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBasicAcceleratorsAccelerator)(nil)).Elem()
+}
+
+func (o GetBasicAcceleratorsAcceleratorArrayOutput) ToGetBasicAcceleratorsAcceleratorArrayOutput() GetBasicAcceleratorsAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetBasicAcceleratorsAcceleratorArrayOutput) ToGetBasicAcceleratorsAcceleratorArrayOutputWithContext(ctx context.Context) GetBasicAcceleratorsAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetBasicAcceleratorsAcceleratorArrayOutput) Index(i pulumi.IntInput) GetBasicAcceleratorsAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBasicAcceleratorsAccelerator {
+		return vs[0].([]GetBasicAcceleratorsAccelerator)[vs[1].(int)]
+	}).(GetBasicAcceleratorsAcceleratorOutput)
+}
+
+type GetBasicAcceleratorsAcceleratorBasicBandwidthPackage struct {
+	// The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The type of the bandwidth that is provided by the basic bandwidth plan.
+	BandwidthType string `pulumi:"bandwidthType"`
+	// The ID of the cross-region acceleration bandwidth plan.
+	InstanceId string `pulumi:"instanceId"`
+}
+
+// GetBasicAcceleratorsAcceleratorBasicBandwidthPackageInput is an input type that accepts GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArgs and GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput values.
+// You can construct a concrete instance of `GetBasicAcceleratorsAcceleratorBasicBandwidthPackageInput` via:
+//
+//	GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArgs{...}
+type GetBasicAcceleratorsAcceleratorBasicBandwidthPackageInput interface {
+	pulumi.Input
+
+	ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput() GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput
+	ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutputWithContext(context.Context) GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput
+}
+
+type GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArgs struct {
+	// The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The type of the bandwidth that is provided by the basic bandwidth plan.
+	BandwidthType pulumi.StringInput `pulumi:"bandwidthType"`
+	// The ID of the cross-region acceleration bandwidth plan.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+}
+
+func (GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBasicAcceleratorsAcceleratorBasicBandwidthPackage)(nil)).Elem()
+}
+
+func (i GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArgs) ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput() GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput {
+	return i.ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutputWithContext(context.Background())
+}
+
+func (i GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArgs) ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutputWithContext(ctx context.Context) GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput)
+}
+
+// GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayInput is an input type that accepts GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArray and GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput values.
+// You can construct a concrete instance of `GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayInput` via:
+//
+//	GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArray{ GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArgs{...} }
+type GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayInput interface {
+	pulumi.Input
+
+	ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput() GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput
+	ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutputWithContext(context.Context) GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput
+}
+
+type GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArray []GetBasicAcceleratorsAcceleratorBasicBandwidthPackageInput
+
+func (GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBasicAcceleratorsAcceleratorBasicBandwidthPackage)(nil)).Elem()
+}
+
+func (i GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArray) ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput() GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput {
+	return i.ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutputWithContext(context.Background())
+}
+
+func (i GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArray) ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutputWithContext(ctx context.Context) GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput)
+}
+
+type GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput struct{ *pulumi.OutputState }
+
+func (GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBasicAcceleratorsAcceleratorBasicBandwidthPackage)(nil)).Elem()
+}
+
+func (o GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput) ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput() GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput {
+	return o
+}
+
+func (o GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput) ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutputWithContext(ctx context.Context) GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput {
+	return o
+}
+
+// The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
+func (o GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAcceleratorBasicBandwidthPackage) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The type of the bandwidth that is provided by the basic bandwidth plan.
+func (o GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput) BandwidthType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAcceleratorBasicBandwidthPackage) string { return v.BandwidthType }).(pulumi.StringOutput)
+}
+
+// The ID of the cross-region acceleration bandwidth plan.
+func (o GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAcceleratorBasicBandwidthPackage) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+type GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBasicAcceleratorsAcceleratorBasicBandwidthPackage)(nil)).Elem()
+}
+
+func (o GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput) ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput() GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput {
+	return o
+}
+
+func (o GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput) ToGetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutputWithContext(ctx context.Context) GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput {
+	return o
+}
+
+func (o GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput) Index(i pulumi.IntInput) GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBasicAcceleratorsAcceleratorBasicBandwidthPackage {
+		return vs[0].([]GetBasicAcceleratorsAcceleratorBasicBandwidthPackage)[vs[1].(int)]
+	}).(GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput)
+}
+
+type GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage struct {
+	// The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The ID of the cross-region acceleration bandwidth plan.
+	InstanceId string `pulumi:"instanceId"`
+}
+
+// GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageInput is an input type that accepts GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs and GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput values.
+// You can construct a concrete instance of `GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageInput` via:
+//
+//	GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs{...}
+type GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageInput interface {
+	pulumi.Input
+
+	ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput() GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput
+	ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutputWithContext(context.Context) GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput
+}
+
+type GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs struct {
+	// The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The ID of the cross-region acceleration bandwidth plan.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+}
+
+func (GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage)(nil)).Elem()
+}
+
+func (i GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs) ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput() GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput {
+	return i.ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutputWithContext(context.Background())
+}
+
+func (i GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs) ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutputWithContext(ctx context.Context) GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput)
+}
+
+// GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayInput is an input type that accepts GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArray and GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput values.
+// You can construct a concrete instance of `GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayInput` via:
+//
+//	GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArray{ GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs{...} }
+type GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayInput interface {
+	pulumi.Input
+
+	ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput() GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput
+	ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutputWithContext(context.Context) GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput
+}
+
+type GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArray []GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageInput
+
+func (GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage)(nil)).Elem()
+}
+
+func (i GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArray) ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput() GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput {
+	return i.ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutputWithContext(context.Background())
+}
+
+func (i GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArray) ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutputWithContext(ctx context.Context) GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput)
+}
+
+type GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput struct{ *pulumi.OutputState }
+
+func (GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage)(nil)).Elem()
+}
+
+func (o GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput) ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput() GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput {
+	return o
+}
+
+func (o GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput) ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutputWithContext(ctx context.Context) GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput {
+	return o
+}
+
+// The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
+func (o GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The ID of the cross-region acceleration bandwidth plan.
+func (o GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+type GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage)(nil)).Elem()
+}
+
+func (o GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput) ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput() GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput {
+	return o
+}
+
+func (o GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput) ToGetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutputWithContext(ctx context.Context) GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput {
+	return o
+}
+
+func (o GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput) Index(i pulumi.IntInput) GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage {
+		return vs[0].([]GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage)[vs[1].(int)]
+	}).(GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput)
+}
+
+type GetBasicEndpointsEndpoint struct {
+	// The ID of the Global Accelerator Basic Accelerator instance.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// The name of the Basic Endpoint.
+	BasicEndpointName string `pulumi:"basicEndpointName"`
+	// The address of the Basic Endpoint.
+	EndpointAddress string `pulumi:"endpointAddress"`
+	// The ID of the Basic Endpoint Group.
+	EndpointGroupId string `pulumi:"endpointGroupId"`
+	// The ID of the Basic Endpoint.
+	EndpointId string `pulumi:"endpointId"`
+	// The sub address of the Basic Endpoint.
+	EndpointSubAddress string `pulumi:"endpointSubAddress"`
+	// The sub address type of the Basic Endpoint.
+	EndpointSubAddressType string `pulumi:"endpointSubAddressType"`
+	// The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
+	EndpointType string `pulumi:"endpointType"`
+	// The zone id of the Basic Endpoint.
+	EndpointZoneId string `pulumi:"endpointZoneId"`
+	// The id of the Global Accelerator Basic Endpoint. It formats as `<endpoint_group_id>:<endpoint_id>`.
+	Id string `pulumi:"id"`
+	// The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
+	Status string `pulumi:"status"`
+}
+
+// GetBasicEndpointsEndpointInput is an input type that accepts GetBasicEndpointsEndpointArgs and GetBasicEndpointsEndpointOutput values.
+// You can construct a concrete instance of `GetBasicEndpointsEndpointInput` via:
+//
+//	GetBasicEndpointsEndpointArgs{...}
+type GetBasicEndpointsEndpointInput interface {
+	pulumi.Input
+
+	ToGetBasicEndpointsEndpointOutput() GetBasicEndpointsEndpointOutput
+	ToGetBasicEndpointsEndpointOutputWithContext(context.Context) GetBasicEndpointsEndpointOutput
+}
+
+type GetBasicEndpointsEndpointArgs struct {
+	// The ID of the Global Accelerator Basic Accelerator instance.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// The name of the Basic Endpoint.
+	BasicEndpointName pulumi.StringInput `pulumi:"basicEndpointName"`
+	// The address of the Basic Endpoint.
+	EndpointAddress pulumi.StringInput `pulumi:"endpointAddress"`
+	// The ID of the Basic Endpoint Group.
+	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
+	// The ID of the Basic Endpoint.
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// The sub address of the Basic Endpoint.
+	EndpointSubAddress pulumi.StringInput `pulumi:"endpointSubAddress"`
+	// The sub address type of the Basic Endpoint.
+	EndpointSubAddressType pulumi.StringInput `pulumi:"endpointSubAddressType"`
+	// The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The zone id of the Basic Endpoint.
+	EndpointZoneId pulumi.StringInput `pulumi:"endpointZoneId"`
+	// The id of the Global Accelerator Basic Endpoint. It formats as `<endpoint_group_id>:<endpoint_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetBasicEndpointsEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBasicEndpointsEndpoint)(nil)).Elem()
+}
+
+func (i GetBasicEndpointsEndpointArgs) ToGetBasicEndpointsEndpointOutput() GetBasicEndpointsEndpointOutput {
+	return i.ToGetBasicEndpointsEndpointOutputWithContext(context.Background())
+}
+
+func (i GetBasicEndpointsEndpointArgs) ToGetBasicEndpointsEndpointOutputWithContext(ctx context.Context) GetBasicEndpointsEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBasicEndpointsEndpointOutput)
+}
+
+// GetBasicEndpointsEndpointArrayInput is an input type that accepts GetBasicEndpointsEndpointArray and GetBasicEndpointsEndpointArrayOutput values.
+// You can construct a concrete instance of `GetBasicEndpointsEndpointArrayInput` via:
+//
+//	GetBasicEndpointsEndpointArray{ GetBasicEndpointsEndpointArgs{...} }
+type GetBasicEndpointsEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetBasicEndpointsEndpointArrayOutput() GetBasicEndpointsEndpointArrayOutput
+	ToGetBasicEndpointsEndpointArrayOutputWithContext(context.Context) GetBasicEndpointsEndpointArrayOutput
+}
+
+type GetBasicEndpointsEndpointArray []GetBasicEndpointsEndpointInput
+
+func (GetBasicEndpointsEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBasicEndpointsEndpoint)(nil)).Elem()
+}
+
+func (i GetBasicEndpointsEndpointArray) ToGetBasicEndpointsEndpointArrayOutput() GetBasicEndpointsEndpointArrayOutput {
+	return i.ToGetBasicEndpointsEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetBasicEndpointsEndpointArray) ToGetBasicEndpointsEndpointArrayOutputWithContext(ctx context.Context) GetBasicEndpointsEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBasicEndpointsEndpointArrayOutput)
+}
+
+type GetBasicEndpointsEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetBasicEndpointsEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBasicEndpointsEndpoint)(nil)).Elem()
+}
+
+func (o GetBasicEndpointsEndpointOutput) ToGetBasicEndpointsEndpointOutput() GetBasicEndpointsEndpointOutput {
+	return o
+}
+
+func (o GetBasicEndpointsEndpointOutput) ToGetBasicEndpointsEndpointOutputWithContext(ctx context.Context) GetBasicEndpointsEndpointOutput {
+	return o
+}
+
+// The ID of the Global Accelerator Basic Accelerator instance.
+func (o GetBasicEndpointsEndpointOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicEndpointsEndpoint) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The name of the Basic Endpoint.
+func (o GetBasicEndpointsEndpointOutput) BasicEndpointName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicEndpointsEndpoint) string { return v.BasicEndpointName }).(pulumi.StringOutput)
+}
+
+// The address of the Basic Endpoint.
+func (o GetBasicEndpointsEndpointOutput) EndpointAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicEndpointsEndpoint) string { return v.EndpointAddress }).(pulumi.StringOutput)
+}
+
+// The ID of the Basic Endpoint Group.
+func (o GetBasicEndpointsEndpointOutput) EndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicEndpointsEndpoint) string { return v.EndpointGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the Basic Endpoint.
+func (o GetBasicEndpointsEndpointOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicEndpointsEndpoint) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// The sub address of the Basic Endpoint.
+func (o GetBasicEndpointsEndpointOutput) EndpointSubAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicEndpointsEndpoint) string { return v.EndpointSubAddress }).(pulumi.StringOutput)
+}
+
+// The sub address type of the Basic Endpoint.
+func (o GetBasicEndpointsEndpointOutput) EndpointSubAddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicEndpointsEndpoint) string { return v.EndpointSubAddressType }).(pulumi.StringOutput)
+}
+
+// The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
+func (o GetBasicEndpointsEndpointOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicEndpointsEndpoint) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The zone id of the Basic Endpoint.
+func (o GetBasicEndpointsEndpointOutput) EndpointZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicEndpointsEndpoint) string { return v.EndpointZoneId }).(pulumi.StringOutput)
+}
+
+// The id of the Global Accelerator Basic Endpoint. It formats as `<endpoint_group_id>:<endpoint_id>`.
+func (o GetBasicEndpointsEndpointOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicEndpointsEndpoint) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
+func (o GetBasicEndpointsEndpointOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBasicEndpointsEndpoint) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetBasicEndpointsEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBasicEndpointsEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBasicEndpointsEndpoint)(nil)).Elem()
+}
+
+func (o GetBasicEndpointsEndpointArrayOutput) ToGetBasicEndpointsEndpointArrayOutput() GetBasicEndpointsEndpointArrayOutput {
+	return o
+}
+
+func (o GetBasicEndpointsEndpointArrayOutput) ToGetBasicEndpointsEndpointArrayOutputWithContext(ctx context.Context) GetBasicEndpointsEndpointArrayOutput {
+	return o
+}
+
+func (o GetBasicEndpointsEndpointArrayOutput) Index(i pulumi.IntInput) GetBasicEndpointsEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBasicEndpointsEndpoint {
+		return vs[0].([]GetBasicEndpointsEndpoint)[vs[1].(int)]
+	}).(GetBasicEndpointsEndpointOutput)
 }
 
 type GetEndpointGroupsGroup struct {
@@ -4188,6 +5152,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAdditionalCertificatesCertificateArrayInput)(nil)).Elem(), GetAdditionalCertificatesCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBandwidthPackagesPackageInput)(nil)).Elem(), GetBandwidthPackagesPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBandwidthPackagesPackageArrayInput)(nil)).Elem(), GetBandwidthPackagesPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicAccelerateIpEndpointRelationsRelationInput)(nil)).Elem(), GetBasicAccelerateIpEndpointRelationsRelationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicAccelerateIpEndpointRelationsRelationArrayInput)(nil)).Elem(), GetBasicAccelerateIpEndpointRelationsRelationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicAccelerateIpsIpInput)(nil)).Elem(), GetBasicAccelerateIpsIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicAccelerateIpsIpArrayInput)(nil)).Elem(), GetBasicAccelerateIpsIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicAcceleratorsAcceleratorInput)(nil)).Elem(), GetBasicAcceleratorsAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicAcceleratorsAcceleratorArrayInput)(nil)).Elem(), GetBasicAcceleratorsAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicAcceleratorsAcceleratorBasicBandwidthPackageInput)(nil)).Elem(), GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayInput)(nil)).Elem(), GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageInput)(nil)).Elem(), GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayInput)(nil)).Elem(), GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicEndpointsEndpointInput)(nil)).Elem(), GetBasicEndpointsEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicEndpointsEndpointArrayInput)(nil)).Elem(), GetBasicEndpointsEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupInput)(nil)).Elem(), GetEndpointGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupArrayInput)(nil)).Elem(), GetEndpointGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupEndpointConfigurationInput)(nil)).Elem(), GetEndpointGroupsGroupEndpointConfigurationArgs{})
@@ -4253,6 +5229,18 @@ func init() {
 	pulumi.RegisterOutputType(GetAdditionalCertificatesCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetBandwidthPackagesPackageOutput{})
 	pulumi.RegisterOutputType(GetBandwidthPackagesPackageArrayOutput{})
+	pulumi.RegisterOutputType(GetBasicAccelerateIpEndpointRelationsRelationOutput{})
+	pulumi.RegisterOutputType(GetBasicAccelerateIpEndpointRelationsRelationArrayOutput{})
+	pulumi.RegisterOutputType(GetBasicAccelerateIpsIpOutput{})
+	pulumi.RegisterOutputType(GetBasicAccelerateIpsIpArrayOutput{})
+	pulumi.RegisterOutputType(GetBasicAcceleratorsAcceleratorOutput{})
+	pulumi.RegisterOutputType(GetBasicAcceleratorsAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetBasicAcceleratorsAcceleratorBasicBandwidthPackageOutput{})
+	pulumi.RegisterOutputType(GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArrayOutput{})
+	pulumi.RegisterOutputType(GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageOutput{})
+	pulumi.RegisterOutputType(GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput{})
+	pulumi.RegisterOutputType(GetBasicEndpointsEndpointOutput{})
+	pulumi.RegisterOutputType(GetBasicEndpointsEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupEndpointConfigurationOutput{})

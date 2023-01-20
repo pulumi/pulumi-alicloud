@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -66,6 +67,11 @@ import * as utilities from "../utilities";
  *     enableNatTraversal: true,
  *     vpnAttachmentName: _var.name,
  * });
+ * const vpnAttachments = alicloud.vpn.getGatewayVpnAttachments({
+ *     ids: [alicloud_vpn_gateway_vpn_attachment.vpn_attachment1.id],
+ * });
+ * export const localId = vpnAttachments.then(vpnAttachments => vpnAttachments.attachments?.[0]?.ikeConfigs?.[0]?.localId);
+ * export const internetIp = vpnAttachments.then(vpnAttachments => vpnAttachments.attachments?.[0]?.internetIp);
  * ```
  *
  * ## Import
@@ -109,7 +115,7 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
      */
     public readonly bgpConfig!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentBgpConfig>;
     /**
-     * The ID of the customer gateway.
+     * The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
      */
     public readonly customerGatewayId!: pulumi.Output<string>;
     /**
@@ -132,6 +138,10 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
      * Configuration negotiated in the second stage. See the following `Block ikeConfig`.
      */
     public readonly ikeConfig!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentIkeConfig>;
+    /**
+     * The VPN gateway IP.
+     */
+    public /*out*/ readonly internetIp!: pulumi.Output<string>;
     /**
      * Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
      */
@@ -177,6 +187,7 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
             resourceInputs["enableNatTraversal"] = state ? state.enableNatTraversal : undefined;
             resourceInputs["healthCheckConfig"] = state ? state.healthCheckConfig : undefined;
             resourceInputs["ikeConfig"] = state ? state.ikeConfig : undefined;
+            resourceInputs["internetIp"] = state ? state.internetIp : undefined;
             resourceInputs["ipsecConfig"] = state ? state.ipsecConfig : undefined;
             resourceInputs["localSubnet"] = state ? state.localSubnet : undefined;
             resourceInputs["networkType"] = state ? state.networkType : undefined;
@@ -206,6 +217,7 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
             resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["remoteSubnet"] = args ? args.remoteSubnet : undefined;
             resourceInputs["vpnAttachmentName"] = args ? args.vpnAttachmentName : undefined;
+            resourceInputs["internetIp"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -222,7 +234,7 @@ export interface GatewayVpnAttachmentState {
      */
     bgpConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentBgpConfig>;
     /**
-     * The ID of the customer gateway.
+     * The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
      */
     customerGatewayId?: pulumi.Input<string>;
     /**
@@ -245,6 +257,10 @@ export interface GatewayVpnAttachmentState {
      * Configuration negotiated in the second stage. See the following `Block ikeConfig`.
      */
     ikeConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentIkeConfig>;
+    /**
+     * The VPN gateway IP.
+     */
+    internetIp?: pulumi.Input<string>;
     /**
      * Configuration negotiated in the second stage. See the following `Block ipsecConfig`.
      */
@@ -280,7 +296,7 @@ export interface GatewayVpnAttachmentArgs {
      */
     bgpConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentBgpConfig>;
     /**
-     * The ID of the customer gateway.
+     * The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
      */
     customerGatewayId: pulumi.Input<string>;
     /**

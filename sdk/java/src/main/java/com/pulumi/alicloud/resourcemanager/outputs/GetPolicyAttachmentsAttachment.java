@@ -21,10 +21,6 @@ public final class GetPolicyAttachmentsAttachment {
     private String description;
     /**
      * @return The ID of the Resource Manager Policy Attachment.
-     * * `policy_name`- The name of the policy.
-     * * `policy_type`- The type of the policy.
-     * * `principal_name`- The name of the object to which the policy is attached.
-     * * `principal_type`- The type of the object to which the policy is attached.
      * 
      */
     private String id;
@@ -71,10 +67,6 @@ public final class GetPolicyAttachmentsAttachment {
     }
     /**
      * @return The ID of the Resource Manager Policy Attachment.
-     * * `policy_name`- The name of the policy.
-     * * `policy_type`- The type of the policy.
-     * * `principal_name`- The name of the object to which the policy is attached.
-     * * `principal_type`- The type of the object to which the policy is attached.
      * 
      */
     public String id() {

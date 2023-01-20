@@ -21,45 +21,44 @@ namespace Pulumi.AliCloud.Cms
     /// Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @default = new AliCloud.Cms.MonitorGroup("default", new()
     ///     {
-    ///         var @default = new AliCloud.Cms.MonitorGroup("default", new AliCloud.Cms.MonitorGroupArgs
-    ///         {
-    ///             MonitorGroupName = "example_value",
-    ///         });
-    ///         var example = new AliCloud.Cms.EventRule("example", new AliCloud.Cms.EventRuleArgs
-    ///         {
-    ///             RuleName = "example_value",
-    ///             GroupId = @default.Id,
-    ///             Description = "example_value",
-    ///             Status = "ENABLED",
-    ///             EventPattern = new AliCloud.Cms.Inputs.EventRuleEventPatternArgs
-    ///             {
-    ///                 Product = "ecs",
-    ///                 EventTypeLists = 
-    ///                 {
-    ///                     "StatusNotification",
-    ///                 },
-    ///                 LevelLists = 
-    ///                 {
-    ///                     "CRITICAL",
-    ///                 },
-    ///                 NameLists = 
-    ///                 {
-    ///                     "example_value",
-    ///                 },
-    ///                 SqlFilter = "example_value",
-    ///             },
-    ///             SilenceTime = 100,
-    ///         });
-    ///     }
+    ///         MonitorGroupName = "example_value",
+    ///     });
     /// 
-    /// }
+    ///     var example = new AliCloud.Cms.EventRule("example", new()
+    ///     {
+    ///         RuleName = "example_value",
+    ///         GroupId = @default.Id,
+    ///         Description = "example_value",
+    ///         Status = "ENABLED",
+    ///         EventPattern = new AliCloud.Cms.Inputs.EventRuleEventPatternArgs
+    ///         {
+    ///             Product = "ecs",
+    ///             EventTypeLists = new[]
+    ///             {
+    ///                 "StatusNotification",
+    ///             },
+    ///             LevelLists = new[]
+    ///             {
+    ///                 "CRITICAL",
+    ///             },
+    ///             NameLists = new[]
+    ///             {
+    ///                 "example_value",
+    ///             },
+    ///             SqlFilter = "example_value",
+    ///         },
+    ///         SilenceTime = 100,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -71,7 +70,7 @@ namespace Pulumi.AliCloud.Cms
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cms/eventRule:EventRule")]
-    public partial class EventRule : Pulumi.CustomResource
+    public partial class EventRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the event-triggered alert rule.
@@ -153,7 +152,7 @@ namespace Pulumi.AliCloud.Cms
         }
     }
 
-    public sealed class EventRuleArgs : Pulumi.ResourceArgs
+    public sealed class EventRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the event-triggered alert rule.
@@ -194,9 +193,10 @@ namespace Pulumi.AliCloud.Cms
         public EventRuleArgs()
         {
         }
+        public static new EventRuleArgs Empty => new EventRuleArgs();
     }
 
-    public sealed class EventRuleState : Pulumi.ResourceArgs
+    public sealed class EventRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the event-triggered alert rule.
@@ -237,5 +237,6 @@ namespace Pulumi.AliCloud.Cms
         public EventRuleState()
         {
         }
+        public static new EventRuleState Empty => new EventRuleState();
     }
 }

@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getProjects";
-export * from "./project";
+export { GetProjectsArgs, GetProjectsResult, GetProjectsOutputArgs } from "./getProjects";
+export const getProjects: typeof import("./getProjects").getProjects = null as any;
+export const getProjectsOutput: typeof import("./getProjects").getProjectsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjects","getProjectsOutput"], () => require("./getProjects"));
 
-// Import resources to register:
-import { Project } from "./project";
+export { ProjectArgs, ProjectState } from "./project";
+export type Project = import("./project").Project;
+export const Project: typeof import("./project").Project = null as any;
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+
 
 const _module = {
     version: utilities.getVersion(),

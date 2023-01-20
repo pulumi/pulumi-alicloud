@@ -23,39 +23,37 @@ namespace Pulumi.AliCloud
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.GetMscSubWebhooks.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.GetMscSubWebhooks.InvokeAsync(new AliCloud.GetMscSubWebhooksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.MscSubWebhookId1 = ids.Apply(ids =&gt; ids.Webhooks?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.GetMscSubWebhooks.InvokeAsync(new AliCloud.GetMscSubWebhooksArgs
-        ///         {
-        ///             NameRegex = "^my-Webhook",
-        ///         }));
-        ///         this.MscSubWebhookId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Webhooks?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("mscSubWebhookId1")]
-        ///     public Output&lt;string&gt; MscSubWebhookId1 { get; set; }
-        ///     [Output("mscSubWebhookId2")]
-        ///     public Output&lt;string&gt; MscSubWebhookId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.GetMscSubWebhooks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Webhook",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mscSubWebhookId1"] = ids.Apply(getMscSubWebhooksResult =&gt; getMscSubWebhooksResult.Webhooks[0]?.Id),
+        ///         ["mscSubWebhookId2"] = nameRegex.Apply(getMscSubWebhooksResult =&gt; getMscSubWebhooksResult.Webhooks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMscSubWebhooksResult> InvokeAsync(GetMscSubWebhooksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMscSubWebhooksResult>("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args ?? new GetMscSubWebhooksArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMscSubWebhooksResult>("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args ?? new GetMscSubWebhooksArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Msc Sub Webhooks of the current Alibaba Cloud user.
@@ -69,43 +67,41 @@ namespace Pulumi.AliCloud
         /// Basic Usage
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ids = AliCloud.GetMscSubWebhooks.Invoke(new()
         ///     {
-        ///         var ids = Output.Create(AliCloud.GetMscSubWebhooks.InvokeAsync(new AliCloud.GetMscSubWebhooksArgs
+        ///         Ids = new[]
         ///         {
-        ///             Ids = 
-        ///             {
-        ///                 "example_id",
-        ///             },
-        ///         }));
-        ///         this.MscSubWebhookId1 = ids.Apply(ids =&gt; ids.Webhooks?[0]?.Id);
-        ///         var nameRegex = Output.Create(AliCloud.GetMscSubWebhooks.InvokeAsync(new AliCloud.GetMscSubWebhooksArgs
-        ///         {
-        ///             NameRegex = "^my-Webhook",
-        ///         }));
-        ///         this.MscSubWebhookId2 = nameRegex.Apply(nameRegex =&gt; nameRegex.Webhooks?[0]?.Id);
-        ///     }
+        ///             "example_id",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("mscSubWebhookId1")]
-        ///     public Output&lt;string&gt; MscSubWebhookId1 { get; set; }
-        ///     [Output("mscSubWebhookId2")]
-        ///     public Output&lt;string&gt; MscSubWebhookId2 { get; set; }
-        /// }
+        ///     var nameRegex = AliCloud.GetMscSubWebhooks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^my-Webhook",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["mscSubWebhookId1"] = ids.Apply(getMscSubWebhooksResult =&gt; getMscSubWebhooksResult.Webhooks[0]?.Id),
+        ///         ["mscSubWebhookId2"] = nameRegex.Apply(getMscSubWebhooksResult =&gt; getMscSubWebhooksResult.Webhooks[0]?.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetMscSubWebhooksResult> Invoke(GetMscSubWebhooksInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMscSubWebhooksResult>("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args ?? new GetMscSubWebhooksInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMscSubWebhooksResult>("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args ?? new GetMscSubWebhooksInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetMscSubWebhooksArgs : Pulumi.InvokeArgs
+    public sealed class GetMscSubWebhooksArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -131,9 +127,10 @@ namespace Pulumi.AliCloud
         public GetMscSubWebhooksArgs()
         {
         }
+        public static new GetMscSubWebhooksArgs Empty => new GetMscSubWebhooksArgs();
     }
 
-    public sealed class GetMscSubWebhooksInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMscSubWebhooksInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -159,6 +156,7 @@ namespace Pulumi.AliCloud
         public GetMscSubWebhooksInvokeArgs()
         {
         }
+        public static new GetMscSubWebhooksInvokeArgs Empty => new GetMscSubWebhooksInvokeArgs();
     }
 
 

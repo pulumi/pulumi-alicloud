@@ -32,6 +32,9 @@ class InstanceArgs:
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  hpc_cluster_id: Optional[pulumi.Input[str]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 http_tokens: Optional[pulumi.Input[str]] = None,
                  include_data_disks: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -39,6 +42,8 @@ class InstanceArgs:
                  internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  io_optimized: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_outdated: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -57,6 +62,7 @@ class InstanceArgs:
                  secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
                  secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
+                 spot_duration: Optional[pulumi.Input[int]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -104,12 +110,19 @@ class InstanceArgs:
         :param pulumi.Input[str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+        :param pulumi.Input[str] http_endpoint: Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        :param pulumi.Input[int] http_put_response_hop_limit: The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        :param pulumi.Input[str] http_tokens: Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+               - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+               - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -122,9 +135,6 @@ class InstanceArgs:
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
-               - `AutoRenewal`: Enable auto renewal.
-               - `Normal`: Disable auto renewal.
-               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
@@ -132,20 +142,19 @@ class InstanceArgs:
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
+        :param pulumi.Input[int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
         :param pulumi.Input[float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
                - NoSpot: A regular Pay-As-You-Go instance.
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
-        :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
-        :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
-        :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-               - `true`: encrypts the system disk.
-               - `false`: does not encrypt the system disk.
+        :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
         :param pulumi.Input[str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
@@ -192,6 +201,12 @@ class InstanceArgs:
             pulumi.set(__self__, "host_name", host_name)
         if hpc_cluster_id is not None:
             pulumi.set(__self__, "hpc_cluster_id", hpc_cluster_id)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+        if http_tokens is not None:
+            pulumi.set(__self__, "http_tokens", http_tokens)
         if include_data_disks is not None:
             pulumi.set(__self__, "include_data_disks", include_data_disks)
         if instance_charge_type is not None:
@@ -212,6 +227,10 @@ class InstanceArgs:
             pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
         if io_optimized is not None:
             pulumi.set(__self__, "io_optimized", io_optimized)
+        if ipv6_address_count is not None:
+            pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+        if ipv6_addresses is not None:
+            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
         if is_outdated is not None:
             pulumi.set(__self__, "is_outdated", is_outdated)
         if key_name is not None:
@@ -248,6 +267,8 @@ class InstanceArgs:
             pulumi.set(__self__, "secondary_private_ips", secondary_private_ips)
         if security_enhancement_strategy is not None:
             pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
+        if spot_duration is not None:
+            pulumi.set(__self__, "spot_duration", spot_duration)
         if spot_price_limit is not None:
             pulumi.set(__self__, "spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
@@ -493,6 +514,44 @@ class InstanceArgs:
         pulumi.set(self, "hpc_cluster_id", value)
 
     @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @http_endpoint.setter
+    def http_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_endpoint", value)
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @http_put_response_hop_limit.setter
+    def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_put_response_hop_limit", value)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+        - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+        - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @http_tokens.setter
+    def http_tokens(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_tokens", value)
+
+    @property
     @pulumi.getter(name="includeDataDisks")
     def include_data_disks(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -572,6 +631,30 @@ class InstanceArgs:
     @io_optimized.setter
     def io_optimized(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "io_optimized", value)
+
+    @property
+    @pulumi.getter(name="ipv6AddressCount")
+    def ipv6_address_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        """
+        return pulumi.get(self, "ipv6_address_count")
+
+    @ipv6_address_count.setter
+    def ipv6_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv6_address_count", value)
+
+    @property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        """
+        return pulumi.get(self, "ipv6_addresses")
+
+    @ipv6_addresses.setter
+    def ipv6_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv6_addresses", value)
 
     @property
     @pulumi.getter(name="isOutdated")
@@ -719,9 +802,6 @@ class InstanceArgs:
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
-        - `AutoRenewal`: Enable auto renewal.
-        - `Normal`: Disable auto renewal.
-        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -792,6 +872,18 @@ class InstanceArgs:
         pulumi.set(self, "security_enhancement_strategy", value)
 
     @property
+    @pulumi.getter(name="spotDuration")
+    def spot_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        """
+        return pulumi.get(self, "spot_duration")
+
+    @spot_duration.setter
+    def spot_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_duration", value)
+
+    @property
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> Optional[pulumi.Input[float]]:
         """
@@ -834,7 +926,7 @@ class InstanceArgs:
     @pulumi.getter(name="stoppedMode")
     def stopped_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         """
         return pulumi.get(self, "stopped_mode")
 
@@ -867,7 +959,7 @@ class InstanceArgs:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+        Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -903,9 +995,7 @@ class InstanceArgs:
     @pulumi.getter(name="systemDiskEncrypted")
     def system_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-        - `true`: encrypts the system disk.
-        - `false`: does not encrypt the system disk.
+        Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
         """
         return pulumi.get(self, "system_disk_encrypted")
 
@@ -1043,6 +1133,9 @@ class _InstanceState:
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  hpc_cluster_id: Optional[pulumi.Input[str]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 http_tokens: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  include_data_disks: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1052,6 +1145,8 @@ class _InstanceState:
                  internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  io_optimized: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_outdated: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -1072,6 +1167,7 @@ class _InstanceState:
                  secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_duration: Optional[pulumi.Input[int]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -1117,6 +1213,11 @@ class _InstanceState:
         :param pulumi.Input[str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+        :param pulumi.Input[str] http_endpoint: Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        :param pulumi.Input[int] http_put_response_hop_limit: The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        :param pulumi.Input[str] http_tokens: Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+               - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+               - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
@@ -1125,6 +1226,8 @@ class _InstanceState:
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -1138,9 +1241,6 @@ class _InstanceState:
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] public_ip: The instance public ip.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
-               - `AutoRenewal`: Enable auto renewal.
-               - `Normal`: Disable auto renewal.
-               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
@@ -1149,20 +1249,19 @@ class _InstanceState:
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
         :param pulumi.Input[float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
                - NoSpot: A regular Pay-As-You-Go instance.
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
-        :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
-        :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
-        :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-               - `true`: encrypts the system disk.
-               - `false`: does not encrypt the system disk.
+        :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
         :param pulumi.Input[str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
@@ -1208,6 +1307,12 @@ class _InstanceState:
             pulumi.set(__self__, "host_name", host_name)
         if hpc_cluster_id is not None:
             pulumi.set(__self__, "hpc_cluster_id", hpc_cluster_id)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+        if http_tokens is not None:
+            pulumi.set(__self__, "http_tokens", http_tokens)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if include_data_disks is not None:
@@ -1232,6 +1337,10 @@ class _InstanceState:
             pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
         if io_optimized is not None:
             pulumi.set(__self__, "io_optimized", io_optimized)
+        if ipv6_address_count is not None:
+            pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+        if ipv6_addresses is not None:
+            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
         if is_outdated is not None:
             pulumi.set(__self__, "is_outdated", is_outdated)
         if key_name is not None:
@@ -1272,6 +1381,8 @@ class _InstanceState:
             pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
+        if spot_duration is not None:
+            pulumi.set(__self__, "spot_duration", spot_duration)
         if spot_price_limit is not None:
             pulumi.set(__self__, "spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
@@ -1493,6 +1604,44 @@ class _InstanceState:
         pulumi.set(self, "hpc_cluster_id", value)
 
     @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @http_endpoint.setter
+    def http_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_endpoint", value)
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @http_put_response_hop_limit.setter
+    def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_put_response_hop_limit", value)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+        - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+        - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @http_tokens.setter
+    def http_tokens(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_tokens", value)
+
+    @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1596,6 +1745,30 @@ class _InstanceState:
     @io_optimized.setter
     def io_optimized(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "io_optimized", value)
+
+    @property
+    @pulumi.getter(name="ipv6AddressCount")
+    def ipv6_address_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        """
+        return pulumi.get(self, "ipv6_address_count")
+
+    @ipv6_address_count.setter
+    def ipv6_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv6_address_count", value)
+
+    @property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        """
+        return pulumi.get(self, "ipv6_addresses")
+
+    @ipv6_addresses.setter
+    def ipv6_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv6_addresses", value)
 
     @property
     @pulumi.getter(name="isOutdated")
@@ -1755,9 +1928,6 @@ class _InstanceState:
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
-        - `AutoRenewal`: Enable auto renewal.
-        - `Normal`: Disable auto renewal.
-        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -1840,6 +2010,18 @@ class _InstanceState:
         pulumi.set(self, "security_groups", value)
 
     @property
+    @pulumi.getter(name="spotDuration")
+    def spot_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        """
+        return pulumi.get(self, "spot_duration")
+
+    @spot_duration.setter
+    def spot_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_duration", value)
+
+    @property
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> Optional[pulumi.Input[float]]:
         """
@@ -1882,7 +2064,7 @@ class _InstanceState:
     @pulumi.getter(name="stoppedMode")
     def stopped_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         """
         return pulumi.get(self, "stopped_mode")
 
@@ -1915,7 +2097,7 @@ class _InstanceState:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+        Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -1951,9 +2133,7 @@ class _InstanceState:
     @pulumi.getter(name="systemDiskEncrypted")
     def system_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-        - `true`: encrypts the system disk.
-        - `false`: does not encrypt the system disk.
+        Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
         """
         return pulumi.get(self, "system_disk_encrypted")
 
@@ -2092,6 +2272,9 @@ class Instance(pulumi.CustomResource):
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  hpc_cluster_id: Optional[pulumi.Input[str]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 http_tokens: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  include_data_disks: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -2101,6 +2284,8 @@ class Instance(pulumi.CustomResource):
                  internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  io_optimized: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_outdated: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -2120,6 +2305,7 @@ class Instance(pulumi.CustomResource):
                  secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_duration: Optional[pulumi.Input[int]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -2174,6 +2360,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+        :param pulumi.Input[str] http_endpoint: Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        :param pulumi.Input[int] http_put_response_hop_limit: The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        :param pulumi.Input[str] http_tokens: Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+               - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+               - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
@@ -2182,6 +2373,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -2194,9 +2387,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
-               - `AutoRenewal`: Enable auto renewal.
-               - `Normal`: Disable auto renewal.
-               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
@@ -2205,20 +2395,19 @@ class Instance(pulumi.CustomResource):
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
         :param pulumi.Input[float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
                - NoSpot: A regular Pay-As-You-Go instance.
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
-        :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
-        :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
-        :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-               - `true`: encrypts the system disk.
-               - `false`: does not encrypt the system disk.
+        :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
         :param pulumi.Input[str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
@@ -2276,6 +2465,9 @@ class Instance(pulumi.CustomResource):
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  hpc_cluster_id: Optional[pulumi.Input[str]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 http_tokens: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  include_data_disks: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -2285,6 +2477,8 @@ class Instance(pulumi.CustomResource):
                  internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
                  internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  io_optimized: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_outdated: Optional[pulumi.Input[bool]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -2304,6 +2498,7 @@ class Instance(pulumi.CustomResource):
                  secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_duration: Optional[pulumi.Input[int]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -2348,6 +2543,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["host_name"] = host_name
             __props__.__dict__["hpc_cluster_id"] = hpc_cluster_id
+            __props__.__dict__["http_endpoint"] = http_endpoint
+            __props__.__dict__["http_put_response_hop_limit"] = http_put_response_hop_limit
+            __props__.__dict__["http_tokens"] = http_tokens
             if image_id is None and not opts.urn:
                 raise TypeError("Missing required property 'image_id'")
             __props__.__dict__["image_id"] = image_id
@@ -2367,6 +2565,8 @@ class Instance(pulumi.CustomResource):
                 warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
                 pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
             __props__.__dict__["io_optimized"] = io_optimized
+            __props__.__dict__["ipv6_address_count"] = ipv6_address_count
+            __props__.__dict__["ipv6_addresses"] = ipv6_addresses
             __props__.__dict__["is_outdated"] = is_outdated
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
@@ -2375,7 +2575,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["maintenance_notify"] = maintenance_notify
             __props__.__dict__["maintenance_time"] = maintenance_time
             __props__.__dict__["operator_type"] = operator_type
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
             __props__.__dict__["private_ip"] = private_ip
@@ -2388,6 +2588,7 @@ class Instance(pulumi.CustomResource):
             if security_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'security_groups'")
             __props__.__dict__["security_groups"] = security_groups
+            __props__.__dict__["spot_duration"] = spot_duration
             __props__.__dict__["spot_price_limit"] = spot_price_limit
             __props__.__dict__["spot_strategy"] = spot_strategy
             __props__.__dict__["status"] = status
@@ -2412,6 +2613,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["deployment_set_group_no"] = None
             __props__.__dict__["public_ip"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'alicloud:ecs/instance:Instance',
             resource_name,
@@ -2436,6 +2639,9 @@ class Instance(pulumi.CustomResource):
             force_delete: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             hpc_cluster_id: Optional[pulumi.Input[str]] = None,
+            http_endpoint: Optional[pulumi.Input[str]] = None,
+            http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+            http_tokens: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             include_data_disks: Optional[pulumi.Input[bool]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -2445,6 +2651,8 @@ class Instance(pulumi.CustomResource):
             internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
             io_optimized: Optional[pulumi.Input[str]] = None,
+            ipv6_address_count: Optional[pulumi.Input[int]] = None,
+            ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             is_outdated: Optional[pulumi.Input[bool]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -2465,6 +2673,7 @@ class Instance(pulumi.CustomResource):
             secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            spot_duration: Optional[pulumi.Input[int]] = None,
             spot_price_limit: Optional[pulumi.Input[float]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -2515,6 +2724,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
+        :param pulumi.Input[str] http_endpoint: Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        :param pulumi.Input[int] http_put_response_hop_limit: The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        :param pulumi.Input[str] http_tokens: Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+               - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+               - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
@@ -2523,6 +2737,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
@@ -2536,9 +2752,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] public_ip: The instance public ip.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
-               - `AutoRenewal`: Enable auto renewal.
-               - `Normal`: Disable auto renewal.
-               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
@@ -2547,20 +2760,19 @@ class Instance(pulumi.CustomResource):
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
         :param pulumi.Input[float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
                - NoSpot: A regular Pay-As-You-Go instance.
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
-        :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
-        :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+        :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm to be used to encrypt the system disk. Valid values are `aes-256`, `sm4-128`. Default value is `aes-256`.
-        :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-               - `true`: encrypts the system disk.
-               - `false`: does not encrypt the system disk.
+        :param pulumi.Input[bool] system_disk_encrypted: Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
         :param pulumi.Input[str] system_disk_kms_key_id: The ID of the Key Management Service (KMS) key to be used for the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
@@ -2593,6 +2805,9 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["host_name"] = host_name
         __props__.__dict__["hpc_cluster_id"] = hpc_cluster_id
+        __props__.__dict__["http_endpoint"] = http_endpoint
+        __props__.__dict__["http_put_response_hop_limit"] = http_put_response_hop_limit
+        __props__.__dict__["http_tokens"] = http_tokens
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["include_data_disks"] = include_data_disks
         __props__.__dict__["instance_charge_type"] = instance_charge_type
@@ -2602,6 +2817,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["internet_max_bandwidth_in"] = internet_max_bandwidth_in
         __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
         __props__.__dict__["io_optimized"] = io_optimized
+        __props__.__dict__["ipv6_address_count"] = ipv6_address_count
+        __props__.__dict__["ipv6_addresses"] = ipv6_addresses
         __props__.__dict__["is_outdated"] = is_outdated
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
@@ -2622,6 +2839,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["secondary_private_ips"] = secondary_private_ips
         __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
         __props__.__dict__["security_groups"] = security_groups
+        __props__.__dict__["spot_duration"] = spot_duration
         __props__.__dict__["spot_price_limit"] = spot_price_limit
         __props__.__dict__["spot_strategy"] = spot_strategy
         __props__.__dict__["status"] = status
@@ -2766,6 +2984,32 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "hpc_cluster_id")
 
     @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> pulumi.Output[int]:
+        """
+        The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
+        - optional: does not forcefully use the security-enhanced mode (IMDSv2).
+        - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
         """
@@ -2833,6 +3077,22 @@ class Instance(pulumi.CustomResource):
         It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
         return pulumi.get(self, "io_optimized")
+
+    @property
+    @pulumi.getter(name="ipv6AddressCount")
+    def ipv6_address_count(self) -> pulumi.Output[int]:
+        """
+        The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
+        """
+        return pulumi.get(self, "ipv6_address_count")
+
+    @property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
+        """
+        return pulumi.get(self, "ipv6_addresses")
 
     @property
     @pulumi.getter(name="isOutdated")
@@ -2940,9 +3200,6 @@ class Instance(pulumi.CustomResource):
     def renewal_status(self) -> pulumi.Output[Optional[str]]:
         """
         Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
-        - `AutoRenewal`: Enable auto renewal.
-        - `Normal`: Disable auto renewal.
-        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -2997,6 +3254,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "security_groups")
 
     @property
+    @pulumi.getter(name="spotDuration")
+    def spot_duration(self) -> pulumi.Output[int]:
+        """
+        The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
+        """
+        return pulumi.get(self, "spot_duration")
+
+    @property
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> pulumi.Output[Optional[float]]:
         """
@@ -3027,7 +3292,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="stoppedMode")
     def stopped_mode(self) -> pulumi.Output[str]:
         """
-        The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         """
         return pulumi.get(self, "stopped_mode")
 
@@ -3048,7 +3313,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> pulumi.Output[Optional[str]]:
         """
-        Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+        Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`. only is used to some none I/O optimized instance. Default to `cloud_efficiency`. Valid values `cloud_auto` Available in 1.184.0+.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -3072,9 +3337,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskEncrypted")
     def system_disk_encrypted(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`. **Note:** The Encrypt System Disk During Instance Creation feature is in public preview. This public preview is provided only in Hongkong Zone B, Hongkong Zone C, Singapore Zone B, and Singapore Zone C.
-        - `true`: encrypts the system disk.
-        - `false`: does not encrypt the system disk.
+        Specifies whether to encrypt the system disk. Valid values: `true`,`false`. Default value: `false`.
         """
         return pulumi.get(self, "system_disk_encrypted")
 
