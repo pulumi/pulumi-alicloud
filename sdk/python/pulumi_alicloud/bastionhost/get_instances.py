@@ -111,7 +111,7 @@ def get_instances(description_regex: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    > **NOTE:** From the version 1.132.0, the data source has been renamed to `bastionhost.get_instances`.
+    > **NOTE:** From the version 1.132.0, the data source has been renamed to _bastionhost_get_instances_.
 
     This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
 
@@ -166,7 +166,7 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
                          tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    > **NOTE:** From the version 1.132.0, the data source has been renamed to `bastionhost.get_instances`.
+    > **NOTE:** From the version 1.132.0, the data source has been renamed to _bastionhost_get_instances_.
 
     This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
 

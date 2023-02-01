@@ -2660,6 +2660,8 @@ type GetInstancesInstance struct {
 	Creator string `pulumi:"creator"`
 	// (Available in 1.70.3+) The storage type of the instance.
 	DbInstanceStorageType string `pulumi:"dbInstanceStorageType"`
+	// (Available in 1.197.0+) The type of instance.
+	DbInstanceType string `pulumi:"dbInstanceType"`
 	// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
 	DbType string `pulumi:"dbType"`
 	// (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -2806,6 +2808,8 @@ type GetInstancesInstanceArgs struct {
 	Creator pulumi.StringInput `pulumi:"creator"`
 	// (Available in 1.70.3+) The storage type of the instance.
 	DbInstanceStorageType pulumi.StringInput `pulumi:"dbInstanceStorageType"`
+	// (Available in 1.197.0+) The type of instance.
+	DbInstanceType pulumi.StringInput `pulumi:"dbInstanceType"`
 	// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
 	DbType pulumi.StringInput `pulumi:"dbType"`
 	// (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -3025,6 +3029,11 @@ func (o GetInstancesInstanceOutput) Creator() pulumi.StringOutput {
 // (Available in 1.70.3+) The storage type of the instance.
 func (o GetInstancesInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceStorageType }).(pulumi.StringOutput)
+}
+
+// (Available in 1.197.0+) The type of instance.
+func (o GetInstancesInstanceOutput) DbInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceType }).(pulumi.StringOutput)
 }
 
 // `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.

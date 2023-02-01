@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.servicecatalog.outputs;
 
+import com.pulumi.alicloud.servicecatalog.outputs.GetProductVersionsProductVersion;
 import com.pulumi.alicloud.servicecatalog.outputs.GetProductVersionsVersion;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -37,6 +38,13 @@ public final class GetProductVersionsResult {
      * @return A list of Product Version Entries. Each element contains the following attributes:
      * 
      */
+    private List<GetProductVersionsProductVersion> productVersions;
+    /**
+     * @deprecated
+     * Field &#39;versions&#39; has been deprecated from provider version 1.197.0.
+     * 
+     */
+    @Deprecated /* Field 'versions' has been deprecated from provider version 1.197.0. */
     private List<GetProductVersionsVersion> versions;
 
     private GetProductVersionsResult() {}
@@ -77,6 +85,15 @@ public final class GetProductVersionsResult {
      * @return A list of Product Version Entries. Each element contains the following attributes:
      * 
      */
+    public List<GetProductVersionsProductVersion> productVersions() {
+        return this.productVersions;
+    }
+    /**
+     * @deprecated
+     * Field &#39;versions&#39; has been deprecated from provider version 1.197.0.
+     * 
+     */
+    @Deprecated /* Field 'versions' has been deprecated from provider version 1.197.0. */
     public List<GetProductVersionsVersion> versions() {
         return this.versions;
     }
@@ -97,6 +114,7 @@ public final class GetProductVersionsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private String productId;
+        private List<GetProductVersionsProductVersion> productVersions;
         private List<GetProductVersionsVersion> versions;
         public Builder() {}
         public Builder(GetProductVersionsResult defaults) {
@@ -108,6 +126,7 @@ public final class GetProductVersionsResult {
     	      this.names = defaults.names;
     	      this.outputFile = defaults.outputFile;
     	      this.productId = defaults.productId;
+    	      this.productVersions = defaults.productVersions;
     	      this.versions = defaults.versions;
         }
 
@@ -153,6 +172,14 @@ public final class GetProductVersionsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder productVersions(List<GetProductVersionsProductVersion> productVersions) {
+            this.productVersions = Objects.requireNonNull(productVersions);
+            return this;
+        }
+        public Builder productVersions(GetProductVersionsProductVersion... productVersions) {
+            return productVersions(List.of(productVersions));
+        }
+        @CustomType.Setter
         public Builder versions(List<GetProductVersionsVersion> versions) {
             this.versions = Objects.requireNonNull(versions);
             return this;
@@ -169,6 +196,7 @@ public final class GetProductVersionsResult {
             o.names = names;
             o.outputFile = outputFile;
             o.productId = productId;
+            o.productVersions = productVersions;
             o.versions = versions;
             return o;
         }

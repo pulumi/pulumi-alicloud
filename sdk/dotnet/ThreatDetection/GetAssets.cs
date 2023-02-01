@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionAssetExampleId"] = @default.Apply(getAssetsResult =&gt; getAssetsResult).Apply(@default =&gt; @default.Apply(getAssetsResult =&gt; getAssetsResult.Assets[0]?.Id)),
+        ///         ["alicloudThreatDetectionAssetExampleId"] = @default.Apply(@default =&gt; @default.Apply(getAssetsResult =&gt; getAssetsResult.Assets[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionAssetExampleId"] = @default.Apply(getAssetsResult =&gt; getAssetsResult).Apply(@default =&gt; @default.Apply(getAssetsResult =&gt; getAssetsResult.Assets[0]?.Id)),
+        ///         ["alicloudThreatDetectionAssetExampleId"] = @default.Apply(@default =&gt; @default.Apply(getAssetsResult =&gt; getAssetsResult.Assets[0]?.Id)),
         ///     };
         /// });
         /// ```

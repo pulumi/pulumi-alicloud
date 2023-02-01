@@ -450,6 +450,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.protocol);
     }
     /**
+     * (Available in 1.197.0+) Instance connection public domain.
+     * 
+     */
+    @Export(name="publicDomain", type=String.class, parameters={})
+    private Output<String> publicDomain;
+
+    /**
+     * @return (Available in 1.197.0+) Instance connection public domain.
+     * 
+     */
+    public Output<String> publicDomain() {
+        return this.publicDomain;
+    }
+    /**
+     * (Available in 1.197.0+) Instance connection public port.
+     * 
+     */
+    @Export(name="publicPort", type=Integer.class, parameters={})
+    private Output<Integer> publicPort;
+
+    /**
+     * @return (Available in 1.197.0+) Instance connection public port.
+     * 
+     */
+    public Output<Integer> publicPort() {
+        return this.publicPort;
+    }
+    /**
      * Set the instance&#39;s IP whitelist in internet network.
      * 
      */

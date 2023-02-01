@@ -181,6 +181,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
+     * (Available in 1.197.0+) Instance connection public domain.
+     */
+    public /*out*/ readonly publicDomain!: pulumi.Output<string>;
+    /**
+     * (Available in 1.197.0+) Instance connection public port.
+     */
+    public /*out*/ readonly publicPort!: pulumi.Output<number>;
+    /**
      * Set the instance's IP whitelist in internet network.
      */
     public readonly publicWhitelists!: pulumi.Output<string[]>;
@@ -254,6 +262,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["privateWhitelists"] = state ? state.privateWhitelists : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["publicDomain"] = state ? state.publicDomain : undefined;
+            resourceInputs["publicPort"] = state ? state.publicPort : undefined;
             resourceInputs["publicWhitelists"] = state ? state.publicWhitelists : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["settingConfig"] = state ? state.settingConfig : undefined;
@@ -315,6 +325,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kibanaDomain"] = undefined /*out*/;
             resourceInputs["kibanaPort"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["publicDomain"] = undefined /*out*/;
+            resourceInputs["publicPort"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -432,6 +444,14 @@ export interface InstanceState {
      * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
      */
     protocol?: pulumi.Input<string>;
+    /**
+     * (Available in 1.197.0+) Instance connection public domain.
+     */
+    publicDomain?: pulumi.Input<string>;
+    /**
+     * (Available in 1.197.0+) Instance connection public port.
+     */
+    publicPort?: pulumi.Input<number>;
     /**
      * Set the instance's IP whitelist in internet network.
      */

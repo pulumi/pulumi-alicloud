@@ -3,19 +3,18 @@
 
 package com.pulumi.alicloud.vpc.outputs;
 
-import com.pulumi.alicloud.vpc.outputs.GetDhcpOptionsSetsSetAssociateVpc;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetDhcpOptionsSetsSet {
     /**
-     * @return AssociateVpcs.
+     * @return The Number of VPCs bound by the DHCP option set.
      * 
      */
-    private List<GetDhcpOptionsSetsSetAssociateVpc> associateVpcs;
+    private Integer associateVpcCount;
     /**
      * @return The description of the DHCP options set. The description must be 2 to 256
      * characters in length and cannot start with `http://` or `https://`.
@@ -57,11 +56,11 @@ public final class GetDhcpOptionsSetsSet {
 
     private GetDhcpOptionsSetsSet() {}
     /**
-     * @return AssociateVpcs.
+     * @return The Number of VPCs bound by the DHCP option set.
      * 
      */
-    public List<GetDhcpOptionsSetsSetAssociateVpc> associateVpcs() {
-        return this.associateVpcs;
+    public Integer associateVpcCount() {
+        return this.associateVpcCount;
     }
     /**
      * @return The description of the DHCP options set. The description must be 2 to 256
@@ -127,7 +126,7 @@ public final class GetDhcpOptionsSetsSet {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetDhcpOptionsSetsSetAssociateVpc> associateVpcs;
+        private Integer associateVpcCount;
         private String dhcpOptionsSetDescription;
         private String dhcpOptionsSetId;
         private String dhcpOptionsSetName;
@@ -139,7 +138,7 @@ public final class GetDhcpOptionsSetsSet {
         public Builder() {}
         public Builder(GetDhcpOptionsSetsSet defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.associateVpcs = defaults.associateVpcs;
+    	      this.associateVpcCount = defaults.associateVpcCount;
     	      this.dhcpOptionsSetDescription = defaults.dhcpOptionsSetDescription;
     	      this.dhcpOptionsSetId = defaults.dhcpOptionsSetId;
     	      this.dhcpOptionsSetName = defaults.dhcpOptionsSetName;
@@ -151,12 +150,9 @@ public final class GetDhcpOptionsSetsSet {
         }
 
         @CustomType.Setter
-        public Builder associateVpcs(List<GetDhcpOptionsSetsSetAssociateVpc> associateVpcs) {
-            this.associateVpcs = Objects.requireNonNull(associateVpcs);
+        public Builder associateVpcCount(Integer associateVpcCount) {
+            this.associateVpcCount = Objects.requireNonNull(associateVpcCount);
             return this;
-        }
-        public Builder associateVpcs(GetDhcpOptionsSetsSetAssociateVpc... associateVpcs) {
-            return associateVpcs(List.of(associateVpcs));
         }
         @CustomType.Setter
         public Builder dhcpOptionsSetDescription(String dhcpOptionsSetDescription) {
@@ -200,7 +196,7 @@ public final class GetDhcpOptionsSetsSet {
         }
         public GetDhcpOptionsSetsSet build() {
             final var o = new GetDhcpOptionsSetsSet();
-            o.associateVpcs = associateVpcs;
+            o.associateVpcCount = associateVpcCount;
             o.dhcpOptionsSetDescription = dhcpOptionsSetDescription;
             o.dhcpOptionsSetId = dhcpOptionsSetId;
             o.dhcpOptionsSetName = dhcpOptionsSetName;

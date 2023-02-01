@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["hbrReplicationVaultRegionRegionId1"] = @default.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult).Apply(@default =&gt; @default.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult.Regions[0]?.ReplicationRegionId)),
+        ///         ["hbrReplicationVaultRegionRegionId1"] = @default.Apply(@default =&gt; @default.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult.Regions[0]?.ReplicationRegionId)),
         ///     };
         /// });
         /// ```
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["hbrReplicationVaultRegionRegionId1"] = @default.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult).Apply(@default =&gt; @default.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult.Regions[0]?.ReplicationRegionId)),
+        ///         ["hbrReplicationVaultRegionRegionId1"] = @default.Apply(@default =&gt; @default.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult.Regions[0]?.ReplicationRegionId)),
         ///     };
         /// });
         /// ```

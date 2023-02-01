@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Sddp
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["sddpInstanceId"] = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0])),
+        ///         ["sddpInstanceId"] = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0])),
         ///     };
         /// });
         /// ```
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Sddp
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["sddpInstanceId"] = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0])),
+        ///         ["sddpInstanceId"] = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0])),
         ///     };
         /// });
         /// ```

@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["zoneId"] = @default.Apply(getStocksResult =&gt; getStocksResult).Apply(@default =&gt; @default.Apply(getStocksResult =&gt; getStocksResult.Stocks[0]?.ZoneId)),
+        ///         ["zoneId"] = @default.Apply(@default =&gt; @default.Apply(getStocksResult =&gt; getStocksResult.Stocks[0]?.ZoneId)),
         ///     };
         /// });
         /// ```
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["zoneId"] = @default.Apply(getStocksResult =&gt; getStocksResult).Apply(@default =&gt; @default.Apply(getStocksResult =&gt; getStocksResult.Stocks[0]?.ZoneId)),
+        ///         ["zoneId"] = @default.Apply(@default =&gt; @default.Apply(getStocksResult =&gt; getStocksResult.Stocks[0]?.ZoneId)),
         ///     };
         /// });
         /// ```

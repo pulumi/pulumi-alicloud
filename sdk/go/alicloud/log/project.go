@@ -26,6 +26,8 @@ type Project struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the log project. It is the only in one Alicloud account.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Log project policy, used to set a policy for a project.
+	Policy pulumi.StringPtrOutput `pulumi:"policy"`
 	// Log project tags.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
@@ -63,6 +65,8 @@ type projectState struct {
 	Description *string `pulumi:"description"`
 	// The name of the log project. It is the only in one Alicloud account.
 	Name *string `pulumi:"name"`
+	// Log project policy, used to set a policy for a project.
+	Policy *string `pulumi:"policy"`
 	// Log project tags.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -72,6 +76,8 @@ type ProjectState struct {
 	Description pulumi.StringPtrInput
 	// The name of the log project. It is the only in one Alicloud account.
 	Name pulumi.StringPtrInput
+	// Log project policy, used to set a policy for a project.
+	Policy pulumi.StringPtrInput
 	// Log project tags.
 	Tags pulumi.MapInput
 }
@@ -85,6 +91,8 @@ type projectArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the log project. It is the only in one Alicloud account.
 	Name *string `pulumi:"name"`
+	// Log project policy, used to set a policy for a project.
+	Policy *string `pulumi:"policy"`
 	// Log project tags.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -95,6 +103,8 @@ type ProjectArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the log project. It is the only in one Alicloud account.
 	Name pulumi.StringPtrInput
+	// Log project policy, used to set a policy for a project.
+	Policy pulumi.StringPtrInput
 	// Log project tags.
 	Tags pulumi.MapInput
 }
@@ -194,6 +204,11 @@ func (o ProjectOutput) Description() pulumi.StringPtrOutput {
 // The name of the log project. It is the only in one Alicloud account.
 func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Log project policy, used to set a policy for a project.
+func (o ProjectOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
 // Log project tags.

@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstZonesId"] = @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult).Apply(@default =&gt; @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult.Zones[0]?.ZoneId)),
+        ///         ["firstZonesId"] = @default.Apply(@default =&gt; @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult.Zones[0]?.ZoneId)),
         ///     };
         /// });
         /// ```
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstZonesId"] = @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult).Apply(@default =&gt; @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult.Zones[0]?.ZoneId)),
+        ///         ["firstZonesId"] = @default.Apply(@default =&gt; @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult.Zones[0]?.ZoneId)),
         ///     };
         /// });
         /// ```

@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudDmsEnterpriseDatabaseExampleId"] = @default.Apply(getEnterpriseDatabasesResult =&gt; getEnterpriseDatabasesResult).Apply(@default =&gt; @default.Apply(getEnterpriseDatabasesResult =&gt; getEnterpriseDatabasesResult.Databases[0]?.Id)),
+        ///         ["alicloudDmsEnterpriseDatabaseExampleId"] = @default.Apply(@default =&gt; @default.Apply(getEnterpriseDatabasesResult =&gt; getEnterpriseDatabasesResult.Databases[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudDmsEnterpriseDatabaseExampleId"] = @default.Apply(getEnterpriseDatabasesResult =&gt; getEnterpriseDatabasesResult).Apply(@default =&gt; @default.Apply(getEnterpriseDatabasesResult =&gt; getEnterpriseDatabasesResult.Databases[0]?.Id)),
+        ///         ["alicloudDmsEnterpriseDatabaseExampleId"] = @default.Apply(@default =&gt; @default.Apply(getEnterpriseDatabasesResult =&gt; getEnterpriseDatabasesResult.Databases[0]?.Id)),
         ///     };
         /// });
         /// ```

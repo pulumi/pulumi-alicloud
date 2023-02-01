@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["mscSubSubscriptionId1"] = @default.Apply(getMscSubSubscriptionsResult =&gt; getMscSubSubscriptionsResult).Apply(@default =&gt; @default.Apply(getMscSubSubscriptionsResult =&gt; getMscSubSubscriptionsResult.Subscriptions[0]?.Id)),
+        ///         ["mscSubSubscriptionId1"] = @default.Apply(@default =&gt; @default.Apply(getMscSubSubscriptionsResult =&gt; getMscSubSubscriptionsResult.Subscriptions[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["mscSubSubscriptionId1"] = @default.Apply(getMscSubSubscriptionsResult =&gt; getMscSubSubscriptionsResult).Apply(@default =&gt; @default.Apply(getMscSubSubscriptionsResult =&gt; getMscSubSubscriptionsResult.Subscriptions[0]?.Id)),
+        ///         ["mscSubSubscriptionId1"] = @default.Apply(@default =&gt; @default.Apply(getMscSubSubscriptionsResult =&gt; getMscSubSubscriptionsResult.Subscriptions[0]?.Id)),
         ///     };
         /// });
         /// ```

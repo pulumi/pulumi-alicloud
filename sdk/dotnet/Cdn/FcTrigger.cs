@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Cdn
     ///         Notes = "example_value",
     ///         RoleArn = $"acs:ram::{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:role/aliyuncdneventnotificationrole",
     ///         SourceArn = $"acs:cdn:*:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:domain/example.com",
-    ///         TriggerArn = Output.Tuple(defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult), defaultAccount.Apply(getAccountResult =&gt; getAccountResult)).Apply(values =&gt;
+    ///         TriggerArn = Output.Tuple(defaultRegions, defaultAccount).Apply(values =&gt;
     ///         {
     ///             var defaultRegions = values.Item1;
     ///             var defaultAccount = values.Item2;

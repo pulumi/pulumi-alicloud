@@ -102,10 +102,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> OsType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        /// The operating system distribution. Default value: Others Linux. 
+        /// More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+        /// **NOTE**: It's default value is Ubuntu before version 1.197.0.
         /// </summary>
         [Output("platform")]
-        public Output<string?> Platform { get; private set; } = null!;
+        public Output<string> Platform { get; private set; } = null!;
 
 
         /// <summary>
@@ -196,7 +198,9 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OsType { get; set; }
 
         /// <summary>
-        /// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        /// The operating system distribution. Default value: Others Linux. 
+        /// More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+        /// **NOTE**: It's default value is Ubuntu before version 1.197.0.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -252,7 +256,9 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OsType { get; set; }
 
         /// <summary>
-        /// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        /// The operating system distribution. Default value: Others Linux. 
+        /// More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+        /// **NOTE**: It's default value is Ubuntu before version 1.197.0.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }

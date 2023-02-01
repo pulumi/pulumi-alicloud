@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     ///     var example = new AliCloud.Hbr.EcsBackupClient("example", new()
     ///     {
-    ///         InstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+    ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
     ///         UseHttps = false,
     ///         DataNetworkType = "PUBLIC",
     ///         MaxCpuCore = "2",

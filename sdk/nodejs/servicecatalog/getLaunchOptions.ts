@@ -17,10 +17,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.servicecatalog.getLaunchOptions({
- *     productId: "prod-bp125x4k29wb7q",
+ * const defaultEndUserProducts = alicloud.servicecatalog.getEndUserProducts({
+ *     nameRegex: "ram模板创建",
  * });
- * export const alicloudServiceCatalogLaunchOptionExampleId = _default.then(_default => _default.options?.[0]?.id);
+ * const defaultLaunchOptions = alicloud.servicecatalog.getLaunchOptions({
+ *     productId: "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
+ * });
+ * export const alicloudServiceCatalogLaunchOptionExampleId = defaultLaunchOptions.then(defaultLaunchOptions => defaultLaunchOptions.launchOptions?.[0]?.id);
  * ```
  */
 export function getLaunchOptions(args: GetLaunchOptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetLaunchOptionsResult> {
@@ -59,9 +62,13 @@ export interface GetLaunchOptionsResult {
      */
     readonly id: string;
     readonly ids: string[];
-    readonly nameRegex?: string;
     /**
      * A list of Launch Option Entries. Each element contains the following attributes:
+     */
+    readonly launchOptions: outputs.servicecatalog.GetLaunchOptionsLaunchOption[];
+    readonly nameRegex?: string;
+    /**
+     * @deprecated Field 'options' has been deprecated from provider version 1.197.0.
      */
     readonly options: outputs.servicecatalog.GetLaunchOptionsOption[];
     readonly outputFile?: string;
@@ -78,10 +85,13 @@ export interface GetLaunchOptionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.servicecatalog.getLaunchOptions({
- *     productId: "prod-bp125x4k29wb7q",
+ * const defaultEndUserProducts = alicloud.servicecatalog.getEndUserProducts({
+ *     nameRegex: "ram模板创建",
  * });
- * export const alicloudServiceCatalogLaunchOptionExampleId = _default.then(_default => _default.options?.[0]?.id);
+ * const defaultLaunchOptions = alicloud.servicecatalog.getLaunchOptions({
+ *     productId: "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
+ * });
+ * export const alicloudServiceCatalogLaunchOptionExampleId = defaultLaunchOptions.then(defaultLaunchOptions => defaultLaunchOptions.launchOptions?.[0]?.id);
  * ```
  */
 export function getLaunchOptionsOutput(args: GetLaunchOptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLaunchOptionsResult> {

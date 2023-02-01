@@ -34,6 +34,12 @@ namespace Pulumi.AliCloud.Log
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Log project policy, used to set a policy for a project.
+        /// </summary>
+        [Output("policy")]
+        public Output<string?> Policy { get; private set; } = null!;
+
+        /// <summary>
         /// Log project tags.
         /// </summary>
         [Output("tags")]
@@ -97,6 +103,12 @@ namespace Pulumi.AliCloud.Log
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Log project policy, used to set a policy for a project.
+        /// </summary>
+        [Input("policy")]
+        public Input<string>? Policy { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -128,6 +140,12 @@ namespace Pulumi.AliCloud.Log
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Log project policy, used to set a policy for a project.
+        /// </summary>
+        [Input("policy")]
+        public Input<string>? Policy { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

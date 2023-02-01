@@ -14,9 +14,9 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class GetDhcpOptionsSetsSetResult
     {
         /// <summary>
-        /// AssociateVpcs.
+        /// The Number of VPCs bound by the DHCP option set.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetDhcpOptionsSetsSetAssociateVpcResult> AssociateVpcs;
+        public readonly int AssociateVpcCount;
         /// <summary>
         /// The description of the DHCP options set. The description must be 2 to 256
         /// characters in length and cannot start with `http://` or `https://`.
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
         [OutputConstructor]
         private GetDhcpOptionsSetsSetResult(
-            ImmutableArray<Outputs.GetDhcpOptionsSetsSetAssociateVpcResult> associateVpcs,
+            int associateVpcCount,
 
             string dhcpOptionsSetDescription,
 
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
             string status)
         {
-            AssociateVpcs = associateVpcs;
+            AssociateVpcCount = associateVpcCount;
             DhcpOptionsSetDescription = dhcpOptionsSetDescription;
             DhcpOptionsSetId = dhcpOptionsSetId;
             DhcpOptionsSetName = dhcpOptionsSetName;

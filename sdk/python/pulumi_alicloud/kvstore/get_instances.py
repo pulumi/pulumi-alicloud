@@ -302,7 +302,7 @@ def get_instances(architecture_type: Optional[str] = None,
                   zone_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The `kvstore.get_instances` data source provides a collection of kvstore instances available in Alicloud account.
+    The _kvstore_get_instances_ data source provides a collection of kvstore instances available in Alicloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
     ## Example Usage
@@ -409,7 +409,7 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
                          zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    The `kvstore.get_instances` data source provides a collection of kvstore instances available in Alicloud account.
+    The _kvstore_get_instances_ data source provides a collection of kvstore instances available in Alicloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
     ## Example Usage

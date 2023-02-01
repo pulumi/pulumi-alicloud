@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(getTransitRouterRouteTableAssociationsResult =&gt; getTransitRouterRouteTableAssociationsResult).Apply(@default =&gt; @default.Apply(getTransitRouterRouteTableAssociationsResult =&gt; getTransitRouterRouteTableAssociationsResult.Associations[0]?.ResourceType)),
+        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterRouteTableAssociationsResult =&gt; getTransitRouterRouteTableAssociationsResult.Associations[0]?.ResourceType)),
         ///     };
         /// });
         /// ```
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(getTransitRouterRouteTableAssociationsResult =&gt; getTransitRouterRouteTableAssociationsResult).Apply(@default =&gt; @default.Apply(getTransitRouterRouteTableAssociationsResult =&gt; getTransitRouterRouteTableAssociationsResult.Associations[0]?.ResourceType)),
+        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterRouteTableAssociationsResult =&gt; getTransitRouterRouteTableAssociationsResult.Associations[0]?.ResourceType)),
         ///     };
         /// });
         /// ```

@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Dcdn
     ///     var example = new AliCloud.Dcdn.IpaDomain("example", new()
     ///     {
     ///         DomainName = "example.com",
-    ///         ResourceGroupId = @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult).Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
     ///         Sources = new[]
     ///         {
     ///             new AliCloud.Dcdn.Inputs.IpaDomainSourceArgs

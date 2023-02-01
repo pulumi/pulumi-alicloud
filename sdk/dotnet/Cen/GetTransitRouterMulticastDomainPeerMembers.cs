@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCenTransitRouterMulticastDomainPeerMemberExampleId"] = @default.Apply(getTransitRouterMulticastDomainPeerMembersResult =&gt; getTransitRouterMulticastDomainPeerMembersResult).Apply(@default =&gt; @default.Apply(getTransitRouterMulticastDomainPeerMembersResult =&gt; getTransitRouterMulticastDomainPeerMembersResult.Members[0]?.Id)),
+        ///         ["alicloudCenTransitRouterMulticastDomainPeerMemberExampleId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterMulticastDomainPeerMembersResult =&gt; getTransitRouterMulticastDomainPeerMembersResult.Members[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCenTransitRouterMulticastDomainPeerMemberExampleId"] = @default.Apply(getTransitRouterMulticastDomainPeerMembersResult =&gt; getTransitRouterMulticastDomainPeerMembersResult).Apply(@default =&gt; @default.Apply(getTransitRouterMulticastDomainPeerMembersResult =&gt; getTransitRouterMulticastDomainPeerMembersResult.Members[0]?.Id)),
+        ///         ["alicloudCenTransitRouterMulticastDomainPeerMemberExampleId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterMulticastDomainPeerMembersResult =&gt; getTransitRouterMulticastDomainPeerMembersResult.Members[0]?.Id)),
         ///     };
         /// });
         /// ```

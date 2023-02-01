@@ -108,14 +108,18 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+     * The operating system distribution. Default value: Others Linux.
+     * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
      * 
      */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
     /**
-     * @return Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+     * @return The operating system distribution. Default value: Others Linux.
+     * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
      * 
      */
     public Optional<Output<String>> platform() {
@@ -289,7 +293,9 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param platform Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+         * @param platform The operating system distribution. Default value: Others Linux.
+         * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+         * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
          * 
          * @return builder
          * 
@@ -300,7 +306,9 @@ public final class ImageImportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param platform Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+         * @param platform The operating system distribution. Default value: Others Linux.
+         * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+         * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
          * 
          * @return builder
          * 

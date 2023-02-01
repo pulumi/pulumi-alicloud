@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+        /// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
         /// </summary>
         [Output("destinationChildInstanceTypes")]
         public Output<ImmutableArray<string>> DestinationChildInstanceTypes { get; private set; } = null!;
@@ -437,7 +437,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _destinationChildInstanceTypes;
 
         /// <summary>
-        /// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+        /// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
         /// </summary>
         public InputList<string> DestinationChildInstanceTypes
         {
@@ -691,7 +691,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _destinationChildInstanceTypes;
 
         /// <summary>
-        /// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+        /// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
         /// </summary>
         public InputList<string> DestinationChildInstanceTypes
         {

@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAccountId"] = @default.Apply(getAccountsResult =&gt; getAccountsResult).Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id)),
+        ///         ["firstAccountId"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAccountId"] = @default.Apply(getAccountsResult =&gt; getAccountsResult).Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id)),
+        ///         ["firstAccountId"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id)),
         ///     };
         /// });
         /// ```

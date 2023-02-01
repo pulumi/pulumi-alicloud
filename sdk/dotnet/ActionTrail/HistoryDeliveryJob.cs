@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.ActionTrail
     ///     var exampleTrail = new AliCloud.ActionTrail.Trail("exampleTrail", new()
     ///     {
     ///         TrailName = "example_value",
-    ///         SlsProjectArn = Output.Tuple(exampleRegions.Apply(getRegionsResult =&gt; getRegionsResult), exampleAccount.Apply(getAccountResult =&gt; getAccountResult), exampleProject.Name).Apply(values =&gt;
+    ///         SlsProjectArn = Output.Tuple(exampleRegions, exampleAccount, exampleProject.Name).Apply(values =&gt;
     ///         {
     ///             var exampleRegions = values.Item1;
     ///             var exampleAccount = values.Item2;

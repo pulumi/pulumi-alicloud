@@ -130,6 +130,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
+     * (Available in 1.197.0+) The type of db instance.
+     */
+    public /*out*/ readonly dbInstanceType!: pulumi.Output<string>;
+    /**
      * Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
      */
     public readonly dbIsIgnoreCase!: pulumi.Output<boolean>;
@@ -425,6 +429,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbInstanceIpArrayAttribute"] = state ? state.dbInstanceIpArrayAttribute : undefined;
             resourceInputs["dbInstanceIpArrayName"] = state ? state.dbInstanceIpArrayName : undefined;
             resourceInputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
+            resourceInputs["dbInstanceType"] = state ? state.dbInstanceType : undefined;
             resourceInputs["dbIsIgnoreCase"] = state ? state.dbIsIgnoreCase : undefined;
             resourceInputs["dbTimeZone"] = state ? state.dbTimeZone : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
@@ -561,6 +566,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zoneIdSlaveA"] = args ? args.zoneIdSlaveA : undefined;
             resourceInputs["zoneIdSlaveB"] = args ? args.zoneIdSlaveB : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
+            resourceInputs["dbInstanceType"] = undefined /*out*/;
             resourceInputs["sslStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -658,6 +664,10 @@ export interface InstanceState {
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
      */
     dbInstanceStorageType?: pulumi.Input<string>;
+    /**
+     * (Available in 1.197.0+) The type of db instance.
+     */
+    dbInstanceType?: pulumi.Input<string>;
     /**
      * Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
      */

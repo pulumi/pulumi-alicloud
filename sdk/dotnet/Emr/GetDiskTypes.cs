@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Emr
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataDiskType"] = @default.Apply(getDiskTypesResult =&gt; getDiskTypesResult).Apply(@default =&gt; @default.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value)),
+        ///         ["dataDiskType"] = @default.Apply(@default =&gt; @default.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value)),
         ///     };
         /// });
         /// ```
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Emr
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataDiskType"] = @default.Apply(getDiskTypesResult =&gt; getDiskTypesResult).Apply(@default =&gt; @default.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value)),
+        ///         ["dataDiskType"] = @default.Apply(@default =&gt; @default.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value)),
         ///     };
         /// });
         /// ```

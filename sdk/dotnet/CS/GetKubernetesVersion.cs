@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
         ///     };
         /// });
         /// ```
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
         ///     };
         /// });
         /// ```
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
         ///     };
         /// });
         /// ```
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
         ///     };
         /// });
         /// ```
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
         ///     };
         /// });
         /// ```
@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
         ///     };
         /// });
         /// ```
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
         ///     };
         /// });
         /// ```
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["metadata"] = @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult).Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
+        ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
         ///     };
         /// });
         /// ```

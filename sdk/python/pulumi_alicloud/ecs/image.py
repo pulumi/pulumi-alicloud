@@ -38,8 +38,11 @@ class ImageArgs:
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[str] instance_id: The instance ID.
-        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
-               Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
+        :param pulumi.Input[str] platform: The distribution of the operating system for the system disk in the custom image. 
+               If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
+               to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+               More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
+               **NOTE**: It's default value is Ubuntu before version 1.197.0.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which a custom image belongs
         :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
@@ -168,8 +171,11 @@ class ImageArgs:
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
-        Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
+        The distribution of the operating system for the system disk in the custom image. 
+        If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
+        to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+        More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
+        **NOTE**: It's default value is Ubuntu before version 1.197.0.
         """
         return pulumi.get(self, "platform")
 
@@ -239,8 +245,11 @@ class _ImageState:
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[str] instance_id: The instance ID.
-        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
-               Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
+        :param pulumi.Input[str] platform: The distribution of the operating system for the system disk in the custom image. 
+               If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
+               to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+               More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
+               **NOTE**: It's default value is Ubuntu before version 1.197.0.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which a custom image belongs
         :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
@@ -369,8 +378,11 @@ class _ImageState:
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
-        Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
+        The distribution of the operating system for the system disk in the custom image. 
+        If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
+        to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+        More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
+        **NOTE**: It's default value is Ubuntu before version 1.197.0.
         """
         return pulumi.get(self, "platform")
 
@@ -480,8 +492,11 @@ class Image(pulumi.CustomResource):
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[str] instance_id: The instance ID.
-        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
-               Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
+        :param pulumi.Input[str] platform: The distribution of the operating system for the system disk in the custom image. 
+               If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
+               to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+               More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
+               **NOTE**: It's default value is Ubuntu before version 1.197.0.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which a custom image belongs
         :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
@@ -617,8 +632,11 @@ class Image(pulumi.CustomResource):
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
         :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[str] instance_id: The instance ID.
-        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
-               Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
+        :param pulumi.Input[str] platform: The distribution of the operating system for the system disk in the custom image. 
+               If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
+               to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+               More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
+               **NOTE**: It's default value is Ubuntu before version 1.197.0.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which a custom image belongs
         :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
@@ -703,10 +721,13 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def platform(self) -> pulumi.Output[Optional[str]]:
+    def platform(self) -> pulumi.Output[str]:
         """
-        Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
-        Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
+        The distribution of the operating system for the system disk in the custom image. 
+        If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
+        to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+        More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
+        **NOTE**: It's default value is Ubuntu before version 1.197.0.
         """
         return pulumi.get(self, "platform")
 

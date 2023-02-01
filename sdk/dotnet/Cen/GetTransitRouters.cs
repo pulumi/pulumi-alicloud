@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTransitRoutersType"] = @default.Apply(getTransitRoutersResult =&gt; getTransitRoutersResult).Apply(@default =&gt; @default.Apply(getTransitRoutersResult =&gt; getTransitRoutersResult.TransitRouters[0]?.Type)),
+        ///         ["firstTransitRoutersType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRoutersResult =&gt; getTransitRoutersResult.TransitRouters[0]?.Type)),
         ///     };
         /// });
         /// ```
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTransitRoutersType"] = @default.Apply(getTransitRoutersResult =&gt; getTransitRoutersResult).Apply(@default =&gt; @default.Apply(getTransitRoutersResult =&gt; getTransitRoutersResult.TransitRouters[0]?.Type)),
+        ///         ["firstTransitRoutersType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRoutersResult =&gt; getTransitRoutersResult.TransitRouters[0]?.Type)),
         ///     };
         /// });
         /// ```

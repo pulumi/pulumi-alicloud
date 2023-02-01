@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Ess
     ///             "AUTOSCALING:SCALE_OUT_SUCCESS",
     ///             "AUTOSCALING:SCALE_OUT_ERROR",
     ///         },
-    ///         NotificationArn = Output.Tuple(defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult), defaultAccount.Apply(getAccountResult =&gt; getAccountResult), defaultQueue.Name).Apply(values =&gt;
+    ///         NotificationArn = Output.Tuple(defaultRegions, defaultAccount, defaultQueue.Name).Apply(values =&gt;
     ///         {
     ///             var defaultRegions = values.Item1;
     ///             var defaultAccount = values.Item2;

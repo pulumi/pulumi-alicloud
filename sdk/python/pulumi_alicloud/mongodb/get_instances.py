@@ -153,7 +153,7 @@ def get_instances(availability_zone: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The `mongodb.get_instances` data source provides a collection of MongoDB instances available in Alicloud account.
+    The _mongodb_get_instances_ data source provides a collection of MongoDB instances available in Alicloud account.
     Filters support regular expression for the instance name, engine or instance type.
 
     ## Example Usage
@@ -210,7 +210,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
                          tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    The `mongodb.get_instances` data source provides a collection of MongoDB instances available in Alicloud account.
+    The _mongodb_get_instances_ data source provides a collection of MongoDB instances available in Alicloud account.
     Filters support regular expression for the instance name, engine or instance type.
 
     ## Example Usage

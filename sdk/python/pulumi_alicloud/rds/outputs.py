@@ -1379,6 +1379,7 @@ class GetInstancesInstanceResult(dict):
                  create_time: str,
                  creator: str,
                  db_instance_storage_type: str,
+                 db_instance_type: str,
                  db_type: str,
                  delete_date: str,
                  deletion_protection: bool,
@@ -1439,6 +1440,7 @@ class GetInstancesInstanceResult(dict):
         :param str create_time: Creation time of the instance.
         :param str creator: (Available in 1.124.3+) The creator of the encryption key.
         :param str db_instance_storage_type: (Available in 1.70.3+) The storage type of the instance.
+        :param str db_instance_type: (Available in 1.197.0+) The type of instance.
         :param str db_type: `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
         :param str delete_date: (Available in 1.124.3+) The estimated time when the encryption key will be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param bool deletion_protection: (Available in 1.167.0+) Indicates whether the release protection feature is enabled for the instance. Valid values:
@@ -1513,6 +1515,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+        pulumi.set(__self__, "db_instance_type", db_instance_type)
         pulumi.set(__self__, "db_type", db_type)
         pulumi.set(__self__, "delete_date", delete_date)
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -1654,6 +1657,14 @@ class GetInstancesInstanceResult(dict):
         (Available in 1.70.3+) The storage type of the instance.
         """
         return pulumi.get(self, "db_instance_storage_type")
+
+    @property
+    @pulumi.getter(name="dbInstanceType")
+    def db_instance_type(self) -> str:
+        """
+        (Available in 1.197.0+) The type of instance.
+        """
+        return pulumi.get(self, "db_instance_type")
 
     @property
     @pulumi.getter(name="dbType")

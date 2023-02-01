@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     var example = new AliCloud.Vpc.Ipv4Gateway("example", new()
     ///     {
     ///         Ipv4GatewayName = "example_value",
-    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult).Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
+    ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
     ///     });
     /// 
     /// });

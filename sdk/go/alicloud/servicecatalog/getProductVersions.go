@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("alicloudServiceCatalogProductVersionExampleId", _default.Versions[0].Id)
+//			ctx.Export("alicloudServiceCatalogProductVersionExampleId", _default.ProductVersions[0].Id)
 //			return nil
 //		})
 //	}
@@ -75,6 +75,8 @@ type GetProductVersionsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	ProductId  string   `pulumi:"productId"`
 	// A list of Product Version Entries. Each element contains the following attributes:
+	ProductVersions []GetProductVersionsProductVersion `pulumi:"productVersions"`
+	// Deprecated: Field 'versions' has been deprecated from provider version 1.197.0.
 	Versions []GetProductVersionsVersion `pulumi:"versions"`
 }
 
@@ -154,6 +156,11 @@ func (o GetProductVersionsResultOutput) ProductId() pulumi.StringOutput {
 }
 
 // A list of Product Version Entries. Each element contains the following attributes:
+func (o GetProductVersionsResultOutput) ProductVersions() GetProductVersionsProductVersionArrayOutput {
+	return o.ApplyT(func(v GetProductVersionsResult) []GetProductVersionsProductVersion { return v.ProductVersions }).(GetProductVersionsProductVersionArrayOutput)
+}
+
+// Deprecated: Field 'versions' has been deprecated from provider version 1.197.0.
 func (o GetProductVersionsResultOutput) Versions() GetProductVersionsVersionArrayOutput {
 	return o.ApplyT(func(v GetProductVersionsResult) []GetProductVersionsVersion { return v.Versions }).(GetProductVersionsVersionArrayOutput)
 }

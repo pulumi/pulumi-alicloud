@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudEbsDedicatedBlockStorageClusterExampleId"] = @default.Apply(getDedicatedBlockStorageClustersResult =&gt; getDedicatedBlockStorageClustersResult).Apply(@default =&gt; @default.Apply(getDedicatedBlockStorageClustersResult =&gt; getDedicatedBlockStorageClustersResult.Clusters[0]?.Id)),
+        ///         ["alicloudEbsDedicatedBlockStorageClusterExampleId"] = @default.Apply(@default =&gt; @default.Apply(getDedicatedBlockStorageClustersResult =&gt; getDedicatedBlockStorageClustersResult.Clusters[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudEbsDedicatedBlockStorageClusterExampleId"] = @default.Apply(getDedicatedBlockStorageClustersResult =&gt; getDedicatedBlockStorageClustersResult).Apply(@default =&gt; @default.Apply(getDedicatedBlockStorageClustersResult =&gt; getDedicatedBlockStorageClustersResult.Clusters[0]?.Id)),
+        ///         ["alicloudEbsDedicatedBlockStorageClusterExampleId"] = @default.Apply(@default =&gt; @default.Apply(getDedicatedBlockStorageClustersResult =&gt; getDedicatedBlockStorageClustersResult.Clusters[0]?.Id)),
         ///     };
         /// });
         /// ```

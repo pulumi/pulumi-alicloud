@@ -48,6 +48,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Log project policy, used to set a policy for a project.
+     * 
+     */
+    @Import(name="policy")
+    private @Nullable Output<String> policy;
+
+    /**
+     * @return Log project policy, used to set a policy for a project.
+     * 
+     */
+    public Optional<Output<String>> policy() {
+        return Optional.ofNullable(this.policy);
+    }
+
+    /**
      * Log project tags.
      * 
      */
@@ -67,6 +82,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     private ProjectState(ProjectState $) {
         this.description = $.description;
         this.name = $.name;
+        this.policy = $.policy;
         this.tags = $.tags;
     }
 
@@ -128,6 +144,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param policy Log project policy, used to set a policy for a project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(@Nullable Output<String> policy) {
+            $.policy = policy;
+            return this;
+        }
+
+        /**
+         * @param policy Log project policy, used to set a policy for a project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(String policy) {
+            return policy(Output.of(policy));
         }
 
         /**

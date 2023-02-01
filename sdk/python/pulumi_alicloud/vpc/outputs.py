@@ -25,7 +25,6 @@ __all__ = [
     'GetCommonBandwidthPackagesPackageResult',
     'GetCommonBandwidthPackagesPackagePublicIpAddressResult',
     'GetDhcpOptionsSetsSetResult',
-    'GetDhcpOptionsSetsSetAssociateVpcResult',
     'GetEnhancedNatAvailableZonesZoneResult',
     'GetForwardEntriesEntryResult',
     'GetHavipsHavipResult',
@@ -1355,7 +1354,7 @@ class GetCommonBandwidthPackagesPackagePublicIpAddressResult(dict):
 @pulumi.output_type
 class GetDhcpOptionsSetsSetResult(dict):
     def __init__(__self__, *,
-                 associate_vpcs: Sequence['outputs.GetDhcpOptionsSetsSetAssociateVpcResult'],
+                 associate_vpc_count: int,
                  dhcp_options_set_description: str,
                  dhcp_options_set_id: str,
                  dhcp_options_set_name: str,
@@ -1365,7 +1364,7 @@ class GetDhcpOptionsSetsSetResult(dict):
                  owner_id: str,
                  status: str):
         """
-        :param Sequence['GetDhcpOptionsSetsSetAssociateVpcArgs'] associate_vpcs: AssociateVpcs.
+        :param int associate_vpc_count: The Number of VPCs bound by the DHCP option set.
         :param str dhcp_options_set_description: The description of the DHCP options set. The description must be 2 to 256
                characters in length and cannot start with `http://` or `https://`.
         :param str dhcp_options_set_name: The root domain, for example, example.com. After a DHCP options set is associated with a
@@ -1379,7 +1378,7 @@ class GetDhcpOptionsSetsSetResult(dict):
         :param str owner_id: The ID of the account to which the DHCP options set belongs.
         :param str status: The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
         """
-        pulumi.set(__self__, "associate_vpcs", associate_vpcs)
+        pulumi.set(__self__, "associate_vpc_count", associate_vpc_count)
         pulumi.set(__self__, "dhcp_options_set_description", dhcp_options_set_description)
         pulumi.set(__self__, "dhcp_options_set_id", dhcp_options_set_id)
         pulumi.set(__self__, "dhcp_options_set_name", dhcp_options_set_name)
@@ -1390,12 +1389,12 @@ class GetDhcpOptionsSetsSetResult(dict):
         pulumi.set(__self__, "status", status)
 
     @property
-    @pulumi.getter(name="associateVpcs")
-    def associate_vpcs(self) -> Sequence['outputs.GetDhcpOptionsSetsSetAssociateVpcResult']:
+    @pulumi.getter(name="associateVpcCount")
+    def associate_vpc_count(self) -> int:
         """
-        AssociateVpcs.
+        The Number of VPCs bound by the DHCP option set.
         """
-        return pulumi.get(self, "associate_vpcs")
+        return pulumi.get(self, "associate_vpc_count")
 
     @property
     @pulumi.getter(name="dhcpOptionsSetDescription")
@@ -1460,35 +1459,6 @@ class GetDhcpOptionsSetsSetResult(dict):
         The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
         """
         return pulumi.get(self, "status")
-
-
-@pulumi.output_type
-class GetDhcpOptionsSetsSetAssociateVpcResult(dict):
-    def __init__(__self__, *,
-                 associate_status: str,
-                 vpc_id: str):
-        """
-        :param str associate_status: The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
-        :param str vpc_id: The ID of the VPC network that is associated with the DHCP options set.
-        """
-        pulumi.set(__self__, "associate_status", associate_status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-
-    @property
-    @pulumi.getter(name="associateStatus")
-    def associate_status(self) -> str:
-        """
-        The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
-        """
-        return pulumi.get(self, "associate_status")
-
-    @property
-    @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> str:
-        """
-        The ID of the VPC network that is associated with the DHCP options set.
-        """
-        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type

@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Hbr
     ///     var example = new AliCloud.Hbr.ServerBackupPlan("example", new()
     ///     {
     ///         EcsServerBackupPlanName = "server_backup_plan",
-    ///         InstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+    ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
     ///         Schedule = "I|1602673264|PT2H",
     ///         Retention = 1,
     ///         Details = new[]

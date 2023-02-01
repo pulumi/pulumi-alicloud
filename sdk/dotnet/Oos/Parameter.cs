@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Oos
     ///             { "Created", "TF" },
     ///             { "For", "OosParameter" },
     ///         },
-    ///         ResourceGroupId = @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult).Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
     ///     });
     /// 
     /// });

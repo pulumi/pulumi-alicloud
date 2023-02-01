@@ -112,10 +112,6 @@ def get_product_as_end_users(ids: Optional[Sequence[str]] = None,
                              sort_order: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProductAsEndUsersResult:
     """
-    This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
-
-    > **NOTE:** Available in 1.196.0+
-
     ## Example Usage
 
     ```python
@@ -157,10 +153,6 @@ def get_product_as_end_users_output(ids: Optional[pulumi.Input[Optional[Sequence
                                     sort_order: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductAsEndUsersResult]:
     """
-    This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
-
-    > **NOTE:** Available in 1.196.0+
-
     ## Example Usage
 
     ```python

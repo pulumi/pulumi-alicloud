@@ -57,6 +57,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Log project policy, used to set a policy for a project.
+     * 
+     */
+    @Export(name="policy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> policy;
+
+    /**
+     * @return Log project policy, used to set a policy for a project.
+     * 
+     */
+    public Output<Optional<String>> policy() {
+        return Codegen.optional(this.policy);
+    }
+    /**
      * Log project tags.
      * 
      */

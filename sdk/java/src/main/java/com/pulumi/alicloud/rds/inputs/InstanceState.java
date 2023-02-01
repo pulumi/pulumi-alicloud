@@ -313,6 +313,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available in 1.197.0+) The type of db instance.
+     * 
+     */
+    @Import(name="dbInstanceType")
+    private @Nullable Output<String> dbInstanceType;
+
+    /**
+     * @return (Available in 1.197.0+) The type of db instance.
+     * 
+     */
+    public Optional<Output<String>> dbInstanceType() {
+        return Optional.ofNullable(this.dbInstanceType);
+    }
+
+    /**
      * Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
      * 
      */
@@ -1233,6 +1248,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.dbInstanceIpArrayAttribute = $.dbInstanceIpArrayAttribute;
         this.dbInstanceIpArrayName = $.dbInstanceIpArrayName;
         this.dbInstanceStorageType = $.dbInstanceStorageType;
+        this.dbInstanceType = $.dbInstanceType;
         this.dbIsIgnoreCase = $.dbIsIgnoreCase;
         this.dbTimeZone = $.dbTimeZone;
         this.deletionProtection = $.deletionProtection;
@@ -1701,6 +1717,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dbInstanceStorageType(String dbInstanceStorageType) {
             return dbInstanceStorageType(Output.of(dbInstanceStorageType));
+        }
+
+        /**
+         * @param dbInstanceType (Available in 1.197.0+) The type of db instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceType(@Nullable Output<String> dbInstanceType) {
+            $.dbInstanceType = dbInstanceType;
+            return this;
+        }
+
+        /**
+         * @param dbInstanceType (Available in 1.197.0+) The type of db instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceType(String dbInstanceType) {
+            return dbInstanceType(Output.of(dbInstanceType));
         }
 
         /**

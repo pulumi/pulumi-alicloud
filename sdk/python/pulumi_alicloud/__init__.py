@@ -3495,6 +3495,46 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ga/customRoutingEndpoint",
+  "fqn": "pulumi_alicloud.ga",
+  "classes": {
+   "alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint": "CustomRoutingEndpoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ga/customRoutingEndpointGroup",
+  "fqn": "pulumi_alicloud.ga",
+  "classes": {
+   "alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup": "CustomRoutingEndpointGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ga/customRoutingEndpointGroupDestination",
+  "fqn": "pulumi_alicloud.ga",
+  "classes": {
+   "alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination": "CustomRoutingEndpointGroupDestination"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ga/customRoutingEndpointTrafficPolicy",
+  "fqn": "pulumi_alicloud.ga",
+  "classes": {
+   "alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy": "CustomRoutingEndpointTrafficPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ga/domain",
+  "fqn": "pulumi_alicloud.ga",
+  "classes": {
+   "alicloud:ga/domain:Domain": "Domain"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ga/endpointGroup",
   "fqn": "pulumi_alicloud.ga",
   "classes": {

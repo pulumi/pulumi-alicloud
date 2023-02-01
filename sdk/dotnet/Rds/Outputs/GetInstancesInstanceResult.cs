@@ -65,6 +65,10 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string DbInstanceStorageType;
         /// <summary>
+        /// (Available in 1.197.0+) The type of instance.
+        /// </summary>
+        public readonly string DbInstanceType;
+        /// <summary>
         /// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
         /// </summary>
         public readonly string DbType;
@@ -278,6 +282,8 @@ namespace Pulumi.AliCloud.Rds.Outputs
 
             string dbInstanceStorageType,
 
+            string dbInstanceType,
+
             string dbType,
 
             string deleteDate,
@@ -374,6 +380,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
             CreateTime = createTime;
             Creator = creator;
             DbInstanceStorageType = dbInstanceStorageType;
+            DbInstanceType = dbInstanceType;
             DbType = dbType;
             DeleteDate = deleteDate;
             DeletionProtection = deletionProtection;

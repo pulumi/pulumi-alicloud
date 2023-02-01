@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["permissions"] = @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult).Apply(@default =&gt; @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions)),
+        ///         ["permissions"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions)),
         ///     };
         /// });
         /// ```
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["permissions"] = @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult).Apply(@default =&gt; @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions)),
+        ///         ["permissions"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions)),
         ///     };
         /// });
         /// ```

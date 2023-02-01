@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Emr
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstInstanceType"] = @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult).Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
+        ///         ["firstInstanceType"] = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Emr
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstInstanceType"] = @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult).Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
+        ///         ["firstInstanceType"] = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
         ///     };
         /// });
         /// ```

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.servicecatalog.outputs;
 
 import com.pulumi.alicloud.servicecatalog.outputs.GetProvisionedProductsProduct;
+import com.pulumi.alicloud.servicecatalog.outputs.GetProvisionedProductsProvisionedProduct;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -37,10 +38,17 @@ public final class GetProvisionedProductsResult {
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
     /**
+     * @deprecated
+     * Field &#39;products&#39; has been deprecated from provider version 1.197.0.
+     * 
+     */
+    @Deprecated /* Field 'products' has been deprecated from provider version 1.197.0. */
+    private List<GetProvisionedProductsProduct> products;
+    /**
      * @return A list of Provisioned Product Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetProvisionedProductsProduct> products;
+    private List<GetProvisionedProductsProvisionedProduct> provisionedProducts;
     private @Nullable String sortBy;
     private @Nullable String sortOrder;
 
@@ -85,11 +93,20 @@ public final class GetProvisionedProductsResult {
         return Optional.ofNullable(this.pageSize);
     }
     /**
+     * @deprecated
+     * Field &#39;products&#39; has been deprecated from provider version 1.197.0.
+     * 
+     */
+    @Deprecated /* Field 'products' has been deprecated from provider version 1.197.0. */
+    public List<GetProvisionedProductsProduct> products() {
+        return this.products;
+    }
+    /**
      * @return A list of Provisioned Product Entries. Each element contains the following attributes:
      * 
      */
-    public List<GetProvisionedProductsProduct> products() {
-        return this.products;
+    public List<GetProvisionedProductsProvisionedProduct> provisionedProducts() {
+        return this.provisionedProducts;
     }
     public Optional<String> sortBy() {
         return Optional.ofNullable(this.sortBy);
@@ -117,6 +134,7 @@ public final class GetProvisionedProductsResult {
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
         private List<GetProvisionedProductsProduct> products;
+        private List<GetProvisionedProductsProvisionedProduct> provisionedProducts;
         private @Nullable String sortBy;
         private @Nullable String sortOrder;
         public Builder() {}
@@ -132,6 +150,7 @@ public final class GetProvisionedProductsResult {
     	      this.pageNumber = defaults.pageNumber;
     	      this.pageSize = defaults.pageSize;
     	      this.products = defaults.products;
+    	      this.provisionedProducts = defaults.provisionedProducts;
     	      this.sortBy = defaults.sortBy;
     	      this.sortOrder = defaults.sortOrder;
         }
@@ -196,6 +215,14 @@ public final class GetProvisionedProductsResult {
             return products(List.of(products));
         }
         @CustomType.Setter
+        public Builder provisionedProducts(List<GetProvisionedProductsProvisionedProduct> provisionedProducts) {
+            this.provisionedProducts = Objects.requireNonNull(provisionedProducts);
+            return this;
+        }
+        public Builder provisionedProducts(GetProvisionedProductsProvisionedProduct... provisionedProducts) {
+            return provisionedProducts(List.of(provisionedProducts));
+        }
+        @CustomType.Setter
         public Builder sortBy(@Nullable String sortBy) {
             this.sortBy = sortBy;
             return this;
@@ -217,6 +244,7 @@ public final class GetProvisionedProductsResult {
             o.pageNumber = pageNumber;
             o.pageSize = pageSize;
             o.products = products;
+            o.provisionedProducts = provisionedProducts;
             o.sortBy = sortBy;
             o.sortOrder = sortOrder;
             return o;

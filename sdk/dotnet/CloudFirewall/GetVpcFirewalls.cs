@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCfwVpcFirewallExampleId"] = @default.Apply(getVpcFirewallsResult =&gt; getVpcFirewallsResult).Apply(@default =&gt; @default.Apply(getVpcFirewallsResult =&gt; getVpcFirewallsResult.Firewalls[0]?.Id)),
+        ///         ["alicloudCfwVpcFirewallExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVpcFirewallsResult =&gt; getVpcFirewallsResult.Firewalls[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCfwVpcFirewallExampleId"] = @default.Apply(getVpcFirewallsResult =&gt; getVpcFirewallsResult).Apply(@default =&gt; @default.Apply(getVpcFirewallsResult =&gt; getVpcFirewallsResult.Firewalls[0]?.Id)),
+        ///         ["alicloudCfwVpcFirewallExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVpcFirewallsResult =&gt; getVpcFirewallsResult.Firewalls[0]?.Id)),
         ///     };
         /// });
         /// ```

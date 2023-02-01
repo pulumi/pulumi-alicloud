@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["regions"] = @default.Apply(getRegionsResult =&gt; getRegionsResult).Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions)),
+        ///         ["regions"] = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions)),
         ///     };
         /// });
         /// ```
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["regions"] = @default.Apply(getRegionsResult =&gt; getRegionsResult).Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions)),
+        ///         ["regions"] = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions)),
         ///     };
         /// });
         /// ```

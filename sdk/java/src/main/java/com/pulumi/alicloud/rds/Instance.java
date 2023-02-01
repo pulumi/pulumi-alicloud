@@ -307,6 +307,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.dbInstanceStorageType;
     }
     /**
+     * (Available in 1.197.0+) The type of db instance.
+     * 
+     */
+    @Export(name="dbInstanceType", type=String.class, parameters={})
+    private Output<String> dbInstanceType;
+
+    /**
+     * @return (Available in 1.197.0+) The type of db instance.
+     * 
+     */
+    public Output<String> dbInstanceType() {
+        return this.dbInstanceType;
+    }
+    /**
      * Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
      * 
      */

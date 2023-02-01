@@ -77,6 +77,8 @@ type Instance struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringOutput `pulumi:"dbInstanceStorageType"`
+	// (Available in 1.197.0+) The type of db instance.
+	DbInstanceType pulumi.StringOutput `pulumi:"dbInstanceType"`
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase pulumi.BoolOutput `pulumi:"dbIsIgnoreCase"`
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
@@ -337,6 +339,8 @@ type instanceState struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
+	// (Available in 1.197.0+) The type of db instance.
+	DbInstanceType *string `pulumi:"dbInstanceType"`
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase *bool `pulumi:"dbIsIgnoreCase"`
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
@@ -557,6 +561,8 @@ type InstanceState struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringPtrInput
+	// (Available in 1.197.0+) The type of db instance.
+	DbInstanceType pulumi.StringPtrInput
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase pulumi.BoolPtrInput
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
@@ -1349,6 +1355,11 @@ func (o InstanceOutput) DbInstanceIpArrayName() pulumi.StringPtrOutput {
 // - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 func (o InstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DbInstanceStorageType }).(pulumi.StringOutput)
+}
+
+// (Available in 1.197.0+) The type of db instance.
+func (o InstanceOutput) DbInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DbInstanceType }).(pulumi.StringOutput)
 }
 
 // Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.

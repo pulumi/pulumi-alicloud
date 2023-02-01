@@ -220,6 +220,18 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string?> Protocol { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.197.0+) Instance connection public domain.
+        /// </summary>
+        [Output("publicDomain")]
+        public Output<string> PublicDomain { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.197.0+) Instance connection public port.
+        /// </summary>
+        [Output("publicPort")]
+        public Output<int> PublicPort { get; private set; } = null!;
+
+        /// <summary>
         /// Set the instance's IP whitelist in internet network.
         /// </summary>
         [Output("publicWhitelists")]
@@ -744,6 +756,18 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
+
+        /// <summary>
+        /// (Available in 1.197.0+) Instance connection public domain.
+        /// </summary>
+        [Input("publicDomain")]
+        public Input<string>? PublicDomain { get; set; }
+
+        /// <summary>
+        /// (Available in 1.197.0+) Instance connection public port.
+        /// </summary>
+        [Input("publicPort")]
+        public Input<int>? PublicPort { get; set; }
 
         [Input("publicWhitelists")]
         private InputList<string>? _publicWhitelists;

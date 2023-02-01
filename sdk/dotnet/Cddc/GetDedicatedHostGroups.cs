@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Cddc
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["cddcDedicatedHostGroupId"] = @default.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult).Apply(@default =&gt; @default.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult.Id)),
+        ///         ["cddcDedicatedHostGroupId"] = @default.Apply(@default =&gt; @default.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult.Id)),
         ///     };
         /// });
         /// ```
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Cddc
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["cddcDedicatedHostGroupId"] = @default.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult).Apply(@default =&gt; @default.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult.Id)),
+        ///         ["cddcDedicatedHostGroupId"] = @default.Apply(@default =&gt; @default.Apply(getDedicatedHostGroupsResult =&gt; getDedicatedHostGroupsResult.Id)),
         ///     };
         /// });
         /// ```

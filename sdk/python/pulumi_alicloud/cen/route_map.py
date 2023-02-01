@@ -54,7 +54,7 @@ class RouteMapArgs:
         :param pulumi.Input[str] community_match_mode: A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
         :param pulumi.Input[str] community_operate_mode: An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
         :param pulumi.Input[str] description: The description of the route map.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_child_instance_types: A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_child_instance_types: A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_cidr_blocks: A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_instance_ids: A match statement that indicates the list of IDs of the destination instances.
         :param pulumi.Input[bool] destination_instance_ids_reverse_match: Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
@@ -249,7 +249,7 @@ class RouteMapArgs:
     @pulumi.getter(name="destinationChildInstanceTypes")
     def destination_child_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+        A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
         """
         return pulumi.get(self, "destination_child_instance_types")
 
@@ -504,7 +504,7 @@ class _RouteMapState:
         :param pulumi.Input[str] community_match_mode: A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
         :param pulumi.Input[str] community_operate_mode: An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
         :param pulumi.Input[str] description: The description of the route map.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_child_instance_types: A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_child_instance_types: A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_cidr_blocks: A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_instance_ids: A match statement that indicates the list of IDs of the destination instances.
         :param pulumi.Input[bool] destination_instance_ids_reverse_match: Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
@@ -677,7 +677,7 @@ class _RouteMapState:
     @pulumi.getter(name="destinationChildInstanceTypes")
     def destination_child_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+        A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
         """
         return pulumi.get(self, "destination_child_instance_types")
 
@@ -1070,7 +1070,7 @@ class RouteMap(pulumi.CustomResource):
         :param pulumi.Input[str] community_match_mode: A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
         :param pulumi.Input[str] community_operate_mode: An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
         :param pulumi.Input[str] description: The description of the route map.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_child_instance_types: A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_child_instance_types: A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_cidr_blocks: A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_instance_ids: A match statement that indicates the list of IDs of the destination instances.
         :param pulumi.Input[bool] destination_instance_ids_reverse_match: Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
@@ -1321,7 +1321,7 @@ class RouteMap(pulumi.CustomResource):
         :param pulumi.Input[str] community_match_mode: A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
         :param pulumi.Input[str] community_operate_mode: An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
         :param pulumi.Input[str] description: The description of the route map.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_child_instance_types: A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_child_instance_types: A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_cidr_blocks: A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_instance_ids: A match statement that indicates the list of IDs of the destination instances.
         :param pulumi.Input[bool] destination_instance_ids_reverse_match: Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
@@ -1441,7 +1441,7 @@ class RouteMap(pulumi.CustomResource):
     @pulumi.getter(name="destinationChildInstanceTypes")
     def destination_child_instance_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+        A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
         """
         return pulumi.get(self, "destination_child_instance_types")
 

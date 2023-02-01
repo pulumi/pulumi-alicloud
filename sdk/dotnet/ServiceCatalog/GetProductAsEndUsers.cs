@@ -12,10 +12,6 @@ namespace Pulumi.AliCloud.ServiceCatalog
     public static class GetProductAsEndUsers
     {
         /// <summary>
-        /// This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
-        /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -34,7 +30,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudServiceCatalogProductAsEndUserExampleId"] = @default.Apply(getProductAsEndUsersResult =&gt; getProductAsEndUsersResult).Apply(@default =&gt; @default.Apply(getProductAsEndUsersResult =&gt; getProductAsEndUsersResult.Users[0]?.Id)),
+        ///         ["alicloudServiceCatalogProductAsEndUserExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProductAsEndUsersResult =&gt; getProductAsEndUsersResult.Users[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -45,10 +41,6 @@ namespace Pulumi.AliCloud.ServiceCatalog
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProductAsEndUsersResult>("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", args ?? new GetProductAsEndUsersArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
-        /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -67,7 +59,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudServiceCatalogProductAsEndUserExampleId"] = @default.Apply(getProductAsEndUsersResult =&gt; getProductAsEndUsersResult).Apply(@default =&gt; @default.Apply(getProductAsEndUsersResult =&gt; getProductAsEndUsersResult.Users[0]?.Id)),
+        ///         ["alicloudServiceCatalogProductAsEndUserExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProductAsEndUsersResult =&gt; getProductAsEndUsersResult.Users[0]?.Id)),
         ///     };
         /// });
         /// ```

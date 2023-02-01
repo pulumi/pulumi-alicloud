@@ -76,6 +76,11 @@ public final class GetInstancesInstance {
      */
     private String dbInstanceStorageType;
     /**
+     * @return (Available in 1.197.0+) The type of instance.
+     * 
+     */
+    private String dbInstanceType;
+    /**
      * @return `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
      * 
      */
@@ -391,6 +396,13 @@ public final class GetInstancesInstance {
      */
     public String dbInstanceStorageType() {
         return this.dbInstanceStorageType;
+    }
+    /**
+     * @return (Available in 1.197.0+) The type of instance.
+     * 
+     */
+    public String dbInstanceType() {
+        return this.dbInstanceType;
     }
     /**
      * @return `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
@@ -727,6 +739,7 @@ public final class GetInstancesInstance {
         private String createTime;
         private String creator;
         private String dbInstanceStorageType;
+        private String dbInstanceType;
         private String dbType;
         private String deleteDate;
         private Boolean deletionProtection;
@@ -784,6 +797,7 @@ public final class GetInstancesInstance {
     	      this.createTime = defaults.createTime;
     	      this.creator = defaults.creator;
     	      this.dbInstanceStorageType = defaults.dbInstanceStorageType;
+    	      this.dbInstanceType = defaults.dbInstanceType;
     	      this.dbType = defaults.dbType;
     	      this.deleteDate = defaults.deleteDate;
     	      this.deletionProtection = defaults.deletionProtection;
@@ -886,6 +900,11 @@ public final class GetInstancesInstance {
         @CustomType.Setter
         public Builder dbInstanceStorageType(String dbInstanceStorageType) {
             this.dbInstanceStorageType = Objects.requireNonNull(dbInstanceStorageType);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dbInstanceType(String dbInstanceType) {
+            this.dbInstanceType = Objects.requireNonNull(dbInstanceType);
             return this;
         }
         @CustomType.Setter
@@ -1118,6 +1137,7 @@ public final class GetInstancesInstance {
             o.createTime = createTime;
             o.creator = creator;
             o.dbInstanceStorageType = dbInstanceStorageType;
+            o.dbInstanceType = dbInstanceType;
             o.dbType = dbType;
             o.deleteDate = deleteDate;
             o.deletionProtection = deletionProtection;

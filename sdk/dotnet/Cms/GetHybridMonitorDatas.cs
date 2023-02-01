@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Cms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["cmsMetricRuleTemplateId1"] = @default.Apply(getHybridMonitorDatasResult =&gt; getHybridMonitorDatasResult).Apply(@default =&gt; @default.Apply(getHybridMonitorDatasResult =&gt; getHybridMonitorDatasResult.Datas[0])),
+        ///         ["cmsMetricRuleTemplateId1"] = @default.Apply(@default =&gt; @default.Apply(getHybridMonitorDatasResult =&gt; getHybridMonitorDatasResult.Datas[0])),
         ///     };
         /// });
         /// ```
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Cms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["cmsMetricRuleTemplateId1"] = @default.Apply(getHybridMonitorDatasResult =&gt; getHybridMonitorDatasResult).Apply(@default =&gt; @default.Apply(getHybridMonitorDatasResult =&gt; getHybridMonitorDatasResult.Datas[0])),
+        ///         ["cmsMetricRuleTemplateId1"] = @default.Apply(@default =&gt; @default.Apply(getHybridMonitorDatasResult =&gt; getHybridMonitorDatasResult.Datas[0])),
         ///     };
         /// });
         /// ```

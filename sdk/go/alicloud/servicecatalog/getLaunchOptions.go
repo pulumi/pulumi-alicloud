@@ -28,13 +28,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := servicecatalog.GetLaunchOptions(ctx, &servicecatalog.GetLaunchOptionsArgs{
-//				ProductId: "prod-bp125x4k29wb7q",
+//			_, err := servicecatalog.GetEndUserProducts(ctx, &servicecatalog.GetEndUserProductsArgs{
+//				NameRegex: pulumi.StringRef("ram模板创建"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("alicloudServiceCatalogLaunchOptionExampleId", _default.Options[0].Id)
+//			defaultLaunchOptions, err := servicecatalog.GetLaunchOptions(ctx, &servicecatalog.GetLaunchOptionsArgs{
+//				ProductId: "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudServiceCatalogLaunchOptionExampleId", defaultLaunchOptions.LaunchOptions[0].Id)
 //			return nil
 //		})
 //	}
@@ -62,10 +68,12 @@ type GetLaunchOptionsArgs struct {
 // A collection of values returned by getLaunchOptions.
 type GetLaunchOptionsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id        string   `pulumi:"id"`
-	Ids       []string `pulumi:"ids"`
-	NameRegex *string  `pulumi:"nameRegex"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
 	// A list of Launch Option Entries. Each element contains the following attributes:
+	LaunchOptions []GetLaunchOptionsLaunchOption `pulumi:"launchOptions"`
+	NameRegex     *string                        `pulumi:"nameRegex"`
+	// Deprecated: Field 'options' has been deprecated from provider version 1.197.0.
 	Options    []GetLaunchOptionsOption `pulumi:"options"`
 	OutputFile *string                  `pulumi:"outputFile"`
 	ProductId  string                   `pulumi:"productId"`
@@ -122,11 +130,16 @@ func (o GetLaunchOptionsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLaunchOptionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Launch Option Entries. Each element contains the following attributes:
+func (o GetLaunchOptionsResultOutput) LaunchOptions() GetLaunchOptionsLaunchOptionArrayOutput {
+	return o.ApplyT(func(v GetLaunchOptionsResult) []GetLaunchOptionsLaunchOption { return v.LaunchOptions }).(GetLaunchOptionsLaunchOptionArrayOutput)
+}
+
 func (o GetLaunchOptionsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLaunchOptionsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of Launch Option Entries. Each element contains the following attributes:
+// Deprecated: Field 'options' has been deprecated from provider version 1.197.0.
 func (o GetLaunchOptionsResultOutput) Options() GetLaunchOptionsOptionArrayOutput {
 	return o.ApplyT(func(v GetLaunchOptionsResult) []GetLaunchOptionsOption { return v.Options }).(GetLaunchOptionsOptionArrayOutput)
 }

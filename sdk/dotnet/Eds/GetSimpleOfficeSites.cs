@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Eds
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["desktopAccessType"] = @default.Apply(getSimpleOfficeSitesResult =&gt; getSimpleOfficeSitesResult).Apply(@default =&gt; @default.Apply(getSimpleOfficeSitesResult =&gt; getSimpleOfficeSitesResult.Sites[0]?.DesktopAccessType)),
+        ///         ["desktopAccessType"] = @default.Apply(@default =&gt; @default.Apply(getSimpleOfficeSitesResult =&gt; getSimpleOfficeSitesResult.Sites[0]?.DesktopAccessType)),
         ///     };
         /// });
         /// ```
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Eds
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["desktopAccessType"] = @default.Apply(getSimpleOfficeSitesResult =&gt; getSimpleOfficeSitesResult).Apply(@default =&gt; @default.Apply(getSimpleOfficeSitesResult =&gt; getSimpleOfficeSitesResult.Sites[0]?.DesktopAccessType)),
+        ///         ["desktopAccessType"] = @default.Apply(@default =&gt; @default.Apply(getSimpleOfficeSitesResult =&gt; getSimpleOfficeSitesResult.Sites[0]?.DesktopAccessType)),
         ///     };
         /// });
         /// ```

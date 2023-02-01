@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudNasZonesId"] = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
+        ///         ["alicloudNasZonesId"] = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
         ///     };
         /// });
         /// ```
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudNasZonesId"] = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
+        ///         ["alicloudNasZonesId"] = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
         ///     };
         /// });
         /// ```

@@ -16,17 +16,21 @@ class ProjectArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[str] description: Description of the log project.
         :param pulumi.Input[str] name: The name of the log project. It is the only in one Alicloud account.
+        :param pulumi.Input[str] policy: Log project policy, used to set a policy for a project.
         :param pulumi.Input[Mapping[str, Any]] tags: Log project tags.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -53,6 +57,18 @@ class ProjectArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Log project policy, used to set a policy for a project.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
 
     @property
     @pulumi.getter
@@ -72,17 +88,21 @@ class _ProjectState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[str] description: Description of the log project.
         :param pulumi.Input[str] name: The name of the log project. It is the only in one Alicloud account.
+        :param pulumi.Input[str] policy: Log project policy, used to set a policy for a project.
         :param pulumi.Input[Mapping[str, Any]] tags: Log project tags.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -109,6 +129,18 @@ class _ProjectState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Log project policy, used to set a policy for a project.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
 
     @property
     @pulumi.getter
@@ -130,6 +162,7 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
@@ -145,6 +178,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the log project.
         :param pulumi.Input[str] name: The name of the log project. It is the only in one Alicloud account.
+        :param pulumi.Input[str] policy: Log project policy, used to set a policy for a project.
         :param pulumi.Input[Mapping[str, Any]] tags: Log project tags.
         """
         ...
@@ -179,6 +213,7 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -191,6 +226,7 @@ class Project(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            __props__.__dict__["policy"] = policy
             __props__.__dict__["tags"] = tags
         super(Project, __self__).__init__(
             'alicloud:log/project:Project',
@@ -204,6 +240,7 @@ class Project(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            policy: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
@@ -214,6 +251,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the log project.
         :param pulumi.Input[str] name: The name of the log project. It is the only in one Alicloud account.
+        :param pulumi.Input[str] policy: Log project policy, used to set a policy for a project.
         :param pulumi.Input[Mapping[str, Any]] tags: Log project tags.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -222,6 +260,7 @@ class Project(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
+        __props__.__dict__["policy"] = policy
         __props__.__dict__["tags"] = tags
         return Project(resource_name, opts=opts, __props__=__props__)
 
@@ -240,6 +279,14 @@ class Project(pulumi.CustomResource):
         The name of the log project. It is the only in one Alicloud account.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Log project policy, used to set a policy for a project.
+        """
+        return pulumi.get(self, "policy")
 
     @property
     @pulumi.getter

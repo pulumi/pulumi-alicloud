@@ -35,8 +35,8 @@ namespace Pulumi.AliCloud.Dns
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["rr"] = @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult).Apply(@this =&gt; @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult.Rr)),
-        ///         ["value"] = @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult).Apply(@this =&gt; @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult.Value)),
+        ///         ["rr"] = @this.Apply(@this =&gt; @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult.Rr)),
+        ///         ["value"] = @this.Apply(@this =&gt; @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult.Value)),
         ///     };
         /// });
         /// ```
@@ -70,8 +70,8 @@ namespace Pulumi.AliCloud.Dns
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["rr"] = @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult).Apply(@this =&gt; @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult.Rr)),
-        ///         ["value"] = @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult).Apply(@this =&gt; @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult.Value)),
+        ///         ["rr"] = @this.Apply(@this =&gt; @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult.Rr)),
+        ///         ["value"] = @this.Apply(@this =&gt; @this.Apply(getDomainTxtGuidResult =&gt; getDomainTxtGuidResult.Value)),
         ///     };
         /// });
         /// ```

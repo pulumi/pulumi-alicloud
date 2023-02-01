@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Vpc
         ///     {
         ///         VpcId = fooNetwork.Id,
         ///         CidrBlock = "172.16.0.0/21",
-        ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///         VswitchName = name,
         ///     });
         /// 
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Vpc
         ///     {
         ///         VpcId = fooNetwork.Id,
         ///         CidrBlock = "172.16.0.0/21",
-        ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///         VswitchName = name,
         ///     });
         /// 

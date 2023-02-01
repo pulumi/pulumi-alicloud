@@ -142,6 +142,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> DbInstanceStorageType { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.197.0+) The type of db instance.
+        /// </summary>
+        [Output("dbInstanceType")]
+        public Output<string> DbInstanceType { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         /// </summary>
         [Output("dbIsIgnoreCase")]
@@ -1202,6 +1208,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("dbInstanceStorageType")]
         public Input<string>? DbInstanceStorageType { get; set; }
+
+        /// <summary>
+        /// (Available in 1.197.0+) The type of db instance.
+        /// </summary>
+        [Input("dbInstanceType")]
+        public Input<string>? DbInstanceType { get; set; }
 
         /// <summary>
         /// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.

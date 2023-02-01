@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudEcsCapacityReservationExampleId"] = @default.Apply(getCapacityReservationsResult =&gt; getCapacityReservationsResult).Apply(@default =&gt; @default.Apply(getCapacityReservationsResult =&gt; getCapacityReservationsResult.Reservations[0]?.Id)),
+        ///         ["alicloudEcsCapacityReservationExampleId"] = @default.Apply(@default =&gt; @default.Apply(getCapacityReservationsResult =&gt; getCapacityReservationsResult.Reservations[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudEcsCapacityReservationExampleId"] = @default.Apply(getCapacityReservationsResult =&gt; getCapacityReservationsResult).Apply(@default =&gt; @default.Apply(getCapacityReservationsResult =&gt; getCapacityReservationsResult.Reservations[0]?.Id)),
+        ///         ["alicloudEcsCapacityReservationExampleId"] = @default.Apply(@default =&gt; @default.Apply(getCapacityReservationsResult =&gt; getCapacityReservationsResult.Reservations[0]?.Id)),
         ///     };
         /// });
         /// ```

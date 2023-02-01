@@ -22,6 +22,18 @@ import com.pulumi.alicloud.ga.inputs.GetBasicAcceleratorsArgs;
 import com.pulumi.alicloud.ga.inputs.GetBasicAcceleratorsPlainArgs;
 import com.pulumi.alicloud.ga.inputs.GetBasicEndpointsArgs;
 import com.pulumi.alicloud.ga.inputs.GetBasicEndpointsPlainArgs;
+import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupDestinationsArgs;
+import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupDestinationsPlainArgs;
+import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupsArgs;
+import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupsPlainArgs;
+import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointTrafficPoliciesArgs;
+import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointTrafficPoliciesPlainArgs;
+import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointsArgs;
+import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointsPlainArgs;
+import com.pulumi.alicloud.ga.inputs.GetCustomRoutingPortMappingsArgs;
+import com.pulumi.alicloud.ga.inputs.GetCustomRoutingPortMappingsPlainArgs;
+import com.pulumi.alicloud.ga.inputs.GetDomainsArgs;
+import com.pulumi.alicloud.ga.inputs.GetDomainsPlainArgs;
 import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsArgs;
 import com.pulumi.alicloud.ga.inputs.GetEndpointGroupsPlainArgs;
 import com.pulumi.alicloud.ga.inputs.GetForwardingRulesArgs;
@@ -39,6 +51,12 @@ import com.pulumi.alicloud.ga.outputs.GetBasicAccelerateIpEndpointRelationsResul
 import com.pulumi.alicloud.ga.outputs.GetBasicAccelerateIpsResult;
 import com.pulumi.alicloud.ga.outputs.GetBasicAcceleratorsResult;
 import com.pulumi.alicloud.ga.outputs.GetBasicEndpointsResult;
+import com.pulumi.alicloud.ga.outputs.GetCustomRoutingEndpointGroupDestinationsResult;
+import com.pulumi.alicloud.ga.outputs.GetCustomRoutingEndpointGroupsResult;
+import com.pulumi.alicloud.ga.outputs.GetCustomRoutingEndpointTrafficPoliciesResult;
+import com.pulumi.alicloud.ga.outputs.GetCustomRoutingEndpointsResult;
+import com.pulumi.alicloud.ga.outputs.GetCustomRoutingPortMappingsResult;
+import com.pulumi.alicloud.ga.outputs.GetDomainsResult;
 import com.pulumi.alicloud.ga.outputs.GetEndpointGroupsResult;
 import com.pulumi.alicloud.ga.outputs.GetForwardingRulesResult;
 import com.pulumi.alicloud.ga.outputs.GetIpSetsResult;
@@ -2021,6 +2039,940 @@ public final class GaFunctions {
      */
     public static CompletableFuture<GetBasicEndpointsResult> getBasicEndpointsPlain(GetBasicEndpointsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ga/getBasicEndpoints:getBasicEndpoints", TypeShape.of(GetBasicEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointGroupDestinationsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -&gt; getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs args) {
+        return getCustomRoutingEndpointGroupDestinations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointGroupDestinationsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -&gt; getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpointGroupDestinationsPlain(GetCustomRoutingEndpointGroupDestinationsPlainArgs args) {
+        return getCustomRoutingEndpointGroupDestinationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointGroupDestinationsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -&gt; getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingEndpointGroupDestinations:getCustomRoutingEndpointGroupDestinations", TypeShape.of(GetCustomRoutingEndpointGroupDestinationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointGroupDestinationsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -&gt; getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpointGroupDestinationsPlain(GetCustomRoutingEndpointGroupDestinationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ga/getCustomRoutingEndpointGroupDestinations:getCustomRoutingEndpointGroupDestinations", TypeShape.of(GetCustomRoutingEndpointGroupDestinationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId2&#34;, nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs args) {
+        return getCustomRoutingEndpointGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId2&#34;, nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroupsPlain(GetCustomRoutingEndpointGroupsPlainArgs args) {
+        return getCustomRoutingEndpointGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId2&#34;, nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups", TypeShape.of(GetCustomRoutingEndpointGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId2&#34;, nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroupsPlain(GetCustomRoutingEndpointGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups", TypeShape.of(GetCustomRoutingEndpointGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointTrafficPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointTrafficPoliciesId1&#34;, ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -&gt; getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs args) {
+        return getCustomRoutingEndpointTrafficPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointTrafficPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointTrafficPoliciesId1&#34;, ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -&gt; getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTrafficPoliciesPlain(GetCustomRoutingEndpointTrafficPoliciesPlainArgs args) {
+        return getCustomRoutingEndpointTrafficPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointTrafficPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointTrafficPoliciesId1&#34;, ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -&gt; getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies", TypeShape.of(GetCustomRoutingEndpointTrafficPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoint Traffic Policies of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointTrafficPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointTrafficPoliciesId1&#34;, ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -&gt; getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTrafficPoliciesPlain(GetCustomRoutingEndpointTrafficPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies", TypeShape.of(GetCustomRoutingEndpointTrafficPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoints of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointsId1&#34;, ids.applyValue(getCustomRoutingEndpointsResult -&gt; getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCustomRoutingEndpointsResult> getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs args) {
+        return getCustomRoutingEndpoints(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoints of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointsId1&#34;, ids.applyValue(getCustomRoutingEndpointsResult -&gt; getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCustomRoutingEndpointsResult> getCustomRoutingEndpointsPlain(GetCustomRoutingEndpointsPlainArgs args) {
+        return getCustomRoutingEndpointsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoints of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointsId1&#34;, ids.applyValue(getCustomRoutingEndpointsResult -&gt; getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCustomRoutingEndpointsResult> getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingEndpoints:getCustomRoutingEndpoints", TypeShape.of(GetCustomRoutingEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Endpoints of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = GaFunctions.getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingEndpointsId1&#34;, ids.applyValue(getCustomRoutingEndpointsResult -&gt; getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCustomRoutingEndpointsResult> getCustomRoutingEndpointsPlain(GetCustomRoutingEndpointsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ga/getCustomRoutingEndpoints:getCustomRoutingEndpoints", TypeShape.of(GetCustomRoutingEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingPortMappingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs.builder()
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingPortMappingsAcceleratorId1&#34;, default_.customRoutingPortMappings()[0].acceleratorId());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCustomRoutingPortMappingsResult> getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs args) {
+        return getCustomRoutingPortMappings(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingPortMappingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs.builder()
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingPortMappingsAcceleratorId1&#34;, default_.customRoutingPortMappings()[0].acceleratorId());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCustomRoutingPortMappingsResult> getCustomRoutingPortMappingsPlain(GetCustomRoutingPortMappingsPlainArgs args) {
+        return getCustomRoutingPortMappingsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingPortMappingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs.builder()
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingPortMappingsAcceleratorId1&#34;, default_.customRoutingPortMappings()[0].acceleratorId());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCustomRoutingPortMappingsResult> getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", TypeShape.of(GetCustomRoutingPortMappingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Global Accelerator (GA) Custom Routing Port Mappings of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetCustomRoutingPortMappingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs.builder()
+     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;gaCustomRoutingPortMappingsAcceleratorId1&#34;, default_.customRoutingPortMappings()[0].acceleratorId());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCustomRoutingPortMappingsResult> getCustomRoutingPortMappingsPlain(GetCustomRoutingPortMappingsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", TypeShape.of(GetCustomRoutingPortMappingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains() {
+        return getDomains(GetDomainsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     */
+    public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
+        return getDomainsPlain(GetDomainsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
+        return getDomains(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     */
+    public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
+        return getDomainsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ga/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
+     * 
+     * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     */
+    public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ga/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.

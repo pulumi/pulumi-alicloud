@@ -24,7 +24,7 @@ class MscSubSubscriptionArgs:
                  webhook_status: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a MscSubSubscription resource.
-        :param pulumi.Input[str] item_name: The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
+        :param pulumi.Input[str] item_name: The name of the Subscription. **NOTE:**  You should use the _get_msc_sub_subscriptions_ to query the available subscription item name.
         :param pulumi.Input[int] email_status: The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[int] pmsg_status: The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[int] sms_status: The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
@@ -52,7 +52,7 @@ class MscSubSubscriptionArgs:
     @pulumi.getter(name="itemName")
     def item_name(self) -> pulumi.Input[str]:
         """
-        The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
+        The name of the Subscription. **NOTE:**  You should use the _get_msc_sub_subscriptions_ to query the available subscription item name.
         """
         return pulumi.get(self, "item_name")
 
@@ -160,7 +160,7 @@ class _MscSubSubscriptionState:
         :param pulumi.Input[str] channel: The channel the Subscription.
         :param pulumi.Input[str] description: The description of the Subscription.
         :param pulumi.Input[int] email_status: The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
-        :param pulumi.Input[str] item_name: The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
+        :param pulumi.Input[str] item_name: The name of the Subscription. **NOTE:**  You should use the _get_msc_sub_subscriptions_ to query the available subscription item name.
         :param pulumi.Input[int] pmsg_status: The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[int] sms_status: The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[int] tts_status: The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
@@ -237,7 +237,7 @@ class _MscSubSubscriptionState:
     @pulumi.getter(name="itemName")
     def item_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
+        The name of the Subscription. **NOTE:**  You should use the _get_msc_sub_subscriptions_ to query the available subscription item name.
         """
         return pulumi.get(self, "item_name")
 
@@ -353,7 +353,7 @@ class MscSubSubscription(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] email_status: The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
-        :param pulumi.Input[str] item_name: The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
+        :param pulumi.Input[str] item_name: The name of the Subscription. **NOTE:**  You should use the _get_msc_sub_subscriptions_ to query the available subscription item name.
         :param pulumi.Input[int] pmsg_status: The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[int] sms_status: The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[int] tts_status: The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
@@ -470,7 +470,7 @@ class MscSubSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] channel: The channel the Subscription.
         :param pulumi.Input[str] description: The description of the Subscription.
         :param pulumi.Input[int] email_status: The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
-        :param pulumi.Input[str] item_name: The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
+        :param pulumi.Input[str] item_name: The name of the Subscription. **NOTE:**  You should use the _get_msc_sub_subscriptions_ to query the available subscription item name.
         :param pulumi.Input[int] pmsg_status: The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[int] sms_status: The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[int] tts_status: The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
@@ -526,7 +526,7 @@ class MscSubSubscription(pulumi.CustomResource):
     @pulumi.getter(name="itemName")
     def item_name(self) -> pulumi.Output[str]:
         """
-        The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
+        The name of the Subscription. **NOTE:**  You should use the _get_msc_sub_subscriptions_ to query the available subscription item name.
         """
         return pulumi.get(self, "item_name")
 

@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Waf
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["theFirstWafInstanceId"] = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+        ///         ["theFirstWafInstanceId"] = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Waf
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["theFirstWafInstanceId"] = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+        ///         ["theFirstWafInstanceId"] = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
         ///     };
         /// });
         /// ```

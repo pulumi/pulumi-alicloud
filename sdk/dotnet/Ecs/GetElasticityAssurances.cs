@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudEcsElasticityAssuranceExampleId"] = @default.Apply(getElasticityAssurancesResult =&gt; getElasticityAssurancesResult).Apply(@default =&gt; @default.Apply(getElasticityAssurancesResult =&gt; getElasticityAssurancesResult.Assurances[0]?.Id)),
+        ///         ["alicloudEcsElasticityAssuranceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getElasticityAssurancesResult =&gt; getElasticityAssurancesResult.Assurances[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudEcsElasticityAssuranceExampleId"] = @default.Apply(getElasticityAssurancesResult =&gt; getElasticityAssurancesResult).Apply(@default =&gt; @default.Apply(getElasticityAssurancesResult =&gt; getElasticityAssurancesResult.Assurances[0]?.Id)),
+        ///         ["alicloudEcsElasticityAssuranceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getElasticityAssurancesResult =&gt; getElasticityAssurancesResult.Assurances[0]?.Id)),
         ///     };
         /// });
         /// ```

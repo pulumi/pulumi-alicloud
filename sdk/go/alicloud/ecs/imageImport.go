@@ -86,8 +86,10 @@ type ImageImport struct {
 	LicenseType pulumi.StringPtrOutput `pulumi:"licenseType"`
 	// Operating system platform type. Valid values: `windows`, Default is `linux`.
 	OsType pulumi.StringPtrOutput `pulumi:"osType"`
-	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
-	Platform pulumi.StringPtrOutput `pulumi:"platform"`
+	// The operating system distribution. Default value: Others Linux.
+	// More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+	// **NOTE**: It's default value is Ubuntu before version 1.197.0.
+	Platform pulumi.StringOutput `pulumi:"platform"`
 }
 
 // NewImageImport registers a new resource with the given unique name, arguments, and options.
@@ -134,7 +136,9 @@ type imageImportState struct {
 	LicenseType *string `pulumi:"licenseType"`
 	// Operating system platform type. Valid values: `windows`, Default is `linux`.
 	OsType *string `pulumi:"osType"`
-	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+	// The operating system distribution. Default value: Others Linux.
+	// More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+	// **NOTE**: It's default value is Ubuntu before version 1.197.0.
 	Platform *string `pulumi:"platform"`
 }
 
@@ -151,7 +155,9 @@ type ImageImportState struct {
 	LicenseType pulumi.StringPtrInput
 	// Operating system platform type. Valid values: `windows`, Default is `linux`.
 	OsType pulumi.StringPtrInput
-	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+	// The operating system distribution. Default value: Others Linux.
+	// More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+	// **NOTE**: It's default value is Ubuntu before version 1.197.0.
 	Platform pulumi.StringPtrInput
 }
 
@@ -172,7 +178,9 @@ type imageImportArgs struct {
 	LicenseType *string `pulumi:"licenseType"`
 	// Operating system platform type. Valid values: `windows`, Default is `linux`.
 	OsType *string `pulumi:"osType"`
-	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+	// The operating system distribution. Default value: Others Linux.
+	// More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+	// **NOTE**: It's default value is Ubuntu before version 1.197.0.
 	Platform *string `pulumi:"platform"`
 }
 
@@ -190,7 +198,9 @@ type ImageImportArgs struct {
 	LicenseType pulumi.StringPtrInput
 	// Operating system platform type. Valid values: `windows`, Default is `linux`.
 	OsType pulumi.StringPtrInput
-	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+	// The operating system distribution. Default value: Others Linux.
+	// More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+	// **NOTE**: It's default value is Ubuntu before version 1.197.0.
 	Platform pulumi.StringPtrInput
 }
 
@@ -311,9 +321,11 @@ func (o ImageImportOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageImport) pulumi.StringPtrOutput { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
-func (o ImageImportOutput) Platform() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageImport) pulumi.StringPtrOutput { return v.Platform }).(pulumi.StringPtrOutput)
+// The operating system distribution. Default value: Others Linux.
+// More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+// **NOTE**: It's default value is Ubuntu before version 1.197.0.
+func (o ImageImportOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageImport) pulumi.StringOutput { return v.Platform }).(pulumi.StringOutput)
 }
 
 type ImageImportArrayOutput struct{ *pulumi.OutputState }

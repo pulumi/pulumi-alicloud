@@ -226,7 +226,7 @@ class InstanceArgs:
                - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
@@ -1219,7 +1219,7 @@ class InstanceArgs:
         """
         The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
         """
         return pulumi.get(self, "zone_id")
 
@@ -1272,6 +1272,7 @@ class _InstanceState:
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+                 db_instance_type: Optional[pulumi.Input[str]] = None,
                  db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -1364,6 +1365,7 @@ class _InstanceState:
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[str] db_instance_type: (Available in 1.197.0+) The type of db instance.
         :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
                - If you set the `Engine` parameter to MySQL.
@@ -1469,7 +1471,7 @@ class _InstanceState:
                - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
@@ -1507,6 +1509,8 @@ class _InstanceState:
             pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
         if db_instance_storage_type is not None:
             pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+        if db_instance_type is not None:
+            pulumi.set(__self__, "db_instance_type", db_instance_type)
         if db_is_ignore_case is not None:
             pulumi.set(__self__, "db_is_ignore_case", db_is_ignore_case)
         if db_time_zone is not None:
@@ -1838,6 +1842,18 @@ class _InstanceState:
     @db_instance_storage_type.setter
     def db_instance_storage_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "db_instance_storage_type", value)
+
+    @property
+    @pulumi.getter(name="dbInstanceType")
+    def db_instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.197.0+) The type of db instance.
+        """
+        return pulumi.get(self, "db_instance_type")
+
+    @db_instance_type.setter
+    def db_instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_type", value)
 
     @property
     @pulumi.getter(name="dbIsIgnoreCase")
@@ -2494,7 +2510,7 @@ class _InstanceState:
         """
         The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
         """
         return pulumi.get(self, "zone_id")
 
@@ -2752,7 +2768,7 @@ class Instance(pulumi.CustomResource):
                - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
@@ -2943,6 +2959,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["zone_id_slave_a"] = zone_id_slave_a
             __props__.__dict__["zone_id_slave_b"] = zone_id_slave_b
             __props__.__dict__["connection_string"] = None
+            __props__.__dict__["db_instance_type"] = None
             __props__.__dict__["ssl_status"] = None
         super(Instance, __self__).__init__(
             'alicloud:rds/instance:Instance',
@@ -2971,6 +2988,7 @@ class Instance(pulumi.CustomResource):
             db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
             db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+            db_instance_type: Optional[pulumi.Input[str]] = None,
             db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
             db_time_zone: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -3068,6 +3086,7 @@ class Instance(pulumi.CustomResource):
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        :param pulumi.Input[str] db_instance_type: (Available in 1.197.0+) The type of db instance.
         :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
                - If you set the `Engine` parameter to MySQL.
@@ -3173,7 +3192,7 @@ class Instance(pulumi.CustomResource):
                - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
@@ -3198,6 +3217,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
         __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
         __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
+        __props__.__dict__["db_instance_type"] = db_instance_type
         __props__.__dict__["db_is_ignore_case"] = db_is_ignore_case
         __props__.__dict__["db_time_zone"] = db_time_zone
         __props__.__dict__["deletion_protection"] = deletion_protection
@@ -3406,6 +3426,14 @@ class Instance(pulumi.CustomResource):
         - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         """
         return pulumi.get(self, "db_instance_storage_type")
+
+    @property
+    @pulumi.getter(name="dbInstanceType")
+    def db_instance_type(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.197.0+) The type of db instance.
+        """
+        return pulumi.get(self, "db_instance_type")
 
     @property
     @pulumi.getter(name="dbIsIgnoreCase")
@@ -3862,7 +3890,7 @@ class Instance(pulumi.CustomResource):
         """
         The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
         """
         return pulumi.get(self, "zone_id")
 

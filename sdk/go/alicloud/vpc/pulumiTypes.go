@@ -2005,8 +2005,8 @@ func (o GetCommonBandwidthPackagesPackagePublicIpAddressArrayOutput) Index(i pul
 }
 
 type GetDhcpOptionsSetsSet struct {
-	// AssociateVpcs.
-	AssociateVpcs []GetDhcpOptionsSetsSetAssociateVpc `pulumi:"associateVpcs"`
+	// The Number of VPCs bound by the DHCP option set.
+	AssociateVpcCount int `pulumi:"associateVpcCount"`
 	// The description of the DHCP options set. The description must be 2 to 256
 	// characters in length and cannot start with `http://` or `https://`.
 	DhcpOptionsSetDescription string `pulumi:"dhcpOptionsSetDescription"`
@@ -2041,8 +2041,8 @@ type GetDhcpOptionsSetsSetInput interface {
 }
 
 type GetDhcpOptionsSetsSetArgs struct {
-	// AssociateVpcs.
-	AssociateVpcs GetDhcpOptionsSetsSetAssociateVpcArrayInput `pulumi:"associateVpcs"`
+	// The Number of VPCs bound by the DHCP option set.
+	AssociateVpcCount pulumi.IntInput `pulumi:"associateVpcCount"`
 	// The description of the DHCP options set. The description must be 2 to 256
 	// characters in length and cannot start with `http://` or `https://`.
 	DhcpOptionsSetDescription pulumi.StringInput `pulumi:"dhcpOptionsSetDescription"`
@@ -2116,9 +2116,9 @@ func (o GetDhcpOptionsSetsSetOutput) ToGetDhcpOptionsSetsSetOutputWithContext(ct
 	return o
 }
 
-// AssociateVpcs.
-func (o GetDhcpOptionsSetsSetOutput) AssociateVpcs() GetDhcpOptionsSetsSetAssociateVpcArrayOutput {
-	return o.ApplyT(func(v GetDhcpOptionsSetsSet) []GetDhcpOptionsSetsSetAssociateVpc { return v.AssociateVpcs }).(GetDhcpOptionsSetsSetAssociateVpcArrayOutput)
+// The Number of VPCs bound by the DHCP option set.
+func (o GetDhcpOptionsSetsSetOutput) AssociateVpcCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDhcpOptionsSetsSet) int { return v.AssociateVpcCount }).(pulumi.IntOutput)
 }
 
 // The description of the DHCP options set. The description must be 2 to 256
@@ -2183,112 +2183,6 @@ func (o GetDhcpOptionsSetsSetArrayOutput) Index(i pulumi.IntInput) GetDhcpOption
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDhcpOptionsSetsSet {
 		return vs[0].([]GetDhcpOptionsSetsSet)[vs[1].(int)]
 	}).(GetDhcpOptionsSetsSetOutput)
-}
-
-type GetDhcpOptionsSetsSetAssociateVpc struct {
-	// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
-	AssociateStatus string `pulumi:"associateStatus"`
-	// The ID of the VPC network that is associated with the DHCP options set.
-	VpcId string `pulumi:"vpcId"`
-}
-
-// GetDhcpOptionsSetsSetAssociateVpcInput is an input type that accepts GetDhcpOptionsSetsSetAssociateVpcArgs and GetDhcpOptionsSetsSetAssociateVpcOutput values.
-// You can construct a concrete instance of `GetDhcpOptionsSetsSetAssociateVpcInput` via:
-//
-//	GetDhcpOptionsSetsSetAssociateVpcArgs{...}
-type GetDhcpOptionsSetsSetAssociateVpcInput interface {
-	pulumi.Input
-
-	ToGetDhcpOptionsSetsSetAssociateVpcOutput() GetDhcpOptionsSetsSetAssociateVpcOutput
-	ToGetDhcpOptionsSetsSetAssociateVpcOutputWithContext(context.Context) GetDhcpOptionsSetsSetAssociateVpcOutput
-}
-
-type GetDhcpOptionsSetsSetAssociateVpcArgs struct {
-	// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
-	AssociateStatus pulumi.StringInput `pulumi:"associateStatus"`
-	// The ID of the VPC network that is associated with the DHCP options set.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
-}
-
-func (GetDhcpOptionsSetsSetAssociateVpcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDhcpOptionsSetsSetAssociateVpc)(nil)).Elem()
-}
-
-func (i GetDhcpOptionsSetsSetAssociateVpcArgs) ToGetDhcpOptionsSetsSetAssociateVpcOutput() GetDhcpOptionsSetsSetAssociateVpcOutput {
-	return i.ToGetDhcpOptionsSetsSetAssociateVpcOutputWithContext(context.Background())
-}
-
-func (i GetDhcpOptionsSetsSetAssociateVpcArgs) ToGetDhcpOptionsSetsSetAssociateVpcOutputWithContext(ctx context.Context) GetDhcpOptionsSetsSetAssociateVpcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDhcpOptionsSetsSetAssociateVpcOutput)
-}
-
-// GetDhcpOptionsSetsSetAssociateVpcArrayInput is an input type that accepts GetDhcpOptionsSetsSetAssociateVpcArray and GetDhcpOptionsSetsSetAssociateVpcArrayOutput values.
-// You can construct a concrete instance of `GetDhcpOptionsSetsSetAssociateVpcArrayInput` via:
-//
-//	GetDhcpOptionsSetsSetAssociateVpcArray{ GetDhcpOptionsSetsSetAssociateVpcArgs{...} }
-type GetDhcpOptionsSetsSetAssociateVpcArrayInput interface {
-	pulumi.Input
-
-	ToGetDhcpOptionsSetsSetAssociateVpcArrayOutput() GetDhcpOptionsSetsSetAssociateVpcArrayOutput
-	ToGetDhcpOptionsSetsSetAssociateVpcArrayOutputWithContext(context.Context) GetDhcpOptionsSetsSetAssociateVpcArrayOutput
-}
-
-type GetDhcpOptionsSetsSetAssociateVpcArray []GetDhcpOptionsSetsSetAssociateVpcInput
-
-func (GetDhcpOptionsSetsSetAssociateVpcArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDhcpOptionsSetsSetAssociateVpc)(nil)).Elem()
-}
-
-func (i GetDhcpOptionsSetsSetAssociateVpcArray) ToGetDhcpOptionsSetsSetAssociateVpcArrayOutput() GetDhcpOptionsSetsSetAssociateVpcArrayOutput {
-	return i.ToGetDhcpOptionsSetsSetAssociateVpcArrayOutputWithContext(context.Background())
-}
-
-func (i GetDhcpOptionsSetsSetAssociateVpcArray) ToGetDhcpOptionsSetsSetAssociateVpcArrayOutputWithContext(ctx context.Context) GetDhcpOptionsSetsSetAssociateVpcArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDhcpOptionsSetsSetAssociateVpcArrayOutput)
-}
-
-type GetDhcpOptionsSetsSetAssociateVpcOutput struct{ *pulumi.OutputState }
-
-func (GetDhcpOptionsSetsSetAssociateVpcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDhcpOptionsSetsSetAssociateVpc)(nil)).Elem()
-}
-
-func (o GetDhcpOptionsSetsSetAssociateVpcOutput) ToGetDhcpOptionsSetsSetAssociateVpcOutput() GetDhcpOptionsSetsSetAssociateVpcOutput {
-	return o
-}
-
-func (o GetDhcpOptionsSetsSetAssociateVpcOutput) ToGetDhcpOptionsSetsSetAssociateVpcOutputWithContext(ctx context.Context) GetDhcpOptionsSetsSetAssociateVpcOutput {
-	return o
-}
-
-// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
-func (o GetDhcpOptionsSetsSetAssociateVpcOutput) AssociateStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDhcpOptionsSetsSetAssociateVpc) string { return v.AssociateStatus }).(pulumi.StringOutput)
-}
-
-// The ID of the VPC network that is associated with the DHCP options set.
-func (o GetDhcpOptionsSetsSetAssociateVpcOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDhcpOptionsSetsSetAssociateVpc) string { return v.VpcId }).(pulumi.StringOutput)
-}
-
-type GetDhcpOptionsSetsSetAssociateVpcArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDhcpOptionsSetsSetAssociateVpcArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDhcpOptionsSetsSetAssociateVpc)(nil)).Elem()
-}
-
-func (o GetDhcpOptionsSetsSetAssociateVpcArrayOutput) ToGetDhcpOptionsSetsSetAssociateVpcArrayOutput() GetDhcpOptionsSetsSetAssociateVpcArrayOutput {
-	return o
-}
-
-func (o GetDhcpOptionsSetsSetAssociateVpcArrayOutput) ToGetDhcpOptionsSetsSetAssociateVpcArrayOutputWithContext(ctx context.Context) GetDhcpOptionsSetsSetAssociateVpcArrayOutput {
-	return o
-}
-
-func (o GetDhcpOptionsSetsSetAssociateVpcArrayOutput) Index(i pulumi.IntInput) GetDhcpOptionsSetsSetAssociateVpcOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDhcpOptionsSetsSetAssociateVpc {
-		return vs[0].([]GetDhcpOptionsSetsSetAssociateVpc)[vs[1].(int)]
-	}).(GetDhcpOptionsSetsSetAssociateVpcOutput)
 }
 
 type GetEnhancedNatAvailableZonesZone struct {
@@ -8831,8 +8725,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCommonBandwidthPackagesPackagePublicIpAddressArrayInput)(nil)).Elem(), GetCommonBandwidthPackagesPackagePublicIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDhcpOptionsSetsSetInput)(nil)).Elem(), GetDhcpOptionsSetsSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDhcpOptionsSetsSetArrayInput)(nil)).Elem(), GetDhcpOptionsSetsSetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDhcpOptionsSetsSetAssociateVpcInput)(nil)).Elem(), GetDhcpOptionsSetsSetAssociateVpcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDhcpOptionsSetsSetAssociateVpcArrayInput)(nil)).Elem(), GetDhcpOptionsSetsSetAssociateVpcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnhancedNatAvailableZonesZoneInput)(nil)).Elem(), GetEnhancedNatAvailableZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnhancedNatAvailableZonesZoneArrayInput)(nil)).Elem(), GetEnhancedNatAvailableZonesZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardEntriesEntryInput)(nil)).Elem(), GetForwardEntriesEntryArgs{})
@@ -8935,8 +8827,6 @@ func init() {
 	pulumi.RegisterOutputType(GetCommonBandwidthPackagesPackagePublicIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDhcpOptionsSetsSetOutput{})
 	pulumi.RegisterOutputType(GetDhcpOptionsSetsSetArrayOutput{})
-	pulumi.RegisterOutputType(GetDhcpOptionsSetsSetAssociateVpcOutput{})
-	pulumi.RegisterOutputType(GetDhcpOptionsSetsSetAssociateVpcArrayOutput{})
 	pulumi.RegisterOutputType(GetEnhancedNatAvailableZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetEnhancedNatAvailableZonesZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetForwardEntriesEntryOutput{})
