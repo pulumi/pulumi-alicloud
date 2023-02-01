@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     ids: ["IdExample"],
  *     nameRegex: "NameRegexExample",
  * });
- * export const alicloudServiceCatalogProvisionedProductExampleId = _default.then(_default => _default.products?.[0]?.id);
+ * export const alicloudServiceCatalogProvisionedProductExampleId = _default.then(_default => _default.provisionedProducts?.[0]?.id);
  * ```
  */
 export function getProvisionedProducts(args?: GetProvisionedProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetProvisionedProductsResult> {
@@ -85,9 +85,13 @@ export interface GetProvisionedProductsResult {
     readonly pageNumber?: number;
     readonly pageSize?: number;
     /**
-     * A list of Provisioned Product Entries. Each element contains the following attributes:
+     * @deprecated Field 'products' has been deprecated from provider version 1.197.0.
      */
     readonly products: outputs.servicecatalog.GetProvisionedProductsProduct[];
+    /**
+     * A list of Provisioned Product Entries. Each element contains the following attributes:
+     */
+    readonly provisionedProducts: outputs.servicecatalog.GetProvisionedProductsProvisionedProduct[];
     readonly sortBy?: string;
     readonly sortOrder?: string;
 }
@@ -106,7 +110,7 @@ export interface GetProvisionedProductsResult {
  *     ids: ["IdExample"],
  *     nameRegex: "NameRegexExample",
  * });
- * export const alicloudServiceCatalogProvisionedProductExampleId = _default.then(_default => _default.products?.[0]?.id);
+ * export const alicloudServiceCatalogProvisionedProductExampleId = _default.then(_default => _default.provisionedProducts?.[0]?.id);
  * ```
  */
 export function getProvisionedProductsOutput(args?: GetProvisionedProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProvisionedProductsResult> {

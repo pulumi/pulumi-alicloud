@@ -82,7 +82,7 @@ def get_endpoints(db_cluster_id: Optional[str] = None,
                   db_endpoint_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEndpointsResult:
     """
-    The `polardb.get_endpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
+    The _polardb_get_endpoints_ data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
     Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
 
     > **NOTE:** Available in v1.68.0+.
@@ -121,7 +121,7 @@ def get_endpoints_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
                          db_endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointsResult]:
     """
-    The `polardb.get_endpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
+    The _polardb_get_endpoints_ data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
     Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
 
     > **NOTE:** Available in v1.68.0+.

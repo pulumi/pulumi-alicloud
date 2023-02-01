@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCloudFirewallInstanceMemberExampleId"] = @default.Apply(getInstanceMembersResult =&gt; getInstanceMembersResult).Apply(@default =&gt; @default.Apply(getInstanceMembersResult =&gt; getInstanceMembersResult.Members[0]?.Id)),
+        ///         ["alicloudCloudFirewallInstanceMemberExampleId"] = @default.Apply(@default =&gt; @default.Apply(getInstanceMembersResult =&gt; getInstanceMembersResult.Members[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCloudFirewallInstanceMemberExampleId"] = @default.Apply(getInstanceMembersResult =&gt; getInstanceMembersResult).Apply(@default =&gt; @default.Apply(getInstanceMembersResult =&gt; getInstanceMembersResult.Members[0]?.Id)),
+        ///         ["alicloudCloudFirewallInstanceMemberExampleId"] = @default.Apply(@default =&gt; @default.Apply(getInstanceMembersResult =&gt; getInstanceMembersResult.Members[0]?.Id)),
         ///     };
         /// });
         /// ```

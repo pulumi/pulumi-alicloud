@@ -80,6 +80,31 @@ export type BasicIpSet = import("./basicIpSet").BasicIpSet;
 export const BasicIpSet: typeof import("./basicIpSet").BasicIpSet = null as any;
 utilities.lazyLoad(exports, ["BasicIpSet"], () => require("./basicIpSet"));
 
+export { CustomRoutingEndpointArgs, CustomRoutingEndpointState } from "./customRoutingEndpoint";
+export type CustomRoutingEndpoint = import("./customRoutingEndpoint").CustomRoutingEndpoint;
+export const CustomRoutingEndpoint: typeof import("./customRoutingEndpoint").CustomRoutingEndpoint = null as any;
+utilities.lazyLoad(exports, ["CustomRoutingEndpoint"], () => require("./customRoutingEndpoint"));
+
+export { CustomRoutingEndpointGroupArgs, CustomRoutingEndpointGroupState } from "./customRoutingEndpointGroup";
+export type CustomRoutingEndpointGroup = import("./customRoutingEndpointGroup").CustomRoutingEndpointGroup;
+export const CustomRoutingEndpointGroup: typeof import("./customRoutingEndpointGroup").CustomRoutingEndpointGroup = null as any;
+utilities.lazyLoad(exports, ["CustomRoutingEndpointGroup"], () => require("./customRoutingEndpointGroup"));
+
+export { CustomRoutingEndpointGroupDestinationArgs, CustomRoutingEndpointGroupDestinationState } from "./customRoutingEndpointGroupDestination";
+export type CustomRoutingEndpointGroupDestination = import("./customRoutingEndpointGroupDestination").CustomRoutingEndpointGroupDestination;
+export const CustomRoutingEndpointGroupDestination: typeof import("./customRoutingEndpointGroupDestination").CustomRoutingEndpointGroupDestination = null as any;
+utilities.lazyLoad(exports, ["CustomRoutingEndpointGroupDestination"], () => require("./customRoutingEndpointGroupDestination"));
+
+export { CustomRoutingEndpointTrafficPolicyArgs, CustomRoutingEndpointTrafficPolicyState } from "./customRoutingEndpointTrafficPolicy";
+export type CustomRoutingEndpointTrafficPolicy = import("./customRoutingEndpointTrafficPolicy").CustomRoutingEndpointTrafficPolicy;
+export const CustomRoutingEndpointTrafficPolicy: typeof import("./customRoutingEndpointTrafficPolicy").CustomRoutingEndpointTrafficPolicy = null as any;
+utilities.lazyLoad(exports, ["CustomRoutingEndpointTrafficPolicy"], () => require("./customRoutingEndpointTrafficPolicy"));
+
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+
 export { EndpointGroupArgs, EndpointGroupState } from "./endpointGroup";
 export type EndpointGroup = import("./endpointGroup").EndpointGroup;
 export const EndpointGroup: typeof import("./endpointGroup").EndpointGroup = null as any;
@@ -134,6 +159,36 @@ export { GetBasicEndpointsArgs, GetBasicEndpointsResult, GetBasicEndpointsOutput
 export const getBasicEndpoints: typeof import("./getBasicEndpoints").getBasicEndpoints = null as any;
 export const getBasicEndpointsOutput: typeof import("./getBasicEndpoints").getBasicEndpointsOutput = null as any;
 utilities.lazyLoad(exports, ["getBasicEndpoints","getBasicEndpointsOutput"], () => require("./getBasicEndpoints"));
+
+export { GetCustomRoutingEndpointGroupDestinationsArgs, GetCustomRoutingEndpointGroupDestinationsResult, GetCustomRoutingEndpointGroupDestinationsOutputArgs } from "./getCustomRoutingEndpointGroupDestinations";
+export const getCustomRoutingEndpointGroupDestinations: typeof import("./getCustomRoutingEndpointGroupDestinations").getCustomRoutingEndpointGroupDestinations = null as any;
+export const getCustomRoutingEndpointGroupDestinationsOutput: typeof import("./getCustomRoutingEndpointGroupDestinations").getCustomRoutingEndpointGroupDestinationsOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomRoutingEndpointGroupDestinations","getCustomRoutingEndpointGroupDestinationsOutput"], () => require("./getCustomRoutingEndpointGroupDestinations"));
+
+export { GetCustomRoutingEndpointGroupsArgs, GetCustomRoutingEndpointGroupsResult, GetCustomRoutingEndpointGroupsOutputArgs } from "./getCustomRoutingEndpointGroups";
+export const getCustomRoutingEndpointGroups: typeof import("./getCustomRoutingEndpointGroups").getCustomRoutingEndpointGroups = null as any;
+export const getCustomRoutingEndpointGroupsOutput: typeof import("./getCustomRoutingEndpointGroups").getCustomRoutingEndpointGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomRoutingEndpointGroups","getCustomRoutingEndpointGroupsOutput"], () => require("./getCustomRoutingEndpointGroups"));
+
+export { GetCustomRoutingEndpointTrafficPoliciesArgs, GetCustomRoutingEndpointTrafficPoliciesResult, GetCustomRoutingEndpointTrafficPoliciesOutputArgs } from "./getCustomRoutingEndpointTrafficPolicies";
+export const getCustomRoutingEndpointTrafficPolicies: typeof import("./getCustomRoutingEndpointTrafficPolicies").getCustomRoutingEndpointTrafficPolicies = null as any;
+export const getCustomRoutingEndpointTrafficPoliciesOutput: typeof import("./getCustomRoutingEndpointTrafficPolicies").getCustomRoutingEndpointTrafficPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomRoutingEndpointTrafficPolicies","getCustomRoutingEndpointTrafficPoliciesOutput"], () => require("./getCustomRoutingEndpointTrafficPolicies"));
+
+export { GetCustomRoutingEndpointsArgs, GetCustomRoutingEndpointsResult, GetCustomRoutingEndpointsOutputArgs } from "./getCustomRoutingEndpoints";
+export const getCustomRoutingEndpoints: typeof import("./getCustomRoutingEndpoints").getCustomRoutingEndpoints = null as any;
+export const getCustomRoutingEndpointsOutput: typeof import("./getCustomRoutingEndpoints").getCustomRoutingEndpointsOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomRoutingEndpoints","getCustomRoutingEndpointsOutput"], () => require("./getCustomRoutingEndpoints"));
+
+export { GetCustomRoutingPortMappingsArgs, GetCustomRoutingPortMappingsResult, GetCustomRoutingPortMappingsOutputArgs } from "./getCustomRoutingPortMappings";
+export const getCustomRoutingPortMappings: typeof import("./getCustomRoutingPortMappings").getCustomRoutingPortMappings = null as any;
+export const getCustomRoutingPortMappingsOutput: typeof import("./getCustomRoutingPortMappings").getCustomRoutingPortMappingsOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomRoutingPortMappings","getCustomRoutingPortMappingsOutput"], () => require("./getCustomRoutingPortMappings"));
+
+export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
+export const getDomains: typeof import("./getDomains").getDomains = null as any;
+export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
 
 export { GetEndpointGroupsArgs, GetEndpointGroupsResult, GetEndpointGroupsOutputArgs } from "./getEndpointGroups";
 export const getEndpointGroups: typeof import("./getEndpointGroups").getEndpointGroups = null as any;
@@ -200,6 +255,16 @@ const _module = {
                 return new BasicEndpointGroup(name, <any>undefined, { urn })
             case "alicloud:ga/basicIpSet:BasicIpSet":
                 return new BasicIpSet(name, <any>undefined, { urn })
+            case "alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint":
+                return new CustomRoutingEndpoint(name, <any>undefined, { urn })
+            case "alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup":
+                return new CustomRoutingEndpointGroup(name, <any>undefined, { urn })
+            case "alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination":
+                return new CustomRoutingEndpointGroupDestination(name, <any>undefined, { urn })
+            case "alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy":
+                return new CustomRoutingEndpointTrafficPolicy(name, <any>undefined, { urn })
+            case "alicloud:ga/domain:Domain":
+                return new Domain(name, <any>undefined, { urn })
             case "alicloud:ga/endpointGroup:EndpointGroup":
                 return new EndpointGroup(name, <any>undefined, { urn })
             case "alicloud:ga/forwardingRule:ForwardingRule":
@@ -228,6 +293,11 @@ pulumi.runtime.registerResourceModule("alicloud", "ga/basicAccelerator", _module
 pulumi.runtime.registerResourceModule("alicloud", "ga/basicEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/basicEndpointGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/basicIpSet", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/customRoutingEndpoint", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/customRoutingEndpointGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/customRoutingEndpointGroupDestination", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/customRoutingEndpointTrafficPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ga/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/endpointGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/forwardingRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ga/ipSet", _module)

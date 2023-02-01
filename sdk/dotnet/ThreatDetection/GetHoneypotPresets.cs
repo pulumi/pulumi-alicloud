@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionHoneypotPresetExampleId"] = @default.Apply(getHoneypotPresetsResult =&gt; getHoneypotPresetsResult).Apply(@default =&gt; @default.Apply(getHoneypotPresetsResult =&gt; getHoneypotPresetsResult.Presets[0]?.Id)),
+        ///         ["alicloudThreatDetectionHoneypotPresetExampleId"] = @default.Apply(@default =&gt; @default.Apply(getHoneypotPresetsResult =&gt; getHoneypotPresetsResult.Presets[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionHoneypotPresetExampleId"] = @default.Apply(getHoneypotPresetsResult =&gt; getHoneypotPresetsResult).Apply(@default =&gt; @default.Apply(getHoneypotPresetsResult =&gt; getHoneypotPresetsResult.Presets[0]?.Id)),
+        ///         ["alicloudThreatDetectionHoneypotPresetExampleId"] = @default.Apply(@default =&gt; @default.Apply(getHoneypotPresetsResult =&gt; getHoneypotPresetsResult.Presets[0]?.Id)),
         ///     };
         /// });
         /// ```

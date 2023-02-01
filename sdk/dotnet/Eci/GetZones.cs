@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Eci
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEciZonesId"] = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[0])),
+        ///         ["firstEciZonesId"] = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[0])),
         ///     };
         /// });
         /// ```
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Eci
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEciZonesId"] = @default.Apply(getZonesResult =&gt; getZonesResult).Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[0])),
+        ///         ["firstEciZonesId"] = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[0])),
         ///     };
         /// });
         /// ```

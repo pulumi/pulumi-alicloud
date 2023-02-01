@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("alicloudServiceCatalogProvisionedProductExampleId", _default.Products[0].Id)
+//			ctx.Export("alicloudServiceCatalogProvisionedProductExampleId", _default.ProvisionedProducts[0].Id)
 //			return nil
 //		})
 //	}
@@ -81,10 +81,12 @@ type GetProvisionedProductsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	PageNumber *int     `pulumi:"pageNumber"`
 	PageSize   *int     `pulumi:"pageSize"`
+	// Deprecated: Field 'products' has been deprecated from provider version 1.197.0.
+	Products []GetProvisionedProductsProduct `pulumi:"products"`
 	// A list of Provisioned Product Entries. Each element contains the following attributes:
-	Products  []GetProvisionedProductsProduct `pulumi:"products"`
-	SortBy    *string                         `pulumi:"sortBy"`
-	SortOrder *string                         `pulumi:"sortOrder"`
+	ProvisionedProducts []GetProvisionedProductsProvisionedProduct `pulumi:"provisionedProducts"`
+	SortBy              *string                                    `pulumi:"sortBy"`
+	SortOrder           *string                                    `pulumi:"sortOrder"`
 }
 
 func GetProvisionedProductsOutput(ctx *pulumi.Context, args GetProvisionedProductsOutputArgs, opts ...pulumi.InvokeOption) GetProvisionedProductsResultOutput {
@@ -173,9 +175,16 @@ func (o GetProvisionedProductsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetProvisionedProductsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
-// A list of Provisioned Product Entries. Each element contains the following attributes:
+// Deprecated: Field 'products' has been deprecated from provider version 1.197.0.
 func (o GetProvisionedProductsResultOutput) Products() GetProvisionedProductsProductArrayOutput {
 	return o.ApplyT(func(v GetProvisionedProductsResult) []GetProvisionedProductsProduct { return v.Products }).(GetProvisionedProductsProductArrayOutput)
+}
+
+// A list of Provisioned Product Entries. Each element contains the following attributes:
+func (o GetProvisionedProductsResultOutput) ProvisionedProducts() GetProvisionedProductsProvisionedProductArrayOutput {
+	return o.ApplyT(func(v GetProvisionedProductsResult) []GetProvisionedProductsProvisionedProduct {
+		return v.ProvisionedProducts
+	}).(GetProvisionedProductsProvisionedProductArrayOutput)
 }
 
 func (o GetProvisionedProductsResultOutput) SortBy() pulumi.StringPtrOutput {

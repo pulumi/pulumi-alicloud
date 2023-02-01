@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstPolicyVersionId"] = @default.Apply(getPolicyVersionsResult =&gt; getPolicyVersionsResult).Apply(@default =&gt; @default.Apply(getPolicyVersionsResult =&gt; getPolicyVersionsResult.Versions[0]?.Id)),
+        ///         ["firstPolicyVersionId"] = @default.Apply(@default =&gt; @default.Apply(getPolicyVersionsResult =&gt; getPolicyVersionsResult.Versions[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstPolicyVersionId"] = @default.Apply(getPolicyVersionsResult =&gt; getPolicyVersionsResult).Apply(@default =&gt; @default.Apply(getPolicyVersionsResult =&gt; getPolicyVersionsResult.Versions[0]?.Id)),
+        ///         ["firstPolicyVersionId"] = @default.Apply(@default =&gt; @default.Apply(getPolicyVersionsResult =&gt; getPolicyVersionsResult.Versions[0]?.Id)),
         ///     };
         /// });
         /// ```

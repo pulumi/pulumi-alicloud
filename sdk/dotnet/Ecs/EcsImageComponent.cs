@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         Content = "RUN yum update -y",
     ///         Description = "example_value",
     ///         ImageComponentName = "example_value",
-    ///         ResourceGroupId = @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult).Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
     ///         SystemType = "Linux",
     ///         Tags = 
     ///         {

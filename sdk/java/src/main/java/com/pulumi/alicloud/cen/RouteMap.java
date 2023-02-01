@@ -242,14 +242,14 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;].
+     * A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;, &#34;VPN&#34;].
      * 
      */
     @Export(name="destinationChildInstanceTypes", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> destinationChildInstanceTypes;
 
     /**
-     * @return A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;].
+     * @return A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;, &#34;VPN&#34;].
      * 
      */
     public Output<Optional<List<String>>> destinationChildInstanceTypes() {

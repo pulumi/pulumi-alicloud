@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult).Apply(@default =&gt; @default.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult.Propagations[0]?.ResourceType)),
+        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult.Propagations[0]?.ResourceType)),
         ///     };
         /// });
         /// ```
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult).Apply(@default =&gt; @default.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult.Propagations[0]?.ResourceType)),
+        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterRouteTablePropagationsResult =&gt; getTransitRouterRouteTablePropagationsResult.Propagations[0]?.ResourceType)),
         ///     };
         /// });
         /// ```

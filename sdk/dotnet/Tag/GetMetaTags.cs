@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Tag
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["tagMetaTagDefault1"] = @default.Apply(getMetaTagsResult =&gt; getMetaTagsResult).Apply(@default =&gt; @default.Apply(getMetaTagsResult =&gt; getMetaTagsResult.Tags?.ValueName)),
+        ///         ["tagMetaTagDefault1"] = @default.Apply(@default =&gt; @default.Apply(getMetaTagsResult =&gt; getMetaTagsResult.Tags?.ValueName)),
         ///     };
         /// });
         /// ```
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Tag
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["tagMetaTagDefault1"] = @default.Apply(getMetaTagsResult =&gt; getMetaTagsResult).Apply(@default =&gt; @default.Apply(getMetaTagsResult =&gt; getMetaTagsResult.Tags?.ValueName)),
+        ///         ["tagMetaTagDefault1"] = @default.Apply(@default =&gt; @default.Apply(getMetaTagsResult =&gt; getMetaTagsResult.Tags?.ValueName)),
         ///     };
         /// });
         /// ```

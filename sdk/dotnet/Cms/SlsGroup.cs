@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Cms
     ///         {
     ///             new AliCloud.Cms.Inputs.SlsGroupSlsGroupConfigArgs
     ///             {
-    ///                 SlsUserId = @this.Apply(getAccountResult =&gt; getAccountResult).Apply(@this =&gt; @this.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///                 SlsUserId = @this.Apply(@this =&gt; @this.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///                 SlsLogstore = "Logstore-ECS",
     ///                 SlsProject = "aliyun-project",
     ///                 SlsRegion = "cn-hangzhou",

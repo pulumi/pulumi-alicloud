@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudServiceCatalogProductVersionExampleId"] = @default.Apply(getProductVersionsResult =&gt; getProductVersionsResult).Apply(@default =&gt; @default.Apply(getProductVersionsResult =&gt; getProductVersionsResult.Versions[0]?.Id)),
+        ///         ["alicloudServiceCatalogProductVersionExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProductVersionsResult =&gt; getProductVersionsResult.ProductVersions[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudServiceCatalogProductVersionExampleId"] = @default.Apply(getProductVersionsResult =&gt; getProductVersionsResult).Apply(@default =&gt; @default.Apply(getProductVersionsResult =&gt; getProductVersionsResult.Versions[0]?.Id)),
+        ///         ["alicloudServiceCatalogProductVersionExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProductVersionsResult =&gt; getProductVersionsResult.ProductVersions[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -180,6 +180,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// <summary>
         /// A list of Product Version Entries. Each element contains the following attributes:
         /// </summary>
+        public readonly ImmutableArray<Outputs.GetProductVersionsProductVersionResult> ProductVersions;
         public readonly ImmutableArray<Outputs.GetProductVersionsVersionResult> Versions;
 
         [OutputConstructor]
@@ -198,6 +199,8 @@ namespace Pulumi.AliCloud.ServiceCatalog
 
             string productId,
 
+            ImmutableArray<Outputs.GetProductVersionsProductVersionResult> productVersions,
+
             ImmutableArray<Outputs.GetProductVersionsVersionResult> versions)
         {
             EnableDetails = enableDetails;
@@ -207,6 +210,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
             Names = names;
             OutputFile = outputFile;
             ProductId = productId;
+            ProductVersions = productVersions;
             Versions = versions;
         }
     }

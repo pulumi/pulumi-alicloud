@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstInstanceName"] = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Name)),
+        ///         ["firstInstanceName"] = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Name)),
         ///     };
         /// });
         /// ```
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstInstanceName"] = @default.Apply(getInstancesResult =&gt; getInstancesResult).Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Name)),
+        ///         ["firstInstanceName"] = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Name)),
         ///     };
         /// });
         /// ```

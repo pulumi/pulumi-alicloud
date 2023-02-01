@@ -50,6 +50,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Log project policy, used to set a policy for a project.
+     */
+    public readonly policy!: pulumi.Output<string | undefined>;
+    /**
      * Log project tags.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -69,11 +73,13 @@ export class Project extends pulumi.CustomResource {
             const state = argsOrState as ProjectState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -94,6 +100,10 @@ export interface ProjectState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Log project policy, used to set a policy for a project.
+     */
+    policy?: pulumi.Input<string>;
+    /**
      * Log project tags.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
@@ -111,6 +121,10 @@ export interface ProjectArgs {
      * The name of the log project. It is the only in one Alicloud account.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Log project policy, used to set a policy for a project.
+     */
+    policy?: pulumi.Input<string>;
     /**
      * Log project tags.
      */

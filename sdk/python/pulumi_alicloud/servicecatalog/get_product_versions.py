@@ -22,7 +22,7 @@ class GetProductVersionsResult:
     """
     A collection of values returned by getProductVersions.
     """
-    def __init__(__self__, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None, product_id=None, versions=None):
+    def __init__(__self__, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None, product_id=None, product_versions=None, versions=None):
         if enable_details and not isinstance(enable_details, bool):
             raise TypeError("Expected argument 'enable_details' to be a bool")
         pulumi.set(__self__, "enable_details", enable_details)
@@ -44,8 +44,15 @@ class GetProductVersionsResult:
         if product_id and not isinstance(product_id, str):
             raise TypeError("Expected argument 'product_id' to be a str")
         pulumi.set(__self__, "product_id", product_id)
+        if product_versions and not isinstance(product_versions, list):
+            raise TypeError("Expected argument 'product_versions' to be a list")
+        pulumi.set(__self__, "product_versions", product_versions)
         if versions and not isinstance(versions, list):
             raise TypeError("Expected argument 'versions' to be a list")
+        if versions is not None:
+            warnings.warn("""Field 'versions' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
+            pulumi.log.warn("""versions is deprecated: Field 'versions' has been deprecated from provider version 1.197.0.""")
+
         pulumi.set(__self__, "versions", versions)
 
     @property
@@ -93,11 +100,16 @@ class GetProductVersionsResult:
         return pulumi.get(self, "product_id")
 
     @property
-    @pulumi.getter
-    def versions(self) -> Sequence['outputs.GetProductVersionsVersionResult']:
+    @pulumi.getter(name="productVersions")
+    def product_versions(self) -> Sequence['outputs.GetProductVersionsProductVersionResult']:
         """
         A list of Product Version Entries. Each element contains the following attributes:
         """
+        return pulumi.get(self, "product_versions")
+
+    @property
+    @pulumi.getter
+    def versions(self) -> Sequence['outputs.GetProductVersionsVersionResult']:
         return pulumi.get(self, "versions")
 
 
@@ -114,6 +126,7 @@ class AwaitableGetProductVersionsResult(GetProductVersionsResult):
             names=self.names,
             output_file=self.output_file,
             product_id=self.product_id,
+            product_versions=self.product_versions,
             versions=self.versions)
 
 
@@ -136,7 +149,7 @@ def get_product_versions(enable_details: Optional[bool] = None,
 
     default = alicloud.servicecatalog.get_product_versions(name_regex="1.0.0",
         product_id="prod-bp125x4k29wb7q")
-    pulumi.export("alicloudServiceCatalogProductVersionExampleId", default.versions[0].id)
+    pulumi.export("alicloudServiceCatalogProductVersionExampleId", default.product_versions[0].id)
     ```
 
 
@@ -161,6 +174,7 @@ def get_product_versions(enable_details: Optional[bool] = None,
         names=__ret__.names,
         output_file=__ret__.output_file,
         product_id=__ret__.product_id,
+        product_versions=__ret__.product_versions,
         versions=__ret__.versions)
 
 
@@ -184,7 +198,7 @@ def get_product_versions_output(enable_details: Optional[pulumi.Input[Optional[b
 
     default = alicloud.servicecatalog.get_product_versions(name_regex="1.0.0",
         product_id="prod-bp125x4k29wb7q")
-    pulumi.export("alicloudServiceCatalogProductVersionExampleId", default.versions[0].id)
+    pulumi.export("alicloudServiceCatalogProductVersionExampleId", default.product_versions[0].id)
     ```
 
 

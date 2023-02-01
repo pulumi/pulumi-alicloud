@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ros
     ///         },
     ///         SourceResourceGroup = new AliCloud.Ros.Inputs.TemplateScratchSourceResourceGroupArgs
     ///         {
-    ///             ResourceGroupId = @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult).Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///             ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///             ResourceTypeFilters = new[]
     ///             {
     ///                 "ALIYUN::ECS::VPC",

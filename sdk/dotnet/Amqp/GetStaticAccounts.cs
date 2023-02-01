@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Amqp
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudAmqpStaticAccountExampleId"] = @default.Apply(getStaticAccountsResult =&gt; getStaticAccountsResult).Apply(@default =&gt; @default.Apply(getStaticAccountsResult =&gt; getStaticAccountsResult.Accounts[0]?.Id)),
+        ///         ["alicloudAmqpStaticAccountExampleId"] = @default.Apply(@default =&gt; @default.Apply(getStaticAccountsResult =&gt; getStaticAccountsResult.Accounts[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Amqp
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudAmqpStaticAccountExampleId"] = @default.Apply(getStaticAccountsResult =&gt; getStaticAccountsResult).Apply(@default =&gt; @default.Apply(getStaticAccountsResult =&gt; getStaticAccountsResult.Accounts[0]?.Id)),
+        ///         ["alicloudAmqpStaticAccountExampleId"] = @default.Apply(@default =&gt; @default.Apply(getStaticAccountsResult =&gt; getStaticAccountsResult.Accounts[0]?.Id)),
         ///     };
         /// });
         /// ```

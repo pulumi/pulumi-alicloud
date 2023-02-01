@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["resourceDirectoryId"] = @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult).Apply(@default =&gt; @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult.Directories[0]?.Id)),
+        ///         ["resourceDirectoryId"] = @default.Apply(@default =&gt; @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult.Directories[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["resourceDirectoryId"] = @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult).Apply(@default =&gt; @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult.Directories[0]?.Id)),
+        ///         ["resourceDirectoryId"] = @default.Apply(@default =&gt; @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult.Directories[0]?.Id)),
         ///     };
         /// });
         /// ```

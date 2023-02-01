@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCenChildInstanceRouteEntryToAttachmentExampleId"] = @default.Apply(getChildInstanceRouteEntryToAttachmentsResult =&gt; getChildInstanceRouteEntryToAttachmentsResult).Apply(@default =&gt; @default.Apply(getChildInstanceRouteEntryToAttachmentsResult =&gt; getChildInstanceRouteEntryToAttachmentsResult.Attachments[0]?.Id)),
+        ///         ["alicloudCenChildInstanceRouteEntryToAttachmentExampleId"] = @default.Apply(@default =&gt; @default.Apply(getChildInstanceRouteEntryToAttachmentsResult =&gt; getChildInstanceRouteEntryToAttachmentsResult.Attachments[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCenChildInstanceRouteEntryToAttachmentExampleId"] = @default.Apply(getChildInstanceRouteEntryToAttachmentsResult =&gt; getChildInstanceRouteEntryToAttachmentsResult).Apply(@default =&gt; @default.Apply(getChildInstanceRouteEntryToAttachmentsResult =&gt; getChildInstanceRouteEntryToAttachmentsResult.Attachments[0]?.Id)),
+        ///         ["alicloudCenChildInstanceRouteEntryToAttachmentExampleId"] = @default.Apply(@default =&gt; @default.Apply(getChildInstanceRouteEntryToAttachmentsResult =&gt; getChildInstanceRouteEntryToAttachmentsResult.Attachments[0]?.Id)),
         ///     };
         /// });
         /// ```

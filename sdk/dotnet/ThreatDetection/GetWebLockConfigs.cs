@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionWebLockConfigExampleId"] = @default.Apply(getWebLockConfigsResult =&gt; getWebLockConfigsResult).Apply(@default =&gt; @default.Apply(getWebLockConfigsResult =&gt; getWebLockConfigsResult.Configs[0]?.Id)),
+        ///         ["alicloudThreatDetectionWebLockConfigExampleId"] = @default.Apply(@default =&gt; @default.Apply(getWebLockConfigsResult =&gt; getWebLockConfigsResult.Configs[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionWebLockConfigExampleId"] = @default.Apply(getWebLockConfigsResult =&gt; getWebLockConfigsResult).Apply(@default =&gt; @default.Apply(getWebLockConfigsResult =&gt; getWebLockConfigsResult.Configs[0]?.Id)),
+        ///         ["alicloudThreatDetectionWebLockConfigExampleId"] = @default.Apply(@default =&gt; @default.Apply(getWebLockConfigsResult =&gt; getWebLockConfigsResult.Configs[0]?.Id)),
         ///     };
         /// });
         /// ```

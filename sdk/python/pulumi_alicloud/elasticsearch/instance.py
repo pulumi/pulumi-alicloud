@@ -510,6 +510,8 @@ class _InstanceState:
                  port: Optional[pulumi.Input[int]] = None,
                  private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 public_domain: Optional[pulumi.Input[str]] = None,
+                 public_port: Optional[pulumi.Input[int]] = None,
                  public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -546,6 +548,8 @@ class _InstanceState:
         :param pulumi.Input[int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
         :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+        :param pulumi.Input[str] public_domain: (Available in 1.197.0+) Instance connection public domain.
+        :param pulumi.Input[int] public_port: (Available in 1.197.0+) Instance connection public port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
         :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
@@ -609,6 +613,10 @@ class _InstanceState:
             pulumi.set(__self__, "private_whitelists", private_whitelists)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
+        if public_domain is not None:
+            pulumi.set(__self__, "public_domain", public_domain)
+        if public_port is not None:
+            pulumi.set(__self__, "public_port", public_port)
         if public_whitelists is not None:
             pulumi.set(__self__, "public_whitelists", public_whitelists)
         if resource_group_id is not None:
@@ -937,6 +945,30 @@ class _InstanceState:
     @protocol.setter
     def protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="publicDomain")
+    def public_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.197.0+) Instance connection public domain.
+        """
+        return pulumi.get(self, "public_domain")
+
+    @public_domain.setter
+    def public_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_domain", value)
+
+    @property
+    @pulumi.getter(name="publicPort")
+    def public_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Available in 1.197.0+) Instance connection public port.
+        """
+        return pulumi.get(self, "public_port")
+
+    @public_port.setter
+    def public_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "public_port", value)
 
     @property
     @pulumi.getter(name="publicWhitelists")
@@ -1296,6 +1328,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["kibana_domain"] = None
             __props__.__dict__["kibana_port"] = None
             __props__.__dict__["port"] = None
+            __props__.__dict__["public_domain"] = None
+            __props__.__dict__["public_port"] = None
             __props__.__dict__["status"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -1335,6 +1369,8 @@ class Instance(pulumi.CustomResource):
             port: Optional[pulumi.Input[int]] = None,
             private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
+            public_domain: Optional[pulumi.Input[str]] = None,
+            public_port: Optional[pulumi.Input[int]] = None,
             public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             setting_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1376,6 +1412,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
         :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+        :param pulumi.Input[str] public_domain: (Available in 1.197.0+) Instance connection public domain.
+        :param pulumi.Input[int] public_port: (Available in 1.197.0+) Instance connection public port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] public_whitelists: Set the instance's IP whitelist in internet network.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Elasticsearch instance belongs.
         :param pulumi.Input[Mapping[str, Any]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
@@ -1417,6 +1455,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["port"] = port
         __props__.__dict__["private_whitelists"] = private_whitelists
         __props__.__dict__["protocol"] = protocol
+        __props__.__dict__["public_domain"] = public_domain
+        __props__.__dict__["public_port"] = public_port
         __props__.__dict__["public_whitelists"] = public_whitelists
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["setting_config"] = setting_config
@@ -1634,6 +1674,22 @@ class Instance(pulumi.CustomResource):
         Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
         """
         return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="publicDomain")
+    def public_domain(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.197.0+) Instance connection public domain.
+        """
+        return pulumi.get(self, "public_domain")
+
+    @property
+    @pulumi.getter(name="publicPort")
+    def public_port(self) -> pulumi.Output[int]:
+        """
+        (Available in 1.197.0+) Instance connection public port.
+        """
+        return pulumi.get(self, "public_port")
 
     @property
     @pulumi.getter(name="publicWhitelists")

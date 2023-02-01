@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["nasProtocolsProtocol"] = @default.Apply(getProtocolsResult =&gt; getProtocolsResult).Apply(@default =&gt; @default.Apply(getProtocolsResult =&gt; getProtocolsResult.Protocols[0])),
+        ///         ["nasProtocolsProtocol"] = @default.Apply(@default =&gt; @default.Apply(getProtocolsResult =&gt; getProtocolsResult.Protocols[0])),
         ///     };
         /// });
         /// ```
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Nas
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["nasProtocolsProtocol"] = @default.Apply(getProtocolsResult =&gt; getProtocolsResult).Apply(@default =&gt; @default.Apply(getProtocolsResult =&gt; getProtocolsResult.Protocols[0])),
+        ///         ["nasProtocolsProtocol"] = @default.Apply(@default =&gt; @default.Apply(getProtocolsResult =&gt; getProtocolsResult.Protocols[0])),
         ///     };
         /// });
         /// ```

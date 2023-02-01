@@ -7,10 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
- *
- * > **NOTE:** Available in 1.196.0+
- *
  * ## Example Usage
  *
  * ```typescript
@@ -75,10 +71,6 @@ export interface GetProductAsEndUsersResult {
     readonly users: outputs.servicecatalog.GetProductAsEndUsersUser[];
 }
 /**
- * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
- *
- * > **NOTE:** Available in 1.196.0+
- *
  * ## Example Usage
  *
  * ```typescript

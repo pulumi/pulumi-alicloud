@@ -231,7 +231,7 @@ def get_instances(connection_mode: Optional[str] = None,
                   vswitch_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The `rds.get_instances` data source provides a collection of RDS instances available in Alibaba Cloud account.
+    The _rds_get_instances_ data source provides a collection of RDS instances available in Alibaba Cloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
     ## Example Usage
@@ -315,7 +315,7 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
                          vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    The `rds.get_instances` data source provides a collection of RDS instances available in Alibaba Cloud account.
+    The _rds_get_instances_ data source provides a collection of RDS instances available in Alibaba Cloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
     ## Example Usage

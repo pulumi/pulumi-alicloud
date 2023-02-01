@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionVulWhitelistExampleId"] = @default.Apply(getVulWhitelistsResult =&gt; getVulWhitelistsResult).Apply(@default =&gt; @default.Apply(getVulWhitelistsResult =&gt; getVulWhitelistsResult.Whitelists[0]?.Id)),
+        ///         ["alicloudThreatDetectionVulWhitelistExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVulWhitelistsResult =&gt; getVulWhitelistsResult.Whitelists[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionVulWhitelistExampleId"] = @default.Apply(getVulWhitelistsResult =&gt; getVulWhitelistsResult).Apply(@default =&gt; @default.Apply(getVulWhitelistsResult =&gt; getVulWhitelistsResult.Whitelists[0]?.Id)),
+        ///         ["alicloudThreatDetectionVulWhitelistExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVulWhitelistsResult =&gt; getVulWhitelistsResult.Whitelists[0]?.Id)),
         ///     };
         /// });
         /// ```

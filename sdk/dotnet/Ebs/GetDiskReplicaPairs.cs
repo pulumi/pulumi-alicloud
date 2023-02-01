@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudEbsDiskReplicaPairExampleId"] = @default.Apply(getDiskReplicaPairsResult =&gt; getDiskReplicaPairsResult).Apply(@default =&gt; @default.Apply(getDiskReplicaPairsResult =&gt; getDiskReplicaPairsResult.Pairs[0]?.Id)),
+        ///         ["alicloudEbsDiskReplicaPairExampleId"] = @default.Apply(@default =&gt; @default.Apply(getDiskReplicaPairsResult =&gt; getDiskReplicaPairsResult.Pairs[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudEbsDiskReplicaPairExampleId"] = @default.Apply(getDiskReplicaPairsResult =&gt; getDiskReplicaPairsResult).Apply(@default =&gt; @default.Apply(getDiskReplicaPairsResult =&gt; getDiskReplicaPairsResult.Pairs[0]?.Id)),
+        ///         ["alicloudEbsDiskReplicaPairExampleId"] = @default.Apply(@default =&gt; @default.Apply(getDiskReplicaPairsResult =&gt; getDiskReplicaPairsResult.Pairs[0]?.Id)),
         ///     };
         /// });
         /// ```

@@ -124,14 +124,14 @@ public final class RouteMapState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;].
+     * A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;, &#34;VPN&#34;].
      * 
      */
     @Import(name="destinationChildInstanceTypes")
     private @Nullable Output<List<String>> destinationChildInstanceTypes;
 
     /**
-     * @return A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;].
+     * @return A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;, &#34;VPN&#34;].
      * 
      */
     public Optional<Output<List<String>>> destinationChildInstanceTypes() {
@@ -669,7 +669,7 @@ public final class RouteMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationChildInstanceTypes A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;].
+         * @param destinationChildInstanceTypes A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;, &#34;VPN&#34;].
          * 
          * @return builder
          * 
@@ -680,7 +680,7 @@ public final class RouteMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationChildInstanceTypes A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;].
+         * @param destinationChildInstanceTypes A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;, &#34;VPN&#34;].
          * 
          * @return builder
          * 
@@ -690,7 +690,7 @@ public final class RouteMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationChildInstanceTypes A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;].
+         * @param destinationChildInstanceTypes A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;, &#34;VPN&#34;].
          * 
          * @return builder
          * 

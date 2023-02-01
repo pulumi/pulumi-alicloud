@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCenInterRegionTrafficQosQueueExampleId"] = @default.Apply(getInterRegionTrafficQosQueuesResult =&gt; getInterRegionTrafficQosQueuesResult).Apply(@default =&gt; @default.Apply(getInterRegionTrafficQosQueuesResult =&gt; getInterRegionTrafficQosQueuesResult.Queues[0]?.Id)),
+        ///         ["alicloudCenInterRegionTrafficQosQueueExampleId"] = @default.Apply(@default =&gt; @default.Apply(getInterRegionTrafficQosQueuesResult =&gt; getInterRegionTrafficQosQueuesResult.Queues[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCenInterRegionTrafficQosQueueExampleId"] = @default.Apply(getInterRegionTrafficQosQueuesResult =&gt; getInterRegionTrafficQosQueuesResult).Apply(@default =&gt; @default.Apply(getInterRegionTrafficQosQueuesResult =&gt; getInterRegionTrafficQosQueuesResult.Queues[0]?.Id)),
+        ///         ["alicloudCenInterRegionTrafficQosQueueExampleId"] = @default.Apply(@default =&gt; @default.Apply(getInterRegionTrafficQosQueuesResult =&gt; getInterRegionTrafficQosQueuesResult.Queues[0]?.Id)),
         ///     };
         /// });
         /// ```

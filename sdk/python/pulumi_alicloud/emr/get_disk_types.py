@@ -131,7 +131,7 @@ def get_disk_types(cluster_type: Optional[str] = None,
                    zone_id: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDiskTypesResult:
     """
-    The `emr.get_disk_types` data source provides a collection of data disk and
+    The _emr_get_disk_types_ data source provides a collection of data disk and
     system disk types available in Alibaba Cloud account when create a emr cluster.
 
     > **NOTE:** Available in 1.60.0+
@@ -188,7 +188,7 @@ def get_disk_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
                           zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDiskTypesResult]:
     """
-    The `emr.get_disk_types` data source provides a collection of data disk and
+    The _emr_get_disk_types_ data source provides a collection of data disk and
     system disk types available in Alibaba Cloud account when create a emr cluster.
 
     > **NOTE:** Available in 1.60.0+

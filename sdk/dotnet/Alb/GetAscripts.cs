@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Alb
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudAlbAscriptExampleId"] = @default.Apply(getAscriptsResult =&gt; getAscriptsResult).Apply(@default =&gt; @default.Apply(getAscriptsResult =&gt; getAscriptsResult.Ascripts[0]?.Id)),
+        ///         ["alicloudAlbAscriptExampleId"] = @default.Apply(@default =&gt; @default.Apply(getAscriptsResult =&gt; getAscriptsResult.Ascripts[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Alb
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudAlbAscriptExampleId"] = @default.Apply(getAscriptsResult =&gt; getAscriptsResult).Apply(@default =&gt; @default.Apply(getAscriptsResult =&gt; getAscriptsResult.Ascripts[0]?.Id)),
+        ///         ["alicloudAlbAscriptExampleId"] = @default.Apply(@default =&gt; @default.Apply(getAscriptsResult =&gt; getAscriptsResult.Ascripts[0]?.Id)),
         ///     };
         /// });
         /// ```

@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Waf
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["wafCertificate"] = @default.Apply(getCertificatesResult =&gt; getCertificatesResult).Apply(@default =&gt; @default.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0])),
+        ///         ["wafCertificate"] = @default.Apply(@default =&gt; @default.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0])),
         ///     };
         /// });
         /// ```
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Waf
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["wafCertificate"] = @default.Apply(getCertificatesResult =&gt; getCertificatesResult).Apply(@default =&gt; @default.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0])),
+        ///         ["wafCertificate"] = @default.Apply(@default =&gt; @default.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0])),
         ///     };
         /// });
         /// ```

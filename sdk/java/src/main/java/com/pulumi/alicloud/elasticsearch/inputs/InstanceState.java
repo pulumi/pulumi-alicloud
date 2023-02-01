@@ -411,6 +411,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available in 1.197.0+) Instance connection public domain.
+     * 
+     */
+    @Import(name="publicDomain")
+    private @Nullable Output<String> publicDomain;
+
+    /**
+     * @return (Available in 1.197.0+) Instance connection public domain.
+     * 
+     */
+    public Optional<Output<String>> publicDomain() {
+        return Optional.ofNullable(this.publicDomain);
+    }
+
+    /**
+     * (Available in 1.197.0+) Instance connection public port.
+     * 
+     */
+    @Import(name="publicPort")
+    private @Nullable Output<Integer> publicPort;
+
+    /**
+     * @return (Available in 1.197.0+) Instance connection public port.
+     * 
+     */
+    public Optional<Output<Integer>> publicPort() {
+        return Optional.ofNullable(this.publicPort);
+    }
+
+    /**
      * Set the instance&#39;s IP whitelist in internet network.
      * 
      */
@@ -563,6 +593,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.port = $.port;
         this.privateWhitelists = $.privateWhitelists;
         this.protocol = $.protocol;
+        this.publicDomain = $.publicDomain;
+        this.publicPort = $.publicPort;
         this.publicWhitelists = $.publicWhitelists;
         this.resourceGroupId = $.resourceGroupId;
         this.settingConfig = $.settingConfig;
@@ -1165,6 +1197,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder protocol(String protocol) {
             return protocol(Output.of(protocol));
+        }
+
+        /**
+         * @param publicDomain (Available in 1.197.0+) Instance connection public domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicDomain(@Nullable Output<String> publicDomain) {
+            $.publicDomain = publicDomain;
+            return this;
+        }
+
+        /**
+         * @param publicDomain (Available in 1.197.0+) Instance connection public domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicDomain(String publicDomain) {
+            return publicDomain(Output.of(publicDomain));
+        }
+
+        /**
+         * @param publicPort (Available in 1.197.0+) Instance connection public port.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicPort(@Nullable Output<Integer> publicPort) {
+            $.publicPort = publicPort;
+            return this;
+        }
+
+        /**
+         * @param publicPort (Available in 1.197.0+) Instance connection public port.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicPort(Integer publicPort) {
+            return publicPort(Output.of(publicPort));
         }
 
         /**

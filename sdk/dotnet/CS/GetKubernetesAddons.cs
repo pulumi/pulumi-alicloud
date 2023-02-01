@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["addons"] = @default.Apply(getKubernetesAddonsResult =&gt; getKubernetesAddonsResult).Apply(@default =&gt; @default.Apply(getKubernetesAddonsResult =&gt; getKubernetesAddonsResult.Addons)),
+        ///         ["addons"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesAddonsResult =&gt; getKubernetesAddonsResult.Addons)),
         ///     };
         /// });
         /// ```
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["addons"] = @default.Apply(getKubernetesAddonsResult =&gt; getKubernetesAddonsResult).Apply(@default =&gt; @default.Apply(getKubernetesAddonsResult =&gt; getKubernetesAddonsResult.Addons)),
+        ///         ["addons"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesAddonsResult =&gt; getKubernetesAddonsResult.Addons)),
         ///     };
         /// });
         /// ```

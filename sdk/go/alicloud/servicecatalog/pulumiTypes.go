@@ -231,6 +231,407 @@ func (o ProvisionedProductParameterArrayOutput) Index(i pulumi.IntInput) Provisi
 	}).(ProvisionedProductParameterOutput)
 }
 
+type GetEndUserProductsEndUserProduct struct {
+	// Product creation time.According to ISO8601 standard, UTC time is used in the format: YYYY-MM-DDThh:mm:ssZ.
+	CreateTime string `pulumi:"createTime"`
+	// Product description.
+	Description string `pulumi:"description"`
+	// Whether there is a default Startup option. Value:-true: There is a default Startup option, and there is no need to fill in the portfolio when starting the product or updating the instance.-false: there is no default Startup option. You must fill in the portfolio when starting the product or updating the instance. For more information about how to obtain the portfolio, see ListLaunchOptions.> If the product is added to only one product portfolio, there will be a default Startup option. If the product is added to multiple product combinations, there will be multiple startup options at the same time, but there is no default Startup option at this time.
+	HasDefaultLaunchOption bool `pulumi:"hasDefaultLaunchOption"`
+	// ID of product, Its value is the same as `productId`.
+	Id string `pulumi:"id"`
+	// Product ARN.
+	ProductArn string `pulumi:"productArn"`
+	// Product ID.
+	ProductId string `pulumi:"productId"`
+	// Product name.
+	ProductName string `pulumi:"productName"`
+	// Type of product.The value is Ros, which indicates the resource orchestration service (ROS).
+	ProductType string `pulumi:"productType"`
+	// Product provider.
+	ProviderName string `pulumi:"providerName"`
+}
+
+// GetEndUserProductsEndUserProductInput is an input type that accepts GetEndUserProductsEndUserProductArgs and GetEndUserProductsEndUserProductOutput values.
+// You can construct a concrete instance of `GetEndUserProductsEndUserProductInput` via:
+//
+//	GetEndUserProductsEndUserProductArgs{...}
+type GetEndUserProductsEndUserProductInput interface {
+	pulumi.Input
+
+	ToGetEndUserProductsEndUserProductOutput() GetEndUserProductsEndUserProductOutput
+	ToGetEndUserProductsEndUserProductOutputWithContext(context.Context) GetEndUserProductsEndUserProductOutput
+}
+
+type GetEndUserProductsEndUserProductArgs struct {
+	// Product creation time.According to ISO8601 standard, UTC time is used in the format: YYYY-MM-DDThh:mm:ssZ.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Product description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Whether there is a default Startup option. Value:-true: There is a default Startup option, and there is no need to fill in the portfolio when starting the product or updating the instance.-false: there is no default Startup option. You must fill in the portfolio when starting the product or updating the instance. For more information about how to obtain the portfolio, see ListLaunchOptions.> If the product is added to only one product portfolio, there will be a default Startup option. If the product is added to multiple product combinations, there will be multiple startup options at the same time, but there is no default Startup option at this time.
+	HasDefaultLaunchOption pulumi.BoolInput `pulumi:"hasDefaultLaunchOption"`
+	// ID of product, Its value is the same as `productId`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Product ARN.
+	ProductArn pulumi.StringInput `pulumi:"productArn"`
+	// Product ID.
+	ProductId pulumi.StringInput `pulumi:"productId"`
+	// Product name.
+	ProductName pulumi.StringInput `pulumi:"productName"`
+	// Type of product.The value is Ros, which indicates the resource orchestration service (ROS).
+	ProductType pulumi.StringInput `pulumi:"productType"`
+	// Product provider.
+	ProviderName pulumi.StringInput `pulumi:"providerName"`
+}
+
+func (GetEndUserProductsEndUserProductArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndUserProductsEndUserProduct)(nil)).Elem()
+}
+
+func (i GetEndUserProductsEndUserProductArgs) ToGetEndUserProductsEndUserProductOutput() GetEndUserProductsEndUserProductOutput {
+	return i.ToGetEndUserProductsEndUserProductOutputWithContext(context.Background())
+}
+
+func (i GetEndUserProductsEndUserProductArgs) ToGetEndUserProductsEndUserProductOutputWithContext(ctx context.Context) GetEndUserProductsEndUserProductOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndUserProductsEndUserProductOutput)
+}
+
+// GetEndUserProductsEndUserProductArrayInput is an input type that accepts GetEndUserProductsEndUserProductArray and GetEndUserProductsEndUserProductArrayOutput values.
+// You can construct a concrete instance of `GetEndUserProductsEndUserProductArrayInput` via:
+//
+//	GetEndUserProductsEndUserProductArray{ GetEndUserProductsEndUserProductArgs{...} }
+type GetEndUserProductsEndUserProductArrayInput interface {
+	pulumi.Input
+
+	ToGetEndUserProductsEndUserProductArrayOutput() GetEndUserProductsEndUserProductArrayOutput
+	ToGetEndUserProductsEndUserProductArrayOutputWithContext(context.Context) GetEndUserProductsEndUserProductArrayOutput
+}
+
+type GetEndUserProductsEndUserProductArray []GetEndUserProductsEndUserProductInput
+
+func (GetEndUserProductsEndUserProductArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndUserProductsEndUserProduct)(nil)).Elem()
+}
+
+func (i GetEndUserProductsEndUserProductArray) ToGetEndUserProductsEndUserProductArrayOutput() GetEndUserProductsEndUserProductArrayOutput {
+	return i.ToGetEndUserProductsEndUserProductArrayOutputWithContext(context.Background())
+}
+
+func (i GetEndUserProductsEndUserProductArray) ToGetEndUserProductsEndUserProductArrayOutputWithContext(ctx context.Context) GetEndUserProductsEndUserProductArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEndUserProductsEndUserProductArrayOutput)
+}
+
+type GetEndUserProductsEndUserProductOutput struct{ *pulumi.OutputState }
+
+func (GetEndUserProductsEndUserProductOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEndUserProductsEndUserProduct)(nil)).Elem()
+}
+
+func (o GetEndUserProductsEndUserProductOutput) ToGetEndUserProductsEndUserProductOutput() GetEndUserProductsEndUserProductOutput {
+	return o
+}
+
+func (o GetEndUserProductsEndUserProductOutput) ToGetEndUserProductsEndUserProductOutputWithContext(ctx context.Context) GetEndUserProductsEndUserProductOutput {
+	return o
+}
+
+// Product creation time.According to ISO8601 standard, UTC time is used in the format: YYYY-MM-DDThh:mm:ssZ.
+func (o GetEndUserProductsEndUserProductOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndUserProductsEndUserProduct) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Product description.
+func (o GetEndUserProductsEndUserProductOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndUserProductsEndUserProduct) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether there is a default Startup option. Value:-true: There is a default Startup option, and there is no need to fill in the portfolio when starting the product or updating the instance.-false: there is no default Startup option. You must fill in the portfolio when starting the product or updating the instance. For more information about how to obtain the portfolio, see ListLaunchOptions.> If the product is added to only one product portfolio, there will be a default Startup option. If the product is added to multiple product combinations, there will be multiple startup options at the same time, but there is no default Startup option at this time.
+func (o GetEndUserProductsEndUserProductOutput) HasDefaultLaunchOption() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEndUserProductsEndUserProduct) bool { return v.HasDefaultLaunchOption }).(pulumi.BoolOutput)
+}
+
+// ID of product, Its value is the same as `productId`.
+func (o GetEndUserProductsEndUserProductOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndUserProductsEndUserProduct) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Product ARN.
+func (o GetEndUserProductsEndUserProductOutput) ProductArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndUserProductsEndUserProduct) string { return v.ProductArn }).(pulumi.StringOutput)
+}
+
+// Product ID.
+func (o GetEndUserProductsEndUserProductOutput) ProductId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndUserProductsEndUserProduct) string { return v.ProductId }).(pulumi.StringOutput)
+}
+
+// Product name.
+func (o GetEndUserProductsEndUserProductOutput) ProductName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndUserProductsEndUserProduct) string { return v.ProductName }).(pulumi.StringOutput)
+}
+
+// Type of product.The value is Ros, which indicates the resource orchestration service (ROS).
+func (o GetEndUserProductsEndUserProductOutput) ProductType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndUserProductsEndUserProduct) string { return v.ProductType }).(pulumi.StringOutput)
+}
+
+// Product provider.
+func (o GetEndUserProductsEndUserProductOutput) ProviderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndUserProductsEndUserProduct) string { return v.ProviderName }).(pulumi.StringOutput)
+}
+
+type GetEndUserProductsEndUserProductArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEndUserProductsEndUserProductArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEndUserProductsEndUserProduct)(nil)).Elem()
+}
+
+func (o GetEndUserProductsEndUserProductArrayOutput) ToGetEndUserProductsEndUserProductArrayOutput() GetEndUserProductsEndUserProductArrayOutput {
+	return o
+}
+
+func (o GetEndUserProductsEndUserProductArrayOutput) ToGetEndUserProductsEndUserProductArrayOutputWithContext(ctx context.Context) GetEndUserProductsEndUserProductArrayOutput {
+	return o
+}
+
+func (o GetEndUserProductsEndUserProductArrayOutput) Index(i pulumi.IntInput) GetEndUserProductsEndUserProductOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEndUserProductsEndUserProduct {
+		return vs[0].([]GetEndUserProductsEndUserProduct)[vs[1].(int)]
+	}).(GetEndUserProductsEndUserProductOutput)
+}
+
+type GetLaunchOptionsLaunchOption struct {
+	// List of constraints.
+	ConstraintSummaries []GetLaunchOptionsLaunchOptionConstraintSummary `pulumi:"constraintSummaries"`
+	// ID of Service Catalog Launch Option.
+	Id string `pulumi:"id"`
+	// Product mix ID.
+	PortfolioId string `pulumi:"portfolioId"`
+	// Product portfolio name.
+	PortfolioName string `pulumi:"portfolioName"`
+}
+
+// GetLaunchOptionsLaunchOptionInput is an input type that accepts GetLaunchOptionsLaunchOptionArgs and GetLaunchOptionsLaunchOptionOutput values.
+// You can construct a concrete instance of `GetLaunchOptionsLaunchOptionInput` via:
+//
+//	GetLaunchOptionsLaunchOptionArgs{...}
+type GetLaunchOptionsLaunchOptionInput interface {
+	pulumi.Input
+
+	ToGetLaunchOptionsLaunchOptionOutput() GetLaunchOptionsLaunchOptionOutput
+	ToGetLaunchOptionsLaunchOptionOutputWithContext(context.Context) GetLaunchOptionsLaunchOptionOutput
+}
+
+type GetLaunchOptionsLaunchOptionArgs struct {
+	// List of constraints.
+	ConstraintSummaries GetLaunchOptionsLaunchOptionConstraintSummaryArrayInput `pulumi:"constraintSummaries"`
+	// ID of Service Catalog Launch Option.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Product mix ID.
+	PortfolioId pulumi.StringInput `pulumi:"portfolioId"`
+	// Product portfolio name.
+	PortfolioName pulumi.StringInput `pulumi:"portfolioName"`
+}
+
+func (GetLaunchOptionsLaunchOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLaunchOptionsLaunchOption)(nil)).Elem()
+}
+
+func (i GetLaunchOptionsLaunchOptionArgs) ToGetLaunchOptionsLaunchOptionOutput() GetLaunchOptionsLaunchOptionOutput {
+	return i.ToGetLaunchOptionsLaunchOptionOutputWithContext(context.Background())
+}
+
+func (i GetLaunchOptionsLaunchOptionArgs) ToGetLaunchOptionsLaunchOptionOutputWithContext(ctx context.Context) GetLaunchOptionsLaunchOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLaunchOptionsLaunchOptionOutput)
+}
+
+// GetLaunchOptionsLaunchOptionArrayInput is an input type that accepts GetLaunchOptionsLaunchOptionArray and GetLaunchOptionsLaunchOptionArrayOutput values.
+// You can construct a concrete instance of `GetLaunchOptionsLaunchOptionArrayInput` via:
+//
+//	GetLaunchOptionsLaunchOptionArray{ GetLaunchOptionsLaunchOptionArgs{...} }
+type GetLaunchOptionsLaunchOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetLaunchOptionsLaunchOptionArrayOutput() GetLaunchOptionsLaunchOptionArrayOutput
+	ToGetLaunchOptionsLaunchOptionArrayOutputWithContext(context.Context) GetLaunchOptionsLaunchOptionArrayOutput
+}
+
+type GetLaunchOptionsLaunchOptionArray []GetLaunchOptionsLaunchOptionInput
+
+func (GetLaunchOptionsLaunchOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLaunchOptionsLaunchOption)(nil)).Elem()
+}
+
+func (i GetLaunchOptionsLaunchOptionArray) ToGetLaunchOptionsLaunchOptionArrayOutput() GetLaunchOptionsLaunchOptionArrayOutput {
+	return i.ToGetLaunchOptionsLaunchOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetLaunchOptionsLaunchOptionArray) ToGetLaunchOptionsLaunchOptionArrayOutputWithContext(ctx context.Context) GetLaunchOptionsLaunchOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLaunchOptionsLaunchOptionArrayOutput)
+}
+
+type GetLaunchOptionsLaunchOptionOutput struct{ *pulumi.OutputState }
+
+func (GetLaunchOptionsLaunchOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLaunchOptionsLaunchOption)(nil)).Elem()
+}
+
+func (o GetLaunchOptionsLaunchOptionOutput) ToGetLaunchOptionsLaunchOptionOutput() GetLaunchOptionsLaunchOptionOutput {
+	return o
+}
+
+func (o GetLaunchOptionsLaunchOptionOutput) ToGetLaunchOptionsLaunchOptionOutputWithContext(ctx context.Context) GetLaunchOptionsLaunchOptionOutput {
+	return o
+}
+
+// List of constraints.
+func (o GetLaunchOptionsLaunchOptionOutput) ConstraintSummaries() GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput {
+	return o.ApplyT(func(v GetLaunchOptionsLaunchOption) []GetLaunchOptionsLaunchOptionConstraintSummary {
+		return v.ConstraintSummaries
+	}).(GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput)
+}
+
+// ID of Service Catalog Launch Option.
+func (o GetLaunchOptionsLaunchOptionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLaunchOptionsLaunchOption) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Product mix ID.
+func (o GetLaunchOptionsLaunchOptionOutput) PortfolioId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLaunchOptionsLaunchOption) string { return v.PortfolioId }).(pulumi.StringOutput)
+}
+
+// Product portfolio name.
+func (o GetLaunchOptionsLaunchOptionOutput) PortfolioName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLaunchOptionsLaunchOption) string { return v.PortfolioName }).(pulumi.StringOutput)
+}
+
+type GetLaunchOptionsLaunchOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLaunchOptionsLaunchOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLaunchOptionsLaunchOption)(nil)).Elem()
+}
+
+func (o GetLaunchOptionsLaunchOptionArrayOutput) ToGetLaunchOptionsLaunchOptionArrayOutput() GetLaunchOptionsLaunchOptionArrayOutput {
+	return o
+}
+
+func (o GetLaunchOptionsLaunchOptionArrayOutput) ToGetLaunchOptionsLaunchOptionArrayOutputWithContext(ctx context.Context) GetLaunchOptionsLaunchOptionArrayOutput {
+	return o
+}
+
+func (o GetLaunchOptionsLaunchOptionArrayOutput) Index(i pulumi.IntInput) GetLaunchOptionsLaunchOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLaunchOptionsLaunchOption {
+		return vs[0].([]GetLaunchOptionsLaunchOption)[vs[1].(int)]
+	}).(GetLaunchOptionsLaunchOptionOutput)
+}
+
+type GetLaunchOptionsLaunchOptionConstraintSummary struct {
+	// Constraint type.The value is Launch, which indicates that the constraint is started.
+	ConstraintType string `pulumi:"constraintType"`
+	// Constraint description.
+	Description string `pulumi:"description"`
+}
+
+// GetLaunchOptionsLaunchOptionConstraintSummaryInput is an input type that accepts GetLaunchOptionsLaunchOptionConstraintSummaryArgs and GetLaunchOptionsLaunchOptionConstraintSummaryOutput values.
+// You can construct a concrete instance of `GetLaunchOptionsLaunchOptionConstraintSummaryInput` via:
+//
+//	GetLaunchOptionsLaunchOptionConstraintSummaryArgs{...}
+type GetLaunchOptionsLaunchOptionConstraintSummaryInput interface {
+	pulumi.Input
+
+	ToGetLaunchOptionsLaunchOptionConstraintSummaryOutput() GetLaunchOptionsLaunchOptionConstraintSummaryOutput
+	ToGetLaunchOptionsLaunchOptionConstraintSummaryOutputWithContext(context.Context) GetLaunchOptionsLaunchOptionConstraintSummaryOutput
+}
+
+type GetLaunchOptionsLaunchOptionConstraintSummaryArgs struct {
+	// Constraint type.The value is Launch, which indicates that the constraint is started.
+	ConstraintType pulumi.StringInput `pulumi:"constraintType"`
+	// Constraint description.
+	Description pulumi.StringInput `pulumi:"description"`
+}
+
+func (GetLaunchOptionsLaunchOptionConstraintSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLaunchOptionsLaunchOptionConstraintSummary)(nil)).Elem()
+}
+
+func (i GetLaunchOptionsLaunchOptionConstraintSummaryArgs) ToGetLaunchOptionsLaunchOptionConstraintSummaryOutput() GetLaunchOptionsLaunchOptionConstraintSummaryOutput {
+	return i.ToGetLaunchOptionsLaunchOptionConstraintSummaryOutputWithContext(context.Background())
+}
+
+func (i GetLaunchOptionsLaunchOptionConstraintSummaryArgs) ToGetLaunchOptionsLaunchOptionConstraintSummaryOutputWithContext(ctx context.Context) GetLaunchOptionsLaunchOptionConstraintSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLaunchOptionsLaunchOptionConstraintSummaryOutput)
+}
+
+// GetLaunchOptionsLaunchOptionConstraintSummaryArrayInput is an input type that accepts GetLaunchOptionsLaunchOptionConstraintSummaryArray and GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput values.
+// You can construct a concrete instance of `GetLaunchOptionsLaunchOptionConstraintSummaryArrayInput` via:
+//
+//	GetLaunchOptionsLaunchOptionConstraintSummaryArray{ GetLaunchOptionsLaunchOptionConstraintSummaryArgs{...} }
+type GetLaunchOptionsLaunchOptionConstraintSummaryArrayInput interface {
+	pulumi.Input
+
+	ToGetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput() GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput
+	ToGetLaunchOptionsLaunchOptionConstraintSummaryArrayOutputWithContext(context.Context) GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput
+}
+
+type GetLaunchOptionsLaunchOptionConstraintSummaryArray []GetLaunchOptionsLaunchOptionConstraintSummaryInput
+
+func (GetLaunchOptionsLaunchOptionConstraintSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLaunchOptionsLaunchOptionConstraintSummary)(nil)).Elem()
+}
+
+func (i GetLaunchOptionsLaunchOptionConstraintSummaryArray) ToGetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput() GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput {
+	return i.ToGetLaunchOptionsLaunchOptionConstraintSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetLaunchOptionsLaunchOptionConstraintSummaryArray) ToGetLaunchOptionsLaunchOptionConstraintSummaryArrayOutputWithContext(ctx context.Context) GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput)
+}
+
+type GetLaunchOptionsLaunchOptionConstraintSummaryOutput struct{ *pulumi.OutputState }
+
+func (GetLaunchOptionsLaunchOptionConstraintSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLaunchOptionsLaunchOptionConstraintSummary)(nil)).Elem()
+}
+
+func (o GetLaunchOptionsLaunchOptionConstraintSummaryOutput) ToGetLaunchOptionsLaunchOptionConstraintSummaryOutput() GetLaunchOptionsLaunchOptionConstraintSummaryOutput {
+	return o
+}
+
+func (o GetLaunchOptionsLaunchOptionConstraintSummaryOutput) ToGetLaunchOptionsLaunchOptionConstraintSummaryOutputWithContext(ctx context.Context) GetLaunchOptionsLaunchOptionConstraintSummaryOutput {
+	return o
+}
+
+// Constraint type.The value is Launch, which indicates that the constraint is started.
+func (o GetLaunchOptionsLaunchOptionConstraintSummaryOutput) ConstraintType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLaunchOptionsLaunchOptionConstraintSummary) string { return v.ConstraintType }).(pulumi.StringOutput)
+}
+
+// Constraint description.
+func (o GetLaunchOptionsLaunchOptionConstraintSummaryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLaunchOptionsLaunchOptionConstraintSummary) string { return v.Description }).(pulumi.StringOutput)
+}
+
+type GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLaunchOptionsLaunchOptionConstraintSummary)(nil)).Elem()
+}
+
+func (o GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput) ToGetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput() GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput {
+	return o
+}
+
+func (o GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput) ToGetLaunchOptionsLaunchOptionConstraintSummaryArrayOutputWithContext(ctx context.Context) GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput {
+	return o
+}
+
+func (o GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput) Index(i pulumi.IntInput) GetLaunchOptionsLaunchOptionConstraintSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLaunchOptionsLaunchOptionConstraintSummary {
+		return vs[0].([]GetLaunchOptionsLaunchOptionConstraintSummary)[vs[1].(int)]
+	}).(GetLaunchOptionsLaunchOptionConstraintSummaryOutput)
+}
+
 type GetLaunchOptionsOption struct {
 	// List of constraints.
 	ConstraintSummaries []GetLaunchOptionsOptionConstraintSummary `pulumi:"constraintSummaries"`
@@ -628,6 +1029,184 @@ func (o GetProductAsEndUsersUserArrayOutput) Index(i pulumi.IntInput) GetProduct
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProductAsEndUsersUser {
 		return vs[0].([]GetProductAsEndUsersUser)[vs[1].(int)]
 	}).(GetProductAsEndUsersUserOutput)
+}
+
+type GetProductVersionsProductVersion struct {
+	// Whether the version is activated
+	Active bool `pulumi:"active"`
+	// The creation time of the resource
+	CreateTime string `pulumi:"createTime"`
+	// Version description
+	Description string `pulumi:"description"`
+	// Administrator guidance
+	Guidance string `pulumi:"guidance"`
+	// ID of product version.
+	Id string `pulumi:"id"`
+	// Product ID
+	ProductId string `pulumi:"productId"`
+	// The first ID of the resource
+	ProductVersionId string `pulumi:"productVersionId"`
+	// The name of the resource
+	ProductVersionName string `pulumi:"productVersionName"`
+	// Template Type
+	TemplateType string `pulumi:"templateType"`
+	// Template URL
+	TemplateUrl string `pulumi:"templateUrl"`
+}
+
+// GetProductVersionsProductVersionInput is an input type that accepts GetProductVersionsProductVersionArgs and GetProductVersionsProductVersionOutput values.
+// You can construct a concrete instance of `GetProductVersionsProductVersionInput` via:
+//
+//	GetProductVersionsProductVersionArgs{...}
+type GetProductVersionsProductVersionInput interface {
+	pulumi.Input
+
+	ToGetProductVersionsProductVersionOutput() GetProductVersionsProductVersionOutput
+	ToGetProductVersionsProductVersionOutputWithContext(context.Context) GetProductVersionsProductVersionOutput
+}
+
+type GetProductVersionsProductVersionArgs struct {
+	// Whether the version is activated
+	Active pulumi.BoolInput `pulumi:"active"`
+	// The creation time of the resource
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Version description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Administrator guidance
+	Guidance pulumi.StringInput `pulumi:"guidance"`
+	// ID of product version.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Product ID
+	ProductId pulumi.StringInput `pulumi:"productId"`
+	// The first ID of the resource
+	ProductVersionId pulumi.StringInput `pulumi:"productVersionId"`
+	// The name of the resource
+	ProductVersionName pulumi.StringInput `pulumi:"productVersionName"`
+	// Template Type
+	TemplateType pulumi.StringInput `pulumi:"templateType"`
+	// Template URL
+	TemplateUrl pulumi.StringInput `pulumi:"templateUrl"`
+}
+
+func (GetProductVersionsProductVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductVersionsProductVersion)(nil)).Elem()
+}
+
+func (i GetProductVersionsProductVersionArgs) ToGetProductVersionsProductVersionOutput() GetProductVersionsProductVersionOutput {
+	return i.ToGetProductVersionsProductVersionOutputWithContext(context.Background())
+}
+
+func (i GetProductVersionsProductVersionArgs) ToGetProductVersionsProductVersionOutputWithContext(ctx context.Context) GetProductVersionsProductVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProductVersionsProductVersionOutput)
+}
+
+// GetProductVersionsProductVersionArrayInput is an input type that accepts GetProductVersionsProductVersionArray and GetProductVersionsProductVersionArrayOutput values.
+// You can construct a concrete instance of `GetProductVersionsProductVersionArrayInput` via:
+//
+//	GetProductVersionsProductVersionArray{ GetProductVersionsProductVersionArgs{...} }
+type GetProductVersionsProductVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetProductVersionsProductVersionArrayOutput() GetProductVersionsProductVersionArrayOutput
+	ToGetProductVersionsProductVersionArrayOutputWithContext(context.Context) GetProductVersionsProductVersionArrayOutput
+}
+
+type GetProductVersionsProductVersionArray []GetProductVersionsProductVersionInput
+
+func (GetProductVersionsProductVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProductVersionsProductVersion)(nil)).Elem()
+}
+
+func (i GetProductVersionsProductVersionArray) ToGetProductVersionsProductVersionArrayOutput() GetProductVersionsProductVersionArrayOutput {
+	return i.ToGetProductVersionsProductVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetProductVersionsProductVersionArray) ToGetProductVersionsProductVersionArrayOutputWithContext(ctx context.Context) GetProductVersionsProductVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProductVersionsProductVersionArrayOutput)
+}
+
+type GetProductVersionsProductVersionOutput struct{ *pulumi.OutputState }
+
+func (GetProductVersionsProductVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductVersionsProductVersion)(nil)).Elem()
+}
+
+func (o GetProductVersionsProductVersionOutput) ToGetProductVersionsProductVersionOutput() GetProductVersionsProductVersionOutput {
+	return o
+}
+
+func (o GetProductVersionsProductVersionOutput) ToGetProductVersionsProductVersionOutputWithContext(ctx context.Context) GetProductVersionsProductVersionOutput {
+	return o
+}
+
+// Whether the version is activated
+func (o GetProductVersionsProductVersionOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProductVersionsProductVersion) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// The creation time of the resource
+func (o GetProductVersionsProductVersionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductVersionsProductVersion) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Version description
+func (o GetProductVersionsProductVersionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductVersionsProductVersion) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Administrator guidance
+func (o GetProductVersionsProductVersionOutput) Guidance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductVersionsProductVersion) string { return v.Guidance }).(pulumi.StringOutput)
+}
+
+// ID of product version.
+func (o GetProductVersionsProductVersionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductVersionsProductVersion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Product ID
+func (o GetProductVersionsProductVersionOutput) ProductId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductVersionsProductVersion) string { return v.ProductId }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource
+func (o GetProductVersionsProductVersionOutput) ProductVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductVersionsProductVersion) string { return v.ProductVersionId }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o GetProductVersionsProductVersionOutput) ProductVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductVersionsProductVersion) string { return v.ProductVersionName }).(pulumi.StringOutput)
+}
+
+// Template Type
+func (o GetProductVersionsProductVersionOutput) TemplateType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductVersionsProductVersion) string { return v.TemplateType }).(pulumi.StringOutput)
+}
+
+// Template URL
+func (o GetProductVersionsProductVersionOutput) TemplateUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductVersionsProductVersion) string { return v.TemplateUrl }).(pulumi.StringOutput)
+}
+
+type GetProductVersionsProductVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProductVersionsProductVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProductVersionsProductVersion)(nil)).Elem()
+}
+
+func (o GetProductVersionsProductVersionArrayOutput) ToGetProductVersionsProductVersionArrayOutput() GetProductVersionsProductVersionArrayOutput {
+	return o
+}
+
+func (o GetProductVersionsProductVersionArrayOutput) ToGetProductVersionsProductVersionArrayOutputWithContext(ctx context.Context) GetProductVersionsProductVersionArrayOutput {
+	return o
+}
+
+func (o GetProductVersionsProductVersionArrayOutput) Index(i pulumi.IntInput) GetProductVersionsProductVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProductVersionsProductVersion {
+		return vs[0].([]GetProductVersionsProductVersion)[vs[1].(int)]
+	}).(GetProductVersionsProductVersionOutput)
 }
 
 type GetProductVersionsVersion struct {
@@ -1297,17 +1876,518 @@ func (o GetProvisionedProductsProductParameterArrayOutput) Index(i pulumi.IntInp
 	}).(GetProvisionedProductsProductParameterOutput)
 }
 
+type GetProvisionedProductsProvisionedProduct struct {
+	// The creation time of the product instance
+	CreateTime string `pulumi:"createTime"`
+	Id         string `pulumi:"id"`
+	// The ID of the last instance operation task
+	LastProvisioningTaskId string `pulumi:"lastProvisioningTaskId"`
+	// The ID of the last successful instance operation task
+	LastSuccessfulProvisioningTaskId string `pulumi:"lastSuccessfulProvisioningTaskId"`
+	// The ID of the last task
+	LastTaskId string                                               `pulumi:"lastTaskId"`
+	Outputs    []GetProvisionedProductsProvisionedProductOutputType `pulumi:"outputs"`
+	// The RAM entity ID of the owner
+	OwnerPrincipalId string `pulumi:"ownerPrincipalId"`
+	// The RAM entity type of the owner
+	OwnerPrincipalType string                                              `pulumi:"ownerPrincipalType"`
+	Parameters         []GetProvisionedProductsProvisionedProductParameter `pulumi:"parameters"`
+	// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+	PortfolioId string `pulumi:"portfolioId"`
+	// Product ID.
+	ProductId string `pulumi:"productId"`
+	// The name of the product
+	ProductName string `pulumi:"productName"`
+	// Product version ID.
+	ProductVersionId string `pulumi:"productVersionId"`
+	// The name of the product version
+	ProductVersionName string `pulumi:"productVersionName"`
+	// The ARN of the product instance
+	ProvisionedProductArn string `pulumi:"provisionedProductArn"`
+	// The ID of the instance.
+	ProvisionedProductId string `pulumi:"provisionedProductId"`
+	// The name of the instance.The length is 1~128 characters.
+	ProvisionedProductName string `pulumi:"provisionedProductName"`
+	// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+	ProvisionedProductType string `pulumi:"provisionedProductType"`
+	// The ID of the ROS stack
+	StackId string `pulumi:"stackId"`
+	// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+	StackRegionId string `pulumi:"stackRegionId"`
+	// Instance status
+	Status string `pulumi:"status"`
+	// The status message of the product instance
+	StatusMessage string                 `pulumi:"statusMessage"`
+	Tags          map[string]interface{} `pulumi:"tags"`
+}
+
+// GetProvisionedProductsProvisionedProductInput is an input type that accepts GetProvisionedProductsProvisionedProductArgs and GetProvisionedProductsProvisionedProductOutput values.
+// You can construct a concrete instance of `GetProvisionedProductsProvisionedProductInput` via:
+//
+//	GetProvisionedProductsProvisionedProductArgs{...}
+type GetProvisionedProductsProvisionedProductInput interface {
+	pulumi.Input
+
+	ToGetProvisionedProductsProvisionedProductOutput() GetProvisionedProductsProvisionedProductOutput
+	ToGetProvisionedProductsProvisionedProductOutputWithContext(context.Context) GetProvisionedProductsProvisionedProductOutput
+}
+
+type GetProvisionedProductsProvisionedProductArgs struct {
+	// The creation time of the product instance
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	Id         pulumi.StringInput `pulumi:"id"`
+	// The ID of the last instance operation task
+	LastProvisioningTaskId pulumi.StringInput `pulumi:"lastProvisioningTaskId"`
+	// The ID of the last successful instance operation task
+	LastSuccessfulProvisioningTaskId pulumi.StringInput `pulumi:"lastSuccessfulProvisioningTaskId"`
+	// The ID of the last task
+	LastTaskId pulumi.StringInput                                           `pulumi:"lastTaskId"`
+	Outputs    GetProvisionedProductsProvisionedProductOutputTypeArrayInput `pulumi:"outputs"`
+	// The RAM entity ID of the owner
+	OwnerPrincipalId pulumi.StringInput `pulumi:"ownerPrincipalId"`
+	// The RAM entity type of the owner
+	OwnerPrincipalType pulumi.StringInput                                          `pulumi:"ownerPrincipalType"`
+	Parameters         GetProvisionedProductsProvisionedProductParameterArrayInput `pulumi:"parameters"`
+	// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+	PortfolioId pulumi.StringInput `pulumi:"portfolioId"`
+	// Product ID.
+	ProductId pulumi.StringInput `pulumi:"productId"`
+	// The name of the product
+	ProductName pulumi.StringInput `pulumi:"productName"`
+	// Product version ID.
+	ProductVersionId pulumi.StringInput `pulumi:"productVersionId"`
+	// The name of the product version
+	ProductVersionName pulumi.StringInput `pulumi:"productVersionName"`
+	// The ARN of the product instance
+	ProvisionedProductArn pulumi.StringInput `pulumi:"provisionedProductArn"`
+	// The ID of the instance.
+	ProvisionedProductId pulumi.StringInput `pulumi:"provisionedProductId"`
+	// The name of the instance.The length is 1~128 characters.
+	ProvisionedProductName pulumi.StringInput `pulumi:"provisionedProductName"`
+	// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+	ProvisionedProductType pulumi.StringInput `pulumi:"provisionedProductType"`
+	// The ID of the ROS stack
+	StackId pulumi.StringInput `pulumi:"stackId"`
+	// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+	StackRegionId pulumi.StringInput `pulumi:"stackRegionId"`
+	// Instance status
+	Status pulumi.StringInput `pulumi:"status"`
+	// The status message of the product instance
+	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
+	Tags          pulumi.MapInput    `pulumi:"tags"`
+}
+
+func (GetProvisionedProductsProvisionedProductArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProvisionedProductsProvisionedProduct)(nil)).Elem()
+}
+
+func (i GetProvisionedProductsProvisionedProductArgs) ToGetProvisionedProductsProvisionedProductOutput() GetProvisionedProductsProvisionedProductOutput {
+	return i.ToGetProvisionedProductsProvisionedProductOutputWithContext(context.Background())
+}
+
+func (i GetProvisionedProductsProvisionedProductArgs) ToGetProvisionedProductsProvisionedProductOutputWithContext(ctx context.Context) GetProvisionedProductsProvisionedProductOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProvisionedProductsProvisionedProductOutput)
+}
+
+// GetProvisionedProductsProvisionedProductArrayInput is an input type that accepts GetProvisionedProductsProvisionedProductArray and GetProvisionedProductsProvisionedProductArrayOutput values.
+// You can construct a concrete instance of `GetProvisionedProductsProvisionedProductArrayInput` via:
+//
+//	GetProvisionedProductsProvisionedProductArray{ GetProvisionedProductsProvisionedProductArgs{...} }
+type GetProvisionedProductsProvisionedProductArrayInput interface {
+	pulumi.Input
+
+	ToGetProvisionedProductsProvisionedProductArrayOutput() GetProvisionedProductsProvisionedProductArrayOutput
+	ToGetProvisionedProductsProvisionedProductArrayOutputWithContext(context.Context) GetProvisionedProductsProvisionedProductArrayOutput
+}
+
+type GetProvisionedProductsProvisionedProductArray []GetProvisionedProductsProvisionedProductInput
+
+func (GetProvisionedProductsProvisionedProductArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProvisionedProductsProvisionedProduct)(nil)).Elem()
+}
+
+func (i GetProvisionedProductsProvisionedProductArray) ToGetProvisionedProductsProvisionedProductArrayOutput() GetProvisionedProductsProvisionedProductArrayOutput {
+	return i.ToGetProvisionedProductsProvisionedProductArrayOutputWithContext(context.Background())
+}
+
+func (i GetProvisionedProductsProvisionedProductArray) ToGetProvisionedProductsProvisionedProductArrayOutputWithContext(ctx context.Context) GetProvisionedProductsProvisionedProductArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProvisionedProductsProvisionedProductArrayOutput)
+}
+
+type GetProvisionedProductsProvisionedProductOutput struct{ *pulumi.OutputState }
+
+func (GetProvisionedProductsProvisionedProductOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProvisionedProductsProvisionedProduct)(nil)).Elem()
+}
+
+func (o GetProvisionedProductsProvisionedProductOutput) ToGetProvisionedProductsProvisionedProductOutput() GetProvisionedProductsProvisionedProductOutput {
+	return o
+}
+
+func (o GetProvisionedProductsProvisionedProductOutput) ToGetProvisionedProductsProvisionedProductOutputWithContext(ctx context.Context) GetProvisionedProductsProvisionedProductOutput {
+	return o
+}
+
+// The creation time of the product instance
+func (o GetProvisionedProductsProvisionedProductOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o GetProvisionedProductsProvisionedProductOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the last instance operation task
+func (o GetProvisionedProductsProvisionedProductOutput) LastProvisioningTaskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.LastProvisioningTaskId }).(pulumi.StringOutput)
+}
+
+// The ID of the last successful instance operation task
+func (o GetProvisionedProductsProvisionedProductOutput) LastSuccessfulProvisioningTaskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.LastSuccessfulProvisioningTaskId }).(pulumi.StringOutput)
+}
+
+// The ID of the last task
+func (o GetProvisionedProductsProvisionedProductOutput) LastTaskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.LastTaskId }).(pulumi.StringOutput)
+}
+
+func (o GetProvisionedProductsProvisionedProductOutput) Outputs() GetProvisionedProductsProvisionedProductOutputTypeArrayOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) []GetProvisionedProductsProvisionedProductOutputType {
+		return v.Outputs
+	}).(GetProvisionedProductsProvisionedProductOutputTypeArrayOutput)
+}
+
+// The RAM entity ID of the owner
+func (o GetProvisionedProductsProvisionedProductOutput) OwnerPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.OwnerPrincipalId }).(pulumi.StringOutput)
+}
+
+// The RAM entity type of the owner
+func (o GetProvisionedProductsProvisionedProductOutput) OwnerPrincipalType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.OwnerPrincipalType }).(pulumi.StringOutput)
+}
+
+func (o GetProvisionedProductsProvisionedProductOutput) Parameters() GetProvisionedProductsProvisionedProductParameterArrayOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) []GetProvisionedProductsProvisionedProductParameter {
+		return v.Parameters
+	}).(GetProvisionedProductsProvisionedProductParameterArrayOutput)
+}
+
+// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+func (o GetProvisionedProductsProvisionedProductOutput) PortfolioId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.PortfolioId }).(pulumi.StringOutput)
+}
+
+// Product ID.
+func (o GetProvisionedProductsProvisionedProductOutput) ProductId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.ProductId }).(pulumi.StringOutput)
+}
+
+// The name of the product
+func (o GetProvisionedProductsProvisionedProductOutput) ProductName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.ProductName }).(pulumi.StringOutput)
+}
+
+// Product version ID.
+func (o GetProvisionedProductsProvisionedProductOutput) ProductVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.ProductVersionId }).(pulumi.StringOutput)
+}
+
+// The name of the product version
+func (o GetProvisionedProductsProvisionedProductOutput) ProductVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.ProductVersionName }).(pulumi.StringOutput)
+}
+
+// The ARN of the product instance
+func (o GetProvisionedProductsProvisionedProductOutput) ProvisionedProductArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.ProvisionedProductArn }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetProvisionedProductsProvisionedProductOutput) ProvisionedProductId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.ProvisionedProductId }).(pulumi.StringOutput)
+}
+
+// The name of the instance.The length is 1~128 characters.
+func (o GetProvisionedProductsProvisionedProductOutput) ProvisionedProductName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.ProvisionedProductName }).(pulumi.StringOutput)
+}
+
+// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+func (o GetProvisionedProductsProvisionedProductOutput) ProvisionedProductType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.ProvisionedProductType }).(pulumi.StringOutput)
+}
+
+// The ID of the ROS stack
+func (o GetProvisionedProductsProvisionedProductOutput) StackId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.StackId }).(pulumi.StringOutput)
+}
+
+// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+func (o GetProvisionedProductsProvisionedProductOutput) StackRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.StackRegionId }).(pulumi.StringOutput)
+}
+
+// Instance status
+func (o GetProvisionedProductsProvisionedProductOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The status message of the product instance
+func (o GetProvisionedProductsProvisionedProductOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+func (o GetProvisionedProductsProvisionedProductOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProduct) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetProvisionedProductsProvisionedProductArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProvisionedProductsProvisionedProductArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProvisionedProductsProvisionedProduct)(nil)).Elem()
+}
+
+func (o GetProvisionedProductsProvisionedProductArrayOutput) ToGetProvisionedProductsProvisionedProductArrayOutput() GetProvisionedProductsProvisionedProductArrayOutput {
+	return o
+}
+
+func (o GetProvisionedProductsProvisionedProductArrayOutput) ToGetProvisionedProductsProvisionedProductArrayOutputWithContext(ctx context.Context) GetProvisionedProductsProvisionedProductArrayOutput {
+	return o
+}
+
+func (o GetProvisionedProductsProvisionedProductArrayOutput) Index(i pulumi.IntInput) GetProvisionedProductsProvisionedProductOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProvisionedProductsProvisionedProduct {
+		return vs[0].([]GetProvisionedProductsProvisionedProduct)[vs[1].(int)]
+	}).(GetProvisionedProductsProvisionedProductOutput)
+}
+
+type GetProvisionedProductsProvisionedProductOutputType struct {
+	Description string `pulumi:"description"`
+	OutputKey   string `pulumi:"outputKey"`
+	OutputValue string `pulumi:"outputValue"`
+}
+
+// GetProvisionedProductsProvisionedProductOutputTypeInput is an input type that accepts GetProvisionedProductsProvisionedProductOutputTypeArgs and GetProvisionedProductsProvisionedProductOutputTypeOutput values.
+// You can construct a concrete instance of `GetProvisionedProductsProvisionedProductOutputTypeInput` via:
+//
+//	GetProvisionedProductsProvisionedProductOutputTypeArgs{...}
+type GetProvisionedProductsProvisionedProductOutputTypeInput interface {
+	pulumi.Input
+
+	ToGetProvisionedProductsProvisionedProductOutputTypeOutput() GetProvisionedProductsProvisionedProductOutputTypeOutput
+	ToGetProvisionedProductsProvisionedProductOutputTypeOutputWithContext(context.Context) GetProvisionedProductsProvisionedProductOutputTypeOutput
+}
+
+type GetProvisionedProductsProvisionedProductOutputTypeArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	OutputKey   pulumi.StringInput `pulumi:"outputKey"`
+	OutputValue pulumi.StringInput `pulumi:"outputValue"`
+}
+
+func (GetProvisionedProductsProvisionedProductOutputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProvisionedProductsProvisionedProductOutputType)(nil)).Elem()
+}
+
+func (i GetProvisionedProductsProvisionedProductOutputTypeArgs) ToGetProvisionedProductsProvisionedProductOutputTypeOutput() GetProvisionedProductsProvisionedProductOutputTypeOutput {
+	return i.ToGetProvisionedProductsProvisionedProductOutputTypeOutputWithContext(context.Background())
+}
+
+func (i GetProvisionedProductsProvisionedProductOutputTypeArgs) ToGetProvisionedProductsProvisionedProductOutputTypeOutputWithContext(ctx context.Context) GetProvisionedProductsProvisionedProductOutputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProvisionedProductsProvisionedProductOutputTypeOutput)
+}
+
+// GetProvisionedProductsProvisionedProductOutputTypeArrayInput is an input type that accepts GetProvisionedProductsProvisionedProductOutputTypeArray and GetProvisionedProductsProvisionedProductOutputTypeArrayOutput values.
+// You can construct a concrete instance of `GetProvisionedProductsProvisionedProductOutputTypeArrayInput` via:
+//
+//	GetProvisionedProductsProvisionedProductOutputTypeArray{ GetProvisionedProductsProvisionedProductOutputTypeArgs{...} }
+type GetProvisionedProductsProvisionedProductOutputTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetProvisionedProductsProvisionedProductOutputTypeArrayOutput() GetProvisionedProductsProvisionedProductOutputTypeArrayOutput
+	ToGetProvisionedProductsProvisionedProductOutputTypeArrayOutputWithContext(context.Context) GetProvisionedProductsProvisionedProductOutputTypeArrayOutput
+}
+
+type GetProvisionedProductsProvisionedProductOutputTypeArray []GetProvisionedProductsProvisionedProductOutputTypeInput
+
+func (GetProvisionedProductsProvisionedProductOutputTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProvisionedProductsProvisionedProductOutputType)(nil)).Elem()
+}
+
+func (i GetProvisionedProductsProvisionedProductOutputTypeArray) ToGetProvisionedProductsProvisionedProductOutputTypeArrayOutput() GetProvisionedProductsProvisionedProductOutputTypeArrayOutput {
+	return i.ToGetProvisionedProductsProvisionedProductOutputTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetProvisionedProductsProvisionedProductOutputTypeArray) ToGetProvisionedProductsProvisionedProductOutputTypeArrayOutputWithContext(ctx context.Context) GetProvisionedProductsProvisionedProductOutputTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProvisionedProductsProvisionedProductOutputTypeArrayOutput)
+}
+
+type GetProvisionedProductsProvisionedProductOutputTypeOutput struct{ *pulumi.OutputState }
+
+func (GetProvisionedProductsProvisionedProductOutputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProvisionedProductsProvisionedProductOutputType)(nil)).Elem()
+}
+
+func (o GetProvisionedProductsProvisionedProductOutputTypeOutput) ToGetProvisionedProductsProvisionedProductOutputTypeOutput() GetProvisionedProductsProvisionedProductOutputTypeOutput {
+	return o
+}
+
+func (o GetProvisionedProductsProvisionedProductOutputTypeOutput) ToGetProvisionedProductsProvisionedProductOutputTypeOutputWithContext(ctx context.Context) GetProvisionedProductsProvisionedProductOutputTypeOutput {
+	return o
+}
+
+func (o GetProvisionedProductsProvisionedProductOutputTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProductOutputType) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetProvisionedProductsProvisionedProductOutputTypeOutput) OutputKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProductOutputType) string { return v.OutputKey }).(pulumi.StringOutput)
+}
+
+func (o GetProvisionedProductsProvisionedProductOutputTypeOutput) OutputValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProductOutputType) string { return v.OutputValue }).(pulumi.StringOutput)
+}
+
+type GetProvisionedProductsProvisionedProductOutputTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProvisionedProductsProvisionedProductOutputTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProvisionedProductsProvisionedProductOutputType)(nil)).Elem()
+}
+
+func (o GetProvisionedProductsProvisionedProductOutputTypeArrayOutput) ToGetProvisionedProductsProvisionedProductOutputTypeArrayOutput() GetProvisionedProductsProvisionedProductOutputTypeArrayOutput {
+	return o
+}
+
+func (o GetProvisionedProductsProvisionedProductOutputTypeArrayOutput) ToGetProvisionedProductsProvisionedProductOutputTypeArrayOutputWithContext(ctx context.Context) GetProvisionedProductsProvisionedProductOutputTypeArrayOutput {
+	return o
+}
+
+func (o GetProvisionedProductsProvisionedProductOutputTypeArrayOutput) Index(i pulumi.IntInput) GetProvisionedProductsProvisionedProductOutputTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProvisionedProductsProvisionedProductOutputType {
+		return vs[0].([]GetProvisionedProductsProvisionedProductOutputType)[vs[1].(int)]
+	}).(GetProvisionedProductsProvisionedProductOutputTypeOutput)
+}
+
+type GetProvisionedProductsProvisionedProductParameter struct {
+	ParameterKey   string `pulumi:"parameterKey"`
+	ParameterValue string `pulumi:"parameterValue"`
+}
+
+// GetProvisionedProductsProvisionedProductParameterInput is an input type that accepts GetProvisionedProductsProvisionedProductParameterArgs and GetProvisionedProductsProvisionedProductParameterOutput values.
+// You can construct a concrete instance of `GetProvisionedProductsProvisionedProductParameterInput` via:
+//
+//	GetProvisionedProductsProvisionedProductParameterArgs{...}
+type GetProvisionedProductsProvisionedProductParameterInput interface {
+	pulumi.Input
+
+	ToGetProvisionedProductsProvisionedProductParameterOutput() GetProvisionedProductsProvisionedProductParameterOutput
+	ToGetProvisionedProductsProvisionedProductParameterOutputWithContext(context.Context) GetProvisionedProductsProvisionedProductParameterOutput
+}
+
+type GetProvisionedProductsProvisionedProductParameterArgs struct {
+	ParameterKey   pulumi.StringInput `pulumi:"parameterKey"`
+	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
+}
+
+func (GetProvisionedProductsProvisionedProductParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProvisionedProductsProvisionedProductParameter)(nil)).Elem()
+}
+
+func (i GetProvisionedProductsProvisionedProductParameterArgs) ToGetProvisionedProductsProvisionedProductParameterOutput() GetProvisionedProductsProvisionedProductParameterOutput {
+	return i.ToGetProvisionedProductsProvisionedProductParameterOutputWithContext(context.Background())
+}
+
+func (i GetProvisionedProductsProvisionedProductParameterArgs) ToGetProvisionedProductsProvisionedProductParameterOutputWithContext(ctx context.Context) GetProvisionedProductsProvisionedProductParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProvisionedProductsProvisionedProductParameterOutput)
+}
+
+// GetProvisionedProductsProvisionedProductParameterArrayInput is an input type that accepts GetProvisionedProductsProvisionedProductParameterArray and GetProvisionedProductsProvisionedProductParameterArrayOutput values.
+// You can construct a concrete instance of `GetProvisionedProductsProvisionedProductParameterArrayInput` via:
+//
+//	GetProvisionedProductsProvisionedProductParameterArray{ GetProvisionedProductsProvisionedProductParameterArgs{...} }
+type GetProvisionedProductsProvisionedProductParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetProvisionedProductsProvisionedProductParameterArrayOutput() GetProvisionedProductsProvisionedProductParameterArrayOutput
+	ToGetProvisionedProductsProvisionedProductParameterArrayOutputWithContext(context.Context) GetProvisionedProductsProvisionedProductParameterArrayOutput
+}
+
+type GetProvisionedProductsProvisionedProductParameterArray []GetProvisionedProductsProvisionedProductParameterInput
+
+func (GetProvisionedProductsProvisionedProductParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProvisionedProductsProvisionedProductParameter)(nil)).Elem()
+}
+
+func (i GetProvisionedProductsProvisionedProductParameterArray) ToGetProvisionedProductsProvisionedProductParameterArrayOutput() GetProvisionedProductsProvisionedProductParameterArrayOutput {
+	return i.ToGetProvisionedProductsProvisionedProductParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetProvisionedProductsProvisionedProductParameterArray) ToGetProvisionedProductsProvisionedProductParameterArrayOutputWithContext(ctx context.Context) GetProvisionedProductsProvisionedProductParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProvisionedProductsProvisionedProductParameterArrayOutput)
+}
+
+type GetProvisionedProductsProvisionedProductParameterOutput struct{ *pulumi.OutputState }
+
+func (GetProvisionedProductsProvisionedProductParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProvisionedProductsProvisionedProductParameter)(nil)).Elem()
+}
+
+func (o GetProvisionedProductsProvisionedProductParameterOutput) ToGetProvisionedProductsProvisionedProductParameterOutput() GetProvisionedProductsProvisionedProductParameterOutput {
+	return o
+}
+
+func (o GetProvisionedProductsProvisionedProductParameterOutput) ToGetProvisionedProductsProvisionedProductParameterOutputWithContext(ctx context.Context) GetProvisionedProductsProvisionedProductParameterOutput {
+	return o
+}
+
+func (o GetProvisionedProductsProvisionedProductParameterOutput) ParameterKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProductParameter) string { return v.ParameterKey }).(pulumi.StringOutput)
+}
+
+func (o GetProvisionedProductsProvisionedProductParameterOutput) ParameterValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProvisionedProductsProvisionedProductParameter) string { return v.ParameterValue }).(pulumi.StringOutput)
+}
+
+type GetProvisionedProductsProvisionedProductParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProvisionedProductsProvisionedProductParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProvisionedProductsProvisionedProductParameter)(nil)).Elem()
+}
+
+func (o GetProvisionedProductsProvisionedProductParameterArrayOutput) ToGetProvisionedProductsProvisionedProductParameterArrayOutput() GetProvisionedProductsProvisionedProductParameterArrayOutput {
+	return o
+}
+
+func (o GetProvisionedProductsProvisionedProductParameterArrayOutput) ToGetProvisionedProductsProvisionedProductParameterArrayOutputWithContext(ctx context.Context) GetProvisionedProductsProvisionedProductParameterArrayOutput {
+	return o
+}
+
+func (o GetProvisionedProductsProvisionedProductParameterArrayOutput) Index(i pulumi.IntInput) GetProvisionedProductsProvisionedProductParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProvisionedProductsProvisionedProductParameter {
+		return vs[0].([]GetProvisionedProductsProvisionedProductParameter)[vs[1].(int)]
+	}).(GetProvisionedProductsProvisionedProductParameterOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProvisionedProductOutputTypeInput)(nil)).Elem(), ProvisionedProductOutputTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProvisionedProductOutputTypeArrayInput)(nil)).Elem(), ProvisionedProductOutputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProvisionedProductParameterInput)(nil)).Elem(), ProvisionedProductParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProvisionedProductParameterArrayInput)(nil)).Elem(), ProvisionedProductParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndUserProductsEndUserProductInput)(nil)).Elem(), GetEndUserProductsEndUserProductArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEndUserProductsEndUserProductArrayInput)(nil)).Elem(), GetEndUserProductsEndUserProductArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLaunchOptionsLaunchOptionInput)(nil)).Elem(), GetLaunchOptionsLaunchOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLaunchOptionsLaunchOptionArrayInput)(nil)).Elem(), GetLaunchOptionsLaunchOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLaunchOptionsLaunchOptionConstraintSummaryInput)(nil)).Elem(), GetLaunchOptionsLaunchOptionConstraintSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLaunchOptionsLaunchOptionConstraintSummaryArrayInput)(nil)).Elem(), GetLaunchOptionsLaunchOptionConstraintSummaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLaunchOptionsOptionInput)(nil)).Elem(), GetLaunchOptionsOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLaunchOptionsOptionArrayInput)(nil)).Elem(), GetLaunchOptionsOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLaunchOptionsOptionConstraintSummaryInput)(nil)).Elem(), GetLaunchOptionsOptionConstraintSummaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLaunchOptionsOptionConstraintSummaryArrayInput)(nil)).Elem(), GetLaunchOptionsOptionConstraintSummaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProductAsEndUsersUserInput)(nil)).Elem(), GetProductAsEndUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProductAsEndUsersUserArrayInput)(nil)).Elem(), GetProductAsEndUsersUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductVersionsProductVersionInput)(nil)).Elem(), GetProductVersionsProductVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProductVersionsProductVersionArrayInput)(nil)).Elem(), GetProductVersionsProductVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProductVersionsVersionInput)(nil)).Elem(), GetProductVersionsVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProductVersionsVersionArrayInput)(nil)).Elem(), GetProductVersionsVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProvisionedProductsProductInput)(nil)).Elem(), GetProvisionedProductsProductArgs{})
@@ -1316,16 +2396,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProvisionedProductsProductOutputTypeArrayInput)(nil)).Elem(), GetProvisionedProductsProductOutputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProvisionedProductsProductParameterInput)(nil)).Elem(), GetProvisionedProductsProductParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProvisionedProductsProductParameterArrayInput)(nil)).Elem(), GetProvisionedProductsProductParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProvisionedProductsProvisionedProductInput)(nil)).Elem(), GetProvisionedProductsProvisionedProductArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProvisionedProductsProvisionedProductArrayInput)(nil)).Elem(), GetProvisionedProductsProvisionedProductArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProvisionedProductsProvisionedProductOutputTypeInput)(nil)).Elem(), GetProvisionedProductsProvisionedProductOutputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProvisionedProductsProvisionedProductOutputTypeArrayInput)(nil)).Elem(), GetProvisionedProductsProvisionedProductOutputTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProvisionedProductsProvisionedProductParameterInput)(nil)).Elem(), GetProvisionedProductsProvisionedProductParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProvisionedProductsProvisionedProductParameterArrayInput)(nil)).Elem(), GetProvisionedProductsProvisionedProductParameterArray{})
 	pulumi.RegisterOutputType(ProvisionedProductOutputTypeOutput{})
 	pulumi.RegisterOutputType(ProvisionedProductOutputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ProvisionedProductParameterOutput{})
 	pulumi.RegisterOutputType(ProvisionedProductParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetEndUserProductsEndUserProductOutput{})
+	pulumi.RegisterOutputType(GetEndUserProductsEndUserProductArrayOutput{})
+	pulumi.RegisterOutputType(GetLaunchOptionsLaunchOptionOutput{})
+	pulumi.RegisterOutputType(GetLaunchOptionsLaunchOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetLaunchOptionsLaunchOptionConstraintSummaryOutput{})
+	pulumi.RegisterOutputType(GetLaunchOptionsLaunchOptionConstraintSummaryArrayOutput{})
 	pulumi.RegisterOutputType(GetLaunchOptionsOptionOutput{})
 	pulumi.RegisterOutputType(GetLaunchOptionsOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetLaunchOptionsOptionConstraintSummaryOutput{})
 	pulumi.RegisterOutputType(GetLaunchOptionsOptionConstraintSummaryArrayOutput{})
 	pulumi.RegisterOutputType(GetProductAsEndUsersUserOutput{})
 	pulumi.RegisterOutputType(GetProductAsEndUsersUserArrayOutput{})
+	pulumi.RegisterOutputType(GetProductVersionsProductVersionOutput{})
+	pulumi.RegisterOutputType(GetProductVersionsProductVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetProductVersionsVersionOutput{})
 	pulumi.RegisterOutputType(GetProductVersionsVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetProvisionedProductsProductOutput{})
@@ -1334,4 +2428,10 @@ func init() {
 	pulumi.RegisterOutputType(GetProvisionedProductsProductOutputTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetProvisionedProductsProductParameterOutput{})
 	pulumi.RegisterOutputType(GetProvisionedProductsProductParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetProvisionedProductsProvisionedProductOutput{})
+	pulumi.RegisterOutputType(GetProvisionedProductsProvisionedProductArrayOutput{})
+	pulumi.RegisterOutputType(GetProvisionedProductsProvisionedProductOutputTypeOutput{})
+	pulumi.RegisterOutputType(GetProvisionedProductsProvisionedProductOutputTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetProvisionedProductsProvisionedProductParameterOutput{})
+	pulumi.RegisterOutputType(GetProvisionedProductsProvisionedProductParameterArrayOutput{})
 }

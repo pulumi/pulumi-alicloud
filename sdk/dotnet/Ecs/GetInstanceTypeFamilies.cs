@@ -34,8 +34,8 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstInstanceTypeFamilyId"] = @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult).Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Families[0]?.Id)),
-        ///         ["instanceIds"] = @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult).Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Ids)),
+        ///         ["firstInstanceTypeFamilyId"] = @default.Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Families[0]?.Id)),
+        ///         ["instanceIds"] = @default.Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Ids)),
         ///     };
         /// });
         /// ```
@@ -68,8 +68,8 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstInstanceTypeFamilyId"] = @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult).Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Families[0]?.Id)),
-        ///         ["instanceIds"] = @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult).Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Ids)),
+        ///         ["firstInstanceTypeFamilyId"] = @default.Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Families[0]?.Id)),
+        ///         ["instanceIds"] = @default.Apply(@default =&gt; @default.Apply(getInstanceTypeFamiliesResult =&gt; getInstanceTypeFamiliesResult.Ids)),
         ///     };
         /// });
         /// ```

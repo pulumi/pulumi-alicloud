@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetEndUserProductsArgs, GetEndUserProductsResult, GetEndUserProductsOutputArgs } from "./getEndUserProducts";
+export const getEndUserProducts: typeof import("./getEndUserProducts").getEndUserProducts = null as any;
+export const getEndUserProductsOutput: typeof import("./getEndUserProducts").getEndUserProductsOutput = null as any;
+utilities.lazyLoad(exports, ["getEndUserProducts","getEndUserProductsOutput"], () => require("./getEndUserProducts"));
+
 export { GetLaunchOptionsArgs, GetLaunchOptionsResult, GetLaunchOptionsOutputArgs } from "./getLaunchOptions";
 export const getLaunchOptions: typeof import("./getLaunchOptions").getLaunchOptions = null as any;
 export const getLaunchOptionsOutput: typeof import("./getLaunchOptions").getLaunchOptionsOutput = null as any;

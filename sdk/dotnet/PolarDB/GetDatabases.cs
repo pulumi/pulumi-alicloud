@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["database"] = @default.Apply(getDatabasesResult =&gt; getDatabasesResult).Apply(@default =&gt; @default.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases[0]?.DbName)),
+        ///         ["database"] = @default.Apply(@default =&gt; @default.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases[0]?.DbName)),
         ///     };
         /// });
         /// ```
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["database"] = @default.Apply(getDatabasesResult =&gt; getDatabasesResult).Apply(@default =&gt; @default.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases[0]?.DbName)),
+        ///         ["database"] = @default.Apply(@default =&gt; @default.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases[0]?.DbName)),
         ///     };
         /// });
         /// ```

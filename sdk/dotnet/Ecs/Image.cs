@@ -102,11 +102,14 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
-        /// Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
+        /// The distribution of the operating system for the system disk in the custom image. 
+        /// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
+        /// to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+        /// More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
+        /// **NOTE**: It's default value is Ubuntu before version 1.197.0.
         /// </summary>
         [Output("platform")]
-        public Output<string?> Platform { get; private set; } = null!;
+        public Output<string> Platform { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the enterprise resource group to which a custom image belongs
@@ -223,8 +226,11 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
-        /// Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
+        /// The distribution of the operating system for the system disk in the custom image. 
+        /// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
+        /// to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+        /// More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
+        /// **NOTE**: It's default value is Ubuntu before version 1.197.0.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -312,8 +318,11 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. 
-        /// Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows Server 2022`, `Windows 7`, Default is `Others Linux`.
+        /// The distribution of the operating system for the system disk in the custom image. 
+        /// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
+        /// to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+        /// More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
+        /// **NOTE**: It's default value is Ubuntu before version 1.197.0.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }

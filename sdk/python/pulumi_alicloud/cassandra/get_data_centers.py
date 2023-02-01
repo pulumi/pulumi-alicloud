@@ -117,7 +117,7 @@ def get_data_centers(cluster_id: Optional[str] = None,
                      output_file: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataCentersResult:
     """
-    The `cassandra.get_data_centers` data source provides a collection of Cassandra Data Centers available in Alicloud account.
+    The _cassandra_get_data_centers_ data source provides a collection of Cassandra Data Centers available in Alicloud account.
     Filters support regular expression for the cluster name or ids.
 
     > **NOTE:**  Available in 1.88.0+.
@@ -162,7 +162,7 @@ def get_data_centers_output(cluster_id: Optional[pulumi.Input[str]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataCentersResult]:
     """
-    The `cassandra.get_data_centers` data source provides a collection of Cassandra Data Centers available in Alicloud account.
+    The _cassandra_get_data_centers_ data source provides a collection of Cassandra Data Centers available in Alicloud account.
     Filters support regular expression for the cluster name or ids.
 
     > **NOTE:**  Available in 1.88.0+.

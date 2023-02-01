@@ -20,6 +20,11 @@ from .basic_accelerator import *
 from .basic_endpoint import *
 from .basic_endpoint_group import *
 from .basic_ip_set import *
+from .custom_routing_endpoint import *
+from .custom_routing_endpoint_group import *
+from .custom_routing_endpoint_group_destination import *
+from .custom_routing_endpoint_traffic_policy import *
+from .domain import *
 from .endpoint_group import *
 from .forwarding_rule import *
 from .get_accelerator_spare_ip_attachments import *
@@ -31,6 +36,12 @@ from .get_basic_accelerate_ip_endpoint_relations import *
 from .get_basic_accelerate_ips import *
 from .get_basic_accelerators import *
 from .get_basic_endpoints import *
+from .get_custom_routing_endpoint_group_destinations import *
+from .get_custom_routing_endpoint_groups import *
+from .get_custom_routing_endpoint_traffic_policies import *
+from .get_custom_routing_endpoints import *
+from .get_custom_routing_port_mappings import *
+from .get_domains import *
 from .get_endpoint_groups import *
 from .get_forwarding_rules import *
 from .get_ip_sets import *

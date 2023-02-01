@@ -51,6 +51,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BasicEndpointGroup{}
 	case "alicloud:ga/basicIpSet:BasicIpSet":
 		r = &BasicIpSet{}
+	case "alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint":
+		r = &CustomRoutingEndpoint{}
+	case "alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup":
+		r = &CustomRoutingEndpointGroup{}
+	case "alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination":
+		r = &CustomRoutingEndpointGroupDestination{}
+	case "alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy":
+		r = &CustomRoutingEndpointTrafficPolicy{}
+	case "alicloud:ga/domain:Domain":
+		r = &Domain{}
 	case "alicloud:ga/endpointGroup:EndpointGroup":
 		r = &EndpointGroup{}
 	case "alicloud:ga/forwardingRule:ForwardingRule":
@@ -145,6 +155,31 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ga/basicIpSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/customRoutingEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/customRoutingEndpointGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/customRoutingEndpointGroupDestination",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/customRoutingEndpointTrafficPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ga/domain",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

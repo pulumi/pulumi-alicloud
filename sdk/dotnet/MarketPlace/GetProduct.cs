@@ -34,9 +34,9 @@ namespace Pulumi.AliCloud.MarketPlace
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["productName"] = @default.Apply(getProductResult =&gt; getProductResult).Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Name)),
-        ///         ["firstProductSkuCode"] = @default.Apply(getProductResult =&gt; getProductResult).Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Skuses[0]?.SkuCode)),
-        ///         ["firstProductPackageVersion"] = @default.Apply(getProductResult =&gt; getProductResult).Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Skuses[0]?.PackageVersions[0]?.PackageVersion)),
+        ///         ["productName"] = @default.Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Name)),
+        ///         ["firstProductSkuCode"] = @default.Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Skuses[0]?.SkuCode)),
+        ///         ["firstProductPackageVersion"] = @default.Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Skuses[0]?.PackageVersions[0]?.PackageVersion)),
         ///     };
         /// });
         /// ```
@@ -69,9 +69,9 @@ namespace Pulumi.AliCloud.MarketPlace
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["productName"] = @default.Apply(getProductResult =&gt; getProductResult).Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Name)),
-        ///         ["firstProductSkuCode"] = @default.Apply(getProductResult =&gt; getProductResult).Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Skuses[0]?.SkuCode)),
-        ///         ["firstProductPackageVersion"] = @default.Apply(getProductResult =&gt; getProductResult).Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Skuses[0]?.PackageVersions[0]?.PackageVersion)),
+        ///         ["productName"] = @default.Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Name)),
+        ///         ["firstProductSkuCode"] = @default.Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Skuses[0]?.SkuCode)),
+        ///         ["firstProductPackageVersion"] = @default.Apply(@default =&gt; @default.Apply(getProductResult =&gt; getProductResult.Products[0]?.Skuses[0]?.PackageVersions[0]?.PackageVersion)),
         ///     };
         /// });
         /// ```

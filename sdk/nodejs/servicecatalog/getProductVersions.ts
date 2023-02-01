@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     nameRegex: "1.0.0",
  *     productId: "prod-bp125x4k29wb7q",
  * });
- * export const alicloudServiceCatalogProductVersionExampleId = _default.then(_default => _default.versions?.[0]?.id);
+ * export const alicloudServiceCatalogProductVersionExampleId = _default.then(_default => _default.productVersions?.[0]?.id);
  * ```
  */
 export function getProductVersions(args: GetProductVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetProductVersionsResult> {
@@ -79,6 +79,10 @@ export interface GetProductVersionsResult {
     /**
      * A list of Product Version Entries. Each element contains the following attributes:
      */
+    readonly productVersions: outputs.servicecatalog.GetProductVersionsProductVersion[];
+    /**
+     * @deprecated Field 'versions' has been deprecated from provider version 1.197.0.
+     */
     readonly versions: outputs.servicecatalog.GetProductVersionsVersion[];
 }
 /**
@@ -96,7 +100,7 @@ export interface GetProductVersionsResult {
  *     nameRegex: "1.0.0",
  *     productId: "prod-bp125x4k29wb7q",
  * });
- * export const alicloudServiceCatalogProductVersionExampleId = _default.then(_default => _default.versions?.[0]?.id);
+ * export const alicloudServiceCatalogProductVersionExampleId = _default.then(_default => _default.productVersions?.[0]?.id);
  * ```
  */
 export function getProductVersionsOutput(args: GetProductVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductVersionsResult> {

@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstCenPrivateZonesId"] = @this.Apply(getPrivateZonesResult =&gt; getPrivateZonesResult).Apply(@this =&gt; @this.Apply(getPrivateZonesResult =&gt; getPrivateZonesResult.Zones[0]?.Id)),
+        ///         ["firstCenPrivateZonesId"] = @this.Apply(@this =&gt; @this.Apply(getPrivateZonesResult =&gt; getPrivateZonesResult.Zones[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstCenPrivateZonesId"] = @this.Apply(getPrivateZonesResult =&gt; getPrivateZonesResult).Apply(@this =&gt; @this.Apply(getPrivateZonesResult =&gt; getPrivateZonesResult.Zones[0]?.Id)),
+        ///         ["firstCenPrivateZonesId"] = @this.Apply(@this =&gt; @this.Apply(getPrivateZonesResult =&gt; getPrivateZonesResult.Zones[0]?.Id)),
         ///     };
         /// });
         /// ```

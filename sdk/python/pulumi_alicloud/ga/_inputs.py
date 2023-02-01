@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'AclAclEntryArgs',
+    'CustomRoutingEndpointTrafficPolicyPortRangeArgs',
     'EndpointGroupEndpointConfigurationArgs',
     'EndpointGroupPortOverridesArgs',
     'ForwardingRuleRuleActionArgs',
@@ -60,6 +61,45 @@ class AclAclEntryArgs:
     @entry_description.setter
     def entry_description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "entry_description", value)
+
+
+@pulumi.input_type
+class CustomRoutingEndpointTrafficPolicyPortRangeArgs:
+    def __init__(__self__, *,
+                 from_port: Optional[pulumi.Input[int]] = None,
+                 to_port: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] from_port: The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+        :param pulumi.Input[int] to_port: The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+        """
+        if from_port is not None:
+            pulumi.set(__self__, "from_port", from_port)
+        if to_port is not None:
+            pulumi.set(__self__, "to_port", to_port)
+
+    @property
+    @pulumi.getter(name="fromPort")
+    def from_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+        """
+        return pulumi.get(self, "from_port")
+
+    @from_port.setter
+    def from_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "from_port", value)
+
+    @property
+    @pulumi.getter(name="toPort")
+    def to_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+        """
+        return pulumi.get(self, "to_port")
+
+    @to_port.setter
+    def to_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "to_port", value)
 
 
 @pulumi.input_type

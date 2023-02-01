@@ -5206,6 +5206,17 @@ export namespace ga {
         entryDescription?: pulumi.Input<string>;
     }
 
+    export interface CustomRoutingEndpointTrafficPolicyPortRange {
+        /**
+         * The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+         */
+        fromPort?: pulumi.Input<number>;
+        /**
+         * The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+         */
+        toPort?: pulumi.Input<number>;
+    }
+
     export interface EndpointGroupEndpointConfiguration {
         /**
          * Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.

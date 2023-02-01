@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["tid"] = @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult).Apply(@default =&gt; @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0])),
+        ///         ["tid"] = @default.Apply(@default =&gt; @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0])),
         ///     };
         /// });
         /// ```
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["tid"] = @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult).Apply(@default =&gt; @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0])),
+        ///         ["tid"] = @default.Apply(@default =&gt; @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0])),
         ///     };
         /// });
         /// ```

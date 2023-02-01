@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudExpressConnectVbrPconnAssociationExampleId"] = @default.Apply(getVbrPconnAssociationsResult =&gt; getVbrPconnAssociationsResult).Apply(@default =&gt; @default.Apply(getVbrPconnAssociationsResult =&gt; getVbrPconnAssociationsResult.Associations[0]?.Id)),
+        ///         ["alicloudExpressConnectVbrPconnAssociationExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVbrPconnAssociationsResult =&gt; getVbrPconnAssociationsResult.Associations[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudExpressConnectVbrPconnAssociationExampleId"] = @default.Apply(getVbrPconnAssociationsResult =&gt; getVbrPconnAssociationsResult).Apply(@default =&gt; @default.Apply(getVbrPconnAssociationsResult =&gt; getVbrPconnAssociationsResult.Associations[0]?.Id)),
+        ///         ["alicloudExpressConnectVbrPconnAssociationExampleId"] = @default.Apply(@default =&gt; @default.Apply(getVbrPconnAssociationsResult =&gt; getVbrPconnAssociationsResult.Associations[0]?.Id)),
         ///     };
         /// });
         /// ```

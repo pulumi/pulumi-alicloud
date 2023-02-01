@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudServiceCatalogProvisionedProductExampleId"] = @default.Apply(getProvisionedProductsResult =&gt; getProvisionedProductsResult).Apply(@default =&gt; @default.Apply(getProvisionedProductsResult =&gt; getProvisionedProductsResult.Products[0]?.Id)),
+        ///         ["alicloudServiceCatalogProvisionedProductExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProvisionedProductsResult =&gt; getProvisionedProductsResult.ProvisionedProducts[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudServiceCatalogProvisionedProductExampleId"] = @default.Apply(getProvisionedProductsResult =&gt; getProvisionedProductsResult).Apply(@default =&gt; @default.Apply(getProvisionedProductsResult =&gt; getProvisionedProductsResult.Products[0]?.Id)),
+        ///         ["alicloudServiceCatalogProvisionedProductExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProvisionedProductsResult =&gt; getProvisionedProductsResult.ProvisionedProducts[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -203,10 +203,11 @@ namespace Pulumi.AliCloud.ServiceCatalog
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        public readonly ImmutableArray<Outputs.GetProvisionedProductsProductResult> Products;
         /// <summary>
         /// A list of Provisioned Product Entries. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetProvisionedProductsProductResult> Products;
+        public readonly ImmutableArray<Outputs.GetProvisionedProductsProvisionedProductResult> ProvisionedProducts;
         public readonly string? SortBy;
         public readonly string? SortOrder;
 
@@ -232,6 +233,8 @@ namespace Pulumi.AliCloud.ServiceCatalog
 
             ImmutableArray<Outputs.GetProvisionedProductsProductResult> products,
 
+            ImmutableArray<Outputs.GetProvisionedProductsProvisionedProductResult> provisionedProducts,
+
             string? sortBy,
 
             string? sortOrder)
@@ -246,6 +249,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
             PageNumber = pageNumber;
             PageSize = pageSize;
             Products = products;
+            ProvisionedProducts = provisionedProducts;
             SortBy = sortBy;
             SortOrder = sortOrder;
         }

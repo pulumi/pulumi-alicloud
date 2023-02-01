@@ -22,7 +22,7 @@ class GetProvisionedProductsResult:
     """
     A collection of values returned by getProvisionedProducts.
     """
-    def __init__(__self__, access_level_filter=None, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, products=None, sort_by=None, sort_order=None):
+    def __init__(__self__, access_level_filter=None, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, products=None, provisioned_products=None, sort_by=None, sort_order=None):
         if access_level_filter and not isinstance(access_level_filter, str):
             raise TypeError("Expected argument 'access_level_filter' to be a str")
         pulumi.set(__self__, "access_level_filter", access_level_filter)
@@ -52,7 +52,14 @@ class GetProvisionedProductsResult:
         pulumi.set(__self__, "page_size", page_size)
         if products and not isinstance(products, list):
             raise TypeError("Expected argument 'products' to be a list")
+        if products is not None:
+            warnings.warn("""Field 'products' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
+            pulumi.log.warn("""products is deprecated: Field 'products' has been deprecated from provider version 1.197.0.""")
+
         pulumi.set(__self__, "products", products)
+        if provisioned_products and not isinstance(provisioned_products, list):
+            raise TypeError("Expected argument 'provisioned_products' to be a list")
+        pulumi.set(__self__, "provisioned_products", provisioned_products)
         if sort_by and not isinstance(sort_by, str):
             raise TypeError("Expected argument 'sort_by' to be a str")
         pulumi.set(__self__, "sort_by", sort_by)
@@ -117,10 +124,15 @@ class GetProvisionedProductsResult:
     @property
     @pulumi.getter
     def products(self) -> Sequence['outputs.GetProvisionedProductsProductResult']:
+        return pulumi.get(self, "products")
+
+    @property
+    @pulumi.getter(name="provisionedProducts")
+    def provisioned_products(self) -> Sequence['outputs.GetProvisionedProductsProvisionedProductResult']:
         """
         A list of Provisioned Product Entries. Each element contains the following attributes:
         """
-        return pulumi.get(self, "products")
+        return pulumi.get(self, "provisioned_products")
 
     @property
     @pulumi.getter(name="sortBy")
@@ -149,6 +161,7 @@ class AwaitableGetProvisionedProductsResult(GetProvisionedProductsResult):
             page_number=self.page_number,
             page_size=self.page_size,
             products=self.products,
+            provisioned_products=self.provisioned_products,
             sort_by=self.sort_by,
             sort_order=self.sort_order)
 
@@ -176,7 +189,7 @@ def get_provisioned_products(access_level_filter: Optional[str] = None,
 
     default = alicloud.servicecatalog.get_provisioned_products(ids=["IdExample"],
         name_regex="NameRegexExample")
-    pulumi.export("alicloudServiceCatalogProvisionedProductExampleId", default.products[0].id)
+    pulumi.export("alicloudServiceCatalogProvisionedProductExampleId", default.provisioned_products[0].id)
     ```
 
 
@@ -207,6 +220,7 @@ def get_provisioned_products(access_level_filter: Optional[str] = None,
         page_number=__ret__.page_number,
         page_size=__ret__.page_size,
         products=__ret__.products,
+        provisioned_products=__ret__.provisioned_products,
         sort_by=__ret__.sort_by,
         sort_order=__ret__.sort_order)
 
@@ -235,7 +249,7 @@ def get_provisioned_products_output(access_level_filter: Optional[pulumi.Input[O
 
     default = alicloud.servicecatalog.get_provisioned_products(ids=["IdExample"],
         name_regex="NameRegexExample")
-    pulumi.export("alicloudServiceCatalogProvisionedProductExampleId", default.products[0].id)
+    pulumi.export("alicloudServiceCatalogProvisionedProductExampleId", default.provisioned_products[0].id)
     ```
 
 

@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["cenTransitRouterPrefixListAssociationId"] = @default.Apply(getTransitRouterPrefixListAssociationsResult =&gt; getTransitRouterPrefixListAssociationsResult).Apply(@default =&gt; @default.Apply(getTransitRouterPrefixListAssociationsResult =&gt; getTransitRouterPrefixListAssociationsResult.Associations[0]?.Id)),
+        ///         ["cenTransitRouterPrefixListAssociationId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterPrefixListAssociationsResult =&gt; getTransitRouterPrefixListAssociationsResult.Associations[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["cenTransitRouterPrefixListAssociationId"] = @default.Apply(getTransitRouterPrefixListAssociationsResult =&gt; getTransitRouterPrefixListAssociationsResult).Apply(@default =&gt; @default.Apply(getTransitRouterPrefixListAssociationsResult =&gt; getTransitRouterPrefixListAssociationsResult.Associations[0]?.Id)),
+        ///         ["cenTransitRouterPrefixListAssociationId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterPrefixListAssociationsResult =&gt; getTransitRouterPrefixListAssociationsResult.Associations[0]?.Id)),
         ///     };
         /// });
         /// ```

@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.servicecatalog.outputs;
 
+import com.pulumi.alicloud.servicecatalog.outputs.GetLaunchOptionsLaunchOption;
 import com.pulumi.alicloud.servicecatalog.outputs.GetLaunchOptionsOption;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
@@ -19,11 +20,18 @@ public final class GetLaunchOptionsResult {
      */
     private String id;
     private List<String> ids;
-    private @Nullable String nameRegex;
     /**
      * @return A list of Launch Option Entries. Each element contains the following attributes:
      * 
      */
+    private List<GetLaunchOptionsLaunchOption> launchOptions;
+    private @Nullable String nameRegex;
+    /**
+     * @deprecated
+     * Field &#39;options&#39; has been deprecated from provider version 1.197.0.
+     * 
+     */
+    @Deprecated /* Field 'options' has been deprecated from provider version 1.197.0. */
     private List<GetLaunchOptionsOption> options;
     private @Nullable String outputFile;
     private String productId;
@@ -39,13 +47,22 @@ public final class GetLaunchOptionsResult {
     public List<String> ids() {
         return this.ids;
     }
-    public Optional<String> nameRegex() {
-        return Optional.ofNullable(this.nameRegex);
-    }
     /**
      * @return A list of Launch Option Entries. Each element contains the following attributes:
      * 
      */
+    public List<GetLaunchOptionsLaunchOption> launchOptions() {
+        return this.launchOptions;
+    }
+    public Optional<String> nameRegex() {
+        return Optional.ofNullable(this.nameRegex);
+    }
+    /**
+     * @deprecated
+     * Field &#39;options&#39; has been deprecated from provider version 1.197.0.
+     * 
+     */
+    @Deprecated /* Field 'options' has been deprecated from provider version 1.197.0. */
     public List<GetLaunchOptionsOption> options() {
         return this.options;
     }
@@ -67,6 +84,7 @@ public final class GetLaunchOptionsResult {
     public static final class Builder {
         private String id;
         private List<String> ids;
+        private List<GetLaunchOptionsLaunchOption> launchOptions;
         private @Nullable String nameRegex;
         private List<GetLaunchOptionsOption> options;
         private @Nullable String outputFile;
@@ -76,6 +94,7 @@ public final class GetLaunchOptionsResult {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.launchOptions = defaults.launchOptions;
     	      this.nameRegex = defaults.nameRegex;
     	      this.options = defaults.options;
     	      this.outputFile = defaults.outputFile;
@@ -94,6 +113,14 @@ public final class GetLaunchOptionsResult {
         }
         public Builder ids(String... ids) {
             return ids(List.of(ids));
+        }
+        @CustomType.Setter
+        public Builder launchOptions(List<GetLaunchOptionsLaunchOption> launchOptions) {
+            this.launchOptions = Objects.requireNonNull(launchOptions);
+            return this;
+        }
+        public Builder launchOptions(GetLaunchOptionsLaunchOption... launchOptions) {
+            return launchOptions(List.of(launchOptions));
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
@@ -122,6 +149,7 @@ public final class GetLaunchOptionsResult {
             final var o = new GetLaunchOptionsResult();
             o.id = id;
             o.ids = ids;
+            o.launchOptions = launchOptions;
             o.nameRegex = nameRegex;
             o.options = options;
             o.outputFile = outputFile;

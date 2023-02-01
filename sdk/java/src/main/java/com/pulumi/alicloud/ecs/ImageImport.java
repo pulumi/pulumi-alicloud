@@ -167,18 +167,22 @@ public class ImageImport extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.osType);
     }
     /**
-     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+     * The operating system distribution. Default value: Others Linux.
+     * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
      * 
      */
     @Export(name="platform", type=String.class, parameters={})
-    private Output</* @Nullable */ String> platform;
+    private Output<String> platform;
 
     /**
-     * @return Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+     * @return The operating system distribution. Default value: Others Linux.
+     * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
      * 
      */
-    public Output<Optional<String>> platform() {
-        return Codegen.optional(this.platform);
+    public Output<String> platform() {
+        return this.platform;
     }
 
     /**

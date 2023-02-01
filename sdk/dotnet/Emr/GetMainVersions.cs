@@ -40,8 +40,8 @@ namespace Pulumi.AliCloud.Emr
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstMainVersion"] = @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult).Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.EmrVersion)),
-        ///         ["thisClusterTypes"] = @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult).Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes)),
+        ///         ["firstMainVersion"] = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.EmrVersion)),
+        ///         ["thisClusterTypes"] = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes)),
         ///     };
         /// });
         /// ```
@@ -80,8 +80,8 @@ namespace Pulumi.AliCloud.Emr
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstMainVersion"] = @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult).Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.EmrVersion)),
-        ///         ["thisClusterTypes"] = @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult).Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes)),
+        ///         ["firstMainVersion"] = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.EmrVersion)),
+        ///         ["thisClusterTypes"] = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes)),
         ///     };
         /// });
         /// ```

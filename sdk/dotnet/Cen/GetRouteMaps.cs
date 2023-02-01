@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstCenRouteMapId"] = @this.Apply(getRouteMapsResult =&gt; getRouteMapsResult).Apply(@this =&gt; @this.Apply(getRouteMapsResult =&gt; getRouteMapsResult.Maps[0]?.RouteMapId)),
+        ///         ["firstCenRouteMapId"] = @this.Apply(@this =&gt; @this.Apply(getRouteMapsResult =&gt; getRouteMapsResult.Maps[0]?.RouteMapId)),
         ///     };
         /// });
         /// ```
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstCenRouteMapId"] = @this.Apply(getRouteMapsResult =&gt; getRouteMapsResult).Apply(@this =&gt; @this.Apply(getRouteMapsResult =&gt; getRouteMapsResult.Maps[0]?.RouteMapId)),
+        ///         ["firstCenRouteMapId"] = @this.Apply(@this =&gt; @this.Apply(getRouteMapsResult =&gt; getRouteMapsResult.Maps[0]?.RouteMapId)),
         ///     };
         /// });
         /// ```

@@ -31,7 +31,9 @@ class ImageImportArgs:
         :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
         :param pulumi.Input[str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
         :param pulumi.Input[str] os_type: Operating system platform type. Valid values: `windows`, Default is `linux`.
-        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        :param pulumi.Input[str] platform: The operating system distribution. Default value: Others Linux. 
+               More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+               **NOTE**: It's default value is Ubuntu before version 1.197.0.
         """
         pulumi.set(__self__, "disk_device_mappings", disk_device_mappings)
         if architecture is not None:
@@ -123,7 +125,9 @@ class ImageImportArgs:
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        The operating system distribution. Default value: Others Linux. 
+        More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+        **NOTE**: It's default value is Ubuntu before version 1.197.0.
         """
         return pulumi.get(self, "platform")
 
@@ -150,7 +154,9 @@ class _ImageImportState:
         :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
         :param pulumi.Input[str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
         :param pulumi.Input[str] os_type: Operating system platform type. Valid values: `windows`, Default is `linux`.
-        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        :param pulumi.Input[str] platform: The operating system distribution. Default value: Others Linux. 
+               More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+               **NOTE**: It's default value is Ubuntu before version 1.197.0.
         """
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
@@ -243,7 +249,9 @@ class _ImageImportState:
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        The operating system distribution. Default value: Others Linux. 
+        More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+        **NOTE**: It's default value is Ubuntu before version 1.197.0.
         """
         return pulumi.get(self, "platform")
 
@@ -315,7 +323,9 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
         :param pulumi.Input[str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
         :param pulumi.Input[str] os_type: Operating system platform type. Valid values: `windows`, Default is `linux`.
-        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        :param pulumi.Input[str] platform: The operating system distribution. Default value: Others Linux. 
+               More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+               **NOTE**: It's default value is Ubuntu before version 1.197.0.
         """
         ...
     @overload
@@ -435,7 +445,9 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
         :param pulumi.Input[str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
         :param pulumi.Input[str] os_type: Operating system platform type. Valid values: `windows`, Default is `linux`.
-        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        :param pulumi.Input[str] platform: The operating system distribution. Default value: Others Linux. 
+               More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+               **NOTE**: It's default value is Ubuntu before version 1.197.0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -500,9 +512,11 @@ class ImageImport(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def platform(self) -> pulumi.Output[Optional[str]]:
+    def platform(self) -> pulumi.Output[str]:
         """
-        Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        The operating system distribution. Default value: Others Linux. 
+        More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+        **NOTE**: It's default value is Ubuntu before version 1.197.0.
         """
         return pulumi.get(self, "platform")
 

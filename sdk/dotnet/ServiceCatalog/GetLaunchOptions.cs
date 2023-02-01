@@ -27,14 +27,19 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.ServiceCatalog.GetLaunchOptions.Invoke(new()
+        ///     var defaultEndUserProducts = AliCloud.ServiceCatalog.GetEndUserProducts.Invoke(new()
         ///     {
-        ///         ProductId = "prod-bp125x4k29wb7q",
+        ///         NameRegex = "ram模板创建",
+        ///     });
+        /// 
+        ///     var defaultLaunchOptions = AliCloud.ServiceCatalog.GetLaunchOptions.Invoke(new()
+        ///     {
+        ///         ProductId = "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudServiceCatalogLaunchOptionExampleId"] = @default.Apply(getLaunchOptionsResult =&gt; getLaunchOptionsResult).Apply(@default =&gt; @default.Apply(getLaunchOptionsResult =&gt; getLaunchOptionsResult.Options[0]?.Id)),
+        ///         ["alicloudServiceCatalogLaunchOptionExampleId"] = defaultLaunchOptions.Apply(getLaunchOptionsResult =&gt; getLaunchOptionsResult.LaunchOptions[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -60,14 +65,19 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.ServiceCatalog.GetLaunchOptions.Invoke(new()
+        ///     var defaultEndUserProducts = AliCloud.ServiceCatalog.GetEndUserProducts.Invoke(new()
         ///     {
-        ///         ProductId = "prod-bp125x4k29wb7q",
+        ///         NameRegex = "ram模板创建",
+        ///     });
+        /// 
+        ///     var defaultLaunchOptions = AliCloud.ServiceCatalog.GetLaunchOptions.Invoke(new()
+        ///     {
+        ///         ProductId = "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudServiceCatalogLaunchOptionExampleId"] = @default.Apply(getLaunchOptionsResult =&gt; getLaunchOptionsResult).Apply(@default =&gt; @default.Apply(getLaunchOptionsResult =&gt; getLaunchOptionsResult.Options[0]?.Id)),
+        ///         ["alicloudServiceCatalogLaunchOptionExampleId"] = defaultLaunchOptions.Apply(getLaunchOptionsResult =&gt; getLaunchOptionsResult.LaunchOptions[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -150,10 +160,11 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
-        public readonly string? NameRegex;
         /// <summary>
         /// A list of Launch Option Entries. Each element contains the following attributes:
         /// </summary>
+        public readonly ImmutableArray<Outputs.GetLaunchOptionsLaunchOptionResult> LaunchOptions;
+        public readonly string? NameRegex;
         public readonly ImmutableArray<Outputs.GetLaunchOptionsOptionResult> Options;
         public readonly string? OutputFile;
         public readonly string ProductId;
@@ -163,6 +174,8 @@ namespace Pulumi.AliCloud.ServiceCatalog
             string id,
 
             ImmutableArray<string> ids,
+
+            ImmutableArray<Outputs.GetLaunchOptionsLaunchOptionResult> launchOptions,
 
             string? nameRegex,
 
@@ -174,6 +187,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         {
             Id = id;
             Ids = ids;
+            LaunchOptions = launchOptions;
             NameRegex = nameRegex;
             Options = options;
             OutputFile = outputFile;

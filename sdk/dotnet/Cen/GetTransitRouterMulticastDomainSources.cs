@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCenTransitRouterMulticastDomainSourceExampleId"] = @default.Apply(getTransitRouterMulticastDomainSourcesResult =&gt; getTransitRouterMulticastDomainSourcesResult).Apply(@default =&gt; @default.Apply(getTransitRouterMulticastDomainSourcesResult =&gt; getTransitRouterMulticastDomainSourcesResult.Sources[0]?.Id)),
+        ///         ["alicloudCenTransitRouterMulticastDomainSourceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterMulticastDomainSourcesResult =&gt; getTransitRouterMulticastDomainSourcesResult.Sources[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCenTransitRouterMulticastDomainSourceExampleId"] = @default.Apply(getTransitRouterMulticastDomainSourcesResult =&gt; getTransitRouterMulticastDomainSourcesResult).Apply(@default =&gt; @default.Apply(getTransitRouterMulticastDomainSourcesResult =&gt; getTransitRouterMulticastDomainSourcesResult.Sources[0]?.Id)),
+        ///         ["alicloudCenTransitRouterMulticastDomainSourceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterMulticastDomainSourcesResult =&gt; getTransitRouterMulticastDomainSourcesResult.Sources[0]?.Id)),
         ///     };
         /// });
         /// ```

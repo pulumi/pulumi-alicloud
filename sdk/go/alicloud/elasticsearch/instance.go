@@ -125,6 +125,10 @@ type Instance struct {
 	PrivateWhitelists pulumi.StringArrayOutput `pulumi:"privateWhitelists"`
 	// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
+	// (Available in 1.197.0+) Instance connection public domain.
+	PublicDomain pulumi.StringOutput `pulumi:"publicDomain"`
+	// (Available in 1.197.0+) Instance connection public port.
+	PublicPort pulumi.IntOutput `pulumi:"publicPort"`
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists pulumi.StringArrayOutput `pulumi:"publicWhitelists"`
 	// The Id of resource group which the Elasticsearch instance belongs.
@@ -251,6 +255,10 @@ type instanceState struct {
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
 	// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
 	Protocol *string `pulumi:"protocol"`
+	// (Available in 1.197.0+) Instance connection public domain.
+	PublicDomain *string `pulumi:"publicDomain"`
+	// (Available in 1.197.0+) Instance connection public port.
+	PublicPort *int `pulumi:"publicPort"`
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists []string `pulumi:"publicWhitelists"`
 	// The Id of resource group which the Elasticsearch instance belongs.
@@ -324,6 +332,10 @@ type InstanceState struct {
 	PrivateWhitelists pulumi.StringArrayInput
 	// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
 	Protocol pulumi.StringPtrInput
+	// (Available in 1.197.0+) Instance connection public domain.
+	PublicDomain pulumi.StringPtrInput
+	// (Available in 1.197.0+) Instance connection public port.
+	PublicPort pulumi.IntPtrInput
 	// Set the instance's IP whitelist in internet network.
 	PublicWhitelists pulumi.StringArrayInput
 	// The Id of resource group which the Elasticsearch instance belongs.
@@ -690,6 +702,16 @@ func (o InstanceOutput) PrivateWhitelists() pulumi.StringArrayOutput {
 // Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
 func (o InstanceOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// (Available in 1.197.0+) Instance connection public domain.
+func (o InstanceOutput) PublicDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PublicDomain }).(pulumi.StringOutput)
+}
+
+// (Available in 1.197.0+) Instance connection public port.
+func (o InstanceOutput) PublicPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.PublicPort }).(pulumi.IntOutput)
 }
 
 // Set the instance's IP whitelist in internet network.

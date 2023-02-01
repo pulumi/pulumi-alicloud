@@ -116,6 +116,112 @@ func (o AclAclEntryArrayOutput) Index(i pulumi.IntInput) AclAclEntryOutput {
 	}).(AclAclEntryOutput)
 }
 
+type CustomRoutingEndpointTrafficPolicyPortRange struct {
+	// The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+	FromPort *int `pulumi:"fromPort"`
+	// The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+	ToPort *int `pulumi:"toPort"`
+}
+
+// CustomRoutingEndpointTrafficPolicyPortRangeInput is an input type that accepts CustomRoutingEndpointTrafficPolicyPortRangeArgs and CustomRoutingEndpointTrafficPolicyPortRangeOutput values.
+// You can construct a concrete instance of `CustomRoutingEndpointTrafficPolicyPortRangeInput` via:
+//
+//	CustomRoutingEndpointTrafficPolicyPortRangeArgs{...}
+type CustomRoutingEndpointTrafficPolicyPortRangeInput interface {
+	pulumi.Input
+
+	ToCustomRoutingEndpointTrafficPolicyPortRangeOutput() CustomRoutingEndpointTrafficPolicyPortRangeOutput
+	ToCustomRoutingEndpointTrafficPolicyPortRangeOutputWithContext(context.Context) CustomRoutingEndpointTrafficPolicyPortRangeOutput
+}
+
+type CustomRoutingEndpointTrafficPolicyPortRangeArgs struct {
+	// The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+	FromPort pulumi.IntPtrInput `pulumi:"fromPort"`
+	// The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+	ToPort pulumi.IntPtrInput `pulumi:"toPort"`
+}
+
+func (CustomRoutingEndpointTrafficPolicyPortRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomRoutingEndpointTrafficPolicyPortRange)(nil)).Elem()
+}
+
+func (i CustomRoutingEndpointTrafficPolicyPortRangeArgs) ToCustomRoutingEndpointTrafficPolicyPortRangeOutput() CustomRoutingEndpointTrafficPolicyPortRangeOutput {
+	return i.ToCustomRoutingEndpointTrafficPolicyPortRangeOutputWithContext(context.Background())
+}
+
+func (i CustomRoutingEndpointTrafficPolicyPortRangeArgs) ToCustomRoutingEndpointTrafficPolicyPortRangeOutputWithContext(ctx context.Context) CustomRoutingEndpointTrafficPolicyPortRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomRoutingEndpointTrafficPolicyPortRangeOutput)
+}
+
+// CustomRoutingEndpointTrafficPolicyPortRangeArrayInput is an input type that accepts CustomRoutingEndpointTrafficPolicyPortRangeArray and CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput values.
+// You can construct a concrete instance of `CustomRoutingEndpointTrafficPolicyPortRangeArrayInput` via:
+//
+//	CustomRoutingEndpointTrafficPolicyPortRangeArray{ CustomRoutingEndpointTrafficPolicyPortRangeArgs{...} }
+type CustomRoutingEndpointTrafficPolicyPortRangeArrayInput interface {
+	pulumi.Input
+
+	ToCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput() CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput
+	ToCustomRoutingEndpointTrafficPolicyPortRangeArrayOutputWithContext(context.Context) CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput
+}
+
+type CustomRoutingEndpointTrafficPolicyPortRangeArray []CustomRoutingEndpointTrafficPolicyPortRangeInput
+
+func (CustomRoutingEndpointTrafficPolicyPortRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomRoutingEndpointTrafficPolicyPortRange)(nil)).Elem()
+}
+
+func (i CustomRoutingEndpointTrafficPolicyPortRangeArray) ToCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput() CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput {
+	return i.ToCustomRoutingEndpointTrafficPolicyPortRangeArrayOutputWithContext(context.Background())
+}
+
+func (i CustomRoutingEndpointTrafficPolicyPortRangeArray) ToCustomRoutingEndpointTrafficPolicyPortRangeArrayOutputWithContext(ctx context.Context) CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput)
+}
+
+type CustomRoutingEndpointTrafficPolicyPortRangeOutput struct{ *pulumi.OutputState }
+
+func (CustomRoutingEndpointTrafficPolicyPortRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomRoutingEndpointTrafficPolicyPortRange)(nil)).Elem()
+}
+
+func (o CustomRoutingEndpointTrafficPolicyPortRangeOutput) ToCustomRoutingEndpointTrafficPolicyPortRangeOutput() CustomRoutingEndpointTrafficPolicyPortRangeOutput {
+	return o
+}
+
+func (o CustomRoutingEndpointTrafficPolicyPortRangeOutput) ToCustomRoutingEndpointTrafficPolicyPortRangeOutputWithContext(ctx context.Context) CustomRoutingEndpointTrafficPolicyPortRangeOutput {
+	return o
+}
+
+// The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+func (o CustomRoutingEndpointTrafficPolicyPortRangeOutput) FromPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomRoutingEndpointTrafficPolicyPortRange) *int { return v.FromPort }).(pulumi.IntPtrOutput)
+}
+
+// The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+func (o CustomRoutingEndpointTrafficPolicyPortRangeOutput) ToPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomRoutingEndpointTrafficPolicyPortRange) *int { return v.ToPort }).(pulumi.IntPtrOutput)
+}
+
+type CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomRoutingEndpointTrafficPolicyPortRange)(nil)).Elem()
+}
+
+func (o CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput) ToCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput() CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput {
+	return o
+}
+
+func (o CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput) ToCustomRoutingEndpointTrafficPolicyPortRangeArrayOutputWithContext(ctx context.Context) CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput {
+	return o
+}
+
+func (o CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput) Index(i pulumi.IntInput) CustomRoutingEndpointTrafficPolicyPortRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomRoutingEndpointTrafficPolicyPortRange {
+		return vs[0].([]CustomRoutingEndpointTrafficPolicyPortRange)[vs[1].(int)]
+	}).(CustomRoutingEndpointTrafficPolicyPortRangeOutput)
+}
+
 type EndpointGroupEndpointConfiguration struct {
 	// Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
 	EnableClientipPreservation *bool `pulumi:"enableClientipPreservation"`
@@ -3320,6 +3426,1218 @@ func (o GetBasicEndpointsEndpointArrayOutput) Index(i pulumi.IntInput) GetBasicE
 	}).(GetBasicEndpointsEndpointOutput)
 }
 
+type GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination struct {
+	// The ID of the GA instance.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// The ID of the Custom Routing Endpoint Group Destination.
+	CustomRoutingEndpointGroupDestinationId string `pulumi:"customRoutingEndpointGroupDestinationId"`
+	// The ID of the endpoint group.
+	EndpointGroupId string `pulumi:"endpointGroupId"`
+	// The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
+	FromPort int `pulumi:"fromPort"`
+	// The id of the Global Accelerator Custom Routing Endpoint Group Destination. It formats as `<endpoint_group_id>:<custom_routing_endpoint_group_destination_id>`.
+	Id string `pulumi:"id"`
+	// The ID of the listener.
+	ListenerId string `pulumi:"listenerId"`
+	// The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
+	Protocols []string `pulumi:"protocols"`
+	// The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
+	ToPort int `pulumi:"toPort"`
+}
+
+// GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationInput is an input type that accepts GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArgs and GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput values.
+// You can construct a concrete instance of `GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationInput` via:
+//
+//	GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArgs{...}
+type GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput() GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput
+	ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutputWithContext(context.Context) GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput
+}
+
+type GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArgs struct {
+	// The ID of the GA instance.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// The ID of the Custom Routing Endpoint Group Destination.
+	CustomRoutingEndpointGroupDestinationId pulumi.StringInput `pulumi:"customRoutingEndpointGroupDestinationId"`
+	// The ID of the endpoint group.
+	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
+	// The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
+	FromPort pulumi.IntInput `pulumi:"fromPort"`
+	// The id of the Global Accelerator Custom Routing Endpoint Group Destination. It formats as `<endpoint_group_id>:<custom_routing_endpoint_group_destination_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the listener.
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+	// The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
+	Protocols pulumi.StringArrayInput `pulumi:"protocols"`
+	// The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
+	ToPort pulumi.IntInput `pulumi:"toPort"`
+}
+
+func (GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination)(nil)).Elem()
+}
+
+func (i GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArgs) ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput() GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput {
+	return i.ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArgs) ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutputWithContext(ctx context.Context) GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput)
+}
+
+// GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayInput is an input type that accepts GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArray and GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput values.
+// You can construct a concrete instance of `GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayInput` via:
+//
+//	GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArray{ GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArgs{...} }
+type GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput() GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput
+	ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutputWithContext(context.Context) GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput
+}
+
+type GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArray []GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationInput
+
+func (GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination)(nil)).Elem()
+}
+
+func (i GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArray) ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput() GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput {
+	return i.ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArray) ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutputWithContext(ctx context.Context) GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput)
+}
+
+type GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination)(nil)).Elem()
+}
+
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput) ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput() GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput) ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutputWithContext(ctx context.Context) GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput {
+	return o
+}
+
+// The ID of the GA instance.
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination) string {
+		return v.AcceleratorId
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the Custom Routing Endpoint Group Destination.
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput) CustomRoutingEndpointGroupDestinationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination) string {
+		return v.CustomRoutingEndpointGroupDestinationId
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the endpoint group.
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput) EndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination) string {
+		return v.EndpointGroupId
+	}).(pulumi.StringOutput)
+}
+
+// The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput) FromPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination) int {
+		return v.FromPort
+	}).(pulumi.IntOutput)
+}
+
+// The id of the Global Accelerator Custom Routing Endpoint Group Destination. It formats as `<endpoint_group_id>:<custom_routing_endpoint_group_destination_id>`.
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the listener.
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination) string {
+		return v.ListenerId
+	}).(pulumi.StringOutput)
+}
+
+// The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination) []string {
+		return v.Protocols
+	}).(pulumi.StringArrayOutput)
+}
+
+// The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput) ToPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination) int {
+		return v.ToPort
+	}).(pulumi.IntOutput)
+}
+
+type GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination)(nil)).Elem()
+}
+
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput) ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput() GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput) ToGetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutputWithContext(ctx context.Context) GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput) Index(i pulumi.IntInput) GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination {
+		return vs[0].([]GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination)[vs[1].(int)]
+	}).(GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput)
+}
+
+type GetCustomRoutingEndpointGroupsGroup struct {
+	// The ID of the GA instance.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// The name of the endpoint group.
+	CustomRoutingEndpointGroupName string `pulumi:"customRoutingEndpointGroupName"`
+	// The description of the endpoint group.
+	Description string `pulumi:"description"`
+	// The ID of the endpoint group.
+	EndpointGroupId string `pulumi:"endpointGroupId"`
+	// The list of endpoint group IP addresses.
+	EndpointGroupIpLists []string `pulumi:"endpointGroupIpLists"`
+	// The ID of the region where the endpoint group is created.
+	EndpointGroupRegion string `pulumi:"endpointGroupRegion"`
+	// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
+	EndpointGroupUnconfirmedIpLists []string `pulumi:"endpointGroupUnconfirmedIpLists"`
+	// The id of the Custom Routing Endpoint Group.
+	Id string `pulumi:"id"`
+	// The ID of the custom routing listener.
+	ListenerId string `pulumi:"listenerId"`
+	// The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
+	Status string `pulumi:"status"`
+}
+
+// GetCustomRoutingEndpointGroupsGroupInput is an input type that accepts GetCustomRoutingEndpointGroupsGroupArgs and GetCustomRoutingEndpointGroupsGroupOutput values.
+// You can construct a concrete instance of `GetCustomRoutingEndpointGroupsGroupInput` via:
+//
+//	GetCustomRoutingEndpointGroupsGroupArgs{...}
+type GetCustomRoutingEndpointGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingEndpointGroupsGroupOutput() GetCustomRoutingEndpointGroupsGroupOutput
+	ToGetCustomRoutingEndpointGroupsGroupOutputWithContext(context.Context) GetCustomRoutingEndpointGroupsGroupOutput
+}
+
+type GetCustomRoutingEndpointGroupsGroupArgs struct {
+	// The ID of the GA instance.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// The name of the endpoint group.
+	CustomRoutingEndpointGroupName pulumi.StringInput `pulumi:"customRoutingEndpointGroupName"`
+	// The description of the endpoint group.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the endpoint group.
+	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
+	// The list of endpoint group IP addresses.
+	EndpointGroupIpLists pulumi.StringArrayInput `pulumi:"endpointGroupIpLists"`
+	// The ID of the region where the endpoint group is created.
+	EndpointGroupRegion pulumi.StringInput `pulumi:"endpointGroupRegion"`
+	// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
+	EndpointGroupUnconfirmedIpLists pulumi.StringArrayInput `pulumi:"endpointGroupUnconfirmedIpLists"`
+	// The id of the Custom Routing Endpoint Group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the custom routing listener.
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+	// The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCustomRoutingEndpointGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingEndpointGroupsGroup)(nil)).Elem()
+}
+
+func (i GetCustomRoutingEndpointGroupsGroupArgs) ToGetCustomRoutingEndpointGroupsGroupOutput() GetCustomRoutingEndpointGroupsGroupOutput {
+	return i.ToGetCustomRoutingEndpointGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingEndpointGroupsGroupArgs) ToGetCustomRoutingEndpointGroupsGroupOutputWithContext(ctx context.Context) GetCustomRoutingEndpointGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingEndpointGroupsGroupOutput)
+}
+
+// GetCustomRoutingEndpointGroupsGroupArrayInput is an input type that accepts GetCustomRoutingEndpointGroupsGroupArray and GetCustomRoutingEndpointGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetCustomRoutingEndpointGroupsGroupArrayInput` via:
+//
+//	GetCustomRoutingEndpointGroupsGroupArray{ GetCustomRoutingEndpointGroupsGroupArgs{...} }
+type GetCustomRoutingEndpointGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingEndpointGroupsGroupArrayOutput() GetCustomRoutingEndpointGroupsGroupArrayOutput
+	ToGetCustomRoutingEndpointGroupsGroupArrayOutputWithContext(context.Context) GetCustomRoutingEndpointGroupsGroupArrayOutput
+}
+
+type GetCustomRoutingEndpointGroupsGroupArray []GetCustomRoutingEndpointGroupsGroupInput
+
+func (GetCustomRoutingEndpointGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingEndpointGroupsGroup)(nil)).Elem()
+}
+
+func (i GetCustomRoutingEndpointGroupsGroupArray) ToGetCustomRoutingEndpointGroupsGroupArrayOutput() GetCustomRoutingEndpointGroupsGroupArrayOutput {
+	return i.ToGetCustomRoutingEndpointGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingEndpointGroupsGroupArray) ToGetCustomRoutingEndpointGroupsGroupArrayOutputWithContext(ctx context.Context) GetCustomRoutingEndpointGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingEndpointGroupsGroupArrayOutput)
+}
+
+type GetCustomRoutingEndpointGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingEndpointGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingEndpointGroupsGroup)(nil)).Elem()
+}
+
+func (o GetCustomRoutingEndpointGroupsGroupOutput) ToGetCustomRoutingEndpointGroupsGroupOutput() GetCustomRoutingEndpointGroupsGroupOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointGroupsGroupOutput) ToGetCustomRoutingEndpointGroupsGroupOutputWithContext(ctx context.Context) GetCustomRoutingEndpointGroupsGroupOutput {
+	return o
+}
+
+// The ID of the GA instance.
+func (o GetCustomRoutingEndpointGroupsGroupOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupsGroup) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The name of the endpoint group.
+func (o GetCustomRoutingEndpointGroupsGroupOutput) CustomRoutingEndpointGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupsGroup) string { return v.CustomRoutingEndpointGroupName }).(pulumi.StringOutput)
+}
+
+// The description of the endpoint group.
+func (o GetCustomRoutingEndpointGroupsGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the endpoint group.
+func (o GetCustomRoutingEndpointGroupsGroupOutput) EndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupsGroup) string { return v.EndpointGroupId }).(pulumi.StringOutput)
+}
+
+// The list of endpoint group IP addresses.
+func (o GetCustomRoutingEndpointGroupsGroupOutput) EndpointGroupIpLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupsGroup) []string { return v.EndpointGroupIpLists }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the region where the endpoint group is created.
+func (o GetCustomRoutingEndpointGroupsGroupOutput) EndpointGroupRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupsGroup) string { return v.EndpointGroupRegion }).(pulumi.StringOutput)
+}
+
+// The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
+func (o GetCustomRoutingEndpointGroupsGroupOutput) EndpointGroupUnconfirmedIpLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupsGroup) []string { return v.EndpointGroupUnconfirmedIpLists }).(pulumi.StringArrayOutput)
+}
+
+// The id of the Custom Routing Endpoint Group.
+func (o GetCustomRoutingEndpointGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the custom routing listener.
+func (o GetCustomRoutingEndpointGroupsGroupOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupsGroup) string { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
+func (o GetCustomRoutingEndpointGroupsGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCustomRoutingEndpointGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingEndpointGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingEndpointGroupsGroup)(nil)).Elem()
+}
+
+func (o GetCustomRoutingEndpointGroupsGroupArrayOutput) ToGetCustomRoutingEndpointGroupsGroupArrayOutput() GetCustomRoutingEndpointGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointGroupsGroupArrayOutput) ToGetCustomRoutingEndpointGroupsGroupArrayOutputWithContext(ctx context.Context) GetCustomRoutingEndpointGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetCustomRoutingEndpointGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomRoutingEndpointGroupsGroup {
+		return vs[0].([]GetCustomRoutingEndpointGroupsGroup)[vs[1].(int)]
+	}).(GetCustomRoutingEndpointGroupsGroupOutput)
+}
+
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy struct {
+	// The ID of the GA instance to which the traffic policies belong.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// The IP addresses of the traffic policies.
+	Address string `pulumi:"address"`
+	// The ID of the Custom Routing Endpoint Traffic Policy.
+	CustomRoutingEndpointTrafficPolicyId string `pulumi:"customRoutingEndpointTrafficPolicyId"`
+	// The ID of the endpoint group to which the traffic policies belong.
+	EndpointGroupId string `pulumi:"endpointGroupId"`
+	// The ID of the endpoint to which the traffic policies belong.
+	EndpointId string `pulumi:"endpointId"`
+	// The id of the Global Accelerator Custom Routing Endpoint Traffic Policy. It formats as `<endpoint_id>:<custom_routing_endpoint_traffic_policy_id>`.
+	Id string `pulumi:"id"`
+	// The ID of the listener to which the traffic policies belong.
+	ListenerId string `pulumi:"listenerId"`
+	// The port range of the traffic policy.
+	PortRanges []GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange `pulumi:"portRanges"`
+}
+
+// GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyInput is an input type that accepts GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArgs and GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput values.
+// You can construct a concrete instance of `GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyInput` via:
+//
+//	GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArgs{...}
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput
+	ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutputWithContext(context.Context) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput
+}
+
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArgs struct {
+	// The ID of the GA instance to which the traffic policies belong.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// The IP addresses of the traffic policies.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The ID of the Custom Routing Endpoint Traffic Policy.
+	CustomRoutingEndpointTrafficPolicyId pulumi.StringInput `pulumi:"customRoutingEndpointTrafficPolicyId"`
+	// The ID of the endpoint group to which the traffic policies belong.
+	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
+	// The ID of the endpoint to which the traffic policies belong.
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// The id of the Global Accelerator Custom Routing Endpoint Traffic Policy. It formats as `<endpoint_id>:<custom_routing_endpoint_traffic_policy_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the listener to which the traffic policies belong.
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+	// The port range of the traffic policy.
+	PortRanges GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayInput `pulumi:"portRanges"`
+}
+
+func (GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy)(nil)).Elem()
+}
+
+func (i GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArgs) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput {
+	return i.ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArgs) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutputWithContext(ctx context.Context) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput)
+}
+
+// GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayInput is an input type that accepts GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArray and GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput values.
+// You can construct a concrete instance of `GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayInput` via:
+//
+//	GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArray{ GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArgs{...} }
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput
+	ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutputWithContext(context.Context) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput
+}
+
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArray []GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyInput
+
+func (GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy)(nil)).Elem()
+}
+
+func (i GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArray) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput {
+	return i.ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArray) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutputWithContext(ctx context.Context) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput)
+}
+
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy)(nil)).Elem()
+}
+
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutputWithContext(ctx context.Context) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput {
+	return o
+}
+
+// The ID of the GA instance to which the traffic policies belong.
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy) string {
+		return v.AcceleratorId
+	}).(pulumi.StringOutput)
+}
+
+// The IP addresses of the traffic policies.
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy) string {
+		return v.Address
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the Custom Routing Endpoint Traffic Policy.
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput) CustomRoutingEndpointTrafficPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy) string {
+		return v.CustomRoutingEndpointTrafficPolicyId
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the endpoint group to which the traffic policies belong.
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput) EndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy) string {
+		return v.EndpointGroupId
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the endpoint to which the traffic policies belong.
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy) string {
+		return v.EndpointId
+	}).(pulumi.StringOutput)
+}
+
+// The id of the Global Accelerator Custom Routing Endpoint Traffic Policy. It formats as `<endpoint_id>:<custom_routing_endpoint_traffic_policy_id>`.
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the listener to which the traffic policies belong.
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy) string {
+		return v.ListenerId
+	}).(pulumi.StringOutput)
+}
+
+// The port range of the traffic policy.
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput) PortRanges() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy) []GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange {
+		return v.PortRanges
+	}).(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput)
+}
+
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy)(nil)).Elem()
+}
+
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutputWithContext(ctx context.Context) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput) Index(i pulumi.IntInput) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy {
+		return vs[0].([]GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy)[vs[1].(int)]
+	}).(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput)
+}
+
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange struct {
+	// The first port of the port range.
+	FromPort int `pulumi:"fromPort"`
+	// The last port of the port range.
+	ToPort int `pulumi:"toPort"`
+}
+
+// GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeInput is an input type that accepts GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArgs and GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput values.
+// You can construct a concrete instance of `GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeInput` via:
+//
+//	GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArgs{...}
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput
+	ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutputWithContext(context.Context) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput
+}
+
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArgs struct {
+	// The first port of the port range.
+	FromPort pulumi.IntInput `pulumi:"fromPort"`
+	// The last port of the port range.
+	ToPort pulumi.IntInput `pulumi:"toPort"`
+}
+
+func (GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange)(nil)).Elem()
+}
+
+func (i GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArgs) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput {
+	return i.ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArgs) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutputWithContext(ctx context.Context) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput)
+}
+
+// GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayInput is an input type that accepts GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArray and GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput values.
+// You can construct a concrete instance of `GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayInput` via:
+//
+//	GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArray{ GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArgs{...} }
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput
+	ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutputWithContext(context.Context) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput
+}
+
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArray []GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeInput
+
+func (GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange)(nil)).Elem()
+}
+
+func (i GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArray) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput {
+	return i.ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArray) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutputWithContext(ctx context.Context) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput)
+}
+
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange)(nil)).Elem()
+}
+
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutputWithContext(ctx context.Context) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput {
+	return o
+}
+
+// The first port of the port range.
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput) FromPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange) int {
+		return v.FromPort
+	}).(pulumi.IntOutput)
+}
+
+// The last port of the port range.
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput) ToPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange) int {
+		return v.ToPort
+	}).(pulumi.IntOutput)
+}
+
+type GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange)(nil)).Elem()
+}
+
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput() GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput) ToGetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutputWithContext(ctx context.Context) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput) Index(i pulumi.IntInput) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange {
+		return vs[0].([]GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange)[vs[1].(int)]
+	}).(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput)
+}
+
+type GetCustomRoutingEndpointsCustomRoutingEndpoint struct {
+	// The ID of the GA instance.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// The ID of the Custom Routing Endpoint.
+	CustomRoutingEndpointId string `pulumi:"customRoutingEndpointId"`
+	// The ID of the endpoint (vSwitch).
+	Endpoint string `pulumi:"endpoint"`
+	// The ID of the endpoint group.
+	EndpointGroupId string `pulumi:"endpointGroupId"`
+	// The id of the Global Accelerator Custom Routing Endpoint. It formats as `<endpoint_group_id>:<custom_routing_endpoint_id>`.
+	Id string `pulumi:"id"`
+	// The ID of the custom routing listener.
+	ListenerId string `pulumi:"listenerId"`
+	// The access policy of traffic for the specified endpoint.
+	TrafficToEndpointPolicy string `pulumi:"trafficToEndpointPolicy"`
+	// The backend service type of the endpoint.
+	Type string `pulumi:"type"`
+}
+
+// GetCustomRoutingEndpointsCustomRoutingEndpointInput is an input type that accepts GetCustomRoutingEndpointsCustomRoutingEndpointArgs and GetCustomRoutingEndpointsCustomRoutingEndpointOutput values.
+// You can construct a concrete instance of `GetCustomRoutingEndpointsCustomRoutingEndpointInput` via:
+//
+//	GetCustomRoutingEndpointsCustomRoutingEndpointArgs{...}
+type GetCustomRoutingEndpointsCustomRoutingEndpointInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingEndpointsCustomRoutingEndpointOutput() GetCustomRoutingEndpointsCustomRoutingEndpointOutput
+	ToGetCustomRoutingEndpointsCustomRoutingEndpointOutputWithContext(context.Context) GetCustomRoutingEndpointsCustomRoutingEndpointOutput
+}
+
+type GetCustomRoutingEndpointsCustomRoutingEndpointArgs struct {
+	// The ID of the GA instance.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// The ID of the Custom Routing Endpoint.
+	CustomRoutingEndpointId pulumi.StringInput `pulumi:"customRoutingEndpointId"`
+	// The ID of the endpoint (vSwitch).
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// The ID of the endpoint group.
+	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
+	// The id of the Global Accelerator Custom Routing Endpoint. It formats as `<endpoint_group_id>:<custom_routing_endpoint_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the custom routing listener.
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+	// The access policy of traffic for the specified endpoint.
+	TrafficToEndpointPolicy pulumi.StringInput `pulumi:"trafficToEndpointPolicy"`
+	// The backend service type of the endpoint.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetCustomRoutingEndpointsCustomRoutingEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingEndpointsCustomRoutingEndpoint)(nil)).Elem()
+}
+
+func (i GetCustomRoutingEndpointsCustomRoutingEndpointArgs) ToGetCustomRoutingEndpointsCustomRoutingEndpointOutput() GetCustomRoutingEndpointsCustomRoutingEndpointOutput {
+	return i.ToGetCustomRoutingEndpointsCustomRoutingEndpointOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingEndpointsCustomRoutingEndpointArgs) ToGetCustomRoutingEndpointsCustomRoutingEndpointOutputWithContext(ctx context.Context) GetCustomRoutingEndpointsCustomRoutingEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingEndpointsCustomRoutingEndpointOutput)
+}
+
+// GetCustomRoutingEndpointsCustomRoutingEndpointArrayInput is an input type that accepts GetCustomRoutingEndpointsCustomRoutingEndpointArray and GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput values.
+// You can construct a concrete instance of `GetCustomRoutingEndpointsCustomRoutingEndpointArrayInput` via:
+//
+//	GetCustomRoutingEndpointsCustomRoutingEndpointArray{ GetCustomRoutingEndpointsCustomRoutingEndpointArgs{...} }
+type GetCustomRoutingEndpointsCustomRoutingEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput() GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput
+	ToGetCustomRoutingEndpointsCustomRoutingEndpointArrayOutputWithContext(context.Context) GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput
+}
+
+type GetCustomRoutingEndpointsCustomRoutingEndpointArray []GetCustomRoutingEndpointsCustomRoutingEndpointInput
+
+func (GetCustomRoutingEndpointsCustomRoutingEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingEndpointsCustomRoutingEndpoint)(nil)).Elem()
+}
+
+func (i GetCustomRoutingEndpointsCustomRoutingEndpointArray) ToGetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput() GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput {
+	return i.ToGetCustomRoutingEndpointsCustomRoutingEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingEndpointsCustomRoutingEndpointArray) ToGetCustomRoutingEndpointsCustomRoutingEndpointArrayOutputWithContext(ctx context.Context) GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput)
+}
+
+type GetCustomRoutingEndpointsCustomRoutingEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingEndpointsCustomRoutingEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingEndpointsCustomRoutingEndpoint)(nil)).Elem()
+}
+
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointOutput) ToGetCustomRoutingEndpointsCustomRoutingEndpointOutput() GetCustomRoutingEndpointsCustomRoutingEndpointOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointOutput) ToGetCustomRoutingEndpointsCustomRoutingEndpointOutputWithContext(ctx context.Context) GetCustomRoutingEndpointsCustomRoutingEndpointOutput {
+	return o
+}
+
+// The ID of the GA instance.
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointsCustomRoutingEndpoint) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The ID of the Custom Routing Endpoint.
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointOutput) CustomRoutingEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointsCustomRoutingEndpoint) string { return v.CustomRoutingEndpointId }).(pulumi.StringOutput)
+}
+
+// The ID of the endpoint (vSwitch).
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointsCustomRoutingEndpoint) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The ID of the endpoint group.
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointOutput) EndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointsCustomRoutingEndpoint) string { return v.EndpointGroupId }).(pulumi.StringOutput)
+}
+
+// The id of the Global Accelerator Custom Routing Endpoint. It formats as `<endpoint_group_id>:<custom_routing_endpoint_id>`.
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointsCustomRoutingEndpoint) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the custom routing listener.
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointsCustomRoutingEndpoint) string { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// The access policy of traffic for the specified endpoint.
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointOutput) TrafficToEndpointPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointsCustomRoutingEndpoint) string { return v.TrafficToEndpointPolicy }).(pulumi.StringOutput)
+}
+
+// The backend service type of the endpoint.
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingEndpointsCustomRoutingEndpoint) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingEndpointsCustomRoutingEndpoint)(nil)).Elem()
+}
+
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput) ToGetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput() GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput) ToGetCustomRoutingEndpointsCustomRoutingEndpointArrayOutputWithContext(ctx context.Context) GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput) Index(i pulumi.IntInput) GetCustomRoutingEndpointsCustomRoutingEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomRoutingEndpointsCustomRoutingEndpoint {
+		return vs[0].([]GetCustomRoutingEndpointsCustomRoutingEndpoint)[vs[1].(int)]
+	}).(GetCustomRoutingEndpointsCustomRoutingEndpointOutput)
+}
+
+type GetCustomRoutingPortMappingsCustomRoutingPortMapping struct {
+	// The ID of the GA instance.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// The acceleration port.
+	AcceleratorPort int `pulumi:"acceleratorPort"`
+	// The service IP address and port of the backend instance.
+	DestinationSocketAddresses []GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress `pulumi:"destinationSocketAddresses"`
+	// The ID of the endpoint group.
+	EndpointGroupId string `pulumi:"endpointGroupId"`
+	// The ID of the region in which the endpoint group resides.
+	EndpointGroupRegion string `pulumi:"endpointGroupRegion"`
+	// The ID of the endpoint.
+	EndpointId string `pulumi:"endpointId"`
+	// The ID of the listener.
+	ListenerId string `pulumi:"listenerId"`
+	// The protocol of the backend service.
+	Protocols []string `pulumi:"protocols"`
+	// The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
+	Status string `pulumi:"status"`
+	// The ID of the endpoint (vSwitch).
+	Vswitch string `pulumi:"vswitch"`
+}
+
+// GetCustomRoutingPortMappingsCustomRoutingPortMappingInput is an input type that accepts GetCustomRoutingPortMappingsCustomRoutingPortMappingArgs and GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput values.
+// You can construct a concrete instance of `GetCustomRoutingPortMappingsCustomRoutingPortMappingInput` via:
+//
+//	GetCustomRoutingPortMappingsCustomRoutingPortMappingArgs{...}
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingPortMappingsCustomRoutingPortMappingOutput() GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput
+	ToGetCustomRoutingPortMappingsCustomRoutingPortMappingOutputWithContext(context.Context) GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput
+}
+
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingArgs struct {
+	// The ID of the GA instance.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// The acceleration port.
+	AcceleratorPort pulumi.IntInput `pulumi:"acceleratorPort"`
+	// The service IP address and port of the backend instance.
+	DestinationSocketAddresses GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayInput `pulumi:"destinationSocketAddresses"`
+	// The ID of the endpoint group.
+	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
+	// The ID of the region in which the endpoint group resides.
+	EndpointGroupRegion pulumi.StringInput `pulumi:"endpointGroupRegion"`
+	// The ID of the endpoint.
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// The ID of the listener.
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+	// The protocol of the backend service.
+	Protocols pulumi.StringArrayInput `pulumi:"protocols"`
+	// The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the endpoint (vSwitch).
+	Vswitch pulumi.StringInput `pulumi:"vswitch"`
+}
+
+func (GetCustomRoutingPortMappingsCustomRoutingPortMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingPortMappingsCustomRoutingPortMapping)(nil)).Elem()
+}
+
+func (i GetCustomRoutingPortMappingsCustomRoutingPortMappingArgs) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingOutput() GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput {
+	return i.ToGetCustomRoutingPortMappingsCustomRoutingPortMappingOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingPortMappingsCustomRoutingPortMappingArgs) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingOutputWithContext(ctx context.Context) GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput)
+}
+
+// GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayInput is an input type that accepts GetCustomRoutingPortMappingsCustomRoutingPortMappingArray and GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput values.
+// You can construct a concrete instance of `GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayInput` via:
+//
+//	GetCustomRoutingPortMappingsCustomRoutingPortMappingArray{ GetCustomRoutingPortMappingsCustomRoutingPortMappingArgs{...} }
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput() GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput
+	ToGetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutputWithContext(context.Context) GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput
+}
+
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingArray []GetCustomRoutingPortMappingsCustomRoutingPortMappingInput
+
+func (GetCustomRoutingPortMappingsCustomRoutingPortMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingPortMappingsCustomRoutingPortMapping)(nil)).Elem()
+}
+
+func (i GetCustomRoutingPortMappingsCustomRoutingPortMappingArray) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput() GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput {
+	return i.ToGetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingPortMappingsCustomRoutingPortMappingArray) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutputWithContext(ctx context.Context) GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput)
+}
+
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingPortMappingsCustomRoutingPortMapping)(nil)).Elem()
+}
+
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingOutput() GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput {
+	return o
+}
+
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingOutputWithContext(ctx context.Context) GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput {
+	return o
+}
+
+// The ID of the GA instance.
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingPortMappingsCustomRoutingPortMapping) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The acceleration port.
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) AcceleratorPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCustomRoutingPortMappingsCustomRoutingPortMapping) int { return v.AcceleratorPort }).(pulumi.IntOutput)
+}
+
+// The service IP address and port of the backend instance.
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) DestinationSocketAddresses() GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput {
+	return o.ApplyT(func(v GetCustomRoutingPortMappingsCustomRoutingPortMapping) []GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress {
+		return v.DestinationSocketAddresses
+	}).(GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput)
+}
+
+// The ID of the endpoint group.
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) EndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingPortMappingsCustomRoutingPortMapping) string { return v.EndpointGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the region in which the endpoint group resides.
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) EndpointGroupRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingPortMappingsCustomRoutingPortMapping) string { return v.EndpointGroupRegion }).(pulumi.StringOutput)
+}
+
+// The ID of the endpoint.
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingPortMappingsCustomRoutingPortMapping) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// The ID of the listener.
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingPortMappingsCustomRoutingPortMapping) string { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// The protocol of the backend service.
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCustomRoutingPortMappingsCustomRoutingPortMapping) []string { return v.Protocols }).(pulumi.StringArrayOutput)
+}
+
+// The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingPortMappingsCustomRoutingPortMapping) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the endpoint (vSwitch).
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput) Vswitch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingPortMappingsCustomRoutingPortMapping) string { return v.Vswitch }).(pulumi.StringOutput)
+}
+
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingPortMappingsCustomRoutingPortMapping)(nil)).Elem()
+}
+
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput() GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutputWithContext(ctx context.Context) GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput) Index(i pulumi.IntInput) GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomRoutingPortMappingsCustomRoutingPortMapping {
+		return vs[0].([]GetCustomRoutingPortMappingsCustomRoutingPortMapping)[vs[1].(int)]
+	}).(GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput)
+}
+
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress struct {
+	// The service IP address of the backend instance.
+	IpAddress string `pulumi:"ipAddress"`
+	// The service port of the backend instance.
+	Port int `pulumi:"port"`
+}
+
+// GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressInput is an input type that accepts GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArgs and GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput values.
+// You can construct a concrete instance of `GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressInput` via:
+//
+//	GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArgs{...}
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput() GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput
+	ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutputWithContext(context.Context) GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput
+}
+
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArgs struct {
+	// The service IP address of the backend instance.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The service port of the backend instance.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress)(nil)).Elem()
+}
+
+func (i GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArgs) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput() GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput {
+	return i.ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArgs) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutputWithContext(ctx context.Context) GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput)
+}
+
+// GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayInput is an input type that accepts GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArray and GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput values.
+// You can construct a concrete instance of `GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayInput` via:
+//
+//	GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArray{ GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArgs{...} }
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput() GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput
+	ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutputWithContext(context.Context) GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput
+}
+
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArray []GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressInput
+
+func (GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress)(nil)).Elem()
+}
+
+func (i GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArray) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput() GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput {
+	return i.ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArray) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutputWithContext(ctx context.Context) GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput)
+}
+
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress)(nil)).Elem()
+}
+
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput() GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput {
+	return o
+}
+
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutputWithContext(ctx context.Context) GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput {
+	return o
+}
+
+// The service IP address of the backend instance.
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress) string {
+		return v.IpAddress
+	}).(pulumi.StringOutput)
+}
+
+// The service port of the backend instance.
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress) int {
+		return v.Port
+	}).(pulumi.IntOutput)
+}
+
+type GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress)(nil)).Elem()
+}
+
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput() GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput) ToGetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutputWithContext(ctx context.Context) GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput {
+	return o
+}
+
+func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput) Index(i pulumi.IntInput) GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress {
+		return vs[0].([]GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress)[vs[1].(int)]
+	}).(GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput)
+}
+
+type GetDomainsDomain struct {
+	// The ID of the global acceleration instance.
+	AcceleratorId string `pulumi:"acceleratorId"`
+	// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+	Domain string `pulumi:"domain"`
+	// The ID of the Ga Domain.
+	Id string `pulumi:"id"`
+	// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+	Status string `pulumi:"status"`
+}
+
+// GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
+// You can construct a concrete instance of `GetDomainsDomainInput` via:
+//
+//	GetDomainsDomainArgs{...}
+type GetDomainsDomainInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainOutput() GetDomainsDomainOutput
+	ToGetDomainsDomainOutputWithContext(context.Context) GetDomainsDomainOutput
+}
+
+type GetDomainsDomainArgs struct {
+	// The ID of the global acceleration instance.
+	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
+	// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The ID of the Ga Domain.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetDomainsDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomain)(nil)).Elem()
+}
+
+func (i GetDomainsDomainArgs) ToGetDomainsDomainOutput() GetDomainsDomainOutput {
+	return i.ToGetDomainsDomainOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainOutput)
+}
+
+// GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
+// You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
+//
+//	GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
+type GetDomainsDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainsDomainArrayOutput() GetDomainsDomainArrayOutput
+	ToGetDomainsDomainArrayOutputWithContext(context.Context) GetDomainsDomainArrayOutput
+}
+
+type GetDomainsDomainArray []GetDomainsDomainInput
+
+func (GetDomainsDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomain)(nil)).Elem()
+}
+
+func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutput() GetDomainsDomainArrayOutput {
+	return i.ToGetDomainsDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutputWithContext(ctx context.Context) GetDomainsDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainArrayOutput)
+}
+
+type GetDomainsDomainOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsDomain)(nil)).Elem()
+}
+
+func (o GetDomainsDomainOutput) ToGetDomainsDomainOutput() GetDomainsDomainOutput {
+	return o
+}
+
+func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.Context) GetDomainsDomainOutput {
+	return o
+}
+
+// The ID of the global acceleration instance.
+func (o GetDomainsDomainOutput) AcceleratorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.AcceleratorId }).(pulumi.StringOutput)
+}
+
+// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+func (o GetDomainsDomainOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The ID of the Ga Domain.
+func (o GetDomainsDomainOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+func (o GetDomainsDomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetDomainsDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainsDomain)(nil)).Elem()
+}
+
+func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutput() GetDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutputWithContext(ctx context.Context) GetDomainsDomainArrayOutput {
+	return o
+}
+
+func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomain {
+		return vs[0].([]GetDomainsDomain)[vs[1].(int)]
+	}).(GetDomainsDomainOutput)
+}
+
 type GetEndpointGroupsGroup struct {
 	// The description of the endpoint group.
 	Description string `pulumi:"description"`
@@ -5117,6 +6435,8 @@ func (o GetListenersListenerPortRangeArrayOutput) Index(i pulumi.IntInput) GetLi
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAclEntryInput)(nil)).Elem(), AclAclEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAclEntryArrayInput)(nil)).Elem(), AclAclEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomRoutingEndpointTrafficPolicyPortRangeInput)(nil)).Elem(), CustomRoutingEndpointTrafficPolicyPortRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomRoutingEndpointTrafficPolicyPortRangeArrayInput)(nil)).Elem(), CustomRoutingEndpointTrafficPolicyPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupEndpointConfigurationInput)(nil)).Elem(), EndpointGroupEndpointConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupEndpointConfigurationArrayInput)(nil)).Elem(), EndpointGroupEndpointConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointGroupPortOverridesInput)(nil)).Elem(), EndpointGroupPortOverridesArgs{})
@@ -5164,6 +6484,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayInput)(nil)).Elem(), GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicEndpointsEndpointInput)(nil)).Elem(), GetBasicEndpointsEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBasicEndpointsEndpointArrayInput)(nil)).Elem(), GetBasicEndpointsEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationInput)(nil)).Elem(), GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayInput)(nil)).Elem(), GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingEndpointGroupsGroupInput)(nil)).Elem(), GetCustomRoutingEndpointGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingEndpointGroupsGroupArrayInput)(nil)).Elem(), GetCustomRoutingEndpointGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyInput)(nil)).Elem(), GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayInput)(nil)).Elem(), GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeInput)(nil)).Elem(), GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayInput)(nil)).Elem(), GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingEndpointsCustomRoutingEndpointInput)(nil)).Elem(), GetCustomRoutingEndpointsCustomRoutingEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingEndpointsCustomRoutingEndpointArrayInput)(nil)).Elem(), GetCustomRoutingEndpointsCustomRoutingEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingPortMappingsCustomRoutingPortMappingInput)(nil)).Elem(), GetCustomRoutingPortMappingsCustomRoutingPortMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayInput)(nil)).Elem(), GetCustomRoutingPortMappingsCustomRoutingPortMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressInput)(nil)).Elem(), GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayInput)(nil)).Elem(), GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupInput)(nil)).Elem(), GetEndpointGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupArrayInput)(nil)).Elem(), GetEndpointGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointGroupsGroupEndpointConfigurationInput)(nil)).Elem(), GetEndpointGroupsGroupEndpointConfigurationArgs{})
@@ -5194,6 +6530,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListenersListenerPortRangeArrayInput)(nil)).Elem(), GetListenersListenerPortRangeArray{})
 	pulumi.RegisterOutputType(AclAclEntryOutput{})
 	pulumi.RegisterOutputType(AclAclEntryArrayOutput{})
+	pulumi.RegisterOutputType(CustomRoutingEndpointTrafficPolicyPortRangeOutput{})
+	pulumi.RegisterOutputType(CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationOutput{})
 	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(EndpointGroupPortOverridesOutput{})
@@ -5241,6 +6579,22 @@ func init() {
 	pulumi.RegisterOutputType(GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetBasicEndpointsEndpointOutput{})
 	pulumi.RegisterOutputType(GetBasicEndpointsEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingEndpointGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingEndpointGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingEndpointsCustomRoutingEndpointOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingEndpointsCustomRoutingEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingPortMappingsCustomRoutingPortMappingOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingPortMappingsCustomRoutingPortMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressOutput{})
+	pulumi.RegisterOutputType(GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
+	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointGroupsGroupEndpointConfigurationOutput{})

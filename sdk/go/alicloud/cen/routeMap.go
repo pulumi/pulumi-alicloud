@@ -176,7 +176,7 @@ type RouteMap struct {
 	CommunityOperateMode pulumi.StringPtrOutput `pulumi:"communityOperateMode"`
 	// The description of the route map.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+	// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
 	DestinationChildInstanceTypes pulumi.StringArrayOutput `pulumi:"destinationChildInstanceTypes"`
 	// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
 	DestinationCidrBlocks pulumi.StringArrayOutput `pulumi:"destinationCidrBlocks"`
@@ -282,7 +282,7 @@ type routeMapState struct {
 	CommunityOperateMode *string `pulumi:"communityOperateMode"`
 	// The description of the route map.
 	Description *string `pulumi:"description"`
-	// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+	// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
 	DestinationChildInstanceTypes []string `pulumi:"destinationChildInstanceTypes"`
 	// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
 	DestinationCidrBlocks []string `pulumi:"destinationCidrBlocks"`
@@ -345,7 +345,7 @@ type RouteMapState struct {
 	CommunityOperateMode pulumi.StringPtrInput
 	// The description of the route map.
 	Description pulumi.StringPtrInput
-	// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+	// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
 	DestinationChildInstanceTypes pulumi.StringArrayInput
 	// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
 	DestinationCidrBlocks pulumi.StringArrayInput
@@ -412,7 +412,7 @@ type routeMapArgs struct {
 	CommunityOperateMode *string `pulumi:"communityOperateMode"`
 	// The description of the route map.
 	Description *string `pulumi:"description"`
-	// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+	// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
 	DestinationChildInstanceTypes []string `pulumi:"destinationChildInstanceTypes"`
 	// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
 	DestinationCidrBlocks []string `pulumi:"destinationCidrBlocks"`
@@ -472,7 +472,7 @@ type RouteMapArgs struct {
 	CommunityOperateMode pulumi.StringPtrInput
 	// The description of the route map.
 	Description pulumi.StringPtrInput
-	// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+	// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
 	DestinationChildInstanceTypes pulumi.StringArrayInput
 	// A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
 	DestinationCidrBlocks pulumi.StringArrayInput
@@ -638,7 +638,7 @@ func (o RouteMapOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteMap) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+// A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
 func (o RouteMapOutput) DestinationChildInstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RouteMap) pulumi.StringArrayOutput { return v.DestinationChildInstanceTypes }).(pulumi.StringArrayOutput)
 }

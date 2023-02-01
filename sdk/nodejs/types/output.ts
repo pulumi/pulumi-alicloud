@@ -24712,6 +24712,17 @@ export namespace ga {
         entryDescription: string;
     }
 
+    export interface CustomRoutingEndpointTrafficPolicyPortRange {
+        /**
+         * The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+         */
+        fromPort?: number;
+        /**
+         * The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+         */
+        toPort?: number;
+    }
+
     export interface EndpointGroupEndpointConfiguration {
         /**
          * Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
@@ -25222,6 +25233,238 @@ export namespace ga {
         id: string;
         /**
          * The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
+         */
+        status: string;
+    }
+
+    export interface GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination {
+        /**
+         * The ID of the GA instance.
+         */
+        acceleratorId: string;
+        /**
+         * The ID of the Custom Routing Endpoint Group Destination.
+         */
+        customRoutingEndpointGroupDestinationId: string;
+        /**
+         * The ID of the endpoint group.
+         */
+        endpointGroupId: string;
+        /**
+         * The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
+         */
+        fromPort: number;
+        /**
+         * The id of the Global Accelerator Custom Routing Endpoint Group Destination. It formats as `<endpoint_group_id>:<custom_routing_endpoint_group_destination_id>`.
+         */
+        id: string;
+        /**
+         * The ID of the listener.
+         */
+        listenerId: string;
+        /**
+         * The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
+         */
+        protocols: string[];
+        /**
+         * The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
+         */
+        toPort: number;
+    }
+
+    export interface GetCustomRoutingEndpointGroupsGroup {
+        /**
+         * The ID of the GA instance.
+         */
+        acceleratorId: string;
+        /**
+         * The name of the endpoint group.
+         */
+        customRoutingEndpointGroupName: string;
+        /**
+         * The description of the endpoint group.
+         */
+        description: string;
+        /**
+         * The ID of the endpoint group.
+         */
+        endpointGroupId: string;
+        /**
+         * The list of endpoint group IP addresses.
+         */
+        endpointGroupIpLists: string[];
+        /**
+         * The ID of the region where the endpoint group is created.
+         */
+        endpointGroupRegion: string;
+        /**
+         * The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
+         */
+        endpointGroupUnconfirmedIpLists: string[];
+        /**
+         * The id of the Custom Routing Endpoint Group.
+         */
+        id: string;
+        /**
+         * The ID of the custom routing listener.
+         */
+        listenerId: string;
+        /**
+         * The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
+         */
+        status: string;
+    }
+
+    export interface GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy {
+        /**
+         * The ID of the GA instance to which the traffic policies belong.
+         */
+        acceleratorId: string;
+        /**
+         * The IP addresses of the traffic policies.
+         */
+        address: string;
+        /**
+         * The ID of the Custom Routing Endpoint Traffic Policy.
+         */
+        customRoutingEndpointTrafficPolicyId: string;
+        /**
+         * The ID of the endpoint group to which the traffic policies belong.
+         */
+        endpointGroupId: string;
+        /**
+         * The ID of the endpoint to which the traffic policies belong.
+         */
+        endpointId: string;
+        /**
+         * The id of the Global Accelerator Custom Routing Endpoint Traffic Policy. It formats as `<endpoint_id>:<custom_routing_endpoint_traffic_policy_id>`.
+         */
+        id: string;
+        /**
+         * The ID of the listener to which the traffic policies belong.
+         */
+        listenerId: string;
+        /**
+         * The port range of the traffic policy.
+         */
+        portRanges: outputs.ga.GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange[];
+    }
+
+    export interface GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange {
+        /**
+         * The first port of the port range.
+         */
+        fromPort: number;
+        /**
+         * The last port of the port range.
+         */
+        toPort: number;
+    }
+
+    export interface GetCustomRoutingEndpointsCustomRoutingEndpoint {
+        /**
+         * The ID of the GA instance.
+         */
+        acceleratorId: string;
+        /**
+         * The ID of the Custom Routing Endpoint.
+         */
+        customRoutingEndpointId: string;
+        /**
+         * The ID of the endpoint (vSwitch).
+         */
+        endpoint: string;
+        /**
+         * The ID of the endpoint group.
+         */
+        endpointGroupId: string;
+        /**
+         * The id of the Global Accelerator Custom Routing Endpoint. It formats as `<endpoint_group_id>:<custom_routing_endpoint_id>`.
+         */
+        id: string;
+        /**
+         * The ID of the custom routing listener.
+         */
+        listenerId: string;
+        /**
+         * The access policy of traffic for the specified endpoint.
+         */
+        trafficToEndpointPolicy: string;
+        /**
+         * The backend service type of the endpoint.
+         */
+        type: string;
+    }
+
+    export interface GetCustomRoutingPortMappingsCustomRoutingPortMapping {
+        /**
+         * The ID of the GA instance.
+         */
+        acceleratorId: string;
+        /**
+         * The acceleration port.
+         */
+        acceleratorPort: number;
+        /**
+         * The service IP address and port of the backend instance.
+         */
+        destinationSocketAddresses: outputs.ga.GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress[];
+        /**
+         * The ID of the endpoint group.
+         */
+        endpointGroupId: string;
+        /**
+         * The ID of the region in which the endpoint group resides.
+         */
+        endpointGroupRegion: string;
+        /**
+         * The ID of the endpoint.
+         */
+        endpointId: string;
+        /**
+         * The ID of the listener.
+         */
+        listenerId: string;
+        /**
+         * The protocol of the backend service.
+         */
+        protocols: string[];
+        /**
+         * The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
+         */
+        status: string;
+        /**
+         * The ID of the endpoint (vSwitch).
+         */
+        vswitch: string;
+    }
+
+    export interface GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress {
+        /**
+         * The service IP address of the backend instance.
+         */
+        ipAddress: string;
+        /**
+         * The service port of the backend instance.
+         */
+        port: number;
+    }
+
+    export interface GetDomainsDomain {
+        /**
+         * The ID of the global acceleration instance.
+         */
+        acceleratorId: string;
+        /**
+         * The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+         */
+        domain: string;
+        /**
+         * The ID of the Ga Domain.
+         */
+        id: string;
+        /**
+         * The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
          */
         status: string;
     }
@@ -34506,6 +34749,10 @@ export namespace rds {
          */
         dbInstanceStorageType: string;
         /**
+         * (Available in 1.197.0+) The type of instance.
+         */
+        dbInstanceType: string;
+        /**
          * `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
          */
         dbType: string;
@@ -37646,6 +37893,75 @@ export namespace securitycenter {
 }
 
 export namespace servicecatalog {
+    export interface GetEndUserProductsEndUserProduct {
+        /**
+         * Product creation time.According to ISO8601 standard, UTC time is used in the format: YYYY-MM-DDThh:mm:ssZ.
+         */
+        createTime: string;
+        /**
+         * Product description.
+         */
+        description: string;
+        /**
+         * Whether there is a default Startup option. Value:-true: There is a default Startup option, and there is no need to fill in the portfolio when starting the product or updating the instance.-false: there is no default Startup option. You must fill in the portfolio when starting the product or updating the instance. For more information about how to obtain the portfolio, see ListLaunchOptions.> If the product is added to only one product portfolio, there will be a default Startup option. If the product is added to multiple product combinations, there will be multiple startup options at the same time, but there is no default Startup option at this time.
+         */
+        hasDefaultLaunchOption: boolean;
+        /**
+         * ID of product, Its value is the same as `productId`.
+         */
+        id: string;
+        /**
+         * Product ARN.
+         */
+        productArn: string;
+        /**
+         * Product ID.
+         */
+        productId: string;
+        /**
+         * Product name.
+         */
+        productName: string;
+        /**
+         * Type of product.The value is Ros, which indicates the resource orchestration service (ROS).
+         */
+        productType: string;
+        /**
+         * Product provider.
+         */
+        providerName: string;
+    }
+
+    export interface GetLaunchOptionsLaunchOption {
+        /**
+         * List of constraints.
+         */
+        constraintSummaries: outputs.servicecatalog.GetLaunchOptionsLaunchOptionConstraintSummary[];
+        /**
+         * ID of Service Catalog Launch Option.
+         */
+        id: string;
+        /**
+         * Product mix ID.
+         */
+        portfolioId: string;
+        /**
+         * Product portfolio name.
+         */
+        portfolioName: string;
+    }
+
+    export interface GetLaunchOptionsLaunchOptionConstraintSummary {
+        /**
+         * Constraint type.The value is Launch, which indicates that the constraint is started.
+         */
+        constraintType: string;
+        /**
+         * Constraint description.
+         */
+        description: string;
+    }
+
     export interface GetLaunchOptionsOption {
         /**
          * List of constraints.
@@ -37713,6 +38029,49 @@ export namespace servicecatalog {
          * Product provider.
          */
         providerName: string;
+    }
+
+    export interface GetProductVersionsProductVersion {
+        /**
+         * Whether the version is activated
+         */
+        active: boolean;
+        /**
+         * The creation time of the resource
+         */
+        createTime: string;
+        /**
+         * Version description
+         */
+        description: string;
+        /**
+         * Administrator guidance
+         */
+        guidance: string;
+        /**
+         * ID of product version.
+         */
+        id: string;
+        /**
+         * Product ID
+         */
+        productId: string;
+        /**
+         * The first ID of the resource
+         */
+        productVersionId: string;
+        /**
+         * The name of the resource
+         */
+        productVersionName: string;
+        /**
+         * Template Type
+         */
+        templateType: string;
+        /**
+         * Template URL
+         */
+        templateUrl: string;
     }
 
     export interface GetProductVersionsVersion {
@@ -37848,6 +38207,100 @@ export namespace servicecatalog {
     }
 
     export interface GetProvisionedProductsProductParameter {
+        parameterKey: string;
+        parameterValue: string;
+    }
+
+    export interface GetProvisionedProductsProvisionedProduct {
+        /**
+         * The creation time of the product instance
+         */
+        createTime: string;
+        id: string;
+        /**
+         * The ID of the last instance operation task
+         */
+        lastProvisioningTaskId: string;
+        /**
+         * The ID of the last successful instance operation task
+         */
+        lastSuccessfulProvisioningTaskId: string;
+        /**
+         * The ID of the last task
+         */
+        lastTaskId: string;
+        outputs: outputs.servicecatalog.GetProvisionedProductsProvisionedProductOutput[];
+        /**
+         * The RAM entity ID of the owner
+         */
+        ownerPrincipalId: string;
+        /**
+         * The RAM entity type of the owner
+         */
+        ownerPrincipalType: string;
+        parameters: outputs.servicecatalog.GetProvisionedProductsProvisionedProductParameter[];
+        /**
+         * Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+         */
+        portfolioId: string;
+        /**
+         * Product ID.
+         */
+        productId: string;
+        /**
+         * The name of the product
+         */
+        productName: string;
+        /**
+         * Product version ID.
+         */
+        productVersionId: string;
+        /**
+         * The name of the product version
+         */
+        productVersionName: string;
+        /**
+         * The ARN of the product instance
+         */
+        provisionedProductArn: string;
+        /**
+         * The ID of the instance.
+         */
+        provisionedProductId: string;
+        /**
+         * The name of the instance.The length is 1~128 characters.
+         */
+        provisionedProductName: string;
+        /**
+         * Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+         */
+        provisionedProductType: string;
+        /**
+         * The ID of the ROS stack
+         */
+        stackId: string;
+        /**
+         * The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+         */
+        stackRegionId: string;
+        /**
+         * Instance status
+         */
+        status: string;
+        /**
+         * The status message of the product instance
+         */
+        statusMessage: string;
+        tags?: {[key: string]: any};
+    }
+
+    export interface GetProvisionedProductsProvisionedProductOutput {
+        description: string;
+        outputKey: string;
+        outputValue: string;
+    }
+
+    export interface GetProvisionedProductsProvisionedProductParameter {
         parameterKey: string;
         parameterValue: string;
     }
@@ -40707,9 +41160,9 @@ export namespace vpc {
 
     export interface GetDhcpOptionsSetsSet {
         /**
-         * AssociateVpcs.
+         * The Number of VPCs bound by the DHCP option set.
          */
-        associateVpcs: outputs.vpc.GetDhcpOptionsSetsSetAssociateVpc[];
+        associateVpcCount: number;
         /**
          * The description of the DHCP options set. The description must be 2 to 256
          * characters in length and cannot start with `http://` or `https://`.
@@ -40742,17 +41195,6 @@ export namespace vpc {
          * The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
          */
         status: string;
-    }
-
-    export interface GetDhcpOptionsSetsSetAssociateVpc {
-        /**
-         * The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
-         */
-        associateStatus: string;
-        /**
-         * The ID of the VPC network that is associated with the DHCP options set.
-         */
-        vpcId: string;
     }
 
     export interface GetEnhancedNatAvailableZonesZone {

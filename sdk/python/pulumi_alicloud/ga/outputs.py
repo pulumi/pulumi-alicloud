@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'AclAclEntry',
+    'CustomRoutingEndpointTrafficPolicyPortRange',
     'EndpointGroupEndpointConfiguration',
     'EndpointGroupPortOverrides',
     'ForwardingRuleRuleAction',
@@ -36,6 +37,14 @@ __all__ = [
     'GetBasicAcceleratorsAcceleratorBasicBandwidthPackageResult',
     'GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageResult',
     'GetBasicEndpointsEndpointResult',
+    'GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationResult',
+    'GetCustomRoutingEndpointGroupsGroupResult',
+    'GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyResult',
+    'GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeResult',
+    'GetCustomRoutingEndpointsCustomRoutingEndpointResult',
+    'GetCustomRoutingPortMappingsCustomRoutingPortMappingResult',
+    'GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressResult',
+    'GetDomainsDomainResult',
     'GetEndpointGroupsGroupResult',
     'GetEndpointGroupsGroupEndpointConfigurationResult',
     'GetEndpointGroupsGroupPortOverrideResult',
@@ -98,6 +107,56 @@ class AclAclEntry(dict):
         The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
         """
         return pulumi.get(self, "entry_description")
+
+
+@pulumi.output_type
+class CustomRoutingEndpointTrafficPolicyPortRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fromPort":
+            suggest = "from_port"
+        elif key == "toPort":
+            suggest = "to_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomRoutingEndpointTrafficPolicyPortRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomRoutingEndpointTrafficPolicyPortRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomRoutingEndpointTrafficPolicyPortRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 from_port: Optional[int] = None,
+                 to_port: Optional[int] = None):
+        """
+        :param int from_port: The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+        :param int to_port: The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+        """
+        if from_port is not None:
+            pulumi.set(__self__, "from_port", from_port)
+        if to_port is not None:
+            pulumi.set(__self__, "to_port", to_port)
+
+    @property
+    @pulumi.getter(name="fromPort")
+    def from_port(self) -> Optional[int]:
+        """
+        The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+        """
+        return pulumi.get(self, "from_port")
+
+    @property
+    @pulumi.getter(name="toPort")
+    def to_port(self) -> Optional[int]:
+        """
+        The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
+        """
+        return pulumi.get(self, "to_port")
 
 
 @pulumi.output_type
@@ -1666,6 +1725,634 @@ class GetBasicEndpointsEndpointResult(dict):
     def status(self) -> str:
         """
         The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationResult(dict):
+    def __init__(__self__, *,
+                 accelerator_id: str,
+                 custom_routing_endpoint_group_destination_id: str,
+                 endpoint_group_id: str,
+                 from_port: int,
+                 id: str,
+                 listener_id: str,
+                 protocols: Sequence[str],
+                 to_port: int):
+        """
+        :param str accelerator_id: The ID of the GA instance.
+        :param str custom_routing_endpoint_group_destination_id: The ID of the Custom Routing Endpoint Group Destination.
+        :param str endpoint_group_id: The ID of the endpoint group.
+        :param int from_port: The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+        :param str id: The id of the Global Accelerator Custom Routing Endpoint Group Destination. It formats as `<endpoint_group_id>:<custom_routing_endpoint_group_destination_id>`.
+        :param str listener_id: The ID of the listener.
+        :param Sequence[str] protocols: The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
+        :param int to_port: The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "custom_routing_endpoint_group_destination_id", custom_routing_endpoint_group_destination_id)
+        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        pulumi.set(__self__, "from_port", from_port)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "protocols", protocols)
+        pulumi.set(__self__, "to_port", to_port)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> str:
+        """
+        The ID of the GA instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @property
+    @pulumi.getter(name="customRoutingEndpointGroupDestinationId")
+    def custom_routing_endpoint_group_destination_id(self) -> str:
+        """
+        The ID of the Custom Routing Endpoint Group Destination.
+        """
+        return pulumi.get(self, "custom_routing_endpoint_group_destination_id")
+
+    @property
+    @pulumi.getter(name="endpointGroupId")
+    def endpoint_group_id(self) -> str:
+        """
+        The ID of the endpoint group.
+        """
+        return pulumi.get(self, "endpoint_group_id")
+
+    @property
+    @pulumi.getter(name="fromPort")
+    def from_port(self) -> int:
+        """
+        The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+        """
+        return pulumi.get(self, "from_port")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the Global Accelerator Custom Routing Endpoint Group Destination. It formats as `<endpoint_group_id>:<custom_routing_endpoint_group_destination_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> str:
+        """
+        The ID of the listener.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @property
+    @pulumi.getter
+    def protocols(self) -> Sequence[str]:
+        """
+        The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
+        """
+        return pulumi.get(self, "protocols")
+
+    @property
+    @pulumi.getter(name="toPort")
+    def to_port(self) -> int:
+        """
+        The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
+        """
+        return pulumi.get(self, "to_port")
+
+
+@pulumi.output_type
+class GetCustomRoutingEndpointGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 accelerator_id: str,
+                 custom_routing_endpoint_group_name: str,
+                 description: str,
+                 endpoint_group_id: str,
+                 endpoint_group_ip_lists: Sequence[str],
+                 endpoint_group_region: str,
+                 endpoint_group_unconfirmed_ip_lists: Sequence[str],
+                 id: str,
+                 listener_id: str,
+                 status: str):
+        """
+        :param str accelerator_id: The ID of the GA instance.
+        :param str custom_routing_endpoint_group_name: The name of the endpoint group.
+        :param str description: The description of the endpoint group.
+        :param str endpoint_group_id: The ID of the endpoint group.
+        :param Sequence[str] endpoint_group_ip_lists: The list of endpoint group IP addresses.
+        :param str endpoint_group_region: The ID of the region where the endpoint group is created.
+        :param Sequence[str] endpoint_group_unconfirmed_ip_lists: The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
+        :param str id: The id of the Custom Routing Endpoint Group.
+        :param str listener_id: The ID of the custom routing listener.
+        :param str status: The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "custom_routing_endpoint_group_name", custom_routing_endpoint_group_name)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        pulumi.set(__self__, "endpoint_group_ip_lists", endpoint_group_ip_lists)
+        pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
+        pulumi.set(__self__, "endpoint_group_unconfirmed_ip_lists", endpoint_group_unconfirmed_ip_lists)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> str:
+        """
+        The ID of the GA instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @property
+    @pulumi.getter(name="customRoutingEndpointGroupName")
+    def custom_routing_endpoint_group_name(self) -> str:
+        """
+        The name of the endpoint group.
+        """
+        return pulumi.get(self, "custom_routing_endpoint_group_name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the endpoint group.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="endpointGroupId")
+    def endpoint_group_id(self) -> str:
+        """
+        The ID of the endpoint group.
+        """
+        return pulumi.get(self, "endpoint_group_id")
+
+    @property
+    @pulumi.getter(name="endpointGroupIpLists")
+    def endpoint_group_ip_lists(self) -> Sequence[str]:
+        """
+        The list of endpoint group IP addresses.
+        """
+        return pulumi.get(self, "endpoint_group_ip_lists")
+
+    @property
+    @pulumi.getter(name="endpointGroupRegion")
+    def endpoint_group_region(self) -> str:
+        """
+        The ID of the region where the endpoint group is created.
+        """
+        return pulumi.get(self, "endpoint_group_region")
+
+    @property
+    @pulumi.getter(name="endpointGroupUnconfirmedIpLists")
+    def endpoint_group_unconfirmed_ip_lists(self) -> Sequence[str]:
+        """
+        The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
+        """
+        return pulumi.get(self, "endpoint_group_unconfirmed_ip_lists")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the Custom Routing Endpoint Group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> str:
+        """
+        The ID of the custom routing listener.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyResult(dict):
+    def __init__(__self__, *,
+                 accelerator_id: str,
+                 address: str,
+                 custom_routing_endpoint_traffic_policy_id: str,
+                 endpoint_group_id: str,
+                 endpoint_id: str,
+                 id: str,
+                 listener_id: str,
+                 port_ranges: Sequence['outputs.GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeResult']):
+        """
+        :param str accelerator_id: The ID of the GA instance to which the traffic policies belong.
+        :param str address: The IP addresses of the traffic policies.
+        :param str custom_routing_endpoint_traffic_policy_id: The ID of the Custom Routing Endpoint Traffic Policy.
+        :param str endpoint_group_id: The ID of the endpoint group to which the traffic policies belong.
+        :param str endpoint_id: The ID of the endpoint to which the traffic policies belong.
+        :param str id: The id of the Global Accelerator Custom Routing Endpoint Traffic Policy. It formats as `<endpoint_id>:<custom_routing_endpoint_traffic_policy_id>`.
+        :param str listener_id: The ID of the listener to which the traffic policies belong.
+        :param Sequence['GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArgs'] port_ranges: The port range of the traffic policy.
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "custom_routing_endpoint_traffic_policy_id", custom_routing_endpoint_traffic_policy_id)
+        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "port_ranges", port_ranges)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> str:
+        """
+        The ID of the GA instance to which the traffic policies belong.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The IP addresses of the traffic policies.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="customRoutingEndpointTrafficPolicyId")
+    def custom_routing_endpoint_traffic_policy_id(self) -> str:
+        """
+        The ID of the Custom Routing Endpoint Traffic Policy.
+        """
+        return pulumi.get(self, "custom_routing_endpoint_traffic_policy_id")
+
+    @property
+    @pulumi.getter(name="endpointGroupId")
+    def endpoint_group_id(self) -> str:
+        """
+        The ID of the endpoint group to which the traffic policies belong.
+        """
+        return pulumi.get(self, "endpoint_group_id")
+
+    @property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> str:
+        """
+        The ID of the endpoint to which the traffic policies belong.
+        """
+        return pulumi.get(self, "endpoint_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the Global Accelerator Custom Routing Endpoint Traffic Policy. It formats as `<endpoint_id>:<custom_routing_endpoint_traffic_policy_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> str:
+        """
+        The ID of the listener to which the traffic policies belong.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @property
+    @pulumi.getter(name="portRanges")
+    def port_ranges(self) -> Sequence['outputs.GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeResult']:
+        """
+        The port range of the traffic policy.
+        """
+        return pulumi.get(self, "port_ranges")
+
+
+@pulumi.output_type
+class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeResult(dict):
+    def __init__(__self__, *,
+                 from_port: int,
+                 to_port: int):
+        """
+        :param int from_port: The first port of the port range.
+        :param int to_port: The last port of the port range.
+        """
+        pulumi.set(__self__, "from_port", from_port)
+        pulumi.set(__self__, "to_port", to_port)
+
+    @property
+    @pulumi.getter(name="fromPort")
+    def from_port(self) -> int:
+        """
+        The first port of the port range.
+        """
+        return pulumi.get(self, "from_port")
+
+    @property
+    @pulumi.getter(name="toPort")
+    def to_port(self) -> int:
+        """
+        The last port of the port range.
+        """
+        return pulumi.get(self, "to_port")
+
+
+@pulumi.output_type
+class GetCustomRoutingEndpointsCustomRoutingEndpointResult(dict):
+    def __init__(__self__, *,
+                 accelerator_id: str,
+                 custom_routing_endpoint_id: str,
+                 endpoint: str,
+                 endpoint_group_id: str,
+                 id: str,
+                 listener_id: str,
+                 traffic_to_endpoint_policy: str,
+                 type: str):
+        """
+        :param str accelerator_id: The ID of the GA instance.
+        :param str custom_routing_endpoint_id: The ID of the Custom Routing Endpoint.
+        :param str endpoint: The ID of the endpoint (vSwitch).
+        :param str endpoint_group_id: The ID of the endpoint group.
+        :param str id: The id of the Global Accelerator Custom Routing Endpoint. It formats as `<endpoint_group_id>:<custom_routing_endpoint_id>`.
+        :param str listener_id: The ID of the custom routing listener.
+        :param str traffic_to_endpoint_policy: The access policy of traffic for the specified endpoint.
+        :param str type: The backend service type of the endpoint.
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "custom_routing_endpoint_id", custom_routing_endpoint_id)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "traffic_to_endpoint_policy", traffic_to_endpoint_policy)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> str:
+        """
+        The ID of the GA instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @property
+    @pulumi.getter(name="customRoutingEndpointId")
+    def custom_routing_endpoint_id(self) -> str:
+        """
+        The ID of the Custom Routing Endpoint.
+        """
+        return pulumi.get(self, "custom_routing_endpoint_id")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The ID of the endpoint (vSwitch).
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="endpointGroupId")
+    def endpoint_group_id(self) -> str:
+        """
+        The ID of the endpoint group.
+        """
+        return pulumi.get(self, "endpoint_group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the Global Accelerator Custom Routing Endpoint. It formats as `<endpoint_group_id>:<custom_routing_endpoint_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> str:
+        """
+        The ID of the custom routing listener.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @property
+    @pulumi.getter(name="trafficToEndpointPolicy")
+    def traffic_to_endpoint_policy(self) -> str:
+        """
+        The access policy of traffic for the specified endpoint.
+        """
+        return pulumi.get(self, "traffic_to_endpoint_policy")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The backend service type of the endpoint.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCustomRoutingPortMappingsCustomRoutingPortMappingResult(dict):
+    def __init__(__self__, *,
+                 accelerator_id: str,
+                 accelerator_port: int,
+                 destination_socket_addresses: Sequence['outputs.GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressResult'],
+                 endpoint_group_id: str,
+                 endpoint_group_region: str,
+                 endpoint_id: str,
+                 listener_id: str,
+                 protocols: Sequence[str],
+                 status: str,
+                 vswitch: str):
+        """
+        :param str accelerator_id: The ID of the GA instance.
+        :param int accelerator_port: The acceleration port.
+        :param Sequence['GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressArgs'] destination_socket_addresses: The service IP address and port of the backend instance.
+        :param str endpoint_group_id: The ID of the endpoint group.
+        :param str endpoint_group_region: The ID of the region in which the endpoint group resides.
+        :param str endpoint_id: The ID of the endpoint.
+        :param str listener_id: The ID of the listener.
+        :param Sequence[str] protocols: The protocol of the backend service.
+        :param str status: The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
+        :param str vswitch: The ID of the endpoint (vSwitch).
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "accelerator_port", accelerator_port)
+        pulumi.set(__self__, "destination_socket_addresses", destination_socket_addresses)
+        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "protocols", protocols)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vswitch", vswitch)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> str:
+        """
+        The ID of the GA instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @property
+    @pulumi.getter(name="acceleratorPort")
+    def accelerator_port(self) -> int:
+        """
+        The acceleration port.
+        """
+        return pulumi.get(self, "accelerator_port")
+
+    @property
+    @pulumi.getter(name="destinationSocketAddresses")
+    def destination_socket_addresses(self) -> Sequence['outputs.GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressResult']:
+        """
+        The service IP address and port of the backend instance.
+        """
+        return pulumi.get(self, "destination_socket_addresses")
+
+    @property
+    @pulumi.getter(name="endpointGroupId")
+    def endpoint_group_id(self) -> str:
+        """
+        The ID of the endpoint group.
+        """
+        return pulumi.get(self, "endpoint_group_id")
+
+    @property
+    @pulumi.getter(name="endpointGroupRegion")
+    def endpoint_group_region(self) -> str:
+        """
+        The ID of the region in which the endpoint group resides.
+        """
+        return pulumi.get(self, "endpoint_group_region")
+
+    @property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> str:
+        """
+        The ID of the endpoint.
+        """
+        return pulumi.get(self, "endpoint_id")
+
+    @property
+    @pulumi.getter(name="listenerId")
+    def listener_id(self) -> str:
+        """
+        The ID of the listener.
+        """
+        return pulumi.get(self, "listener_id")
+
+    @property
+    @pulumi.getter
+    def protocols(self) -> Sequence[str]:
+        """
+        The protocol of the backend service.
+        """
+        return pulumi.get(self, "protocols")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def vswitch(self) -> str:
+        """
+        The ID of the endpoint (vSwitch).
+        """
+        return pulumi.get(self, "vswitch")
+
+
+@pulumi.output_type
+class GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressResult(dict):
+    def __init__(__self__, *,
+                 ip_address: str,
+                 port: int):
+        """
+        :param str ip_address: The service IP address of the backend instance.
+        :param int port: The service port of the backend instance.
+        """
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        The service IP address of the backend instance.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The service port of the backend instance.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetDomainsDomainResult(dict):
+    def __init__(__self__, *,
+                 accelerator_id: str,
+                 domain: str,
+                 id: str,
+                 status: str):
+        """
+        :param str accelerator_id: The ID of the global acceleration instance.
+        :param str domain: The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+        :param str id: The ID of the Ga Domain.
+        :param str status: The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+        """
+        pulumi.set(__self__, "accelerator_id", accelerator_id)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="acceleratorId")
+    def accelerator_id(self) -> str:
+        """
+        The ID of the global acceleration instance.
+        """
+        return pulumi.get(self, "accelerator_id")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Ga Domain.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
         """
         return pulumi.get(self, "status")
 

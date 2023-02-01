@@ -102,9 +102,11 @@ export class ImageImport extends pulumi.CustomResource {
      */
     public readonly osType!: pulumi.Output<string | undefined>;
     /**
-     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+     * The operating system distribution. Default value: Others Linux. 
+     * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * **NOTE**: It's default value is Ubuntu before version 1.197.0.
      */
-    public readonly platform!: pulumi.Output<string | undefined>;
+    public readonly platform!: pulumi.Output<string>;
 
     /**
      * Create a ImageImport resource with the given unique name, arguments, and options.
@@ -173,7 +175,9 @@ export interface ImageImportState {
      */
     osType?: pulumi.Input<string>;
     /**
-     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+     * The operating system distribution. Default value: Others Linux. 
+     * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * **NOTE**: It's default value is Ubuntu before version 1.197.0.
      */
     platform?: pulumi.Input<string>;
 }
@@ -207,7 +211,9 @@ export interface ImageImportArgs {
      */
     osType?: pulumi.Input<string>;
     /**
-     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+     * The operating system distribution. Default value: Others Linux. 
+     * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * **NOTE**: It's default value is Ubuntu before version 1.197.0.
      */
     platform?: pulumi.Input<string>;
 }

@@ -144,7 +144,7 @@ export class RouteMap extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+     * A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
      */
     public readonly destinationChildInstanceTypes!: pulumi.Output<string[] | undefined>;
     /**
@@ -365,7 +365,7 @@ export interface RouteMapState {
      */
     description?: pulumi.Input<string>;
     /**
-     * A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+     * A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
      */
     destinationChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -491,7 +491,7 @@ export interface RouteMapArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN"].
+     * A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
      */
     destinationChildInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**

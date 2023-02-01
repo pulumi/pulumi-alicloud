@@ -127,7 +127,7 @@ def get_instances(availability_zone: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The `hbase.get_instances` data source provides a collection of HBase instances available in Alicloud account.
+    The _hbase_get_instances_ data source provides a collection of HBase instances available in Alicloud account.
     Filters support regular expression for the instance name, ids or availability_zone.
 
     > **NOTE:**  Available in 1.67.0+
@@ -176,7 +176,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
                          tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    The `hbase.get_instances` data source provides a collection of HBase instances available in Alicloud account.
+    The _hbase_get_instances_ data source provides a collection of HBase instances available in Alicloud account.
     Filters support regular expression for the instance name, ids or availability_zone.
 
     > **NOTE:**  Available in 1.67.0+

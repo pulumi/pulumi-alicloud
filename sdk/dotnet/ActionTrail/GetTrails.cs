@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["trailName"] = @default.Apply(getTrailsResult =&gt; getTrailsResult).Apply(@default =&gt; @default.Apply(getTrailsResult =&gt; getTrailsResult.Trails[0]?.Id)),
+        ///         ["trailName"] = @default.Apply(@default =&gt; @default.Apply(getTrailsResult =&gt; getTrailsResult.Trails[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["trailName"] = @default.Apply(getTrailsResult =&gt; getTrailsResult).Apply(@default =&gt; @default.Apply(getTrailsResult =&gt; getTrailsResult.Trails[0]?.Id)),
+        ///         ["trailName"] = @default.Apply(@default =&gt; @default.Apply(getTrailsResult =&gt; getTrailsResult.Trails[0]?.Id)),
         ///     };
         /// });
         /// ```

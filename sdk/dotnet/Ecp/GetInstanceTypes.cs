@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Ecp
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcpInstanceTypesInstanceType"] = @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult).Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.InstanceType)),
+        ///         ["firstEcpInstanceTypesInstanceType"] = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.InstanceType)),
         ///     };
         /// });
         /// ```
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Ecp
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEcpInstanceTypesInstanceType"] = @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult).Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.InstanceType)),
+        ///         ["firstEcpInstanceTypesInstanceType"] = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.InstanceType)),
         ///     };
         /// });
         /// ```
