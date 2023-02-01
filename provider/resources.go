@@ -26,6 +26,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the AliCloud token components used below.
@@ -844,25 +845,13 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_fnf_execution": {Tok: resource(fnfMod, "Execution")},
 
 			// Ga
-			"alicloud_ga_accelerator":                           {Tok: resource(gaMod, "Accelerator")},
-			"alicloud_ga_accelerator_spare_ip_attachment":       {Tok: resource(gaMod, "AcceleratorSpareIpAttachment")},
-			"alicloud_ga_access_log":                            {Tok: resource(gaMod, "AccessLog")},
-			"alicloud_ga_acl":                                   {Tok: resource(gaMod, "Acl")},
-			"alicloud_ga_acl_attachment":                        {Tok: resource(gaMod, "AclAttachment")},
-			"alicloud_ga_acl_entry_attachment":                  {Tok: resource(gaMod, "AclEntryAttachment")},
-			"alicloud_ga_additional_certificate":                {Tok: resource(gaMod, "AdditionalCertificate")},
-			"alicloud_ga_bandwidth_package":                     {Tok: resource(gaMod, "BandwidthPackage")},
-			"alicloud_ga_bandwidth_package_attachment":          {Tok: resource(gaMod, "BandwidthPackageAttachment")},
-			"alicloud_ga_basic_accelerate_ip":                   {Tok: resource(gaMod, "BasicAccelerateIp")},
-			"alicloud_ga_basic_accelerate_ip_endpoint_relation": {Tok: resource(gaMod, "BasicAccelerateIpEndpointRelation")},
-			"alicloud_ga_basic_accelerator":                     {Tok: resource(gaMod, "BasicAccelerator")},
-			"alicloud_ga_basic_endpoint":                        {Tok: resource(gaMod, "BasicEndpoint")},
-			"alicloud_ga_basic_endpoint_group":                  {Tok: resource(gaMod, "BasicEndpointGroup")},
-			"alicloud_ga_basic_ip_set":                          {Tok: resource(gaMod, "BasicIpSet")},
-			"alicloud_ga_endpoint_group":                        {Tok: resource(gaMod, "EndpointGroup")},
-			"alicloud_ga_forwarding_rule":                       {Tok: resource(gaMod, "ForwardingRule")},
-			"alicloud_ga_ip_set":                                {Tok: resource(gaMod, "IpSet")},
-			"alicloud_ga_listener":                              {Tok: resource(gaMod, "Listener")},
+			"alicloud_ga_domain": {
+				Tok: resource(gaMod, "Domain"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"domain": {
+						CSharpName: "AcceleratedDomain",
+					},
+				}},
 
 			// Gpdb
 			"alicloud_gpdb_connection":       {Tok: resource(gpdbMod, "Connection")},
@@ -2388,6 +2377,20 @@ func Provider() tfbridge.ProviderInfo {
 		dataSource(otsMod, "getInstances"), ossMod, otsMod, nil)
 	prov.RenameDataSource("alicloud_ots_tables", dataSource(ossMod, "getTables"),
 		dataSource(otsMod, "getTables"), ossMod, otsMod, nil)
+
+	moduleMap := map[string]string{
+		"ga":             gaMod,
+		"servicecatalog": serviceCatalogMod,
+	}
+	err := prov.ComputeDefaults(tfbridge.TokensKnownModules("alicloud_", "", []string{
+		"ga",
+		"service_catalog",
+	}, func(mod, name string) (string, error) {
+		m, ok := moduleMap[strings.ToLower(mod)]
+		contract.Assertf(ok, "all mods must be mapped: '%s'", strings.ToLower(mod))
+		return resource(m, name).String(), nil
+	}))
+	contract.AssertNoError(err)
 
 	prov.SetAutonaming(255, "-")
 
