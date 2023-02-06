@@ -2,6 +2,8 @@ module github.com/pulumi/pulumi-alicloud/provider/v3
 
 go 1.18
 
+replace github.com/pulumi/pulumi-terraform-bridge/v3 => ../../pulumi-terraform-bridge
+
 replace (
 	github.com/Sirupsen/logrus => github.com/sirupsen/logrus v0.0.0-20181010200618-458213699411
 	github.com/aliyun/aliyun-tablestore-go-sdk => github.com/aliyun/aliyun-tablestore-go-sdk v1.7.6

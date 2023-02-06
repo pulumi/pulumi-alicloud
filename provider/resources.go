@@ -15,6 +15,7 @@
 package alicloud
 
 import (
+	_ "embed"
 	"fmt"
 	"path/filepath"
 	"strings"
@@ -24,10 +25,14 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-alicloud/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
+
+//go:embed cmd/pulumi-resource-alicloud/mapping-history.json
+var mappingHistory []byte
 
 // all of the AliCloud token components used below.
 const (
@@ -2382,15 +2387,24 @@ func Provider() tfbridge.ProviderInfo {
 		"ga":             gaMod,
 		"servicecatalog": serviceCatalogMod,
 	}
-	err := prov.ComputeDefaults(tfbridge.TokensKnownModules("alicloud_", "", []string{
+
+	tokenMapping := tfbridge.TokensKnownModules("alicloud_", "", []string{
 		"ga",
 		"service_catalog",
 	}, func(mod, name string) (string, error) {
 		m, ok := moduleMap[strings.ToLower(mod)]
 		contract.Assertf(ok, "all mods must be mapped: '%s'", strings.ToLower(mod))
 		return resource(m, name).String(), nil
-	}))
+	})
+
+	tokenMapping, finish, err := tfbridge.Aliasing(mappingHistory, tokenMapping)
 	contract.AssertNoError(err)
+
+	err = prov.ComputeDefaults(tokenMapping)
+	contract.AssertNoError(err)
+
+	newMap := finish(&prov)
+	tfgen.AdditionalSchemaFile("mapping-history.json", newMap)
 
 	prov.SetAutonaming(255, "-")
 

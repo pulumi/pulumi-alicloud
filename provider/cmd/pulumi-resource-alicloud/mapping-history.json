@@ -1,0 +1,96 @@
+{
+    "resources": {
+        "alicloud_ga_accelerator": {
+            "current": "alicloud:ga/accelerator:Accelerator"
+        },
+        "alicloud_ga_accelerator_spare_ip_attachment": {
+            "current": "alicloud:ga/acceleratorSpareIpAttachment:AcceleratorSpareIpAttachment"
+        },
+        "alicloud_ga_access_log": {
+            "current": "alicloud:ga/accessLog:AccessLog"
+        },
+        "alicloud_ga_acl": {
+            "current": "alicloud:ga/acl:Acl"
+        },
+        "alicloud_ga_acl_attachment": {
+            "current": "alicloud:ga/aclAttachment:AclAttachment"
+        },
+        "alicloud_ga_acl_entry_attachment": {
+            "current": "alicloud:ga/aclEntryAttachment:AclEntryAttachment"
+        },
+        "alicloud_ga_additional_certificate": {
+            "current": "alicloud:ga/additionalCertificate:AdditionalCertificate"
+        },
+        "alicloud_ga_bandwidth_package": {
+            "current": "alicloud:ga/bandwidthPackage:BandwidthPackage"
+        },
+        "alicloud_ga_bandwidth_package_attachment": {
+            "current": "alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment"
+        },
+        "alicloud_ga_basic_accelerate_ip": {
+            "current": "alicloud:ga/basicAccelerateIp:BasicAccelerateIp"
+        },
+        "alicloud_ga_basic_accelerate_ip_endpoint_relation": {
+            "current": "alicloud:ga/basicAccelerateIpEndpointRelation:BasicAccelerateIpEndpointRelation"
+        },
+        "alicloud_ga_basic_accelerator": {
+            "current": "alicloud:ga/basicAccelerator:BasicAccelerator"
+        },
+        "alicloud_ga_basic_endpoint": {
+            "current": "alicloud:ga/basicEndpoint:BasicEndpoint"
+        },
+        "alicloud_ga_basic_endpoint_group": {
+            "current": "alicloud:ga/basicEndpointGroup:BasicEndpointGroup"
+        },
+        "alicloud_ga_basic_ip_set": {
+            "current": "alicloud:ga/basicIpSet:BasicIpSet"
+        },
+        "alicloud_ga_custom_routing_endpoint": {
+            "current": "alicloud:ga/customRoutingEndpoint:CustomRoutingEndpoint"
+        },
+        "alicloud_ga_custom_routing_endpoint_group": {
+            "current": "alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup"
+        },
+        "alicloud_ga_custom_routing_endpoint_group_destination": {
+            "current": "alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination"
+        },
+        "alicloud_ga_custom_routing_endpoint_traffic_policy": {
+            "current": "alicloud:ga/customRoutingEndpointTrafficPolicy:CustomRoutingEndpointTrafficPolicy"
+        },
+        "alicloud_ga_endpoint_group": {
+            "current": "alicloud:ga/endpointGroup:EndpointGroup"
+        },
+        "alicloud_ga_forwarding_rule": {
+            "current": "alicloud:ga/forwardingRule:ForwardingRule"
+        },
+        "alicloud_ga_ip_set": {
+            "current": "alicloud:ga/ipSet:IpSet"
+        },
+        "alicloud_ga_listener": {
+            "current": "alicloud:ga/listener:Listener"
+        }
+    },
+    "datasources": {
+        "alicloud_ga_custom_routing_endpoint_group_destinations": {
+            "current": "alicloud:ga/getCustomRoutingEndpointGroupDestinations:getCustomRoutingEndpointGroupDestinations"
+        },
+        "alicloud_ga_custom_routing_endpoint_groups": {
+            "current": "alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups"
+        },
+        "alicloud_ga_custom_routing_endpoint_traffic_policies": {
+            "current": "alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies"
+        },
+        "alicloud_ga_custom_routing_endpoints": {
+            "current": "alicloud:ga/getCustomRoutingEndpoints:getCustomRoutingEndpoints"
+        },
+        "alicloud_ga_custom_routing_port_mappings": {
+            "current": "alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings"
+        },
+        "alicloud_ga_domains": {
+            "current": "alicloud:ga/getDomains:getDomains"
+        },
+        "alicloud_service_catalog_end_user_products": {
+            "current": "alicloud:servicecatalog/getEndUserProducts:getEndUserProducts"
+        }
+    }
+}
