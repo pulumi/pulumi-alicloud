@@ -15,6 +15,11 @@ export const getConsumerChannels: typeof import("./getConsumerChannels").getCons
 export const getConsumerChannelsOutput: typeof import("./getConsumerChannels").getConsumerChannelsOutput = null as any;
 utilities.lazyLoad(exports, ["getConsumerChannels","getConsumerChannelsOutput"], () => require("./getConsumerChannels"));
 
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
 export { GetMigrationJobsArgs, GetMigrationJobsResult, GetMigrationJobsOutputArgs } from "./getMigrationJobs";
 export const getMigrationJobs: typeof import("./getMigrationJobs").getMigrationJobs = null as any;
 export const getMigrationJobsOutput: typeof import("./getMigrationJobs").getMigrationJobsOutput = null as any;
@@ -29,6 +34,11 @@ export { GetSynchronizationJobsArgs, GetSynchronizationJobsResult, GetSynchroniz
 export const getSynchronizationJobs: typeof import("./getSynchronizationJobs").getSynchronizationJobs = null as any;
 export const getSynchronizationJobsOutput: typeof import("./getSynchronizationJobs").getSynchronizationJobsOutput = null as any;
 utilities.lazyLoad(exports, ["getSynchronizationJobs","getSynchronizationJobsOutput"], () => require("./getSynchronizationJobs"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
 export { JobMonitorRuleArgs, JobMonitorRuleState } from "./jobMonitorRule";
 export type JobMonitorRule = import("./jobMonitorRule").JobMonitorRule;
@@ -67,6 +77,8 @@ const _module = {
         switch (type) {
             case "alicloud:dts/consumerChannel:ConsumerChannel":
                 return new ConsumerChannel(name, <any>undefined, { urn })
+            case "alicloud:dts/instance:Instance":
+                return new Instance(name, <any>undefined, { urn })
             case "alicloud:dts/jobMonitorRule:JobMonitorRule":
                 return new JobMonitorRule(name, <any>undefined, { urn })
             case "alicloud:dts/migrationInstance:MigrationInstance":
@@ -85,6 +97,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "dts/consumerChannel", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dts/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dts/jobMonitorRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dts/migrationInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dts/migrationJob", _module)

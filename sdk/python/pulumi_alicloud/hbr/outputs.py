@@ -20,6 +20,7 @@ __all__ = [
     'GetBackupJobsJobOtsDetailResult',
     'GetEcsBackupClientsClientResult',
     'GetEcsBackupPlansPlanResult',
+    'GetHanaBackupClientsHanaBackupClientResult',
     'GetHanaBackupPlansPlanResult',
     'GetHanaInstancesInstanceResult',
     'GetNasBackupPlansPlanResult',
@@ -1261,6 +1262,178 @@ class GetEcsBackupPlansPlanResult(dict):
     def vault_id(self) -> str:
         """
         The ID of Backup vault.
+        """
+        return pulumi.get(self, "vault_id")
+
+
+@pulumi.output_type
+class GetHanaBackupClientsHanaBackupClientResult(dict):
+    def __init__(__self__, *,
+                 alert_setting: str,
+                 client_id: str,
+                 client_name: str,
+                 client_type: str,
+                 client_version: str,
+                 cluster_id: str,
+                 id: str,
+                 instance_id: str,
+                 instance_name: str,
+                 max_version: str,
+                 network_type: str,
+                 status: str,
+                 status_message: str,
+                 use_https: bool,
+                 vault_id: str):
+        """
+        :param str alert_setting: The alert settings.
+        :param str client_id: The ID of the backup client.
+        :param str client_name: The name of the backup client.
+        :param str client_type: The type of the backup client.
+        :param str client_version: The version number of the backup client.
+        :param str cluster_id: The ID of the SAP HANA instance.
+        :param str id: The id of the Hana Backup Client. It formats as `<vault_id>:<client_id>`.
+        :param str instance_id: The ID of the instance.
+        :param str instance_name: The name of the ECS instance.
+        :param str max_version: The maximum version number of the backup client.
+        :param str network_type: The network type.
+        :param str status: The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
+        :param str status_message: The status information.
+        :param bool use_https: Indicates whether data is transmitted over HTTPS.
+        :param str vault_id: The ID of the backup vault.
+        """
+        pulumi.set(__self__, "alert_setting", alert_setting)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_name", client_name)
+        pulumi.set(__self__, "client_type", client_type)
+        pulumi.set(__self__, "client_version", client_version)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "max_version", max_version)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "status_message", status_message)
+        pulumi.set(__self__, "use_https", use_https)
+        pulumi.set(__self__, "vault_id", vault_id)
+
+    @property
+    @pulumi.getter(name="alertSetting")
+    def alert_setting(self) -> str:
+        """
+        The alert settings.
+        """
+        return pulumi.get(self, "alert_setting")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The ID of the backup client.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientName")
+    def client_name(self) -> str:
+        """
+        The name of the backup client.
+        """
+        return pulumi.get(self, "client_name")
+
+    @property
+    @pulumi.getter(name="clientType")
+    def client_type(self) -> str:
+        """
+        The type of the backup client.
+        """
+        return pulumi.get(self, "client_type")
+
+    @property
+    @pulumi.getter(name="clientVersion")
+    def client_version(self) -> str:
+        """
+        The version number of the backup client.
+        """
+        return pulumi.get(self, "client_version")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the SAP HANA instance.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id of the Hana Backup Client. It formats as `<vault_id>:<client_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of the ECS instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="maxVersion")
+    def max_version(self) -> str:
+        """
+        The maximum version number of the backup client.
+        """
+        return pulumi.get(self, "max_version")
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        """
+        The network type.
+        """
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> str:
+        """
+        The status information.
+        """
+        return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter(name="useHttps")
+    def use_https(self) -> bool:
+        """
+        Indicates whether data is transmitted over HTTPS.
+        """
+        return pulumi.get(self, "use_https")
+
+    @property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> str:
+        """
+        The ID of the backup vault.
         """
         return pulumi.get(self, "vault_id")
 

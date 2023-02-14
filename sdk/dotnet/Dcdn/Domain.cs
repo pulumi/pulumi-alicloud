@@ -83,6 +83,12 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string?> CheckUrl { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+        /// </summary>
+        [Output("cname")]
+        public Output<string> Cname { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the accelerated domain.
         /// </summary>
         [Output("domainName")]
@@ -315,6 +321,12 @@ namespace Pulumi.AliCloud.Dcdn
         /// </summary>
         [Input("checkUrl")]
         public Input<string>? CheckUrl { get; set; }
+
+        /// <summary>
+        /// (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+        /// </summary>
+        [Input("cname")]
+        public Input<string>? Cname { get; set; }
 
         /// <summary>
         /// The name of the accelerated domain.

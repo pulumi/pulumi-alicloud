@@ -40,6 +40,7 @@ class ApplicationArgs:
                  jdk: Optional[pulumi.Input[str]] = None,
                  liveness: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
+                 micro_registration: Optional[pulumi.Input[str]] = None,
                  min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
                  mount_desc: Optional[pulumi.Input[str]] = None,
@@ -98,6 +99,7 @@ class ApplicationArgs:
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
         :param pulumi.Input[str] liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+        :param pulumi.Input[str] micro_registration: Select the Nacos registry. Valid values: `0`, `1`, `2`.
         :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
                * `-1`: Initialization value, indicating that percentages are not used.
                * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
@@ -180,6 +182,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "liveness", liveness)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if micro_registration is not None:
+            pulumi.set(__self__, "micro_registration", micro_registration)
         if min_ready_instance_ratio is not None:
             pulumi.set(__self__, "min_ready_instance_ratio", min_ready_instance_ratio)
         if min_ready_instances is not None:
@@ -552,6 +556,18 @@ class ApplicationArgs:
     @memory.setter
     def memory(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter(name="microRegistration")
+    def micro_registration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Select the Nacos registry. Valid values: `0`, `1`, `2`.
+        """
+        return pulumi.get(self, "micro_registration")
+
+    @micro_registration.setter
+    def micro_registration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "micro_registration", value)
 
     @property
     @pulumi.getter(name="minReadyInstanceRatio")
@@ -943,6 +959,7 @@ class _ApplicationState:
                  jdk: Optional[pulumi.Input[str]] = None,
                  liveness: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
+                 micro_registration: Optional[pulumi.Input[str]] = None,
                  min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
                  mount_desc: Optional[pulumi.Input[str]] = None,
@@ -1001,6 +1018,7 @@ class _ApplicationState:
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
         :param pulumi.Input[str] liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+        :param pulumi.Input[str] micro_registration: Select the Nacos registry. Valid values: `0`, `1`, `2`.
         :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
                * `-1`: Initialization value, indicating that percentages are not used.
                * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
@@ -1084,6 +1102,8 @@ class _ApplicationState:
             pulumi.set(__self__, "liveness", liveness)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if micro_registration is not None:
+            pulumi.set(__self__, "micro_registration", micro_registration)
         if min_ready_instance_ratio is not None:
             pulumi.set(__self__, "min_ready_instance_ratio", min_ready_instance_ratio)
         if min_ready_instances is not None:
@@ -1436,6 +1456,18 @@ class _ApplicationState:
     @memory.setter
     def memory(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter(name="microRegistration")
+    def micro_registration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Select the Nacos registry. Valid values: `0`, `1`, `2`.
+        """
+        return pulumi.get(self, "micro_registration")
+
+    @micro_registration.setter
+    def micro_registration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "micro_registration", value)
 
     @property
     @pulumi.getter(name="minReadyInstanceRatio")
@@ -1853,6 +1885,7 @@ class Application(pulumi.CustomResource):
                  jdk: Optional[pulumi.Input[str]] = None,
                  liveness: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
+                 micro_registration: Optional[pulumi.Input[str]] = None,
                  min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
                  mount_desc: Optional[pulumi.Input[str]] = None,
@@ -1965,6 +1998,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
         :param pulumi.Input[str] liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+        :param pulumi.Input[str] micro_registration: Select the Nacos registry. Valid values: `0`, `1`, `2`.
         :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
                * `-1`: Initialization value, indicating that percentages are not used.
                * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
@@ -2098,6 +2132,7 @@ class Application(pulumi.CustomResource):
                  jdk: Optional[pulumi.Input[str]] = None,
                  liveness: Optional[pulumi.Input[str]] = None,
                  memory: Optional[pulumi.Input[int]] = None,
+                 micro_registration: Optional[pulumi.Input[str]] = None,
                  min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
                  mount_desc: Optional[pulumi.Input[str]] = None,
@@ -2165,6 +2200,7 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["jdk"] = jdk
             __props__.__dict__["liveness"] = liveness
             __props__.__dict__["memory"] = memory
+            __props__.__dict__["micro_registration"] = micro_registration
             __props__.__dict__["min_ready_instance_ratio"] = min_ready_instance_ratio
             __props__.__dict__["min_ready_instances"] = min_ready_instances
             __props__.__dict__["mount_desc"] = mount_desc
@@ -2237,6 +2273,7 @@ class Application(pulumi.CustomResource):
             jdk: Optional[pulumi.Input[str]] = None,
             liveness: Optional[pulumi.Input[str]] = None,
             memory: Optional[pulumi.Input[int]] = None,
+            micro_registration: Optional[pulumi.Input[str]] = None,
             min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
             min_ready_instances: Optional[pulumi.Input[int]] = None,
             mount_desc: Optional[pulumi.Input[str]] = None,
@@ -2300,6 +2337,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] jdk: The JDK version that the deployment package depends on. Image type applications are not supported.
         :param pulumi.Input[str] liveness: Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         :param pulumi.Input[int] memory: The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
+        :param pulumi.Input[str] micro_registration: Select the Nacos registry. Valid values: `0`, `1`, `2`.
         :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
                * `-1`: Initialization value, indicating that percentages are not used.
                * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
@@ -2363,6 +2401,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["jdk"] = jdk
         __props__.__dict__["liveness"] = liveness
         __props__.__dict__["memory"] = memory
+        __props__.__dict__["micro_registration"] = micro_registration
         __props__.__dict__["min_ready_instance_ratio"] = min_ready_instance_ratio
         __props__.__dict__["min_ready_instances"] = min_ready_instances
         __props__.__dict__["mount_desc"] = mount_desc
@@ -2588,6 +2627,14 @@ class Application(pulumi.CustomResource):
         The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `131072`, `16384`, `2048`, `32768`, `4096`, `65536`, `8192`.
         """
         return pulumi.get(self, "memory")
+
+    @property
+    @pulumi.getter(name="microRegistration")
+    def micro_registration(self) -> pulumi.Output[Optional[str]]:
+        """
+        Select the Nacos registry. Valid values: `0`, `1`, `2`.
+        """
+        return pulumi.get(self, "micro_registration")
 
     @property
     @pulumi.getter(name="minReadyInstanceRatio")

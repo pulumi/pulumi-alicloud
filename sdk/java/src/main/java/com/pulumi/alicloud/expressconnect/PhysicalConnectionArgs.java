@@ -106,15 +106,15 @@ public final class PhysicalConnectionArgs extends com.pulumi.resources.ResourceA
      * and an on-Premises Data Center Location.
      * 
      */
-    @Import(name="peerLocation", required=true)
-    private Output<String> peerLocation;
+    @Import(name="peerLocation")
+    private @Nullable Output<String> peerLocation;
 
     /**
      * @return and an on-Premises Data Center Location.
      * 
      */
-    public Output<String> peerLocation() {
-        return this.peerLocation;
+    public Optional<Output<String>> peerLocation() {
+        return Optional.ofNullable(this.peerLocation);
     }
 
     /**
@@ -363,7 +363,7 @@ public final class PhysicalConnectionArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder peerLocation(Output<String> peerLocation) {
+        public Builder peerLocation(@Nullable Output<String> peerLocation) {
             $.peerLocation = peerLocation;
             return this;
         }
@@ -500,7 +500,6 @@ public final class PhysicalConnectionArgs extends com.pulumi.resources.ResourceA
         public PhysicalConnectionArgs build() {
             $.accessPointId = Objects.requireNonNull($.accessPointId, "expected parameter 'accessPointId' to be non-null");
             $.lineOperator = Objects.requireNonNull($.lineOperator, "expected parameter 'lineOperator' to be non-null");
-            $.peerLocation = Objects.requireNonNull($.peerLocation, "expected parameter 'peerLocation' to be non-null");
             return $;
         }
     }

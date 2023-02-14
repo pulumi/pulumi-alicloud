@@ -27,20 +27,19 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in v1.183.0+.
  * 
  * ## Example Usage
- * 
- * Basic Usage
+ * ### Basic Example
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.CenFunctions;
+ * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.TransitRouter;
  * import com.pulumi.alicloud.cen.TransitRouterArgs;
- * import com.pulumi.alicloud.cen.CenFunctions;
- * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
  * import com.pulumi.alicloud.vpn.CustomerGateway;
  * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
  * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
@@ -65,17 +64,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+ * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(var_.name())
+ *             .cenInstanceName(&#34;tf-example&#34;)
  *             .build());
  * 
  *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
  *             .cenId(defaultInstance.id())
- *             .transitRouterDescription(&#34;desd&#34;)
- *             .transitRouterName(var_.name())
+ *             .transitRouterDescription(&#34;tf-example-description&#34;)
+ *             .transitRouterName(&#34;tf-example-name&#34;)
  *             .build());
- * 
- *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
  * 
  *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
  *             .ipAddress(&#34;42.104.22.210&#34;)
@@ -122,15 +121,134 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .enableDpd(true)
  *             .enableNatTraversal(true)
- *             .vpnAttachmentName(var_.name())
+ *             .vpnAttachmentName(&#34;tf-example-name&#34;)
  *             .build());
  * 
  *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
  *             .autoPublishRouteEnabled(false)
- *             .transitRouterAttachmentDescription(var_.name())
- *             .transitRouterAttachmentName(var_.name())
+ *             .transitRouterAttachmentDescription(&#34;tf-example-description&#34;)
+ *             .transitRouterAttachmentName(&#34;tf-example-name&#34;)
  *             .cenId(defaultTransitRouter.cenId())
  *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .vpnId(defaultGatewayVpnAttachment.id())
+ *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
+ *                 .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Example Create a Transit Router Vpn Attachment with Transit Router Cidr
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.CenFunctions;
+ * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterCidr;
+ * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
+ * import com.pulumi.alicloud.vpn.CustomerGateway;
+ * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+ * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+ * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIkeConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentBgpConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentHealthCheckConfigArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+ * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
+ * import com.pulumi.alicloud.cen.inputs.TransitRouterVpnAttachmentZoneArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf-example&#34;)
+ *             .build());
+ * 
+ *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .cenId(defaultInstance.id())
+ *             .build());
+ * 
+ *         var defaultTransitRouterCidr = new TransitRouterCidr(&#34;defaultTransitRouterCidr&#34;, TransitRouterCidrArgs.builder()        
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .cidr(&#34;192.168.0.0/16&#34;)
+ *             .transitRouterCidrName(&#34;tf-example-name&#34;)
+ *             .description(&#34;tf-example-description&#34;)
+ *             .publishCidrRoute(true)
+ *             .build());
+ * 
+ *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+ *             .ipAddress(&#34;42.104.22.210&#34;)
+ *             .asn(&#34;45014&#34;)
+ *             .build());
+ * 
+ *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment(&#34;defaultGatewayVpnAttachment&#34;, GatewayVpnAttachmentArgs.builder()        
+ *             .customerGatewayId(defaultCustomerGateway.id())
+ *             .networkType(&#34;public&#34;)
+ *             .localSubnet(&#34;0.0.0.0/0&#34;)
+ *             .remoteSubnet(&#34;0.0.0.0/0&#34;)
+ *             .effectImmediately(false)
+ *             .ikeConfig(GatewayVpnAttachmentIkeConfigArgs.builder()
+ *                 .ikeAuthAlg(&#34;md5&#34;)
+ *                 .ikeEncAlg(&#34;des&#34;)
+ *                 .ikeVersion(&#34;ikev2&#34;)
+ *                 .ikeMode(&#34;main&#34;)
+ *                 .ikeLifetime(86400)
+ *                 .psk(&#34;tf-testvpn2&#34;)
+ *                 .ikePfs(&#34;group1&#34;)
+ *                 .remoteId(&#34;testbob2&#34;)
+ *                 .localId(&#34;testalice2&#34;)
+ *                 .build())
+ *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
+ *                 .ipsecPfs(&#34;group5&#34;)
+ *                 .ipsecEncAlg(&#34;des&#34;)
+ *                 .ipsecAuthAlg(&#34;md5&#34;)
+ *                 .ipsecLifetime(86400)
+ *                 .build())
+ *             .bgpConfig(GatewayVpnAttachmentBgpConfigArgs.builder()
+ *                 .enable(true)
+ *                 .localAsn(45014)
+ *                 .tunnelCidr(&#34;169.254.11.0/30&#34;)
+ *                 .localBgpIp(&#34;169.254.11.1&#34;)
+ *                 .build())
+ *             .healthCheckConfig(GatewayVpnAttachmentHealthCheckConfigArgs.builder()
+ *                 .enable(true)
+ *                 .sip(&#34;192.168.1.1&#34;)
+ *                 .dip(&#34;10.0.0.1&#34;)
+ *                 .interval(10)
+ *                 .retry(10)
+ *                 .policy(&#34;revoke_route&#34;)
+ *                 .build())
+ *             .enableDpd(true)
+ *             .enableNatTraversal(true)
+ *             .vpnAttachmentName(&#34;tf-example-name&#34;)
+ *             .build());
+ * 
+ *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
+ *             .autoPublishRouteEnabled(false)
+ *             .transitRouterAttachmentDescription(&#34;tf-example-description&#34;)
+ *             .transitRouterAttachmentName(&#34;tf-example-name&#34;)
+ *             .cenId(defaultTransitRouter.cenId())
+ *             .transitRouterId(defaultTransitRouterCidr.transitRouterId())
  *             .vpnId(defaultGatewayVpnAttachment.id())
  *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
  *                 .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))

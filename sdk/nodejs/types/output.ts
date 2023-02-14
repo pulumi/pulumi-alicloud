@@ -14913,6 +14913,62 @@ export namespace dts {
         unconsumedData: number;
     }
 
+    export interface GetInstancesInstance {
+        /**
+         * Instance creation time
+         */
+        createTime: string;
+        /**
+         * The target database engine type.
+         */
+        destinationEndpointEngineName: string;
+        /**
+         * The destination instance region.
+         */
+        destinationRegion: string;
+        /**
+         * The ID of the subscription instance.
+         */
+        dtsInstanceId: string;
+        /**
+         * The ID of the instance.
+         */
+        id: string;
+        /**
+         * The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
+         */
+        instanceClass: string;
+        instanceName: string;
+        /**
+         * The payment type of the resource.
+         */
+        paymentType: string;
+        /**
+         * Resource Group ID
+         */
+        resourceGroupId: string;
+        /**
+         * Source instance database engine type.
+         */
+        sourceEndpointEngineName: string;
+        /**
+         * The source instance region.
+         */
+        sourceRegion: string;
+        /**
+         * Instance status.
+         */
+        status: string;
+        /**
+         * The tag value corresponding to the tag key.
+         */
+        tags?: {[key: string]: any};
+        /**
+         * The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
+         */
+        type: string;
+    }
+
     export interface GetMigrationJobsJob {
         /**
          * Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
@@ -26822,6 +26878,69 @@ export namespace hbr {
         vaultId: string;
     }
 
+    export interface GetHanaBackupClientsHanaBackupClient {
+        /**
+         * The alert settings.
+         */
+        alertSetting: string;
+        /**
+         * The ID of the backup client.
+         */
+        clientId: string;
+        /**
+         * The name of the backup client.
+         */
+        clientName: string;
+        /**
+         * The type of the backup client.
+         */
+        clientType: string;
+        /**
+         * The version number of the backup client.
+         */
+        clientVersion: string;
+        /**
+         * The ID of the SAP HANA instance.
+         */
+        clusterId: string;
+        /**
+         * The id of the Hana Backup Client. It formats as `<vault_id>:<client_id>`.
+         */
+        id: string;
+        /**
+         * The ID of the instance.
+         */
+        instanceId: string;
+        /**
+         * The name of the ECS instance.
+         */
+        instanceName: string;
+        /**
+         * The maximum version number of the backup client.
+         */
+        maxVersion: string;
+        /**
+         * The network type.
+         */
+        networkType: string;
+        /**
+         * The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
+         */
+        status: string;
+        /**
+         * The status information.
+         */
+        statusMessage: string;
+        /**
+         * Indicates whether data is transmitted over HTTPS.
+         */
+        useHttps: boolean;
+        /**
+         * The ID of the backup vault.
+         */
+        vaultId: string;
+    }
+
     export interface GetHanaBackupPlansPlan {
         /**
          * The backup prefix.
@@ -28709,6 +28828,10 @@ export namespace log {
          * The owner of project.
          */
         owner: string;
+        /**
+         * The policy of project.
+         */
+        policy: string;
         /**
          * The name of the project.
          */
@@ -34430,6 +34553,49 @@ export namespace rdc {
 }
 
 export namespace rds {
+    export interface DdrInstanceParameter {
+        name: string;
+        value: string;
+    }
+
+    export interface DdrInstancePgHbaConf {
+        /**
+         * The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+         */
+        address: string;
+        /**
+         * The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+         */
+        database: string;
+        /**
+         * The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+         */
+        mask: string;
+        /**
+         * The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+         */
+        method: string;
+        /**
+         * Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+         */
+        option: string;
+        /**
+         * The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+         */
+        priorityId: number;
+        /**
+         * The type of connection to the instance. Valid values:
+         * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+         * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+         * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         */
+        type: string;
+        /**
+         * The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+         */
+        user: string;
+    }
+
     export interface GetAccountsAccount {
         /**
          * Database description.
@@ -34474,6 +34640,21 @@ export namespace rds {
          * Database name.
          */
         dbName: string;
+    }
+
+    export interface GetCollationTimeZonesCollationTimeZone {
+        /**
+         * The code of the instance type.
+         */
+        description?: string;
+        /**
+         * The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+         */
+        standardTimeOffset?: string;
+        /**
+         * The time zone that is available for use in ApsaraDB RDS.
+         */
+        timeZone?: string;
     }
 
     export interface GetCrossRegionBackupsBackup {

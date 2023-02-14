@@ -30,6 +30,11 @@ export const getEcsBackupPlans: typeof import("./getEcsBackupPlans").getEcsBacku
 export const getEcsBackupPlansOutput: typeof import("./getEcsBackupPlans").getEcsBackupPlansOutput = null as any;
 utilities.lazyLoad(exports, ["getEcsBackupPlans","getEcsBackupPlansOutput"], () => require("./getEcsBackupPlans"));
 
+export { GetHanaBackupClientsArgs, GetHanaBackupClientsResult, GetHanaBackupClientsOutputArgs } from "./getHanaBackupClients";
+export const getHanaBackupClients: typeof import("./getHanaBackupClients").getHanaBackupClients = null as any;
+export const getHanaBackupClientsOutput: typeof import("./getHanaBackupClients").getHanaBackupClientsOutput = null as any;
+utilities.lazyLoad(exports, ["getHanaBackupClients","getHanaBackupClientsOutput"], () => require("./getHanaBackupClients"));
+
 export { GetHanaBackupPlansArgs, GetHanaBackupPlansResult, GetHanaBackupPlansOutputArgs } from "./getHanaBackupPlans";
 export const getHanaBackupPlans: typeof import("./getHanaBackupPlans").getHanaBackupPlans = null as any;
 export const getHanaBackupPlansOutput: typeof import("./getHanaBackupPlans").getHanaBackupPlansOutput = null as any;
@@ -90,6 +95,11 @@ export const getVaults: typeof import("./getVaults").getVaults = null as any;
 export const getVaultsOutput: typeof import("./getVaults").getVaultsOutput = null as any;
 utilities.lazyLoad(exports, ["getVaults","getVaultsOutput"], () => require("./getVaults"));
 
+export { HanaBackupClientArgs, HanaBackupClientState } from "./hanaBackupClient";
+export type HanaBackupClient = import("./hanaBackupClient").HanaBackupClient;
+export const HanaBackupClient: typeof import("./hanaBackupClient").HanaBackupClient = null as any;
+utilities.lazyLoad(exports, ["HanaBackupClient"], () => require("./hanaBackupClient"));
+
 export { HanaBackupPlanArgs, HanaBackupPlanState } from "./hanaBackupPlan";
 export type HanaBackupPlan = import("./hanaBackupPlan").HanaBackupPlan;
 export const HanaBackupPlan: typeof import("./hanaBackupPlan").HanaBackupPlan = null as any;
@@ -144,6 +154,8 @@ const _module = {
                 return new EcsBackupClient(name, <any>undefined, { urn })
             case "alicloud:hbr/ecsBackupPlan:EcsBackupPlan":
                 return new EcsBackupPlan(name, <any>undefined, { urn })
+            case "alicloud:hbr/hanaBackupClient:HanaBackupClient":
+                return new HanaBackupClient(name, <any>undefined, { urn })
             case "alicloud:hbr/hanaBackupPlan:HanaBackupPlan":
                 return new HanaBackupPlan(name, <any>undefined, { urn })
             case "alicloud:hbr/hanaInstance:HanaInstance":
@@ -169,6 +181,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ecsBackupClient", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ecsBackupPlan", _module)
+pulumi.runtime.registerResourceModule("alicloud", "hbr/hanaBackupClient", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/hanaBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/hanaInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/nasBackupPlan", _module)

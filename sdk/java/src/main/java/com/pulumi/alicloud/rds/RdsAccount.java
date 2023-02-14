@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -278,6 +279,20 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
      */
     public Output<String> password() {
         return this.password;
+    }
+    /**
+     * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     * 
+     */
+    @Export(name="resetPermissionFlag", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> resetPermissionFlag;
+
+    /**
+     * @return Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     * 
+     */
+    public Output<Optional<Boolean>> resetPermissionFlag() {
+        return Codegen.optional(this.resetPermissionFlag);
     }
     /**
      * The status of the resource. Valid values: `Available`, `Unavailable`.

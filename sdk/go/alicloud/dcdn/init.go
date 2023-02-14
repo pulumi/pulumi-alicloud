@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DomainConfig{}
 	case "alicloud:dcdn/ipaDomain:IpaDomain":
 		r = &IpaDomain{}
+	case "alicloud:dcdn/kv:Kv":
+		r = &Kv{}
+	case "alicloud:dcdn/kvNamespace:KvNamespace":
+		r = &KvNamespace{}
 	case "alicloud:dcdn/wafDomain:WafDomain":
 		r = &WafDomain{}
 	case "alicloud:dcdn/wafPolicy:WafPolicy":
@@ -59,6 +63,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dcdn/ipaDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dcdn/kv",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dcdn/kvNamespace",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

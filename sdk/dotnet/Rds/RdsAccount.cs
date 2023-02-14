@@ -149,6 +149,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
+        /// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        /// </summary>
+        [Output("resetPermissionFlag")]
+        public Output<bool?> ResetPermissionFlag { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource. Valid values: `Available`, `Unavailable`.
         /// </summary>
         [Output("status")]
@@ -307,6 +313,12 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
+        /// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        /// </summary>
+        [Input("resetPermissionFlag")]
+        public Input<bool>? ResetPermissionFlag { get; set; }
+
+        /// <summary>
         /// The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         /// </summary>
         [Input("type")]
@@ -414,6 +426,12 @@ namespace Pulumi.AliCloud.Rds
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        /// </summary>
+        [Input("resetPermissionFlag")]
+        public Input<bool>? ResetPermissionFlag { get; set; }
 
         /// <summary>
         /// The status of the resource. Valid values: `Available`, `Unavailable`.

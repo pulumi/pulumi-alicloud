@@ -14,20 +14,19 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.183.0+.
  *
  * ## Example Usage
- *
- * Basic Usage
+ * ### Basic Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {cenInstanceName: _var.name});
+ * const defaultTransitRouterAvailableResources = alicloud.cen.getTransitRouterAvailableResources({});
+ * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {cenInstanceName: "tf-example"});
  * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {
  *     cenId: defaultInstance.id,
- *     transitRouterDescription: "desd",
- *     transitRouterName: _var.name,
+ *     transitRouterDescription: "tf-example-description",
+ *     transitRouterName: "tf-example-name",
  * });
- * const defaultTransitRouterAvailableResources = alicloud.cen.getTransitRouterAvailableResources({});
  * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("defaultCustomerGateway", {
  *     ipAddress: "42.104.22.210",
  *     asn: "45014",
@@ -72,14 +71,87 @@ import * as utilities from "../utilities";
  *     },
  *     enableDpd: true,
  *     enableNatTraversal: true,
- *     vpnAttachmentName: _var.name,
+ *     vpnAttachmentName: "tf-example-name",
  * });
  * const defaultTransitRouterVpnAttachment = new alicloud.cen.TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", {
  *     autoPublishRouteEnabled: false,
- *     transitRouterAttachmentDescription: _var.name,
- *     transitRouterAttachmentName: _var.name,
+ *     transitRouterAttachmentDescription: "tf-example-description",
+ *     transitRouterAttachmentName: "tf-example-name",
  *     cenId: defaultTransitRouter.cenId,
  *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     vpnId: defaultGatewayVpnAttachment.id,
+ *     zones: [{
+ *         zoneId: defaultTransitRouterAvailableResources.then(defaultTransitRouterAvailableResources => defaultTransitRouterAvailableResources.resources?.[0]?.masterZones?.[0]),
+ *     }],
+ * });
+ * ```
+ * ### Example Create a Transit Router Vpn Attachment with Transit Router Cidr
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultTransitRouterAvailableResources = alicloud.cen.getTransitRouterAvailableResources({});
+ * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {cenInstanceName: "tf-example"});
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {cenId: defaultInstance.id});
+ * const defaultTransitRouterCidr = new alicloud.cen.TransitRouterCidr("defaultTransitRouterCidr", {
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     cidr: "192.168.0.0/16",
+ *     transitRouterCidrName: "tf-example-name",
+ *     description: "tf-example-description",
+ *     publishCidrRoute: true,
+ * });
+ * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("defaultCustomerGateway", {
+ *     ipAddress: "42.104.22.210",
+ *     asn: "45014",
+ * });
+ * const defaultGatewayVpnAttachment = new alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment", {
+ *     customerGatewayId: defaultCustomerGateway.id,
+ *     networkType: "public",
+ *     localSubnet: "0.0.0.0/0",
+ *     remoteSubnet: "0.0.0.0/0",
+ *     effectImmediately: false,
+ *     ikeConfig: {
+ *         ikeAuthAlg: "md5",
+ *         ikeEncAlg: "des",
+ *         ikeVersion: "ikev2",
+ *         ikeMode: "main",
+ *         ikeLifetime: 86400,
+ *         psk: "tf-testvpn2",
+ *         ikePfs: "group1",
+ *         remoteId: "testbob2",
+ *         localId: "testalice2",
+ *     },
+ *     ipsecConfig: {
+ *         ipsecPfs: "group5",
+ *         ipsecEncAlg: "des",
+ *         ipsecAuthAlg: "md5",
+ *         ipsecLifetime: 86400,
+ *     },
+ *     bgpConfig: {
+ *         enable: true,
+ *         localAsn: 45014,
+ *         tunnelCidr: "169.254.11.0/30",
+ *         localBgpIp: "169.254.11.1",
+ *     },
+ *     healthCheckConfig: {
+ *         enable: true,
+ *         sip: "192.168.1.1",
+ *         dip: "10.0.0.1",
+ *         interval: 10,
+ *         retry: 10,
+ *         policy: "revoke_route",
+ *     },
+ *     enableDpd: true,
+ *     enableNatTraversal: true,
+ *     vpnAttachmentName: "tf-example-name",
+ * });
+ * const defaultTransitRouterVpnAttachment = new alicloud.cen.TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", {
+ *     autoPublishRouteEnabled: false,
+ *     transitRouterAttachmentDescription: "tf-example-description",
+ *     transitRouterAttachmentName: "tf-example-name",
+ *     cenId: defaultTransitRouter.cenId,
+ *     transitRouterId: defaultTransitRouterCidr.transitRouterId,
  *     vpnId: defaultGatewayVpnAttachment.id,
  *     zones: [{
  *         zoneId: defaultTransitRouterAvailableResources.then(defaultTransitRouterAvailableResources => defaultTransitRouterAvailableResources.resources?.[0]?.masterZones?.[0]),

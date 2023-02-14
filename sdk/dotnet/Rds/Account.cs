@@ -122,6 +122,9 @@ namespace Pulumi.AliCloud.Rds
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
+        [Output("resetPermissionFlag")]
+        public Output<bool?> ResetPermissionFlag { get; private set; } = null!;
+
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -261,6 +264,9 @@ namespace Pulumi.AliCloud.Rds
             }
         }
 
+        [Input("resetPermissionFlag")]
+        public Input<bool>? ResetPermissionFlag { get; set; }
+
         /// <summary>
         /// Privilege type of account.
         /// - Normal: Common privilege.
@@ -353,6 +359,9 @@ namespace Pulumi.AliCloud.Rds
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("resetPermissionFlag")]
+        public Input<bool>? ResetPermissionFlag { get; set; }
 
         [Input("status")]
         public Input<string>? Status { get; set; }

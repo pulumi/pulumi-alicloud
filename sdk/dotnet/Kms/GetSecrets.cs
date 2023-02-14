@@ -106,7 +106,8 @@ namespace Pulumi.AliCloud.Kms
         public bool? FetchTags { get; set; }
 
         /// <summary>
-        /// Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+        /// The secret filter. The filter consists of one or more key-value pairs. 
+        /// More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
         /// </summary>
         [Input("filters")]
         public string? Filters { get; set; }
@@ -165,7 +166,8 @@ namespace Pulumi.AliCloud.Kms
         public Input<bool>? FetchTags { get; set; }
 
         /// <summary>
-        /// Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+        /// The secret filter. The filter consists of one or more key-value pairs. 
+        /// More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
         /// </summary>
         [Input("filters")]
         public Input<string>? Filters { get; set; }

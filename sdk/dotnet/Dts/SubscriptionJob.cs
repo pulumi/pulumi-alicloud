@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Dts
     ///     var defaultSubscriptionJob = new AliCloud.Dts.SubscriptionJob("defaultSubscriptionJob", new()
     ///     {
     ///         DtsJobName = name,
-    ///         PaymentType = "PostPaid",
+    ///         PaymentType = "PayAsYouGo",
     ///         SourceEndpointEngineName = "MySQL",
     ///         SourceEndpointRegion = "cn-hangzhou",
     ///         SourceEndpointInstanceType = "RDS",
@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.Dts
         /// The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
         /// </summary>
         [Output("sourceEndpointEngineName")]
-        public Output<string?> SourceEndpointEngineName { get; private set; } = null!;
+        public Output<string> SourceEndpointEngineName { get; private set; } = null!;
 
         /// <summary>
         /// The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
@@ -258,7 +258,7 @@ namespace Pulumi.AliCloud.Dts
         /// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
         /// </summary>
         [Output("sourceEndpointInstanceType")]
-        public Output<string?> SourceEndpointInstanceType { get; private set; } = null!;
+        public Output<string> SourceEndpointInstanceType { get; private set; } = null!;
 
         /// <summary>
         /// The IP of source endpoint.
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.Dts
         /// The region of source database.
         /// </summary>
         [Output("sourceEndpointRegion")]
-        public Output<string?> SourceEndpointRegion { get; private set; } = null!;
+        public Output<string> SourceEndpointRegion { get; private set; } = null!;
 
         /// <summary>
         /// Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
@@ -525,8 +525,8 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
         /// </summary>
-        [Input("sourceEndpointEngineName")]
-        public Input<string>? SourceEndpointEngineName { get; set; }
+        [Input("sourceEndpointEngineName", required: true)]
+        public Input<string> SourceEndpointEngineName { get; set; } = null!;
 
         /// <summary>
         /// The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
@@ -537,8 +537,8 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
         /// </summary>
-        [Input("sourceEndpointInstanceType")]
-        public Input<string>? SourceEndpointInstanceType { get; set; }
+        [Input("sourceEndpointInstanceType", required: true)]
+        public Input<string> SourceEndpointInstanceType { get; set; } = null!;
 
         /// <summary>
         /// The IP of source endpoint.
@@ -573,8 +573,8 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// The region of source database.
         /// </summary>
-        [Input("sourceEndpointRegion")]
-        public Input<string>? SourceEndpointRegion { get; set; }
+        [Input("sourceEndpointRegion", required: true)]
+        public Input<string> SourceEndpointRegion { get; set; } = null!;
 
         /// <summary>
         /// Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -174,6 +175,13 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.password);
     }
 
+    @Import(name="resetPermissionFlag")
+    private @Nullable Output<Boolean> resetPermissionFlag;
+
+    public Optional<Output<Boolean>> resetPermissionFlag() {
+        return Optional.ofNullable(this.resetPermissionFlag);
+    }
+
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
@@ -215,6 +223,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         this.kmsEncryptionContext = $.kmsEncryptionContext;
         this.name = $.name;
         this.password = $.password;
+        this.resetPermissionFlag = $.resetPermissionFlag;
         this.type = $.type;
     }
 
@@ -437,6 +446,15 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead. */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        public Builder resetPermissionFlag(@Nullable Output<Boolean> resetPermissionFlag) {
+            $.resetPermissionFlag = resetPermissionFlag;
+            return this;
+        }
+
+        public Builder resetPermissionFlag(Boolean resetPermissionFlag) {
+            return resetPermissionFlag(Output.of(resetPermissionFlag));
         }
 
         /**

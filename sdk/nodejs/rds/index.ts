@@ -30,10 +30,25 @@ export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
 utilities.lazyLoad(exports, ["Database"], () => require("./database"));
 
+export { DdrInstanceArgs, DdrInstanceState } from "./ddrInstance";
+export type DdrInstance = import("./ddrInstance").DdrInstance;
+export const DdrInstance: typeof import("./ddrInstance").DdrInstance = null as any;
+utilities.lazyLoad(exports, ["DdrInstance"], () => require("./ddrInstance"));
+
 export { GetAccountsArgs, GetAccountsResult, GetAccountsOutputArgs } from "./getAccounts";
 export const getAccounts: typeof import("./getAccounts").getAccounts = null as any;
 export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
 utilities.lazyLoad(exports, ["getAccounts","getAccountsOutput"], () => require("./getAccounts"));
+
+export { GetCharacterSetNamesArgs, GetCharacterSetNamesResult, GetCharacterSetNamesOutputArgs } from "./getCharacterSetNames";
+export const getCharacterSetNames: typeof import("./getCharacterSetNames").getCharacterSetNames = null as any;
+export const getCharacterSetNamesOutput: typeof import("./getCharacterSetNames").getCharacterSetNamesOutput = null as any;
+utilities.lazyLoad(exports, ["getCharacterSetNames","getCharacterSetNamesOutput"], () => require("./getCharacterSetNames"));
+
+export { GetCollationTimeZonesArgs, GetCollationTimeZonesResult, GetCollationTimeZonesOutputArgs } from "./getCollationTimeZones";
+export const getCollationTimeZones: typeof import("./getCollationTimeZones").getCollationTimeZones = null as any;
+export const getCollationTimeZonesOutput: typeof import("./getCollationTimeZones").getCollationTimeZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getCollationTimeZones","getCollationTimeZonesOutput"], () => require("./getCollationTimeZones"));
 
 export { GetCrossRegionBackupsArgs, GetCrossRegionBackupsResult, GetCrossRegionBackupsOutputArgs } from "./getCrossRegionBackups";
 export const getCrossRegionBackups: typeof import("./getCrossRegionBackups").getCrossRegionBackups = null as any;
@@ -155,6 +170,8 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "alicloud:rds/database:Database":
                 return new Database(name, <any>undefined, { urn })
+            case "alicloud:rds/ddrInstance:DdrInstance":
+                return new DdrInstance(name, <any>undefined, { urn })
             case "alicloud:rds/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:rds/rdsAccount:RdsAccount":
@@ -187,6 +204,7 @@ pulumi.runtime.registerResourceModule("alicloud", "rds/accountPrivilege", _modul
 pulumi.runtime.registerResourceModule("alicloud", "rds/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/database", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/ddrInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/rdsBackup", _module)

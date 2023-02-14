@@ -25,6 +25,11 @@ export const getIpaDomains: typeof import("./getIpaDomains").getIpaDomains = nul
 export const getIpaDomainsOutput: typeof import("./getIpaDomains").getIpaDomainsOutput = null as any;
 utilities.lazyLoad(exports, ["getIpaDomains","getIpaDomainsOutput"], () => require("./getIpaDomains"));
 
+export { GetKvAccountArgs, GetKvAccountResult, GetKvAccountOutputArgs } from "./getKvAccount";
+export const getKvAccount: typeof import("./getKvAccount").getKvAccount = null as any;
+export const getKvAccountOutput: typeof import("./getKvAccount").getKvAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getKvAccount","getKvAccountOutput"], () => require("./getKvAccount"));
+
 export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
 export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
@@ -44,6 +49,16 @@ export { IpaDomainArgs, IpaDomainState } from "./ipaDomain";
 export type IpaDomain = import("./ipaDomain").IpaDomain;
 export const IpaDomain: typeof import("./ipaDomain").IpaDomain = null as any;
 utilities.lazyLoad(exports, ["IpaDomain"], () => require("./ipaDomain"));
+
+export { KvArgs, KvState } from "./kv";
+export type Kv = import("./kv").Kv;
+export const Kv: typeof import("./kv").Kv = null as any;
+utilities.lazyLoad(exports, ["Kv"], () => require("./kv"));
+
+export { KvNamespaceArgs, KvNamespaceState } from "./kvNamespace";
+export type KvNamespace = import("./kvNamespace").KvNamespace;
+export const KvNamespace: typeof import("./kvNamespace").KvNamespace = null as any;
+utilities.lazyLoad(exports, ["KvNamespace"], () => require("./kvNamespace"));
 
 export { WafDomainArgs, WafDomainState } from "./wafDomain";
 export type WafDomain = import("./wafDomain").WafDomain;
@@ -71,6 +86,10 @@ const _module = {
                 return new DomainConfig(name, <any>undefined, { urn })
             case "alicloud:dcdn/ipaDomain:IpaDomain":
                 return new IpaDomain(name, <any>undefined, { urn })
+            case "alicloud:dcdn/kv:Kv":
+                return new Kv(name, <any>undefined, { urn })
+            case "alicloud:dcdn/kvNamespace:KvNamespace":
+                return new KvNamespace(name, <any>undefined, { urn })
             case "alicloud:dcdn/wafDomain:WafDomain":
                 return new WafDomain(name, <any>undefined, { urn })
             case "alicloud:dcdn/wafPolicy:WafPolicy":
@@ -85,6 +104,8 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/domainConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/ipaDomain", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dcdn/kv", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dcdn/kvNamespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/wafDomain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/wafPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/wafPolicyDomainAttachment", _module)

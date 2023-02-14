@@ -10,7 +10,10 @@ from .account_privilege import *
 from .backup_policy import *
 from .connection import *
 from .database import *
+from .ddr_instance import *
 from .get_accounts import *
+from .get_character_set_names import *
+from .get_collation_time_zones import *
 from .get_cross_region_backups import *
 from .get_cross_regions import *
 from .get_instance_class_infos import *

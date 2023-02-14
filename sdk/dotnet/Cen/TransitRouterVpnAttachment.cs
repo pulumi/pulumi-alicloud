@@ -17,8 +17,7 @@ namespace Pulumi.AliCloud.Cen
     /// &gt; **NOTE:** Available in v1.183.0+.
     /// 
     /// ## Example Usage
-    /// 
-    /// Basic Usage
+    /// ### Basic Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -27,19 +26,19 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var defaultTransitRouterAvailableResources = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
+    /// 
     ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
     ///     {
-    ///         CenInstanceName = @var.Name,
+    ///         CenInstanceName = "tf-example",
     ///     });
     /// 
     ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
     ///     {
     ///         CenId = defaultInstance.Id,
-    ///         TransitRouterDescription = "desd",
-    ///         TransitRouterName = @var.Name,
+    ///         TransitRouterDescription = "tf-example-description",
+    ///         TransitRouterName = "tf-example-name",
     ///     });
-    /// 
-    ///     var defaultTransitRouterAvailableResources = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
     /// 
     ///     var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new()
     ///     {
@@ -92,16 +91,118 @@ namespace Pulumi.AliCloud.Cen
     ///         },
     ///         EnableDpd = true,
     ///         EnableNatTraversal = true,
-    ///         VpnAttachmentName = @var.Name,
+    ///         VpnAttachmentName = "tf-example-name",
     ///     });
     /// 
     ///     var defaultTransitRouterVpnAttachment = new AliCloud.Cen.TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", new()
     ///     {
     ///         AutoPublishRouteEnabled = false,
-    ///         TransitRouterAttachmentDescription = @var.Name,
-    ///         TransitRouterAttachmentName = @var.Name,
+    ///         TransitRouterAttachmentDescription = "tf-example-description",
+    ///         TransitRouterAttachmentName = "tf-example-name",
     ///         CenId = defaultTransitRouter.CenId,
     ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         VpnId = defaultGatewayVpnAttachment.Id,
+    ///         Zones = new[]
+    ///         {
+    ///             new AliCloud.Cen.Inputs.TransitRouterVpnAttachmentZoneArgs
+    ///             {
+    ///                 ZoneId = defaultTransitRouterAvailableResources.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0]),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Example Create a Transit Router Vpn Attachment with Transit Router Cidr
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultTransitRouterAvailableResources = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
+    /// 
+    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     {
+    ///         CenInstanceName = "tf-example",
+    ///     });
+    /// 
+    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
+    ///     {
+    ///         CenId = defaultInstance.Id,
+    ///     });
+    /// 
+    ///     var defaultTransitRouterCidr = new AliCloud.Cen.TransitRouterCidr("defaultTransitRouterCidr", new()
+    ///     {
+    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         Cidr = "192.168.0.0/16",
+    ///         TransitRouterCidrName = "tf-example-name",
+    ///         Description = "tf-example-description",
+    ///         PublishCidrRoute = true,
+    ///     });
+    /// 
+    ///     var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new()
+    ///     {
+    ///         IpAddress = "42.104.22.210",
+    ///         Asn = "45014",
+    ///     });
+    /// 
+    ///     var defaultGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment", new()
+    ///     {
+    ///         CustomerGatewayId = defaultCustomerGateway.Id,
+    ///         NetworkType = "public",
+    ///         LocalSubnet = "0.0.0.0/0",
+    ///         RemoteSubnet = "0.0.0.0/0",
+    ///         EffectImmediately = false,
+    ///         IkeConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIkeConfigArgs
+    ///         {
+    ///             IkeAuthAlg = "md5",
+    ///             IkeEncAlg = "des",
+    ///             IkeVersion = "ikev2",
+    ///             IkeMode = "main",
+    ///             IkeLifetime = 86400,
+    ///             Psk = "tf-testvpn2",
+    ///             IkePfs = "group1",
+    ///             RemoteId = "testbob2",
+    ///             LocalId = "testalice2",
+    ///         },
+    ///         IpsecConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentIpsecConfigArgs
+    ///         {
+    ///             IpsecPfs = "group5",
+    ///             IpsecEncAlg = "des",
+    ///             IpsecAuthAlg = "md5",
+    ///             IpsecLifetime = 86400,
+    ///         },
+    ///         BgpConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentBgpConfigArgs
+    ///         {
+    ///             Enable = true,
+    ///             LocalAsn = 45014,
+    ///             TunnelCidr = "169.254.11.0/30",
+    ///             LocalBgpIp = "169.254.11.1",
+    ///         },
+    ///         HealthCheckConfig = new AliCloud.Vpn.Inputs.GatewayVpnAttachmentHealthCheckConfigArgs
+    ///         {
+    ///             Enable = true,
+    ///             Sip = "192.168.1.1",
+    ///             Dip = "10.0.0.1",
+    ///             Interval = 10,
+    ///             Retry = 10,
+    ///             Policy = "revoke_route",
+    ///         },
+    ///         EnableDpd = true,
+    ///         EnableNatTraversal = true,
+    ///         VpnAttachmentName = "tf-example-name",
+    ///     });
+    /// 
+    ///     var defaultTransitRouterVpnAttachment = new AliCloud.Cen.TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", new()
+    ///     {
+    ///         AutoPublishRouteEnabled = false,
+    ///         TransitRouterAttachmentDescription = "tf-example-description",
+    ///         TransitRouterAttachmentName = "tf-example-name",
+    ///         CenId = defaultTransitRouter.CenId,
+    ///         TransitRouterId = defaultTransitRouterCidr.TransitRouterId,
     ///         VpnId = defaultGatewayVpnAttachment.Id,
     ///         Zones = new[]
     ///         {

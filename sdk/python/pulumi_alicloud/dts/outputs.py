@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'GetConsumerChannelsChannelResult',
+    'GetInstancesInstanceResult',
     'GetMigrationJobsJobResult',
     'GetSubscriptionJobsJobResult',
     'GetSubscriptionJobsJobSubscriptionHostResult',
@@ -100,6 +101,164 @@ class GetConsumerChannelsChannelResult(dict):
         The total number of unconsumed messages.
         """
         return pulumi.get(self, "unconsumed_data")
+
+
+@pulumi.output_type
+class GetInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 destination_endpoint_engine_name: str,
+                 destination_region: str,
+                 dts_instance_id: str,
+                 id: str,
+                 instance_class: str,
+                 instance_name: str,
+                 payment_type: str,
+                 resource_group_id: str,
+                 source_endpoint_engine_name: str,
+                 source_region: str,
+                 status: str,
+                 type: str,
+                 tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param str create_time: Instance creation time
+        :param str destination_endpoint_engine_name: The target database engine type.
+        :param str destination_region: The destination instance region.
+        :param str dts_instance_id: The ID of the subscription instance.
+        :param str id: The ID of the instance.
+        :param str instance_class: The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
+        :param str payment_type: The payment type of the resource.
+        :param str resource_group_id: Resource Group ID
+        :param str source_endpoint_engine_name: Source instance database engine type.
+        :param str source_region: The source instance region.
+        :param str status: Instance status.
+        :param str type: The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
+        :param Mapping[str, Any] tags: The tag value corresponding to the tag key.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
+        pulumi.set(__self__, "destination_region", destination_region)
+        pulumi.set(__self__, "dts_instance_id", dts_instance_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_class", instance_class)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
+        pulumi.set(__self__, "source_region", source_region)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Instance creation time
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="destinationEndpointEngineName")
+    def destination_endpoint_engine_name(self) -> str:
+        """
+        The target database engine type.
+        """
+        return pulumi.get(self, "destination_endpoint_engine_name")
+
+    @property
+    @pulumi.getter(name="destinationRegion")
+    def destination_region(self) -> str:
+        """
+        The destination instance region.
+        """
+        return pulumi.get(self, "destination_region")
+
+    @property
+    @pulumi.getter(name="dtsInstanceId")
+    def dts_instance_id(self) -> str:
+        """
+        The ID of the subscription instance.
+        """
+        return pulumi.get(self, "dts_instance_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceClass")
+    def instance_class(self) -> str:
+        """
+        The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
+        """
+        return pulumi.get(self, "instance_class")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the resource.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        Resource Group ID
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="sourceEndpointEngineName")
+    def source_endpoint_engine_name(self) -> str:
+        """
+        Source instance database engine type.
+        """
+        return pulumi.get(self, "source_endpoint_engine_name")
+
+    @property
+    @pulumi.getter(name="sourceRegion")
+    def source_region(self) -> str:
+        """
+        The source instance region.
+        """
+        return pulumi.get(self, "source_region")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Instance status.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        The tag value corresponding to the tag key.
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

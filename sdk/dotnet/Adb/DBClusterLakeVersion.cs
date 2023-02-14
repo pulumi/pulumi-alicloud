@@ -90,6 +90,12 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The description of the cluster.
+        /// </summary>
+        [Output("dbClusterDescription")]
+        public Output<string> DbClusterDescription { get; private set; } = null!;
+
+        /// <summary>
         /// The version of the cluster. Value options: `5.0`.
         /// </summary>
         [Output("dbClusterVersion")]
@@ -154,6 +160,14 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+        /// - IP addresses, such as 10.23.XX.XX.
+        /// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        /// </summary>
+        [Output("securityIps")]
+        public Output<string> SecurityIps { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource.
@@ -238,6 +252,12 @@ namespace Pulumi.AliCloud.Adb
         public Input<string> ComputeResource { get; set; } = null!;
 
         /// <summary>
+        /// The description of the cluster.
+        /// </summary>
+        [Input("dbClusterDescription")]
+        public Input<string>? DbClusterDescription { get; set; }
+
+        /// <summary>
         /// The version of the cluster. Value options: `5.0`.
         /// </summary>
         [Input("dbClusterVersion", required: true)]
@@ -254,6 +274,14 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
+
+        /// <summary>
+        /// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+        /// - IP addresses, such as 10.23.XX.XX.
+        /// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        /// </summary>
+        [Input("securityIps")]
+        public Input<string>? SecurityIps { get; set; }
 
         /// <summary>
         /// The storage resources of the cluster.
@@ -310,6 +338,12 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the cluster.
+        /// </summary>
+        [Input("dbClusterDescription")]
+        public Input<string>? DbClusterDescription { get; set; }
 
         /// <summary>
         /// The version of the cluster. Value options: `5.0`.
@@ -376,6 +410,14 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+        /// - IP addresses, such as 10.23.XX.XX.
+        /// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        /// </summary>
+        [Input("securityIps")]
+        public Input<string>? SecurityIps { get; set; }
 
         /// <summary>
         /// The status of the resource.

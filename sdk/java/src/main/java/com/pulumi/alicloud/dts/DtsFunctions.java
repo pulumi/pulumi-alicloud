@@ -6,6 +6,8 @@ package com.pulumi.alicloud.dts;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.dts.inputs.GetConsumerChannelsArgs;
 import com.pulumi.alicloud.dts.inputs.GetConsumerChannelsPlainArgs;
+import com.pulumi.alicloud.dts.inputs.GetInstancesArgs;
+import com.pulumi.alicloud.dts.inputs.GetInstancesPlainArgs;
 import com.pulumi.alicloud.dts.inputs.GetMigrationJobsArgs;
 import com.pulumi.alicloud.dts.inputs.GetMigrationJobsPlainArgs;
 import com.pulumi.alicloud.dts.inputs.GetSubscriptionJobsArgs;
@@ -13,6 +15,7 @@ import com.pulumi.alicloud.dts.inputs.GetSubscriptionJobsPlainArgs;
 import com.pulumi.alicloud.dts.inputs.GetSynchronizationJobsArgs;
 import com.pulumi.alicloud.dts.inputs.GetSynchronizationJobsPlainArgs;
 import com.pulumi.alicloud.dts.outputs.GetConsumerChannelsResult;
+import com.pulumi.alicloud.dts.outputs.GetInstancesResult;
 import com.pulumi.alicloud.dts.outputs.GetMigrationJobsResult;
 import com.pulumi.alicloud.dts.outputs.GetSubscriptionJobsResult;
 import com.pulumi.alicloud.dts.outputs.GetSynchronizationJobsResult;
@@ -182,6 +185,252 @@ public final class DtsFunctions {
      */
     public static CompletableFuture<GetConsumerChannelsResult> getConsumerChannelsPlain(GetConsumerChannelsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dts/getConsumerChannels:getConsumerChannels", TypeShape.of(GetConsumerChannelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
+     * 
+     * &gt; **NOTE:** Available in 1.198.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(alicloud_dts_instance.default().id())
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDtsInstanceExampleId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances() {
+        return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
+     * 
+     * &gt; **NOTE:** Available in 1.198.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(alicloud_dts_instance.default().id())
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDtsInstanceExampleId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
+        return getInstancesPlain(GetInstancesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
+     * 
+     * &gt; **NOTE:** Available in 1.198.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(alicloud_dts_instance.default().id())
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDtsInstanceExampleId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
+        return getInstances(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
+     * 
+     * &gt; **NOTE:** Available in 1.198.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(alicloud_dts_instance.default().id())
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDtsInstanceExampleId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
+        return getInstancesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
+     * 
+     * &gt; **NOTE:** Available in 1.198.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(alicloud_dts_instance.default().id())
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDtsInstanceExampleId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dts/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
+     * 
+     * &gt; **NOTE:** Available in 1.198.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dts.DtsFunctions;
+     * import com.pulumi.alicloud.dts.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(alicloud_dts_instance.default().id())
+     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDtsInstanceExampleId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:dts/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.

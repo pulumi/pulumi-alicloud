@@ -79,6 +79,8 @@ type Domain struct {
 	CertType pulumi.StringPtrOutput `pulumi:"certType"`
 	// The URL that is used to test the accessibility of the origin.
 	CheckUrl pulumi.StringPtrOutput `pulumi:"checkUrl"`
+	// (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+	Cname pulumi.StringOutput `pulumi:"cname"`
 	// The name of the accelerated domain.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
@@ -147,6 +149,8 @@ type domainState struct {
 	CertType *string `pulumi:"certType"`
 	// The URL that is used to test the accessibility of the origin.
 	CheckUrl *string `pulumi:"checkUrl"`
+	// (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+	Cname *string `pulumi:"cname"`
 	// The name of the accelerated domain.
 	DomainName *string `pulumi:"domainName"`
 	// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
@@ -181,6 +185,8 @@ type DomainState struct {
 	CertType pulumi.StringPtrInput
 	// The URL that is used to test the accessibility of the origin.
 	CheckUrl pulumi.StringPtrInput
+	// (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+	Cname pulumi.StringPtrInput
 	// The name of the accelerated domain.
 	DomainName pulumi.StringPtrInput
 	// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
@@ -381,6 +387,11 @@ func (o DomainOutput) CertType() pulumi.StringPtrOutput {
 // The URL that is used to test the accessibility of the origin.
 func (o DomainOutput) CheckUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.CheckUrl }).(pulumi.StringPtrOutput)
+}
+
+// (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+func (o DomainOutput) Cname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
 }
 
 // The name of the accelerated domain.

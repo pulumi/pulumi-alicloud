@@ -69,6 +69,21 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+     * 
+     */
+    @Import(name="cname")
+    private @Nullable Output<String> cname;
+
+    /**
+     * @return (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+     * 
+     */
+    public Optional<Output<String>> cname() {
+        return Optional.ofNullable(this.cname);
+    }
+
+    /**
      * The name of the accelerated domain.
      * 
      */
@@ -239,6 +254,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         this.certName = $.certName;
         this.certType = $.certType;
         this.checkUrl = $.checkUrl;
+        this.cname = $.cname;
         this.domainName = $.domainName;
         this.forceSet = $.forceSet;
         this.resourceGroupId = $.resourceGroupId;
@@ -337,6 +353,27 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder checkUrl(String checkUrl) {
             return checkUrl(Output.of(checkUrl));
+        }
+
+        /**
+         * @param cname (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cname(@Nullable Output<String> cname) {
+            $.cname = cname;
+            return this;
+        }
+
+        /**
+         * @param cname (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cname(String cname) {
+            return cname(Output.of(cname));
         }
 
         /**

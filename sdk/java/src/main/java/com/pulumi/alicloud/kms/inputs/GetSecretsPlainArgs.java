@@ -49,14 +49,16 @@ public final class GetSecretsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+     * The secret filter. The filter consists of one or more key-value pairs.
+     * More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
      * 
      */
     @Import(name="filters")
     private @Nullable String filters;
 
     /**
-     * @return Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+     * @return The secret filter. The filter consists of one or more key-value pairs.
+     * More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
      * 
      */
     public Optional<String> filters() {
@@ -168,7 +170,8 @@ public final class GetSecretsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param filters Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+         * @param filters The secret filter. The filter consists of one or more key-value pairs.
+         * More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
          * 
          * @return builder
          * 

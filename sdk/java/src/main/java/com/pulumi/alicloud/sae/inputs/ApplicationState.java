@@ -380,6 +380,21 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Select the Nacos registry. Valid values: `0`, `1`, `2`.
+     * 
+     */
+    @Import(name="microRegistration")
+    private @Nullable Output<String> microRegistration;
+
+    /**
+     * @return Select the Nacos registry. Valid values: `0`, `1`, `2`.
+     * 
+     */
+    public Optional<Output<String>> microRegistration() {
+        return Optional.ofNullable(this.microRegistration);
+    }
+
+    /**
      * Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
      * * `-1`: Initialization value, indicating that percentages are not used.
      * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
@@ -890,6 +905,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         this.jdk = $.jdk;
         this.liveness = $.liveness;
         this.memory = $.memory;
+        this.microRegistration = $.microRegistration;
         this.minReadyInstanceRatio = $.minReadyInstanceRatio;
         this.minReadyInstances = $.minReadyInstances;
         this.mountDesc = $.mountDesc;
@@ -1444,6 +1460,27 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder memory(Integer memory) {
             return memory(Output.of(memory));
+        }
+
+        /**
+         * @param microRegistration Select the Nacos registry. Valid values: `0`, `1`, `2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder microRegistration(@Nullable Output<String> microRegistration) {
+            $.microRegistration = microRegistration;
+            return this;
+        }
+
+        /**
+         * @param microRegistration Select the Nacos registry. Valid values: `0`, `1`, `2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder microRegistration(String microRegistration) {
+            return microRegistration(Output.of(microRegistration));
         }
 
         /**

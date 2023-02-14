@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -225,6 +226,12 @@ public class Account extends com.pulumi.resources.CustomResource {
      */
     public Output<String> password() {
         return this.password;
+    }
+    @Export(name="resetPermissionFlag", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> resetPermissionFlag;
+
+    public Output<Optional<Boolean>> resetPermissionFlag() {
+        return Codegen.optional(this.resetPermissionFlag);
     }
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;

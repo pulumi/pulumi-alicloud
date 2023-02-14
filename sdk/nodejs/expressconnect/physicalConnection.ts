@@ -106,7 +106,7 @@ export class PhysicalConnection extends pulumi.CustomResource {
     /**
      * and an on-Premises Data Center Location.
      */
-    public readonly peerLocation!: pulumi.Output<string>;
+    public readonly peerLocation!: pulumi.Output<string | undefined>;
     /**
      * on Behalf of the Resource Name of the Resources-Attribute Field.
      */
@@ -166,9 +166,6 @@ export class PhysicalConnection extends pulumi.CustomResource {
             }
             if ((!args || args.lineOperator === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'lineOperator'");
-            }
-            if ((!args || args.peerLocation === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'peerLocation'");
             }
             resourceInputs["accessPointId"] = args ? args.accessPointId : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
@@ -283,7 +280,7 @@ export interface PhysicalConnectionArgs {
     /**
      * and an on-Premises Data Center Location.
      */
-    peerLocation: pulumi.Input<string>;
+    peerLocation?: pulumi.Input<string>;
     /**
      * on Behalf of the Resource Name of the Resources-Attribute Field.
      */

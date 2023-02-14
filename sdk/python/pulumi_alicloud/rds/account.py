@@ -25,6 +25,7 @@ class AccountArgs:
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 reset_permission_flag: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Account resource.
@@ -72,6 +73,8 @@ class AccountArgs:
             pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if reset_permission_flag is not None:
+            pulumi.set(__self__, "reset_permission_flag", reset_permission_flag)
         if type is not None:
             warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
@@ -196,6 +199,15 @@ class AccountArgs:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="resetPermissionFlag")
+    def reset_permission_flag(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "reset_permission_flag")
+
+    @reset_permission_flag.setter
+    def reset_permission_flag(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reset_permission_flag", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -224,6 +236,7 @@ class _AccountState:
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 reset_permission_flag: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -272,6 +285,8 @@ class _AccountState:
             pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if reset_permission_flag is not None:
+            pulumi.set(__self__, "reset_permission_flag", reset_permission_flag)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if type is not None:
@@ -398,6 +413,15 @@ class _AccountState:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="resetPermissionFlag")
+    def reset_permission_flag(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "reset_permission_flag")
+
+    @reset_permission_flag.setter
+    def reset_permission_flag(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reset_permission_flag", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "status")
@@ -437,6 +461,7 @@ class Account(pulumi.CustomResource):
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 reset_permission_flag: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -569,6 +594,7 @@ class Account(pulumi.CustomResource):
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 reset_permission_flag: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -602,6 +628,7 @@ class Account(pulumi.CustomResource):
                 warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
                 pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["reset_permission_flag"] = reset_permission_flag
             if type is not None and not opts.urn:
                 warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
                 pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
@@ -630,6 +657,7 @@ class Account(pulumi.CustomResource):
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
+            reset_permission_flag: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Account':
         """
@@ -664,6 +692,7 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
         __props__.__dict__["name"] = name
         __props__.__dict__["password"] = password
+        __props__.__dict__["reset_permission_flag"] = reset_permission_flag
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
         return Account(resource_name, opts=opts, __props__=__props__)
@@ -740,6 +769,11 @@ class Account(pulumi.CustomResource):
         Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="resetPermissionFlag")
+    def reset_permission_flag(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "reset_permission_flag")
 
     @property
     @pulumi.getter

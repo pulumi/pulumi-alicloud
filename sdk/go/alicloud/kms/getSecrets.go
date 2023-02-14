@@ -60,7 +60,8 @@ type GetSecretsArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// Whether to include the predetermined resource tag in the return value. Default to `false`.
 	FetchTags *bool `pulumi:"fetchTags"`
-	// Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+	// The secret filter. The filter consists of one or more key-value pairs.
+	// More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
 	Filters *string `pulumi:"filters"`
 	// A list of KMS Secret ids. The value is same as KMS secret_name.
 	Ids []string `pulumi:"ids"`
@@ -109,7 +110,8 @@ type GetSecretsOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// Whether to include the predetermined resource tag in the return value. Default to `false`.
 	FetchTags pulumi.BoolPtrInput `pulumi:"fetchTags"`
-	// Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+	// The secret filter. The filter consists of one or more key-value pairs.
+	// More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
 	Filters pulumi.StringPtrInput `pulumi:"filters"`
 	// A list of KMS Secret ids. The value is same as KMS secret_name.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

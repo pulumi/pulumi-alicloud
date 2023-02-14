@@ -169,14 +169,14 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="peerLocation", type=String.class, parameters={})
-    private Output<String> peerLocation;
+    private Output</* @Nullable */ String> peerLocation;
 
     /**
      * @return and an on-Premises Data Center Location.
      * 
      */
-    public Output<String> peerLocation() {
-        return this.peerLocation;
+    public Output<Optional<String>> peerLocation() {
+        return Codegen.optional(this.peerLocation);
     }
     /**
      * on Behalf of the Resource Name of the Resources-Attribute Field.
