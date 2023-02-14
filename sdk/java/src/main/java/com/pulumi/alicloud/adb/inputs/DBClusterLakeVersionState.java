@@ -77,6 +77,21 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The description of the cluster.
+     * 
+     */
+    @Import(name="dbClusterDescription")
+    private @Nullable Output<String> dbClusterDescription;
+
+    /**
+     * @return The description of the cluster.
+     * 
+     */
+    public Optional<Output<String>> dbClusterDescription() {
+        return Optional.ofNullable(this.dbClusterDescription);
+    }
+
+    /**
      * The version of the cluster. Value options: `5.0`.
      * 
      */
@@ -242,6 +257,25 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+     * - IP addresses, such as 10.23.XX.XX.
+     * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+     * 
+     */
+    @Import(name="securityIps")
+    private @Nullable Output<String> securityIps;
+
+    /**
+     * @return The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+     * - IP addresses, such as 10.23.XX.XX.
+     * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+     * 
+     */
+    public Optional<Output<String>> securityIps() {
+        return Optional.ofNullable(this.securityIps);
+    }
+
+    /**
      * The status of the resource.
      * 
      */
@@ -323,6 +357,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         this.computeResource = $.computeResource;
         this.connectionString = $.connectionString;
         this.createTime = $.createTime;
+        this.dbClusterDescription = $.dbClusterDescription;
         this.dbClusterVersion = $.dbClusterVersion;
         this.enableDefaultResourceGroup = $.enableDefaultResourceGroup;
         this.engine = $.engine;
@@ -334,6 +369,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         this.paymentType = $.paymentType;
         this.port = $.port;
         this.resourceGroupId = $.resourceGroupId;
+        this.securityIps = $.securityIps;
         this.status = $.status;
         this.storageResource = $.storageResource;
         this.vpcId = $.vpcId;
@@ -441,6 +477,27 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param dbClusterDescription The description of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbClusterDescription(@Nullable Output<String> dbClusterDescription) {
+            $.dbClusterDescription = dbClusterDescription;
+            return this;
+        }
+
+        /**
+         * @param dbClusterDescription The description of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbClusterDescription(String dbClusterDescription) {
+            return dbClusterDescription(Output.of(dbClusterDescription));
         }
 
         /**
@@ -672,6 +729,31 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param securityIps The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+         * - IP addresses, such as 10.23.XX.XX.
+         * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityIps(@Nullable Output<String> securityIps) {
+            $.securityIps = securityIps;
+            return this;
+        }
+
+        /**
+         * @param securityIps The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+         * - IP addresses, such as 10.23.XX.XX.
+         * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityIps(String securityIps) {
+            return securityIps(Output.of(securityIps));
         }
 
         /**

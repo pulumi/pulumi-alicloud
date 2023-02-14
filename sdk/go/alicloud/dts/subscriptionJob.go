@@ -68,11 +68,11 @@ type SubscriptionJob struct {
 	// To subscribe to the name of the database.
 	SourceEndpointDatabaseName pulumi.StringPtrOutput `pulumi:"sourceEndpointDatabaseName"`
 	// The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
-	SourceEndpointEngineName pulumi.StringPtrOutput `pulumi:"sourceEndpointEngineName"`
+	SourceEndpointEngineName pulumi.StringOutput `pulumi:"sourceEndpointEngineName"`
 	// The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
 	SourceEndpointInstanceId pulumi.StringPtrOutput `pulumi:"sourceEndpointInstanceId"`
 	// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
-	SourceEndpointInstanceType pulumi.StringPtrOutput `pulumi:"sourceEndpointInstanceType"`
+	SourceEndpointInstanceType pulumi.StringOutput `pulumi:"sourceEndpointInstanceType"`
 	// The IP of source endpoint.
 	SourceEndpointIp pulumi.StringPtrOutput `pulumi:"sourceEndpointIp"`
 	// The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
@@ -84,7 +84,7 @@ type SubscriptionJob struct {
 	// The port of source database.
 	SourceEndpointPort pulumi.StringPtrOutput `pulumi:"sourceEndpointPort"`
 	// The region of source database.
-	SourceEndpointRegion pulumi.StringPtrOutput `pulumi:"sourceEndpointRegion"`
+	SourceEndpointRegion pulumi.StringOutput `pulumi:"sourceEndpointRegion"`
 	// Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
 	SourceEndpointRole pulumi.StringPtrOutput `pulumi:"sourceEndpointRole"`
 	// The username of source database instance account.
@@ -118,6 +118,15 @@ func NewSubscriptionJob(ctx *pulumi.Context,
 
 	if args.PaymentType == nil {
 		return nil, errors.New("invalid value for required argument 'PaymentType'")
+	}
+	if args.SourceEndpointEngineName == nil {
+		return nil, errors.New("invalid value for required argument 'SourceEndpointEngineName'")
+	}
+	if args.SourceEndpointInstanceType == nil {
+		return nil, errors.New("invalid value for required argument 'SourceEndpointInstanceType'")
+	}
+	if args.SourceEndpointRegion == nil {
+		return nil, errors.New("invalid value for required argument 'SourceEndpointRegion'")
 	}
 	var resource SubscriptionJob
 	err := ctx.RegisterResource("alicloud:dts/subscriptionJob:SubscriptionJob", name, args, &resource, opts...)
@@ -346,11 +355,11 @@ type subscriptionJobArgs struct {
 	// To subscribe to the name of the database.
 	SourceEndpointDatabaseName *string `pulumi:"sourceEndpointDatabaseName"`
 	// The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
-	SourceEndpointEngineName *string `pulumi:"sourceEndpointEngineName"`
+	SourceEndpointEngineName string `pulumi:"sourceEndpointEngineName"`
 	// The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
 	SourceEndpointInstanceId *string `pulumi:"sourceEndpointInstanceId"`
 	// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
-	SourceEndpointInstanceType *string `pulumi:"sourceEndpointInstanceType"`
+	SourceEndpointInstanceType string `pulumi:"sourceEndpointInstanceType"`
 	// The IP of source endpoint.
 	SourceEndpointIp *string `pulumi:"sourceEndpointIp"`
 	// The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
@@ -362,7 +371,7 @@ type subscriptionJobArgs struct {
 	// The port of source database.
 	SourceEndpointPort *string `pulumi:"sourceEndpointPort"`
 	// The region of source database.
-	SourceEndpointRegion *string `pulumi:"sourceEndpointRegion"`
+	SourceEndpointRegion string `pulumi:"sourceEndpointRegion"`
 	// Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
 	// The username of source database instance account.
@@ -428,11 +437,11 @@ type SubscriptionJobArgs struct {
 	// To subscribe to the name of the database.
 	SourceEndpointDatabaseName pulumi.StringPtrInput
 	// The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
-	SourceEndpointEngineName pulumi.StringPtrInput
+	SourceEndpointEngineName pulumi.StringInput
 	// The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
 	SourceEndpointInstanceId pulumi.StringPtrInput
 	// The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
-	SourceEndpointInstanceType pulumi.StringPtrInput
+	SourceEndpointInstanceType pulumi.StringInput
 	// The IP of source endpoint.
 	SourceEndpointIp pulumi.StringPtrInput
 	// The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
@@ -444,7 +453,7 @@ type SubscriptionJobArgs struct {
 	// The port of source database.
 	SourceEndpointPort pulumi.StringPtrInput
 	// The region of source database.
-	SourceEndpointRegion pulumi.StringPtrInput
+	SourceEndpointRegion pulumi.StringInput
 	// Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
 	SourceEndpointRole pulumi.StringPtrInput
 	// The username of source database instance account.
@@ -652,8 +661,8 @@ func (o SubscriptionJobOutput) SourceEndpointDatabaseName() pulumi.StringPtrOutp
 }
 
 // The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
-func (o SubscriptionJobOutput) SourceEndpointEngineName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointEngineName }).(pulumi.StringPtrOutput)
+func (o SubscriptionJobOutput) SourceEndpointEngineName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringOutput { return v.SourceEndpointEngineName }).(pulumi.StringOutput)
 }
 
 // The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
@@ -662,8 +671,8 @@ func (o SubscriptionJobOutput) SourceEndpointInstanceId() pulumi.StringPtrOutput
 }
 
 // The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
-func (o SubscriptionJobOutput) SourceEndpointInstanceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointInstanceType }).(pulumi.StringPtrOutput)
+func (o SubscriptionJobOutput) SourceEndpointInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringOutput { return v.SourceEndpointInstanceType }).(pulumi.StringOutput)
 }
 
 // The IP of source endpoint.
@@ -692,8 +701,8 @@ func (o SubscriptionJobOutput) SourceEndpointPort() pulumi.StringPtrOutput {
 }
 
 // The region of source database.
-func (o SubscriptionJobOutput) SourceEndpointRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringPtrOutput { return v.SourceEndpointRegion }).(pulumi.StringPtrOutput)
+func (o SubscriptionJobOutput) SourceEndpointRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionJob) pulumi.StringOutput { return v.SourceEndpointRegion }).(pulumi.StringOutput)
 }
 
 // Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.

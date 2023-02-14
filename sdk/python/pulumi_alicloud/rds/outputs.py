@@ -11,6 +11,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'DdrInstanceParameter',
+    'DdrInstancePgHbaConf',
     'InstanceBabelfishConfig',
     'InstanceParameter',
     'InstancePgHbaConf',
@@ -23,6 +25,7 @@ __all__ = [
     'ReadOnlyInstanceParameter',
     'GetAccountsAccountResult',
     'GetAccountsAccountDatabasePrivilegeResult',
+    'GetCollationTimeZonesCollationTimeZoneResult',
     'GetCrossRegionBackupsBackupResult',
     'GetCrossRegionsRegionResult',
     'GetInstanceClassInfosInfoResult',
@@ -39,6 +42,145 @@ __all__ = [
     'GetRdsParameterGroupsGroupParamDetailResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class DdrInstanceParameter(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DdrInstancePgHbaConf(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "priorityId":
+            suggest = "priority_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DdrInstancePgHbaConf. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DdrInstancePgHbaConf.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DdrInstancePgHbaConf.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: str,
+                 database: str,
+                 method: str,
+                 priority_id: int,
+                 type: str,
+                 user: str,
+                 mask: Optional[str] = None,
+                 option: Optional[str] = None):
+        """
+        :param str address: The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+        :param str database: The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+        :param str method: The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+        :param int priority_id: The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+        :param str type: The type of connection to the instance. Valid values:
+               * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+               * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+               * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+        :param str user: The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+        :param str mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+        :param str option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "priority_id", priority_id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "user", user)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if option is not None:
+            pulumi.set(__self__, "option", option)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def method(self) -> str:
+        """
+        The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+        """
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter(name="priorityId")
+    def priority_id(self) -> int:
+        """
+        The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+        """
+        return pulumi.get(self, "priority_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of connection to the instance. Valid values:
+        * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+        * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+        * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def user(self) -> str:
+        """
+        The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+        """
+        return pulumi.get(self, "user")
+
+    @property
+    @pulumi.getter
+    def mask(self) -> Optional[str]:
+        """
+        The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+        """
+        return pulumi.get(self, "mask")
+
+    @property
+    @pulumi.getter
+    def option(self) -> Optional[str]:
+        """
+        Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+        """
+        return pulumi.get(self, "option")
+
 
 @pulumi.output_type
 class InstanceBabelfishConfig(dict):
@@ -762,6 +904,49 @@ class GetAccountsAccountDatabasePrivilegeResult(dict):
         Database name.
         """
         return pulumi.get(self, "db_name")
+
+
+@pulumi.output_type
+class GetCollationTimeZonesCollationTimeZoneResult(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 standard_time_offset: Optional[str] = None,
+                 time_zone: Optional[str] = None):
+        """
+        :param str description: The code of the instance type.
+        :param str standard_time_offset: The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+        :param str time_zone: The time zone that is available for use in ApsaraDB RDS.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if standard_time_offset is not None:
+            pulumi.set(__self__, "standard_time_offset", standard_time_offset)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The code of the instance type.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="standardTimeOffset")
+    def standard_time_offset(self) -> Optional[str]:
+        """
+        The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+        """
+        return pulumi.get(self, "standard_time_offset")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[str]:
+        """
+        The time zone that is available for use in ApsaraDB RDS.
+        """
+        return pulumi.get(self, "time_zone")
 
 
 @pulumi.output_type

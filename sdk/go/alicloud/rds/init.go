@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "alicloud:rds/database:Database":
 		r = &Database{}
+	case "alicloud:rds/ddrInstance:DdrInstance":
+		r = &DdrInstance{}
 	case "alicloud:rds/instance:Instance":
 		r = &Instance{}
 	case "alicloud:rds/rdsAccount:RdsAccount":
@@ -89,6 +91,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"rds/database",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"rds/ddrInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

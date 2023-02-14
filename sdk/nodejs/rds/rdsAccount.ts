@@ -141,6 +141,10 @@ export class RdsAccount extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string>;
     /**
+     * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     */
+    public readonly resetPermissionFlag!: pulumi.Output<boolean | undefined>;
+    /**
      * The status of the resource. Valid values: `Available`, `Unavailable`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -175,6 +179,7 @@ export class RdsAccount extends pulumi.CustomResource {
             resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["resetPermissionFlag"] = state ? state.resetPermissionFlag : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
@@ -190,6 +195,7 @@ export class RdsAccount extends pulumi.CustomResource {
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["resetPermissionFlag"] = args ? args.resetPermissionFlag : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -258,6 +264,10 @@ export interface RdsAccountState {
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     password?: pulumi.Input<string>;
+    /**
+     * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     */
+    resetPermissionFlag?: pulumi.Input<boolean>;
     /**
      * The status of the resource. Valid values: `Available`, `Unavailable`.
      */
@@ -328,6 +338,10 @@ export interface RdsAccountArgs {
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     password?: pulumi.Input<string>;
+    /**
+     * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     */
+    resetPermissionFlag?: pulumi.Input<boolean>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      *

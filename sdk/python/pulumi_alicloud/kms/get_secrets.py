@@ -169,7 +169,8 @@ def get_secrets(enable_details: Optional[bool] = None,
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param bool fetch_tags: Whether to include the predetermined resource tag in the return value. Default to `false`.
-    :param str filters: Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+    :param str filters: The secret filter. The filter consists of one or more key-value pairs. 
+           More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
     :param Sequence[str] ids: A list of KMS Secret ids. The value is same as KMS secret_name.
     :param str name_regex: A regex string to filter the results by the KMS secret_name.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
@@ -230,7 +231,8 @@ def get_secrets_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param bool fetch_tags: Whether to include the predetermined resource tag in the return value. Default to `false`.
-    :param str filters: Credential filter. It is composed of Key-Values ​​key-value pairs, the length is 0~1. When using a tag key to filter resources, the number of resources queried cannot exceed 4000.
+    :param str filters: The secret filter. The filter consists of one or more key-value pairs. 
+           More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
     :param Sequence[str] ids: A list of KMS Secret ids. The value is same as KMS secret_name.
     :param str name_regex: A regex string to filter the results by the KMS secret_name.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.

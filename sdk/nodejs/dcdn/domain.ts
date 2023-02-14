@@ -89,6 +89,10 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly checkUrl!: pulumi.Output<string | undefined>;
     /**
+     * (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+     */
+    public /*out*/ readonly cname!: pulumi.Output<string>;
+    /**
      * The name of the accelerated domain.
      */
     public readonly domainName!: pulumi.Output<string>;
@@ -149,6 +153,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["certName"] = state ? state.certName : undefined;
             resourceInputs["certType"] = state ? state.certType : undefined;
             resourceInputs["checkUrl"] = state ? state.checkUrl : undefined;
+            resourceInputs["cname"] = state ? state.cname : undefined;
             resourceInputs["domainName"] = state ? state.domainName : undefined;
             resourceInputs["forceSet"] = state ? state.forceSet : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -182,6 +187,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["sslPub"] = args ? args.sslPub : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["topLevelDomain"] = args ? args.topLevelDomain : undefined;
+            resourceInputs["cname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Domain.__pulumiType, name, resourceInputs, opts);
@@ -207,6 +213,10 @@ export interface DomainState {
      * The URL that is used to test the accessibility of the origin.
      */
     checkUrl?: pulumi.Input<string>;
+    /**
+     * (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+     */
+    cname?: pulumi.Input<string>;
     /**
      * The name of the accelerated domain.
      */

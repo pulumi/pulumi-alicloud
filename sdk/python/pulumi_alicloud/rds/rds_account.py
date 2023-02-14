@@ -25,6 +25,7 @@ class RdsAccountArgs:
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 reset_permission_flag: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RdsAccount resource.
@@ -41,6 +42,7 @@ class RdsAccountArgs:
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         :param pulumi.Input[str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         if account_description is not None:
@@ -77,6 +79,8 @@ class RdsAccountArgs:
             pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if reset_permission_flag is not None:
+            pulumi.set(__self__, "reset_permission_flag", reset_permission_flag)
         if type is not None:
             warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
@@ -218,6 +222,18 @@ class RdsAccountArgs:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="resetPermissionFlag")
+    def reset_permission_flag(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        """
+        return pulumi.get(self, "reset_permission_flag")
+
+    @reset_permission_flag.setter
+    def reset_permission_flag(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reset_permission_flag", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -244,6 +260,7 @@ class _RdsAccountState:
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 reset_permission_flag: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -261,6 +278,7 @@ class _RdsAccountState:
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
@@ -298,6 +316,8 @@ class _RdsAccountState:
             pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if reset_permission_flag is not None:
+            pulumi.set(__self__, "reset_permission_flag", reset_permission_flag)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if type is not None:
@@ -441,6 +461,18 @@ class _RdsAccountState:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="resetPermissionFlag")
+    def reset_permission_flag(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        """
+        return pulumi.get(self, "reset_permission_flag")
+
+    @reset_permission_flag.setter
+    def reset_permission_flag(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reset_permission_flag", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -481,6 +513,7 @@ class RdsAccount(pulumi.CustomResource):
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 reset_permission_flag: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -550,6 +583,7 @@ class RdsAccount(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         :param pulumi.Input[str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
         ...
@@ -636,6 +670,7 @@ class RdsAccount(pulumi.CustomResource):
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 reset_permission_flag: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -669,6 +704,7 @@ class RdsAccount(pulumi.CustomResource):
                 warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
                 pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["reset_permission_flag"] = reset_permission_flag
             if type is not None and not opts.urn:
                 warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
                 pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
@@ -697,6 +733,7 @@ class RdsAccount(pulumi.CustomResource):
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
+            reset_permission_flag: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'RdsAccount':
         """
@@ -719,6 +756,7 @@ class RdsAccount(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
         """
@@ -737,6 +775,7 @@ class RdsAccount(pulumi.CustomResource):
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
         __props__.__dict__["name"] = name
         __props__.__dict__["password"] = password
+        __props__.__dict__["reset_permission_flag"] = reset_permission_flag
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
         return RdsAccount(resource_name, opts=opts, __props__=__props__)
@@ -830,6 +869,14 @@ class RdsAccount(pulumi.CustomResource):
         The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="resetPermissionFlag")
+    def reset_permission_flag(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        """
+        return pulumi.get(self, "reset_permission_flag")
 
     @property
     @pulumi.getter

@@ -30,6 +30,10 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly string Owner;
         /// <summary>
+        /// The policy of project.
+        /// </summary>
+        public readonly string Policy;
+        /// <summary>
         /// The name of the project.
         /// </summary>
         public readonly string ProjectName;
@@ -52,6 +56,8 @@ namespace Pulumi.AliCloud.Log.Outputs
 
             string owner,
 
+            string policy,
+
             string projectName,
 
             string region,
@@ -62,6 +68,7 @@ namespace Pulumi.AliCloud.Log.Outputs
             Id = id;
             LastModifyTime = lastModifyTime;
             Owner = owner;
+            Policy = policy;
             ProjectName = projectName;
             Region = region;
             Status = status;

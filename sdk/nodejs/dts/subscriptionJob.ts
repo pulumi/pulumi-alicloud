@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultSubscriptionJob = new alicloud.dts.SubscriptionJob("defaultSubscriptionJob", {
  *     dtsJobName: name,
- *     paymentType: "PostPaid",
+ *     paymentType: "PayAsYouGo",
  *     sourceEndpointEngineName: "MySQL",
  *     sourceEndpointRegion: "cn-hangzhou",
  *     sourceEndpointInstanceType: "RDS",
@@ -200,7 +200,7 @@ export class SubscriptionJob extends pulumi.CustomResource {
     /**
      * The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
      */
-    public readonly sourceEndpointEngineName!: pulumi.Output<string | undefined>;
+    public readonly sourceEndpointEngineName!: pulumi.Output<string>;
     /**
      * The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
      */
@@ -208,7 +208,7 @@ export class SubscriptionJob extends pulumi.CustomResource {
     /**
      * The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
      */
-    public readonly sourceEndpointInstanceType!: pulumi.Output<string | undefined>;
+    public readonly sourceEndpointInstanceType!: pulumi.Output<string>;
     /**
      * The IP of source endpoint.
      */
@@ -232,7 +232,7 @@ export class SubscriptionJob extends pulumi.CustomResource {
     /**
      * The region of source database.
      */
-    public readonly sourceEndpointRegion!: pulumi.Output<string | undefined>;
+    public readonly sourceEndpointRegion!: pulumi.Output<string>;
     /**
      * Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
      */
@@ -334,6 +334,15 @@ export class SubscriptionJob extends pulumi.CustomResource {
             const args = argsOrState as SubscriptionJobArgs | undefined;
             if ((!args || args.paymentType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
+            }
+            if ((!args || args.sourceEndpointEngineName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sourceEndpointEngineName'");
+            }
+            if ((!args || args.sourceEndpointInstanceType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sourceEndpointInstanceType'");
+            }
+            if ((!args || args.sourceEndpointRegion === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sourceEndpointRegion'");
             }
             resourceInputs["checkpoint"] = args ? args.checkpoint : undefined;
             resourceInputs["computeUnit"] = args ? args.computeUnit : undefined;
@@ -625,7 +634,7 @@ export interface SubscriptionJobArgs {
     /**
      * The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
      */
-    sourceEndpointEngineName?: pulumi.Input<string>;
+    sourceEndpointEngineName: pulumi.Input<string>;
     /**
      * The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
      */
@@ -633,7 +642,7 @@ export interface SubscriptionJobArgs {
     /**
      * The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
      */
-    sourceEndpointInstanceType?: pulumi.Input<string>;
+    sourceEndpointInstanceType: pulumi.Input<string>;
     /**
      * The IP of source endpoint.
      */
@@ -657,7 +666,7 @@ export interface SubscriptionJobArgs {
     /**
      * The region of source database.
      */
-    sourceEndpointRegion?: pulumi.Input<string>;
+    sourceEndpointRegion: pulumi.Input<string>;
     /**
      * Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
      */

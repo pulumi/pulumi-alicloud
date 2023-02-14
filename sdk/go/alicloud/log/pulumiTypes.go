@@ -2693,6 +2693,8 @@ type GetProjectsProject struct {
 	LastModifyTime string `pulumi:"lastModifyTime"`
 	// The owner of project.
 	Owner string `pulumi:"owner"`
+	// The policy of project.
+	Policy string `pulumi:"policy"`
 	// The name of the project.
 	ProjectName string `pulumi:"projectName"`
 	// The region of project.
@@ -2721,6 +2723,8 @@ type GetProjectsProjectArgs struct {
 	LastModifyTime pulumi.StringInput `pulumi:"lastModifyTime"`
 	// The owner of project.
 	Owner pulumi.StringInput `pulumi:"owner"`
+	// The policy of project.
+	Policy pulumi.StringInput `pulumi:"policy"`
 	// The name of the project.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 	// The region of project.
@@ -2798,6 +2802,11 @@ func (o GetProjectsProjectOutput) LastModifyTime() pulumi.StringOutput {
 // The owner of project.
 func (o GetProjectsProjectOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// The policy of project.
+func (o GetProjectsProjectOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Policy }).(pulumi.StringOutput)
 }
 
 // The name of the project.

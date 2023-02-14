@@ -127,6 +127,20 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.checkUrl);
     }
     /**
+     * (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+     * 
+     */
+    @Export(name="cname", type=String.class, parameters={})
+    private Output<String> cname;
+
+    /**
+     * @return (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+     * 
+     */
+    public Output<String> cname() {
+        return this.cname;
+    }
+    /**
      * The name of the accelerated domain.
      * 
      */

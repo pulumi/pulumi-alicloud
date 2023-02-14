@@ -45,6 +45,10 @@ export interface GetKeysArgs {
      */
     descriptionRegex?: string;
     enableDetails?: boolean;
+    /**
+     * The CMK filter. The filter consists of one or more key-value pairs. 
+     * You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
+     */
     filters?: string;
     /**
      * A list of KMS key IDs.
@@ -111,6 +115,10 @@ export interface GetKeysOutputArgs {
      */
     descriptionRegex?: pulumi.Input<string>;
     enableDetails?: pulumi.Input<boolean>;
+    /**
+     * The CMK filter. The filter consists of one or more key-value pairs. 
+     * You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
+     */
     filters?: pulumi.Input<string>;
     /**
      * A list of KMS key IDs.

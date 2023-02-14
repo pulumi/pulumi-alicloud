@@ -114,6 +114,7 @@ export class Account extends pulumi.CustomResource {
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     public readonly password!: pulumi.Output<string>;
+    public readonly resetPermissionFlag!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Privilege type of account.
@@ -148,6 +149,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["resetPermissionFlag"] = state ? state.resetPermissionFlag : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
@@ -163,6 +165,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["resetPermissionFlag"] = args ? args.resetPermissionFlag : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -214,6 +217,7 @@ export interface AccountState {
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     password?: pulumi.Input<string>;
+    resetPermissionFlag?: pulumi.Input<boolean>;
     status?: pulumi.Input<string>;
     /**
      * Privilege type of account.
@@ -266,6 +270,7 @@ export interface AccountArgs {
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
     password?: pulumi.Input<string>;
+    resetPermissionFlag?: pulumi.Input<boolean>;
     /**
      * Privilege type of account.
      * - Normal: Common privilege.

@@ -118,8 +118,9 @@ type Account struct {
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-	Password pulumi.StringOutput `pulumi:"password"`
-	Status   pulumi.StringOutput `pulumi:"status"`
+	Password            pulumi.StringOutput  `pulumi:"password"`
+	ResetPermissionFlag pulumi.BoolPtrOutput `pulumi:"resetPermissionFlag"`
+	Status              pulumi.StringOutput  `pulumi:"status"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
@@ -192,8 +193,9 @@ type accountState struct {
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-	Password *string `pulumi:"password"`
-	Status   *string `pulumi:"status"`
+	Password            *string `pulumi:"password"`
+	ResetPermissionFlag *bool   `pulumi:"resetPermissionFlag"`
+	Status              *string `pulumi:"status"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
@@ -227,8 +229,9 @@ type AccountState struct {
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-	Password pulumi.StringPtrInput
-	Status   pulumi.StringPtrInput
+	Password            pulumi.StringPtrInput
+	ResetPermissionFlag pulumi.BoolPtrInput
+	Status              pulumi.StringPtrInput
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
@@ -266,7 +269,8 @@ type accountArgs struct {
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-	Password *string `pulumi:"password"`
+	Password            *string `pulumi:"password"`
+	ResetPermissionFlag *bool   `pulumi:"resetPermissionFlag"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
@@ -301,7 +305,8 @@ type AccountArgs struct {
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	//
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
-	Password pulumi.StringPtrInput
+	Password            pulumi.StringPtrInput
+	ResetPermissionFlag pulumi.BoolPtrInput
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
@@ -453,6 +458,10 @@ func (o AccountOutput) Name() pulumi.StringOutput {
 // Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 func (o AccountOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+func (o AccountOutput) ResetPermissionFlag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.BoolPtrOutput { return v.ResetPermissionFlag }).(pulumi.BoolPtrOutput)
 }
 
 func (o AccountOutput) Status() pulumi.StringOutput {

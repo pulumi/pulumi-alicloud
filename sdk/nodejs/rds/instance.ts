@@ -304,6 +304,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly sslAction!: pulumi.Output<string>;
     /**
+     * The internal or public endpoint for which the server certificate needs to be created or updated.
+     */
+    public readonly sslConnectionString!: pulumi.Output<string>;
+    /**
      * Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
      */
     public /*out*/ readonly sslStatus!: pulumi.Output<string>;
@@ -327,7 +331,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly storageUpperBound!: pulumi.Output<number | undefined>;
     /**
-     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `targetMinorVersion` is changed. The time must be in UTC.
      */
     public readonly switchTime!: pulumi.Output<string | undefined>;
     /**
@@ -337,7 +341,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
      * - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
      * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -360,10 +364,12 @@ export class Instance extends pulumi.CustomResource {
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
+     *
+     * @deprecated Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
      */
     public readonly upgradeDbInstanceKernelVersion!: pulumi.Output<boolean | undefined>;
     /**
-     * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+     * The method to update the minor engine version. Default value: Immediate. It is valid only when `targetMinorVersion` is changed. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -466,6 +472,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["sqlCollectorConfigValue"] = state ? state.sqlCollectorConfigValue : undefined;
             resourceInputs["sqlCollectorStatus"] = state ? state.sqlCollectorStatus : undefined;
             resourceInputs["sslAction"] = state ? state.sslAction : undefined;
+            resourceInputs["sslConnectionString"] = state ? state.sslConnectionString : undefined;
             resourceInputs["sslStatus"] = state ? state.sslStatus : undefined;
             resourceInputs["storageAutoScale"] = state ? state.storageAutoScale : undefined;
             resourceInputs["storageThreshold"] = state ? state.storageThreshold : undefined;
@@ -549,6 +556,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["sqlCollectorConfigValue"] = args ? args.sqlCollectorConfigValue : undefined;
             resourceInputs["sqlCollectorStatus"] = args ? args.sqlCollectorStatus : undefined;
             resourceInputs["sslAction"] = args ? args.sslAction : undefined;
+            resourceInputs["sslConnectionString"] = args ? args.sslConnectionString : undefined;
             resourceInputs["storageAutoScale"] = args ? args.storageAutoScale : undefined;
             resourceInputs["storageThreshold"] = args ? args.storageThreshold : undefined;
             resourceInputs["storageUpperBound"] = args ? args.storageUpperBound : undefined;
@@ -839,6 +847,10 @@ export interface InstanceState {
      */
     sslAction?: pulumi.Input<string>;
     /**
+     * The internal or public endpoint for which the server certificate needs to be created or updated.
+     */
+    sslConnectionString?: pulumi.Input<string>;
+    /**
      * Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
      */
     sslStatus?: pulumi.Input<string>;
@@ -862,7 +874,7 @@ export interface InstanceState {
      */
     storageUpperBound?: pulumi.Input<number>;
     /**
-     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `targetMinorVersion` is changed. The time must be in UTC.
      */
     switchTime?: pulumi.Input<string>;
     /**
@@ -872,7 +884,7 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
      * - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
      * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -895,10 +907,12 @@ export interface InstanceState {
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
+     *
+     * @deprecated Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
      */
     upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
     /**
-     * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+     * The method to update the minor engine version. Default value: Immediate. It is valid only when `targetMinorVersion` is changed. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -1192,6 +1206,10 @@ export interface InstanceArgs {
      */
     sslAction?: pulumi.Input<string>;
     /**
+     * The internal or public endpoint for which the server certificate needs to be created or updated.
+     */
+    sslConnectionString?: pulumi.Input<string>;
+    /**
      * Automatic storage space expansion switch. Valid values:
      * - Enable
      * - Disable
@@ -1211,7 +1229,7 @@ export interface InstanceArgs {
      */
     storageUpperBound?: pulumi.Input<number>;
     /**
-     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `targetMinorVersion` is changed. The time must be in UTC.
      */
     switchTime?: pulumi.Input<string>;
     /**
@@ -1221,7 +1239,7 @@ export interface InstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
+     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
      * - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
      * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -1244,10 +1262,12 @@ export interface InstanceArgs {
      * Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
+     *
+     * @deprecated Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
      */
     upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
     /**
-     * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgradeDbInstanceKernelVersion = true`. Valid values:
+     * The method to update the minor engine version. Default value: Immediate. It is valid only when `targetMinorVersion` is changed. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.

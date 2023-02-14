@@ -16,10 +16,10 @@ class PhysicalConnectionArgs:
     def __init__(__self__, *,
                  access_point_id: pulumi.Input[str],
                  line_operator: pulumi.Input[str],
-                 peer_location: pulumi.Input[str],
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  circuit_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 peer_location: Optional[pulumi.Input[str]] = None,
                  physical_connection_name: Optional[pulumi.Input[str]] = None,
                  port_type: Optional[pulumi.Input[str]] = None,
                  redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
@@ -35,10 +35,10 @@ class PhysicalConnectionArgs:
                * CO: Other Chinese
                * Equinix: Equinix
                * Other: Other Overseas.
-        :param pulumi.Input[str] peer_location: and an on-Premises Data Center Location.
         :param pulumi.Input[str] bandwidth: On the Bandwidth of the ECC Service and Physical Connection.
         :param pulumi.Input[str] circuit_code: Operators for Physical Connection Circuit Provided Coding.
         :param pulumi.Input[str] description: The Physical Connection to Which the Description.
+        :param pulumi.Input[str] peer_location: and an on-Premises Data Center Location.
         :param pulumi.Input[str] physical_connection_name: on Behalf of the Resource Name of the Resources-Attribute Field.
         :param pulumi.Input[str] port_type: The Physical Leased Line Access Port Type. Valid value:
                * 100Base-T: Fast Electrical Ports
@@ -54,13 +54,14 @@ class PhysicalConnectionArgs:
         """
         pulumi.set(__self__, "access_point_id", access_point_id)
         pulumi.set(__self__, "line_operator", line_operator)
-        pulumi.set(__self__, "peer_location", peer_location)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if circuit_code is not None:
             pulumi.set(__self__, "circuit_code", circuit_code)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if peer_location is not None:
+            pulumi.set(__self__, "peer_location", peer_location)
         if physical_connection_name is not None:
             pulumi.set(__self__, "physical_connection_name", physical_connection_name)
         if port_type is not None:
@@ -103,18 +104,6 @@ class PhysicalConnectionArgs:
         pulumi.set(self, "line_operator", value)
 
     @property
-    @pulumi.getter(name="peerLocation")
-    def peer_location(self) -> pulumi.Input[str]:
-        """
-        and an on-Premises Data Center Location.
-        """
-        return pulumi.get(self, "peer_location")
-
-    @peer_location.setter
-    def peer_location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "peer_location", value)
-
-    @property
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
@@ -149,6 +138,18 @@ class PhysicalConnectionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="peerLocation")
+    def peer_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        and an on-Premises Data Center Location.
+        """
+        return pulumi.get(self, "peer_location")
+
+    @peer_location.setter
+    def peer_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_location", value)
 
     @property
     @pulumi.getter(name="physicalConnectionName")
@@ -608,8 +609,6 @@ class PhysicalConnection(pulumi.CustomResource):
             if line_operator is None and not opts.urn:
                 raise TypeError("Missing required property 'line_operator'")
             __props__.__dict__["line_operator"] = line_operator
-            if peer_location is None and not opts.urn:
-                raise TypeError("Missing required property 'peer_location'")
             __props__.__dict__["peer_location"] = peer_location
             __props__.__dict__["physical_connection_name"] = physical_connection_name
             __props__.__dict__["port_type"] = port_type
@@ -734,7 +733,7 @@ class PhysicalConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerLocation")
-    def peer_location(self) -> pulumi.Output[str]:
+    def peer_location(self) -> pulumi.Output[Optional[str]]:
         """
         and an on-Premises Data Center Location.
         """

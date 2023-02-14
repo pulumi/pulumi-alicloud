@@ -94,7 +94,7 @@ type PhysicalConnection struct {
 	// * Other: Other Overseas.
 	LineOperator pulumi.StringOutput `pulumi:"lineOperator"`
 	// and an on-Premises Data Center Location.
-	PeerLocation pulumi.StringOutput `pulumi:"peerLocation"`
+	PeerLocation pulumi.StringPtrOutput `pulumi:"peerLocation"`
 	// on Behalf of the Resource Name of the Resources-Attribute Field.
 	PhysicalConnectionName pulumi.StringPtrOutput `pulumi:"physicalConnectionName"`
 	// The Physical Leased Line Access Port Type. Valid value:
@@ -126,9 +126,6 @@ func NewPhysicalConnection(ctx *pulumi.Context,
 	}
 	if args.LineOperator == nil {
 		return nil, errors.New("invalid value for required argument 'LineOperator'")
-	}
-	if args.PeerLocation == nil {
-		return nil, errors.New("invalid value for required argument 'PeerLocation'")
 	}
 	var resource PhysicalConnection
 	err := ctx.RegisterResource("alicloud:expressconnect/physicalConnection:PhysicalConnection", name, args, &resource, opts...)
@@ -249,7 +246,7 @@ type physicalConnectionArgs struct {
 	// * Other: Other Overseas.
 	LineOperator string `pulumi:"lineOperator"`
 	// and an on-Premises Data Center Location.
-	PeerLocation string `pulumi:"peerLocation"`
+	PeerLocation *string `pulumi:"peerLocation"`
 	// on Behalf of the Resource Name of the Resources-Attribute Field.
 	PhysicalConnectionName *string `pulumi:"physicalConnectionName"`
 	// The Physical Leased Line Access Port Type. Valid value:
@@ -288,7 +285,7 @@ type PhysicalConnectionArgs struct {
 	// * Other: Other Overseas.
 	LineOperator pulumi.StringInput
 	// and an on-Premises Data Center Location.
-	PeerLocation pulumi.StringInput
+	PeerLocation pulumi.StringPtrInput
 	// on Behalf of the Resource Name of the Resources-Attribute Field.
 	PhysicalConnectionName pulumi.StringPtrInput
 	// The Physical Leased Line Access Port Type. Valid value:
@@ -427,8 +424,8 @@ func (o PhysicalConnectionOutput) LineOperator() pulumi.StringOutput {
 }
 
 // and an on-Premises Data Center Location.
-func (o PhysicalConnectionOutput) PeerLocation() pulumi.StringOutput {
-	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringOutput { return v.PeerLocation }).(pulumi.StringOutput)
+func (o PhysicalConnectionOutput) PeerLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhysicalConnection) pulumi.StringPtrOutput { return v.PeerLocation }).(pulumi.StringPtrOutput)
 }
 
 // on Behalf of the Resource Name of the Resources-Attribute Field.

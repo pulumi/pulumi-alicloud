@@ -161,6 +161,217 @@ func (o GetConsumerChannelsChannelArrayOutput) Index(i pulumi.IntInput) GetConsu
 	}).(GetConsumerChannelsChannelOutput)
 }
 
+type GetInstancesInstance struct {
+	// Instance creation time
+	CreateTime string `pulumi:"createTime"`
+	// The target database engine type.
+	DestinationEndpointEngineName string `pulumi:"destinationEndpointEngineName"`
+	// The destination instance region.
+	DestinationRegion string `pulumi:"destinationRegion"`
+	// The ID of the subscription instance.
+	DtsInstanceId string `pulumi:"dtsInstanceId"`
+	// The ID of the instance.
+	Id string `pulumi:"id"`
+	// The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
+	InstanceClass string `pulumi:"instanceClass"`
+	InstanceName  string `pulumi:"instanceName"`
+	// The payment type of the resource.
+	PaymentType string `pulumi:"paymentType"`
+	// Resource Group ID
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Source instance database engine type.
+	SourceEndpointEngineName string `pulumi:"sourceEndpointEngineName"`
+	// The source instance region.
+	SourceRegion string `pulumi:"sourceRegion"`
+	// Instance status.
+	Status string `pulumi:"status"`
+	// The tag value corresponding to the tag key.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
+	Type string `pulumi:"type"`
+}
+
+// GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceInput` via:
+//
+//	GetInstancesInstanceArgs{...}
+type GetInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceOutput() GetInstancesInstanceOutput
+	ToGetInstancesInstanceOutputWithContext(context.Context) GetInstancesInstanceOutput
+}
+
+type GetInstancesInstanceArgs struct {
+	// Instance creation time
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The target database engine type.
+	DestinationEndpointEngineName pulumi.StringInput `pulumi:"destinationEndpointEngineName"`
+	// The destination instance region.
+	DestinationRegion pulumi.StringInput `pulumi:"destinationRegion"`
+	// The ID of the subscription instance.
+	DtsInstanceId pulumi.StringInput `pulumi:"dtsInstanceId"`
+	// The ID of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
+	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
+	InstanceName  pulumi.StringInput `pulumi:"instanceName"`
+	// The payment type of the resource.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// Resource Group ID
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Source instance database engine type.
+	SourceEndpointEngineName pulumi.StringInput `pulumi:"sourceEndpointEngineName"`
+	// The source instance region.
+	SourceRegion pulumi.StringInput `pulumi:"sourceRegion"`
+	// Instance status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The tag value corresponding to the tag key.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return i.ToGetInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+// GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
+//
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+type GetInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput
+	ToGetInstancesInstanceArrayOutputWithContext(context.Context) GetInstancesInstanceArrayOutput
+}
+
+type GetInstancesInstanceArray []GetInstancesInstanceInput
+
+func (GetInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return i.ToGetInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
+}
+
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return o
+}
+
+// Instance creation time
+func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The target database engine type.
+func (o GetInstancesInstanceOutput) DestinationEndpointEngineName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DestinationEndpointEngineName }).(pulumi.StringOutput)
+}
+
+// The destination instance region.
+func (o GetInstancesInstanceOutput) DestinationRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DestinationRegion }).(pulumi.StringOutput)
+}
+
+// The ID of the subscription instance.
+func (o GetInstancesInstanceOutput) DtsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DtsInstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
+func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
+}
+
+func (o GetInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource.
+func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Resource Group ID
+func (o GetInstancesInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Source instance database engine type.
+func (o GetInstancesInstanceOutput) SourceEndpointEngineName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SourceEndpointEngineName }).(pulumi.StringOutput)
+}
+
+// The source instance region.
+func (o GetInstancesInstanceOutput) SourceRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SourceRegion }).(pulumi.StringOutput)
+}
+
+// Instance status.
+func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag value corresponding to the tag key.
+func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
+func (o GetInstancesInstanceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
+		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
+	}).(GetInstancesInstanceOutput)
+}
+
 type GetMigrationJobsJob struct {
 	// Whether or not to execute DTS supports schema migration, full data migration, or full-data initialization.
 	DataInitialization bool `pulumi:"dataInitialization"`
@@ -1350,6 +1561,8 @@ func (o GetSynchronizationJobsJobArrayOutput) Index(i pulumi.IntInput) GetSynchr
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerChannelsChannelInput)(nil)).Elem(), GetConsumerChannelsChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerChannelsChannelArrayInput)(nil)).Elem(), GetConsumerChannelsChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMigrationJobsJobInput)(nil)).Elem(), GetMigrationJobsJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMigrationJobsJobArrayInput)(nil)).Elem(), GetMigrationJobsJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionJobsJobInput)(nil)).Elem(), GetSubscriptionJobsJobArgs{})
@@ -1360,6 +1573,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSynchronizationJobsJobArrayInput)(nil)).Elem(), GetSynchronizationJobsJobArray{})
 	pulumi.RegisterOutputType(GetConsumerChannelsChannelOutput{})
 	pulumi.RegisterOutputType(GetConsumerChannelsChannelArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetMigrationJobsJobOutput{})
 	pulumi.RegisterOutputType(GetMigrationJobsJobArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionJobsJobOutput{})

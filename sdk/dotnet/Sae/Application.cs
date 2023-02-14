@@ -228,6 +228,12 @@ namespace Pulumi.AliCloud.Sae
         public Output<int?> Memory { get; private set; } = null!;
 
         /// <summary>
+        /// Select the Nacos registry. Valid values: `0`, `1`, `2`.
+        /// </summary>
+        [Output("microRegistration")]
+        public Output<string?> MicroRegistration { get; private set; } = null!;
+
+        /// <summary>
         /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
         /// * `-1`: Initialization value, indicating that percentages are not used.
         /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
@@ -617,6 +623,12 @@ namespace Pulumi.AliCloud.Sae
         public Input<int>? Memory { get; set; }
 
         /// <summary>
+        /// Select the Nacos registry. Valid values: `0`, `1`, `2`.
+        /// </summary>
+        [Input("microRegistration")]
+        public Input<string>? MicroRegistration { get; set; }
+
+        /// <summary>
         /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 
         /// * `-1`: Initialization value, indicating that percentages are not used.
         /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
@@ -987,6 +999,12 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Input("memory")]
         public Input<int>? Memory { get; set; }
+
+        /// <summary>
+        /// Select the Nacos registry. Valid values: `0`, `1`, `2`.
+        /// </summary>
+        [Input("microRegistration")]
+        public Input<string>? MicroRegistration { get; set; }
 
         /// <summary>
         /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows: 

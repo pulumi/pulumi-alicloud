@@ -13,6 +13,7 @@ from .get_server_groups import *
 from .get_zones import *
 from .listener import *
 from .load_balancer import *
+from .load_balancer_security_group_attachment import *
 from .security_policy import *
 from .server_group import *
 from .server_group_server_attachment import *

@@ -21,7 +21,9 @@ class DBClusterLakeVersionArgs:
                  vpc_id: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
-                 enable_default_resource_group: Optional[pulumi.Input[bool]] = None):
+                 db_cluster_description: Optional[pulumi.Input[str]] = None,
+                 enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
+                 security_ips: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DBClusterLakeVersion resource.
         :param pulumi.Input[str] compute_resource: The computing resources of the cluster.
@@ -31,7 +33,11 @@ class DBClusterLakeVersionArgs:
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
+        :param pulumi.Input[str] db_cluster_description: The description of the cluster.
         :param pulumi.Input[bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
+        :param pulumi.Input[str] security_ips: The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+               - IP addresses, such as 10.23.XX.XX.
+               - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
         """
         pulumi.set(__self__, "compute_resource", compute_resource)
         pulumi.set(__self__, "db_cluster_version", db_cluster_version)
@@ -40,8 +46,12 @@ class DBClusterLakeVersionArgs:
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
+        if db_cluster_description is not None:
+            pulumi.set(__self__, "db_cluster_description", db_cluster_description)
         if enable_default_resource_group is not None:
             pulumi.set(__self__, "enable_default_resource_group", enable_default_resource_group)
+        if security_ips is not None:
+            pulumi.set(__self__, "security_ips", security_ips)
 
     @property
     @pulumi.getter(name="computeResource")
@@ -128,6 +138,18 @@ class DBClusterLakeVersionArgs:
         pulumi.set(self, "zone_id", value)
 
     @property
+    @pulumi.getter(name="dbClusterDescription")
+    def db_cluster_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the cluster.
+        """
+        return pulumi.get(self, "db_cluster_description")
+
+    @db_cluster_description.setter
+    def db_cluster_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_cluster_description", value)
+
+    @property
     @pulumi.getter(name="enableDefaultResourceGroup")
     def enable_default_resource_group(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -139,6 +161,20 @@ class DBClusterLakeVersionArgs:
     def enable_default_resource_group(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_default_resource_group", value)
 
+    @property
+    @pulumi.getter(name="securityIps")
+    def security_ips(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+        - IP addresses, such as 10.23.XX.XX.
+        - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        """
+        return pulumi.get(self, "security_ips")
+
+    @security_ips.setter
+    def security_ips(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ips", value)
+
 
 @pulumi.input_type
 class _DBClusterLakeVersionState:
@@ -147,6 +183,7 @@ class _DBClusterLakeVersionState:
                  compute_resource: Optional[pulumi.Input[str]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_version: Optional[pulumi.Input[str]] = None,
                  enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
@@ -158,6 +195,7 @@ class _DBClusterLakeVersionState:
                  payment_type: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_ips: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_resource: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -169,6 +207,7 @@ class _DBClusterLakeVersionState:
         :param pulumi.Input[str] compute_resource: The computing resources of the cluster.
         :param pulumi.Input[str] connection_string: The endpoint of the cluster.
         :param pulumi.Input[str] create_time: The createTime of the cluster.
+        :param pulumi.Input[str] db_cluster_description: The description of the cluster.
         :param pulumi.Input[str] db_cluster_version: The version of the cluster. Value options: `5.0`.
         :param pulumi.Input[bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
         :param pulumi.Input[str] engine: The engine of the database.
@@ -180,6 +219,9 @@ class _DBClusterLakeVersionState:
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo`.
         :param pulumi.Input[str] port: The port that is used to access the cluster.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] security_ips: The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+               - IP addresses, such as 10.23.XX.XX.
+               - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] storage_resource: The storage resources of the cluster.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
@@ -194,6 +236,8 @@ class _DBClusterLakeVersionState:
             pulumi.set(__self__, "connection_string", connection_string)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if db_cluster_description is not None:
+            pulumi.set(__self__, "db_cluster_description", db_cluster_description)
         if db_cluster_version is not None:
             pulumi.set(__self__, "db_cluster_version", db_cluster_version)
         if enable_default_resource_group is not None:
@@ -216,6 +260,8 @@ class _DBClusterLakeVersionState:
             pulumi.set(__self__, "port", port)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_ips is not None:
+            pulumi.set(__self__, "security_ips", security_ips)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if storage_resource is not None:
@@ -274,6 +320,18 @@ class _DBClusterLakeVersionState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="dbClusterDescription")
+    def db_cluster_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the cluster.
+        """
+        return pulumi.get(self, "db_cluster_description")
+
+    @db_cluster_description.setter
+    def db_cluster_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_cluster_description", value)
 
     @property
     @pulumi.getter(name="dbClusterVersion")
@@ -408,6 +466,20 @@ class _DBClusterLakeVersionState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="securityIps")
+    def security_ips(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+        - IP addresses, such as 10.23.XX.XX.
+        - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        """
+        return pulumi.get(self, "security_ips")
+
+    @security_ips.setter
+    def security_ips(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ips", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -474,9 +546,11 @@ class DBClusterLakeVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compute_resource: Optional[pulumi.Input[str]] = None,
+                 db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_version: Optional[pulumi.Input[str]] = None,
                  enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 security_ips: Optional[pulumi.Input[str]] = None,
                  storage_resource: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -522,9 +596,13 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compute_resource: The computing resources of the cluster.
+        :param pulumi.Input[str] db_cluster_description: The description of the cluster.
         :param pulumi.Input[str] db_cluster_version: The version of the cluster. Value options: `5.0`.
         :param pulumi.Input[bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo`.
+        :param pulumi.Input[str] security_ips: The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+               - IP addresses, such as 10.23.XX.XX.
+               - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
         :param pulumi.Input[str] storage_resource: The storage resources of the cluster.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
@@ -589,9 +667,11 @@ class DBClusterLakeVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compute_resource: Optional[pulumi.Input[str]] = None,
+                 db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_version: Optional[pulumi.Input[str]] = None,
                  enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 security_ips: Optional[pulumi.Input[str]] = None,
                  storage_resource: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -608,6 +688,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             if compute_resource is None and not opts.urn:
                 raise TypeError("Missing required property 'compute_resource'")
             __props__.__dict__["compute_resource"] = compute_resource
+            __props__.__dict__["db_cluster_description"] = db_cluster_description
             if db_cluster_version is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_version'")
             __props__.__dict__["db_cluster_version"] = db_cluster_version
@@ -615,6 +696,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
+            __props__.__dict__["security_ips"] = security_ips
             if storage_resource is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_resource'")
             __props__.__dict__["storage_resource"] = storage_resource
@@ -653,6 +735,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             compute_resource: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            db_cluster_description: Optional[pulumi.Input[str]] = None,
             db_cluster_version: Optional[pulumi.Input[str]] = None,
             enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
             engine: Optional[pulumi.Input[str]] = None,
@@ -664,6 +747,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            security_ips: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_resource: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -680,6 +764,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param pulumi.Input[str] compute_resource: The computing resources of the cluster.
         :param pulumi.Input[str] connection_string: The endpoint of the cluster.
         :param pulumi.Input[str] create_time: The createTime of the cluster.
+        :param pulumi.Input[str] db_cluster_description: The description of the cluster.
         :param pulumi.Input[str] db_cluster_version: The version of the cluster. Value options: `5.0`.
         :param pulumi.Input[bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
         :param pulumi.Input[str] engine: The engine of the database.
@@ -691,6 +776,9 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo`.
         :param pulumi.Input[str] port: The port that is used to access the cluster.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] security_ips: The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+               - IP addresses, such as 10.23.XX.XX.
+               - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] storage_resource: The storage resources of the cluster.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
@@ -705,6 +793,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         __props__.__dict__["compute_resource"] = compute_resource
         __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["db_cluster_description"] = db_cluster_description
         __props__.__dict__["db_cluster_version"] = db_cluster_version
         __props__.__dict__["enable_default_resource_group"] = enable_default_resource_group
         __props__.__dict__["engine"] = engine
@@ -716,6 +805,7 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["port"] = port
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["security_ips"] = security_ips
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_resource"] = storage_resource
         __props__.__dict__["vpc_id"] = vpc_id
@@ -754,6 +844,14 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         The createTime of the cluster.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dbClusterDescription")
+    def db_cluster_description(self) -> pulumi.Output[str]:
+        """
+        The description of the cluster.
+        """
+        return pulumi.get(self, "db_cluster_description")
 
     @property
     @pulumi.getter(name="dbClusterVersion")
@@ -842,6 +940,16 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityIps")
+    def security_ips(self) -> pulumi.Output[str]:
+        """
+        The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+        - IP addresses, such as 10.23.XX.XX.
+        - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        """
+        return pulumi.get(self, "security_ips")
 
     @property
     @pulumi.getter

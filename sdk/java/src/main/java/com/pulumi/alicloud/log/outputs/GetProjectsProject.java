@@ -30,6 +30,11 @@ public final class GetProjectsProject {
      */
     private String owner;
     /**
+     * @return The policy of project.
+     * 
+     */
+    private String policy;
+    /**
      * @return The name of the project.
      * 
      */
@@ -75,6 +80,13 @@ public final class GetProjectsProject {
         return this.owner;
     }
     /**
+     * @return The policy of project.
+     * 
+     */
+    public String policy() {
+        return this.policy;
+    }
+    /**
      * @return The name of the project.
      * 
      */
@@ -109,6 +121,7 @@ public final class GetProjectsProject {
         private String id;
         private String lastModifyTime;
         private String owner;
+        private String policy;
         private String projectName;
         private String region;
         private String status;
@@ -119,6 +132,7 @@ public final class GetProjectsProject {
     	      this.id = defaults.id;
     	      this.lastModifyTime = defaults.lastModifyTime;
     	      this.owner = defaults.owner;
+    	      this.policy = defaults.policy;
     	      this.projectName = defaults.projectName;
     	      this.region = defaults.region;
     	      this.status = defaults.status;
@@ -145,6 +159,11 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder policy(String policy) {
+            this.policy = Objects.requireNonNull(policy);
+            return this;
+        }
+        @CustomType.Setter
         public Builder projectName(String projectName) {
             this.projectName = Objects.requireNonNull(projectName);
             return this;
@@ -165,6 +184,7 @@ public final class GetProjectsProject {
             o.id = id;
             o.lastModifyTime = lastModifyTime;
             o.owner = owner;
+            o.policy = policy;
             o.projectName = projectName;
             o.region = region;
             o.status = status;

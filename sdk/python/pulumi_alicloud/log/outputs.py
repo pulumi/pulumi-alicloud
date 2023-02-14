@@ -1300,6 +1300,7 @@ class GetProjectsProjectResult(dict):
                  id: str,
                  last_modify_time: str,
                  owner: str,
+                 policy: str,
                  project_name: str,
                  region: str,
                  status: str):
@@ -1308,6 +1309,7 @@ class GetProjectsProjectResult(dict):
         :param str id: The ID of the project.
         :param str last_modify_time: The last modify time of project.
         :param str owner: The owner of project.
+        :param str policy: The policy of project.
         :param str project_name: The name of the project.
         :param str region: The region of project.
         :param str status: The status of project.
@@ -1316,6 +1318,7 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "last_modify_time", last_modify_time)
         pulumi.set(__self__, "owner", owner)
+        pulumi.set(__self__, "policy", policy)
         pulumi.set(__self__, "project_name", project_name)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "status", status)
@@ -1351,6 +1354,14 @@ class GetProjectsProjectResult(dict):
         The owner of project.
         """
         return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> str:
+        """
+        The policy of project.
+        """
+        return pulumi.get(self, "policy")
 
     @property
     @pulumi.getter(name="projectName")

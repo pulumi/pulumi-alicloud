@@ -10,11 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Gpdb
 {
     /// <summary>
-    /// Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\
-    /// For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
-    /// 
-    /// &gt; **NOTE:**  Available in 1.127.0+
-    /// 
     /// ## Example Usage
     /// ### Create a AnalyticDB for PostgreSQL instance
     /// 

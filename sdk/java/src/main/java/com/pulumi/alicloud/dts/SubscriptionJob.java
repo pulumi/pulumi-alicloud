@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultSubscriptionJob = new SubscriptionJob(&#34;defaultSubscriptionJob&#34;, SubscriptionJobArgs.builder()        
  *             .dtsJobName(name)
- *             .paymentType(&#34;PostPaid&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .sourceEndpointEngineName(&#34;MySQL&#34;)
  *             .sourceEndpointRegion(&#34;cn-hangzhou&#34;)
  *             .sourceEndpointInstanceType(&#34;RDS&#34;)
@@ -429,14 +429,14 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sourceEndpointEngineName", type=String.class, parameters={})
-    private Output</* @Nullable */ String> sourceEndpointEngineName;
+    private Output<String> sourceEndpointEngineName;
 
     /**
      * @return The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
      * 
      */
-    public Output<Optional<String>> sourceEndpointEngineName() {
-        return Codegen.optional(this.sourceEndpointEngineName);
+    public Output<String> sourceEndpointEngineName() {
+        return this.sourceEndpointEngineName;
     }
     /**
      * The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
@@ -457,14 +457,14 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sourceEndpointInstanceType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> sourceEndpointInstanceType;
+    private Output<String> sourceEndpointInstanceType;
 
     /**
      * @return The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
      * 
      */
-    public Output<Optional<String>> sourceEndpointInstanceType() {
-        return Codegen.optional(this.sourceEndpointInstanceType);
+    public Output<String> sourceEndpointInstanceType() {
+        return this.sourceEndpointInstanceType;
     }
     /**
      * The IP of source endpoint.
@@ -541,14 +541,14 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sourceEndpointRegion", type=String.class, parameters={})
-    private Output</* @Nullable */ String> sourceEndpointRegion;
+    private Output<String> sourceEndpointRegion;
 
     /**
      * @return The region of source database.
      * 
      */
-    public Output<Optional<String>> sourceEndpointRegion() {
-        return Codegen.optional(this.sourceEndpointRegion);
+    public Output<String> sourceEndpointRegion() {
+        return this.sourceEndpointRegion;
     }
     /**
      * Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.

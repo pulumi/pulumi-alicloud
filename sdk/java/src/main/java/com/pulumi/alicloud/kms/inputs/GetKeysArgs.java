@@ -39,9 +39,19 @@ public final class GetKeysArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.enableDetails);
     }
 
+    /**
+     * The CMK filter. The filter consists of one or more key-value pairs.
+     * You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<String> filters;
 
+    /**
+     * @return The CMK filter. The filter consists of one or more key-value pairs.
+     * You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
+     * 
+     */
     public Optional<Output<String>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -142,11 +152,25 @@ public final class GetKeysArgs extends com.pulumi.resources.InvokeArgs {
             return enableDetails(Output.of(enableDetails));
         }
 
+        /**
+         * @param filters The CMK filter. The filter consists of one or more key-value pairs.
+         * You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<String> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters The CMK filter. The filter consists of one or more key-value pairs.
+         * You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(String filters) {
             return filters(Output.of(filters));
         }

@@ -91,6 +91,10 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The description of the cluster.
+     */
+    public readonly dbClusterDescription!: pulumi.Output<string>;
+    /**
      * The version of the cluster. Value options: `5.0`.
      */
     public readonly dbClusterVersion!: pulumi.Output<string>;
@@ -135,6 +139,12 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceGroupId!: pulumi.Output<string>;
     /**
+     * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+     * - IP addresses, such as 10.23.XX.XX.
+     * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+     */
+    public readonly securityIps!: pulumi.Output<string>;
+    /**
      * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -172,6 +182,7 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
             resourceInputs["computeResource"] = state ? state.computeResource : undefined;
             resourceInputs["connectionString"] = state ? state.connectionString : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["dbClusterDescription"] = state ? state.dbClusterDescription : undefined;
             resourceInputs["dbClusterVersion"] = state ? state.dbClusterVersion : undefined;
             resourceInputs["enableDefaultResourceGroup"] = state ? state.enableDefaultResourceGroup : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
@@ -183,6 +194,7 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityIps"] = state ? state.securityIps : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["storageResource"] = state ? state.storageResource : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
@@ -212,9 +224,11 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["computeResource"] = args ? args.computeResource : undefined;
+            resourceInputs["dbClusterDescription"] = args ? args.dbClusterDescription : undefined;
             resourceInputs["dbClusterVersion"] = args ? args.dbClusterVersion : undefined;
             resourceInputs["enableDefaultResourceGroup"] = args ? args.enableDefaultResourceGroup : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["securityIps"] = args ? args.securityIps : undefined;
             resourceInputs["storageResource"] = args ? args.storageResource : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -257,6 +271,10 @@ export interface DBClusterLakeVersionState {
      * The createTime of the cluster.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * The description of the cluster.
+     */
+    dbClusterDescription?: pulumi.Input<string>;
     /**
      * The version of the cluster. Value options: `5.0`.
      */
@@ -302,6 +320,12 @@ export interface DBClusterLakeVersionState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
+     * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+     * - IP addresses, such as 10.23.XX.XX.
+     * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+     */
+    securityIps?: pulumi.Input<string>;
+    /**
      * The status of the resource.
      */
     status?: pulumi.Input<string>;
@@ -332,6 +356,10 @@ export interface DBClusterLakeVersionArgs {
      */
     computeResource: pulumi.Input<string>;
     /**
+     * The description of the cluster.
+     */
+    dbClusterDescription?: pulumi.Input<string>;
+    /**
      * The version of the cluster. Value options: `5.0`.
      */
     dbClusterVersion: pulumi.Input<string>;
@@ -343,6 +371,12 @@ export interface DBClusterLakeVersionArgs {
      * The payment type of the resource. Valid values are `PayAsYouGo`.
      */
     paymentType: pulumi.Input<string>;
+    /**
+     * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+     * - IP addresses, such as 10.23.XX.XX.
+     * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+     */
+    securityIps?: pulumi.Input<string>;
     /**
      * The storage resources of the cluster.
      */

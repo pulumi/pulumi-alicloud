@@ -144,6 +144,20 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * The description of the cluster.
+     * 
+     */
+    @Export(name="dbClusterDescription", type=String.class, parameters={})
+    private Output<String> dbClusterDescription;
+
+    /**
+     * @return The description of the cluster.
+     * 
+     */
+    public Output<String> dbClusterDescription() {
+        return this.dbClusterDescription;
+    }
+    /**
      * The version of the cluster. Value options: `5.0`.
      * 
      */
@@ -296,6 +310,24 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
+    }
+    /**
+     * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+     * - IP addresses, such as 10.23.XX.XX.
+     * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+     * 
+     */
+    @Export(name="securityIps", type=String.class, parameters={})
+    private Output<String> securityIps;
+
+    /**
+     * @return The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+     * - IP addresses, such as 10.23.XX.XX.
+     * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+     * 
+     */
+    public Output<String> securityIps() {
+        return this.securityIps;
     }
     /**
      * The status of the resource.

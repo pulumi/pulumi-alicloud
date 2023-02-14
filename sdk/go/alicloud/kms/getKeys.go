@@ -53,7 +53,9 @@ type GetKeysArgs struct {
 	// A regex string to filter the results by the KMS key description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	EnableDetails    *bool   `pulumi:"enableDetails"`
-	Filters          *string `pulumi:"filters"`
+	// The CMK filter. The filter consists of one or more key-value pairs.
+	// You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
+	Filters *string `pulumi:"filters"`
 	// A list of KMS key IDs.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -95,7 +97,9 @@ type GetKeysOutputArgs struct {
 	// A regex string to filter the results by the KMS key description.
 	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
 	EnableDetails    pulumi.BoolPtrInput   `pulumi:"enableDetails"`
-	Filters          pulumi.StringPtrInput `pulumi:"filters"`
+	// The CMK filter. The filter consists of one or more key-value pairs.
+	// You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
+	Filters pulumi.StringPtrInput `pulumi:"filters"`
 	// A list of KMS key IDs.
 	Ids        pulumi.StringArrayInput `pulumi:"ids"`
 	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`

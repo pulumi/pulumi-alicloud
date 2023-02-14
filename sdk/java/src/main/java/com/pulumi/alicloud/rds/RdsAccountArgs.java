@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -219,6 +220,21 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     * 
+     */
+    @Import(name="resetPermissionFlag")
+    private @Nullable Output<Boolean> resetPermissionFlag;
+
+    /**
+     * @return Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     * 
+     */
+    public Optional<Output<Boolean>> resetPermissionFlag() {
+        return Optional.ofNullable(this.resetPermissionFlag);
+    }
+
+    /**
      * The attribute has been deprecated from 1.120.0 and using `account_type` instead.
      * 
      * @deprecated
@@ -255,6 +271,7 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         this.kmsEncryptionContext = $.kmsEncryptionContext;
         this.name = $.name;
         this.password = $.password;
+        this.resetPermissionFlag = $.resetPermissionFlag;
         this.type = $.type;
     }
 
@@ -541,6 +558,27 @@ public final class RdsAccountArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead. */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param resetPermissionFlag Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resetPermissionFlag(@Nullable Output<Boolean> resetPermissionFlag) {
+            $.resetPermissionFlag = resetPermissionFlag;
+            return this;
+        }
+
+        /**
+         * @param resetPermissionFlag Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resetPermissionFlag(Boolean resetPermissionFlag) {
+            return resetPermissionFlag(Output.of(resetPermissionFlag));
         }
 
         /**

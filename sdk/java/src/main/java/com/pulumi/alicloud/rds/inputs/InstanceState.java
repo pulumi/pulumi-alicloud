@@ -920,6 +920,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The internal or public endpoint for which the server certificate needs to be created or updated.
+     * 
+     */
+    @Import(name="sslConnectionString")
+    private @Nullable Output<String> sslConnectionString;
+
+    /**
+     * @return The internal or public endpoint for which the server certificate needs to be created or updated.
+     * 
+     */
+    public Optional<Output<String>> sslConnectionString() {
+        return Optional.ofNullable(this.sslConnectionString);
+    }
+
+    /**
      * Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
      * 
      */
@@ -994,14 +1009,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+     * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
      * 
      */
     @Import(name="switchTime")
     private @Nullable Output<String> switchTime;
 
     /**
-     * @return The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+     * @return The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
      * 
      */
     public Optional<Output<String>> switchTime() {
@@ -1028,7 +1043,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+     * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
      * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
      * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -1041,7 +1056,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> targetMinorVersion;
 
     /**
-     * @return The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+     * @return The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
      * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
      * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -1093,7 +1108,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - true: upgrade
      * - false: not to upgrade
      * 
+     * @deprecated
+     * Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
+     * 
      */
+    @Deprecated /* Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead. */
     @Import(name="upgradeDbInstanceKernelVersion")
     private @Nullable Output<Boolean> upgradeDbInstanceKernelVersion;
 
@@ -1102,13 +1121,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - true: upgrade
      * - false: not to upgrade
      * 
+     * @deprecated
+     * Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
+     * 
      */
+    @Deprecated /* Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead. */
     public Optional<Output<Boolean>> upgradeDbInstanceKernelVersion() {
         return Optional.ofNullable(this.upgradeDbInstanceKernelVersion);
     }
 
     /**
-     * The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+     * The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -1118,7 +1141,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> upgradeTime;
 
     /**
-     * @return The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+     * @return The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
      * - Immediate: The minor engine version is immediately updated.
      * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -1285,6 +1308,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.sqlCollectorConfigValue = $.sqlCollectorConfigValue;
         this.sqlCollectorStatus = $.sqlCollectorStatus;
         this.sslAction = $.sslAction;
+        this.sslConnectionString = $.sslConnectionString;
         this.sslStatus = $.sslStatus;
         this.storageAutoScale = $.storageAutoScale;
         this.storageThreshold = $.storageThreshold;
@@ -2581,6 +2605,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param sslConnectionString The internal or public endpoint for which the server certificate needs to be created or updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslConnectionString(@Nullable Output<String> sslConnectionString) {
+            $.sslConnectionString = sslConnectionString;
+            return this;
+        }
+
+        /**
+         * @param sslConnectionString The internal or public endpoint for which the server certificate needs to be created or updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslConnectionString(String sslConnectionString) {
+            return sslConnectionString(Output.of(sslConnectionString));
+        }
+
+        /**
          * @param sslStatus Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
          * 
          * @return builder
@@ -2679,7 +2724,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+         * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
          * 
          * @return builder
          * 
@@ -2690,7 +2735,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+         * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
          * 
          * @return builder
          * 
@@ -2725,7 +2770,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetMinorVersion The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+         * @param targetMinorVersion The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
          * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
          * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
          * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -2742,7 +2787,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetMinorVersion The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
+         * @param targetMinorVersion The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
          * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
          * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
          * - rds: The instance runs RDS Basic or High-availability Edition.
@@ -2810,7 +2855,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
+         * 
          */
+        @Deprecated /* Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead. */
         public Builder upgradeDbInstanceKernelVersion(@Nullable Output<Boolean> upgradeDbInstanceKernelVersion) {
             $.upgradeDbInstanceKernelVersion = upgradeDbInstanceKernelVersion;
             return this;
@@ -2823,13 +2872,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
+         * 
          */
+        @Deprecated /* Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead. */
         public Builder upgradeDbInstanceKernelVersion(Boolean upgradeDbInstanceKernelVersion) {
             return upgradeDbInstanceKernelVersion(Output.of(upgradeDbInstanceKernelVersion));
         }
 
         /**
-         * @param upgradeTime The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+         * @param upgradeTime The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
          * - Immediate: The minor engine version is immediately updated.
          * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
          * - SpecifyTime: The minor engine version is updated at the point in time you specify.
@@ -2843,7 +2896,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradeTime The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
+         * @param upgradeTime The method to update the minor engine version. Default value: Immediate. It is valid only when `target_minor_version` is changed. Valid values:
          * - Immediate: The minor engine version is immediately updated.
          * - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
          * - SpecifyTime: The minor engine version is updated at the point in time you specify.

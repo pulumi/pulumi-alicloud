@@ -8,6 +8,8 @@ import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
 import com.pulumi.alicloud.dcdn.inputs.GetDomainsPlainArgs;
 import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsArgs;
 import com.pulumi.alicloud.dcdn.inputs.GetIpaDomainsPlainArgs;
+import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
+import com.pulumi.alicloud.dcdn.inputs.GetKvAccountPlainArgs;
 import com.pulumi.alicloud.dcdn.inputs.GetServiceArgs;
 import com.pulumi.alicloud.dcdn.inputs.GetServicePlainArgs;
 import com.pulumi.alicloud.dcdn.inputs.GetWafDomainsArgs;
@@ -16,6 +18,7 @@ import com.pulumi.alicloud.dcdn.inputs.GetWafPoliciesArgs;
 import com.pulumi.alicloud.dcdn.inputs.GetWafPoliciesPlainArgs;
 import com.pulumi.alicloud.dcdn.outputs.GetDomainsResult;
 import com.pulumi.alicloud.dcdn.outputs.GetIpaDomainsResult;
+import com.pulumi.alicloud.dcdn.outputs.GetKvAccountResult;
 import com.pulumi.alicloud.dcdn.outputs.GetServiceResult;
 import com.pulumi.alicloud.dcdn.outputs.GetWafDomainsResult;
 import com.pulumi.alicloud.dcdn.outputs.GetWafPoliciesResult;
@@ -379,6 +382,240 @@ public final class DcdnFunctions {
      */
     public static CompletableFuture<GetIpaDomainsResult> getIpaDomainsPlain(GetIpaDomainsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dcdn/getIpaDomains:getIpaDomains", TypeShape.of(GetIpaDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
+     *             .status(&#34;online&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetKvAccountResult> getKvAccount() {
+        return getKvAccount(GetKvAccountArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
+     *             .status(&#34;online&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetKvAccountResult> getKvAccountPlain() {
+        return getKvAccountPlain(GetKvAccountPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
+     *             .status(&#34;online&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetKvAccountResult> getKvAccount(GetKvAccountArgs args) {
+        return getKvAccount(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
+     *             .status(&#34;online&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetKvAccountResult> getKvAccountPlain(GetKvAccountPlainArgs args) {
+        return getKvAccountPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
+     *             .status(&#34;online&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetKvAccountResult> getKvAccount(GetKvAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dcdn/getKvAccount:getKvAccount", TypeShape.of(GetKvAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetKvAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
+     *             .status(&#34;online&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetKvAccountResult> getKvAccountPlain(GetKvAccountPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:dcdn/getKvAccount:getKvAccount", TypeShape.of(GetKvAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Using this data source can open DCDN service automatically. If the service has been opened, it will return opened.

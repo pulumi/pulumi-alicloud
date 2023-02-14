@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:dts/consumerChannel:ConsumerChannel":
 		r = &ConsumerChannel{}
+	case "alicloud:dts/instance:Instance":
+		r = &Instance{}
 	case "alicloud:dts/jobMonitorRule:JobMonitorRule":
 		r = &JobMonitorRule{}
 	case "alicloud:dts/migrationInstance:MigrationInstance":
@@ -51,6 +53,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dts/consumerChannel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dts/instance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

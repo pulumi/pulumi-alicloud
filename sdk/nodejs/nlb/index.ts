@@ -45,6 +45,11 @@ export type LoadBalancer = import("./loadBalancer").LoadBalancer;
 export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
 utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
 
+export { LoadBalancerSecurityGroupAttachmentArgs, LoadBalancerSecurityGroupAttachmentState } from "./loadBalancerSecurityGroupAttachment";
+export type LoadBalancerSecurityGroupAttachment = import("./loadBalancerSecurityGroupAttachment").LoadBalancerSecurityGroupAttachment;
+export const LoadBalancerSecurityGroupAttachment: typeof import("./loadBalancerSecurityGroupAttachment").LoadBalancerSecurityGroupAttachment = null as any;
+utilities.lazyLoad(exports, ["LoadBalancerSecurityGroupAttachment"], () => require("./loadBalancerSecurityGroupAttachment"));
+
 export { SecurityPolicyArgs, SecurityPolicyState } from "./securityPolicy";
 export type SecurityPolicy = import("./securityPolicy").SecurityPolicy;
 export const SecurityPolicy: typeof import("./securityPolicy").SecurityPolicy = null as any;
@@ -69,6 +74,8 @@ const _module = {
                 return new Listener(name, <any>undefined, { urn })
             case "alicloud:nlb/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
+            case "alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment":
+                return new LoadBalancerSecurityGroupAttachment(name, <any>undefined, { urn })
             case "alicloud:nlb/securityPolicy:SecurityPolicy":
                 return new SecurityPolicy(name, <any>undefined, { urn })
             case "alicloud:nlb/serverGroup:ServerGroup":
@@ -82,6 +89,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "nlb/listener", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/loadBalancer", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nlb/loadBalancerSecurityGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/securityPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/serverGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/serverGroupServerAttachment", _module)

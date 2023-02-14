@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Listener{}
 	case "alicloud:nlb/loadBalancer:LoadBalancer":
 		r = &LoadBalancer{}
+	case "alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment":
+		r = &LoadBalancerSecurityGroupAttachment{}
 	case "alicloud:nlb/securityPolicy:SecurityPolicy":
 		r = &SecurityPolicy{}
 	case "alicloud:nlb/serverGroup:ServerGroup":
@@ -52,6 +54,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"nlb/loadBalancer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"nlb/loadBalancerSecurityGroupAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

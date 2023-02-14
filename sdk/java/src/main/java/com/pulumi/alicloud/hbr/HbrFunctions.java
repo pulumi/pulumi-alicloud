@@ -10,6 +10,8 @@ import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsArgs;
 import com.pulumi.alicloud.hbr.inputs.GetEcsBackupClientsPlainArgs;
 import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
 import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansPlainArgs;
+import com.pulumi.alicloud.hbr.inputs.GetHanaBackupClientsArgs;
+import com.pulumi.alicloud.hbr.inputs.GetHanaBackupClientsPlainArgs;
 import com.pulumi.alicloud.hbr.inputs.GetHanaBackupPlansArgs;
 import com.pulumi.alicloud.hbr.inputs.GetHanaBackupPlansPlainArgs;
 import com.pulumi.alicloud.hbr.inputs.GetHanaInstancesArgs;
@@ -37,6 +39,7 @@ import com.pulumi.alicloud.hbr.inputs.GetVaultsPlainArgs;
 import com.pulumi.alicloud.hbr.outputs.GetBackupJobsResult;
 import com.pulumi.alicloud.hbr.outputs.GetEcsBackupClientsResult;
 import com.pulumi.alicloud.hbr.outputs.GetEcsBackupPlansResult;
+import com.pulumi.alicloud.hbr.outputs.GetHanaBackupClientsResult;
 import com.pulumi.alicloud.hbr.outputs.GetHanaBackupPlansResult;
 import com.pulumi.alicloud.hbr.outputs.GetHanaInstancesResult;
 import com.pulumi.alicloud.hbr.outputs.GetNasBackupPlansResult;
@@ -955,6 +958,178 @@ public final class HbrFunctions {
      */
     public static CompletableFuture<GetEcsBackupPlansResult> getEcsBackupPlansPlain(GetEcsBackupPlansPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", TypeShape.of(GetEcsBackupPlansResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Hybrid Backup Recovery (HBR) Hana Backup Clients of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.198.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaBackupClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaBackupClients(GetHanaBackupClientsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .vaultId(&#34;your_vault_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaBackupClientsId1&#34;, ids.applyValue(getHanaBackupClientsResult -&gt; getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetHanaBackupClientsResult> getHanaBackupClients(GetHanaBackupClientsArgs args) {
+        return getHanaBackupClients(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Hybrid Backup Recovery (HBR) Hana Backup Clients of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.198.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaBackupClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaBackupClients(GetHanaBackupClientsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .vaultId(&#34;your_vault_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaBackupClientsId1&#34;, ids.applyValue(getHanaBackupClientsResult -&gt; getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetHanaBackupClientsResult> getHanaBackupClientsPlain(GetHanaBackupClientsPlainArgs args) {
+        return getHanaBackupClientsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Hybrid Backup Recovery (HBR) Hana Backup Clients of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.198.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaBackupClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaBackupClients(GetHanaBackupClientsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .vaultId(&#34;your_vault_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaBackupClientsId1&#34;, ids.applyValue(getHanaBackupClientsResult -&gt; getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetHanaBackupClientsResult> getHanaBackupClients(GetHanaBackupClientsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:hbr/getHanaBackupClients:getHanaBackupClients", TypeShape.of(GetHanaBackupClientsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Hybrid Backup Recovery (HBR) Hana Backup Clients of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in 1.198.0+
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbr.HbrFunctions;
+     * import com.pulumi.alicloud.hbr.inputs.GetHanaBackupClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = HbrFunctions.getHanaBackupClients(GetHanaBackupClientsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .vaultId(&#34;your_vault_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;hbrHanaBackupClientsId1&#34;, ids.applyValue(getHanaBackupClientsResult -&gt; getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetHanaBackupClientsResult> getHanaBackupClientsPlain(GetHanaBackupClientsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:hbr/getHanaBackupClients:getHanaBackupClients", TypeShape.of(GetHanaBackupClientsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.

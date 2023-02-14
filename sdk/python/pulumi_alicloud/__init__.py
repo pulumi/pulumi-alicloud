@@ -1991,6 +1991,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "dcdn/kv",
+  "fqn": "pulumi_alicloud.dcdn",
+  "classes": {
+   "alicloud:dcdn/kv:Kv": "Kv"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dcdn/kvNamespace",
+  "fqn": "pulumi_alicloud.dcdn",
+  "classes": {
+   "alicloud:dcdn/kvNamespace:KvNamespace": "KvNamespace"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "dcdn/wafDomain",
   "fqn": "pulumi_alicloud.dcdn",
   "classes": {
@@ -2339,6 +2355,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.dts",
   "classes": {
    "alicloud:dts/consumerChannel:ConsumerChannel": "ConsumerChannel"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dts/instance",
+  "fqn": "pulumi_alicloud.dts",
+  "classes": {
+   "alicloud:dts/instance:Instance": "Instance"
   }
  },
  {
@@ -3639,6 +3663,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "hbr/hanaBackupClient",
+  "fqn": "pulumi_alicloud.hbr",
+  "classes": {
+   "alicloud:hbr/hanaBackupClient:HanaBackupClient": "HanaBackupClient"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "hbr/hanaBackupPlan",
   "fqn": "pulumi_alicloud.hbr",
   "classes": {
@@ -4239,6 +4271,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "nlb/loadBalancerSecurityGroupAttachment",
+  "fqn": "pulumi_alicloud.nlb",
+  "classes": {
+   "alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment": "LoadBalancerSecurityGroupAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "nlb/securityPolicy",
   "fqn": "pulumi_alicloud.nlb",
   "classes": {
@@ -4795,6 +4835,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.rds",
   "classes": {
    "alicloud:rds/database:Database": "Database"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "rds/ddrInstance",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/ddrInstance:DdrInstance": "DdrInstance"
   }
  },
  {

@@ -90,6 +90,8 @@ type DBClusterLakeVersion struct {
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The createTime of the cluster.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the cluster.
+	DbClusterDescription pulumi.StringOutput `pulumi:"dbClusterDescription"`
 	// The version of the cluster. Value options: `5.0`.
 	DbClusterVersion pulumi.StringOutput `pulumi:"dbClusterVersion"`
 	// Whether to enable default allocation of resources to userDefault resource groups.
@@ -112,6 +114,10 @@ type DBClusterLakeVersion struct {
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+	// - IP addresses, such as 10.23.XX.XX.
+	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+	SecurityIps pulumi.StringOutput `pulumi:"securityIps"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The storage resources of the cluster.
@@ -182,6 +188,8 @@ type dbclusterLakeVersionState struct {
 	ConnectionString *string `pulumi:"connectionString"`
 	// The createTime of the cluster.
 	CreateTime *string `pulumi:"createTime"`
+	// The description of the cluster.
+	DbClusterDescription *string `pulumi:"dbClusterDescription"`
 	// The version of the cluster. Value options: `5.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
 	// Whether to enable default allocation of resources to userDefault resource groups.
@@ -204,6 +212,10 @@ type dbclusterLakeVersionState struct {
 	Port *string `pulumi:"port"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+	// - IP addresses, such as 10.23.XX.XX.
+	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+	SecurityIps *string `pulumi:"securityIps"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The storage resources of the cluster.
@@ -225,6 +237,8 @@ type DBClusterLakeVersionState struct {
 	ConnectionString pulumi.StringPtrInput
 	// The createTime of the cluster.
 	CreateTime pulumi.StringPtrInput
+	// The description of the cluster.
+	DbClusterDescription pulumi.StringPtrInput
 	// The version of the cluster. Value options: `5.0`.
 	DbClusterVersion pulumi.StringPtrInput
 	// Whether to enable default allocation of resources to userDefault resource groups.
@@ -247,6 +261,10 @@ type DBClusterLakeVersionState struct {
 	Port pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+	// - IP addresses, such as 10.23.XX.XX.
+	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+	SecurityIps pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The storage resources of the cluster.
@@ -266,12 +284,18 @@ func (DBClusterLakeVersionState) ElementType() reflect.Type {
 type dbclusterLakeVersionArgs struct {
 	// The computing resources of the cluster.
 	ComputeResource string `pulumi:"computeResource"`
+	// The description of the cluster.
+	DbClusterDescription *string `pulumi:"dbClusterDescription"`
 	// The version of the cluster. Value options: `5.0`.
 	DbClusterVersion string `pulumi:"dbClusterVersion"`
 	// Whether to enable default allocation of resources to userDefault resource groups.
 	EnableDefaultResourceGroup *bool `pulumi:"enableDefaultResourceGroup"`
 	// The payment type of the resource. Valid values are `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
+	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+	// - IP addresses, such as 10.23.XX.XX.
+	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+	SecurityIps *string `pulumi:"securityIps"`
 	// The storage resources of the cluster.
 	StorageResource string `pulumi:"storageResource"`
 	// The vpc ID of the resource.
@@ -286,12 +310,18 @@ type dbclusterLakeVersionArgs struct {
 type DBClusterLakeVersionArgs struct {
 	// The computing resources of the cluster.
 	ComputeResource pulumi.StringInput
+	// The description of the cluster.
+	DbClusterDescription pulumi.StringPtrInput
 	// The version of the cluster. Value options: `5.0`.
 	DbClusterVersion pulumi.StringInput
 	// Whether to enable default allocation of resources to userDefault resource groups.
 	EnableDefaultResourceGroup pulumi.BoolPtrInput
 	// The payment type of the resource. Valid values are `PayAsYouGo`.
 	PaymentType pulumi.StringInput
+	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+	// - IP addresses, such as 10.23.XX.XX.
+	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+	SecurityIps pulumi.StringPtrInput
 	// The storage resources of the cluster.
 	StorageResource pulumi.StringInput
 	// The vpc ID of the resource.
@@ -409,6 +439,11 @@ func (o DBClusterLakeVersionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The description of the cluster.
+func (o DBClusterLakeVersionOutput) DbClusterDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.DbClusterDescription }).(pulumi.StringOutput)
+}
+
 // The version of the cluster. Value options: `5.0`.
 func (o DBClusterLakeVersionOutput) DbClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.DbClusterVersion }).(pulumi.StringOutput)
@@ -462,6 +497,13 @@ func (o DBClusterLakeVersionOutput) Port() pulumi.StringOutput {
 // The ID of the resource group.
 func (o DBClusterLakeVersionOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
+// - IP addresses, such as 10.23.XX.XX.
+// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+func (o DBClusterLakeVersionOutput) SecurityIps() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.SecurityIps }).(pulumi.StringOutput)
 }
 
 // The status of the resource.

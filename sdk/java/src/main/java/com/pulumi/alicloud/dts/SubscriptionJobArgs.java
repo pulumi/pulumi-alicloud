@@ -308,15 +308,15 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
      * The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
      * 
      */
-    @Import(name="sourceEndpointEngineName")
-    private @Nullable Output<String> sourceEndpointEngineName;
+    @Import(name="sourceEndpointEngineName", required=true)
+    private Output<String> sourceEndpointEngineName;
 
     /**
      * @return The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
      * 
      */
-    public Optional<Output<String>> sourceEndpointEngineName() {
-        return Optional.ofNullable(this.sourceEndpointEngineName);
+    public Output<String> sourceEndpointEngineName() {
+        return this.sourceEndpointEngineName;
     }
 
     /**
@@ -338,15 +338,15 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
      * The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
      * 
      */
-    @Import(name="sourceEndpointInstanceType")
-    private @Nullable Output<String> sourceEndpointInstanceType;
+    @Import(name="sourceEndpointInstanceType", required=true)
+    private Output<String> sourceEndpointInstanceType;
 
     /**
      * @return The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
      * 
      */
-    public Optional<Output<String>> sourceEndpointInstanceType() {
-        return Optional.ofNullable(this.sourceEndpointInstanceType);
+    public Output<String> sourceEndpointInstanceType() {
+        return this.sourceEndpointInstanceType;
     }
 
     /**
@@ -428,15 +428,15 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
      * The region of source database.
      * 
      */
-    @Import(name="sourceEndpointRegion")
-    private @Nullable Output<String> sourceEndpointRegion;
+    @Import(name="sourceEndpointRegion", required=true)
+    private Output<String> sourceEndpointRegion;
 
     /**
      * @return The region of source database.
      * 
      */
-    public Optional<Output<String>> sourceEndpointRegion() {
-        return Optional.ofNullable(this.sourceEndpointRegion);
+    public Output<String> sourceEndpointRegion() {
+        return this.sourceEndpointRegion;
     }
 
     /**
@@ -1071,7 +1071,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder sourceEndpointEngineName(@Nullable Output<String> sourceEndpointEngineName) {
+        public Builder sourceEndpointEngineName(Output<String> sourceEndpointEngineName) {
             $.sourceEndpointEngineName = sourceEndpointEngineName;
             return this;
         }
@@ -1113,7 +1113,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder sourceEndpointInstanceType(@Nullable Output<String> sourceEndpointInstanceType) {
+        public Builder sourceEndpointInstanceType(Output<String> sourceEndpointInstanceType) {
             $.sourceEndpointInstanceType = sourceEndpointInstanceType;
             return this;
         }
@@ -1239,7 +1239,7 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder sourceEndpointRegion(@Nullable Output<String> sourceEndpointRegion) {
+        public Builder sourceEndpointRegion(Output<String> sourceEndpointRegion) {
             $.sourceEndpointRegion = sourceEndpointRegion;
             return this;
         }
@@ -1487,6 +1487,9 @@ public final class SubscriptionJobArgs extends com.pulumi.resources.ResourceArgs
 
         public SubscriptionJobArgs build() {
             $.paymentType = Objects.requireNonNull($.paymentType, "expected parameter 'paymentType' to be non-null");
+            $.sourceEndpointEngineName = Objects.requireNonNull($.sourceEndpointEngineName, "expected parameter 'sourceEndpointEngineName' to be non-null");
+            $.sourceEndpointInstanceType = Objects.requireNonNull($.sourceEndpointInstanceType, "expected parameter 'sourceEndpointInstanceType' to be non-null");
+            $.sourceEndpointRegion = Objects.requireNonNull($.sourceEndpointRegion, "expected parameter 'sourceEndpointRegion' to be non-null");
             return $;
         }
     }

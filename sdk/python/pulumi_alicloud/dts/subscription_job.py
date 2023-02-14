@@ -15,6 +15,9 @@ __all__ = ['SubscriptionJobArgs', 'SubscriptionJob']
 class SubscriptionJobArgs:
     def __init__(__self__, *,
                  payment_type: pulumi.Input[str],
+                 source_endpoint_engine_name: pulumi.Input[str],
+                 source_endpoint_instance_type: pulumi.Input[str],
+                 source_endpoint_region: pulumi.Input[str],
                  checkpoint: Optional[pulumi.Input[str]] = None,
                  compute_unit: Optional[pulumi.Input[int]] = None,
                  database_count: Optional[pulumi.Input[int]] = None,
@@ -33,15 +36,12 @@ class SubscriptionJobArgs:
                  payment_duration_unit: Optional[pulumi.Input[str]] = None,
                  reserve: Optional[pulumi.Input[str]] = None,
                  source_endpoint_database_name: Optional[pulumi.Input[str]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
                  source_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
-                 source_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
                  source_endpoint_ip: Optional[pulumi.Input[str]] = None,
                  source_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
                  source_endpoint_owner_id: Optional[pulumi.Input[str]] = None,
                  source_endpoint_password: Optional[pulumi.Input[str]] = None,
                  source_endpoint_port: Optional[pulumi.Input[str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[str]] = None,
                  source_endpoint_role: Optional[pulumi.Input[str]] = None,
                  source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -56,6 +56,9 @@ class SubscriptionJobArgs:
         """
         The set of arguments for constructing a SubscriptionJob resource.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
+        :param pulumi.Input[str] source_endpoint_engine_name: The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
+        :param pulumi.Input[str] source_endpoint_instance_type: The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
+        :param pulumi.Input[str] source_endpoint_region: The region of source database.
         :param pulumi.Input[str] checkpoint: Subscription start time in Unix timestamp format.
         :param pulumi.Input[int] compute_unit: [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         :param pulumi.Input[int] database_count: The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
@@ -74,15 +77,12 @@ class SubscriptionJobArgs:
         :param pulumi.Input[str] payment_duration_unit: The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
         :param pulumi.Input[str] reserve: DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter description of the [Reserve parameter](https://help.aliyun.com/document_detail/176470.html).
         :param pulumi.Input[str] source_endpoint_database_name: To subscribe to the name of the database.
-        :param pulumi.Input[str] source_endpoint_engine_name: The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
         :param pulumi.Input[str] source_endpoint_instance_id: The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
-        :param pulumi.Input[str] source_endpoint_instance_type: The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
         :param pulumi.Input[str] source_endpoint_ip: The IP of source endpoint.
         :param pulumi.Input[str] source_endpoint_oracle_sid: The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
         :param pulumi.Input[str] source_endpoint_owner_id: The Alibaba Cloud account ID to which the source instance belongs. This parameter is only available when configuring data subscriptions across Alibaba Cloud accounts and must be passed in.
         :param pulumi.Input[str] source_endpoint_password: The password of source database instance account.
         :param pulumi.Input[str] source_endpoint_port: The port of source database.
-        :param pulumi.Input[str] source_endpoint_region: The region of source database.
         :param pulumi.Input[str] source_endpoint_role: Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
         :param pulumi.Input[str] source_endpoint_user_name: The username of source database instance account.
         :param pulumi.Input[str] status: The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
@@ -96,6 +96,9 @@ class SubscriptionJobArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
+        pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
+        pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
         if checkpoint is not None:
             pulumi.set(__self__, "checkpoint", checkpoint)
         if compute_unit is not None:
@@ -132,12 +135,8 @@ class SubscriptionJobArgs:
             pulumi.set(__self__, "reserve", reserve)
         if source_endpoint_database_name is not None:
             pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
-        if source_endpoint_engine_name is not None:
-            pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
         if source_endpoint_instance_id is not None:
             pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
-        if source_endpoint_instance_type is not None:
-            pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
         if source_endpoint_ip is not None:
             pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
         if source_endpoint_oracle_sid is not None:
@@ -148,8 +147,6 @@ class SubscriptionJobArgs:
             pulumi.set(__self__, "source_endpoint_password", source_endpoint_password)
         if source_endpoint_port is not None:
             pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
-        if source_endpoint_region is not None:
-            pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
         if source_endpoint_role is not None:
             pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
         if source_endpoint_user_name is not None:
@@ -184,6 +181,42 @@ class SubscriptionJobArgs:
     @payment_type.setter
     def payment_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter(name="sourceEndpointEngineName")
+    def source_endpoint_engine_name(self) -> pulumi.Input[str]:
+        """
+        The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
+        """
+        return pulumi.get(self, "source_endpoint_engine_name")
+
+    @source_endpoint_engine_name.setter
+    def source_endpoint_engine_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_endpoint_engine_name", value)
+
+    @property
+    @pulumi.getter(name="sourceEndpointInstanceType")
+    def source_endpoint_instance_type(self) -> pulumi.Input[str]:
+        """
+        The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
+        """
+        return pulumi.get(self, "source_endpoint_instance_type")
+
+    @source_endpoint_instance_type.setter
+    def source_endpoint_instance_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_endpoint_instance_type", value)
+
+    @property
+    @pulumi.getter(name="sourceEndpointRegion")
+    def source_endpoint_region(self) -> pulumi.Input[str]:
+        """
+        The region of source database.
+        """
+        return pulumi.get(self, "source_endpoint_region")
+
+    @source_endpoint_region.setter
+    def source_endpoint_region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_endpoint_region", value)
 
     @property
     @pulumi.getter
@@ -402,18 +435,6 @@ class SubscriptionJobArgs:
         pulumi.set(self, "source_endpoint_database_name", value)
 
     @property
-    @pulumi.getter(name="sourceEndpointEngineName")
-    def source_endpoint_engine_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
-        """
-        return pulumi.get(self, "source_endpoint_engine_name")
-
-    @source_endpoint_engine_name.setter
-    def source_endpoint_engine_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source_endpoint_engine_name", value)
-
-    @property
     @pulumi.getter(name="sourceEndpointInstanceId")
     def source_endpoint_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -424,18 +445,6 @@ class SubscriptionJobArgs:
     @source_endpoint_instance_id.setter
     def source_endpoint_instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_endpoint_instance_id", value)
-
-    @property
-    @pulumi.getter(name="sourceEndpointInstanceType")
-    def source_endpoint_instance_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
-        """
-        return pulumi.get(self, "source_endpoint_instance_type")
-
-    @source_endpoint_instance_type.setter
-    def source_endpoint_instance_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source_endpoint_instance_type", value)
 
     @property
     @pulumi.getter(name="sourceEndpointIp")
@@ -496,18 +505,6 @@ class SubscriptionJobArgs:
     @source_endpoint_port.setter
     def source_endpoint_port(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_endpoint_port", value)
-
-    @property
-    @pulumi.getter(name="sourceEndpointRegion")
-    def source_endpoint_region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region of source database.
-        """
-        return pulumi.get(self, "source_endpoint_region")
-
-    @source_endpoint_region.setter
-    def source_endpoint_region(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source_endpoint_region", value)
 
     @property
     @pulumi.getter(name="sourceEndpointRole")
@@ -1375,7 +1372,7 @@ class SubscriptionJob(pulumi.CustomResource):
         default1_switches = alicloud.vpc.get_switches(vpc_id=data["alicloud_vpcs"]["default"]["ids"])
         default_subscription_job = alicloud.dts.SubscriptionJob("defaultSubscriptionJob",
             dts_job_name=name,
-            payment_type="PostPaid",
+            payment_type="PayAsYouGo",
             source_endpoint_engine_name="MySQL",
             source_endpoint_region="cn-hangzhou",
             source_endpoint_instance_type="RDS",
@@ -1502,7 +1499,7 @@ class SubscriptionJob(pulumi.CustomResource):
         default1_switches = alicloud.vpc.get_switches(vpc_id=data["alicloud_vpcs"]["default"]["ids"])
         default_subscription_job = alicloud.dts.SubscriptionJob("defaultSubscriptionJob",
             dts_job_name=name,
-            payment_type="PostPaid",
+            payment_type="PayAsYouGo",
             source_endpoint_engine_name="MySQL",
             source_endpoint_region="cn-hangzhou",
             source_endpoint_instance_type="RDS",
@@ -1609,14 +1606,20 @@ class SubscriptionJob(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["reserve"] = reserve
             __props__.__dict__["source_endpoint_database_name"] = source_endpoint_database_name
+            if source_endpoint_engine_name is None and not opts.urn:
+                raise TypeError("Missing required property 'source_endpoint_engine_name'")
             __props__.__dict__["source_endpoint_engine_name"] = source_endpoint_engine_name
             __props__.__dict__["source_endpoint_instance_id"] = source_endpoint_instance_id
+            if source_endpoint_instance_type is None and not opts.urn:
+                raise TypeError("Missing required property 'source_endpoint_instance_type'")
             __props__.__dict__["source_endpoint_instance_type"] = source_endpoint_instance_type
             __props__.__dict__["source_endpoint_ip"] = source_endpoint_ip
             __props__.__dict__["source_endpoint_oracle_sid"] = source_endpoint_oracle_sid
             __props__.__dict__["source_endpoint_owner_id"] = source_endpoint_owner_id
             __props__.__dict__["source_endpoint_password"] = source_endpoint_password
             __props__.__dict__["source_endpoint_port"] = source_endpoint_port
+            if source_endpoint_region is None and not opts.urn:
+                raise TypeError("Missing required property 'source_endpoint_region'")
             __props__.__dict__["source_endpoint_region"] = source_endpoint_region
             __props__.__dict__["source_endpoint_role"] = source_endpoint_role
             __props__.__dict__["source_endpoint_user_name"] = source_endpoint_user_name
@@ -1924,7 +1927,7 @@ class SubscriptionJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceEndpointEngineName")
-    def source_endpoint_engine_name(self) -> pulumi.Output[Optional[str]]:
+    def source_endpoint_engine_name(self) -> pulumi.Output[str]:
         """
         The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
         """
@@ -1940,7 +1943,7 @@ class SubscriptionJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceEndpointInstanceType")
-    def source_endpoint_instance_type(self) -> pulumi.Output[Optional[str]]:
+    def source_endpoint_instance_type(self) -> pulumi.Output[str]:
         """
         The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
         """
@@ -1988,7 +1991,7 @@ class SubscriptionJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceEndpointRegion")
-    def source_endpoint_region(self) -> pulumi.Output[Optional[str]]:
+    def source_endpoint_region(self) -> pulumi.Output[str]:
         """
         The region of source database.
         """

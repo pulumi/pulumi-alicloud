@@ -6,6 +6,10 @@ package com.pulumi.alicloud.rds;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.rds.inputs.GetAccountsArgs;
 import com.pulumi.alicloud.rds.inputs.GetAccountsPlainArgs;
+import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesArgs;
+import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesPlainArgs;
+import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
+import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesPlainArgs;
 import com.pulumi.alicloud.rds.inputs.GetCrossRegionBackupsArgs;
 import com.pulumi.alicloud.rds.inputs.GetCrossRegionBackupsPlainArgs;
 import com.pulumi.alicloud.rds.inputs.GetCrossRegionsArgs;
@@ -27,6 +31,8 @@ import com.pulumi.alicloud.rds.inputs.GetRdsParameterGroupsPlainArgs;
 import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
 import com.pulumi.alicloud.rds.inputs.GetZonesPlainArgs;
 import com.pulumi.alicloud.rds.outputs.GetAccountsResult;
+import com.pulumi.alicloud.rds.outputs.GetCharacterSetNamesResult;
+import com.pulumi.alicloud.rds.outputs.GetCollationTimeZonesResult;
 import com.pulumi.alicloud.rds.outputs.GetCrossRegionBackupsResult;
 import com.pulumi.alicloud.rds.outputs.GetCrossRegionsResult;
 import com.pulumi.alicloud.rds.outputs.GetInstanceClassInfosResult;
@@ -215,6 +221,418 @@ public final class RdsFunctions {
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rds/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is the character set supported by querying RDS instances.
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
+     *             .engine(&#34;MySQL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsCharacterSetNames&#34;, names.applyValue(getCharacterSetNamesResult -&gt; getCharacterSetNamesResult.names()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCharacterSetNamesResult> getCharacterSetNames(GetCharacterSetNamesArgs args) {
+        return getCharacterSetNames(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is the character set supported by querying RDS instances.
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
+     *             .engine(&#34;MySQL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsCharacterSetNames&#34;, names.applyValue(getCharacterSetNamesResult -&gt; getCharacterSetNamesResult.names()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCharacterSetNamesResult> getCharacterSetNamesPlain(GetCharacterSetNamesPlainArgs args) {
+        return getCharacterSetNamesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source is the character set supported by querying RDS instances.
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
+     *             .engine(&#34;MySQL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsCharacterSetNames&#34;, names.applyValue(getCharacterSetNamesResult -&gt; getCharacterSetNamesResult.names()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCharacterSetNamesResult> getCharacterSetNames(GetCharacterSetNamesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getCharacterSetNames:getCharacterSetNames", TypeShape.of(GetCharacterSetNamesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source is the character set supported by querying RDS instances.
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
+     *             .engine(&#34;MySQL&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsCharacterSetNames&#34;, names.applyValue(getCharacterSetNamesResult -&gt; getCharacterSetNamesResult.names()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCharacterSetNamesResult> getCharacterSetNamesPlain(GetCharacterSetNamesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:rds/getCharacterSetNames:getCharacterSetNames", TypeShape.of(GetCharacterSetNamesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsCollationTimeZones&#34;, zones.applyValue(getCollationTimeZonesResult -&gt; getCollationTimeZonesResult.collationTimeZones()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCollationTimeZonesResult> getCollationTimeZones() {
+        return getCollationTimeZones(GetCollationTimeZonesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsCollationTimeZones&#34;, zones.applyValue(getCollationTimeZonesResult -&gt; getCollationTimeZonesResult.collationTimeZones()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCollationTimeZonesResult> getCollationTimeZonesPlain() {
+        return getCollationTimeZonesPlain(GetCollationTimeZonesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsCollationTimeZones&#34;, zones.applyValue(getCollationTimeZonesResult -&gt; getCollationTimeZonesResult.collationTimeZones()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCollationTimeZonesResult> getCollationTimeZones(GetCollationTimeZonesArgs args) {
+        return getCollationTimeZones(args, InvokeOptions.Empty);
+    }
+    /**
+     * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsCollationTimeZones&#34;, zones.applyValue(getCollationTimeZonesResult -&gt; getCollationTimeZonesResult.collationTimeZones()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCollationTimeZonesResult> getCollationTimeZonesPlain(GetCollationTimeZonesPlainArgs args) {
+        return getCollationTimeZonesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsCollationTimeZones&#34;, zones.applyValue(getCollationTimeZonesResult -&gt; getCollationTimeZonesResult.collationTimeZones()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCollationTimeZonesResult> getCollationTimeZones(GetCollationTimeZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getCollationTimeZones:getCollationTimeZones", TypeShape.of(GetCollationTimeZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
+     * 
+     * &gt; **NOTE:** Available in v1.198.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
+     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsCollationTimeZones&#34;, zones.applyValue(getCollationTimeZonesResult -&gt; getCollationTimeZonesResult.collationTimeZones()[0]));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCollationTimeZonesResult> getCollationTimeZonesPlain(GetCollationTimeZonesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:rds/getCollationTimeZones:getCollationTimeZones", TypeShape.of(GetCollationTimeZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.

@@ -1712,6 +1712,229 @@ func (o GetEcsBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetEcsBackupP
 	}).(GetEcsBackupPlansPlanOutput)
 }
 
+type GetHanaBackupClientsHanaBackupClient struct {
+	// The alert settings.
+	AlertSetting string `pulumi:"alertSetting"`
+	// The ID of the backup client.
+	ClientId string `pulumi:"clientId"`
+	// The name of the backup client.
+	ClientName string `pulumi:"clientName"`
+	// The type of the backup client.
+	ClientType string `pulumi:"clientType"`
+	// The version number of the backup client.
+	ClientVersion string `pulumi:"clientVersion"`
+	// The ID of the SAP HANA instance.
+	ClusterId string `pulumi:"clusterId"`
+	// The id of the Hana Backup Client. It formats as `<vault_id>:<client_id>`.
+	Id string `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The name of the ECS instance.
+	InstanceName string `pulumi:"instanceName"`
+	// The maximum version number of the backup client.
+	MaxVersion string `pulumi:"maxVersion"`
+	// The network type.
+	NetworkType string `pulumi:"networkType"`
+	// The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
+	Status string `pulumi:"status"`
+	// The status information.
+	StatusMessage string `pulumi:"statusMessage"`
+	// Indicates whether data is transmitted over HTTPS.
+	UseHttps bool `pulumi:"useHttps"`
+	// The ID of the backup vault.
+	VaultId string `pulumi:"vaultId"`
+}
+
+// GetHanaBackupClientsHanaBackupClientInput is an input type that accepts GetHanaBackupClientsHanaBackupClientArgs and GetHanaBackupClientsHanaBackupClientOutput values.
+// You can construct a concrete instance of `GetHanaBackupClientsHanaBackupClientInput` via:
+//
+//	GetHanaBackupClientsHanaBackupClientArgs{...}
+type GetHanaBackupClientsHanaBackupClientInput interface {
+	pulumi.Input
+
+	ToGetHanaBackupClientsHanaBackupClientOutput() GetHanaBackupClientsHanaBackupClientOutput
+	ToGetHanaBackupClientsHanaBackupClientOutputWithContext(context.Context) GetHanaBackupClientsHanaBackupClientOutput
+}
+
+type GetHanaBackupClientsHanaBackupClientArgs struct {
+	// The alert settings.
+	AlertSetting pulumi.StringInput `pulumi:"alertSetting"`
+	// The ID of the backup client.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The name of the backup client.
+	ClientName pulumi.StringInput `pulumi:"clientName"`
+	// The type of the backup client.
+	ClientType pulumi.StringInput `pulumi:"clientType"`
+	// The version number of the backup client.
+	ClientVersion pulumi.StringInput `pulumi:"clientVersion"`
+	// The ID of the SAP HANA instance.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The id of the Hana Backup Client. It formats as `<vault_id>:<client_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The name of the ECS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The maximum version number of the backup client.
+	MaxVersion pulumi.StringInput `pulumi:"maxVersion"`
+	// The network type.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The status information.
+	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
+	// Indicates whether data is transmitted over HTTPS.
+	UseHttps pulumi.BoolInput `pulumi:"useHttps"`
+	// The ID of the backup vault.
+	VaultId pulumi.StringInput `pulumi:"vaultId"`
+}
+
+func (GetHanaBackupClientsHanaBackupClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHanaBackupClientsHanaBackupClient)(nil)).Elem()
+}
+
+func (i GetHanaBackupClientsHanaBackupClientArgs) ToGetHanaBackupClientsHanaBackupClientOutput() GetHanaBackupClientsHanaBackupClientOutput {
+	return i.ToGetHanaBackupClientsHanaBackupClientOutputWithContext(context.Background())
+}
+
+func (i GetHanaBackupClientsHanaBackupClientArgs) ToGetHanaBackupClientsHanaBackupClientOutputWithContext(ctx context.Context) GetHanaBackupClientsHanaBackupClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHanaBackupClientsHanaBackupClientOutput)
+}
+
+// GetHanaBackupClientsHanaBackupClientArrayInput is an input type that accepts GetHanaBackupClientsHanaBackupClientArray and GetHanaBackupClientsHanaBackupClientArrayOutput values.
+// You can construct a concrete instance of `GetHanaBackupClientsHanaBackupClientArrayInput` via:
+//
+//	GetHanaBackupClientsHanaBackupClientArray{ GetHanaBackupClientsHanaBackupClientArgs{...} }
+type GetHanaBackupClientsHanaBackupClientArrayInput interface {
+	pulumi.Input
+
+	ToGetHanaBackupClientsHanaBackupClientArrayOutput() GetHanaBackupClientsHanaBackupClientArrayOutput
+	ToGetHanaBackupClientsHanaBackupClientArrayOutputWithContext(context.Context) GetHanaBackupClientsHanaBackupClientArrayOutput
+}
+
+type GetHanaBackupClientsHanaBackupClientArray []GetHanaBackupClientsHanaBackupClientInput
+
+func (GetHanaBackupClientsHanaBackupClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHanaBackupClientsHanaBackupClient)(nil)).Elem()
+}
+
+func (i GetHanaBackupClientsHanaBackupClientArray) ToGetHanaBackupClientsHanaBackupClientArrayOutput() GetHanaBackupClientsHanaBackupClientArrayOutput {
+	return i.ToGetHanaBackupClientsHanaBackupClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetHanaBackupClientsHanaBackupClientArray) ToGetHanaBackupClientsHanaBackupClientArrayOutputWithContext(ctx context.Context) GetHanaBackupClientsHanaBackupClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHanaBackupClientsHanaBackupClientArrayOutput)
+}
+
+type GetHanaBackupClientsHanaBackupClientOutput struct{ *pulumi.OutputState }
+
+func (GetHanaBackupClientsHanaBackupClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHanaBackupClientsHanaBackupClient)(nil)).Elem()
+}
+
+func (o GetHanaBackupClientsHanaBackupClientOutput) ToGetHanaBackupClientsHanaBackupClientOutput() GetHanaBackupClientsHanaBackupClientOutput {
+	return o
+}
+
+func (o GetHanaBackupClientsHanaBackupClientOutput) ToGetHanaBackupClientsHanaBackupClientOutputWithContext(ctx context.Context) GetHanaBackupClientsHanaBackupClientOutput {
+	return o
+}
+
+// The alert settings.
+func (o GetHanaBackupClientsHanaBackupClientOutput) AlertSetting() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.AlertSetting }).(pulumi.StringOutput)
+}
+
+// The ID of the backup client.
+func (o GetHanaBackupClientsHanaBackupClientOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The name of the backup client.
+func (o GetHanaBackupClientsHanaBackupClientOutput) ClientName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.ClientName }).(pulumi.StringOutput)
+}
+
+// The type of the backup client.
+func (o GetHanaBackupClientsHanaBackupClientOutput) ClientType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.ClientType }).(pulumi.StringOutput)
+}
+
+// The version number of the backup client.
+func (o GetHanaBackupClientsHanaBackupClientOutput) ClientVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.ClientVersion }).(pulumi.StringOutput)
+}
+
+// The ID of the SAP HANA instance.
+func (o GetHanaBackupClientsHanaBackupClientOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The id of the Hana Backup Client. It formats as `<vault_id>:<client_id>`.
+func (o GetHanaBackupClientsHanaBackupClientOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetHanaBackupClientsHanaBackupClientOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the ECS instance.
+func (o GetHanaBackupClientsHanaBackupClientOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The maximum version number of the backup client.
+func (o GetHanaBackupClientsHanaBackupClientOutput) MaxVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.MaxVersion }).(pulumi.StringOutput)
+}
+
+// The network type.
+func (o GetHanaBackupClientsHanaBackupClientOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
+func (o GetHanaBackupClientsHanaBackupClientOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The status information.
+func (o GetHanaBackupClientsHanaBackupClientOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Indicates whether data is transmitted over HTTPS.
+func (o GetHanaBackupClientsHanaBackupClientOutput) UseHttps() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) bool { return v.UseHttps }).(pulumi.BoolOutput)
+}
+
+// The ID of the backup vault.
+func (o GetHanaBackupClientsHanaBackupClientOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHanaBackupClientsHanaBackupClient) string { return v.VaultId }).(pulumi.StringOutput)
+}
+
+type GetHanaBackupClientsHanaBackupClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHanaBackupClientsHanaBackupClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHanaBackupClientsHanaBackupClient)(nil)).Elem()
+}
+
+func (o GetHanaBackupClientsHanaBackupClientArrayOutput) ToGetHanaBackupClientsHanaBackupClientArrayOutput() GetHanaBackupClientsHanaBackupClientArrayOutput {
+	return o
+}
+
+func (o GetHanaBackupClientsHanaBackupClientArrayOutput) ToGetHanaBackupClientsHanaBackupClientArrayOutputWithContext(ctx context.Context) GetHanaBackupClientsHanaBackupClientArrayOutput {
+	return o
+}
+
+func (o GetHanaBackupClientsHanaBackupClientArrayOutput) Index(i pulumi.IntInput) GetHanaBackupClientsHanaBackupClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHanaBackupClientsHanaBackupClient {
+		return vs[0].([]GetHanaBackupClientsHanaBackupClient)[vs[1].(int)]
+	}).(GetHanaBackupClientsHanaBackupClientOutput)
+}
+
 type GetHanaBackupPlansPlan struct {
 	// The backup prefix.
 	BackupPrefix string `pulumi:"backupPrefix"`
@@ -4649,6 +4872,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsBackupClientsClientArrayInput)(nil)).Elem(), GetEcsBackupClientsClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsBackupPlansPlanInput)(nil)).Elem(), GetEcsBackupPlansPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEcsBackupPlansPlanArrayInput)(nil)).Elem(), GetEcsBackupPlansPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHanaBackupClientsHanaBackupClientInput)(nil)).Elem(), GetHanaBackupClientsHanaBackupClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHanaBackupClientsHanaBackupClientArrayInput)(nil)).Elem(), GetHanaBackupClientsHanaBackupClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHanaBackupPlansPlanInput)(nil)).Elem(), GetHanaBackupPlansPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHanaBackupPlansPlanArrayInput)(nil)).Elem(), GetHanaBackupPlansPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHanaInstancesInstanceInput)(nil)).Elem(), GetHanaInstancesInstanceArgs{})
@@ -4695,6 +4920,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEcsBackupClientsClientArrayOutput{})
 	pulumi.RegisterOutputType(GetEcsBackupPlansPlanOutput{})
 	pulumi.RegisterOutputType(GetEcsBackupPlansPlanArrayOutput{})
+	pulumi.RegisterOutputType(GetHanaBackupClientsHanaBackupClientOutput{})
+	pulumi.RegisterOutputType(GetHanaBackupClientsHanaBackupClientArrayOutput{})
 	pulumi.RegisterOutputType(GetHanaBackupPlansPlanOutput{})
 	pulumi.RegisterOutputType(GetHanaBackupPlansPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetHanaInstancesInstanceOutput{})

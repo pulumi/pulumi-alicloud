@@ -7168,6 +7168,79 @@ export namespace rdc {
 }
 
 export namespace rds {
+    export interface DdrInstanceParameter {
+        name: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface DdrInstancePgHbaConf {
+        /**
+         * The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+         */
+        address: pulumi.Input<string>;
+        /**
+         * The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+         */
+        database: pulumi.Input<string>;
+        /**
+         * The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+         */
+        mask?: pulumi.Input<string>;
+        /**
+         * The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+         */
+        method: pulumi.Input<string>;
+        /**
+         * Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+         */
+        option?: pulumi.Input<string>;
+        /**
+         * The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+         */
+        priorityId: pulumi.Input<number>;
+        /**
+         * The type of connection to the instance. Valid values:
+         * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+         * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+         * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         */
+        type: pulumi.Input<string>;
+        /**
+         * The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+         */
+        user: pulumi.Input<string>;
+    }
+
+    export interface GetCollationTimeZonesCollationTimeZone {
+        /**
+         * The code of the instance type.
+         */
+        description?: string;
+        /**
+         * The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+         */
+        standardTimeOffset?: string;
+        /**
+         * The time zone that is available for use in ApsaraDB RDS.
+         */
+        timeZone?: string;
+    }
+
+    export interface GetCollationTimeZonesCollationTimeZoneArgs {
+        /**
+         * The code of the instance type.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+         */
+        standardTimeOffset?: pulumi.Input<string>;
+        /**
+         * The time zone that is available for use in ApsaraDB RDS.
+         */
+        timeZone?: pulumi.Input<string>;
+    }
+
     export interface GetInstanceClassInfosInfo {
         /**
          * The code of the instance type.

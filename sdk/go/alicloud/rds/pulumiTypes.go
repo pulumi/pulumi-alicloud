@@ -10,6 +10,275 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DdrInstanceParameter struct {
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// DdrInstanceParameterInput is an input type that accepts DdrInstanceParameterArgs and DdrInstanceParameterOutput values.
+// You can construct a concrete instance of `DdrInstanceParameterInput` via:
+//
+//	DdrInstanceParameterArgs{...}
+type DdrInstanceParameterInput interface {
+	pulumi.Input
+
+	ToDdrInstanceParameterOutput() DdrInstanceParameterOutput
+	ToDdrInstanceParameterOutputWithContext(context.Context) DdrInstanceParameterOutput
+}
+
+type DdrInstanceParameterArgs struct {
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (DdrInstanceParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdrInstanceParameter)(nil)).Elem()
+}
+
+func (i DdrInstanceParameterArgs) ToDdrInstanceParameterOutput() DdrInstanceParameterOutput {
+	return i.ToDdrInstanceParameterOutputWithContext(context.Background())
+}
+
+func (i DdrInstanceParameterArgs) ToDdrInstanceParameterOutputWithContext(ctx context.Context) DdrInstanceParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdrInstanceParameterOutput)
+}
+
+// DdrInstanceParameterArrayInput is an input type that accepts DdrInstanceParameterArray and DdrInstanceParameterArrayOutput values.
+// You can construct a concrete instance of `DdrInstanceParameterArrayInput` via:
+//
+//	DdrInstanceParameterArray{ DdrInstanceParameterArgs{...} }
+type DdrInstanceParameterArrayInput interface {
+	pulumi.Input
+
+	ToDdrInstanceParameterArrayOutput() DdrInstanceParameterArrayOutput
+	ToDdrInstanceParameterArrayOutputWithContext(context.Context) DdrInstanceParameterArrayOutput
+}
+
+type DdrInstanceParameterArray []DdrInstanceParameterInput
+
+func (DdrInstanceParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DdrInstanceParameter)(nil)).Elem()
+}
+
+func (i DdrInstanceParameterArray) ToDdrInstanceParameterArrayOutput() DdrInstanceParameterArrayOutput {
+	return i.ToDdrInstanceParameterArrayOutputWithContext(context.Background())
+}
+
+func (i DdrInstanceParameterArray) ToDdrInstanceParameterArrayOutputWithContext(ctx context.Context) DdrInstanceParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdrInstanceParameterArrayOutput)
+}
+
+type DdrInstanceParameterOutput struct{ *pulumi.OutputState }
+
+func (DdrInstanceParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdrInstanceParameter)(nil)).Elem()
+}
+
+func (o DdrInstanceParameterOutput) ToDdrInstanceParameterOutput() DdrInstanceParameterOutput {
+	return o
+}
+
+func (o DdrInstanceParameterOutput) ToDdrInstanceParameterOutputWithContext(ctx context.Context) DdrInstanceParameterOutput {
+	return o
+}
+
+func (o DdrInstanceParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DdrInstanceParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o DdrInstanceParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DdrInstanceParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type DdrInstanceParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (DdrInstanceParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DdrInstanceParameter)(nil)).Elem()
+}
+
+func (o DdrInstanceParameterArrayOutput) ToDdrInstanceParameterArrayOutput() DdrInstanceParameterArrayOutput {
+	return o
+}
+
+func (o DdrInstanceParameterArrayOutput) ToDdrInstanceParameterArrayOutputWithContext(ctx context.Context) DdrInstanceParameterArrayOutput {
+	return o
+}
+
+func (o DdrInstanceParameterArrayOutput) Index(i pulumi.IntInput) DdrInstanceParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DdrInstanceParameter {
+		return vs[0].([]DdrInstanceParameter)[vs[1].(int)]
+	}).(DdrInstanceParameterOutput)
+}
+
+type DdrInstancePgHbaConf struct {
+	// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+	Address string `pulumi:"address"`
+	// The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+	Database string `pulumi:"database"`
+	// The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+	Mask *string `pulumi:"mask"`
+	// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+	Method string `pulumi:"method"`
+	// Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+	Option *string `pulumi:"option"`
+	// The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+	PriorityId int `pulumi:"priorityId"`
+	// The type of connection to the instance. Valid values:
+	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	Type string `pulumi:"type"`
+	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+	User string `pulumi:"user"`
+}
+
+// DdrInstancePgHbaConfInput is an input type that accepts DdrInstancePgHbaConfArgs and DdrInstancePgHbaConfOutput values.
+// You can construct a concrete instance of `DdrInstancePgHbaConfInput` via:
+//
+//	DdrInstancePgHbaConfArgs{...}
+type DdrInstancePgHbaConfInput interface {
+	pulumi.Input
+
+	ToDdrInstancePgHbaConfOutput() DdrInstancePgHbaConfOutput
+	ToDdrInstancePgHbaConfOutputWithContext(context.Context) DdrInstancePgHbaConfOutput
+}
+
+type DdrInstancePgHbaConfArgs struct {
+	// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+	Database pulumi.StringInput `pulumi:"database"`
+	// The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+	Mask pulumi.StringPtrInput `pulumi:"mask"`
+	// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+	Method pulumi.StringInput `pulumi:"method"`
+	// Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+	Option pulumi.StringPtrInput `pulumi:"option"`
+	// The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+	PriorityId pulumi.IntInput `pulumi:"priorityId"`
+	// The type of connection to the instance. Valid values:
+	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+	User pulumi.StringInput `pulumi:"user"`
+}
+
+func (DdrInstancePgHbaConfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdrInstancePgHbaConf)(nil)).Elem()
+}
+
+func (i DdrInstancePgHbaConfArgs) ToDdrInstancePgHbaConfOutput() DdrInstancePgHbaConfOutput {
+	return i.ToDdrInstancePgHbaConfOutputWithContext(context.Background())
+}
+
+func (i DdrInstancePgHbaConfArgs) ToDdrInstancePgHbaConfOutputWithContext(ctx context.Context) DdrInstancePgHbaConfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdrInstancePgHbaConfOutput)
+}
+
+// DdrInstancePgHbaConfArrayInput is an input type that accepts DdrInstancePgHbaConfArray and DdrInstancePgHbaConfArrayOutput values.
+// You can construct a concrete instance of `DdrInstancePgHbaConfArrayInput` via:
+//
+//	DdrInstancePgHbaConfArray{ DdrInstancePgHbaConfArgs{...} }
+type DdrInstancePgHbaConfArrayInput interface {
+	pulumi.Input
+
+	ToDdrInstancePgHbaConfArrayOutput() DdrInstancePgHbaConfArrayOutput
+	ToDdrInstancePgHbaConfArrayOutputWithContext(context.Context) DdrInstancePgHbaConfArrayOutput
+}
+
+type DdrInstancePgHbaConfArray []DdrInstancePgHbaConfInput
+
+func (DdrInstancePgHbaConfArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DdrInstancePgHbaConf)(nil)).Elem()
+}
+
+func (i DdrInstancePgHbaConfArray) ToDdrInstancePgHbaConfArrayOutput() DdrInstancePgHbaConfArrayOutput {
+	return i.ToDdrInstancePgHbaConfArrayOutputWithContext(context.Background())
+}
+
+func (i DdrInstancePgHbaConfArray) ToDdrInstancePgHbaConfArrayOutputWithContext(ctx context.Context) DdrInstancePgHbaConfArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DdrInstancePgHbaConfArrayOutput)
+}
+
+type DdrInstancePgHbaConfOutput struct{ *pulumi.OutputState }
+
+func (DdrInstancePgHbaConfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DdrInstancePgHbaConf)(nil)).Elem()
+}
+
+func (o DdrInstancePgHbaConfOutput) ToDdrInstancePgHbaConfOutput() DdrInstancePgHbaConfOutput {
+	return o
+}
+
+func (o DdrInstancePgHbaConfOutput) ToDdrInstancePgHbaConfOutputWithContext(ctx context.Context) DdrInstancePgHbaConfOutput {
+	return o
+}
+
+// The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+func (o DdrInstancePgHbaConfOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v DdrInstancePgHbaConf) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
+func (o DdrInstancePgHbaConfOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v DdrInstancePgHbaConf) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
+func (o DdrInstancePgHbaConfOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DdrInstancePgHbaConf) *string { return v.Mask }).(pulumi.StringPtrOutput)
+}
+
+// The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
+func (o DdrInstancePgHbaConfOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v DdrInstancePgHbaConf) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
+func (o DdrInstancePgHbaConfOutput) Option() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DdrInstancePgHbaConf) *string { return v.Option }).(pulumi.StringPtrOutput)
+}
+
+// The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
+func (o DdrInstancePgHbaConfOutput) PriorityId() pulumi.IntOutput {
+	return o.ApplyT(func(v DdrInstancePgHbaConf) int { return v.PriorityId }).(pulumi.IntOutput)
+}
+
+// The type of connection to the instance. Valid values:
+// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
+// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
+// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+func (o DdrInstancePgHbaConfOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DdrInstancePgHbaConf) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
+func (o DdrInstancePgHbaConfOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v DdrInstancePgHbaConf) string { return v.User }).(pulumi.StringOutput)
+}
+
+type DdrInstancePgHbaConfArrayOutput struct{ *pulumi.OutputState }
+
+func (DdrInstancePgHbaConfArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DdrInstancePgHbaConf)(nil)).Elem()
+}
+
+func (o DdrInstancePgHbaConfArrayOutput) ToDdrInstancePgHbaConfArrayOutput() DdrInstancePgHbaConfArrayOutput {
+	return o
+}
+
+func (o DdrInstancePgHbaConfArrayOutput) ToDdrInstancePgHbaConfArrayOutputWithContext(ctx context.Context) DdrInstancePgHbaConfArrayOutput {
+	return o
+}
+
+func (o DdrInstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) DdrInstancePgHbaConfOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DdrInstancePgHbaConf {
+		return vs[0].([]DdrInstancePgHbaConf)[vs[1].(int)]
+	}).(DdrInstancePgHbaConfOutput)
+}
+
 type InstanceBabelfishConfig struct {
 	// specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
 	BabelfishEnabled string `pulumi:"babelfishEnabled"`
@@ -1514,6 +1783,121 @@ func (o GetAccountsAccountDatabasePrivilegeArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccountDatabasePrivilege {
 		return vs[0].([]GetAccountsAccountDatabasePrivilege)[vs[1].(int)]
 	}).(GetAccountsAccountDatabasePrivilegeOutput)
+}
+
+type GetCollationTimeZonesCollationTimeZone struct {
+	// The code of the instance type.
+	Description *string `pulumi:"description"`
+	// The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+	StandardTimeOffset *string `pulumi:"standardTimeOffset"`
+	// The time zone that is available for use in ApsaraDB RDS.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// GetCollationTimeZonesCollationTimeZoneInput is an input type that accepts GetCollationTimeZonesCollationTimeZoneArgs and GetCollationTimeZonesCollationTimeZoneOutput values.
+// You can construct a concrete instance of `GetCollationTimeZonesCollationTimeZoneInput` via:
+//
+//	GetCollationTimeZonesCollationTimeZoneArgs{...}
+type GetCollationTimeZonesCollationTimeZoneInput interface {
+	pulumi.Input
+
+	ToGetCollationTimeZonesCollationTimeZoneOutput() GetCollationTimeZonesCollationTimeZoneOutput
+	ToGetCollationTimeZonesCollationTimeZoneOutputWithContext(context.Context) GetCollationTimeZonesCollationTimeZoneOutput
+}
+
+type GetCollationTimeZonesCollationTimeZoneArgs struct {
+	// The code of the instance type.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+	StandardTimeOffset pulumi.StringPtrInput `pulumi:"standardTimeOffset"`
+	// The time zone that is available for use in ApsaraDB RDS.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (GetCollationTimeZonesCollationTimeZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCollationTimeZonesCollationTimeZone)(nil)).Elem()
+}
+
+func (i GetCollationTimeZonesCollationTimeZoneArgs) ToGetCollationTimeZonesCollationTimeZoneOutput() GetCollationTimeZonesCollationTimeZoneOutput {
+	return i.ToGetCollationTimeZonesCollationTimeZoneOutputWithContext(context.Background())
+}
+
+func (i GetCollationTimeZonesCollationTimeZoneArgs) ToGetCollationTimeZonesCollationTimeZoneOutputWithContext(ctx context.Context) GetCollationTimeZonesCollationTimeZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCollationTimeZonesCollationTimeZoneOutput)
+}
+
+// GetCollationTimeZonesCollationTimeZoneArrayInput is an input type that accepts GetCollationTimeZonesCollationTimeZoneArray and GetCollationTimeZonesCollationTimeZoneArrayOutput values.
+// You can construct a concrete instance of `GetCollationTimeZonesCollationTimeZoneArrayInput` via:
+//
+//	GetCollationTimeZonesCollationTimeZoneArray{ GetCollationTimeZonesCollationTimeZoneArgs{...} }
+type GetCollationTimeZonesCollationTimeZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetCollationTimeZonesCollationTimeZoneArrayOutput() GetCollationTimeZonesCollationTimeZoneArrayOutput
+	ToGetCollationTimeZonesCollationTimeZoneArrayOutputWithContext(context.Context) GetCollationTimeZonesCollationTimeZoneArrayOutput
+}
+
+type GetCollationTimeZonesCollationTimeZoneArray []GetCollationTimeZonesCollationTimeZoneInput
+
+func (GetCollationTimeZonesCollationTimeZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCollationTimeZonesCollationTimeZone)(nil)).Elem()
+}
+
+func (i GetCollationTimeZonesCollationTimeZoneArray) ToGetCollationTimeZonesCollationTimeZoneArrayOutput() GetCollationTimeZonesCollationTimeZoneArrayOutput {
+	return i.ToGetCollationTimeZonesCollationTimeZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetCollationTimeZonesCollationTimeZoneArray) ToGetCollationTimeZonesCollationTimeZoneArrayOutputWithContext(ctx context.Context) GetCollationTimeZonesCollationTimeZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCollationTimeZonesCollationTimeZoneArrayOutput)
+}
+
+type GetCollationTimeZonesCollationTimeZoneOutput struct{ *pulumi.OutputState }
+
+func (GetCollationTimeZonesCollationTimeZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCollationTimeZonesCollationTimeZone)(nil)).Elem()
+}
+
+func (o GetCollationTimeZonesCollationTimeZoneOutput) ToGetCollationTimeZonesCollationTimeZoneOutput() GetCollationTimeZonesCollationTimeZoneOutput {
+	return o
+}
+
+func (o GetCollationTimeZonesCollationTimeZoneOutput) ToGetCollationTimeZonesCollationTimeZoneOutputWithContext(ctx context.Context) GetCollationTimeZonesCollationTimeZoneOutput {
+	return o
+}
+
+// The code of the instance type.
+func (o GetCollationTimeZonesCollationTimeZoneOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCollationTimeZonesCollationTimeZone) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+func (o GetCollationTimeZonesCollationTimeZoneOutput) StandardTimeOffset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCollationTimeZonesCollationTimeZone) *string { return v.StandardTimeOffset }).(pulumi.StringPtrOutput)
+}
+
+// The time zone that is available for use in ApsaraDB RDS.
+func (o GetCollationTimeZonesCollationTimeZoneOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCollationTimeZonesCollationTimeZone) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type GetCollationTimeZonesCollationTimeZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCollationTimeZonesCollationTimeZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCollationTimeZonesCollationTimeZone)(nil)).Elem()
+}
+
+func (o GetCollationTimeZonesCollationTimeZoneArrayOutput) ToGetCollationTimeZonesCollationTimeZoneArrayOutput() GetCollationTimeZonesCollationTimeZoneArrayOutput {
+	return o
+}
+
+func (o GetCollationTimeZonesCollationTimeZoneArrayOutput) ToGetCollationTimeZonesCollationTimeZoneArrayOutputWithContext(ctx context.Context) GetCollationTimeZonesCollationTimeZoneArrayOutput {
+	return o
+}
+
+func (o GetCollationTimeZonesCollationTimeZoneArrayOutput) Index(i pulumi.IntInput) GetCollationTimeZonesCollationTimeZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCollationTimeZonesCollationTimeZone {
+		return vs[0].([]GetCollationTimeZonesCollationTimeZone)[vs[1].(int)]
+	}).(GetCollationTimeZonesCollationTimeZoneOutput)
 }
 
 type GetCrossRegionBackupsBackup struct {
@@ -4252,6 +4636,10 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DdrInstanceParameterInput)(nil)).Elem(), DdrInstanceParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DdrInstanceParameterArrayInput)(nil)).Elem(), DdrInstanceParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DdrInstancePgHbaConfInput)(nil)).Elem(), DdrInstancePgHbaConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DdrInstancePgHbaConfArrayInput)(nil)).Elem(), DdrInstancePgHbaConfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBabelfishConfigInput)(nil)).Elem(), InstanceBabelfishConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBabelfishConfigArrayInput)(nil)).Elem(), InstanceBabelfishConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterInput)(nil)).Elem(), InstanceParameterArgs{})
@@ -4276,6 +4664,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountDatabasePrivilegeInput)(nil)).Elem(), GetAccountsAccountDatabasePrivilegeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountDatabasePrivilegeArrayInput)(nil)).Elem(), GetAccountsAccountDatabasePrivilegeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCollationTimeZonesCollationTimeZoneInput)(nil)).Elem(), GetCollationTimeZonesCollationTimeZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCollationTimeZonesCollationTimeZoneArrayInput)(nil)).Elem(), GetCollationTimeZonesCollationTimeZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCrossRegionBackupsBackupInput)(nil)).Elem(), GetCrossRegionBackupsBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCrossRegionBackupsBackupArrayInput)(nil)).Elem(), GetCrossRegionBackupsBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCrossRegionsRegionInput)(nil)).Elem(), GetCrossRegionsRegionArgs{})
@@ -4305,6 +4695,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsParameterGroupsGroupParamDetailArrayInput)(nil)).Elem(), GetRdsParameterGroupsGroupParamDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(DdrInstanceParameterOutput{})
+	pulumi.RegisterOutputType(DdrInstanceParameterArrayOutput{})
+	pulumi.RegisterOutputType(DdrInstancePgHbaConfOutput{})
+	pulumi.RegisterOutputType(DdrInstancePgHbaConfArrayOutput{})
 	pulumi.RegisterOutputType(InstanceBabelfishConfigOutput{})
 	pulumi.RegisterOutputType(InstanceBabelfishConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceParameterOutput{})
@@ -4329,6 +4723,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountDatabasePrivilegeOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountDatabasePrivilegeArrayOutput{})
+	pulumi.RegisterOutputType(GetCollationTimeZonesCollationTimeZoneOutput{})
+	pulumi.RegisterOutputType(GetCollationTimeZonesCollationTimeZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetCrossRegionBackupsBackupOutput{})
 	pulumi.RegisterOutputType(GetCrossRegionBackupsBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetCrossRegionsRegionOutput{})

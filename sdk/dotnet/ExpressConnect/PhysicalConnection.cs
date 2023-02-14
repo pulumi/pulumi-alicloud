@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// and an on-Premises Data Center Location.
         /// </summary>
         [Output("peerLocation")]
-        public Output<string> PeerLocation { get; private set; } = null!;
+        public Output<string?> PeerLocation { get; private set; } = null!;
 
         /// <summary>
         /// on Behalf of the Resource Name of the Resources-Attribute Field.
@@ -229,8 +229,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// and an on-Premises Data Center Location.
         /// </summary>
-        [Input("peerLocation", required: true)]
-        public Input<string> PeerLocation { get; set; } = null!;
+        [Input("peerLocation")]
+        public Input<string>? PeerLocation { get; set; }
 
         /// <summary>
         /// on Behalf of the Resource Name of the Resources-Attribute Field.

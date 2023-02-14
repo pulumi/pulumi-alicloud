@@ -2381,10 +2381,16 @@ func Provider() tfbridge.ProviderInfo {
 	moduleMap := map[string]string{
 		"ga":             gaMod,
 		"servicecatalog": serviceCatalogMod,
+		"dcdn":           dcdnMod,
+		"dts":            dtsMod,
+		"hbr":            hbrMod,
+		"rds":            rdsMod,
+		"nlb":            nlbMod,
 	}
 	err := prov.ComputeDefaults(tfbridge.TokensKnownModules("alicloud_", "", []string{
-		"ga",
-		"service_catalog",
+		"ga", "service_catalog", "dcdn",
+		"dts", "hbr", "rds",
+		"nlb",
 	}, func(mod, name string) (string, error) {
 		m, ok := moduleMap[strings.ToLower(mod)]
 		contract.Assertf(ok, "all mods must be mapped: '%s'", strings.ToLower(mod))
