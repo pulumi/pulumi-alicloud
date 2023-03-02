@@ -59,16 +59,25 @@ class GetSearchIndexesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        A list of search index IDs.
+        """
         return pulumi.get(self, "ids")
 
     @property
     @pulumi.getter
     def indexes(self) -> Sequence['outputs.GetSearchIndexesIndexResult']:
+        """
+        A list of indexes. Each element contains the following attributes:
+        """
         return pulumi.get(self, "indexes")
 
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> str:
+        """
+        The OTS instance name.
+        """
         return pulumi.get(self, "instance_name")
 
     @property
@@ -79,6 +88,9 @@ class GetSearchIndexesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of search index  names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -89,6 +101,9 @@ class GetSearchIndexesResult:
     @property
     @pulumi.getter(name="tableName")
     def table_name(self) -> str:
+        """
+        The table name of the OTS which could not be changed.
+        """
         return pulumi.get(self, "table_name")
 
 
@@ -115,7 +130,17 @@ def get_search_indexes(ids: Optional[Sequence[str]] = None,
                        table_name: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSearchIndexesResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the ots search index of the current Alibaba Cloud user.
+
+    For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
+
+    > **NOTE:** Available in v1.187.0+.
+
+
+    :param Sequence[str] ids: A list of search index IDs.
+    :param str instance_name: The name of OTS instance.
+    :param str name_regex: A regex string to filter results by search index name.
+    :param str table_name: The name of OTS table.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -145,6 +170,16 @@ def get_search_indexes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
                               table_name: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSearchIndexesResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the ots search index of the current Alibaba Cloud user.
+
+    For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
+
+    > **NOTE:** Available in v1.187.0+.
+
+
+    :param Sequence[str] ids: A list of search index IDs.
+    :param str instance_name: The name of OTS instance.
+    :param str name_regex: A regex string to filter results by search index name.
+    :param str table_name: The name of OTS table.
     """
     ...

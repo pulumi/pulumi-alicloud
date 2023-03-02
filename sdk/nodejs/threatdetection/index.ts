@@ -65,6 +65,11 @@ export const getHoneypotProbes: typeof import("./getHoneypotProbes").getHoneypot
 export const getHoneypotProbesOutput: typeof import("./getHoneypotProbes").getHoneypotProbesOutput = null as any;
 utilities.lazyLoad(exports, ["getHoneypotProbes","getHoneypotProbesOutput"], () => require("./getHoneypotProbes"));
 
+export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
+export const getInstances: typeof import("./getInstances").getInstances = null as any;
+export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
 export { GetLogShipperArgs, GetLogShipperResult, GetLogShipperOutputArgs } from "./getLogShipper";
 export const getLogShipper: typeof import("./getLogShipper").getLogShipper = null as any;
 export const getLogShipperOutput: typeof import("./getLogShipper").getLogShipperOutput = null as any;
@@ -100,6 +105,11 @@ export type HoneypotProbe = import("./honeypotProbe").HoneypotProbe;
 export const HoneypotProbe: typeof import("./honeypotProbe").HoneypotProbe = null as any;
 utilities.lazyLoad(exports, ["HoneypotProbe"], () => require("./honeypotProbe"));
 
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
 export { VulWhitelistArgs, VulWhitelistState } from "./vulWhitelist";
 export type VulWhitelist = import("./vulWhitelist").VulWhitelist;
 export const VulWhitelist: typeof import("./vulWhitelist").VulWhitelist = null as any;
@@ -129,6 +139,8 @@ const _module = {
                 return new HoneypotPreset(name, <any>undefined, { urn })
             case "alicloud:threatdetection/honeypotProbe:HoneypotProbe":
                 return new HoneypotProbe(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/instance:Instance":
+                return new Instance(name, <any>undefined, { urn })
             case "alicloud:threatdetection/vulWhitelist:VulWhitelist":
                 return new VulWhitelist(name, <any>undefined, { urn })
             case "alicloud:threatdetection/webLockConfig:WebLockConfig":
@@ -145,5 +157,6 @@ pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeyPot", _m
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeypotNode", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeypotPreset", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeypotProbe", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/vulWhitelist", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/webLockConfig", _module)

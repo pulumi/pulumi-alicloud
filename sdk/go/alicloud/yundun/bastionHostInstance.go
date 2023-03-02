@@ -22,6 +22,7 @@ type BastionHostInstance struct {
 	LicenseCode        pulumi.StringOutput                          `pulumi:"licenseCode"`
 	Period             pulumi.IntPtrOutput                          `pulumi:"period"`
 	PlanCode           pulumi.StringOutput                          `pulumi:"planCode"`
+	PublicWhiteLists   pulumi.StringArrayOutput                     `pulumi:"publicWhiteLists"`
 	RenewPeriod        pulumi.IntPtrOutput                          `pulumi:"renewPeriod"`
 	RenewalPeriodUnit  pulumi.StringOutput                          `pulumi:"renewalPeriodUnit"`
 	RenewalStatus      pulumi.StringOutput                          `pulumi:"renewalStatus"`
@@ -90,6 +91,7 @@ type bastionHostInstanceState struct {
 	LicenseCode        *string                             `pulumi:"licenseCode"`
 	Period             *int                                `pulumi:"period"`
 	PlanCode           *string                             `pulumi:"planCode"`
+	PublicWhiteLists   []string                            `pulumi:"publicWhiteLists"`
 	RenewPeriod        *int                                `pulumi:"renewPeriod"`
 	RenewalPeriodUnit  *string                             `pulumi:"renewalPeriodUnit"`
 	RenewalStatus      *string                             `pulumi:"renewalStatus"`
@@ -109,6 +111,7 @@ type BastionHostInstanceState struct {
 	LicenseCode        pulumi.StringPtrInput
 	Period             pulumi.IntPtrInput
 	PlanCode           pulumi.StringPtrInput
+	PublicWhiteLists   pulumi.StringArrayInput
 	RenewPeriod        pulumi.IntPtrInput
 	RenewalPeriodUnit  pulumi.StringPtrInput
 	RenewalStatus      pulumi.StringPtrInput
@@ -132,6 +135,7 @@ type bastionHostInstanceArgs struct {
 	LicenseCode        string                              `pulumi:"licenseCode"`
 	Period             *int                                `pulumi:"period"`
 	PlanCode           string                              `pulumi:"planCode"`
+	PublicWhiteLists   []string                            `pulumi:"publicWhiteLists"`
 	RenewPeriod        *int                                `pulumi:"renewPeriod"`
 	RenewalPeriodUnit  *string                             `pulumi:"renewalPeriodUnit"`
 	RenewalStatus      *string                             `pulumi:"renewalStatus"`
@@ -152,6 +156,7 @@ type BastionHostInstanceArgs struct {
 	LicenseCode        pulumi.StringInput
 	Period             pulumi.IntPtrInput
 	PlanCode           pulumi.StringInput
+	PublicWhiteLists   pulumi.StringArrayInput
 	RenewPeriod        pulumi.IntPtrInput
 	RenewalPeriodUnit  pulumi.StringPtrInput
 	RenewalStatus      pulumi.StringPtrInput
@@ -279,6 +284,10 @@ func (o BastionHostInstanceOutput) Period() pulumi.IntPtrOutput {
 
 func (o BastionHostInstanceOutput) PlanCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringOutput { return v.PlanCode }).(pulumi.StringOutput)
+}
+
+func (o BastionHostInstanceOutput) PublicWhiteLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringArrayOutput { return v.PublicWhiteLists }).(pulumi.StringArrayOutput)
 }
 
 func (o BastionHostInstanceOutput) RenewPeriod() pulumi.IntPtrOutput {

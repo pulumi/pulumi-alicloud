@@ -23,6 +23,7 @@ class InstanceArgs:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
+                 hidden_zone_id: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -32,12 +33,15 @@ class InstanceArgs:
                  network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
+                 storage_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -55,6 +59,7 @@ class InstanceArgs:
                > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        :param pulumi.Input[str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -67,12 +72,15 @@ class InstanceArgs:
                * DOWNGRADE: The specifications are downgraded.
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
+        :param pulumi.Input[str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
         :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
         :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
@@ -92,6 +100,8 @@ class InstanceArgs:
             pulumi.set(__self__, "backup_periods", backup_periods)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
+        if hidden_zone_id is not None:
+            pulumi.set(__self__, "hidden_zone_id", hidden_zone_id)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if kms_encrypted_password is not None:
@@ -110,10 +120,14 @@ class InstanceArgs:
             pulumi.set(__self__, "order_type", order_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if readonly_replicas is not None:
+            pulumi.set(__self__, "readonly_replicas", readonly_replicas)
         if replication_factor is not None:
             pulumi.set(__self__, "replication_factor", replication_factor)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if secondary_zone_id is not None:
+            pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_ip_lists is not None:
@@ -122,6 +136,8 @@ class InstanceArgs:
             pulumi.set(__self__, "ssl_action", ssl_action)
         if storage_engine is not None:
             pulumi.set(__self__, "storage_engine", storage_engine)
+        if storage_type is not None:
+            pulumi.set(__self__, "storage_type", storage_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
@@ -221,6 +237,18 @@ class InstanceArgs:
         pulumi.set(self, "backup_time", value)
 
     @property
+    @pulumi.getter(name="hiddenZoneId")
+    def hidden_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        """
+        return pulumi.get(self, "hidden_zone_id")
+
+    @hidden_zone_id.setter
+    def hidden_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hidden_zone_id", value)
+
+    @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -332,6 +360,18 @@ class InstanceArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="readonlyReplicas")
+    def readonly_replicas(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
+        """
+        return pulumi.get(self, "readonly_replicas")
+
+    @readonly_replicas.setter
+    def readonly_replicas(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "readonly_replicas", value)
+
+    @property
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> Optional[pulumi.Input[int]]:
         """
@@ -354,6 +394,18 @@ class InstanceArgs:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="secondaryZoneId")
+    def secondary_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        """
+        return pulumi.get(self, "secondary_zone_id")
+
+    @secondary_zone_id.setter
+    def secondary_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_zone_id", value)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -402,6 +454,18 @@ class InstanceArgs:
     @storage_engine.setter
     def storage_engine(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_engine", value)
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @storage_type.setter
+    def storage_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_type", value)
 
     @property
     @pulumi.getter
@@ -476,6 +540,7 @@ class _InstanceState:
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_storage: Optional[pulumi.Input[int]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
+                 hidden_zone_id: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -485,16 +550,19 @@ class _InstanceState:
                  network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replica_set_name: Optional[pulumi.Input[str]] = None,
                  replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
+                 secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  ssl_status: Optional[pulumi.Input[str]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
+                 storage_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -512,6 +580,7 @@ class _InstanceState:
                - Custom storage space.
                - 10-GB increments.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+        :param pulumi.Input[str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -524,16 +593,19 @@ class _InstanceState:
                * DOWNGRADE: The specifications are downgraded.
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
         :param pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]] replica_sets: Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
+        :param pulumi.Input[str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
         :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
         :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
         :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
@@ -556,6 +628,8 @@ class _InstanceState:
             pulumi.set(__self__, "db_instance_storage", db_instance_storage)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
+        if hidden_zone_id is not None:
+            pulumi.set(__self__, "hidden_zone_id", hidden_zone_id)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if kms_encrypted_password is not None:
@@ -574,6 +648,8 @@ class _InstanceState:
             pulumi.set(__self__, "order_type", order_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if readonly_replicas is not None:
+            pulumi.set(__self__, "readonly_replicas", readonly_replicas)
         if replica_set_name is not None:
             pulumi.set(__self__, "replica_set_name", replica_set_name)
         if replica_sets is not None:
@@ -584,6 +660,8 @@ class _InstanceState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_period is not None:
             pulumi.set(__self__, "retention_period", retention_period)
+        if secondary_zone_id is not None:
+            pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_ip_lists is not None:
@@ -594,6 +672,8 @@ class _InstanceState:
             pulumi.set(__self__, "ssl_status", ssl_status)
         if storage_engine is not None:
             pulumi.set(__self__, "storage_engine", storage_engine)
+        if storage_type is not None:
+            pulumi.set(__self__, "storage_type", storage_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tde_status is not None:
@@ -693,6 +773,18 @@ class _InstanceState:
         pulumi.set(self, "engine_version", value)
 
     @property
+    @pulumi.getter(name="hiddenZoneId")
+    def hidden_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        """
+        return pulumi.get(self, "hidden_zone_id")
+
+    @hidden_zone_id.setter
+    def hidden_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hidden_zone_id", value)
+
+    @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -804,6 +896,18 @@ class _InstanceState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="readonlyReplicas")
+    def readonly_replicas(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
+        """
+        return pulumi.get(self, "readonly_replicas")
+
+    @readonly_replicas.setter
+    def readonly_replicas(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "readonly_replicas", value)
+
+    @property
     @pulumi.getter(name="replicaSetName")
     def replica_set_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -864,6 +968,18 @@ class _InstanceState:
         pulumi.set(self, "retention_period", value)
 
     @property
+    @pulumi.getter(name="secondaryZoneId")
+    def secondary_zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        """
+        return pulumi.get(self, "secondary_zone_id")
+
+    @secondary_zone_id.setter
+    def secondary_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_zone_id", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -922,6 +1038,18 @@ class _InstanceState:
     @storage_engine.setter
     def storage_engine(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_engine", value)
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @storage_type.setter
+    def storage_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_type", value)
 
     @property
     @pulumi.getter
@@ -998,6 +1126,7 @@ class Instance(pulumi.CustomResource):
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_storage: Optional[pulumi.Input[int]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
+                 hidden_zone_id: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1007,12 +1136,15 @@ class Instance(pulumi.CustomResource):
                  network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
+                 storage_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1040,6 +1172,7 @@ class Instance(pulumi.CustomResource):
                - Custom storage space.
                - 10-GB increments.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+        :param pulumi.Input[str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -1052,12 +1185,15 @@ class Instance(pulumi.CustomResource):
                * DOWNGRADE: The specifications are downgraded.
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
+        :param pulumi.Input[str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
         :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
         :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
@@ -1103,6 +1239,7 @@ class Instance(pulumi.CustomResource):
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_storage: Optional[pulumi.Input[int]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
+                 hidden_zone_id: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1112,12 +1249,15 @@ class Instance(pulumi.CustomResource):
                  network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
+                 storage_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tde_status: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1145,6 +1285,7 @@ class Instance(pulumi.CustomResource):
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
+            __props__.__dict__["hidden_zone_id"] = hidden_zone_id
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
@@ -1154,12 +1295,15 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["network_type"] = network_type
             __props__.__dict__["order_type"] = order_type
             __props__.__dict__["period"] = period
+            __props__.__dict__["readonly_replicas"] = readonly_replicas
             __props__.__dict__["replication_factor"] = replication_factor
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["secondary_zone_id"] = secondary_zone_id
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_ip_lists"] = security_ip_lists
             __props__.__dict__["ssl_action"] = ssl_action
             __props__.__dict__["storage_engine"] = storage_engine
+            __props__.__dict__["storage_type"] = storage_type
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["vpc_id"] = vpc_id
@@ -1188,6 +1332,7 @@ class Instance(pulumi.CustomResource):
             db_instance_class: Optional[pulumi.Input[str]] = None,
             db_instance_storage: Optional[pulumi.Input[int]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
+            hidden_zone_id: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1197,16 +1342,19 @@ class Instance(pulumi.CustomResource):
             network_type: Optional[pulumi.Input[str]] = None,
             order_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            readonly_replicas: Optional[pulumi.Input[int]] = None,
             replica_set_name: Optional[pulumi.Input[str]] = None,
             replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]]] = None,
             replication_factor: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             retention_period: Optional[pulumi.Input[int]] = None,
+            secondary_zone_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ssl_action: Optional[pulumi.Input[str]] = None,
             ssl_status: Optional[pulumi.Input[str]] = None,
             storage_engine: Optional[pulumi.Input[str]] = None,
+            storage_type: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             tde_status: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -1229,6 +1377,7 @@ class Instance(pulumi.CustomResource):
                - Custom storage space.
                - 10-GB increments.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+        :param pulumi.Input[str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -1241,16 +1390,19 @@ class Instance(pulumi.CustomResource):
                * DOWNGRADE: The specifications are downgraded.
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]] replica_sets: Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
+        :param pulumi.Input[str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
         :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
         :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
         :param pulumi.Input[str] vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
@@ -1270,6 +1422,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["db_instance_class"] = db_instance_class
         __props__.__dict__["db_instance_storage"] = db_instance_storage
         __props__.__dict__["engine_version"] = engine_version
+        __props__.__dict__["hidden_zone_id"] = hidden_zone_id
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
@@ -1279,16 +1432,19 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["network_type"] = network_type
         __props__.__dict__["order_type"] = order_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["readonly_replicas"] = readonly_replicas
         __props__.__dict__["replica_set_name"] = replica_set_name
         __props__.__dict__["replica_sets"] = replica_sets
         __props__.__dict__["replication_factor"] = replication_factor
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retention_period"] = retention_period
+        __props__.__dict__["secondary_zone_id"] = secondary_zone_id
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_ip_lists"] = security_ip_lists
         __props__.__dict__["ssl_action"] = ssl_action
         __props__.__dict__["ssl_status"] = ssl_status
         __props__.__dict__["storage_engine"] = storage_engine
+        __props__.__dict__["storage_type"] = storage_type
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tde_status"] = tde_status
         __props__.__dict__["vpc_id"] = vpc_id
@@ -1354,6 +1510,14 @@ class Instance(pulumi.CustomResource):
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
         """
         return pulumi.get(self, "engine_version")
+
+    @property
+    @pulumi.getter(name="hiddenZoneId")
+    def hidden_zone_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        """
+        return pulumi.get(self, "hidden_zone_id")
 
     @property
     @pulumi.getter(name="instanceChargeType")
@@ -1431,6 +1595,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "period")
 
     @property
+    @pulumi.getter(name="readonlyReplicas")
+    def readonly_replicas(self) -> pulumi.Output[int]:
+        """
+        The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
+        """
+        return pulumi.get(self, "readonly_replicas")
+
+    @property
     @pulumi.getter(name="replicaSetName")
     def replica_set_name(self) -> pulumi.Output[str]:
         """
@@ -1471,6 +1643,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "retention_period")
 
     @property
+    @pulumi.getter(name="secondaryZoneId")
+    def secondary_zone_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        """
+        return pulumi.get(self, "secondary_zone_id")
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[str]:
         """
@@ -1509,6 +1689,14 @@ class Instance(pulumi.CustomResource):
         Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         """
         return pulumi.get(self, "storage_engine")
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> pulumi.Output[str]:
+        """
+        The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        """
+        return pulumi.get(self, "storage_type")
 
     @property
     @pulumi.getter

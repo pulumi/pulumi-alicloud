@@ -547,6 +547,20 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskDescription);
     }
     /**
+     * Whether to encrypt the system disk.
+     * 
+     */
+    @Export(name="systemDiskEncrypted", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> systemDiskEncrypted;
+
+    /**
+     * @return Whether to encrypt the system disk.
+     * 
+     */
+    public Output<Optional<Boolean>> systemDiskEncrypted() {
+        return Codegen.optional(this.systemDiskEncrypted);
+    }
+    /**
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      * 
      */

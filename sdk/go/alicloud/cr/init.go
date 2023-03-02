@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegistryEnterpriseInstance{}
 	case "alicloud:cr/repo:Repo":
 		r = &Repo{}
+	case "alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc":
+		r = &VpcEndpointLinkedVpc{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -81,6 +83,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cr/repo",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cr/vpcEndpointLinkedVpc",
 		&module{version},
 	)
 }

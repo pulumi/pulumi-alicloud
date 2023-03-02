@@ -24,6 +24,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-alicloud/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
@@ -1089,7 +1090,10 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"alicloud_ram_alias":                   {Tok: resource(ramMod, "Alias")},
+			"alicloud_ram_alias": {
+				Tok:  resource(ramMod, "Alias"),
+				Docs: &tfbridge.DocInfo{Markdown: []byte{' '}},
+			},
 			"alicloud_ram_group":                   {Tok: resource(ramMod, "Group")},
 			"alicloud_ram_group_membership":        {Tok: resource(ramMod, "GroupMembership")},
 			"alicloud_ram_group_policy_attachment": {Tok: resource(ramMod, "GroupPolicyAttachment")},
@@ -1453,7 +1457,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_brain_industrial_pid_loops":         {Tok: dataSource(brainMod, "getIndustrialPidLoops")},
 
 			// Bss
-			"alicloud_bss_open_api_products":        {Tok: dataSource(bssMod, "getOpenApiProducts")},
+			"alicloud_bss_open_api_products": {
+				Tok:  dataSource(bssMod, "getOpenApiProducts"),
+				Docs: &tfbridge.DocInfo{Source: "bss_openapi_products.html.markdown"},
+			},
 			"alicloud_bss_open_api_pricing_modules": {Tok: dataSource(bssMod, "getOpenApiPricingModules")},
 
 			// Cas
@@ -2027,7 +2034,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_oss_service":        {Tok: dataSource(ossMod, "getService")},
 
 			// Ots
-			"alicloud_ots_search_indexes":    {Tok: dataSource(otsMod, "getSearchIndexes")},
+			"alicloud_ots_search_indexes": {
+				Tok:  dataSource(otsMod, "getSearchIndexes"),
+				Docs: &tfbridge.DocInfo{Source: "ots_search_index.html.markdown"},
+			},
 			"alicloud_ots_secondary_indexes": {Tok: dataSource(otsMod, "getSecondaryIndexes")},
 			"alicloud_ots_service":           {Tok: dataSource(otsMod, "getService")},
 			"alicloud_ots_tunnels":           {Tok: dataSource(otsMod, "getTunnels")},
@@ -2378,24 +2388,37 @@ func Provider() tfbridge.ProviderInfo {
 	prov.RenameDataSource("alicloud_ots_tables", dataSource(ossMod, "getTables"),
 		dataSource(otsMod, "getTables"), ossMod, otsMod, nil)
 
-	moduleMap := map[string]string{
-		"ga":             gaMod,
-		"servicecatalog": serviceCatalogMod,
-		"dcdn":           dcdnMod,
-		"dts":            dtsMod,
-		"hbr":            hbrMod,
-		"rds":            rdsMod,
-		"nlb":            nlbMod,
+	// The set of modules that x.TokensKnownModules is aware of.
+	mappedMods := map[string]string{
+		"cr":               crMod,
+		"dcdn":             dcdnMod,
+		"dts":              dtsMod,
+		"emrv2":            "Emrv2",
+		"express_connect":  expressConnectMod,
+		"ga":               gaMod,
+		"hbr":              hbrMod,
+		"nlb":              nlbMod,
+		"rds":              rdsMod,
+		"service_catalog":  serviceCatalogMod,
+		"threat_detection": threatDetectionMod,
 	}
-	err := prov.ComputeDefaults(tfbridge.TokensKnownModules("alicloud_", "", []string{
-		"ga", "service_catalog", "dcdn",
-		"dts", "hbr", "rds",
-		"nlb",
-	}, func(mod, name string) (string, error) {
-		m, ok := moduleMap[strings.ToLower(mod)]
-		contract.Assertf(ok, "all mods must be mapped: '%s'", strings.ToLower(mod))
-		return resource(m, name).String(), nil
-	}))
+
+	mappedModKeys := make([]string, 0, len(mappedMods))
+	for k := range mappedMods {
+		mappedModKeys = append(mappedModKeys, k)
+	}
+
+	moduleNameMap := make(map[string]string, len(mappedMods))
+	for _, v := range mappedMods {
+		moduleNameMap[strings.ToLower(v)] = v
+	}
+
+	err := x.ComputeDefaults(&prov, x.TokensKnownModules("alicloud_", "", mappedModKeys,
+		func(mod, name string) (string, error) {
+			m, ok := moduleNameMap[strings.ToLower(mod)]
+			contract.Assertf(ok, "all mods must be mapped: '%s'", strings.ToLower(mod))
+			return resource(m, name).String(), nil
+		}))
 	contract.AssertNoError(err)
 
 	prov.SetAutonaming(255, "-")

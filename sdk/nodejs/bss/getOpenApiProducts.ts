@@ -6,6 +6,11 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+ *
+ * > **NOTE:** Available in 1.195.0+
+ */
 export function getOpenApiProducts(args?: GetOpenApiProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenApiProductsResult> {
     args = args || {};
 
@@ -21,7 +26,13 @@ export function getOpenApiProducts(args?: GetOpenApiProductsArgs, opts?: pulumi.
  * A collection of arguments for invoking getOpenApiProducts.
  */
 export interface GetOpenApiProductsArgs {
+    /**
+     * A list of product IDs.
+     */
     ids?: string[];
+    /**
+     * A regex string to filter results by Product name.
+     */
     nameRegex?: string;
     outputFile?: string;
 }
@@ -36,10 +47,21 @@ export interface GetOpenApiProductsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of name of Products.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Product Entries. Each element contains the following attributes:
+     */
     readonly products: outputs.bss.GetOpenApiProductsProduct[];
 }
+/**
+ * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+ *
+ * > **NOTE:** Available in 1.195.0+
+ */
 export function getOpenApiProductsOutput(args?: GetOpenApiProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenApiProductsResult> {
     return pulumi.output(args).apply((a: any) => getOpenApiProducts(a, opts))
 }
@@ -48,7 +70,13 @@ export function getOpenApiProductsOutput(args?: GetOpenApiProductsOutputArgs, op
  * A collection of arguments for invoking getOpenApiProducts.
  */
 export interface GetOpenApiProductsOutputArgs {
+    /**
+     * A list of product IDs.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Product name.
+     */
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
 }

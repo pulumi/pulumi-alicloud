@@ -34,6 +34,7 @@ __all__ = [
     'GetReposRepoResult',
     'GetReposRepoDomainListResult',
     'GetReposRepoTagResult',
+    'GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcResult',
 ]
 
 @pulumi.output_type
@@ -1171,5 +1172,100 @@ class GetReposRepoTagResult(dict):
         Tag of this image.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcResult(dict):
+    def __init__(__self__, *,
+                 default_access: bool,
+                 id: str,
+                 instance_id: str,
+                 ip: str,
+                 module_name: str,
+                 status: str,
+                 vpc_id: str,
+                 vswitch_id: str):
+        """
+        :param bool default_access: Indicates whether the default policy is used to access the instance.
+        :param str id: The ID of the Vpc Endpoint Linked Vpc. It formats as `<instance_id>:<vpc_id>:<vswitch_id>:<module_name>`.
+        :param str instance_id: The ID of the instance.
+        :param str ip: IP address.
+        :param str module_name: The name of the module that you want to access. Valid Values:
+        :param str status: The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
+        :param str vpc_id: The ID of the VPC.
+        :param str vswitch_id: The ID of the vSwitch.
+        """
+        pulumi.set(__self__, "default_access", default_access)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "module_name", module_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="defaultAccess")
+    def default_access(self) -> bool:
+        """
+        Indicates whether the default policy is used to access the instance.
+        """
+        return pulumi.get(self, "default_access")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Vpc Endpoint Linked Vpc. It formats as `<instance_id>:<vpc_id>:<vswitch_id>:<module_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        IP address.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="moduleName")
+    def module_name(self) -> str:
+        """
+        The name of the module that you want to access. Valid Values:
+        """
+        return pulumi.get(self, "module_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the vSwitch.
+        """
+        return pulumi.get(self, "vswitch_id")
 
 

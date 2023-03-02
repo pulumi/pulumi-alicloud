@@ -19,8 +19,16 @@ public final class GetOpenApiPricingModulesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Pricing Module Entries. Each element contains the following attributes:
+     * 
+     */
     private List<GetOpenApiPricingModulesModule> modules;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of name of Pricing Modules.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private String productCode;
@@ -38,12 +46,20 @@ public final class GetOpenApiPricingModulesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Pricing Module Entries. Each element contains the following attributes:
+     * 
+     */
     public List<GetOpenApiPricingModulesModule> modules() {
         return this.modules;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of name of Pricing Modules.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

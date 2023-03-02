@@ -19,10 +19,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.nlb.SecurityPolicy("example", {
- *     ciphers: ["example_value"],
- *     securityPolicyName: "example_value",
- *     tlsVersions: ["example_value"],
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultSecurityPolicy = new alicloud.nlb.SecurityPolicy("defaultSecurityPolicy", {
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     securityPolicyName: _var.name,
+ *     ciphers: [
+ *         "ECDHE-RSA-AES128-SHA",
+ *         "ECDHE-ECDSA-AES128-SHA",
+ *     ],
+ *     tlsVersions: [
+ *         "TLSv1.0",
+ *         "TLSv1.1",
+ *         "TLSv1.2",
+ *     ],
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Acceptance-test",
+ *     },
  * });
  * ```
  *

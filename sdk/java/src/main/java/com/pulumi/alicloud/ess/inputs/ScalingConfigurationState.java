@@ -580,6 +580,21 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Whether to encrypt the system disk.
+     * 
+     */
+    @Import(name="systemDiskEncrypted")
+    private @Nullable Output<Boolean> systemDiskEncrypted;
+
+    /**
+     * @return Whether to encrypt the system disk.
+     * 
+     */
+    public Optional<Output<Boolean>> systemDiskEncrypted() {
+        return Optional.ofNullable(this.systemDiskEncrypted);
+    }
+
+    /**
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      * 
      */
@@ -697,6 +712,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         this.systemDiskAutoSnapshotPolicyId = $.systemDiskAutoSnapshotPolicyId;
         this.systemDiskCategory = $.systemDiskCategory;
         this.systemDiskDescription = $.systemDiskDescription;
+        this.systemDiskEncrypted = $.systemDiskEncrypted;
         this.systemDiskName = $.systemDiskName;
         this.systemDiskPerformanceLevel = $.systemDiskPerformanceLevel;
         this.systemDiskSize = $.systemDiskSize;
@@ -1556,6 +1572,27 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          */
         public Builder systemDiskDescription(String systemDiskDescription) {
             return systemDiskDescription(Output.of(systemDiskDescription));
+        }
+
+        /**
+         * @param systemDiskEncrypted Whether to encrypt the system disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskEncrypted(@Nullable Output<Boolean> systemDiskEncrypted) {
+            $.systemDiskEncrypted = systemDiskEncrypted;
+            return this;
+        }
+
+        /**
+         * @param systemDiskEncrypted Whether to encrypt the system disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskEncrypted(Boolean systemDiskEncrypted) {
+            return systemDiskEncrypted(Output.of(systemDiskEncrypted));
         }
 
         /**

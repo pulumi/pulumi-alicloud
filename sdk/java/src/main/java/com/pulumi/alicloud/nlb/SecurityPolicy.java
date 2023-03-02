@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.nlb.SecurityPolicy;
  * import com.pulumi.alicloud.nlb.SecurityPolicyArgs;
  * import java.util.List;
@@ -48,10 +50,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new SecurityPolicy(&#34;example&#34;, SecurityPolicyArgs.builder()        
- *             .ciphers(&#34;example_value&#34;)
- *             .securityPolicyName(&#34;example_value&#34;)
- *             .tlsVersions(&#34;example_value&#34;)
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         var defaultSecurityPolicy = new SecurityPolicy(&#34;defaultSecurityPolicy&#34;, SecurityPolicyArgs.builder()        
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .securityPolicyName(var_.name())
+ *             .ciphers(            
+ *                 &#34;ECDHE-RSA-AES128-SHA&#34;,
+ *                 &#34;ECDHE-ECDSA-AES128-SHA&#34;)
+ *             .tlsVersions(            
+ *                 &#34;TLSv1.0&#34;,
+ *                 &#34;TLSv1.1&#34;,
+ *                 &#34;TLSv1.2&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;Acceptance-test&#34;)
+ *             ))
  *             .build());
  * 
  *     }

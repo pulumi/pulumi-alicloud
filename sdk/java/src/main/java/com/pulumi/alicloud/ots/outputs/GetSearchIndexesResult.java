@@ -18,12 +18,32 @@ public final class GetSearchIndexesResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of search index IDs.
+     * 
+     */
     private List<String> ids;
+    /**
+     * @return A list of indexes. Each element contains the following attributes:
+     * 
+     */
     private List<GetSearchIndexesIndex> indexes;
+    /**
+     * @return The OTS instance name.
+     * 
+     */
     private String instanceName;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of search index  names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The table name of the OTS which could not be changed.
+     * 
+     */
     private String tableName;
 
     private GetSearchIndexesResult() {}
@@ -34,24 +54,44 @@ public final class GetSearchIndexesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of search index IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of indexes. Each element contains the following attributes:
+     * 
+     */
     public List<GetSearchIndexesIndex> indexes() {
         return this.indexes;
     }
+    /**
+     * @return The OTS instance name.
+     * 
+     */
     public String instanceName() {
         return this.instanceName;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of search index  names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The table name of the OTS which could not be changed.
+     * 
+     */
     public String tableName() {
         return this.tableName;
     }

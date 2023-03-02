@@ -15,23 +15,47 @@ public final class GetSearchIndexesPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetSearchIndexesPlainArgs Empty = new GetSearchIndexesPlainArgs();
 
+    /**
+     * A list of search index IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
+    /**
+     * @return A list of search index IDs.
+     * 
+     */
     public Optional<List<String>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The name of OTS instance.
+     * 
+     */
     @Import(name="instanceName", required=true)
     private String instanceName;
 
+    /**
+     * @return The name of OTS instance.
+     * 
+     */
     public String instanceName() {
         return this.instanceName;
     }
 
+    /**
+     * A regex string to filter results by search index name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
+    /**
+     * @return A regex string to filter results by search index name.
+     * 
+     */
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -43,9 +67,17 @@ public final class GetSearchIndexesPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The name of OTS table.
+     * 
+     */
     @Import(name="tableName", required=true)
     private String tableName;
 
+    /**
+     * @return The name of OTS table.
+     * 
+     */
     public String tableName() {
         return this.tableName;
     }
@@ -78,20 +110,44 @@ public final class GetSearchIndexesPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetSearchIndexesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of search index IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable List<String> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of search index IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param instanceName The name of OTS instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceName(String instanceName) {
             $.instanceName = instanceName;
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by search index name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable String nameRegex) {
             $.nameRegex = nameRegex;
             return this;
@@ -102,6 +158,12 @@ public final class GetSearchIndexesPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
+        /**
+         * @param tableName The name of OTS table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableName(String tableName) {
             $.tableName = tableName;
             return this;

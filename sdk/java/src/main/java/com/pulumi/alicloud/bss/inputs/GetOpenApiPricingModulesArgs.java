@@ -23,9 +23,17 @@ public final class GetOpenApiPricingModulesArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * A regex string to filter results by Property name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
+    /**
+     * @return A regex string to filter results by Property name.
+     * 
+     */
     public Optional<Output<String>> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -37,23 +45,51 @@ public final class GetOpenApiPricingModulesArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The product code.
+     * 
+     */
     @Import(name="productCode", required=true)
     private Output<String> productCode;
 
+    /**
+     * @return The product code.
+     * 
+     */
     public Output<String> productCode() {
         return this.productCode;
     }
 
+    /**
+     * The product type.
+     * 
+     */
     @Import(name="productType")
     private @Nullable Output<String> productType;
 
+    /**
+     * @return The product type.
+     * 
+     */
     public Optional<Output<String>> productType() {
         return Optional.ofNullable(this.productType);
     }
 
+    /**
+     * Subscription type. Value:
+     * * Subscription: Prepaid.
+     * * PayAsYouGo: postpaid.
+     * 
+     */
     @Import(name="subscriptionType", required=true)
     private Output<String> subscriptionType;
 
+    /**
+     * @return Subscription type. Value:
+     * * Subscription: Prepaid.
+     * * PayAsYouGo: postpaid.
+     * 
+     */
     public Output<String> subscriptionType() {
         return this.subscriptionType;
     }
@@ -100,11 +136,23 @@ public final class GetOpenApiPricingModulesArgs extends com.pulumi.resources.Inv
             return ids(List.of(ids));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Property name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable Output<String> nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Property name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(String nameRegex) {
             return nameRegex(Output.of(nameRegex));
         }
@@ -118,29 +166,69 @@ public final class GetOpenApiPricingModulesArgs extends com.pulumi.resources.Inv
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param productCode The product code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productCode(Output<String> productCode) {
             $.productCode = productCode;
             return this;
         }
 
+        /**
+         * @param productCode The product code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productCode(String productCode) {
             return productCode(Output.of(productCode));
         }
 
+        /**
+         * @param productType The product type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productType(@Nullable Output<String> productType) {
             $.productType = productType;
             return this;
         }
 
+        /**
+         * @param productType The product type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productType(String productType) {
             return productType(Output.of(productType));
         }
 
+        /**
+         * @param subscriptionType Subscription type. Value:
+         * * Subscription: Prepaid.
+         * * PayAsYouGo: postpaid.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptionType(Output<String> subscriptionType) {
             $.subscriptionType = subscriptionType;
             return this;
         }
 
+        /**
+         * @param subscriptionType Subscription type. Value:
+         * * Subscription: Prepaid.
+         * * PayAsYouGo: postpaid.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptionType(String subscriptionType) {
             return subscriptionType(Output.of(subscriptionType));
         }

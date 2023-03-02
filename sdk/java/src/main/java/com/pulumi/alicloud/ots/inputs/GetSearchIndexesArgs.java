@@ -16,23 +16,47 @@ public final class GetSearchIndexesArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetSearchIndexesArgs Empty = new GetSearchIndexesArgs();
 
+    /**
+     * A list of search index IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
+    /**
+     * @return A list of search index IDs.
+     * 
+     */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The name of OTS instance.
+     * 
+     */
     @Import(name="instanceName", required=true)
     private Output<String> instanceName;
 
+    /**
+     * @return The name of OTS instance.
+     * 
+     */
     public Output<String> instanceName() {
         return this.instanceName;
     }
 
+    /**
+     * A regex string to filter results by search index name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
+    /**
+     * @return A regex string to filter results by search index name.
+     * 
+     */
     public Optional<Output<String>> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -44,9 +68,17 @@ public final class GetSearchIndexesArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The name of OTS table.
+     * 
+     */
     @Import(name="tableName", required=true)
     private Output<String> tableName;
 
+    /**
+     * @return The name of OTS table.
+     * 
+     */
     public Output<String> tableName() {
         return this.tableName;
     }
@@ -79,33 +111,75 @@ public final class GetSearchIndexesArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetSearchIndexesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of search index IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<List<String>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of search index IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(List<String> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param ids A list of search index IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param instanceName The name of OTS instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceName(Output<String> instanceName) {
             $.instanceName = instanceName;
             return this;
         }
 
+        /**
+         * @param instanceName The name of OTS instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceName(String instanceName) {
             return instanceName(Output.of(instanceName));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by search index name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable Output<String> nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by search index name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(String nameRegex) {
             return nameRegex(Output.of(nameRegex));
         }
@@ -119,11 +193,23 @@ public final class GetSearchIndexesArgs extends com.pulumi.resources.InvokeArgs 
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param tableName The name of OTS table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableName(Output<String> tableName) {
             $.tableName = tableName;
             return this;
         }
 
+        /**
+         * @param tableName The name of OTS table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableName(String tableName) {
             return tableName(Output.of(tableName));
         }

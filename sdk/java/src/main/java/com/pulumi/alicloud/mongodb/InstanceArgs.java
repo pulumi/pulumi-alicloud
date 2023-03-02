@@ -132,6 +132,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * 
+     */
+    @Import(name="hiddenZoneId")
+    private @Nullable Output<String> hiddenZoneId;
+
+    /**
+     * @return Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * 
+     */
+    public Optional<Output<String>> hiddenZoneId() {
+        return Optional.ofNullable(this.hiddenZoneId);
+    }
+
+    /**
      * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      * 
      */
@@ -273,6 +288,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
+     * 
+     */
+    @Import(name="readonlyReplicas")
+    private @Nullable Output<Integer> readonlyReplicas;
+
+    /**
+     * @return The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
+     * 
+     */
+    public Optional<Output<Integer>> readonlyReplicas() {
+        return Optional.ofNullable(this.readonlyReplicas);
+    }
+
+    /**
      * Number of replica set nodes. Valid values: [1, 3, 5, 7]
      * 
      */
@@ -300,6 +330,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * 
+     */
+    @Import(name="secondaryZoneId")
+    private @Nullable Output<String> secondaryZoneId;
+
+    /**
+     * @return Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * 
+     */
+    public Optional<Output<String>> secondaryZoneId() {
+        return Optional.ofNullable(this.secondaryZoneId);
     }
 
     /**
@@ -360,6 +405,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> storageEngine() {
         return Optional.ofNullable(this.storageEngine);
+    }
+
+    /**
+     * The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+     * 
+     */
+    @Import(name="storageType")
+    private @Nullable Output<String> storageType;
+
+    /**
+     * @return The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+     * 
+     */
+    public Optional<Output<String>> storageType() {
+        return Optional.ofNullable(this.storageType);
     }
 
     /**
@@ -451,6 +511,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.dbInstanceClass = $.dbInstanceClass;
         this.dbInstanceStorage = $.dbInstanceStorage;
         this.engineVersion = $.engineVersion;
+        this.hiddenZoneId = $.hiddenZoneId;
         this.instanceChargeType = $.instanceChargeType;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
@@ -460,12 +521,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.networkType = $.networkType;
         this.orderType = $.orderType;
         this.period = $.period;
+        this.readonlyReplicas = $.readonlyReplicas;
         this.replicationFactor = $.replicationFactor;
         this.resourceGroupId = $.resourceGroupId;
+        this.secondaryZoneId = $.secondaryZoneId;
         this.securityGroupId = $.securityGroupId;
         this.securityIpLists = $.securityIpLists;
         this.sslAction = $.sslAction;
         this.storageEngine = $.storageEngine;
+        this.storageType = $.storageType;
         this.tags = $.tags;
         this.tdeStatus = $.tdeStatus;
         this.vpcId = $.vpcId;
@@ -652,6 +716,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder engineVersion(String engineVersion) {
             return engineVersion(Output.of(engineVersion));
+        }
+
+        /**
+         * @param hiddenZoneId Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hiddenZoneId(@Nullable Output<String> hiddenZoneId) {
+            $.hiddenZoneId = hiddenZoneId;
+            return this;
+        }
+
+        /**
+         * @param hiddenZoneId Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hiddenZoneId(String hiddenZoneId) {
+            return hiddenZoneId(Output.of(hiddenZoneId));
         }
 
         /**
@@ -850,6 +935,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param readonlyReplicas The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readonlyReplicas(@Nullable Output<Integer> readonlyReplicas) {
+            $.readonlyReplicas = readonlyReplicas;
+            return this;
+        }
+
+        /**
+         * @param readonlyReplicas The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readonlyReplicas(Integer readonlyReplicas) {
+            return readonlyReplicas(Output.of(readonlyReplicas));
+        }
+
+        /**
          * @param replicationFactor Number of replica set nodes. Valid values: [1, 3, 5, 7]
          * 
          * @return builder
@@ -889,6 +995,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param secondaryZoneId Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryZoneId(@Nullable Output<String> secondaryZoneId) {
+            $.secondaryZoneId = secondaryZoneId;
+            return this;
+        }
+
+        /**
+         * @param secondaryZoneId Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryZoneId(String secondaryZoneId) {
+            return secondaryZoneId(Output.of(secondaryZoneId));
         }
 
         /**
@@ -983,6 +1110,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder storageEngine(String storageEngine) {
             return storageEngine(Output.of(storageEngine));
+        }
+
+        /**
+         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageType(@Nullable Output<String> storageType) {
+            $.storageType = storageType;
+            return this;
+        }
+
+        /**
+         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageType(String storageType) {
+            return storageType(Output.of(storageType));
         }
 
         /**

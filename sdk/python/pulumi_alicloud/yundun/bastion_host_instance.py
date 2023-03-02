@@ -27,6 +27,7 @@ class BastionHostInstanceArgs:
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -50,6 +51,8 @@ class BastionHostInstanceArgs:
             pulumi.set(__self__, "ldap_auth_servers", ldap_auth_servers)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if public_white_lists is not None:
+            pulumi.set(__self__, "public_white_lists", public_white_lists)
         if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_period_unit is not None:
@@ -161,6 +164,15 @@ class BastionHostInstanceArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="publicWhiteLists")
+    def public_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "public_white_lists")
+
+    @public_white_lists.setter
+    def public_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "public_white_lists", value)
+
+    @property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "renew_period")
@@ -217,6 +229,7 @@ class _BastionHostInstanceState:
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  plan_code: Optional[pulumi.Input[str]] = None,
+                 public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -244,6 +257,8 @@ class _BastionHostInstanceState:
             pulumi.set(__self__, "period", period)
         if plan_code is not None:
             pulumi.set(__self__, "plan_code", plan_code)
+        if public_white_lists is not None:
+            pulumi.set(__self__, "public_white_lists", public_white_lists)
         if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_period_unit is not None:
@@ -334,6 +349,15 @@ class _BastionHostInstanceState:
         pulumi.set(self, "plan_code", value)
 
     @property
+    @pulumi.getter(name="publicWhiteLists")
+    def public_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "public_white_lists")
+
+    @public_white_lists.setter
+    def public_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "public_white_lists", value)
+
+    @property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "renew_period")
@@ -419,6 +443,7 @@ class BastionHostInstance(pulumi.CustomResource):
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  plan_code: Optional[pulumi.Input[str]] = None,
+                 public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -464,6 +489,7 @@ class BastionHostInstance(pulumi.CustomResource):
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  plan_code: Optional[pulumi.Input[str]] = None,
+                 public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -497,6 +523,7 @@ class BastionHostInstance(pulumi.CustomResource):
             if plan_code is None and not opts.urn:
                 raise TypeError("Missing required property 'plan_code'")
             __props__.__dict__["plan_code"] = plan_code
+            __props__.__dict__["public_white_lists"] = public_white_lists
             __props__.__dict__["renew_period"] = renew_period
             __props__.__dict__["renewal_period_unit"] = renewal_period_unit
             __props__.__dict__["renewal_status"] = renewal_status
@@ -529,6 +556,7 @@ class BastionHostInstance(pulumi.CustomResource):
             license_code: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             plan_code: Optional[pulumi.Input[str]] = None,
+            public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             renew_period: Optional[pulumi.Input[int]] = None,
             renewal_period_unit: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
@@ -557,6 +585,7 @@ class BastionHostInstance(pulumi.CustomResource):
         __props__.__dict__["license_code"] = license_code
         __props__.__dict__["period"] = period
         __props__.__dict__["plan_code"] = plan_code
+        __props__.__dict__["public_white_lists"] = public_white_lists
         __props__.__dict__["renew_period"] = renew_period
         __props__.__dict__["renewal_period_unit"] = renewal_period_unit
         __props__.__dict__["renewal_status"] = renewal_status
@@ -606,6 +635,11 @@ class BastionHostInstance(pulumi.CustomResource):
     @pulumi.getter(name="planCode")
     def plan_code(self) -> pulumi.Output[str]:
         return pulumi.get(self, "plan_code")
+
+    @property
+    @pulumi.getter(name="publicWhiteLists")
+    def public_white_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "public_white_lists")
 
     @property
     @pulumi.getter(name="renewPeriod")

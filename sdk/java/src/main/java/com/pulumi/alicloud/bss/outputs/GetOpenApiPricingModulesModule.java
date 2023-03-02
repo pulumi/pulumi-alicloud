@@ -11,37 +11,105 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOpenApiPricingModulesModule {
+    /**
+     * @return Property Code.
+     * 
+     */
     private String code;
+    /**
+     * @return A list of Price Module IDs.
+     * 
+     */
     private String id;
+    /**
+     * @return Attribute name.
+     * 
+     */
     private String pricingModuleName;
+    /**
+     * @return The product code.
+     * 
+     */
     private String productCode;
+    /**
+     * @return The product type.
+     * 
+     */
     private String productType;
+    /**
+     * @return Subscription type. Value:
+     * * Subscription: Prepaid.
+     * * PayAsYouGo: postpaid.
+     * 
+     */
     private String subscriptionType;
+    /**
+     * @return Attribute unit.
+     * 
+     */
     private String unit;
+    /**
+     * @return Property.
+     * 
+     */
     private List<GetOpenApiPricingModulesModuleValue> values;
 
     private GetOpenApiPricingModulesModule() {}
+    /**
+     * @return Property Code.
+     * 
+     */
     public String code() {
         return this.code;
     }
+    /**
+     * @return A list of Price Module IDs.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Attribute name.
+     * 
+     */
     public String pricingModuleName() {
         return this.pricingModuleName;
     }
+    /**
+     * @return The product code.
+     * 
+     */
     public String productCode() {
         return this.productCode;
     }
+    /**
+     * @return The product type.
+     * 
+     */
     public String productType() {
         return this.productType;
     }
+    /**
+     * @return Subscription type. Value:
+     * * Subscription: Prepaid.
+     * * PayAsYouGo: postpaid.
+     * 
+     */
     public String subscriptionType() {
         return this.subscriptionType;
     }
+    /**
+     * @return Attribute unit.
+     * 
+     */
     public String unit() {
         return this.unit;
     }
+    /**
+     * @return Property.
+     * 
+     */
     public List<GetOpenApiPricingModulesModuleValue> values() {
         return this.values;
     }

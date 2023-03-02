@@ -4203,28 +4203,86 @@ export namespace brain {
 
 export namespace bss {
     export interface GetOpenApiPricingModulesModule {
+        /**
+         * Property Code.
+         */
         code: string;
+        /**
+         * A list of Price Module IDs.
+         */
         id: string;
+        /**
+         * Attribute name.
+         */
         pricingModuleName: string;
+        /**
+         * The product code.
+         */
         productCode: string;
+        /**
+         * The product type.
+         */
         productType: string;
+        /**
+         * Subscription type. Value:
+         * * Subscription: Prepaid.
+         * * PayAsYouGo: postpaid.
+         */
         subscriptionType: string;
+        /**
+         * Attribute unit.
+         */
         unit: string;
+        /**
+         * Property.
+         */
         values: outputs.bss.GetOpenApiPricingModulesModuleValue[];
     }
 
     export interface GetOpenApiPricingModulesModuleValue {
+        /**
+         * The module Code corresponds to the attribute value.
+         */
         name: string;
+        /**
+         * Module value description information.
+         */
         remark: string;
+        /**
+         * The attribute value type corresponding to the module Code. Value:
+         * * single_float: single value type.
+         * * range_float: range value type.
+         */
         type: string;
+        /**
+         * The module Code corresponds to the attribute value.
+         * > format 1024-1024000 when Type = range_float: 1024 means from 1024 to 1024000, step size 1024.
+         */
         value: string;
     }
 
     export interface GetOpenApiProductsProduct {
+        /**
+         * The ID of the product. The value is formulated as `<product_code>:<product_type>:<subscription_type>`.
+         */
         id: string;
+        /**
+         * Product code.
+         */
         productCode: string;
+        /**
+         * Product name.
+         */
         productName: string;
+        /**
+         * Type of product.
+         */
         productType: string;
+        /**
+         * Subscription type. Value:
+         * * Subscription: Prepaid.
+         * * PayAsYouGo: postpaid.
+         */
         subscriptionType: string;
     }
 
@@ -10865,6 +10923,41 @@ export namespace cr {
          * Tag of this image.
          */
         tag: string;
+    }
+
+    export interface GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
+        /**
+         * Indicates whether the default policy is used to access the instance.
+         */
+        defaultAccess: boolean;
+        /**
+         * The ID of the Vpc Endpoint Linked Vpc. It formats as `<instance_id>:<vpc_id>:<vswitch_id>:<module_name>`.
+         */
+        id: string;
+        /**
+         * The ID of the instance.
+         */
+        instanceId: string;
+        /**
+         * IP address.
+         */
+        ip: string;
+        /**
+         * The name of the module that you want to access. Valid Values:
+         */
+        moduleName: string;
+        /**
+         * The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
+         */
+        status: string;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: string;
+        /**
+         * The ID of the vSwitch.
+         */
+        vswitchId: string;
     }
 
     export interface RepoDomainList {
@@ -22648,6 +22741,358 @@ export namespace emr {
 
 }
 
+export namespace emrv2 {
+    export interface ClusterApplicationConfig {
+        /**
+         * The application name of EMR cluster which has installed.
+         */
+        applicationName: string;
+        /**
+         * The configuration description of application installed.
+         */
+        configDescription?: string;
+        /**
+         * The configuration file name of application installed.
+         */
+        configFileName: string;
+        /**
+         * The configuration item key of application installed.
+         */
+        configItemKey: string;
+        /**
+         * The configuration item value of application installed.
+         */
+        configItemValue: string;
+        /**
+         * The configuration scope of emr cluster. Supported value: CLUSTER or NODEGROUP.
+         */
+        configScope?: string;
+        /**
+         * The configuration effected which node group id of emr cluster.
+         */
+        nodeGroupId?: string;
+        /**
+         * The configuration effected which node group name of emr cluster.
+         */
+        nodeGroupName?: string;
+    }
+
+    export interface ClusterBootstrapScript {
+        /**
+         * The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+         */
+        executionFailStrategy: string;
+        /**
+         * The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+         */
+        executionMoment: string;
+        /**
+         * The bootstrap scripts execution target.
+         */
+        nodeSelector: outputs.emrv2.ClusterBootstrapScriptNodeSelector;
+        /**
+         * The bootstrap scripts priority.
+         */
+        priority?: number;
+        /**
+         * The bootstrap script args, e.g. "--a=b".
+         */
+        scriptArgs: string;
+        /**
+         * The bootstrap script name.
+         */
+        scriptName: string;
+        /**
+         * The bootstrap script path, e.g. "oss://bucket/path".
+         */
+        scriptPath: string;
+    }
+
+    export interface ClusterBootstrapScriptNodeSelector {
+        /**
+         * The configuration effected which node group id of emr cluster.
+         */
+        nodeGroupId?: string;
+        /**
+         * The configuration effected which node group name of emr cluster.
+         */
+        nodeGroupName?: string;
+        /**
+         * The bootstrap scripts execution target node group types.
+         */
+        nodeGroupTypes?: string[];
+        /**
+         * The bootstrap scripts execution target node names.
+         */
+        nodeNames?: string[];
+        /**
+         * The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
+         */
+        nodeSelectType: string;
+    }
+
+    export interface ClusterNodeAttribute {
+        /**
+         * The name of the key pair.
+         */
+        keyPairName: string;
+        /**
+         * Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
+         */
+        ramRole: string;
+        /**
+         * Security Group ID for Cluster.
+         */
+        securityGroupId: string;
+        /**
+         * Used to retrieve instances belong to specified VPC.
+         */
+        vpcId: string;
+        /**
+         * Zone ID, e.g. cn-hangzhou-i
+         */
+        zoneId: string;
+    }
+
+    export interface ClusterNodeGroup {
+        /**
+         * Additional security Group IDS for Cluster, you can also specify this key for each node group.
+         */
+        additionalSecurityGroupIds?: string[];
+        /**
+         * The detail cost optimized configuration of emr cluster.
+         */
+        costOptimizedConfig?: outputs.emrv2.ClusterNodeGroupCostOptimizedConfig;
+        /**
+         * Host Ecs data disks information in this node group.
+         */
+        dataDisks: outputs.emrv2.ClusterNodeGroupDataDisk[];
+        /**
+         * Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
+         */
+        gracefulShutdown: boolean;
+        /**
+         * Host Ecs instance types.
+         */
+        instanceTypes: string[];
+        /**
+         * Host Ecs number in this node group.
+         */
+        nodeCount: number;
+        /**
+         * The configuration effected which node group name of emr cluster.
+         */
+        nodeGroupName: string;
+        /**
+         * The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+         */
+        nodeGroupType: string;
+        /**
+         * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+         */
+        paymentType: string;
+        /**
+         * The spot bid prices of a PayAsYouGo instance.
+         */
+        spotBidPrices?: outputs.emrv2.ClusterNodeGroupSpotBidPrice[];
+        /**
+         * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+         */
+        spotInstanceRemedy?: boolean;
+        /**
+         * The detail configuration of subscription payment type.
+         */
+        subscriptionConfig?: outputs.emrv2.ClusterNodeGroupSubscriptionConfig;
+        /**
+         * Host Ecs system disk information in this node group.
+         */
+        systemDisk: outputs.emrv2.ClusterNodeGroupSystemDisk;
+        /**
+         * Global vSwitch ids, you can also specify it in node group.
+         */
+        vswitchIds?: string[];
+        /**
+         * Whether the node has a public IP address enabled.
+         */
+        withPublicIp: boolean;
+    }
+
+    export interface ClusterNodeGroupCostOptimizedConfig {
+        /**
+         * The cost optimized configuration which on demand based capacity.
+         */
+        onDemandBaseCapacity: number;
+        /**
+         * The cost optimized configuration which on demand percentage above based capacity.
+         */
+        onDemandPercentageAboveBaseCapacity: number;
+        /**
+         * The cost optimized configuration with spot instance pools.
+         */
+        spotInstancePools: number;
+    }
+
+    export interface ClusterNodeGroupDataDisk {
+        /**
+         * The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+         */
+        category: string;
+        /**
+         * The count of a data disk.
+         */
+        count: number;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+         */
+        performanceLevel: string;
+        /**
+         * The size of a data disk, at least 40. Unit: GiB.
+         */
+        size: number;
+    }
+
+    export interface ClusterNodeGroupSpotBidPrice {
+        /**
+         * The spot bid price of a PayAsYouGo instance.
+         */
+        bidPrice: number;
+        /**
+         * Host Ecs instance type.
+         */
+        instanceType: string;
+    }
+
+    export interface ClusterNodeGroupSubscriptionConfig {
+        /**
+         * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
+         */
+        autoRenew?: boolean;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
+         */
+        autoRenewDuration?: number;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+         */
+        autoRenewDurationUnit?: string;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
+         */
+        paymentDuration: number;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+         */
+        paymentDurationUnit: string;
+    }
+
+    export interface ClusterNodeGroupSystemDisk {
+        /**
+         * The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+         */
+        category: string;
+        /**
+         * The count of a data disk.
+         */
+        count: number;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+         */
+        performanceLevel: string;
+        /**
+         * The size of a data disk, at least 40. Unit: GiB.
+         */
+        size: number;
+    }
+
+    export interface ClusterSubscriptionConfig {
+        /**
+         * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
+         */
+        autoRenew?: boolean;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
+         */
+        autoRenewDuration?: number;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+         */
+        autoRenewDurationUnit?: string;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
+         */
+        paymentDuration: number;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+         */
+        paymentDurationUnit: string;
+    }
+
+    export interface GetClustersCluster {
+        /**
+         * The first ID of the resource.
+         */
+        clusterId: string;
+        /**
+         * The name of the emr cluster.
+         */
+        clusterName: string;
+        /**
+         * The state of the emr cluster.
+         */
+        clusterState: string;
+        /**
+         * The type of the emr cluster.
+         */
+        clusterType: string;
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The ecs default role belongs to this emr cluster.
+         */
+        emrDefaultRole: string;
+        /**
+         * The end time of the resource.
+         */
+        endTime: string;
+        /**
+         * The expire time of the resource.
+         */
+        expireTime: string;
+        /**
+         * The payment type of the emr cluster.
+         */
+        paymentType: string;
+        /**
+         * The ready time of the resource.
+         */
+        readyTime: string;
+        /**
+         * The release version of the resource.
+         */
+        releaseVersion: string;
+        /**
+         * The resource group id of the resource.
+         */
+        resourceGroupId: string;
+        /**
+         * The cluster state change reason.
+         */
+        stateChangeReason: {[key: string]: any};
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: outputs.emrv2.GetClustersClusterTag[];
+    }
+
+    export interface GetClustersClusterTag {
+        key: string;
+        value: string;
+    }
+
+}
+
 export namespace ens {
     export interface GetKeyPairsPair {
         /**
@@ -23872,6 +24317,163 @@ export namespace expressconnect {
          * Physical Private Line of Type. Default Value: VPC.
          */
         type: string;
+    }
+
+    export interface GetRouterInterfacesFilter {
+        key?: string;
+        values?: string[];
+    }
+
+    export interface GetRouterInterfacesInterface {
+        /**
+         * The access point ID to which the VBR belongs.
+         */
+        accessPointId: string;
+        /**
+         * The bandwidth of the resource.
+         */
+        bandwidth: number;
+        /**
+         * The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+         */
+        businessStatus: string;
+        /**
+         * The connected time of the resource.
+         */
+        connectedTime: string;
+        /**
+         * The creation time of the resource
+         */
+        createTime: string;
+        /**
+         * The cross border of the resource.
+         */
+        crossBorder: boolean;
+        /**
+         * The description of the router interface.
+         */
+        description: string;
+        /**
+         * The end time of the resource.
+         */
+        endTime: string;
+        /**
+         * The has reservation data of the resource.
+         */
+        hasReservationData: string;
+        /**
+         * The hc rate of the resource.
+         */
+        hcRate: number;
+        /**
+         * The hc threshold of the resource.
+         */
+        hcThreshold: string;
+        /**
+         * The health check source IP address, must be an unused IP within the local VPC.
+         */
+        healthCheckSourceIp: string;
+        /**
+         * The IP address for health screening purposes.
+         */
+        healthCheckTargetIp: string;
+        id: string;
+        /**
+         * The Access point ID to which the other end belongs.
+         */
+        oppositeAccessPointId: string;
+        /**
+         * The opposite bandwidth of the router on the other side.
+         */
+        oppositeBandwidth: number;
+        /**
+         * The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+         */
+        oppositeInterfaceBusinessStatus: string;
+        /**
+         * The Interface ID of the router at the other end.
+         */
+        oppositeInterfaceId: string;
+        /**
+         * The AliCloud account ID of the owner of the router interface on the other end.
+         */
+        oppositeInterfaceOwnerId: string;
+        /**
+         * The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+         */
+        oppositeInterfaceSpec: string;
+        /**
+         * The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+         */
+        oppositeInterfaceStatus: string;
+        /**
+         * The geographical ID of the location of the receiving end of the connection.
+         */
+        oppositeRegionId: string;
+        /**
+         * The id of the router at the other end.
+         */
+        oppositeRouterId: string;
+        /**
+         * The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+         */
+        oppositeRouterType: string;
+        /**
+         * The opposite vpc instance id of the router on the other side.
+         */
+        oppositeVpcInstanceId: string;
+        /**
+         * The payment methods for router interfaces. Valid Values: `PrePaid`, `PostPaid`.
+         */
+        paymentType: string;
+        /**
+         * The reservation active time of the resource.
+         */
+        reservationActiveTime: string;
+        /**
+         * The reservation bandwidth of the resource.
+         */
+        reservationBandwidth: string;
+        /**
+         * The reservation internet charge type of the resource.
+         */
+        reservationInternetChargeType: string;
+        /**
+         * The reservation order type of the resource.
+         */
+        reservationOrderType: string;
+        /**
+         * The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+         */
+        role: string;
+        /**
+         * The router id associated with the router interface.
+         */
+        routerId: string;
+        /**
+         * The first ID of the resource.
+         */
+        routerInterfaceId: string;
+        /**
+         * The name of the resource.
+         */
+        routerInterfaceName: string;
+        /**
+         * The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+         */
+        routerType: string;
+        /**
+         * The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+         */
+        spec: string;
+        /**
+         * The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+         */
+        status: string;
+        /**
+         * The vpc instance id of the resource.
+         */
+        vpcInstanceId: string;
     }
 
     export interface GetVbrPconnAssociationsAssociation {
@@ -32797,18 +33399,57 @@ export namespace ots {
     }
 
     export interface GetSearchIndexesIndex {
+        /**
+         * The creation time of the index.
+         */
         createTime: number;
+        /**
+         * Timestamp for sync phase.
+         */
         currentSyncTimestamp: number;
+        /**
+         * The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
+         */
         id: string;
+        /**
+         * The index name of the OTS Table which could not be changed.
+         */
         indexName: string;
+        /**
+         * The name of OTS instance.
+         */
         instanceName: string;
+        /**
+         * Last update time for metering data..
+         */
         meteringLastUpdateTime: number;
+        /**
+         * Reserve related resources for the index.
+         */
         reservedReadCu: number;
+        /**
+         * The number of rows of data for index.
+         */
         rowCount: number;
+        /**
+         * JSON representation of the schema of index.
+         */
         schema: string;
+        /**
+         * Storage space occupied by index.
+         */
         storageSize: number;
+        /**
+         * The synchronization state of the index.
+         */
         syncPhase: string;
+        /**
+         * The name of OTS table.
+         */
         tableName: string;
+        /**
+         * TTL of index.
+         */
         timeToLive: number;
     }
 
@@ -40708,6 +41349,29 @@ export namespace threatdetection {
          * Destination port.
          */
         targetPort: number;
+    }
+
+    export interface GetInstancesInstance {
+        /**
+         * The creation time of the resource
+         */
+        createTime: string;
+        /**
+         * ID of the instance.
+         */
+        id: string;
+        /**
+         * The first ID of the resource
+         */
+        instanceId: string;
+        /**
+         * The payment type of the resource.
+         */
+        paymentType: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
     }
 
     export interface GetVulWhitelistsWhitelist {

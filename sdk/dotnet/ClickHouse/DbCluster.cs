@@ -99,8 +99,8 @@ namespace Pulumi.AliCloud.ClickHouse
 
         /// <summary>
         /// The DBCluster class. According to the category, db_cluster_class has two value ranges:
-        /// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
-        /// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
+        /// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
+        /// * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
         /// </summary>
         [Output("dbClusterClass")]
         public Output<string> DbClusterClass { get; private set; } = null!;
@@ -273,8 +273,8 @@ namespace Pulumi.AliCloud.ClickHouse
 
         /// <summary>
         /// The DBCluster class. According to the category, db_cluster_class has two value ranges:
-        /// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
-        /// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
+        /// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
+        /// * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
         /// </summary>
         [Input("dbClusterClass", required: true)]
         public Input<string> DbClusterClass { get; set; } = null!;
@@ -409,8 +409,8 @@ namespace Pulumi.AliCloud.ClickHouse
 
         /// <summary>
         /// The DBCluster class. According to the category, db_cluster_class has two value ranges:
-        /// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
-        /// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
+        /// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
+        /// * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
         /// </summary>
         [Input("dbClusterClass")]
         public Input<string>? DbClusterClass { get; set; }

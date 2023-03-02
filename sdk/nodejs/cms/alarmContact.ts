@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * // If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
  * const example = new alicloud.cms.AlarmContact("example", {
  *     alarmContactName: "zhangsan",
- *     channelsMail: "terraform.test.com",
+ *     channelsMail: "terraform@test.com",
  *     describe: "For Test",
  * });
  * ```
@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * const example = new alicloud.cms.AlarmContact("example", {
  *     alarmContactName: "zhangsan",
  *     describe: "For Test",
- *     channelsMail: "terraform.test.com",
+ *     channelsMail: "terraform@test.com",
  * });
  * ```
  *

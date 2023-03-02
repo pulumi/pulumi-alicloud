@@ -135,6 +135,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The public IP address that you want to add to the whitelist.
+     * 
+     */
+    @Import(name="publicWhiteLists")
+    private @Nullable Output<List<String>> publicWhiteLists;
+
+    /**
+     * @return The public IP address that you want to add to the whitelist.
+     * 
+     */
+    public Optional<Output<List<String>>> publicWhiteLists() {
+        return Optional.ofNullable(this.publicWhiteLists);
+    }
+
+    /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
      * 
      */
@@ -257,6 +272,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.licenseCode = $.licenseCode;
         this.period = $.period;
         this.planCode = $.planCode;
+        this.publicWhiteLists = $.publicWhiteLists;
         this.renewPeriod = $.renewPeriod;
         this.renewalPeriodUnit = $.renewalPeriodUnit;
         this.renewalStatus = $.renewalStatus;
@@ -459,6 +475,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder planCode(String planCode) {
             return planCode(Output.of(planCode));
+        }
+
+        /**
+         * @param publicWhiteLists The public IP address that you want to add to the whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicWhiteLists(@Nullable Output<List<String>> publicWhiteLists) {
+            $.publicWhiteLists = publicWhiteLists;
+            return this;
+        }
+
+        /**
+         * @param publicWhiteLists The public IP address that you want to add to the whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicWhiteLists(List<String> publicWhiteLists) {
+            return publicWhiteLists(Output.of(publicWhiteLists));
+        }
+
+        /**
+         * @param publicWhiteLists The public IP address that you want to add to the whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicWhiteLists(String... publicWhiteLists) {
+            return publicWhiteLists(List.of(publicWhiteLists));
         }
 
         /**

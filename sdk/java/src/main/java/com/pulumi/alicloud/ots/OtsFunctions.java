@@ -426,15 +426,47 @@ public final class OtsFunctions {
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ots/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides the ots search index of the current Alibaba Cloud user.
+     * 
+     * For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     */
     public static Output<GetSearchIndexesResult> getSearchIndexes(GetSearchIndexesArgs args) {
         return getSearchIndexes(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the ots search index of the current Alibaba Cloud user.
+     * 
+     * For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     */
     public static CompletableFuture<GetSearchIndexesResult> getSearchIndexesPlain(GetSearchIndexesPlainArgs args) {
         return getSearchIndexesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the ots search index of the current Alibaba Cloud user.
+     * 
+     * For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     */
     public static Output<GetSearchIndexesResult> getSearchIndexes(GetSearchIndexesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ots/getSearchIndexes:getSearchIndexes", TypeShape.of(GetSearchIndexesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides the ots search index of the current Alibaba Cloud user.
+     * 
+     * For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
+     * 
+     * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     */
     public static CompletableFuture<GetSearchIndexesResult> getSearchIndexesPlain(GetSearchIndexesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ots/getSearchIndexes:getSearchIndexes", TypeShape.of(GetSearchIndexesResult.class), args, Utilities.withVersion(options));
     }

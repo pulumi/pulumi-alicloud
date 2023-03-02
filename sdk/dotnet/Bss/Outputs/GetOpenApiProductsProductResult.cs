@@ -13,10 +13,27 @@ namespace Pulumi.AliCloud.Bss.Outputs
     [OutputType]
     public sealed class GetOpenApiProductsProductResult
     {
+        /// <summary>
+        /// The ID of the product. The value is formulated as `&lt;product_code&gt;:&lt;product_type&gt;:&lt;subscription_type&gt;`.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Product code.
+        /// </summary>
         public readonly string ProductCode;
+        /// <summary>
+        /// Product name.
+        /// </summary>
         public readonly string ProductName;
+        /// <summary>
+        /// Type of product.
+        /// </summary>
         public readonly string ProductType;
+        /// <summary>
+        /// Subscription type. Value:
+        /// * Subscription: Prepaid.
+        /// * PayAsYouGo: postpaid.
+        /// </summary>
         public readonly string SubscriptionType;
 
         [OutputConstructor]

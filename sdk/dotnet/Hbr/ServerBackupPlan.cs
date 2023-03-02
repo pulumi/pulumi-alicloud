@@ -65,6 +65,24 @@ namespace Pulumi.AliCloud.Hbr
     public partial class ServerBackupPlan : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Output("crossAccountRoleName")]
+        public Output<string?> CrossAccountRoleName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Output("crossAccountType")]
+        public Output<string> CrossAccountType { get; private set; } = null!;
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Output("crossAccountUserId")]
+        public Output<int?> CrossAccountUserId { get; private set; } = null!;
+
+        /// <summary>
         /// ECS server backup plan details.
         /// </summary>
         [Output("details")]
@@ -146,6 +164,24 @@ namespace Pulumi.AliCloud.Hbr
 
     public sealed class ServerBackupPlanArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
+
         [Input("details", required: true)]
         private InputList<Inputs.ServerBackupPlanDetailArgs>? _details;
 
@@ -196,6 +232,24 @@ namespace Pulumi.AliCloud.Hbr
 
     public sealed class ServerBackupPlanState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// </summary>
+        [Input("crossAccountRoleName")]
+        public Input<string>? CrossAccountRoleName { get; set; }
+
+        /// <summary>
+        /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+        /// </summary>
+        [Input("crossAccountType")]
+        public Input<string>? CrossAccountType { get; set; }
+
+        /// <summary>
+        /// The original account ID of the cross account backup managed by the current account.
+        /// </summary>
+        [Input("crossAccountUserId")]
+        public Input<int>? CrossAccountUserId { get; set; }
+
         [Input("details")]
         private InputList<Inputs.ServerBackupPlanDetailGetArgs>? _details;
 

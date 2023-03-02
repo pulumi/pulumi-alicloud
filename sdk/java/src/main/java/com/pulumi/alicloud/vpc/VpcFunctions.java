@@ -7773,9 +7773,6 @@ public final class VpcFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getRouteTables:getRouteTables", TypeShape.of(GetRouteTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
-     * that connect VPCs together.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7813,9 +7810,6 @@ public final class VpcFunctions {
         return getRouterInterfaces(GetRouterInterfacesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
-     * that connect VPCs together.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7853,9 +7847,6 @@ public final class VpcFunctions {
         return getRouterInterfacesPlain(GetRouterInterfacesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
-     * that connect VPCs together.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7893,9 +7884,6 @@ public final class VpcFunctions {
         return getRouterInterfaces(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
-     * that connect VPCs together.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7933,9 +7921,6 @@ public final class VpcFunctions {
         return getRouterInterfacesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
-     * that connect VPCs together.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7973,9 +7958,6 @@ public final class VpcFunctions {
         return Deployment.getInstance().invoke("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", TypeShape.of(GetRouterInterfacesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
-     * that connect VPCs together.
-     * 
      * ## Example Usage
      * ```java
      * package generated_program;

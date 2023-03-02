@@ -12,9 +12,6 @@ namespace Pulumi.AliCloud.Vpc
     public static class GetRouterInterfaces
     {
         /// <summary>
-        /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
-        /// that connect VPCs together.
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -45,9 +42,6 @@ namespace Pulumi.AliCloud.Vpc
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
-        /// that connect VPCs together.
-        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

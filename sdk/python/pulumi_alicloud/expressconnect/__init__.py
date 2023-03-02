@@ -9,11 +9,13 @@ from .get_access_points import *
 from .get_grant_rule_to_cens import *
 from .get_physical_connection_service import *
 from .get_physical_connections import *
+from .get_router_interfaces import *
 from .get_vbr_pconn_associations import *
 from .get_virtual_border_routers import *
 from .get_virtual_physical_connections import *
 from .grant_rule_to_cen import *
 from .physical_connection import *
+from .router_interface import *
 from .vbr_pconn_association import *
 from .virtual_border_router import *
 from .virtual_physical_connection import *

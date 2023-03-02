@@ -11,9 +11,19 @@ namespace Pulumi.AliCloud.Bss
 {
     public static class GetOpenApiProducts
     {
+        /// <summary>
+        /// This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+        /// 
+        /// &gt; **NOTE:** Available in 1.195.0+
+        /// </summary>
         public static Task<GetOpenApiProductsResult> InvokeAsync(GetOpenApiProductsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenApiProductsResult>("alicloud:bss/getOpenApiProducts:getOpenApiProducts", args ?? new GetOpenApiProductsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+        /// 
+        /// &gt; **NOTE:** Available in 1.195.0+
+        /// </summary>
         public static Output<GetOpenApiProductsResult> Invoke(GetOpenApiProductsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenApiProductsResult>("alicloud:bss/getOpenApiProducts:getOpenApiProducts", args ?? new GetOpenApiProductsInvokeArgs(), options.WithDefaults());
     }
@@ -23,12 +33,19 @@ namespace Pulumi.AliCloud.Bss
     {
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of product IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Product name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
@@ -45,12 +62,19 @@ namespace Pulumi.AliCloud.Bss
     {
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of product IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Product name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
@@ -73,8 +97,14 @@ namespace Pulumi.AliCloud.Bss
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of name of Products.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Product Entries. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenApiProductsProductResult> Products;
 
         [OutputConstructor]

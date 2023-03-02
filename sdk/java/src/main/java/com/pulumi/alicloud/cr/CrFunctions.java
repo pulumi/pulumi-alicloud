@@ -20,6 +20,8 @@ import com.pulumi.alicloud.cr.inputs.GetReposArgs;
 import com.pulumi.alicloud.cr.inputs.GetReposPlainArgs;
 import com.pulumi.alicloud.cr.inputs.GetServiceArgs;
 import com.pulumi.alicloud.cr.inputs.GetServicePlainArgs;
+import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
+import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsPlainArgs;
 import com.pulumi.alicloud.cr.outputs.GetChainsResult;
 import com.pulumi.alicloud.cr.outputs.GetChartNamespacesResult;
 import com.pulumi.alicloud.cr.outputs.GetChartRepositoriesResult;
@@ -28,6 +30,7 @@ import com.pulumi.alicloud.cr.outputs.GetEndpointAclServiceResult;
 import com.pulumi.alicloud.cr.outputs.GetNamespacesResult;
 import com.pulumi.alicloud.cr.outputs.GetReposResult;
 import com.pulumi.alicloud.cr.outputs.GetServiceResult;
+import com.pulumi.alicloud.cr.outputs.GetVpcEndpointLinkedVpcsResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -1490,5 +1493,181 @@ public final class CrFunctions {
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cr/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.199.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .instanceId(&#34;your_cr_instance_id&#34;)
+     *             .moduleName(&#34;Registry&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCrVpcEndpointLinkedVpcsId1&#34;, ids.applyValue(getVpcEndpointLinkedVpcsResult -&gt; getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVpcEndpointLinkedVpcsResult> getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs args) {
+        return getVpcEndpointLinkedVpcs(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.199.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .instanceId(&#34;your_cr_instance_id&#34;)
+     *             .moduleName(&#34;Registry&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCrVpcEndpointLinkedVpcsId1&#34;, ids.applyValue(getVpcEndpointLinkedVpcsResult -&gt; getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVpcEndpointLinkedVpcsResult> getVpcEndpointLinkedVpcsPlain(GetVpcEndpointLinkedVpcsPlainArgs args) {
+        return getVpcEndpointLinkedVpcsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.199.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .instanceId(&#34;your_cr_instance_id&#34;)
+     *             .moduleName(&#34;Registry&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCrVpcEndpointLinkedVpcsId1&#34;, ids.applyValue(getVpcEndpointLinkedVpcsResult -&gt; getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVpcEndpointLinkedVpcsResult> getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", TypeShape.of(GetVpcEndpointLinkedVpcsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.199.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CrFunctions.getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .instanceId(&#34;your_cr_instance_id&#34;)
+     *             .moduleName(&#34;Registry&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudCrVpcEndpointLinkedVpcsId1&#34;, ids.applyValue(getVpcEndpointLinkedVpcsResult -&gt; getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVpcEndpointLinkedVpcsResult> getVpcEndpointLinkedVpcsPlain(GetVpcEndpointLinkedVpcsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", TypeShape.of(GetVpcEndpointLinkedVpcsResult.class), args, Utilities.withVersion(options));
     }
 }

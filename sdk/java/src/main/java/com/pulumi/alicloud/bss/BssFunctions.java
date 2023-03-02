@@ -17,33 +17,229 @@ import com.pulumi.deployment.InvokeOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class BssFunctions {
+    /**
+     * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bss.BssFunctions;
+     * import com.pulumi.alicloud.bss.inputs.GetOpenApiPricingModulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = BssFunctions.getOpenApiPricingModules(GetOpenApiPricingModulesArgs.builder()
+     *             .nameRegex(&#34;国内月均日峰值带宽&#34;)
+     *             .productCode(&#34;cdn&#34;)
+     *             .productType(&#34;CDN&#34;)
+     *             .subscriptionType(&#34;PayAsYouGo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudBssOpenapiPricingModuleExampleId&#34;, default_.modules()[0].code());
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetOpenApiPricingModulesResult> getOpenApiPricingModules(GetOpenApiPricingModulesArgs args) {
         return getOpenApiPricingModules(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bss.BssFunctions;
+     * import com.pulumi.alicloud.bss.inputs.GetOpenApiPricingModulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = BssFunctions.getOpenApiPricingModules(GetOpenApiPricingModulesArgs.builder()
+     *             .nameRegex(&#34;国内月均日峰值带宽&#34;)
+     *             .productCode(&#34;cdn&#34;)
+     *             .productType(&#34;CDN&#34;)
+     *             .subscriptionType(&#34;PayAsYouGo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudBssOpenapiPricingModuleExampleId&#34;, default_.modules()[0].code());
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetOpenApiPricingModulesResult> getOpenApiPricingModulesPlain(GetOpenApiPricingModulesPlainArgs args) {
         return getOpenApiPricingModulesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bss.BssFunctions;
+     * import com.pulumi.alicloud.bss.inputs.GetOpenApiPricingModulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = BssFunctions.getOpenApiPricingModules(GetOpenApiPricingModulesArgs.builder()
+     *             .nameRegex(&#34;国内月均日峰值带宽&#34;)
+     *             .productCode(&#34;cdn&#34;)
+     *             .productType(&#34;CDN&#34;)
+     *             .subscriptionType(&#34;PayAsYouGo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudBssOpenapiPricingModuleExampleId&#34;, default_.modules()[0].code());
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetOpenApiPricingModulesResult> getOpenApiPricingModules(GetOpenApiPricingModulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", TypeShape.of(GetOpenApiPricingModulesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.bss.BssFunctions;
+     * import com.pulumi.alicloud.bss.inputs.GetOpenApiPricingModulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = BssFunctions.getOpenApiPricingModules(GetOpenApiPricingModulesArgs.builder()
+     *             .nameRegex(&#34;国内月均日峰值带宽&#34;)
+     *             .productCode(&#34;cdn&#34;)
+     *             .productType(&#34;CDN&#34;)
+     *             .subscriptionType(&#34;PayAsYouGo&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudBssOpenapiPricingModuleExampleId&#34;, default_.modules()[0].code());
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetOpenApiPricingModulesResult> getOpenApiPricingModulesPlain(GetOpenApiPricingModulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", TypeShape.of(GetOpenApiPricingModulesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     */
     public static Output<GetOpenApiProductsResult> getOpenApiProducts() {
         return getOpenApiProducts(GetOpenApiProductsArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     */
     public static CompletableFuture<GetOpenApiProductsResult> getOpenApiProductsPlain() {
         return getOpenApiProductsPlain(GetOpenApiProductsPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     */
     public static Output<GetOpenApiProductsResult> getOpenApiProducts(GetOpenApiProductsArgs args) {
         return getOpenApiProducts(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     */
     public static CompletableFuture<GetOpenApiProductsResult> getOpenApiProductsPlain(GetOpenApiProductsPlainArgs args) {
         return getOpenApiProductsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     */
     public static Output<GetOpenApiProductsResult> getOpenApiProducts(GetOpenApiProductsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:bss/getOpenApiProducts:getOpenApiProducts", TypeShape.of(GetOpenApiProductsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+     * 
+     * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     */
     public static CompletableFuture<GetOpenApiProductsResult> getOpenApiProductsPlain(GetOpenApiProductsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:bss/getOpenApiProducts:getOpenApiProducts", TypeShape.of(GetOpenApiProductsResult.class), args, Utilities.withVersion(options));
     }

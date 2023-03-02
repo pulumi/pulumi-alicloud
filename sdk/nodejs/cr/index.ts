@@ -65,6 +65,11 @@ export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
 utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 
+export { GetVpcEndpointLinkedVpcsArgs, GetVpcEndpointLinkedVpcsResult, GetVpcEndpointLinkedVpcsOutputArgs } from "./getVpcEndpointLinkedVpcs";
+export const getVpcEndpointLinkedVpcs: typeof import("./getVpcEndpointLinkedVpcs").getVpcEndpointLinkedVpcs = null as any;
+export const getVpcEndpointLinkedVpcsOutput: typeof import("./getVpcEndpointLinkedVpcs").getVpcEndpointLinkedVpcsOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcEndpointLinkedVpcs","getVpcEndpointLinkedVpcsOutput"], () => require("./getVpcEndpointLinkedVpcs"));
+
 export { NamespaceArgs, NamespaceState } from "./namespace";
 export type Namespace = import("./namespace").Namespace;
 export const Namespace: typeof import("./namespace").Namespace = null as any;
@@ -79,6 +84,11 @@ export { RepoArgs, RepoState } from "./repo";
 export type Repo = import("./repo").Repo;
 export const Repo: typeof import("./repo").Repo = null as any;
 utilities.lazyLoad(exports, ["Repo"], () => require("./repo"));
+
+export { VpcEndpointLinkedVpcArgs, VpcEndpointLinkedVpcState } from "./vpcEndpointLinkedVpc";
+export type VpcEndpointLinkedVpc = import("./vpcEndpointLinkedVpc").VpcEndpointLinkedVpc;
+export const VpcEndpointLinkedVpc: typeof import("./vpcEndpointLinkedVpc").VpcEndpointLinkedVpc = null as any;
+utilities.lazyLoad(exports, ["VpcEndpointLinkedVpc"], () => require("./vpcEndpointLinkedVpc"));
 
 
 const _module = {
@@ -99,6 +109,8 @@ const _module = {
                 return new RegistryEnterpriseInstance(name, <any>undefined, { urn })
             case "alicloud:cr/repo:Repo":
                 return new Repo(name, <any>undefined, { urn })
+            case "alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc":
+                return new VpcEndpointLinkedVpc(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -111,3 +123,4 @@ pulumi.runtime.registerResourceModule("alicloud", "cr/endpointAclPolicy", _modul
 pulumi.runtime.registerResourceModule("alicloud", "cr/namespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/registryEnterpriseInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/repo", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cr/vpcEndpointLinkedVpc", _module)

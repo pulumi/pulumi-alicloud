@@ -2764,6 +2764,166 @@ func (o GetReposRepoTagArrayOutput) Index(i pulumi.IntInput) GetReposRepoTagOutp
 	}).(GetReposRepoTagOutput)
 }
 
+type GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc struct {
+	// Indicates whether the default policy is used to access the instance.
+	DefaultAccess bool `pulumi:"defaultAccess"`
+	// The ID of the Vpc Endpoint Linked Vpc. It formats as `<instance_id>:<vpc_id>:<vswitch_id>:<module_name>`.
+	Id string `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId string `pulumi:"instanceId"`
+	// IP address.
+	Ip string `pulumi:"ip"`
+	// The name of the module that you want to access. Valid Values:
+	ModuleName string `pulumi:"moduleName"`
+	// The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
+	Status string `pulumi:"status"`
+	// The ID of the VPC.
+	VpcId string `pulumi:"vpcId"`
+	// The ID of the vSwitch.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcInput is an input type that accepts GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArgs and GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput values.
+// You can construct a concrete instance of `GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcInput` via:
+//
+//	GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArgs{...}
+type GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcInput interface {
+	pulumi.Input
+
+	ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput() GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput
+	ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutputWithContext(context.Context) GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput
+}
+
+type GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArgs struct {
+	// Indicates whether the default policy is used to access the instance.
+	DefaultAccess pulumi.BoolInput `pulumi:"defaultAccess"`
+	// The ID of the Vpc Endpoint Linked Vpc. It formats as `<instance_id>:<vpc_id>:<vswitch_id>:<module_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// IP address.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// The name of the module that you want to access. Valid Values:
+	ModuleName pulumi.StringInput `pulumi:"moduleName"`
+	// The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the VPC.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the vSwitch.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc)(nil)).Elem()
+}
+
+func (i GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArgs) ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput() GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput {
+	return i.ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutputWithContext(context.Background())
+}
+
+func (i GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArgs) ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutputWithContext(ctx context.Context) GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput)
+}
+
+// GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayInput is an input type that accepts GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArray and GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput values.
+// You can construct a concrete instance of `GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayInput` via:
+//
+//	GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArray{ GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArgs{...} }
+type GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput() GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput
+	ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutputWithContext(context.Context) GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput
+}
+
+type GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArray []GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcInput
+
+func (GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc)(nil)).Elem()
+}
+
+func (i GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArray) ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput() GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput {
+	return i.ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArray) ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutputWithContext(ctx context.Context) GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput)
+}
+
+type GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc)(nil)).Elem()
+}
+
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput() GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput {
+	return o
+}
+
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutputWithContext(ctx context.Context) GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput {
+	return o
+}
+
+// Indicates whether the default policy is used to access the instance.
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) DefaultAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc) bool { return v.DefaultAccess }).(pulumi.BoolOutput)
+}
+
+// The ID of the Vpc Endpoint Linked Vpc. It formats as `<instance_id>:<vpc_id>:<vswitch_id>:<module_name>`.
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the instance.
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// IP address.
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The name of the module that you want to access. Valid Values:
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) ModuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc) string { return v.ModuleName }).(pulumi.StringOutput)
+}
+
+// The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC.
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the vSwitch.
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc)(nil)).Elem()
+}
+
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput) ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput() GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput {
+	return o
+}
+
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput) ToGetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutputWithContext(ctx context.Context) GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput {
+	return o
+}
+
+func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput) Index(i pulumi.IntInput) GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
+		return vs[0].([]GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc)[vs[1].(int)]
+	}).(GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigInput)(nil)).Elem(), ChainChainConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChainChainConfigArrayInput)(nil)).Elem(), ChainChainConfigArray{})
@@ -2810,6 +2970,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoDomainListInput)(nil)).Elem(), GetReposRepoDomainListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoTagInput)(nil)).Elem(), GetReposRepoTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReposRepoTagArrayInput)(nil)).Elem(), GetReposRepoTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcInput)(nil)).Elem(), GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayInput)(nil)).Elem(), GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArray{})
 	pulumi.RegisterOutputType(ChainChainConfigOutput{})
 	pulumi.RegisterOutputType(ChainChainConfigArrayOutput{})
 	pulumi.RegisterOutputType(ChainChainConfigNodeOutput{})
@@ -2855,4 +3017,6 @@ func init() {
 	pulumi.RegisterOutputType(GetReposRepoDomainListOutput{})
 	pulumi.RegisterOutputType(GetReposRepoTagOutput{})
 	pulumi.RegisterOutputType(GetReposRepoTagArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput{})
+	pulumi.RegisterOutputType(GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArrayOutput{})
 }

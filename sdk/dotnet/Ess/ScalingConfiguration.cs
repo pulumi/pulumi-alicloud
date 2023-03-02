@@ -238,6 +238,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> SystemDiskDescription { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to encrypt the system disk.
+        /// </summary>
+        [Output("systemDiskEncrypted")]
+        public Output<bool?> SystemDiskEncrypted { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         /// </summary>
         [Output("systemDiskName")]
@@ -575,6 +581,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? SystemDiskDescription { get; set; }
 
         /// <summary>
+        /// Whether to encrypt the system disk.
+        /// </summary>
+        [Input("systemDiskEncrypted")]
+        public Input<bool>? SystemDiskEncrypted { get; set; }
+
+        /// <summary>
         /// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         /// </summary>
         [Input("systemDiskName")]
@@ -878,6 +890,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("systemDiskDescription")]
         public Input<string>? SystemDiskDescription { get; set; }
+
+        /// <summary>
+        /// Whether to encrypt the system disk.
+        /// </summary>
+        [Input("systemDiskEncrypted")]
+        public Input<bool>? SystemDiskEncrypted { get; set; }
 
         /// <summary>
         /// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.

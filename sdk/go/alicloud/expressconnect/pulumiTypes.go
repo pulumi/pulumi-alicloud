@@ -742,6 +742,533 @@ func (o GetPhysicalConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetPhysicalConnectionsConnectionOutput)
 }
 
+type GetRouterInterfacesFilter struct {
+	Key    *string  `pulumi:"key"`
+	Values []string `pulumi:"values"`
+}
+
+// GetRouterInterfacesFilterInput is an input type that accepts GetRouterInterfacesFilterArgs and GetRouterInterfacesFilterOutput values.
+// You can construct a concrete instance of `GetRouterInterfacesFilterInput` via:
+//
+//	GetRouterInterfacesFilterArgs{...}
+type GetRouterInterfacesFilterInput interface {
+	pulumi.Input
+
+	ToGetRouterInterfacesFilterOutput() GetRouterInterfacesFilterOutput
+	ToGetRouterInterfacesFilterOutputWithContext(context.Context) GetRouterInterfacesFilterOutput
+}
+
+type GetRouterInterfacesFilterArgs struct {
+	Key    pulumi.StringPtrInput   `pulumi:"key"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRouterInterfacesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterInterfacesFilter)(nil)).Elem()
+}
+
+func (i GetRouterInterfacesFilterArgs) ToGetRouterInterfacesFilterOutput() GetRouterInterfacesFilterOutput {
+	return i.ToGetRouterInterfacesFilterOutputWithContext(context.Background())
+}
+
+func (i GetRouterInterfacesFilterArgs) ToGetRouterInterfacesFilterOutputWithContext(ctx context.Context) GetRouterInterfacesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterInterfacesFilterOutput)
+}
+
+// GetRouterInterfacesFilterArrayInput is an input type that accepts GetRouterInterfacesFilterArray and GetRouterInterfacesFilterArrayOutput values.
+// You can construct a concrete instance of `GetRouterInterfacesFilterArrayInput` via:
+//
+//	GetRouterInterfacesFilterArray{ GetRouterInterfacesFilterArgs{...} }
+type GetRouterInterfacesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterInterfacesFilterArrayOutput() GetRouterInterfacesFilterArrayOutput
+	ToGetRouterInterfacesFilterArrayOutputWithContext(context.Context) GetRouterInterfacesFilterArrayOutput
+}
+
+type GetRouterInterfacesFilterArray []GetRouterInterfacesFilterInput
+
+func (GetRouterInterfacesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterInterfacesFilter)(nil)).Elem()
+}
+
+func (i GetRouterInterfacesFilterArray) ToGetRouterInterfacesFilterArrayOutput() GetRouterInterfacesFilterArrayOutput {
+	return i.ToGetRouterInterfacesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterInterfacesFilterArray) ToGetRouterInterfacesFilterArrayOutputWithContext(ctx context.Context) GetRouterInterfacesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterInterfacesFilterArrayOutput)
+}
+
+type GetRouterInterfacesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetRouterInterfacesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterInterfacesFilter)(nil)).Elem()
+}
+
+func (o GetRouterInterfacesFilterOutput) ToGetRouterInterfacesFilterOutput() GetRouterInterfacesFilterOutput {
+	return o
+}
+
+func (o GetRouterInterfacesFilterOutput) ToGetRouterInterfacesFilterOutputWithContext(ctx context.Context) GetRouterInterfacesFilterOutput {
+	return o
+}
+
+func (o GetRouterInterfacesFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouterInterfacesFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRouterInterfacesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterInterfacesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRouterInterfacesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterInterfacesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterInterfacesFilter)(nil)).Elem()
+}
+
+func (o GetRouterInterfacesFilterArrayOutput) ToGetRouterInterfacesFilterArrayOutput() GetRouterInterfacesFilterArrayOutput {
+	return o
+}
+
+func (o GetRouterInterfacesFilterArrayOutput) ToGetRouterInterfacesFilterArrayOutputWithContext(ctx context.Context) GetRouterInterfacesFilterArrayOutput {
+	return o
+}
+
+func (o GetRouterInterfacesFilterArrayOutput) Index(i pulumi.IntInput) GetRouterInterfacesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterInterfacesFilter {
+		return vs[0].([]GetRouterInterfacesFilter)[vs[1].(int)]
+	}).(GetRouterInterfacesFilterOutput)
+}
+
+type GetRouterInterfacesInterface struct {
+	// The access point ID to which the VBR belongs.
+	AccessPointId string `pulumi:"accessPointId"`
+	// The bandwidth of the resource.
+	Bandwidth int `pulumi:"bandwidth"`
+	// The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+	BusinessStatus string `pulumi:"businessStatus"`
+	// The connected time of the resource.
+	ConnectedTime string `pulumi:"connectedTime"`
+	// The creation time of the resource
+	CreateTime string `pulumi:"createTime"`
+	// The cross border of the resource.
+	CrossBorder bool `pulumi:"crossBorder"`
+	// The description of the router interface.
+	Description string `pulumi:"description"`
+	// The end time of the resource.
+	EndTime string `pulumi:"endTime"`
+	// The has reservation data of the resource.
+	HasReservationData string `pulumi:"hasReservationData"`
+	// The hc rate of the resource.
+	HcRate int `pulumi:"hcRate"`
+	// The hc threshold of the resource.
+	HcThreshold string `pulumi:"hcThreshold"`
+	// The health check source IP address, must be an unused IP within the local VPC.
+	HealthCheckSourceIp string `pulumi:"healthCheckSourceIp"`
+	// The IP address for health screening purposes.
+	HealthCheckTargetIp string `pulumi:"healthCheckTargetIp"`
+	Id                  string `pulumi:"id"`
+	// The Access point ID to which the other end belongs.
+	OppositeAccessPointId string `pulumi:"oppositeAccessPointId"`
+	// The opposite bandwidth of the router on the other side.
+	OppositeBandwidth int `pulumi:"oppositeBandwidth"`
+	// The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+	OppositeInterfaceBusinessStatus string `pulumi:"oppositeInterfaceBusinessStatus"`
+	// The Interface ID of the router at the other end.
+	OppositeInterfaceId string `pulumi:"oppositeInterfaceId"`
+	// The AliCloud account ID of the owner of the router interface on the other end.
+	OppositeInterfaceOwnerId string `pulumi:"oppositeInterfaceOwnerId"`
+	// The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+	OppositeInterfaceSpec string `pulumi:"oppositeInterfaceSpec"`
+	// The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+	OppositeInterfaceStatus string `pulumi:"oppositeInterfaceStatus"`
+	// The geographical ID of the location of the receiving end of the connection.
+	OppositeRegionId string `pulumi:"oppositeRegionId"`
+	// The id of the router at the other end.
+	OppositeRouterId string `pulumi:"oppositeRouterId"`
+	// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+	OppositeRouterType string `pulumi:"oppositeRouterType"`
+	// The opposite vpc instance id of the router on the other side.
+	OppositeVpcInstanceId string `pulumi:"oppositeVpcInstanceId"`
+	// The payment methods for router interfaces. Valid Values: `PrePaid`, `PostPaid`.
+	PaymentType string `pulumi:"paymentType"`
+	// The reservation active time of the resource.
+	ReservationActiveTime string `pulumi:"reservationActiveTime"`
+	// The reservation bandwidth of the resource.
+	ReservationBandwidth string `pulumi:"reservationBandwidth"`
+	// The reservation internet charge type of the resource.
+	ReservationInternetChargeType string `pulumi:"reservationInternetChargeType"`
+	// The reservation order type of the resource.
+	ReservationOrderType string `pulumi:"reservationOrderType"`
+	// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+	Role string `pulumi:"role"`
+	// The router id associated with the router interface.
+	RouterId string `pulumi:"routerId"`
+	// The first ID of the resource.
+	RouterInterfaceId string `pulumi:"routerInterfaceId"`
+	// The name of the resource.
+	RouterInterfaceName string `pulumi:"routerInterfaceName"`
+	// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+	RouterType string `pulumi:"routerType"`
+	// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+	Spec string `pulumi:"spec"`
+	// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+	Status string `pulumi:"status"`
+	// The vpc instance id of the resource.
+	VpcInstanceId string `pulumi:"vpcInstanceId"`
+}
+
+// GetRouterInterfacesInterfaceInput is an input type that accepts GetRouterInterfacesInterfaceArgs and GetRouterInterfacesInterfaceOutput values.
+// You can construct a concrete instance of `GetRouterInterfacesInterfaceInput` via:
+//
+//	GetRouterInterfacesInterfaceArgs{...}
+type GetRouterInterfacesInterfaceInput interface {
+	pulumi.Input
+
+	ToGetRouterInterfacesInterfaceOutput() GetRouterInterfacesInterfaceOutput
+	ToGetRouterInterfacesInterfaceOutputWithContext(context.Context) GetRouterInterfacesInterfaceOutput
+}
+
+type GetRouterInterfacesInterfaceArgs struct {
+	// The access point ID to which the VBR belongs.
+	AccessPointId pulumi.StringInput `pulumi:"accessPointId"`
+	// The bandwidth of the resource.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+	BusinessStatus pulumi.StringInput `pulumi:"businessStatus"`
+	// The connected time of the resource.
+	ConnectedTime pulumi.StringInput `pulumi:"connectedTime"`
+	// The creation time of the resource
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The cross border of the resource.
+	CrossBorder pulumi.BoolInput `pulumi:"crossBorder"`
+	// The description of the router interface.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The end time of the resource.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The has reservation data of the resource.
+	HasReservationData pulumi.StringInput `pulumi:"hasReservationData"`
+	// The hc rate of the resource.
+	HcRate pulumi.IntInput `pulumi:"hcRate"`
+	// The hc threshold of the resource.
+	HcThreshold pulumi.StringInput `pulumi:"hcThreshold"`
+	// The health check source IP address, must be an unused IP within the local VPC.
+	HealthCheckSourceIp pulumi.StringInput `pulumi:"healthCheckSourceIp"`
+	// The IP address for health screening purposes.
+	HealthCheckTargetIp pulumi.StringInput `pulumi:"healthCheckTargetIp"`
+	Id                  pulumi.StringInput `pulumi:"id"`
+	// The Access point ID to which the other end belongs.
+	OppositeAccessPointId pulumi.StringInput `pulumi:"oppositeAccessPointId"`
+	// The opposite bandwidth of the router on the other side.
+	OppositeBandwidth pulumi.IntInput `pulumi:"oppositeBandwidth"`
+	// The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+	OppositeInterfaceBusinessStatus pulumi.StringInput `pulumi:"oppositeInterfaceBusinessStatus"`
+	// The Interface ID of the router at the other end.
+	OppositeInterfaceId pulumi.StringInput `pulumi:"oppositeInterfaceId"`
+	// The AliCloud account ID of the owner of the router interface on the other end.
+	OppositeInterfaceOwnerId pulumi.StringInput `pulumi:"oppositeInterfaceOwnerId"`
+	// The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+	OppositeInterfaceSpec pulumi.StringInput `pulumi:"oppositeInterfaceSpec"`
+	// The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+	OppositeInterfaceStatus pulumi.StringInput `pulumi:"oppositeInterfaceStatus"`
+	// The geographical ID of the location of the receiving end of the connection.
+	OppositeRegionId pulumi.StringInput `pulumi:"oppositeRegionId"`
+	// The id of the router at the other end.
+	OppositeRouterId pulumi.StringInput `pulumi:"oppositeRouterId"`
+	// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+	OppositeRouterType pulumi.StringInput `pulumi:"oppositeRouterType"`
+	// The opposite vpc instance id of the router on the other side.
+	OppositeVpcInstanceId pulumi.StringInput `pulumi:"oppositeVpcInstanceId"`
+	// The payment methods for router interfaces. Valid Values: `PrePaid`, `PostPaid`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The reservation active time of the resource.
+	ReservationActiveTime pulumi.StringInput `pulumi:"reservationActiveTime"`
+	// The reservation bandwidth of the resource.
+	ReservationBandwidth pulumi.StringInput `pulumi:"reservationBandwidth"`
+	// The reservation internet charge type of the resource.
+	ReservationInternetChargeType pulumi.StringInput `pulumi:"reservationInternetChargeType"`
+	// The reservation order type of the resource.
+	ReservationOrderType pulumi.StringInput `pulumi:"reservationOrderType"`
+	// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+	Role pulumi.StringInput `pulumi:"role"`
+	// The router id associated with the router interface.
+	RouterId pulumi.StringInput `pulumi:"routerId"`
+	// The first ID of the resource.
+	RouterInterfaceId pulumi.StringInput `pulumi:"routerInterfaceId"`
+	// The name of the resource.
+	RouterInterfaceName pulumi.StringInput `pulumi:"routerInterfaceName"`
+	// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+	RouterType pulumi.StringInput `pulumi:"routerType"`
+	// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+	Spec pulumi.StringInput `pulumi:"spec"`
+	// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The vpc instance id of the resource.
+	VpcInstanceId pulumi.StringInput `pulumi:"vpcInstanceId"`
+}
+
+func (GetRouterInterfacesInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterInterfacesInterface)(nil)).Elem()
+}
+
+func (i GetRouterInterfacesInterfaceArgs) ToGetRouterInterfacesInterfaceOutput() GetRouterInterfacesInterfaceOutput {
+	return i.ToGetRouterInterfacesInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetRouterInterfacesInterfaceArgs) ToGetRouterInterfacesInterfaceOutputWithContext(ctx context.Context) GetRouterInterfacesInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterInterfacesInterfaceOutput)
+}
+
+// GetRouterInterfacesInterfaceArrayInput is an input type that accepts GetRouterInterfacesInterfaceArray and GetRouterInterfacesInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetRouterInterfacesInterfaceArrayInput` via:
+//
+//	GetRouterInterfacesInterfaceArray{ GetRouterInterfacesInterfaceArgs{...} }
+type GetRouterInterfacesInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterInterfacesInterfaceArrayOutput() GetRouterInterfacesInterfaceArrayOutput
+	ToGetRouterInterfacesInterfaceArrayOutputWithContext(context.Context) GetRouterInterfacesInterfaceArrayOutput
+}
+
+type GetRouterInterfacesInterfaceArray []GetRouterInterfacesInterfaceInput
+
+func (GetRouterInterfacesInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterInterfacesInterface)(nil)).Elem()
+}
+
+func (i GetRouterInterfacesInterfaceArray) ToGetRouterInterfacesInterfaceArrayOutput() GetRouterInterfacesInterfaceArrayOutput {
+	return i.ToGetRouterInterfacesInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterInterfacesInterfaceArray) ToGetRouterInterfacesInterfaceArrayOutputWithContext(ctx context.Context) GetRouterInterfacesInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterInterfacesInterfaceArrayOutput)
+}
+
+type GetRouterInterfacesInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetRouterInterfacesInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterInterfacesInterface)(nil)).Elem()
+}
+
+func (o GetRouterInterfacesInterfaceOutput) ToGetRouterInterfacesInterfaceOutput() GetRouterInterfacesInterfaceOutput {
+	return o
+}
+
+func (o GetRouterInterfacesInterfaceOutput) ToGetRouterInterfacesInterfaceOutputWithContext(ctx context.Context) GetRouterInterfacesInterfaceOutput {
+	return o
+}
+
+// The access point ID to which the VBR belongs.
+func (o GetRouterInterfacesInterfaceOutput) AccessPointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.AccessPointId }).(pulumi.StringOutput)
+}
+
+// The bandwidth of the resource.
+func (o GetRouterInterfacesInterfaceOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+func (o GetRouterInterfacesInterfaceOutput) BusinessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.BusinessStatus }).(pulumi.StringOutput)
+}
+
+// The connected time of the resource.
+func (o GetRouterInterfacesInterfaceOutput) ConnectedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.ConnectedTime }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource
+func (o GetRouterInterfacesInterfaceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The cross border of the resource.
+func (o GetRouterInterfacesInterfaceOutput) CrossBorder() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) bool { return v.CrossBorder }).(pulumi.BoolOutput)
+}
+
+// The description of the router interface.
+func (o GetRouterInterfacesInterfaceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The end time of the resource.
+func (o GetRouterInterfacesInterfaceOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The has reservation data of the resource.
+func (o GetRouterInterfacesInterfaceOutput) HasReservationData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.HasReservationData }).(pulumi.StringOutput)
+}
+
+// The hc rate of the resource.
+func (o GetRouterInterfacesInterfaceOutput) HcRate() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) int { return v.HcRate }).(pulumi.IntOutput)
+}
+
+// The hc threshold of the resource.
+func (o GetRouterInterfacesInterfaceOutput) HcThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.HcThreshold }).(pulumi.StringOutput)
+}
+
+// The health check source IP address, must be an unused IP within the local VPC.
+func (o GetRouterInterfacesInterfaceOutput) HealthCheckSourceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.HealthCheckSourceIp }).(pulumi.StringOutput)
+}
+
+// The IP address for health screening purposes.
+func (o GetRouterInterfacesInterfaceOutput) HealthCheckTargetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.HealthCheckTargetIp }).(pulumi.StringOutput)
+}
+
+func (o GetRouterInterfacesInterfaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Access point ID to which the other end belongs.
+func (o GetRouterInterfacesInterfaceOutput) OppositeAccessPointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.OppositeAccessPointId }).(pulumi.StringOutput)
+}
+
+// The opposite bandwidth of the router on the other side.
+func (o GetRouterInterfacesInterfaceOutput) OppositeBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) int { return v.OppositeBandwidth }).(pulumi.IntOutput)
+}
+
+// The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+func (o GetRouterInterfacesInterfaceOutput) OppositeInterfaceBusinessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.OppositeInterfaceBusinessStatus }).(pulumi.StringOutput)
+}
+
+// The Interface ID of the router at the other end.
+func (o GetRouterInterfacesInterfaceOutput) OppositeInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.OppositeInterfaceId }).(pulumi.StringOutput)
+}
+
+// The AliCloud account ID of the owner of the router interface on the other end.
+func (o GetRouterInterfacesInterfaceOutput) OppositeInterfaceOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.OppositeInterfaceOwnerId }).(pulumi.StringOutput)
+}
+
+// The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+func (o GetRouterInterfacesInterfaceOutput) OppositeInterfaceSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.OppositeInterfaceSpec }).(pulumi.StringOutput)
+}
+
+// The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+func (o GetRouterInterfacesInterfaceOutput) OppositeInterfaceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.OppositeInterfaceStatus }).(pulumi.StringOutput)
+}
+
+// The geographical ID of the location of the receiving end of the connection.
+func (o GetRouterInterfacesInterfaceOutput) OppositeRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.OppositeRegionId }).(pulumi.StringOutput)
+}
+
+// The id of the router at the other end.
+func (o GetRouterInterfacesInterfaceOutput) OppositeRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.OppositeRouterId }).(pulumi.StringOutput)
+}
+
+// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+func (o GetRouterInterfacesInterfaceOutput) OppositeRouterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.OppositeRouterType }).(pulumi.StringOutput)
+}
+
+// The opposite vpc instance id of the router on the other side.
+func (o GetRouterInterfacesInterfaceOutput) OppositeVpcInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.OppositeVpcInstanceId }).(pulumi.StringOutput)
+}
+
+// The payment methods for router interfaces. Valid Values: `PrePaid`, `PostPaid`.
+func (o GetRouterInterfacesInterfaceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The reservation active time of the resource.
+func (o GetRouterInterfacesInterfaceOutput) ReservationActiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.ReservationActiveTime }).(pulumi.StringOutput)
+}
+
+// The reservation bandwidth of the resource.
+func (o GetRouterInterfacesInterfaceOutput) ReservationBandwidth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.ReservationBandwidth }).(pulumi.StringOutput)
+}
+
+// The reservation internet charge type of the resource.
+func (o GetRouterInterfacesInterfaceOutput) ReservationInternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.ReservationInternetChargeType }).(pulumi.StringOutput)
+}
+
+// The reservation order type of the resource.
+func (o GetRouterInterfacesInterfaceOutput) ReservationOrderType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.ReservationOrderType }).(pulumi.StringOutput)
+}
+
+// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+func (o GetRouterInterfacesInterfaceOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// The router id associated with the router interface.
+func (o GetRouterInterfacesInterfaceOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource.
+func (o GetRouterInterfacesInterfaceOutput) RouterInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.RouterInterfaceId }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o GetRouterInterfacesInterfaceOutput) RouterInterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.RouterInterfaceName }).(pulumi.StringOutput)
+}
+
+// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+func (o GetRouterInterfacesInterfaceOutput) RouterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.RouterType }).(pulumi.StringOutput)
+}
+
+// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+func (o GetRouterInterfacesInterfaceOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.Spec }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+func (o GetRouterInterfacesInterfaceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The vpc instance id of the resource.
+func (o GetRouterInterfacesInterfaceOutput) VpcInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterInterfacesInterface) string { return v.VpcInstanceId }).(pulumi.StringOutput)
+}
+
+type GetRouterInterfacesInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterInterfacesInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterInterfacesInterface)(nil)).Elem()
+}
+
+func (o GetRouterInterfacesInterfaceArrayOutput) ToGetRouterInterfacesInterfaceArrayOutput() GetRouterInterfacesInterfaceArrayOutput {
+	return o
+}
+
+func (o GetRouterInterfacesInterfaceArrayOutput) ToGetRouterInterfacesInterfaceArrayOutputWithContext(ctx context.Context) GetRouterInterfacesInterfaceArrayOutput {
+	return o
+}
+
+func (o GetRouterInterfacesInterfaceArrayOutput) Index(i pulumi.IntInput) GetRouterInterfacesInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterInterfacesInterface {
+		return vs[0].([]GetRouterInterfacesInterface)[vs[1].(int)]
+	}).(GetRouterInterfacesInterfaceOutput)
+}
+
 type GetVbrPconnAssociationsAssociation struct {
 	// The circuit code provided by the operator for the physical connection.
 	CircuitCode string `pulumi:"circuitCode"`
@@ -1799,6 +2326,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGrantRuleToCensCenArrayInput)(nil)).Elem(), GetGrantRuleToCensCenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPhysicalConnectionsConnectionInput)(nil)).Elem(), GetPhysicalConnectionsConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPhysicalConnectionsConnectionArrayInput)(nil)).Elem(), GetPhysicalConnectionsConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterInterfacesFilterInput)(nil)).Elem(), GetRouterInterfacesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterInterfacesFilterArrayInput)(nil)).Elem(), GetRouterInterfacesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterInterfacesInterfaceInput)(nil)).Elem(), GetRouterInterfacesInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterInterfacesInterfaceArrayInput)(nil)).Elem(), GetRouterInterfacesInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVbrPconnAssociationsAssociationInput)(nil)).Elem(), GetVbrPconnAssociationsAssociationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVbrPconnAssociationsAssociationArrayInput)(nil)).Elem(), GetVbrPconnAssociationsAssociationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualBorderRoutersFilterInput)(nil)).Elem(), GetVirtualBorderRoutersFilterArgs{})
@@ -1815,6 +2346,10 @@ func init() {
 	pulumi.RegisterOutputType(GetGrantRuleToCensCenArrayOutput{})
 	pulumi.RegisterOutputType(GetPhysicalConnectionsConnectionOutput{})
 	pulumi.RegisterOutputType(GetPhysicalConnectionsConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterInterfacesFilterOutput{})
+	pulumi.RegisterOutputType(GetRouterInterfacesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterInterfacesInterfaceOutput{})
+	pulumi.RegisterOutputType(GetRouterInterfacesInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetVbrPconnAssociationsAssociationOutput{})
 	pulumi.RegisterOutputType(GetVbrPconnAssociationsAssociationArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualBorderRoutersFilterOutput{})

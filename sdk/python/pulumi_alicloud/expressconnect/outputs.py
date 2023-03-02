@@ -15,6 +15,8 @@ __all__ = [
     'GetAccessPointsPointAccessPointFeatureModelResult',
     'GetGrantRuleToCensCenResult',
     'GetPhysicalConnectionsConnectionResult',
+    'GetRouterInterfacesFilterResult',
+    'GetRouterInterfacesInterfaceResult',
     'GetVbrPconnAssociationsAssociationResult',
     'GetVirtualBorderRoutersFilterResult',
     'GetVirtualBorderRoutersRouterResult',
@@ -509,6 +511,448 @@ class GetPhysicalConnectionsConnectionResult(dict):
         Physical Private Line of Type. Default Value: VPC.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetRouterInterfacesFilterResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetRouterInterfacesInterfaceResult(dict):
+    def __init__(__self__, *,
+                 access_point_id: str,
+                 bandwidth: int,
+                 business_status: str,
+                 connected_time: str,
+                 create_time: str,
+                 cross_border: bool,
+                 description: str,
+                 end_time: str,
+                 has_reservation_data: str,
+                 hc_rate: int,
+                 hc_threshold: str,
+                 health_check_source_ip: str,
+                 health_check_target_ip: str,
+                 id: str,
+                 opposite_access_point_id: str,
+                 opposite_bandwidth: int,
+                 opposite_interface_business_status: str,
+                 opposite_interface_id: str,
+                 opposite_interface_owner_id: str,
+                 opposite_interface_spec: str,
+                 opposite_interface_status: str,
+                 opposite_region_id: str,
+                 opposite_router_id: str,
+                 opposite_router_type: str,
+                 opposite_vpc_instance_id: str,
+                 payment_type: str,
+                 reservation_active_time: str,
+                 reservation_bandwidth: str,
+                 reservation_internet_charge_type: str,
+                 reservation_order_type: str,
+                 role: str,
+                 router_id: str,
+                 router_interface_id: str,
+                 router_interface_name: str,
+                 router_type: str,
+                 spec: str,
+                 status: str,
+                 vpc_instance_id: str):
+        """
+        :param str access_point_id: The access point ID to which the VBR belongs.
+        :param int bandwidth: The bandwidth of the resource.
+        :param str business_status: The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+        :param str connected_time: The connected time of the resource.
+        :param str create_time: The creation time of the resource
+        :param bool cross_border: The cross border of the resource.
+        :param str description: The description of the router interface.
+        :param str end_time: The end time of the resource.
+        :param str has_reservation_data: The has reservation data of the resource.
+        :param int hc_rate: The hc rate of the resource.
+        :param str hc_threshold: The hc threshold of the resource.
+        :param str health_check_source_ip: The health check source IP address, must be an unused IP within the local VPC.
+        :param str health_check_target_ip: The IP address for health screening purposes.
+        :param str opposite_access_point_id: The Access point ID to which the other end belongs.
+        :param int opposite_bandwidth: The opposite bandwidth of the router on the other side.
+        :param str opposite_interface_business_status: The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+        :param str opposite_interface_id: The Interface ID of the router at the other end.
+        :param str opposite_interface_owner_id: The AliCloud account ID of the owner of the router interface on the other end.
+        :param str opposite_interface_spec: The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        :param str opposite_interface_status: The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        :param str opposite_region_id: The geographical ID of the location of the receiving end of the connection.
+        :param str opposite_router_id: The id of the router at the other end.
+        :param str opposite_router_type: The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+        :param str opposite_vpc_instance_id: The opposite vpc instance id of the router on the other side.
+        :param str payment_type: The payment methods for router interfaces. Valid Values: `PrePaid`, `PostPaid`.
+        :param str reservation_active_time: The reservation active time of the resource.
+        :param str reservation_bandwidth: The reservation bandwidth of the resource.
+        :param str reservation_internet_charge_type: The reservation internet charge type of the resource.
+        :param str reservation_order_type: The reservation order type of the resource.
+        :param str role: The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+        :param str router_id: The router id associated with the router interface.
+        :param str router_interface_id: The first ID of the resource.
+        :param str router_interface_name: The name of the resource.
+        :param str router_type: The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+        :param str spec: The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        :param str status: The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        :param str vpc_instance_id: The vpc instance id of the resource.
+        """
+        pulumi.set(__self__, "access_point_id", access_point_id)
+        pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "business_status", business_status)
+        pulumi.set(__self__, "connected_time", connected_time)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "cross_border", cross_border)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
+        pulumi.set(__self__, "hc_rate", hc_rate)
+        pulumi.set(__self__, "hc_threshold", hc_threshold)
+        pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
+        pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "opposite_access_point_id", opposite_access_point_id)
+        pulumi.set(__self__, "opposite_bandwidth", opposite_bandwidth)
+        pulumi.set(__self__, "opposite_interface_business_status", opposite_interface_business_status)
+        pulumi.set(__self__, "opposite_interface_id", opposite_interface_id)
+        pulumi.set(__self__, "opposite_interface_owner_id", opposite_interface_owner_id)
+        pulumi.set(__self__, "opposite_interface_spec", opposite_interface_spec)
+        pulumi.set(__self__, "opposite_interface_status", opposite_interface_status)
+        pulumi.set(__self__, "opposite_region_id", opposite_region_id)
+        pulumi.set(__self__, "opposite_router_id", opposite_router_id)
+        pulumi.set(__self__, "opposite_router_type", opposite_router_type)
+        pulumi.set(__self__, "opposite_vpc_instance_id", opposite_vpc_instance_id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
+        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
+        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
+        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "router_id", router_id)
+        pulumi.set(__self__, "router_interface_id", router_interface_id)
+        pulumi.set(__self__, "router_interface_name", router_interface_name)
+        pulumi.set(__self__, "router_type", router_type)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_instance_id", vpc_instance_id)
+
+    @property
+    @pulumi.getter(name="accessPointId")
+    def access_point_id(self) -> str:
+        """
+        The access point ID to which the VBR belongs.
+        """
+        return pulumi.get(self, "access_point_id")
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> int:
+        """
+        The bandwidth of the resource.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="businessStatus")
+    def business_status(self) -> str:
+        """
+        The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+        """
+        return pulumi.get(self, "business_status")
+
+    @property
+    @pulumi.getter(name="connectedTime")
+    def connected_time(self) -> str:
+        """
+        The connected time of the resource.
+        """
+        return pulumi.get(self, "connected_time")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="crossBorder")
+    def cross_border(self) -> bool:
+        """
+        The cross border of the resource.
+        """
+        return pulumi.get(self, "cross_border")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the router interface.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The end time of the resource.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="hasReservationData")
+    def has_reservation_data(self) -> str:
+        """
+        The has reservation data of the resource.
+        """
+        return pulumi.get(self, "has_reservation_data")
+
+    @property
+    @pulumi.getter(name="hcRate")
+    def hc_rate(self) -> int:
+        """
+        The hc rate of the resource.
+        """
+        return pulumi.get(self, "hc_rate")
+
+    @property
+    @pulumi.getter(name="hcThreshold")
+    def hc_threshold(self) -> str:
+        """
+        The hc threshold of the resource.
+        """
+        return pulumi.get(self, "hc_threshold")
+
+    @property
+    @pulumi.getter(name="healthCheckSourceIp")
+    def health_check_source_ip(self) -> str:
+        """
+        The health check source IP address, must be an unused IP within the local VPC.
+        """
+        return pulumi.get(self, "health_check_source_ip")
+
+    @property
+    @pulumi.getter(name="healthCheckTargetIp")
+    def health_check_target_ip(self) -> str:
+        """
+        The IP address for health screening purposes.
+        """
+        return pulumi.get(self, "health_check_target_ip")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="oppositeAccessPointId")
+    def opposite_access_point_id(self) -> str:
+        """
+        The Access point ID to which the other end belongs.
+        """
+        return pulumi.get(self, "opposite_access_point_id")
+
+    @property
+    @pulumi.getter(name="oppositeBandwidth")
+    def opposite_bandwidth(self) -> int:
+        """
+        The opposite bandwidth of the router on the other side.
+        """
+        return pulumi.get(self, "opposite_bandwidth")
+
+    @property
+    @pulumi.getter(name="oppositeInterfaceBusinessStatus")
+    def opposite_interface_business_status(self) -> str:
+        """
+        The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+        """
+        return pulumi.get(self, "opposite_interface_business_status")
+
+    @property
+    @pulumi.getter(name="oppositeInterfaceId")
+    def opposite_interface_id(self) -> str:
+        """
+        The Interface ID of the router at the other end.
+        """
+        return pulumi.get(self, "opposite_interface_id")
+
+    @property
+    @pulumi.getter(name="oppositeInterfaceOwnerId")
+    def opposite_interface_owner_id(self) -> str:
+        """
+        The AliCloud account ID of the owner of the router interface on the other end.
+        """
+        return pulumi.get(self, "opposite_interface_owner_id")
+
+    @property
+    @pulumi.getter(name="oppositeInterfaceSpec")
+    def opposite_interface_spec(self) -> str:
+        """
+        The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        """
+        return pulumi.get(self, "opposite_interface_spec")
+
+    @property
+    @pulumi.getter(name="oppositeInterfaceStatus")
+    def opposite_interface_status(self) -> str:
+        """
+        The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        """
+        return pulumi.get(self, "opposite_interface_status")
+
+    @property
+    @pulumi.getter(name="oppositeRegionId")
+    def opposite_region_id(self) -> str:
+        """
+        The geographical ID of the location of the receiving end of the connection.
+        """
+        return pulumi.get(self, "opposite_region_id")
+
+    @property
+    @pulumi.getter(name="oppositeRouterId")
+    def opposite_router_id(self) -> str:
+        """
+        The id of the router at the other end.
+        """
+        return pulumi.get(self, "opposite_router_id")
+
+    @property
+    @pulumi.getter(name="oppositeRouterType")
+    def opposite_router_type(self) -> str:
+        """
+        The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+        """
+        return pulumi.get(self, "opposite_router_type")
+
+    @property
+    @pulumi.getter(name="oppositeVpcInstanceId")
+    def opposite_vpc_instance_id(self) -> str:
+        """
+        The opposite vpc instance id of the router on the other side.
+        """
+        return pulumi.get(self, "opposite_vpc_instance_id")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment methods for router interfaces. Valid Values: `PrePaid`, `PostPaid`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter(name="reservationActiveTime")
+    def reservation_active_time(self) -> str:
+        """
+        The reservation active time of the resource.
+        """
+        return pulumi.get(self, "reservation_active_time")
+
+    @property
+    @pulumi.getter(name="reservationBandwidth")
+    def reservation_bandwidth(self) -> str:
+        """
+        The reservation bandwidth of the resource.
+        """
+        return pulumi.get(self, "reservation_bandwidth")
+
+    @property
+    @pulumi.getter(name="reservationInternetChargeType")
+    def reservation_internet_charge_type(self) -> str:
+        """
+        The reservation internet charge type of the resource.
+        """
+        return pulumi.get(self, "reservation_internet_charge_type")
+
+    @property
+    @pulumi.getter(name="reservationOrderType")
+    def reservation_order_type(self) -> str:
+        """
+        The reservation order type of the resource.
+        """
+        return pulumi.get(self, "reservation_order_type")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> str:
+        """
+        The router id associated with the router interface.
+        """
+        return pulumi.get(self, "router_id")
+
+    @property
+    @pulumi.getter(name="routerInterfaceId")
+    def router_interface_id(self) -> str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "router_interface_id")
+
+    @property
+    @pulumi.getter(name="routerInterfaceName")
+    def router_interface_name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "router_interface_name")
+
+    @property
+    @pulumi.getter(name="routerType")
+    def router_type(self) -> str:
+        """
+        The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+        """
+        return pulumi.get(self, "router_type")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> str:
+        """
+        The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        """
+        return pulumi.get(self, "spec")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="vpcInstanceId")
+    def vpc_instance_id(self) -> str:
+        """
+        The vpc instance id of the resource.
+        """
+        return pulumi.get(self, "vpc_instance_id")
 
 
 @pulumi.output_type

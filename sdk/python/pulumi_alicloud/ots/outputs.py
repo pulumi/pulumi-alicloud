@@ -740,6 +740,21 @@ class GetSearchIndexesIndexResult(dict):
                  sync_phase: str,
                  table_name: str,
                  time_to_live: int):
+        """
+        :param int create_time: The creation time of the index.
+        :param int current_sync_timestamp: Timestamp for sync phase.
+        :param str id: The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
+        :param str index_name: The index name of the OTS Table which could not be changed.
+        :param str instance_name: The name of OTS instance.
+        :param int metering_last_update_time: Last update time for metering data..
+        :param int reserved_read_cu: Reserve related resources for the index.
+        :param int row_count: The number of rows of data for index.
+        :param str schema: JSON representation of the schema of index.
+        :param int storage_size: Storage space occupied by index.
+        :param str sync_phase: The synchronization state of the index.
+        :param str table_name: The name of OTS table.
+        :param int time_to_live: TTL of index.
+        """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "current_sync_timestamp", current_sync_timestamp)
         pulumi.set(__self__, "id", id)
@@ -757,66 +772,105 @@ class GetSearchIndexesIndexResult(dict):
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> int:
+        """
+        The creation time of the index.
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="currentSyncTimestamp")
     def current_sync_timestamp(self) -> int:
+        """
+        Timestamp for sync phase.
+        """
         return pulumi.get(self, "current_sync_timestamp")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="indexName")
     def index_name(self) -> str:
+        """
+        The index name of the OTS Table which could not be changed.
+        """
         return pulumi.get(self, "index_name")
 
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> str:
+        """
+        The name of OTS instance.
+        """
         return pulumi.get(self, "instance_name")
 
     @property
     @pulumi.getter(name="meteringLastUpdateTime")
     def metering_last_update_time(self) -> int:
+        """
+        Last update time for metering data..
+        """
         return pulumi.get(self, "metering_last_update_time")
 
     @property
     @pulumi.getter(name="reservedReadCu")
     def reserved_read_cu(self) -> int:
+        """
+        Reserve related resources for the index.
+        """
         return pulumi.get(self, "reserved_read_cu")
 
     @property
     @pulumi.getter(name="rowCount")
     def row_count(self) -> int:
+        """
+        The number of rows of data for index.
+        """
         return pulumi.get(self, "row_count")
 
     @property
     @pulumi.getter
     def schema(self) -> str:
+        """
+        JSON representation of the schema of index.
+        """
         return pulumi.get(self, "schema")
 
     @property
     @pulumi.getter(name="storageSize")
     def storage_size(self) -> int:
+        """
+        Storage space occupied by index.
+        """
         return pulumi.get(self, "storage_size")
 
     @property
     @pulumi.getter(name="syncPhase")
     def sync_phase(self) -> str:
+        """
+        The synchronization state of the index.
+        """
         return pulumi.get(self, "sync_phase")
 
     @property
     @pulumi.getter(name="tableName")
     def table_name(self) -> str:
+        """
+        The name of OTS table.
+        """
         return pulumi.get(self, "table_name")
 
     @property
     @pulumi.getter(name="timeToLive")
     def time_to_live(self) -> int:
+        """
+        TTL of index.
+        """
         return pulumi.get(self, "time_to_live")
 
 

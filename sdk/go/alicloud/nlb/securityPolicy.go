@@ -27,19 +27,32 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nlb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := nlb.NewSecurityPolicy(ctx, "example", &nlb.SecurityPolicyArgs{
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nlb.NewSecurityPolicy(ctx, "defaultSecurityPolicy", &nlb.SecurityPolicyArgs{
+//				ResourceGroupId:    *pulumi.String(defaultResourceGroups.Ids[0]),
+//				SecurityPolicyName: pulumi.Any(_var.Name),
 //				Ciphers: pulumi.StringArray{
-//					pulumi.String("example_value"),
+//					pulumi.String("ECDHE-RSA-AES128-SHA"),
+//					pulumi.String("ECDHE-ECDSA-AES128-SHA"),
 //				},
-//				SecurityPolicyName: pulumi.String("example_value"),
 //				TlsVersions: pulumi.StringArray{
-//					pulumi.String("example_value"),
+//					pulumi.String("TLSv1.0"),
+//					pulumi.String("TLSv1.1"),
+//					pulumi.String("TLSv1.2"),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("Acceptance-test"),
 //				},
 //			})
 //			if err != nil {

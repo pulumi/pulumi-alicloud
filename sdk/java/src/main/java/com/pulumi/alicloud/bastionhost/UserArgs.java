@@ -161,7 +161,10 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Specify the New of the User That Created the Source. Valid Values:
      * * Local: Local User
-     * * RAM: Ram User
+     * * Ram: Ram User
+     * * AD: AD-authenticated User
+     * * LDAP: LDAP-authenticated User
+     * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      * 
      */
     @Import(name="source", required=true)
@@ -170,7 +173,10 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Specify the New of the User That Created the Source. Valid Values:
      * * Local: Local User
-     * * RAM: Ram User
+     * * Ram: Ram User
+     * * AD: AD-authenticated User
+     * * LDAP: LDAP-authenticated User
+     * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      * 
      */
     public Output<String> source() {
@@ -444,7 +450,10 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param source Specify the New of the User That Created the Source. Valid Values:
          * * Local: Local User
-         * * RAM: Ram User
+         * * Ram: Ram User
+         * * AD: AD-authenticated User
+         * * LDAP: LDAP-authenticated User
+         * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
          * 
          * @return builder
          * 
@@ -457,7 +466,10 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param source Specify the New of the User That Created the Source. Valid Values:
          * * Local: Local User
-         * * RAM: Ram User
+         * * Ram: Ram User
+         * * AD: AD-authenticated User
+         * * LDAP: LDAP-authenticated User
+         * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
          * 
          * @return builder
          * 

@@ -9,21 +9,59 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOpenApiPricingModulesModuleValue {
+    /**
+     * @return The module Code corresponds to the attribute value.
+     * 
+     */
     private String name;
+    /**
+     * @return Module value description information.
+     * 
+     */
     private String remark;
+    /**
+     * @return The attribute value type corresponding to the module Code. Value:
+     * * single_float: single value type.
+     * * range_float: range value type.
+     * 
+     */
     private String type;
+    /**
+     * @return The module Code corresponds to the attribute value.
+     * &gt; format 1024-1024000 when Type = range_float: 1024 means from 1024 to 1024000, step size 1024.
+     * 
+     */
     private String value;
 
     private GetOpenApiPricingModulesModuleValue() {}
+    /**
+     * @return The module Code corresponds to the attribute value.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Module value description information.
+     * 
+     */
     public String remark() {
         return this.remark;
     }
+    /**
+     * @return The attribute value type corresponding to the module Code. Value:
+     * * single_float: single value type.
+     * * range_float: range value type.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The module Code corresponds to the attribute value.
+     * &gt; format 1024-1024000 when Type = range_float: 1024 means from 1024 to 1024000, step size 1024.
+     * 
+     */
     public String value() {
         return this.value;
     }

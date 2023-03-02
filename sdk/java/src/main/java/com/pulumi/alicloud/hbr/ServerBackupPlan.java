@@ -15,6 +15,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -83,6 +84,48 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:hbr/serverBackupPlan:ServerBackupPlan")
 public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
+    /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    @Export(name="crossAccountRoleName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> crossAccountRoleName;
+
+    /**
+     * @return The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     */
+    public Output<Optional<String>> crossAccountRoleName() {
+        return Codegen.optional(this.crossAccountRoleName);
+    }
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    @Export(name="crossAccountType", type=String.class, parameters={})
+    private Output<String> crossAccountType;
+
+    /**
+     * @return The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     * 
+     */
+    public Output<String> crossAccountType() {
+        return this.crossAccountType;
+    }
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    @Export(name="crossAccountUserId", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> crossAccountUserId;
+
+    /**
+     * @return The original account ID of the cross account backup managed by the current account.
+     * 
+     */
+    public Output<Optional<Integer>> crossAccountUserId() {
+        return Codegen.optional(this.crossAccountUserId);
+    }
     /**
      * ECS server backup plan details.
      * 
