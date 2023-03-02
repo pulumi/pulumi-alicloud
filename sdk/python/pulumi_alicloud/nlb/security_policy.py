@@ -239,10 +239,23 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.nlb.SecurityPolicy("example",
-            ciphers=["example_value"],
-            security_policy_name="example_value",
-            tls_versions=["example_value"])
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_security_policy = alicloud.nlb.SecurityPolicy("defaultSecurityPolicy",
+            resource_group_id=default_resource_groups.ids[0],
+            security_policy_name=var["name"],
+            ciphers=[
+                "ECDHE-RSA-AES128-SHA",
+                "ECDHE-ECDSA-AES128-SHA",
+            ],
+            tls_versions=[
+                "TLSv1.0",
+                "TLSv1.1",
+                "TLSv1.2",
+            ],
+            tags={
+                "Created": "TF",
+                "For": "Acceptance-test",
+            })
         ```
 
         ## Import
@@ -285,10 +298,23 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.nlb.SecurityPolicy("example",
-            ciphers=["example_value"],
-            security_policy_name="example_value",
-            tls_versions=["example_value"])
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_security_policy = alicloud.nlb.SecurityPolicy("defaultSecurityPolicy",
+            resource_group_id=default_resource_groups.ids[0],
+            security_policy_name=var["name"],
+            ciphers=[
+                "ECDHE-RSA-AES128-SHA",
+                "ECDHE-ECDSA-AES128-SHA",
+            ],
+            tls_versions=[
+                "TLSv1.0",
+                "TLSv1.1",
+                "TLSv1.2",
+            ],
+            tags={
+                "Created": "TF",
+                "For": "Acceptance-test",
+            })
         ```
 
         ## Import

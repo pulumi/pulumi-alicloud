@@ -278,7 +278,7 @@ class AlarmContact(pulumi.CustomResource):
         # If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
         example = alicloud.cms.AlarmContact("example",
             alarm_contact_name="zhangsan",
-            channels_mail="terraform.test.com",
+            channels_mail="terraform@test.com",
             describe="For Test")
         ```
 
@@ -290,7 +290,7 @@ class AlarmContact(pulumi.CustomResource):
         example = alicloud.cms.AlarmContact("example",
             alarm_contact_name="zhangsan",
             describe="For Test",
-            channels_mail="terraform.test.com")
+            channels_mail="terraform@test.com")
         ```
 
         ## Import
@@ -333,7 +333,7 @@ class AlarmContact(pulumi.CustomResource):
         # If you use this template, you need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible.
         example = alicloud.cms.AlarmContact("example",
             alarm_contact_name="zhangsan",
-            channels_mail="terraform.test.com",
+            channels_mail="terraform@test.com",
             describe="For Test")
         ```
 
@@ -345,7 +345,7 @@ class AlarmContact(pulumi.CustomResource):
         example = alicloud.cms.AlarmContact("example",
             alarm_contact_name="zhangsan",
             describe="For Test",
-            channels_mail="terraform.test.com")
+            channels_mail="terraform@test.com")
         ```
 
         ## Import

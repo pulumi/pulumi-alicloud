@@ -13,18 +13,57 @@ namespace Pulumi.AliCloud.Ots.Outputs
     [OutputType]
     public sealed class GetSearchIndexesIndexResult
     {
+        /// <summary>
+        /// The creation time of the index.
+        /// </summary>
         public readonly int CreateTime;
+        /// <summary>
+        /// Timestamp for sync phase.
+        /// </summary>
         public readonly int CurrentSyncTimestamp;
+        /// <summary>
+        /// The resource ID. The value is `&lt;instance_name&gt;:&lt;table_name&gt;:&lt;indexName&gt;:&lt;indexType&gt;`.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The index name of the OTS Table which could not be changed.
+        /// </summary>
         public readonly string IndexName;
+        /// <summary>
+        /// The name of OTS instance.
+        /// </summary>
         public readonly string InstanceName;
+        /// <summary>
+        /// Last update time for metering data..
+        /// </summary>
         public readonly int MeteringLastUpdateTime;
+        /// <summary>
+        /// Reserve related resources for the index.
+        /// </summary>
         public readonly int ReservedReadCu;
+        /// <summary>
+        /// The number of rows of data for index.
+        /// </summary>
         public readonly int RowCount;
+        /// <summary>
+        /// JSON representation of the schema of index.
+        /// </summary>
         public readonly string Schema;
+        /// <summary>
+        /// Storage space occupied by index.
+        /// </summary>
         public readonly int StorageSize;
+        /// <summary>
+        /// The synchronization state of the index.
+        /// </summary>
         public readonly string SyncPhase;
+        /// <summary>
+        /// The name of OTS table.
+        /// </summary>
         public readonly string TableName;
+        /// <summary>
+        /// TTL of index.
+        /// </summary>
         public readonly int TimeToLive;
 
         [OutputConstructor]

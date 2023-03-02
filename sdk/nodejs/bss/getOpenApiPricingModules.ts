@@ -6,6 +6,26 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+ *
+ * > **NOTE:** Available in 1.195.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.bss.getOpenApiPricingModules({
+ *     nameRegex: "国内月均日峰值带宽",
+ *     productCode: "cdn",
+ *     productType: "CDN",
+ *     subscriptionType: "PayAsYouGo",
+ * });
+ * export const alicloudBssOpenapiPricingModuleExampleId = _default.then(_default => _default.modules?.[0]?.code);
+ * ```
+ */
 export function getOpenApiPricingModules(args: GetOpenApiPricingModulesArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenApiPricingModulesResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -24,10 +44,24 @@ export function getOpenApiPricingModules(args: GetOpenApiPricingModulesArgs, opt
  */
 export interface GetOpenApiPricingModulesArgs {
     ids?: string[];
+    /**
+     * A regex string to filter results by Property name.
+     */
     nameRegex?: string;
     outputFile?: string;
+    /**
+     * The product code.
+     */
     productCode: string;
+    /**
+     * The product type.
+     */
     productType?: string;
+    /**
+     * Subscription type. Value:
+     * * Subscription: Prepaid.
+     * * PayAsYouGo: postpaid.
+     */
     subscriptionType: string;
 }
 
@@ -40,14 +74,40 @@ export interface GetOpenApiPricingModulesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Pricing Module Entries. Each element contains the following attributes:
+     */
     readonly modules: outputs.bss.GetOpenApiPricingModulesModule[];
     readonly nameRegex?: string;
+    /**
+     * A list of name of Pricing Modules.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly productCode: string;
     readonly productType?: string;
     readonly subscriptionType: string;
 }
+/**
+ * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+ *
+ * > **NOTE:** Available in 1.195.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.bss.getOpenApiPricingModules({
+ *     nameRegex: "国内月均日峰值带宽",
+ *     productCode: "cdn",
+ *     productType: "CDN",
+ *     subscriptionType: "PayAsYouGo",
+ * });
+ * export const alicloudBssOpenapiPricingModuleExampleId = _default.then(_default => _default.modules?.[0]?.code);
+ * ```
+ */
 export function getOpenApiPricingModulesOutput(args: GetOpenApiPricingModulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenApiPricingModulesResult> {
     return pulumi.output(args).apply((a: any) => getOpenApiPricingModules(a, opts))
 }
@@ -57,9 +117,23 @@ export function getOpenApiPricingModulesOutput(args: GetOpenApiPricingModulesOut
  */
 export interface GetOpenApiPricingModulesOutputArgs {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Property name.
+     */
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
+    /**
+     * The product code.
+     */
     productCode: pulumi.Input<string>;
+    /**
+     * The product type.
+     */
     productType?: pulumi.Input<string>;
+    /**
+     * Subscription type. Value:
+     * * Subscription: Prepaid.
+     * * PayAsYouGo: postpaid.
+     */
     subscriptionType: pulumi.Input<string>;
 }

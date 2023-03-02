@@ -15,17 +15,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC router interface connection resource to connect two router interfaces which are in two different VPCs.
- * After that, all of the two router interfaces will be active.
- * 
- * &gt; **NOTE:** At present, Router interface does not support changing opposite router interface, the connection delete action is only deactivating it to inactive, not modifying the connection to empty.
- * 
- * &gt; **NOTE:** If you want to changing opposite router interface, you can delete router interface and re-build them.
- * 
- * &gt; **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
- * 
- * &gt; **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;

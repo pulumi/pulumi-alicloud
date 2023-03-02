@@ -99,8 +99,8 @@ type DbCluster struct {
 	// The db cluster access white list.
 	DbClusterAccessWhiteLists DbClusterDbClusterAccessWhiteListArrayOutput `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
-	// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
-	// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
+	// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
+	// * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
 	DbClusterClass pulumi.StringOutput `pulumi:"dbClusterClass"`
 	// The DBCluster description.
 	DbClusterDescription pulumi.StringOutput `pulumi:"dbClusterDescription"`
@@ -198,8 +198,8 @@ type dbClusterState struct {
 	// The db cluster access white list.
 	DbClusterAccessWhiteLists []DbClusterDbClusterAccessWhiteList `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
-	// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
-	// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
+	// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
+	// * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
 	DbClusterClass *string `pulumi:"dbClusterClass"`
 	// The DBCluster description.
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
@@ -245,8 +245,8 @@ type DbClusterState struct {
 	// The db cluster access white list.
 	DbClusterAccessWhiteLists DbClusterDbClusterAccessWhiteListArrayInput
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
-	// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
-	// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
+	// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
+	// * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
 	DbClusterClass pulumi.StringPtrInput
 	// The DBCluster description.
 	DbClusterDescription pulumi.StringPtrInput
@@ -294,8 +294,8 @@ type dbClusterArgs struct {
 	// The db cluster access white list.
 	DbClusterAccessWhiteLists []DbClusterDbClusterAccessWhiteList `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
-	// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
-	// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
+	// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
+	// * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
 	DbClusterClass string `pulumi:"dbClusterClass"`
 	// The DBCluster description.
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
@@ -338,8 +338,8 @@ type DbClusterArgs struct {
 	// The db cluster access white list.
 	DbClusterAccessWhiteLists DbClusterDbClusterAccessWhiteListArrayInput
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
-	// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
-	// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
+	// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
+	// * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
 	DbClusterClass pulumi.StringInput
 	// The DBCluster description.
 	DbClusterDescription pulumi.StringPtrInput
@@ -478,8 +478,8 @@ func (o DbClusterOutput) DbClusterAccessWhiteLists() DbClusterDbClusterAccessWhi
 }
 
 // The DBCluster class. According to the category, dbClusterClass has two value ranges:
-// * Under the condition that the category is the `Basic`, Valid values: `S4-NEW`, `S8`, `S16`, `S32`, `S64`, `S104`.
-// * Under the condition that the category is the `HighAvailability`, Valid values: `C4-NEW`, `C8`, `C16`, `C32`, `C64`, `C104`.
+// * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
+// * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
 func (o DbClusterOutput) DbClusterClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.DbClusterClass }).(pulumi.StringOutput)
 }

@@ -11,14 +11,24 @@ import (
 )
 
 type GetOpenApiPricingModulesModule struct {
-	Code              string                                `pulumi:"code"`
-	Id                string                                `pulumi:"id"`
-	PricingModuleName string                                `pulumi:"pricingModuleName"`
-	ProductCode       string                                `pulumi:"productCode"`
-	ProductType       string                                `pulumi:"productType"`
-	SubscriptionType  string                                `pulumi:"subscriptionType"`
-	Unit              string                                `pulumi:"unit"`
-	Values            []GetOpenApiPricingModulesModuleValue `pulumi:"values"`
+	// Property Code.
+	Code string `pulumi:"code"`
+	// A list of Price Module IDs.
+	Id string `pulumi:"id"`
+	// Attribute name.
+	PricingModuleName string `pulumi:"pricingModuleName"`
+	// The product code.
+	ProductCode string `pulumi:"productCode"`
+	// The product type.
+	ProductType string `pulumi:"productType"`
+	// Subscription type. Value:
+	// * Subscription: Prepaid.
+	// * PayAsYouGo: postpaid.
+	SubscriptionType string `pulumi:"subscriptionType"`
+	// Attribute unit.
+	Unit string `pulumi:"unit"`
+	// Property.
+	Values []GetOpenApiPricingModulesModuleValue `pulumi:"values"`
 }
 
 // GetOpenApiPricingModulesModuleInput is an input type that accepts GetOpenApiPricingModulesModuleArgs and GetOpenApiPricingModulesModuleOutput values.
@@ -33,14 +43,24 @@ type GetOpenApiPricingModulesModuleInput interface {
 }
 
 type GetOpenApiPricingModulesModuleArgs struct {
-	Code              pulumi.StringInput                            `pulumi:"code"`
-	Id                pulumi.StringInput                            `pulumi:"id"`
-	PricingModuleName pulumi.StringInput                            `pulumi:"pricingModuleName"`
-	ProductCode       pulumi.StringInput                            `pulumi:"productCode"`
-	ProductType       pulumi.StringInput                            `pulumi:"productType"`
-	SubscriptionType  pulumi.StringInput                            `pulumi:"subscriptionType"`
-	Unit              pulumi.StringInput                            `pulumi:"unit"`
-	Values            GetOpenApiPricingModulesModuleValueArrayInput `pulumi:"values"`
+	// Property Code.
+	Code pulumi.StringInput `pulumi:"code"`
+	// A list of Price Module IDs.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Attribute name.
+	PricingModuleName pulumi.StringInput `pulumi:"pricingModuleName"`
+	// The product code.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
+	// The product type.
+	ProductType pulumi.StringInput `pulumi:"productType"`
+	// Subscription type. Value:
+	// * Subscription: Prepaid.
+	// * PayAsYouGo: postpaid.
+	SubscriptionType pulumi.StringInput `pulumi:"subscriptionType"`
+	// Attribute unit.
+	Unit pulumi.StringInput `pulumi:"unit"`
+	// Property.
+	Values GetOpenApiPricingModulesModuleValueArrayInput `pulumi:"values"`
 }
 
 func (GetOpenApiPricingModulesModuleArgs) ElementType() reflect.Type {
@@ -94,34 +114,44 @@ func (o GetOpenApiPricingModulesModuleOutput) ToGetOpenApiPricingModulesModuleOu
 	return o
 }
 
+// Property Code.
 func (o GetOpenApiPricingModulesModuleOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModule) string { return v.Code }).(pulumi.StringOutput)
 }
 
+// A list of Price Module IDs.
 func (o GetOpenApiPricingModulesModuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModule) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Attribute name.
 func (o GetOpenApiPricingModulesModuleOutput) PricingModuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModule) string { return v.PricingModuleName }).(pulumi.StringOutput)
 }
 
+// The product code.
 func (o GetOpenApiPricingModulesModuleOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModule) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
+// The product type.
 func (o GetOpenApiPricingModulesModuleOutput) ProductType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModule) string { return v.ProductType }).(pulumi.StringOutput)
 }
 
+// Subscription type. Value:
+// * Subscription: Prepaid.
+// * PayAsYouGo: postpaid.
 func (o GetOpenApiPricingModulesModuleOutput) SubscriptionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModule) string { return v.SubscriptionType }).(pulumi.StringOutput)
 }
 
+// Attribute unit.
 func (o GetOpenApiPricingModulesModuleOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModule) string { return v.Unit }).(pulumi.StringOutput)
 }
 
+// Property.
 func (o GetOpenApiPricingModulesModuleOutput) Values() GetOpenApiPricingModulesModuleValueArrayOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModule) []GetOpenApiPricingModulesModuleValue { return v.Values }).(GetOpenApiPricingModulesModuleValueArrayOutput)
 }
@@ -147,10 +177,17 @@ func (o GetOpenApiPricingModulesModuleArrayOutput) Index(i pulumi.IntInput) GetO
 }
 
 type GetOpenApiPricingModulesModuleValue struct {
-	Name   string `pulumi:"name"`
+	// The module Code corresponds to the attribute value.
+	Name string `pulumi:"name"`
+	// Module value description information.
 	Remark string `pulumi:"remark"`
-	Type   string `pulumi:"type"`
-	Value  string `pulumi:"value"`
+	// The attribute value type corresponding to the module Code. Value:
+	// * single_float: single value type.
+	// * range_float: range value type.
+	Type string `pulumi:"type"`
+	// The module Code corresponds to the attribute value.
+	// > format 1024-1024000 when Type = range_float: 1024 means from 1024 to 1024000, step size 1024.
+	Value string `pulumi:"value"`
 }
 
 // GetOpenApiPricingModulesModuleValueInput is an input type that accepts GetOpenApiPricingModulesModuleValueArgs and GetOpenApiPricingModulesModuleValueOutput values.
@@ -165,10 +202,17 @@ type GetOpenApiPricingModulesModuleValueInput interface {
 }
 
 type GetOpenApiPricingModulesModuleValueArgs struct {
-	Name   pulumi.StringInput `pulumi:"name"`
+	// The module Code corresponds to the attribute value.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Module value description information.
 	Remark pulumi.StringInput `pulumi:"remark"`
-	Type   pulumi.StringInput `pulumi:"type"`
-	Value  pulumi.StringInput `pulumi:"value"`
+	// The attribute value type corresponding to the module Code. Value:
+	// * single_float: single value type.
+	// * range_float: range value type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The module Code corresponds to the attribute value.
+	// > format 1024-1024000 when Type = range_float: 1024 means from 1024 to 1024000, step size 1024.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetOpenApiPricingModulesModuleValueArgs) ElementType() reflect.Type {
@@ -222,18 +266,25 @@ func (o GetOpenApiPricingModulesModuleValueOutput) ToGetOpenApiPricingModulesMod
 	return o
 }
 
+// The module Code corresponds to the attribute value.
 func (o GetOpenApiPricingModulesModuleValueOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModuleValue) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Module value description information.
 func (o GetOpenApiPricingModulesModuleValueOutput) Remark() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModuleValue) string { return v.Remark }).(pulumi.StringOutput)
 }
 
+// The attribute value type corresponding to the module Code. Value:
+// * single_float: single value type.
+// * range_float: range value type.
 func (o GetOpenApiPricingModulesModuleValueOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModuleValue) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The module Code corresponds to the attribute value.
+// > format 1024-1024000 when Type = range_float: 1024 means from 1024 to 1024000, step size 1024.
 func (o GetOpenApiPricingModulesModuleValueOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModuleValue) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -259,10 +310,17 @@ func (o GetOpenApiPricingModulesModuleValueArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetOpenApiProductsProduct struct {
-	Id               string `pulumi:"id"`
-	ProductCode      string `pulumi:"productCode"`
-	ProductName      string `pulumi:"productName"`
-	ProductType      string `pulumi:"productType"`
+	// The ID of the product. The value is formulated as `<product_code>:<product_type>:<subscription_type>`.
+	Id string `pulumi:"id"`
+	// Product code.
+	ProductCode string `pulumi:"productCode"`
+	// Product name.
+	ProductName string `pulumi:"productName"`
+	// Type of product.
+	ProductType string `pulumi:"productType"`
+	// Subscription type. Value:
+	// * Subscription: Prepaid.
+	// * PayAsYouGo: postpaid.
 	SubscriptionType string `pulumi:"subscriptionType"`
 }
 
@@ -278,10 +336,17 @@ type GetOpenApiProductsProductInput interface {
 }
 
 type GetOpenApiProductsProductArgs struct {
-	Id               pulumi.StringInput `pulumi:"id"`
-	ProductCode      pulumi.StringInput `pulumi:"productCode"`
-	ProductName      pulumi.StringInput `pulumi:"productName"`
-	ProductType      pulumi.StringInput `pulumi:"productType"`
+	// The ID of the product. The value is formulated as `<product_code>:<product_type>:<subscription_type>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Product code.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
+	// Product name.
+	ProductName pulumi.StringInput `pulumi:"productName"`
+	// Type of product.
+	ProductType pulumi.StringInput `pulumi:"productType"`
+	// Subscription type. Value:
+	// * Subscription: Prepaid.
+	// * PayAsYouGo: postpaid.
 	SubscriptionType pulumi.StringInput `pulumi:"subscriptionType"`
 }
 
@@ -336,22 +401,29 @@ func (o GetOpenApiProductsProductOutput) ToGetOpenApiProductsProductOutputWithCo
 	return o
 }
 
+// The ID of the product. The value is formulated as `<product_code>:<product_type>:<subscription_type>`.
 func (o GetOpenApiProductsProductOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiProductsProduct) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Product code.
 func (o GetOpenApiProductsProductOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiProductsProduct) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
+// Product name.
 func (o GetOpenApiProductsProductOutput) ProductName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiProductsProduct) string { return v.ProductName }).(pulumi.StringOutput)
 }
 
+// Type of product.
 func (o GetOpenApiProductsProductOutput) ProductType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiProductsProduct) string { return v.ProductType }).(pulumi.StringOutput)
 }
 
+// Subscription type. Value:
+// * Subscription: Prepaid.
+// * PayAsYouGo: postpaid.
 func (o GetOpenApiProductsProductOutput) SubscriptionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiProductsProduct) string { return v.SubscriptionType }).(pulumi.StringOutput)
 }

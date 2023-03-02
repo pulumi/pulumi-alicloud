@@ -73,6 +73,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly planCode!: pulumi.Output<string>;
     /**
+     * The public IP address that you want to add to the whitelist.
+     */
+    public readonly publicWhiteLists!: pulumi.Output<string[] | undefined>;
+    /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
      */
     public readonly renewPeriod!: pulumi.Output<number | undefined>;
@@ -123,6 +127,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["licenseCode"] = state ? state.licenseCode : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["planCode"] = state ? state.planCode : undefined;
+            resourceInputs["publicWhiteLists"] = state ? state.publicWhiteLists : undefined;
             resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
             resourceInputs["renewalPeriodUnit"] = state ? state.renewalPeriodUnit : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
@@ -162,6 +167,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["licenseCode"] = args ? args.licenseCode : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["planCode"] = args ? args.planCode : undefined;
+            resourceInputs["publicWhiteLists"] = args ? args.publicWhiteLists : undefined;
             resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
             resourceInputs["renewalPeriodUnit"] = args ? args.renewalPeriodUnit : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
@@ -209,6 +215,10 @@ export interface InstanceState {
      * The plan code of Cloud Bastionhost instance. Valid values:
      */
     planCode?: pulumi.Input<string>;
+    /**
+     * The public IP address that you want to add to the whitelist.
+     */
+    publicWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
      */
@@ -273,6 +283,10 @@ export interface InstanceArgs {
      * The plan code of Cloud Bastionhost instance. Valid values:
      */
     planCode: pulumi.Input<string>;
+    /**
+     * The public IP address that you want to add to the whitelist.
+     */
+    publicWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
      */

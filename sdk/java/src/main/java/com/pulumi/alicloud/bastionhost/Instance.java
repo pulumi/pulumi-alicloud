@@ -138,6 +138,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.planCode;
     }
     /**
+     * The public IP address that you want to add to the whitelist.
+     * 
+     */
+    @Export(name="publicWhiteLists", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> publicWhiteLists;
+
+    /**
+     * @return The public IP address that you want to add to the whitelist.
+     * 
+     */
+    public Output<Optional<List<String>>> publicWhiteLists() {
+        return Codegen.optional(this.publicWhiteLists);
+    }
+    /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
      * 
      */

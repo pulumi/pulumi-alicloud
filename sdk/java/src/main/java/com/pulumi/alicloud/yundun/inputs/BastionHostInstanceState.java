@@ -78,6 +78,13 @@ public final class BastionHostInstanceState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.planCode);
     }
 
+    @Import(name="publicWhiteLists")
+    private @Nullable Output<List<String>> publicWhiteLists;
+
+    public Optional<Output<List<String>>> publicWhiteLists() {
+        return Optional.ofNullable(this.publicWhiteLists);
+    }
+
     @Import(name="renewPeriod")
     private @Nullable Output<Integer> renewPeriod;
 
@@ -145,6 +152,7 @@ public final class BastionHostInstanceState extends com.pulumi.resources.Resourc
         this.licenseCode = $.licenseCode;
         this.period = $.period;
         this.planCode = $.planCode;
+        this.publicWhiteLists = $.publicWhiteLists;
         this.renewPeriod = $.renewPeriod;
         this.renewalPeriodUnit = $.renewalPeriodUnit;
         this.renewalStatus = $.renewalStatus;
@@ -251,6 +259,19 @@ public final class BastionHostInstanceState extends com.pulumi.resources.Resourc
 
         public Builder planCode(String planCode) {
             return planCode(Output.of(planCode));
+        }
+
+        public Builder publicWhiteLists(@Nullable Output<List<String>> publicWhiteLists) {
+            $.publicWhiteLists = publicWhiteLists;
+            return this;
+        }
+
+        public Builder publicWhiteLists(List<String> publicWhiteLists) {
+            return publicWhiteLists(Output.of(publicWhiteLists));
+        }
+
+        public Builder publicWhiteLists(String... publicWhiteLists) {
+            return publicWhiteLists(List.of(publicWhiteLists));
         }
 
         public Builder renewPeriod(@Nullable Output<Integer> renewPeriod) {

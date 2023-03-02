@@ -99,6 +99,8 @@ type ScalingConfiguration struct {
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrOutput `pulumi:"systemDiskDescription"`
+	// Whether to encrypt the system disk.
+	SystemDiskEncrypted pulumi.BoolPtrOutput `pulumi:"systemDiskEncrypted"`
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName pulumi.StringPtrOutput `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk.
@@ -221,6 +223,8 @@ type scalingConfigurationState struct {
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
+	// Whether to encrypt the system disk.
+	SystemDiskEncrypted *bool `pulumi:"systemDiskEncrypted"`
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName *string `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk.
@@ -312,6 +316,8 @@ type ScalingConfigurationState struct {
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrInput
+	// Whether to encrypt the system disk.
+	SystemDiskEncrypted pulumi.BoolPtrInput
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName pulumi.StringPtrInput
 	// The performance level of the ESSD used as the system disk.
@@ -407,6 +413,8 @@ type scalingConfigurationArgs struct {
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
+	// Whether to encrypt the system disk.
+	SystemDiskEncrypted *bool `pulumi:"systemDiskEncrypted"`
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName *string `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk.
@@ -499,6 +507,8 @@ type ScalingConfigurationArgs struct {
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrInput
+	// Whether to encrypt the system disk.
+	SystemDiskEncrypted pulumi.BoolPtrInput
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName pulumi.StringPtrInput
 	// The performance level of the ESSD used as the system disk.
@@ -784,6 +794,11 @@ func (o ScalingConfigurationOutput) SystemDiskCategory() pulumi.StringPtrOutput 
 // The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 func (o ScalingConfigurationOutput) SystemDiskDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SystemDiskDescription }).(pulumi.StringPtrOutput)
+}
+
+// Whether to encrypt the system disk.
+func (o ScalingConfigurationOutput) SystemDiskEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.BoolPtrOutput { return v.SystemDiskEncrypted }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.

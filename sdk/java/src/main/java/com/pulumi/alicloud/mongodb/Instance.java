@@ -137,6 +137,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.engineVersion;
     }
     /**
+     * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * 
+     */
+    @Export(name="hiddenZoneId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> hiddenZoneId;
+
+    /**
+     * @return Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+     * 
+     */
+    public Output<Optional<String>> hiddenZoneId() {
+        return Codegen.optional(this.hiddenZoneId);
+    }
+    /**
      * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      * 
      */
@@ -269,6 +283,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.period;
     }
     /**
+     * The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
+     * 
+     */
+    @Export(name="readonlyReplicas", type=Integer.class, parameters={})
+    private Output<Integer> readonlyReplicas;
+
+    /**
+     * @return The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
+     * 
+     */
+    public Output<Integer> readonlyReplicas() {
+        return this.readonlyReplicas;
+    }
+    /**
      * The name of the mongo replica set
      * 
      */
@@ -339,6 +367,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.retentionPeriod;
     }
     /**
+     * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * 
+     */
+    @Export(name="secondaryZoneId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> secondaryZoneId;
+
+    /**
+     * @return Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+     * 
+     */
+    public Output<Optional<String>> secondaryZoneId() {
+        return Codegen.optional(this.secondaryZoneId);
+    }
+    /**
      * The Security Group ID of ECS.
      * 
      */
@@ -407,6 +449,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> storageEngine() {
         return this.storageEngine;
+    }
+    /**
+     * The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+     * 
+     */
+    @Export(name="storageType", type=String.class, parameters={})
+    private Output<String> storageType;
+
+    /**
+     * @return The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+     * 
+     */
+    public Output<String> storageType() {
+        return this.storageType;
     }
     /**
      * A mapping of tags to assign to the resource.

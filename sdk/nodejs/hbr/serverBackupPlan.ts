@@ -75,6 +75,18 @@ export class ServerBackupPlan extends pulumi.CustomResource {
     }
 
     /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    public readonly crossAccountRoleName!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    public readonly crossAccountType!: pulumi.Output<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    public readonly crossAccountUserId!: pulumi.Output<number | undefined>;
+    /**
      * ECS server backup plan details.
      */
     public readonly details!: pulumi.Output<outputs.hbr.ServerBackupPlanDetail[]>;
@@ -112,6 +124,9 @@ export class ServerBackupPlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerBackupPlanState | undefined;
+            resourceInputs["crossAccountRoleName"] = state ? state.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = state ? state.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = state ? state.crossAccountUserId : undefined;
             resourceInputs["details"] = state ? state.details : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["ecsServerBackupPlanName"] = state ? state.ecsServerBackupPlanName : undefined;
@@ -135,6 +150,9 @@ export class ServerBackupPlan extends pulumi.CustomResource {
             if ((!args || args.schedule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
             }
+            resourceInputs["crossAccountRoleName"] = args ? args.crossAccountRoleName : undefined;
+            resourceInputs["crossAccountType"] = args ? args.crossAccountType : undefined;
+            resourceInputs["crossAccountUserId"] = args ? args.crossAccountUserId : undefined;
             resourceInputs["details"] = args ? args.details : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["ecsServerBackupPlanName"] = args ? args.ecsServerBackupPlanName : undefined;
@@ -151,6 +169,18 @@ export class ServerBackupPlan extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServerBackupPlan resources.
  */
 export interface ServerBackupPlanState {
+    /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
     /**
      * ECS server backup plan details.
      */
@@ -181,6 +211,18 @@ export interface ServerBackupPlanState {
  * The set of arguments for constructing a ServerBackupPlan resource.
  */
 export interface ServerBackupPlanArgs {
+    /**
+     * The role name created in the original account RAM backup by the cross account managed by the current account.
+     */
+    crossAccountRoleName?: pulumi.Input<string>;
+    /**
+     * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+     */
+    crossAccountType?: pulumi.Input<string>;
+    /**
+     * The original account ID of the cross account backup managed by the current account.
+     */
+    crossAccountUserId?: pulumi.Input<number>;
     /**
      * ECS server backup plan details.
      */

@@ -52,6 +52,7 @@ class ScalingConfigurationArgs:
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
@@ -95,6 +96,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk.
         :param pulumi.Input[int] system_disk_size: Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
@@ -180,6 +182,8 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "system_disk_category", system_disk_category)
         if system_disk_description is not None:
             pulumi.set(__self__, "system_disk_description", system_disk_description)
+        if system_disk_encrypted is not None:
+            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
         if system_disk_name is not None:
             pulumi.set(__self__, "system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
@@ -624,6 +628,18 @@ class ScalingConfigurationArgs:
         pulumi.set(self, "system_disk_description", value)
 
     @property
+    @pulumi.getter(name="systemDiskEncrypted")
+    def system_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to encrypt the system disk.
+        """
+        return pulumi.get(self, "system_disk_encrypted")
+
+    @system_disk_encrypted.setter
+    def system_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "system_disk_encrypted", value)
+
+    @property
     @pulumi.getter(name="systemDiskName")
     def system_disk_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -725,6 +741,7 @@ class _ScalingConfigurationState:
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
@@ -768,6 +785,7 @@ class _ScalingConfigurationState:
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk.
         :param pulumi.Input[int] system_disk_size: Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
@@ -854,6 +872,8 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "system_disk_category", system_disk_category)
         if system_disk_description is not None:
             pulumi.set(__self__, "system_disk_description", system_disk_description)
+        if system_disk_encrypted is not None:
+            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
         if system_disk_name is not None:
             pulumi.set(__self__, "system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
@@ -1298,6 +1318,18 @@ class _ScalingConfigurationState:
         pulumi.set(self, "system_disk_description", value)
 
     @property
+    @pulumi.getter(name="systemDiskEncrypted")
+    def system_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to encrypt the system disk.
+        """
+        return pulumi.get(self, "system_disk_encrypted")
+
+    @system_disk_encrypted.setter
+    def system_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "system_disk_encrypted", value)
+
+    @property
     @pulumi.getter(name="systemDiskName")
     def system_disk_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1401,6 +1433,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
@@ -1454,6 +1487,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk.
         :param pulumi.Input[int] system_disk_size: Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
@@ -1528,6 +1562,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
@@ -1586,6 +1621,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
             __props__.__dict__["system_disk_category"] = system_disk_category
             __props__.__dict__["system_disk_description"] = system_disk_description
+            __props__.__dict__["system_disk_encrypted"] = system_disk_encrypted
             __props__.__dict__["system_disk_name"] = system_disk_name
             __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
             __props__.__dict__["system_disk_size"] = system_disk_size
@@ -1637,6 +1673,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
             system_disk_description: Optional[pulumi.Input[str]] = None,
+            system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
             system_disk_name: Optional[pulumi.Input[str]] = None,
             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
             system_disk_size: Optional[pulumi.Input[int]] = None,
@@ -1685,6 +1722,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk.
         :param pulumi.Input[int] system_disk_size: Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
@@ -1733,6 +1771,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
         __props__.__dict__["system_disk_category"] = system_disk_category
         __props__.__dict__["system_disk_description"] = system_disk_description
+        __props__.__dict__["system_disk_encrypted"] = system_disk_encrypted
         __props__.__dict__["system_disk_name"] = system_disk_name
         __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
         __props__.__dict__["system_disk_size"] = system_disk_size
@@ -2027,6 +2066,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "system_disk_description")
+
+    @property
+    @pulumi.getter(name="systemDiskEncrypted")
+    def system_disk_encrypted(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to encrypt the system disk.
+        """
+        return pulumi.get(self, "system_disk_encrypted")
 
     @property
     @pulumi.getter(name="systemDiskName")

@@ -192,6 +192,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly systemDiskDescription!: pulumi.Output<string | undefined>;
     /**
+     * Whether to encrypt the system disk.
+     */
+    public readonly systemDiskEncrypted!: pulumi.Output<boolean | undefined>;
+    /**
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      */
     public readonly systemDiskName!: pulumi.Output<string | undefined>;
@@ -263,6 +267,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = state ? state.systemDiskAutoSnapshotPolicyId : undefined;
             resourceInputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
             resourceInputs["systemDiskDescription"] = state ? state.systemDiskDescription : undefined;
+            resourceInputs["systemDiskEncrypted"] = state ? state.systemDiskEncrypted : undefined;
             resourceInputs["systemDiskName"] = state ? state.systemDiskName : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = state ? state.systemDiskPerformanceLevel : undefined;
             resourceInputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
@@ -309,6 +314,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = args ? args.systemDiskAutoSnapshotPolicyId : undefined;
             resourceInputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
             resourceInputs["systemDiskDescription"] = args ? args.systemDiskDescription : undefined;
+            resourceInputs["systemDiskEncrypted"] = args ? args.systemDiskEncrypted : undefined;
             resourceInputs["systemDiskName"] = args ? args.systemDiskName : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = args ? args.systemDiskPerformanceLevel : undefined;
             resourceInputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
@@ -472,6 +478,10 @@ export interface ScalingConfigurationState {
      * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     systemDiskDescription?: pulumi.Input<string>;
+    /**
+     * Whether to encrypt the system disk.
+     */
+    systemDiskEncrypted?: pulumi.Input<boolean>;
     /**
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      */
@@ -648,6 +658,10 @@ export interface ScalingConfigurationArgs {
      * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     systemDiskDescription?: pulumi.Input<string>;
+    /**
+     * Whether to encrypt the system disk.
+     */
+    systemDiskEncrypted?: pulumi.Input<boolean>;
     /**
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      */

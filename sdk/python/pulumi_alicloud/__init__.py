@@ -129,6 +129,8 @@ if typing.TYPE_CHECKING:
     elasticsearch = __elasticsearch
     import pulumi_alicloud.emr as __emr
     emr = __emr
+    import pulumi_alicloud.emrv2 as __emrv2
+    emrv2 = __emrv2
     import pulumi_alicloud.ens as __ens
     ens = __ens
     import pulumi_alicloud.ess as __ess
@@ -307,6 +309,7 @@ else:
     eipanycast = _utilities.lazy_import('pulumi_alicloud.eipanycast')
     elasticsearch = _utilities.lazy_import('pulumi_alicloud.elasticsearch')
     emr = _utilities.lazy_import('pulumi_alicloud.emr')
+    emrv2 = _utilities.lazy_import('pulumi_alicloud.emrv2')
     ens = _utilities.lazy_import('pulumi_alicloud.ens')
     ess = _utilities.lazy_import('pulumi_alicloud.ess')
     eventbridge = _utilities.lazy_import('pulumi_alicloud.eventbridge')
@@ -1759,6 +1762,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cr/vpcEndpointLinkedVpc",
+  "fqn": "pulumi_alicloud.cr",
+  "classes": {
+   "alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc": "VpcEndpointLinkedVpc"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cs/application",
   "fqn": "pulumi_alicloud.cs",
   "classes": {
@@ -3127,6 +3138,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "emrv2/cluster",
+  "fqn": "pulumi_alicloud.emrv2",
+  "classes": {
+   "alicloud:emrv2/cluster:Cluster": "Cluster"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ens/keyPair",
   "fqn": "pulumi_alicloud.ens",
   "classes": {
@@ -3291,6 +3310,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.expressconnect",
   "classes": {
    "alicloud:expressconnect/physicalConnection:PhysicalConnection": "PhysicalConnection"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "expressconnect/routerInterface",
+  "fqn": "pulumi_alicloud.expressconnect",
+  "classes": {
+   "alicloud:expressconnect/routerInterface:RouterInterface": "RouterInterface"
   }
  },
  {
@@ -5587,6 +5614,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.threatdetection",
   "classes": {
    "alicloud:threatdetection/honeypotProbe:HoneypotProbe": "HoneypotProbe"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "threatdetection/instance",
+  "fqn": "pulumi_alicloud.threatdetection",
+  "classes": {
+   "alicloud:threatdetection/instance:Instance": "Instance"
   }
  },
  {

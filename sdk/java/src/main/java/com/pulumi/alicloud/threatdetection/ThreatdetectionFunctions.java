@@ -22,6 +22,8 @@ import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotPresetsArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotPresetsPlainArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesPlainArgs;
+import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
+import com.pulumi.alicloud.threatdetection.inputs.GetInstancesPlainArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetLogShipperArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetLogShipperPlainArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetVulWhitelistsArgs;
@@ -37,6 +39,7 @@ import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotImagesResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotNodesResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotPresetsResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotProbesResult;
+import com.pulumi.alicloud.threatdetection.outputs.GetInstancesResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetLogShipperResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetVulWhitelistsResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetWebLockConfigsResult;
@@ -2044,6 +2047,246 @@ public final class ThreatdetectionFunctions {
      */
     public static CompletableFuture<GetHoneypotProbesResult> getHoneypotProbesPlain(GetHoneypotProbesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes", TypeShape.of(GetHoneypotProbesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(alicloud_threat_detection_instance.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances() {
+        return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(alicloud_threat_detection_instance.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
+        return getInstancesPlain(GetInstancesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(alicloud_threat_detection_instance.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
+        return getInstances(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(alicloud_threat_detection_instance.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
+        return getInstancesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(alicloud_threat_detection_instance.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/security-center/latest/what-is-security-center)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
+     *             .ids(alicloud_threat_detection_instance.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Using this data source can open Threat Detection Log Shipper automatically. If the service has been enabled, it will return `Opened`.

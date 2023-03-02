@@ -67,6 +67,12 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string> PlanCode { get; private set; } = null!;
 
         /// <summary>
+        /// The public IP address that you want to add to the whitelist.
+        /// </summary>
+        [Output("publicWhiteLists")]
+        public Output<ImmutableArray<string>> PublicWhiteLists { get; private set; } = null!;
+
+        /// <summary>
         /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         /// </summary>
         [Output("renewPeriod")]
@@ -214,6 +220,18 @@ namespace Pulumi.AliCloud.BastionHost
         [Input("planCode", required: true)]
         public Input<string> PlanCode { get; set; } = null!;
 
+        [Input("publicWhiteLists")]
+        private InputList<string>? _publicWhiteLists;
+
+        /// <summary>
+        /// The public IP address that you want to add to the whitelist.
+        /// </summary>
+        public InputList<string> PublicWhiteLists
+        {
+            get => _publicWhiteLists ?? (_publicWhiteLists = new InputList<string>());
+            set => _publicWhiteLists = value;
+        }
+
         /// <summary>
         /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         /// </summary>
@@ -334,6 +352,18 @@ namespace Pulumi.AliCloud.BastionHost
         /// </summary>
         [Input("planCode")]
         public Input<string>? PlanCode { get; set; }
+
+        [Input("publicWhiteLists")]
+        private InputList<string>? _publicWhiteLists;
+
+        /// <summary>
+        /// The public IP address that you want to add to the whitelist.
+        /// </summary>
+        public InputList<string> PublicWhiteLists
+        {
+            get => _publicWhiteLists ?? (_publicWhiteLists = new InputList<string>());
+            set => _publicWhiteLists = value;
+        }
 
         /// <summary>
         /// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.

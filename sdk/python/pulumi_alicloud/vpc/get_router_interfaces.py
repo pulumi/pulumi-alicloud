@@ -195,9 +195,6 @@ def get_router_interfaces(ids: Optional[Sequence[str]] = None,
                           status: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouterInterfacesResult:
     """
-    This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
-    that connect VPCs together.
-
     ## Example Usage
 
     ```python
@@ -264,9 +261,6 @@ def get_router_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterInterfacesResult]:
     """
-    This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
-    that connect VPCs together.
-
     ## Example Usage
 
     ```python

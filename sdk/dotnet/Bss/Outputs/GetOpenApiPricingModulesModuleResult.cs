@@ -13,13 +13,39 @@ namespace Pulumi.AliCloud.Bss.Outputs
     [OutputType]
     public sealed class GetOpenApiPricingModulesModuleResult
     {
+        /// <summary>
+        /// Property Code.
+        /// </summary>
         public readonly string Code;
+        /// <summary>
+        /// A list of Price Module IDs.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Attribute name.
+        /// </summary>
         public readonly string PricingModuleName;
+        /// <summary>
+        /// The product code.
+        /// </summary>
         public readonly string ProductCode;
+        /// <summary>
+        /// The product type.
+        /// </summary>
         public readonly string ProductType;
+        /// <summary>
+        /// Subscription type. Value:
+        /// * Subscription: Prepaid.
+        /// * PayAsYouGo: postpaid.
+        /// </summary>
         public readonly string SubscriptionType;
+        /// <summary>
+        /// Attribute unit.
+        /// </summary>
         public readonly string Unit;
+        /// <summary>
+        /// Property.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenApiPricingModulesModuleValueResult> Values;
 
         [OutputConstructor]

@@ -1359,19 +1359,32 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetSearchIndexesIndex struct {
-	CreateTime             int    `pulumi:"createTime"`
-	CurrentSyncTimestamp   int    `pulumi:"currentSyncTimestamp"`
-	Id                     string `pulumi:"id"`
-	IndexName              string `pulumi:"indexName"`
-	InstanceName           string `pulumi:"instanceName"`
-	MeteringLastUpdateTime int    `pulumi:"meteringLastUpdateTime"`
-	ReservedReadCu         int    `pulumi:"reservedReadCu"`
-	RowCount               int    `pulumi:"rowCount"`
-	Schema                 string `pulumi:"schema"`
-	StorageSize            int    `pulumi:"storageSize"`
-	SyncPhase              string `pulumi:"syncPhase"`
-	TableName              string `pulumi:"tableName"`
-	TimeToLive             int    `pulumi:"timeToLive"`
+	// The creation time of the index.
+	CreateTime int `pulumi:"createTime"`
+	// Timestamp for sync phase.
+	CurrentSyncTimestamp int `pulumi:"currentSyncTimestamp"`
+	// The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
+	Id string `pulumi:"id"`
+	// The index name of the OTS Table which could not be changed.
+	IndexName string `pulumi:"indexName"`
+	// The name of OTS instance.
+	InstanceName string `pulumi:"instanceName"`
+	// Last update time for metering data..
+	MeteringLastUpdateTime int `pulumi:"meteringLastUpdateTime"`
+	// Reserve related resources for the index.
+	ReservedReadCu int `pulumi:"reservedReadCu"`
+	// The number of rows of data for index.
+	RowCount int `pulumi:"rowCount"`
+	// JSON representation of the schema of index.
+	Schema string `pulumi:"schema"`
+	// Storage space occupied by index.
+	StorageSize int `pulumi:"storageSize"`
+	// The synchronization state of the index.
+	SyncPhase string `pulumi:"syncPhase"`
+	// The name of OTS table.
+	TableName string `pulumi:"tableName"`
+	// TTL of index.
+	TimeToLive int `pulumi:"timeToLive"`
 }
 
 // GetSearchIndexesIndexInput is an input type that accepts GetSearchIndexesIndexArgs and GetSearchIndexesIndexOutput values.
@@ -1386,19 +1399,32 @@ type GetSearchIndexesIndexInput interface {
 }
 
 type GetSearchIndexesIndexArgs struct {
-	CreateTime             pulumi.IntInput    `pulumi:"createTime"`
-	CurrentSyncTimestamp   pulumi.IntInput    `pulumi:"currentSyncTimestamp"`
-	Id                     pulumi.StringInput `pulumi:"id"`
-	IndexName              pulumi.StringInput `pulumi:"indexName"`
-	InstanceName           pulumi.StringInput `pulumi:"instanceName"`
-	MeteringLastUpdateTime pulumi.IntInput    `pulumi:"meteringLastUpdateTime"`
-	ReservedReadCu         pulumi.IntInput    `pulumi:"reservedReadCu"`
-	RowCount               pulumi.IntInput    `pulumi:"rowCount"`
-	Schema                 pulumi.StringInput `pulumi:"schema"`
-	StorageSize            pulumi.IntInput    `pulumi:"storageSize"`
-	SyncPhase              pulumi.StringInput `pulumi:"syncPhase"`
-	TableName              pulumi.StringInput `pulumi:"tableName"`
-	TimeToLive             pulumi.IntInput    `pulumi:"timeToLive"`
+	// The creation time of the index.
+	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	// Timestamp for sync phase.
+	CurrentSyncTimestamp pulumi.IntInput `pulumi:"currentSyncTimestamp"`
+	// The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The index name of the OTS Table which could not be changed.
+	IndexName pulumi.StringInput `pulumi:"indexName"`
+	// The name of OTS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// Last update time for metering data..
+	MeteringLastUpdateTime pulumi.IntInput `pulumi:"meteringLastUpdateTime"`
+	// Reserve related resources for the index.
+	ReservedReadCu pulumi.IntInput `pulumi:"reservedReadCu"`
+	// The number of rows of data for index.
+	RowCount pulumi.IntInput `pulumi:"rowCount"`
+	// JSON representation of the schema of index.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// Storage space occupied by index.
+	StorageSize pulumi.IntInput `pulumi:"storageSize"`
+	// The synchronization state of the index.
+	SyncPhase pulumi.StringInput `pulumi:"syncPhase"`
+	// The name of OTS table.
+	TableName pulumi.StringInput `pulumi:"tableName"`
+	// TTL of index.
+	TimeToLive pulumi.IntInput `pulumi:"timeToLive"`
 }
 
 func (GetSearchIndexesIndexArgs) ElementType() reflect.Type {
@@ -1452,54 +1478,67 @@ func (o GetSearchIndexesIndexOutput) ToGetSearchIndexesIndexOutputWithContext(ct
 	return o
 }
 
+// The creation time of the index.
 func (o GetSearchIndexesIndexOutput) CreateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.CreateTime }).(pulumi.IntOutput)
 }
 
+// Timestamp for sync phase.
 func (o GetSearchIndexesIndexOutput) CurrentSyncTimestamp() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.CurrentSyncTimestamp }).(pulumi.IntOutput)
 }
 
+// The resource ID. The value is `<instance_name>:<table_name>:<indexName>:<indexType>`.
 func (o GetSearchIndexesIndexOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The index name of the OTS Table which could not be changed.
 func (o GetSearchIndexesIndexOutput) IndexName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) string { return v.IndexName }).(pulumi.StringOutput)
 }
 
+// The name of OTS instance.
 func (o GetSearchIndexesIndexOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
+// Last update time for metering data..
 func (o GetSearchIndexesIndexOutput) MeteringLastUpdateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.MeteringLastUpdateTime }).(pulumi.IntOutput)
 }
 
+// Reserve related resources for the index.
 func (o GetSearchIndexesIndexOutput) ReservedReadCu() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.ReservedReadCu }).(pulumi.IntOutput)
 }
 
+// The number of rows of data for index.
 func (o GetSearchIndexesIndexOutput) RowCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.RowCount }).(pulumi.IntOutput)
 }
 
+// JSON representation of the schema of index.
 func (o GetSearchIndexesIndexOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) string { return v.Schema }).(pulumi.StringOutput)
 }
 
+// Storage space occupied by index.
 func (o GetSearchIndexesIndexOutput) StorageSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.StorageSize }).(pulumi.IntOutput)
 }
 
+// The synchronization state of the index.
 func (o GetSearchIndexesIndexOutput) SyncPhase() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) string { return v.SyncPhase }).(pulumi.StringOutput)
 }
 
+// The name of OTS table.
 func (o GetSearchIndexesIndexOutput) TableName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) string { return v.TableName }).(pulumi.StringOutput)
 }
 
+// TTL of index.
 func (o GetSearchIndexesIndexOutput) TimeToLive() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSearchIndexesIndex) int { return v.TimeToLive }).(pulumi.IntOutput)
 }

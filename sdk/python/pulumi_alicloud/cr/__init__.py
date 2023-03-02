@@ -17,8 +17,10 @@ from .get_endpoint_acl_service import *
 from .get_namespaces import *
 from .get_repos import *
 from .get_service import *
+from .get_vpc_endpoint_linked_vpcs import *
 from .namespace import *
 from .registry_enterprise_instance import *
 from .repo import *
+from .vpc_endpoint_linked_vpc import *
 from ._inputs import *
 from . import outputs

@@ -75,6 +75,12 @@ import (
 type ServerBackupPlan struct {
 	pulumi.CustomResourceState
 
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName pulumi.StringPtrOutput `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType pulumi.StringOutput `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId pulumi.IntPtrOutput `pulumi:"crossAccountUserId"`
 	// ECS server backup plan details.
 	Details ServerBackupPlanDetailArrayOutput `pulumi:"details"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -133,6 +139,12 @@ func GetServerBackupPlan(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerBackupPlan resources.
 type serverBackupPlanState struct {
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType *string `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId *int `pulumi:"crossAccountUserId"`
 	// ECS server backup plan details.
 	Details []ServerBackupPlanDetail `pulumi:"details"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -148,6 +160,12 @@ type serverBackupPlanState struct {
 }
 
 type ServerBackupPlanState struct {
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName pulumi.StringPtrInput
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType pulumi.StringPtrInput
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId pulumi.IntPtrInput
 	// ECS server backup plan details.
 	Details ServerBackupPlanDetailArrayInput
 	// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -167,6 +185,12 @@ func (ServerBackupPlanState) ElementType() reflect.Type {
 }
 
 type serverBackupPlanArgs struct {
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType *string `pulumi:"crossAccountType"`
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId *int `pulumi:"crossAccountUserId"`
 	// ECS server backup plan details.
 	Details []ServerBackupPlanDetail `pulumi:"details"`
 	// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -183,6 +207,12 @@ type serverBackupPlanArgs struct {
 
 // The set of arguments for constructing a ServerBackupPlan resource.
 type ServerBackupPlanArgs struct {
+	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	CrossAccountRoleName pulumi.StringPtrInput
+	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+	CrossAccountType pulumi.StringPtrInput
+	// The original account ID of the cross account backup managed by the current account.
+	CrossAccountUserId pulumi.IntPtrInput
 	// ECS server backup plan details.
 	Details ServerBackupPlanDetailArrayInput
 	// Whether to disable the backup task. Valid values: `true`, `false`.
@@ -282,6 +312,21 @@ func (o ServerBackupPlanOutput) ToServerBackupPlanOutput() ServerBackupPlanOutpu
 
 func (o ServerBackupPlanOutput) ToServerBackupPlanOutputWithContext(ctx context.Context) ServerBackupPlanOutput {
 	return o
+}
+
+// The role name created in the original account RAM backup by the cross account managed by the current account.
+func (o ServerBackupPlanOutput) CrossAccountRoleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerBackupPlan) pulumi.StringPtrOutput { return v.CrossAccountRoleName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
+func (o ServerBackupPlanOutput) CrossAccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerBackupPlan) pulumi.StringOutput { return v.CrossAccountType }).(pulumi.StringOutput)
+}
+
+// The original account ID of the cross account backup managed by the current account.
+func (o ServerBackupPlanOutput) CrossAccountUserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerBackupPlan) pulumi.IntPtrOutput { return v.CrossAccountUserId }).(pulumi.IntPtrOutput)
 }
 
 // ECS server backup plan details.

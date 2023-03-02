@@ -11,9 +11,23 @@ namespace Pulumi.AliCloud.Ots
 {
     public static class GetSearchIndexes
     {
+        /// <summary>
+        /// This data source provides the ots search index of the current Alibaba Cloud user.
+        /// 
+        /// For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
+        /// 
+        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// </summary>
         public static Task<GetSearchIndexesResult> InvokeAsync(GetSearchIndexesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSearchIndexesResult>("alicloud:ots/getSearchIndexes:getSearchIndexes", args ?? new GetSearchIndexesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides the ots search index of the current Alibaba Cloud user.
+        /// 
+        /// For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
+        /// 
+        /// &gt; **NOTE:** Available in v1.187.0+.
+        /// </summary>
         public static Output<GetSearchIndexesResult> Invoke(GetSearchIndexesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSearchIndexesResult>("alicloud:ots/getSearchIndexes:getSearchIndexes", args ?? new GetSearchIndexesInvokeArgs(), options.WithDefaults());
     }
@@ -23,21 +37,34 @@ namespace Pulumi.AliCloud.Ots
     {
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of search index IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The name of OTS instance.
+        /// </summary>
         [Input("instanceName", required: true)]
         public string InstanceName { get; set; } = null!;
 
+        /// <summary>
+        /// A regex string to filter results by search index name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The name of OTS table.
+        /// </summary>
         [Input("tableName", required: true)]
         public string TableName { get; set; } = null!;
 
@@ -51,21 +78,34 @@ namespace Pulumi.AliCloud.Ots
     {
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of search index IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The name of OTS instance.
+        /// </summary>
         [Input("instanceName", required: true)]
         public Input<string> InstanceName { get; set; } = null!;
 
+        /// <summary>
+        /// A regex string to filter results by search index name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The name of OTS table.
+        /// </summary>
         [Input("tableName", required: true)]
         public Input<string> TableName { get; set; } = null!;
 
@@ -83,12 +123,27 @@ namespace Pulumi.AliCloud.Ots
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of search index IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of indexes. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSearchIndexesIndexResult> Indexes;
+        /// <summary>
+        /// The OTS instance name.
+        /// </summary>
         public readonly string InstanceName;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of search index  names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The table name of the OTS which could not be changed.
+        /// </summary>
         public readonly string TableName;
 
         [OutputConstructor]

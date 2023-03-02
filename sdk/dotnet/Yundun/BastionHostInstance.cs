@@ -36,6 +36,9 @@ namespace Pulumi.AliCloud.Yundun
         [Output("planCode")]
         public Output<string> PlanCode { get; private set; } = null!;
 
+        [Output("publicWhiteLists")]
+        public Output<ImmutableArray<string>> PublicWhiteLists { get; private set; } = null!;
+
         [Output("renewPeriod")]
         public Output<int?> RenewPeriod { get; private set; } = null!;
 
@@ -140,6 +143,14 @@ namespace Pulumi.AliCloud.Yundun
         [Input("planCode", required: true)]
         public Input<string> PlanCode { get; set; } = null!;
 
+        [Input("publicWhiteLists")]
+        private InputList<string>? _publicWhiteLists;
+        public InputList<string> PublicWhiteLists
+        {
+            get => _publicWhiteLists ?? (_publicWhiteLists = new InputList<string>());
+            set => _publicWhiteLists = value;
+        }
+
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
@@ -215,6 +226,14 @@ namespace Pulumi.AliCloud.Yundun
 
         [Input("planCode")]
         public Input<string>? PlanCode { get; set; }
+
+        [Input("publicWhiteLists")]
+        private InputList<string>? _publicWhiteLists;
+        public InputList<string> PublicWhiteLists
+        {
+            get => _publicWhiteLists ?? (_publicWhiteLists = new InputList<string>());
+            set => _publicWhiteLists = value;
+        }
 
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }

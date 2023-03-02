@@ -67,6 +67,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        /// </summary>
+        [Output("hiddenZoneId")]
+        public Output<string?> HiddenZoneId { get; private set; } = null!;
+
+        /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         /// </summary>
         [Output("instanceChargeType")]
@@ -124,6 +130,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
+        /// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
+        /// </summary>
+        [Output("readonlyReplicas")]
+        public Output<int> ReadonlyReplicas { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the mongo replica set
         /// </summary>
         [Output("replicaSetName")]
@@ -154,6 +166,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int> RetentionPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        /// </summary>
+        [Output("secondaryZoneId")]
+        public Output<string?> SecondaryZoneId { get; private set; } = null!;
+
+        /// <summary>
         /// The Security Group ID of ECS.
         /// </summary>
         [Output("securityGroupId")]
@@ -182,6 +200,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("storageEngine")]
         public Output<string> StorageEngine { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        /// </summary>
+        [Output("storageType")]
+        public Output<string> StorageType { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -327,6 +351,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string> EngineVersion { get; set; } = null!;
 
         /// <summary>
+        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        /// </summary>
+        [Input("hiddenZoneId")]
+        public Input<string>? HiddenZoneId { get; set; }
+
+        /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         /// </summary>
         [Input("instanceChargeType")]
@@ -390,6 +420,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
+        /// </summary>
+        [Input("readonlyReplicas")]
+        public Input<int>? ReadonlyReplicas { get; set; }
+
+        /// <summary>
         /// Number of replica set nodes. Valid values: [1, 3, 5, 7]
         /// </summary>
         [Input("replicationFactor")]
@@ -400,6 +436,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        /// </summary>
+        [Input("secondaryZoneId")]
+        public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
         /// The Security Group ID of ECS.
@@ -430,6 +472,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
+
+        /// <summary>
+        /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        /// </summary>
+        [Input("storageType")]
+        public Input<string>? StorageType { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -539,6 +587,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
+        /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
+        /// </summary>
+        [Input("hiddenZoneId")]
+        public Input<string>? HiddenZoneId { get; set; }
+
+        /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         /// </summary>
         [Input("instanceChargeType")]
@@ -602,6 +656,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
+        /// </summary>
+        [Input("readonlyReplicas")]
+        public Input<int>? ReadonlyReplicas { get; set; }
+
+        /// <summary>
         /// The name of the mongo replica set
         /// </summary>
         [Input("replicaSetName")]
@@ -638,6 +698,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? RetentionPeriod { get; set; }
 
         /// <summary>
+        /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
+        /// </summary>
+        [Input("secondaryZoneId")]
+        public Input<string>? SecondaryZoneId { get; set; }
+
+        /// <summary>
         /// The Security Group ID of ECS.
         /// </summary>
         [Input("securityGroupId")]
@@ -672,6 +738,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
+
+        /// <summary>
+        /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+        /// </summary>
+        [Input("storageType")]
+        public Input<string>? StorageType { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

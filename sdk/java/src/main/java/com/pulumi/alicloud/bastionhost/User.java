@@ -219,7 +219,10 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * Specify the New of the User That Created the Source. Valid Values:
      * * Local: Local User
-     * * RAM: Ram User
+     * * Ram: Ram User
+     * * AD: AD-authenticated User
+     * * LDAP: LDAP-authenticated User
+     * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      * 
      */
     @Export(name="source", type=String.class, parameters={})
@@ -228,7 +231,10 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * @return Specify the New of the User That Created the Source. Valid Values:
      * * Local: Local User
-     * * RAM: Ram User
+     * * Ram: Ram User
+     * * AD: AD-authenticated User
+     * * LDAP: LDAP-authenticated User
+     * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      * 
      */
     public Output<String> source() {

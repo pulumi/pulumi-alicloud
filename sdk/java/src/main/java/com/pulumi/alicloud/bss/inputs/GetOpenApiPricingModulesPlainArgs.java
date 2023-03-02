@@ -22,9 +22,17 @@ public final class GetOpenApiPricingModulesPlainArgs extends com.pulumi.resource
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * A regex string to filter results by Property name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
+    /**
+     * @return A regex string to filter results by Property name.
+     * 
+     */
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -36,23 +44,51 @@ public final class GetOpenApiPricingModulesPlainArgs extends com.pulumi.resource
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The product code.
+     * 
+     */
     @Import(name="productCode", required=true)
     private String productCode;
 
+    /**
+     * @return The product code.
+     * 
+     */
     public String productCode() {
         return this.productCode;
     }
 
+    /**
+     * The product type.
+     * 
+     */
     @Import(name="productType")
     private @Nullable String productType;
 
+    /**
+     * @return The product type.
+     * 
+     */
     public Optional<String> productType() {
         return Optional.ofNullable(this.productType);
     }
 
+    /**
+     * Subscription type. Value:
+     * * Subscription: Prepaid.
+     * * PayAsYouGo: postpaid.
+     * 
+     */
     @Import(name="subscriptionType", required=true)
     private String subscriptionType;
 
+    /**
+     * @return Subscription type. Value:
+     * * Subscription: Prepaid.
+     * * PayAsYouGo: postpaid.
+     * 
+     */
     public String subscriptionType() {
         return this.subscriptionType;
     }
@@ -95,6 +131,12 @@ public final class GetOpenApiPricingModulesPlainArgs extends com.pulumi.resource
             return ids(List.of(ids));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Property name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable String nameRegex) {
             $.nameRegex = nameRegex;
             return this;
@@ -105,16 +147,36 @@ public final class GetOpenApiPricingModulesPlainArgs extends com.pulumi.resource
             return this;
         }
 
+        /**
+         * @param productCode The product code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productCode(String productCode) {
             $.productCode = productCode;
             return this;
         }
 
+        /**
+         * @param productType The product type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productType(@Nullable String productType) {
             $.productType = productType;
             return this;
         }
 
+        /**
+         * @param subscriptionType Subscription type. Value:
+         * * Subscription: Prepaid.
+         * * PayAsYouGo: postpaid.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptionType(String subscriptionType) {
             $.subscriptionType = subscriptionType;
             return this;

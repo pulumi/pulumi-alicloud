@@ -4519,6 +4519,294 @@ export namespace emr {
 
 }
 
+export namespace emrv2 {
+    export interface ClusterApplicationConfig {
+        /**
+         * The application name of EMR cluster which has installed.
+         */
+        applicationName: pulumi.Input<string>;
+        /**
+         * The configuration description of application installed.
+         */
+        configDescription?: pulumi.Input<string>;
+        /**
+         * The configuration file name of application installed.
+         */
+        configFileName: pulumi.Input<string>;
+        /**
+         * The configuration item key of application installed.
+         */
+        configItemKey: pulumi.Input<string>;
+        /**
+         * The configuration item value of application installed.
+         */
+        configItemValue: pulumi.Input<string>;
+        /**
+         * The configuration scope of emr cluster. Supported value: CLUSTER or NODEGROUP.
+         */
+        configScope?: pulumi.Input<string>;
+        /**
+         * The configuration effected which node group id of emr cluster.
+         */
+        nodeGroupId?: pulumi.Input<string>;
+        /**
+         * The configuration effected which node group name of emr cluster.
+         */
+        nodeGroupName?: pulumi.Input<string>;
+    }
+
+    export interface ClusterBootstrapScript {
+        /**
+         * The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+         */
+        executionFailStrategy: pulumi.Input<string>;
+        /**
+         * The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+         */
+        executionMoment: pulumi.Input<string>;
+        /**
+         * The bootstrap scripts execution target.
+         */
+        nodeSelector: pulumi.Input<inputs.emrv2.ClusterBootstrapScriptNodeSelector>;
+        /**
+         * The bootstrap scripts priority.
+         */
+        priority?: pulumi.Input<number>;
+        /**
+         * The bootstrap script args, e.g. "--a=b".
+         */
+        scriptArgs: pulumi.Input<string>;
+        /**
+         * The bootstrap script name.
+         */
+        scriptName: pulumi.Input<string>;
+        /**
+         * The bootstrap script path, e.g. "oss://bucket/path".
+         */
+        scriptPath: pulumi.Input<string>;
+    }
+
+    export interface ClusterBootstrapScriptNodeSelector {
+        /**
+         * The configuration effected which node group id of emr cluster.
+         */
+        nodeGroupId?: pulumi.Input<string>;
+        /**
+         * The configuration effected which node group name of emr cluster.
+         */
+        nodeGroupName?: pulumi.Input<string>;
+        /**
+         * The bootstrap scripts execution target node group types.
+         */
+        nodeGroupTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The bootstrap scripts execution target node names.
+         */
+        nodeNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
+         */
+        nodeSelectType: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodeAttribute {
+        /**
+         * The name of the key pair.
+         */
+        keyPairName: pulumi.Input<string>;
+        /**
+         * Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
+         */
+        ramRole: pulumi.Input<string>;
+        /**
+         * Security Group ID for Cluster.
+         */
+        securityGroupId: pulumi.Input<string>;
+        /**
+         * Used to retrieve instances belong to specified VPC.
+         */
+        vpcId: pulumi.Input<string>;
+        /**
+         * Zone ID, e.g. cn-hangzhou-i
+         */
+        zoneId: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodeGroup {
+        /**
+         * Additional security Group IDS for Cluster, you can also specify this key for each node group.
+         */
+        additionalSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The detail cost optimized configuration of emr cluster.
+         */
+        costOptimizedConfig?: pulumi.Input<inputs.emrv2.ClusterNodeGroupCostOptimizedConfig>;
+        /**
+         * Host Ecs data disks information in this node group.
+         */
+        dataDisks: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroupDataDisk>[]>;
+        /**
+         * Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
+         */
+        gracefulShutdown?: pulumi.Input<boolean>;
+        /**
+         * Host Ecs instance types.
+         */
+        instanceTypes: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Host Ecs number in this node group.
+         */
+        nodeCount: pulumi.Input<number>;
+        /**
+         * The configuration effected which node group name of emr cluster.
+         */
+        nodeGroupName: pulumi.Input<string>;
+        /**
+         * The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+         */
+        nodeGroupType: pulumi.Input<string>;
+        /**
+         * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+         */
+        paymentType?: pulumi.Input<string>;
+        /**
+         * The spot bid prices of a PayAsYouGo instance.
+         */
+        spotBidPrices?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroupSpotBidPrice>[]>;
+        /**
+         * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+         */
+        spotInstanceRemedy?: pulumi.Input<boolean>;
+        /**
+         * The detail configuration of subscription payment type.
+         */
+        subscriptionConfig?: pulumi.Input<inputs.emrv2.ClusterNodeGroupSubscriptionConfig>;
+        /**
+         * Host Ecs system disk information in this node group.
+         */
+        systemDisk: pulumi.Input<inputs.emrv2.ClusterNodeGroupSystemDisk>;
+        /**
+         * Global vSwitch ids, you can also specify it in node group.
+         */
+        vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether the node has a public IP address enabled.
+         */
+        withPublicIp?: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterNodeGroupCostOptimizedConfig {
+        /**
+         * The cost optimized configuration which on demand based capacity.
+         */
+        onDemandBaseCapacity: pulumi.Input<number>;
+        /**
+         * The cost optimized configuration which on demand percentage above based capacity.
+         */
+        onDemandPercentageAboveBaseCapacity: pulumi.Input<number>;
+        /**
+         * The cost optimized configuration with spot instance pools.
+         */
+        spotInstancePools: pulumi.Input<number>;
+    }
+
+    export interface ClusterNodeGroupDataDisk {
+        /**
+         * The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+         */
+        category: pulumi.Input<string>;
+        /**
+         * The count of a data disk.
+         */
+        count?: pulumi.Input<number>;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * The size of a data disk, at least 40. Unit: GiB.
+         */
+        size: pulumi.Input<number>;
+    }
+
+    export interface ClusterNodeGroupSpotBidPrice {
+        /**
+         * The spot bid price of a PayAsYouGo instance.
+         */
+        bidPrice: pulumi.Input<number>;
+        /**
+         * Host Ecs instance type.
+         */
+        instanceType: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodeGroupSubscriptionConfig {
+        /**
+         * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
+         */
+        autoRenew?: pulumi.Input<boolean>;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
+         */
+        autoRenewDuration?: pulumi.Input<number>;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+         */
+        autoRenewDurationUnit?: pulumi.Input<string>;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
+         */
+        paymentDuration: pulumi.Input<number>;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+         */
+        paymentDurationUnit: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodeGroupSystemDisk {
+        /**
+         * The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+         */
+        category: pulumi.Input<string>;
+        /**
+         * The count of a data disk.
+         */
+        count?: pulumi.Input<number>;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * The size of a data disk, at least 40. Unit: GiB.
+         */
+        size: pulumi.Input<number>;
+    }
+
+    export interface ClusterSubscriptionConfig {
+        /**
+         * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
+         */
+        autoRenew?: pulumi.Input<boolean>;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
+         */
+        autoRenewDuration?: pulumi.Input<number>;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+         */
+        autoRenewDurationUnit?: pulumi.Input<string>;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
+         */
+        paymentDuration: pulumi.Input<number>;
+        /**
+         * If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+         */
+        paymentDurationUnit: pulumi.Input<string>;
+    }
+
+}
+
 export namespace ens {
 }
 
@@ -5013,6 +5301,16 @@ export namespace eventbridge {
 }
 
 export namespace expressconnect {
+    export interface GetRouterInterfacesFilter {
+        key?: string;
+        values?: string[];
+    }
+
+    export interface GetRouterInterfacesFilterArgs {
+        key?: pulumi.Input<string>;
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface GetVirtualBorderRoutersFilter {
         /**
          * The key of the field to filter by, as defined by

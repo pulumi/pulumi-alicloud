@@ -71,6 +71,12 @@ public class BastionHostInstance extends com.pulumi.resources.CustomResource {
     public Output<String> planCode() {
         return this.planCode;
     }
+    @Export(name="publicWhiteLists", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> publicWhiteLists;
+
+    public Output<Optional<List<String>>> publicWhiteLists() {
+        return Codegen.optional(this.publicWhiteLists);
+    }
     @Export(name="renewPeriod", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> renewPeriod;
 

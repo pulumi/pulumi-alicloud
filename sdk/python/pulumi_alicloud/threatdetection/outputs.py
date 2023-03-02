@@ -26,6 +26,7 @@ __all__ = [
     'GetHoneypotProbesProbeResult',
     'GetHoneypotProbesProbeHoneypotBindListResult',
     'GetHoneypotProbesProbeHoneypotBindListBindPortListResult',
+    'GetInstancesInstanceResult',
     'GetVulWhitelistsWhitelistResult',
     'GetWebLockConfigsConfigResult',
 ]
@@ -1221,6 +1222,68 @@ class GetHoneypotProbesProbeHoneypotBindListBindPortListResult(dict):
         Destination port.
         """
         return pulumi.get(self, "target_port")
+
+
+@pulumi.output_type
+class GetInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 id: str,
+                 instance_id: str,
+                 payment_type: str,
+                 status: str):
+        """
+        :param str create_time: The creation time of the resource
+        :param str id: ID of the instance.
+        :param str instance_id: The first ID of the resource
+        :param str payment_type: The payment type of the resource.
+        :param str status: The status of the resource.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the instance.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The first ID of the resource
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> str:
+        """
+        The payment type of the resource.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of the resource.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

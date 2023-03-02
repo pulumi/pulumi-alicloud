@@ -2234,6 +2234,139 @@ func (o GetHoneypotProbesProbeHoneypotBindListBindPortListArrayOutput) Index(i p
 	}).(GetHoneypotProbesProbeHoneypotBindListBindPortListOutput)
 }
 
+type GetInstancesInstance struct {
+	// The creation time of the resource
+	CreateTime string `pulumi:"createTime"`
+	// ID of the instance.
+	Id string `pulumi:"id"`
+	// The first ID of the resource
+	InstanceId string `pulumi:"instanceId"`
+	// The payment type of the resource.
+	PaymentType string `pulumi:"paymentType"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+}
+
+// GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceInput` via:
+//
+//	GetInstancesInstanceArgs{...}
+type GetInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceOutput() GetInstancesInstanceOutput
+	ToGetInstancesInstanceOutputWithContext(context.Context) GetInstancesInstanceOutput
+}
+
+type GetInstancesInstanceArgs struct {
+	// The creation time of the resource
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// ID of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The first ID of the resource
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The payment type of the resource.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return i.ToGetInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+// GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
+//
+//	GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+type GetInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput
+	ToGetInstancesInstanceArrayOutputWithContext(context.Context) GetInstancesInstanceArrayOutput
+}
+
+type GetInstancesInstanceArray []GetInstancesInstanceInput
+
+func (GetInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return i.ToGetInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
+}
+
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return o
+}
+
+// The creation time of the resource
+func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// ID of the instance.
+func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource
+func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource.
+func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
+		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
+	}).(GetInstancesInstanceOutput)
+}
+
 type GetVulWhitelistsWhitelist struct {
 	// The ID of the Vul Whitelist.
 	Id string `pulumi:"id"`
@@ -2576,6 +2709,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHoneypotProbesProbeHoneypotBindListArrayInput)(nil)).Elem(), GetHoneypotProbesProbeHoneypotBindListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHoneypotProbesProbeHoneypotBindListBindPortListInput)(nil)).Elem(), GetHoneypotProbesProbeHoneypotBindListBindPortListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHoneypotProbesProbeHoneypotBindListBindPortListArrayInput)(nil)).Elem(), GetHoneypotProbesProbeHoneypotBindListBindPortListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVulWhitelistsWhitelistInput)(nil)).Elem(), GetVulWhitelistsWhitelistArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVulWhitelistsWhitelistArrayInput)(nil)).Elem(), GetVulWhitelistsWhitelistArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebLockConfigsConfigInput)(nil)).Elem(), GetWebLockConfigsConfigArgs{})
@@ -2610,6 +2745,8 @@ func init() {
 	pulumi.RegisterOutputType(GetHoneypotProbesProbeHoneypotBindListArrayOutput{})
 	pulumi.RegisterOutputType(GetHoneypotProbesProbeHoneypotBindListBindPortListOutput{})
 	pulumi.RegisterOutputType(GetHoneypotProbesProbeHoneypotBindListBindPortListArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetVulWhitelistsWhitelistOutput{})
 	pulumi.RegisterOutputType(GetVulWhitelistsWhitelistArrayOutput{})
 	pulumi.RegisterOutputType(GetWebLockConfigsConfigOutput{})

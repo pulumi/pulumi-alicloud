@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Cms
     ///     var example = new AliCloud.Cms.AlarmContact("example", new()
     ///     {
     ///         AlarmContactName = "zhangsan",
-    ///         ChannelsMail = "terraform.test.com",
+    ///         ChannelsMail = "terraform@test.com",
     ///         Describe = "For Test",
     ///     });
     /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Cms
     ///     {
     ///         AlarmContactName = "zhangsan",
     ///         Describe = "For Test",
-    ///         ChannelsMail = "terraform.test.com",
+    ///         ChannelsMail = "terraform@test.com",
     ///     });
     /// 
     /// });

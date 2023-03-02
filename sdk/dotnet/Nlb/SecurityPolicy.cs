@@ -27,16 +27,27 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Nlb.SecurityPolicy("example", new()
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultSecurityPolicy = new AliCloud.Nlb.SecurityPolicy("defaultSecurityPolicy", new()
     ///     {
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         SecurityPolicyName = @var.Name,
     ///         Ciphers = new[]
     ///         {
-    ///             "example_value",
+    ///             "ECDHE-RSA-AES128-SHA",
+    ///             "ECDHE-ECDSA-AES128-SHA",
     ///         },
-    ///         SecurityPolicyName = "example_value",
     ///         TlsVersions = new[]
     ///         {
-    ///             "example_value",
+    ///             "TLSv1.0",
+    ///             "TLSv1.1",
+    ///             "TLSv1.2",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "Acceptance-test" },
     ///         },
     ///     });
     /// 

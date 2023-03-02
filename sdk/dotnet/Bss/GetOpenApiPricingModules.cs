@@ -11,9 +11,75 @@ namespace Pulumi.AliCloud.Bss
 {
     public static class GetOpenApiPricingModules
     {
+        /// <summary>
+        /// This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+        /// 
+        /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Bss.GetOpenApiPricingModules.Invoke(new()
+        ///     {
+        ///         NameRegex = "国内月均日峰值带宽",
+        ///         ProductCode = "cdn",
+        ///         ProductType = "CDN",
+        ///         SubscriptionType = "PayAsYouGo",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudBssOpenapiPricingModuleExampleId"] = @default.Apply(@default =&gt; @default.Apply(getOpenApiPricingModulesResult =&gt; getOpenApiPricingModulesResult.Modules[0]?.Code)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetOpenApiPricingModulesResult> InvokeAsync(GetOpenApiPricingModulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenApiPricingModulesResult>("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args ?? new GetOpenApiPricingModulesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+        /// 
+        /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Bss.GetOpenApiPricingModules.Invoke(new()
+        ///     {
+        ///         NameRegex = "国内月均日峰值带宽",
+        ///         ProductCode = "cdn",
+        ///         ProductType = "CDN",
+        ///         SubscriptionType = "PayAsYouGo",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudBssOpenapiPricingModuleExampleId"] = @default.Apply(@default =&gt; @default.Apply(getOpenApiPricingModulesResult =&gt; getOpenApiPricingModulesResult.Modules[0]?.Code)),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetOpenApiPricingModulesResult> Invoke(GetOpenApiPricingModulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenApiPricingModulesResult>("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args ?? new GetOpenApiPricingModulesInvokeArgs(), options.WithDefaults());
     }
@@ -29,18 +95,32 @@ namespace Pulumi.AliCloud.Bss
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Property name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The product code.
+        /// </summary>
         [Input("productCode", required: true)]
         public string ProductCode { get; set; } = null!;
 
+        /// <summary>
+        /// The product type.
+        /// </summary>
         [Input("productType")]
         public string? ProductType { get; set; }
 
+        /// <summary>
+        /// Subscription type. Value:
+        /// * Subscription: Prepaid.
+        /// * PayAsYouGo: postpaid.
+        /// </summary>
         [Input("subscriptionType", required: true)]
         public string SubscriptionType { get; set; } = null!;
 
@@ -60,18 +140,32 @@ namespace Pulumi.AliCloud.Bss
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Property name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The product code.
+        /// </summary>
         [Input("productCode", required: true)]
         public Input<string> ProductCode { get; set; } = null!;
 
+        /// <summary>
+        /// The product type.
+        /// </summary>
         [Input("productType")]
         public Input<string>? ProductType { get; set; }
 
+        /// <summary>
+        /// Subscription type. Value:
+        /// * Subscription: Prepaid.
+        /// * PayAsYouGo: postpaid.
+        /// </summary>
         [Input("subscriptionType", required: true)]
         public Input<string> SubscriptionType { get; set; } = null!;
 
@@ -90,8 +184,14 @@ namespace Pulumi.AliCloud.Bss
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Pricing Module Entries. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenApiPricingModulesModuleResult> Modules;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of name of Pricing Modules.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string ProductCode;

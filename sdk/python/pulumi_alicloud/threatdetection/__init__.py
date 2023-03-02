@@ -17,6 +17,7 @@ from .get_honeypot_images import *
 from .get_honeypot_nodes import *
 from .get_honeypot_presets import *
 from .get_honeypot_probes import *
+from .get_instances import *
 from .get_log_shipper import *
 from .get_vul_whitelists import *
 from .get_web_lock_configs import *
@@ -24,6 +25,7 @@ from .honey_pot import *
 from .honeypot_node import *
 from .honeypot_preset import *
 from .honeypot_probe import *
+from .instance import *
 from .vul_whitelist import *
 from .web_lock_config import *
 from ._inputs import *

@@ -25,6 +25,11 @@ export const getPhysicalConnections: typeof import("./getPhysicalConnections").g
 export const getPhysicalConnectionsOutput: typeof import("./getPhysicalConnections").getPhysicalConnectionsOutput = null as any;
 utilities.lazyLoad(exports, ["getPhysicalConnections","getPhysicalConnectionsOutput"], () => require("./getPhysicalConnections"));
 
+export { GetRouterInterfacesArgs, GetRouterInterfacesResult, GetRouterInterfacesOutputArgs } from "./getRouterInterfaces";
+export const getRouterInterfaces: typeof import("./getRouterInterfaces").getRouterInterfaces = null as any;
+export const getRouterInterfacesOutput: typeof import("./getRouterInterfaces").getRouterInterfacesOutput = null as any;
+utilities.lazyLoad(exports, ["getRouterInterfaces","getRouterInterfacesOutput"], () => require("./getRouterInterfaces"));
+
 export { GetVbrPconnAssociationsArgs, GetVbrPconnAssociationsResult, GetVbrPconnAssociationsOutputArgs } from "./getVbrPconnAssociations";
 export const getVbrPconnAssociations: typeof import("./getVbrPconnAssociations").getVbrPconnAssociations = null as any;
 export const getVbrPconnAssociationsOutput: typeof import("./getVbrPconnAssociations").getVbrPconnAssociationsOutput = null as any;
@@ -50,6 +55,11 @@ export type PhysicalConnection = import("./physicalConnection").PhysicalConnecti
 export const PhysicalConnection: typeof import("./physicalConnection").PhysicalConnection = null as any;
 utilities.lazyLoad(exports, ["PhysicalConnection"], () => require("./physicalConnection"));
 
+export { RouterInterfaceArgs, RouterInterfaceState } from "./routerInterface";
+export type RouterInterface = import("./routerInterface").RouterInterface;
+export const RouterInterface: typeof import("./routerInterface").RouterInterface = null as any;
+utilities.lazyLoad(exports, ["RouterInterface"], () => require("./routerInterface"));
+
 export { VbrPconnAssociationArgs, VbrPconnAssociationState } from "./vbrPconnAssociation";
 export type VbrPconnAssociation = import("./vbrPconnAssociation").VbrPconnAssociation;
 export const VbrPconnAssociation: typeof import("./vbrPconnAssociation").VbrPconnAssociation = null as any;
@@ -74,6 +84,8 @@ const _module = {
                 return new GrantRuleToCen(name, <any>undefined, { urn })
             case "alicloud:expressconnect/physicalConnection:PhysicalConnection":
                 return new PhysicalConnection(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/routerInterface:RouterInterface":
+                return new RouterInterface(name, <any>undefined, { urn })
             case "alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation":
                 return new VbrPconnAssociation(name, <any>undefined, { urn })
             case "alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter":
@@ -87,6 +99,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/grantRuleToCen", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/physicalConnection", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/routerInterface", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/vbrPconnAssociation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/virtualBorderRouter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/virtualPhysicalConnection", _module)

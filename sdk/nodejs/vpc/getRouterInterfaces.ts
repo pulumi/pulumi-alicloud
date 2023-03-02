@@ -7,9 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
- * that connect VPCs together.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -137,9 +134,6 @@ export interface GetRouterInterfacesResult {
     readonly status?: string;
 }
 /**
- * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
- * that connect VPCs together.
- *
  * ## Example Usage
  *
  * ```typescript

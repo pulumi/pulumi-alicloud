@@ -10,6 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+//
+// > **NOTE:** Available in 1.195.0+
 func GetOpenApiProducts(ctx *pulumi.Context, args *GetOpenApiProductsArgs, opts ...pulumi.InvokeOption) (*GetOpenApiProductsResult, error) {
 	var rv GetOpenApiProductsResult
 	err := ctx.Invoke("alicloud:bss/getOpenApiProducts:getOpenApiProducts", args, &rv, opts...)
@@ -21,20 +24,24 @@ func GetOpenApiProducts(ctx *pulumi.Context, args *GetOpenApiProductsArgs, opts 
 
 // A collection of arguments for invoking getOpenApiProducts.
 type GetOpenApiProductsArgs struct {
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
-	OutputFile *string  `pulumi:"outputFile"`
+	// A list of product IDs.
+	Ids []string `pulumi:"ids"`
+	// A regex string to filter results by Product name.
+	NameRegex  *string `pulumi:"nameRegex"`
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getOpenApiProducts.
 type GetOpenApiProductsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                      `pulumi:"id"`
-	Ids        []string                    `pulumi:"ids"`
-	NameRegex  *string                     `pulumi:"nameRegex"`
-	Names      []string                    `pulumi:"names"`
-	OutputFile *string                     `pulumi:"outputFile"`
-	Products   []GetOpenApiProductsProduct `pulumi:"products"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of name of Products.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Product Entries. Each element contains the following attributes:
+	Products []GetOpenApiProductsProduct `pulumi:"products"`
 }
 
 func GetOpenApiProductsOutput(ctx *pulumi.Context, args GetOpenApiProductsOutputArgs, opts ...pulumi.InvokeOption) GetOpenApiProductsResultOutput {
@@ -52,9 +59,11 @@ func GetOpenApiProductsOutput(ctx *pulumi.Context, args GetOpenApiProductsOutput
 
 // A collection of arguments for invoking getOpenApiProducts.
 type GetOpenApiProductsOutputArgs struct {
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	NameRegex  pulumi.StringPtrInput   `pulumi:"nameRegex"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// A list of product IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Product name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetOpenApiProductsOutputArgs) ElementType() reflect.Type {
@@ -89,6 +98,7 @@ func (o GetOpenApiProductsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenApiProductsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of name of Products.
 func (o GetOpenApiProductsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOpenApiProductsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -97,6 +107,7 @@ func (o GetOpenApiProductsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenApiProductsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Product Entries. Each element contains the following attributes:
 func (o GetOpenApiProductsResultOutput) Products() GetOpenApiProductsProductArrayOutput {
 	return o.ApplyT(func(v GetOpenApiProductsResult) []GetOpenApiProductsProduct { return v.Products }).(GetOpenApiProductsProductArrayOutput)
 }

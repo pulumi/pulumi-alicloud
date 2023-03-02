@@ -123,6 +123,7 @@ import * as ehpc from "./ehpc";
 import * as eipanycast from "./eipanycast";
 import * as elasticsearch from "./elasticsearch";
 import * as emr from "./emr";
+import * as emrv2 from "./emrv2";
 import * as ens from "./ens";
 import * as ess from "./ess";
 import * as eventbridge from "./eventbridge";
@@ -241,6 +242,7 @@ export {
     eipanycast,
     elasticsearch,
     emr,
+    emrv2,
     ens,
     ess,
     eventbridge,

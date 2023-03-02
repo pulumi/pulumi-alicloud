@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HoneypotPreset{}
 	case "alicloud:threatdetection/honeypotProbe:HoneypotProbe":
 		r = &HoneypotProbe{}
+	case "alicloud:threatdetection/instance:Instance":
+		r = &Instance{}
 	case "alicloud:threatdetection/vulWhitelist:VulWhitelist":
 		r = &VulWhitelist{}
 	case "alicloud:threatdetection/webLockConfig:WebLockConfig":
@@ -85,6 +87,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"threatdetection/honeypotProbe",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/instance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

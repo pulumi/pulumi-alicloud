@@ -10,57 +10,161 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSearchIndexesIndex {
+    /**
+     * @return The creation time of the index.
+     * 
+     */
     private Integer createTime;
+    /**
+     * @return Timestamp for sync phase.
+     * 
+     */
     private Integer currentSyncTimestamp;
+    /**
+     * @return The resource ID. The value is `&lt;instance_name&gt;:&lt;table_name&gt;:&lt;indexName&gt;:&lt;indexType&gt;`.
+     * 
+     */
     private String id;
+    /**
+     * @return The index name of the OTS Table which could not be changed.
+     * 
+     */
     private String indexName;
+    /**
+     * @return The name of OTS instance.
+     * 
+     */
     private String instanceName;
+    /**
+     * @return Last update time for metering data..
+     * 
+     */
     private Integer meteringLastUpdateTime;
+    /**
+     * @return Reserve related resources for the index.
+     * 
+     */
     private Integer reservedReadCu;
+    /**
+     * @return The number of rows of data for index.
+     * 
+     */
     private Integer rowCount;
+    /**
+     * @return JSON representation of the schema of index.
+     * 
+     */
     private String schema;
+    /**
+     * @return Storage space occupied by index.
+     * 
+     */
     private Integer storageSize;
+    /**
+     * @return The synchronization state of the index.
+     * 
+     */
     private String syncPhase;
+    /**
+     * @return The name of OTS table.
+     * 
+     */
     private String tableName;
+    /**
+     * @return TTL of index.
+     * 
+     */
     private Integer timeToLive;
 
     private GetSearchIndexesIndex() {}
+    /**
+     * @return The creation time of the index.
+     * 
+     */
     public Integer createTime() {
         return this.createTime;
     }
+    /**
+     * @return Timestamp for sync phase.
+     * 
+     */
     public Integer currentSyncTimestamp() {
         return this.currentSyncTimestamp;
     }
+    /**
+     * @return The resource ID. The value is `&lt;instance_name&gt;:&lt;table_name&gt;:&lt;indexName&gt;:&lt;indexType&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The index name of the OTS Table which could not be changed.
+     * 
+     */
     public String indexName() {
         return this.indexName;
     }
+    /**
+     * @return The name of OTS instance.
+     * 
+     */
     public String instanceName() {
         return this.instanceName;
     }
+    /**
+     * @return Last update time for metering data..
+     * 
+     */
     public Integer meteringLastUpdateTime() {
         return this.meteringLastUpdateTime;
     }
+    /**
+     * @return Reserve related resources for the index.
+     * 
+     */
     public Integer reservedReadCu() {
         return this.reservedReadCu;
     }
+    /**
+     * @return The number of rows of data for index.
+     * 
+     */
     public Integer rowCount() {
         return this.rowCount;
     }
+    /**
+     * @return JSON representation of the schema of index.
+     * 
+     */
     public String schema() {
         return this.schema;
     }
+    /**
+     * @return Storage space occupied by index.
+     * 
+     */
     public Integer storageSize() {
         return this.storageSize;
     }
+    /**
+     * @return The synchronization state of the index.
+     * 
+     */
     public String syncPhase() {
         return this.syncPhase;
     }
+    /**
+     * @return The name of OTS table.
+     * 
+     */
     public String tableName() {
         return this.tableName;
     }
+    /**
+     * @return TTL of index.
+     * 
+     */
     public Integer timeToLive() {
         return this.timeToLive;
     }

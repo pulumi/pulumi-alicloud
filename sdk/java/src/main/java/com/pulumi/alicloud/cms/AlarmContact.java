@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new AlarmContact(&#34;example&#34;, AlarmContactArgs.builder()        
  *             .alarmContactName(&#34;zhangsan&#34;)
- *             .channelsMail(&#34;terraform.test.com&#34;)
+ *             .channelsMail(&#34;terraform@test.com&#34;)
  *             .describe(&#34;For Test&#34;)
  *             .build());
  * 
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *         var example = new AlarmContact(&#34;example&#34;, AlarmContactArgs.builder()        
  *             .alarmContactName(&#34;zhangsan&#34;)
  *             .describe(&#34;For Test&#34;)
- *             .channelsMail(&#34;terraform.test.com&#34;)
+ *             .channelsMail(&#34;terraform@test.com&#34;)
  *             .build());
  * 
  *     }

@@ -27,6 +27,7 @@ class InstanceArgs:
                  enable_public_access: Optional[pulumi.Input[bool]] = None,
                  ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -43,6 +44,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] public_white_lists: The public IP address that you want to add to the whitelist.
         :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
@@ -64,6 +66,8 @@ class InstanceArgs:
             pulumi.set(__self__, "ldap_auth_servers", ldap_auth_servers)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if public_white_lists is not None:
+            pulumi.set(__self__, "public_white_lists", public_white_lists)
         if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_period_unit is not None:
@@ -202,6 +206,18 @@ class InstanceArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="publicWhiteLists")
+    def public_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The public IP address that you want to add to the whitelist.
+        """
+        return pulumi.get(self, "public_white_lists")
+
+    @public_white_lists.setter
+    def public_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "public_white_lists", value)
+
+    @property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -273,6 +289,7 @@ class _InstanceState:
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  plan_code: Optional[pulumi.Input[str]] = None,
+                 public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -290,6 +307,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] public_white_lists: The public IP address that you want to add to the whitelist.
         :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
@@ -314,6 +332,8 @@ class _InstanceState:
             pulumi.set(__self__, "period", period)
         if plan_code is not None:
             pulumi.set(__self__, "plan_code", plan_code)
+        if public_white_lists is not None:
+            pulumi.set(__self__, "public_white_lists", public_white_lists)
         if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_period_unit is not None:
@@ -425,6 +445,18 @@ class _InstanceState:
         pulumi.set(self, "plan_code", value)
 
     @property
+    @pulumi.getter(name="publicWhiteLists")
+    def public_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The public IP address that you want to add to the whitelist.
+        """
+        return pulumi.get(self, "public_white_lists")
+
+    @public_white_lists.setter
+    def public_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "public_white_lists", value)
+
+    @property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -531,6 +563,7 @@ class Instance(pulumi.CustomResource):
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  plan_code: Optional[pulumi.Input[str]] = None,
+                 public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -558,6 +591,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] public_white_lists: The public IP address that you want to add to the whitelist.
         :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
@@ -604,6 +638,7 @@ class Instance(pulumi.CustomResource):
                  license_code: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  plan_code: Optional[pulumi.Input[str]] = None,
+                 public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
@@ -637,6 +672,7 @@ class Instance(pulumi.CustomResource):
             if plan_code is None and not opts.urn:
                 raise TypeError("Missing required property 'plan_code'")
             __props__.__dict__["plan_code"] = plan_code
+            __props__.__dict__["public_white_lists"] = public_white_lists
             __props__.__dict__["renew_period"] = renew_period
             __props__.__dict__["renewal_period_unit"] = renewal_period_unit
             __props__.__dict__["renewal_status"] = renewal_status
@@ -669,6 +705,7 @@ class Instance(pulumi.CustomResource):
             license_code: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             plan_code: Optional[pulumi.Input[str]] = None,
+            public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             renew_period: Optional[pulumi.Input[int]] = None,
             renewal_period_unit: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
@@ -691,6 +728,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] public_white_lists: The public IP address that you want to add to the whitelist.
         :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
@@ -711,6 +749,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["license_code"] = license_code
         __props__.__dict__["period"] = period
         __props__.__dict__["plan_code"] = plan_code
+        __props__.__dict__["public_white_lists"] = public_white_lists
         __props__.__dict__["renew_period"] = renew_period
         __props__.__dict__["renewal_period_unit"] = renewal_period_unit
         __props__.__dict__["renewal_status"] = renewal_status
@@ -781,6 +820,14 @@ class Instance(pulumi.CustomResource):
         The plan code of Cloud Bastionhost instance. Valid values:
         """
         return pulumi.get(self, "plan_code")
+
+    @property
+    @pulumi.getter(name="publicWhiteLists")
+    def public_white_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The public IP address that you want to add to the whitelist.
+        """
+        return pulumi.get(self, "public_white_lists")
 
     @property
     @pulumi.getter(name="renewPeriod")

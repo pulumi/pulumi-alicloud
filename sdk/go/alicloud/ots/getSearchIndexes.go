@@ -10,6 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides the ots search index of the current Alibaba Cloud user.
+//
+// For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
+//
+// > **NOTE:** Available in v1.187.0+.
 func GetSearchIndexes(ctx *pulumi.Context, args *GetSearchIndexesArgs, opts ...pulumi.InvokeOption) (*GetSearchIndexesResult, error) {
 	var rv GetSearchIndexesResult
 	err := ctx.Invoke("alicloud:ots/getSearchIndexes:getSearchIndexes", args, &rv, opts...)
@@ -21,24 +26,33 @@ func GetSearchIndexes(ctx *pulumi.Context, args *GetSearchIndexesArgs, opts ...p
 
 // A collection of arguments for invoking getSearchIndexes.
 type GetSearchIndexesArgs struct {
-	Ids          []string `pulumi:"ids"`
-	InstanceName string   `pulumi:"instanceName"`
-	NameRegex    *string  `pulumi:"nameRegex"`
-	OutputFile   *string  `pulumi:"outputFile"`
-	TableName    string   `pulumi:"tableName"`
+	// A list of search index IDs.
+	Ids []string `pulumi:"ids"`
+	// The name of OTS instance.
+	InstanceName string `pulumi:"instanceName"`
+	// A regex string to filter results by search index name.
+	NameRegex  *string `pulumi:"nameRegex"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The name of OTS table.
+	TableName string `pulumi:"tableName"`
 }
 
 // A collection of values returned by getSearchIndexes.
 type GetSearchIndexesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                  `pulumi:"id"`
-	Ids          []string                `pulumi:"ids"`
-	Indexes      []GetSearchIndexesIndex `pulumi:"indexes"`
-	InstanceName string                  `pulumi:"instanceName"`
-	NameRegex    *string                 `pulumi:"nameRegex"`
-	Names        []string                `pulumi:"names"`
-	OutputFile   *string                 `pulumi:"outputFile"`
-	TableName    string                  `pulumi:"tableName"`
+	Id string `pulumi:"id"`
+	// A list of search index IDs.
+	Ids []string `pulumi:"ids"`
+	// A list of indexes. Each element contains the following attributes:
+	Indexes []GetSearchIndexesIndex `pulumi:"indexes"`
+	// The OTS instance name.
+	InstanceName string  `pulumi:"instanceName"`
+	NameRegex    *string `pulumi:"nameRegex"`
+	// A list of search index  names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The table name of the OTS which could not be changed.
+	TableName string `pulumi:"tableName"`
 }
 
 func GetSearchIndexesOutput(ctx *pulumi.Context, args GetSearchIndexesOutputArgs, opts ...pulumi.InvokeOption) GetSearchIndexesResultOutput {
@@ -56,11 +70,15 @@ func GetSearchIndexesOutput(ctx *pulumi.Context, args GetSearchIndexesOutputArgs
 
 // A collection of arguments for invoking getSearchIndexes.
 type GetSearchIndexesOutputArgs struct {
-	Ids          pulumi.StringArrayInput `pulumi:"ids"`
-	InstanceName pulumi.StringInput      `pulumi:"instanceName"`
-	NameRegex    pulumi.StringPtrInput   `pulumi:"nameRegex"`
-	OutputFile   pulumi.StringPtrInput   `pulumi:"outputFile"`
-	TableName    pulumi.StringInput      `pulumi:"tableName"`
+	// A list of search index IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The name of OTS instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// A regex string to filter results by search index name.
+	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The name of OTS table.
+	TableName pulumi.StringInput `pulumi:"tableName"`
 }
 
 func (GetSearchIndexesOutputArgs) ElementType() reflect.Type {
@@ -87,14 +105,17 @@ func (o GetSearchIndexesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSearchIndexesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of search index IDs.
 func (o GetSearchIndexesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSearchIndexesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of indexes. Each element contains the following attributes:
 func (o GetSearchIndexesResultOutput) Indexes() GetSearchIndexesIndexArrayOutput {
 	return o.ApplyT(func(v GetSearchIndexesResult) []GetSearchIndexesIndex { return v.Indexes }).(GetSearchIndexesIndexArrayOutput)
 }
 
+// The OTS instance name.
 func (o GetSearchIndexesResultOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSearchIndexesResult) string { return v.InstanceName }).(pulumi.StringOutput)
 }
@@ -103,6 +124,7 @@ func (o GetSearchIndexesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSearchIndexesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of search index  names.
 func (o GetSearchIndexesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSearchIndexesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -111,6 +133,7 @@ func (o GetSearchIndexesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSearchIndexesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The table name of the OTS which could not be changed.
 func (o GetSearchIndexesResultOutput) TableName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSearchIndexesResult) string { return v.TableName }).(pulumi.StringOutput)
 }

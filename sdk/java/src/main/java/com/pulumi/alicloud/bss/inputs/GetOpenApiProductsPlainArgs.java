@@ -15,16 +15,32 @@ public final class GetOpenApiProductsPlainArgs extends com.pulumi.resources.Invo
 
     public static final GetOpenApiProductsPlainArgs Empty = new GetOpenApiProductsPlainArgs();
 
+    /**
+     * A list of product IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
+    /**
+     * @return A list of product IDs.
+     * 
+     */
     public Optional<List<String>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * A regex string to filter results by Product name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
+    /**
+     * @return A regex string to filter results by Product name.
+     * 
+     */
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -62,15 +78,33 @@ public final class GetOpenApiProductsPlainArgs extends com.pulumi.resources.Invo
             $ = new GetOpenApiProductsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of product IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable List<String> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of product IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Product name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable String nameRegex) {
             $.nameRegex = nameRegex;
             return this;

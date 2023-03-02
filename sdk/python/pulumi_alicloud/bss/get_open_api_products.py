@@ -63,6 +63,9 @@ class GetOpenApiProductsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of name of Products.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -73,6 +76,9 @@ class GetOpenApiProductsResult:
     @property
     @pulumi.getter
     def products(self) -> Sequence['outputs.GetOpenApiProductsProductResult']:
+        """
+        A list of Product Entries. Each element contains the following attributes:
+        """
         return pulumi.get(self, "products")
 
 
@@ -95,7 +101,13 @@ def get_open_api_products(ids: Optional[Sequence[str]] = None,
                           output_file: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpenApiProductsResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+
+    > **NOTE:** Available in 1.195.0+
+
+
+    :param Sequence[str] ids: A list of product IDs.
+    :param str name_regex: A regex string to filter results by Product name.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -119,6 +131,12 @@ def get_open_api_products_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpenApiProductsResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/zh/bss-openapi/latest/api-doc-bssopenapi-2017-12-14-api-doc-queryproductlist)
+
+    > **NOTE:** Available in 1.195.0+
+
+
+    :param Sequence[str] ids: A list of product IDs.
+    :param str name_regex: A regex string to filter results by Product name.
     """
     ...

@@ -33,7 +33,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
 //				AlarmContactName: pulumi.String("zhangsan"),
-//				ChannelsMail:     pulumi.String("terraform.test.com"),
+//				ChannelsMail:     pulumi.String("terraform@test.com"),
 //				Describe:         pulumi.String("For Test"),
 //			})
 //			if err != nil {
@@ -60,7 +60,7 @@ import (
 //			_, err := cms.NewAlarmContact(ctx, "example", &cms.AlarmContactArgs{
 //				AlarmContactName: pulumi.String("zhangsan"),
 //				Describe:         pulumi.String("For Test"),
-//				ChannelsMail:     pulumi.String("terraform.test.com"),
+//				ChannelsMail:     pulumi.String("terraform@test.com"),
 //			})
 //			if err != nil {
 //				return err

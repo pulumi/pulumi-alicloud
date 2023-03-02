@@ -12,6 +12,8 @@ import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionServiceArg
 import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionServicePlainArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsPlainArgs;
+import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
+import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesPlainArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetVbrPconnAssociationsArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetVbrPconnAssociationsPlainArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
@@ -22,6 +24,7 @@ import com.pulumi.alicloud.expressconnect.outputs.GetAccessPointsResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetGrantRuleToCensResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetPhysicalConnectionServiceResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetPhysicalConnectionsResult;
+import com.pulumi.alicloud.expressconnect.outputs.GetRouterInterfacesResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetVbrPconnAssociationsResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetVirtualBorderRoutersResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetVirtualPhysicalConnectionsResult;
@@ -1013,6 +1016,252 @@ public final class ExpressconnectFunctions {
      */
     public static CompletableFuture<GetPhysicalConnectionsResult> getPhysicalConnectionsPlain(GetPhysicalConnectionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", TypeShape.of(GetPhysicalConnectionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .ids(alicloud_router_interface.default().id())
+     *             .nameRegex(alicloud_router_interface.default().name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRouterInterfacesResult> getRouterInterfaces() {
+        return getRouterInterfaces(GetRouterInterfacesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .ids(alicloud_router_interface.default().id())
+     *             .nameRegex(alicloud_router_interface.default().name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain() {
+        return getRouterInterfacesPlain(GetRouterInterfacesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .ids(alicloud_router_interface.default().id())
+     *             .nameRegex(alicloud_router_interface.default().name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRouterInterfacesResult> getRouterInterfaces(GetRouterInterfacesArgs args) {
+        return getRouterInterfaces(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .ids(alicloud_router_interface.default().id())
+     *             .nameRegex(alicloud_router_interface.default().name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain(GetRouterInterfacesPlainArgs args) {
+        return getRouterInterfacesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .ids(alicloud_router_interface.default().id())
+     *             .nameRegex(alicloud_router_interface.default().name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRouterInterfacesResult> getRouterInterfaces(GetRouterInterfacesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", TypeShape.of(GetRouterInterfacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+     * 
+     * &gt; **NOTE:** Available in 1.199.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
+     *             .ids(alicloud_router_interface.default().id())
+     *             .nameRegex(alicloud_router_interface.default().name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain(GetRouterInterfacesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", TypeShape.of(GetRouterInterfacesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides Express Connect Vbr Pconn Association available to the user.

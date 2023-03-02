@@ -9,25 +9,69 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOpenApiProductsProduct {
+    /**
+     * @return The ID of the product. The value is formulated as `&lt;product_code&gt;:&lt;product_type&gt;:&lt;subscription_type&gt;`.
+     * 
+     */
     private String id;
+    /**
+     * @return Product code.
+     * 
+     */
     private String productCode;
+    /**
+     * @return Product name.
+     * 
+     */
     private String productName;
+    /**
+     * @return Type of product.
+     * 
+     */
     private String productType;
+    /**
+     * @return Subscription type. Value:
+     * * Subscription: Prepaid.
+     * * PayAsYouGo: postpaid.
+     * 
+     */
     private String subscriptionType;
 
     private GetOpenApiProductsProduct() {}
+    /**
+     * @return The ID of the product. The value is formulated as `&lt;product_code&gt;:&lt;product_type&gt;:&lt;subscription_type&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Product code.
+     * 
+     */
     public String productCode() {
         return this.productCode;
     }
+    /**
+     * @return Product name.
+     * 
+     */
     public String productName() {
         return this.productName;
     }
+    /**
+     * @return Type of product.
+     * 
+     */
     public String productType() {
         return this.productType;
     }
+    /**
+     * @return Subscription type. Value:
+     * * Subscription: Prepaid.
+     * * PayAsYouGo: postpaid.
+     * 
+     */
     public String subscriptionType() {
         return this.subscriptionType;
     }
