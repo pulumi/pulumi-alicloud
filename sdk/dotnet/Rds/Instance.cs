@@ -77,6 +77,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **HighAvailability**: High-availability Edition.
         /// * **AlwaysOn**: Cluster Edition.
         /// * **Finance**: Enterprise Edition.
+        /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
@@ -131,7 +132,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> DbInstanceIpArrayName { get; private set; } = null!;
 
         /// <summary>
-        /// The storage type of the instance. Valid values:
+        /// The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
         /// - local_ssd: specifies to use local SSDs. This value is recommended.
         /// - cloud_ssd: specifies to use standard SSDs.
         /// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -188,7 +189,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> EncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -222,7 +223,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> HaConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+        /// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string?> InstanceChargeType { get; private set; } = null!;
@@ -246,7 +247,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> InstanceStorage { get; private set; } = null!;
 
         /// <summary>
-        /// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        /// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -368,6 +369,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("serverKey")]
         public Output<string> ServerKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        /// </summary>
+        [Output("serverlessConfigs")]
+        public Output<ImmutableArray<Outputs.InstanceServerlessConfig>> ServerlessConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
@@ -630,6 +637,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **HighAvailability**: High-availability Edition.
         /// * **AlwaysOn**: Cluster Edition.
         /// * **Finance**: Enterprise Edition.
+        /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -678,7 +686,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceIpArrayName { get; set; }
 
         /// <summary>
-        /// The storage type of the instance. Valid values:
+        /// The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
         /// - local_ssd: specifies to use local SSDs. This value is recommended.
         /// - cloud_ssd: specifies to use standard SSDs.
         /// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -729,7 +737,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -763,7 +771,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? HaConfig { get; set; }
 
         /// <summary>
-        /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+        /// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -787,7 +795,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int> InstanceStorage { get; set; } = null!;
 
         /// <summary>
-        /// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        /// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -933,6 +941,18 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("serverKey")]
         public Input<string>? ServerKey { get; set; }
+
+        [Input("serverlessConfigs")]
+        private InputList<Inputs.InstanceServerlessConfigArgs>? _serverlessConfigs;
+
+        /// <summary>
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        /// </summary>
+        public InputList<Inputs.InstanceServerlessConfigArgs> ServerlessConfigs
+        {
+            get => _serverlessConfigs ?? (_serverlessConfigs = new InputList<Inputs.InstanceServerlessConfigArgs>());
+            set => _serverlessConfigs = value;
+        }
 
         /// <summary>
         /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
@@ -1157,6 +1177,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **HighAvailability**: High-availability Edition.
         /// * **AlwaysOn**: Cluster Edition.
         /// * **Finance**: Enterprise Edition.
+        /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -1211,7 +1232,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceIpArrayName { get; set; }
 
         /// <summary>
-        /// The storage type of the instance. Valid values:
+        /// The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
         /// - local_ssd: specifies to use local SSDs. This value is recommended.
         /// - cloud_ssd: specifies to use standard SSDs.
         /// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -1268,7 +1289,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -1302,7 +1323,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? HaConfig { get; set; }
 
         /// <summary>
-        /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+        /// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -1326,7 +1347,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? InstanceStorage { get; set; }
 
         /// <summary>
-        /// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        /// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -1472,6 +1493,18 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("serverKey")]
         public Input<string>? ServerKey { get; set; }
+
+        [Input("serverlessConfigs")]
+        private InputList<Inputs.InstanceServerlessConfigGetArgs>? _serverlessConfigs;
+
+        /// <summary>
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        /// </summary>
+        public InputList<Inputs.InstanceServerlessConfigGetArgs> ServerlessConfigs
+        {
+            get => _serverlessConfigs ?? (_serverlessConfigs = new InputList<Inputs.InstanceServerlessConfigGetArgs>());
+            set => _serverlessConfigs = value;
+        }
 
         /// <summary>
         /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.

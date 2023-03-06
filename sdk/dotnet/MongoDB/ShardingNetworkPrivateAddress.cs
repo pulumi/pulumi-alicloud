@@ -27,6 +27,8 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
     /// 
     ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
@@ -44,7 +46,7 @@ namespace Pulumi.AliCloud.MongoDB
     ///     {
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         EngineVersion = "3.4",
+    ///         EngineVersion = "4.2",
     ///         MongoLists = new[]
     ///         {
     ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs

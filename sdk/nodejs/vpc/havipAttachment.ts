@@ -97,6 +97,10 @@ export class HAVipAttachment extends pulumi.CustomResource {
     }
 
     /**
+     * Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     */
+    public readonly force!: pulumi.Output<string | undefined>;
+    /**
      * The havipId of the havip attachment, the field can't be changed.
      */
     public readonly havipId!: pulumi.Output<string>;
@@ -118,6 +122,7 @@ export class HAVipAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HAVipAttachmentState | undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["havipId"] = state ? state.havipId : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
@@ -128,6 +133,7 @@ export class HAVipAttachment extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
+            resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["havipId"] = args ? args.havipId : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
         }
@@ -140,6 +146,10 @@ export class HAVipAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering HAVipAttachment resources.
  */
 export interface HAVipAttachmentState {
+    /**
+     * Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     */
+    force?: pulumi.Input<string>;
     /**
      * The havipId of the havip attachment, the field can't be changed.
      */
@@ -154,6 +164,10 @@ export interface HAVipAttachmentState {
  * The set of arguments for constructing a HAVipAttachment resource.
  */
 export interface HAVipAttachmentArgs {
+    /**
+     * Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     */
+    force?: pulumi.Input<string>;
     /**
      * The havipId of the havip attachment, the field can't be changed.
      */

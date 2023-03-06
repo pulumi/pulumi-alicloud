@@ -7679,6 +7679,29 @@ export namespace rds {
         user: pulumi.Input<string>;
     }
 
+    export interface InstanceServerlessConfig {
+        /**
+         * Specifies whether to enable the smart startup and stop feature for the serverless instance. After the smart startup and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is stopped. After a connection is established to the instance, the instance is automatically woken up. Valid values:
+         * - true: enables the feature.
+         * - false: disables the feature. This is the default value.
+         */
+        autoPause: pulumi.Input<boolean>;
+        /**
+         * The maximum number of RDS Capacity Units (RCUs). Valid values: 0.5 to 8. The value of this parameter must be greater than or equal to the value of the `minCapacity` parameter.
+         */
+        maxCapacity: pulumi.Input<number>;
+        /**
+         * The minimum number of RCUs. Valid values: 0.5 to 8. The value of this parameter must be less than or equal to the value of the `maxCapacity` parameter.
+         */
+        minCapacity: pulumi.Input<number>;
+        /**
+         * Specifies whether to enable the forced scaling feature for the serverless instance. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during the forced scaling process. Process with caution. The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance. Valid values:
+         * - true: enables the feature.
+         * - false: disables the feature. This is the default value.
+         */
+        switchForce: pulumi.Input<boolean>;
+    }
+
     export interface RdsCloneDbInstanceParameter {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;
@@ -7720,6 +7743,29 @@ export namespace rds {
          * The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
          */
         user: pulumi.Input<string>;
+    }
+
+    export interface RdsCloneDbInstanceServerlessConfig {
+        /**
+         * Specifies whether to enable the smart startup and stop feature for the serverless instance. After the smart startup and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is stopped. After a connection is established to the instance, the instance is automatically woken up. Valid values:
+         * - true: enables the feature.
+         * - false: disables the feature. This is the default value.
+         */
+        autoPause: pulumi.Input<boolean>;
+        /**
+         * The maximum number of RDS Capacity Units (RCUs). Valid values: 0.5 to 8. The value of this parameter must be greater than or equal to the value of the `minCapacity` parameter.
+         */
+        maxCapacity: pulumi.Input<number>;
+        /**
+         * The minimum number of RCUs. Valid values: 0.5 to 8. The value of this parameter must be less than or equal to the value of the `maxCapacity` parameter.
+         */
+        minCapacity: pulumi.Input<number>;
+        /**
+         * Specifies whether to enable the forced scaling feature for the serverless instance. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during the forced scaling process. Process with caution. The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance. Valid values:
+         * - true: enables the feature.
+         * - false: disables the feature. This is the default value.
+         */
+        switchForce: pulumi.Input<boolean>;
     }
 
     export interface RdsDbProxyReadOnlyInstanceWeight {
@@ -9069,6 +9115,160 @@ export namespace vpn {
 export namespace waf {
     export interface DomainLogHeader {
         key?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+}
+
+export namespace wafv3 {
+    export interface DomainListen {
+        /**
+         * The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+         */
+        certId?: pulumi.Input<string>;
+        /**
+         * The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
+         * - **1**: indicates that all encryption suites are added.
+         * - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
+         * - **99**: indicates that a custom encryption suite is added.
+         */
+        cipherSuite?: pulumi.Input<number>;
+        /**
+         * The specific custom encryption suite to add.
+         */
+        customCiphers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
+         * - **true**: indicates that TSL1.3 is supported.
+         * - **false**: indicates that TSL1.3 is not supported.
+         */
+        enableTlsv3?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
+         * - **true**: indicates that the exclusive IP address is enabled.
+         * - **false** (default): indicates that exclusive IP address is not enabled.
+         */
+        exclusiveIp?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `httpsPorts` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
+         * - **true**: indicates that HTTPS forced redirection is enabled.
+         * - **false**: indicates that HTTPS forced redirection is not enabled.
+         */
+        focusHttps?: pulumi.Input<boolean>;
+        /**
+         * Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
+         * - **true:** indicates that HTTP2 is enabled.
+         * - **false** (default): indicates that HTTP2 is not enabled.
+         */
+        http2Enabled?: pulumi.Input<boolean>;
+        /**
+         * The listening port of the HTTP protocol.
+         */
+        httpPorts?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * The listening port of the HTTPS protocol.
+         */
+        httpsPorts?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * Whether IPv6 is turned on. Value:
+         * - **true**: indicates that IPv6 is enabled.
+         * - **false** (default): indicates that IPv6 is not enabled.
+         */
+        ipv6Enabled?: pulumi.Input<boolean>;
+        /**
+         * The type of protection resource to use. Value:
+         * - **share** (default): indicates that a shared cluster is used.
+         * - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+         */
+        protectionResource?: pulumi.Input<string>;
+        /**
+         * The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+         */
+        tlsVersion?: pulumi.Input<string>;
+        /**
+         * WAF obtains the real IP address of the client. Value:
+         * - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
+         * - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
+         * - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+         */
+        xffHeaderMode?: pulumi.Input<number>;
+        /**
+         * Set the list of custom fields used to obtain the client IP address.
+         */
+        xffHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface DomainRedirect {
+        /**
+         * The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+         */
+        backends?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Connection timeout. Unit: seconds, value range: 5~120.
+         */
+        connectTimeout?: pulumi.Input<number>;
+        /**
+         * Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
+         * - **true**: indicates that forced HTTP back-to-origin is enabled.
+         * - **false**: indicates that forced HTTP back-to-origin is not enabled.
+         */
+        focusHttpBackend?: pulumi.Input<boolean>;
+        /**
+         * Open long connection, default true.
+         */
+        keepalive?: pulumi.Input<boolean>;
+        /**
+         * Number of long connections,  default: `60`. range :60-1000.
+         */
+        keepaliveRequests?: pulumi.Input<number>;
+        /**
+         * Long connection over time, default: `15`. Range: 1-60.
+         */
+        keepaliveTimeout?: pulumi.Input<number>;
+        /**
+         * The load balancing algorithm used when returning to the source. Value:
+         * - **iphash**: indicates the IPHash algorithm.
+         * - **roundRobin**: indicates the polling algorithm.
+         * - **leastTime**: indicates the Least Time algorithm.
+         * - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+         */
+        loadbalance: pulumi.Input<string>;
+        /**
+         * Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+         */
+        readTimeout?: pulumi.Input<number>;
+        /**
+         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is `[{" k ":"_key_"," v ":"_value_"}]`. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.See the following `Block RequestHeaders`.
+         */
+        requestHeaders?: pulumi.Input<pulumi.Input<inputs.wafv3.DomainRedirectRequestHeader>[]>;
+        /**
+         * Back to Source Retry. default: true, retry 3 times by default.
+         */
+        retry?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
+         * - **true**: indicates that the back-to-source SNI is enabled.
+         * - **false** (default) indicates that the back-to-source SNI is not enabled.
+         */
+        sniEnabled?: pulumi.Input<boolean>;
+        /**
+         * Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).> This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+         */
+        sniHost?: pulumi.Input<string>;
+        /**
+         * Write timeout duration> **Unit**: seconds, **Value range**: 5~1800.
+         */
+        writeTimeout?: pulumi.Input<number>;
+    }
+
+    export interface DomainRedirectRequestHeader {
+        /**
+         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         */
         value?: pulumi.Input<string>;
     }
 

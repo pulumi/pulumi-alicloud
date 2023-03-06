@@ -91,6 +91,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+        /// </summary>
+        [Output("highDefinitionMonitorLogStatus")]
+        public Output<string> HighDefinitionMonitorLogStatus { get; private set; } = null!;
+
+        /// <summary>
         /// Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
         /// </summary>
         [Output("instanceChargeType")]
@@ -114,6 +120,18 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("isp")]
         public Output<string> Isp { get; private set; } = null!;
+
+        /// <summary>
+        /// The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        /// </summary>
+        [Output("logProject")]
+        public Output<string?> LogProject { get; private set; } = null!;
+
+        /// <summary>
+        /// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        /// </summary>
+        [Output("logStore")]
+        public Output<string?> LogStore { get; private set; } = null!;
 
         /// <summary>
         /// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
@@ -252,6 +270,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+        /// </summary>
+        [Input("highDefinitionMonitorLogStatus")]
+        public Input<string>? HighDefinitionMonitorLogStatus { get; set; }
+
+        /// <summary>
         /// Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
         /// </summary>
         [Input("instanceChargeType")]
@@ -269,6 +293,18 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
+
+        /// <summary>
+        /// The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        /// </summary>
+        [Input("logProject")]
+        public Input<string>? LogProject { get; set; }
+
+        /// <summary>
+        /// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        /// </summary>
+        [Input("logStore")]
+        public Input<string>? LogStore { get; set; }
 
         /// <summary>
         /// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
@@ -375,6 +411,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+        /// </summary>
+        [Input("highDefinitionMonitorLogStatus")]
+        public Input<string>? HighDefinitionMonitorLogStatus { get; set; }
+
+        /// <summary>
         /// Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
         /// </summary>
         [Input("instanceChargeType")]
@@ -398,6 +440,18 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
+
+        /// <summary>
+        /// The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        /// </summary>
+        [Input("logProject")]
+        public Input<string>? LogProject { get; set; }
+
+        /// <summary>
+        /// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        /// </summary>
+        [Input("logStore")]
+        public Input<string>? LogStore { get; set; }
 
         /// <summary>
         /// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.

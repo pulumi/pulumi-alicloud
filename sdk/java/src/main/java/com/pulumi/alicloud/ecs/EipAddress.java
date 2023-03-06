@@ -162,6 +162,20 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+     * 
+     */
+    @Export(name="highDefinitionMonitorLogStatus", type=String.class, parameters={})
+    private Output<String> highDefinitionMonitorLogStatus;
+
+    /**
+     * @return The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+     * 
+     */
+    public Output<String> highDefinitionMonitorLogStatus() {
+        return this.highDefinitionMonitorLogStatus;
+    }
+    /**
      * Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
      * 
      * @deprecated
@@ -222,6 +236,34 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      */
     public Output<String> isp() {
         return this.isp;
+    }
+    /**
+     * The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * 
+     */
+    @Export(name="logProject", type=String.class, parameters={})
+    private Output</* @Nullable */ String> logProject;
+
+    /**
+     * @return The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * 
+     */
+    public Output<Optional<String>> logProject() {
+        return Codegen.optional(this.logProject);
+    }
+    /**
+     * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * 
+     */
+    @Export(name="logStore", type=String.class, parameters={})
+    private Output</* @Nullable */ String> logStore;
+
+    /**
+     * @return The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * 
+     */
+    public Output<Optional<String>> logStore() {
+        return Codegen.optional(this.logStore);
     }
     /**
      * Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.

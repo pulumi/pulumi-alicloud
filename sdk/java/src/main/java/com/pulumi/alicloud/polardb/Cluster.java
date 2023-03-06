@@ -336,6 +336,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptNewTables);
     }
     /**
+     * The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+     * 
+     */
+    @Export(name="encryptionKey", type=String.class, parameters={})
+    private Output</* @Nullable */ String> encryptionKey;
+
+    /**
+     * @return The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+     * 
+     */
+    public Output<Optional<String>> encryptionKey() {
+        return Codegen.optional(this.encryptionKey);
+    }
+    /**
      * The ID of the global database network (GDN).
      * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
      * 
@@ -474,6 +488,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
+     * The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+     * 
+     */
+    @Export(name="roleArn", type=String.class, parameters={})
+    private Output</* @Nullable */ String> roleArn;
+
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+     * 
+     */
+    public Output<Optional<String>> roleArn() {
+        return Codegen.optional(this.roleArn);
+    }
+    /**
      * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
      * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      * 
@@ -550,6 +578,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * (Available in 1.200.0+) The region where the TDE key resides.
+     * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+     * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+     * 
+     */
+    @Export(name="tdeRegion", type=String.class, parameters={})
+    private Output<String> tdeRegion;
+
+    /**
+     * @return (Available in 1.200.0+) The region where the TDE key resides.
+     * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+     * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+     * 
+     */
+    public Output<String> tdeRegion() {
+        return this.tdeRegion;
     }
     /**
      * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.

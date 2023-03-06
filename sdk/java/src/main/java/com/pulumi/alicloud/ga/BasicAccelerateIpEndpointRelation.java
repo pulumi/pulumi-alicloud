@@ -29,8 +29,28 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.Provider;
+ * import com.pulumi.alicloud.ProviderArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterface;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceArgs;
+ * import com.pulumi.alicloud.ga.BasicAccelerator;
+ * import com.pulumi.alicloud.ga.BasicAcceleratorArgs;
+ * import com.pulumi.alicloud.ga.BasicIpSet;
+ * import com.pulumi.alicloud.ga.BasicIpSetArgs;
+ * import com.pulumi.alicloud.ga.BasicAccelerateIp;
+ * import com.pulumi.alicloud.ga.BasicAccelerateIpArgs;
+ * import com.pulumi.alicloud.ga.BasicEndpointGroup;
+ * import com.pulumi.alicloud.ga.BasicEndpointGroupArgs;
+ * import com.pulumi.alicloud.ga.BasicEndpoint;
+ * import com.pulumi.alicloud.ga.BasicEndpointArgs;
  * import com.pulumi.alicloud.ga.BasicAccelerateIpEndpointRelation;
  * import com.pulumi.alicloud.ga.BasicAccelerateIpEndpointRelationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,10 +64,78 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new BasicAccelerateIpEndpointRelation(&#34;default&#34;, BasicAccelerateIpEndpointRelationArgs.builder()        
- *             .accelerateIpId(&#34;your_accelerate_ip_id&#34;)
- *             .acceleratorId(&#34;your_accelerator_id&#34;)
- *             .endpointId(&#34;your_endpoint_id&#34;)
+ *         var sz = new Provider(&#34;sz&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-shenzhen&#34;)
+ *             .build());
+ * 
+ *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-hangzhou&#34;)
+ *             .build());
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;your_vpc_name&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(&#34;alicloud.sz&#34;)
+ *                 .build());
+ * 
+ *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(&#34;alicloud.sz&#34;)
+ *                 .build());
+ * 
+ *         var defaultBasicAccelerator = new BasicAccelerator(&#34;defaultBasicAccelerator&#34;, BasicAcceleratorArgs.builder()        
+ *             .duration(1)
+ *             .pricingCycle(&#34;Month&#34;)
+ *             .basicAcceleratorName(var_.name())
+ *             .description(var_.name())
+ *             .bandwidthBillingType(&#34;CDT&#34;)
+ *             .autoPay(true)
+ *             .autoUseCoupon(&#34;true&#34;)
+ *             .autoRenew(false)
+ *             .autoRenewDuration(1)
+ *             .build());
+ * 
+ *         var defaultBasicIpSet = new BasicIpSet(&#34;defaultBasicIpSet&#34;, BasicIpSetArgs.builder()        
+ *             .acceleratorId(defaultBasicAccelerator.id())
+ *             .accelerateRegionId(&#34;cn-hangzhou&#34;)
+ *             .ispType(&#34;BGP&#34;)
+ *             .bandwidth(&#34;5&#34;)
+ *             .build());
+ * 
+ *         var defaultBasicAccelerateIp = new BasicAccelerateIp(&#34;defaultBasicAccelerateIp&#34;, BasicAccelerateIpArgs.builder()        
+ *             .acceleratorId(defaultBasicIpSet.acceleratorId())
+ *             .ipSetId(defaultBasicIpSet.id())
+ *             .build());
+ * 
+ *         var defaultBasicEndpointGroup = new BasicEndpointGroup(&#34;defaultBasicEndpointGroup&#34;, BasicEndpointGroupArgs.builder()        
+ *             .acceleratorId(defaultBasicAccelerator.id())
+ *             .endpointGroupRegion(&#34;cn-shenzhen&#34;)
+ *             .build());
+ * 
+ *         var defaultBasicEndpoint = new BasicEndpoint(&#34;defaultBasicEndpoint&#34;, BasicEndpointArgs.builder()        
+ *             .acceleratorId(defaultBasicAccelerator.id())
+ *             .endpointGroupId(defaultBasicEndpointGroup.id())
+ *             .endpointType(&#34;ENI&#34;)
+ *             .endpointAddress(defaultEcsNetworkInterface.id())
+ *             .endpointSubAddressType(&#34;primary&#34;)
+ *             .endpointSubAddress(&#34;192.168.0.1&#34;)
+ *             .basicEndpointName(var_.name())
+ *             .build());
+ * 
+ *         var defaultBasicAccelerateIpEndpointRelation = new BasicAccelerateIpEndpointRelation(&#34;defaultBasicAccelerateIpEndpointRelation&#34;, BasicAccelerateIpEndpointRelationArgs.builder()        
+ *             .acceleratorId(defaultBasicAccelerateIp.acceleratorId())
+ *             .accelerateIpId(defaultBasicAccelerateIp.id())
+ *             .endpointId(defaultBasicEndpoint.endpointId())
  *             .build());
  * 
  *     }

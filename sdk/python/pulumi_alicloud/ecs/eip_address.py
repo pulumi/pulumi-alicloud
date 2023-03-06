@@ -20,9 +20,12 @@ class EipAddressArgs:
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
+                 log_project: Optional[pulumi.Input[str]] = None,
+                 log_store: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -39,10 +42,13 @@ class EipAddressArgs:
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
         :param pulumi.Input[str] description: The description of the EIP.
+        :param pulumi.Input[str] high_definition_monitor_log_status: The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: The metering method of the EIP. 
                Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
+        :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -64,6 +70,8 @@ class EipAddressArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if high_definition_monitor_log_status is not None:
+            pulumi.set(__self__, "high_definition_monitor_log_status", high_definition_monitor_log_status)
         if instance_charge_type is not None:
             warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
@@ -73,6 +81,10 @@ class EipAddressArgs:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if isp is not None:
             pulumi.set(__self__, "isp", isp)
+        if log_project is not None:
+            pulumi.set(__self__, "log_project", log_project)
+        if log_store is not None:
+            pulumi.set(__self__, "log_store", log_store)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""")
@@ -166,6 +178,18 @@ class EipAddressArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="highDefinitionMonitorLogStatus")
+    def high_definition_monitor_log_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+        """
+        return pulumi.get(self, "high_definition_monitor_log_status")
+
+    @high_definition_monitor_log_status.setter
+    def high_definition_monitor_log_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "high_definition_monitor_log_status", value)
+
+    @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -201,6 +225,30 @@ class EipAddressArgs:
     @isp.setter
     def isp(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "isp", value)
+
+    @property
+    @pulumi.getter(name="logProject")
+    def log_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        """
+        return pulumi.get(self, "log_project")
+
+    @log_project.setter
+    def log_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_project", value)
+
+    @property
+    @pulumi.getter(name="logStore")
+    def log_store(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        """
+        return pulumi.get(self, "log_store")
+
+    @log_store.setter
+    def log_store(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_store", value)
 
     @property
     @pulumi.getter
@@ -308,10 +356,13 @@ class _EipAddressState:
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
+                 log_project: Optional[pulumi.Input[str]] = None,
+                 log_store: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -329,11 +380,14 @@ class _EipAddressState:
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
         :param pulumi.Input[str] description: The description of the EIP.
+        :param pulumi.Input[str] high_definition_monitor_log_status: The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: The metering method of the EIP. 
                Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         :param pulumi.Input[str] ip_address: The address of the EIP.
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
+        :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -356,6 +410,8 @@ class _EipAddressState:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if high_definition_monitor_log_status is not None:
+            pulumi.set(__self__, "high_definition_monitor_log_status", high_definition_monitor_log_status)
         if instance_charge_type is not None:
             warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
@@ -367,6 +423,10 @@ class _EipAddressState:
             pulumi.set(__self__, "ip_address", ip_address)
         if isp is not None:
             pulumi.set(__self__, "isp", isp)
+        if log_project is not None:
+            pulumi.set(__self__, "log_project", log_project)
+        if log_store is not None:
+            pulumi.set(__self__, "log_store", log_store)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""")
@@ -462,6 +522,18 @@ class _EipAddressState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="highDefinitionMonitorLogStatus")
+    def high_definition_monitor_log_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+        """
+        return pulumi.get(self, "high_definition_monitor_log_status")
+
+    @high_definition_monitor_log_status.setter
+    def high_definition_monitor_log_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "high_definition_monitor_log_status", value)
+
+    @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -509,6 +581,30 @@ class _EipAddressState:
     @isp.setter
     def isp(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "isp", value)
+
+    @property
+    @pulumi.getter(name="logProject")
+    def log_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        """
+        return pulumi.get(self, "log_project")
+
+    @log_project.setter
+    def log_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_project", value)
+
+    @property
+    @pulumi.getter(name="logStore")
+    def log_store(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        """
+        return pulumi.get(self, "log_store")
+
+    @log_store.setter
+    def log_store(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_store", value)
 
     @property
     @pulumi.getter
@@ -630,9 +726,12 @@ class EipAddress(pulumi.CustomResource):
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
+                 log_project: Optional[pulumi.Input[str]] = None,
+                 log_store: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -685,10 +784,13 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
         :param pulumi.Input[str] description: The description of the EIP.
+        :param pulumi.Input[str] high_definition_monitor_log_status: The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: The metering method of the EIP. 
                Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
+        :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -760,9 +862,12 @@ class EipAddress(pulumi.CustomResource):
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
+                 log_project: Optional[pulumi.Input[str]] = None,
+                 log_store: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -786,12 +891,15 @@ class EipAddress(pulumi.CustomResource):
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
+            __props__.__dict__["high_definition_monitor_log_status"] = high_definition_monitor_log_status
             if instance_charge_type is not None and not opts.urn:
                 warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
                 pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
             __props__.__dict__["isp"] = isp
+            __props__.__dict__["log_project"] = log_project
+            __props__.__dict__["log_store"] = log_store
             if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""")
@@ -821,10 +929,13 @@ class EipAddress(pulumi.CustomResource):
             bandwidth: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             isp: Optional[pulumi.Input[str]] = None,
+            log_project: Optional[pulumi.Input[str]] = None,
+            log_store: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             netmode: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
@@ -847,11 +958,14 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
         :param pulumi.Input[str] description: The description of the EIP.
+        :param pulumi.Input[str] high_definition_monitor_log_status: The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: The metering method of the EIP. 
                Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
         :param pulumi.Input[str] ip_address: The address of the EIP.
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
+        :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -872,10 +986,13 @@ class EipAddress(pulumi.CustomResource):
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
+        __props__.__dict__["high_definition_monitor_log_status"] = high_definition_monitor_log_status
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["internet_charge_type"] = internet_charge_type
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["isp"] = isp
+        __props__.__dict__["log_project"] = log_project
+        __props__.__dict__["log_store"] = log_store
         __props__.__dict__["name"] = name
         __props__.__dict__["netmode"] = netmode
         __props__.__dict__["payment_type"] = payment_type
@@ -936,6 +1053,14 @@ class EipAddress(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="highDefinitionMonitorLogStatus")
+    def high_definition_monitor_log_status(self) -> pulumi.Output[str]:
+        """
+        The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+        """
+        return pulumi.get(self, "high_definition_monitor_log_status")
+
+    @property
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[str]:
         """
@@ -967,6 +1092,22 @@ class EipAddress(pulumi.CustomResource):
         The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
         """
         return pulumi.get(self, "isp")
+
+    @property
+    @pulumi.getter(name="logProject")
+    def log_project(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        """
+        return pulumi.get(self, "log_project")
+
+    @property
+    @pulumi.getter(name="logStore")
+    def log_store(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        """
+        return pulumi.get(self, "log_store")
 
     @property
     @pulumi.getter

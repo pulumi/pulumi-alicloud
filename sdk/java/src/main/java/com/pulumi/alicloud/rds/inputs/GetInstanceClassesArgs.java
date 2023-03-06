@@ -17,14 +17,14 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
     public static final GetInstanceClassesArgs Empty = new GetInstanceClassesArgs();
 
     /**
-     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * @return DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      * 
      */
     public Optional<Output<String>> category() {
@@ -41,6 +41,8 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
      * * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
      * * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
      * * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+     * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
+     * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
      * 
      */
     @Import(name="commodityCode")
@@ -56,6 +58,8 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
      * * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
      * * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
      * * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+     * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
+     * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
      * 
      */
     public Optional<Output<String>> commodityCode() {
@@ -138,14 +142,14 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
      * 
      */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+     * @return Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
      * 
      */
     public Optional<Output<String>> instanceChargeType() {
@@ -248,7 +252,7 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param category DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+         * @param category DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
          * 
          * @return builder
          * 
@@ -259,7 +263,7 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param category DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+         * @param category DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
          * 
          * @return builder
          * 
@@ -278,6 +282,8 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
          * * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
          * * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
          * * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+         * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
+         * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
          * 
          * @return builder
          * 
@@ -297,6 +303,8 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
          * * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
          * * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
          * * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+         * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
+         * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
          * 
          * @return builder
          * 
@@ -411,7 +419,7 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param instanceChargeType Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+         * @param instanceChargeType Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
          * 
          * @return builder
          * 
@@ -422,7 +430,7 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param instanceChargeType Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+         * @param instanceChargeType Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
          * 
          * @return builder
          * 

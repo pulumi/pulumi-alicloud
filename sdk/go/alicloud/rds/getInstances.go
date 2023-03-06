@@ -61,7 +61,7 @@ type GetInstancesArgs struct {
 	DbType *string `pulumi:"dbType"`
 	// Default to `false`. Set it to `true` can output parameter template about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
 	Engine *string `pulumi:"engine"`
 	// A list of RDS instance IDs.
 	Ids []string `pulumi:"ids"`
@@ -133,7 +133,7 @@ type GetInstancesOutputArgs struct {
 	DbType pulumi.StringPtrInput `pulumi:"dbType"`
 	// Default to `false`. Set it to `true` can output parameter template about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// A list of RDS instance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

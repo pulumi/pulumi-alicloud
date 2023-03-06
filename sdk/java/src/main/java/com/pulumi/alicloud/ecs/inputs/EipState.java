@@ -98,6 +98,13 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="highDefinitionMonitorLogStatus")
+    private @Nullable Output<String> highDefinitionMonitorLogStatus;
+
+    public Optional<Output<String>> highDefinitionMonitorLogStatus() {
+        return Optional.ofNullable(this.highDefinitionMonitorLogStatus);
+    }
+
     /**
      * (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
@@ -164,6 +171,20 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> isp() {
         return Optional.ofNullable(this.isp);
+    }
+
+    @Import(name="logProject")
+    private @Nullable Output<String> logProject;
+
+    public Optional<Output<String>> logProject() {
+        return Optional.ofNullable(this.logProject);
+    }
+
+    @Import(name="logStore")
+    private @Nullable Output<String> logStore;
+
+    public Optional<Output<String>> logStore() {
+        return Optional.ofNullable(this.logStore);
     }
 
     /**
@@ -286,10 +307,13 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         this.bandwidth = $.bandwidth;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
+        this.highDefinitionMonitorLogStatus = $.highDefinitionMonitorLogStatus;
         this.instanceChargeType = $.instanceChargeType;
         this.internetChargeType = $.internetChargeType;
         this.ipAddress = $.ipAddress;
         this.isp = $.isp;
+        this.logProject = $.logProject;
+        this.logStore = $.logStore;
         this.name = $.name;
         this.netmode = $.netmode;
         this.paymentType = $.paymentType;
@@ -425,6 +449,15 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        public Builder highDefinitionMonitorLogStatus(@Nullable Output<String> highDefinitionMonitorLogStatus) {
+            $.highDefinitionMonitorLogStatus = highDefinitionMonitorLogStatus;
+            return this;
+        }
+
+        public Builder highDefinitionMonitorLogStatus(String highDefinitionMonitorLogStatus) {
+            return highDefinitionMonitorLogStatus(Output.of(highDefinitionMonitorLogStatus));
+        }
+
         /**
          * @param instanceChargeType (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
          * 
@@ -515,6 +548,24 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder isp(String isp) {
             return isp(Output.of(isp));
+        }
+
+        public Builder logProject(@Nullable Output<String> logProject) {
+            $.logProject = logProject;
+            return this;
+        }
+
+        public Builder logProject(String logProject) {
+            return logProject(Output.of(logProject));
+        }
+
+        public Builder logStore(@Nullable Output<String> logStore) {
+            $.logStore = logStore;
+            return this;
+        }
+
+        public Builder logStore(String logStore) {
+            return logStore(Output.of(logStore));
         }
 
         /**

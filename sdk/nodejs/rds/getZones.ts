@@ -33,7 +33,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetZonesArgs {
     /**
-     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      */
     category?: string;
     dbInstanceClass?: string;
@@ -50,7 +50,7 @@ export interface GetZonesArgs {
      */
     engineVersion?: string;
     /**
-     * Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+     * Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
      */
     instanceChargeType?: string;
     /**
@@ -104,7 +104,7 @@ export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetZonesOutputArgs {
     /**
-     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      */
     category?: pulumi.Input<string>;
     dbInstanceClass?: pulumi.Input<string>;
@@ -121,7 +121,7 @@ export interface GetZonesOutputArgs {
      */
     engineVersion?: pulumi.Input<string>;
     /**
-     * Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+     * Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**

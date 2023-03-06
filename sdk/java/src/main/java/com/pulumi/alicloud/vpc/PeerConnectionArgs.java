@@ -24,8 +24,8 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
      * - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      * 
      */
-    @Import(name="acceptingAliUid")
-    private @Nullable Output<Integer> acceptingAliUid;
+    @Import(name="acceptingAliUid", required=true)
+    private Output<Integer> acceptingAliUid;
 
     /**
      * @return The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
@@ -34,8 +34,8 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
      * - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      * 
      */
-    public Optional<Output<Integer>> acceptingAliUid() {
-        return Optional.ofNullable(this.acceptingAliUid);
+    public Output<Integer> acceptingAliUid() {
+        return this.acceptingAliUid;
     }
 
     /**
@@ -203,7 +203,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder acceptingAliUid(@Nullable Output<Integer> acceptingAliUid) {
+        public Builder acceptingAliUid(Output<Integer> acceptingAliUid) {
             $.acceptingAliUid = acceptingAliUid;
             return this;
         }
@@ -394,6 +394,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public PeerConnectionArgs build() {
+            $.acceptingAliUid = Objects.requireNonNull($.acceptingAliUid, "expected parameter 'acceptingAliUid' to be non-null");
             $.acceptingRegionId = Objects.requireNonNull($.acceptingRegionId, "expected parameter 'acceptingRegionId' to be non-null");
             $.acceptingVpcId = Objects.requireNonNull($.acceptingVpcId, "expected parameter 'acceptingVpcId' to be non-null");
             $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");

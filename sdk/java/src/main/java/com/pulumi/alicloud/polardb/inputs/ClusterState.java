@@ -261,6 +261,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+     * 
+     */
+    @Import(name="encryptionKey")
+    private @Nullable Output<String> encryptionKey;
+
+    /**
+     * @return The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+     * 
+     */
+    public Optional<Output<String>> encryptionKey() {
+        return Optional.ofNullable(this.encryptionKey);
+    }
+
+    /**
      * The ID of the global database network (GDN).
      * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
      * 
@@ -409,6 +424,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+     * 
+     */
+    @Import(name="roleArn")
+    private @Nullable Output<String> roleArn;
+
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+     * 
+     */
+    public Optional<Output<String>> roleArn() {
+        return Optional.ofNullable(this.roleArn);
+    }
+
+    /**
      * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
      * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      * 
@@ -489,6 +519,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * (Available in 1.200.0+) The region where the TDE key resides.
+     * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+     * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+     * 
+     */
+    @Import(name="tdeRegion")
+    private @Nullable Output<String> tdeRegion;
+
+    /**
+     * @return (Available in 1.200.0+) The region where the TDE key resides.
+     * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+     * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+     * 
+     */
+    public Optional<Output<String>> tdeRegion() {
+        return Optional.ofNullable(this.tdeRegion);
     }
 
     /**
@@ -573,6 +622,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.deletionLock = $.deletionLock;
         this.description = $.description;
         this.encryptNewTables = $.encryptNewTables;
+        this.encryptionKey = $.encryptionKey;
         this.gdnId = $.gdnId;
         this.imciSwitch = $.imciSwitch;
         this.maintainTime = $.maintainTime;
@@ -583,11 +633,13 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.port = $.port;
         this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
+        this.roleArn = $.roleArn;
         this.securityGroupIds = $.securityGroupIds;
         this.securityIps = $.securityIps;
         this.sourceResourceId = $.sourceResourceId;
         this.subCategory = $.subCategory;
         this.tags = $.tags;
+        this.tdeRegion = $.tdeRegion;
         this.tdeStatus = $.tdeStatus;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
@@ -952,6 +1004,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param encryptionKey The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKey(@Nullable Output<String> encryptionKey) {
+            $.encryptionKey = encryptionKey;
+            return this;
+        }
+
+        /**
+         * @param encryptionKey The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKey(String encryptionKey) {
+            return encryptionKey(Output.of(encryptionKey));
+        }
+
+        /**
          * @param gdnId The ID of the global database network (GDN).
          * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
          * 
@@ -1166,6 +1239,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param roleArn The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleArn(@Nullable Output<String> roleArn) {
+            $.roleArn = roleArn;
+            return this;
+        }
+
+        /**
+         * @param roleArn The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleArn(String roleArn) {
+            return roleArn(Output.of(roleArn));
+        }
+
+        /**
          * @param securityGroupIds The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
          * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
          * 
@@ -1298,6 +1392,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tdeRegion (Available in 1.200.0+) The region where the TDE key resides.
+         * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+         * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tdeRegion(@Nullable Output<String> tdeRegion) {
+            $.tdeRegion = tdeRegion;
+            return this;
+        }
+
+        /**
+         * @param tdeRegion (Available in 1.200.0+) The region where the TDE key resides.
+         * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+         * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tdeRegion(String tdeRegion) {
+            return tdeRegion(Output.of(tdeRegion));
         }
 
         /**

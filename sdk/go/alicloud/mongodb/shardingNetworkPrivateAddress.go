@@ -29,11 +29,17 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultZones, err := mongodb.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
@@ -54,7 +60,7 @@ import (
 //			defaultShardingInstance, err := mongodb.NewShardingInstance(ctx, "defaultShardingInstance", &mongodb.ShardingInstanceArgs{
 //				ZoneId:        *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchId:     *pulumi.String(defaultSwitches.Ids[0]),
-//				EngineVersion: pulumi.String("3.4"),
+//				EngineVersion: pulumi.String("4.2"),
 //				MongoLists: mongodb.ShardingInstanceMongoListArray{
 //					&mongodb.ShardingInstanceMongoListArgs{
 //						NodeClass: pulumi.String("dds.mongos.mid"),

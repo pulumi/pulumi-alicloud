@@ -190,6 +190,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> EncryptNewTables { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+        /// </summary>
+        [Output("encryptionKey")]
+        public Output<string?> EncryptionKey { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the global database network (GDN).
         /// &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         /// </summary>
@@ -250,6 +256,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+        /// </summary>
+        [Output("roleArn")]
+        public Output<string?> RoleArn { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
         /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         /// </summary>
@@ -282,6 +294,14 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.200.0+) The region where the TDE key resides.
+        /// &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+        /// &gt; **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+        /// </summary>
+        [Output("tdeRegion")]
+        public Output<string> TdeRegion { get; private set; } = null!;
 
         /// <summary>
         /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
@@ -453,6 +473,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? EncryptNewTables { get; set; }
 
         /// <summary>
+        /// The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+        /// </summary>
+        [Input("encryptionKey")]
+        public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
         /// The ID of the global database network (GDN).
         /// &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         /// </summary>
@@ -511,6 +537,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+        /// </summary>
+        [Input("roleArn")]
+        public Input<string>? RoleArn { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
@@ -702,6 +734,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? EncryptNewTables { get; set; }
 
         /// <summary>
+        /// The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+        /// </summary>
+        [Input("encryptionKey")]
+        public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
         /// The ID of the global database network (GDN).
         /// &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         /// </summary>
@@ -767,6 +805,12 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+        /// </summary>
+        [Input("roleArn")]
+        public Input<string>? RoleArn { get; set; }
+
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
 
@@ -818,6 +862,14 @@ namespace Pulumi.AliCloud.PolarDB
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// (Available in 1.200.0+) The region where the TDE key resides.
+        /// &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+        /// &gt; **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+        /// </summary>
+        [Input("tdeRegion")]
+        public Input<string>? TdeRegion { get; set; }
 
         /// <summary>
         /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 

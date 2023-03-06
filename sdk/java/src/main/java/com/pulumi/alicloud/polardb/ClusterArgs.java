@@ -246,6 +246,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+     * 
+     */
+    @Import(name="encryptionKey")
+    private @Nullable Output<String> encryptionKey;
+
+    /**
+     * @return The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+     * 
+     */
+    public Optional<Output<String>> encryptionKey() {
+        return Optional.ofNullable(this.encryptionKey);
+    }
+
+    /**
      * The ID of the global database network (GDN).
      * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
      * 
@@ -376,6 +391,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+     * 
+     */
+    @Import(name="roleArn")
+    private @Nullable Output<String> roleArn;
+
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+     * 
+     */
+    public Optional<Output<String>> roleArn() {
+        return Optional.ofNullable(this.roleArn);
     }
 
     /**
@@ -542,6 +572,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionLock = $.deletionLock;
         this.description = $.description;
         this.encryptNewTables = $.encryptNewTables;
+        this.encryptionKey = $.encryptionKey;
         this.gdnId = $.gdnId;
         this.imciSwitch = $.imciSwitch;
         this.maintainTime = $.maintainTime;
@@ -551,6 +582,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.period = $.period;
         this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
+        this.roleArn = $.roleArn;
         this.securityGroupIds = $.securityGroupIds;
         this.securityIps = $.securityIps;
         this.sourceResourceId = $.sourceResourceId;
@@ -899,6 +931,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param encryptionKey The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKey(@Nullable Output<String> encryptionKey) {
+            $.encryptionKey = encryptionKey;
+            return this;
+        }
+
+        /**
+         * @param encryptionKey The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKey(String encryptionKey) {
+            return encryptionKey(Output.of(encryptionKey));
+        }
+
+        /**
          * @param gdnId The ID of the global database network (GDN).
          * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
          * 
@@ -1089,6 +1142,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param roleArn The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleArn(@Nullable Output<String> roleArn) {
+            $.roleArn = roleArn;
+            return this;
+        }
+
+        /**
+         * @param roleArn The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleArn(String roleArn) {
+            return roleArn(Output.of(roleArn));
         }
 
         /**

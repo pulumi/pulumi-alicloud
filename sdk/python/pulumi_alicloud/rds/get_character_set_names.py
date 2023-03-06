@@ -90,7 +90,7 @@ def get_character_set_names(engine: Optional[str] = None,
     ```
 
 
-    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
     """
     __args__ = dict()
     __args__['engine'] = engine
@@ -125,6 +125,6 @@ def get_character_set_names_output(engine: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
     """
     ...

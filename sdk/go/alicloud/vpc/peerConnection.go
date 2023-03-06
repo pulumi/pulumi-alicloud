@@ -103,6 +103,9 @@ func NewPeerConnection(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AcceptingAliUid == nil {
+		return nil, errors.New("invalid value for required argument 'AcceptingAliUid'")
+	}
 	if args.AcceptingRegionId == nil {
 		return nil, errors.New("invalid value for required argument 'AcceptingRegionId'")
 	}
@@ -194,7 +197,7 @@ type peerConnectionArgs struct {
 	// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
 	// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
 	// - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
-	AcceptingAliUid *int `pulumi:"acceptingAliUid"`
+	AcceptingAliUid int `pulumi:"acceptingAliUid"`
 	// The region ID of the recipient of the VPC peering connection to be created.
 	// - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
 	// - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
@@ -221,7 +224,7 @@ type PeerConnectionArgs struct {
 	// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
 	// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
 	// - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
-	AcceptingAliUid pulumi.IntPtrInput
+	AcceptingAliUid pulumi.IntInput
 	// The region ID of the recipient of the VPC peering connection to be created.
 	// - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
 	// - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.

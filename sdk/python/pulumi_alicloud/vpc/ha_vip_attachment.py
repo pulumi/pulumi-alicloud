@@ -15,14 +15,18 @@ __all__ = ['HAVipAttachmentArgs', 'HAVipAttachment']
 class HAVipAttachmentArgs:
     def __init__(__self__, *,
                  havip_id: pulumi.Input[str],
-                 instance_id: pulumi.Input[str]):
+                 instance_id: pulumi.Input[str],
+                 force: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HAVipAttachment resource.
         :param pulumi.Input[str] havip_id: The havip_id of the havip attachment, the field can't be changed.
         :param pulumi.Input[str] instance_id: The instance_id of the havip attachment, the field can't be changed.
+        :param pulumi.Input[str] force: Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
         """
         pulumi.set(__self__, "havip_id", havip_id)
         pulumi.set(__self__, "instance_id", instance_id)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
 
     @property
     @pulumi.getter(name="havipId")
@@ -48,21 +52,49 @@ class HAVipAttachmentArgs:
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
 
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force", value)
+
 
 @pulumi.input_type
 class _HAVipAttachmentState:
     def __init__(__self__, *,
+                 force: Optional[pulumi.Input[str]] = None,
                  havip_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering HAVipAttachment resources.
+        :param pulumi.Input[str] force: Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
         :param pulumi.Input[str] havip_id: The havip_id of the havip attachment, the field can't be changed.
         :param pulumi.Input[str] instance_id: The instance_id of the havip attachment, the field can't be changed.
         """
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if havip_id is not None:
             pulumi.set(__self__, "havip_id", havip_id)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force", value)
 
     @property
     @pulumi.getter(name="havipId")
@@ -94,6 +126,7 @@ class HAVipAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 force: Optional[pulumi.Input[str]] = None,
                  havip_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -154,6 +187,7 @@ class HAVipAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] force: Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
         :param pulumi.Input[str] havip_id: The havip_id of the havip attachment, the field can't be changed.
         :param pulumi.Input[str] instance_id: The instance_id of the havip attachment, the field can't be changed.
         """
@@ -233,6 +267,7 @@ class HAVipAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 force: Optional[pulumi.Input[str]] = None,
                  havip_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -244,6 +279,7 @@ class HAVipAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HAVipAttachmentArgs.__new__(HAVipAttachmentArgs)
 
+            __props__.__dict__["force"] = force
             if havip_id is None and not opts.urn:
                 raise TypeError("Missing required property 'havip_id'")
             __props__.__dict__["havip_id"] = havip_id
@@ -260,6 +296,7 @@ class HAVipAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            force: Optional[pulumi.Input[str]] = None,
             havip_id: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None) -> 'HAVipAttachment':
         """
@@ -269,6 +306,7 @@ class HAVipAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] force: Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
         :param pulumi.Input[str] havip_id: The havip_id of the havip attachment, the field can't be changed.
         :param pulumi.Input[str] instance_id: The instance_id of the havip attachment, the field can't be changed.
         """
@@ -276,9 +314,18 @@ class HAVipAttachment(pulumi.CustomResource):
 
         __props__ = _HAVipAttachmentState.__new__(_HAVipAttachmentState)
 
+        __props__.__dict__["force"] = force
         __props__.__dict__["havip_id"] = havip_id
         __props__.__dict__["instance_id"] = instance_id
         return HAVipAttachment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def force(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+        """
+        return pulumi.get(self, "force")
 
     @property
     @pulumi.getter(name="havipId")

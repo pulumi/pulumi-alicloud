@@ -85,6 +85,7 @@ export class Instance extends pulumi.CustomResource {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
+     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
      */
     public readonly category!: pulumi.Output<string>;
     /**
@@ -121,7 +122,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dbInstanceIpArrayName!: pulumi.Output<string | undefined>;
     /**
-     * The storage type of the instance. Valid values:
+     * The storage type of the instance. Serverless instance, only `cloudEssd` can be selected. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
      * - cloud_ssd: specifies to use standard SSDs.
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -164,7 +165,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly encryptionKey!: pulumi.Output<string | undefined>;
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -188,7 +189,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly haConfig!: pulumi.Output<string>;
     /**
-     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+     * Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
@@ -206,7 +207,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceStorage!: pulumi.Output<number>;
     /**
-     * DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     * DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -291,6 +292,10 @@ export class Instance extends pulumi.CustomResource {
      * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
      */
     public readonly serverKey!: pulumi.Output<string>;
+    /**
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     */
+    public readonly serverlessConfigs!: pulumi.Output<outputs.rds.InstanceServerlessConfig[] | undefined>;
     /**
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
      */
@@ -469,6 +474,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
             resourceInputs["serverCert"] = state ? state.serverCert : undefined;
             resourceInputs["serverKey"] = state ? state.serverKey : undefined;
+            resourceInputs["serverlessConfigs"] = state ? state.serverlessConfigs : undefined;
             resourceInputs["sqlCollectorConfigValue"] = state ? state.sqlCollectorConfigValue : undefined;
             resourceInputs["sqlCollectorStatus"] = state ? state.sqlCollectorStatus : undefined;
             resourceInputs["sslAction"] = state ? state.sslAction : undefined;
@@ -553,6 +559,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
             resourceInputs["serverCert"] = args ? args.serverCert : undefined;
             resourceInputs["serverKey"] = args ? args.serverKey : undefined;
+            resourceInputs["serverlessConfigs"] = args ? args.serverlessConfigs : undefined;
             resourceInputs["sqlCollectorConfigValue"] = args ? args.sqlCollectorConfigValue : undefined;
             resourceInputs["sqlCollectorStatus"] = args ? args.sqlCollectorStatus : undefined;
             resourceInputs["sslAction"] = args ? args.sslAction : undefined;
@@ -628,6 +635,7 @@ export interface InstanceState {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
+     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
      */
     category?: pulumi.Input<string>;
     /**
@@ -664,7 +672,7 @@ export interface InstanceState {
      */
     dbInstanceIpArrayName?: pulumi.Input<string>;
     /**
-     * The storage type of the instance. Valid values:
+     * The storage type of the instance. Serverless instance, only `cloudEssd` can be selected. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
      * - cloud_ssd: specifies to use standard SSDs.
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -707,7 +715,7 @@ export interface InstanceState {
      */
     encryptionKey?: pulumi.Input<string>;
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
      */
     engine?: pulumi.Input<string>;
     /**
@@ -731,7 +739,7 @@ export interface InstanceState {
      */
     haConfig?: pulumi.Input<string>;
     /**
-     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+     * Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -749,7 +757,7 @@ export interface InstanceState {
      */
     instanceStorage?: pulumi.Input<number>;
     /**
-     * DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     * DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -834,6 +842,10 @@ export interface InstanceState {
      * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
      */
     serverKey?: pulumi.Input<string>;
+    /**
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     */
+    serverlessConfigs?: pulumi.Input<pulumi.Input<inputs.rds.InstanceServerlessConfig>[]>;
     /**
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
      */
@@ -995,6 +1007,7 @@ export interface InstanceArgs {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
+     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
      */
     category?: pulumi.Input<string>;
     /**
@@ -1027,7 +1040,7 @@ export interface InstanceArgs {
      */
     dbInstanceIpArrayName?: pulumi.Input<string>;
     /**
-     * The storage type of the instance. Valid values:
+     * The storage type of the instance. Serverless instance, only `cloudEssd` can be selected. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
      * - cloud_ssd: specifies to use standard SSDs.
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -1066,7 +1079,7 @@ export interface InstanceArgs {
      */
     encryptionKey?: pulumi.Input<string>;
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
      */
     engine: pulumi.Input<string>;
     /**
@@ -1090,7 +1103,7 @@ export interface InstanceArgs {
      */
     haConfig?: pulumi.Input<string>;
     /**
-     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+     * Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -1108,7 +1121,7 @@ export interface InstanceArgs {
      */
     instanceStorage: pulumi.Input<number>;
     /**
-     * DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     * DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      */
     instanceType: pulumi.Input<string>;
     /**
@@ -1193,6 +1206,10 @@ export interface InstanceArgs {
      * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
      */
     serverKey?: pulumi.Input<string>;
+    /**
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     */
+    serverlessConfigs?: pulumi.Input<pulumi.Input<inputs.rds.InstanceServerlessConfig>[]>;
     /**
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
      */

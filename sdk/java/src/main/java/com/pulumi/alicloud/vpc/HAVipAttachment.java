@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -124,6 +125,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:vpc/hAVipAttachment:HAVipAttachment")
 public class HAVipAttachment extends com.pulumi.resources.CustomResource {
+    /**
+     * Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     * 
+     */
+    @Export(name="force", type=String.class, parameters={})
+    private Output</* @Nullable */ String> force;
+
+    /**
+     * @return Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     * 
+     */
+    public Output<Optional<String>> force() {
+        return Codegen.optional(this.force);
+    }
     /**
      * The havip_id of the havip attachment, the field can&#39;t be changed.
      * 

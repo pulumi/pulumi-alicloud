@@ -147,6 +147,8 @@ type Cluster struct {
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
 	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables pulumi.StringPtrOutput `pulumi:"encryptNewTables"`
+	// The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
+	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId pulumi.StringPtrOutput `pulumi:"gdnId"`
@@ -169,6 +171,8 @@ type Cluster struct {
 	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
@@ -183,6 +187,10 @@ type Cluster struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// (Available in 1.200.0+) The region where the TDE key resides.
+	// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+	// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+	TdeRegion pulumi.StringOutput `pulumi:"tdeRegion"`
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
@@ -270,6 +278,8 @@ type clusterState struct {
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
 	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables *string `pulumi:"encryptNewTables"`
+	// The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
+	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId *string `pulumi:"gdnId"`
@@ -292,6 +302,8 @@ type clusterState struct {
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+	RoleArn *string `pulumi:"roleArn"`
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -306,6 +318,10 @@ type clusterState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// (Available in 1.200.0+) The region where the TDE key resides.
+	// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+	// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+	TdeRegion *string `pulumi:"tdeRegion"`
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus *string `pulumi:"tdeStatus"`
@@ -356,6 +372,8 @@ type ClusterState struct {
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
 	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables pulumi.StringPtrInput
+	// The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
+	EncryptionKey pulumi.StringPtrInput
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId pulumi.StringPtrInput
@@ -378,6 +396,8 @@ type ClusterState struct {
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+	RoleArn pulumi.StringPtrInput
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	SecurityGroupIds pulumi.StringArrayInput
@@ -392,6 +412,10 @@ type ClusterState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// (Available in 1.200.0+) The region where the TDE key resides.
+	// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+	// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+	TdeRegion pulumi.StringPtrInput
 	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
 	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
 	TdeStatus pulumi.StringPtrInput
@@ -444,6 +468,8 @@ type clusterArgs struct {
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
 	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables *string `pulumi:"encryptNewTables"`
+	// The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
+	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId *string `pulumi:"gdnId"`
@@ -464,6 +490,8 @@ type clusterArgs struct {
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+	RoleArn *string `pulumi:"roleArn"`
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -527,6 +555,8 @@ type ClusterArgs struct {
 	// turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
 	// > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
 	EncryptNewTables pulumi.StringPtrInput
+	// The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
+	EncryptionKey pulumi.StringPtrInput
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId pulumi.StringPtrInput
@@ -547,6 +577,8 @@ type ClusterArgs struct {
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+	RoleArn pulumi.StringPtrInput
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	SecurityGroupIds pulumi.StringArrayInput
@@ -742,6 +774,11 @@ func (o ClusterOutput) EncryptNewTables() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.EncryptNewTables }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
+func (o ClusterOutput) EncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the global database network (GDN).
 // > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 func (o ClusterOutput) GdnId() pulumi.StringPtrOutput {
@@ -794,6 +831,11 @@ func (o ClusterOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+func (o ClusterOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 // > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 func (o ClusterOutput) SecurityGroupIds() pulumi.StringArrayOutput {
@@ -821,6 +863,13 @@ func (o ClusterOutput) SubCategory() pulumi.StringOutput {
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 func (o ClusterOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// (Available in 1.200.0+) The region where the TDE key resides.
+// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+func (o ClusterOutput) TdeRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.TdeRegion }).(pulumi.StringOutput)
 }
 
 // turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.

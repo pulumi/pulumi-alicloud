@@ -103,6 +103,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.availabilityZone;
     }
     /**
+     * The number of vCPUs.
+     * 
+     */
+    @Export(name="cpu", type=Integer.class, parameters={})
+    private Output<Integer> cpu;
+
+    /**
+     * @return The number of vCPUs.
+     * 
+     */
+    public Output<Integer> cpu() {
+        return this.cpu;
+    }
+    /**
      * Performance mode of the t5 burstable instance. Valid values: &#39;Standard&#39;, &#39;Unlimited&#39;.
      * 
      */
@@ -553,6 +567,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceTime);
     }
     /**
+     * The memory size of the instance. Unit: MiB.
+     * 
+     */
+    @Export(name="memory", type=Integer.class, parameters={})
+    private Output<Integer> memory;
+
+    /**
+     * @return The memory size of the instance. Unit: MiB.
+     * 
+     */
+    public Output<Integer> memory() {
+        return this.memory;
+    }
+    /**
      * The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
      * 
      */
@@ -565,6 +593,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> operatorType() {
         return Codegen.optional(this.operatorType);
+    }
+    /**
+     * The name of the operating system of the instance.
+     * 
+     */
+    @Export(name="osName", type=String.class, parameters={})
+    private Output<String> osName;
+
+    /**
+     * @return The name of the operating system of the instance.
+     * 
+     */
+    public Output<String> osName() {
+        return this.osName;
+    }
+    /**
+     * The type of the operating system of the instance.
+     * 
+     */
+    @Export(name="osType", type=String.class, parameters={})
+    private Output<String> osType;
+
+    /**
+     * @return The type of the operating system of the instance.
+     * 
+     */
+    public Output<String> osType() {
+        return this.osType;
     }
     /**
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
@@ -599,6 +655,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> periodUnit() {
         return Codegen.optional(this.periodUnit);
+    }
+    /**
+     * The primary private IP address of the ENI.
+     * 
+     */
+    @Export(name="primaryIpAddress", type=String.class, parameters={})
+    private Output<String> primaryIpAddress;
+
+    /**
+     * @return The primary private IP address of the ENI.
+     * 
+     */
+    public Output<String> primaryIpAddress() {
+        return this.primaryIpAddress;
     }
     /**
      * Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.

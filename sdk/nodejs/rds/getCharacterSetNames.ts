@@ -35,7 +35,7 @@ export function getCharacterSetNames(args: GetCharacterSetNamesArgs, opts?: pulu
  */
 export interface GetCharacterSetNamesArgs {
     /**
-     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
      */
     engine: string;
     outputFile?: string;
@@ -79,7 +79,7 @@ export function getCharacterSetNamesOutput(args: GetCharacterSetNamesOutputArgs,
  */
 export interface GetCharacterSetNamesOutputArgs {
     /**
-     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
      */
     engine: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;

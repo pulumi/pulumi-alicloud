@@ -56,6 +56,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var defaultZones = MongodbFunctions.getZones();
  * 
  *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
@@ -70,7 +72,7 @@ import javax.annotation.Nullable;
  *         var defaultShardingInstance = new ShardingInstance(&#34;defaultShardingInstance&#34;, ShardingInstanceArgs.builder()        
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
- *             .engineVersion(&#34;3.4&#34;)
+ *             .engineVersion(&#34;4.2&#34;)
  *             .mongoLists(            
  *                 ShardingInstanceMongoListArgs.builder()
  *                     .nodeClass(&#34;dds.mongos.mid&#34;)

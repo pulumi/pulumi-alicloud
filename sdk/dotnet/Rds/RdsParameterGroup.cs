@@ -63,13 +63,13 @@ namespace Pulumi.AliCloud.Rds
     public partial class RdsParameterGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The database engine. Valid values: `mysql`, `mariadb`.
+        /// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+        /// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -139,13 +139,13 @@ namespace Pulumi.AliCloud.Rds
     public sealed class RdsParameterGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The database engine. Valid values: `mysql`, `mariadb`.
+        /// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
         /// <summary>
-        /// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+        /// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         /// </summary>
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
@@ -183,13 +183,13 @@ namespace Pulumi.AliCloud.Rds
     public sealed class RdsParameterGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The database engine. Valid values: `mysql`, `mariadb`.
+        /// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 
         /// <summary>
-        /// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+        /// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }

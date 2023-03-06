@@ -93,6 +93,10 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+     */
+    public readonly highDefinitionMonitorLogStatus!: pulumi.Output<string>;
+    /**
      * Field `instanceChargeType` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
@@ -111,6 +115,14 @@ export class EipAddress extends pulumi.CustomResource {
      * The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
      */
     public readonly isp!: pulumi.Output<string>;
+    /**
+     * The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     */
+    public readonly logProject!: pulumi.Output<string | undefined>;
+    /**
+     * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     */
+    public readonly logStore!: pulumi.Output<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `addressName` instead.
      *
@@ -169,10 +181,13 @@ export class EipAddress extends pulumi.CustomResource {
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["highDefinitionMonitorLogStatus"] = state ? state.highDefinitionMonitorLogStatus : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["isp"] = state ? state.isp : undefined;
+            resourceInputs["logProject"] = state ? state.logProject : undefined;
+            resourceInputs["logStore"] = state ? state.logStore : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["netmode"] = state ? state.netmode : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
@@ -190,9 +205,12 @@ export class EipAddress extends pulumi.CustomResource {
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["highDefinitionMonitorLogStatus"] = args ? args.highDefinitionMonitorLogStatus : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
             resourceInputs["isp"] = args ? args.isp : undefined;
+            resourceInputs["logProject"] = args ? args.logProject : undefined;
+            resourceInputs["logStore"] = args ? args.logStore : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["netmode"] = args ? args.netmode : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
@@ -238,6 +256,10 @@ export interface EipAddressState {
      */
     description?: pulumi.Input<string>;
     /**
+     * The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+     */
+    highDefinitionMonitorLogStatus?: pulumi.Input<string>;
+    /**
      * Field `instanceChargeType` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
@@ -256,6 +278,14 @@ export interface EipAddressState {
      * The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
      */
     isp?: pulumi.Input<string>;
+    /**
+     * The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     */
+    logProject?: pulumi.Input<string>;
+    /**
+     * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     */
+    logStore?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `addressName` instead.
      *
@@ -325,6 +355,10 @@ export interface EipAddressArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+     */
+    highDefinitionMonitorLogStatus?: pulumi.Input<string>;
+    /**
      * Field `instanceChargeType` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
@@ -339,6 +373,14 @@ export interface EipAddressArgs {
      * The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
      */
     isp?: pulumi.Input<string>;
+    /**
+     * The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     */
+    logProject?: pulumi.Input<string>;
+    /**
+     * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     */
+    logStore?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `addressName` instead.
      *

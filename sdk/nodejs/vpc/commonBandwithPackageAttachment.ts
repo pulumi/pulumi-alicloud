@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage", {
  *     bandwidth: "2",
+ *     bandwidthPackageName: "test_common_bandwidth_package",
  *     description: "test_common_bandwidth_package",
  * });
  * const fooEipAddress = new alicloud.ecs.EipAddress("fooEipAddress", {
@@ -32,7 +33,7 @@ import * as utilities from "../utilities";
  * The common bandwidth package attachment can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo cbwp-abc123456:eip-abc123456
+ *  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo <bandwidth_package_id>:<instance_id>
  * ```
  */
 export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
@@ -72,6 +73,10 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
      */
     public readonly bandwidthPackageId!: pulumi.Output<string>;
     /**
+     * Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+     */
+    public readonly cancelCommonBandwidthPackageIpBandwidth!: pulumi.Output<boolean | undefined>;
+    /**
      * The instanceId of the common bandwidth package attachment, the field can't be changed.
      */
     public readonly instanceId!: pulumi.Output<string>;
@@ -91,6 +96,7 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
             const state = argsOrState as CommonBandwithPackageAttachmentState | undefined;
             resourceInputs["bandwidthPackageBandwidth"] = state ? state.bandwidthPackageBandwidth : undefined;
             resourceInputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
+            resourceInputs["cancelCommonBandwidthPackageIpBandwidth"] = state ? state.cancelCommonBandwidthPackageIpBandwidth : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
             const args = argsOrState as CommonBandwithPackageAttachmentArgs | undefined;
@@ -102,6 +108,7 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
             }
             resourceInputs["bandwidthPackageBandwidth"] = args ? args.bandwidthPackageBandwidth : undefined;
             resourceInputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
+            resourceInputs["cancelCommonBandwidthPackageIpBandwidth"] = args ? args.cancelCommonBandwidthPackageIpBandwidth : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -122,6 +129,10 @@ export interface CommonBandwithPackageAttachmentState {
      */
     bandwidthPackageId?: pulumi.Input<string>;
     /**
+     * Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+     */
+    cancelCommonBandwidthPackageIpBandwidth?: pulumi.Input<boolean>;
+    /**
      * The instanceId of the common bandwidth package attachment, the field can't be changed.
      */
     instanceId?: pulumi.Input<string>;
@@ -139,6 +150,10 @@ export interface CommonBandwithPackageAttachmentArgs {
      * The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
      */
     bandwidthPackageId: pulumi.Input<string>;
+    /**
+     * Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+     */
+    cancelCommonBandwidthPackageIpBandwidth?: pulumi.Input<boolean>;
     /**
      * The instanceId of the common bandwidth package attachment, the field can't be changed.
      */

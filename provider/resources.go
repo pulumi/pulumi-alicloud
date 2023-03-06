@@ -149,6 +149,7 @@ const (
 	vodMod                 = "Vod"
 	vpnMod                 = "Vpn"
 	wafMod                 = "Waf"
+	wafv3Mod               = "Wafv3"
 	yundunMod              = "Yundun"
 )
 
@@ -1367,6 +1368,16 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 
+			// WafV3
+			"alicloud_wafv3_domain": {
+				Tok: resource(wafv3Mod, "Domain"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"domain": {
+						CSharpName: "DomainName",
+					},
+				},
+			},
+
 			// Yundun
 			"alicloud_yundun_bastionhost_instance": {
 				Tok: resource(yundunMod, "BastionHostInstance"),
@@ -2390,6 +2401,7 @@ func Provider() tfbridge.ProviderInfo {
 
 	// The set of modules that x.TokensKnownModules is aware of.
 	mappedMods := map[string]string{
+		"alb":              albMod,
 		"cr":               crMod,
 		"dcdn":             dcdnMod,
 		"dts":              dtsMod,
@@ -2401,6 +2413,7 @@ func Provider() tfbridge.ProviderInfo {
 		"rds":              rdsMod,
 		"service_catalog":  serviceCatalogMod,
 		"threat_detection": threatDetectionMod,
+		"wafv3":            wafv3Mod,
 	}
 
 	mappedModKeys := make([]string, 0, len(mappedMods))

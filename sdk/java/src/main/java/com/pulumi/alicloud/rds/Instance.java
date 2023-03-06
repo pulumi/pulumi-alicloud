@@ -9,6 +9,7 @@ import com.pulumi.alicloud.rds.inputs.InstanceState;
 import com.pulumi.alicloud.rds.outputs.InstanceBabelfishConfig;
 import com.pulumi.alicloud.rds.outputs.InstanceParameter;
 import com.pulumi.alicloud.rds.outputs.InstancePgHbaConf;
+import com.pulumi.alicloud.rds.outputs.InstanceServerlessConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -154,6 +155,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
+     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
      * 
      */
     @Export(name="category", type=String.class, parameters={})
@@ -165,6 +167,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
+     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
      * 
      */
     public Output<String> category() {
@@ -283,7 +286,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dbInstanceIpArrayName);
     }
     /**
-     * The storage type of the instance. Valid values:
+     * The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
      * - cloud_ssd: specifies to use standard SSDs.
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -295,7 +298,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> dbInstanceStorageType;
 
     /**
-     * @return The storage type of the instance. Valid values:
+     * @return The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
      * - cloud_ssd: specifies to use standard SSDs.
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -411,14 +414,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptionKey);
     }
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
      * 
      */
     @Export(name="engine", type=String.class, parameters={})
     private Output<String> engine;
 
     /**
-     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
      * 
      */
     public Output<String> engine() {
@@ -489,14 +492,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.haConfig;
     }
     /**
-     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+     * Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
      * 
      */
     @Export(name="instanceChargeType", type=String.class, parameters={})
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
-     * @return Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+     * @return Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
      * 
      */
     public Output<Optional<String>> instanceChargeType() {
@@ -543,14 +546,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceStorage;
     }
     /**
-     * DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     * DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      * 
      */
     @Export(name="instanceType", type=String.class, parameters={})
     private Output<String> instanceType;
 
     /**
-     * @return DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     * @return DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      * 
      */
     public Output<String> instanceType() {
@@ -829,6 +832,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> serverKey() {
         return this.serverKey;
+    }
+    /**
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     * 
+     */
+    @Export(name="serverlessConfigs", type=List.class, parameters={InstanceServerlessConfig.class})
+    private Output</* @Nullable */ List<InstanceServerlessConfig>> serverlessConfigs;
+
+    /**
+     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     * 
+     */
+    public Output<Optional<List<InstanceServerlessConfig>>> serverlessConfigs() {
+        return Codegen.optional(this.serverlessConfigs);
     }
     /**
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.

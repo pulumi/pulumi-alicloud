@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.mhub.Product;
+ * import com.pulumi.alicloud.mhub.ProductArgs;
  * import com.pulumi.alicloud.mhub.App;
  * import com.pulumi.alicloud.mhub.AppArgs;
  * import java.util.List;
@@ -49,9 +51,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
- *         var default_ = new App(&#34;default&#34;, AppArgs.builder()        
+ *         var defaultProduct = new Product(&#34;defaultProduct&#34;, ProductArgs.builder()        
+ *             .productName(name)
+ *             .build());
+ * 
+ *         var defaultApp = new App(&#34;defaultApp&#34;, AppArgs.builder()        
  *             .appName(name)
- *             .productId(alicloud_mhub_product.default().id())
+ *             .productId(defaultProduct.id())
  *             .packageName(&#34;com.test.android&#34;)
  *             .type(&#34;Android&#34;)
  *             .build());

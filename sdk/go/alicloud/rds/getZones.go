@@ -24,7 +24,7 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
-	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
 	Category        *string `pulumi:"category"`
 	DbInstanceClass *string `pulumi:"dbInstanceClass"`
 	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
@@ -33,7 +33,7 @@ type GetZonesArgs struct {
 	Engine *string `pulumi:"engine"`
 	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion *string `pulumi:"engineVersion"`
-	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// It has been deprecated from version 1.137.0 and using `multiZone` instead.
 	Multi *bool `pulumi:"multi"`
@@ -76,7 +76,7 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getZones.
 type GetZonesOutputArgs struct {
-	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
 	Category        pulumi.StringPtrInput `pulumi:"category"`
 	DbInstanceClass pulumi.StringPtrInput `pulumi:"dbInstanceClass"`
 	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
@@ -85,7 +85,7 @@ type GetZonesOutputArgs struct {
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringPtrInput `pulumi:"engineVersion"`
-	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
 	// It has been deprecated from version 1.137.0 and using `multiZone` instead.
 	Multi pulumi.BoolPtrInput `pulumi:"multi"`

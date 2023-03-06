@@ -80,28 +80,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:rds/rdsParameterGroup:RdsParameterGroup")
 public class RdsParameterGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The database engine. Valid values: `mysql`, `mariadb`.
+     * The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
      * 
      */
     @Export(name="engine", type=String.class, parameters={})
     private Output<String> engine;
 
     /**
-     * @return The database engine. Valid values: `mysql`, `mariadb`.
+     * @return The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
      * 
      */
     public Output<String> engine() {
         return this.engine;
     }
     /**
-     * The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+     * The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
      * 
      */
     @Export(name="engineVersion", type=String.class, parameters={})
     private Output<String> engineVersion;
 
     /**
-     * @return The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+     * @return The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
      * 
      */
     public Output<String> engineVersion() {

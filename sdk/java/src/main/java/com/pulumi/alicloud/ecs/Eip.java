@@ -107,6 +107,12 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    @Export(name="highDefinitionMonitorLogStatus", type=String.class, parameters={})
+    private Output<String> highDefinitionMonitorLogStatus;
+
+    public Output<String> highDefinitionMonitorLogStatus() {
+        return this.highDefinitionMonitorLogStatus;
+    }
     /**
      * (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
@@ -166,6 +172,18 @@ public class Eip extends com.pulumi.resources.CustomResource {
      */
     public Output<String> isp() {
         return this.isp;
+    }
+    @Export(name="logProject", type=String.class, parameters={})
+    private Output</* @Nullable */ String> logProject;
+
+    public Output<Optional<String>> logProject() {
+        return Codegen.optional(this.logProject);
+    }
+    @Export(name="logStore", type=String.class, parameters={})
+    private Output</* @Nullable */ String> logStore;
+
+    public Output<Optional<String>> logStore() {
+        return Codegen.optional(this.logStore);
     }
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.

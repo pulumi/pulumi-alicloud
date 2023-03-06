@@ -166,8 +166,8 @@ namespace Pulumi.AliCloud.Vpc
         /// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
         /// - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         /// </summary>
-        [Input("acceptingAliUid")]
-        public Input<int>? AcceptingAliUid { get; set; }
+        [Input("acceptingAliUid", required: true)]
+        public Input<int> AcceptingAliUid { get; set; } = null!;
 
         /// <summary>
         /// The region ID of the recipient of the VPC peering connection to be created.

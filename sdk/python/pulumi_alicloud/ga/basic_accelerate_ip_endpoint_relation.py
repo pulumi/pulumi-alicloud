@@ -160,10 +160,49 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ga.BasicAccelerateIpEndpointRelation("default",
-            accelerate_ip_id="your_accelerate_ip_id",
-            accelerator_id="your_accelerator_id",
-            endpoint_id="your_endpoint_id")
+        sz = alicloud.Provider("sz", region="cn-shenzhen")
+        hz = alicloud.Provider("hz", region="cn-hangzhou")
+        default_networks = alicloud.vpc.get_networks(name_regex="your_vpc_name")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0],
+        opts=pulumi.ResourceOptions(provider="alicloud.sz"))
+        default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface",
+            vswitch_id=default_switches.ids[0],
+            security_group_ids=[default_security_group.id],
+            opts=pulumi.ResourceOptions(provider="alicloud.sz"))
+        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
+            duration=1,
+            pricing_cycle="Month",
+            basic_accelerator_name=var["name"],
+            description=var["name"],
+            bandwidth_billing_type="CDT",
+            auto_pay=True,
+            auto_use_coupon="true",
+            auto_renew=False,
+            auto_renew_duration=1)
+        default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
+            accelerator_id=default_basic_accelerator.id,
+            accelerate_region_id="cn-hangzhou",
+            isp_type="BGP",
+            bandwidth=5)
+        default_basic_accelerate_ip = alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp",
+            accelerator_id=default_basic_ip_set.accelerator_id,
+            ip_set_id=default_basic_ip_set.id)
+        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
+            accelerator_id=default_basic_accelerator.id,
+            endpoint_group_region="cn-shenzhen")
+        default_basic_endpoint = alicloud.ga.BasicEndpoint("defaultBasicEndpoint",
+            accelerator_id=default_basic_accelerator.id,
+            endpoint_group_id=default_basic_endpoint_group.id,
+            endpoint_type="ENI",
+            endpoint_address=default_ecs_network_interface.id,
+            endpoint_sub_address_type="primary",
+            endpoint_sub_address="192.168.0.1",
+            basic_endpoint_name=var["name"])
+        default_basic_accelerate_ip_endpoint_relation = alicloud.ga.BasicAccelerateIpEndpointRelation("defaultBasicAccelerateIpEndpointRelation",
+            accelerator_id=default_basic_accelerate_ip.accelerator_id,
+            accelerate_ip_id=default_basic_accelerate_ip.id,
+            endpoint_id=default_basic_endpoint.endpoint_id)
         ```
 
         ## Import
@@ -201,10 +240,49 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ga.BasicAccelerateIpEndpointRelation("default",
-            accelerate_ip_id="your_accelerate_ip_id",
-            accelerator_id="your_accelerator_id",
-            endpoint_id="your_endpoint_id")
+        sz = alicloud.Provider("sz", region="cn-shenzhen")
+        hz = alicloud.Provider("hz", region="cn-hangzhou")
+        default_networks = alicloud.vpc.get_networks(name_regex="your_vpc_name")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0],
+        opts=pulumi.ResourceOptions(provider="alicloud.sz"))
+        default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface",
+            vswitch_id=default_switches.ids[0],
+            security_group_ids=[default_security_group.id],
+            opts=pulumi.ResourceOptions(provider="alicloud.sz"))
+        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
+            duration=1,
+            pricing_cycle="Month",
+            basic_accelerator_name=var["name"],
+            description=var["name"],
+            bandwidth_billing_type="CDT",
+            auto_pay=True,
+            auto_use_coupon="true",
+            auto_renew=False,
+            auto_renew_duration=1)
+        default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
+            accelerator_id=default_basic_accelerator.id,
+            accelerate_region_id="cn-hangzhou",
+            isp_type="BGP",
+            bandwidth=5)
+        default_basic_accelerate_ip = alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp",
+            accelerator_id=default_basic_ip_set.accelerator_id,
+            ip_set_id=default_basic_ip_set.id)
+        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
+            accelerator_id=default_basic_accelerator.id,
+            endpoint_group_region="cn-shenzhen")
+        default_basic_endpoint = alicloud.ga.BasicEndpoint("defaultBasicEndpoint",
+            accelerator_id=default_basic_accelerator.id,
+            endpoint_group_id=default_basic_endpoint_group.id,
+            endpoint_type="ENI",
+            endpoint_address=default_ecs_network_interface.id,
+            endpoint_sub_address_type="primary",
+            endpoint_sub_address="192.168.0.1",
+            basic_endpoint_name=var["name"])
+        default_basic_accelerate_ip_endpoint_relation = alicloud.ga.BasicAccelerateIpEndpointRelation("defaultBasicAccelerateIpEndpointRelation",
+            accelerator_id=default_basic_accelerate_ip.accelerator_id,
+            accelerate_ip_id=default_basic_accelerate_ip.id,
+            endpoint_id=default_basic_endpoint.endpoint_id)
         ```
 
         ## Import

@@ -16,6 +16,21 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
     public static final HAVipAttachmentState Empty = new HAVipAttachmentState();
 
     /**
+     * Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     * 
+     */
+    @Import(name="force")
+    private @Nullable Output<String> force;
+
+    /**
+     * @return Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     * 
+     */
+    public Optional<Output<String>> force() {
+        return Optional.ofNullable(this.force);
+    }
+
+    /**
      * The havip_id of the havip attachment, the field can&#39;t be changed.
      * 
      */
@@ -48,6 +63,7 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
     private HAVipAttachmentState() {}
 
     private HAVipAttachmentState(HAVipAttachmentState $) {
+        this.force = $.force;
         this.havipId = $.havipId;
         this.instanceId = $.instanceId;
     }
@@ -68,6 +84,27 @@ public final class HAVipAttachmentState extends com.pulumi.resources.ResourceArg
 
         public Builder(HAVipAttachmentState defaults) {
             $ = new HAVipAttachmentState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param force Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(@Nullable Output<String> force) {
+            $.force = force;
+            return this;
+        }
+
+        /**
+         * @param force Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(String force) {
+            return force(Output.of(force));
         }
 
         /**

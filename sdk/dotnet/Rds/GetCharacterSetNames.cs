@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetCharacterSetNamesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
         /// </summary>
         [Input("engine", required: true)]
         public string Engine { get; set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetCharacterSetNamesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;

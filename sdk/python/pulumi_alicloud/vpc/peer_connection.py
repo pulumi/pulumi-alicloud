@@ -14,10 +14,10 @@ __all__ = ['PeerConnectionArgs', 'PeerConnection']
 @pulumi.input_type
 class PeerConnectionArgs:
     def __init__(__self__, *,
+                 accepting_ali_uid: pulumi.Input[int],
                  accepting_region_id: pulumi.Input[str],
                  accepting_vpc_id: pulumi.Input[str],
                  vpc_id: pulumi.Input[str],
-                 accepting_ali_uid: Optional[pulumi.Input[int]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -25,26 +25,25 @@ class PeerConnectionArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PeerConnection resource.
+        :param pulumi.Input[int] accepting_ali_uid: The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
+               - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
+               - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+               - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         :param pulumi.Input[str] accepting_region_id: The region ID of the recipient of the VPC peering connection to be created.
                - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
                - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
         :param pulumi.Input[str] accepting_vpc_id: The VPC ID of the receiving end of the VPC peer connection.
         :param pulumi.Input[str] vpc_id: The ID of the requester VPC.
-        :param pulumi.Input[int] accepting_ali_uid: The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-               - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
-               - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-               - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         :param pulumi.Input[int] bandwidth: The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
         :param pulumi.Input[str] description: The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] peer_connection_name: The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
         :param pulumi.Input[str] status: The status of the resource.
         """
+        pulumi.set(__self__, "accepting_ali_uid", accepting_ali_uid)
         pulumi.set(__self__, "accepting_region_id", accepting_region_id)
         pulumi.set(__self__, "accepting_vpc_id", accepting_vpc_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
-        if accepting_ali_uid is not None:
-            pulumi.set(__self__, "accepting_ali_uid", accepting_ali_uid)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if description is not None:
@@ -55,6 +54,21 @@ class PeerConnectionArgs:
             pulumi.set(__self__, "peer_connection_name", peer_connection_name)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="acceptingAliUid")
+    def accepting_ali_uid(self) -> pulumi.Input[int]:
+        """
+        The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
+        - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
+        - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+        - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+        """
+        return pulumi.get(self, "accepting_ali_uid")
+
+    @accepting_ali_uid.setter
+    def accepting_ali_uid(self, value: pulumi.Input[int]):
+        pulumi.set(self, "accepting_ali_uid", value)
 
     @property
     @pulumi.getter(name="acceptingRegionId")
@@ -93,21 +107,6 @@ class PeerConnectionArgs:
     @vpc_id.setter
     def vpc_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc_id", value)
-
-    @property
-    @pulumi.getter(name="acceptingAliUid")
-    def accepting_ali_uid(self) -> Optional[pulumi.Input[int]]:
-        """
-        The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-        - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
-        - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-        - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
-        """
-        return pulumi.get(self, "accepting_ali_uid")
-
-    @accepting_ali_uid.setter
-    def accepting_ali_uid(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "accepting_ali_uid", value)
 
     @property
     @pulumi.getter
@@ -471,6 +470,8 @@ class PeerConnection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PeerConnectionArgs.__new__(PeerConnectionArgs)
 
+            if accepting_ali_uid is None and not opts.urn:
+                raise TypeError("Missing required property 'accepting_ali_uid'")
             __props__.__dict__["accepting_ali_uid"] = accepting_ali_uid
             if accepting_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'accepting_region_id'")

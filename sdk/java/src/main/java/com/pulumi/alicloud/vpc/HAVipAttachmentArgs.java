@@ -7,11 +7,28 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final HAVipAttachmentArgs Empty = new HAVipAttachmentArgs();
+
+    /**
+     * Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     * 
+     */
+    @Import(name="force")
+    private @Nullable Output<String> force;
+
+    /**
+     * @return Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+     * 
+     */
+    public Optional<Output<String>> force() {
+        return Optional.ofNullable(this.force);
+    }
 
     /**
      * The havip_id of the havip attachment, the field can&#39;t be changed.
@@ -46,6 +63,7 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
     private HAVipAttachmentArgs() {}
 
     private HAVipAttachmentArgs(HAVipAttachmentArgs $) {
+        this.force = $.force;
         this.havipId = $.havipId;
         this.instanceId = $.instanceId;
     }
@@ -66,6 +84,27 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(HAVipAttachmentArgs defaults) {
             $ = new HAVipAttachmentArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param force Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(@Nullable Output<String> force) {
+            $.force = force;
+            return this;
+        }
+
+        /**
+         * @param force Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder force(String force) {
+            return force(Output.of(force));
         }
 
         /**

@@ -19,10 +19,61 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ga.BasicAccelerateIpEndpointRelation("default", {
- *     accelerateIpId: "your_accelerate_ip_id",
- *     acceleratorId: "your_accelerator_id",
- *     endpointId: "your_endpoint_id",
+ * const sz = new alicloud.Provider("sz", {region: "cn-shenzhen"});
+ * const hz = new alicloud.Provider("hz", {region: "cn-hangzhou"});
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "your_vpc_name",
+ * });
+ * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ * }));
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])}, {
+ *     provider: "alicloud.sz",
+ * });
+ * const defaultEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface", {
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ * }, {
+ *     provider: "alicloud.sz",
+ * });
+ * const defaultBasicAccelerator = new alicloud.ga.BasicAccelerator("defaultBasicAccelerator", {
+ *     duration: 1,
+ *     pricingCycle: "Month",
+ *     basicAcceleratorName: _var.name,
+ *     description: _var.name,
+ *     bandwidthBillingType: "CDT",
+ *     autoPay: true,
+ *     autoUseCoupon: "true",
+ *     autoRenew: false,
+ *     autoRenewDuration: 1,
+ * });
+ * const defaultBasicIpSet = new alicloud.ga.BasicIpSet("defaultBasicIpSet", {
+ *     acceleratorId: defaultBasicAccelerator.id,
+ *     accelerateRegionId: "cn-hangzhou",
+ *     ispType: "BGP",
+ *     bandwidth: 5,
+ * });
+ * const defaultBasicAccelerateIp = new alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp", {
+ *     acceleratorId: defaultBasicIpSet.acceleratorId,
+ *     ipSetId: defaultBasicIpSet.id,
+ * });
+ * const defaultBasicEndpointGroup = new alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup", {
+ *     acceleratorId: defaultBasicAccelerator.id,
+ *     endpointGroupRegion: "cn-shenzhen",
+ * });
+ * const defaultBasicEndpoint = new alicloud.ga.BasicEndpoint("defaultBasicEndpoint", {
+ *     acceleratorId: defaultBasicAccelerator.id,
+ *     endpointGroupId: defaultBasicEndpointGroup.id,
+ *     endpointType: "ENI",
+ *     endpointAddress: defaultEcsNetworkInterface.id,
+ *     endpointSubAddressType: "primary",
+ *     endpointSubAddress: "192.168.0.1",
+ *     basicEndpointName: _var.name,
+ * });
+ * const defaultBasicAccelerateIpEndpointRelation = new alicloud.ga.BasicAccelerateIpEndpointRelation("defaultBasicAccelerateIpEndpointRelation", {
+ *     acceleratorId: defaultBasicAccelerateIp.acceleratorId,
+ *     accelerateIpId: defaultBasicAccelerateIp.id,
+ *     endpointId: defaultBasicEndpoint.endpointId,
  * });
  * ```
  *

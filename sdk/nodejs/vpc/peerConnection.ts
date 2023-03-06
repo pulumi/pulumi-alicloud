@@ -133,6 +133,9 @@ export class PeerConnection extends pulumi.CustomResource {
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as PeerConnectionArgs | undefined;
+            if ((!args || args.acceptingAliUid === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'acceptingAliUid'");
+            }
             if ((!args || args.acceptingRegionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'acceptingRegionId'");
             }
@@ -214,7 +217,7 @@ export interface PeerConnectionArgs {
      * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
      * - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      */
-    acceptingAliUid?: pulumi.Input<number>;
+    acceptingAliUid: pulumi.Input<number>;
     /**
      * The region ID of the recipient of the VPC peering connection to be created.
      * - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.

@@ -26,17 +26,108 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ga.NewBasicAccelerateIpEndpointRelation(ctx, "default", &ga.BasicAccelerateIpEndpointRelationArgs{
-//				AccelerateIpId: pulumi.String("your_accelerate_ip_id"),
-//				AcceleratorId:  pulumi.String("your_accelerator_id"),
-//				EndpointId:     pulumi.String("your_endpoint_id"),
+//			_, err := alicloud.NewProvider(ctx, "sz", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-shenzhen"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("your_vpc_name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+//			}, pulumi.Provider("alicloud.sz"))
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "defaultEcsNetworkInterface", &ecs.EcsNetworkInterfaceArgs{
+//				VswitchId: *pulumi.String(defaultSwitches.Ids[0]),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//			}, pulumi.Provider("alicloud.sz"))
+//			if err != nil {
+//				return err
+//			}
+//			defaultBasicAccelerator, err := ga.NewBasicAccelerator(ctx, "defaultBasicAccelerator", &ga.BasicAcceleratorArgs{
+//				Duration:             pulumi.Int(1),
+//				PricingCycle:         pulumi.String("Month"),
+//				BasicAcceleratorName: pulumi.Any(_var.Name),
+//				Description:          pulumi.Any(_var.Name),
+//				BandwidthBillingType: pulumi.String("CDT"),
+//				AutoPay:              pulumi.Bool(true),
+//				AutoUseCoupon:        pulumi.String("true"),
+//				AutoRenew:            pulumi.Bool(false),
+//				AutoRenewDuration:    pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBasicIpSet, err := ga.NewBasicIpSet(ctx, "defaultBasicIpSet", &ga.BasicIpSetArgs{
+//				AcceleratorId:      defaultBasicAccelerator.ID(),
+//				AccelerateRegionId: pulumi.String("cn-hangzhou"),
+//				IspType:            pulumi.String("BGP"),
+//				Bandwidth:          pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBasicAccelerateIp, err := ga.NewBasicAccelerateIp(ctx, "defaultBasicAccelerateIp", &ga.BasicAccelerateIpArgs{
+//				AcceleratorId: defaultBasicIpSet.AcceleratorId,
+//				IpSetId:       defaultBasicIpSet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBasicEndpointGroup, err := ga.NewBasicEndpointGroup(ctx, "defaultBasicEndpointGroup", &ga.BasicEndpointGroupArgs{
+//				AcceleratorId:       defaultBasicAccelerator.ID(),
+//				EndpointGroupRegion: pulumi.String("cn-shenzhen"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBasicEndpoint, err := ga.NewBasicEndpoint(ctx, "defaultBasicEndpoint", &ga.BasicEndpointArgs{
+//				AcceleratorId:          defaultBasicAccelerator.ID(),
+//				EndpointGroupId:        defaultBasicEndpointGroup.ID(),
+//				EndpointType:           pulumi.String("ENI"),
+//				EndpointAddress:        defaultEcsNetworkInterface.ID(),
+//				EndpointSubAddressType: pulumi.String("primary"),
+//				EndpointSubAddress:     pulumi.String("192.168.0.1"),
+//				BasicEndpointName:      pulumi.Any(_var.Name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewBasicAccelerateIpEndpointRelation(ctx, "defaultBasicAccelerateIpEndpointRelation", &ga.BasicAccelerateIpEndpointRelationArgs{
+//				AcceleratorId:  defaultBasicAccelerateIp.AcceleratorId,
+//				AccelerateIpId: defaultBasicAccelerateIp.ID(),
+//				EndpointId:     defaultBasicEndpoint.EndpointId,
 //			})
 //			if err != nil {
 //				return err

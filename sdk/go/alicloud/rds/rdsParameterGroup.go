@@ -70,9 +70,9 @@ import (
 type RdsParameterGroup struct {
 	pulumi.CustomResourceState
 
-	// The database engine. Valid values: `mysql`, `mariadb`.
+	// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
 	Engine pulumi.StringOutput `pulumi:"engine"`
-	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Parameter list.
 	ParamDetails RdsParameterGroupParamDetailArrayOutput `pulumi:"paramDetails"`
@@ -123,9 +123,9 @@ func GetRdsParameterGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RdsParameterGroup resources.
 type rdsParameterGroupState struct {
-	// The database engine. Valid values: `mysql`, `mariadb`.
+	// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
 	Engine *string `pulumi:"engine"`
-	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Parameter list.
 	ParamDetails []RdsParameterGroupParamDetail `pulumi:"paramDetails"`
@@ -136,9 +136,9 @@ type rdsParameterGroupState struct {
 }
 
 type RdsParameterGroupState struct {
-	// The database engine. Valid values: `mysql`, `mariadb`.
+	// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
 	Engine pulumi.StringPtrInput
-	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
 	EngineVersion pulumi.StringPtrInput
 	// Parameter list.
 	ParamDetails RdsParameterGroupParamDetailArrayInput
@@ -153,9 +153,9 @@ func (RdsParameterGroupState) ElementType() reflect.Type {
 }
 
 type rdsParameterGroupArgs struct {
-	// The database engine. Valid values: `mysql`, `mariadb`.
+	// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
 	Engine string `pulumi:"engine"`
-	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
 	EngineVersion string `pulumi:"engineVersion"`
 	// Parameter list.
 	ParamDetails []RdsParameterGroupParamDetail `pulumi:"paramDetails"`
@@ -167,9 +167,9 @@ type rdsParameterGroupArgs struct {
 
 // The set of arguments for constructing a RdsParameterGroup resource.
 type RdsParameterGroupArgs struct {
-	// The database engine. Valid values: `mysql`, `mariadb`.
+	// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
 	Engine pulumi.StringInput
-	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+	// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
 	EngineVersion pulumi.StringInput
 	// Parameter list.
 	ParamDetails RdsParameterGroupParamDetailArrayInput
@@ -266,12 +266,12 @@ func (o RdsParameterGroupOutput) ToRdsParameterGroupOutputWithContext(ctx contex
 	return o
 }
 
-// The database engine. Valid values: `mysql`, `mariadb`.
+// The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
 func (o RdsParameterGroupOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsParameterGroup) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
 
-// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+// The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
 func (o RdsParameterGroupOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsParameterGroup) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }

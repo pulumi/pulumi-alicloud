@@ -100,6 +100,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of vCPUs.
+     * 
+     */
+    @Import(name="cpu")
+    private @Nullable Output<Integer> cpu;
+
+    /**
+     * @return The number of vCPUs.
+     * 
+     */
+    public Optional<Output<Integer>> cpu() {
+        return Optional.ofNullable(this.cpu);
+    }
+
+    /**
      * Performance mode of the t5 burstable instance. Valid values: &#39;Standard&#39;, &#39;Unlimited&#39;.
      * 
      */
@@ -589,6 +604,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The memory size of the instance. Unit: MiB.
+     * 
+     */
+    @Import(name="memory")
+    private @Nullable Output<Integer> memory;
+
+    /**
+     * @return The memory size of the instance. Unit: MiB.
+     * 
+     */
+    public Optional<Output<Integer>> memory() {
+        return Optional.ofNullable(this.memory);
+    }
+
+    /**
      * The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
      * 
      */
@@ -601,6 +631,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> operatorType() {
         return Optional.ofNullable(this.operatorType);
+    }
+
+    /**
+     * The name of the operating system of the instance.
+     * 
+     */
+    @Import(name="osName")
+    private @Nullable Output<String> osName;
+
+    /**
+     * @return The name of the operating system of the instance.
+     * 
+     */
+    public Optional<Output<String>> osName() {
+        return Optional.ofNullable(this.osName);
+    }
+
+    /**
+     * The type of the operating system of the instance.
+     * 
+     */
+    @Import(name="osType")
+    private @Nullable Output<String> osType;
+
+    /**
+     * @return The type of the operating system of the instance.
+     * 
+     */
+    public Optional<Output<String>> osType() {
+        return Optional.ofNullable(this.osType);
     }
 
     /**
@@ -638,6 +698,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> periodUnit() {
         return Optional.ofNullable(this.periodUnit);
+    }
+
+    /**
+     * The primary private IP address of the ENI.
+     * 
+     */
+    @Import(name="primaryIpAddress")
+    private @Nullable Output<String> primaryIpAddress;
+
+    /**
+     * @return The primary private IP address of the ENI.
+     * 
+     */
+    public Optional<Output<String>> primaryIpAddress() {
+        return Optional.ofNullable(this.primaryIpAddress);
     }
 
     /**
@@ -1104,6 +1179,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.autoReleaseTime = $.autoReleaseTime;
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.availabilityZone = $.availabilityZone;
+        this.cpu = $.cpu;
         this.creditSpecification = $.creditSpecification;
         this.dataDisks = $.dataDisks;
         this.deletionProtection = $.deletionProtection;
@@ -1135,10 +1211,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.maintenanceAction = $.maintenanceAction;
         this.maintenanceNotify = $.maintenanceNotify;
         this.maintenanceTime = $.maintenanceTime;
+        this.memory = $.memory;
         this.operatorType = $.operatorType;
+        this.osName = $.osName;
+        this.osType = $.osType;
         this.password = $.password;
         this.period = $.period;
         this.periodUnit = $.periodUnit;
+        this.primaryIpAddress = $.primaryIpAddress;
         this.privateIp = $.privateIp;
         this.publicIp = $.publicIp;
         this.renewalStatus = $.renewalStatus;
@@ -1286,6 +1366,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
+        }
+
+        /**
+         * @param cpu The number of vCPUs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpu(@Nullable Output<Integer> cpu) {
+            $.cpu = cpu;
+            return this;
+        }
+
+        /**
+         * @param cpu The number of vCPUs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpu(Integer cpu) {
+            return cpu(Output.of(cpu));
         }
 
         /**
@@ -1980,6 +2081,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param memory The memory size of the instance. Unit: MiB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memory(@Nullable Output<Integer> memory) {
+            $.memory = memory;
+            return this;
+        }
+
+        /**
+         * @param memory The memory size of the instance. Unit: MiB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memory(Integer memory) {
+            return memory(Output.of(memory));
+        }
+
+        /**
          * @param operatorType The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
          * 
          * @return builder
@@ -1998,6 +2120,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder operatorType(String operatorType) {
             return operatorType(Output.of(operatorType));
+        }
+
+        /**
+         * @param osName The name of the operating system of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osName(@Nullable Output<String> osName) {
+            $.osName = osName;
+            return this;
+        }
+
+        /**
+         * @param osName The name of the operating system of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osName(String osName) {
+            return osName(Output.of(osName));
+        }
+
+        /**
+         * @param osType The type of the operating system of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osType(@Nullable Output<String> osType) {
+            $.osType = osType;
+            return this;
+        }
+
+        /**
+         * @param osType The type of the operating system of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osType(String osType) {
+            return osType(Output.of(osType));
         }
 
         /**
@@ -2049,6 +2213,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder periodUnit(String periodUnit) {
             return periodUnit(Output.of(periodUnit));
+        }
+
+        /**
+         * @param primaryIpAddress The primary private IP address of the ENI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryIpAddress(@Nullable Output<String> primaryIpAddress) {
+            $.primaryIpAddress = primaryIpAddress;
+            return this;
+        }
+
+        /**
+         * @param primaryIpAddress The primary private IP address of the ENI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryIpAddress(String primaryIpAddress) {
+            return primaryIpAddress(Output.of(primaryIpAddress));
         }
 
         /**
