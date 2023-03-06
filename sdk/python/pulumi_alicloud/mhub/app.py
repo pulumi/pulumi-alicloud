@@ -282,9 +282,10 @@ class App(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "example_value"
-        default = alicloud.mhub.App("default",
+        default_product = alicloud.mhub.Product("defaultProduct", product_name=name)
+        default_app = alicloud.mhub.App("defaultApp",
             app_name=name,
-            product_id=alicloud_mhub_product["default"]["id"],
+            product_id=default_product.id,
             package_name="com.test.android",
             type="Android")
         ```
@@ -334,9 +335,10 @@ class App(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "example_value"
-        default = alicloud.mhub.App("default",
+        default_product = alicloud.mhub.Product("defaultProduct", product_name=name)
+        default_app = alicloud.mhub.App("defaultApp",
             app_name=name,
-            product_id=alicloud_mhub_product["default"]["id"],
+            product_id=default_product.id,
             package_name="com.test.android",
             type="Android")
         ```

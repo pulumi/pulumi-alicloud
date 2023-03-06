@@ -23,8 +23,8 @@ class RdsParameterGroupArgs:
                  parameter_group_desc: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RdsParameterGroup resource.
-        :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`.
-        :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+        :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
+        :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         :param pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]] param_details: Parameter list.
         :param pulumi.Input[str] parameter_group_name: The name of the parameter template.
         :param pulumi.Input[str] parameter_group_desc: The description of the parameter template.
@@ -40,7 +40,7 @@ class RdsParameterGroupArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        The database engine. Valid values: `mysql`, `mariadb`.
+        The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         """
         return pulumi.get(self, "engine")
 
@@ -52,7 +52,7 @@ class RdsParameterGroupArgs:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Input[str]:
         """
-        The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+        The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         """
         return pulumi.get(self, "engine_version")
 
@@ -107,8 +107,8 @@ class _RdsParameterGroupState:
                  parameter_group_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RdsParameterGroup resources.
-        :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`.
-        :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+        :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
+        :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         :param pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]] param_details: Parameter list.
         :param pulumi.Input[str] parameter_group_desc: The description of the parameter template.
         :param pulumi.Input[str] parameter_group_name: The name of the parameter template.
@@ -128,7 +128,7 @@ class _RdsParameterGroupState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        The database engine. Valid values: `mysql`, `mariadb`.
+        The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         """
         return pulumi.get(self, "engine")
 
@@ -140,7 +140,7 @@ class _RdsParameterGroupState:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+        The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         """
         return pulumi.get(self, "engine_version")
 
@@ -238,8 +238,8 @@ class RdsParameterGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`.
-        :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+        :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
+        :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsParameterGroupParamDetailArgs']]]] param_details: Parameter list.
         :param pulumi.Input[str] parameter_group_desc: The description of the parameter template.
         :param pulumi.Input[str] parameter_group_name: The name of the parameter template.
@@ -354,8 +354,8 @@ class RdsParameterGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`.
-        :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+        :param pulumi.Input[str] engine: The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
+        :param pulumi.Input[str] engine_version: The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsParameterGroupParamDetailArgs']]]] param_details: Parameter list.
         :param pulumi.Input[str] parameter_group_desc: The description of the parameter template.
         :param pulumi.Input[str] parameter_group_name: The name of the parameter template.
@@ -375,7 +375,7 @@ class RdsParameterGroup(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        The database engine. Valid values: `mysql`, `mariadb`.
+        The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         """
         return pulumi.get(self, "engine")
 
@@ -383,7 +383,7 @@ class RdsParameterGroup(pulumi.CustomResource):
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Output[str]:
         """
-        The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+        The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         """
         return pulumi.get(self, "engine_version")
 

@@ -29,8 +29,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			fooCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "fooCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
-//				Bandwidth:   pulumi.String("2"),
-//				Description: pulumi.String("test_common_bandwidth_package"),
+//				Bandwidth:            pulumi.String("2"),
+//				BandwidthPackageName: pulumi.String("test_common_bandwidth_package"),
+//				Description:          pulumi.String("test_common_bandwidth_package"),
 //			})
 //			if err != nil {
 //				return err
@@ -61,7 +62,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo cbwp-abc123456:eip-abc123456
+//	$ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo <bandwidth_package_id>:<instance_id>
 //
 // ```
 type CommonBandwithPackageAttachment struct {
@@ -71,6 +72,8 @@ type CommonBandwithPackageAttachment struct {
 	BandwidthPackageBandwidth pulumi.StringOutput `pulumi:"bandwidthPackageBandwidth"`
 	// The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
 	BandwidthPackageId pulumi.StringOutput `pulumi:"bandwidthPackageId"`
+	// Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+	CancelCommonBandwidthPackageIpBandwidth pulumi.BoolPtrOutput `pulumi:"cancelCommonBandwidthPackageIpBandwidth"`
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 }
@@ -114,6 +117,8 @@ type commonBandwithPackageAttachmentState struct {
 	BandwidthPackageBandwidth *string `pulumi:"bandwidthPackageBandwidth"`
 	// The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
 	BandwidthPackageId *string `pulumi:"bandwidthPackageId"`
+	// Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+	CancelCommonBandwidthPackageIpBandwidth *bool `pulumi:"cancelCommonBandwidthPackageIpBandwidth"`
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
 	InstanceId *string `pulumi:"instanceId"`
 }
@@ -123,6 +128,8 @@ type CommonBandwithPackageAttachmentState struct {
 	BandwidthPackageBandwidth pulumi.StringPtrInput
 	// The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
 	BandwidthPackageId pulumi.StringPtrInput
+	// Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+	CancelCommonBandwidthPackageIpBandwidth pulumi.BoolPtrInput
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
 	InstanceId pulumi.StringPtrInput
 }
@@ -136,6 +143,8 @@ type commonBandwithPackageAttachmentArgs struct {
 	BandwidthPackageBandwidth *string `pulumi:"bandwidthPackageBandwidth"`
 	// The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
 	BandwidthPackageId string `pulumi:"bandwidthPackageId"`
+	// Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+	CancelCommonBandwidthPackageIpBandwidth *bool `pulumi:"cancelCommonBandwidthPackageIpBandwidth"`
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
 	InstanceId string `pulumi:"instanceId"`
 }
@@ -146,6 +155,8 @@ type CommonBandwithPackageAttachmentArgs struct {
 	BandwidthPackageBandwidth pulumi.StringPtrInput
 	// The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
 	BandwidthPackageId pulumi.StringInput
+	// Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+	CancelCommonBandwidthPackageIpBandwidth pulumi.BoolPtrInput
 	// The instanceId of the common bandwidth package attachment, the field can't be changed.
 	InstanceId pulumi.StringInput
 }
@@ -245,6 +256,13 @@ func (o CommonBandwithPackageAttachmentOutput) BandwidthPackageBandwidth() pulum
 // The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
 func (o CommonBandwithPackageAttachmentOutput) BandwidthPackageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackageAttachment) pulumi.StringOutput { return v.BandwidthPackageId }).(pulumi.StringOutput)
+}
+
+// Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+func (o CommonBandwithPackageAttachmentOutput) CancelCommonBandwidthPackageIpBandwidth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CommonBandwithPackageAttachment) pulumi.BoolPtrOutput {
+		return v.CancelCommonBandwidthPackageIpBandwidth
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The instanceId of the common bandwidth package attachment, the field can't be changed.

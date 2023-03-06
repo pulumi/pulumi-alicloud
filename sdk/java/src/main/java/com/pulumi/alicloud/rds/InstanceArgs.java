@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rds;
 import com.pulumi.alicloud.rds.inputs.InstanceBabelfishConfigArgs;
 import com.pulumi.alicloud.rds.inputs.InstanceParameterArgs;
 import com.pulumi.alicloud.rds.inputs.InstancePgHbaConfArgs;
+import com.pulumi.alicloud.rds.inputs.InstanceServerlessConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -150,6 +151,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
+     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
      * 
      */
     @Import(name="category")
@@ -161,6 +163,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
+     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
      * 
      */
     public Optional<Output<String>> category() {
@@ -273,7 +276,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage type of the instance. Valid values:
+     * The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
      * - cloud_ssd: specifies to use standard SSDs.
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -285,7 +288,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> dbInstanceStorageType;
 
     /**
-     * @return The storage type of the instance. Valid values:
+     * @return The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
      * - local_ssd: specifies to use local SSDs. This value is recommended.
      * - cloud_ssd: specifies to use standard SSDs.
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -393,14 +396,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
      * 
      */
     @Import(name="engine", required=true)
     private Output<String> engine;
 
     /**
-     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
      * 
      */
     public Output<String> engine() {
@@ -476,14 +479,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+     * Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
      * 
      */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+     * @return Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
      * 
      */
     public Optional<Output<String>> instanceChargeType() {
@@ -533,14 +536,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     * DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      * 
      */
     @Import(name="instanceType", required=true)
     private Output<String> instanceType;
 
     /**
-     * @return DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     * @return DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      * 
      */
     public Output<String> instanceType() {
@@ -842,6 +845,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> serverKey() {
         return Optional.ofNullable(this.serverKey);
+    }
+
+    /**
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     * 
+     */
+    @Import(name="serverlessConfigs")
+    private @Nullable Output<List<InstanceServerlessConfigArgs>> serverlessConfigs;
+
+    /**
+     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     * 
+     */
+    public Optional<Output<List<InstanceServerlessConfigArgs>>> serverlessConfigs() {
+        return Optional.ofNullable(this.serverlessConfigs);
     }
 
     /**
@@ -1258,6 +1276,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.securityIps = $.securityIps;
         this.serverCert = $.serverCert;
         this.serverKey = $.serverKey;
+        this.serverlessConfigs = $.serverlessConfigs;
         this.sqlCollectorConfigValue = $.sqlCollectorConfigValue;
         this.sqlCollectorStatus = $.sqlCollectorStatus;
         this.sslAction = $.sslAction;
@@ -1477,6 +1496,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * **HighAvailability**: High-availability Edition.
          * * **AlwaysOn**: Cluster Edition.
          * * **Finance**: Enterprise Edition.
+         * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
          * 
          * @return builder
          * 
@@ -1492,6 +1512,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * **HighAvailability**: High-availability Edition.
          * * **AlwaysOn**: Cluster Edition.
          * * **Finance**: Enterprise Edition.
+         * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
          * 
          * @return builder
          * 
@@ -1644,7 +1665,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceStorageType The storage type of the instance. Valid values:
+         * @param dbInstanceStorageType The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
          * - local_ssd: specifies to use local SSDs. This value is recommended.
          * - cloud_ssd: specifies to use standard SSDs.
          * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -1660,7 +1681,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceStorageType The storage type of the instance. Valid values:
+         * @param dbInstanceStorageType The storage type of the instance. Serverless instance, only `cloud_essd` can be selected. Valid values:
          * - local_ssd: specifies to use local SSDs. This value is recommended.
          * - cloud_ssd: specifies to use standard SSDs.
          * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
@@ -1800,7 +1821,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
          * 
          * @return builder
          * 
@@ -1811,7 +1832,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
          * 
          * @return builder
          * 
@@ -1913,7 +1934,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+         * @param instanceChargeType Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
          * 
          * @return builder
          * 
@@ -1924,7 +1945,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+         * @param instanceChargeType Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
          * 
          * @return builder
          * 
@@ -1988,7 +2009,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+         * @param instanceType DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
          * 
          * @return builder
          * 
@@ -1999,7 +2020,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+         * @param instanceType DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
          * 
          * @return builder
          * 
@@ -2449,6 +2470,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serverKey(String serverKey) {
             return serverKey(Output.of(serverKey));
+        }
+
+        /**
+         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessConfigs(@Nullable Output<List<InstanceServerlessConfigArgs>> serverlessConfigs) {
+            $.serverlessConfigs = serverlessConfigs;
+            return this;
+        }
+
+        /**
+         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessConfigs(List<InstanceServerlessConfigArgs> serverlessConfigs) {
+            return serverlessConfigs(Output.of(serverlessConfigs));
+        }
+
+        /**
+         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessConfigs(InstanceServerlessConfigArgs... serverlessConfigs) {
+            return serverlessConfigs(List.of(serverlessConfigs));
         }
 
         /**

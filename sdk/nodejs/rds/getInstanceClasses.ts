@@ -52,7 +52,7 @@ export function getInstanceClasses(args?: GetInstanceClassesArgs, opts?: pulumi.
  */
 export interface GetInstanceClassesArgs {
     /**
-     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      */
     category?: string;
     /**
@@ -65,6 +65,8 @@ export interface GetInstanceClassesArgs {
      * * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
      * * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
      * * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+     * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
+     * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
      */
     commodityCode?: string;
     /**
@@ -88,7 +90,7 @@ export interface GetInstanceClassesArgs {
      */
     engineVersion?: string;
     /**
-     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
      */
     instanceChargeType?: string;
     /**
@@ -166,7 +168,7 @@ export function getInstanceClassesOutput(args?: GetInstanceClassesOutputArgs, op
  */
 export interface GetInstanceClassesOutputArgs {
     /**
-     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      */
     category?: pulumi.Input<string>;
     /**
@@ -179,6 +181,8 @@ export interface GetInstanceClassesOutputArgs {
      * * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
      * * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
      * * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+     * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
+     * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
      */
     commodityCode?: pulumi.Input<string>;
     /**
@@ -202,7 +206,7 @@ export interface GetInstanceClassesOutputArgs {
      */
     engineVersion?: pulumi.Input<string>;
     /**
-     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+     * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**

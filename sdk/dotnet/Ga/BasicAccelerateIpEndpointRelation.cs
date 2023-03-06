@@ -27,11 +27,95 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Ga.BasicAccelerateIpEndpointRelation("default", new()
+    ///     var sz = new AliCloud.Provider("sz", new()
     ///     {
-    ///         AccelerateIpId = "your_accelerate_ip_id",
-    ///         AcceleratorId = "your_accelerator_id",
-    ///         EndpointId = "your_endpoint_id",
+    ///         Region = "cn-shenzhen",
+    ///     });
+    /// 
+    ///     var hz = new AliCloud.Provider("hz", new()
+    ///     {
+    ///         Region = "cn-hangzhou",
+    ///     });
+    /// 
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "your_vpc_name",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = "alicloud.sz",
+    ///     });
+    /// 
+    ///     var defaultEcsNetworkInterface = new AliCloud.Ecs.EcsNetworkInterface("defaultEcsNetworkInterface", new()
+    ///     {
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = "alicloud.sz",
+    ///     });
+    /// 
+    ///     var defaultBasicAccelerator = new AliCloud.Ga.BasicAccelerator("defaultBasicAccelerator", new()
+    ///     {
+    ///         Duration = 1,
+    ///         PricingCycle = "Month",
+    ///         BasicAcceleratorName = @var.Name,
+    ///         Description = @var.Name,
+    ///         BandwidthBillingType = "CDT",
+    ///         AutoPay = true,
+    ///         AutoUseCoupon = "true",
+    ///         AutoRenew = false,
+    ///         AutoRenewDuration = 1,
+    ///     });
+    /// 
+    ///     var defaultBasicIpSet = new AliCloud.Ga.BasicIpSet("defaultBasicIpSet", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicAccelerator.Id,
+    ///         AccelerateRegionId = "cn-hangzhou",
+    ///         IspType = "BGP",
+    ///         Bandwidth = 5,
+    ///     });
+    /// 
+    ///     var defaultBasicAccelerateIp = new AliCloud.Ga.BasicAccelerateIp("defaultBasicAccelerateIp", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicIpSet.AcceleratorId,
+    ///         IpSetId = defaultBasicIpSet.Id,
+    ///     });
+    /// 
+    ///     var defaultBasicEndpointGroup = new AliCloud.Ga.BasicEndpointGroup("defaultBasicEndpointGroup", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicAccelerator.Id,
+    ///         EndpointGroupRegion = "cn-shenzhen",
+    ///     });
+    /// 
+    ///     var defaultBasicEndpoint = new AliCloud.Ga.BasicEndpoint("defaultBasicEndpoint", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicAccelerator.Id,
+    ///         EndpointGroupId = defaultBasicEndpointGroup.Id,
+    ///         EndpointType = "ENI",
+    ///         EndpointAddress = defaultEcsNetworkInterface.Id,
+    ///         EndpointSubAddressType = "primary",
+    ///         EndpointSubAddress = "192.168.0.1",
+    ///         BasicEndpointName = @var.Name,
+    ///     });
+    /// 
+    ///     var defaultBasicAccelerateIpEndpointRelation = new AliCloud.Ga.BasicAccelerateIpEndpointRelation("defaultBasicAccelerateIpEndpointRelation", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicAccelerateIp.AcceleratorId,
+    ///         AccelerateIpId = defaultBasicAccelerateIp.Id,
+    ///         EndpointId = defaultBasicEndpoint.EndpointId,
     ///     });
     /// 
     /// });

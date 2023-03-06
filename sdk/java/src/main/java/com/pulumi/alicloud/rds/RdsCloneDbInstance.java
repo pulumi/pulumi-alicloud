@@ -8,6 +8,7 @@ import com.pulumi.alicloud.rds.RdsCloneDbInstanceArgs;
 import com.pulumi.alicloud.rds.inputs.RdsCloneDbInstanceState;
 import com.pulumi.alicloud.rds.outputs.RdsCloneDbInstanceParameter;
 import com.pulumi.alicloud.rds.outputs.RdsCloneDbInstancePgHbaConf;
+import com.pulumi.alicloud.rds.outputs.RdsCloneDbInstanceServerlessConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -196,6 +197,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **HighAvailability**: High availability
      * * **AlwaysOn**: Cluster Edition
      * * **Finance**: Three-node Enterprise Edition.
+     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
      * 
      */
     @Export(name="category", type=String.class, parameters={})
@@ -207,6 +209,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **HighAvailability**: High availability
      * * **AlwaysOn**: Cluster Edition
      * * **Finance**: Three-node Enterprise Edition.
+     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
      * 
      */
     public Output<String> category() {
@@ -609,14 +612,14 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
-     * The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+     * The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
      * 
      */
     @Export(name="paymentType", type=String.class, parameters={})
     private Output<String> paymentType;
 
     /**
-     * @return The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+     * @return The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
      * 
      */
     public Output<String> paymentType() {
@@ -821,6 +824,20 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> serverKey() {
         return this.serverKey;
+    }
+    /**
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     * 
+     */
+    @Export(name="serverlessConfigs", type=List.class, parameters={RdsCloneDbInstanceServerlessConfig.class})
+    private Output</* @Nullable */ List<RdsCloneDbInstanceServerlessConfig>> serverlessConfigs;
+
+    /**
+     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     * 
+     */
+    public Output<Optional<List<RdsCloneDbInstanceServerlessConfig>>> serverlessConfigs() {
+        return Codegen.optional(this.serverlessConfigs);
     }
     /**
      * The source biz.

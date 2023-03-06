@@ -31,10 +31,15 @@ namespace Pulumi.AliCloud.Mhub
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "example_value";
-    ///     var @default = new AliCloud.Mhub.App("default", new()
+    ///     var defaultProduct = new AliCloud.Mhub.Product("defaultProduct", new()
+    ///     {
+    ///         ProductName = name,
+    ///     });
+    /// 
+    ///     var defaultApp = new AliCloud.Mhub.App("defaultApp", new()
     ///     {
     ///         AppName = name,
-    ///         ProductId = alicloud_mhub_product.Default.Id,
+    ///         ProductId = defaultProduct.Id,
     ///         PackageName = "com.test.android",
     ///         Type = "Android",
     ///     });

@@ -115,7 +115,7 @@ public final class GetInstancesInstance {
      */
     private String encryptionKeyStatus;
     /**
-     * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+     * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
      * 
      */
     private String engine;
@@ -451,7 +451,7 @@ public final class GetInstancesInstance {
         return this.encryptionKeyStatus;
     }
     /**
-     * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+     * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
      * 
      */
     public String engine() {

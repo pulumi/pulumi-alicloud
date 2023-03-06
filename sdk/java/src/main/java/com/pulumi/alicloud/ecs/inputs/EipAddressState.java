@@ -111,6 +111,21 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+     * 
+     */
+    @Import(name="highDefinitionMonitorLogStatus")
+    private @Nullable Output<String> highDefinitionMonitorLogStatus;
+
+    /**
+     * @return The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+     * 
+     */
+    public Optional<Output<String>> highDefinitionMonitorLogStatus() {
+        return Optional.ofNullable(this.highDefinitionMonitorLogStatus);
+    }
+
+    /**
      * Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
      * 
      * @deprecated
@@ -178,6 +193,36 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> isp() {
         return Optional.ofNullable(this.isp);
+    }
+
+    /**
+     * The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * 
+     */
+    @Import(name="logProject")
+    private @Nullable Output<String> logProject;
+
+    /**
+     * @return The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * 
+     */
+    public Optional<Output<String>> logProject() {
+        return Optional.ofNullable(this.logProject);
+    }
+
+    /**
+     * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * 
+     */
+    @Import(name="logStore")
+    private @Nullable Output<String> logStore;
+
+    /**
+     * @return The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * 
+     */
+    public Optional<Output<String>> logStore() {
+        return Optional.ofNullable(this.logStore);
     }
 
     /**
@@ -332,10 +377,13 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         this.bandwidth = $.bandwidth;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
+        this.highDefinitionMonitorLogStatus = $.highDefinitionMonitorLogStatus;
         this.instanceChargeType = $.instanceChargeType;
         this.internetChargeType = $.internetChargeType;
         this.ipAddress = $.ipAddress;
         this.isp = $.isp;
+        this.logProject = $.logProject;
+        this.logStore = $.logStore;
         this.name = $.name;
         this.netmode = $.netmode;
         this.paymentType = $.paymentType;
@@ -492,6 +540,27 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param highDefinitionMonitorLogStatus The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder highDefinitionMonitorLogStatus(@Nullable Output<String> highDefinitionMonitorLogStatus) {
+            $.highDefinitionMonitorLogStatus = highDefinitionMonitorLogStatus;
+            return this;
+        }
+
+        /**
+         * @param highDefinitionMonitorLogStatus The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder highDefinitionMonitorLogStatus(String highDefinitionMonitorLogStatus) {
+            return highDefinitionMonitorLogStatus(Output.of(highDefinitionMonitorLogStatus));
+        }
+
+        /**
          * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
          * 
          * @return builder
@@ -583,6 +652,48 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder isp(String isp) {
             return isp(Output.of(isp));
+        }
+
+        /**
+         * @param logProject The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logProject(@Nullable Output<String> logProject) {
+            $.logProject = logProject;
+            return this;
+        }
+
+        /**
+         * @param logProject The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logProject(String logProject) {
+            return logProject(Output.of(logProject));
+        }
+
+        /**
+         * @param logStore The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logStore(@Nullable Output<String> logStore) {
+            $.logStore = logStore;
+            return this;
+        }
+
+        /**
+         * @param logStore The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logStore(String logStore) {
+            return logStore(Output.of(logStore));
         }
 
         /**

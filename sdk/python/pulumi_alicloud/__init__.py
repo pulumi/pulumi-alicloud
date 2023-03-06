@@ -253,6 +253,8 @@ if typing.TYPE_CHECKING:
     vpn = __vpn
     import pulumi_alicloud.waf as __waf
     waf = __waf
+    import pulumi_alicloud.wafv3 as __wafv3
+    wafv3 = __wafv3
     import pulumi_alicloud.yundun as __yundun
     yundun = __yundun
 else:
@@ -371,6 +373,7 @@ else:
     vpc = _utilities.lazy_import('pulumi_alicloud.vpc')
     vpn = _utilities.lazy_import('pulumi_alicloud.vpn')
     waf = _utilities.lazy_import('pulumi_alicloud.waf')
+    wafv3 = _utilities.lazy_import('pulumi_alicloud.wafv3')
     yundun = _utilities.lazy_import('pulumi_alicloud.yundun')
 
 _utilities.register(
@@ -518,6 +521,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.alb",
   "classes": {
    "alicloud:alb/loadBalancer:LoadBalancer": "LoadBalancer"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "alb/loadBalancerCommonBandwidthPackageAttachment",
+  "fqn": "pulumi_alicloud.alb",
+  "classes": {
+   "alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment": "LoadBalancerCommonBandwidthPackageAttachment"
   }
  },
  {
@@ -6142,6 +6153,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.waf",
   "classes": {
    "alicloud:waf/protectionModule:ProtectionModule": "ProtectionModule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "wafv3/domain",
+  "fqn": "pulumi_alicloud.wafv3",
+  "classes": {
+   "alicloud:wafv3/domain:Domain": "Domain"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "wafv3/instance",
+  "fqn": "pulumi_alicloud.wafv3",
+  "classes": {
+   "alicloud:wafv3/instance:Instance": "Instance"
   }
  },
  {

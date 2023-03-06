@@ -163,6 +163,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly encryptNewTables!: pulumi.Output<string | undefined>;
     /**
+     * The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
+     */
+    public readonly encryptionKey!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the global database network (GDN).
      * > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
      */
@@ -203,6 +207,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
+     * The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+     */
+    public readonly roleArn!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
      * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
@@ -226,6 +234,12 @@ export class Cluster extends pulumi.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * (Available in 1.200.0+) The region where the TDE key resides.
+     * > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+     * > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+     */
+    public /*out*/ readonly tdeRegion!: pulumi.Output<string>;
     /**
      * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
      * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
@@ -273,6 +287,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["deletionLock"] = state ? state.deletionLock : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["encryptNewTables"] = state ? state.encryptNewTables : undefined;
+            resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["gdnId"] = state ? state.gdnId : undefined;
             resourceInputs["imciSwitch"] = state ? state.imciSwitch : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
@@ -283,11 +298,13 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
             resourceInputs["sourceResourceId"] = state ? state.sourceResourceId : undefined;
             resourceInputs["subCategory"] = state ? state.subCategory : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tdeRegion"] = state ? state.tdeRegion : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -317,6 +334,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["deletionLock"] = args ? args.deletionLock : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encryptNewTables"] = args ? args.encryptNewTables : undefined;
+            resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["gdnId"] = args ? args.gdnId : undefined;
             resourceInputs["imciSwitch"] = args ? args.imciSwitch : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
@@ -326,6 +344,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
             resourceInputs["sourceResourceId"] = args ? args.sourceResourceId : undefined;
@@ -337,6 +356,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["tdeRegion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
@@ -415,6 +435,10 @@ export interface ClusterState {
      */
     encryptNewTables?: pulumi.Input<string>;
     /**
+     * The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
+     */
+    encryptionKey?: pulumi.Input<string>;
+    /**
      * The ID of the global database network (GDN).
      * > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
      */
@@ -455,6 +479,10 @@ export interface ClusterState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
+     * The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+     */
+    roleArn?: pulumi.Input<string>;
+    /**
      * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
      * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
@@ -478,6 +506,12 @@ export interface ClusterState {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * (Available in 1.200.0+) The region where the TDE key resides.
+     * > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
+     * > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+     */
+    tdeRegion?: pulumi.Input<string>;
     /**
      * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
      * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
@@ -566,6 +600,10 @@ export interface ClusterArgs {
      */
     encryptNewTables?: pulumi.Input<string>;
     /**
+     * The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
+     */
+    encryptionKey?: pulumi.Input<string>;
+    /**
      * The ID of the global database network (GDN).
      * > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
      */
@@ -601,6 +639,10 @@ export interface ClusterArgs {
      * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+     */
+    roleArn?: pulumi.Input<string>;
     /**
      * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
      * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.

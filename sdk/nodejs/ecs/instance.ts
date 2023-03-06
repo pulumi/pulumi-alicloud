@@ -66,6 +66,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
+     * The number of vCPUs.
+     */
+    public /*out*/ readonly cpu!: pulumi.Output<number>;
+    /**
      * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
      */
     public readonly creditSpecification!: pulumi.Output<string>;
@@ -199,9 +203,21 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly maintenanceTime!: pulumi.Output<outputs.ecs.InstanceMaintenanceTime | undefined>;
     /**
+     * The memory size of the instance. Unit: MiB.
+     */
+    public /*out*/ readonly memory!: pulumi.Output<number>;
+    /**
      * The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
      */
     public readonly operatorType!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the operating system of the instance.
+     */
+    public /*out*/ readonly osName!: pulumi.Output<string>;
+    /**
+     * The type of the operating system of the instance.
+     */
+    public /*out*/ readonly osType!: pulumi.Output<string>;
     /**
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
      */
@@ -211,6 +227,10 @@ export class Instance extends pulumi.CustomResource {
      * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
      */
     public readonly periodUnit!: pulumi.Output<string | undefined>;
+    /**
+     * The primary private IP address of the ENI.
+     */
+    public /*out*/ readonly primaryIpAddress!: pulumi.Output<string>;
     /**
      * Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
      */
@@ -354,6 +374,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoReleaseTime"] = state ? state.autoReleaseTime : undefined;
             resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["creditSpecification"] = state ? state.creditSpecification : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
@@ -385,10 +406,14 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintenanceAction"] = state ? state.maintenanceAction : undefined;
             resourceInputs["maintenanceNotify"] = state ? state.maintenanceNotify : undefined;
             resourceInputs["maintenanceTime"] = state ? state.maintenanceTime : undefined;
+            resourceInputs["memory"] = state ? state.memory : undefined;
             resourceInputs["operatorType"] = state ? state.operatorType : undefined;
+            resourceInputs["osName"] = state ? state.osName : undefined;
+            resourceInputs["osType"] = state ? state.osType : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["primaryIpAddress"] = state ? state.primaryIpAddress : undefined;
             resourceInputs["privateIp"] = state ? state.privateIp : undefined;
             resourceInputs["publicIp"] = state ? state.publicIp : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
@@ -495,7 +520,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["volumeTags"] = args ? args.volumeTags : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["cpu"] = undefined /*out*/;
             resourceInputs["deploymentSetGroupNo"] = undefined /*out*/;
+            resourceInputs["memory"] = undefined /*out*/;
+            resourceInputs["osName"] = undefined /*out*/;
+            resourceInputs["osType"] = undefined /*out*/;
+            resourceInputs["primaryIpAddress"] = undefined /*out*/;
             resourceInputs["publicIp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -531,6 +561,10 @@ export interface InstanceState {
      * The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
      */
     availabilityZone?: pulumi.Input<string>;
+    /**
+     * The number of vCPUs.
+     */
+    cpu?: pulumi.Input<number>;
     /**
      * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
      */
@@ -665,9 +699,21 @@ export interface InstanceState {
      */
     maintenanceTime?: pulumi.Input<inputs.ecs.InstanceMaintenanceTime>;
     /**
+     * The memory size of the instance. Unit: MiB.
+     */
+    memory?: pulumi.Input<number>;
+    /**
      * The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
      */
     operatorType?: pulumi.Input<string>;
+    /**
+     * The name of the operating system of the instance.
+     */
+    osName?: pulumi.Input<string>;
+    /**
+     * The type of the operating system of the instance.
+     */
+    osType?: pulumi.Input<string>;
     /**
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
      */
@@ -677,6 +723,10 @@ export interface InstanceState {
      * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
      */
     periodUnit?: pulumi.Input<string>;
+    /**
+     * The primary private IP address of the ENI.
+     */
+    primaryIpAddress?: pulumi.Input<string>;
     /**
      * Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
      */

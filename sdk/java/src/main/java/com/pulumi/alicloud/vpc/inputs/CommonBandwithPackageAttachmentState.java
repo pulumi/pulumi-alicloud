@@ -5,6 +5,7 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,6 +47,21 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
     }
 
     /**
+     * Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+     * 
+     */
+    @Import(name="cancelCommonBandwidthPackageIpBandwidth")
+    private @Nullable Output<Boolean> cancelCommonBandwidthPackageIpBandwidth;
+
+    /**
+     * @return Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+     * 
+     */
+    public Optional<Output<Boolean>> cancelCommonBandwidthPackageIpBandwidth() {
+        return Optional.ofNullable(this.cancelCommonBandwidthPackageIpBandwidth);
+    }
+
+    /**
      * The instance_id of the common bandwidth package attachment, the field can&#39;t be changed.
      * 
      */
@@ -65,6 +81,7 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
     private CommonBandwithPackageAttachmentState(CommonBandwithPackageAttachmentState $) {
         this.bandwidthPackageBandwidth = $.bandwidthPackageBandwidth;
         this.bandwidthPackageId = $.bandwidthPackageId;
+        this.cancelCommonBandwidthPackageIpBandwidth = $.cancelCommonBandwidthPackageIpBandwidth;
         this.instanceId = $.instanceId;
     }
 
@@ -126,6 +143,27 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
          */
         public Builder bandwidthPackageId(String bandwidthPackageId) {
             return bandwidthPackageId(Output.of(bandwidthPackageId));
+        }
+
+        /**
+         * @param cancelCommonBandwidthPackageIpBandwidth Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cancelCommonBandwidthPackageIpBandwidth(@Nullable Output<Boolean> cancelCommonBandwidthPackageIpBandwidth) {
+            $.cancelCommonBandwidthPackageIpBandwidth = cancelCommonBandwidthPackageIpBandwidth;
+            return this;
+        }
+
+        /**
+         * @param cancelCommonBandwidthPackageIpBandwidth Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cancelCommonBandwidthPackageIpBandwidth(Boolean cancelCommonBandwidthPackageIpBandwidth) {
+            return cancelCommonBandwidthPackageIpBandwidth(Output.of(cancelCommonBandwidthPackageIpBandwidth));
         }
 
         /**

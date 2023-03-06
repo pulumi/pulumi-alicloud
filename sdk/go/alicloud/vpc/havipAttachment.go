@@ -127,6 +127,8 @@ import (
 type HAVipAttachment struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+	Force pulumi.StringPtrOutput `pulumi:"force"`
 	// The havipId of the havip attachment, the field can't be changed.
 	HavipId pulumi.StringOutput `pulumi:"havipId"`
 	// The instanceId of the havip attachment, the field can't be changed.
@@ -168,6 +170,8 @@ func GetHAVipAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HAVipAttachment resources.
 type havipAttachmentState struct {
+	// Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+	Force *string `pulumi:"force"`
 	// The havipId of the havip attachment, the field can't be changed.
 	HavipId *string `pulumi:"havipId"`
 	// The instanceId of the havip attachment, the field can't be changed.
@@ -175,6 +179,8 @@ type havipAttachmentState struct {
 }
 
 type HAVipAttachmentState struct {
+	// Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+	Force pulumi.StringPtrInput
 	// The havipId of the havip attachment, the field can't be changed.
 	HavipId pulumi.StringPtrInput
 	// The instanceId of the havip attachment, the field can't be changed.
@@ -186,6 +192,8 @@ func (HAVipAttachmentState) ElementType() reflect.Type {
 }
 
 type havipAttachmentArgs struct {
+	// Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+	Force *string `pulumi:"force"`
 	// The havipId of the havip attachment, the field can't be changed.
 	HavipId string `pulumi:"havipId"`
 	// The instanceId of the havip attachment, the field can't be changed.
@@ -194,6 +202,8 @@ type havipAttachmentArgs struct {
 
 // The set of arguments for constructing a HAVipAttachment resource.
 type HAVipAttachmentArgs struct {
+	// Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+	Force pulumi.StringPtrInput
 	// The havipId of the havip attachment, the field can't be changed.
 	HavipId pulumi.StringInput
 	// The instanceId of the havip attachment, the field can't be changed.
@@ -285,6 +295,11 @@ func (o HAVipAttachmentOutput) ToHAVipAttachmentOutput() HAVipAttachmentOutput {
 
 func (o HAVipAttachmentOutput) ToHAVipAttachmentOutputWithContext(ctx context.Context) HAVipAttachmentOutput {
 	return o
+}
+
+// Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+func (o HAVipAttachmentOutput) Force() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HAVipAttachment) pulumi.StringPtrOutput { return v.Force }).(pulumi.StringPtrOutput)
 }
 
 // The havipId of the havip attachment, the field can't be changed.

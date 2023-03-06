@@ -63,6 +63,7 @@ class RdsCloneDbInstanceArgs:
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
+                 serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]]] = None,
                  source_biz: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
                  switch_time: Optional[pulumi.Input[str]] = None,
@@ -82,7 +83,7 @@ class RdsCloneDbInstanceArgs:
                * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
                * **cloud_essd2**: ESSDs of PL2
                * **cloud_essd3**: ESSDs of PL3
-        :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+        :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
         :param pulumi.Input[str] source_db_instance_id: The source db instance id.
         :param pulumi.Input[str] acl: This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         :param pulumi.Input[str] auto_upgrade_minor_version: How to upgrade the minor version of the instance. Valid values:
@@ -100,6 +101,7 @@ class RdsCloneDbInstanceArgs:
                * **HighAvailability**: High availability
                * **AlwaysOn**: Cluster Edition
                * **Finance**: Three-node Enterprise Edition.
+               * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
         :param pulumi.Input[str] certificate: The file that contains the certificate used for TDE.
         :param pulumi.Input[str] client_ca_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
         :param pulumi.Input[int] client_ca_enabled: The client ca enabled.
@@ -151,6 +153,7 @@ class RdsCloneDbInstanceArgs:
                * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
         :param pulumi.Input[str] source_biz: The source biz.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[str] switch_time: The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -264,6 +267,8 @@ class RdsCloneDbInstanceArgs:
             pulumi.set(__self__, "server_cert", server_cert)
         if server_key is not None:
             pulumi.set(__self__, "server_key", server_key)
+        if serverless_configs is not None:
+            pulumi.set(__self__, "serverless_configs", serverless_configs)
         if source_biz is not None:
             pulumi.set(__self__, "source_biz", source_biz)
         if ssl_enabled is not None:
@@ -308,7 +313,7 @@ class RdsCloneDbInstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[str]:
         """
-        The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+        The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -403,6 +408,7 @@ class RdsCloneDbInstanceArgs:
         * **HighAvailability**: High availability
         * **AlwaysOn**: Cluster Edition
         * **Finance**: Three-node Enterprise Edition.
+        * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
         """
         return pulumi.get(self, "category")
 
@@ -880,6 +886,18 @@ class RdsCloneDbInstanceArgs:
         pulumi.set(self, "server_key", value)
 
     @property
+    @pulumi.getter(name="serverlessConfigs")
+    def serverless_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]]]:
+        """
+        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        """
+        return pulumi.get(self, "serverless_configs")
+
+    @serverless_configs.setter
+    def serverless_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]]]):
+        pulumi.set(self, "serverless_configs", value)
+
+    @property
     @pulumi.getter(name="sourceBiz")
     def source_biz(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1072,6 +1090,7 @@ class _RdsCloneDbInstanceState:
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
+                 serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]]] = None,
                  source_biz: Optional[pulumi.Input[str]] = None,
                  source_db_instance_id: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
@@ -1102,6 +1121,7 @@ class _RdsCloneDbInstanceState:
                * **HighAvailability**: High availability
                * **AlwaysOn**: Cluster Edition
                * **Finance**: Three-node Enterprise Edition.
+               * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
         :param pulumi.Input[str] certificate: The file that contains the certificate used for TDE.
         :param pulumi.Input[str] client_ca_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
         :param pulumi.Input[int] client_ca_enabled: The client ca enabled.
@@ -1144,7 +1164,7 @@ class _RdsCloneDbInstanceState:
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] password: The password of the certificate.
-        :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+        :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
         :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
@@ -1161,6 +1181,7 @@ class _RdsCloneDbInstanceState:
                * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
         :param pulumi.Input[str] source_biz: The source biz.
         :param pulumi.Input[str] source_db_instance_id: The source db instance id.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
@@ -1278,6 +1299,8 @@ class _RdsCloneDbInstanceState:
             pulumi.set(__self__, "server_cert", server_cert)
         if server_key is not None:
             pulumi.set(__self__, "server_key", server_key)
+        if serverless_configs is not None:
+            pulumi.set(__self__, "serverless_configs", serverless_configs)
         if source_biz is not None:
             pulumi.set(__self__, "source_biz", source_biz)
         if source_db_instance_id is not None:
@@ -1378,6 +1401,7 @@ class _RdsCloneDbInstanceState:
         * **HighAvailability**: High availability
         * **AlwaysOn**: Cluster Edition
         * **Finance**: Three-node Enterprise Edition.
+        * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
         """
         return pulumi.get(self, "category")
 
@@ -1717,7 +1741,7 @@ class _RdsCloneDbInstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+        The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -1894,6 +1918,18 @@ class _RdsCloneDbInstanceState:
     @server_key.setter
     def server_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "server_key", value)
+
+    @property
+    @pulumi.getter(name="serverlessConfigs")
+    def serverless_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]]]:
+        """
+        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        """
+        return pulumi.get(self, "serverless_configs")
+
+    @serverless_configs.setter
+    def serverless_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]]]):
+        pulumi.set(self, "serverless_configs", value)
 
     @property
     @pulumi.getter(name="sourceBiz")
@@ -2101,6 +2137,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
+                 serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]]] = None,
                  source_biz: Optional[pulumi.Input[str]] = None,
                  source_db_instance_id: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
@@ -2184,6 +2221,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **HighAvailability**: High availability
                * **AlwaysOn**: Cluster Edition
                * **Finance**: Three-node Enterprise Edition.
+               * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
         :param pulumi.Input[str] certificate: The file that contains the certificate used for TDE.
         :param pulumi.Input[str] client_ca_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
         :param pulumi.Input[int] client_ca_enabled: The client ca enabled.
@@ -2225,7 +2263,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] password: The password of the certificate.
-        :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+        :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
@@ -2242,6 +2280,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
         :param pulumi.Input[str] source_biz: The source biz.
         :param pulumi.Input[str] source_db_instance_id: The source db instance id.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
@@ -2384,6 +2423,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
+                 serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]]] = None,
                  source_biz: Optional[pulumi.Input[str]] = None,
                  source_db_instance_id: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
@@ -2455,6 +2495,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             __props__.__dict__["security_ips"] = security_ips
             __props__.__dict__["server_cert"] = server_cert
             __props__.__dict__["server_key"] = server_key
+            __props__.__dict__["serverless_configs"] = serverless_configs
             __props__.__dict__["source_biz"] = source_biz
             if source_db_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'source_db_instance_id'")
@@ -2527,6 +2568,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             server_cert: Optional[pulumi.Input[str]] = None,
             server_key: Optional[pulumi.Input[str]] = None,
+            serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]]] = None,
             source_biz: Optional[pulumi.Input[str]] = None,
             source_db_instance_id: Optional[pulumi.Input[str]] = None,
             ssl_enabled: Optional[pulumi.Input[int]] = None,
@@ -2562,6 +2604,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **HighAvailability**: High availability
                * **AlwaysOn**: Cluster Edition
                * **Finance**: Three-node Enterprise Edition.
+               * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
         :param pulumi.Input[str] certificate: The file that contains the certificate used for TDE.
         :param pulumi.Input[str] client_ca_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
         :param pulumi.Input[int] client_ca_enabled: The client ca enabled.
@@ -2604,7 +2647,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] password: The password of the certificate.
-        :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+        :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
@@ -2621,6 +2664,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
         :param pulumi.Input[str] source_biz: The source biz.
         :param pulumi.Input[str] source_db_instance_id: The source db instance id.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
@@ -2695,6 +2739,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         __props__.__dict__["security_ips"] = security_ips
         __props__.__dict__["server_cert"] = server_cert
         __props__.__dict__["server_key"] = server_key
+        __props__.__dict__["serverless_configs"] = serverless_configs
         __props__.__dict__["source_biz"] = source_biz
         __props__.__dict__["source_db_instance_id"] = source_db_instance_id
         __props__.__dict__["ssl_enabled"] = ssl_enabled
@@ -2764,6 +2809,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         * **HighAvailability**: High availability
         * **AlwaysOn**: Cluster Edition
         * **Finance**: Three-node Enterprise Edition.
+        * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
         """
         return pulumi.get(self, "category")
 
@@ -2995,7 +3041,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+        The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -3112,6 +3158,14 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
         """
         return pulumi.get(self, "server_key")
+
+    @property
+    @pulumi.getter(name="serverlessConfigs")
+    def serverless_configs(self) -> pulumi.Output[Optional[Sequence['outputs.RdsCloneDbInstanceServerlessConfig']]]:
+        """
+        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        """
+        return pulumi.get(self, "serverless_configs")
 
     @property
     @pulumi.getter(name="sourceBiz")

@@ -10,7 +10,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -44,6 +46,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
  *             .bandwidth(&#34;2&#34;)
+ *             .bandwidthPackageName(&#34;test_common_bandwidth_package&#34;)
  *             .description(&#34;test_common_bandwidth_package&#34;)
  *             .build());
  * 
@@ -66,7 +69,7 @@ import javax.annotation.Nullable;
  * The common bandwidth package attachment can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo cbwp-abc123456:eip-abc123456
+ *  $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment foo &lt;bandwidth_package_id&gt;:&lt;instance_id&gt;
  * ```
  * 
  */
@@ -99,6 +102,20 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      */
     public Output<String> bandwidthPackageId() {
         return this.bandwidthPackageId;
+    }
+    /**
+     * Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+     * 
+     */
+    @Export(name="cancelCommonBandwidthPackageIpBandwidth", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> cancelCommonBandwidthPackageIpBandwidth;
+
+    /**
+     * @return Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+     * 
+     */
+    public Output<Optional<Boolean>> cancelCommonBandwidthPackageIpBandwidth() {
+        return Codegen.optional(this.cancelCommonBandwidthPackageIpBandwidth);
     }
     /**
      * The instance_id of the common bandwidth package attachment, the field can&#39;t be changed.

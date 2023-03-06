@@ -64,6 +64,7 @@ export class Eip extends pulumi.CustomResource {
      * Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly highDefinitionMonitorLogStatus!: pulumi.Output<string>;
     /**
      * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
      *
@@ -82,6 +83,8 @@ export class Eip extends pulumi.CustomResource {
      * The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
      */
     public readonly isp!: pulumi.Output<string>;
+    public readonly logProject!: pulumi.Output<string | undefined>;
+    public readonly logStore!: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      *
@@ -131,10 +134,13 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["highDefinitionMonitorLogStatus"] = state ? state.highDefinitionMonitorLogStatus : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["isp"] = state ? state.isp : undefined;
+            resourceInputs["logProject"] = state ? state.logProject : undefined;
+            resourceInputs["logStore"] = state ? state.logStore : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["netmode"] = state ? state.netmode : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
@@ -152,9 +158,12 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["highDefinitionMonitorLogStatus"] = args ? args.highDefinitionMonitorLogStatus : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
             resourceInputs["isp"] = args ? args.isp : undefined;
+            resourceInputs["logProject"] = args ? args.logProject : undefined;
+            resourceInputs["logStore"] = args ? args.logStore : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["netmode"] = args ? args.netmode : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
@@ -195,6 +204,7 @@ export interface EipState {
      * Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     description?: pulumi.Input<string>;
+    highDefinitionMonitorLogStatus?: pulumi.Input<string>;
     /**
      * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
      *
@@ -213,6 +223,8 @@ export interface EipState {
      * The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
      */
     isp?: pulumi.Input<string>;
+    logProject?: pulumi.Input<string>;
+    logStore?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      *
@@ -265,6 +277,7 @@ export interface EipArgs {
      * Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     description?: pulumi.Input<string>;
+    highDefinitionMonitorLogStatus?: pulumi.Input<string>;
     /**
      * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
      *
@@ -279,6 +292,8 @@ export interface EipArgs {
      * The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
      */
     isp?: pulumi.Input<string>;
+    logProject?: pulumi.Input<string>;
+    logStore?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      *

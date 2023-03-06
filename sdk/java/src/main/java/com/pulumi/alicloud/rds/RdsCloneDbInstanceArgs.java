@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rds;
 
 import com.pulumi.alicloud.rds.inputs.RdsCloneDbInstanceParameterArgs;
 import com.pulumi.alicloud.rds.inputs.RdsCloneDbInstancePgHbaConfArgs;
+import com.pulumi.alicloud.rds.inputs.RdsCloneDbInstanceServerlessConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -113,6 +114,7 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
      * * **HighAvailability**: High availability
      * * **AlwaysOn**: Cluster Edition
      * * **Finance**: Three-node Enterprise Edition.
+     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
      * 
      */
     @Import(name="category")
@@ -124,6 +126,7 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
      * * **HighAvailability**: High availability
      * * **AlwaysOn**: Cluster Edition
      * * **Finance**: Three-node Enterprise Edition.
+     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
      * 
      */
     public Optional<Output<String>> category() {
@@ -538,14 +541,14 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+     * The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
      * 
      */
     @Import(name="paymentType", required=true)
     private Output<String> paymentType;
 
     /**
-     * @return The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+     * @return The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
      * 
      */
     public Output<String> paymentType() {
@@ -764,6 +767,21 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> serverKey() {
         return Optional.ofNullable(this.serverKey);
+    }
+
+    /**
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     * 
+     */
+    @Import(name="serverlessConfigs")
+    private @Nullable Output<List<RdsCloneDbInstanceServerlessConfigArgs>> serverlessConfigs;
+
+    /**
+     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     * 
+     */
+    public Optional<Output<List<RdsCloneDbInstanceServerlessConfigArgs>>> serverlessConfigs() {
+        return Optional.ofNullable(this.serverlessConfigs);
     }
 
     /**
@@ -1015,6 +1033,7 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
         this.securityIps = $.securityIps;
         this.serverCert = $.serverCert;
         this.serverKey = $.serverKey;
+        this.serverlessConfigs = $.serverlessConfigs;
         this.sourceBiz = $.sourceBiz;
         this.sourceDbInstanceId = $.sourceDbInstanceId;
         this.sslEnabled = $.sslEnabled;
@@ -1170,6 +1189,7 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
          * * **HighAvailability**: High availability
          * * **AlwaysOn**: Cluster Edition
          * * **Finance**: Three-node Enterprise Edition.
+         * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
          * 
          * @return builder
          * 
@@ -1185,6 +1205,7 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
          * * **HighAvailability**: High availability
          * * **AlwaysOn**: Cluster Edition
          * * **Finance**: Three-node Enterprise Edition.
+         * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
          * 
          * @return builder
          * 
@@ -1761,7 +1782,7 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param paymentType The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+         * @param paymentType The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
          * 
          * @return builder
          * 
@@ -1772,7 +1793,7 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param paymentType The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
+         * @param paymentType The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
          * 
          * @return builder
          * 
@@ -2099,6 +2120,37 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
          */
         public Builder serverKey(String serverKey) {
             return serverKey(Output.of(serverKey));
+        }
+
+        /**
+         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessConfigs(@Nullable Output<List<RdsCloneDbInstanceServerlessConfigArgs>> serverlessConfigs) {
+            $.serverlessConfigs = serverlessConfigs;
+            return this;
+        }
+
+        /**
+         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessConfigs(List<RdsCloneDbInstanceServerlessConfigArgs> serverlessConfigs) {
+            return serverlessConfigs(Output.of(serverlessConfigs));
+        }
+
+        /**
+         * @param serverlessConfigs The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessConfigs(RdsCloneDbInstanceServerlessConfigArgs... serverlessConfigs) {
+            return serverlessConfigs(List.of(serverlessConfigs));
         }
 
         /**

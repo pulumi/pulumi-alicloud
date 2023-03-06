@@ -253,7 +253,7 @@ def get_instances(connection_mode: Optional[str] = None,
     :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
     :param str db_type: `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
     :param bool enable_details: Default to `false`. Set it to `true` can output parameter template about resource attributes.
-    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
     :param Sequence[str] ids: A list of RDS instance IDs.
     :param str name_regex: A regex string to filter results by instance name.
     :param str status: Status of the instance.
@@ -337,7 +337,7 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
     :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
     :param str db_type: `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
     :param bool enable_details: Default to `false`. Set it to `true` can output parameter template about resource attributes.
-    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
     :param Sequence[str] ids: A list of RDS instance IDs.
     :param str name_regex: A regex string to filter results by instance name.
     :param str status: Status of the instance.

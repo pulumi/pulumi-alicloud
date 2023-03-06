@@ -104,6 +104,12 @@ namespace Pulumi.AliCloud.Vpc
     public partial class HAVipAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+        /// </summary>
+        [Output("force")]
+        public Output<string?> Force { get; private set; } = null!;
+
+        /// <summary>
         /// The havip_id of the havip attachment, the field can't be changed.
         /// </summary>
         [Output("havipId")]
@@ -162,6 +168,12 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class HAVipAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+        /// </summary>
+        [Input("force")]
+        public Input<string>? Force { get; set; }
+
+        /// <summary>
         /// The havip_id of the havip attachment, the field can't be changed.
         /// </summary>
         [Input("havipId", required: true)]
@@ -181,6 +193,12 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class HAVipAttachmentState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to forcefully disassociate the HAVIP from the ECS instance or ENI. Default value: `False`. Valid values: `True` and `False`.
+        /// </summary>
+        [Input("force")]
+        public Input<string>? Force { get; set; }
+
         /// <summary>
         /// The havip_id of the havip attachment, the field can't be changed.
         /// </summary>

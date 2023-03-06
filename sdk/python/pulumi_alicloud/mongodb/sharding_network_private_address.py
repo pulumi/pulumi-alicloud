@@ -248,6 +248,10 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_zones = alicloud.mongodb.get_zones()
         default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
         default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
@@ -255,7 +259,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         default_sharding_instance = alicloud.mongodb.ShardingInstance("defaultShardingInstance",
             zone_id=default_zones.zones[0].id,
             vswitch_id=default_switches.ids[0],
-            engine_version="3.4",
+            engine_version="4.2",
             mongo_lists=[
                 alicloud.mongodb.ShardingInstanceMongoListArgs(
                     node_class="dds.mongos.mid",
@@ -324,6 +328,10 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_zones = alicloud.mongodb.get_zones()
         default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
         default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
@@ -331,7 +339,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         default_sharding_instance = alicloud.mongodb.ShardingInstance("defaultShardingInstance",
             zone_id=default_zones.zones[0].id,
             vswitch_id=default_switches.ids[0],
-            engine_version="3.4",
+            engine_version="4.2",
             mongo_lists=[
                 alicloud.mongodb.ShardingInstanceMongoListArgs(
                     node_class="dds.mongos.mid",

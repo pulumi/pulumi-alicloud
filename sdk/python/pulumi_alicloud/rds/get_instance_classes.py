@@ -219,7 +219,7 @@ def get_instance_classes(category: Optional[str] = None,
     ```
 
 
-    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
     :param str commodity_code: The commodity code of the instance. Valid values:
            * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
            * **rds**: The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
@@ -229,12 +229,14 @@ def get_instance_classes(category: Optional[str] = None,
            * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
            * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
            * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+           * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
+           * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
     :param str db_instance_class: The DB instance class type by the user.
     :param str db_instance_id: The ID of the instance.
     :param str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
     :param str engine: Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
     :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-    :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
     :param bool multi_zone: Whether to show multi available zone. Default false to not show multi availability zone.
     :param str storage_type: It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
     :param str zone_id: The Zone to launch the DB instance.
@@ -309,7 +311,7 @@ def get_instance_classes_output(category: Optional[pulumi.Input[Optional[str]]] 
     ```
 
 
-    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
     :param str commodity_code: The commodity code of the instance. Valid values:
            * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
            * **rds**: The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
@@ -319,12 +321,14 @@ def get_instance_classes_output(category: Optional[pulumi.Input[Optional[str]]] 
            * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
            * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
            * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+           * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
+           * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
     :param str db_instance_class: The DB instance class type by the user.
     :param str db_instance_id: The ID of the instance.
     :param str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
     :param str engine: Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
     :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
-    :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
     :param bool multi_zone: Whether to show multi available zone. Default false to not show multi availability zone.
     :param str storage_type: It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
     :param str zone_id: The Zone to launch the DB instance.

@@ -35,7 +35,8 @@ type Eip struct {
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description                    pulumi.StringPtrOutput `pulumi:"description"`
+	HighDefinitionMonitorLogStatus pulumi.StringOutput    `pulumi:"highDefinitionMonitorLogStatus"`
 	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
@@ -45,7 +46,9 @@ type Eip struct {
 	// The elastic ip address
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-	Isp pulumi.StringOutput `pulumi:"isp"`
+	Isp        pulumi.StringOutput    `pulumi:"isp"`
+	LogProject pulumi.StringPtrOutput `pulumi:"logProject"`
+	LogStore   pulumi.StringPtrOutput `pulumi:"logStore"`
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
@@ -104,7 +107,8 @@ type eipState struct {
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-	Description *string `pulumi:"description"`
+	Description                    *string `pulumi:"description"`
+	HighDefinitionMonitorLogStatus *string `pulumi:"highDefinitionMonitorLogStatus"`
 	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
@@ -114,7 +118,9 @@ type eipState struct {
 	// The elastic ip address
 	IpAddress *string `pulumi:"ipAddress"`
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-	Isp *string `pulumi:"isp"`
+	Isp        *string `pulumi:"isp"`
+	LogProject *string `pulumi:"logProject"`
+	LogStore   *string `pulumi:"logStore"`
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
@@ -145,7 +151,8 @@ type EipState struct {
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-	Description pulumi.StringPtrInput
+	Description                    pulumi.StringPtrInput
+	HighDefinitionMonitorLogStatus pulumi.StringPtrInput
 	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
@@ -155,7 +162,9 @@ type EipState struct {
 	// The elastic ip address
 	IpAddress pulumi.StringPtrInput
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-	Isp pulumi.StringPtrInput
+	Isp        pulumi.StringPtrInput
+	LogProject pulumi.StringPtrInput
+	LogStore   pulumi.StringPtrInput
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
@@ -190,7 +199,8 @@ type eipArgs struct {
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-	Description *string `pulumi:"description"`
+	Description                    *string `pulumi:"description"`
+	HighDefinitionMonitorLogStatus *string `pulumi:"highDefinitionMonitorLogStatus"`
 	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
@@ -198,7 +208,9 @@ type eipArgs struct {
 	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-	Isp *string `pulumi:"isp"`
+	Isp        *string `pulumi:"isp"`
+	LogProject *string `pulumi:"logProject"`
+	LogStore   *string `pulumi:"logStore"`
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
@@ -228,7 +240,8 @@ type EipArgs struct {
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-	Description pulumi.StringPtrInput
+	Description                    pulumi.StringPtrInput
+	HighDefinitionMonitorLogStatus pulumi.StringPtrInput
 	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
@@ -236,7 +249,9 @@ type EipArgs struct {
 	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType pulumi.StringPtrInput
 	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-	Isp pulumi.StringPtrInput
+	Isp        pulumi.StringPtrInput
+	LogProject pulumi.StringPtrInput
+	LogStore   pulumi.StringPtrInput
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
@@ -370,6 +385,10 @@ func (o EipOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+func (o EipOutput) HighDefinitionMonitorLogStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.HighDefinitionMonitorLogStatus }).(pulumi.StringOutput)
+}
+
 // (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 //
 // Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
@@ -390,6 +409,14 @@ func (o EipOutput) IpAddress() pulumi.StringOutput {
 // The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
 func (o EipOutput) Isp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Isp }).(pulumi.StringOutput)
+}
+
+func (o EipOutput) LogProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.LogProject }).(pulumi.StringPtrOutput)
+}
+
+func (o EipOutput) LogStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.LogStore }).(pulumi.StringPtrOutput)
 }
 
 // It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.

@@ -15,14 +15,14 @@ public final class GetCharacterSetNamesPlainArgs extends com.pulumi.resources.In
     public static final GetCharacterSetNamesPlainArgs Empty = new GetCharacterSetNamesPlainArgs();
 
     /**
-     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
      * 
      */
     @Import(name="engine", required=true)
     private String engine;
 
     /**
-     * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+     * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
      * 
      */
     public String engine() {
@@ -62,7 +62,7 @@ public final class GetCharacterSetNamesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param engine Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+         * @param engine Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
          * 
          * @return builder
          * 

@@ -186,6 +186,7 @@ import * as vod from "./vod";
 import * as vpc from "./vpc";
 import * as vpn from "./vpn";
 import * as waf from "./waf";
+import * as wafv3 from "./wafv3";
 import * as yundun from "./yundun";
 
 export {
@@ -305,6 +306,7 @@ export {
     vpc,
     vpn,
     waf,
+    wafv3,
     yundun,
 };
 

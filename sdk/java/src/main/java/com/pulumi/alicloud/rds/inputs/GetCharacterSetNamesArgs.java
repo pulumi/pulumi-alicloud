@@ -16,14 +16,14 @@ public final class GetCharacterSetNamesArgs extends com.pulumi.resources.InvokeA
     public static final GetCharacterSetNamesArgs Empty = new GetCharacterSetNamesArgs();
 
     /**
-     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
      * 
      */
     @Import(name="engine", required=true)
     private Output<String> engine;
 
     /**
-     * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+     * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
      * 
      */
     public Output<String> engine() {
@@ -63,7 +63,7 @@ public final class GetCharacterSetNamesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param engine Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+         * @param engine Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
          * 
          * @return builder
          * 
@@ -74,7 +74,7 @@ public final class GetCharacterSetNamesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param engine Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+         * @param engine Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
          * 
          * @return builder
          * 

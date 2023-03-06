@@ -51,7 +51,7 @@ func GetCharacterSetNames(ctx *pulumi.Context, args *GetCharacterSetNamesArgs, o
 
 // A collection of arguments for invoking getCharacterSetNames.
 type GetCharacterSetNamesArgs struct {
-	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
 	Engine     string  `pulumi:"engine"`
 	OutputFile *string `pulumi:"outputFile"`
 }
@@ -80,7 +80,7 @@ func GetCharacterSetNamesOutput(ctx *pulumi.Context, args GetCharacterSetNamesOu
 
 // A collection of arguments for invoking getCharacterSetNames.
 type GetCharacterSetNamesOutputArgs struct {
-	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`.
+	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
 	Engine     pulumi.StringInput    `pulumi:"engine"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }

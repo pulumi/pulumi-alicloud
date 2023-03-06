@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetInstanceClassesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
@@ -103,6 +103,8 @@ namespace Pulumi.AliCloud.Rds
         /// * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
         /// * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
         /// * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+        /// * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
+        /// * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
         /// </summary>
         [Input("commodityCode")]
         public string? CommodityCode { get; set; }
@@ -138,7 +140,7 @@ namespace Pulumi.AliCloud.Rds
         public string? EngineVersion { get; set; }
 
         /// <summary>
-        /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+        /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
         /// </summary>
         [Input("instanceChargeType")]
         public string? InstanceChargeType { get; set; }
@@ -176,7 +178,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetInstanceClassesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -191,6 +193,8 @@ namespace Pulumi.AliCloud.Rds
         /// * **rds_intl**: The instance is a subscription primary instance. This value is available on the International site (alibabacloud.com).
         /// * **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available on the International site (alibabacloud.com).
         /// * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+        /// * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
+        /// * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
         /// </summary>
         [Input("commodityCode")]
         public Input<string>? CommodityCode { get; set; }
@@ -226,7 +230,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+        /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }

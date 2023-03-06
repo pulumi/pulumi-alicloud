@@ -95,6 +95,11 @@ export type LoadBalancer = import("./loadBalancer").LoadBalancer;
 export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
 utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
 
+export { LoadBalancerCommonBandwidthPackageAttachmentArgs, LoadBalancerCommonBandwidthPackageAttachmentState } from "./loadBalancerCommonBandwidthPackageAttachment";
+export type LoadBalancerCommonBandwidthPackageAttachment = import("./loadBalancerCommonBandwidthPackageAttachment").LoadBalancerCommonBandwidthPackageAttachment;
+export const LoadBalancerCommonBandwidthPackageAttachment: typeof import("./loadBalancerCommonBandwidthPackageAttachment").LoadBalancerCommonBandwidthPackageAttachment = null as any;
+utilities.lazyLoad(exports, ["LoadBalancerCommonBandwidthPackageAttachment"], () => require("./loadBalancerCommonBandwidthPackageAttachment"));
+
 export { RuleArgs, RuleState } from "./rule";
 export type Rule = import("./rule").Rule;
 export const Rule: typeof import("./rule").Rule = null as any;
@@ -131,6 +136,8 @@ const _module = {
                 return new ListenerAdditionalCertificateAttachment(name, <any>undefined, { urn })
             case "alicloud:alb/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
+            case "alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment":
+                return new LoadBalancerCommonBandwidthPackageAttachment(name, <any>undefined, { urn })
             case "alicloud:alb/rule:Rule":
                 return new Rule(name, <any>undefined, { urn })
             case "alicloud:alb/securityPolicy:SecurityPolicy":
@@ -150,6 +157,7 @@ pulumi.runtime.registerResourceModule("alicloud", "alb/listener", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/listenerAclAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/listenerAdditionalCertificateAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancer", _module)
+pulumi.runtime.registerResourceModule("alicloud", "alb/loadBalancerCommonBandwidthPackageAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/rule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/securityPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "alb/serverGroup", _module)

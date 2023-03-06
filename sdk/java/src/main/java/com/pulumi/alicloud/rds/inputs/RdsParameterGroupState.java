@@ -18,14 +18,14 @@ public final class RdsParameterGroupState extends com.pulumi.resources.ResourceA
     public static final RdsParameterGroupState Empty = new RdsParameterGroupState();
 
     /**
-     * The database engine. Valid values: `mysql`, `mariadb`.
+     * The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
      * 
      */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
     /**
-     * @return The database engine. Valid values: `mysql`, `mariadb`.
+     * @return The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
      * 
      */
     public Optional<Output<String>> engine() {
@@ -33,14 +33,14 @@ public final class RdsParameterGroupState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+     * The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
      * 
      */
     @Import(name="engineVersion")
     private @Nullable Output<String> engineVersion;
 
     /**
-     * @return The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+     * @return The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
      * 
      */
     public Optional<Output<String>> engineVersion() {
@@ -121,7 +121,7 @@ public final class RdsParameterGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param engine The database engine. Valid values: `mysql`, `mariadb`.
+         * @param engine The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class RdsParameterGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param engine The database engine. Valid values: `mysql`, `mariadb`.
+         * @param engine The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class RdsParameterGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param engineVersion The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+         * @param engineVersion The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class RdsParameterGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param engineVersion The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`.
+         * @param engineVersion The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
          * 
          * @return builder
          * 

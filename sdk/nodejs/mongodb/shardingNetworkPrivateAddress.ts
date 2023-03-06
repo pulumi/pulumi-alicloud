@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultZones = alicloud.mongodb.getZones({});
  * const defaultNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
@@ -32,7 +34,7 @@ import * as utilities from "../utilities";
  * const defaultShardingInstance = new alicloud.mongodb.ShardingInstance("defaultShardingInstance", {
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     engineVersion: "3.4",
+ *     engineVersion: "4.2",
  *     mongoLists: [
  *         {
  *             nodeClass: "dds.mongos.mid",
