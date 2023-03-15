@@ -132,6 +132,34 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return this.acl;
     }
     /**
+     * Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+     * 
+     */
+    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> autoRenew;
+
+    /**
+     * @return Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> autoRenew() {
+        return Codegen.optional(this.autoRenew);
+    }
+    /**
+     * Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+     * 
+     */
+    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> autoRenewPeriod;
+
+    /**
+     * @return Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+     * 
+     */
+    public Output<Optional<Integer>> autoRenewPeriod() {
+        return Codegen.optional(this.autoRenewPeriod);
+    }
+    /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
@@ -256,6 +284,30 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dbInstanceIpArrayName);
     }
     /**
+     * The storage type of the instance. Valid values:
+     * - local_ssd: specifies to use local SSDs. This value is recommended.
+     * - cloud_ssd: specifies to use standard SSDs.
+     * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     * 
+     */
+    @Export(name="dbInstanceStorageType", type=String.class, parameters={})
+    private Output<String> dbInstanceStorageType;
+
+    /**
+     * @return The storage type of the instance. Valid values:
+     * - local_ssd: specifies to use local SSDs. This value is recommended.
+     * - cloud_ssd: specifies to use standard SSDs.
+     * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     * 
+     */
+    public Output<String> dbInstanceStorageType() {
+        return this.dbInstanceStorageType;
+    }
+    /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
@@ -314,6 +366,20 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> forceRestart() {
         return Codegen.optional(this.forceRestart);
+    }
+    /**
+     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+     * 
+     */
+    @Export(name="instanceChargeType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> instanceChargeType;
+
+    /**
+     * @return Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+     * 
+     */
+    public Output<Optional<String>> instanceChargeType() {
+        return Codegen.optional(this.instanceChargeType);
     }
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
@@ -404,6 +470,20 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<List<ReadOnlyInstanceParameter>> parameters() {
         return this.parameters;
+    }
+    /**
+     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * 
+     */
+    @Export(name="period", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> period;
+
+    /**
+     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * 
+     */
+    public Output<Optional<Integer>> period() {
+        return Codegen.optional(this.period);
     }
     /**
      * RDS database connection port.

@@ -60,12 +60,28 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
         return this.instanceId;
     }
 
+    /**
+     * The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+     * 
+     */
+    @Import(name="instanceType")
+    private @Nullable Output<String> instanceType;
+
+    /**
+     * @return The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+     * 
+     */
+    public Optional<Output<String>> instanceType() {
+        return Optional.ofNullable(this.instanceType);
+    }
+
     private HAVipAttachmentArgs() {}
 
     private HAVipAttachmentArgs(HAVipAttachmentArgs $) {
         this.force = $.force;
         this.havipId = $.havipId;
         this.instanceId = $.instanceId;
+        this.instanceType = $.instanceType;
     }
 
     public static Builder builder() {
@@ -147,6 +163,27 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param instanceType The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(@Nullable Output<String> instanceType) {
+            $.instanceType = instanceType;
+            return this;
+        }
+
+        /**
+         * @param instanceType The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(String instanceType) {
+            return instanceType(Output.of(instanceType));
         }
 
         public HAVipAttachmentArgs build() {

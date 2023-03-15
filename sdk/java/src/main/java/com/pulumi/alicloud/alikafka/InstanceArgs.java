@@ -102,15 +102,34 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      * 
      */
-    @Import(name="ioMax", required=true)
-    private Output<Integer> ioMax;
+    @Import(name="ioMax")
+    private @Nullable Output<Integer> ioMax;
 
     /**
      * @return The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      * 
      */
-    public Output<Integer> ioMax() {
-        return this.ioMax;
+    public Optional<Output<Integer>> ioMax() {
+        return Optional.ofNullable(this.ioMax);
+    }
+
+    /**
+     * The traffic specification of the instance. We recommend that you configure this parameter.
+     * - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+     * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+     * 
+     */
+    @Import(name="ioMaxSpec")
+    private @Nullable Output<String> ioMaxSpec;
+
+    /**
+     * @return The traffic specification of the instance. We recommend that you configure this parameter.
+     * - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+     * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+     * 
+     */
+    public Optional<Output<String>> ioMaxSpec() {
+        return Optional.ofNullable(this.ioMaxSpec);
     }
 
     /**
@@ -327,6 +346,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.diskType = $.diskType;
         this.eipMax = $.eipMax;
         this.ioMax = $.ioMax;
+        this.ioMaxSpec = $.ioMaxSpec;
         this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.paidType = $.paidType;
@@ -475,7 +495,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder ioMax(Output<Integer> ioMax) {
+        public Builder ioMax(@Nullable Output<Integer> ioMax) {
             $.ioMax = ioMax;
             return this;
         }
@@ -488,6 +508,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ioMax(Integer ioMax) {
             return ioMax(Output.of(ioMax));
+        }
+
+        /**
+         * @param ioMaxSpec The traffic specification of the instance. We recommend that you configure this parameter.
+         * - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+         * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioMaxSpec(@Nullable Output<String> ioMaxSpec) {
+            $.ioMaxSpec = ioMaxSpec;
+            return this;
+        }
+
+        /**
+         * @param ioMaxSpec The traffic specification of the instance. We recommend that you configure this parameter.
+         * - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+         * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioMaxSpec(String ioMaxSpec) {
+            return ioMaxSpec(Output.of(ioMaxSpec));
         }
 
         /**
@@ -787,7 +832,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             $.deployType = Objects.requireNonNull($.deployType, "expected parameter 'deployType' to be non-null");
             $.diskSize = Objects.requireNonNull($.diskSize, "expected parameter 'diskSize' to be non-null");
             $.diskType = Objects.requireNonNull($.diskType, "expected parameter 'diskType' to be non-null");
-            $.ioMax = Objects.requireNonNull($.ioMax, "expected parameter 'ioMax' to be non-null");
             $.vswitchId = Objects.requireNonNull($.vswitchId, "expected parameter 'vswitchId' to be non-null");
             return $;
         }

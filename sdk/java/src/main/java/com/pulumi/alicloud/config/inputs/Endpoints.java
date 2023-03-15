@@ -66,6 +66,7 @@ public final class Endpoints {
     private @Nullable String edas;
     private @Nullable String edasschedulerx;
     private @Nullable String edsuser;
+    private @Nullable String eflo;
     private @Nullable String ehpc;
     private @Nullable String ehs;
     private @Nullable String eipanycast;
@@ -302,6 +303,9 @@ public final class Endpoints {
     }
     public Optional<String> edsuser() {
         return Optional.ofNullable(this.edsuser);
+    }
+    public Optional<String> eflo() {
+        return Optional.ofNullable(this.eflo);
     }
     public Optional<String> ehpc() {
         return Optional.ofNullable(this.ehpc);
@@ -578,6 +582,7 @@ public final class Endpoints {
         private @Nullable String edas;
         private @Nullable String edasschedulerx;
         private @Nullable String edsuser;
+        private @Nullable String eflo;
         private @Nullable String ehpc;
         private @Nullable String ehs;
         private @Nullable String eipanycast;
@@ -706,6 +711,7 @@ public final class Endpoints {
     	      this.edas = defaults.edas;
     	      this.edasschedulerx = defaults.edasschedulerx;
     	      this.edsuser = defaults.edsuser;
+    	      this.eflo = defaults.eflo;
     	      this.ehpc = defaults.ehpc;
     	      this.ehs = defaults.ehs;
     	      this.eipanycast = defaults.eipanycast;
@@ -1051,6 +1057,11 @@ public final class Endpoints {
         @CustomType.Setter
         public Builder edsuser(@Nullable String edsuser) {
             this.edsuser = edsuser;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder eflo(@Nullable String eflo) {
+            this.eflo = eflo;
             return this;
         }
         @CustomType.Setter
@@ -1460,6 +1471,7 @@ public final class Endpoints {
             o.edas = edas;
             o.edasschedulerx = edasschedulerx;
             o.edsuser = edsuser;
+            o.eflo = eflo;
             o.ehpc = ehpc;
             o.ehs = ehs;
             o.eipanycast = eipanycast;

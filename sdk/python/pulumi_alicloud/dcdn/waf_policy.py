@@ -20,7 +20,7 @@ class WafPolicyArgs:
                  status: pulumi.Input[str]):
         """
         The set of arguments for constructing a WafPolicy resource.
-        :param pulumi.Input[str] defense_scene: The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`.
+        :param pulumi.Input[str] defense_scene: The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
         :param pulumi.Input[str] policy_name: The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
         :param pulumi.Input[str] policy_type: The type of the protection policy. Valid values: `default`, `custom`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `on`, `off`.
@@ -34,7 +34,7 @@ class WafPolicyArgs:
     @pulumi.getter(name="defenseScene")
     def defense_scene(self) -> pulumi.Input[str]:
         """
-        The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`.
+        The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
         """
         return pulumi.get(self, "defense_scene")
 
@@ -88,7 +88,7 @@ class _WafPolicyState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WafPolicy resources.
-        :param pulumi.Input[str] defense_scene: The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`.
+        :param pulumi.Input[str] defense_scene: The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
         :param pulumi.Input[str] policy_name: The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
         :param pulumi.Input[str] policy_type: The type of the protection policy. Valid values: `default`, `custom`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `on`, `off`.
@@ -106,7 +106,7 @@ class _WafPolicyState:
     @pulumi.getter(name="defenseScene")
     def defense_scene(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`.
+        The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
         """
         return pulumi.get(self, "defense_scene")
 
@@ -193,7 +193,7 @@ class WafPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] defense_scene: The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`.
+        :param pulumi.Input[str] defense_scene: The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
         :param pulumi.Input[str] policy_name: The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
         :param pulumi.Input[str] policy_type: The type of the protection policy. Valid values: `default`, `custom`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `on`, `off`.
@@ -295,7 +295,7 @@ class WafPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] defense_scene: The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`.
+        :param pulumi.Input[str] defense_scene: The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
         :param pulumi.Input[str] policy_name: The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
         :param pulumi.Input[str] policy_type: The type of the protection policy. Valid values: `default`, `custom`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `on`, `off`.
@@ -314,7 +314,7 @@ class WafPolicy(pulumi.CustomResource):
     @pulumi.getter(name="defenseScene")
     def defense_scene(self) -> pulumi.Output[str]:
         """
-        The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`.
+        The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
         """
         return pulumi.get(self, "defense_scene")
 

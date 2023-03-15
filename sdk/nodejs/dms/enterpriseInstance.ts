@@ -74,7 +74,7 @@ export class EnterpriseInstance extends pulumi.CustomResource {
     /**
      * Cross-database query datalink name.
      */
-    public readonly dataLinkName!: pulumi.Output<string | undefined>;
+    public readonly dataLinkName!: pulumi.Output<string>;
     /**
      * Database access password.
      */

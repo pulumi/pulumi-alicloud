@@ -209,7 +209,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
      */
-    public readonly roleArn!: pulumi.Output<string | undefined>;
+    public readonly roleArn!: pulumi.Output<string>;
     /**
      * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
      * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.

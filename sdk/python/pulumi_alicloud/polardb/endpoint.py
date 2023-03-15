@@ -16,6 +16,7 @@ class EndpointArgs:
     def __init__(__self__, *,
                  db_cluster_id: pulumi.Input[str],
                  auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
+                 db_endpoint_description: Optional[pulumi.Input[str]] = None,
                  endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
@@ -30,6 +31,8 @@ class EndpointArgs:
         pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if auto_add_new_nodes is not None:
             pulumi.set(__self__, "auto_add_new_nodes", auto_add_new_nodes)
+        if db_endpoint_description is not None:
+            pulumi.set(__self__, "db_endpoint_description", db_endpoint_description)
         if endpoint_config is not None:
             pulumi.set(__self__, "endpoint_config", endpoint_config)
         if endpoint_type is not None:
@@ -62,6 +65,15 @@ class EndpointArgs:
     @auto_add_new_nodes.setter
     def auto_add_new_nodes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auto_add_new_nodes", value)
+
+    @property
+    @pulumi.getter(name="dbEndpointDescription")
+    def db_endpoint_description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "db_endpoint_description")
+
+    @db_endpoint_description.setter
+    def db_endpoint_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_endpoint_description", value)
 
     @property
     @pulumi.getter(name="endpointConfig")
@@ -135,6 +147,7 @@ class _EndpointState:
     def __init__(__self__, *,
                  auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 db_endpoint_description: Optional[pulumi.Input[str]] = None,
                  db_endpoint_id: Optional[pulumi.Input[str]] = None,
                  endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
@@ -157,6 +170,8 @@ class _EndpointState:
             pulumi.set(__self__, "auto_add_new_nodes", auto_add_new_nodes)
         if db_cluster_id is not None:
             pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        if db_endpoint_description is not None:
+            pulumi.set(__self__, "db_endpoint_description", db_endpoint_description)
         if db_endpoint_id is not None:
             pulumi.set(__self__, "db_endpoint_id", db_endpoint_id)
         if endpoint_config is not None:
@@ -197,6 +212,15 @@ class _EndpointState:
     @db_cluster_id.setter
     def db_cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "db_cluster_id", value)
+
+    @property
+    @pulumi.getter(name="dbEndpointDescription")
+    def db_endpoint_description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "db_endpoint_description")
+
+    @db_endpoint_description.setter
+    def db_endpoint_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_endpoint_description", value)
 
     @property
     @pulumi.getter(name="dbEndpointId")
@@ -317,6 +341,7 @@ class Endpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 db_endpoint_description: Optional[pulumi.Input[str]] = None,
                  endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
@@ -381,6 +406,7 @@ class Endpoint(pulumi.CustomResource):
         * `ssl_certificate_url` - (Available in v1.132.0+) Specifies SSL certificate download link.\\
             **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\\
             For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+        * `db_endpoint_description` - (Optional, Available in v1.201.0+) The name of the endpoint.
 
         ## Import
 
@@ -456,6 +482,7 @@ class Endpoint(pulumi.CustomResource):
         * `ssl_certificate_url` - (Available in v1.132.0+) Specifies SSL certificate download link.\\
             **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\\
             For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+        * `db_endpoint_description` - (Optional, Available in v1.201.0+) The name of the endpoint.
 
         ## Import
 
@@ -482,6 +509,7 @@ class Endpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 db_endpoint_description: Optional[pulumi.Input[str]] = None,
                  endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
@@ -502,6 +530,7 @@ class Endpoint(pulumi.CustomResource):
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__.__dict__["db_cluster_id"] = db_cluster_id
+            __props__.__dict__["db_endpoint_description"] = db_endpoint_description
             __props__.__dict__["endpoint_config"] = endpoint_config
             __props__.__dict__["endpoint_type"] = endpoint_type
             __props__.__dict__["net_type"] = net_type
@@ -525,6 +554,7 @@ class Endpoint(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_add_new_nodes: Optional[pulumi.Input[str]] = None,
             db_cluster_id: Optional[pulumi.Input[str]] = None,
+            db_endpoint_description: Optional[pulumi.Input[str]] = None,
             db_endpoint_id: Optional[pulumi.Input[str]] = None,
             endpoint_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             endpoint_type: Optional[pulumi.Input[str]] = None,
@@ -554,6 +584,7 @@ class Endpoint(pulumi.CustomResource):
 
         __props__.__dict__["auto_add_new_nodes"] = auto_add_new_nodes
         __props__.__dict__["db_cluster_id"] = db_cluster_id
+        __props__.__dict__["db_endpoint_description"] = db_endpoint_description
         __props__.__dict__["db_endpoint_id"] = db_endpoint_id
         __props__.__dict__["endpoint_config"] = endpoint_config
         __props__.__dict__["endpoint_type"] = endpoint_type
@@ -576,6 +607,11 @@ class Endpoint(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "db_cluster_id")
+
+    @property
+    @pulumi.getter(name="dbEndpointDescription")
+    def db_endpoint_description(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "db_endpoint_description")
 
     @property
     @pulumi.getter(name="dbEndpointId")

@@ -308,7 +308,7 @@ class Record(pulumi.CustomResource):
         RDS record can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/record:Record example abc123456
+         $ pulumi import alicloud:dns/record:Record example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -346,7 +346,7 @@ class Record(pulumi.CustomResource):
         RDS record can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:dns/record:Record example abc123456
+         $ pulumi import alicloud:dns/record:Record example <id>
         ```
 
         :param str resource_name: The name of the resource.

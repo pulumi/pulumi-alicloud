@@ -94,28 +94,28 @@ public class TrafficMirrorFilter extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+     * The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="trafficMirrorFilterDescription", type=String.class, parameters={})
     private Output</* @Nullable */ String> trafficMirrorFilterDescription;
 
     /**
-     * @return The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+     * @return The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> trafficMirrorFilterDescription() {
         return Codegen.optional(this.trafficMirrorFilterDescription);
     }
     /**
-     * The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+     * The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="trafficMirrorFilterName", type=String.class, parameters={})
     private Output</* @Nullable */ String> trafficMirrorFilterName;
 
     /**
-     * @return The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+     * @return The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> trafficMirrorFilterName() {

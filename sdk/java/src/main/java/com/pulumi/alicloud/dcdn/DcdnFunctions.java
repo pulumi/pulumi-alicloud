@@ -16,12 +16,15 @@ import com.pulumi.alicloud.dcdn.inputs.GetWafDomainsArgs;
 import com.pulumi.alicloud.dcdn.inputs.GetWafDomainsPlainArgs;
 import com.pulumi.alicloud.dcdn.inputs.GetWafPoliciesArgs;
 import com.pulumi.alicloud.dcdn.inputs.GetWafPoliciesPlainArgs;
+import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
+import com.pulumi.alicloud.dcdn.inputs.GetWafRulesPlainArgs;
 import com.pulumi.alicloud.dcdn.outputs.GetDomainsResult;
 import com.pulumi.alicloud.dcdn.outputs.GetIpaDomainsResult;
 import com.pulumi.alicloud.dcdn.outputs.GetKvAccountResult;
 import com.pulumi.alicloud.dcdn.outputs.GetServiceResult;
 import com.pulumi.alicloud.dcdn.outputs.GetWafDomainsResult;
 import com.pulumi.alicloud.dcdn.outputs.GetWafPoliciesResult;
+import com.pulumi.alicloud.dcdn.outputs.GetWafRulesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -1342,5 +1345,245 @@ public final class DcdnFunctions {
      */
     public static CompletableFuture<GetWafPoliciesResult> getWafPoliciesPlain(GetWafPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:dcdn/getWafPolicies:getWafPolicies", TypeShape.of(GetWafPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+     * 
+     * &gt; **NOTE:** Available in 1.201.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
+     *             .ids(alicloud_dcdn_waf_rule.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDcdnWafRuleExampleId&#34;, default_.wafRules()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetWafRulesResult> getWafRules() {
+        return getWafRules(GetWafRulesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+     * 
+     * &gt; **NOTE:** Available in 1.201.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
+     *             .ids(alicloud_dcdn_waf_rule.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDcdnWafRuleExampleId&#34;, default_.wafRules()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetWafRulesResult> getWafRulesPlain() {
+        return getWafRulesPlain(GetWafRulesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+     * 
+     * &gt; **NOTE:** Available in 1.201.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
+     *             .ids(alicloud_dcdn_waf_rule.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDcdnWafRuleExampleId&#34;, default_.wafRules()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetWafRulesResult> getWafRules(GetWafRulesArgs args) {
+        return getWafRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+     * 
+     * &gt; **NOTE:** Available in 1.201.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
+     *             .ids(alicloud_dcdn_waf_rule.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDcdnWafRuleExampleId&#34;, default_.wafRules()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetWafRulesResult> getWafRulesPlain(GetWafRulesPlainArgs args) {
+        return getWafRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+     * 
+     * &gt; **NOTE:** Available in 1.201.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
+     *             .ids(alicloud_dcdn_waf_rule.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDcdnWafRuleExampleId&#34;, default_.wafRules()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetWafRulesResult> getWafRules(GetWafRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:dcdn/getWafRules:getWafRules", TypeShape.of(GetWafRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+     * 
+     * &gt; **NOTE:** Available in 1.201.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetWafRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DcdnFunctions.getWafRules(GetWafRulesArgs.builder()
+     *             .ids(alicloud_dcdn_waf_rule.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDcdnWafRuleExampleId&#34;, default_.wafRules()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetWafRulesResult> getWafRulesPlain(GetWafRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:dcdn/getWafRules:getWafRules", TypeShape.of(GetWafRulesResult.class), args, Utilities.withVersion(options));
     }
 }

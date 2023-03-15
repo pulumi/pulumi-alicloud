@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Dms
         /// Cross-database query datalink name.
         /// </summary>
         [Output("dataLinkName")]
-        public Output<string?> DataLinkName { get; private set; } = null!;
+        public Output<string> DataLinkName { get; private set; } = null!;
 
         /// <summary>
         /// Database access password.

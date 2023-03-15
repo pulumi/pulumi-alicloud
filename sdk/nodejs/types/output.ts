@@ -10480,6 +10480,7 @@ export namespace config {
         edas?: string;
         edasschedulerx?: string;
         edsuser?: string;
+        eflo?: string;
         ehpc?: string;
         ehs?: string;
         eipanycast?: string;
@@ -12716,6 +12717,712 @@ export namespace dcdn {
         weight?: string;
     }
 
+    export interface ErEnvConf {
+        /**
+         * The configuration of a presetCanaryAnhui environment. The `Block presetCanaryAnhui` is same as `Block staging`.
+         */
+        presetCanaryAnhui: outputs.dcdn.ErEnvConfPresetCanaryAnhui;
+        /**
+         * The configuration of a presetCanaryBeijing environment. The `Block presetCanaryBeijing` is same as `Block staging`.
+         */
+        presetCanaryBeijing: outputs.dcdn.ErEnvConfPresetCanaryBeijing;
+        /**
+         * The configuration of a presetCanaryChongqing environment. The `Block presetCanaryChongqing` is same as `Block staging`.
+         */
+        presetCanaryChongqing: outputs.dcdn.ErEnvConfPresetCanaryChongqing;
+        /**
+         * The configuration of a presetCanaryFujian environment. The `Block presetCanaryFujian` is same as `Block staging`.
+         */
+        presetCanaryFujian: outputs.dcdn.ErEnvConfPresetCanaryFujian;
+        /**
+         * The configuration of a presetCanaryGansu environment. The `Block presetCanaryGansu` is same as `Block staging`.
+         */
+        presetCanaryGansu: outputs.dcdn.ErEnvConfPresetCanaryGansu;
+        /**
+         * The configuration of a presetCanaryGuangdong environment. The `Block presetCanaryGuangdong` is same as `Block staging`.
+         */
+        presetCanaryGuangdong: outputs.dcdn.ErEnvConfPresetCanaryGuangdong;
+        /**
+         * The configuration of a presetCanaryGuangxi environment. The `Block presetCanaryGuangxi` is same as `Block staging`.
+         */
+        presetCanaryGuangxi: outputs.dcdn.ErEnvConfPresetCanaryGuangxi;
+        /**
+         * The configuration of a presetCanaryGuizhou environment. The `Block presetCanaryGuizhou` is same as `Block staging`.
+         */
+        presetCanaryGuizhou: outputs.dcdn.ErEnvConfPresetCanaryGuizhou;
+        /**
+         * The configuration of a presetCanaryHainan environment. The `Block presetCanaryHainan` is same as `Block staging`.
+         */
+        presetCanaryHainan: outputs.dcdn.ErEnvConfPresetCanaryHainan;
+        /**
+         * The configuration of a presetCanaryHebei environment. The `Block presetCanaryHebei` is same as `Block staging`.
+         */
+        presetCanaryHebei: outputs.dcdn.ErEnvConfPresetCanaryHebei;
+        /**
+         * The configuration of a presetCanaryHeilongjiang environment. The `Block presetCanaryHeilongjiang` is same as `Block staging`.
+         */
+        presetCanaryHeilongjiang: outputs.dcdn.ErEnvConfPresetCanaryHeilongjiang;
+        /**
+         * The configuration of a presetCanaryHenan environment. The `Block presetCanaryHenan` is same as `Block staging`.
+         */
+        presetCanaryHenan: outputs.dcdn.ErEnvConfPresetCanaryHenan;
+        /**
+         * The configuration of a presetCanaryHongKong environment. The `Block presetCanaryHongKong` is same as `Block staging`.
+         */
+        presetCanaryHongKong: outputs.dcdn.ErEnvConfPresetCanaryHongKong;
+        /**
+         * The configuration of a presetCanaryHubei environment. The `Block presetCanaryHubei` is same as `Block staging`.
+         */
+        presetCanaryHubei: outputs.dcdn.ErEnvConfPresetCanaryHubei;
+        /**
+         * The configuration of a presetCanaryHunan environment. The `Block presetCanaryHunan` is same as `Block staging`.
+         */
+        presetCanaryHunan: outputs.dcdn.ErEnvConfPresetCanaryHunan;
+        /**
+         * The configuration of a presetCanaryJiangsu environment. The `Block presetCanaryJiangsu` is same as `Block staging`.
+         */
+        presetCanaryJiangsu: outputs.dcdn.ErEnvConfPresetCanaryJiangsu;
+        /**
+         * The configuration of a presetCanaryJiangxi environment. The `Block presetCanaryJiangxi` is same as `Block staging`.
+         */
+        presetCanaryJiangxi: outputs.dcdn.ErEnvConfPresetCanaryJiangxi;
+        /**
+         * The configuration of a presetCanaryJilin environment. The `Block presetCanaryJilin` is same as `Block staging`.
+         */
+        presetCanaryJilin: outputs.dcdn.ErEnvConfPresetCanaryJilin;
+        /**
+         * The configuration of a presetCanaryLiaoning environment. The `Block presetCanaryLiaoning` is same as `Block staging`.
+         */
+        presetCanaryLiaoning: outputs.dcdn.ErEnvConfPresetCanaryLiaoning;
+        /**
+         * The configuration of a presetCanaryMacau environment. The `Block presetCanaryMacau` is same as `Block staging`.
+         */
+        presetCanaryMacau: outputs.dcdn.ErEnvConfPresetCanaryMacau;
+        /**
+         * The configuration of a presetCanaryNeimenggu environment. The `Block presetCanaryNeimenggu` is same as `Block staging`.
+         */
+        presetCanaryNeimenggu: outputs.dcdn.ErEnvConfPresetCanaryNeimenggu;
+        /**
+         * The configuration of a presetCanaryNingxia environment. The `Block presetCanaryNingxia` is same as `Block staging`.
+         */
+        presetCanaryNingxia: outputs.dcdn.ErEnvConfPresetCanaryNingxia;
+        /**
+         * The configuration of a presetCanaryOverseas environment. The `Block presetCanaryOverseas` is same as `Block staging`.
+         */
+        presetCanaryOverseas: outputs.dcdn.ErEnvConfPresetCanaryOverseas;
+        /**
+         * The configuration of a presetCanaryQinghai environment. The `Block presetCanaryQinghai` is same as `Block staging`.
+         */
+        presetCanaryQinghai: outputs.dcdn.ErEnvConfPresetCanaryQinghai;
+        /**
+         * The configuration of a presetCanaryShaanxi environment. The `Block presetCanaryShaanxi` is same as `Block staging`.
+         */
+        presetCanaryShaanxi: outputs.dcdn.ErEnvConfPresetCanaryShaanxi;
+        /**
+         * The configuration of a presetCanaryShandong environment. The `Block presetCanaryShandong` is same as `Block staging`.
+         */
+        presetCanaryShandong: outputs.dcdn.ErEnvConfPresetCanaryShandong;
+        /**
+         * The configuration of a presetCanaryShanghai environment. The `Block presetCanaryShanghai` is same as `Block staging`.
+         */
+        presetCanaryShanghai: outputs.dcdn.ErEnvConfPresetCanaryShanghai;
+        /**
+         * The configuration of a presetCanaryShanxi environment. The `Block presetCanaryShanxi` is same as `Block staging`.
+         */
+        presetCanaryShanxi: outputs.dcdn.ErEnvConfPresetCanaryShanxi;
+        /**
+         * The configuration of a presetCanarySichuan environment. The `Block presetCanarySichuan` is same as `Block staging`.
+         */
+        presetCanarySichuan: outputs.dcdn.ErEnvConfPresetCanarySichuan;
+        /**
+         * The configuration of a presetCanaryTaiwan environment. The `Block presetCanaryTaiwan` is same as `Block staging`.
+         */
+        presetCanaryTaiwan: outputs.dcdn.ErEnvConfPresetCanaryTaiwan;
+        /**
+         * The configuration of a presetCanaryTianjin environment. The `Block presetCanaryTianjin` is same as `Block staging`.
+         */
+        presetCanaryTianjin: outputs.dcdn.ErEnvConfPresetCanaryTianjin;
+        /**
+         * The configuration of a presetCanaryXinjiang environment. The `Block presetCanaryXinjiang` is same as `Block staging`.
+         */
+        presetCanaryXinjiang: outputs.dcdn.ErEnvConfPresetCanaryXinjiang;
+        /**
+         * The configuration of a presetCanaryXizang environment. The `Block presetCanaryXizang` is same as `Block staging`.
+         */
+        presetCanaryXizang: outputs.dcdn.ErEnvConfPresetCanaryXizang;
+        /**
+         * The configuration of a presetCanaryYunnan environment. The `Block presetCanaryYunnan` is same as `Block staging`.
+         */
+        presetCanaryYunnan: outputs.dcdn.ErEnvConfPresetCanaryYunnan;
+        /**
+         * The configuration of a presetCanaryZhejiang environment. The `Block presetCanaryZhejiang` is same as `Block staging`.
+         */
+        presetCanaryZhejiang: outputs.dcdn.ErEnvConfPresetCanaryZhejiang;
+        /**
+         * The configuration of a production environment. The `Block production` is same as `Block staging`.
+         */
+        production: outputs.dcdn.ErEnvConfProduction;
+        /**
+         * The configuration of a staging environment. See the following `Block staging`.
+         */
+        staging: outputs.dcdn.ErEnvConfStaging;
+    }
+
+    export interface ErEnvConfPresetCanaryAnhui {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryBeijing {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryChongqing {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryFujian {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryGansu {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryGuangdong {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryGuangxi {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryGuizhou {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryHainan {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryHebei {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryHeilongjiang {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryHenan {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryHongKong {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryHubei {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryHunan {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryJiangsu {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryJiangxi {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryJilin {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryLiaoning {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryMacau {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryNeimenggu {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryNingxia {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryOverseas {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryQinghai {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryShaanxi {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryShandong {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryShanghai {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryShanxi {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanarySichuan {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryTaiwan {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryTianjin {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryXinjiang {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryXizang {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryYunnan {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfPresetCanaryZhejiang {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfProduction {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
+    export interface ErEnvConfStaging {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts: string[];
+        /**
+         * The version number of the code.
+         */
+        codeRev?: string;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName: string;
+    }
+
     export interface GetDomainsDomain {
         /**
          * Indicates the name of the certificate.
@@ -12937,6 +13644,143 @@ export namespace dcdn {
         status: string;
     }
 
+    export interface GetWafRulesWafRule {
+        /**
+         * Specifies the action of the rule.
+         */
+        action: string;
+        /**
+         * Whether to turn on Frequency Control, on/off
+         */
+        ccStatus: string;
+        /**
+         * The blocked regions in the Chinese mainland, separated by commas (,).
+         */
+        cnRegionList: string;
+        /**
+         * The trigger condition of the rule.
+         */
+        conditions: outputs.dcdn.GetWafRulesWafRuleCondition[];
+        /**
+         * The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
+         */
+        defenseScene: string;
+        /**
+         * The effective range of the frequency control blacklist.
+         */
+        effect: string;
+        /**
+         * Revised the time. The date format is based on ISO8601 notation and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
+         */
+        gmtModified: string;
+        /**
+         * The ID of the Waf Rule.
+         */
+        id: string;
+        /**
+         * The effective range of the frequency control blacklist.
+         */
+        otherRegionList: string;
+        /**
+         * The protection policy ID.
+         */
+        policyId: string;
+        /**
+         * The rules of rate limiting.
+         */
+        rateLimits: outputs.dcdn.GetWafRulesWafRuleRateLimit[];
+        /**
+         * The regular expression.
+         */
+        regularRules: string[];
+        /**
+         * The type of the regular expression. If the value of the tags field contains waf_group, you can specify this field.
+         */
+        regularTypes: string[];
+        /**
+         * Filter by IP address.
+         */
+        remoteAddrs: string[];
+        /**
+         * The name of the protection rule.
+         */
+        ruleName: string;
+        /**
+         * List of protection scenarios
+         */
+        scenes: string[];
+        /**
+         * The information about the HTTP status code.
+         */
+        status: string;
+        /**
+         * The id of the waf rule group.
+         */
+        wafGroupIds: string;
+        /**
+         * The first ID of the resource
+         */
+        wafRuleId: string;
+    }
+
+    export interface GetWafRulesWafRuleCondition {
+        /**
+         * The match field.
+         */
+        key: string;
+        /**
+         * The logical symbol.
+         */
+        opValue: string;
+        /**
+         * The subfield of the target field.
+         */
+        subKey: string;
+        /**
+         * The match content. Separate multiple values with commas (,).
+         */
+        values: string;
+    }
+
+    export interface GetWafRulesWafRuleRateLimit {
+        /**
+         * The statistical interval. Valid values: 5 to 1800. Unit: seconds.
+         */
+        interval: number;
+        /**
+         * The information about the HTTP status code.
+         */
+        statuses: outputs.dcdn.GetWafRulesWafRuleRateLimitStatus[];
+        /**
+         * The subfield of the target field.
+         */
+        subKey: string;
+        /**
+         * The statistical field for frequency control.
+         */
+        target: string;
+        /**
+         * The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
+         */
+        threshold: number;
+        /**
+         * The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
+         */
+        ttl: number;
+    }
+
+    export interface GetWafRulesWafRuleRateLimitStatus {
+        code: string;
+        /**
+         * The number of times that the HTTP status code that was returned.
+         */
+        count: number;
+        /**
+         * The percentage of HTTP status codes.
+         */
+        ratio: number;
+    }
+
     export interface IpaDomainSource {
         /**
          * The address of the origin server. You can specify an IP address or a domain name.
@@ -12958,6 +13802,67 @@ export namespace dcdn {
          * The weight of the origin server. You must specify a value that is less than `100`. Default value: `10`.
          */
         weight: number;
+    }
+
+    export interface WafRuleCondition {
+        /**
+         * The match field.
+         */
+        key: string;
+        /**
+         * The logical symbol.
+         */
+        opValue: string;
+        /**
+         * The match subfield.
+         */
+        subKey?: string;
+        /**
+         * The match content. Separate multiple values with commas (,).
+         */
+        values?: string;
+    }
+
+    export interface WafRuleRateLimit {
+        /**
+         * Statistical duration, 5-1800.
+         */
+        interval?: number;
+        /**
+         * The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+         */
+        status?: outputs.dcdn.WafRuleRateLimitStatus;
+        /**
+         * The match subfield.
+         */
+        subKey?: string;
+        /**
+         * The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
+         */
+        target?: string;
+        /**
+         * The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
+         */
+        threshold?: number;
+        /**
+         * The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
+         */
+        ttl?: number;
+    }
+
+    export interface WafRuleRateLimitStatus {
+        /**
+         * The HTTP status code returned.
+         */
+        code?: string;
+        /**
+         * The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+         */
+        count?: number;
+        /**
+         * The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+         */
+        ratio?: number;
     }
 
 }
@@ -21730,6 +22635,44 @@ export namespace eds {
 
 }
 
+export namespace eflo {
+    export interface GetVpdsVpd {
+        /**
+         * CIDR network segment
+         */
+        cidr: string;
+        /**
+         * The creation time of the resource
+         */
+        createTime: string;
+        /**
+         * Modification time
+         */
+        gmtModified: string;
+        /**
+         * The id of the vpd.
+         */
+        id: string;
+        /**
+         * The Resource group id
+         */
+        resourceGroupId: string;
+        /**
+         * The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+         */
+        status: string;
+        /**
+         * The id of the vpd.
+         */
+        vpdId: string;
+        /**
+         * The Name of the VPD.
+         */
+        vpdName: string;
+    }
+
+}
+
 export namespace ehpc {
     export interface ClusterAdditionalVolume {
         /**
@@ -22898,7 +23841,7 @@ export namespace emrv2 {
         /**
          * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
          */
-        spotInstanceRemedy?: boolean;
+        spotInstanceRemedy: boolean;
         /**
          * The detail configuration of subscription payment type.
          */

@@ -59,13 +59,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        /// The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("trafficMirrorFilterDescription")]
         public Output<string?> TrafficMirrorFilterDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        /// The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("trafficMirrorFilterName")]
         public Output<string?> TrafficMirrorFilterName { get; private set; } = null!;
@@ -123,13 +123,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        /// The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("trafficMirrorFilterDescription")]
         public Input<string>? TrafficMirrorFilterDescription { get; set; }
 
         /// <summary>
-        /// The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        /// The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("trafficMirrorFilterName")]
         public Input<string>? TrafficMirrorFilterName { get; set; }
@@ -155,13 +155,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        /// The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("trafficMirrorFilterDescription")]
         public Input<string>? TrafficMirrorFilterDescription { get; set; }
 
         /// <summary>
-        /// The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        /// The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("trafficMirrorFilterName")]
         public Input<string>? TrafficMirrorFilterName { get; set; }

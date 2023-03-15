@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -132,6 +133,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instanceSeries() {
         return this.instanceSeries;
+    }
+    /**
+     * The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+     * 
+     */
+    @Export(name="mysqlVersion", type=Integer.class, parameters={})
+    private Output<Integer> mysqlVersion;
+
+    /**
+     * @return The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+     * 
+     */
+    public Output<Integer> mysqlVersion() {
+        return this.mysqlVersion;
     }
     /**
      * (Available in 1.196.0+) The connection port of the DRDS instance.

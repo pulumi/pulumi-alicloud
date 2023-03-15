@@ -94,6 +94,18 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Acl { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        /// </summary>
+        [Output("autoRenew")]
+        public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
+        /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        /// </summary>
+        [Output("autoRenewPeriod")]
+        public Output<int?> AutoRenewPeriod { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
@@ -148,6 +160,17 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> DbInstanceIpArrayName { get; private set; } = null!;
 
         /// <summary>
+        /// The storage type of the instance. Valid values:
+        /// - local_ssd: specifies to use local SSDs. This value is recommended.
+        /// - cloud_ssd: specifies to use standard SSDs.
+        /// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+        /// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+        /// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        /// </summary>
+        [Output("dbInstanceStorageType")]
+        public Output<string> DbInstanceStorageType { get; private set; } = null!;
+
+        /// <summary>
         /// The switch of delete protection. Valid values:
         /// - true: delete protect.
         /// - false: no delete protect.
@@ -172,6 +195,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("forceRestart")]
         public Output<bool?> ForceRestart { get; private set; } = null!;
+
+        /// <summary>
+        /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+        /// </summary>
+        [Output("instanceChargeType")]
+        public Output<string?> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
         /// The name of DB instance. It a string of 2 to 256 characters.
@@ -211,6 +240,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ReadOnlyInstanceParameter>> Parameters { get; private set; } = null!;
+
+        /// <summary>
+        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// </summary>
+        [Output("period")]
+        public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
         /// RDS database connection port.
@@ -389,6 +424,18 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Acl { get; set; }
 
         /// <summary>
+        /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
         /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
@@ -437,6 +484,17 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceIpArrayName { get; set; }
 
         /// <summary>
+        /// The storage type of the instance. Valid values:
+        /// - local_ssd: specifies to use local SSDs. This value is recommended.
+        /// - cloud_ssd: specifies to use standard SSDs.
+        /// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+        /// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+        /// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        /// </summary>
+        [Input("dbInstanceStorageType")]
+        public Input<string>? DbInstanceStorageType { get; set; }
+
+        /// <summary>
         /// The switch of delete protection. Valid values:
         /// - true: delete protect.
         /// - false: no delete protect.
@@ -455,6 +513,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("forceRestart")]
         public Input<bool>? ForceRestart { get; set; }
+
+        /// <summary>
+        /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+        /// </summary>
+        [Input("instanceChargeType")]
+        public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
         /// The name of DB instance. It a string of 2 to 256 characters.
@@ -500,6 +564,12 @@ namespace Pulumi.AliCloud.Rds
             get => _parameters ?? (_parameters = new InputList<Inputs.ReadOnlyInstanceParameterArgs>());
             set => _parameters = value;
         }
+
+        /// <summary>
+        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
 
         /// <summary>
         /// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
@@ -646,6 +716,18 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Acl { get; set; }
 
         /// <summary>
+        /// Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
         /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
@@ -700,6 +782,17 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceIpArrayName { get; set; }
 
         /// <summary>
+        /// The storage type of the instance. Valid values:
+        /// - local_ssd: specifies to use local SSDs. This value is recommended.
+        /// - cloud_ssd: specifies to use standard SSDs.
+        /// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+        /// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+        /// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        /// </summary>
+        [Input("dbInstanceStorageType")]
+        public Input<string>? DbInstanceStorageType { get; set; }
+
+        /// <summary>
         /// The switch of delete protection. Valid values:
         /// - true: delete protect.
         /// - false: no delete protect.
@@ -724,6 +817,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("forceRestart")]
         public Input<bool>? ForceRestart { get; set; }
+
+        /// <summary>
+        /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+        /// </summary>
+        [Input("instanceChargeType")]
+        public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
         /// The name of DB instance. It a string of 2 to 256 characters.
@@ -769,6 +868,12 @@ namespace Pulumi.AliCloud.Rds
             get => _parameters ?? (_parameters = new InputList<Inputs.ReadOnlyInstanceParameterGetArgs>());
             set => _parameters = value;
         }
+
+        /// <summary>
+        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
 
         /// <summary>
         /// RDS database connection port.

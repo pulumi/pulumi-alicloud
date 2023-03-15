@@ -388,7 +388,10 @@ class ForwardEntry(pulumi.CustomResource):
             vswitch_name=name)
         default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
             vpc_id=default_network.id,
-            specification="Small")
+            internet_charge_type="PayByLcu",
+            nat_gateway_name=name,
+            nat_type="Enhanced",
+            vswitch_id=default_switch.id)
         default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
         default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
             allocation_id=default_eip_address.id,
@@ -454,7 +457,10 @@ class ForwardEntry(pulumi.CustomResource):
             vswitch_name=name)
         default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
             vpc_id=default_network.id,
-            specification="Small")
+            internet_charge_type="PayByLcu",
+            nat_gateway_name=name,
+            nat_type="Enhanced",
+            vswitch_id=default_switch.id)
         default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
         default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
             allocation_id=default_eip_address.id,

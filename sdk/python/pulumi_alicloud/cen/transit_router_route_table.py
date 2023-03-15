@@ -16,18 +16,22 @@ class TransitRouterRouteTableArgs:
     def __init__(__self__, *,
                  transit_router_id: pulumi.Input[str],
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  transit_router_route_table_description: Optional[pulumi.Input[str]] = None,
                  transit_router_route_table_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TransitRouterRouteTable resource.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_route_table_description: The description of the transit router route table.
         :param pulumi.Input[str] transit_router_route_table_name: The name of the transit router route table.
         """
         pulumi.set(__self__, "transit_router_id", transit_router_id)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if transit_router_route_table_description is not None:
             pulumi.set(__self__, "transit_router_route_table_description", transit_router_route_table_description)
         if transit_router_route_table_name is not None:
@@ -56,6 +60,18 @@ class TransitRouterRouteTableArgs:
     @dry_run.setter
     def dry_run(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="transitRouterRouteTableDescription")
@@ -87,6 +103,7 @@ class _TransitRouterRouteTableState:
     def __init__(__self__, *,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
                  transit_router_route_table_description: Optional[pulumi.Input[str]] = None,
                  transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
@@ -96,6 +113,7 @@ class _TransitRouterRouteTableState:
         Input properties used for looking up and filtering TransitRouterRouteTable resources.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] status: The associating status of the Transit Router.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] transit_router_route_table_description: The description of the transit router route table.
         :param pulumi.Input[str] transit_router_route_table_id: The id of the transit router route table.
@@ -106,6 +124,8 @@ class _TransitRouterRouteTableState:
             pulumi.set(__self__, "dry_run", dry_run)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if transit_router_id is not None:
             pulumi.set(__self__, "transit_router_id", transit_router_id)
         if transit_router_route_table_description is not None:
@@ -140,6 +160,18 @@ class _TransitRouterRouteTableState:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="transitRouterId")
@@ -208,6 +240,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
                  transit_router_route_table_description: Optional[pulumi.Input[str]] = None,
                  transit_router_route_table_name: Optional[pulumi.Input[str]] = None,
@@ -230,6 +263,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] transit_router_route_table_description: The description of the transit router route table.
         :param pulumi.Input[str] transit_router_route_table_name: The name of the transit router route table.
@@ -271,6 +305,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  transit_router_id: Optional[pulumi.Input[str]] = None,
                  transit_router_route_table_description: Optional[pulumi.Input[str]] = None,
                  transit_router_route_table_name: Optional[pulumi.Input[str]] = None,
@@ -284,6 +319,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
             __props__ = TransitRouterRouteTableArgs.__new__(TransitRouterRouteTableArgs)
 
             __props__.__dict__["dry_run"] = dry_run
+            __props__.__dict__["tags"] = tags
             if transit_router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'transit_router_id'")
             __props__.__dict__["transit_router_id"] = transit_router_id
@@ -304,6 +340,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             transit_router_id: Optional[pulumi.Input[str]] = None,
             transit_router_route_table_description: Optional[pulumi.Input[str]] = None,
             transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
@@ -318,6 +355,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] status: The associating status of the Transit Router.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] transit_router_route_table_description: The description of the transit router route table.
         :param pulumi.Input[str] transit_router_route_table_id: The id of the transit router route table.
@@ -330,6 +368,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
 
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["transit_router_id"] = transit_router_id
         __props__.__dict__["transit_router_route_table_description"] = transit_router_route_table_description
         __props__.__dict__["transit_router_route_table_id"] = transit_router_route_table_id
@@ -352,6 +391,14 @@ class TransitRouterRouteTable(pulumi.CustomResource):
         The associating status of the Transit Router.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="transitRouterId")

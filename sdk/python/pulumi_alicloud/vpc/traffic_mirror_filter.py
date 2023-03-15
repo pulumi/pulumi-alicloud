@@ -20,8 +20,8 @@ class TrafficMirrorFilterArgs:
         """
         The set of arguments for constructing a TrafficMirrorFilter resource.
         :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] traffic_mirror_filter_description: The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] traffic_mirror_filter_name: The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] traffic_mirror_filter_description: The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] traffic_mirror_filter_name: The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -46,7 +46,7 @@ class TrafficMirrorFilterArgs:
     @pulumi.getter(name="trafficMirrorFilterDescription")
     def traffic_mirror_filter_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "traffic_mirror_filter_description")
 
@@ -58,7 +58,7 @@ class TrafficMirrorFilterArgs:
     @pulumi.getter(name="trafficMirrorFilterName")
     def traffic_mirror_filter_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "traffic_mirror_filter_name")
 
@@ -78,8 +78,8 @@ class _TrafficMirrorFilterState:
         Input properties used for looking up and filtering TrafficMirrorFilter resources.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] status: The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
-        :param pulumi.Input[str] traffic_mirror_filter_description: The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] traffic_mirror_filter_name: The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] traffic_mirror_filter_description: The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] traffic_mirror_filter_name: The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -118,7 +118,7 @@ class _TrafficMirrorFilterState:
     @pulumi.getter(name="trafficMirrorFilterDescription")
     def traffic_mirror_filter_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "traffic_mirror_filter_description")
 
@@ -130,7 +130,7 @@ class _TrafficMirrorFilterState:
     @pulumi.getter(name="trafficMirrorFilterName")
     def traffic_mirror_filter_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "traffic_mirror_filter_name")
 
@@ -177,8 +177,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] traffic_mirror_filter_description: The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] traffic_mirror_filter_name: The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] traffic_mirror_filter_description: The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] traffic_mirror_filter_name: The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         """
         ...
     @overload
@@ -266,8 +266,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] status: The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
-        :param pulumi.Input[str] traffic_mirror_filter_description: The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] traffic_mirror_filter_name: The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] traffic_mirror_filter_description: The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] traffic_mirror_filter_name: The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -299,7 +299,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
     @pulumi.getter(name="trafficMirrorFilterDescription")
     def traffic_mirror_filter_description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "traffic_mirror_filter_description")
 
@@ -307,7 +307,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
     @pulumi.getter(name="trafficMirrorFilterName")
     def traffic_mirror_filter_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "traffic_mirror_filter_name")
 

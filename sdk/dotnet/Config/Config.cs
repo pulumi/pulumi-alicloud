@@ -321,6 +321,7 @@ namespace Pulumi.AliCloud
                 public string? Edas { get; set; } = null!;
                 public string? Edasschedulerx { get; set; } = null!;
                 public string? Edsuser { get; set; } = null!;
+                public string? Eflo { get; set; } = null!;
                 public string? Ehpc { get; set; } = null!;
                 public string? Ehs { get; set; } = null!;
                 public string? Eipanycast { get; set; } = null!;

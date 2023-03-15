@@ -20,6 +20,7 @@ class InstanceArgs:
                  vswitch_id: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 mysql_version: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -40,6 +41,7 @@ class InstanceArgs:
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in.
         :param pulumi.Input[str] zone_id: The Zone to launch the DRDS instance.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        :param pulumi.Input[int] mysql_version: The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         """
         pulumi.set(__self__, "description", description)
@@ -49,6 +51,8 @@ class InstanceArgs:
         pulumi.set(__self__, "zone_id", zone_id)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if mysql_version is not None:
+            pulumi.set(__self__, "mysql_version", mysql_version)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
 
@@ -136,6 +140,18 @@ class InstanceArgs:
         pulumi.set(self, "instance_charge_type", value)
 
     @property
+    @pulumi.getter(name="mysqlVersion")
+    def mysql_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+        """
+        return pulumi.get(self, "mysql_version")
+
+    @mysql_version.setter
+    def mysql_version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mysql_version", value)
+
+    @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -155,6 +171,7 @@ class _InstanceState:
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_series: Optional[pulumi.Input[str]] = None,
+                 mysql_version: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -169,6 +186,7 @@ class _InstanceState:
                - `drds.sn2.4c16g` Starter Edition.
                - `drds.sn2.8c32g` Standard Edition.
                - `drds.sn2.16c64g` Enterprise Edition.
+        :param pulumi.Input[int] mysql_version: The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
         :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the DRDS instance.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
                - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -191,6 +209,8 @@ class _InstanceState:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_series is not None:
             pulumi.set(__self__, "instance_series", instance_series)
+        if mysql_version is not None:
+            pulumi.set(__self__, "mysql_version", mysql_version)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if specification is not None:
@@ -252,6 +272,18 @@ class _InstanceState:
     @instance_series.setter
     def instance_series(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_series", value)
+
+    @property
+    @pulumi.getter(name="mysqlVersion")
+    def mysql_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+        """
+        return pulumi.get(self, "mysql_version")
+
+    @mysql_version.setter
+    def mysql_version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mysql_version", value)
 
     @property
     @pulumi.getter
@@ -330,6 +362,7 @@ class Instance(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_series: Optional[pulumi.Input[str]] = None,
+                 mysql_version: Optional[pulumi.Input[int]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -377,6 +410,7 @@ class Instance(pulumi.CustomResource):
                - `drds.sn2.4c16g` Starter Edition.
                - `drds.sn2.8c32g` Standard Edition.
                - `drds.sn2.16c64g` Enterprise Edition.
+        :param pulumi.Input[int] mysql_version: The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
                - `drds.sn1.4c8g` for DRDS instance Starter version;
                - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -448,6 +482,7 @@ class Instance(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_series: Optional[pulumi.Input[str]] = None,
+                 mysql_version: Optional[pulumi.Input[int]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -468,6 +503,7 @@ class Instance(pulumi.CustomResource):
             if instance_series is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_series'")
             __props__.__dict__["instance_series"] = instance_series
+            __props__.__dict__["mysql_version"] = mysql_version
             if specification is None and not opts.urn:
                 raise TypeError("Missing required property 'specification'")
             __props__.__dict__["specification"] = specification
@@ -494,6 +530,7 @@ class Instance(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             instance_series: Optional[pulumi.Input[str]] = None,
+            mysql_version: Optional[pulumi.Input[int]] = None,
             port: Optional[pulumi.Input[str]] = None,
             specification: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -513,6 +550,7 @@ class Instance(pulumi.CustomResource):
                - `drds.sn2.4c16g` Starter Edition.
                - `drds.sn2.8c32g` Standard Edition.
                - `drds.sn2.16c64g` Enterprise Edition.
+        :param pulumi.Input[int] mysql_version: The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
         :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the DRDS instance.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
                - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -535,6 +573,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["instance_series"] = instance_series
+        __props__.__dict__["mysql_version"] = mysql_version
         __props__.__dict__["port"] = port
         __props__.__dict__["specification"] = specification
         __props__.__dict__["vpc_id"] = vpc_id
@@ -576,6 +615,14 @@ class Instance(pulumi.CustomResource):
         - `drds.sn2.16c64g` Enterprise Edition.
         """
         return pulumi.get(self, "instance_series")
+
+    @property
+    @pulumi.getter(name="mysqlVersion")
+    def mysql_version(self) -> pulumi.Output[int]:
+        """
+        The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+        """
+        return pulumi.get(self, "mysql_version")
 
     @property
     @pulumi.getter

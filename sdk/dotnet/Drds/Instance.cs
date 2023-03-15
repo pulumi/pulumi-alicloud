@@ -81,6 +81,12 @@ namespace Pulumi.AliCloud.Drds
         public Output<string> InstanceSeries { get; private set; } = null!;
 
         /// <summary>
+        /// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+        /// </summary>
+        [Output("mysqlVersion")]
+        public Output<int> MysqlVersion { get; private set; } = null!;
+
+        /// <summary>
         /// (Available in 1.196.0+) The connection port of the DRDS instance.
         /// </summary>
         [Output("port")]
@@ -186,6 +192,12 @@ namespace Pulumi.AliCloud.Drds
         public Input<string> InstanceSeries { get; set; } = null!;
 
         /// <summary>
+        /// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+        /// </summary>
+        [Input("mysqlVersion")]
+        public Input<int>? MysqlVersion { get; set; }
+
+        /// <summary>
         /// User-defined DRDS instance specification. Value range:
         /// - `drds.sn1.4c8g` for DRDS instance Starter version;
         /// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -251,6 +263,12 @@ namespace Pulumi.AliCloud.Drds
         /// </summary>
         [Input("instanceSeries")]
         public Input<string>? InstanceSeries { get; set; }
+
+        /// <summary>
+        /// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+        /// </summary>
+        [Input("mysqlVersion")]
+        public Input<int>? MysqlVersion { get; set; }
 
         /// <summary>
         /// (Available in 1.196.0+) The connection port of the DRDS instance.

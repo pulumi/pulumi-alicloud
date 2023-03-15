@@ -119,6 +119,7 @@ import * as ecp from "./ecp";
 import * as ecs from "./ecs";
 import * as edas from "./edas";
 import * as eds from "./eds";
+import * as eflo from "./eflo";
 import * as ehpc from "./ehpc";
 import * as eipanycast from "./eipanycast";
 import * as elasticsearch from "./elasticsearch";
@@ -239,6 +240,7 @@ export {
     ecs,
     edas,
     eds,
+    eflo,
     ehpc,
     eipanycast,
     elasticsearch,

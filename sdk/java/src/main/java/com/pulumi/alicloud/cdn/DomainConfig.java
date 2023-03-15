@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var domain = new DomainNew(&#34;domain&#34;, DomainNewArgs.builder()        
- *             .domainName(&#34;mycdndomain.xiaozhu.com&#34;)
+ *             .domainName(&#34;mycdndomain.alicloud-provider.cn&#34;)
  *             .cdnType(&#34;web&#34;)
  *             .scope(&#34;overseas&#34;)
  *             .sources(DomainNewSourceArgs.builder()

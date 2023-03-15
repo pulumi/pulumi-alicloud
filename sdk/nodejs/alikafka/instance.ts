@@ -116,6 +116,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly ioMax!: pulumi.Output<number>;
     /**
+     * The traffic specification of the instance. We recommend that you configure this parameter.
+     * - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
+     * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+     */
+    public readonly ioMaxSpec!: pulumi.Output<string>;
+    /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
      */
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
@@ -199,6 +205,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["eipMax"] = state ? state.eipMax : undefined;
             resourceInputs["endPoint"] = state ? state.endPoint : undefined;
             resourceInputs["ioMax"] = state ? state.ioMax : undefined;
+            resourceInputs["ioMaxSpec"] = state ? state.ioMaxSpec : undefined;
             resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["paidType"] = state ? state.paidType : undefined;
@@ -224,9 +231,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.diskType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'diskType'");
             }
-            if ((!args || args.ioMax === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ioMax'");
-            }
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
@@ -236,6 +240,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["diskType"] = args ? args.diskType : undefined;
             resourceInputs["eipMax"] = args ? args.eipMax : undefined;
             resourceInputs["ioMax"] = args ? args.ioMax : undefined;
+            resourceInputs["ioMaxSpec"] = args ? args.ioMaxSpec : undefined;
             resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["paidType"] = args ? args.paidType : undefined;
@@ -291,6 +296,12 @@ export interface InstanceState {
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
     ioMax?: pulumi.Input<number>;
+    /**
+     * The traffic specification of the instance. We recommend that you configure this parameter.
+     * - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
+     * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+     */
+    ioMaxSpec?: pulumi.Input<string>;
     /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
      */
@@ -385,7 +396,13 @@ export interface InstanceArgs {
     /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
-    ioMax: pulumi.Input<number>;
+    ioMax?: pulumi.Input<number>;
+    /**
+     * The traffic specification of the instance. We recommend that you configure this parameter.
+     * - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
+     * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+     */
+    ioMaxSpec?: pulumi.Input<string>;
     /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
      */

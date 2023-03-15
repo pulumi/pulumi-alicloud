@@ -145,6 +145,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataDisks);
     }
     /**
+     * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     * 
+     */
+    @Export(name="dedicatedHostId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> dedicatedHostId;
+
+    /**
+     * @return The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     * 
+     */
+    public Output<Optional<String>> dedicatedHostId() {
+        return Codegen.optional(this.dedicatedHostId);
+    }
+    /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
@@ -836,7 +850,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="spotStrategy", type=String.class, parameters={})
-    private Output</* @Nullable */ String> spotStrategy;
+    private Output<String> spotStrategy;
 
     /**
      * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;. Value range:
@@ -845,8 +859,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
      * 
      */
-    public Output<Optional<String>> spotStrategy() {
-        return Codegen.optional(this.spotStrategy);
+    public Output<String> spotStrategy() {
+        return this.spotStrategy;
     }
     /**
      * The instance status. Valid values: [&#34;Running&#34;, &#34;Stopped&#34;]. You can control the instance start and stop through this parameter. Default to `Running`.
@@ -1047,14 +1061,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * It supports to setting a base64-encoded value, and it is the recommended usage.
+     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
      * 
      */
     @Export(name="userData", type=String.class, parameters={})
     private Output</* @Nullable */ String> userData;
 
     /**
-     * @return User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+     * @return User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * It supports to setting a base64-encoded value, and it is the recommended usage.
+     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
      * 
      */
     public Output<Optional<String>> userData() {

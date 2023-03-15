@@ -130,6 +130,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     * 
+     */
+    @Import(name="dedicatedHostId")
+    private @Nullable Output<String> dedicatedHostId;
+
+    /**
+     * @return The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     * 
+     */
+    public Optional<Output<String>> dedicatedHostId() {
+        return Optional.ofNullable(this.dedicatedHostId);
+    }
+
+    /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
@@ -1019,14 +1034,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * It supports to setting a base64-encoded value, and it is the recommended usage.
+     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
      * 
      */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
     /**
-     * @return User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+     * @return User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * It supports to setting a base64-encoded value, and it is the recommended usage.
+     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
      * 
      */
     public Optional<Output<String>> userData() {
@@ -1076,6 +1097,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.availabilityZone = $.availabilityZone;
         this.creditSpecification = $.creditSpecification;
         this.dataDisks = $.dataDisks;
+        this.dedicatedHostId = $.dedicatedHostId;
         this.deletionProtection = $.deletionProtection;
         this.deploymentSetId = $.deploymentSetId;
         this.description = $.description;
@@ -1306,6 +1328,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataDisks(InstanceDataDiskArgs... dataDisks) {
             return dataDisks(List.of(dataDisks));
+        }
+
+        /**
+         * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedHostId(@Nullable Output<String> dedicatedHostId) {
+            $.dedicatedHostId = dedicatedHostId;
+            return this;
+        }
+
+        /**
+         * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedHostId(String dedicatedHostId) {
+            return dedicatedHostId(Output.of(dedicatedHostId));
         }
 
         /**
@@ -2562,7 +2605,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userData User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+         * @param userData User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+         * It supports to setting a base64-encoded value, and it is the recommended usage.
+         * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+         * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
          * 
          * @return builder
          * 
@@ -2573,7 +2619,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userData User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+         * @param userData User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+         * It supports to setting a base64-encoded value, and it is the recommended usage.
+         * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+         * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
          * 
          * @return builder
          * 

@@ -123,14 +123,14 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
      * 
      */
     @Import(name="taskType")
     private @Nullable Output<String> taskType;
 
     /**
-     * @return The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+     * @return The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
      * 
      */
     public Optional<Output<String>> taskType() {
@@ -342,7 +342,7 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taskType The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+         * @param taskType The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taskType The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+         * @param taskType The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
          * 
          * @return builder
          * 

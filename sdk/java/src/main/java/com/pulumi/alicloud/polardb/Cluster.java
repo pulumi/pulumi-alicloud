@@ -492,14 +492,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="roleArn", type=String.class, parameters={})
-    private Output</* @Nullable */ String> roleArn;
+    private Output<String> roleArn;
 
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
      * 
      */
-    public Output<Optional<String>> roleArn() {
-        return Codegen.optional(this.roleArn);
+    public Output<String> roleArn() {
+        return this.roleArn;
     }
     /**
      * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.

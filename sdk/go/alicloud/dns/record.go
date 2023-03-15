@@ -45,7 +45,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:dns/record:Record example abc123456
+//	$ pulumi import alicloud:dns/record:Record example <id>
 //
 // ```
 type Record struct {

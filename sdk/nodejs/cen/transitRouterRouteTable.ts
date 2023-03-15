@@ -56,6 +56,10 @@ export class TransitRouterRouteTable extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * The ID of the transit router.
      */
     public readonly transitRouterId!: pulumi.Output<string>;
@@ -91,6 +95,7 @@ export class TransitRouterRouteTable extends pulumi.CustomResource {
             const state = argsOrState as TransitRouterRouteTableState | undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
             resourceInputs["transitRouterRouteTableDescription"] = state ? state.transitRouterRouteTableDescription : undefined;
             resourceInputs["transitRouterRouteTableId"] = state ? state.transitRouterRouteTableId : undefined;
@@ -102,6 +107,7 @@ export class TransitRouterRouteTable extends pulumi.CustomResource {
                 throw new Error("Missing required property 'transitRouterId'");
             }
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
             resourceInputs["transitRouterRouteTableDescription"] = args ? args.transitRouterRouteTableDescription : undefined;
             resourceInputs["transitRouterRouteTableName"] = args ? args.transitRouterRouteTableName : undefined;
@@ -126,6 +132,10 @@ export interface TransitRouterRouteTableState {
      * The associating status of the Transit Router.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the transit router.
      */
@@ -156,6 +166,10 @@ export interface TransitRouterRouteTableArgs {
      * The dry run.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the transit router.
      */

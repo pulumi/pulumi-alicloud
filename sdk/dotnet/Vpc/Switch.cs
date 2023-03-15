@@ -40,6 +40,24 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        /// </summary>
+        [Output("enableIpv6")]
+        public Output<bool?> EnableIpv6 { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+        /// </summary>
+        [Output("ipv6CidrBlock")]
+        public Output<string> Ipv6CidrBlock { get; private set; } = null!;
+
+        /// <summary>
+        /// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+        /// </summary>
+        [Output("ipv6CidrBlockMask")]
+        public Output<int?> Ipv6CidrBlockMask { get; private set; } = null!;
+
+        /// <summary>
         /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         /// </summary>
         [Output("name")]
@@ -140,6 +158,18 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        /// </summary>
+        [Input("enableIpv6")]
+        public Input<bool>? EnableIpv6 { get; set; }
+
+        /// <summary>
+        /// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+        /// </summary>
+        [Input("ipv6CidrBlockMask")]
+        public Input<int>? Ipv6CidrBlockMask { get; set; }
+
+        /// <summary>
         /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         /// </summary>
         [Input("name")]
@@ -200,6 +230,24 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        /// </summary>
+        [Input("enableIpv6")]
+        public Input<bool>? EnableIpv6 { get; set; }
+
+        /// <summary>
+        /// (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+        /// </summary>
+        [Input("ipv6CidrBlock")]
+        public Input<string>? Ipv6CidrBlock { get; set; }
+
+        /// <summary>
+        /// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+        /// </summary>
+        [Input("ipv6CidrBlockMask")]
+        public Input<int>? Ipv6CidrBlockMask { get; set; }
 
         /// <summary>
         /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.

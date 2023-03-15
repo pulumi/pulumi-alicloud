@@ -10,6 +10,10 @@ export const getConsumerGroups: typeof import("./getConsumerGroups").getConsumer
 export const getConsumerGroupsOutput: typeof import("./getConsumerGroups").getConsumerGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getConsumerGroups","getConsumerGroupsOutput"], () => require("./getConsumerGroups"));
 
+export { GetGlobalEventsStorageRegionResult } from "./getGlobalEventsStorageRegion";
+export const getGlobalEventsStorageRegion: typeof import("./getGlobalEventsStorageRegion").getGlobalEventsStorageRegion = null as any;
+utilities.lazyLoad(exports, ["getGlobalEventsStorageRegion"], () => require("./getGlobalEventsStorageRegion"));
+
 export { GetHistoryDeliveryJobsArgs, GetHistoryDeliveryJobsResult, GetHistoryDeliveryJobsOutputArgs } from "./getHistoryDeliveryJobs";
 export const getHistoryDeliveryJobs: typeof import("./getHistoryDeliveryJobs").getHistoryDeliveryJobs = null as any;
 export const getHistoryDeliveryJobsOutput: typeof import("./getHistoryDeliveryJobs").getHistoryDeliveryJobsOutput = null as any;
@@ -45,6 +49,11 @@ export const getTrailsDeprecated: typeof import("./getTrailsDeprecated").getTrai
 export const getTrailsDeprecatedOutput: typeof import("./getTrailsDeprecated").getTrailsDeprecatedOutput = null as any;
 utilities.lazyLoad(exports, ["getTrailsDeprecated","getTrailsDeprecatedOutput"], () => require("./getTrailsDeprecated"));
 
+export { GlobalEventsStorageRegionArgs, GlobalEventsStorageRegionState } from "./globalEventsStorageRegion";
+export type GlobalEventsStorageRegion = import("./globalEventsStorageRegion").GlobalEventsStorageRegion;
+export const GlobalEventsStorageRegion: typeof import("./globalEventsStorageRegion").GlobalEventsStorageRegion = null as any;
+utilities.lazyLoad(exports, ["GlobalEventsStorageRegion"], () => require("./globalEventsStorageRegion"));
+
 export { HistoryDeliveryJobArgs, HistoryDeliveryJobState } from "./historyDeliveryJob";
 export type HistoryDeliveryJob = import("./historyDeliveryJob").HistoryDeliveryJob;
 export const HistoryDeliveryJob: typeof import("./historyDeliveryJob").HistoryDeliveryJob = null as any;
@@ -65,6 +74,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion":
+                return new GlobalEventsStorageRegion(name, <any>undefined, { urn })
             case "alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob":
                 return new HistoryDeliveryJob(name, <any>undefined, { urn })
             case "alicloud:actiontrail/trail:Trail":
@@ -76,6 +87,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "actiontrail/globalEventsStorageRegion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "actiontrail/historyDeliveryJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "actiontrail/trail", _module)
 pulumi.runtime.registerResourceModule("alicloud", "actiontrail/trailDeprecated", _module)

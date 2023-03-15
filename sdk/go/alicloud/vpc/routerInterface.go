@@ -26,6 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foo, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_test_foo12345"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {

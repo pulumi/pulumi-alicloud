@@ -10,6 +10,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -47,6 +49,24 @@ public class Subnet extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    @Export(name="enableIpv6", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> enableIpv6;
+
+    public Output<Optional<Boolean>> enableIpv6() {
+        return Codegen.optional(this.enableIpv6);
+    }
+    @Export(name="ipv6CidrBlock", type=String.class, parameters={})
+    private Output<String> ipv6CidrBlock;
+
+    public Output<String> ipv6CidrBlock() {
+        return this.ipv6CidrBlock;
+    }
+    @Export(name="ipv6CidrBlockMask", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> ipv6CidrBlockMask;
+
+    public Output<Optional<Integer>> ipv6CidrBlockMask() {
+        return Codegen.optional(this.ipv6CidrBlockMask);
     }
     /**
      * @deprecated

@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Oos
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
         /// </summary>
         [Output("operationSystem")]
         public Output<string> OperationSystem { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
         /// </summary>
         [Input("operationSystem", required: true)]
         public Input<string> OperationSystem { get; set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
+        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
         /// </summary>
         [Input("operationSystem")]
         public Input<string>? OperationSystem { get; set; }

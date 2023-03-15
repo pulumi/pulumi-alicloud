@@ -83,14 +83,14 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="dataLinkName", type=String.class, parameters={})
-    private Output</* @Nullable */ String> dataLinkName;
+    private Output<String> dataLinkName;
 
     /**
      * @return Cross-database query datalink name.
      * 
      */
-    public Output<Optional<String>> dataLinkName() {
-        return Codegen.optional(this.dataLinkName);
+    public Output<String> dataLinkName() {
+        return this.dataLinkName;
     }
     /**
      * Database access password.

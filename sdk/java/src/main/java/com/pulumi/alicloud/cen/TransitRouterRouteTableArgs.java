@@ -6,7 +6,9 @@ package com.pulumi.alicloud.cen;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,6 +31,21 @@ public final class TransitRouterRouteTableArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<Boolean>> dryRun() {
         return Optional.ofNullable(this.dryRun);
+    }
+
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -80,6 +97,7 @@ public final class TransitRouterRouteTableArgs extends com.pulumi.resources.Reso
 
     private TransitRouterRouteTableArgs(TransitRouterRouteTableArgs $) {
         this.dryRun = $.dryRun;
+        this.tags = $.tags;
         this.transitRouterId = $.transitRouterId;
         this.transitRouterRouteTableDescription = $.transitRouterRouteTableDescription;
         this.transitRouterRouteTableName = $.transitRouterRouteTableName;
@@ -122,6 +140,27 @@ public final class TransitRouterRouteTableArgs extends com.pulumi.resources.Reso
          */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

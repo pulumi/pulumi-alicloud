@@ -60,7 +60,7 @@ import (
 type WafPolicy struct {
 	pulumi.CustomResourceState
 
-	// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`.
+	// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
 	DefenseScene pulumi.StringOutput `pulumi:"defenseScene"`
 	// The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
@@ -111,7 +111,7 @@ func GetWafPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WafPolicy resources.
 type wafPolicyState struct {
-	// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`.
+	// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
 	DefenseScene *string `pulumi:"defenseScene"`
 	// The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
 	PolicyName *string `pulumi:"policyName"`
@@ -122,7 +122,7 @@ type wafPolicyState struct {
 }
 
 type WafPolicyState struct {
-	// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`.
+	// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
 	DefenseScene pulumi.StringPtrInput
 	// The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
 	PolicyName pulumi.StringPtrInput
@@ -137,7 +137,7 @@ func (WafPolicyState) ElementType() reflect.Type {
 }
 
 type wafPolicyArgs struct {
-	// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`.
+	// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
 	DefenseScene string `pulumi:"defenseScene"`
 	// The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
 	PolicyName string `pulumi:"policyName"`
@@ -149,7 +149,7 @@ type wafPolicyArgs struct {
 
 // The set of arguments for constructing a WafPolicy resource.
 type WafPolicyArgs struct {
-	// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`.
+	// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
 	DefenseScene pulumi.StringInput
 	// The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
 	PolicyName pulumi.StringInput
@@ -246,7 +246,7 @@ func (o WafPolicyOutput) ToWafPolicyOutputWithContext(ctx context.Context) WafPo
 	return o
 }
 
-// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`.
+// The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
 func (o WafPolicyOutput) DefenseScene() pulumi.StringOutput {
 	return o.ApplyT(func(v *WafPolicy) pulumi.StringOutput { return v.DefenseScene }).(pulumi.StringOutput)
 }

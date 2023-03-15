@@ -45,6 +45,36 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+     * 
+     */
+    @Import(name="autoRenew")
+    private @Nullable Output<Boolean> autoRenew;
+
+    /**
+     * @return Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> autoRenew() {
+        return Optional.ofNullable(this.autoRenew);
+    }
+
+    /**
+     * Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+     * 
+     */
+    @Import(name="autoRenewPeriod")
+    private @Nullable Output<Integer> autoRenewPeriod;
+
+    /**
+     * @return Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+     * 
+     */
+    public Optional<Output<Integer>> autoRenewPeriod() {
+        return Optional.ofNullable(this.autoRenewPeriod);
+    }
+
+    /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
@@ -177,6 +207,31 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The storage type of the instance. Valid values:
+     * - local_ssd: specifies to use local SSDs. This value is recommended.
+     * - cloud_ssd: specifies to use standard SSDs.
+     * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     * 
+     */
+    @Import(name="dbInstanceStorageType")
+    private @Nullable Output<String> dbInstanceStorageType;
+
+    /**
+     * @return The storage type of the instance. Valid values:
+     * - local_ssd: specifies to use local SSDs. This value is recommended.
+     * - cloud_ssd: specifies to use standard SSDs.
+     * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     * 
+     */
+    public Optional<Output<String>> dbInstanceStorageType() {
+        return Optional.ofNullable(this.dbInstanceStorageType);
+    }
+
+    /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
@@ -238,6 +293,21 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> forceRestart() {
         return Optional.ofNullable(this.forceRestart);
+    }
+
+    /**
+     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+     * 
+     */
+    @Import(name="instanceChargeType")
+    private @Nullable Output<String> instanceChargeType;
+
+    /**
+     * @return Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+     * 
+     */
+    public Optional<Output<String>> instanceChargeType() {
+        return Optional.ofNullable(this.instanceChargeType);
     }
 
     /**
@@ -334,6 +404,21 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<List<ReadOnlyInstanceParameterArgs>>> parameters() {
         return Optional.ofNullable(this.parameters);
+    }
+
+    /**
+     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * 
+     */
+    @Import(name="period")
+    private @Nullable Output<Integer> period;
+
+    /**
+     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * 
+     */
+    public Optional<Output<Integer>> period() {
+        return Optional.ofNullable(this.period);
     }
 
     /**
@@ -628,6 +713,8 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
 
     private ReadOnlyInstanceState(ReadOnlyInstanceState $) {
         this.acl = $.acl;
+        this.autoRenew = $.autoRenew;
+        this.autoRenewPeriod = $.autoRenewPeriod;
         this.caType = $.caType;
         this.clientCaCert = $.clientCaCert;
         this.clientCaEnabled = $.clientCaEnabled;
@@ -636,16 +723,19 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
         this.connectionString = $.connectionString;
         this.dbInstanceIpArrayAttribute = $.dbInstanceIpArrayAttribute;
         this.dbInstanceIpArrayName = $.dbInstanceIpArrayName;
+        this.dbInstanceStorageType = $.dbInstanceStorageType;
         this.deletionProtection = $.deletionProtection;
         this.engine = $.engine;
         this.engineVersion = $.engineVersion;
         this.forceRestart = $.forceRestart;
+        this.instanceChargeType = $.instanceChargeType;
         this.instanceName = $.instanceName;
         this.instanceStorage = $.instanceStorage;
         this.instanceType = $.instanceType;
         this.masterDbInstanceId = $.masterDbInstanceId;
         this.modifyMode = $.modifyMode;
         this.parameters = $.parameters;
+        this.period = $.period;
         this.port = $.port;
         this.replicationAcl = $.replicationAcl;
         this.resourceGroupId = $.resourceGroupId;
@@ -709,6 +799,48 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder acl(String acl) {
             return acl(Output.of(acl));
+        }
+
+        /**
+         * @param autoRenew Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(@Nullable Output<Boolean> autoRenew) {
+            $.autoRenew = autoRenew;
+            return this;
+        }
+
+        /**
+         * @param autoRenew Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(Boolean autoRenew) {
+            return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param autoRenewPeriod Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewPeriod(@Nullable Output<Integer> autoRenewPeriod) {
+            $.autoRenewPeriod = autoRenewPeriod;
+            return this;
+        }
+
+        /**
+         * @param autoRenewPeriod Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewPeriod(Integer autoRenewPeriod) {
+            return autoRenewPeriod(Output.of(autoRenewPeriod));
         }
 
         /**
@@ -892,6 +1024,37 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param dbInstanceStorageType The storage type of the instance. Valid values:
+         * - local_ssd: specifies to use local SSDs. This value is recommended.
+         * - cloud_ssd: specifies to use standard SSDs.
+         * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+         * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+         * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceStorageType(@Nullable Output<String> dbInstanceStorageType) {
+            $.dbInstanceStorageType = dbInstanceStorageType;
+            return this;
+        }
+
+        /**
+         * @param dbInstanceStorageType The storage type of the instance. Valid values:
+         * - local_ssd: specifies to use local SSDs. This value is recommended.
+         * - cloud_ssd: specifies to use standard SSDs.
+         * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+         * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+         * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbInstanceStorageType(String dbInstanceStorageType) {
+            return dbInstanceStorageType(Output.of(dbInstanceStorageType));
+        }
+
+        /**
          * @param deletionProtection The switch of delete protection. Valid values:
          * - true: delete protect.
          * - false: no delete protect.
@@ -977,6 +1140,27 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder forceRestart(Boolean forceRestart) {
             return forceRestart(Output.of(forceRestart));
+        }
+
+        /**
+         * @param instanceChargeType Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
+            $.instanceChargeType = instanceChargeType;
+            return this;
+        }
+
+        /**
+         * @param instanceChargeType Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceChargeType(String instanceChargeType) {
+            return instanceChargeType(Output.of(instanceChargeType));
         }
 
         /**
@@ -1119,6 +1303,27 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder parameters(ReadOnlyInstanceParameterArgs... parameters) {
             return parameters(List.of(parameters));
+        }
+
+        /**
+         * @param period The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder period(@Nullable Output<Integer> period) {
+            $.period = period;
+            return this;
+        }
+
+        /**
+         * @param period The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder period(Integer period) {
+            return period(Output.of(period));
         }
 
         /**

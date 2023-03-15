@@ -74,7 +74,10 @@ import javax.annotation.Nullable;
  * 
  *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .specification(&#34;Small&#34;)
+ *             .internetChargeType(&#34;PayByLcu&#34;)
+ *             .natGatewayName(name)
+ *             .natType(&#34;Enhanced&#34;)
+ *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
  *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        

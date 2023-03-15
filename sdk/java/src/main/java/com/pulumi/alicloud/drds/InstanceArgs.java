@@ -5,6 +5,7 @@ package com.pulumi.alicloud.drds;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,6 +65,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> instanceSeries() {
         return this.instanceSeries;
+    }
+
+    /**
+     * The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+     * 
+     */
+    @Import(name="mysqlVersion")
+    private @Nullable Output<Integer> mysqlVersion;
+
+    /**
+     * @return The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+     * 
+     */
+    public Optional<Output<Integer>> mysqlVersion() {
+        return Optional.ofNullable(this.mysqlVersion);
     }
 
     /**
@@ -148,6 +164,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.instanceChargeType = $.instanceChargeType;
         this.instanceSeries = $.instanceSeries;
+        this.mysqlVersion = $.mysqlVersion;
         this.specification = $.specification;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
@@ -239,6 +256,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceSeries(String instanceSeries) {
             return instanceSeries(Output.of(instanceSeries));
+        }
+
+        /**
+         * @param mysqlVersion The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mysqlVersion(@Nullable Output<Integer> mysqlVersion) {
+            $.mysqlVersion = mysqlVersion;
+            return this;
+        }
+
+        /**
+         * @param mysqlVersion The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mysqlVersion(Integer mysqlVersion) {
+            return mysqlVersion(Output.of(mysqlVersion));
         }
 
         /**

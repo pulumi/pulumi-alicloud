@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> TaskState { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+        /// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
         /// </summary>
         [Output("taskType")]
         public Output<string> TaskType { get; private set; } = null!;
@@ -202,7 +202,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string> TaskName { get; set; } = null!;
 
         /// <summary>
-        /// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+        /// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
         /// </summary>
         [Input("taskType", required: true)]
         public Input<string> TaskType { get; set; } = null!;
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? TaskState { get; set; }
 
         /// <summary>
-        /// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+        /// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
         /// </summary>
         [Input("taskType")]
         public Input<string>? TaskType { get; set; }

@@ -180,7 +180,7 @@ class DomainConfig(pulumi.CustomResource):
 
         # Create a new Domain config.
         domain = alicloud.cdn.DomainNew("domain",
-            domain_name="mycdndomain.xiaozhu.com",
+            domain_name="mycdndomain.alicloud-provider.cn",
             cdn_type="web",
             scope="overseas",
             sources=[alicloud.cdn.DomainNewSourceArgs(
@@ -240,7 +240,7 @@ class DomainConfig(pulumi.CustomResource):
 
         # Create a new Domain config.
         domain = alicloud.cdn.DomainNew("domain",
-            domain_name="mycdndomain.xiaozhu.com",
+            domain_name="mycdndomain.alicloud-provider.cn",
             cdn_type="web",
             scope="overseas",
             sources=[alicloud.cdn.DomainNewSourceArgs(

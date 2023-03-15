@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Domain{}
 	case "alicloud:dcdn/domainConfig:DomainConfig":
 		r = &DomainConfig{}
+	case "alicloud:dcdn/er:Er":
+		r = &Er{}
 	case "alicloud:dcdn/ipaDomain:IpaDomain":
 		r = &IpaDomain{}
 	case "alicloud:dcdn/kv:Kv":
@@ -37,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WafPolicy{}
 	case "alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment":
 		r = &WafPolicyDomainAttachment{}
+	case "alicloud:dcdn/wafRule:WafRule":
+		r = &WafRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -58,6 +62,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dcdn/domainConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dcdn/er",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -88,6 +97,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dcdn/wafPolicyDomainAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dcdn/wafRule",
 		&module{version},
 	)
 }

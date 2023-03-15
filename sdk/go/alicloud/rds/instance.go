@@ -45,7 +45,7 @@ type Instance struct {
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
 	CaType pulumi.StringOutput `pulumi:"caType"`
-	// The RDS edition of the instance. Valid values:
+	// The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
 	// * **Basic**: Basic Edition.
 	// * **HighAvailability**: High-availability Edition.
 	// * **AlwaysOn**: Cluster Edition.
@@ -314,7 +314,7 @@ type instanceState struct {
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
 	CaType *string `pulumi:"caType"`
-	// The RDS edition of the instance. Valid values:
+	// The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
 	// * **Basic**: Basic Edition.
 	// * **HighAvailability**: High-availability Edition.
 	// * **AlwaysOn**: Cluster Edition.
@@ -543,7 +543,7 @@ type InstanceState struct {
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
 	CaType pulumi.StringPtrInput
-	// The RDS edition of the instance. Valid values:
+	// The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
 	// * **Basic**: Basic Edition.
 	// * **HighAvailability**: High-availability Edition.
 	// * **AlwaysOn**: Cluster Edition.
@@ -776,7 +776,7 @@ type instanceArgs struct {
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
 	CaType *string `pulumi:"caType"`
-	// The RDS edition of the instance. Valid values:
+	// The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
 	// * **Basic**: Basic Edition.
 	// * **HighAvailability**: High-availability Edition.
 	// * **AlwaysOn**: Cluster Edition.
@@ -1000,7 +1000,7 @@ type InstanceArgs struct {
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
 	CaType pulumi.StringPtrInput
-	// The RDS edition of the instance. Valid values:
+	// The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
 	// * **Basic**: Basic Edition.
 	// * **HighAvailability**: High-availability Edition.
 	// * **AlwaysOn**: Cluster Edition.
@@ -1330,7 +1330,7 @@ func (o InstanceOutput) CaType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CaType }).(pulumi.StringOutput)
 }
 
-// The RDS edition of the instance. Valid values:
+// The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
 // * **Basic**: Basic Edition.
 // * **HighAvailability**: High-availability Edition.
 // * **AlwaysOn**: Cluster Edition.

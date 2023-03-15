@@ -17,10 +17,11 @@ class InstanceArgs:
                  deploy_type: pulumi.Input[int],
                  disk_size: pulumi.Input[int],
                  disk_type: pulumi.Input[int],
-                 io_max: pulumi.Input[int],
                  vswitch_id: pulumi.Input[str],
                  config: Optional[pulumi.Input[str]] = None,
                  eip_max: Optional[pulumi.Input[int]] = None,
+                 io_max: Optional[pulumi.Input[int]] = None,
+                 io_max_spec: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
@@ -40,10 +41,13 @@ class InstanceArgs:
                - 5: vpc instance.
         :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
-        :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] config: The basic config for this instance. The input should be json type, only the following key allowed: enable.acl, enable.vpc_sasl_ssl, kafka.log.retention.hours, kafka.message.max.bytes.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
+        :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
+               - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+               - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
         :param pulumi.Input[str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
@@ -61,12 +65,15 @@ class InstanceArgs:
         pulumi.set(__self__, "deploy_type", deploy_type)
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
-        pulumi.set(__self__, "io_max", io_max)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if eip_max is not None:
             pulumi.set(__self__, "eip_max", eip_max)
+        if io_max is not None:
+            pulumi.set(__self__, "io_max", io_max)
+        if io_max_spec is not None:
+            pulumi.set(__self__, "io_max_spec", io_max_spec)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
@@ -134,18 +141,6 @@ class InstanceArgs:
         pulumi.set(self, "disk_type", value)
 
     @property
-    @pulumi.getter(name="ioMax")
-    def io_max(self) -> pulumi.Input[int]:
-        """
-        The max value of io of the instance. When modify this value, it only support adjust to a greater value.
-        """
-        return pulumi.get(self, "io_max")
-
-    @io_max.setter
-    def io_max(self, value: pulumi.Input[int]):
-        pulumi.set(self, "io_max", value)
-
-    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
         """
@@ -180,6 +175,32 @@ class InstanceArgs:
     @eip_max.setter
     def eip_max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "eip_max", value)
+
+    @property
+    @pulumi.getter(name="ioMax")
+    def io_max(self) -> Optional[pulumi.Input[int]]:
+        """
+        The max value of io of the instance. When modify this value, it only support adjust to a greater value.
+        """
+        return pulumi.get(self, "io_max")
+
+    @io_max.setter
+    def io_max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "io_max", value)
+
+    @property
+    @pulumi.getter(name="ioMaxSpec")
+    def io_max_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The traffic specification of the instance. We recommend that you configure this parameter.
+        - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+        - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+        """
+        return pulumi.get(self, "io_max_spec")
+
+    @io_max_spec.setter
+    def io_max_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "io_max_spec", value)
 
     @property
     @pulumi.getter(name="kmsKeyId")
@@ -337,6 +358,7 @@ class _InstanceState:
                  eip_max: Optional[pulumi.Input[int]] = None,
                  end_point: Optional[pulumi.Input[str]] = None,
                  io_max: Optional[pulumi.Input[int]] = None,
+                 io_max_spec: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
@@ -362,6 +384,9 @@ class _InstanceState:
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
+               - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+               - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
         :param pulumi.Input[str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
@@ -396,6 +421,8 @@ class _InstanceState:
             pulumi.set(__self__, "end_point", end_point)
         if io_max is not None:
             pulumi.set(__self__, "io_max", io_max)
+        if io_max_spec is not None:
+            pulumi.set(__self__, "io_max_spec", io_max_spec)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if name is not None:
@@ -513,6 +540,20 @@ class _InstanceState:
     @io_max.setter
     def io_max(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "io_max", value)
+
+    @property
+    @pulumi.getter(name="ioMaxSpec")
+    def io_max_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The traffic specification of the instance. We recommend that you configure this parameter.
+        - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+        - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+        """
+        return pulumi.get(self, "io_max_spec")
+
+    @io_max_spec.setter
+    def io_max_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "io_max_spec", value)
 
     @property
     @pulumi.getter(name="kmsKeyId")
@@ -699,6 +740,7 @@ class Instance(pulumi.CustomResource):
                  disk_type: Optional[pulumi.Input[int]] = None,
                  eip_max: Optional[pulumi.Input[int]] = None,
                  io_max: Optional[pulumi.Input[int]] = None,
+                 io_max_spec: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
@@ -774,6 +816,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
+               - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+               - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
         :param pulumi.Input[str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
@@ -867,6 +912,7 @@ class Instance(pulumi.CustomResource):
                  disk_type: Optional[pulumi.Input[int]] = None,
                  eip_max: Optional[pulumi.Input[int]] = None,
                  io_max: Optional[pulumi.Input[int]] = None,
+                 io_max_spec: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
@@ -900,9 +946,8 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'disk_type'")
             __props__.__dict__["disk_type"] = disk_type
             __props__.__dict__["eip_max"] = eip_max
-            if io_max is None and not opts.urn:
-                raise TypeError("Missing required property 'io_max'")
             __props__.__dict__["io_max"] = io_max
+            __props__.__dict__["io_max_spec"] = io_max_spec
             __props__.__dict__["kms_key_id"] = kms_key_id
             __props__.__dict__["name"] = name
             __props__.__dict__["paid_type"] = paid_type
@@ -940,6 +985,7 @@ class Instance(pulumi.CustomResource):
             eip_max: Optional[pulumi.Input[int]] = None,
             end_point: Optional[pulumi.Input[str]] = None,
             io_max: Optional[pulumi.Input[int]] = None,
+            io_max_spec: Optional[pulumi.Input[str]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             paid_type: Optional[pulumi.Input[str]] = None,
@@ -970,6 +1016,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[int] io_max: The max value of io of the instance. When modify this value, it only support adjust to a greater value.
+        :param pulumi.Input[str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
+               - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+               - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
         :param pulumi.Input[str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
@@ -1001,6 +1050,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["eip_max"] = eip_max
         __props__.__dict__["end_point"] = end_point
         __props__.__dict__["io_max"] = io_max
+        __props__.__dict__["io_max_spec"] = io_max_spec
         __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["name"] = name
         __props__.__dict__["paid_type"] = paid_type
@@ -1074,6 +1124,16 @@ class Instance(pulumi.CustomResource):
         The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         """
         return pulumi.get(self, "io_max")
+
+    @property
+    @pulumi.getter(name="ioMaxSpec")
+    def io_max_spec(self) -> pulumi.Output[str]:
+        """
+        The traffic specification of the instance. We recommend that you configure this parameter.
+        - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+        - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+        """
+        return pulumi.get(self, "io_max_spec")
 
     @property
     @pulumi.getter(name="kmsKeyId")

@@ -16,6 +16,21 @@ public final class ResourceDirectoryArgs extends com.pulumi.resources.ResourceAr
     public static final ResourceDirectoryArgs Empty = new ResourceDirectoryArgs();
 
     /**
+     * Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+     * 
+     */
+    @Import(name="memberDeletionStatus")
+    private @Nullable Output<String> memberDeletionStatus;
+
+    /**
+     * @return Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+     * 
+     */
+    public Optional<Output<String>> memberDeletionStatus() {
+        return Optional.ofNullable(this.memberDeletionStatus);
+    }
+
+    /**
      * The status of control policy. Valid values:`Enabled` and `Disabled`.
      * 
      */
@@ -33,6 +48,7 @@ public final class ResourceDirectoryArgs extends com.pulumi.resources.ResourceAr
     private ResourceDirectoryArgs() {}
 
     private ResourceDirectoryArgs(ResourceDirectoryArgs $) {
+        this.memberDeletionStatus = $.memberDeletionStatus;
         this.status = $.status;
     }
 
@@ -52,6 +68,27 @@ public final class ResourceDirectoryArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(ResourceDirectoryArgs defaults) {
             $ = new ResourceDirectoryArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param memberDeletionStatus Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberDeletionStatus(@Nullable Output<String> memberDeletionStatus) {
+            $.memberDeletionStatus = memberDeletionStatus;
+            return this;
+        }
+
+        /**
+         * @param memberDeletionStatus Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberDeletionStatus(String memberDeletionStatus) {
+            return memberDeletionStatus(Output.of(memberDeletionStatus));
         }
 
         /**

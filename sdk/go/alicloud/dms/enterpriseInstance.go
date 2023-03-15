@@ -69,7 +69,7 @@ type EnterpriseInstance struct {
 	pulumi.CustomResourceState
 
 	// Cross-database query datalink name.
-	DataLinkName pulumi.StringPtrOutput `pulumi:"dataLinkName"`
+	DataLinkName pulumi.StringOutput `pulumi:"dataLinkName"`
 	// Database access password.
 	DatabasePassword pulumi.StringOutput `pulumi:"databasePassword"`
 	// Database access account.
@@ -540,8 +540,8 @@ func (o EnterpriseInstanceOutput) ToEnterpriseInstanceOutputWithContext(ctx cont
 }
 
 // Cross-database query datalink name.
-func (o EnterpriseInstanceOutput) DataLinkName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringPtrOutput { return v.DataLinkName }).(pulumi.StringPtrOutput)
+func (o EnterpriseInstanceOutput) DataLinkName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseInstance) pulumi.StringOutput { return v.DataLinkName }).(pulumi.StringOutput)
 }
 
 // Database access password.

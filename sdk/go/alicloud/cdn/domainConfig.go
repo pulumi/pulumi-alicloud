@@ -34,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			domain, err := cdn.NewDomainNew(ctx, "domain", &cdn.DomainNewArgs{
-//				DomainName: pulumi.String("mycdndomain.xiaozhu.com"),
+//				DomainName: pulumi.String("mycdndomain.alicloud-provider.cn"),
 //				CdnType:    pulumi.String("web"),
 //				Scope:      pulumi.String("overseas"),
 //				Sources: cdn.DomainNewSourceArray{

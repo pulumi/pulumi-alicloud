@@ -32,7 +32,10 @@ import * as utilities from "../utilities";
  * });
  * const defaultNatGateway = new alicloud.vpc.NatGateway("defaultNatGateway", {
  *     vpcId: defaultNetwork.id,
- *     specification: "Small",
+ *     internetChargeType: "PayByLcu",
+ *     natGatewayName: name,
+ *     natType: "Enhanced",
+ *     vswitchId: defaultSwitch.id,
  * });
  * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {addressName: name});
  * const defaultEipAssociation = new alicloud.ecs.EipAssociation("defaultEipAssociation", {

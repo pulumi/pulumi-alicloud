@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new Network(&#34;foo&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_test_foo12345&#34;)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 

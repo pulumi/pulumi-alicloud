@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> CaType { get; private set; } = null!;
 
         /// <summary>
-        /// The RDS edition of the instance. Valid values:
+        /// The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
         /// * **Basic**: Basic Edition.
         /// * **HighAvailability**: High-availability Edition.
         /// * **AlwaysOn**: Cluster Edition.
@@ -632,7 +632,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CaType { get; set; }
 
         /// <summary>
-        /// The RDS edition of the instance. Valid values:
+        /// The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
         /// * **Basic**: Basic Edition.
         /// * **HighAvailability**: High-availability Edition.
         /// * **AlwaysOn**: Cluster Edition.
@@ -1172,7 +1172,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CaType { get; set; }
 
         /// <summary>
-        /// The RDS edition of the instance. Valid values:
+        /// The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
         /// * **Basic**: Basic Edition.
         /// * **HighAvailability**: High-availability Edition.
         /// * **AlwaysOn**: Cluster Edition.

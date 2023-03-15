@@ -97,6 +97,14 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      */
     public readonly acl!: pulumi.Output<string>;
     /**
+     * Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+     */
+    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    /**
+     * Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+     */
+    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
@@ -135,6 +143,15 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      */
     public readonly dbInstanceIpArrayName!: pulumi.Output<string | undefined>;
     /**
+     * The storage type of the instance. Valid values:
+     * - local_ssd: specifies to use local SSDs. This value is recommended.
+     * - cloud_ssd: specifies to use standard SSDs.
+     * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     */
+    public readonly dbInstanceStorageType!: pulumi.Output<string>;
+    /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
@@ -152,6 +169,10 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
     public readonly forceRestart!: pulumi.Output<boolean | undefined>;
+    /**
+     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+     */
+    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
@@ -179,6 +200,10 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
      */
     public readonly parameters!: pulumi.Output<outputs.rds.ReadOnlyInstanceParameter[]>;
+    /**
+     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     */
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * RDS database connection port.
      */
@@ -282,6 +307,8 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ReadOnlyInstanceState | undefined;
             resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             resourceInputs["caType"] = state ? state.caType : undefined;
             resourceInputs["clientCaCert"] = state ? state.clientCaCert : undefined;
             resourceInputs["clientCaEnabled"] = state ? state.clientCaEnabled : undefined;
@@ -290,16 +317,19 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["connectionString"] = state ? state.connectionString : undefined;
             resourceInputs["dbInstanceIpArrayAttribute"] = state ? state.dbInstanceIpArrayAttribute : undefined;
             resourceInputs["dbInstanceIpArrayName"] = state ? state.dbInstanceIpArrayName : undefined;
+            resourceInputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
             resourceInputs["forceRestart"] = state ? state.forceRestart : undefined;
+            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["instanceStorage"] = state ? state.instanceStorage : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["masterDbInstanceId"] = state ? state.masterDbInstanceId : undefined;
             resourceInputs["modifyMode"] = state ? state.modifyMode : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["replicationAcl"] = state ? state.replicationAcl : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -331,6 +361,8 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'masterDbInstanceId'");
             }
             resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["caType"] = args ? args.caType : undefined;
             resourceInputs["clientCaCert"] = args ? args.clientCaCert : undefined;
             resourceInputs["clientCaEnabled"] = args ? args.clientCaEnabled : undefined;
@@ -338,15 +370,18 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             resourceInputs["clientCrlEnabled"] = args ? args.clientCrlEnabled : undefined;
             resourceInputs["dbInstanceIpArrayAttribute"] = args ? args.dbInstanceIpArrayAttribute : undefined;
             resourceInputs["dbInstanceIpArrayName"] = args ? args.dbInstanceIpArrayName : undefined;
+            resourceInputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
             resourceInputs["forceRestart"] = args ? args.forceRestart : undefined;
+            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["instanceStorage"] = args ? args.instanceStorage : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["masterDbInstanceId"] = args ? args.masterDbInstanceId : undefined;
             resourceInputs["modifyMode"] = args ? args.modifyMode : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["replicationAcl"] = args ? args.replicationAcl : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityIpType"] = args ? args.securityIpType : undefined;
@@ -383,6 +418,14 @@ export interface ReadOnlyInstanceState {
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      */
     acl?: pulumi.Input<string>;
+    /**
+     * Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+     */
+    autoRenew?: pulumi.Input<boolean>;
+    /**
+     * Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+     */
+    autoRenewPeriod?: pulumi.Input<number>;
     /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
      * - aliyun: a cloud certificate
@@ -422,6 +465,15 @@ export interface ReadOnlyInstanceState {
      */
     dbInstanceIpArrayName?: pulumi.Input<string>;
     /**
+     * The storage type of the instance. Valid values:
+     * - local_ssd: specifies to use local SSDs. This value is recommended.
+     * - cloud_ssd: specifies to use standard SSDs.
+     * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     */
+    dbInstanceStorageType?: pulumi.Input<string>;
+    /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
@@ -439,6 +491,10 @@ export interface ReadOnlyInstanceState {
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
     forceRestart?: pulumi.Input<boolean>;
+    /**
+     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+     */
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
@@ -466,6 +522,10 @@ export interface ReadOnlyInstanceState {
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.ReadOnlyInstanceParameter>[]>;
+    /**
+     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     */
+    period?: pulumi.Input<number>;
     /**
      * RDS database connection port.
      */
@@ -569,6 +629,14 @@ export interface ReadOnlyInstanceArgs {
      */
     acl?: pulumi.Input<string>;
     /**
+     * Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+     */
+    autoRenew?: pulumi.Input<boolean>;
+    /**
+     * Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+     */
+    autoRenewPeriod?: pulumi.Input<number>;
+    /**
      * The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
      * - aliyun: a cloud certificate
      * - custom: a custom certificate
@@ -603,6 +671,15 @@ export interface ReadOnlyInstanceArgs {
      */
     dbInstanceIpArrayName?: pulumi.Input<string>;
     /**
+     * The storage type of the instance. Valid values:
+     * - local_ssd: specifies to use local SSDs. This value is recommended.
+     * - cloud_ssd: specifies to use standard SSDs.
+     * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     */
+    dbInstanceStorageType?: pulumi.Input<string>;
+    /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
@@ -616,6 +693,10 @@ export interface ReadOnlyInstanceArgs {
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
     forceRestart?: pulumi.Input<boolean>;
+    /**
+     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+     */
+    instanceChargeType?: pulumi.Input<string>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
@@ -643,6 +724,10 @@ export interface ReadOnlyInstanceArgs {
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.ReadOnlyInstanceParameter>[]>;
+    /**
+     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     */
+    period?: pulumi.Input<number>;
     /**
      * The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
      * - cert

@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * // Create a new Domain config.
  * const domain = new alicloud.cdn.DomainNew("domain", {
- *     domainName: "mycdndomain.xiaozhu.com",
+ *     domainName: "mycdndomain.alicloud-provider.cn",
  *     cdnType: "web",
  *     scope: "overseas",
  *     sources: [{

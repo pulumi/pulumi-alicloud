@@ -68,6 +68,7 @@ export interface ProviderEndpoint {
     edas?: pulumi.Input<string>;
     edasschedulerx?: pulumi.Input<string>;
     edsuser?: pulumi.Input<string>;
+    eflo?: pulumi.Input<string>;
     ehpc?: pulumi.Input<string>;
     ehs?: pulumi.Input<string>;
     eipanycast?: pulumi.Input<string>;
@@ -3022,6 +3023,712 @@ export namespace dcdn {
         weight?: pulumi.Input<string>;
     }
 
+    export interface ErEnvConf {
+        /**
+         * The configuration of a presetCanaryAnhui environment. The `Block presetCanaryAnhui` is same as `Block staging`.
+         */
+        presetCanaryAnhui?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryAnhui>;
+        /**
+         * The configuration of a presetCanaryBeijing environment. The `Block presetCanaryBeijing` is same as `Block staging`.
+         */
+        presetCanaryBeijing?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryBeijing>;
+        /**
+         * The configuration of a presetCanaryChongqing environment. The `Block presetCanaryChongqing` is same as `Block staging`.
+         */
+        presetCanaryChongqing?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryChongqing>;
+        /**
+         * The configuration of a presetCanaryFujian environment. The `Block presetCanaryFujian` is same as `Block staging`.
+         */
+        presetCanaryFujian?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryFujian>;
+        /**
+         * The configuration of a presetCanaryGansu environment. The `Block presetCanaryGansu` is same as `Block staging`.
+         */
+        presetCanaryGansu?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryGansu>;
+        /**
+         * The configuration of a presetCanaryGuangdong environment. The `Block presetCanaryGuangdong` is same as `Block staging`.
+         */
+        presetCanaryGuangdong?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryGuangdong>;
+        /**
+         * The configuration of a presetCanaryGuangxi environment. The `Block presetCanaryGuangxi` is same as `Block staging`.
+         */
+        presetCanaryGuangxi?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryGuangxi>;
+        /**
+         * The configuration of a presetCanaryGuizhou environment. The `Block presetCanaryGuizhou` is same as `Block staging`.
+         */
+        presetCanaryGuizhou?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryGuizhou>;
+        /**
+         * The configuration of a presetCanaryHainan environment. The `Block presetCanaryHainan` is same as `Block staging`.
+         */
+        presetCanaryHainan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHainan>;
+        /**
+         * The configuration of a presetCanaryHebei environment. The `Block presetCanaryHebei` is same as `Block staging`.
+         */
+        presetCanaryHebei?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHebei>;
+        /**
+         * The configuration of a presetCanaryHeilongjiang environment. The `Block presetCanaryHeilongjiang` is same as `Block staging`.
+         */
+        presetCanaryHeilongjiang?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHeilongjiang>;
+        /**
+         * The configuration of a presetCanaryHenan environment. The `Block presetCanaryHenan` is same as `Block staging`.
+         */
+        presetCanaryHenan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHenan>;
+        /**
+         * The configuration of a presetCanaryHongKong environment. The `Block presetCanaryHongKong` is same as `Block staging`.
+         */
+        presetCanaryHongKong?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHongKong>;
+        /**
+         * The configuration of a presetCanaryHubei environment. The `Block presetCanaryHubei` is same as `Block staging`.
+         */
+        presetCanaryHubei?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHubei>;
+        /**
+         * The configuration of a presetCanaryHunan environment. The `Block presetCanaryHunan` is same as `Block staging`.
+         */
+        presetCanaryHunan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryHunan>;
+        /**
+         * The configuration of a presetCanaryJiangsu environment. The `Block presetCanaryJiangsu` is same as `Block staging`.
+         */
+        presetCanaryJiangsu?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryJiangsu>;
+        /**
+         * The configuration of a presetCanaryJiangxi environment. The `Block presetCanaryJiangxi` is same as `Block staging`.
+         */
+        presetCanaryJiangxi?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryJiangxi>;
+        /**
+         * The configuration of a presetCanaryJilin environment. The `Block presetCanaryJilin` is same as `Block staging`.
+         */
+        presetCanaryJilin?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryJilin>;
+        /**
+         * The configuration of a presetCanaryLiaoning environment. The `Block presetCanaryLiaoning` is same as `Block staging`.
+         */
+        presetCanaryLiaoning?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryLiaoning>;
+        /**
+         * The configuration of a presetCanaryMacau environment. The `Block presetCanaryMacau` is same as `Block staging`.
+         */
+        presetCanaryMacau?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryMacau>;
+        /**
+         * The configuration of a presetCanaryNeimenggu environment. The `Block presetCanaryNeimenggu` is same as `Block staging`.
+         */
+        presetCanaryNeimenggu?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryNeimenggu>;
+        /**
+         * The configuration of a presetCanaryNingxia environment. The `Block presetCanaryNingxia` is same as `Block staging`.
+         */
+        presetCanaryNingxia?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryNingxia>;
+        /**
+         * The configuration of a presetCanaryOverseas environment. The `Block presetCanaryOverseas` is same as `Block staging`.
+         */
+        presetCanaryOverseas?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryOverseas>;
+        /**
+         * The configuration of a presetCanaryQinghai environment. The `Block presetCanaryQinghai` is same as `Block staging`.
+         */
+        presetCanaryQinghai?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryQinghai>;
+        /**
+         * The configuration of a presetCanaryShaanxi environment. The `Block presetCanaryShaanxi` is same as `Block staging`.
+         */
+        presetCanaryShaanxi?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryShaanxi>;
+        /**
+         * The configuration of a presetCanaryShandong environment. The `Block presetCanaryShandong` is same as `Block staging`.
+         */
+        presetCanaryShandong?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryShandong>;
+        /**
+         * The configuration of a presetCanaryShanghai environment. The `Block presetCanaryShanghai` is same as `Block staging`.
+         */
+        presetCanaryShanghai?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryShanghai>;
+        /**
+         * The configuration of a presetCanaryShanxi environment. The `Block presetCanaryShanxi` is same as `Block staging`.
+         */
+        presetCanaryShanxi?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryShanxi>;
+        /**
+         * The configuration of a presetCanarySichuan environment. The `Block presetCanarySichuan` is same as `Block staging`.
+         */
+        presetCanarySichuan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanarySichuan>;
+        /**
+         * The configuration of a presetCanaryTaiwan environment. The `Block presetCanaryTaiwan` is same as `Block staging`.
+         */
+        presetCanaryTaiwan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryTaiwan>;
+        /**
+         * The configuration of a presetCanaryTianjin environment. The `Block presetCanaryTianjin` is same as `Block staging`.
+         */
+        presetCanaryTianjin?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryTianjin>;
+        /**
+         * The configuration of a presetCanaryXinjiang environment. The `Block presetCanaryXinjiang` is same as `Block staging`.
+         */
+        presetCanaryXinjiang?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryXinjiang>;
+        /**
+         * The configuration of a presetCanaryXizang environment. The `Block presetCanaryXizang` is same as `Block staging`.
+         */
+        presetCanaryXizang?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryXizang>;
+        /**
+         * The configuration of a presetCanaryYunnan environment. The `Block presetCanaryYunnan` is same as `Block staging`.
+         */
+        presetCanaryYunnan?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryYunnan>;
+        /**
+         * The configuration of a presetCanaryZhejiang environment. The `Block presetCanaryZhejiang` is same as `Block staging`.
+         */
+        presetCanaryZhejiang?: pulumi.Input<inputs.dcdn.ErEnvConfPresetCanaryZhejiang>;
+        /**
+         * The configuration of a production environment. The `Block production` is same as `Block staging`.
+         */
+        production?: pulumi.Input<inputs.dcdn.ErEnvConfProduction>;
+        /**
+         * The configuration of a staging environment. See the following `Block staging`.
+         */
+        staging?: pulumi.Input<inputs.dcdn.ErEnvConfStaging>;
+    }
+
+    export interface ErEnvConfPresetCanaryAnhui {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryBeijing {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryChongqing {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryFujian {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryGansu {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryGuangdong {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryGuangxi {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryGuizhou {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryHainan {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryHebei {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryHeilongjiang {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryHenan {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryHongKong {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryHubei {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryHunan {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryJiangsu {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryJiangxi {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryJilin {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryLiaoning {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryMacau {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryNeimenggu {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryNingxia {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryOverseas {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryQinghai {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryShaanxi {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryShandong {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryShanghai {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryShanxi {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanarySichuan {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryTaiwan {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryTianjin {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryXinjiang {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryXizang {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryYunnan {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfPresetCanaryZhejiang {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfProduction {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
+    export interface ErEnvConfStaging {
+        /**
+         * Allowed DCDN domain names.
+         */
+        allowedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The version number of the code.
+         */
+        codeRev?: pulumi.Input<string>;
+        /**
+         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         */
+        specName?: pulumi.Input<string>;
+    }
+
     export interface IpaDomainSource {
         /**
          * The address of the origin server. You can specify an IP address or a domain name.
@@ -3043,6 +3750,67 @@ export namespace dcdn {
          * The weight of the origin server. You must specify a value that is less than `100`. Default value: `10`.
          */
         weight: pulumi.Input<number>;
+    }
+
+    export interface WafRuleCondition {
+        /**
+         * The match field.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The logical symbol.
+         */
+        opValue: pulumi.Input<string>;
+        /**
+         * The match subfield.
+         */
+        subKey?: pulumi.Input<string>;
+        /**
+         * The match content. Separate multiple values with commas (,).
+         */
+        values?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleRateLimit {
+        /**
+         * Statistical duration, 5-1800.
+         */
+        interval?: pulumi.Input<number>;
+        /**
+         * The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+         */
+        status?: pulumi.Input<inputs.dcdn.WafRuleRateLimitStatus>;
+        /**
+         * The match subfield.
+         */
+        subKey?: pulumi.Input<string>;
+        /**
+         * The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
+         */
+        target?: pulumi.Input<string>;
+        /**
+         * The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
+         */
+        threshold?: pulumi.Input<number>;
+        /**
+         * The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
+         */
+        ttl?: pulumi.Input<number>;
+    }
+
+    export interface WafRuleRateLimitStatus {
+        /**
+         * The HTTP status code returned.
+         */
+        code?: pulumi.Input<string>;
+        /**
+         * The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+         */
+        count?: pulumi.Input<number>;
+        /**
+         * The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+         */
+        ratio?: pulumi.Input<number>;
     }
 }
 
@@ -4271,6 +5039,9 @@ export namespace eds {
         type?: pulumi.Input<string>;
     }
 
+}
+
+export namespace eflo {
 }
 
 export namespace ehpc {

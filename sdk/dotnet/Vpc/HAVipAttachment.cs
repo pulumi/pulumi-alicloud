@@ -121,6 +121,18 @@ namespace Pulumi.AliCloud.Vpc
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
+        /// <summary>
+        /// The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+        /// </summary>
+        [Output("instanceType")]
+        public Output<string> InstanceType { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in v1.201.0+) The status of the HaVip instance.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a HAVipAttachment resource with the given unique name, arguments, and options.
@@ -185,6 +197,12 @@ namespace Pulumi.AliCloud.Vpc
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
         public HAVipAttachmentArgs()
         {
         }
@@ -210,6 +228,18 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// (Available in v1.201.0+) The status of the HaVip instance.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public HAVipAttachmentState()
         {

@@ -33,6 +33,8 @@ type TransitRouterRouteTable struct {
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The associating status of the Transit Router.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringOutput `pulumi:"transitRouterId"`
 	// The description of the transit router route table.
@@ -81,6 +83,8 @@ type transitRouterRouteTableState struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The associating status of the Transit Router.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
 	// The description of the transit router route table.
@@ -98,6 +102,8 @@ type TransitRouterRouteTableState struct {
 	DryRun pulumi.BoolPtrInput
 	// The associating status of the Transit Router.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringPtrInput
 	// The description of the transit router route table.
@@ -117,6 +123,8 @@ func (TransitRouterRouteTableState) ElementType() reflect.Type {
 type transitRouterRouteTableArgs struct {
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the transit router.
 	TransitRouterId string `pulumi:"transitRouterId"`
 	// The description of the transit router route table.
@@ -129,6 +137,8 @@ type transitRouterRouteTableArgs struct {
 type TransitRouterRouteTableArgs struct {
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringInput
 	// The description of the transit router route table.
@@ -232,6 +242,11 @@ func (o TransitRouterRouteTableOutput) DryRun() pulumi.BoolPtrOutput {
 // The associating status of the Transit Router.
 func (o TransitRouterRouteTableOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterRouteTable) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o TransitRouterRouteTableOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *TransitRouterRouteTable) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 // The ID of the transit router.
