@@ -112,7 +112,7 @@ export interface GetInstancesResult {
     readonly dbType?: string;
     readonly enableDetails?: boolean;
     /**
-     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
      */
     readonly engine?: string;
     /**

@@ -482,14 +482,14 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptionKey);
     }
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
      * 
      */
     @Export(name="engine", type=String.class, parameters={})
     private Output<String> engine;
 
     /**
-     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
      * 
      */
     public Output<String> engine() {

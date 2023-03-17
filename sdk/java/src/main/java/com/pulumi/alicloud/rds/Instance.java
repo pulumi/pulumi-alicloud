@@ -414,14 +414,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptionKey);
     }
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
      * 
      */
     @Export(name="engine", type=String.class, parameters={})
     private Output<String> engine;
 
     /**
-     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
      * 
      */
     public Output<String> engine() {

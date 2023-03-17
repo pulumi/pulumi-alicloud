@@ -100,7 +100,7 @@ type Instance struct {
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
@@ -369,7 +369,7 @@ type instanceState struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
 	Engine *string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion *string `pulumi:"engineVersion"`
@@ -598,7 +598,7 @@ type InstanceState struct {
 	EffectiveTime pulumi.StringPtrInput
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
 	Engine pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringPtrInput
@@ -827,7 +827,7 @@ type instanceArgs struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
 	Engine string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion string `pulumi:"engineVersion"`
@@ -1051,7 +1051,7 @@ type InstanceArgs struct {
 	EffectiveTime pulumi.StringPtrInput
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
 	Engine pulumi.StringInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringInput
@@ -1433,7 +1433,7 @@ func (o InstanceOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
 
-// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
 func (o InstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }

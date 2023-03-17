@@ -100,7 +100,7 @@ class GetInstancesResult:
     @pulumi.getter
     def engine(self) -> Optional[str]:
         """
-        Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+        Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
         """
         return pulumi.get(self, "engine")
 

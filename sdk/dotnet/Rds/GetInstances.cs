@@ -283,7 +283,7 @@ namespace Pulumi.AliCloud.Rds
         public readonly string? DbType;
         public readonly bool? EnableDetails;
         /// <summary>
-        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
         /// </summary>
         public readonly string? Engine;
         /// <summary>

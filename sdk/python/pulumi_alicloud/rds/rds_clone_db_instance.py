@@ -120,7 +120,7 @@ class RdsCloneDbInstanceArgs:
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
-        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value:
                * MySQL:**5.5/5.6/5.7/8.0**
                * SQL Server:**2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**
@@ -614,7 +614,7 @@ class RdsCloneDbInstanceArgs:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
         """
         return pulumi.get(self, "engine")
 
@@ -1147,7 +1147,7 @@ class _RdsCloneDbInstanceState:
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
-        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value:
                * MySQL:**5.5/5.6/5.7/8.0**
                * SQL Server:**2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**
@@ -1636,7 +1636,7 @@ class _RdsCloneDbInstanceState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
         """
         return pulumi.get(self, "engine")
 
@@ -2246,7 +2246,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
-        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value:
                * MySQL:**5.5/5.6/5.7/8.0**
                * SQL Server:**2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**
@@ -2630,7 +2630,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
-        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value:
                * MySQL:**5.5/5.6/5.7/8.0**
                * SQL Server:**2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**
@@ -2968,7 +2968,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
         """
         return pulumi.get(self, "engine")
 
