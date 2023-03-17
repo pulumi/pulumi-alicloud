@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> EncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -683,7 +683,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -1114,7 +1114,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }

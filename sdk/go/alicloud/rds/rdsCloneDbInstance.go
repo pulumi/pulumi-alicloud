@@ -171,7 +171,7 @@ type RdsCloneDbInstance struct {
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// The ID of the private key.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Database version. Value:
 	// * MySQL:**5.5/5.6/5.7/8.0**
@@ -370,7 +370,7 @@ type rdsCloneDbInstanceState struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The ID of the private key.
 	EncryptionKey *string `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
 	Engine *string `pulumi:"engine"`
 	// Database version. Value:
 	// * MySQL:**5.5/5.6/5.7/8.0**
@@ -532,7 +532,7 @@ type RdsCloneDbInstanceState struct {
 	EffectiveTime pulumi.StringPtrInput
 	// The ID of the private key.
 	EncryptionKey pulumi.StringPtrInput
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
 	Engine pulumi.StringPtrInput
 	// Database version. Value:
 	// * MySQL:**5.5/5.6/5.7/8.0**
@@ -696,7 +696,7 @@ type rdsCloneDbInstanceArgs struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The ID of the private key.
 	EncryptionKey *string `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
 	Engine *string `pulumi:"engine"`
 	// Database version. Value:
 	// * MySQL:**5.5/5.6/5.7/8.0**
@@ -857,7 +857,7 @@ type RdsCloneDbInstanceArgs struct {
 	EffectiveTime pulumi.StringPtrInput
 	// The ID of the private key.
 	EncryptionKey pulumi.StringPtrInput
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
 	Engine pulumi.StringPtrInput
 	// Database version. Value:
 	// * MySQL:**5.5/5.6/5.7/8.0**
@@ -1177,7 +1177,7 @@ func (o RdsCloneDbInstanceOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
 
-// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
 func (o RdsCloneDbInstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }

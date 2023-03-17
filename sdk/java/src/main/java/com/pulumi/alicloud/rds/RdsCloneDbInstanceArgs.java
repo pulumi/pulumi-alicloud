@@ -403,14 +403,14 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
      * 
      */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
     /**
-     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
      * 
      */
     public Optional<Output<String>> engine() {
@@ -1586,7 +1586,7 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
          * 
          * @return builder
          * 
@@ -1597,7 +1597,7 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
          * 
          * @return builder
          * 

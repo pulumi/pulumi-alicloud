@@ -33002,7 +33002,7 @@ export namespace nlb {
         /**
          * The HTTP method that is used for health checks. Valid values: `GET` and `HEAD`. **Note:** This parameter takes effect only if `healthCheckType` is set to `http`.
          */
-        httpCheckMethod?: string;
+        httpCheckMethod: string;
         /**
          * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Default value: 2.
          */

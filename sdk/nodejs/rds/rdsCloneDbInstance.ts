@@ -202,7 +202,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      */
     public readonly encryptionKey!: pulumi.Output<string | undefined>;
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -636,7 +636,7 @@ export interface RdsCloneDbInstanceState {
      */
     encryptionKey?: pulumi.Input<string>;
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
      */
     engine?: pulumi.Input<string>;
     /**
@@ -917,7 +917,7 @@ export interface RdsCloneDbInstanceArgs {
      */
     encryptionKey?: pulumi.Input<string>;
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
      */
     engine?: pulumi.Input<string>;
     /**
