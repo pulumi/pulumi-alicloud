@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cdn
     ///     // Create a new Domain config.
     ///     var domain = new AliCloud.Cdn.DomainNew("domain", new()
     ///     {
-    ///         DomainName = "mycdndomain.xiaozhu.com",
+    ///         DomainName = "mycdndomain.alicloud-provider.cn",
     ///         CdnType = "web",
     ///         Scope = "overseas",
     ///         Sources = new[]

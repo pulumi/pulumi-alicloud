@@ -1268,7 +1268,7 @@ class EnterpriseInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataLinkName")
-    def data_link_name(self) -> pulumi.Output[Optional[str]]:
+    def data_link_name(self) -> pulumi.Output[str]:
         """
         Cross-database query datalink name.
         """

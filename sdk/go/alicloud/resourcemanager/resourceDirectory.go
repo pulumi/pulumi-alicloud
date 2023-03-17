@@ -66,6 +66,8 @@ type ResourceDirectory struct {
 	MasterAccountId pulumi.StringOutput `pulumi:"masterAccountId"`
 	// The name of the master account.
 	MasterAccountName pulumi.StringOutput `pulumi:"masterAccountName"`
+	// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+	MemberDeletionStatus pulumi.StringOutput `pulumi:"memberDeletionStatus"`
 	// The ID of the root folder.
 	RootFolderId pulumi.StringOutput `pulumi:"rootFolderId"`
 	// The status of control policy. Valid values:`Enabled` and `Disabled`.
@@ -105,6 +107,8 @@ type resourceDirectoryState struct {
 	MasterAccountId *string `pulumi:"masterAccountId"`
 	// The name of the master account.
 	MasterAccountName *string `pulumi:"masterAccountName"`
+	// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+	MemberDeletionStatus *string `pulumi:"memberDeletionStatus"`
 	// The ID of the root folder.
 	RootFolderId *string `pulumi:"rootFolderId"`
 	// The status of control policy. Valid values:`Enabled` and `Disabled`.
@@ -116,6 +120,8 @@ type ResourceDirectoryState struct {
 	MasterAccountId pulumi.StringPtrInput
 	// The name of the master account.
 	MasterAccountName pulumi.StringPtrInput
+	// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+	MemberDeletionStatus pulumi.StringPtrInput
 	// The ID of the root folder.
 	RootFolderId pulumi.StringPtrInput
 	// The status of control policy. Valid values:`Enabled` and `Disabled`.
@@ -127,12 +133,16 @@ func (ResourceDirectoryState) ElementType() reflect.Type {
 }
 
 type resourceDirectoryArgs struct {
+	// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+	MemberDeletionStatus *string `pulumi:"memberDeletionStatus"`
 	// The status of control policy. Valid values:`Enabled` and `Disabled`.
 	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a ResourceDirectory resource.
 type ResourceDirectoryArgs struct {
+	// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+	MemberDeletionStatus pulumi.StringPtrInput
 	// The status of control policy. Valid values:`Enabled` and `Disabled`.
 	Status pulumi.StringPtrInput
 }
@@ -232,6 +242,11 @@ func (o ResourceDirectoryOutput) MasterAccountId() pulumi.StringOutput {
 // The name of the master account.
 func (o ResourceDirectoryOutput) MasterAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.MasterAccountName }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+func (o ResourceDirectoryOutput) MemberDeletionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.MemberDeletionStatus }).(pulumi.StringOutput)
 }
 
 // The ID of the root folder.

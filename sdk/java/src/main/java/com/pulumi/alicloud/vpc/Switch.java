@@ -10,6 +10,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -73,6 +75,48 @@ public class Switch extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+     * 
+     */
+    @Export(name="enableIpv6", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> enableIpv6;
+
+    /**
+     * @return Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+     * 
+     */
+    public Output<Optional<Boolean>> enableIpv6() {
+        return Codegen.optional(this.enableIpv6);
+    }
+    /**
+     * (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+     * 
+     */
+    @Export(name="ipv6CidrBlock", type=String.class, parameters={})
+    private Output<String> ipv6CidrBlock;
+
+    /**
+     * @return (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+     * 
+     */
+    public Output<String> ipv6CidrBlock() {
+        return this.ipv6CidrBlock;
+    }
+    /**
+     * The last 8 bits of the switch&#39;s IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+     * 
+     */
+    @Export(name="ipv6CidrBlockMask", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> ipv6CidrBlockMask;
+
+    /**
+     * @return The last 8 bits of the switch&#39;s IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+     * 
+     */
+    public Output<Optional<Integer>> ipv6CidrBlockMask() {
+        return Codegen.optional(this.ipv6CidrBlockMask);
     }
     /**
      * Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.

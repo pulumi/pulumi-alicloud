@@ -56,6 +56,18 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+     */
+    public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
+    /**
+     * (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+     */
+    public /*out*/ readonly ipv6CidrBlock!: pulumi.Output<string>;
+    /**
+     * The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+     */
+    public readonly ipv6CidrBlockMask!: pulumi.Output<number | undefined>;
+    /**
      * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
@@ -98,6 +110,9 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
+            resourceInputs["ipv6CidrBlock"] = state ? state.ipv6CidrBlock : undefined;
+            resourceInputs["ipv6CidrBlockMask"] = state ? state.ipv6CidrBlockMask : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -115,11 +130,14 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
+            resourceInputs["ipv6CidrBlockMask"] = args ? args.ipv6CidrBlockMask : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchName"] = args ? args.vswitchName : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["ipv6CidrBlock"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -145,6 +163,18 @@ export interface SwitchState {
      * The switch description. Defaults to null.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+     */
+    enableIpv6?: pulumi.Input<boolean>;
+    /**
+     * (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+     */
+    ipv6CidrBlock?: pulumi.Input<string>;
+    /**
+     * The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+     */
+    ipv6CidrBlockMask?: pulumi.Input<number>;
     /**
      * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
      *
@@ -191,6 +221,14 @@ export interface SwitchArgs {
      * The switch description. Defaults to null.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+     */
+    enableIpv6?: pulumi.Input<boolean>;
+    /**
+     * The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+     */
+    ipv6CidrBlockMask?: pulumi.Input<number>;
     /**
      * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
      *

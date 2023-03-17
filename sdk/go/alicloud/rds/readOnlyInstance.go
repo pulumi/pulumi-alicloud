@@ -114,6 +114,10 @@ type ReadOnlyInstance struct {
 	// - verify-ca
 	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
 	Acl pulumi.StringOutput `pulumi:"acl"`
+	// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
+	// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -136,6 +140,13 @@ type ReadOnlyInstance struct {
 	DbInstanceIpArrayAttribute pulumi.StringPtrOutput `pulumi:"dbInstanceIpArrayAttribute"`
 	// The name of the IP address whitelist. Default value: Default.
 	DbInstanceIpArrayName pulumi.StringPtrOutput `pulumi:"dbInstanceIpArrayName"`
+	// The storage type of the instance. Valid values:
+	// - local_ssd: specifies to use local SSDs. This value is recommended.
+	// - cloud_ssd: specifies to use standard SSDs.
+	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	DbInstanceStorageType pulumi.StringOutput `pulumi:"dbInstanceStorageType"`
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
 	// - false: no delete protect.
@@ -146,6 +157,8 @@ type ReadOnlyInstance struct {
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrOutput `pulumi:"forceRestart"`
+	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
@@ -161,6 +174,8 @@ type ReadOnlyInstance struct {
 	ModifyMode pulumi.StringPtrOutput `pulumi:"modifyMode"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters ReadOnlyInstanceParameterArrayOutput `pulumi:"parameters"`
+	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// RDS database connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
@@ -266,6 +281,10 @@ type readOnlyInstanceState struct {
 	// - verify-ca
 	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
 	Acl *string `pulumi:"acl"`
+	// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -288,6 +307,13 @@ type readOnlyInstanceState struct {
 	DbInstanceIpArrayAttribute *string `pulumi:"dbInstanceIpArrayAttribute"`
 	// The name of the IP address whitelist. Default value: Default.
 	DbInstanceIpArrayName *string `pulumi:"dbInstanceIpArrayName"`
+	// The storage type of the instance. Valid values:
+	// - local_ssd: specifies to use local SSDs. This value is recommended.
+	// - cloud_ssd: specifies to use standard SSDs.
+	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
 	// - false: no delete protect.
@@ -298,6 +324,8 @@ type readOnlyInstanceState struct {
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart *bool `pulumi:"forceRestart"`
+	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName *string `pulumi:"instanceName"`
 	// User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
@@ -313,6 +341,8 @@ type readOnlyInstanceState struct {
 	ModifyMode *string `pulumi:"modifyMode"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters []ReadOnlyInstanceParameter `pulumi:"parameters"`
+	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+	Period *int `pulumi:"period"`
 	// RDS database connection port.
 	Port *string `pulumi:"port"`
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
@@ -378,6 +408,10 @@ type ReadOnlyInstanceState struct {
 	// - verify-ca
 	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
 	Acl pulumi.StringPtrInput
+	// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+	AutoRenew pulumi.BoolPtrInput
+	// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+	AutoRenewPeriod pulumi.IntPtrInput
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -400,6 +434,13 @@ type ReadOnlyInstanceState struct {
 	DbInstanceIpArrayAttribute pulumi.StringPtrInput
 	// The name of the IP address whitelist. Default value: Default.
 	DbInstanceIpArrayName pulumi.StringPtrInput
+	// The storage type of the instance. Valid values:
+	// - local_ssd: specifies to use local SSDs. This value is recommended.
+	// - cloud_ssd: specifies to use standard SSDs.
+	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	DbInstanceStorageType pulumi.StringPtrInput
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
 	// - false: no delete protect.
@@ -410,6 +451,8 @@ type ReadOnlyInstanceState struct {
 	EngineVersion pulumi.StringPtrInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrInput
+	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+	InstanceChargeType pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName pulumi.StringPtrInput
 	// User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
@@ -425,6 +468,8 @@ type ReadOnlyInstanceState struct {
 	ModifyMode pulumi.StringPtrInput
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters ReadOnlyInstanceParameterArrayInput
+	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+	Period pulumi.IntPtrInput
 	// RDS database connection port.
 	Port pulumi.StringPtrInput
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
@@ -494,6 +539,10 @@ type readOnlyInstanceArgs struct {
 	// - verify-ca
 	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
 	Acl *string `pulumi:"acl"`
+	// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -514,6 +563,13 @@ type readOnlyInstanceArgs struct {
 	DbInstanceIpArrayAttribute *string `pulumi:"dbInstanceIpArrayAttribute"`
 	// The name of the IP address whitelist. Default value: Default.
 	DbInstanceIpArrayName *string `pulumi:"dbInstanceIpArrayName"`
+	// The storage type of the instance. Valid values:
+	// - local_ssd: specifies to use local SSDs. This value is recommended.
+	// - cloud_ssd: specifies to use standard SSDs.
+	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
 	// - false: no delete protect.
@@ -522,6 +578,8 @@ type readOnlyInstanceArgs struct {
 	EngineVersion string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart *bool `pulumi:"forceRestart"`
+	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName *string `pulumi:"instanceName"`
 	// User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
@@ -537,6 +595,8 @@ type readOnlyInstanceArgs struct {
 	ModifyMode *string `pulumi:"modifyMode"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters []ReadOnlyInstanceParameter `pulumi:"parameters"`
+	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+	Period *int `pulumi:"period"`
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
 	// - cert
 	// - perfer
@@ -601,6 +661,10 @@ type ReadOnlyInstanceArgs struct {
 	// - verify-ca
 	// - verify-full (supported only when the instance runs PostgreSQL 12 or later)
 	Acl pulumi.StringPtrInput
+	// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+	AutoRenew pulumi.BoolPtrInput
+	// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+	AutoRenewPeriod pulumi.IntPtrInput
 	// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
 	// - aliyun: a cloud certificate
 	// - custom: a custom certificate
@@ -621,6 +685,13 @@ type ReadOnlyInstanceArgs struct {
 	DbInstanceIpArrayAttribute pulumi.StringPtrInput
 	// The name of the IP address whitelist. Default value: Default.
 	DbInstanceIpArrayName pulumi.StringPtrInput
+	// The storage type of the instance. Valid values:
+	// - local_ssd: specifies to use local SSDs. This value is recommended.
+	// - cloud_ssd: specifies to use standard SSDs.
+	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	DbInstanceStorageType pulumi.StringPtrInput
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
 	// - false: no delete protect.
@@ -629,6 +700,8 @@ type ReadOnlyInstanceArgs struct {
 	EngineVersion pulumi.StringInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrInput
+	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+	InstanceChargeType pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName pulumi.StringPtrInput
 	// User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
@@ -644,6 +717,8 @@ type ReadOnlyInstanceArgs struct {
 	ModifyMode pulumi.StringPtrInput
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters ReadOnlyInstanceParameterArrayInput
+	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+	Period pulumi.IntPtrInput
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `sslEnabled  = 1`. Valid values:
 	// - cert
 	// - perfer
@@ -796,6 +871,16 @@ func (o ReadOnlyInstanceOutput) Acl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.Acl }).(pulumi.StringOutput)
 }
 
+// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+func (o ReadOnlyInstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+func (o ReadOnlyInstanceOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
 // The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `sslEnabled  = 1`. Value range:
 // - aliyun: a cloud certificate
 // - custom: a custom certificate
@@ -842,6 +927,16 @@ func (o ReadOnlyInstanceOutput) DbInstanceIpArrayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringPtrOutput { return v.DbInstanceIpArrayName }).(pulumi.StringPtrOutput)
 }
 
+// The storage type of the instance. Valid values:
+// - local_ssd: specifies to use local SSDs. This value is recommended.
+// - cloud_ssd: specifies to use standard SSDs.
+// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+func (o ReadOnlyInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringOutput { return v.DbInstanceStorageType }).(pulumi.StringOutput)
+}
+
 // The switch of delete protection. Valid values:
 // - true: delete protect.
 // - false: no delete protect.
@@ -862,6 +957,11 @@ func (o ReadOnlyInstanceOutput) EngineVersion() pulumi.StringOutput {
 // Set it to true to make some parameter efficient when modifying them. Default to false.
 func (o ReadOnlyInstanceOutput) ForceRestart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.BoolPtrOutput { return v.ForceRestart }).(pulumi.BoolPtrOutput)
+}
+
+// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+func (o ReadOnlyInstanceOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
 }
 
 // The name of DB instance. It a string of 2 to 256 characters.
@@ -895,6 +995,11 @@ func (o ReadOnlyInstanceOutput) ModifyMode() pulumi.StringPtrOutput {
 // Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 func (o ReadOnlyInstanceOutput) Parameters() ReadOnlyInstanceParameterArrayOutput {
 	return o.ApplyT(func(v *ReadOnlyInstance) ReadOnlyInstanceParameterArrayOutput { return v.Parameters }).(ReadOnlyInstanceParameterArrayOutput)
+}
+
+// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+func (o ReadOnlyInstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReadOnlyInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 // RDS database connection port.

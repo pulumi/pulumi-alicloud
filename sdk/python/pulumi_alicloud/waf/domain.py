@@ -643,7 +643,7 @@ class Domain(pulumi.CustomResource):
 
         domain = alicloud.waf.Domain("domain",
             cluster_type="PhysicalCluster",
-            domain="www.aliyun.com",
+            domain_name="alicloud-provider.cn",
             http2_ports=["443"],
             http_ports=["80"],
             http_to_user_ip="Off",
@@ -711,7 +711,7 @@ class Domain(pulumi.CustomResource):
 
         domain = alicloud.waf.Domain("domain",
             cluster_type="PhysicalCluster",
-            domain="www.aliyun.com",
+            domain_name="alicloud-provider.cn",
             http2_ports=["443"],
             http_ports=["80"],
             http_to_user_ip="Off",

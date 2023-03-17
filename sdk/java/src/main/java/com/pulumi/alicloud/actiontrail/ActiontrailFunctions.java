@@ -21,6 +21,7 @@ import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
 import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedPlainArgs;
 import com.pulumi.alicloud.actiontrail.inputs.GetTrailsPlainArgs;
 import com.pulumi.alicloud.actiontrail.outputs.GetConsumerGroupsResult;
+import com.pulumi.alicloud.actiontrail.outputs.GetGlobalEventsStorageRegionResult;
 import com.pulumi.alicloud.actiontrail.outputs.GetHistoryDeliveryJobsResult;
 import com.pulumi.alicloud.actiontrail.outputs.GetInstancesResult;
 import com.pulumi.alicloud.actiontrail.outputs.GetSaslAclsResult;
@@ -32,6 +33,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class ActiontrailFunctions {
@@ -202,6 +204,240 @@ public final class ActiontrailFunctions {
      */
     public static CompletableFuture<GetConsumerGroupsResult> getConsumerGroupsPlain(GetConsumerGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", TypeShape.of(GetConsumerGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.201.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     * 
+     *         ctx.export(&#34;alicloudActiontrailGlobalEventsStorageRegion1&#34;, default_.storageRegion());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegion() {
+        return getGlobalEventsStorageRegion(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.201.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     * 
+     *         ctx.export(&#34;alicloudActiontrailGlobalEventsStorageRegion1&#34;, default_.storageRegion());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegionPlain() {
+        return getGlobalEventsStorageRegionPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.201.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     * 
+     *         ctx.export(&#34;alicloudActiontrailGlobalEventsStorageRegion1&#34;, default_.storageRegion());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegion(InvokeArgs args) {
+        return getGlobalEventsStorageRegion(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.201.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     * 
+     *         ctx.export(&#34;alicloudActiontrailGlobalEventsStorageRegion1&#34;, default_.storageRegion());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegionPlain(InvokeArgs args) {
+        return getGlobalEventsStorageRegionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.201.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     * 
+     *         ctx.export(&#34;alicloudActiontrailGlobalEventsStorageRegion1&#34;, default_.storageRegion());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegion(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", TypeShape.of(GetGlobalEventsStorageRegionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Actiontrail Global Events Storage Region of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.201.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
+     * 
+     *         ctx.export(&#34;alicloudActiontrailGlobalEventsStorageRegion1&#34;, default_.storageRegion());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegionPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", TypeShape.of(GetGlobalEventsStorageRegionResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.

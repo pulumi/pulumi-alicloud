@@ -5,6 +5,8 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -68,6 +70,51 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+     * 
+     */
+    @Import(name="enableIpv6")
+    private @Nullable Output<Boolean> enableIpv6;
+
+    /**
+     * @return Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+     * 
+     */
+    public Optional<Output<Boolean>> enableIpv6() {
+        return Optional.ofNullable(this.enableIpv6);
+    }
+
+    /**
+     * (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+     * 
+     */
+    @Import(name="ipv6CidrBlock")
+    private @Nullable Output<String> ipv6CidrBlock;
+
+    /**
+     * @return (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+     * 
+     */
+    public Optional<Output<String>> ipv6CidrBlock() {
+        return Optional.ofNullable(this.ipv6CidrBlock);
+    }
+
+    /**
+     * The last 8 bits of the switch&#39;s IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+     * 
+     */
+    @Import(name="ipv6CidrBlockMask")
+    private @Nullable Output<Integer> ipv6CidrBlockMask;
+
+    /**
+     * @return The last 8 bits of the switch&#39;s IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+     * 
+     */
+    public Optional<Output<Integer>> ipv6CidrBlockMask() {
+        return Optional.ofNullable(this.ipv6CidrBlockMask);
     }
 
     /**
@@ -174,6 +221,9 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         this.availabilityZone = $.availabilityZone;
         this.cidrBlock = $.cidrBlock;
         this.description = $.description;
+        this.enableIpv6 = $.enableIpv6;
+        this.ipv6CidrBlock = $.ipv6CidrBlock;
+        this.ipv6CidrBlockMask = $.ipv6CidrBlockMask;
         this.name = $.name;
         this.status = $.status;
         this.tags = $.tags;
@@ -269,6 +319,69 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param enableIpv6 Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableIpv6(@Nullable Output<Boolean> enableIpv6) {
+            $.enableIpv6 = enableIpv6;
+            return this;
+        }
+
+        /**
+         * @param enableIpv6 Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableIpv6(Boolean enableIpv6) {
+            return enableIpv6(Output.of(enableIpv6));
+        }
+
+        /**
+         * @param ipv6CidrBlock (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6CidrBlock(@Nullable Output<String> ipv6CidrBlock) {
+            $.ipv6CidrBlock = ipv6CidrBlock;
+            return this;
+        }
+
+        /**
+         * @param ipv6CidrBlock (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6CidrBlock(String ipv6CidrBlock) {
+            return ipv6CidrBlock(Output.of(ipv6CidrBlock));
+        }
+
+        /**
+         * @param ipv6CidrBlockMask The last 8 bits of the switch&#39;s IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6CidrBlockMask(@Nullable Output<Integer> ipv6CidrBlockMask) {
+            $.ipv6CidrBlockMask = ipv6CidrBlockMask;
+            return this;
+        }
+
+        /**
+         * @param ipv6CidrBlockMask The last 8 bits of the switch&#39;s IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6CidrBlockMask(Integer ipv6CidrBlockMask) {
+            return ipv6CidrBlockMask(Output.of(ipv6CidrBlockMask));
         }
 
         /**

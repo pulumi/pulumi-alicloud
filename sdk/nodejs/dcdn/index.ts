@@ -15,6 +15,11 @@ export type DomainConfig = import("./domainConfig").DomainConfig;
 export const DomainConfig: typeof import("./domainConfig").DomainConfig = null as any;
 utilities.lazyLoad(exports, ["DomainConfig"], () => require("./domainConfig"));
 
+export { ErArgs, ErState } from "./er";
+export type Er = import("./er").Er;
+export const Er: typeof import("./er").Er = null as any;
+utilities.lazyLoad(exports, ["Er"], () => require("./er"));
+
 export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
 export const getDomains: typeof import("./getDomains").getDomains = null as any;
 export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
@@ -44,6 +49,11 @@ export { GetWafPoliciesArgs, GetWafPoliciesResult, GetWafPoliciesOutputArgs } fr
 export const getWafPolicies: typeof import("./getWafPolicies").getWafPolicies = null as any;
 export const getWafPoliciesOutput: typeof import("./getWafPolicies").getWafPoliciesOutput = null as any;
 utilities.lazyLoad(exports, ["getWafPolicies","getWafPoliciesOutput"], () => require("./getWafPolicies"));
+
+export { GetWafRulesArgs, GetWafRulesResult, GetWafRulesOutputArgs } from "./getWafRules";
+export const getWafRules: typeof import("./getWafRules").getWafRules = null as any;
+export const getWafRulesOutput: typeof import("./getWafRules").getWafRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getWafRules","getWafRulesOutput"], () => require("./getWafRules"));
 
 export { IpaDomainArgs, IpaDomainState } from "./ipaDomain";
 export type IpaDomain = import("./ipaDomain").IpaDomain;
@@ -75,6 +85,11 @@ export type WafPolicyDomainAttachment = import("./wafPolicyDomainAttachment").Wa
 export const WafPolicyDomainAttachment: typeof import("./wafPolicyDomainAttachment").WafPolicyDomainAttachment = null as any;
 utilities.lazyLoad(exports, ["WafPolicyDomainAttachment"], () => require("./wafPolicyDomainAttachment"));
 
+export { WafRuleArgs, WafRuleState } from "./wafRule";
+export type WafRule = import("./wafRule").WafRule;
+export const WafRule: typeof import("./wafRule").WafRule = null as any;
+utilities.lazyLoad(exports, ["WafRule"], () => require("./wafRule"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -84,6 +99,8 @@ const _module = {
                 return new Domain(name, <any>undefined, { urn })
             case "alicloud:dcdn/domainConfig:DomainConfig":
                 return new DomainConfig(name, <any>undefined, { urn })
+            case "alicloud:dcdn/er:Er":
+                return new Er(name, <any>undefined, { urn })
             case "alicloud:dcdn/ipaDomain:IpaDomain":
                 return new IpaDomain(name, <any>undefined, { urn })
             case "alicloud:dcdn/kv:Kv":
@@ -96,6 +113,8 @@ const _module = {
                 return new WafPolicy(name, <any>undefined, { urn })
             case "alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment":
                 return new WafPolicyDomainAttachment(name, <any>undefined, { urn })
+            case "alicloud:dcdn/wafRule:WafRule":
+                return new WafRule(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -103,9 +122,11 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/domainConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dcdn/er", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/ipaDomain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/kv", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/kvNamespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/wafDomain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/wafPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dcdn/wafPolicyDomainAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dcdn/wafRule", _module)

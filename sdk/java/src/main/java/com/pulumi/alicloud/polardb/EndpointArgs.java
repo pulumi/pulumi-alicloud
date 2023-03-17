@@ -32,6 +32,13 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         return this.dbClusterId;
     }
 
+    @Import(name="dbEndpointDescription")
+    private @Nullable Output<String> dbEndpointDescription;
+
+    public Optional<Output<String>> dbEndpointDescription() {
+        return Optional.ofNullable(this.dbEndpointDescription);
+    }
+
     @Import(name="endpointConfig")
     private @Nullable Output<Map<String,Object>> endpointConfig;
 
@@ -94,6 +101,7 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
     private EndpointArgs(EndpointArgs $) {
         this.autoAddNewNodes = $.autoAddNewNodes;
         this.dbClusterId = $.dbClusterId;
+        this.dbEndpointDescription = $.dbEndpointDescription;
         this.endpointConfig = $.endpointConfig;
         this.endpointType = $.endpointType;
         this.netType = $.netType;
@@ -137,6 +145,15 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder dbClusterId(String dbClusterId) {
             return dbClusterId(Output.of(dbClusterId));
+        }
+
+        public Builder dbEndpointDescription(@Nullable Output<String> dbEndpointDescription) {
+            $.dbEndpointDescription = dbEndpointDescription;
+            return this;
+        }
+
+        public Builder dbEndpointDescription(String dbEndpointDescription) {
+            return dbEndpointDescription(Output.of(dbEndpointDescription));
         }
 
         public Builder endpointConfig(@Nullable Output<Map<String,Object>> endpointConfig) {

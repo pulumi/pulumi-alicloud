@@ -95,7 +95,7 @@ export class SiteMonitor extends pulumi.CustomResource {
     public readonly taskName!: pulumi.Output<string>;
     public /*out*/ readonly taskState!: pulumi.Output<string>;
     /**
-     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
      */
     public readonly taskType!: pulumi.Output<string>;
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -181,7 +181,7 @@ export interface SiteMonitorState {
     taskName?: pulumi.Input<string>;
     taskState?: pulumi.Input<string>;
     /**
-     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
      */
     taskType?: pulumi.Input<string>;
     updateTime?: pulumi.Input<string>;
@@ -216,7 +216,7 @@ export interface SiteMonitorArgs {
      */
     taskName: pulumi.Input<string>;
     /**
-     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
      */
     taskType: pulumi.Input<string>;
 }

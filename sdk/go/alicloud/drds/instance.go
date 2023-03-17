@@ -75,6 +75,8 @@ type Instance struct {
 	// - `drds.sn2.8c32g` Standard Edition.
 	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries pulumi.StringOutput `pulumi:"instanceSeries"`
+	// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+	MysqlVersion pulumi.IntOutput `pulumi:"mysqlVersion"`
 	// (Available in 1.196.0+) The connection port of the DRDS instance.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// User-defined DRDS instance specification. Value range:
@@ -150,6 +152,8 @@ type instanceState struct {
 	// - `drds.sn2.8c32g` Standard Edition.
 	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries *string `pulumi:"instanceSeries"`
+	// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+	MysqlVersion *int `pulumi:"mysqlVersion"`
 	// (Available in 1.196.0+) The connection port of the DRDS instance.
 	Port *string `pulumi:"port"`
 	// User-defined DRDS instance specification. Value range:
@@ -182,6 +186,8 @@ type InstanceState struct {
 	// - `drds.sn2.8c32g` Standard Edition.
 	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries pulumi.StringPtrInput
+	// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+	MysqlVersion pulumi.IntPtrInput
 	// (Available in 1.196.0+) The connection port of the DRDS instance.
 	Port pulumi.StringPtrInput
 	// User-defined DRDS instance specification. Value range:
@@ -216,6 +222,8 @@ type instanceArgs struct {
 	// - `drds.sn2.8c32g` Standard Edition.
 	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries string `pulumi:"instanceSeries"`
+	// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+	MysqlVersion *int `pulumi:"mysqlVersion"`
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;
 	// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -245,6 +253,8 @@ type InstanceArgs struct {
 	// - `drds.sn2.8c32g` Standard Edition.
 	// - `drds.sn2.16c64g` Enterprise Edition.
 	InstanceSeries pulumi.StringInput
+	// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+	MysqlVersion pulumi.IntPtrInput
 	// User-defined DRDS instance specification. Value range:
 	// - `drds.sn1.4c8g` for DRDS instance Starter version;
 	// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
@@ -371,6 +381,11 @@ func (o InstanceOutput) InstanceChargeType() pulumi.StringPtrOutput {
 // - `drds.sn2.16c64g` Enterprise Edition.
 func (o InstanceOutput) InstanceSeries() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceSeries }).(pulumi.StringOutput)
+}
+
+// The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
+func (o InstanceOutput) MysqlVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.MysqlVersion }).(pulumi.IntOutput)
 }
 
 // (Available in 1.196.0+) The connection port of the DRDS instance.

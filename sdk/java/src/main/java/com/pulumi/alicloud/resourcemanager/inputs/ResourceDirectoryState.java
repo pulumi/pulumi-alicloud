@@ -46,6 +46,21 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+     * 
+     */
+    @Import(name="memberDeletionStatus")
+    private @Nullable Output<String> memberDeletionStatus;
+
+    /**
+     * @return Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+     * 
+     */
+    public Optional<Output<String>> memberDeletionStatus() {
+        return Optional.ofNullable(this.memberDeletionStatus);
+    }
+
+    /**
      * The ID of the root folder.
      * 
      */
@@ -80,6 +95,7 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
     private ResourceDirectoryState(ResourceDirectoryState $) {
         this.masterAccountId = $.masterAccountId;
         this.masterAccountName = $.masterAccountName;
+        this.memberDeletionStatus = $.memberDeletionStatus;
         this.rootFolderId = $.rootFolderId;
         this.status = $.status;
     }
@@ -142,6 +158,27 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
          */
         public Builder masterAccountName(String masterAccountName) {
             return masterAccountName(Output.of(masterAccountName));
+        }
+
+        /**
+         * @param memberDeletionStatus Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberDeletionStatus(@Nullable Output<String> memberDeletionStatus) {
+            $.memberDeletionStatus = memberDeletionStatus;
+            return this;
+        }
+
+        /**
+         * @param memberDeletionStatus Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberDeletionStatus(String memberDeletionStatus) {
+            return memberDeletionStatus(Output.of(memberDeletionStatus));
         }
 
         /**

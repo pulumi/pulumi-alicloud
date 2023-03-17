@@ -67,11 +67,11 @@ export class TrafficMirrorFilter extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+     * The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
      */
     public readonly trafficMirrorFilterDescription!: pulumi.Output<string | undefined>;
     /**
-     * The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+     * The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      */
     public readonly trafficMirrorFilterName!: pulumi.Output<string | undefined>;
 
@@ -117,11 +117,11 @@ export interface TrafficMirrorFilterState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+     * The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
      */
     trafficMirrorFilterDescription?: pulumi.Input<string>;
     /**
-     * The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+     * The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      */
     trafficMirrorFilterName?: pulumi.Input<string>;
 }
@@ -135,11 +135,11 @@ export interface TrafficMirrorFilterArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+     * The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
      */
     trafficMirrorFilterDescription?: pulumi.Input<string>;
     /**
-     * The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+     * The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      */
     trafficMirrorFilterName?: pulumi.Input<string>;
 }

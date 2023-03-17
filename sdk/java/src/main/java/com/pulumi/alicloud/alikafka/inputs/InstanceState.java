@@ -129,6 +129,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The traffic specification of the instance. We recommend that you configure this parameter.
+     * - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+     * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+     * 
+     */
+    @Import(name="ioMaxSpec")
+    private @Nullable Output<String> ioMaxSpec;
+
+    /**
+     * @return The traffic specification of the instance. We recommend that you configure this parameter.
+     * - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+     * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+     * 
+     */
+    public Optional<Output<String>> ioMaxSpec() {
+        return Optional.ofNullable(this.ioMaxSpec);
+    }
+
+    /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
      * 
      */
@@ -366,6 +385,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.eipMax = $.eipMax;
         this.endPoint = $.endPoint;
         this.ioMax = $.ioMax;
+        this.ioMaxSpec = $.ioMaxSpec;
         this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.paidType = $.paidType;
@@ -549,6 +569,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ioMax(Integer ioMax) {
             return ioMax(Output.of(ioMax));
+        }
+
+        /**
+         * @param ioMaxSpec The traffic specification of the instance. We recommend that you configure this parameter.
+         * - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+         * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioMaxSpec(@Nullable Output<String> ioMaxSpec) {
+            $.ioMaxSpec = ioMaxSpec;
+            return this;
+        }
+
+        /**
+         * @param ioMaxSpec The traffic specification of the instance. We recommend that you configure this parameter.
+         * - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+         * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioMaxSpec(String ioMaxSpec) {
+            return ioMaxSpec(Output.of(ioMaxSpec));
         }
 
         /**

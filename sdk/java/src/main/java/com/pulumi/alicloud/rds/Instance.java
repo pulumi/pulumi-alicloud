@@ -150,7 +150,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.caType;
     }
     /**
-     * The RDS edition of the instance. Valid values:
+     * The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
      * * **Basic**: Basic Edition.
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
@@ -162,7 +162,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> category;
 
     /**
-     * @return The RDS edition of the instance. Valid values:
+     * @return The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
      * * **Basic**: Basic Edition.
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.

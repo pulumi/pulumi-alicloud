@@ -64,7 +64,7 @@ export class WafPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`.
+     * The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
      */
     public readonly defenseScene!: pulumi.Output<string>;
     /**
@@ -126,7 +126,7 @@ export class WafPolicy extends pulumi.CustomResource {
  */
 export interface WafPolicyState {
     /**
-     * The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`.
+     * The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
      */
     defenseScene?: pulumi.Input<string>;
     /**
@@ -148,7 +148,7 @@ export interface WafPolicyState {
  */
 export interface WafPolicyArgs {
     /**
-     * The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`.
+     * The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
      */
     defenseScene: pulumi.Input<string>;
     /**

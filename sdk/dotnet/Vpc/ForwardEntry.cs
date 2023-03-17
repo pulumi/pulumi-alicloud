@@ -47,7 +47,10 @@ namespace Pulumi.AliCloud.Vpc
     ///     var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
-    ///         Specification = "Small",
+    ///         InternetChargeType = "PayByLcu",
+    ///         NatGatewayName = name,
+    ///         NatType = "Enhanced",
+    ///         VswitchId = defaultSwitch.Id,
     ///     });
     /// 
     ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()

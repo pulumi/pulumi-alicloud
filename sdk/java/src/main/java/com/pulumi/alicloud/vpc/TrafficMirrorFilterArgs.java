@@ -32,14 +32,14 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+     * The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="trafficMirrorFilterDescription")
     private @Nullable Output<String> trafficMirrorFilterDescription;
 
     /**
-     * @return The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+     * @return The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> trafficMirrorFilterDescription() {
@@ -47,14 +47,14 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+     * The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="trafficMirrorFilterName")
     private @Nullable Output<String> trafficMirrorFilterName;
 
     /**
-     * @return The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+     * @return The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> trafficMirrorFilterName() {
@@ -109,7 +109,7 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param trafficMirrorFilterDescription The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+         * @param trafficMirrorFilterDescription The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param trafficMirrorFilterDescription The description of the filter. The description must be `2` to `256` characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+         * @param trafficMirrorFilterDescription The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param trafficMirrorFilterName The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+         * @param trafficMirrorFilterName The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param trafficMirrorFilterName The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+         * @param trafficMirrorFilterName The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 

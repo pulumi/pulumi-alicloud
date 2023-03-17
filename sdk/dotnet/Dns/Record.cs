@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Dns
     /// RDS record can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dns/record:Record example abc123456
+    ///  $ pulumi import alicloud:dns/record:Record example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dns/record:Record")]

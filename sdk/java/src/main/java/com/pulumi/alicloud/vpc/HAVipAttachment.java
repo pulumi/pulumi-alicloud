@@ -167,6 +167,34 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
     public Output<String> instanceId() {
         return this.instanceId;
     }
+    /**
+     * The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+     * 
+     */
+    @Export(name="instanceType", type=String.class, parameters={})
+    private Output<String> instanceType;
+
+    /**
+     * @return The Type of instance to bind HaVip to. Valid values: `EcsInstance` and `NetworkInterface`. When the HaVip instance is bound to a resilient NIC, the resilient NIC instance must be filled in.
+     * 
+     */
+    public Output<String> instanceType() {
+        return this.instanceType;
+    }
+    /**
+     * (Available in v1.201.0+) The status of the HaVip instance.
+     * 
+     */
+    @Export(name="status", type=String.class, parameters={})
+    private Output<String> status;
+
+    /**
+     * @return (Available in v1.201.0+) The status of the HaVip instance.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
 
     /**
      *

@@ -221,27 +221,30 @@ def get_forward_entries(external_ip: Optional[str] = None,
         name = "forward-entry-config-example-name"
     default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
     default_network = alicloud.vpc.Network("defaultNetwork",
-        cidr_block="172.16.0.0/12",
-        vpc_name=name)
+        vpc_name=name,
+        cidr_block="172.16.0.0/12")
     default_switch = alicloud.vpc.Switch("defaultSwitch",
-        cidr_block="172.16.0.0/21",
         vpc_id=default_network.id,
-        vswitch_name=name,
-        zone_id=default_zones.zones[0].id)
+        cidr_block="172.16.0.0/21",
+        zone_id=default_zones.zones[0].id,
+        vswitch_name=name)
     default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
-        specification="Small",
-        vpc_id=default_network.id)
+        vpc_id=default_network.id,
+        internet_charge_type="PayByLcu",
+        nat_gateway_name=name,
+        nat_type="Enhanced",
+        vswitch_id=default_switch.id)
     default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
     default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
         allocation_id=default_eip_address.id,
         instance_id=default_nat_gateway.id)
     default_forward_entry = alicloud.vpc.ForwardEntry("defaultForwardEntry",
+        forward_table_id=default_nat_gateway.forward_table_ids,
         external_ip=default_eip_address.ip_address,
         external_port="80",
-        forward_table_id=default_nat_gateway.forward_table_ids,
+        ip_protocol="tcp",
         internal_ip="172.16.0.3",
-        internal_port="8080",
-        ip_protocol="tcp")
+        internal_port="8080")
     default_forward_entries = alicloud.vpc.get_forward_entries_output(forward_table_id=default_forward_entry.forward_table_id)
     ```
 
@@ -319,27 +322,30 @@ def get_forward_entries_output(external_ip: Optional[pulumi.Input[Optional[str]]
         name = "forward-entry-config-example-name"
     default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
     default_network = alicloud.vpc.Network("defaultNetwork",
-        cidr_block="172.16.0.0/12",
-        vpc_name=name)
+        vpc_name=name,
+        cidr_block="172.16.0.0/12")
     default_switch = alicloud.vpc.Switch("defaultSwitch",
-        cidr_block="172.16.0.0/21",
         vpc_id=default_network.id,
-        vswitch_name=name,
-        zone_id=default_zones.zones[0].id)
+        cidr_block="172.16.0.0/21",
+        zone_id=default_zones.zones[0].id,
+        vswitch_name=name)
     default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
-        specification="Small",
-        vpc_id=default_network.id)
+        vpc_id=default_network.id,
+        internet_charge_type="PayByLcu",
+        nat_gateway_name=name,
+        nat_type="Enhanced",
+        vswitch_id=default_switch.id)
     default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
     default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
         allocation_id=default_eip_address.id,
         instance_id=default_nat_gateway.id)
     default_forward_entry = alicloud.vpc.ForwardEntry("defaultForwardEntry",
+        forward_table_id=default_nat_gateway.forward_table_ids,
         external_ip=default_eip_address.ip_address,
         external_port="80",
-        forward_table_id=default_nat_gateway.forward_table_ids,
+        ip_protocol="tcp",
         internal_ip="172.16.0.3",
-        internal_port="8080",
-        ip_protocol="tcp")
+        internal_port="8080")
     default_forward_entries = alicloud.vpc.get_forward_entries_output(forward_table_id=default_forward_entry.forward_table_id)
     ```
 

@@ -81,6 +81,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// * `ssl_certificate_url` - (Available in v1.132.0+) Specifies SSL certificate download link.\
     ///     **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\
     ///     For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+    /// * `db_endpoint_description` - (Optional, Available in v1.201.0+) The name of the endpoint.
     /// 
     /// ## Import
     /// 
@@ -98,6 +99,9 @@ namespace Pulumi.AliCloud.PolarDB
 
         [Output("dbClusterId")]
         public Output<string> DbClusterId { get; private set; } = null!;
+
+        [Output("dbEndpointDescription")]
+        public Output<string?> DbEndpointDescription { get; private set; } = null!;
 
         /// <summary>
         /// (Available in v1.161.0+) The ID of the cluster endpoint.
@@ -196,6 +200,9 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("dbClusterId", required: true)]
         public Input<string> DbClusterId { get; set; } = null!;
 
+        [Input("dbEndpointDescription")]
+        public Input<string>? DbEndpointDescription { get; set; }
+
         [Input("endpointConfig")]
         private InputMap<object>? _endpointConfig;
         public InputMap<object> EndpointConfig
@@ -243,6 +250,9 @@ namespace Pulumi.AliCloud.PolarDB
 
         [Input("dbClusterId")]
         public Input<string>? DbClusterId { get; set; }
+
+        [Input("dbEndpointDescription")]
+        public Input<string>? DbEndpointDescription { get; set; }
 
         /// <summary>
         /// (Available in v1.161.0+) The ID of the cluster endpoint.

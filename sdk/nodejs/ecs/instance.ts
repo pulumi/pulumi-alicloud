@@ -78,6 +78,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dataDisks!: pulumi.Output<outputs.ecs.InstanceDataDisk[] | undefined>;
     /**
+     * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     */
+    public readonly dedicatedHostId!: pulumi.Output<string | undefined>;
+    /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
@@ -283,7 +287,7 @@ export class Instance extends pulumi.CustomResource {
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
      */
-    public readonly spotStrategy!: pulumi.Output<string | undefined>;
+    public readonly spotStrategy!: pulumi.Output<string>;
     /**
      * The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
      */
@@ -343,7 +347,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * It supports to setting a base64-encoded value, and it is the recommended usage.
+     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
      */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
@@ -377,6 +384,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["creditSpecification"] = state ? state.creditSpecification : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
+            resourceInputs["dedicatedHostId"] = state ? state.dedicatedHostId : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["deploymentSetGroupNo"] = state ? state.deploymentSetGroupNo : undefined;
             resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
@@ -460,6 +468,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["creditSpecification"] = args ? args.creditSpecification : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
+            resourceInputs["dedicatedHostId"] = args ? args.dedicatedHostId : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -573,6 +582,10 @@ export interface InstanceState {
      * The list of data disks created with instance.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.InstanceDataDisk>[]>;
+    /**
+     * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     */
+    dedicatedHostId?: pulumi.Input<string>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -839,7 +852,10 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * It supports to setting a base64-encoded value, and it is the recommended usage.
+     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
      */
     userData?: pulumi.Input<string>;
     /**
@@ -888,6 +904,10 @@ export interface InstanceArgs {
      * The list of data disks created with instance.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.InstanceDataDisk>[]>;
+    /**
+     * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     */
+    dedicatedHostId?: pulumi.Input<string>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -1130,7 +1150,10 @@ export interface InstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * It supports to setting a base64-encoded value, and it is the recommended usage.
+     * From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+     * Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
      */
     userData?: pulumi.Input<string>;
     /**

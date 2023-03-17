@@ -31,6 +31,12 @@ type Switch struct {
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
 	// The switch description. Defaults to null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
+	// (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+	Ipv6CidrBlock pulumi.StringOutput `pulumi:"ipv6CidrBlock"`
+	// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+	Ipv6CidrBlockMask pulumi.IntPtrOutput `pulumi:"ipv6CidrBlockMask"`
 	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
@@ -90,6 +96,12 @@ type switchState struct {
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The switch description. Defaults to null.
 	Description *string `pulumi:"description"`
+	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+	EnableIpv6 *bool `pulumi:"enableIpv6"`
+	// (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
+	// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+	Ipv6CidrBlockMask *int `pulumi:"ipv6CidrBlockMask"`
 	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
@@ -115,6 +127,12 @@ type SwitchState struct {
 	CidrBlock pulumi.StringPtrInput
 	// The switch description. Defaults to null.
 	Description pulumi.StringPtrInput
+	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+	EnableIpv6 pulumi.BoolPtrInput
+	// (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+	Ipv6CidrBlock pulumi.StringPtrInput
+	// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+	Ipv6CidrBlockMask pulumi.IntPtrInput
 	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
@@ -144,6 +162,10 @@ type switchArgs struct {
 	CidrBlock string `pulumi:"cidrBlock"`
 	// The switch description. Defaults to null.
 	Description *string `pulumi:"description"`
+	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+	EnableIpv6 *bool `pulumi:"enableIpv6"`
+	// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+	Ipv6CidrBlockMask *int `pulumi:"ipv6CidrBlockMask"`
 	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
@@ -168,6 +190,10 @@ type SwitchArgs struct {
 	CidrBlock pulumi.StringInput
 	// The switch description. Defaults to null.
 	Description pulumi.StringPtrInput
+	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+	EnableIpv6 pulumi.BoolPtrInput
+	// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+	Ipv6CidrBlockMask pulumi.IntPtrInput
 	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
@@ -284,6 +310,21 @@ func (o SwitchOutput) CidrBlock() pulumi.StringOutput {
 // The switch description. Defaults to null.
 func (o SwitchOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+func (o SwitchOutput) EnableIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Switch) pulumi.BoolPtrOutput { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
+}
+
+// (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+func (o SwitchOutput) Ipv6CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Ipv6CidrBlock }).(pulumi.StringOutput)
+}
+
+// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+func (o SwitchOutput) Ipv6CidrBlockMask() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Switch) pulumi.IntPtrOutput { return v.Ipv6CidrBlockMask }).(pulumi.IntPtrOutput)
 }
 
 // Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.

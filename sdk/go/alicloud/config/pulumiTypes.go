@@ -133,6 +133,7 @@ type Endpoints struct {
 	Edas                *string `pulumi:"edas"`
 	Edasschedulerx      *string `pulumi:"edasschedulerx"`
 	Edsuser             *string `pulumi:"edsuser"`
+	Eflo                *string `pulumi:"eflo"`
 	Ehpc                *string `pulumi:"ehpc"`
 	Ehs                 *string `pulumi:"ehs"`
 	Eipanycast          *string `pulumi:"eipanycast"`
@@ -272,6 +273,7 @@ type EndpointsArgs struct {
 	Edas                pulumi.StringPtrInput `pulumi:"edas"`
 	Edasschedulerx      pulumi.StringPtrInput `pulumi:"edasschedulerx"`
 	Edsuser             pulumi.StringPtrInput `pulumi:"edsuser"`
+	Eflo                pulumi.StringPtrInput `pulumi:"eflo"`
 	Ehpc                pulumi.StringPtrInput `pulumi:"ehpc"`
 	Ehs                 pulumi.StringPtrInput `pulumi:"ehs"`
 	Eipanycast          pulumi.StringPtrInput `pulumi:"eipanycast"`
@@ -613,6 +615,10 @@ func (o EndpointsOutput) Edasschedulerx() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Edsuser() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Edsuser }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Eflo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Eflo }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Ehpc() pulumi.StringPtrOutput {

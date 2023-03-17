@@ -1844,20 +1844,23 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
      *             .vpcId(defaultNetwork.id())
-     *             .vswitchName(name)
+     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
      *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
      *             .build());
      * 
      *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
-     *             .specification(&#34;Small&#34;)
      *             .vpcId(defaultNetwork.id())
+     *             .internetChargeType(&#34;PayByLcu&#34;)
+     *             .natGatewayName(name)
+     *             .natType(&#34;Enhanced&#34;)
+     *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
@@ -1870,12 +1873,12 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+     *             .forwardTableId(defaultNatGateway.forwardTableIds())
      *             .externalIp(defaultEipAddress.ipAddress())
      *             .externalPort(&#34;80&#34;)
-     *             .forwardTableId(defaultNatGateway.forwardTableIds())
+     *             .ipProtocol(&#34;tcp&#34;)
      *             .internalIp(&#34;172.16.0.3&#34;)
      *             .internalPort(&#34;8080&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
      *             .build());
      * 
      *         final var defaultForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
@@ -1938,20 +1941,23 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
      *             .vpcId(defaultNetwork.id())
-     *             .vswitchName(name)
+     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
      *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
      *             .build());
      * 
      *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
-     *             .specification(&#34;Small&#34;)
      *             .vpcId(defaultNetwork.id())
+     *             .internetChargeType(&#34;PayByLcu&#34;)
+     *             .natGatewayName(name)
+     *             .natType(&#34;Enhanced&#34;)
+     *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
@@ -1964,12 +1970,12 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+     *             .forwardTableId(defaultNatGateway.forwardTableIds())
      *             .externalIp(defaultEipAddress.ipAddress())
      *             .externalPort(&#34;80&#34;)
-     *             .forwardTableId(defaultNatGateway.forwardTableIds())
+     *             .ipProtocol(&#34;tcp&#34;)
      *             .internalIp(&#34;172.16.0.3&#34;)
      *             .internalPort(&#34;8080&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
      *             .build());
      * 
      *         final var defaultForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
@@ -2032,20 +2038,23 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
      *             .vpcId(defaultNetwork.id())
-     *             .vswitchName(name)
+     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
      *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
      *             .build());
      * 
      *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
-     *             .specification(&#34;Small&#34;)
      *             .vpcId(defaultNetwork.id())
+     *             .internetChargeType(&#34;PayByLcu&#34;)
+     *             .natGatewayName(name)
+     *             .natType(&#34;Enhanced&#34;)
+     *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
@@ -2058,12 +2067,12 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+     *             .forwardTableId(defaultNatGateway.forwardTableIds())
      *             .externalIp(defaultEipAddress.ipAddress())
      *             .externalPort(&#34;80&#34;)
-     *             .forwardTableId(defaultNatGateway.forwardTableIds())
+     *             .ipProtocol(&#34;tcp&#34;)
      *             .internalIp(&#34;172.16.0.3&#34;)
      *             .internalPort(&#34;8080&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
      *             .build());
      * 
      *         final var defaultForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
@@ -2126,20 +2135,23 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
      *             .vpcId(defaultNetwork.id())
-     *             .vswitchName(name)
+     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
      *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
      *             .build());
      * 
      *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
-     *             .specification(&#34;Small&#34;)
      *             .vpcId(defaultNetwork.id())
+     *             .internetChargeType(&#34;PayByLcu&#34;)
+     *             .natGatewayName(name)
+     *             .natType(&#34;Enhanced&#34;)
+     *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
@@ -2152,12 +2164,12 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+     *             .forwardTableId(defaultNatGateway.forwardTableIds())
      *             .externalIp(defaultEipAddress.ipAddress())
      *             .externalPort(&#34;80&#34;)
-     *             .forwardTableId(defaultNatGateway.forwardTableIds())
+     *             .ipProtocol(&#34;tcp&#34;)
      *             .internalIp(&#34;172.16.0.3&#34;)
      *             .internalPort(&#34;8080&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
      *             .build());
      * 
      *         final var defaultForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()

@@ -21,6 +21,8 @@ class ReadOnlyInstanceArgs:
                  instance_type: pulumi.Input[str],
                  master_db_instance_id: pulumi.Input[str],
                  acl: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
@@ -28,11 +30,14 @@ class ReadOnlyInstanceArgs:
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
+                 db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_type: Optional[pulumi.Input[str]] = None,
@@ -59,6 +64,8 @@ class ReadOnlyInstanceArgs:
                - perfer
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        :param pulumi.Input[bool] auto_renew: Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
@@ -72,16 +79,24 @@ class ReadOnlyInstanceArgs:
                - 0: disables the CRL
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
         :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
+        :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
+               - local_ssd: specifies to use local SSDs. This value is recommended.
+               - cloud_ssd: specifies to use standard SSDs.
+               - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+               - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+               - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[str] modify_mode: The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
                - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - cert
                - perfer
@@ -128,6 +143,10 @@ class ReadOnlyInstanceArgs:
         pulumi.set(__self__, "master_db_instance_id", master_db_instance_id)
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if ca_type is not None:
             pulumi.set(__self__, "ca_type", ca_type)
         if client_ca_cert is not None:
@@ -142,16 +161,22 @@ class ReadOnlyInstanceArgs:
             pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:
             pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
+        if db_instance_storage_type is not None:
+            pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if modify_mode is not None:
             pulumi.set(__self__, "modify_mode", modify_mode)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
         if replication_acl is not None:
             pulumi.set(__self__, "replication_acl", replication_acl)
         if resource_group_id is not None:
@@ -248,6 +273,30 @@ class ReadOnlyInstanceArgs:
         pulumi.set(self, "acl", value)
 
     @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
+
+    @property
     @pulumi.getter(name="caType")
     def ca_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -338,6 +387,23 @@ class ReadOnlyInstanceArgs:
         pulumi.set(self, "db_instance_ip_array_name", value)
 
     @property
+    @pulumi.getter(name="dbInstanceStorageType")
+    def db_instance_storage_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage type of the instance. Valid values:
+        - local_ssd: specifies to use local SSDs. This value is recommended.
+        - cloud_ssd: specifies to use standard SSDs.
+        - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+        - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+        - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        """
+        return pulumi.get(self, "db_instance_storage_type")
+
+    @db_instance_storage_type.setter
+    def db_instance_storage_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_storage_type", value)
+
+    @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -362,6 +428,18 @@ class ReadOnlyInstanceArgs:
     @force_restart.setter
     def force_restart(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_restart", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -401,6 +479,18 @@ class ReadOnlyInstanceArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
 
     @property
     @pulumi.getter(name="replicationAcl")
@@ -611,6 +701,8 @@ class ReadOnlyInstanceArgs:
 class _ReadOnlyInstanceState:
     def __init__(__self__, *,
                  acl: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
@@ -619,16 +711,19 @@ class _ReadOnlyInstanceState:
                  connection_string: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
+                 db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  master_db_instance_id: Optional[pulumi.Input[str]] = None,
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -652,6 +747,8 @@ class _ReadOnlyInstanceState:
                - perfer
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        :param pulumi.Input[bool] auto_renew: Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
@@ -666,12 +763,19 @@ class _ReadOnlyInstanceState:
         :param pulumi.Input[str] connection_string: RDS database connection string.
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
         :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
+        :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
+               - local_ssd: specifies to use local SSDs. This value is recommended.
+               - cloud_ssd: specifies to use standard SSDs.
+               - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+               - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+               - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
         :param pulumi.Input[str] engine: Database type.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
@@ -681,6 +785,7 @@ class _ReadOnlyInstanceState:
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[str] port: RDS database connection port.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - cert
@@ -724,6 +829,10 @@ class _ReadOnlyInstanceState:
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if ca_type is not None:
             pulumi.set(__self__, "ca_type", ca_type)
         if client_ca_cert is not None:
@@ -740,6 +849,8 @@ class _ReadOnlyInstanceState:
             pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:
             pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
+        if db_instance_storage_type is not None:
+            pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if engine is not None:
@@ -748,6 +859,8 @@ class _ReadOnlyInstanceState:
             pulumi.set(__self__, "engine_version", engine_version)
         if force_restart is not None:
             pulumi.set(__self__, "force_restart", force_restart)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_storage is not None:
@@ -760,6 +873,8 @@ class _ReadOnlyInstanceState:
             pulumi.set(__self__, "modify_mode", modify_mode)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if replication_acl is not None:
@@ -808,6 +923,30 @@ class _ReadOnlyInstanceState:
     @acl.setter
     def acl(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
 
     @property
     @pulumi.getter(name="caType")
@@ -912,6 +1051,23 @@ class _ReadOnlyInstanceState:
         pulumi.set(self, "db_instance_ip_array_name", value)
 
     @property
+    @pulumi.getter(name="dbInstanceStorageType")
+    def db_instance_storage_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage type of the instance. Valid values:
+        - local_ssd: specifies to use local SSDs. This value is recommended.
+        - cloud_ssd: specifies to use standard SSDs.
+        - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+        - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+        - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        """
+        return pulumi.get(self, "db_instance_storage_type")
+
+    @db_instance_storage_type.setter
+    def db_instance_storage_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_instance_storage_type", value)
+
+    @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -960,6 +1116,18 @@ class _ReadOnlyInstanceState:
     @force_restart.setter
     def force_restart(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_restart", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -1035,6 +1203,18 @@ class _ReadOnlyInstanceState:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
 
     @property
     @pulumi.getter
@@ -1259,6 +1439,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
@@ -1266,15 +1448,18 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
+                 db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  master_db_instance_id: Optional[pulumi.Input[str]] = None,
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_type: Optional[pulumi.Input[str]] = None,
@@ -1351,6 +1536,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - perfer
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        :param pulumi.Input[bool] auto_renew: Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
@@ -1364,11 +1551,18 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - 0: disables the CRL
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
         :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
+        :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
+               - local_ssd: specifies to use local SSDs. This value is recommended.
+               - cloud_ssd: specifies to use standard SSDs.
+               - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+               - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+               - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
@@ -1378,6 +1572,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - cert
                - perfer
@@ -1493,6 +1688,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  client_ca_cert: Optional[pulumi.Input[str]] = None,
                  client_ca_enabled: Optional[pulumi.Input[int]] = None,
@@ -1500,15 +1697,18 @@ class ReadOnlyInstance(pulumi.CustomResource):
                  client_crl_enabled: Optional[pulumi.Input[int]] = None,
                  db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
+                 db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_restart: Optional[pulumi.Input[bool]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_storage: Optional[pulumi.Input[int]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  master_db_instance_id: Optional[pulumi.Input[str]] = None,
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  replication_acl: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_type: Optional[pulumi.Input[str]] = None,
@@ -1534,6 +1734,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
             __props__ = ReadOnlyInstanceArgs.__new__(ReadOnlyInstanceArgs)
 
             __props__.__dict__["acl"] = acl
+            __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["ca_type"] = ca_type
             __props__.__dict__["client_ca_cert"] = client_ca_cert
             __props__.__dict__["client_ca_enabled"] = client_ca_enabled
@@ -1541,11 +1743,13 @@ class ReadOnlyInstance(pulumi.CustomResource):
             __props__.__dict__["client_crl_enabled"] = client_crl_enabled
             __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
             __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
+            __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
             __props__.__dict__["deletion_protection"] = deletion_protection
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
             __props__.__dict__["force_restart"] = force_restart
+            __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["instance_name"] = instance_name
             if instance_storage is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_storage'")
@@ -1558,6 +1762,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             __props__.__dict__["master_db_instance_id"] = master_db_instance_id
             __props__.__dict__["modify_mode"] = modify_mode
             __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["period"] = period
             __props__.__dict__["replication_acl"] = replication_acl
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_ip_type"] = security_ip_type
@@ -1587,6 +1792,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             acl: Optional[pulumi.Input[str]] = None,
+            auto_renew: Optional[pulumi.Input[bool]] = None,
+            auto_renew_period: Optional[pulumi.Input[int]] = None,
             ca_type: Optional[pulumi.Input[str]] = None,
             client_ca_cert: Optional[pulumi.Input[str]] = None,
             client_ca_enabled: Optional[pulumi.Input[int]] = None,
@@ -1595,16 +1802,19 @@ class ReadOnlyInstance(pulumi.CustomResource):
             connection_string: Optional[pulumi.Input[str]] = None,
             db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
             db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
+            db_instance_storage_type: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             force_restart: Optional[pulumi.Input[bool]] = None,
+            instance_charge_type: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_storage: Optional[pulumi.Input[int]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             master_db_instance_id: Optional[pulumi.Input[str]] = None,
             modify_mode: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             port: Optional[pulumi.Input[str]] = None,
             replication_acl: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -1633,6 +1843,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - perfer
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
+        :param pulumi.Input[bool] auto_renew: Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
@@ -1647,12 +1859,19 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[str] connection_string: RDS database connection string.
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
         :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
+        :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
+               - local_ssd: specifies to use local SSDs. This value is recommended.
+               - cloud_ssd: specifies to use standard SSDs.
+               - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+               - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+               - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
         :param pulumi.Input[str] engine: Database type.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
@@ -1662,6 +1881,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadOnlyInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[str] port: RDS database connection port.
         :param pulumi.Input[str] replication_acl: The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
                - cert
@@ -1708,6 +1928,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__ = _ReadOnlyInstanceState.__new__(_ReadOnlyInstanceState)
 
         __props__.__dict__["acl"] = acl
+        __props__.__dict__["auto_renew"] = auto_renew
+        __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["ca_type"] = ca_type
         __props__.__dict__["client_ca_cert"] = client_ca_cert
         __props__.__dict__["client_ca_enabled"] = client_ca_enabled
@@ -1716,16 +1938,19 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["db_instance_ip_array_attribute"] = db_instance_ip_array_attribute
         __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
+        __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["force_restart"] = force_restart
+        __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_storage"] = instance_storage
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["master_db_instance_id"] = master_db_instance_id
         __props__.__dict__["modify_mode"] = modify_mode
         __props__.__dict__["parameters"] = parameters
+        __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
         __props__.__dict__["replication_acl"] = replication_acl
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -1755,6 +1980,22 @@ class ReadOnlyInstance(pulumi.CustomResource):
         - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         """
         return pulumi.get(self, "acl")
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> pulumi.Output[Optional[int]]:
+        """
+        Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
+        """
+        return pulumi.get(self, "auto_renew_period")
 
     @property
     @pulumi.getter(name="caType")
@@ -1827,6 +2068,19 @@ class ReadOnlyInstance(pulumi.CustomResource):
         return pulumi.get(self, "db_instance_ip_array_name")
 
     @property
+    @pulumi.getter(name="dbInstanceStorageType")
+    def db_instance_storage_type(self) -> pulumi.Output[str]:
+        """
+        The storage type of the instance. Valid values:
+        - local_ssd: specifies to use local SSDs. This value is recommended.
+        - cloud_ssd: specifies to use standard SSDs.
+        - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+        - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+        - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        """
+        return pulumi.get(self, "db_instance_storage_type")
+
+    @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1859,6 +2113,14 @@ class ReadOnlyInstance(pulumi.CustomResource):
         Set it to true to make some parameter efficient when modifying them. Default to false.
         """
         return pulumi.get(self, "force_restart")
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
+        """
+        return pulumi.get(self, "instance_charge_type")
 
     @property
     @pulumi.getter(name="instanceName")
@@ -1910,6 +2172,14 @@ class ReadOnlyInstance(pulumi.CustomResource):
         Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         """
         return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
+    def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        """
+        return pulumi.get(self, "period")
 
     @property
     @pulumi.getter

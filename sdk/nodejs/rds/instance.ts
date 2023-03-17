@@ -80,7 +80,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly caType!: pulumi.Output<string>;
     /**
-     * The RDS edition of the instance. Valid values:
+     * The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
      * * **Basic**: Basic Edition.
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
@@ -630,7 +630,7 @@ export interface InstanceState {
      */
     caType?: pulumi.Input<string>;
     /**
-     * The RDS edition of the instance. Valid values:
+     * The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
      * * **Basic**: Basic Edition.
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
@@ -1002,7 +1002,7 @@ export interface InstanceArgs {
      */
     caType?: pulumi.Input<string>;
     /**
-     * The RDS edition of the instance. Valid values:
+     * The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
      * * **Basic**: Basic Edition.
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.

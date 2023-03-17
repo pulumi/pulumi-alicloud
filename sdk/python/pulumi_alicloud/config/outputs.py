@@ -108,6 +108,7 @@ class Endpoints(dict):
                  edas: Optional[str] = None,
                  edasschedulerx: Optional[str] = None,
                  edsuser: Optional[str] = None,
+                 eflo: Optional[str] = None,
                  ehpc: Optional[str] = None,
                  ehs: Optional[str] = None,
                  eipanycast: Optional[str] = None,
@@ -288,6 +289,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "edasschedulerx", edasschedulerx)
         if edsuser is not None:
             pulumi.set(__self__, "edsuser", edsuser)
+        if eflo is not None:
+            pulumi.set(__self__, "eflo", eflo)
         if ehpc is not None:
             pulumi.set(__self__, "ehpc", ehpc)
         if ehs is not None:
@@ -703,6 +706,11 @@ class Endpoints(dict):
     @pulumi.getter
     def edsuser(self) -> Optional[str]:
         return pulumi.get(self, "edsuser")
+
+    @property
+    @pulumi.getter
+    def eflo(self) -> Optional[str]:
+        return pulumi.get(self, "eflo")
 
     @property
     @pulumi.getter

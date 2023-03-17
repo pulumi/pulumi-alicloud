@@ -18,6 +18,8 @@ class SwitchArgs:
                  vpc_id: pulumi.Input[str],
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_ipv6: Optional[pulumi.Input[bool]] = None,
+                 ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vswitch_name: Optional[pulumi.Input[str]] = None,
@@ -28,6 +30,8 @@ class SwitchArgs:
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         :param pulumi.Input[str] description: The switch description. Defaults to null.
+        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        :param pulumi.Input[int] ipv6_cidr_block_mask: The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_name: The name of the switch. Defaults to null.
@@ -42,6 +46,10 @@ class SwitchArgs:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_ipv6 is not None:
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+        if ipv6_cidr_block_mask is not None:
+            pulumi.set(__self__, "ipv6_cidr_block_mask", ipv6_cidr_block_mask)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
@@ -103,6 +111,30 @@ class SwitchArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        """
+        return pulumi.get(self, "enable_ipv6")
+
+    @enable_ipv6.setter
+    def enable_ipv6(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ipv6", value)
+
+    @property
+    @pulumi.getter(name="ipv6CidrBlockMask")
+    def ipv6_cidr_block_mask(self) -> Optional[pulumi.Input[int]]:
+        """
+        The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+        """
+        return pulumi.get(self, "ipv6_cidr_block_mask")
+
+    @ipv6_cidr_block_mask.setter
+    def ipv6_cidr_block_mask(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv6_cidr_block_mask", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -157,6 +189,9 @@ class _SwitchState:
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_ipv6: Optional[pulumi.Input[bool]] = None,
+                 ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
+                 ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -168,6 +203,9 @@ class _SwitchState:
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         :param pulumi.Input[str] cidr_block: The CIDR block for the switch.
         :param pulumi.Input[str] description: The switch description. Defaults to null.
+        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        :param pulumi.Input[str] ipv6_cidr_block: (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+        :param pulumi.Input[int] ipv6_cidr_block_mask: The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         :param pulumi.Input[str] status: (Available in 1.119.0+) The status of the switch.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -184,6 +222,12 @@ class _SwitchState:
             pulumi.set(__self__, "cidr_block", cidr_block)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_ipv6 is not None:
+            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+        if ipv6_cidr_block is not None:
+            pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
+        if ipv6_cidr_block_mask is not None:
+            pulumi.set(__self__, "ipv6_cidr_block_mask", ipv6_cidr_block_mask)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
@@ -235,6 +279,42 @@ class _SwitchState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        """
+        return pulumi.get(self, "enable_ipv6")
+
+    @enable_ipv6.setter
+    def enable_ipv6(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ipv6", value)
+
+    @property
+    @pulumi.getter(name="ipv6CidrBlock")
+    def ipv6_cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+        """
+        return pulumi.get(self, "ipv6_cidr_block")
+
+    @ipv6_cidr_block.setter
+    def ipv6_cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_cidr_block", value)
+
+    @property
+    @pulumi.getter(name="ipv6CidrBlockMask")
+    def ipv6_cidr_block_mask(self) -> Optional[pulumi.Input[int]]:
+        """
+        The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+        """
+        return pulumi.get(self, "ipv6_cidr_block_mask")
+
+    @ipv6_cidr_block_mask.setter
+    def ipv6_cidr_block_mask(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv6_cidr_block_mask", value)
 
     @property
     @pulumi.getter
@@ -317,6 +397,8 @@ class Switch(pulumi.CustomResource):
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_ipv6: Optional[pulumi.Input[bool]] = None,
+                 ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -337,6 +419,8 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         :param pulumi.Input[str] cidr_block: The CIDR block for the switch.
         :param pulumi.Input[str] description: The switch description. Defaults to null.
+        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        :param pulumi.Input[int] ipv6_cidr_block_mask: The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID.
@@ -376,6 +460,8 @@ class Switch(pulumi.CustomResource):
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_ipv6: Optional[pulumi.Input[bool]] = None,
+                 ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -398,6 +484,8 @@ class Switch(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cidr_block'")
             __props__.__dict__["cidr_block"] = cidr_block
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_ipv6"] = enable_ipv6
+            __props__.__dict__["ipv6_cidr_block_mask"] = ipv6_cidr_block_mask
             if name is not None and not opts.urn:
                 warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
                 pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
@@ -408,6 +496,7 @@ class Switch(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_name"] = vswitch_name
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["ipv6_cidr_block"] = None
             __props__.__dict__["status"] = None
         super(Switch, __self__).__init__(
             'alicloud:vpc/switch:Switch',
@@ -422,6 +511,9 @@ class Switch(pulumi.CustomResource):
             availability_zone: Optional[pulumi.Input[str]] = None,
             cidr_block: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            enable_ipv6: Optional[pulumi.Input[bool]] = None,
+            ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
+            ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -438,6 +530,9 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         :param pulumi.Input[str] cidr_block: The CIDR block for the switch.
         :param pulumi.Input[str] description: The switch description. Defaults to null.
+        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        :param pulumi.Input[str] ipv6_cidr_block: (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+        :param pulumi.Input[int] ipv6_cidr_block_mask: The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         :param pulumi.Input[str] status: (Available in 1.119.0+) The status of the switch.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -452,6 +547,9 @@ class Switch(pulumi.CustomResource):
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["cidr_block"] = cidr_block
         __props__.__dict__["description"] = description
+        __props__.__dict__["enable_ipv6"] = enable_ipv6
+        __props__.__dict__["ipv6_cidr_block"] = ipv6_cidr_block
+        __props__.__dict__["ipv6_cidr_block_mask"] = ipv6_cidr_block_mask
         __props__.__dict__["name"] = name
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -483,6 +581,30 @@ class Switch(pulumi.CustomResource):
         The switch description. Defaults to null.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        """
+        return pulumi.get(self, "enable_ipv6")
+
+    @property
+    @pulumi.getter(name="ipv6CidrBlock")
+    def ipv6_cidr_block(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+        """
+        return pulumi.get(self, "ipv6_cidr_block")
+
+    @property
+    @pulumi.getter(name="ipv6CidrBlockMask")
+    def ipv6_cidr_block_mask(self) -> pulumi.Output[Optional[int]]:
+        """
+        The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+        """
+        return pulumi.get(self, "ipv6_cidr_block_mask")
 
     @property
     @pulumi.getter

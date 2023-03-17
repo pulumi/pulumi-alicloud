@@ -62,6 +62,7 @@ import * as utilities from "../utilities";
  * * `sslCertificateUrl` - (Available in v1.132.0+) Specifies SSL certificate download link.\
  *     **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\
  *     For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+ * * `dbEndpointDescription` - (Optional, Available in v1.201.0+) The name of the endpoint.
  *
  * ## Import
  *
@@ -101,6 +102,7 @@ export class Endpoint extends pulumi.CustomResource {
 
     public readonly autoAddNewNodes!: pulumi.Output<string>;
     public readonly dbClusterId!: pulumi.Output<string>;
+    public readonly dbEndpointDescription!: pulumi.Output<string | undefined>;
     /**
      * (Available in v1.161.0+) The ID of the cluster endpoint.
      */
@@ -140,6 +142,7 @@ export class Endpoint extends pulumi.CustomResource {
             const state = argsOrState as EndpointState | undefined;
             resourceInputs["autoAddNewNodes"] = state ? state.autoAddNewNodes : undefined;
             resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
+            resourceInputs["dbEndpointDescription"] = state ? state.dbEndpointDescription : undefined;
             resourceInputs["dbEndpointId"] = state ? state.dbEndpointId : undefined;
             resourceInputs["endpointConfig"] = state ? state.endpointConfig : undefined;
             resourceInputs["endpointType"] = state ? state.endpointType : undefined;
@@ -158,6 +161,7 @@ export class Endpoint extends pulumi.CustomResource {
             }
             resourceInputs["autoAddNewNodes"] = args ? args.autoAddNewNodes : undefined;
             resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
+            resourceInputs["dbEndpointDescription"] = args ? args.dbEndpointDescription : undefined;
             resourceInputs["endpointConfig"] = args ? args.endpointConfig : undefined;
             resourceInputs["endpointType"] = args ? args.endpointType : undefined;
             resourceInputs["netType"] = args ? args.netType : undefined;
@@ -181,6 +185,7 @@ export class Endpoint extends pulumi.CustomResource {
 export interface EndpointState {
     autoAddNewNodes?: pulumi.Input<string>;
     dbClusterId?: pulumi.Input<string>;
+    dbEndpointDescription?: pulumi.Input<string>;
     /**
      * (Available in v1.161.0+) The ID of the cluster endpoint.
      */
@@ -212,6 +217,7 @@ export interface EndpointState {
 export interface EndpointArgs {
     autoAddNewNodes?: pulumi.Input<string>;
     dbClusterId: pulumi.Input<string>;
+    dbEndpointDescription?: pulumi.Input<string>;
     endpointConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * Type of endpoint.

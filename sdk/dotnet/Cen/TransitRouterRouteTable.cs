@@ -40,6 +40,12 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the transit router.
         /// </summary>
         [Output("transitRouterId")]
@@ -121,6 +127,18 @@ namespace Pulumi.AliCloud.Cen
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The ID of the transit router.
         /// </summary>
@@ -158,6 +176,18 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The ID of the transit router.

@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .get_consumer_groups import *
+from .get_global_events_storage_region import *
 from .get_history_delivery_jobs import *
 from .get_instances import *
 from .get_sasl_acls import *
@@ -13,6 +14,7 @@ from .get_sasl_users import *
 from .get_topics import *
 from .get_trails import *
 from .get_trails_deprecated import *
+from .global_events_storage_region import *
 from .history_delivery_job import *
 from .trail import *
 from .trail_deprecated import *

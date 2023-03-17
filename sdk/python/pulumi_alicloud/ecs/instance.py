@@ -25,6 +25,7 @@ class InstanceArgs:
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
+                 dedicated_host_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -97,6 +98,7 @@ class InstanceArgs:
         :param pulumi.Input[str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -163,7 +165,10 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+               It supports to setting a base64-encoded value, and it is the recommended usage.
+               From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+               Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         :param pulumi.Input[Mapping[str, Any]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -187,6 +192,8 @@ class InstanceArgs:
             pulumi.set(__self__, "credit_specification", credit_specification)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
+        if dedicated_host_id is not None:
+            pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if deployment_set_id is not None:
@@ -422,6 +429,18 @@ class InstanceArgs:
     @data_disks.setter
     def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
+
+    @property
+    @pulumi.getter(name="dedicatedHostId")
+    def dedicated_host_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+        """
+        return pulumi.get(self, "dedicated_host_id")
+
+    @dedicated_host_id.setter
+    def dedicated_host_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_host_id", value)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -1081,7 +1100,10 @@ class InstanceArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+        It supports to setting a base64-encoded value, and it is the recommended usage.
+        From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+        Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         """
         return pulumi.get(self, "user_data")
 
@@ -1126,6 +1148,7 @@ class _InstanceState:
                  cpu: Optional[pulumi.Input[int]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
+                 dedicated_host_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deployment_set_group_no: Optional[pulumi.Input[str]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
@@ -1205,6 +1228,7 @@ class _InstanceState:
         :param pulumi.Input[int] cpu: The number of vCPUs.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -1280,7 +1304,10 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+               It supports to setting a base64-encoded value, and it is the recommended usage.
+               From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+               Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         :param pulumi.Input[Mapping[str, Any]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1303,6 +1330,8 @@ class _InstanceState:
             pulumi.set(__self__, "credit_specification", credit_specification)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
+        if dedicated_host_id is not None:
+            pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if deployment_set_group_no is not None:
@@ -1532,6 +1561,18 @@ class _InstanceState:
     @data_disks.setter
     def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
+
+    @property
+    @pulumi.getter(name="dedicatedHostId")
+    def dedicated_host_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+        """
+        return pulumi.get(self, "dedicated_host_id")
+
+    @dedicated_host_id.setter
+    def dedicated_host_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_host_id", value)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -2299,7 +2340,10 @@ class _InstanceState:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+        It supports to setting a base64-encoded value, and it is the recommended usage.
+        From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+        Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         """
         return pulumi.get(self, "user_data")
 
@@ -2345,6 +2389,7 @@ class Instance(pulumi.CustomResource):
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]]] = None,
+                 dedicated_host_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -2427,6 +2472,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -2496,7 +2542,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+               It supports to setting a base64-encoded value, and it is the recommended usage.
+               From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+               Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         :param pulumi.Input[Mapping[str, Any]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -2538,6 +2587,7 @@ class Instance(pulumi.CustomResource):
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]]] = None,
+                 dedicated_host_id: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -2616,6 +2666,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["credit_specification"] = credit_specification
             __props__.__dict__["data_disks"] = data_disks
+            __props__.__dict__["dedicated_host_id"] = dedicated_host_id
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["description"] = description
@@ -2717,6 +2768,7 @@ class Instance(pulumi.CustomResource):
             cpu: Optional[pulumi.Input[int]] = None,
             credit_specification: Optional[pulumi.Input[str]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]]] = None,
+            dedicated_host_id: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             deployment_set_group_no: Optional[pulumi.Input[str]] = None,
             deployment_set_id: Optional[pulumi.Input[str]] = None,
@@ -2801,6 +2853,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] cpu: The number of vCPUs.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -2876,7 +2929,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+               It supports to setting a base64-encoded value, and it is the recommended usage.
+               From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+               Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         :param pulumi.Input[Mapping[str, Any]] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -2893,6 +2949,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["credit_specification"] = credit_specification
         __props__.__dict__["data_disks"] = data_disks
+        __props__.__dict__["dedicated_host_id"] = dedicated_host_id
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["deployment_set_group_no"] = deployment_set_group_no
         __props__.__dict__["deployment_set_id"] = deployment_set_id
@@ -3020,6 +3077,14 @@ class Instance(pulumi.CustomResource):
         The list of data disks created with instance.
         """
         return pulumi.get(self, "data_disks")
+
+    @property
+    @pulumi.getter(name="dedicatedHostId")
+    def dedicated_host_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+        """
+        return pulumi.get(self, "dedicated_host_id")
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -3411,7 +3476,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> pulumi.Output[Optional[str]]:
+    def spot_strategy(self) -> pulumi.Output[str]:
         """
         The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
         - NoSpot: A regular Pay-As-You-Go instance.
@@ -3535,7 +3600,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
         """
-        User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+        It supports to setting a base64-encoded value, and it is the recommended usage.
+        From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+        Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         """
         return pulumi.get(self, "user_data")
 

@@ -121,6 +121,8 @@ if typing.TYPE_CHECKING:
     edas = __edas
     import pulumi_alicloud.eds as __eds
     eds = __eds
+    import pulumi_alicloud.eflo as __eflo
+    eflo = __eflo
     import pulumi_alicloud.ehpc as __ehpc
     ehpc = __ehpc
     import pulumi_alicloud.eipanycast as __eipanycast
@@ -307,6 +309,7 @@ else:
     ecs = _utilities.lazy_import('pulumi_alicloud.ecs')
     edas = _utilities.lazy_import('pulumi_alicloud.edas')
     eds = _utilities.lazy_import('pulumi_alicloud.eds')
+    eflo = _utilities.lazy_import('pulumi_alicloud.eflo')
     ehpc = _utilities.lazy_import('pulumi_alicloud.ehpc')
     eipanycast = _utilities.lazy_import('pulumi_alicloud.eipanycast')
     elasticsearch = _utilities.lazy_import('pulumi_alicloud.elasticsearch')
@@ -379,6 +382,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "alicloud",
+  "mod": "actiontrail/globalEventsStorageRegion",
+  "fqn": "pulumi_alicloud.actiontrail",
+  "classes": {
+   "alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion": "GlobalEventsStorageRegion"
+  }
+ },
  {
   "pkg": "alicloud",
   "mod": "actiontrail/historyDeliveryJob",
@@ -2005,6 +2016,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "dcdn/er",
+  "fqn": "pulumi_alicloud.dcdn",
+  "classes": {
+   "alicloud:dcdn/er:Er": "Er"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "dcdn/ipaDomain",
   "fqn": "pulumi_alicloud.dcdn",
   "classes": {
@@ -2049,6 +2068,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.dcdn",
   "classes": {
    "alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment": "WafPolicyDomainAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dcdn/wafRule",
+  "fqn": "pulumi_alicloud.dcdn",
+  "classes": {
+   "alicloud:dcdn/wafRule:WafRule": "WafRule"
   }
  },
  {
@@ -3097,6 +3124,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eds",
   "classes": {
    "alicloud:eds/user:User": "User"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eflo/vpd",
+  "fqn": "pulumi_alicloud.eflo",
+  "classes": {
+   "alicloud:eflo/vpd:Vpd": "Vpd"
   }
  },
  {

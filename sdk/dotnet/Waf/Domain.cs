@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Waf
     ///     var domain = new AliCloud.Waf.Domain("domain", new()
     ///     {
     ///         ClusterType = "PhysicalCluster",
-    ///         DomainDeprecated = "www.aliyun.com",
+    ///         DomainName = "alicloud-provider.cn",
     ///         Http2Ports = new[]
     ///         {
     ///             "443",

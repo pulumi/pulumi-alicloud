@@ -42,6 +42,9 @@ export class Subnet extends pulumi.CustomResource {
     public readonly availabilityZone!: pulumi.Output<string>;
     public readonly cidrBlock!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly ipv6CidrBlock!: pulumi.Output<string>;
+    public readonly ipv6CidrBlockMask!: pulumi.Output<number | undefined>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
@@ -71,6 +74,9 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
+            resourceInputs["ipv6CidrBlock"] = state ? state.ipv6CidrBlock : undefined;
+            resourceInputs["ipv6CidrBlockMask"] = state ? state.ipv6CidrBlockMask : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -88,11 +94,14 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
+            resourceInputs["ipv6CidrBlockMask"] = args ? args.ipv6CidrBlockMask : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchName"] = args ? args.vswitchName : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["ipv6CidrBlock"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -110,6 +119,9 @@ export interface SubnetState {
     availabilityZone?: pulumi.Input<string>;
     cidrBlock?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
+    enableIpv6?: pulumi.Input<boolean>;
+    ipv6CidrBlock?: pulumi.Input<string>;
+    ipv6CidrBlockMask?: pulumi.Input<number>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
@@ -131,6 +143,8 @@ export interface SubnetArgs {
     availabilityZone?: pulumi.Input<string>;
     cidrBlock: pulumi.Input<string>;
     description?: pulumi.Input<string>;
+    enableIpv6?: pulumi.Input<boolean>;
+    ipv6CidrBlockMask?: pulumi.Input<number>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */

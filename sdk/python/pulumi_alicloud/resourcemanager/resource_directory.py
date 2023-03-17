@@ -14,13 +14,29 @@ __all__ = ['ResourceDirectoryArgs', 'ResourceDirectory']
 @pulumi.input_type
 class ResourceDirectoryArgs:
     def __init__(__self__, *,
+                 member_deletion_status: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ResourceDirectory resource.
+        :param pulumi.Input[str] member_deletion_status: Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
         :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
+        if member_deletion_status is not None:
+            pulumi.set(__self__, "member_deletion_status", member_deletion_status)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="memberDeletionStatus")
+    def member_deletion_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+        """
+        return pulumi.get(self, "member_deletion_status")
+
+    @member_deletion_status.setter
+    def member_deletion_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member_deletion_status", value)
 
     @property
     @pulumi.getter
@@ -40,12 +56,14 @@ class _ResourceDirectoryState:
     def __init__(__self__, *,
                  master_account_id: Optional[pulumi.Input[str]] = None,
                  master_account_name: Optional[pulumi.Input[str]] = None,
+                 member_deletion_status: Optional[pulumi.Input[str]] = None,
                  root_folder_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ResourceDirectory resources.
         :param pulumi.Input[str] master_account_id: The ID of the master account.
         :param pulumi.Input[str] master_account_name: The name of the master account.
+        :param pulumi.Input[str] member_deletion_status: Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
         :param pulumi.Input[str] root_folder_id: The ID of the root folder.
         :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
@@ -53,6 +71,8 @@ class _ResourceDirectoryState:
             pulumi.set(__self__, "master_account_id", master_account_id)
         if master_account_name is not None:
             pulumi.set(__self__, "master_account_name", master_account_name)
+        if member_deletion_status is not None:
+            pulumi.set(__self__, "member_deletion_status", member_deletion_status)
         if root_folder_id is not None:
             pulumi.set(__self__, "root_folder_id", root_folder_id)
         if status is not None:
@@ -81,6 +101,18 @@ class _ResourceDirectoryState:
     @master_account_name.setter
     def master_account_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "master_account_name", value)
+
+    @property
+    @pulumi.getter(name="memberDeletionStatus")
+    def member_deletion_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+        """
+        return pulumi.get(self, "member_deletion_status")
+
+    @member_deletion_status.setter
+    def member_deletion_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member_deletion_status", value)
 
     @property
     @pulumi.getter(name="rootFolderId")
@@ -112,6 +144,7 @@ class ResourceDirectory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 member_deletion_status: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -148,6 +181,7 @@ class ResourceDirectory(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] member_deletion_status: Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
         :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
         ...
@@ -203,6 +237,7 @@ class ResourceDirectory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 member_deletion_status: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -213,6 +248,7 @@ class ResourceDirectory(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ResourceDirectoryArgs.__new__(ResourceDirectoryArgs)
 
+            __props__.__dict__["member_deletion_status"] = member_deletion_status
             __props__.__dict__["status"] = status
             __props__.__dict__["master_account_id"] = None
             __props__.__dict__["master_account_name"] = None
@@ -229,6 +265,7 @@ class ResourceDirectory(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             master_account_id: Optional[pulumi.Input[str]] = None,
             master_account_name: Optional[pulumi.Input[str]] = None,
+            member_deletion_status: Optional[pulumi.Input[str]] = None,
             root_folder_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'ResourceDirectory':
         """
@@ -240,6 +277,7 @@ class ResourceDirectory(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] master_account_id: The ID of the master account.
         :param pulumi.Input[str] master_account_name: The name of the master account.
+        :param pulumi.Input[str] member_deletion_status: Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
         :param pulumi.Input[str] root_folder_id: The ID of the root folder.
         :param pulumi.Input[str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
         """
@@ -249,6 +287,7 @@ class ResourceDirectory(pulumi.CustomResource):
 
         __props__.__dict__["master_account_id"] = master_account_id
         __props__.__dict__["master_account_name"] = master_account_name
+        __props__.__dict__["member_deletion_status"] = member_deletion_status
         __props__.__dict__["root_folder_id"] = root_folder_id
         __props__.__dict__["status"] = status
         return ResourceDirectory(resource_name, opts=opts, __props__=__props__)
@@ -268,6 +307,14 @@ class ResourceDirectory(pulumi.CustomResource):
         The name of the master account.
         """
         return pulumi.get(self, "master_account_name")
+
+    @property
+    @pulumi.getter(name="memberDeletionStatus")
+    def member_deletion_status(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+        """
+        return pulumi.get(self, "member_deletion_status")
 
     @property
     @pulumi.getter(name="rootFolderId")

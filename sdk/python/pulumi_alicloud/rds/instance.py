@@ -113,7 +113,7 @@ class InstanceArgs:
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
-        :param pulumi.Input[str] category: The RDS edition of the instance. Valid values:
+        :param pulumi.Input[str] category: The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
                * **Basic**: Basic Edition.
                * **HighAvailability**: High-availability Edition.
                * **AlwaysOn**: Cluster Edition.
@@ -528,7 +528,7 @@ class InstanceArgs:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        The RDS edition of the instance. Valid values:
+        The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
         * **Basic**: Basic Edition.
         * **HighAvailability**: High-availability Edition.
         * **AlwaysOn**: Cluster Edition.
@@ -1382,7 +1382,7 @@ class _InstanceState:
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
-        :param pulumi.Input[str] category: The RDS edition of the instance. Valid values:
+        :param pulumi.Input[str] category: The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
                * **Basic**: Basic Edition.
                * **HighAvailability**: High-availability Edition.
                * **AlwaysOn**: Cluster Edition.
@@ -1766,7 +1766,7 @@ class _InstanceState:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        The RDS edition of the instance. Valid values:
+        The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
         * **Basic**: Basic Edition.
         * **HighAvailability**: High-availability Edition.
         * **AlwaysOn**: Cluster Edition.
@@ -2719,7 +2719,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
-        :param pulumi.Input[str] category: The RDS edition of the instance. Valid values:
+        :param pulumi.Input[str] category: The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
                * **Basic**: Basic Edition.
                * **HighAvailability**: High-availability Edition.
                * **AlwaysOn**: Cluster Edition.
@@ -3152,7 +3152,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
-        :param pulumi.Input[str] category: The RDS edition of the instance. Valid values:
+        :param pulumi.Input[str] category: The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
                * **Basic**: Basic Edition.
                * **HighAvailability**: High-availability Edition.
                * **AlwaysOn**: Cluster Edition.
@@ -3434,7 +3434,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def category(self) -> pulumi.Output[str]:
         """
-        The RDS edition of the instance. Valid values:
+        The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
         * **Basic**: Basic Edition.
         * **HighAvailability**: High-availability Edition.
         * **AlwaysOn**: Cluster Edition.

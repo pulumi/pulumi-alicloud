@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
         /// </summary>
         [Output("roleArn")]
-        public Output<string?> RoleArn { get; private set; } = null!;
+        public Output<string> RoleArn { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.

@@ -98,6 +98,20 @@ public class ResourceDirectory extends com.pulumi.resources.CustomResource {
         return this.masterAccountName;
     }
     /**
+     * Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+     * 
+     */
+    @Export(name="memberDeletionStatus", type=String.class, parameters={})
+    private Output<String> memberDeletionStatus;
+
+    /**
+     * @return Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+     * 
+     */
+    public Output<String> memberDeletionStatus() {
+        return this.memberDeletionStatus;
+    }
+    /**
      * The ID of the root folder.
      * 
      */

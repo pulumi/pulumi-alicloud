@@ -21,6 +21,7 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var foo = new AliCloud.Vpc.Network("foo", new()
     ///     {
+    ///         VpcName = "tf_test_foo12345",
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 

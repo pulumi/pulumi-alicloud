@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const domain = new alicloud.waf.Domain("domain", {
  *     clusterType: "PhysicalCluster",
- *     domain: "www.aliyun.com",
+ *     domainName: "alicloud-provider.cn",
  *     http2Ports: ["443"],
  *     httpPorts: ["80"],
  *     httpToUserIp: "Off",

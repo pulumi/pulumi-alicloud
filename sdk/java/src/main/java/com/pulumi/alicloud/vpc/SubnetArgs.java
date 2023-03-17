@@ -5,6 +5,8 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -48,6 +50,20 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    @Import(name="enableIpv6")
+    private @Nullable Output<Boolean> enableIpv6;
+
+    public Optional<Output<Boolean>> enableIpv6() {
+        return Optional.ofNullable(this.enableIpv6);
+    }
+
+    @Import(name="ipv6CidrBlockMask")
+    private @Nullable Output<Integer> ipv6CidrBlockMask;
+
+    public Optional<Output<Integer>> ipv6CidrBlockMask() {
+        return Optional.ofNullable(this.ipv6CidrBlockMask);
     }
 
     /**
@@ -103,6 +119,8 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         this.availabilityZone = $.availabilityZone;
         this.cidrBlock = $.cidrBlock;
         this.description = $.description;
+        this.enableIpv6 = $.enableIpv6;
+        this.ipv6CidrBlockMask = $.ipv6CidrBlockMask;
         this.name = $.name;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
@@ -169,6 +187,24 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder enableIpv6(@Nullable Output<Boolean> enableIpv6) {
+            $.enableIpv6 = enableIpv6;
+            return this;
+        }
+
+        public Builder enableIpv6(Boolean enableIpv6) {
+            return enableIpv6(Output.of(enableIpv6));
+        }
+
+        public Builder ipv6CidrBlockMask(@Nullable Output<Integer> ipv6CidrBlockMask) {
+            $.ipv6CidrBlockMask = ipv6CidrBlockMask;
+            return this;
+        }
+
+        public Builder ipv6CidrBlockMask(Integer ipv6CidrBlockMask) {
+            return ipv6CidrBlockMask(Output.of(ipv6CidrBlockMask));
         }
 
         /**

@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var domain = new Domain(&#34;domain&#34;, DomainArgs.builder()        
  *             .clusterType(&#34;PhysicalCluster&#34;)
- *             .domain(&#34;www.aliyun.com&#34;)
+ *             .domainName(&#34;alicloud-provider.cn&#34;)
  *             .http2Ports(443)
  *             .httpPorts(80)
  *             .httpToUserIp(&#34;Off&#34;)

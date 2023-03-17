@@ -258,6 +258,7302 @@ func (o DomainSourceArrayOutput) Index(i pulumi.IntInput) DomainSourceOutput {
 	}).(DomainSourceOutput)
 }
 
+type ErEnvConf struct {
+	// The configuration of a presetCanaryAnhui environment. The `Block presetCanaryAnhui` is same as `Block staging`.
+	PresetCanaryAnhui *ErEnvConfPresetCanaryAnhui `pulumi:"presetCanaryAnhui"`
+	// The configuration of a presetCanaryBeijing environment. The `Block presetCanaryBeijing` is same as `Block staging`.
+	PresetCanaryBeijing *ErEnvConfPresetCanaryBeijing `pulumi:"presetCanaryBeijing"`
+	// The configuration of a presetCanaryChongqing environment. The `Block presetCanaryChongqing` is same as `Block staging`.
+	PresetCanaryChongqing *ErEnvConfPresetCanaryChongqing `pulumi:"presetCanaryChongqing"`
+	// The configuration of a presetCanaryFujian environment. The `Block presetCanaryFujian` is same as `Block staging`.
+	PresetCanaryFujian *ErEnvConfPresetCanaryFujian `pulumi:"presetCanaryFujian"`
+	// The configuration of a presetCanaryGansu environment. The `Block presetCanaryGansu` is same as `Block staging`.
+	PresetCanaryGansu *ErEnvConfPresetCanaryGansu `pulumi:"presetCanaryGansu"`
+	// The configuration of a presetCanaryGuangdong environment. The `Block presetCanaryGuangdong` is same as `Block staging`.
+	PresetCanaryGuangdong *ErEnvConfPresetCanaryGuangdong `pulumi:"presetCanaryGuangdong"`
+	// The configuration of a presetCanaryGuangxi environment. The `Block presetCanaryGuangxi` is same as `Block staging`.
+	PresetCanaryGuangxi *ErEnvConfPresetCanaryGuangxi `pulumi:"presetCanaryGuangxi"`
+	// The configuration of a presetCanaryGuizhou environment. The `Block presetCanaryGuizhou` is same as `Block staging`.
+	PresetCanaryGuizhou *ErEnvConfPresetCanaryGuizhou `pulumi:"presetCanaryGuizhou"`
+	// The configuration of a presetCanaryHainan environment. The `Block presetCanaryHainan` is same as `Block staging`.
+	PresetCanaryHainan *ErEnvConfPresetCanaryHainan `pulumi:"presetCanaryHainan"`
+	// The configuration of a presetCanaryHebei environment. The `Block presetCanaryHebei` is same as `Block staging`.
+	PresetCanaryHebei *ErEnvConfPresetCanaryHebei `pulumi:"presetCanaryHebei"`
+	// The configuration of a presetCanaryHeilongjiang environment. The `Block presetCanaryHeilongjiang` is same as `Block staging`.
+	PresetCanaryHeilongjiang *ErEnvConfPresetCanaryHeilongjiang `pulumi:"presetCanaryHeilongjiang"`
+	// The configuration of a presetCanaryHenan environment. The `Block presetCanaryHenan` is same as `Block staging`.
+	PresetCanaryHenan *ErEnvConfPresetCanaryHenan `pulumi:"presetCanaryHenan"`
+	// The configuration of a presetCanaryHongKong environment. The `Block presetCanaryHongKong` is same as `Block staging`.
+	PresetCanaryHongKong *ErEnvConfPresetCanaryHongKong `pulumi:"presetCanaryHongKong"`
+	// The configuration of a presetCanaryHubei environment. The `Block presetCanaryHubei` is same as `Block staging`.
+	PresetCanaryHubei *ErEnvConfPresetCanaryHubei `pulumi:"presetCanaryHubei"`
+	// The configuration of a presetCanaryHunan environment. The `Block presetCanaryHunan` is same as `Block staging`.
+	PresetCanaryHunan *ErEnvConfPresetCanaryHunan `pulumi:"presetCanaryHunan"`
+	// The configuration of a presetCanaryJiangsu environment. The `Block presetCanaryJiangsu` is same as `Block staging`.
+	PresetCanaryJiangsu *ErEnvConfPresetCanaryJiangsu `pulumi:"presetCanaryJiangsu"`
+	// The configuration of a presetCanaryJiangxi environment. The `Block presetCanaryJiangxi` is same as `Block staging`.
+	PresetCanaryJiangxi *ErEnvConfPresetCanaryJiangxi `pulumi:"presetCanaryJiangxi"`
+	// The configuration of a presetCanaryJilin environment. The `Block presetCanaryJilin` is same as `Block staging`.
+	PresetCanaryJilin *ErEnvConfPresetCanaryJilin `pulumi:"presetCanaryJilin"`
+	// The configuration of a presetCanaryLiaoning environment. The `Block presetCanaryLiaoning` is same as `Block staging`.
+	PresetCanaryLiaoning *ErEnvConfPresetCanaryLiaoning `pulumi:"presetCanaryLiaoning"`
+	// The configuration of a presetCanaryMacau environment. The `Block presetCanaryMacau` is same as `Block staging`.
+	PresetCanaryMacau *ErEnvConfPresetCanaryMacau `pulumi:"presetCanaryMacau"`
+	// The configuration of a presetCanaryNeimenggu environment. The `Block presetCanaryNeimenggu` is same as `Block staging`.
+	PresetCanaryNeimenggu *ErEnvConfPresetCanaryNeimenggu `pulumi:"presetCanaryNeimenggu"`
+	// The configuration of a presetCanaryNingxia environment. The `Block presetCanaryNingxia` is same as `Block staging`.
+	PresetCanaryNingxia *ErEnvConfPresetCanaryNingxia `pulumi:"presetCanaryNingxia"`
+	// The configuration of a presetCanaryOverseas environment. The `Block presetCanaryOverseas` is same as `Block staging`.
+	PresetCanaryOverseas *ErEnvConfPresetCanaryOverseas `pulumi:"presetCanaryOverseas"`
+	// The configuration of a presetCanaryQinghai environment. The `Block presetCanaryQinghai` is same as `Block staging`.
+	PresetCanaryQinghai *ErEnvConfPresetCanaryQinghai `pulumi:"presetCanaryQinghai"`
+	// The configuration of a presetCanaryShaanxi environment. The `Block presetCanaryShaanxi` is same as `Block staging`.
+	PresetCanaryShaanxi *ErEnvConfPresetCanaryShaanxi `pulumi:"presetCanaryShaanxi"`
+	// The configuration of a presetCanaryShandong environment. The `Block presetCanaryShandong` is same as `Block staging`.
+	PresetCanaryShandong *ErEnvConfPresetCanaryShandong `pulumi:"presetCanaryShandong"`
+	// The configuration of a presetCanaryShanghai environment. The `Block presetCanaryShanghai` is same as `Block staging`.
+	PresetCanaryShanghai *ErEnvConfPresetCanaryShanghai `pulumi:"presetCanaryShanghai"`
+	// The configuration of a presetCanaryShanxi environment. The `Block presetCanaryShanxi` is same as `Block staging`.
+	PresetCanaryShanxi *ErEnvConfPresetCanaryShanxi `pulumi:"presetCanaryShanxi"`
+	// The configuration of a presetCanarySichuan environment. The `Block presetCanarySichuan` is same as `Block staging`.
+	PresetCanarySichuan *ErEnvConfPresetCanarySichuan `pulumi:"presetCanarySichuan"`
+	// The configuration of a presetCanaryTaiwan environment. The `Block presetCanaryTaiwan` is same as `Block staging`.
+	PresetCanaryTaiwan *ErEnvConfPresetCanaryTaiwan `pulumi:"presetCanaryTaiwan"`
+	// The configuration of a presetCanaryTianjin environment. The `Block presetCanaryTianjin` is same as `Block staging`.
+	PresetCanaryTianjin *ErEnvConfPresetCanaryTianjin `pulumi:"presetCanaryTianjin"`
+	// The configuration of a presetCanaryXinjiang environment. The `Block presetCanaryXinjiang` is same as `Block staging`.
+	PresetCanaryXinjiang *ErEnvConfPresetCanaryXinjiang `pulumi:"presetCanaryXinjiang"`
+	// The configuration of a presetCanaryXizang environment. The `Block presetCanaryXizang` is same as `Block staging`.
+	PresetCanaryXizang *ErEnvConfPresetCanaryXizang `pulumi:"presetCanaryXizang"`
+	// The configuration of a presetCanaryYunnan environment. The `Block presetCanaryYunnan` is same as `Block staging`.
+	PresetCanaryYunnan *ErEnvConfPresetCanaryYunnan `pulumi:"presetCanaryYunnan"`
+	// The configuration of a presetCanaryZhejiang environment. The `Block presetCanaryZhejiang` is same as `Block staging`.
+	PresetCanaryZhejiang *ErEnvConfPresetCanaryZhejiang `pulumi:"presetCanaryZhejiang"`
+	// The configuration of a production environment. The `Block production` is same as `Block staging`.
+	Production *ErEnvConfProduction `pulumi:"production"`
+	// The configuration of a staging environment. See the following `Block staging`.
+	Staging *ErEnvConfStaging `pulumi:"staging"`
+}
+
+// ErEnvConfInput is an input type that accepts ErEnvConfArgs and ErEnvConfOutput values.
+// You can construct a concrete instance of `ErEnvConfInput` via:
+//
+//	ErEnvConfArgs{...}
+type ErEnvConfInput interface {
+	pulumi.Input
+
+	ToErEnvConfOutput() ErEnvConfOutput
+	ToErEnvConfOutputWithContext(context.Context) ErEnvConfOutput
+}
+
+type ErEnvConfArgs struct {
+	// The configuration of a presetCanaryAnhui environment. The `Block presetCanaryAnhui` is same as `Block staging`.
+	PresetCanaryAnhui ErEnvConfPresetCanaryAnhuiPtrInput `pulumi:"presetCanaryAnhui"`
+	// The configuration of a presetCanaryBeijing environment. The `Block presetCanaryBeijing` is same as `Block staging`.
+	PresetCanaryBeijing ErEnvConfPresetCanaryBeijingPtrInput `pulumi:"presetCanaryBeijing"`
+	// The configuration of a presetCanaryChongqing environment. The `Block presetCanaryChongqing` is same as `Block staging`.
+	PresetCanaryChongqing ErEnvConfPresetCanaryChongqingPtrInput `pulumi:"presetCanaryChongqing"`
+	// The configuration of a presetCanaryFujian environment. The `Block presetCanaryFujian` is same as `Block staging`.
+	PresetCanaryFujian ErEnvConfPresetCanaryFujianPtrInput `pulumi:"presetCanaryFujian"`
+	// The configuration of a presetCanaryGansu environment. The `Block presetCanaryGansu` is same as `Block staging`.
+	PresetCanaryGansu ErEnvConfPresetCanaryGansuPtrInput `pulumi:"presetCanaryGansu"`
+	// The configuration of a presetCanaryGuangdong environment. The `Block presetCanaryGuangdong` is same as `Block staging`.
+	PresetCanaryGuangdong ErEnvConfPresetCanaryGuangdongPtrInput `pulumi:"presetCanaryGuangdong"`
+	// The configuration of a presetCanaryGuangxi environment. The `Block presetCanaryGuangxi` is same as `Block staging`.
+	PresetCanaryGuangxi ErEnvConfPresetCanaryGuangxiPtrInput `pulumi:"presetCanaryGuangxi"`
+	// The configuration of a presetCanaryGuizhou environment. The `Block presetCanaryGuizhou` is same as `Block staging`.
+	PresetCanaryGuizhou ErEnvConfPresetCanaryGuizhouPtrInput `pulumi:"presetCanaryGuizhou"`
+	// The configuration of a presetCanaryHainan environment. The `Block presetCanaryHainan` is same as `Block staging`.
+	PresetCanaryHainan ErEnvConfPresetCanaryHainanPtrInput `pulumi:"presetCanaryHainan"`
+	// The configuration of a presetCanaryHebei environment. The `Block presetCanaryHebei` is same as `Block staging`.
+	PresetCanaryHebei ErEnvConfPresetCanaryHebeiPtrInput `pulumi:"presetCanaryHebei"`
+	// The configuration of a presetCanaryHeilongjiang environment. The `Block presetCanaryHeilongjiang` is same as `Block staging`.
+	PresetCanaryHeilongjiang ErEnvConfPresetCanaryHeilongjiangPtrInput `pulumi:"presetCanaryHeilongjiang"`
+	// The configuration of a presetCanaryHenan environment. The `Block presetCanaryHenan` is same as `Block staging`.
+	PresetCanaryHenan ErEnvConfPresetCanaryHenanPtrInput `pulumi:"presetCanaryHenan"`
+	// The configuration of a presetCanaryHongKong environment. The `Block presetCanaryHongKong` is same as `Block staging`.
+	PresetCanaryHongKong ErEnvConfPresetCanaryHongKongPtrInput `pulumi:"presetCanaryHongKong"`
+	// The configuration of a presetCanaryHubei environment. The `Block presetCanaryHubei` is same as `Block staging`.
+	PresetCanaryHubei ErEnvConfPresetCanaryHubeiPtrInput `pulumi:"presetCanaryHubei"`
+	// The configuration of a presetCanaryHunan environment. The `Block presetCanaryHunan` is same as `Block staging`.
+	PresetCanaryHunan ErEnvConfPresetCanaryHunanPtrInput `pulumi:"presetCanaryHunan"`
+	// The configuration of a presetCanaryJiangsu environment. The `Block presetCanaryJiangsu` is same as `Block staging`.
+	PresetCanaryJiangsu ErEnvConfPresetCanaryJiangsuPtrInput `pulumi:"presetCanaryJiangsu"`
+	// The configuration of a presetCanaryJiangxi environment. The `Block presetCanaryJiangxi` is same as `Block staging`.
+	PresetCanaryJiangxi ErEnvConfPresetCanaryJiangxiPtrInput `pulumi:"presetCanaryJiangxi"`
+	// The configuration of a presetCanaryJilin environment. The `Block presetCanaryJilin` is same as `Block staging`.
+	PresetCanaryJilin ErEnvConfPresetCanaryJilinPtrInput `pulumi:"presetCanaryJilin"`
+	// The configuration of a presetCanaryLiaoning environment. The `Block presetCanaryLiaoning` is same as `Block staging`.
+	PresetCanaryLiaoning ErEnvConfPresetCanaryLiaoningPtrInput `pulumi:"presetCanaryLiaoning"`
+	// The configuration of a presetCanaryMacau environment. The `Block presetCanaryMacau` is same as `Block staging`.
+	PresetCanaryMacau ErEnvConfPresetCanaryMacauPtrInput `pulumi:"presetCanaryMacau"`
+	// The configuration of a presetCanaryNeimenggu environment. The `Block presetCanaryNeimenggu` is same as `Block staging`.
+	PresetCanaryNeimenggu ErEnvConfPresetCanaryNeimengguPtrInput `pulumi:"presetCanaryNeimenggu"`
+	// The configuration of a presetCanaryNingxia environment. The `Block presetCanaryNingxia` is same as `Block staging`.
+	PresetCanaryNingxia ErEnvConfPresetCanaryNingxiaPtrInput `pulumi:"presetCanaryNingxia"`
+	// The configuration of a presetCanaryOverseas environment. The `Block presetCanaryOverseas` is same as `Block staging`.
+	PresetCanaryOverseas ErEnvConfPresetCanaryOverseasPtrInput `pulumi:"presetCanaryOverseas"`
+	// The configuration of a presetCanaryQinghai environment. The `Block presetCanaryQinghai` is same as `Block staging`.
+	PresetCanaryQinghai ErEnvConfPresetCanaryQinghaiPtrInput `pulumi:"presetCanaryQinghai"`
+	// The configuration of a presetCanaryShaanxi environment. The `Block presetCanaryShaanxi` is same as `Block staging`.
+	PresetCanaryShaanxi ErEnvConfPresetCanaryShaanxiPtrInput `pulumi:"presetCanaryShaanxi"`
+	// The configuration of a presetCanaryShandong environment. The `Block presetCanaryShandong` is same as `Block staging`.
+	PresetCanaryShandong ErEnvConfPresetCanaryShandongPtrInput `pulumi:"presetCanaryShandong"`
+	// The configuration of a presetCanaryShanghai environment. The `Block presetCanaryShanghai` is same as `Block staging`.
+	PresetCanaryShanghai ErEnvConfPresetCanaryShanghaiPtrInput `pulumi:"presetCanaryShanghai"`
+	// The configuration of a presetCanaryShanxi environment. The `Block presetCanaryShanxi` is same as `Block staging`.
+	PresetCanaryShanxi ErEnvConfPresetCanaryShanxiPtrInput `pulumi:"presetCanaryShanxi"`
+	// The configuration of a presetCanarySichuan environment. The `Block presetCanarySichuan` is same as `Block staging`.
+	PresetCanarySichuan ErEnvConfPresetCanarySichuanPtrInput `pulumi:"presetCanarySichuan"`
+	// The configuration of a presetCanaryTaiwan environment. The `Block presetCanaryTaiwan` is same as `Block staging`.
+	PresetCanaryTaiwan ErEnvConfPresetCanaryTaiwanPtrInput `pulumi:"presetCanaryTaiwan"`
+	// The configuration of a presetCanaryTianjin environment. The `Block presetCanaryTianjin` is same as `Block staging`.
+	PresetCanaryTianjin ErEnvConfPresetCanaryTianjinPtrInput `pulumi:"presetCanaryTianjin"`
+	// The configuration of a presetCanaryXinjiang environment. The `Block presetCanaryXinjiang` is same as `Block staging`.
+	PresetCanaryXinjiang ErEnvConfPresetCanaryXinjiangPtrInput `pulumi:"presetCanaryXinjiang"`
+	// The configuration of a presetCanaryXizang environment. The `Block presetCanaryXizang` is same as `Block staging`.
+	PresetCanaryXizang ErEnvConfPresetCanaryXizangPtrInput `pulumi:"presetCanaryXizang"`
+	// The configuration of a presetCanaryYunnan environment. The `Block presetCanaryYunnan` is same as `Block staging`.
+	PresetCanaryYunnan ErEnvConfPresetCanaryYunnanPtrInput `pulumi:"presetCanaryYunnan"`
+	// The configuration of a presetCanaryZhejiang environment. The `Block presetCanaryZhejiang` is same as `Block staging`.
+	PresetCanaryZhejiang ErEnvConfPresetCanaryZhejiangPtrInput `pulumi:"presetCanaryZhejiang"`
+	// The configuration of a production environment. The `Block production` is same as `Block staging`.
+	Production ErEnvConfProductionPtrInput `pulumi:"production"`
+	// The configuration of a staging environment. See the following `Block staging`.
+	Staging ErEnvConfStagingPtrInput `pulumi:"staging"`
+}
+
+func (ErEnvConfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConf)(nil)).Elem()
+}
+
+func (i ErEnvConfArgs) ToErEnvConfOutput() ErEnvConfOutput {
+	return i.ToErEnvConfOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfArgs) ToErEnvConfOutputWithContext(ctx context.Context) ErEnvConfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfOutput)
+}
+
+func (i ErEnvConfArgs) ToErEnvConfPtrOutput() ErEnvConfPtrOutput {
+	return i.ToErEnvConfPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfArgs) ToErEnvConfPtrOutputWithContext(ctx context.Context) ErEnvConfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfOutput).ToErEnvConfPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPtrInput is an input type that accepts ErEnvConfArgs, ErEnvConfPtr and ErEnvConfPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPtrInput` via:
+//
+//	        ErEnvConfArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPtrOutput() ErEnvConfPtrOutput
+	ToErEnvConfPtrOutputWithContext(context.Context) ErEnvConfPtrOutput
+}
+
+type erEnvConfPtrType ErEnvConfArgs
+
+func ErEnvConfPtr(v *ErEnvConfArgs) ErEnvConfPtrInput {
+	return (*erEnvConfPtrType)(v)
+}
+
+func (*erEnvConfPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConf)(nil)).Elem()
+}
+
+func (i *erEnvConfPtrType) ToErEnvConfPtrOutput() ErEnvConfPtrOutput {
+	return i.ToErEnvConfPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPtrType) ToErEnvConfPtrOutputWithContext(ctx context.Context) ErEnvConfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPtrOutput)
+}
+
+type ErEnvConfOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConf)(nil)).Elem()
+}
+
+func (o ErEnvConfOutput) ToErEnvConfOutput() ErEnvConfOutput {
+	return o
+}
+
+func (o ErEnvConfOutput) ToErEnvConfOutputWithContext(ctx context.Context) ErEnvConfOutput {
+	return o
+}
+
+func (o ErEnvConfOutput) ToErEnvConfPtrOutput() ErEnvConfPtrOutput {
+	return o.ToErEnvConfPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfOutput) ToErEnvConfPtrOutputWithContext(ctx context.Context) ErEnvConfPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConf) *ErEnvConf {
+		return &v
+	}).(ErEnvConfPtrOutput)
+}
+
+// The configuration of a presetCanaryAnhui environment. The `Block presetCanaryAnhui` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryAnhui() ErEnvConfPresetCanaryAnhuiPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryAnhui { return v.PresetCanaryAnhui }).(ErEnvConfPresetCanaryAnhuiPtrOutput)
+}
+
+// The configuration of a presetCanaryBeijing environment. The `Block presetCanaryBeijing` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryBeijing() ErEnvConfPresetCanaryBeijingPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryBeijing { return v.PresetCanaryBeijing }).(ErEnvConfPresetCanaryBeijingPtrOutput)
+}
+
+// The configuration of a presetCanaryChongqing environment. The `Block presetCanaryChongqing` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryChongqing() ErEnvConfPresetCanaryChongqingPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryChongqing { return v.PresetCanaryChongqing }).(ErEnvConfPresetCanaryChongqingPtrOutput)
+}
+
+// The configuration of a presetCanaryFujian environment. The `Block presetCanaryFujian` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryFujian() ErEnvConfPresetCanaryFujianPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryFujian { return v.PresetCanaryFujian }).(ErEnvConfPresetCanaryFujianPtrOutput)
+}
+
+// The configuration of a presetCanaryGansu environment. The `Block presetCanaryGansu` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryGansu() ErEnvConfPresetCanaryGansuPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryGansu { return v.PresetCanaryGansu }).(ErEnvConfPresetCanaryGansuPtrOutput)
+}
+
+// The configuration of a presetCanaryGuangdong environment. The `Block presetCanaryGuangdong` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryGuangdong() ErEnvConfPresetCanaryGuangdongPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryGuangdong { return v.PresetCanaryGuangdong }).(ErEnvConfPresetCanaryGuangdongPtrOutput)
+}
+
+// The configuration of a presetCanaryGuangxi environment. The `Block presetCanaryGuangxi` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryGuangxi() ErEnvConfPresetCanaryGuangxiPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryGuangxi { return v.PresetCanaryGuangxi }).(ErEnvConfPresetCanaryGuangxiPtrOutput)
+}
+
+// The configuration of a presetCanaryGuizhou environment. The `Block presetCanaryGuizhou` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryGuizhou() ErEnvConfPresetCanaryGuizhouPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryGuizhou { return v.PresetCanaryGuizhou }).(ErEnvConfPresetCanaryGuizhouPtrOutput)
+}
+
+// The configuration of a presetCanaryHainan environment. The `Block presetCanaryHainan` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryHainan() ErEnvConfPresetCanaryHainanPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHainan { return v.PresetCanaryHainan }).(ErEnvConfPresetCanaryHainanPtrOutput)
+}
+
+// The configuration of a presetCanaryHebei environment. The `Block presetCanaryHebei` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryHebei() ErEnvConfPresetCanaryHebeiPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHebei { return v.PresetCanaryHebei }).(ErEnvConfPresetCanaryHebeiPtrOutput)
+}
+
+// The configuration of a presetCanaryHeilongjiang environment. The `Block presetCanaryHeilongjiang` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryHeilongjiang() ErEnvConfPresetCanaryHeilongjiangPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHeilongjiang { return v.PresetCanaryHeilongjiang }).(ErEnvConfPresetCanaryHeilongjiangPtrOutput)
+}
+
+// The configuration of a presetCanaryHenan environment. The `Block presetCanaryHenan` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryHenan() ErEnvConfPresetCanaryHenanPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHenan { return v.PresetCanaryHenan }).(ErEnvConfPresetCanaryHenanPtrOutput)
+}
+
+// The configuration of a presetCanaryHongKong environment. The `Block presetCanaryHongKong` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryHongKong() ErEnvConfPresetCanaryHongKongPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHongKong { return v.PresetCanaryHongKong }).(ErEnvConfPresetCanaryHongKongPtrOutput)
+}
+
+// The configuration of a presetCanaryHubei environment. The `Block presetCanaryHubei` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryHubei() ErEnvConfPresetCanaryHubeiPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHubei { return v.PresetCanaryHubei }).(ErEnvConfPresetCanaryHubeiPtrOutput)
+}
+
+// The configuration of a presetCanaryHunan environment. The `Block presetCanaryHunan` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryHunan() ErEnvConfPresetCanaryHunanPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryHunan { return v.PresetCanaryHunan }).(ErEnvConfPresetCanaryHunanPtrOutput)
+}
+
+// The configuration of a presetCanaryJiangsu environment. The `Block presetCanaryJiangsu` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryJiangsu() ErEnvConfPresetCanaryJiangsuPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryJiangsu { return v.PresetCanaryJiangsu }).(ErEnvConfPresetCanaryJiangsuPtrOutput)
+}
+
+// The configuration of a presetCanaryJiangxi environment. The `Block presetCanaryJiangxi` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryJiangxi() ErEnvConfPresetCanaryJiangxiPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryJiangxi { return v.PresetCanaryJiangxi }).(ErEnvConfPresetCanaryJiangxiPtrOutput)
+}
+
+// The configuration of a presetCanaryJilin environment. The `Block presetCanaryJilin` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryJilin() ErEnvConfPresetCanaryJilinPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryJilin { return v.PresetCanaryJilin }).(ErEnvConfPresetCanaryJilinPtrOutput)
+}
+
+// The configuration of a presetCanaryLiaoning environment. The `Block presetCanaryLiaoning` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryLiaoning() ErEnvConfPresetCanaryLiaoningPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryLiaoning { return v.PresetCanaryLiaoning }).(ErEnvConfPresetCanaryLiaoningPtrOutput)
+}
+
+// The configuration of a presetCanaryMacau environment. The `Block presetCanaryMacau` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryMacau() ErEnvConfPresetCanaryMacauPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryMacau { return v.PresetCanaryMacau }).(ErEnvConfPresetCanaryMacauPtrOutput)
+}
+
+// The configuration of a presetCanaryNeimenggu environment. The `Block presetCanaryNeimenggu` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryNeimenggu() ErEnvConfPresetCanaryNeimengguPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryNeimenggu { return v.PresetCanaryNeimenggu }).(ErEnvConfPresetCanaryNeimengguPtrOutput)
+}
+
+// The configuration of a presetCanaryNingxia environment. The `Block presetCanaryNingxia` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryNingxia() ErEnvConfPresetCanaryNingxiaPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryNingxia { return v.PresetCanaryNingxia }).(ErEnvConfPresetCanaryNingxiaPtrOutput)
+}
+
+// The configuration of a presetCanaryOverseas environment. The `Block presetCanaryOverseas` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryOverseas() ErEnvConfPresetCanaryOverseasPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryOverseas { return v.PresetCanaryOverseas }).(ErEnvConfPresetCanaryOverseasPtrOutput)
+}
+
+// The configuration of a presetCanaryQinghai environment. The `Block presetCanaryQinghai` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryQinghai() ErEnvConfPresetCanaryQinghaiPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryQinghai { return v.PresetCanaryQinghai }).(ErEnvConfPresetCanaryQinghaiPtrOutput)
+}
+
+// The configuration of a presetCanaryShaanxi environment. The `Block presetCanaryShaanxi` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryShaanxi() ErEnvConfPresetCanaryShaanxiPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryShaanxi { return v.PresetCanaryShaanxi }).(ErEnvConfPresetCanaryShaanxiPtrOutput)
+}
+
+// The configuration of a presetCanaryShandong environment. The `Block presetCanaryShandong` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryShandong() ErEnvConfPresetCanaryShandongPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryShandong { return v.PresetCanaryShandong }).(ErEnvConfPresetCanaryShandongPtrOutput)
+}
+
+// The configuration of a presetCanaryShanghai environment. The `Block presetCanaryShanghai` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryShanghai() ErEnvConfPresetCanaryShanghaiPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryShanghai { return v.PresetCanaryShanghai }).(ErEnvConfPresetCanaryShanghaiPtrOutput)
+}
+
+// The configuration of a presetCanaryShanxi environment. The `Block presetCanaryShanxi` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryShanxi() ErEnvConfPresetCanaryShanxiPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryShanxi { return v.PresetCanaryShanxi }).(ErEnvConfPresetCanaryShanxiPtrOutput)
+}
+
+// The configuration of a presetCanarySichuan environment. The `Block presetCanarySichuan` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanarySichuan() ErEnvConfPresetCanarySichuanPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanarySichuan { return v.PresetCanarySichuan }).(ErEnvConfPresetCanarySichuanPtrOutput)
+}
+
+// The configuration of a presetCanaryTaiwan environment. The `Block presetCanaryTaiwan` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryTaiwan() ErEnvConfPresetCanaryTaiwanPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryTaiwan { return v.PresetCanaryTaiwan }).(ErEnvConfPresetCanaryTaiwanPtrOutput)
+}
+
+// The configuration of a presetCanaryTianjin environment. The `Block presetCanaryTianjin` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryTianjin() ErEnvConfPresetCanaryTianjinPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryTianjin { return v.PresetCanaryTianjin }).(ErEnvConfPresetCanaryTianjinPtrOutput)
+}
+
+// The configuration of a presetCanaryXinjiang environment. The `Block presetCanaryXinjiang` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryXinjiang() ErEnvConfPresetCanaryXinjiangPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryXinjiang { return v.PresetCanaryXinjiang }).(ErEnvConfPresetCanaryXinjiangPtrOutput)
+}
+
+// The configuration of a presetCanaryXizang environment. The `Block presetCanaryXizang` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryXizang() ErEnvConfPresetCanaryXizangPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryXizang { return v.PresetCanaryXizang }).(ErEnvConfPresetCanaryXizangPtrOutput)
+}
+
+// The configuration of a presetCanaryYunnan environment. The `Block presetCanaryYunnan` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryYunnan() ErEnvConfPresetCanaryYunnanPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryYunnan { return v.PresetCanaryYunnan }).(ErEnvConfPresetCanaryYunnanPtrOutput)
+}
+
+// The configuration of a presetCanaryZhejiang environment. The `Block presetCanaryZhejiang` is same as `Block staging`.
+func (o ErEnvConfOutput) PresetCanaryZhejiang() ErEnvConfPresetCanaryZhejiangPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfPresetCanaryZhejiang { return v.PresetCanaryZhejiang }).(ErEnvConfPresetCanaryZhejiangPtrOutput)
+}
+
+// The configuration of a production environment. The `Block production` is same as `Block staging`.
+func (o ErEnvConfOutput) Production() ErEnvConfProductionPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfProduction { return v.Production }).(ErEnvConfProductionPtrOutput)
+}
+
+// The configuration of a staging environment. See the following `Block staging`.
+func (o ErEnvConfOutput) Staging() ErEnvConfStagingPtrOutput {
+	return o.ApplyT(func(v ErEnvConf) *ErEnvConfStaging { return v.Staging }).(ErEnvConfStagingPtrOutput)
+}
+
+type ErEnvConfPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConf)(nil)).Elem()
+}
+
+func (o ErEnvConfPtrOutput) ToErEnvConfPtrOutput() ErEnvConfPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPtrOutput) ToErEnvConfPtrOutputWithContext(ctx context.Context) ErEnvConfPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPtrOutput) Elem() ErEnvConfOutput {
+	return o.ApplyT(func(v *ErEnvConf) ErEnvConf {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConf
+		return ret
+	}).(ErEnvConfOutput)
+}
+
+// The configuration of a presetCanaryAnhui environment. The `Block presetCanaryAnhui` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryAnhui() ErEnvConfPresetCanaryAnhuiPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryAnhui {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryAnhui
+	}).(ErEnvConfPresetCanaryAnhuiPtrOutput)
+}
+
+// The configuration of a presetCanaryBeijing environment. The `Block presetCanaryBeijing` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryBeijing() ErEnvConfPresetCanaryBeijingPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryBeijing {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryBeijing
+	}).(ErEnvConfPresetCanaryBeijingPtrOutput)
+}
+
+// The configuration of a presetCanaryChongqing environment. The `Block presetCanaryChongqing` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryChongqing() ErEnvConfPresetCanaryChongqingPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryChongqing {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryChongqing
+	}).(ErEnvConfPresetCanaryChongqingPtrOutput)
+}
+
+// The configuration of a presetCanaryFujian environment. The `Block presetCanaryFujian` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryFujian() ErEnvConfPresetCanaryFujianPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryFujian {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryFujian
+	}).(ErEnvConfPresetCanaryFujianPtrOutput)
+}
+
+// The configuration of a presetCanaryGansu environment. The `Block presetCanaryGansu` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryGansu() ErEnvConfPresetCanaryGansuPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryGansu {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryGansu
+	}).(ErEnvConfPresetCanaryGansuPtrOutput)
+}
+
+// The configuration of a presetCanaryGuangdong environment. The `Block presetCanaryGuangdong` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryGuangdong() ErEnvConfPresetCanaryGuangdongPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryGuangdong {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryGuangdong
+	}).(ErEnvConfPresetCanaryGuangdongPtrOutput)
+}
+
+// The configuration of a presetCanaryGuangxi environment. The `Block presetCanaryGuangxi` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryGuangxi() ErEnvConfPresetCanaryGuangxiPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryGuangxi {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryGuangxi
+	}).(ErEnvConfPresetCanaryGuangxiPtrOutput)
+}
+
+// The configuration of a presetCanaryGuizhou environment. The `Block presetCanaryGuizhou` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryGuizhou() ErEnvConfPresetCanaryGuizhouPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryGuizhou {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryGuizhou
+	}).(ErEnvConfPresetCanaryGuizhouPtrOutput)
+}
+
+// The configuration of a presetCanaryHainan environment. The `Block presetCanaryHainan` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryHainan() ErEnvConfPresetCanaryHainanPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHainan {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryHainan
+	}).(ErEnvConfPresetCanaryHainanPtrOutput)
+}
+
+// The configuration of a presetCanaryHebei environment. The `Block presetCanaryHebei` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryHebei() ErEnvConfPresetCanaryHebeiPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHebei {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryHebei
+	}).(ErEnvConfPresetCanaryHebeiPtrOutput)
+}
+
+// The configuration of a presetCanaryHeilongjiang environment. The `Block presetCanaryHeilongjiang` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryHeilongjiang() ErEnvConfPresetCanaryHeilongjiangPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHeilongjiang {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryHeilongjiang
+	}).(ErEnvConfPresetCanaryHeilongjiangPtrOutput)
+}
+
+// The configuration of a presetCanaryHenan environment. The `Block presetCanaryHenan` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryHenan() ErEnvConfPresetCanaryHenanPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHenan {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryHenan
+	}).(ErEnvConfPresetCanaryHenanPtrOutput)
+}
+
+// The configuration of a presetCanaryHongKong environment. The `Block presetCanaryHongKong` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryHongKong() ErEnvConfPresetCanaryHongKongPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHongKong {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryHongKong
+	}).(ErEnvConfPresetCanaryHongKongPtrOutput)
+}
+
+// The configuration of a presetCanaryHubei environment. The `Block presetCanaryHubei` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryHubei() ErEnvConfPresetCanaryHubeiPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHubei {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryHubei
+	}).(ErEnvConfPresetCanaryHubeiPtrOutput)
+}
+
+// The configuration of a presetCanaryHunan environment. The `Block presetCanaryHunan` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryHunan() ErEnvConfPresetCanaryHunanPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryHunan {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryHunan
+	}).(ErEnvConfPresetCanaryHunanPtrOutput)
+}
+
+// The configuration of a presetCanaryJiangsu environment. The `Block presetCanaryJiangsu` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryJiangsu() ErEnvConfPresetCanaryJiangsuPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryJiangsu {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryJiangsu
+	}).(ErEnvConfPresetCanaryJiangsuPtrOutput)
+}
+
+// The configuration of a presetCanaryJiangxi environment. The `Block presetCanaryJiangxi` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryJiangxi() ErEnvConfPresetCanaryJiangxiPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryJiangxi {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryJiangxi
+	}).(ErEnvConfPresetCanaryJiangxiPtrOutput)
+}
+
+// The configuration of a presetCanaryJilin environment. The `Block presetCanaryJilin` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryJilin() ErEnvConfPresetCanaryJilinPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryJilin {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryJilin
+	}).(ErEnvConfPresetCanaryJilinPtrOutput)
+}
+
+// The configuration of a presetCanaryLiaoning environment. The `Block presetCanaryLiaoning` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryLiaoning() ErEnvConfPresetCanaryLiaoningPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryLiaoning {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryLiaoning
+	}).(ErEnvConfPresetCanaryLiaoningPtrOutput)
+}
+
+// The configuration of a presetCanaryMacau environment. The `Block presetCanaryMacau` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryMacau() ErEnvConfPresetCanaryMacauPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryMacau {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryMacau
+	}).(ErEnvConfPresetCanaryMacauPtrOutput)
+}
+
+// The configuration of a presetCanaryNeimenggu environment. The `Block presetCanaryNeimenggu` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryNeimenggu() ErEnvConfPresetCanaryNeimengguPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryNeimenggu {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryNeimenggu
+	}).(ErEnvConfPresetCanaryNeimengguPtrOutput)
+}
+
+// The configuration of a presetCanaryNingxia environment. The `Block presetCanaryNingxia` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryNingxia() ErEnvConfPresetCanaryNingxiaPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryNingxia {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryNingxia
+	}).(ErEnvConfPresetCanaryNingxiaPtrOutput)
+}
+
+// The configuration of a presetCanaryOverseas environment. The `Block presetCanaryOverseas` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryOverseas() ErEnvConfPresetCanaryOverseasPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryOverseas {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryOverseas
+	}).(ErEnvConfPresetCanaryOverseasPtrOutput)
+}
+
+// The configuration of a presetCanaryQinghai environment. The `Block presetCanaryQinghai` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryQinghai() ErEnvConfPresetCanaryQinghaiPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryQinghai {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryQinghai
+	}).(ErEnvConfPresetCanaryQinghaiPtrOutput)
+}
+
+// The configuration of a presetCanaryShaanxi environment. The `Block presetCanaryShaanxi` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryShaanxi() ErEnvConfPresetCanaryShaanxiPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryShaanxi {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryShaanxi
+	}).(ErEnvConfPresetCanaryShaanxiPtrOutput)
+}
+
+// The configuration of a presetCanaryShandong environment. The `Block presetCanaryShandong` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryShandong() ErEnvConfPresetCanaryShandongPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryShandong {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryShandong
+	}).(ErEnvConfPresetCanaryShandongPtrOutput)
+}
+
+// The configuration of a presetCanaryShanghai environment. The `Block presetCanaryShanghai` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryShanghai() ErEnvConfPresetCanaryShanghaiPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryShanghai {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryShanghai
+	}).(ErEnvConfPresetCanaryShanghaiPtrOutput)
+}
+
+// The configuration of a presetCanaryShanxi environment. The `Block presetCanaryShanxi` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryShanxi() ErEnvConfPresetCanaryShanxiPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryShanxi {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryShanxi
+	}).(ErEnvConfPresetCanaryShanxiPtrOutput)
+}
+
+// The configuration of a presetCanarySichuan environment. The `Block presetCanarySichuan` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanarySichuan() ErEnvConfPresetCanarySichuanPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanarySichuan {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanarySichuan
+	}).(ErEnvConfPresetCanarySichuanPtrOutput)
+}
+
+// The configuration of a presetCanaryTaiwan environment. The `Block presetCanaryTaiwan` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryTaiwan() ErEnvConfPresetCanaryTaiwanPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryTaiwan {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryTaiwan
+	}).(ErEnvConfPresetCanaryTaiwanPtrOutput)
+}
+
+// The configuration of a presetCanaryTianjin environment. The `Block presetCanaryTianjin` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryTianjin() ErEnvConfPresetCanaryTianjinPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryTianjin {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryTianjin
+	}).(ErEnvConfPresetCanaryTianjinPtrOutput)
+}
+
+// The configuration of a presetCanaryXinjiang environment. The `Block presetCanaryXinjiang` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryXinjiang() ErEnvConfPresetCanaryXinjiangPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryXinjiang {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryXinjiang
+	}).(ErEnvConfPresetCanaryXinjiangPtrOutput)
+}
+
+// The configuration of a presetCanaryXizang environment. The `Block presetCanaryXizang` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryXizang() ErEnvConfPresetCanaryXizangPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryXizang {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryXizang
+	}).(ErEnvConfPresetCanaryXizangPtrOutput)
+}
+
+// The configuration of a presetCanaryYunnan environment. The `Block presetCanaryYunnan` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryYunnan() ErEnvConfPresetCanaryYunnanPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryYunnan {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryYunnan
+	}).(ErEnvConfPresetCanaryYunnanPtrOutput)
+}
+
+// The configuration of a presetCanaryZhejiang environment. The `Block presetCanaryZhejiang` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) PresetCanaryZhejiang() ErEnvConfPresetCanaryZhejiangPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfPresetCanaryZhejiang {
+		if v == nil {
+			return nil
+		}
+		return v.PresetCanaryZhejiang
+	}).(ErEnvConfPresetCanaryZhejiangPtrOutput)
+}
+
+// The configuration of a production environment. The `Block production` is same as `Block staging`.
+func (o ErEnvConfPtrOutput) Production() ErEnvConfProductionPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfProduction {
+		if v == nil {
+			return nil
+		}
+		return v.Production
+	}).(ErEnvConfProductionPtrOutput)
+}
+
+// The configuration of a staging environment. See the following `Block staging`.
+func (o ErEnvConfPtrOutput) Staging() ErEnvConfStagingPtrOutput {
+	return o.ApplyT(func(v *ErEnvConf) *ErEnvConfStaging {
+		if v == nil {
+			return nil
+		}
+		return v.Staging
+	}).(ErEnvConfStagingPtrOutput)
+}
+
+type ErEnvConfPresetCanaryAnhui struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryAnhuiInput is an input type that accepts ErEnvConfPresetCanaryAnhuiArgs and ErEnvConfPresetCanaryAnhuiOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryAnhuiInput` via:
+//
+//	ErEnvConfPresetCanaryAnhuiArgs{...}
+type ErEnvConfPresetCanaryAnhuiInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryAnhuiOutput() ErEnvConfPresetCanaryAnhuiOutput
+	ToErEnvConfPresetCanaryAnhuiOutputWithContext(context.Context) ErEnvConfPresetCanaryAnhuiOutput
+}
+
+type ErEnvConfPresetCanaryAnhuiArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryAnhuiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryAnhui)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryAnhuiArgs) ToErEnvConfPresetCanaryAnhuiOutput() ErEnvConfPresetCanaryAnhuiOutput {
+	return i.ToErEnvConfPresetCanaryAnhuiOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryAnhuiArgs) ToErEnvConfPresetCanaryAnhuiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryAnhuiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryAnhuiOutput)
+}
+
+func (i ErEnvConfPresetCanaryAnhuiArgs) ToErEnvConfPresetCanaryAnhuiPtrOutput() ErEnvConfPresetCanaryAnhuiPtrOutput {
+	return i.ToErEnvConfPresetCanaryAnhuiPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryAnhuiArgs) ToErEnvConfPresetCanaryAnhuiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryAnhuiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryAnhuiOutput).ToErEnvConfPresetCanaryAnhuiPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryAnhuiPtrInput is an input type that accepts ErEnvConfPresetCanaryAnhuiArgs, ErEnvConfPresetCanaryAnhuiPtr and ErEnvConfPresetCanaryAnhuiPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryAnhuiPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryAnhuiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryAnhuiPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryAnhuiPtrOutput() ErEnvConfPresetCanaryAnhuiPtrOutput
+	ToErEnvConfPresetCanaryAnhuiPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryAnhuiPtrOutput
+}
+
+type erEnvConfPresetCanaryAnhuiPtrType ErEnvConfPresetCanaryAnhuiArgs
+
+func ErEnvConfPresetCanaryAnhuiPtr(v *ErEnvConfPresetCanaryAnhuiArgs) ErEnvConfPresetCanaryAnhuiPtrInput {
+	return (*erEnvConfPresetCanaryAnhuiPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryAnhuiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryAnhui)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryAnhuiPtrType) ToErEnvConfPresetCanaryAnhuiPtrOutput() ErEnvConfPresetCanaryAnhuiPtrOutput {
+	return i.ToErEnvConfPresetCanaryAnhuiPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryAnhuiPtrType) ToErEnvConfPresetCanaryAnhuiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryAnhuiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryAnhuiPtrOutput)
+}
+
+type ErEnvConfPresetCanaryAnhuiOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryAnhuiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryAnhui)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryAnhuiOutput) ToErEnvConfPresetCanaryAnhuiOutput() ErEnvConfPresetCanaryAnhuiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryAnhuiOutput) ToErEnvConfPresetCanaryAnhuiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryAnhuiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryAnhuiOutput) ToErEnvConfPresetCanaryAnhuiPtrOutput() ErEnvConfPresetCanaryAnhuiPtrOutput {
+	return o.ToErEnvConfPresetCanaryAnhuiPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryAnhuiOutput) ToErEnvConfPresetCanaryAnhuiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryAnhuiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryAnhui) *ErEnvConfPresetCanaryAnhui {
+		return &v
+	}).(ErEnvConfPresetCanaryAnhuiPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryAnhuiOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryAnhui) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryAnhuiOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryAnhui) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryAnhuiOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryAnhui) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryAnhuiPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryAnhuiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryAnhui)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryAnhuiPtrOutput) ToErEnvConfPresetCanaryAnhuiPtrOutput() ErEnvConfPresetCanaryAnhuiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryAnhuiPtrOutput) ToErEnvConfPresetCanaryAnhuiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryAnhuiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryAnhuiPtrOutput) Elem() ErEnvConfPresetCanaryAnhuiOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryAnhui) ErEnvConfPresetCanaryAnhui {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryAnhui
+		return ret
+	}).(ErEnvConfPresetCanaryAnhuiOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryAnhuiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryAnhui) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryAnhuiPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryAnhui) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryAnhuiPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryAnhui) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryBeijing struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryBeijingInput is an input type that accepts ErEnvConfPresetCanaryBeijingArgs and ErEnvConfPresetCanaryBeijingOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryBeijingInput` via:
+//
+//	ErEnvConfPresetCanaryBeijingArgs{...}
+type ErEnvConfPresetCanaryBeijingInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryBeijingOutput() ErEnvConfPresetCanaryBeijingOutput
+	ToErEnvConfPresetCanaryBeijingOutputWithContext(context.Context) ErEnvConfPresetCanaryBeijingOutput
+}
+
+type ErEnvConfPresetCanaryBeijingArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryBeijingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryBeijing)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryBeijingArgs) ToErEnvConfPresetCanaryBeijingOutput() ErEnvConfPresetCanaryBeijingOutput {
+	return i.ToErEnvConfPresetCanaryBeijingOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryBeijingArgs) ToErEnvConfPresetCanaryBeijingOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryBeijingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryBeijingOutput)
+}
+
+func (i ErEnvConfPresetCanaryBeijingArgs) ToErEnvConfPresetCanaryBeijingPtrOutput() ErEnvConfPresetCanaryBeijingPtrOutput {
+	return i.ToErEnvConfPresetCanaryBeijingPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryBeijingArgs) ToErEnvConfPresetCanaryBeijingPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryBeijingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryBeijingOutput).ToErEnvConfPresetCanaryBeijingPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryBeijingPtrInput is an input type that accepts ErEnvConfPresetCanaryBeijingArgs, ErEnvConfPresetCanaryBeijingPtr and ErEnvConfPresetCanaryBeijingPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryBeijingPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryBeijingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryBeijingPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryBeijingPtrOutput() ErEnvConfPresetCanaryBeijingPtrOutput
+	ToErEnvConfPresetCanaryBeijingPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryBeijingPtrOutput
+}
+
+type erEnvConfPresetCanaryBeijingPtrType ErEnvConfPresetCanaryBeijingArgs
+
+func ErEnvConfPresetCanaryBeijingPtr(v *ErEnvConfPresetCanaryBeijingArgs) ErEnvConfPresetCanaryBeijingPtrInput {
+	return (*erEnvConfPresetCanaryBeijingPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryBeijingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryBeijing)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryBeijingPtrType) ToErEnvConfPresetCanaryBeijingPtrOutput() ErEnvConfPresetCanaryBeijingPtrOutput {
+	return i.ToErEnvConfPresetCanaryBeijingPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryBeijingPtrType) ToErEnvConfPresetCanaryBeijingPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryBeijingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryBeijingPtrOutput)
+}
+
+type ErEnvConfPresetCanaryBeijingOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryBeijingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryBeijing)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryBeijingOutput) ToErEnvConfPresetCanaryBeijingOutput() ErEnvConfPresetCanaryBeijingOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryBeijingOutput) ToErEnvConfPresetCanaryBeijingOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryBeijingOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryBeijingOutput) ToErEnvConfPresetCanaryBeijingPtrOutput() ErEnvConfPresetCanaryBeijingPtrOutput {
+	return o.ToErEnvConfPresetCanaryBeijingPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryBeijingOutput) ToErEnvConfPresetCanaryBeijingPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryBeijingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryBeijing) *ErEnvConfPresetCanaryBeijing {
+		return &v
+	}).(ErEnvConfPresetCanaryBeijingPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryBeijingOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryBeijing) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryBeijingOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryBeijing) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryBeijingOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryBeijing) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryBeijingPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryBeijingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryBeijing)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryBeijingPtrOutput) ToErEnvConfPresetCanaryBeijingPtrOutput() ErEnvConfPresetCanaryBeijingPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryBeijingPtrOutput) ToErEnvConfPresetCanaryBeijingPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryBeijingPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryBeijingPtrOutput) Elem() ErEnvConfPresetCanaryBeijingOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryBeijing) ErEnvConfPresetCanaryBeijing {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryBeijing
+		return ret
+	}).(ErEnvConfPresetCanaryBeijingOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryBeijingPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryBeijing) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryBeijingPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryBeijing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryBeijingPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryBeijing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryChongqing struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryChongqingInput is an input type that accepts ErEnvConfPresetCanaryChongqingArgs and ErEnvConfPresetCanaryChongqingOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryChongqingInput` via:
+//
+//	ErEnvConfPresetCanaryChongqingArgs{...}
+type ErEnvConfPresetCanaryChongqingInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryChongqingOutput() ErEnvConfPresetCanaryChongqingOutput
+	ToErEnvConfPresetCanaryChongqingOutputWithContext(context.Context) ErEnvConfPresetCanaryChongqingOutput
+}
+
+type ErEnvConfPresetCanaryChongqingArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryChongqingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryChongqing)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryChongqingArgs) ToErEnvConfPresetCanaryChongqingOutput() ErEnvConfPresetCanaryChongqingOutput {
+	return i.ToErEnvConfPresetCanaryChongqingOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryChongqingArgs) ToErEnvConfPresetCanaryChongqingOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryChongqingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryChongqingOutput)
+}
+
+func (i ErEnvConfPresetCanaryChongqingArgs) ToErEnvConfPresetCanaryChongqingPtrOutput() ErEnvConfPresetCanaryChongqingPtrOutput {
+	return i.ToErEnvConfPresetCanaryChongqingPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryChongqingArgs) ToErEnvConfPresetCanaryChongqingPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryChongqingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryChongqingOutput).ToErEnvConfPresetCanaryChongqingPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryChongqingPtrInput is an input type that accepts ErEnvConfPresetCanaryChongqingArgs, ErEnvConfPresetCanaryChongqingPtr and ErEnvConfPresetCanaryChongqingPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryChongqingPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryChongqingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryChongqingPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryChongqingPtrOutput() ErEnvConfPresetCanaryChongqingPtrOutput
+	ToErEnvConfPresetCanaryChongqingPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryChongqingPtrOutput
+}
+
+type erEnvConfPresetCanaryChongqingPtrType ErEnvConfPresetCanaryChongqingArgs
+
+func ErEnvConfPresetCanaryChongqingPtr(v *ErEnvConfPresetCanaryChongqingArgs) ErEnvConfPresetCanaryChongqingPtrInput {
+	return (*erEnvConfPresetCanaryChongqingPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryChongqingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryChongqing)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryChongqingPtrType) ToErEnvConfPresetCanaryChongqingPtrOutput() ErEnvConfPresetCanaryChongqingPtrOutput {
+	return i.ToErEnvConfPresetCanaryChongqingPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryChongqingPtrType) ToErEnvConfPresetCanaryChongqingPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryChongqingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryChongqingPtrOutput)
+}
+
+type ErEnvConfPresetCanaryChongqingOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryChongqingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryChongqing)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryChongqingOutput) ToErEnvConfPresetCanaryChongqingOutput() ErEnvConfPresetCanaryChongqingOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryChongqingOutput) ToErEnvConfPresetCanaryChongqingOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryChongqingOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryChongqingOutput) ToErEnvConfPresetCanaryChongqingPtrOutput() ErEnvConfPresetCanaryChongqingPtrOutput {
+	return o.ToErEnvConfPresetCanaryChongqingPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryChongqingOutput) ToErEnvConfPresetCanaryChongqingPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryChongqingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryChongqing) *ErEnvConfPresetCanaryChongqing {
+		return &v
+	}).(ErEnvConfPresetCanaryChongqingPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryChongqingOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryChongqing) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryChongqingOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryChongqing) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryChongqingOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryChongqing) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryChongqingPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryChongqingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryChongqing)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryChongqingPtrOutput) ToErEnvConfPresetCanaryChongqingPtrOutput() ErEnvConfPresetCanaryChongqingPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryChongqingPtrOutput) ToErEnvConfPresetCanaryChongqingPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryChongqingPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryChongqingPtrOutput) Elem() ErEnvConfPresetCanaryChongqingOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryChongqing) ErEnvConfPresetCanaryChongqing {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryChongqing
+		return ret
+	}).(ErEnvConfPresetCanaryChongqingOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryChongqingPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryChongqing) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryChongqingPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryChongqing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryChongqingPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryChongqing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryFujian struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryFujianInput is an input type that accepts ErEnvConfPresetCanaryFujianArgs and ErEnvConfPresetCanaryFujianOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryFujianInput` via:
+//
+//	ErEnvConfPresetCanaryFujianArgs{...}
+type ErEnvConfPresetCanaryFujianInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryFujianOutput() ErEnvConfPresetCanaryFujianOutput
+	ToErEnvConfPresetCanaryFujianOutputWithContext(context.Context) ErEnvConfPresetCanaryFujianOutput
+}
+
+type ErEnvConfPresetCanaryFujianArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryFujianArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryFujian)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryFujianArgs) ToErEnvConfPresetCanaryFujianOutput() ErEnvConfPresetCanaryFujianOutput {
+	return i.ToErEnvConfPresetCanaryFujianOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryFujianArgs) ToErEnvConfPresetCanaryFujianOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryFujianOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryFujianOutput)
+}
+
+func (i ErEnvConfPresetCanaryFujianArgs) ToErEnvConfPresetCanaryFujianPtrOutput() ErEnvConfPresetCanaryFujianPtrOutput {
+	return i.ToErEnvConfPresetCanaryFujianPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryFujianArgs) ToErEnvConfPresetCanaryFujianPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryFujianPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryFujianOutput).ToErEnvConfPresetCanaryFujianPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryFujianPtrInput is an input type that accepts ErEnvConfPresetCanaryFujianArgs, ErEnvConfPresetCanaryFujianPtr and ErEnvConfPresetCanaryFujianPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryFujianPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryFujianArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryFujianPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryFujianPtrOutput() ErEnvConfPresetCanaryFujianPtrOutput
+	ToErEnvConfPresetCanaryFujianPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryFujianPtrOutput
+}
+
+type erEnvConfPresetCanaryFujianPtrType ErEnvConfPresetCanaryFujianArgs
+
+func ErEnvConfPresetCanaryFujianPtr(v *ErEnvConfPresetCanaryFujianArgs) ErEnvConfPresetCanaryFujianPtrInput {
+	return (*erEnvConfPresetCanaryFujianPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryFujianPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryFujian)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryFujianPtrType) ToErEnvConfPresetCanaryFujianPtrOutput() ErEnvConfPresetCanaryFujianPtrOutput {
+	return i.ToErEnvConfPresetCanaryFujianPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryFujianPtrType) ToErEnvConfPresetCanaryFujianPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryFujianPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryFujianPtrOutput)
+}
+
+type ErEnvConfPresetCanaryFujianOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryFujianOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryFujian)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryFujianOutput) ToErEnvConfPresetCanaryFujianOutput() ErEnvConfPresetCanaryFujianOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryFujianOutput) ToErEnvConfPresetCanaryFujianOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryFujianOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryFujianOutput) ToErEnvConfPresetCanaryFujianPtrOutput() ErEnvConfPresetCanaryFujianPtrOutput {
+	return o.ToErEnvConfPresetCanaryFujianPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryFujianOutput) ToErEnvConfPresetCanaryFujianPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryFujianPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryFujian) *ErEnvConfPresetCanaryFujian {
+		return &v
+	}).(ErEnvConfPresetCanaryFujianPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryFujianOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryFujian) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryFujianOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryFujian) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryFujianOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryFujian) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryFujianPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryFujianPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryFujian)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryFujianPtrOutput) ToErEnvConfPresetCanaryFujianPtrOutput() ErEnvConfPresetCanaryFujianPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryFujianPtrOutput) ToErEnvConfPresetCanaryFujianPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryFujianPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryFujianPtrOutput) Elem() ErEnvConfPresetCanaryFujianOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryFujian) ErEnvConfPresetCanaryFujian {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryFujian
+		return ret
+	}).(ErEnvConfPresetCanaryFujianOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryFujianPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryFujian) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryFujianPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryFujian) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryFujianPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryFujian) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryGansu struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryGansuInput is an input type that accepts ErEnvConfPresetCanaryGansuArgs and ErEnvConfPresetCanaryGansuOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryGansuInput` via:
+//
+//	ErEnvConfPresetCanaryGansuArgs{...}
+type ErEnvConfPresetCanaryGansuInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryGansuOutput() ErEnvConfPresetCanaryGansuOutput
+	ToErEnvConfPresetCanaryGansuOutputWithContext(context.Context) ErEnvConfPresetCanaryGansuOutput
+}
+
+type ErEnvConfPresetCanaryGansuArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryGansuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryGansu)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryGansuArgs) ToErEnvConfPresetCanaryGansuOutput() ErEnvConfPresetCanaryGansuOutput {
+	return i.ToErEnvConfPresetCanaryGansuOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryGansuArgs) ToErEnvConfPresetCanaryGansuOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGansuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGansuOutput)
+}
+
+func (i ErEnvConfPresetCanaryGansuArgs) ToErEnvConfPresetCanaryGansuPtrOutput() ErEnvConfPresetCanaryGansuPtrOutput {
+	return i.ToErEnvConfPresetCanaryGansuPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryGansuArgs) ToErEnvConfPresetCanaryGansuPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGansuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGansuOutput).ToErEnvConfPresetCanaryGansuPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryGansuPtrInput is an input type that accepts ErEnvConfPresetCanaryGansuArgs, ErEnvConfPresetCanaryGansuPtr and ErEnvConfPresetCanaryGansuPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryGansuPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryGansuArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryGansuPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryGansuPtrOutput() ErEnvConfPresetCanaryGansuPtrOutput
+	ToErEnvConfPresetCanaryGansuPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryGansuPtrOutput
+}
+
+type erEnvConfPresetCanaryGansuPtrType ErEnvConfPresetCanaryGansuArgs
+
+func ErEnvConfPresetCanaryGansuPtr(v *ErEnvConfPresetCanaryGansuArgs) ErEnvConfPresetCanaryGansuPtrInput {
+	return (*erEnvConfPresetCanaryGansuPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryGansuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryGansu)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryGansuPtrType) ToErEnvConfPresetCanaryGansuPtrOutput() ErEnvConfPresetCanaryGansuPtrOutput {
+	return i.ToErEnvConfPresetCanaryGansuPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryGansuPtrType) ToErEnvConfPresetCanaryGansuPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGansuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGansuPtrOutput)
+}
+
+type ErEnvConfPresetCanaryGansuOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryGansuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryGansu)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryGansuOutput) ToErEnvConfPresetCanaryGansuOutput() ErEnvConfPresetCanaryGansuOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGansuOutput) ToErEnvConfPresetCanaryGansuOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGansuOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGansuOutput) ToErEnvConfPresetCanaryGansuPtrOutput() ErEnvConfPresetCanaryGansuPtrOutput {
+	return o.ToErEnvConfPresetCanaryGansuPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryGansuOutput) ToErEnvConfPresetCanaryGansuPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGansuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryGansu) *ErEnvConfPresetCanaryGansu {
+		return &v
+	}).(ErEnvConfPresetCanaryGansuPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryGansuOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryGansu) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryGansuOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryGansu) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryGansuOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryGansu) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryGansuPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryGansuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryGansu)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryGansuPtrOutput) ToErEnvConfPresetCanaryGansuPtrOutput() ErEnvConfPresetCanaryGansuPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGansuPtrOutput) ToErEnvConfPresetCanaryGansuPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGansuPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGansuPtrOutput) Elem() ErEnvConfPresetCanaryGansuOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGansu) ErEnvConfPresetCanaryGansu {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryGansu
+		return ret
+	}).(ErEnvConfPresetCanaryGansuOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryGansuPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGansu) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryGansuPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGansu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryGansuPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGansu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryGuangdong struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryGuangdongInput is an input type that accepts ErEnvConfPresetCanaryGuangdongArgs and ErEnvConfPresetCanaryGuangdongOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryGuangdongInput` via:
+//
+//	ErEnvConfPresetCanaryGuangdongArgs{...}
+type ErEnvConfPresetCanaryGuangdongInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryGuangdongOutput() ErEnvConfPresetCanaryGuangdongOutput
+	ToErEnvConfPresetCanaryGuangdongOutputWithContext(context.Context) ErEnvConfPresetCanaryGuangdongOutput
+}
+
+type ErEnvConfPresetCanaryGuangdongArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryGuangdongArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryGuangdong)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryGuangdongArgs) ToErEnvConfPresetCanaryGuangdongOutput() ErEnvConfPresetCanaryGuangdongOutput {
+	return i.ToErEnvConfPresetCanaryGuangdongOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryGuangdongArgs) ToErEnvConfPresetCanaryGuangdongOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangdongOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuangdongOutput)
+}
+
+func (i ErEnvConfPresetCanaryGuangdongArgs) ToErEnvConfPresetCanaryGuangdongPtrOutput() ErEnvConfPresetCanaryGuangdongPtrOutput {
+	return i.ToErEnvConfPresetCanaryGuangdongPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryGuangdongArgs) ToErEnvConfPresetCanaryGuangdongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangdongPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuangdongOutput).ToErEnvConfPresetCanaryGuangdongPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryGuangdongPtrInput is an input type that accepts ErEnvConfPresetCanaryGuangdongArgs, ErEnvConfPresetCanaryGuangdongPtr and ErEnvConfPresetCanaryGuangdongPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryGuangdongPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryGuangdongArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryGuangdongPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryGuangdongPtrOutput() ErEnvConfPresetCanaryGuangdongPtrOutput
+	ToErEnvConfPresetCanaryGuangdongPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryGuangdongPtrOutput
+}
+
+type erEnvConfPresetCanaryGuangdongPtrType ErEnvConfPresetCanaryGuangdongArgs
+
+func ErEnvConfPresetCanaryGuangdongPtr(v *ErEnvConfPresetCanaryGuangdongArgs) ErEnvConfPresetCanaryGuangdongPtrInput {
+	return (*erEnvConfPresetCanaryGuangdongPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryGuangdongPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryGuangdong)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryGuangdongPtrType) ToErEnvConfPresetCanaryGuangdongPtrOutput() ErEnvConfPresetCanaryGuangdongPtrOutput {
+	return i.ToErEnvConfPresetCanaryGuangdongPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryGuangdongPtrType) ToErEnvConfPresetCanaryGuangdongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangdongPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuangdongPtrOutput)
+}
+
+type ErEnvConfPresetCanaryGuangdongOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryGuangdongOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryGuangdong)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryGuangdongOutput) ToErEnvConfPresetCanaryGuangdongOutput() ErEnvConfPresetCanaryGuangdongOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGuangdongOutput) ToErEnvConfPresetCanaryGuangdongOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangdongOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGuangdongOutput) ToErEnvConfPresetCanaryGuangdongPtrOutput() ErEnvConfPresetCanaryGuangdongPtrOutput {
+	return o.ToErEnvConfPresetCanaryGuangdongPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryGuangdongOutput) ToErEnvConfPresetCanaryGuangdongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangdongPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryGuangdong) *ErEnvConfPresetCanaryGuangdong {
+		return &v
+	}).(ErEnvConfPresetCanaryGuangdongPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryGuangdongOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryGuangdong) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryGuangdongOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryGuangdong) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryGuangdongOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryGuangdong) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryGuangdongPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryGuangdongPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryGuangdong)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryGuangdongPtrOutput) ToErEnvConfPresetCanaryGuangdongPtrOutput() ErEnvConfPresetCanaryGuangdongPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGuangdongPtrOutput) ToErEnvConfPresetCanaryGuangdongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangdongPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGuangdongPtrOutput) Elem() ErEnvConfPresetCanaryGuangdongOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangdong) ErEnvConfPresetCanaryGuangdong {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryGuangdong
+		return ret
+	}).(ErEnvConfPresetCanaryGuangdongOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryGuangdongPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangdong) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryGuangdongPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangdong) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryGuangdongPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangdong) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryGuangxi struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryGuangxiInput is an input type that accepts ErEnvConfPresetCanaryGuangxiArgs and ErEnvConfPresetCanaryGuangxiOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryGuangxiInput` via:
+//
+//	ErEnvConfPresetCanaryGuangxiArgs{...}
+type ErEnvConfPresetCanaryGuangxiInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryGuangxiOutput() ErEnvConfPresetCanaryGuangxiOutput
+	ToErEnvConfPresetCanaryGuangxiOutputWithContext(context.Context) ErEnvConfPresetCanaryGuangxiOutput
+}
+
+type ErEnvConfPresetCanaryGuangxiArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryGuangxiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryGuangxi)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryGuangxiArgs) ToErEnvConfPresetCanaryGuangxiOutput() ErEnvConfPresetCanaryGuangxiOutput {
+	return i.ToErEnvConfPresetCanaryGuangxiOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryGuangxiArgs) ToErEnvConfPresetCanaryGuangxiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangxiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuangxiOutput)
+}
+
+func (i ErEnvConfPresetCanaryGuangxiArgs) ToErEnvConfPresetCanaryGuangxiPtrOutput() ErEnvConfPresetCanaryGuangxiPtrOutput {
+	return i.ToErEnvConfPresetCanaryGuangxiPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryGuangxiArgs) ToErEnvConfPresetCanaryGuangxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangxiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuangxiOutput).ToErEnvConfPresetCanaryGuangxiPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryGuangxiPtrInput is an input type that accepts ErEnvConfPresetCanaryGuangxiArgs, ErEnvConfPresetCanaryGuangxiPtr and ErEnvConfPresetCanaryGuangxiPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryGuangxiPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryGuangxiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryGuangxiPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryGuangxiPtrOutput() ErEnvConfPresetCanaryGuangxiPtrOutput
+	ToErEnvConfPresetCanaryGuangxiPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryGuangxiPtrOutput
+}
+
+type erEnvConfPresetCanaryGuangxiPtrType ErEnvConfPresetCanaryGuangxiArgs
+
+func ErEnvConfPresetCanaryGuangxiPtr(v *ErEnvConfPresetCanaryGuangxiArgs) ErEnvConfPresetCanaryGuangxiPtrInput {
+	return (*erEnvConfPresetCanaryGuangxiPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryGuangxiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryGuangxi)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryGuangxiPtrType) ToErEnvConfPresetCanaryGuangxiPtrOutput() ErEnvConfPresetCanaryGuangxiPtrOutput {
+	return i.ToErEnvConfPresetCanaryGuangxiPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryGuangxiPtrType) ToErEnvConfPresetCanaryGuangxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangxiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuangxiPtrOutput)
+}
+
+type ErEnvConfPresetCanaryGuangxiOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryGuangxiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryGuangxi)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryGuangxiOutput) ToErEnvConfPresetCanaryGuangxiOutput() ErEnvConfPresetCanaryGuangxiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGuangxiOutput) ToErEnvConfPresetCanaryGuangxiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangxiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGuangxiOutput) ToErEnvConfPresetCanaryGuangxiPtrOutput() ErEnvConfPresetCanaryGuangxiPtrOutput {
+	return o.ToErEnvConfPresetCanaryGuangxiPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryGuangxiOutput) ToErEnvConfPresetCanaryGuangxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangxiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryGuangxi) *ErEnvConfPresetCanaryGuangxi {
+		return &v
+	}).(ErEnvConfPresetCanaryGuangxiPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryGuangxiOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryGuangxi) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryGuangxiOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryGuangxi) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryGuangxiOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryGuangxi) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryGuangxiPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryGuangxiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryGuangxi)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryGuangxiPtrOutput) ToErEnvConfPresetCanaryGuangxiPtrOutput() ErEnvConfPresetCanaryGuangxiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGuangxiPtrOutput) ToErEnvConfPresetCanaryGuangxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuangxiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGuangxiPtrOutput) Elem() ErEnvConfPresetCanaryGuangxiOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangxi) ErEnvConfPresetCanaryGuangxi {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryGuangxi
+		return ret
+	}).(ErEnvConfPresetCanaryGuangxiOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryGuangxiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangxi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryGuangxiPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangxi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryGuangxiPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangxi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryGuizhou struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryGuizhouInput is an input type that accepts ErEnvConfPresetCanaryGuizhouArgs and ErEnvConfPresetCanaryGuizhouOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryGuizhouInput` via:
+//
+//	ErEnvConfPresetCanaryGuizhouArgs{...}
+type ErEnvConfPresetCanaryGuizhouInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryGuizhouOutput() ErEnvConfPresetCanaryGuizhouOutput
+	ToErEnvConfPresetCanaryGuizhouOutputWithContext(context.Context) ErEnvConfPresetCanaryGuizhouOutput
+}
+
+type ErEnvConfPresetCanaryGuizhouArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryGuizhouArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryGuizhou)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryGuizhouArgs) ToErEnvConfPresetCanaryGuizhouOutput() ErEnvConfPresetCanaryGuizhouOutput {
+	return i.ToErEnvConfPresetCanaryGuizhouOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryGuizhouArgs) ToErEnvConfPresetCanaryGuizhouOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuizhouOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuizhouOutput)
+}
+
+func (i ErEnvConfPresetCanaryGuizhouArgs) ToErEnvConfPresetCanaryGuizhouPtrOutput() ErEnvConfPresetCanaryGuizhouPtrOutput {
+	return i.ToErEnvConfPresetCanaryGuizhouPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryGuizhouArgs) ToErEnvConfPresetCanaryGuizhouPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuizhouPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuizhouOutput).ToErEnvConfPresetCanaryGuizhouPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryGuizhouPtrInput is an input type that accepts ErEnvConfPresetCanaryGuizhouArgs, ErEnvConfPresetCanaryGuizhouPtr and ErEnvConfPresetCanaryGuizhouPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryGuizhouPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryGuizhouArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryGuizhouPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryGuizhouPtrOutput() ErEnvConfPresetCanaryGuizhouPtrOutput
+	ToErEnvConfPresetCanaryGuizhouPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryGuizhouPtrOutput
+}
+
+type erEnvConfPresetCanaryGuizhouPtrType ErEnvConfPresetCanaryGuizhouArgs
+
+func ErEnvConfPresetCanaryGuizhouPtr(v *ErEnvConfPresetCanaryGuizhouArgs) ErEnvConfPresetCanaryGuizhouPtrInput {
+	return (*erEnvConfPresetCanaryGuizhouPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryGuizhouPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryGuizhou)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryGuizhouPtrType) ToErEnvConfPresetCanaryGuizhouPtrOutput() ErEnvConfPresetCanaryGuizhouPtrOutput {
+	return i.ToErEnvConfPresetCanaryGuizhouPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryGuizhouPtrType) ToErEnvConfPresetCanaryGuizhouPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuizhouPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryGuizhouPtrOutput)
+}
+
+type ErEnvConfPresetCanaryGuizhouOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryGuizhouOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryGuizhou)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryGuizhouOutput) ToErEnvConfPresetCanaryGuizhouOutput() ErEnvConfPresetCanaryGuizhouOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGuizhouOutput) ToErEnvConfPresetCanaryGuizhouOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuizhouOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGuizhouOutput) ToErEnvConfPresetCanaryGuizhouPtrOutput() ErEnvConfPresetCanaryGuizhouPtrOutput {
+	return o.ToErEnvConfPresetCanaryGuizhouPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryGuizhouOutput) ToErEnvConfPresetCanaryGuizhouPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuizhouPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryGuizhou) *ErEnvConfPresetCanaryGuizhou {
+		return &v
+	}).(ErEnvConfPresetCanaryGuizhouPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryGuizhouOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryGuizhou) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryGuizhouOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryGuizhou) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryGuizhouOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryGuizhou) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryGuizhouPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryGuizhouPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryGuizhou)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryGuizhouPtrOutput) ToErEnvConfPresetCanaryGuizhouPtrOutput() ErEnvConfPresetCanaryGuizhouPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGuizhouPtrOutput) ToErEnvConfPresetCanaryGuizhouPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryGuizhouPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryGuizhouPtrOutput) Elem() ErEnvConfPresetCanaryGuizhouOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuizhou) ErEnvConfPresetCanaryGuizhou {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryGuizhou
+		return ret
+	}).(ErEnvConfPresetCanaryGuizhouOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryGuizhouPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuizhou) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryGuizhouPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuizhou) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryGuizhouPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuizhou) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHainan struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryHainanInput is an input type that accepts ErEnvConfPresetCanaryHainanArgs and ErEnvConfPresetCanaryHainanOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHainanInput` via:
+//
+//	ErEnvConfPresetCanaryHainanArgs{...}
+type ErEnvConfPresetCanaryHainanInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHainanOutput() ErEnvConfPresetCanaryHainanOutput
+	ToErEnvConfPresetCanaryHainanOutputWithContext(context.Context) ErEnvConfPresetCanaryHainanOutput
+}
+
+type ErEnvConfPresetCanaryHainanArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryHainanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHainan)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryHainanArgs) ToErEnvConfPresetCanaryHainanOutput() ErEnvConfPresetCanaryHainanOutput {
+	return i.ToErEnvConfPresetCanaryHainanOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHainanArgs) ToErEnvConfPresetCanaryHainanOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHainanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHainanOutput)
+}
+
+func (i ErEnvConfPresetCanaryHainanArgs) ToErEnvConfPresetCanaryHainanPtrOutput() ErEnvConfPresetCanaryHainanPtrOutput {
+	return i.ToErEnvConfPresetCanaryHainanPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHainanArgs) ToErEnvConfPresetCanaryHainanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHainanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHainanOutput).ToErEnvConfPresetCanaryHainanPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryHainanPtrInput is an input type that accepts ErEnvConfPresetCanaryHainanArgs, ErEnvConfPresetCanaryHainanPtr and ErEnvConfPresetCanaryHainanPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHainanPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryHainanArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryHainanPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHainanPtrOutput() ErEnvConfPresetCanaryHainanPtrOutput
+	ToErEnvConfPresetCanaryHainanPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryHainanPtrOutput
+}
+
+type erEnvConfPresetCanaryHainanPtrType ErEnvConfPresetCanaryHainanArgs
+
+func ErEnvConfPresetCanaryHainanPtr(v *ErEnvConfPresetCanaryHainanArgs) ErEnvConfPresetCanaryHainanPtrInput {
+	return (*erEnvConfPresetCanaryHainanPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryHainanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHainan)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryHainanPtrType) ToErEnvConfPresetCanaryHainanPtrOutput() ErEnvConfPresetCanaryHainanPtrOutput {
+	return i.ToErEnvConfPresetCanaryHainanPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryHainanPtrType) ToErEnvConfPresetCanaryHainanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHainanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHainanPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHainanOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHainanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHainan)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHainanOutput) ToErEnvConfPresetCanaryHainanOutput() ErEnvConfPresetCanaryHainanOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHainanOutput) ToErEnvConfPresetCanaryHainanOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHainanOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHainanOutput) ToErEnvConfPresetCanaryHainanPtrOutput() ErEnvConfPresetCanaryHainanPtrOutput {
+	return o.ToErEnvConfPresetCanaryHainanPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryHainanOutput) ToErEnvConfPresetCanaryHainanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHainanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHainan) *ErEnvConfPresetCanaryHainan {
+		return &v
+	}).(ErEnvConfPresetCanaryHainanPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHainanOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHainan) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHainanOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHainan) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHainanOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHainan) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHainanPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHainanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHainan)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHainanPtrOutput) ToErEnvConfPresetCanaryHainanPtrOutput() ErEnvConfPresetCanaryHainanPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHainanPtrOutput) ToErEnvConfPresetCanaryHainanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHainanPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHainanPtrOutput) Elem() ErEnvConfPresetCanaryHainanOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHainan) ErEnvConfPresetCanaryHainan {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryHainan
+		return ret
+	}).(ErEnvConfPresetCanaryHainanOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHainanPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHainan) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHainanPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHainan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHainanPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHainan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHebei struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryHebeiInput is an input type that accepts ErEnvConfPresetCanaryHebeiArgs and ErEnvConfPresetCanaryHebeiOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHebeiInput` via:
+//
+//	ErEnvConfPresetCanaryHebeiArgs{...}
+type ErEnvConfPresetCanaryHebeiInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHebeiOutput() ErEnvConfPresetCanaryHebeiOutput
+	ToErEnvConfPresetCanaryHebeiOutputWithContext(context.Context) ErEnvConfPresetCanaryHebeiOutput
+}
+
+type ErEnvConfPresetCanaryHebeiArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryHebeiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHebei)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryHebeiArgs) ToErEnvConfPresetCanaryHebeiOutput() ErEnvConfPresetCanaryHebeiOutput {
+	return i.ToErEnvConfPresetCanaryHebeiOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHebeiArgs) ToErEnvConfPresetCanaryHebeiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHebeiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHebeiOutput)
+}
+
+func (i ErEnvConfPresetCanaryHebeiArgs) ToErEnvConfPresetCanaryHebeiPtrOutput() ErEnvConfPresetCanaryHebeiPtrOutput {
+	return i.ToErEnvConfPresetCanaryHebeiPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHebeiArgs) ToErEnvConfPresetCanaryHebeiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHebeiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHebeiOutput).ToErEnvConfPresetCanaryHebeiPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryHebeiPtrInput is an input type that accepts ErEnvConfPresetCanaryHebeiArgs, ErEnvConfPresetCanaryHebeiPtr and ErEnvConfPresetCanaryHebeiPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHebeiPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryHebeiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryHebeiPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHebeiPtrOutput() ErEnvConfPresetCanaryHebeiPtrOutput
+	ToErEnvConfPresetCanaryHebeiPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryHebeiPtrOutput
+}
+
+type erEnvConfPresetCanaryHebeiPtrType ErEnvConfPresetCanaryHebeiArgs
+
+func ErEnvConfPresetCanaryHebeiPtr(v *ErEnvConfPresetCanaryHebeiArgs) ErEnvConfPresetCanaryHebeiPtrInput {
+	return (*erEnvConfPresetCanaryHebeiPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryHebeiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHebei)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryHebeiPtrType) ToErEnvConfPresetCanaryHebeiPtrOutput() ErEnvConfPresetCanaryHebeiPtrOutput {
+	return i.ToErEnvConfPresetCanaryHebeiPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryHebeiPtrType) ToErEnvConfPresetCanaryHebeiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHebeiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHebeiPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHebeiOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHebeiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHebei)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHebeiOutput) ToErEnvConfPresetCanaryHebeiOutput() ErEnvConfPresetCanaryHebeiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHebeiOutput) ToErEnvConfPresetCanaryHebeiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHebeiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHebeiOutput) ToErEnvConfPresetCanaryHebeiPtrOutput() ErEnvConfPresetCanaryHebeiPtrOutput {
+	return o.ToErEnvConfPresetCanaryHebeiPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryHebeiOutput) ToErEnvConfPresetCanaryHebeiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHebeiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHebei) *ErEnvConfPresetCanaryHebei {
+		return &v
+	}).(ErEnvConfPresetCanaryHebeiPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHebeiOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHebei) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHebeiOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHebei) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHebeiOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHebei) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHebeiPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHebeiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHebei)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHebeiPtrOutput) ToErEnvConfPresetCanaryHebeiPtrOutput() ErEnvConfPresetCanaryHebeiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHebeiPtrOutput) ToErEnvConfPresetCanaryHebeiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHebeiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHebeiPtrOutput) Elem() ErEnvConfPresetCanaryHebeiOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHebei) ErEnvConfPresetCanaryHebei {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryHebei
+		return ret
+	}).(ErEnvConfPresetCanaryHebeiOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHebeiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHebei) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHebeiPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHebei) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHebeiPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHebei) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHeilongjiang struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryHeilongjiangInput is an input type that accepts ErEnvConfPresetCanaryHeilongjiangArgs and ErEnvConfPresetCanaryHeilongjiangOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHeilongjiangInput` via:
+//
+//	ErEnvConfPresetCanaryHeilongjiangArgs{...}
+type ErEnvConfPresetCanaryHeilongjiangInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHeilongjiangOutput() ErEnvConfPresetCanaryHeilongjiangOutput
+	ToErEnvConfPresetCanaryHeilongjiangOutputWithContext(context.Context) ErEnvConfPresetCanaryHeilongjiangOutput
+}
+
+type ErEnvConfPresetCanaryHeilongjiangArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryHeilongjiangArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHeilongjiang)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryHeilongjiangArgs) ToErEnvConfPresetCanaryHeilongjiangOutput() ErEnvConfPresetCanaryHeilongjiangOutput {
+	return i.ToErEnvConfPresetCanaryHeilongjiangOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHeilongjiangArgs) ToErEnvConfPresetCanaryHeilongjiangOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHeilongjiangOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHeilongjiangOutput)
+}
+
+func (i ErEnvConfPresetCanaryHeilongjiangArgs) ToErEnvConfPresetCanaryHeilongjiangPtrOutput() ErEnvConfPresetCanaryHeilongjiangPtrOutput {
+	return i.ToErEnvConfPresetCanaryHeilongjiangPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHeilongjiangArgs) ToErEnvConfPresetCanaryHeilongjiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHeilongjiangPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHeilongjiangOutput).ToErEnvConfPresetCanaryHeilongjiangPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryHeilongjiangPtrInput is an input type that accepts ErEnvConfPresetCanaryHeilongjiangArgs, ErEnvConfPresetCanaryHeilongjiangPtr and ErEnvConfPresetCanaryHeilongjiangPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHeilongjiangPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryHeilongjiangArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryHeilongjiangPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHeilongjiangPtrOutput() ErEnvConfPresetCanaryHeilongjiangPtrOutput
+	ToErEnvConfPresetCanaryHeilongjiangPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryHeilongjiangPtrOutput
+}
+
+type erEnvConfPresetCanaryHeilongjiangPtrType ErEnvConfPresetCanaryHeilongjiangArgs
+
+func ErEnvConfPresetCanaryHeilongjiangPtr(v *ErEnvConfPresetCanaryHeilongjiangArgs) ErEnvConfPresetCanaryHeilongjiangPtrInput {
+	return (*erEnvConfPresetCanaryHeilongjiangPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryHeilongjiangPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHeilongjiang)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryHeilongjiangPtrType) ToErEnvConfPresetCanaryHeilongjiangPtrOutput() ErEnvConfPresetCanaryHeilongjiangPtrOutput {
+	return i.ToErEnvConfPresetCanaryHeilongjiangPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryHeilongjiangPtrType) ToErEnvConfPresetCanaryHeilongjiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHeilongjiangPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHeilongjiangPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHeilongjiangOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHeilongjiangOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHeilongjiang)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHeilongjiangOutput) ToErEnvConfPresetCanaryHeilongjiangOutput() ErEnvConfPresetCanaryHeilongjiangOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHeilongjiangOutput) ToErEnvConfPresetCanaryHeilongjiangOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHeilongjiangOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHeilongjiangOutput) ToErEnvConfPresetCanaryHeilongjiangPtrOutput() ErEnvConfPresetCanaryHeilongjiangPtrOutput {
+	return o.ToErEnvConfPresetCanaryHeilongjiangPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryHeilongjiangOutput) ToErEnvConfPresetCanaryHeilongjiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHeilongjiangPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHeilongjiang) *ErEnvConfPresetCanaryHeilongjiang {
+		return &v
+	}).(ErEnvConfPresetCanaryHeilongjiangPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHeilongjiangOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHeilongjiang) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHeilongjiangOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHeilongjiang) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHeilongjiangOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHeilongjiang) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHeilongjiangPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHeilongjiangPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHeilongjiang)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) ToErEnvConfPresetCanaryHeilongjiangPtrOutput() ErEnvConfPresetCanaryHeilongjiangPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) ToErEnvConfPresetCanaryHeilongjiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHeilongjiangPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) Elem() ErEnvConfPresetCanaryHeilongjiangOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHeilongjiang) ErEnvConfPresetCanaryHeilongjiang {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryHeilongjiang
+		return ret
+	}).(ErEnvConfPresetCanaryHeilongjiangOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHeilongjiang) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHeilongjiang) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHeilongjiang) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHenan struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryHenanInput is an input type that accepts ErEnvConfPresetCanaryHenanArgs and ErEnvConfPresetCanaryHenanOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHenanInput` via:
+//
+//	ErEnvConfPresetCanaryHenanArgs{...}
+type ErEnvConfPresetCanaryHenanInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHenanOutput() ErEnvConfPresetCanaryHenanOutput
+	ToErEnvConfPresetCanaryHenanOutputWithContext(context.Context) ErEnvConfPresetCanaryHenanOutput
+}
+
+type ErEnvConfPresetCanaryHenanArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryHenanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHenan)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryHenanArgs) ToErEnvConfPresetCanaryHenanOutput() ErEnvConfPresetCanaryHenanOutput {
+	return i.ToErEnvConfPresetCanaryHenanOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHenanArgs) ToErEnvConfPresetCanaryHenanOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHenanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHenanOutput)
+}
+
+func (i ErEnvConfPresetCanaryHenanArgs) ToErEnvConfPresetCanaryHenanPtrOutput() ErEnvConfPresetCanaryHenanPtrOutput {
+	return i.ToErEnvConfPresetCanaryHenanPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHenanArgs) ToErEnvConfPresetCanaryHenanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHenanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHenanOutput).ToErEnvConfPresetCanaryHenanPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryHenanPtrInput is an input type that accepts ErEnvConfPresetCanaryHenanArgs, ErEnvConfPresetCanaryHenanPtr and ErEnvConfPresetCanaryHenanPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHenanPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryHenanArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryHenanPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHenanPtrOutput() ErEnvConfPresetCanaryHenanPtrOutput
+	ToErEnvConfPresetCanaryHenanPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryHenanPtrOutput
+}
+
+type erEnvConfPresetCanaryHenanPtrType ErEnvConfPresetCanaryHenanArgs
+
+func ErEnvConfPresetCanaryHenanPtr(v *ErEnvConfPresetCanaryHenanArgs) ErEnvConfPresetCanaryHenanPtrInput {
+	return (*erEnvConfPresetCanaryHenanPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryHenanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHenan)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryHenanPtrType) ToErEnvConfPresetCanaryHenanPtrOutput() ErEnvConfPresetCanaryHenanPtrOutput {
+	return i.ToErEnvConfPresetCanaryHenanPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryHenanPtrType) ToErEnvConfPresetCanaryHenanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHenanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHenanPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHenanOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHenanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHenan)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHenanOutput) ToErEnvConfPresetCanaryHenanOutput() ErEnvConfPresetCanaryHenanOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHenanOutput) ToErEnvConfPresetCanaryHenanOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHenanOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHenanOutput) ToErEnvConfPresetCanaryHenanPtrOutput() ErEnvConfPresetCanaryHenanPtrOutput {
+	return o.ToErEnvConfPresetCanaryHenanPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryHenanOutput) ToErEnvConfPresetCanaryHenanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHenanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHenan) *ErEnvConfPresetCanaryHenan {
+		return &v
+	}).(ErEnvConfPresetCanaryHenanPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHenanOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHenan) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHenanOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHenan) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHenanOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHenan) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHenanPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHenanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHenan)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHenanPtrOutput) ToErEnvConfPresetCanaryHenanPtrOutput() ErEnvConfPresetCanaryHenanPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHenanPtrOutput) ToErEnvConfPresetCanaryHenanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHenanPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHenanPtrOutput) Elem() ErEnvConfPresetCanaryHenanOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHenan) ErEnvConfPresetCanaryHenan {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryHenan
+		return ret
+	}).(ErEnvConfPresetCanaryHenanOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHenanPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHenan) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHenanPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHenan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHenanPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHenan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHongKong struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryHongKongInput is an input type that accepts ErEnvConfPresetCanaryHongKongArgs and ErEnvConfPresetCanaryHongKongOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHongKongInput` via:
+//
+//	ErEnvConfPresetCanaryHongKongArgs{...}
+type ErEnvConfPresetCanaryHongKongInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHongKongOutput() ErEnvConfPresetCanaryHongKongOutput
+	ToErEnvConfPresetCanaryHongKongOutputWithContext(context.Context) ErEnvConfPresetCanaryHongKongOutput
+}
+
+type ErEnvConfPresetCanaryHongKongArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryHongKongArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHongKong)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryHongKongArgs) ToErEnvConfPresetCanaryHongKongOutput() ErEnvConfPresetCanaryHongKongOutput {
+	return i.ToErEnvConfPresetCanaryHongKongOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHongKongArgs) ToErEnvConfPresetCanaryHongKongOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHongKongOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHongKongOutput)
+}
+
+func (i ErEnvConfPresetCanaryHongKongArgs) ToErEnvConfPresetCanaryHongKongPtrOutput() ErEnvConfPresetCanaryHongKongPtrOutput {
+	return i.ToErEnvConfPresetCanaryHongKongPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHongKongArgs) ToErEnvConfPresetCanaryHongKongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHongKongPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHongKongOutput).ToErEnvConfPresetCanaryHongKongPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryHongKongPtrInput is an input type that accepts ErEnvConfPresetCanaryHongKongArgs, ErEnvConfPresetCanaryHongKongPtr and ErEnvConfPresetCanaryHongKongPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHongKongPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryHongKongArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryHongKongPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHongKongPtrOutput() ErEnvConfPresetCanaryHongKongPtrOutput
+	ToErEnvConfPresetCanaryHongKongPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryHongKongPtrOutput
+}
+
+type erEnvConfPresetCanaryHongKongPtrType ErEnvConfPresetCanaryHongKongArgs
+
+func ErEnvConfPresetCanaryHongKongPtr(v *ErEnvConfPresetCanaryHongKongArgs) ErEnvConfPresetCanaryHongKongPtrInput {
+	return (*erEnvConfPresetCanaryHongKongPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryHongKongPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHongKong)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryHongKongPtrType) ToErEnvConfPresetCanaryHongKongPtrOutput() ErEnvConfPresetCanaryHongKongPtrOutput {
+	return i.ToErEnvConfPresetCanaryHongKongPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryHongKongPtrType) ToErEnvConfPresetCanaryHongKongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHongKongPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHongKongPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHongKongOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHongKongOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHongKong)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHongKongOutput) ToErEnvConfPresetCanaryHongKongOutput() ErEnvConfPresetCanaryHongKongOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHongKongOutput) ToErEnvConfPresetCanaryHongKongOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHongKongOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHongKongOutput) ToErEnvConfPresetCanaryHongKongPtrOutput() ErEnvConfPresetCanaryHongKongPtrOutput {
+	return o.ToErEnvConfPresetCanaryHongKongPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryHongKongOutput) ToErEnvConfPresetCanaryHongKongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHongKongPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHongKong) *ErEnvConfPresetCanaryHongKong {
+		return &v
+	}).(ErEnvConfPresetCanaryHongKongPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHongKongOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHongKong) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHongKongOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHongKong) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHongKongOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHongKong) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHongKongPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHongKongPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHongKong)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHongKongPtrOutput) ToErEnvConfPresetCanaryHongKongPtrOutput() ErEnvConfPresetCanaryHongKongPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHongKongPtrOutput) ToErEnvConfPresetCanaryHongKongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHongKongPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHongKongPtrOutput) Elem() ErEnvConfPresetCanaryHongKongOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHongKong) ErEnvConfPresetCanaryHongKong {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryHongKong
+		return ret
+	}).(ErEnvConfPresetCanaryHongKongOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHongKongPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHongKong) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHongKongPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHongKong) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHongKongPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHongKong) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHubei struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryHubeiInput is an input type that accepts ErEnvConfPresetCanaryHubeiArgs and ErEnvConfPresetCanaryHubeiOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHubeiInput` via:
+//
+//	ErEnvConfPresetCanaryHubeiArgs{...}
+type ErEnvConfPresetCanaryHubeiInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHubeiOutput() ErEnvConfPresetCanaryHubeiOutput
+	ToErEnvConfPresetCanaryHubeiOutputWithContext(context.Context) ErEnvConfPresetCanaryHubeiOutput
+}
+
+type ErEnvConfPresetCanaryHubeiArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryHubeiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHubei)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryHubeiArgs) ToErEnvConfPresetCanaryHubeiOutput() ErEnvConfPresetCanaryHubeiOutput {
+	return i.ToErEnvConfPresetCanaryHubeiOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHubeiArgs) ToErEnvConfPresetCanaryHubeiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHubeiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHubeiOutput)
+}
+
+func (i ErEnvConfPresetCanaryHubeiArgs) ToErEnvConfPresetCanaryHubeiPtrOutput() ErEnvConfPresetCanaryHubeiPtrOutput {
+	return i.ToErEnvConfPresetCanaryHubeiPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHubeiArgs) ToErEnvConfPresetCanaryHubeiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHubeiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHubeiOutput).ToErEnvConfPresetCanaryHubeiPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryHubeiPtrInput is an input type that accepts ErEnvConfPresetCanaryHubeiArgs, ErEnvConfPresetCanaryHubeiPtr and ErEnvConfPresetCanaryHubeiPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHubeiPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryHubeiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryHubeiPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHubeiPtrOutput() ErEnvConfPresetCanaryHubeiPtrOutput
+	ToErEnvConfPresetCanaryHubeiPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryHubeiPtrOutput
+}
+
+type erEnvConfPresetCanaryHubeiPtrType ErEnvConfPresetCanaryHubeiArgs
+
+func ErEnvConfPresetCanaryHubeiPtr(v *ErEnvConfPresetCanaryHubeiArgs) ErEnvConfPresetCanaryHubeiPtrInput {
+	return (*erEnvConfPresetCanaryHubeiPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryHubeiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHubei)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryHubeiPtrType) ToErEnvConfPresetCanaryHubeiPtrOutput() ErEnvConfPresetCanaryHubeiPtrOutput {
+	return i.ToErEnvConfPresetCanaryHubeiPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryHubeiPtrType) ToErEnvConfPresetCanaryHubeiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHubeiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHubeiPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHubeiOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHubeiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHubei)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHubeiOutput) ToErEnvConfPresetCanaryHubeiOutput() ErEnvConfPresetCanaryHubeiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHubeiOutput) ToErEnvConfPresetCanaryHubeiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHubeiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHubeiOutput) ToErEnvConfPresetCanaryHubeiPtrOutput() ErEnvConfPresetCanaryHubeiPtrOutput {
+	return o.ToErEnvConfPresetCanaryHubeiPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryHubeiOutput) ToErEnvConfPresetCanaryHubeiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHubeiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHubei) *ErEnvConfPresetCanaryHubei {
+		return &v
+	}).(ErEnvConfPresetCanaryHubeiPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHubeiOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHubei) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHubeiOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHubei) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHubeiOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHubei) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHubeiPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHubeiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHubei)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHubeiPtrOutput) ToErEnvConfPresetCanaryHubeiPtrOutput() ErEnvConfPresetCanaryHubeiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHubeiPtrOutput) ToErEnvConfPresetCanaryHubeiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHubeiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHubeiPtrOutput) Elem() ErEnvConfPresetCanaryHubeiOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHubei) ErEnvConfPresetCanaryHubei {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryHubei
+		return ret
+	}).(ErEnvConfPresetCanaryHubeiOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHubeiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHubei) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHubeiPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHubei) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHubeiPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHubei) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHunan struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryHunanInput is an input type that accepts ErEnvConfPresetCanaryHunanArgs and ErEnvConfPresetCanaryHunanOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHunanInput` via:
+//
+//	ErEnvConfPresetCanaryHunanArgs{...}
+type ErEnvConfPresetCanaryHunanInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHunanOutput() ErEnvConfPresetCanaryHunanOutput
+	ToErEnvConfPresetCanaryHunanOutputWithContext(context.Context) ErEnvConfPresetCanaryHunanOutput
+}
+
+type ErEnvConfPresetCanaryHunanArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryHunanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHunan)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryHunanArgs) ToErEnvConfPresetCanaryHunanOutput() ErEnvConfPresetCanaryHunanOutput {
+	return i.ToErEnvConfPresetCanaryHunanOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHunanArgs) ToErEnvConfPresetCanaryHunanOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHunanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHunanOutput)
+}
+
+func (i ErEnvConfPresetCanaryHunanArgs) ToErEnvConfPresetCanaryHunanPtrOutput() ErEnvConfPresetCanaryHunanPtrOutput {
+	return i.ToErEnvConfPresetCanaryHunanPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryHunanArgs) ToErEnvConfPresetCanaryHunanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHunanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHunanOutput).ToErEnvConfPresetCanaryHunanPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryHunanPtrInput is an input type that accepts ErEnvConfPresetCanaryHunanArgs, ErEnvConfPresetCanaryHunanPtr and ErEnvConfPresetCanaryHunanPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryHunanPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryHunanArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryHunanPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryHunanPtrOutput() ErEnvConfPresetCanaryHunanPtrOutput
+	ToErEnvConfPresetCanaryHunanPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryHunanPtrOutput
+}
+
+type erEnvConfPresetCanaryHunanPtrType ErEnvConfPresetCanaryHunanArgs
+
+func ErEnvConfPresetCanaryHunanPtr(v *ErEnvConfPresetCanaryHunanArgs) ErEnvConfPresetCanaryHunanPtrInput {
+	return (*erEnvConfPresetCanaryHunanPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryHunanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHunan)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryHunanPtrType) ToErEnvConfPresetCanaryHunanPtrOutput() ErEnvConfPresetCanaryHunanPtrOutput {
+	return i.ToErEnvConfPresetCanaryHunanPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryHunanPtrType) ToErEnvConfPresetCanaryHunanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHunanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryHunanPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHunanOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHunanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryHunan)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHunanOutput) ToErEnvConfPresetCanaryHunanOutput() ErEnvConfPresetCanaryHunanOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHunanOutput) ToErEnvConfPresetCanaryHunanOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHunanOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHunanOutput) ToErEnvConfPresetCanaryHunanPtrOutput() ErEnvConfPresetCanaryHunanPtrOutput {
+	return o.ToErEnvConfPresetCanaryHunanPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryHunanOutput) ToErEnvConfPresetCanaryHunanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHunanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryHunan) *ErEnvConfPresetCanaryHunan {
+		return &v
+	}).(ErEnvConfPresetCanaryHunanPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHunanOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHunan) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHunanOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHunan) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHunanOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryHunan) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryHunanPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryHunanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryHunan)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryHunanPtrOutput) ToErEnvConfPresetCanaryHunanPtrOutput() ErEnvConfPresetCanaryHunanPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHunanPtrOutput) ToErEnvConfPresetCanaryHunanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryHunanPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryHunanPtrOutput) Elem() ErEnvConfPresetCanaryHunanOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHunan) ErEnvConfPresetCanaryHunan {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryHunan
+		return ret
+	}).(ErEnvConfPresetCanaryHunanOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryHunanPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHunan) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryHunanPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHunan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryHunanPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryHunan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryJiangsu struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryJiangsuInput is an input type that accepts ErEnvConfPresetCanaryJiangsuArgs and ErEnvConfPresetCanaryJiangsuOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryJiangsuInput` via:
+//
+//	ErEnvConfPresetCanaryJiangsuArgs{...}
+type ErEnvConfPresetCanaryJiangsuInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryJiangsuOutput() ErEnvConfPresetCanaryJiangsuOutput
+	ToErEnvConfPresetCanaryJiangsuOutputWithContext(context.Context) ErEnvConfPresetCanaryJiangsuOutput
+}
+
+type ErEnvConfPresetCanaryJiangsuArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryJiangsuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryJiangsu)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryJiangsuArgs) ToErEnvConfPresetCanaryJiangsuOutput() ErEnvConfPresetCanaryJiangsuOutput {
+	return i.ToErEnvConfPresetCanaryJiangsuOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryJiangsuArgs) ToErEnvConfPresetCanaryJiangsuOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangsuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJiangsuOutput)
+}
+
+func (i ErEnvConfPresetCanaryJiangsuArgs) ToErEnvConfPresetCanaryJiangsuPtrOutput() ErEnvConfPresetCanaryJiangsuPtrOutput {
+	return i.ToErEnvConfPresetCanaryJiangsuPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryJiangsuArgs) ToErEnvConfPresetCanaryJiangsuPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangsuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJiangsuOutput).ToErEnvConfPresetCanaryJiangsuPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryJiangsuPtrInput is an input type that accepts ErEnvConfPresetCanaryJiangsuArgs, ErEnvConfPresetCanaryJiangsuPtr and ErEnvConfPresetCanaryJiangsuPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryJiangsuPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryJiangsuArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryJiangsuPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryJiangsuPtrOutput() ErEnvConfPresetCanaryJiangsuPtrOutput
+	ToErEnvConfPresetCanaryJiangsuPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryJiangsuPtrOutput
+}
+
+type erEnvConfPresetCanaryJiangsuPtrType ErEnvConfPresetCanaryJiangsuArgs
+
+func ErEnvConfPresetCanaryJiangsuPtr(v *ErEnvConfPresetCanaryJiangsuArgs) ErEnvConfPresetCanaryJiangsuPtrInput {
+	return (*erEnvConfPresetCanaryJiangsuPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryJiangsuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryJiangsu)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryJiangsuPtrType) ToErEnvConfPresetCanaryJiangsuPtrOutput() ErEnvConfPresetCanaryJiangsuPtrOutput {
+	return i.ToErEnvConfPresetCanaryJiangsuPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryJiangsuPtrType) ToErEnvConfPresetCanaryJiangsuPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangsuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJiangsuPtrOutput)
+}
+
+type ErEnvConfPresetCanaryJiangsuOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryJiangsuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryJiangsu)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryJiangsuOutput) ToErEnvConfPresetCanaryJiangsuOutput() ErEnvConfPresetCanaryJiangsuOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryJiangsuOutput) ToErEnvConfPresetCanaryJiangsuOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangsuOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryJiangsuOutput) ToErEnvConfPresetCanaryJiangsuPtrOutput() ErEnvConfPresetCanaryJiangsuPtrOutput {
+	return o.ToErEnvConfPresetCanaryJiangsuPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryJiangsuOutput) ToErEnvConfPresetCanaryJiangsuPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangsuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryJiangsu) *ErEnvConfPresetCanaryJiangsu {
+		return &v
+	}).(ErEnvConfPresetCanaryJiangsuPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryJiangsuOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryJiangsu) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryJiangsuOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryJiangsu) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryJiangsuOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryJiangsu) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryJiangsuPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryJiangsuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryJiangsu)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryJiangsuPtrOutput) ToErEnvConfPresetCanaryJiangsuPtrOutput() ErEnvConfPresetCanaryJiangsuPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryJiangsuPtrOutput) ToErEnvConfPresetCanaryJiangsuPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangsuPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryJiangsuPtrOutput) Elem() ErEnvConfPresetCanaryJiangsuOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangsu) ErEnvConfPresetCanaryJiangsu {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryJiangsu
+		return ret
+	}).(ErEnvConfPresetCanaryJiangsuOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryJiangsuPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangsu) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryJiangsuPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangsu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryJiangsuPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangsu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryJiangxi struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryJiangxiInput is an input type that accepts ErEnvConfPresetCanaryJiangxiArgs and ErEnvConfPresetCanaryJiangxiOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryJiangxiInput` via:
+//
+//	ErEnvConfPresetCanaryJiangxiArgs{...}
+type ErEnvConfPresetCanaryJiangxiInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryJiangxiOutput() ErEnvConfPresetCanaryJiangxiOutput
+	ToErEnvConfPresetCanaryJiangxiOutputWithContext(context.Context) ErEnvConfPresetCanaryJiangxiOutput
+}
+
+type ErEnvConfPresetCanaryJiangxiArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryJiangxiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryJiangxi)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryJiangxiArgs) ToErEnvConfPresetCanaryJiangxiOutput() ErEnvConfPresetCanaryJiangxiOutput {
+	return i.ToErEnvConfPresetCanaryJiangxiOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryJiangxiArgs) ToErEnvConfPresetCanaryJiangxiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangxiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJiangxiOutput)
+}
+
+func (i ErEnvConfPresetCanaryJiangxiArgs) ToErEnvConfPresetCanaryJiangxiPtrOutput() ErEnvConfPresetCanaryJiangxiPtrOutput {
+	return i.ToErEnvConfPresetCanaryJiangxiPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryJiangxiArgs) ToErEnvConfPresetCanaryJiangxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangxiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJiangxiOutput).ToErEnvConfPresetCanaryJiangxiPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryJiangxiPtrInput is an input type that accepts ErEnvConfPresetCanaryJiangxiArgs, ErEnvConfPresetCanaryJiangxiPtr and ErEnvConfPresetCanaryJiangxiPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryJiangxiPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryJiangxiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryJiangxiPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryJiangxiPtrOutput() ErEnvConfPresetCanaryJiangxiPtrOutput
+	ToErEnvConfPresetCanaryJiangxiPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryJiangxiPtrOutput
+}
+
+type erEnvConfPresetCanaryJiangxiPtrType ErEnvConfPresetCanaryJiangxiArgs
+
+func ErEnvConfPresetCanaryJiangxiPtr(v *ErEnvConfPresetCanaryJiangxiArgs) ErEnvConfPresetCanaryJiangxiPtrInput {
+	return (*erEnvConfPresetCanaryJiangxiPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryJiangxiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryJiangxi)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryJiangxiPtrType) ToErEnvConfPresetCanaryJiangxiPtrOutput() ErEnvConfPresetCanaryJiangxiPtrOutput {
+	return i.ToErEnvConfPresetCanaryJiangxiPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryJiangxiPtrType) ToErEnvConfPresetCanaryJiangxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangxiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJiangxiPtrOutput)
+}
+
+type ErEnvConfPresetCanaryJiangxiOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryJiangxiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryJiangxi)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryJiangxiOutput) ToErEnvConfPresetCanaryJiangxiOutput() ErEnvConfPresetCanaryJiangxiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryJiangxiOutput) ToErEnvConfPresetCanaryJiangxiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangxiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryJiangxiOutput) ToErEnvConfPresetCanaryJiangxiPtrOutput() ErEnvConfPresetCanaryJiangxiPtrOutput {
+	return o.ToErEnvConfPresetCanaryJiangxiPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryJiangxiOutput) ToErEnvConfPresetCanaryJiangxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangxiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryJiangxi) *ErEnvConfPresetCanaryJiangxi {
+		return &v
+	}).(ErEnvConfPresetCanaryJiangxiPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryJiangxiOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryJiangxi) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryJiangxiOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryJiangxi) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryJiangxiOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryJiangxi) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryJiangxiPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryJiangxiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryJiangxi)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryJiangxiPtrOutput) ToErEnvConfPresetCanaryJiangxiPtrOutput() ErEnvConfPresetCanaryJiangxiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryJiangxiPtrOutput) ToErEnvConfPresetCanaryJiangxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJiangxiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryJiangxiPtrOutput) Elem() ErEnvConfPresetCanaryJiangxiOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangxi) ErEnvConfPresetCanaryJiangxi {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryJiangxi
+		return ret
+	}).(ErEnvConfPresetCanaryJiangxiOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryJiangxiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangxi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryJiangxiPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangxi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryJiangxiPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangxi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryJilin struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryJilinInput is an input type that accepts ErEnvConfPresetCanaryJilinArgs and ErEnvConfPresetCanaryJilinOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryJilinInput` via:
+//
+//	ErEnvConfPresetCanaryJilinArgs{...}
+type ErEnvConfPresetCanaryJilinInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryJilinOutput() ErEnvConfPresetCanaryJilinOutput
+	ToErEnvConfPresetCanaryJilinOutputWithContext(context.Context) ErEnvConfPresetCanaryJilinOutput
+}
+
+type ErEnvConfPresetCanaryJilinArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryJilinArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryJilin)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryJilinArgs) ToErEnvConfPresetCanaryJilinOutput() ErEnvConfPresetCanaryJilinOutput {
+	return i.ToErEnvConfPresetCanaryJilinOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryJilinArgs) ToErEnvConfPresetCanaryJilinOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJilinOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJilinOutput)
+}
+
+func (i ErEnvConfPresetCanaryJilinArgs) ToErEnvConfPresetCanaryJilinPtrOutput() ErEnvConfPresetCanaryJilinPtrOutput {
+	return i.ToErEnvConfPresetCanaryJilinPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryJilinArgs) ToErEnvConfPresetCanaryJilinPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJilinPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJilinOutput).ToErEnvConfPresetCanaryJilinPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryJilinPtrInput is an input type that accepts ErEnvConfPresetCanaryJilinArgs, ErEnvConfPresetCanaryJilinPtr and ErEnvConfPresetCanaryJilinPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryJilinPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryJilinArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryJilinPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryJilinPtrOutput() ErEnvConfPresetCanaryJilinPtrOutput
+	ToErEnvConfPresetCanaryJilinPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryJilinPtrOutput
+}
+
+type erEnvConfPresetCanaryJilinPtrType ErEnvConfPresetCanaryJilinArgs
+
+func ErEnvConfPresetCanaryJilinPtr(v *ErEnvConfPresetCanaryJilinArgs) ErEnvConfPresetCanaryJilinPtrInput {
+	return (*erEnvConfPresetCanaryJilinPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryJilinPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryJilin)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryJilinPtrType) ToErEnvConfPresetCanaryJilinPtrOutput() ErEnvConfPresetCanaryJilinPtrOutput {
+	return i.ToErEnvConfPresetCanaryJilinPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryJilinPtrType) ToErEnvConfPresetCanaryJilinPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJilinPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryJilinPtrOutput)
+}
+
+type ErEnvConfPresetCanaryJilinOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryJilinOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryJilin)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryJilinOutput) ToErEnvConfPresetCanaryJilinOutput() ErEnvConfPresetCanaryJilinOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryJilinOutput) ToErEnvConfPresetCanaryJilinOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJilinOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryJilinOutput) ToErEnvConfPresetCanaryJilinPtrOutput() ErEnvConfPresetCanaryJilinPtrOutput {
+	return o.ToErEnvConfPresetCanaryJilinPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryJilinOutput) ToErEnvConfPresetCanaryJilinPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJilinPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryJilin) *ErEnvConfPresetCanaryJilin {
+		return &v
+	}).(ErEnvConfPresetCanaryJilinPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryJilinOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryJilin) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryJilinOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryJilin) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryJilinOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryJilin) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryJilinPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryJilinPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryJilin)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryJilinPtrOutput) ToErEnvConfPresetCanaryJilinPtrOutput() ErEnvConfPresetCanaryJilinPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryJilinPtrOutput) ToErEnvConfPresetCanaryJilinPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryJilinPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryJilinPtrOutput) Elem() ErEnvConfPresetCanaryJilinOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryJilin) ErEnvConfPresetCanaryJilin {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryJilin
+		return ret
+	}).(ErEnvConfPresetCanaryJilinOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryJilinPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryJilin) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryJilinPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryJilin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryJilinPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryJilin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryLiaoning struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryLiaoningInput is an input type that accepts ErEnvConfPresetCanaryLiaoningArgs and ErEnvConfPresetCanaryLiaoningOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryLiaoningInput` via:
+//
+//	ErEnvConfPresetCanaryLiaoningArgs{...}
+type ErEnvConfPresetCanaryLiaoningInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryLiaoningOutput() ErEnvConfPresetCanaryLiaoningOutput
+	ToErEnvConfPresetCanaryLiaoningOutputWithContext(context.Context) ErEnvConfPresetCanaryLiaoningOutput
+}
+
+type ErEnvConfPresetCanaryLiaoningArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryLiaoningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryLiaoning)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryLiaoningArgs) ToErEnvConfPresetCanaryLiaoningOutput() ErEnvConfPresetCanaryLiaoningOutput {
+	return i.ToErEnvConfPresetCanaryLiaoningOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryLiaoningArgs) ToErEnvConfPresetCanaryLiaoningOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryLiaoningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryLiaoningOutput)
+}
+
+func (i ErEnvConfPresetCanaryLiaoningArgs) ToErEnvConfPresetCanaryLiaoningPtrOutput() ErEnvConfPresetCanaryLiaoningPtrOutput {
+	return i.ToErEnvConfPresetCanaryLiaoningPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryLiaoningArgs) ToErEnvConfPresetCanaryLiaoningPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryLiaoningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryLiaoningOutput).ToErEnvConfPresetCanaryLiaoningPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryLiaoningPtrInput is an input type that accepts ErEnvConfPresetCanaryLiaoningArgs, ErEnvConfPresetCanaryLiaoningPtr and ErEnvConfPresetCanaryLiaoningPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryLiaoningPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryLiaoningArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryLiaoningPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryLiaoningPtrOutput() ErEnvConfPresetCanaryLiaoningPtrOutput
+	ToErEnvConfPresetCanaryLiaoningPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryLiaoningPtrOutput
+}
+
+type erEnvConfPresetCanaryLiaoningPtrType ErEnvConfPresetCanaryLiaoningArgs
+
+func ErEnvConfPresetCanaryLiaoningPtr(v *ErEnvConfPresetCanaryLiaoningArgs) ErEnvConfPresetCanaryLiaoningPtrInput {
+	return (*erEnvConfPresetCanaryLiaoningPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryLiaoningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryLiaoning)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryLiaoningPtrType) ToErEnvConfPresetCanaryLiaoningPtrOutput() ErEnvConfPresetCanaryLiaoningPtrOutput {
+	return i.ToErEnvConfPresetCanaryLiaoningPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryLiaoningPtrType) ToErEnvConfPresetCanaryLiaoningPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryLiaoningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryLiaoningPtrOutput)
+}
+
+type ErEnvConfPresetCanaryLiaoningOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryLiaoningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryLiaoning)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryLiaoningOutput) ToErEnvConfPresetCanaryLiaoningOutput() ErEnvConfPresetCanaryLiaoningOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryLiaoningOutput) ToErEnvConfPresetCanaryLiaoningOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryLiaoningOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryLiaoningOutput) ToErEnvConfPresetCanaryLiaoningPtrOutput() ErEnvConfPresetCanaryLiaoningPtrOutput {
+	return o.ToErEnvConfPresetCanaryLiaoningPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryLiaoningOutput) ToErEnvConfPresetCanaryLiaoningPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryLiaoningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryLiaoning) *ErEnvConfPresetCanaryLiaoning {
+		return &v
+	}).(ErEnvConfPresetCanaryLiaoningPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryLiaoningOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryLiaoning) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryLiaoningOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryLiaoning) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryLiaoningOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryLiaoning) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryLiaoningPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryLiaoningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryLiaoning)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryLiaoningPtrOutput) ToErEnvConfPresetCanaryLiaoningPtrOutput() ErEnvConfPresetCanaryLiaoningPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryLiaoningPtrOutput) ToErEnvConfPresetCanaryLiaoningPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryLiaoningPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryLiaoningPtrOutput) Elem() ErEnvConfPresetCanaryLiaoningOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryLiaoning) ErEnvConfPresetCanaryLiaoning {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryLiaoning
+		return ret
+	}).(ErEnvConfPresetCanaryLiaoningOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryLiaoningPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryLiaoning) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryLiaoningPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryLiaoning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryLiaoningPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryLiaoning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryMacau struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryMacauInput is an input type that accepts ErEnvConfPresetCanaryMacauArgs and ErEnvConfPresetCanaryMacauOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryMacauInput` via:
+//
+//	ErEnvConfPresetCanaryMacauArgs{...}
+type ErEnvConfPresetCanaryMacauInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryMacauOutput() ErEnvConfPresetCanaryMacauOutput
+	ToErEnvConfPresetCanaryMacauOutputWithContext(context.Context) ErEnvConfPresetCanaryMacauOutput
+}
+
+type ErEnvConfPresetCanaryMacauArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryMacauArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryMacau)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryMacauArgs) ToErEnvConfPresetCanaryMacauOutput() ErEnvConfPresetCanaryMacauOutput {
+	return i.ToErEnvConfPresetCanaryMacauOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryMacauArgs) ToErEnvConfPresetCanaryMacauOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryMacauOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryMacauOutput)
+}
+
+func (i ErEnvConfPresetCanaryMacauArgs) ToErEnvConfPresetCanaryMacauPtrOutput() ErEnvConfPresetCanaryMacauPtrOutput {
+	return i.ToErEnvConfPresetCanaryMacauPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryMacauArgs) ToErEnvConfPresetCanaryMacauPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryMacauPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryMacauOutput).ToErEnvConfPresetCanaryMacauPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryMacauPtrInput is an input type that accepts ErEnvConfPresetCanaryMacauArgs, ErEnvConfPresetCanaryMacauPtr and ErEnvConfPresetCanaryMacauPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryMacauPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryMacauArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryMacauPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryMacauPtrOutput() ErEnvConfPresetCanaryMacauPtrOutput
+	ToErEnvConfPresetCanaryMacauPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryMacauPtrOutput
+}
+
+type erEnvConfPresetCanaryMacauPtrType ErEnvConfPresetCanaryMacauArgs
+
+func ErEnvConfPresetCanaryMacauPtr(v *ErEnvConfPresetCanaryMacauArgs) ErEnvConfPresetCanaryMacauPtrInput {
+	return (*erEnvConfPresetCanaryMacauPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryMacauPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryMacau)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryMacauPtrType) ToErEnvConfPresetCanaryMacauPtrOutput() ErEnvConfPresetCanaryMacauPtrOutput {
+	return i.ToErEnvConfPresetCanaryMacauPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryMacauPtrType) ToErEnvConfPresetCanaryMacauPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryMacauPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryMacauPtrOutput)
+}
+
+type ErEnvConfPresetCanaryMacauOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryMacauOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryMacau)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryMacauOutput) ToErEnvConfPresetCanaryMacauOutput() ErEnvConfPresetCanaryMacauOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryMacauOutput) ToErEnvConfPresetCanaryMacauOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryMacauOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryMacauOutput) ToErEnvConfPresetCanaryMacauPtrOutput() ErEnvConfPresetCanaryMacauPtrOutput {
+	return o.ToErEnvConfPresetCanaryMacauPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryMacauOutput) ToErEnvConfPresetCanaryMacauPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryMacauPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryMacau) *ErEnvConfPresetCanaryMacau {
+		return &v
+	}).(ErEnvConfPresetCanaryMacauPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryMacauOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryMacau) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryMacauOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryMacau) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryMacauOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryMacau) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryMacauPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryMacauPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryMacau)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryMacauPtrOutput) ToErEnvConfPresetCanaryMacauPtrOutput() ErEnvConfPresetCanaryMacauPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryMacauPtrOutput) ToErEnvConfPresetCanaryMacauPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryMacauPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryMacauPtrOutput) Elem() ErEnvConfPresetCanaryMacauOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryMacau) ErEnvConfPresetCanaryMacau {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryMacau
+		return ret
+	}).(ErEnvConfPresetCanaryMacauOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryMacauPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryMacau) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryMacauPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryMacau) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryMacauPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryMacau) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryNeimenggu struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryNeimengguInput is an input type that accepts ErEnvConfPresetCanaryNeimengguArgs and ErEnvConfPresetCanaryNeimengguOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryNeimengguInput` via:
+//
+//	ErEnvConfPresetCanaryNeimengguArgs{...}
+type ErEnvConfPresetCanaryNeimengguInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryNeimengguOutput() ErEnvConfPresetCanaryNeimengguOutput
+	ToErEnvConfPresetCanaryNeimengguOutputWithContext(context.Context) ErEnvConfPresetCanaryNeimengguOutput
+}
+
+type ErEnvConfPresetCanaryNeimengguArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryNeimengguArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryNeimenggu)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryNeimengguArgs) ToErEnvConfPresetCanaryNeimengguOutput() ErEnvConfPresetCanaryNeimengguOutput {
+	return i.ToErEnvConfPresetCanaryNeimengguOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryNeimengguArgs) ToErEnvConfPresetCanaryNeimengguOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNeimengguOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryNeimengguOutput)
+}
+
+func (i ErEnvConfPresetCanaryNeimengguArgs) ToErEnvConfPresetCanaryNeimengguPtrOutput() ErEnvConfPresetCanaryNeimengguPtrOutput {
+	return i.ToErEnvConfPresetCanaryNeimengguPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryNeimengguArgs) ToErEnvConfPresetCanaryNeimengguPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNeimengguPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryNeimengguOutput).ToErEnvConfPresetCanaryNeimengguPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryNeimengguPtrInput is an input type that accepts ErEnvConfPresetCanaryNeimengguArgs, ErEnvConfPresetCanaryNeimengguPtr and ErEnvConfPresetCanaryNeimengguPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryNeimengguPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryNeimengguArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryNeimengguPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryNeimengguPtrOutput() ErEnvConfPresetCanaryNeimengguPtrOutput
+	ToErEnvConfPresetCanaryNeimengguPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryNeimengguPtrOutput
+}
+
+type erEnvConfPresetCanaryNeimengguPtrType ErEnvConfPresetCanaryNeimengguArgs
+
+func ErEnvConfPresetCanaryNeimengguPtr(v *ErEnvConfPresetCanaryNeimengguArgs) ErEnvConfPresetCanaryNeimengguPtrInput {
+	return (*erEnvConfPresetCanaryNeimengguPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryNeimengguPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryNeimenggu)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryNeimengguPtrType) ToErEnvConfPresetCanaryNeimengguPtrOutput() ErEnvConfPresetCanaryNeimengguPtrOutput {
+	return i.ToErEnvConfPresetCanaryNeimengguPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryNeimengguPtrType) ToErEnvConfPresetCanaryNeimengguPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNeimengguPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryNeimengguPtrOutput)
+}
+
+type ErEnvConfPresetCanaryNeimengguOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryNeimengguOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryNeimenggu)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryNeimengguOutput) ToErEnvConfPresetCanaryNeimengguOutput() ErEnvConfPresetCanaryNeimengguOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryNeimengguOutput) ToErEnvConfPresetCanaryNeimengguOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNeimengguOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryNeimengguOutput) ToErEnvConfPresetCanaryNeimengguPtrOutput() ErEnvConfPresetCanaryNeimengguPtrOutput {
+	return o.ToErEnvConfPresetCanaryNeimengguPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryNeimengguOutput) ToErEnvConfPresetCanaryNeimengguPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNeimengguPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryNeimenggu) *ErEnvConfPresetCanaryNeimenggu {
+		return &v
+	}).(ErEnvConfPresetCanaryNeimengguPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryNeimengguOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryNeimenggu) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryNeimengguOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryNeimenggu) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryNeimengguOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryNeimenggu) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryNeimengguPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryNeimengguPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryNeimenggu)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryNeimengguPtrOutput) ToErEnvConfPresetCanaryNeimengguPtrOutput() ErEnvConfPresetCanaryNeimengguPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryNeimengguPtrOutput) ToErEnvConfPresetCanaryNeimengguPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNeimengguPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryNeimengguPtrOutput) Elem() ErEnvConfPresetCanaryNeimengguOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryNeimenggu) ErEnvConfPresetCanaryNeimenggu {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryNeimenggu
+		return ret
+	}).(ErEnvConfPresetCanaryNeimengguOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryNeimengguPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryNeimenggu) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryNeimengguPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryNeimenggu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryNeimengguPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryNeimenggu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryNingxia struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryNingxiaInput is an input type that accepts ErEnvConfPresetCanaryNingxiaArgs and ErEnvConfPresetCanaryNingxiaOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryNingxiaInput` via:
+//
+//	ErEnvConfPresetCanaryNingxiaArgs{...}
+type ErEnvConfPresetCanaryNingxiaInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryNingxiaOutput() ErEnvConfPresetCanaryNingxiaOutput
+	ToErEnvConfPresetCanaryNingxiaOutputWithContext(context.Context) ErEnvConfPresetCanaryNingxiaOutput
+}
+
+type ErEnvConfPresetCanaryNingxiaArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryNingxiaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryNingxia)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryNingxiaArgs) ToErEnvConfPresetCanaryNingxiaOutput() ErEnvConfPresetCanaryNingxiaOutput {
+	return i.ToErEnvConfPresetCanaryNingxiaOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryNingxiaArgs) ToErEnvConfPresetCanaryNingxiaOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNingxiaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryNingxiaOutput)
+}
+
+func (i ErEnvConfPresetCanaryNingxiaArgs) ToErEnvConfPresetCanaryNingxiaPtrOutput() ErEnvConfPresetCanaryNingxiaPtrOutput {
+	return i.ToErEnvConfPresetCanaryNingxiaPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryNingxiaArgs) ToErEnvConfPresetCanaryNingxiaPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNingxiaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryNingxiaOutput).ToErEnvConfPresetCanaryNingxiaPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryNingxiaPtrInput is an input type that accepts ErEnvConfPresetCanaryNingxiaArgs, ErEnvConfPresetCanaryNingxiaPtr and ErEnvConfPresetCanaryNingxiaPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryNingxiaPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryNingxiaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryNingxiaPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryNingxiaPtrOutput() ErEnvConfPresetCanaryNingxiaPtrOutput
+	ToErEnvConfPresetCanaryNingxiaPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryNingxiaPtrOutput
+}
+
+type erEnvConfPresetCanaryNingxiaPtrType ErEnvConfPresetCanaryNingxiaArgs
+
+func ErEnvConfPresetCanaryNingxiaPtr(v *ErEnvConfPresetCanaryNingxiaArgs) ErEnvConfPresetCanaryNingxiaPtrInput {
+	return (*erEnvConfPresetCanaryNingxiaPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryNingxiaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryNingxia)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryNingxiaPtrType) ToErEnvConfPresetCanaryNingxiaPtrOutput() ErEnvConfPresetCanaryNingxiaPtrOutput {
+	return i.ToErEnvConfPresetCanaryNingxiaPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryNingxiaPtrType) ToErEnvConfPresetCanaryNingxiaPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNingxiaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryNingxiaPtrOutput)
+}
+
+type ErEnvConfPresetCanaryNingxiaOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryNingxiaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryNingxia)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryNingxiaOutput) ToErEnvConfPresetCanaryNingxiaOutput() ErEnvConfPresetCanaryNingxiaOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryNingxiaOutput) ToErEnvConfPresetCanaryNingxiaOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNingxiaOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryNingxiaOutput) ToErEnvConfPresetCanaryNingxiaPtrOutput() ErEnvConfPresetCanaryNingxiaPtrOutput {
+	return o.ToErEnvConfPresetCanaryNingxiaPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryNingxiaOutput) ToErEnvConfPresetCanaryNingxiaPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNingxiaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryNingxia) *ErEnvConfPresetCanaryNingxia {
+		return &v
+	}).(ErEnvConfPresetCanaryNingxiaPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryNingxiaOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryNingxia) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryNingxiaOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryNingxia) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryNingxiaOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryNingxia) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryNingxiaPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryNingxiaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryNingxia)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryNingxiaPtrOutput) ToErEnvConfPresetCanaryNingxiaPtrOutput() ErEnvConfPresetCanaryNingxiaPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryNingxiaPtrOutput) ToErEnvConfPresetCanaryNingxiaPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryNingxiaPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryNingxiaPtrOutput) Elem() ErEnvConfPresetCanaryNingxiaOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryNingxia) ErEnvConfPresetCanaryNingxia {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryNingxia
+		return ret
+	}).(ErEnvConfPresetCanaryNingxiaOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryNingxiaPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryNingxia) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryNingxiaPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryNingxia) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryNingxiaPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryNingxia) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryOverseas struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryOverseasInput is an input type that accepts ErEnvConfPresetCanaryOverseasArgs and ErEnvConfPresetCanaryOverseasOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryOverseasInput` via:
+//
+//	ErEnvConfPresetCanaryOverseasArgs{...}
+type ErEnvConfPresetCanaryOverseasInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryOverseasOutput() ErEnvConfPresetCanaryOverseasOutput
+	ToErEnvConfPresetCanaryOverseasOutputWithContext(context.Context) ErEnvConfPresetCanaryOverseasOutput
+}
+
+type ErEnvConfPresetCanaryOverseasArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryOverseasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryOverseas)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryOverseasArgs) ToErEnvConfPresetCanaryOverseasOutput() ErEnvConfPresetCanaryOverseasOutput {
+	return i.ToErEnvConfPresetCanaryOverseasOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryOverseasArgs) ToErEnvConfPresetCanaryOverseasOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryOverseasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryOverseasOutput)
+}
+
+func (i ErEnvConfPresetCanaryOverseasArgs) ToErEnvConfPresetCanaryOverseasPtrOutput() ErEnvConfPresetCanaryOverseasPtrOutput {
+	return i.ToErEnvConfPresetCanaryOverseasPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryOverseasArgs) ToErEnvConfPresetCanaryOverseasPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryOverseasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryOverseasOutput).ToErEnvConfPresetCanaryOverseasPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryOverseasPtrInput is an input type that accepts ErEnvConfPresetCanaryOverseasArgs, ErEnvConfPresetCanaryOverseasPtr and ErEnvConfPresetCanaryOverseasPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryOverseasPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryOverseasArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryOverseasPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryOverseasPtrOutput() ErEnvConfPresetCanaryOverseasPtrOutput
+	ToErEnvConfPresetCanaryOverseasPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryOverseasPtrOutput
+}
+
+type erEnvConfPresetCanaryOverseasPtrType ErEnvConfPresetCanaryOverseasArgs
+
+func ErEnvConfPresetCanaryOverseasPtr(v *ErEnvConfPresetCanaryOverseasArgs) ErEnvConfPresetCanaryOverseasPtrInput {
+	return (*erEnvConfPresetCanaryOverseasPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryOverseasPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryOverseas)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryOverseasPtrType) ToErEnvConfPresetCanaryOverseasPtrOutput() ErEnvConfPresetCanaryOverseasPtrOutput {
+	return i.ToErEnvConfPresetCanaryOverseasPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryOverseasPtrType) ToErEnvConfPresetCanaryOverseasPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryOverseasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryOverseasPtrOutput)
+}
+
+type ErEnvConfPresetCanaryOverseasOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryOverseasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryOverseas)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryOverseasOutput) ToErEnvConfPresetCanaryOverseasOutput() ErEnvConfPresetCanaryOverseasOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryOverseasOutput) ToErEnvConfPresetCanaryOverseasOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryOverseasOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryOverseasOutput) ToErEnvConfPresetCanaryOverseasPtrOutput() ErEnvConfPresetCanaryOverseasPtrOutput {
+	return o.ToErEnvConfPresetCanaryOverseasPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryOverseasOutput) ToErEnvConfPresetCanaryOverseasPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryOverseasPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryOverseas) *ErEnvConfPresetCanaryOverseas {
+		return &v
+	}).(ErEnvConfPresetCanaryOverseasPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryOverseasOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryOverseas) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryOverseasOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryOverseas) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryOverseasOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryOverseas) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryOverseasPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryOverseasPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryOverseas)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryOverseasPtrOutput) ToErEnvConfPresetCanaryOverseasPtrOutput() ErEnvConfPresetCanaryOverseasPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryOverseasPtrOutput) ToErEnvConfPresetCanaryOverseasPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryOverseasPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryOverseasPtrOutput) Elem() ErEnvConfPresetCanaryOverseasOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryOverseas) ErEnvConfPresetCanaryOverseas {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryOverseas
+		return ret
+	}).(ErEnvConfPresetCanaryOverseasOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryOverseasPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryOverseas) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryOverseasPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryOverseas) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryOverseasPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryOverseas) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryQinghai struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryQinghaiInput is an input type that accepts ErEnvConfPresetCanaryQinghaiArgs and ErEnvConfPresetCanaryQinghaiOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryQinghaiInput` via:
+//
+//	ErEnvConfPresetCanaryQinghaiArgs{...}
+type ErEnvConfPresetCanaryQinghaiInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryQinghaiOutput() ErEnvConfPresetCanaryQinghaiOutput
+	ToErEnvConfPresetCanaryQinghaiOutputWithContext(context.Context) ErEnvConfPresetCanaryQinghaiOutput
+}
+
+type ErEnvConfPresetCanaryQinghaiArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryQinghaiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryQinghai)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryQinghaiArgs) ToErEnvConfPresetCanaryQinghaiOutput() ErEnvConfPresetCanaryQinghaiOutput {
+	return i.ToErEnvConfPresetCanaryQinghaiOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryQinghaiArgs) ToErEnvConfPresetCanaryQinghaiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryQinghaiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryQinghaiOutput)
+}
+
+func (i ErEnvConfPresetCanaryQinghaiArgs) ToErEnvConfPresetCanaryQinghaiPtrOutput() ErEnvConfPresetCanaryQinghaiPtrOutput {
+	return i.ToErEnvConfPresetCanaryQinghaiPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryQinghaiArgs) ToErEnvConfPresetCanaryQinghaiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryQinghaiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryQinghaiOutput).ToErEnvConfPresetCanaryQinghaiPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryQinghaiPtrInput is an input type that accepts ErEnvConfPresetCanaryQinghaiArgs, ErEnvConfPresetCanaryQinghaiPtr and ErEnvConfPresetCanaryQinghaiPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryQinghaiPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryQinghaiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryQinghaiPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryQinghaiPtrOutput() ErEnvConfPresetCanaryQinghaiPtrOutput
+	ToErEnvConfPresetCanaryQinghaiPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryQinghaiPtrOutput
+}
+
+type erEnvConfPresetCanaryQinghaiPtrType ErEnvConfPresetCanaryQinghaiArgs
+
+func ErEnvConfPresetCanaryQinghaiPtr(v *ErEnvConfPresetCanaryQinghaiArgs) ErEnvConfPresetCanaryQinghaiPtrInput {
+	return (*erEnvConfPresetCanaryQinghaiPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryQinghaiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryQinghai)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryQinghaiPtrType) ToErEnvConfPresetCanaryQinghaiPtrOutput() ErEnvConfPresetCanaryQinghaiPtrOutput {
+	return i.ToErEnvConfPresetCanaryQinghaiPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryQinghaiPtrType) ToErEnvConfPresetCanaryQinghaiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryQinghaiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryQinghaiPtrOutput)
+}
+
+type ErEnvConfPresetCanaryQinghaiOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryQinghaiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryQinghai)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryQinghaiOutput) ToErEnvConfPresetCanaryQinghaiOutput() ErEnvConfPresetCanaryQinghaiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryQinghaiOutput) ToErEnvConfPresetCanaryQinghaiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryQinghaiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryQinghaiOutput) ToErEnvConfPresetCanaryQinghaiPtrOutput() ErEnvConfPresetCanaryQinghaiPtrOutput {
+	return o.ToErEnvConfPresetCanaryQinghaiPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryQinghaiOutput) ToErEnvConfPresetCanaryQinghaiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryQinghaiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryQinghai) *ErEnvConfPresetCanaryQinghai {
+		return &v
+	}).(ErEnvConfPresetCanaryQinghaiPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryQinghaiOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryQinghai) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryQinghaiOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryQinghai) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryQinghaiOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryQinghai) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryQinghaiPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryQinghaiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryQinghai)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryQinghaiPtrOutput) ToErEnvConfPresetCanaryQinghaiPtrOutput() ErEnvConfPresetCanaryQinghaiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryQinghaiPtrOutput) ToErEnvConfPresetCanaryQinghaiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryQinghaiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryQinghaiPtrOutput) Elem() ErEnvConfPresetCanaryQinghaiOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryQinghai) ErEnvConfPresetCanaryQinghai {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryQinghai
+		return ret
+	}).(ErEnvConfPresetCanaryQinghaiOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryQinghaiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryQinghai) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryQinghaiPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryQinghai) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryQinghaiPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryQinghai) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryShaanxi struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryShaanxiInput is an input type that accepts ErEnvConfPresetCanaryShaanxiArgs and ErEnvConfPresetCanaryShaanxiOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryShaanxiInput` via:
+//
+//	ErEnvConfPresetCanaryShaanxiArgs{...}
+type ErEnvConfPresetCanaryShaanxiInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryShaanxiOutput() ErEnvConfPresetCanaryShaanxiOutput
+	ToErEnvConfPresetCanaryShaanxiOutputWithContext(context.Context) ErEnvConfPresetCanaryShaanxiOutput
+}
+
+type ErEnvConfPresetCanaryShaanxiArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryShaanxiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryShaanxi)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryShaanxiArgs) ToErEnvConfPresetCanaryShaanxiOutput() ErEnvConfPresetCanaryShaanxiOutput {
+	return i.ToErEnvConfPresetCanaryShaanxiOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryShaanxiArgs) ToErEnvConfPresetCanaryShaanxiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShaanxiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShaanxiOutput)
+}
+
+func (i ErEnvConfPresetCanaryShaanxiArgs) ToErEnvConfPresetCanaryShaanxiPtrOutput() ErEnvConfPresetCanaryShaanxiPtrOutput {
+	return i.ToErEnvConfPresetCanaryShaanxiPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryShaanxiArgs) ToErEnvConfPresetCanaryShaanxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShaanxiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShaanxiOutput).ToErEnvConfPresetCanaryShaanxiPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryShaanxiPtrInput is an input type that accepts ErEnvConfPresetCanaryShaanxiArgs, ErEnvConfPresetCanaryShaanxiPtr and ErEnvConfPresetCanaryShaanxiPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryShaanxiPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryShaanxiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryShaanxiPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryShaanxiPtrOutput() ErEnvConfPresetCanaryShaanxiPtrOutput
+	ToErEnvConfPresetCanaryShaanxiPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryShaanxiPtrOutput
+}
+
+type erEnvConfPresetCanaryShaanxiPtrType ErEnvConfPresetCanaryShaanxiArgs
+
+func ErEnvConfPresetCanaryShaanxiPtr(v *ErEnvConfPresetCanaryShaanxiArgs) ErEnvConfPresetCanaryShaanxiPtrInput {
+	return (*erEnvConfPresetCanaryShaanxiPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryShaanxiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryShaanxi)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryShaanxiPtrType) ToErEnvConfPresetCanaryShaanxiPtrOutput() ErEnvConfPresetCanaryShaanxiPtrOutput {
+	return i.ToErEnvConfPresetCanaryShaanxiPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryShaanxiPtrType) ToErEnvConfPresetCanaryShaanxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShaanxiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShaanxiPtrOutput)
+}
+
+type ErEnvConfPresetCanaryShaanxiOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryShaanxiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryShaanxi)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryShaanxiOutput) ToErEnvConfPresetCanaryShaanxiOutput() ErEnvConfPresetCanaryShaanxiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShaanxiOutput) ToErEnvConfPresetCanaryShaanxiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShaanxiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShaanxiOutput) ToErEnvConfPresetCanaryShaanxiPtrOutput() ErEnvConfPresetCanaryShaanxiPtrOutput {
+	return o.ToErEnvConfPresetCanaryShaanxiPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryShaanxiOutput) ToErEnvConfPresetCanaryShaanxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShaanxiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryShaanxi) *ErEnvConfPresetCanaryShaanxi {
+		return &v
+	}).(ErEnvConfPresetCanaryShaanxiPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryShaanxiOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryShaanxi) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryShaanxiOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryShaanxi) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryShaanxiOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryShaanxi) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryShaanxiPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryShaanxiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryShaanxi)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryShaanxiPtrOutput) ToErEnvConfPresetCanaryShaanxiPtrOutput() ErEnvConfPresetCanaryShaanxiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShaanxiPtrOutput) ToErEnvConfPresetCanaryShaanxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShaanxiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShaanxiPtrOutput) Elem() ErEnvConfPresetCanaryShaanxiOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShaanxi) ErEnvConfPresetCanaryShaanxi {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryShaanxi
+		return ret
+	}).(ErEnvConfPresetCanaryShaanxiOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryShaanxiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShaanxi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryShaanxiPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShaanxi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryShaanxiPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShaanxi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryShandong struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryShandongInput is an input type that accepts ErEnvConfPresetCanaryShandongArgs and ErEnvConfPresetCanaryShandongOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryShandongInput` via:
+//
+//	ErEnvConfPresetCanaryShandongArgs{...}
+type ErEnvConfPresetCanaryShandongInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryShandongOutput() ErEnvConfPresetCanaryShandongOutput
+	ToErEnvConfPresetCanaryShandongOutputWithContext(context.Context) ErEnvConfPresetCanaryShandongOutput
+}
+
+type ErEnvConfPresetCanaryShandongArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryShandongArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryShandong)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryShandongArgs) ToErEnvConfPresetCanaryShandongOutput() ErEnvConfPresetCanaryShandongOutput {
+	return i.ToErEnvConfPresetCanaryShandongOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryShandongArgs) ToErEnvConfPresetCanaryShandongOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShandongOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShandongOutput)
+}
+
+func (i ErEnvConfPresetCanaryShandongArgs) ToErEnvConfPresetCanaryShandongPtrOutput() ErEnvConfPresetCanaryShandongPtrOutput {
+	return i.ToErEnvConfPresetCanaryShandongPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryShandongArgs) ToErEnvConfPresetCanaryShandongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShandongPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShandongOutput).ToErEnvConfPresetCanaryShandongPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryShandongPtrInput is an input type that accepts ErEnvConfPresetCanaryShandongArgs, ErEnvConfPresetCanaryShandongPtr and ErEnvConfPresetCanaryShandongPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryShandongPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryShandongArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryShandongPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryShandongPtrOutput() ErEnvConfPresetCanaryShandongPtrOutput
+	ToErEnvConfPresetCanaryShandongPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryShandongPtrOutput
+}
+
+type erEnvConfPresetCanaryShandongPtrType ErEnvConfPresetCanaryShandongArgs
+
+func ErEnvConfPresetCanaryShandongPtr(v *ErEnvConfPresetCanaryShandongArgs) ErEnvConfPresetCanaryShandongPtrInput {
+	return (*erEnvConfPresetCanaryShandongPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryShandongPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryShandong)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryShandongPtrType) ToErEnvConfPresetCanaryShandongPtrOutput() ErEnvConfPresetCanaryShandongPtrOutput {
+	return i.ToErEnvConfPresetCanaryShandongPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryShandongPtrType) ToErEnvConfPresetCanaryShandongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShandongPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShandongPtrOutput)
+}
+
+type ErEnvConfPresetCanaryShandongOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryShandongOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryShandong)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryShandongOutput) ToErEnvConfPresetCanaryShandongOutput() ErEnvConfPresetCanaryShandongOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShandongOutput) ToErEnvConfPresetCanaryShandongOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShandongOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShandongOutput) ToErEnvConfPresetCanaryShandongPtrOutput() ErEnvConfPresetCanaryShandongPtrOutput {
+	return o.ToErEnvConfPresetCanaryShandongPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryShandongOutput) ToErEnvConfPresetCanaryShandongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShandongPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryShandong) *ErEnvConfPresetCanaryShandong {
+		return &v
+	}).(ErEnvConfPresetCanaryShandongPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryShandongOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryShandong) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryShandongOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryShandong) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryShandongOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryShandong) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryShandongPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryShandongPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryShandong)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryShandongPtrOutput) ToErEnvConfPresetCanaryShandongPtrOutput() ErEnvConfPresetCanaryShandongPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShandongPtrOutput) ToErEnvConfPresetCanaryShandongPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShandongPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShandongPtrOutput) Elem() ErEnvConfPresetCanaryShandongOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShandong) ErEnvConfPresetCanaryShandong {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryShandong
+		return ret
+	}).(ErEnvConfPresetCanaryShandongOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryShandongPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShandong) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryShandongPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShandong) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryShandongPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShandong) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryShanghai struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryShanghaiInput is an input type that accepts ErEnvConfPresetCanaryShanghaiArgs and ErEnvConfPresetCanaryShanghaiOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryShanghaiInput` via:
+//
+//	ErEnvConfPresetCanaryShanghaiArgs{...}
+type ErEnvConfPresetCanaryShanghaiInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryShanghaiOutput() ErEnvConfPresetCanaryShanghaiOutput
+	ToErEnvConfPresetCanaryShanghaiOutputWithContext(context.Context) ErEnvConfPresetCanaryShanghaiOutput
+}
+
+type ErEnvConfPresetCanaryShanghaiArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryShanghaiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryShanghai)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryShanghaiArgs) ToErEnvConfPresetCanaryShanghaiOutput() ErEnvConfPresetCanaryShanghaiOutput {
+	return i.ToErEnvConfPresetCanaryShanghaiOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryShanghaiArgs) ToErEnvConfPresetCanaryShanghaiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanghaiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShanghaiOutput)
+}
+
+func (i ErEnvConfPresetCanaryShanghaiArgs) ToErEnvConfPresetCanaryShanghaiPtrOutput() ErEnvConfPresetCanaryShanghaiPtrOutput {
+	return i.ToErEnvConfPresetCanaryShanghaiPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryShanghaiArgs) ToErEnvConfPresetCanaryShanghaiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanghaiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShanghaiOutput).ToErEnvConfPresetCanaryShanghaiPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryShanghaiPtrInput is an input type that accepts ErEnvConfPresetCanaryShanghaiArgs, ErEnvConfPresetCanaryShanghaiPtr and ErEnvConfPresetCanaryShanghaiPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryShanghaiPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryShanghaiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryShanghaiPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryShanghaiPtrOutput() ErEnvConfPresetCanaryShanghaiPtrOutput
+	ToErEnvConfPresetCanaryShanghaiPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryShanghaiPtrOutput
+}
+
+type erEnvConfPresetCanaryShanghaiPtrType ErEnvConfPresetCanaryShanghaiArgs
+
+func ErEnvConfPresetCanaryShanghaiPtr(v *ErEnvConfPresetCanaryShanghaiArgs) ErEnvConfPresetCanaryShanghaiPtrInput {
+	return (*erEnvConfPresetCanaryShanghaiPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryShanghaiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryShanghai)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryShanghaiPtrType) ToErEnvConfPresetCanaryShanghaiPtrOutput() ErEnvConfPresetCanaryShanghaiPtrOutput {
+	return i.ToErEnvConfPresetCanaryShanghaiPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryShanghaiPtrType) ToErEnvConfPresetCanaryShanghaiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanghaiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShanghaiPtrOutput)
+}
+
+type ErEnvConfPresetCanaryShanghaiOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryShanghaiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryShanghai)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryShanghaiOutput) ToErEnvConfPresetCanaryShanghaiOutput() ErEnvConfPresetCanaryShanghaiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShanghaiOutput) ToErEnvConfPresetCanaryShanghaiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanghaiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShanghaiOutput) ToErEnvConfPresetCanaryShanghaiPtrOutput() ErEnvConfPresetCanaryShanghaiPtrOutput {
+	return o.ToErEnvConfPresetCanaryShanghaiPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryShanghaiOutput) ToErEnvConfPresetCanaryShanghaiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanghaiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryShanghai) *ErEnvConfPresetCanaryShanghai {
+		return &v
+	}).(ErEnvConfPresetCanaryShanghaiPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryShanghaiOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryShanghai) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryShanghaiOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryShanghai) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryShanghaiOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryShanghai) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryShanghaiPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryShanghaiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryShanghai)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryShanghaiPtrOutput) ToErEnvConfPresetCanaryShanghaiPtrOutput() ErEnvConfPresetCanaryShanghaiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShanghaiPtrOutput) ToErEnvConfPresetCanaryShanghaiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanghaiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShanghaiPtrOutput) Elem() ErEnvConfPresetCanaryShanghaiOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanghai) ErEnvConfPresetCanaryShanghai {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryShanghai
+		return ret
+	}).(ErEnvConfPresetCanaryShanghaiOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryShanghaiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanghai) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryShanghaiPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanghai) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryShanghaiPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanghai) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryShanxi struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryShanxiInput is an input type that accepts ErEnvConfPresetCanaryShanxiArgs and ErEnvConfPresetCanaryShanxiOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryShanxiInput` via:
+//
+//	ErEnvConfPresetCanaryShanxiArgs{...}
+type ErEnvConfPresetCanaryShanxiInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryShanxiOutput() ErEnvConfPresetCanaryShanxiOutput
+	ToErEnvConfPresetCanaryShanxiOutputWithContext(context.Context) ErEnvConfPresetCanaryShanxiOutput
+}
+
+type ErEnvConfPresetCanaryShanxiArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryShanxiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryShanxi)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryShanxiArgs) ToErEnvConfPresetCanaryShanxiOutput() ErEnvConfPresetCanaryShanxiOutput {
+	return i.ToErEnvConfPresetCanaryShanxiOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryShanxiArgs) ToErEnvConfPresetCanaryShanxiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanxiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShanxiOutput)
+}
+
+func (i ErEnvConfPresetCanaryShanxiArgs) ToErEnvConfPresetCanaryShanxiPtrOutput() ErEnvConfPresetCanaryShanxiPtrOutput {
+	return i.ToErEnvConfPresetCanaryShanxiPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryShanxiArgs) ToErEnvConfPresetCanaryShanxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanxiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShanxiOutput).ToErEnvConfPresetCanaryShanxiPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryShanxiPtrInput is an input type that accepts ErEnvConfPresetCanaryShanxiArgs, ErEnvConfPresetCanaryShanxiPtr and ErEnvConfPresetCanaryShanxiPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryShanxiPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryShanxiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryShanxiPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryShanxiPtrOutput() ErEnvConfPresetCanaryShanxiPtrOutput
+	ToErEnvConfPresetCanaryShanxiPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryShanxiPtrOutput
+}
+
+type erEnvConfPresetCanaryShanxiPtrType ErEnvConfPresetCanaryShanxiArgs
+
+func ErEnvConfPresetCanaryShanxiPtr(v *ErEnvConfPresetCanaryShanxiArgs) ErEnvConfPresetCanaryShanxiPtrInput {
+	return (*erEnvConfPresetCanaryShanxiPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryShanxiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryShanxi)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryShanxiPtrType) ToErEnvConfPresetCanaryShanxiPtrOutput() ErEnvConfPresetCanaryShanxiPtrOutput {
+	return i.ToErEnvConfPresetCanaryShanxiPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryShanxiPtrType) ToErEnvConfPresetCanaryShanxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanxiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryShanxiPtrOutput)
+}
+
+type ErEnvConfPresetCanaryShanxiOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryShanxiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryShanxi)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryShanxiOutput) ToErEnvConfPresetCanaryShanxiOutput() ErEnvConfPresetCanaryShanxiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShanxiOutput) ToErEnvConfPresetCanaryShanxiOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanxiOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShanxiOutput) ToErEnvConfPresetCanaryShanxiPtrOutput() ErEnvConfPresetCanaryShanxiPtrOutput {
+	return o.ToErEnvConfPresetCanaryShanxiPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryShanxiOutput) ToErEnvConfPresetCanaryShanxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanxiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryShanxi) *ErEnvConfPresetCanaryShanxi {
+		return &v
+	}).(ErEnvConfPresetCanaryShanxiPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryShanxiOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryShanxi) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryShanxiOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryShanxi) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryShanxiOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryShanxi) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryShanxiPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryShanxiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryShanxi)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryShanxiPtrOutput) ToErEnvConfPresetCanaryShanxiPtrOutput() ErEnvConfPresetCanaryShanxiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShanxiPtrOutput) ToErEnvConfPresetCanaryShanxiPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryShanxiPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryShanxiPtrOutput) Elem() ErEnvConfPresetCanaryShanxiOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanxi) ErEnvConfPresetCanaryShanxi {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryShanxi
+		return ret
+	}).(ErEnvConfPresetCanaryShanxiOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryShanxiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanxi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryShanxiPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanxi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryShanxiPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanxi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanarySichuan struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanarySichuanInput is an input type that accepts ErEnvConfPresetCanarySichuanArgs and ErEnvConfPresetCanarySichuanOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanarySichuanInput` via:
+//
+//	ErEnvConfPresetCanarySichuanArgs{...}
+type ErEnvConfPresetCanarySichuanInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanarySichuanOutput() ErEnvConfPresetCanarySichuanOutput
+	ToErEnvConfPresetCanarySichuanOutputWithContext(context.Context) ErEnvConfPresetCanarySichuanOutput
+}
+
+type ErEnvConfPresetCanarySichuanArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanarySichuanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanarySichuan)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanarySichuanArgs) ToErEnvConfPresetCanarySichuanOutput() ErEnvConfPresetCanarySichuanOutput {
+	return i.ToErEnvConfPresetCanarySichuanOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanarySichuanArgs) ToErEnvConfPresetCanarySichuanOutputWithContext(ctx context.Context) ErEnvConfPresetCanarySichuanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanarySichuanOutput)
+}
+
+func (i ErEnvConfPresetCanarySichuanArgs) ToErEnvConfPresetCanarySichuanPtrOutput() ErEnvConfPresetCanarySichuanPtrOutput {
+	return i.ToErEnvConfPresetCanarySichuanPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanarySichuanArgs) ToErEnvConfPresetCanarySichuanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanarySichuanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanarySichuanOutput).ToErEnvConfPresetCanarySichuanPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanarySichuanPtrInput is an input type that accepts ErEnvConfPresetCanarySichuanArgs, ErEnvConfPresetCanarySichuanPtr and ErEnvConfPresetCanarySichuanPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanarySichuanPtrInput` via:
+//
+//	        ErEnvConfPresetCanarySichuanArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanarySichuanPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanarySichuanPtrOutput() ErEnvConfPresetCanarySichuanPtrOutput
+	ToErEnvConfPresetCanarySichuanPtrOutputWithContext(context.Context) ErEnvConfPresetCanarySichuanPtrOutput
+}
+
+type erEnvConfPresetCanarySichuanPtrType ErEnvConfPresetCanarySichuanArgs
+
+func ErEnvConfPresetCanarySichuanPtr(v *ErEnvConfPresetCanarySichuanArgs) ErEnvConfPresetCanarySichuanPtrInput {
+	return (*erEnvConfPresetCanarySichuanPtrType)(v)
+}
+
+func (*erEnvConfPresetCanarySichuanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanarySichuan)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanarySichuanPtrType) ToErEnvConfPresetCanarySichuanPtrOutput() ErEnvConfPresetCanarySichuanPtrOutput {
+	return i.ToErEnvConfPresetCanarySichuanPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanarySichuanPtrType) ToErEnvConfPresetCanarySichuanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanarySichuanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanarySichuanPtrOutput)
+}
+
+type ErEnvConfPresetCanarySichuanOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanarySichuanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanarySichuan)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanarySichuanOutput) ToErEnvConfPresetCanarySichuanOutput() ErEnvConfPresetCanarySichuanOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanarySichuanOutput) ToErEnvConfPresetCanarySichuanOutputWithContext(ctx context.Context) ErEnvConfPresetCanarySichuanOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanarySichuanOutput) ToErEnvConfPresetCanarySichuanPtrOutput() ErEnvConfPresetCanarySichuanPtrOutput {
+	return o.ToErEnvConfPresetCanarySichuanPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanarySichuanOutput) ToErEnvConfPresetCanarySichuanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanarySichuanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanarySichuan) *ErEnvConfPresetCanarySichuan {
+		return &v
+	}).(ErEnvConfPresetCanarySichuanPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanarySichuanOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanarySichuan) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanarySichuanOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanarySichuan) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanarySichuanOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanarySichuan) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanarySichuanPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanarySichuanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanarySichuan)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanarySichuanPtrOutput) ToErEnvConfPresetCanarySichuanPtrOutput() ErEnvConfPresetCanarySichuanPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanarySichuanPtrOutput) ToErEnvConfPresetCanarySichuanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanarySichuanPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanarySichuanPtrOutput) Elem() ErEnvConfPresetCanarySichuanOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanarySichuan) ErEnvConfPresetCanarySichuan {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanarySichuan
+		return ret
+	}).(ErEnvConfPresetCanarySichuanOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanarySichuanPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanarySichuan) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanarySichuanPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanarySichuan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanarySichuanPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanarySichuan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryTaiwan struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryTaiwanInput is an input type that accepts ErEnvConfPresetCanaryTaiwanArgs and ErEnvConfPresetCanaryTaiwanOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryTaiwanInput` via:
+//
+//	ErEnvConfPresetCanaryTaiwanArgs{...}
+type ErEnvConfPresetCanaryTaiwanInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryTaiwanOutput() ErEnvConfPresetCanaryTaiwanOutput
+	ToErEnvConfPresetCanaryTaiwanOutputWithContext(context.Context) ErEnvConfPresetCanaryTaiwanOutput
+}
+
+type ErEnvConfPresetCanaryTaiwanArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryTaiwanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryTaiwan)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryTaiwanArgs) ToErEnvConfPresetCanaryTaiwanOutput() ErEnvConfPresetCanaryTaiwanOutput {
+	return i.ToErEnvConfPresetCanaryTaiwanOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryTaiwanArgs) ToErEnvConfPresetCanaryTaiwanOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTaiwanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryTaiwanOutput)
+}
+
+func (i ErEnvConfPresetCanaryTaiwanArgs) ToErEnvConfPresetCanaryTaiwanPtrOutput() ErEnvConfPresetCanaryTaiwanPtrOutput {
+	return i.ToErEnvConfPresetCanaryTaiwanPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryTaiwanArgs) ToErEnvConfPresetCanaryTaiwanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTaiwanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryTaiwanOutput).ToErEnvConfPresetCanaryTaiwanPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryTaiwanPtrInput is an input type that accepts ErEnvConfPresetCanaryTaiwanArgs, ErEnvConfPresetCanaryTaiwanPtr and ErEnvConfPresetCanaryTaiwanPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryTaiwanPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryTaiwanArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryTaiwanPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryTaiwanPtrOutput() ErEnvConfPresetCanaryTaiwanPtrOutput
+	ToErEnvConfPresetCanaryTaiwanPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryTaiwanPtrOutput
+}
+
+type erEnvConfPresetCanaryTaiwanPtrType ErEnvConfPresetCanaryTaiwanArgs
+
+func ErEnvConfPresetCanaryTaiwanPtr(v *ErEnvConfPresetCanaryTaiwanArgs) ErEnvConfPresetCanaryTaiwanPtrInput {
+	return (*erEnvConfPresetCanaryTaiwanPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryTaiwanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryTaiwan)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryTaiwanPtrType) ToErEnvConfPresetCanaryTaiwanPtrOutput() ErEnvConfPresetCanaryTaiwanPtrOutput {
+	return i.ToErEnvConfPresetCanaryTaiwanPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryTaiwanPtrType) ToErEnvConfPresetCanaryTaiwanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTaiwanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryTaiwanPtrOutput)
+}
+
+type ErEnvConfPresetCanaryTaiwanOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryTaiwanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryTaiwan)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryTaiwanOutput) ToErEnvConfPresetCanaryTaiwanOutput() ErEnvConfPresetCanaryTaiwanOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryTaiwanOutput) ToErEnvConfPresetCanaryTaiwanOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTaiwanOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryTaiwanOutput) ToErEnvConfPresetCanaryTaiwanPtrOutput() ErEnvConfPresetCanaryTaiwanPtrOutput {
+	return o.ToErEnvConfPresetCanaryTaiwanPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryTaiwanOutput) ToErEnvConfPresetCanaryTaiwanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTaiwanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryTaiwan) *ErEnvConfPresetCanaryTaiwan {
+		return &v
+	}).(ErEnvConfPresetCanaryTaiwanPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryTaiwanOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryTaiwan) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryTaiwanOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryTaiwan) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryTaiwanOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryTaiwan) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryTaiwanPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryTaiwanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryTaiwan)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryTaiwanPtrOutput) ToErEnvConfPresetCanaryTaiwanPtrOutput() ErEnvConfPresetCanaryTaiwanPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryTaiwanPtrOutput) ToErEnvConfPresetCanaryTaiwanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTaiwanPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryTaiwanPtrOutput) Elem() ErEnvConfPresetCanaryTaiwanOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryTaiwan) ErEnvConfPresetCanaryTaiwan {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryTaiwan
+		return ret
+	}).(ErEnvConfPresetCanaryTaiwanOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryTaiwanPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryTaiwan) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryTaiwanPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryTaiwan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryTaiwanPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryTaiwan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryTianjin struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryTianjinInput is an input type that accepts ErEnvConfPresetCanaryTianjinArgs and ErEnvConfPresetCanaryTianjinOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryTianjinInput` via:
+//
+//	ErEnvConfPresetCanaryTianjinArgs{...}
+type ErEnvConfPresetCanaryTianjinInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryTianjinOutput() ErEnvConfPresetCanaryTianjinOutput
+	ToErEnvConfPresetCanaryTianjinOutputWithContext(context.Context) ErEnvConfPresetCanaryTianjinOutput
+}
+
+type ErEnvConfPresetCanaryTianjinArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryTianjinArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryTianjin)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryTianjinArgs) ToErEnvConfPresetCanaryTianjinOutput() ErEnvConfPresetCanaryTianjinOutput {
+	return i.ToErEnvConfPresetCanaryTianjinOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryTianjinArgs) ToErEnvConfPresetCanaryTianjinOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTianjinOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryTianjinOutput)
+}
+
+func (i ErEnvConfPresetCanaryTianjinArgs) ToErEnvConfPresetCanaryTianjinPtrOutput() ErEnvConfPresetCanaryTianjinPtrOutput {
+	return i.ToErEnvConfPresetCanaryTianjinPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryTianjinArgs) ToErEnvConfPresetCanaryTianjinPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTianjinPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryTianjinOutput).ToErEnvConfPresetCanaryTianjinPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryTianjinPtrInput is an input type that accepts ErEnvConfPresetCanaryTianjinArgs, ErEnvConfPresetCanaryTianjinPtr and ErEnvConfPresetCanaryTianjinPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryTianjinPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryTianjinArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryTianjinPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryTianjinPtrOutput() ErEnvConfPresetCanaryTianjinPtrOutput
+	ToErEnvConfPresetCanaryTianjinPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryTianjinPtrOutput
+}
+
+type erEnvConfPresetCanaryTianjinPtrType ErEnvConfPresetCanaryTianjinArgs
+
+func ErEnvConfPresetCanaryTianjinPtr(v *ErEnvConfPresetCanaryTianjinArgs) ErEnvConfPresetCanaryTianjinPtrInput {
+	return (*erEnvConfPresetCanaryTianjinPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryTianjinPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryTianjin)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryTianjinPtrType) ToErEnvConfPresetCanaryTianjinPtrOutput() ErEnvConfPresetCanaryTianjinPtrOutput {
+	return i.ToErEnvConfPresetCanaryTianjinPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryTianjinPtrType) ToErEnvConfPresetCanaryTianjinPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTianjinPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryTianjinPtrOutput)
+}
+
+type ErEnvConfPresetCanaryTianjinOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryTianjinOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryTianjin)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryTianjinOutput) ToErEnvConfPresetCanaryTianjinOutput() ErEnvConfPresetCanaryTianjinOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryTianjinOutput) ToErEnvConfPresetCanaryTianjinOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTianjinOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryTianjinOutput) ToErEnvConfPresetCanaryTianjinPtrOutput() ErEnvConfPresetCanaryTianjinPtrOutput {
+	return o.ToErEnvConfPresetCanaryTianjinPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryTianjinOutput) ToErEnvConfPresetCanaryTianjinPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTianjinPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryTianjin) *ErEnvConfPresetCanaryTianjin {
+		return &v
+	}).(ErEnvConfPresetCanaryTianjinPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryTianjinOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryTianjin) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryTianjinOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryTianjin) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryTianjinOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryTianjin) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryTianjinPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryTianjinPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryTianjin)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryTianjinPtrOutput) ToErEnvConfPresetCanaryTianjinPtrOutput() ErEnvConfPresetCanaryTianjinPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryTianjinPtrOutput) ToErEnvConfPresetCanaryTianjinPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryTianjinPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryTianjinPtrOutput) Elem() ErEnvConfPresetCanaryTianjinOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryTianjin) ErEnvConfPresetCanaryTianjin {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryTianjin
+		return ret
+	}).(ErEnvConfPresetCanaryTianjinOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryTianjinPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryTianjin) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryTianjinPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryTianjin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryTianjinPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryTianjin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryXinjiang struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryXinjiangInput is an input type that accepts ErEnvConfPresetCanaryXinjiangArgs and ErEnvConfPresetCanaryXinjiangOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryXinjiangInput` via:
+//
+//	ErEnvConfPresetCanaryXinjiangArgs{...}
+type ErEnvConfPresetCanaryXinjiangInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryXinjiangOutput() ErEnvConfPresetCanaryXinjiangOutput
+	ToErEnvConfPresetCanaryXinjiangOutputWithContext(context.Context) ErEnvConfPresetCanaryXinjiangOutput
+}
+
+type ErEnvConfPresetCanaryXinjiangArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryXinjiangArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryXinjiang)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryXinjiangArgs) ToErEnvConfPresetCanaryXinjiangOutput() ErEnvConfPresetCanaryXinjiangOutput {
+	return i.ToErEnvConfPresetCanaryXinjiangOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryXinjiangArgs) ToErEnvConfPresetCanaryXinjiangOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXinjiangOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryXinjiangOutput)
+}
+
+func (i ErEnvConfPresetCanaryXinjiangArgs) ToErEnvConfPresetCanaryXinjiangPtrOutput() ErEnvConfPresetCanaryXinjiangPtrOutput {
+	return i.ToErEnvConfPresetCanaryXinjiangPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryXinjiangArgs) ToErEnvConfPresetCanaryXinjiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXinjiangPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryXinjiangOutput).ToErEnvConfPresetCanaryXinjiangPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryXinjiangPtrInput is an input type that accepts ErEnvConfPresetCanaryXinjiangArgs, ErEnvConfPresetCanaryXinjiangPtr and ErEnvConfPresetCanaryXinjiangPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryXinjiangPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryXinjiangArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryXinjiangPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryXinjiangPtrOutput() ErEnvConfPresetCanaryXinjiangPtrOutput
+	ToErEnvConfPresetCanaryXinjiangPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryXinjiangPtrOutput
+}
+
+type erEnvConfPresetCanaryXinjiangPtrType ErEnvConfPresetCanaryXinjiangArgs
+
+func ErEnvConfPresetCanaryXinjiangPtr(v *ErEnvConfPresetCanaryXinjiangArgs) ErEnvConfPresetCanaryXinjiangPtrInput {
+	return (*erEnvConfPresetCanaryXinjiangPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryXinjiangPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryXinjiang)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryXinjiangPtrType) ToErEnvConfPresetCanaryXinjiangPtrOutput() ErEnvConfPresetCanaryXinjiangPtrOutput {
+	return i.ToErEnvConfPresetCanaryXinjiangPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryXinjiangPtrType) ToErEnvConfPresetCanaryXinjiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXinjiangPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryXinjiangPtrOutput)
+}
+
+type ErEnvConfPresetCanaryXinjiangOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryXinjiangOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryXinjiang)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryXinjiangOutput) ToErEnvConfPresetCanaryXinjiangOutput() ErEnvConfPresetCanaryXinjiangOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryXinjiangOutput) ToErEnvConfPresetCanaryXinjiangOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXinjiangOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryXinjiangOutput) ToErEnvConfPresetCanaryXinjiangPtrOutput() ErEnvConfPresetCanaryXinjiangPtrOutput {
+	return o.ToErEnvConfPresetCanaryXinjiangPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryXinjiangOutput) ToErEnvConfPresetCanaryXinjiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXinjiangPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryXinjiang) *ErEnvConfPresetCanaryXinjiang {
+		return &v
+	}).(ErEnvConfPresetCanaryXinjiangPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryXinjiangOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryXinjiang) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryXinjiangOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryXinjiang) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryXinjiangOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryXinjiang) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryXinjiangPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryXinjiangPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryXinjiang)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryXinjiangPtrOutput) ToErEnvConfPresetCanaryXinjiangPtrOutput() ErEnvConfPresetCanaryXinjiangPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryXinjiangPtrOutput) ToErEnvConfPresetCanaryXinjiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXinjiangPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryXinjiangPtrOutput) Elem() ErEnvConfPresetCanaryXinjiangOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryXinjiang) ErEnvConfPresetCanaryXinjiang {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryXinjiang
+		return ret
+	}).(ErEnvConfPresetCanaryXinjiangOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryXinjiangPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryXinjiang) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryXinjiangPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryXinjiang) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryXinjiangPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryXinjiang) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryXizang struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryXizangInput is an input type that accepts ErEnvConfPresetCanaryXizangArgs and ErEnvConfPresetCanaryXizangOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryXizangInput` via:
+//
+//	ErEnvConfPresetCanaryXizangArgs{...}
+type ErEnvConfPresetCanaryXizangInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryXizangOutput() ErEnvConfPresetCanaryXizangOutput
+	ToErEnvConfPresetCanaryXizangOutputWithContext(context.Context) ErEnvConfPresetCanaryXizangOutput
+}
+
+type ErEnvConfPresetCanaryXizangArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryXizangArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryXizang)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryXizangArgs) ToErEnvConfPresetCanaryXizangOutput() ErEnvConfPresetCanaryXizangOutput {
+	return i.ToErEnvConfPresetCanaryXizangOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryXizangArgs) ToErEnvConfPresetCanaryXizangOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXizangOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryXizangOutput)
+}
+
+func (i ErEnvConfPresetCanaryXizangArgs) ToErEnvConfPresetCanaryXizangPtrOutput() ErEnvConfPresetCanaryXizangPtrOutput {
+	return i.ToErEnvConfPresetCanaryXizangPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryXizangArgs) ToErEnvConfPresetCanaryXizangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXizangPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryXizangOutput).ToErEnvConfPresetCanaryXizangPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryXizangPtrInput is an input type that accepts ErEnvConfPresetCanaryXizangArgs, ErEnvConfPresetCanaryXizangPtr and ErEnvConfPresetCanaryXizangPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryXizangPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryXizangArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryXizangPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryXizangPtrOutput() ErEnvConfPresetCanaryXizangPtrOutput
+	ToErEnvConfPresetCanaryXizangPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryXizangPtrOutput
+}
+
+type erEnvConfPresetCanaryXizangPtrType ErEnvConfPresetCanaryXizangArgs
+
+func ErEnvConfPresetCanaryXizangPtr(v *ErEnvConfPresetCanaryXizangArgs) ErEnvConfPresetCanaryXizangPtrInput {
+	return (*erEnvConfPresetCanaryXizangPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryXizangPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryXizang)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryXizangPtrType) ToErEnvConfPresetCanaryXizangPtrOutput() ErEnvConfPresetCanaryXizangPtrOutput {
+	return i.ToErEnvConfPresetCanaryXizangPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryXizangPtrType) ToErEnvConfPresetCanaryXizangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXizangPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryXizangPtrOutput)
+}
+
+type ErEnvConfPresetCanaryXizangOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryXizangOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryXizang)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryXizangOutput) ToErEnvConfPresetCanaryXizangOutput() ErEnvConfPresetCanaryXizangOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryXizangOutput) ToErEnvConfPresetCanaryXizangOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXizangOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryXizangOutput) ToErEnvConfPresetCanaryXizangPtrOutput() ErEnvConfPresetCanaryXizangPtrOutput {
+	return o.ToErEnvConfPresetCanaryXizangPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryXizangOutput) ToErEnvConfPresetCanaryXizangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXizangPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryXizang) *ErEnvConfPresetCanaryXizang {
+		return &v
+	}).(ErEnvConfPresetCanaryXizangPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryXizangOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryXizang) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryXizangOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryXizang) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryXizangOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryXizang) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryXizangPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryXizangPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryXizang)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryXizangPtrOutput) ToErEnvConfPresetCanaryXizangPtrOutput() ErEnvConfPresetCanaryXizangPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryXizangPtrOutput) ToErEnvConfPresetCanaryXizangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryXizangPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryXizangPtrOutput) Elem() ErEnvConfPresetCanaryXizangOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryXizang) ErEnvConfPresetCanaryXizang {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryXizang
+		return ret
+	}).(ErEnvConfPresetCanaryXizangOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryXizangPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryXizang) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryXizangPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryXizang) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryXizangPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryXizang) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryYunnan struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryYunnanInput is an input type that accepts ErEnvConfPresetCanaryYunnanArgs and ErEnvConfPresetCanaryYunnanOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryYunnanInput` via:
+//
+//	ErEnvConfPresetCanaryYunnanArgs{...}
+type ErEnvConfPresetCanaryYunnanInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryYunnanOutput() ErEnvConfPresetCanaryYunnanOutput
+	ToErEnvConfPresetCanaryYunnanOutputWithContext(context.Context) ErEnvConfPresetCanaryYunnanOutput
+}
+
+type ErEnvConfPresetCanaryYunnanArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryYunnanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryYunnan)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryYunnanArgs) ToErEnvConfPresetCanaryYunnanOutput() ErEnvConfPresetCanaryYunnanOutput {
+	return i.ToErEnvConfPresetCanaryYunnanOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryYunnanArgs) ToErEnvConfPresetCanaryYunnanOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryYunnanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryYunnanOutput)
+}
+
+func (i ErEnvConfPresetCanaryYunnanArgs) ToErEnvConfPresetCanaryYunnanPtrOutput() ErEnvConfPresetCanaryYunnanPtrOutput {
+	return i.ToErEnvConfPresetCanaryYunnanPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryYunnanArgs) ToErEnvConfPresetCanaryYunnanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryYunnanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryYunnanOutput).ToErEnvConfPresetCanaryYunnanPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryYunnanPtrInput is an input type that accepts ErEnvConfPresetCanaryYunnanArgs, ErEnvConfPresetCanaryYunnanPtr and ErEnvConfPresetCanaryYunnanPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryYunnanPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryYunnanArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryYunnanPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryYunnanPtrOutput() ErEnvConfPresetCanaryYunnanPtrOutput
+	ToErEnvConfPresetCanaryYunnanPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryYunnanPtrOutput
+}
+
+type erEnvConfPresetCanaryYunnanPtrType ErEnvConfPresetCanaryYunnanArgs
+
+func ErEnvConfPresetCanaryYunnanPtr(v *ErEnvConfPresetCanaryYunnanArgs) ErEnvConfPresetCanaryYunnanPtrInput {
+	return (*erEnvConfPresetCanaryYunnanPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryYunnanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryYunnan)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryYunnanPtrType) ToErEnvConfPresetCanaryYunnanPtrOutput() ErEnvConfPresetCanaryYunnanPtrOutput {
+	return i.ToErEnvConfPresetCanaryYunnanPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryYunnanPtrType) ToErEnvConfPresetCanaryYunnanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryYunnanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryYunnanPtrOutput)
+}
+
+type ErEnvConfPresetCanaryYunnanOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryYunnanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryYunnan)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryYunnanOutput) ToErEnvConfPresetCanaryYunnanOutput() ErEnvConfPresetCanaryYunnanOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryYunnanOutput) ToErEnvConfPresetCanaryYunnanOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryYunnanOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryYunnanOutput) ToErEnvConfPresetCanaryYunnanPtrOutput() ErEnvConfPresetCanaryYunnanPtrOutput {
+	return o.ToErEnvConfPresetCanaryYunnanPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryYunnanOutput) ToErEnvConfPresetCanaryYunnanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryYunnanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryYunnan) *ErEnvConfPresetCanaryYunnan {
+		return &v
+	}).(ErEnvConfPresetCanaryYunnanPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryYunnanOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryYunnan) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryYunnanOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryYunnan) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryYunnanOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryYunnan) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryYunnanPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryYunnanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryYunnan)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryYunnanPtrOutput) ToErEnvConfPresetCanaryYunnanPtrOutput() ErEnvConfPresetCanaryYunnanPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryYunnanPtrOutput) ToErEnvConfPresetCanaryYunnanPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryYunnanPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryYunnanPtrOutput) Elem() ErEnvConfPresetCanaryYunnanOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryYunnan) ErEnvConfPresetCanaryYunnan {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryYunnan
+		return ret
+	}).(ErEnvConfPresetCanaryYunnanOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryYunnanPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryYunnan) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryYunnanPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryYunnan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryYunnanPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryYunnan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryZhejiang struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfPresetCanaryZhejiangInput is an input type that accepts ErEnvConfPresetCanaryZhejiangArgs and ErEnvConfPresetCanaryZhejiangOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryZhejiangInput` via:
+//
+//	ErEnvConfPresetCanaryZhejiangArgs{...}
+type ErEnvConfPresetCanaryZhejiangInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryZhejiangOutput() ErEnvConfPresetCanaryZhejiangOutput
+	ToErEnvConfPresetCanaryZhejiangOutputWithContext(context.Context) ErEnvConfPresetCanaryZhejiangOutput
+}
+
+type ErEnvConfPresetCanaryZhejiangArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfPresetCanaryZhejiangArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryZhejiang)(nil)).Elem()
+}
+
+func (i ErEnvConfPresetCanaryZhejiangArgs) ToErEnvConfPresetCanaryZhejiangOutput() ErEnvConfPresetCanaryZhejiangOutput {
+	return i.ToErEnvConfPresetCanaryZhejiangOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryZhejiangArgs) ToErEnvConfPresetCanaryZhejiangOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryZhejiangOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryZhejiangOutput)
+}
+
+func (i ErEnvConfPresetCanaryZhejiangArgs) ToErEnvConfPresetCanaryZhejiangPtrOutput() ErEnvConfPresetCanaryZhejiangPtrOutput {
+	return i.ToErEnvConfPresetCanaryZhejiangPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfPresetCanaryZhejiangArgs) ToErEnvConfPresetCanaryZhejiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryZhejiangPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryZhejiangOutput).ToErEnvConfPresetCanaryZhejiangPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfPresetCanaryZhejiangPtrInput is an input type that accepts ErEnvConfPresetCanaryZhejiangArgs, ErEnvConfPresetCanaryZhejiangPtr and ErEnvConfPresetCanaryZhejiangPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfPresetCanaryZhejiangPtrInput` via:
+//
+//	        ErEnvConfPresetCanaryZhejiangArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfPresetCanaryZhejiangPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfPresetCanaryZhejiangPtrOutput() ErEnvConfPresetCanaryZhejiangPtrOutput
+	ToErEnvConfPresetCanaryZhejiangPtrOutputWithContext(context.Context) ErEnvConfPresetCanaryZhejiangPtrOutput
+}
+
+type erEnvConfPresetCanaryZhejiangPtrType ErEnvConfPresetCanaryZhejiangArgs
+
+func ErEnvConfPresetCanaryZhejiangPtr(v *ErEnvConfPresetCanaryZhejiangArgs) ErEnvConfPresetCanaryZhejiangPtrInput {
+	return (*erEnvConfPresetCanaryZhejiangPtrType)(v)
+}
+
+func (*erEnvConfPresetCanaryZhejiangPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryZhejiang)(nil)).Elem()
+}
+
+func (i *erEnvConfPresetCanaryZhejiangPtrType) ToErEnvConfPresetCanaryZhejiangPtrOutput() ErEnvConfPresetCanaryZhejiangPtrOutput {
+	return i.ToErEnvConfPresetCanaryZhejiangPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfPresetCanaryZhejiangPtrType) ToErEnvConfPresetCanaryZhejiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryZhejiangPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfPresetCanaryZhejiangPtrOutput)
+}
+
+type ErEnvConfPresetCanaryZhejiangOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryZhejiangOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfPresetCanaryZhejiang)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryZhejiangOutput) ToErEnvConfPresetCanaryZhejiangOutput() ErEnvConfPresetCanaryZhejiangOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryZhejiangOutput) ToErEnvConfPresetCanaryZhejiangOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryZhejiangOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryZhejiangOutput) ToErEnvConfPresetCanaryZhejiangPtrOutput() ErEnvConfPresetCanaryZhejiangPtrOutput {
+	return o.ToErEnvConfPresetCanaryZhejiangPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfPresetCanaryZhejiangOutput) ToErEnvConfPresetCanaryZhejiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryZhejiangPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfPresetCanaryZhejiang) *ErEnvConfPresetCanaryZhejiang {
+		return &v
+	}).(ErEnvConfPresetCanaryZhejiangPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryZhejiangOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryZhejiang) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryZhejiangOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryZhejiang) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryZhejiangOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfPresetCanaryZhejiang) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfPresetCanaryZhejiangPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfPresetCanaryZhejiangPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfPresetCanaryZhejiang)(nil)).Elem()
+}
+
+func (o ErEnvConfPresetCanaryZhejiangPtrOutput) ToErEnvConfPresetCanaryZhejiangPtrOutput() ErEnvConfPresetCanaryZhejiangPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryZhejiangPtrOutput) ToErEnvConfPresetCanaryZhejiangPtrOutputWithContext(ctx context.Context) ErEnvConfPresetCanaryZhejiangPtrOutput {
+	return o
+}
+
+func (o ErEnvConfPresetCanaryZhejiangPtrOutput) Elem() ErEnvConfPresetCanaryZhejiangOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryZhejiang) ErEnvConfPresetCanaryZhejiang {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfPresetCanaryZhejiang
+		return ret
+	}).(ErEnvConfPresetCanaryZhejiangOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfPresetCanaryZhejiangPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryZhejiang) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfPresetCanaryZhejiangPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryZhejiang) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfPresetCanaryZhejiangPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfPresetCanaryZhejiang) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfProduction struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfProductionInput is an input type that accepts ErEnvConfProductionArgs and ErEnvConfProductionOutput values.
+// You can construct a concrete instance of `ErEnvConfProductionInput` via:
+//
+//	ErEnvConfProductionArgs{...}
+type ErEnvConfProductionInput interface {
+	pulumi.Input
+
+	ToErEnvConfProductionOutput() ErEnvConfProductionOutput
+	ToErEnvConfProductionOutputWithContext(context.Context) ErEnvConfProductionOutput
+}
+
+type ErEnvConfProductionArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfProductionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfProduction)(nil)).Elem()
+}
+
+func (i ErEnvConfProductionArgs) ToErEnvConfProductionOutput() ErEnvConfProductionOutput {
+	return i.ToErEnvConfProductionOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfProductionArgs) ToErEnvConfProductionOutputWithContext(ctx context.Context) ErEnvConfProductionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfProductionOutput)
+}
+
+func (i ErEnvConfProductionArgs) ToErEnvConfProductionPtrOutput() ErEnvConfProductionPtrOutput {
+	return i.ToErEnvConfProductionPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfProductionArgs) ToErEnvConfProductionPtrOutputWithContext(ctx context.Context) ErEnvConfProductionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfProductionOutput).ToErEnvConfProductionPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfProductionPtrInput is an input type that accepts ErEnvConfProductionArgs, ErEnvConfProductionPtr and ErEnvConfProductionPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfProductionPtrInput` via:
+//
+//	        ErEnvConfProductionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfProductionPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfProductionPtrOutput() ErEnvConfProductionPtrOutput
+	ToErEnvConfProductionPtrOutputWithContext(context.Context) ErEnvConfProductionPtrOutput
+}
+
+type erEnvConfProductionPtrType ErEnvConfProductionArgs
+
+func ErEnvConfProductionPtr(v *ErEnvConfProductionArgs) ErEnvConfProductionPtrInput {
+	return (*erEnvConfProductionPtrType)(v)
+}
+
+func (*erEnvConfProductionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfProduction)(nil)).Elem()
+}
+
+func (i *erEnvConfProductionPtrType) ToErEnvConfProductionPtrOutput() ErEnvConfProductionPtrOutput {
+	return i.ToErEnvConfProductionPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfProductionPtrType) ToErEnvConfProductionPtrOutputWithContext(ctx context.Context) ErEnvConfProductionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfProductionPtrOutput)
+}
+
+type ErEnvConfProductionOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfProductionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfProduction)(nil)).Elem()
+}
+
+func (o ErEnvConfProductionOutput) ToErEnvConfProductionOutput() ErEnvConfProductionOutput {
+	return o
+}
+
+func (o ErEnvConfProductionOutput) ToErEnvConfProductionOutputWithContext(ctx context.Context) ErEnvConfProductionOutput {
+	return o
+}
+
+func (o ErEnvConfProductionOutput) ToErEnvConfProductionPtrOutput() ErEnvConfProductionPtrOutput {
+	return o.ToErEnvConfProductionPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfProductionOutput) ToErEnvConfProductionPtrOutputWithContext(ctx context.Context) ErEnvConfProductionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfProduction) *ErEnvConfProduction {
+		return &v
+	}).(ErEnvConfProductionPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfProductionOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfProduction) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfProductionOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfProduction) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfProductionOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfProduction) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfProductionPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfProductionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfProduction)(nil)).Elem()
+}
+
+func (o ErEnvConfProductionPtrOutput) ToErEnvConfProductionPtrOutput() ErEnvConfProductionPtrOutput {
+	return o
+}
+
+func (o ErEnvConfProductionPtrOutput) ToErEnvConfProductionPtrOutputWithContext(ctx context.Context) ErEnvConfProductionPtrOutput {
+	return o
+}
+
+func (o ErEnvConfProductionPtrOutput) Elem() ErEnvConfProductionOutput {
+	return o.ApplyT(func(v *ErEnvConfProduction) ErEnvConfProduction {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfProduction
+		return ret
+	}).(ErEnvConfProductionOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfProductionPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfProduction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfProductionPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfProduction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfProductionPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfProduction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfStaging struct {
+	// Allowed DCDN domain names.
+	AllowedHosts []string `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
+}
+
+// ErEnvConfStagingInput is an input type that accepts ErEnvConfStagingArgs and ErEnvConfStagingOutput values.
+// You can construct a concrete instance of `ErEnvConfStagingInput` via:
+//
+//	ErEnvConfStagingArgs{...}
+type ErEnvConfStagingInput interface {
+	pulumi.Input
+
+	ToErEnvConfStagingOutput() ErEnvConfStagingOutput
+	ToErEnvConfStagingOutputWithContext(context.Context) ErEnvConfStagingOutput
+}
+
+type ErEnvConfStagingArgs struct {
+	// Allowed DCDN domain names.
+	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
+}
+
+func (ErEnvConfStagingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfStaging)(nil)).Elem()
+}
+
+func (i ErEnvConfStagingArgs) ToErEnvConfStagingOutput() ErEnvConfStagingOutput {
+	return i.ToErEnvConfStagingOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfStagingArgs) ToErEnvConfStagingOutputWithContext(ctx context.Context) ErEnvConfStagingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfStagingOutput)
+}
+
+func (i ErEnvConfStagingArgs) ToErEnvConfStagingPtrOutput() ErEnvConfStagingPtrOutput {
+	return i.ToErEnvConfStagingPtrOutputWithContext(context.Background())
+}
+
+func (i ErEnvConfStagingArgs) ToErEnvConfStagingPtrOutputWithContext(ctx context.Context) ErEnvConfStagingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfStagingOutput).ToErEnvConfStagingPtrOutputWithContext(ctx)
+}
+
+// ErEnvConfStagingPtrInput is an input type that accepts ErEnvConfStagingArgs, ErEnvConfStagingPtr and ErEnvConfStagingPtrOutput values.
+// You can construct a concrete instance of `ErEnvConfStagingPtrInput` via:
+//
+//	        ErEnvConfStagingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ErEnvConfStagingPtrInput interface {
+	pulumi.Input
+
+	ToErEnvConfStagingPtrOutput() ErEnvConfStagingPtrOutput
+	ToErEnvConfStagingPtrOutputWithContext(context.Context) ErEnvConfStagingPtrOutput
+}
+
+type erEnvConfStagingPtrType ErEnvConfStagingArgs
+
+func ErEnvConfStagingPtr(v *ErEnvConfStagingArgs) ErEnvConfStagingPtrInput {
+	return (*erEnvConfStagingPtrType)(v)
+}
+
+func (*erEnvConfStagingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfStaging)(nil)).Elem()
+}
+
+func (i *erEnvConfStagingPtrType) ToErEnvConfStagingPtrOutput() ErEnvConfStagingPtrOutput {
+	return i.ToErEnvConfStagingPtrOutputWithContext(context.Background())
+}
+
+func (i *erEnvConfStagingPtrType) ToErEnvConfStagingPtrOutputWithContext(ctx context.Context) ErEnvConfStagingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErEnvConfStagingPtrOutput)
+}
+
+type ErEnvConfStagingOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfStagingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErEnvConfStaging)(nil)).Elem()
+}
+
+func (o ErEnvConfStagingOutput) ToErEnvConfStagingOutput() ErEnvConfStagingOutput {
+	return o
+}
+
+func (o ErEnvConfStagingOutput) ToErEnvConfStagingOutputWithContext(ctx context.Context) ErEnvConfStagingOutput {
+	return o
+}
+
+func (o ErEnvConfStagingOutput) ToErEnvConfStagingPtrOutput() ErEnvConfStagingPtrOutput {
+	return o.ToErEnvConfStagingPtrOutputWithContext(context.Background())
+}
+
+func (o ErEnvConfStagingOutput) ToErEnvConfStagingPtrOutputWithContext(ctx context.Context) ErEnvConfStagingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErEnvConfStaging) *ErEnvConfStaging {
+		return &v
+	}).(ErEnvConfStagingPtrOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfStagingOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErEnvConfStaging) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfStagingOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfStaging) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfStagingOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErEnvConfStaging) *string { return v.SpecName }).(pulumi.StringPtrOutput)
+}
+
+type ErEnvConfStagingPtrOutput struct{ *pulumi.OutputState }
+
+func (ErEnvConfStagingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErEnvConfStaging)(nil)).Elem()
+}
+
+func (o ErEnvConfStagingPtrOutput) ToErEnvConfStagingPtrOutput() ErEnvConfStagingPtrOutput {
+	return o
+}
+
+func (o ErEnvConfStagingPtrOutput) ToErEnvConfStagingPtrOutputWithContext(ctx context.Context) ErEnvConfStagingPtrOutput {
+	return o
+}
+
+func (o ErEnvConfStagingPtrOutput) Elem() ErEnvConfStagingOutput {
+	return o.ApplyT(func(v *ErEnvConfStaging) ErEnvConfStaging {
+		if v != nil {
+			return *v
+		}
+		var ret ErEnvConfStaging
+		return ret
+	}).(ErEnvConfStagingOutput)
+}
+
+// Allowed DCDN domain names.
+func (o ErEnvConfStagingPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErEnvConfStaging) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The version number of the code.
+func (o ErEnvConfStagingPtrOutput) CodeRev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfStaging) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeRev
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+func (o ErEnvConfStagingPtrOutput) SpecName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErEnvConfStaging) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpecName
+	}).(pulumi.StringPtrOutput)
+}
+
 type IpaDomainSource struct {
 	// The address of the origin server. You can specify an IP address or a domain name.
 	Content string `pulumi:"content"`
@@ -389,6 +7685,537 @@ func (o IpaDomainSourceArrayOutput) Index(i pulumi.IntInput) IpaDomainSourceOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpaDomainSource {
 		return vs[0].([]IpaDomainSource)[vs[1].(int)]
 	}).(IpaDomainSourceOutput)
+}
+
+type WafRuleCondition struct {
+	// The match field.
+	Key string `pulumi:"key"`
+	// The logical symbol.
+	OpValue string `pulumi:"opValue"`
+	// The match subfield.
+	SubKey *string `pulumi:"subKey"`
+	// The match content. Separate multiple values with commas (,).
+	Values *string `pulumi:"values"`
+}
+
+// WafRuleConditionInput is an input type that accepts WafRuleConditionArgs and WafRuleConditionOutput values.
+// You can construct a concrete instance of `WafRuleConditionInput` via:
+//
+//	WafRuleConditionArgs{...}
+type WafRuleConditionInput interface {
+	pulumi.Input
+
+	ToWafRuleConditionOutput() WafRuleConditionOutput
+	ToWafRuleConditionOutputWithContext(context.Context) WafRuleConditionOutput
+}
+
+type WafRuleConditionArgs struct {
+	// The match field.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The logical symbol.
+	OpValue pulumi.StringInput `pulumi:"opValue"`
+	// The match subfield.
+	SubKey pulumi.StringPtrInput `pulumi:"subKey"`
+	// The match content. Separate multiple values with commas (,).
+	Values pulumi.StringPtrInput `pulumi:"values"`
+}
+
+func (WafRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleCondition)(nil)).Elem()
+}
+
+func (i WafRuleConditionArgs) ToWafRuleConditionOutput() WafRuleConditionOutput {
+	return i.ToWafRuleConditionOutputWithContext(context.Background())
+}
+
+func (i WafRuleConditionArgs) ToWafRuleConditionOutputWithContext(ctx context.Context) WafRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConditionOutput)
+}
+
+// WafRuleConditionArrayInput is an input type that accepts WafRuleConditionArray and WafRuleConditionArrayOutput values.
+// You can construct a concrete instance of `WafRuleConditionArrayInput` via:
+//
+//	WafRuleConditionArray{ WafRuleConditionArgs{...} }
+type WafRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleConditionArrayOutput() WafRuleConditionArrayOutput
+	ToWafRuleConditionArrayOutputWithContext(context.Context) WafRuleConditionArrayOutput
+}
+
+type WafRuleConditionArray []WafRuleConditionInput
+
+func (WafRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleCondition)(nil)).Elem()
+}
+
+func (i WafRuleConditionArray) ToWafRuleConditionArrayOutput() WafRuleConditionArrayOutput {
+	return i.ToWafRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleConditionArray) ToWafRuleConditionArrayOutputWithContext(ctx context.Context) WafRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConditionArrayOutput)
+}
+
+type WafRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleCondition)(nil)).Elem()
+}
+
+func (o WafRuleConditionOutput) ToWafRuleConditionOutput() WafRuleConditionOutput {
+	return o
+}
+
+func (o WafRuleConditionOutput) ToWafRuleConditionOutputWithContext(ctx context.Context) WafRuleConditionOutput {
+	return o
+}
+
+// The match field.
+func (o WafRuleConditionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v WafRuleCondition) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The logical symbol.
+func (o WafRuleConditionOutput) OpValue() pulumi.StringOutput {
+	return o.ApplyT(func(v WafRuleCondition) string { return v.OpValue }).(pulumi.StringOutput)
+}
+
+// The match subfield.
+func (o WafRuleConditionOutput) SubKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleCondition) *string { return v.SubKey }).(pulumi.StringPtrOutput)
+}
+
+// The match content. Separate multiple values with commas (,).
+func (o WafRuleConditionOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleCondition) *string { return v.Values }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleCondition)(nil)).Elem()
+}
+
+func (o WafRuleConditionArrayOutput) ToWafRuleConditionArrayOutput() WafRuleConditionArrayOutput {
+	return o
+}
+
+func (o WafRuleConditionArrayOutput) ToWafRuleConditionArrayOutputWithContext(ctx context.Context) WafRuleConditionArrayOutput {
+	return o
+}
+
+func (o WafRuleConditionArrayOutput) Index(i pulumi.IntInput) WafRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleCondition {
+		return vs[0].([]WafRuleCondition)[vs[1].(int)]
+	}).(WafRuleConditionOutput)
+}
+
+type WafRuleRateLimit struct {
+	// Statistical duration, 5-1800.
+	Interval *int `pulumi:"interval"`
+	// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+	Status *WafRuleRateLimitStatus `pulumi:"status"`
+	// The match subfield.
+	SubKey *string `pulumi:"subKey"`
+	// The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
+	Target *string `pulumi:"target"`
+	// The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
+	Threshold *int `pulumi:"threshold"`
+	// The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
+	Ttl *int `pulumi:"ttl"`
+}
+
+// WafRuleRateLimitInput is an input type that accepts WafRuleRateLimitArgs and WafRuleRateLimitOutput values.
+// You can construct a concrete instance of `WafRuleRateLimitInput` via:
+//
+//	WafRuleRateLimitArgs{...}
+type WafRuleRateLimitInput interface {
+	pulumi.Input
+
+	ToWafRuleRateLimitOutput() WafRuleRateLimitOutput
+	ToWafRuleRateLimitOutputWithContext(context.Context) WafRuleRateLimitOutput
+}
+
+type WafRuleRateLimitArgs struct {
+	// Statistical duration, 5-1800.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+	Status WafRuleRateLimitStatusPtrInput `pulumi:"status"`
+	// The match subfield.
+	SubKey pulumi.StringPtrInput `pulumi:"subKey"`
+	// The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
+	Threshold pulumi.IntPtrInput `pulumi:"threshold"`
+	// The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
+}
+
+func (WafRuleRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleRateLimit)(nil)).Elem()
+}
+
+func (i WafRuleRateLimitArgs) ToWafRuleRateLimitOutput() WafRuleRateLimitOutput {
+	return i.ToWafRuleRateLimitOutputWithContext(context.Background())
+}
+
+func (i WafRuleRateLimitArgs) ToWafRuleRateLimitOutputWithContext(ctx context.Context) WafRuleRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleRateLimitOutput)
+}
+
+func (i WafRuleRateLimitArgs) ToWafRuleRateLimitPtrOutput() WafRuleRateLimitPtrOutput {
+	return i.ToWafRuleRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleRateLimitArgs) ToWafRuleRateLimitPtrOutputWithContext(ctx context.Context) WafRuleRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleRateLimitOutput).ToWafRuleRateLimitPtrOutputWithContext(ctx)
+}
+
+// WafRuleRateLimitPtrInput is an input type that accepts WafRuleRateLimitArgs, WafRuleRateLimitPtr and WafRuleRateLimitPtrOutput values.
+// You can construct a concrete instance of `WafRuleRateLimitPtrInput` via:
+//
+//	        WafRuleRateLimitArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleRateLimitPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleRateLimitPtrOutput() WafRuleRateLimitPtrOutput
+	ToWafRuleRateLimitPtrOutputWithContext(context.Context) WafRuleRateLimitPtrOutput
+}
+
+type wafRuleRateLimitPtrType WafRuleRateLimitArgs
+
+func WafRuleRateLimitPtr(v *WafRuleRateLimitArgs) WafRuleRateLimitPtrInput {
+	return (*wafRuleRateLimitPtrType)(v)
+}
+
+func (*wafRuleRateLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleRateLimit)(nil)).Elem()
+}
+
+func (i *wafRuleRateLimitPtrType) ToWafRuleRateLimitPtrOutput() WafRuleRateLimitPtrOutput {
+	return i.ToWafRuleRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleRateLimitPtrType) ToWafRuleRateLimitPtrOutputWithContext(ctx context.Context) WafRuleRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleRateLimitPtrOutput)
+}
+
+type WafRuleRateLimitOutput struct{ *pulumi.OutputState }
+
+func (WafRuleRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleRateLimit)(nil)).Elem()
+}
+
+func (o WafRuleRateLimitOutput) ToWafRuleRateLimitOutput() WafRuleRateLimitOutput {
+	return o
+}
+
+func (o WafRuleRateLimitOutput) ToWafRuleRateLimitOutputWithContext(ctx context.Context) WafRuleRateLimitOutput {
+	return o
+}
+
+func (o WafRuleRateLimitOutput) ToWafRuleRateLimitPtrOutput() WafRuleRateLimitPtrOutput {
+	return o.ToWafRuleRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleRateLimitOutput) ToWafRuleRateLimitPtrOutputWithContext(ctx context.Context) WafRuleRateLimitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleRateLimit) *WafRuleRateLimit {
+		return &v
+	}).(WafRuleRateLimitPtrOutput)
+}
+
+// Statistical duration, 5-1800.
+func (o WafRuleRateLimitOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleRateLimit) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+func (o WafRuleRateLimitOutput) Status() WafRuleRateLimitStatusPtrOutput {
+	return o.ApplyT(func(v WafRuleRateLimit) *WafRuleRateLimitStatus { return v.Status }).(WafRuleRateLimitStatusPtrOutput)
+}
+
+// The match subfield.
+func (o WafRuleRateLimitOutput) SubKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleRateLimit) *string { return v.SubKey }).(pulumi.StringPtrOutput)
+}
+
+// The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
+func (o WafRuleRateLimitOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleRateLimit) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
+func (o WafRuleRateLimitOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleRateLimit) *int { return v.Threshold }).(pulumi.IntPtrOutput)
+}
+
+// The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
+func (o WafRuleRateLimitOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleRateLimit) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+type WafRuleRateLimitPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleRateLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleRateLimit)(nil)).Elem()
+}
+
+func (o WafRuleRateLimitPtrOutput) ToWafRuleRateLimitPtrOutput() WafRuleRateLimitPtrOutput {
+	return o
+}
+
+func (o WafRuleRateLimitPtrOutput) ToWafRuleRateLimitPtrOutputWithContext(ctx context.Context) WafRuleRateLimitPtrOutput {
+	return o
+}
+
+func (o WafRuleRateLimitPtrOutput) Elem() WafRuleRateLimitOutput {
+	return o.ApplyT(func(v *WafRuleRateLimit) WafRuleRateLimit {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleRateLimit
+		return ret
+	}).(WafRuleRateLimitOutput)
+}
+
+// Statistical duration, 5-1800.
+func (o WafRuleRateLimitPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The status of the waf rule. Valid values: `on` and `off`. Default value: on.
+func (o WafRuleRateLimitPtrOutput) Status() WafRuleRateLimitStatusPtrOutput {
+	return o.ApplyT(func(v *WafRuleRateLimit) *WafRuleRateLimitStatus {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(WafRuleRateLimitStatusPtrOutput)
+}
+
+// The match subfield.
+func (o WafRuleRateLimitPtrOutput) SubKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleRateLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
+func (o WafRuleRateLimitPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleRateLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
+func (o WafRuleRateLimitPtrOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
+func (o WafRuleRateLimitPtrOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Ttl
+	}).(pulumi.IntPtrOutput)
+}
+
+type WafRuleRateLimitStatus struct {
+	// The HTTP status code returned.
+	Code *string `pulumi:"code"`
+	// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+	Count *int `pulumi:"count"`
+	// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+	Ratio *int `pulumi:"ratio"`
+}
+
+// WafRuleRateLimitStatusInput is an input type that accepts WafRuleRateLimitStatusArgs and WafRuleRateLimitStatusOutput values.
+// You can construct a concrete instance of `WafRuleRateLimitStatusInput` via:
+//
+//	WafRuleRateLimitStatusArgs{...}
+type WafRuleRateLimitStatusInput interface {
+	pulumi.Input
+
+	ToWafRuleRateLimitStatusOutput() WafRuleRateLimitStatusOutput
+	ToWafRuleRateLimitStatusOutputWithContext(context.Context) WafRuleRateLimitStatusOutput
+}
+
+type WafRuleRateLimitStatusArgs struct {
+	// The HTTP status code returned.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+	Ratio pulumi.IntPtrInput `pulumi:"ratio"`
+}
+
+func (WafRuleRateLimitStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleRateLimitStatus)(nil)).Elem()
+}
+
+func (i WafRuleRateLimitStatusArgs) ToWafRuleRateLimitStatusOutput() WafRuleRateLimitStatusOutput {
+	return i.ToWafRuleRateLimitStatusOutputWithContext(context.Background())
+}
+
+func (i WafRuleRateLimitStatusArgs) ToWafRuleRateLimitStatusOutputWithContext(ctx context.Context) WafRuleRateLimitStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleRateLimitStatusOutput)
+}
+
+func (i WafRuleRateLimitStatusArgs) ToWafRuleRateLimitStatusPtrOutput() WafRuleRateLimitStatusPtrOutput {
+	return i.ToWafRuleRateLimitStatusPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleRateLimitStatusArgs) ToWafRuleRateLimitStatusPtrOutputWithContext(ctx context.Context) WafRuleRateLimitStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleRateLimitStatusOutput).ToWafRuleRateLimitStatusPtrOutputWithContext(ctx)
+}
+
+// WafRuleRateLimitStatusPtrInput is an input type that accepts WafRuleRateLimitStatusArgs, WafRuleRateLimitStatusPtr and WafRuleRateLimitStatusPtrOutput values.
+// You can construct a concrete instance of `WafRuleRateLimitStatusPtrInput` via:
+//
+//	        WafRuleRateLimitStatusArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleRateLimitStatusPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleRateLimitStatusPtrOutput() WafRuleRateLimitStatusPtrOutput
+	ToWafRuleRateLimitStatusPtrOutputWithContext(context.Context) WafRuleRateLimitStatusPtrOutput
+}
+
+type wafRuleRateLimitStatusPtrType WafRuleRateLimitStatusArgs
+
+func WafRuleRateLimitStatusPtr(v *WafRuleRateLimitStatusArgs) WafRuleRateLimitStatusPtrInput {
+	return (*wafRuleRateLimitStatusPtrType)(v)
+}
+
+func (*wafRuleRateLimitStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleRateLimitStatus)(nil)).Elem()
+}
+
+func (i *wafRuleRateLimitStatusPtrType) ToWafRuleRateLimitStatusPtrOutput() WafRuleRateLimitStatusPtrOutput {
+	return i.ToWafRuleRateLimitStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleRateLimitStatusPtrType) ToWafRuleRateLimitStatusPtrOutputWithContext(ctx context.Context) WafRuleRateLimitStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleRateLimitStatusPtrOutput)
+}
+
+type WafRuleRateLimitStatusOutput struct{ *pulumi.OutputState }
+
+func (WafRuleRateLimitStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleRateLimitStatus)(nil)).Elem()
+}
+
+func (o WafRuleRateLimitStatusOutput) ToWafRuleRateLimitStatusOutput() WafRuleRateLimitStatusOutput {
+	return o
+}
+
+func (o WafRuleRateLimitStatusOutput) ToWafRuleRateLimitStatusOutputWithContext(ctx context.Context) WafRuleRateLimitStatusOutput {
+	return o
+}
+
+func (o WafRuleRateLimitStatusOutput) ToWafRuleRateLimitStatusPtrOutput() WafRuleRateLimitStatusPtrOutput {
+	return o.ToWafRuleRateLimitStatusPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleRateLimitStatusOutput) ToWafRuleRateLimitStatusPtrOutputWithContext(ctx context.Context) WafRuleRateLimitStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleRateLimitStatus) *WafRuleRateLimitStatus {
+		return &v
+	}).(WafRuleRateLimitStatusPtrOutput)
+}
+
+// The HTTP status code returned.
+func (o WafRuleRateLimitStatusOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleRateLimitStatus) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+func (o WafRuleRateLimitStatusOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleRateLimitStatus) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+func (o WafRuleRateLimitStatusOutput) Ratio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleRateLimitStatus) *int { return v.Ratio }).(pulumi.IntPtrOutput)
+}
+
+type WafRuleRateLimitStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleRateLimitStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleRateLimitStatus)(nil)).Elem()
+}
+
+func (o WafRuleRateLimitStatusPtrOutput) ToWafRuleRateLimitStatusPtrOutput() WafRuleRateLimitStatusPtrOutput {
+	return o
+}
+
+func (o WafRuleRateLimitStatusPtrOutput) ToWafRuleRateLimitStatusPtrOutputWithContext(ctx context.Context) WafRuleRateLimitStatusPtrOutput {
+	return o
+}
+
+func (o WafRuleRateLimitStatusPtrOutput) Elem() WafRuleRateLimitStatusOutput {
+	return o.ApplyT(func(v *WafRuleRateLimitStatus) WafRuleRateLimitStatus {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleRateLimitStatus
+		return ret
+	}).(WafRuleRateLimitStatusOutput)
+}
+
+// The HTTP status code returned.
+func (o WafRuleRateLimitStatusPtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleRateLimitStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+func (o WafRuleRateLimitStatusPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleRateLimitStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+func (o WafRuleRateLimitStatusPtrOutput) Ratio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleRateLimitStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Ratio
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetDomainsDomain struct {
@@ -1457,13 +9284,732 @@ func (o GetWafPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetWafPolicies
 	}).(GetWafPoliciesPolicyOutput)
 }
 
+type GetWafRulesWafRule struct {
+	// Specifies the action of the rule.
+	Action string `pulumi:"action"`
+	// Whether to turn on Frequency Control, on/off
+	CcStatus string `pulumi:"ccStatus"`
+	// The blocked regions in the Chinese mainland, separated by commas (,).
+	CnRegionList string `pulumi:"cnRegionList"`
+	// The trigger condition of the rule.
+	Conditions []GetWafRulesWafRuleCondition `pulumi:"conditions"`
+	// The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
+	DefenseScene string `pulumi:"defenseScene"`
+	// The effective range of the frequency control blacklist.
+	Effect string `pulumi:"effect"`
+	// Revised the time. The date format is based on ISO8601 notation and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
+	GmtModified string `pulumi:"gmtModified"`
+	// The ID of the Waf Rule.
+	Id string `pulumi:"id"`
+	// The effective range of the frequency control blacklist.
+	OtherRegionList string `pulumi:"otherRegionList"`
+	// The protection policy ID.
+	PolicyId string `pulumi:"policyId"`
+	// The rules of rate limiting.
+	RateLimits []GetWafRulesWafRuleRateLimit `pulumi:"rateLimits"`
+	// The regular expression.
+	RegularRules []string `pulumi:"regularRules"`
+	// The type of the regular expression. If the value of the tags field contains waf_group, you can specify this field.
+	RegularTypes []string `pulumi:"regularTypes"`
+	// Filter by IP address.
+	RemoteAddrs []string `pulumi:"remoteAddrs"`
+	// The name of the protection rule.
+	RuleName string `pulumi:"ruleName"`
+	// List of protection scenarios
+	Scenes []string `pulumi:"scenes"`
+	// The information about the HTTP status code.
+	Status string `pulumi:"status"`
+	// The id of the waf rule group.
+	WafGroupIds string `pulumi:"wafGroupIds"`
+	// The first ID of the resource
+	WafRuleId string `pulumi:"wafRuleId"`
+}
+
+// GetWafRulesWafRuleInput is an input type that accepts GetWafRulesWafRuleArgs and GetWafRulesWafRuleOutput values.
+// You can construct a concrete instance of `GetWafRulesWafRuleInput` via:
+//
+//	GetWafRulesWafRuleArgs{...}
+type GetWafRulesWafRuleInput interface {
+	pulumi.Input
+
+	ToGetWafRulesWafRuleOutput() GetWafRulesWafRuleOutput
+	ToGetWafRulesWafRuleOutputWithContext(context.Context) GetWafRulesWafRuleOutput
+}
+
+type GetWafRulesWafRuleArgs struct {
+	// Specifies the action of the rule.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Whether to turn on Frequency Control, on/off
+	CcStatus pulumi.StringInput `pulumi:"ccStatus"`
+	// The blocked regions in the Chinese mainland, separated by commas (,).
+	CnRegionList pulumi.StringInput `pulumi:"cnRegionList"`
+	// The trigger condition of the rule.
+	Conditions GetWafRulesWafRuleConditionArrayInput `pulumi:"conditions"`
+	// The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
+	DefenseScene pulumi.StringInput `pulumi:"defenseScene"`
+	// The effective range of the frequency control blacklist.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// Revised the time. The date format is based on ISO8601 notation and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
+	GmtModified pulumi.StringInput `pulumi:"gmtModified"`
+	// The ID of the Waf Rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The effective range of the frequency control blacklist.
+	OtherRegionList pulumi.StringInput `pulumi:"otherRegionList"`
+	// The protection policy ID.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+	// The rules of rate limiting.
+	RateLimits GetWafRulesWafRuleRateLimitArrayInput `pulumi:"rateLimits"`
+	// The regular expression.
+	RegularRules pulumi.StringArrayInput `pulumi:"regularRules"`
+	// The type of the regular expression. If the value of the tags field contains waf_group, you can specify this field.
+	RegularTypes pulumi.StringArrayInput `pulumi:"regularTypes"`
+	// Filter by IP address.
+	RemoteAddrs pulumi.StringArrayInput `pulumi:"remoteAddrs"`
+	// The name of the protection rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// List of protection scenarios
+	Scenes pulumi.StringArrayInput `pulumi:"scenes"`
+	// The information about the HTTP status code.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The id of the waf rule group.
+	WafGroupIds pulumi.StringInput `pulumi:"wafGroupIds"`
+	// The first ID of the resource
+	WafRuleId pulumi.StringInput `pulumi:"wafRuleId"`
+}
+
+func (GetWafRulesWafRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesWafRule)(nil)).Elem()
+}
+
+func (i GetWafRulesWafRuleArgs) ToGetWafRulesWafRuleOutput() GetWafRulesWafRuleOutput {
+	return i.ToGetWafRulesWafRuleOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesWafRuleArgs) ToGetWafRulesWafRuleOutputWithContext(ctx context.Context) GetWafRulesWafRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleOutput)
+}
+
+// GetWafRulesWafRuleArrayInput is an input type that accepts GetWafRulesWafRuleArray and GetWafRulesWafRuleArrayOutput values.
+// You can construct a concrete instance of `GetWafRulesWafRuleArrayInput` via:
+//
+//	GetWafRulesWafRuleArray{ GetWafRulesWafRuleArgs{...} }
+type GetWafRulesWafRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetWafRulesWafRuleArrayOutput() GetWafRulesWafRuleArrayOutput
+	ToGetWafRulesWafRuleArrayOutputWithContext(context.Context) GetWafRulesWafRuleArrayOutput
+}
+
+type GetWafRulesWafRuleArray []GetWafRulesWafRuleInput
+
+func (GetWafRulesWafRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafRulesWafRule)(nil)).Elem()
+}
+
+func (i GetWafRulesWafRuleArray) ToGetWafRulesWafRuleArrayOutput() GetWafRulesWafRuleArrayOutput {
+	return i.ToGetWafRulesWafRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesWafRuleArray) ToGetWafRulesWafRuleArrayOutputWithContext(ctx context.Context) GetWafRulesWafRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleArrayOutput)
+}
+
+type GetWafRulesWafRuleOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesWafRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesWafRule)(nil)).Elem()
+}
+
+func (o GetWafRulesWafRuleOutput) ToGetWafRulesWafRuleOutput() GetWafRulesWafRuleOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleOutput) ToGetWafRulesWafRuleOutputWithContext(ctx context.Context) GetWafRulesWafRuleOutput {
+	return o
+}
+
+// Specifies the action of the rule.
+func (o GetWafRulesWafRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Whether to turn on Frequency Control, on/off
+func (o GetWafRulesWafRuleOutput) CcStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.CcStatus }).(pulumi.StringOutput)
+}
+
+// The blocked regions in the Chinese mainland, separated by commas (,).
+func (o GetWafRulesWafRuleOutput) CnRegionList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.CnRegionList }).(pulumi.StringOutput)
+}
+
+// The trigger condition of the rule.
+func (o GetWafRulesWafRuleOutput) Conditions() GetWafRulesWafRuleConditionArrayOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) []GetWafRulesWafRuleCondition { return v.Conditions }).(GetWafRulesWafRuleConditionArrayOutput)
+}
+
+// The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
+func (o GetWafRulesWafRuleOutput) DefenseScene() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.DefenseScene }).(pulumi.StringOutput)
+}
+
+// The effective range of the frequency control blacklist.
+func (o GetWafRulesWafRuleOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// Revised the time. The date format is based on ISO8601 notation and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
+func (o GetWafRulesWafRuleOutput) GmtModified() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.GmtModified }).(pulumi.StringOutput)
+}
+
+// The ID of the Waf Rule.
+func (o GetWafRulesWafRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The effective range of the frequency control blacklist.
+func (o GetWafRulesWafRuleOutput) OtherRegionList() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.OtherRegionList }).(pulumi.StringOutput)
+}
+
+// The protection policy ID.
+func (o GetWafRulesWafRuleOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+// The rules of rate limiting.
+func (o GetWafRulesWafRuleOutput) RateLimits() GetWafRulesWafRuleRateLimitArrayOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) []GetWafRulesWafRuleRateLimit { return v.RateLimits }).(GetWafRulesWafRuleRateLimitArrayOutput)
+}
+
+// The regular expression.
+func (o GetWafRulesWafRuleOutput) RegularRules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) []string { return v.RegularRules }).(pulumi.StringArrayOutput)
+}
+
+// The type of the regular expression. If the value of the tags field contains waf_group, you can specify this field.
+func (o GetWafRulesWafRuleOutput) RegularTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) []string { return v.RegularTypes }).(pulumi.StringArrayOutput)
+}
+
+// Filter by IP address.
+func (o GetWafRulesWafRuleOutput) RemoteAddrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) []string { return v.RemoteAddrs }).(pulumi.StringArrayOutput)
+}
+
+// The name of the protection rule.
+func (o GetWafRulesWafRuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// List of protection scenarios
+func (o GetWafRulesWafRuleOutput) Scenes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) []string { return v.Scenes }).(pulumi.StringArrayOutput)
+}
+
+// The information about the HTTP status code.
+func (o GetWafRulesWafRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The id of the waf rule group.
+func (o GetWafRulesWafRuleOutput) WafGroupIds() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.WafGroupIds }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource
+func (o GetWafRulesWafRuleOutput) WafRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRule) string { return v.WafRuleId }).(pulumi.StringOutput)
+}
+
+type GetWafRulesWafRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesWafRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafRulesWafRule)(nil)).Elem()
+}
+
+func (o GetWafRulesWafRuleArrayOutput) ToGetWafRulesWafRuleArrayOutput() GetWafRulesWafRuleArrayOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleArrayOutput) ToGetWafRulesWafRuleArrayOutputWithContext(ctx context.Context) GetWafRulesWafRuleArrayOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleArrayOutput) Index(i pulumi.IntInput) GetWafRulesWafRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWafRulesWafRule {
+		return vs[0].([]GetWafRulesWafRule)[vs[1].(int)]
+	}).(GetWafRulesWafRuleOutput)
+}
+
+type GetWafRulesWafRuleCondition struct {
+	// The match field.
+	Key string `pulumi:"key"`
+	// The logical symbol.
+	OpValue string `pulumi:"opValue"`
+	// The subfield of the target field.
+	SubKey string `pulumi:"subKey"`
+	// The match content. Separate multiple values with commas (,).
+	Values string `pulumi:"values"`
+}
+
+// GetWafRulesWafRuleConditionInput is an input type that accepts GetWafRulesWafRuleConditionArgs and GetWafRulesWafRuleConditionOutput values.
+// You can construct a concrete instance of `GetWafRulesWafRuleConditionInput` via:
+//
+//	GetWafRulesWafRuleConditionArgs{...}
+type GetWafRulesWafRuleConditionInput interface {
+	pulumi.Input
+
+	ToGetWafRulesWafRuleConditionOutput() GetWafRulesWafRuleConditionOutput
+	ToGetWafRulesWafRuleConditionOutputWithContext(context.Context) GetWafRulesWafRuleConditionOutput
+}
+
+type GetWafRulesWafRuleConditionArgs struct {
+	// The match field.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The logical symbol.
+	OpValue pulumi.StringInput `pulumi:"opValue"`
+	// The subfield of the target field.
+	SubKey pulumi.StringInput `pulumi:"subKey"`
+	// The match content. Separate multiple values with commas (,).
+	Values pulumi.StringInput `pulumi:"values"`
+}
+
+func (GetWafRulesWafRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesWafRuleCondition)(nil)).Elem()
+}
+
+func (i GetWafRulesWafRuleConditionArgs) ToGetWafRulesWafRuleConditionOutput() GetWafRulesWafRuleConditionOutput {
+	return i.ToGetWafRulesWafRuleConditionOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesWafRuleConditionArgs) ToGetWafRulesWafRuleConditionOutputWithContext(ctx context.Context) GetWafRulesWafRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleConditionOutput)
+}
+
+// GetWafRulesWafRuleConditionArrayInput is an input type that accepts GetWafRulesWafRuleConditionArray and GetWafRulesWafRuleConditionArrayOutput values.
+// You can construct a concrete instance of `GetWafRulesWafRuleConditionArrayInput` via:
+//
+//	GetWafRulesWafRuleConditionArray{ GetWafRulesWafRuleConditionArgs{...} }
+type GetWafRulesWafRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetWafRulesWafRuleConditionArrayOutput() GetWafRulesWafRuleConditionArrayOutput
+	ToGetWafRulesWafRuleConditionArrayOutputWithContext(context.Context) GetWafRulesWafRuleConditionArrayOutput
+}
+
+type GetWafRulesWafRuleConditionArray []GetWafRulesWafRuleConditionInput
+
+func (GetWafRulesWafRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafRulesWafRuleCondition)(nil)).Elem()
+}
+
+func (i GetWafRulesWafRuleConditionArray) ToGetWafRulesWafRuleConditionArrayOutput() GetWafRulesWafRuleConditionArrayOutput {
+	return i.ToGetWafRulesWafRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesWafRuleConditionArray) ToGetWafRulesWafRuleConditionArrayOutputWithContext(ctx context.Context) GetWafRulesWafRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleConditionArrayOutput)
+}
+
+type GetWafRulesWafRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesWafRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesWafRuleCondition)(nil)).Elem()
+}
+
+func (o GetWafRulesWafRuleConditionOutput) ToGetWafRulesWafRuleConditionOutput() GetWafRulesWafRuleConditionOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleConditionOutput) ToGetWafRulesWafRuleConditionOutputWithContext(ctx context.Context) GetWafRulesWafRuleConditionOutput {
+	return o
+}
+
+// The match field.
+func (o GetWafRulesWafRuleConditionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleCondition) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The logical symbol.
+func (o GetWafRulesWafRuleConditionOutput) OpValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleCondition) string { return v.OpValue }).(pulumi.StringOutput)
+}
+
+// The subfield of the target field.
+func (o GetWafRulesWafRuleConditionOutput) SubKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleCondition) string { return v.SubKey }).(pulumi.StringOutput)
+}
+
+// The match content. Separate multiple values with commas (,).
+func (o GetWafRulesWafRuleConditionOutput) Values() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleCondition) string { return v.Values }).(pulumi.StringOutput)
+}
+
+type GetWafRulesWafRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesWafRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafRulesWafRuleCondition)(nil)).Elem()
+}
+
+func (o GetWafRulesWafRuleConditionArrayOutput) ToGetWafRulesWafRuleConditionArrayOutput() GetWafRulesWafRuleConditionArrayOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleConditionArrayOutput) ToGetWafRulesWafRuleConditionArrayOutputWithContext(ctx context.Context) GetWafRulesWafRuleConditionArrayOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleConditionArrayOutput) Index(i pulumi.IntInput) GetWafRulesWafRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWafRulesWafRuleCondition {
+		return vs[0].([]GetWafRulesWafRuleCondition)[vs[1].(int)]
+	}).(GetWafRulesWafRuleConditionOutput)
+}
+
+type GetWafRulesWafRuleRateLimit struct {
+	// The statistical interval. Valid values: 5 to 1800. Unit: seconds.
+	Interval int `pulumi:"interval"`
+	// The information about the HTTP status code.
+	Statuses []GetWafRulesWafRuleRateLimitStatus `pulumi:"statuses"`
+	// The subfield of the target field.
+	SubKey string `pulumi:"subKey"`
+	// The statistical field for frequency control.
+	Target string `pulumi:"target"`
+	// The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
+	Threshold int `pulumi:"threshold"`
+	// The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
+	Ttl int `pulumi:"ttl"`
+}
+
+// GetWafRulesWafRuleRateLimitInput is an input type that accepts GetWafRulesWafRuleRateLimitArgs and GetWafRulesWafRuleRateLimitOutput values.
+// You can construct a concrete instance of `GetWafRulesWafRuleRateLimitInput` via:
+//
+//	GetWafRulesWafRuleRateLimitArgs{...}
+type GetWafRulesWafRuleRateLimitInput interface {
+	pulumi.Input
+
+	ToGetWafRulesWafRuleRateLimitOutput() GetWafRulesWafRuleRateLimitOutput
+	ToGetWafRulesWafRuleRateLimitOutputWithContext(context.Context) GetWafRulesWafRuleRateLimitOutput
+}
+
+type GetWafRulesWafRuleRateLimitArgs struct {
+	// The statistical interval. Valid values: 5 to 1800. Unit: seconds.
+	Interval pulumi.IntInput `pulumi:"interval"`
+	// The information about the HTTP status code.
+	Statuses GetWafRulesWafRuleRateLimitStatusArrayInput `pulumi:"statuses"`
+	// The subfield of the target field.
+	SubKey pulumi.StringInput `pulumi:"subKey"`
+	// The statistical field for frequency control.
+	Target pulumi.StringInput `pulumi:"target"`
+	// The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
+	Threshold pulumi.IntInput `pulumi:"threshold"`
+	// The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (GetWafRulesWafRuleRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesWafRuleRateLimit)(nil)).Elem()
+}
+
+func (i GetWafRulesWafRuleRateLimitArgs) ToGetWafRulesWafRuleRateLimitOutput() GetWafRulesWafRuleRateLimitOutput {
+	return i.ToGetWafRulesWafRuleRateLimitOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesWafRuleRateLimitArgs) ToGetWafRulesWafRuleRateLimitOutputWithContext(ctx context.Context) GetWafRulesWafRuleRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleRateLimitOutput)
+}
+
+// GetWafRulesWafRuleRateLimitArrayInput is an input type that accepts GetWafRulesWafRuleRateLimitArray and GetWafRulesWafRuleRateLimitArrayOutput values.
+// You can construct a concrete instance of `GetWafRulesWafRuleRateLimitArrayInput` via:
+//
+//	GetWafRulesWafRuleRateLimitArray{ GetWafRulesWafRuleRateLimitArgs{...} }
+type GetWafRulesWafRuleRateLimitArrayInput interface {
+	pulumi.Input
+
+	ToGetWafRulesWafRuleRateLimitArrayOutput() GetWafRulesWafRuleRateLimitArrayOutput
+	ToGetWafRulesWafRuleRateLimitArrayOutputWithContext(context.Context) GetWafRulesWafRuleRateLimitArrayOutput
+}
+
+type GetWafRulesWafRuleRateLimitArray []GetWafRulesWafRuleRateLimitInput
+
+func (GetWafRulesWafRuleRateLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafRulesWafRuleRateLimit)(nil)).Elem()
+}
+
+func (i GetWafRulesWafRuleRateLimitArray) ToGetWafRulesWafRuleRateLimitArrayOutput() GetWafRulesWafRuleRateLimitArrayOutput {
+	return i.ToGetWafRulesWafRuleRateLimitArrayOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesWafRuleRateLimitArray) ToGetWafRulesWafRuleRateLimitArrayOutputWithContext(ctx context.Context) GetWafRulesWafRuleRateLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleRateLimitArrayOutput)
+}
+
+type GetWafRulesWafRuleRateLimitOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesWafRuleRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesWafRuleRateLimit)(nil)).Elem()
+}
+
+func (o GetWafRulesWafRuleRateLimitOutput) ToGetWafRulesWafRuleRateLimitOutput() GetWafRulesWafRuleRateLimitOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleRateLimitOutput) ToGetWafRulesWafRuleRateLimitOutputWithContext(ctx context.Context) GetWafRulesWafRuleRateLimitOutput {
+	return o
+}
+
+// The statistical interval. Valid values: 5 to 1800. Unit: seconds.
+func (o GetWafRulesWafRuleRateLimitOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleRateLimit) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+// The information about the HTTP status code.
+func (o GetWafRulesWafRuleRateLimitOutput) Statuses() GetWafRulesWafRuleRateLimitStatusArrayOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleRateLimit) []GetWafRulesWafRuleRateLimitStatus { return v.Statuses }).(GetWafRulesWafRuleRateLimitStatusArrayOutput)
+}
+
+// The subfield of the target field.
+func (o GetWafRulesWafRuleRateLimitOutput) SubKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleRateLimit) string { return v.SubKey }).(pulumi.StringOutput)
+}
+
+// The statistical field for frequency control.
+func (o GetWafRulesWafRuleRateLimitOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleRateLimit) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
+func (o GetWafRulesWafRuleRateLimitOutput) Threshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleRateLimit) int { return v.Threshold }).(pulumi.IntOutput)
+}
+
+// The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
+func (o GetWafRulesWafRuleRateLimitOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleRateLimit) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type GetWafRulesWafRuleRateLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesWafRuleRateLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafRulesWafRuleRateLimit)(nil)).Elem()
+}
+
+func (o GetWafRulesWafRuleRateLimitArrayOutput) ToGetWafRulesWafRuleRateLimitArrayOutput() GetWafRulesWafRuleRateLimitArrayOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleRateLimitArrayOutput) ToGetWafRulesWafRuleRateLimitArrayOutputWithContext(ctx context.Context) GetWafRulesWafRuleRateLimitArrayOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleRateLimitArrayOutput) Index(i pulumi.IntInput) GetWafRulesWafRuleRateLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWafRulesWafRuleRateLimit {
+		return vs[0].([]GetWafRulesWafRuleRateLimit)[vs[1].(int)]
+	}).(GetWafRulesWafRuleRateLimitOutput)
+}
+
+type GetWafRulesWafRuleRateLimitStatus struct {
+	Code string `pulumi:"code"`
+	// The number of times that the HTTP status code that was returned.
+	Count int `pulumi:"count"`
+	// The percentage of HTTP status codes.
+	Ratio int `pulumi:"ratio"`
+}
+
+// GetWafRulesWafRuleRateLimitStatusInput is an input type that accepts GetWafRulesWafRuleRateLimitStatusArgs and GetWafRulesWafRuleRateLimitStatusOutput values.
+// You can construct a concrete instance of `GetWafRulesWafRuleRateLimitStatusInput` via:
+//
+//	GetWafRulesWafRuleRateLimitStatusArgs{...}
+type GetWafRulesWafRuleRateLimitStatusInput interface {
+	pulumi.Input
+
+	ToGetWafRulesWafRuleRateLimitStatusOutput() GetWafRulesWafRuleRateLimitStatusOutput
+	ToGetWafRulesWafRuleRateLimitStatusOutputWithContext(context.Context) GetWafRulesWafRuleRateLimitStatusOutput
+}
+
+type GetWafRulesWafRuleRateLimitStatusArgs struct {
+	Code pulumi.StringInput `pulumi:"code"`
+	// The number of times that the HTTP status code that was returned.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The percentage of HTTP status codes.
+	Ratio pulumi.IntInput `pulumi:"ratio"`
+}
+
+func (GetWafRulesWafRuleRateLimitStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesWafRuleRateLimitStatus)(nil)).Elem()
+}
+
+func (i GetWafRulesWafRuleRateLimitStatusArgs) ToGetWafRulesWafRuleRateLimitStatusOutput() GetWafRulesWafRuleRateLimitStatusOutput {
+	return i.ToGetWafRulesWafRuleRateLimitStatusOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesWafRuleRateLimitStatusArgs) ToGetWafRulesWafRuleRateLimitStatusOutputWithContext(ctx context.Context) GetWafRulesWafRuleRateLimitStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleRateLimitStatusOutput)
+}
+
+// GetWafRulesWafRuleRateLimitStatusArrayInput is an input type that accepts GetWafRulesWafRuleRateLimitStatusArray and GetWafRulesWafRuleRateLimitStatusArrayOutput values.
+// You can construct a concrete instance of `GetWafRulesWafRuleRateLimitStatusArrayInput` via:
+//
+//	GetWafRulesWafRuleRateLimitStatusArray{ GetWafRulesWafRuleRateLimitStatusArgs{...} }
+type GetWafRulesWafRuleRateLimitStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetWafRulesWafRuleRateLimitStatusArrayOutput() GetWafRulesWafRuleRateLimitStatusArrayOutput
+	ToGetWafRulesWafRuleRateLimitStatusArrayOutputWithContext(context.Context) GetWafRulesWafRuleRateLimitStatusArrayOutput
+}
+
+type GetWafRulesWafRuleRateLimitStatusArray []GetWafRulesWafRuleRateLimitStatusInput
+
+func (GetWafRulesWafRuleRateLimitStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafRulesWafRuleRateLimitStatus)(nil)).Elem()
+}
+
+func (i GetWafRulesWafRuleRateLimitStatusArray) ToGetWafRulesWafRuleRateLimitStatusArrayOutput() GetWafRulesWafRuleRateLimitStatusArrayOutput {
+	return i.ToGetWafRulesWafRuleRateLimitStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesWafRuleRateLimitStatusArray) ToGetWafRulesWafRuleRateLimitStatusArrayOutputWithContext(ctx context.Context) GetWafRulesWafRuleRateLimitStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesWafRuleRateLimitStatusArrayOutput)
+}
+
+type GetWafRulesWafRuleRateLimitStatusOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesWafRuleRateLimitStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesWafRuleRateLimitStatus)(nil)).Elem()
+}
+
+func (o GetWafRulesWafRuleRateLimitStatusOutput) ToGetWafRulesWafRuleRateLimitStatusOutput() GetWafRulesWafRuleRateLimitStatusOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleRateLimitStatusOutput) ToGetWafRulesWafRuleRateLimitStatusOutputWithContext(ctx context.Context) GetWafRulesWafRuleRateLimitStatusOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleRateLimitStatusOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleRateLimitStatus) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The number of times that the HTTP status code that was returned.
+func (o GetWafRulesWafRuleRateLimitStatusOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleRateLimitStatus) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The percentage of HTTP status codes.
+func (o GetWafRulesWafRuleRateLimitStatusOutput) Ratio() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWafRulesWafRuleRateLimitStatus) int { return v.Ratio }).(pulumi.IntOutput)
+}
+
+type GetWafRulesWafRuleRateLimitStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesWafRuleRateLimitStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWafRulesWafRuleRateLimitStatus)(nil)).Elem()
+}
+
+func (o GetWafRulesWafRuleRateLimitStatusArrayOutput) ToGetWafRulesWafRuleRateLimitStatusArrayOutput() GetWafRulesWafRuleRateLimitStatusArrayOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleRateLimitStatusArrayOutput) ToGetWafRulesWafRuleRateLimitStatusArrayOutputWithContext(ctx context.Context) GetWafRulesWafRuleRateLimitStatusArrayOutput {
+	return o
+}
+
+func (o GetWafRulesWafRuleRateLimitStatusArrayOutput) Index(i pulumi.IntInput) GetWafRulesWafRuleRateLimitStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWafRulesWafRuleRateLimitStatus {
+		return vs[0].([]GetWafRulesWafRuleRateLimitStatus)[vs[1].(int)]
+	}).(GetWafRulesWafRuleRateLimitStatusOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigFunctionArgInput)(nil)).Elem(), DomainConfigFunctionArgArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigFunctionArgArrayInput)(nil)).Elem(), DomainConfigFunctionArgArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainSourceInput)(nil)).Elem(), DomainSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainSourceArrayInput)(nil)).Elem(), DomainSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfInput)(nil)).Elem(), ErEnvConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPtrInput)(nil)).Elem(), ErEnvConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryAnhuiInput)(nil)).Elem(), ErEnvConfPresetCanaryAnhuiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryAnhuiPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryAnhuiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryBeijingInput)(nil)).Elem(), ErEnvConfPresetCanaryBeijingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryBeijingPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryBeijingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryChongqingInput)(nil)).Elem(), ErEnvConfPresetCanaryChongqingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryChongqingPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryChongqingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryFujianInput)(nil)).Elem(), ErEnvConfPresetCanaryFujianArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryFujianPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryFujianArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryGansuInput)(nil)).Elem(), ErEnvConfPresetCanaryGansuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryGansuPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryGansuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryGuangdongInput)(nil)).Elem(), ErEnvConfPresetCanaryGuangdongArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryGuangdongPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryGuangdongArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryGuangxiInput)(nil)).Elem(), ErEnvConfPresetCanaryGuangxiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryGuangxiPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryGuangxiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryGuizhouInput)(nil)).Elem(), ErEnvConfPresetCanaryGuizhouArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryGuizhouPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryGuizhouArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHainanInput)(nil)).Elem(), ErEnvConfPresetCanaryHainanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHainanPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryHainanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHebeiInput)(nil)).Elem(), ErEnvConfPresetCanaryHebeiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHebeiPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryHebeiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHeilongjiangInput)(nil)).Elem(), ErEnvConfPresetCanaryHeilongjiangArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHeilongjiangPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryHeilongjiangArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHenanInput)(nil)).Elem(), ErEnvConfPresetCanaryHenanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHenanPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryHenanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHongKongInput)(nil)).Elem(), ErEnvConfPresetCanaryHongKongArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHongKongPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryHongKongArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHubeiInput)(nil)).Elem(), ErEnvConfPresetCanaryHubeiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHubeiPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryHubeiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHunanInput)(nil)).Elem(), ErEnvConfPresetCanaryHunanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryHunanPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryHunanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryJiangsuInput)(nil)).Elem(), ErEnvConfPresetCanaryJiangsuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryJiangsuPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryJiangsuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryJiangxiInput)(nil)).Elem(), ErEnvConfPresetCanaryJiangxiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryJiangxiPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryJiangxiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryJilinInput)(nil)).Elem(), ErEnvConfPresetCanaryJilinArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryJilinPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryJilinArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryLiaoningInput)(nil)).Elem(), ErEnvConfPresetCanaryLiaoningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryLiaoningPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryLiaoningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryMacauInput)(nil)).Elem(), ErEnvConfPresetCanaryMacauArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryMacauPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryMacauArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryNeimengguInput)(nil)).Elem(), ErEnvConfPresetCanaryNeimengguArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryNeimengguPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryNeimengguArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryNingxiaInput)(nil)).Elem(), ErEnvConfPresetCanaryNingxiaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryNingxiaPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryNingxiaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryOverseasInput)(nil)).Elem(), ErEnvConfPresetCanaryOverseasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryOverseasPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryOverseasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryQinghaiInput)(nil)).Elem(), ErEnvConfPresetCanaryQinghaiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryQinghaiPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryQinghaiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryShaanxiInput)(nil)).Elem(), ErEnvConfPresetCanaryShaanxiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryShaanxiPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryShaanxiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryShandongInput)(nil)).Elem(), ErEnvConfPresetCanaryShandongArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryShandongPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryShandongArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryShanghaiInput)(nil)).Elem(), ErEnvConfPresetCanaryShanghaiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryShanghaiPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryShanghaiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryShanxiInput)(nil)).Elem(), ErEnvConfPresetCanaryShanxiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryShanxiPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryShanxiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanarySichuanInput)(nil)).Elem(), ErEnvConfPresetCanarySichuanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanarySichuanPtrInput)(nil)).Elem(), ErEnvConfPresetCanarySichuanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryTaiwanInput)(nil)).Elem(), ErEnvConfPresetCanaryTaiwanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryTaiwanPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryTaiwanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryTianjinInput)(nil)).Elem(), ErEnvConfPresetCanaryTianjinArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryTianjinPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryTianjinArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryXinjiangInput)(nil)).Elem(), ErEnvConfPresetCanaryXinjiangArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryXinjiangPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryXinjiangArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryXizangInput)(nil)).Elem(), ErEnvConfPresetCanaryXizangArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryXizangPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryXizangArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryYunnanInput)(nil)).Elem(), ErEnvConfPresetCanaryYunnanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryYunnanPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryYunnanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryZhejiangInput)(nil)).Elem(), ErEnvConfPresetCanaryZhejiangArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfPresetCanaryZhejiangPtrInput)(nil)).Elem(), ErEnvConfPresetCanaryZhejiangArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfProductionInput)(nil)).Elem(), ErEnvConfProductionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfProductionPtrInput)(nil)).Elem(), ErEnvConfProductionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfStagingInput)(nil)).Elem(), ErEnvConfStagingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ErEnvConfStagingPtrInput)(nil)).Elem(), ErEnvConfStagingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IpaDomainSourceInput)(nil)).Elem(), IpaDomainSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IpaDomainSourceArrayInput)(nil)).Elem(), IpaDomainSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConditionInput)(nil)).Elem(), WafRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConditionArrayInput)(nil)).Elem(), WafRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleRateLimitInput)(nil)).Elem(), WafRuleRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleRateLimitPtrInput)(nil)).Elem(), WafRuleRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleRateLimitStatusInput)(nil)).Elem(), WafRuleRateLimitStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleRateLimitStatusPtrInput)(nil)).Elem(), WafRuleRateLimitStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainSourceInput)(nil)).Elem(), GetDomainsDomainSourceArgs{})
@@ -1478,12 +10024,102 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafDomainsDomainDefenseSceneArrayInput)(nil)).Elem(), GetWafDomainsDomainDefenseSceneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafPoliciesPolicyInput)(nil)).Elem(), GetWafPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafPoliciesPolicyArrayInput)(nil)).Elem(), GetWafPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesWafRuleInput)(nil)).Elem(), GetWafRulesWafRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesWafRuleArrayInput)(nil)).Elem(), GetWafRulesWafRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesWafRuleConditionInput)(nil)).Elem(), GetWafRulesWafRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesWafRuleConditionArrayInput)(nil)).Elem(), GetWafRulesWafRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesWafRuleRateLimitInput)(nil)).Elem(), GetWafRulesWafRuleRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesWafRuleRateLimitArrayInput)(nil)).Elem(), GetWafRulesWafRuleRateLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesWafRuleRateLimitStatusInput)(nil)).Elem(), GetWafRulesWafRuleRateLimitStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesWafRuleRateLimitStatusArrayInput)(nil)).Elem(), GetWafRulesWafRuleRateLimitStatusArray{})
 	pulumi.RegisterOutputType(DomainConfigFunctionArgOutput{})
 	pulumi.RegisterOutputType(DomainConfigFunctionArgArrayOutput{})
 	pulumi.RegisterOutputType(DomainSourceOutput{})
 	pulumi.RegisterOutputType(DomainSourceArrayOutput{})
+	pulumi.RegisterOutputType(ErEnvConfOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryAnhuiOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryAnhuiPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryBeijingOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryBeijingPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryChongqingOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryChongqingPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryFujianOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryFujianPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryGansuOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryGansuPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryGuangdongOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryGuangdongPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryGuangxiOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryGuangxiPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryGuizhouOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryGuizhouPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHainanOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHainanPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHebeiOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHebeiPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHeilongjiangOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHeilongjiangPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHenanOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHenanPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHongKongOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHongKongPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHubeiOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHubeiPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHunanOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryHunanPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryJiangsuOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryJiangsuPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryJiangxiOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryJiangxiPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryJilinOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryJilinPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryLiaoningOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryLiaoningPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryMacauOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryMacauPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryNeimengguOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryNeimengguPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryNingxiaOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryNingxiaPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryOverseasOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryOverseasPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryQinghaiOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryQinghaiPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryShaanxiOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryShaanxiPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryShandongOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryShandongPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryShanghaiOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryShanghaiPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryShanxiOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryShanxiPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanarySichuanOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanarySichuanPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryTaiwanOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryTaiwanPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryTianjinOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryTianjinPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryXinjiangOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryXinjiangPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryXizangOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryXizangPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryYunnanOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryYunnanPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryZhejiangOutput{})
+	pulumi.RegisterOutputType(ErEnvConfPresetCanaryZhejiangPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfProductionOutput{})
+	pulumi.RegisterOutputType(ErEnvConfProductionPtrOutput{})
+	pulumi.RegisterOutputType(ErEnvConfStagingOutput{})
+	pulumi.RegisterOutputType(ErEnvConfStagingPtrOutput{})
 	pulumi.RegisterOutputType(IpaDomainSourceOutput{})
 	pulumi.RegisterOutputType(IpaDomainSourceArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleConditionOutput{})
+	pulumi.RegisterOutputType(WafRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleRateLimitOutput{})
+	pulumi.RegisterOutputType(WafRuleRateLimitPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleRateLimitStatusOutput{})
+	pulumi.RegisterOutputType(WafRuleRateLimitStatusPtrOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainSourceOutput{})
@@ -1498,4 +10134,12 @@ func init() {
 	pulumi.RegisterOutputType(GetWafDomainsDomainDefenseSceneArrayOutput{})
 	pulumi.RegisterOutputType(GetWafPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetWafPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetWafRulesWafRuleOutput{})
+	pulumi.RegisterOutputType(GetWafRulesWafRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetWafRulesWafRuleConditionOutput{})
+	pulumi.RegisterOutputType(GetWafRulesWafRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetWafRulesWafRuleRateLimitOutput{})
+	pulumi.RegisterOutputType(GetWafRulesWafRuleRateLimitArrayOutput{})
+	pulumi.RegisterOutputType(GetWafRulesWafRuleRateLimitStatusOutput{})
+	pulumi.RegisterOutputType(GetWafRulesWafRuleRateLimitStatusArrayOutput{})
 }

@@ -400,6 +400,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.edsuser);
     }
 
+    @Import(name="eflo")
+    private @Nullable Output<String> eflo;
+
+    public Optional<Output<String>> eflo() {
+        return Optional.ofNullable(this.eflo);
+    }
+
     @Import(name="ehpc")
     private @Nullable Output<String> ehpc;
 
@@ -948,6 +955,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.edas = $.edas;
         this.edasschedulerx = $.edasschedulerx;
         this.edsuser = $.edsuser;
+        this.eflo = $.eflo;
         this.ehpc = $.ehpc;
         this.ehs = $.ehs;
         this.eipanycast = $.eipanycast;
@@ -1531,6 +1539,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder edsuser(String edsuser) {
             return edsuser(Output.of(edsuser));
+        }
+
+        public Builder eflo(@Nullable Output<String> eflo) {
+            $.eflo = eflo;
+            return this;
+        }
+
+        public Builder eflo(String eflo) {
+            return eflo(Output.of(eflo));
         }
 
         public Builder ehpc(@Nullable Output<String> ehpc) {

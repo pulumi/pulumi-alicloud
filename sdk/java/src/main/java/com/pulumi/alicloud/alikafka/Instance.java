@@ -212,6 +212,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.ioMax;
     }
     /**
+     * The traffic specification of the instance. We recommend that you configure this parameter.
+     * - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+     * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+     * 
+     */
+    @Export(name="ioMaxSpec", type=String.class, parameters={})
+    private Output<String> ioMaxSpec;
+
+    /**
+     * @return The traffic specification of the instance. We recommend that you configure this parameter.
+     * - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+     * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+     * 
+     */
+    public Output<String> ioMaxSpec() {
+        return this.ioMaxSpec;
+    }
+    /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
      * 
      */

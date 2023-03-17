@@ -33,7 +33,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := waf.NewDomain(ctx, "domain", &waf.DomainArgs{
 //				ClusterType: pulumi.String("PhysicalCluster"),
-//				Domain:      pulumi.String("www.aliyun.com"),
+//				DomainName:  pulumi.String("alicloud-provider.cn"),
 //				Http2Ports: pulumi.StringArray{
 //					pulumi.String("443"),
 //				},

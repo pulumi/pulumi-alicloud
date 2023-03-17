@@ -22,6 +22,15 @@ namespace Pulumi.AliCloud.Vpc
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        [Output("enableIpv6")]
+        public Output<bool?> EnableIpv6 { get; private set; } = null!;
+
+        [Output("ipv6CidrBlock")]
+        public Output<string> Ipv6CidrBlock { get; private set; } = null!;
+
+        [Output("ipv6CidrBlockMask")]
+        public Output<int?> Ipv6CidrBlockMask { get; private set; } = null!;
+
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -95,6 +104,12 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("enableIpv6")]
+        public Input<bool>? EnableIpv6 { get; set; }
+
+        [Input("ipv6CidrBlockMask")]
+        public Input<int>? Ipv6CidrBlockMask { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -131,6 +146,15 @@ namespace Pulumi.AliCloud.Vpc
 
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("enableIpv6")]
+        public Input<bool>? EnableIpv6 { get; set; }
+
+        [Input("ipv6CidrBlock")]
+        public Input<string>? Ipv6CidrBlock { get; set; }
+
+        [Input("ipv6CidrBlockMask")]
+        public Input<int>? Ipv6CidrBlockMask { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

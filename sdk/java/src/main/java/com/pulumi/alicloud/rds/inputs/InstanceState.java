@@ -146,7 +146,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The RDS edition of the instance. Valid values:
+     * The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
      * * **Basic**: Basic Edition.
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
@@ -158,7 +158,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> category;
 
     /**
-     * @return The RDS edition of the instance. Valid values:
+     * @return The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
      * * **Basic**: Basic Edition.
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
@@ -1539,7 +1539,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category The RDS edition of the instance. Valid values:
+         * @param category The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
          * * **Basic**: Basic Edition.
          * * **HighAvailability**: High-availability Edition.
          * * **AlwaysOn**: Cluster Edition.
@@ -1555,7 +1555,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category The RDS edition of the instance. Valid values:
+         * @param category The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
          * * **Basic**: Basic Edition.
          * * **HighAvailability**: High-availability Edition.
          * * **AlwaysOn**: Cluster Edition.

@@ -529,7 +529,9 @@ class RouterInterface(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo = alicloud.vpc.Network("foo", cidr_block="172.16.0.0/12")
+        foo = alicloud.vpc.Network("foo",
+            vpc_name="tf_test_foo12345",
+            cidr_block="172.16.0.0/12")
         interface = alicloud.vpc.RouterInterface("interface",
             opposite_region="cn-beijing",
             router_type="VRouter",
@@ -575,7 +577,9 @@ class RouterInterface(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo = alicloud.vpc.Network("foo", cidr_block="172.16.0.0/12")
+        foo = alicloud.vpc.Network("foo",
+            vpc_name="tf_test_foo12345",
+            cidr_block="172.16.0.0/12")
         interface = alicloud.vpc.RouterInterface("interface",
             opposite_region="cn-beijing",
             router_type="VRouter",

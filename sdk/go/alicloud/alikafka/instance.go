@@ -121,6 +121,10 @@ type Instance struct {
 	EndPoint pulumi.StringOutput `pulumi:"endPoint"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntOutput `pulumi:"ioMax"`
+	// The traffic specification of the instance. We recommend that you configure this parameter.
+	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
+	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+	IoMaxSpec pulumi.StringOutput `pulumi:"ioMaxSpec"`
 	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
@@ -174,9 +178,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.DiskType == nil {
 		return nil, errors.New("invalid value for required argument 'DiskType'")
 	}
-	if args.IoMax == nil {
-		return nil, errors.New("invalid value for required argument 'IoMax'")
-	}
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
@@ -218,6 +219,10 @@ type instanceState struct {
 	EndPoint *string `pulumi:"endPoint"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax *int `pulumi:"ioMax"`
+	// The traffic specification of the instance. We recommend that you configure this parameter.
+	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
+	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+	IoMaxSpec *string `pulumi:"ioMaxSpec"`
 	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
@@ -272,6 +277,10 @@ type InstanceState struct {
 	EndPoint pulumi.StringPtrInput
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 	IoMax pulumi.IntPtrInput
+	// The traffic specification of the instance. We recommend that you configure this parameter.
+	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
+	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+	IoMaxSpec pulumi.StringPtrInput
 	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
 	KmsKeyId pulumi.StringPtrInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
@@ -327,7 +336,11 @@ type instanceArgs struct {
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax *int `pulumi:"eipMax"`
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
-	IoMax int `pulumi:"ioMax"`
+	IoMax *int `pulumi:"ioMax"`
+	// The traffic specification of the instance. We recommend that you configure this parameter.
+	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
+	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+	IoMaxSpec *string `pulumi:"ioMaxSpec"`
 	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
@@ -374,7 +387,11 @@ type InstanceArgs struct {
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax pulumi.IntPtrInput
 	// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
-	IoMax pulumi.IntInput
+	IoMax pulumi.IntPtrInput
+	// The traffic specification of the instance. We recommend that you configure this parameter.
+	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
+	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+	IoMaxSpec pulumi.StringPtrInput
 	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
 	KmsKeyId pulumi.StringPtrInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
@@ -528,6 +545,13 @@ func (o InstanceOutput) EndPoint() pulumi.StringOutput {
 // The max value of io of the instance. When modify this value, it only support adjust to a greater value.
 func (o InstanceOutput) IoMax() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.IoMax }).(pulumi.IntOutput)
+}
+
+// The traffic specification of the instance. We recommend that you configure this parameter.
+// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
+// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+func (o InstanceOutput) IoMaxSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.IoMaxSpec }).(pulumi.StringOutput)
 }
 
 // The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.

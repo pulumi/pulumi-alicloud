@@ -43,24 +43,27 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
 //				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
-//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultNatGateway, err := vpc.NewNatGateway(ctx, "defaultNatGateway", &vpc.NatGatewayArgs{
-//				Specification: pulumi.String("Small"),
-//				VpcId:         defaultNetwork.ID(),
+//				VpcId:              defaultNetwork.ID(),
+//				InternetChargeType: pulumi.String("PayByLcu"),
+//				NatGatewayName:     pulumi.String(name),
+//				NatType:            pulumi.String("Enhanced"),
+//				VswitchId:          defaultSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -79,12 +82,12 @@ import (
 //				return err
 //			}
 //			defaultForwardEntry, err := vpc.NewForwardEntry(ctx, "defaultForwardEntry", &vpc.ForwardEntryArgs{
+//				ForwardTableId: defaultNatGateway.ForwardTableIds,
 //				ExternalIp:     defaultEipAddress.IpAddress,
 //				ExternalPort:   pulumi.String("80"),
-//				ForwardTableId: defaultNatGateway.ForwardTableIds,
+//				IpProtocol:     pulumi.String("tcp"),
 //				InternalIp:     pulumi.String("172.16.0.3"),
 //				InternalPort:   pulumi.String("8080"),
-//				IpProtocol:     pulumi.String("tcp"),
 //			})
 //			if err != nil {
 //				return err

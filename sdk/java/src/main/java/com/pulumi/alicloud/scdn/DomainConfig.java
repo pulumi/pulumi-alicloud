@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var domain = new Domain(&#34;domain&#34;, DomainArgs.builder()        
- *             .domainName(&#34;mydomain.xiaozhu.com&#34;)
+ *             .domainName(&#34;mydomain.alicloud-provider.cn&#34;)
  *             .cdnType(&#34;web&#34;)
  *             .scope(&#34;overseas&#34;)
  *             .sources(DomainSourceArgs.builder()

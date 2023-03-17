@@ -171,14 +171,14 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
         return this.taskState;
     }
     /**
-     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
      * 
      */
     @Export(name="taskType", type=String.class, parameters={})
     private Output<String> taskType;
 
     /**
-     * @return The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+     * @return The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
      * 
      */
     public Output<String> taskType() {

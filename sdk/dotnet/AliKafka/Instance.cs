@@ -128,6 +128,14 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<int> IoMax { get; private set; } = null!;
 
         /// <summary>
+        /// The traffic specification of the instance. We recommend that you configure this parameter.
+        /// - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+        /// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+        /// </summary>
+        [Output("ioMaxSpec")]
+        public Output<string> IoMaxSpec { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
         /// </summary>
         [Output("kmsKeyId")]
@@ -297,8 +305,16 @@ namespace Pulumi.AliCloud.AliKafka
         /// <summary>
         /// The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         /// </summary>
-        [Input("ioMax", required: true)]
-        public Input<int> IoMax { get; set; } = null!;
+        [Input("ioMax")]
+        public Input<int>? IoMax { get; set; }
+
+        /// <summary>
+        /// The traffic specification of the instance. We recommend that you configure this parameter.
+        /// - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+        /// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+        /// </summary>
+        [Input("ioMaxSpec")]
+        public Input<string>? IoMaxSpec { get; set; }
 
         /// <summary>
         /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
@@ -442,6 +458,14 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("ioMax")]
         public Input<int>? IoMax { get; set; }
+
+        /// <summary>
+        /// The traffic specification of the instance. We recommend that you configure this parameter.
+        /// - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
+        /// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
+        /// </summary>
+        [Input("ioMaxSpec")]
+        public Input<string>? IoMaxSpec { get; set; }
 
         /// <summary>
         /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.

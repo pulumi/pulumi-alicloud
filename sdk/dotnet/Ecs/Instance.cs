@@ -68,6 +68,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<Outputs.InstanceDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+        /// </summary>
+        [Output("dedicatedHostId")]
+        public Output<string?> DedicatedHostId { get; private set; } = null!;
+
+        /// <summary>
         /// Whether enable the deletion protection or not. Default value: `false`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
@@ -366,7 +372,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
         /// </summary>
         [Output("spotStrategy")]
-        public Output<string?> SpotStrategy { get; private set; } = null!;
+        public Output<string> SpotStrategy { get; private set; } = null!;
 
         /// <summary>
         /// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
@@ -452,7 +458,10 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+        /// It supports to setting a base64-encoded value, and it is the recommended usage.
+        /// From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+        /// Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
@@ -566,6 +575,12 @@ namespace Pulumi.AliCloud.Ecs
             get => _dataDisks ?? (_dataDisks = new InputList<Inputs.InstanceDataDiskArgs>());
             set => _dataDisks = value;
         }
+
+        /// <summary>
+        /// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+        /// </summary>
+        [Input("dedicatedHostId")]
+        public Input<string>? DedicatedHostId { get; set; }
 
         /// <summary>
         /// Whether enable the deletion protection or not. Default value: `false`.
@@ -956,7 +971,10 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+        /// It supports to setting a base64-encoded value, and it is the recommended usage.
+        /// From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+        /// Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -1040,6 +1058,12 @@ namespace Pulumi.AliCloud.Ecs
             get => _dataDisks ?? (_dataDisks = new InputList<Inputs.InstanceDataDiskGetArgs>());
             set => _dataDisks = value;
         }
+
+        /// <summary>
+        /// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+        /// </summary>
+        [Input("dedicatedHostId")]
+        public Input<string>? DedicatedHostId { get; set; }
 
         /// <summary>
         /// Whether enable the deletion protection or not. Default value: `false`.
@@ -1466,7 +1490,10 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+        /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+        /// It supports to setting a base64-encoded value, and it is the recommended usage.
+        /// From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+        /// Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }

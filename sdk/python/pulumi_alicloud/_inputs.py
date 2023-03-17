@@ -124,6 +124,7 @@ class ProviderEndpointArgs:
                  edas: Optional[pulumi.Input[str]] = None,
                  edasschedulerx: Optional[pulumi.Input[str]] = None,
                  edsuser: Optional[pulumi.Input[str]] = None,
+                 eflo: Optional[pulumi.Input[str]] = None,
                  ehpc: Optional[pulumi.Input[str]] = None,
                  ehs: Optional[pulumi.Input[str]] = None,
                  eipanycast: Optional[pulumi.Input[str]] = None,
@@ -304,6 +305,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "edasschedulerx", edasschedulerx)
         if edsuser is not None:
             pulumi.set(__self__, "edsuser", edsuser)
+        if eflo is not None:
+            pulumi.set(__self__, "eflo", eflo)
         if ehpc is not None:
             pulumi.set(__self__, "ehpc", ehpc)
         if ehs is not None:
@@ -939,6 +942,15 @@ class ProviderEndpointArgs:
     @edsuser.setter
     def edsuser(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "edsuser", value)
+
+    @property
+    @pulumi.getter
+    def eflo(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "eflo")
+
+    @eflo.setter
+    def eflo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eflo", value)
 
     @property
     @pulumi.getter

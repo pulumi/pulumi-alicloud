@@ -104,6 +104,7 @@ import (
 //   - `sslCertificateUrl` - (Available in v1.132.0+) Specifies SSL certificate download link.\
 //     **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).\
 //     For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
+//   - `dbEndpointDescription` - (Optional, Available in v1.201.0+) The name of the endpoint.
 //
 // ## Import
 //
@@ -117,8 +118,9 @@ import (
 type Endpoint struct {
 	pulumi.CustomResourceState
 
-	AutoAddNewNodes pulumi.StringOutput `pulumi:"autoAddNewNodes"`
-	DbClusterId     pulumi.StringOutput `pulumi:"dbClusterId"`
+	AutoAddNewNodes       pulumi.StringOutput    `pulumi:"autoAddNewNodes"`
+	DbClusterId           pulumi.StringOutput    `pulumi:"dbClusterId"`
+	DbEndpointDescription pulumi.StringPtrOutput `pulumi:"dbEndpointDescription"`
 	// (Available in v1.161.0+) The ID of the cluster endpoint.
 	DbEndpointId   pulumi.StringOutput `pulumi:"dbEndpointId"`
 	EndpointConfig pulumi.MapOutput    `pulumi:"endpointConfig"`
@@ -168,8 +170,9 @@ func GetEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Endpoint resources.
 type endpointState struct {
-	AutoAddNewNodes *string `pulumi:"autoAddNewNodes"`
-	DbClusterId     *string `pulumi:"dbClusterId"`
+	AutoAddNewNodes       *string `pulumi:"autoAddNewNodes"`
+	DbClusterId           *string `pulumi:"dbClusterId"`
+	DbEndpointDescription *string `pulumi:"dbEndpointDescription"`
 	// (Available in v1.161.0+) The ID of the cluster endpoint.
 	DbEndpointId   *string                `pulumi:"dbEndpointId"`
 	EndpointConfig map[string]interface{} `pulumi:"endpointConfig"`
@@ -188,8 +191,9 @@ type endpointState struct {
 }
 
 type EndpointState struct {
-	AutoAddNewNodes pulumi.StringPtrInput
-	DbClusterId     pulumi.StringPtrInput
+	AutoAddNewNodes       pulumi.StringPtrInput
+	DbClusterId           pulumi.StringPtrInput
+	DbEndpointDescription pulumi.StringPtrInput
 	// (Available in v1.161.0+) The ID of the cluster endpoint.
 	DbEndpointId   pulumi.StringPtrInput
 	EndpointConfig pulumi.MapInput
@@ -212,9 +216,10 @@ func (EndpointState) ElementType() reflect.Type {
 }
 
 type endpointArgs struct {
-	AutoAddNewNodes *string                `pulumi:"autoAddNewNodes"`
-	DbClusterId     string                 `pulumi:"dbClusterId"`
-	EndpointConfig  map[string]interface{} `pulumi:"endpointConfig"`
+	AutoAddNewNodes       *string                `pulumi:"autoAddNewNodes"`
+	DbClusterId           string                 `pulumi:"dbClusterId"`
+	DbEndpointDescription *string                `pulumi:"dbEndpointDescription"`
+	EndpointConfig        map[string]interface{} `pulumi:"endpointConfig"`
 	// Type of endpoint.
 	EndpointType  *string  `pulumi:"endpointType"`
 	NetType       *string  `pulumi:"netType"`
@@ -226,9 +231,10 @@ type endpointArgs struct {
 
 // The set of arguments for constructing a Endpoint resource.
 type EndpointArgs struct {
-	AutoAddNewNodes pulumi.StringPtrInput
-	DbClusterId     pulumi.StringInput
-	EndpointConfig  pulumi.MapInput
+	AutoAddNewNodes       pulumi.StringPtrInput
+	DbClusterId           pulumi.StringInput
+	DbEndpointDescription pulumi.StringPtrInput
+	EndpointConfig        pulumi.MapInput
 	// Type of endpoint.
 	EndpointType  pulumi.StringPtrInput
 	NetType       pulumi.StringPtrInput
@@ -331,6 +337,10 @@ func (o EndpointOutput) AutoAddNewNodes() pulumi.StringOutput {
 
 func (o EndpointOutput) DbClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+func (o EndpointOutput) DbEndpointDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringPtrOutput { return v.DbEndpointDescription }).(pulumi.StringPtrOutput)
 }
 
 // (Available in v1.161.0+) The ID of the cluster endpoint.

@@ -43,6 +43,8 @@ type Instance struct {
 	CreditSpecification pulumi.StringOutput `pulumi:"creditSpecification"`
 	// The list of data disks created with instance.
 	DataDisks InstanceDataDiskArrayOutput `pulumi:"dataDisks"`
+	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+	DedicatedHostId pulumi.StringPtrOutput `pulumi:"dedicatedHostId"`
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -155,7 +157,7 @@ type Instance struct {
 	// - NoSpot: A regular Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: A price threshold for a spot instance
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
-	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
+	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
@@ -186,7 +188,10 @@ type Instance struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+	// It supports to setting a base64-encoded value, and it is the recommended usage.
+	// From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+	// Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// A mapping of tags to assign to the devices created by the instance at launch time.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -261,6 +266,8 @@ type instanceState struct {
 	CreditSpecification *string `pulumi:"creditSpecification"`
 	// The list of data disks created with instance.
 	DataDisks []InstanceDataDisk `pulumi:"dataDisks"`
+	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+	DedicatedHostId *string `pulumi:"dedicatedHostId"`
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -404,7 +411,10 @@ type instanceState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]string `pulumi:"tags"`
-	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+	// It supports to setting a base64-encoded value, and it is the recommended usage.
+	// From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+	// Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData *string `pulumi:"userData"`
 	// A mapping of tags to assign to the devices created by the instance at launch time.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -435,6 +445,8 @@ type InstanceState struct {
 	CreditSpecification pulumi.StringPtrInput
 	// The list of data disks created with instance.
 	DataDisks InstanceDataDiskArrayInput
+	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+	DedicatedHostId pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -578,7 +590,10 @@ type InstanceState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.StringMapInput
-	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+	// It supports to setting a base64-encoded value, and it is the recommended usage.
+	// From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+	// Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData pulumi.StringPtrInput
 	// A mapping of tags to assign to the devices created by the instance at launch time.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -611,6 +626,8 @@ type instanceArgs struct {
 	CreditSpecification *string `pulumi:"creditSpecification"`
 	// The list of data disks created with instance.
 	DataDisks []InstanceDataDisk `pulumi:"dataDisks"`
+	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+	DedicatedHostId *string `pulumi:"dedicatedHostId"`
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -742,7 +759,10 @@ type instanceArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]string `pulumi:"tags"`
-	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+	// It supports to setting a base64-encoded value, and it is the recommended usage.
+	// From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+	// Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData *string `pulumi:"userData"`
 	// A mapping of tags to assign to the devices created by the instance at launch time.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -772,6 +792,8 @@ type InstanceArgs struct {
 	CreditSpecification pulumi.StringPtrInput
 	// The list of data disks created with instance.
 	DataDisks InstanceDataDiskArrayInput
+	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+	DedicatedHostId pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -903,7 +925,10 @@ type InstanceArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.StringMapInput
-	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+	// It supports to setting a base64-encoded value, and it is the recommended usage.
+	// From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+	// Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData pulumi.StringPtrInput
 	// A mapping of tags to assign to the devices created by the instance at launch time.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1039,6 +1064,11 @@ func (o InstanceOutput) CreditSpecification() pulumi.StringOutput {
 // The list of data disks created with instance.
 func (o InstanceOutput) DataDisks() InstanceDataDiskArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceDataDiskArrayOutput { return v.DataDisks }).(InstanceDataDiskArrayOutput)
+}
+
+// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+func (o InstanceOutput) DedicatedHostId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DedicatedHostId }).(pulumi.StringPtrOutput)
 }
 
 // Whether enable the deletion protection or not. Default value: `false`.
@@ -1297,8 +1327,8 @@ func (o InstanceOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
 // - NoSpot: A regular Pay-As-You-Go instance.
 // - SpotWithPriceLimit: A price threshold for a spot instance
 // - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
-func (o InstanceOutput) SpotStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) SpotStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SpotStrategy }).(pulumi.StringOutput)
 }
 
 // The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
@@ -1373,7 +1403,10 @@ func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+// It supports to setting a base64-encoded value, and it is the recommended usage.
+// From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect.
+// Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 func (o InstanceOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }

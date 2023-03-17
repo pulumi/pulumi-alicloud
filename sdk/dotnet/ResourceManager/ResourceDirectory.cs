@@ -65,6 +65,12 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> MasterAccountName { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+        /// </summary>
+        [Output("memberDeletionStatus")]
+        public Output<string> MemberDeletionStatus { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the root folder.
         /// </summary>
         [Output("rootFolderId")]
@@ -123,6 +129,12 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class ResourceDirectoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+        /// </summary>
+        [Input("memberDeletionStatus")]
+        public Input<string>? MemberDeletionStatus { get; set; }
+
+        /// <summary>
         /// The status of control policy. Valid values:`Enabled` and `Disabled`.
         /// </summary>
         [Input("status")]
@@ -147,6 +159,12 @@ namespace Pulumi.AliCloud.ResourceManager
         /// </summary>
         [Input("masterAccountName")]
         public Input<string>? MasterAccountName { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+        /// </summary>
+        [Input("memberDeletionStatus")]
+        public Input<string>? MemberDeletionStatus { get; set; }
 
         /// <summary>
         /// The ID of the root folder.
